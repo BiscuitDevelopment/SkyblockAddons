@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -26,9 +27,7 @@ public enum Feature {
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ColorCode.RED), true),
     HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
     HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR, true),
-
     DOUBLE_DROP_IN_OTHER_GAMES(14, null, false),
-
     MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION, new GuiFeatureData(ColorCode.RED), false),
     IGNORE_ITEM_FRAME_CLICKS(16, Message.SETTING_IGNORE_ITEM_FRAME_CLICKS, true),
     USE_VANILLA_TEXTURE_DEFENCE(17, Message.SETTING_USE_VANILLA_TEXTURE, true),
@@ -49,9 +48,7 @@ public enum Feature {
     SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(33, null, false),
     SHOW_ITEM_ANVIL_USES(34, Message.SETTING_SHOW_ITEM_ANVIL_USES, new GuiFeatureData(ColorCode.RED, true), false),
     PREVENT_MOVEMENT_ON_DEATH(35, Message.SETTING_PREVENT_MOVEMENT_ON_DEATH, true),
-
     SHOW_MAGMA_TIMER_IN_OTHER_GAMES(36, null, true),
-
     DONT_RESET_CURSOR_INVENTORY(37, Message.SETTING_DONT_RESET_CURSOR_INVENTORY, false),
     LOCK_SLOTS(38, Message.SETTING_LOCK_SLOTS, false),
     SUMMONING_EYE_ALERT(39, Message.SETTING_SUMMONING_EYE_ALERT, new GuiFeatureData(ColorCode.RED), false),
@@ -73,12 +70,11 @@ public enum Feature {
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ColorCode.AQUA), true),
     SPECIAL_ZEALOT_ALERT(58, Message.SETTING_SPECIAL_ZEALOT_ALERT, new GuiFeatureData(ColorCode.RED), false),
     ONLY_MINE_VALUABLES_NETHER(59, Message.SETTING_ONLY_MINE_VALUABLES_NETHER, new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
-
     ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS(60, null, false),
     ENABLE_MESSAGE_WHEN_BREAKING_STEMS(61, null, false),
     ENABLE_MESSAGE_WHEN_MINING_NETHER(62, null, false),
-
     HIDE_PET_HEALTH_BAR(63, Message.SETTING_HIDE_PET_HEALTH_BAR, false),
+    // Release v1.4
     DISABLE_MAGICAL_SOUP_MESSAGES(64, Message.SETTING_DISABLE_MAGICAL_SOUP_MESSAGE, true),
     POWER_ORB_STATUS_DISPLAY(65, Message.SETTING_POWER_ORB_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.POWER_ORB_DISPLAY, null), false, EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE),
     ZEALOT_COUNTER(66, Message.SETTING_ZEALOT_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA), false, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
@@ -87,9 +83,7 @@ public enum Feature {
     NO_ARROWS_LEFT_ALERT(69, Message.SETTING_NO_ARROWS_LEFT_ALERT, new GuiFeatureData(ColorCode.RED), false),
     HIDE_NIGHT_VISION_EFFECT_TIMER(70, Message.SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, true),
     CAKE_BAG_PREVIEW(71, Message.SETTING_SHOW_CAKE_BAG_PREVIEW, true),
-
     REPEAT_FULL_INVENTORY_WARNING(73, null, true),
-
     SORT_TAB_EFFECT_TIMERS(74, Message.SETTING_SORT_TAB_EFFECT_TIMERS, false),
     SHOW_BROKEN_FRAGMENTS(75, Message.SETTING_SHOW_BROKEN_FRAGMENTS, new GuiFeatureData(ColorCode.RED, true), false),
     SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU(76, Message.SETTING_SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU, false),
@@ -115,6 +109,7 @@ public enum Feature {
     CHANGE_ZEALOT_COLOR(96, Message.SETTING_CHANGE_ZEALOT_COLOR, new GuiFeatureData(ColorCode.LIGHT_PURPLE), true),
     HIDE_SVEN_PUP_NAMETAGS(97, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
     REPEAT_SLAYER_BOSS_WARNING(98, null, true),
+    // Release v1.5
     DUNGEONS_MAP_DISPLAY(99, Message.SETTING_DUNGEON_MAP_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.DUNGEONS_MAP, ColorCode.BLACK), false, EnumUtils.FeatureSetting.ROTATE_MAP, EnumUtils.FeatureSetting.CENTER_ROTATION_ON_PLAYER, EnumUtils.FeatureSetting.SHOW_PLAYER_HEADS_ON_MAP, EnumUtils.FeatureSetting.MAP_ZOOM),
     ROTATE_MAP(100, Message.SETTING_ROTATE_MAP, false),
     CENTER_ROTATION_ON_PLAYER(101, Message.SETTING_CENTER_ROTATION_ON_PLAYER, false),
@@ -132,66 +127,52 @@ public enum Feature {
     DUNGEONS_COLLECTED_ESSENCES_DISPLAY(112, Message.SETTING_DUNGEONS_COLLECTED_ESSENCES_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.YELLOW), false, EnumUtils.FeatureSetting.SHOW_SALVAGE_ESSENCES_COUNTER),
     STOP_BONZO_STAFF_SOUNDS(113, Message.SETTING_BONZO_STAFF_SOUNDS, null, true),
     SHOW_RARITY_UPGRADED(114, Message.SETTING_SHOW_RARITY_UPGRADED, new GuiFeatureData(ColorCode.LIGHT_PURPLE, true), false),
-
     SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL(115, null, true),
-
     REVENANT_SLAYER_TRACKER(116, Message.SETTING_REVENANT_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ColorCode.WHITE), false, EnumUtils.FeatureSetting.COLOUR_BY_RARITY, EnumUtils.FeatureSetting.TEXT_MODE, EnumUtils.FeatureSetting.HIDE_WHEN_NOT_IN_CRYPTS),
     TARANTULA_SLAYER_TRACKER(117, Message.SETTING_TARANTULA_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ColorCode.WHITE), false, EnumUtils.FeatureSetting.COLOUR_BY_RARITY, EnumUtils.FeatureSetting.TEXT_MODE, EnumUtils.FeatureSetting.HIDE_WHEN_NOT_IN_SPIDERS_DEN),
     SVEN_SLAYER_TRACKER(118, Message.SETTING_SVEN_SLAYER_TRACKER, new GuiFeatureData(EnumUtils.DrawType.SLAYER_TRACKERS, ColorCode.WHITE), false, EnumUtils.FeatureSetting.COLOUR_BY_RARITY, EnumUtils.FeatureSetting.TEXT_MODE, EnumUtils.FeatureSetting.HIDE_WHEN_NOT_IN_CASTLE),
-
     REVENANT_COLOR_BY_RARITY(119, null, false),
     TARANTULA_COLOR_BY_RARITY(120, null, false),
     SVEN_COLOR_BY_RARITY(121, null, false),
-
     REVENANT_TEXT_MODE(122, null, true),
     TARANTULA_TEXT_MODE(123, null, true),
     SVEN_TEXT_MODE(124, null, true),
-
     DRAGON_STATS_TRACKER(125, Message.SETTING_DRAGON_STATS_TRACKER, new GuiFeatureData(EnumUtils.DrawType.DRAGON_STATS_TRACKER, ColorCode.WHITE), true, EnumUtils.FeatureSetting.COLOUR_BY_RARITY, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
     DRAGON_STATS_TRACKER_COLOR_BY_RARITY(126, null, false),
     DRAGON_STATS_TRACKER_TEXT_MODE(127, null, false),
     DRAGON_STATS_TRACKER_NEST_ONLY(128, null, false),
-
     ZEALOT_COUNTER_NEST_ONLY(129, null, false),
     SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY(130, null, false),
     SHOW_SUMMONING_EYE_COUNT_NEST_ONLY(131, null, false),
     SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY(132, null, false),
-
     HIDE_WHEN_NOT_IN_CRYPTS(133, null, false),
     HIDE_WHEN_NOT_IN_SPIDERS_DEN(134, null, false),
     HIDE_WHEN_NOT_IN_CASTLE(135, null, false),
-
     DUNGEON_DEATH_COUNTER(136, Message.SETTING_DUNGEON_DEATH_COUNTER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), true),
     SHOW_PERSONAL_COMPACTOR_PREVIEW(137, null, false),
-
     ROCK_PET_TRACKER(138, "settings.rockPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), true),
     DOLPHIN_PET_TRACKER(139, "settings.dolphinPetTracker", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), true),
-
     SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY(140, "settings.dungeonsTeammateNameOverlay", null, false),
     SHOW_EXPERTISE_KILLS(141, "settings.showExpertiseKills", new GuiFeatureData(ColorCode.RED, true), false),
     DUNGEONS_SECRETS_DISPLAY(142, "settings.dungeonsSecretsDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false),
-
     SKILL_PROGRESS_BAR(143, "settings.skillProgressBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.GREEN), true),
     SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP(144, null, true),
     SHOW_SKILL_XP_GAINED(145, null, false),
     SHOW_SALVAGE_ESSENCES_COUNTER(146, null, false),
-
     DISABLE_MORT_MESSAGES(147, "settings.disableMortMessages", null, false),
     DISABLE_BOSS_MESSAGES(148, "settings.disableBossMessages", null, false),
     SHOW_SWORD_KILLS(149, "settings.showSwordKills", new GuiFeatureData(ColorCode.RED, true), false),
-
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
+    COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
+    ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
 
     CITY_PROJECTS_PIN(152, Message.SETTING_CITY_PROJECTS_PIN, new GuiFeatureData(EnumUtils.DrawType.CITY_PROJECTS_PIN, ColorCode.WHITE),false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
-
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
-
     ADD(-1, null, false),
     SUBTRACT(-1, null, false),
-
     LANGUAGE(-1, Message.LANGUAGE, false),
     EDIT_LOCATIONS(-1, Message.SETTING_EDIT_LOCATIONS, false),
     RESET_LOCATION(-1, Message.SETTING_RESET_LOCATIONS, false),
@@ -257,6 +238,7 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
+            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);
@@ -272,6 +254,7 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
+            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);
@@ -336,7 +319,7 @@ public enum Feature {
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
                 main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DUNGEONS_MAP) {
-                main.getRenderListener().drawDungeonsMap(mc, scale, buttonLocation);
+                DungeonMapManager.drawDungeonsMap(mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
                 main.getRenderListener().drawSlayerTrackers(this, mc, scale, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {

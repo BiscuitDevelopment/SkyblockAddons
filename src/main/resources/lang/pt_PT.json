@@ -59,7 +59,7 @@
     },
     "warningDuration": "Duração do aviso",
     "dontOpenProfileWithBow": "Não abrir perfis com o arco",
-    "stopDroppingSellingRareItems": "Não atirar/vender itens raros",
+    "stopDroppingSellingRareItems": "Não largar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "avoidBreakingBottomSugarCane": "Evitar partir a cana de açúcar de baixo",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Esconder o nome dos Sven Pups",
     "turnAllFeaturesChroma": "Colocar todas as opções em chroma",
     "dungeonMapDisplay": "Mostrar o mapa da Dungeon",
-    "rotateMap": "Rodar o mapa de acordo com a posição do jogador",
-    "centerRotationOnYourPlayer": "Centrar a rotação no jogador",
+    "rotateMap": "Rodar o mapa de acordo com a orientação do jogador",
+    "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
     "mapZoom": "Zoom do mapa",
     "glowingDroppedItems": "Brilho nos itens no chão",
     "glowingDungeonTeammates": "Brilho dos colegas de equipa",
@@ -172,12 +172,14 @@
     "disableBossMessages": "Desativar as mensagens dos bosses",
     "hideOtherPlayersPresents": "Esconder os presentes de outros jogadores",
     "easierPresentOpening": "Abrir presentes mais facilmente",
-    "showSwordKills": "Mostrar kills com a espada"
+    "showSwordKills": "Mostrar kills com a espada",
+    "compactTabList": "Lista de jogadores compacta",
+    "highlightMaxEnchantments": "Destacar encantamentos especiais"
   },
   "messages": {
     "enchants": "encantamentos",
     "reforges": "reforges",
-    "dropConfirmation": "Atira este item outra vez para confirmar!",
+    "dropConfirmation": "Larga este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Utilizadores do Laby mod: Esconder a Comida, Armadura e Barra de Vida é incompatível.",
@@ -201,9 +203,9 @@
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Uma opção preveniu-te de partires esta semente. Usa a tua própria mão se a quiseres mesmo partir.",
     "cancelledProfileOpening": "Uma opção preveniu-te de abrires o perfil deste jogador enquanto seguras um arco.",
-    "cancelledDropping": "Uma opção preveniu-te de atirar este item ou ferramenta \"rara\" da tua hotbar.",
-    "clickMoreTimes": "Clica/atira este item mais %times% vezes se quiseres mesmo fazer isto.",
-    "clickOneMoreTime": "Clica/atira este item mais 1 vez se quiseres mesmo fazer isto.",
+    "cancelledDropping": "Uma opção preveniu-te de largar este item ou ferramenta \"rara\" da tua hotbar.",
+    "clickMoreTimes": "Clica/larga este item mais %times% vezes se quiseres mesmo fazer isto.",
+    "clickOneMoreTime": "Clica/larga este item mais 1 vez se quiseres mesmo fazer isto.",
     "cancelledDeepCaverns": "Uma opção preveniu-te de partires este minério aqui.",
     "featureDisabled": "Função Desativada",
     "anvilUses": "Usos na bigorna: %uses%",
@@ -238,7 +240,9 @@
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
     "actionsLeft": "%number% restantes",
     "effectActive": "1 efeito ativo",
-    "effectsActive": "%number% efeitos ativos"
+    "effectsActive": "%number% efeitos ativos",
+    "none": "Nenhum",
+    "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
   },
   "commandUsage": {
-    "sba": "Abrir o menu principal",
-    "sba.brand": "§e(Program) §7Mostrar a marca do servidor",
-    "sba.brand.brandOutput": "Marca do servidor: %brand%",
-    "sba.brand.notFound": "Não foi possível encontrar a marca do servidor!",
-    "sba.copyEntity": "§e(Program) §7Copiar dados de NBT para entidades do(s) nome(s) dentro do raio determinado à volta do jogador",
-    "sba.copySidebar": "§e(Program) §7Copiar o texto da tabela lateral",
-    "sba.copyTabList": "§e(Program) §7Copiar o cabeçalho e o rodapé da lista de jogadores",
-    "sba.dev": "Ativar o modo de programador",
-    "sba.dev.disabled": "Modo de programador desativado!",
-    "sba.dev.enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!",
-    "sba.edit": "Editar localizações da GUI",
-    "sba.folder": "Abre a pasta mods",
-    "sba.folder.error": "Ocorreu um erro ao tentar abrir a pasta mods: %s",
-    "sba.help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
-    "sba.help.copyEntity": "Copia os dados NBT das entidades. Os dados dos tipos de entidades incluídas no raio à volta do jogador podem ser personalizados. Se não forem fornecidas definições, serão usados os valores predefinidos. As definições predefinidas são: incluir jogadores, suportes para armaduras e criaturas num raio de 3 blocos. Se não for fornecido um raio, será usado o valor predefinido.",
-    "sba.help.copyEntity.entityNames": "Nomes dos tipos de entidades para as quais queres copiar dados (ex.: Player, Creeper). Pressiona \"Tab\" depois de escreveres o comando para uma lista completa. Separa cada nome com vírgulas e tem em atenção que estes são sensíveis às maiúsculas e minúsculas.",
-    "sba.help.copyEntity.radius": "O raio (em blocos) à volta do jogador onde serão copiados os dados NBT das entidades",
-    "sba.help.copySidebar.formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser definida como \"true\" ou \"false\" e, caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\".",
-    "sba.help.copyTabList": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos.",
-    "sba.help.dev": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens.",
-    "sba.help.help.command": "o comando para o qual desejas obter informação detalhada",
-    "sba.help.set.zealotCounter": "Define manualmente os valores no contador de zealots.",
-    "sba.help.set.zealotCounter.eyes": "Total de summoning eyes obtidos",
-    "sba.help.set.zealotCounter.totalZealots": "Total de zealots mortos",
-    "sba.help.set.zealotCounter.zealots": "Zealots mortos desde o último summoning eye",
-    "sba.help.slayer": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
-    "sba.help.slayer.boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
-    "sba.help.slayer.number": "Número para o qual será definido a estatística",
-    "sba.help.slayer.stat": "Estatística do slayer para alterar. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Define a tua contagem de zealots manualmente",
-    "sba.set.zealotCounter.eyes": "Definir contagem total de summoning eyes para %number%!",
-    "sba.set.zealotCounter.totalZealots": "Define a contagem total de zealots para %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Seleção inválida! Escolhe %options%.",
-    "sba.set.zealotCounter.zealots": "Define a contagem atual de zealots para %number%!",
-    "sba.slayer": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
-    "sba.slayer.bossRequired": "Precisas de escolher um boss! Escolhe %bosses%",
-    "sba.slayer.statRequired": "Precisas de escolher uma estatística. Prime tab para opções.",
-    "sba.slayer.numberRequired": "Precisas de adicionar o número que desejas.",
-    "sba.slayer.killsSet": "Kills para o slayer de %boss% foram definidas para %number%.",
-    "sba.slayer.statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" não é uma estatística válida!",
-    "sba.slayer.invalidStat": "\"%input%\" não é um boss válido!",
-    "sba.toggleActionBarLogging": "§e(Program) §7Alterar o registo de mensagens da barra de ação",
-    "sba.toggleActionBarLogging.disabled": "As mensagens da barra de ação não serão registadas.",
-    "sba.toggleActionBarLogging.enabled": "As mensagens da barra de ação serão registadas.",
-    "sba.wrongUsage.generic": "Uso errado!",
-    "sba.wrongUsage.subCommandNotFound": "O comando %sub-command% não foi encontrado."
+    "sba": {
+      "base": {
+        "help": "Abrir o menu principal"
+      },
+      "brand": {
+        "help": "§e(Program) §7Mostrar a marca do servidor",
+        "brandOutput": "Marca do servidor: %brand%",
+        "notFound": "Não foi possível encontrar a marca do servidor!"
+      },
+      "copyBlock": {
+        "help": "§e(Program) §7Copia os dados do bloco para o qual estás a olhar"
+      },
+      "copyEntity": {
+        "help": "§e(Program) §7Copiar dados de NBT para entidades do(s) nome(s) dentro do raio determinado à volta do jogador",
+        "detailedHelp": {
+          "description": "Copia os dados NBT das entidades. Os dados dos tipos de entidades incluídas no raio à volta do jogador podem ser personalizados. Se não forem fornecidas definições, serão usados os valores predefinidos. As definições predefinidas são: incluir jogadores, suportes para armaduras e criaturas num raio de 3 blocos. Se não for fornecido um raio, será usado o valor predefinido.",
+          "options": {
+            "entityNames": "Nomes dos tipos de entidades das quais queres copiar os dados (ex.: Player, Creeper). Pressiona \"Tab\" depois de escreveres o comando para uma lista completa. Separa vários nomes com vírgulas. Os nomes são sensíveis a maiúsculas e minúsculas.",
+            "radius": "O raio (em blocos) à volta do jogador para copiar os dados NBT das entidades"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Program) §7Copiar o texto da tabela lateral",
+        "detailedHelp": {
+          "description": "Copia o texto apresentado na barra lateral",
+          "options": {
+            "formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser definida como \"true\" ou \"false\" e, caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Program) §7Copiar o cabeçalho e o rodapé da lista de jogadores",
+        "detailedHelp": {
+          "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
+        }
+      },
+      "dev": {
+        "help": "Ativar o modo de programador",
+        "detailedHelp": {
+          "description": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens."
+        },
+        "disabled": "Modo de programador desativado!",
+        "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!"
+      },
+      "edit": {
+        "help": "Editar localizações da GUI"
+      },
+      "folder": {
+        "help": "Abre a pasta mods",
+        "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
+      },
+      "help": {
+        "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
+        "detailedHelp": {
+          "options": {
+            "command": "o comando para o qual desejas obter informação detalhada"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Define as tuas contagens de zealots manualmente",
+          "detailedHelp": {
+            "description": "Define manualmente os valores no contador de zealots.",
+            "options": {
+              "eyes": "Total de summoning eyes obtidos",
+              "totalZealots": "Total de zealots mortos",
+              "zealots": "Zealots mortos desde o último summoning eye"
+            }
+          },
+          "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+          "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
+          "wrongUsage": "Seleção inválida! Escolhe %options%.",
+          "zealotsSet": "A contagem atual de zealots foi definida para %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+        "detailedHelp": {
+          "description": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+          "options": {
+            "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
+            "number": "Número para o qual será definido a estatística",
+            "stat": "Estatística do slayer para alterar. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "Precisas de escolher um boss! Escolhe %bosses%",
+        "statRequired": "Precisas de escolher uma estatística. Prime tab para opções.",
+        "numberRequired": "Precisas de adicionar o número que desejas.",
+        "killsSet": "As kills para o slayer de %boss% foram definidas para %number%.",
+        "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
+        "invalidBoss": "\"%input%\" não é uma estatística válida!",
+        "invalidStat": "\"%input%\" não é um boss válido!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Program) §7Alternar o registo de mensagens da barra de ação",
+        "disabled": "As mensagens da barra de ação não serão mais registadas.",
+        "enabled": "As mensagens da barra de ação serão agora registadas."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Uso errado!",
+          "subCommandNotFound": "O comando %sub-command% não foi encontrado."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Copiar NBT"

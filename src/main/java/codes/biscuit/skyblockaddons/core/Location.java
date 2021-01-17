@@ -72,7 +72,7 @@ public enum Location {
     JERRYS_WORKSHOP("Jerry's Workshop"), // TODO RPC
 
     // Dungeons
-    DUNGEON("Dungeon"), // TODO RPC
+    THE_CATACOMBS("The Catacombs"), // TODO RPC
     DUNGEON_HUB("Dungeon Hub"), // TODO RPC
 
     /*

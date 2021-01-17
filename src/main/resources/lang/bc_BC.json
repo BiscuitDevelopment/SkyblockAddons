@@ -7,16 +7,16 @@
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
     "hideFoodAndArmor": "Hide Food & Armor Bar",
-    "fullInventoryWarning": "Full Inventory Warning",
+    "fullInventoryWarning": "Warning When Pockets full of Biscuits",
     "repeating": "Repeat Warning",
     "disableEmberRodAbility": "Disable Island Ember Rod",
-    "editLocations": "Edit GUI Locations",
-    "guiScale": "Gui Scale: %scale%",
-    "resetLocations": "Reset Locations",
+    "editLocations": "Edit Biscuit Positions omg",
+    "guiScale": "Biscuit Size: %scale%",
+    "resetLocations": "Reset Biscuits to Normal",
     "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "hidePlayersNearNPCs": "Hide Biscuts Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -25,12 +25,12 @@
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Hide Vanilla Health Bar",
     "fullMinionWarning": "Full Minion Warning",
-    "ignoreItemFrameClicks": "Ignore Clicks On Item Frames",
+    "ignoreItemFrameClicks": "Ignore Bites On Biscuit Plates",
     "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Bar",
     "manaText": "Mana Number",
     "healthBar": "Health Bar",
-    "healthText": "Health Number",
+    "healthText": "The Health of Your Biscuits (important)",
     "defenceIcon": "Defence Symbol",
     "defenceText": "Defence Number",
     "defencePercentage": "Defence Percentage",
@@ -38,14 +38,14 @@
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
     "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
+    "itemPickupLog": "Recently Picked up Biscuits on Screen",
     "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
     "avoidBreakingStems": "Avoid Breaking Stems",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "preventMovementOnDeath": "Prevent Walking After Death",
     "showItemAnvilUses": "Show Item Anvil Uses",
-    "lockSlots": "Allow Locking Slots",
-    "lockSlot": "Lock Slot",
+    "lockSlots": "Allow locking biscuit boxes",
+    "lockSlot": "Lock biscuits boxes",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
@@ -63,7 +63,7 @@
     "makeBackpackInventoriesColored": "Color Inventories",
     "avoidBreakingBottomSugarCane": "Avoid Breaking Bottom Sugar Cane",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "changeBarColorForPotions": "Change Biscuit Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
@@ -71,7 +71,7 @@
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
     "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
+    "speedPercentage": "Sugar Percentage",
     "collectionDisplay": "Skill Progress Display",
     "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
@@ -97,8 +97,8 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Rainbow Biscuit Speed",
+    "chromaMode": "Rainbow Biscuit Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
       "fade": "Color Fade"
@@ -113,12 +113,12 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
+    "fancyWarpMenu": "Crunchy Warp Menu",
     "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "advancedMode": "Big Brain Mode",
+    "legendarySeaCreatureWarning": "Biscuitary Sea Biscuit Warning",
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
@@ -131,17 +131,17 @@
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate Map to Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
+    "glowingDroppedItems": "Glowing Dropped Biscuits",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
+    "colorByRarity": "Color by Biscuit Rarity",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showGlowingItemsOnIsland": "Show Glowing Biscuits On Island",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
@@ -170,20 +170,22 @@
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Disable Mort Messages",
     "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "hideOtherPlayersPresents": "Hide Other Biscuits's Presents",
     "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Show Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightMaxEnchantments": "Highlight Special Enchantments"
   },
   "messages": {
-    "enchants": "Enchants",
+    "enchants": "Bischants",
     "reforges": "Reforges",
-    "dropConfirmation": "Drop this item again to confirm!",
+    "dropConfirmation": "Throw out this biscuit again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Full Inventory!",
-    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "labymod": "Labymod Users: A few biscuits here and there don't work.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
     "minionIsFull": "A minion on your island is full!",
-    "typeEnchantmentsHere": "Type %type% Here!",
+    "typeEnchantmentsHere": "Put %type% Biscuit Here!!",
     "separateMultiple": "Separate Multiple With Commas.",
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Exclude:",
@@ -192,17 +194,17 @@
     "directDownload": "DIRECT DOWNLOAD LINK",
     "openModFolder": "OPEN MODS FOLDER",
     "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
     "update": {
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "This biscuit is locked!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
     "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "cancelledDropping": "SkyblockAddons has stopped you from dropping this rare biscuit or oven mitt from your hotbar.",
+    "clickMoreTimes": "Click/drop this biscuit %times% more times if you really want to do this.",
     "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
@@ -216,19 +218,19 @@
     "chooseAColor": "Choose a Color",
     "selectedColor": "Selected Color",
     "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "Rescale The Biscuits",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "Enable Biscuit Snapping",
     "stage": "Stage %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
+    "clickToOpenFolder": "Click to open your biscuits folder!",
+    "firstStatus": "This biscuit will appear at the top",
+    "secondStatus": "This biscuit will appear under your first biscuit",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
+    "legendarySeaCreatureWarning": "Biscuitary Catch!",
+    "cancelledPark": "A biscuit has stopped you from eating this biscuit here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Enable All",
     "disableAll": "Disable All",
@@ -238,11 +240,13 @@
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active"
+    "effectsActive": "%number% Effects Active",
+    "none": "None",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "None",
-    "descriptionNone": "No text is displayed",
+    "descriptionNone": "No biscuit is displayed",
     "titleLocation": "Location",
     "descriptionLocation": "Shows your current location",
     "titlePurse": "Purse",
@@ -269,53 +273,113 @@
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
-    "sba": "Open the main menu",
-    "sba.brand": "§e(Dev) §7Show the server brand",
-    "sba.brand.brandOutput": "Server Brand: %brand%",
-    "sba.brand.notFound": "Server brand not found!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
-    "sba.dev": "Toggle developer mode",
-    "sba.dev.disabled": "Developer mode disabled!",
-    "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-    "sba.edit": "Edit GUI locations",
-    "sba.folder": "Open your mods folder",
-    "sba.folder.error": "An error occurred trying to open the mods folder: %s",
-    "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-    "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
-    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
-    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
-    "sba.help.help.command": "the sub-command to get detailed usage for",
-    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
-    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
-    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
-    "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
-    "sba.help.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "Number to set the stat to",
-    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manually set your zealot counts",
-    "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
-    "sba.slayer": "Manually set slayer stats, press tab for arguments",
-    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
-    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
-    "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit Biscuits locations"
+      },
+      "folder": {
+        "help": "Open your biscuits folder",
+        "error": "An error occurred trying to open the biscuits folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-biscuit to get detailed recipe for"
+          }
+        }
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since last summoning biscuit drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Copy NBT"

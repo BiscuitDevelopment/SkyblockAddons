@@ -2,14 +2,13 @@ package codes.biscuit.skyblockaddons.misc;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import lombok.Getter;
 
 import java.awt.*;
 
 public class ChromaManager {
-
-    private static SkyblockAddons main = SkyblockAddons.getInstance();
 
     @Getter private static boolean coloringTextChroma;
     private static float featureScale;
@@ -48,9 +47,9 @@ public class ChromaManager {
         float newHue = (x / 4F * chromaWidth + y / 4F * chromaWidth - ticks * chromaSpeed) % 1;
 
         if (currentHSB[2] < 0.3) { // Keep shadows as shadows
-            return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]), alpha);
+            return ColorUtils.setColorAlpha(Color.HSBtoRGB(newHue, currentHSB[1], currentHSB[2]), alpha);
         } else {
-            return main.getUtils().getColorWithAlpha(Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]), alpha);
+            return ColorUtils.setColorAlpha(Color.HSBtoRGB(newHue, defaultColorHSB[1], defaultColorHSB[2]), alpha);
         }
     }
 

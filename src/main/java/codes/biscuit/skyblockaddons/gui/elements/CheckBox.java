@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
@@ -74,7 +75,7 @@ public class CheckBox {
         GlStateManager.scale(scale, scale, 1);
 
         int color = value ? ColorCode.WHITE.getColor() : ColorCode.GRAY.getColor();
-        SkyblockAddons.getInstance().getUtils().drawTextWithStyle(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
+        DrawUtils.drawText(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
 
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
