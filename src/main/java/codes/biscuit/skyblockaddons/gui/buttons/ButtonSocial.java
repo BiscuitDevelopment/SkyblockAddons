@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.core.Feature;
 import net.minecraft.client.Minecraft;
@@ -50,7 +49,7 @@ public class ButtonSocial extends GuiButton {
         }
 
         mc.getTextureManager().bindTexture(social.getResourceLocation());
-        DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0, 0, width, height, width, height, true);
+        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0, 0, width, height, width, height, true);
     }
 
 

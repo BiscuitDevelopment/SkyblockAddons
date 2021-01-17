@@ -35,38 +35,34 @@ public class DiscordRPCManager implements IPCListener {
     private boolean connected;
 
     public void start() {
-        SkyblockAddons.runAsync(() -> {
-            try {
-                logger.info("Starting Discord RPC...");
-                if (isActive()) {
-                    return;
-                }
+        try {
+            logger.info("Starting Discord RPC...");
+            if (isActive()) {
+                return;
+            }
 
-                stateLine = main.getConfigValues().getDiscordStatus();
-                detailsLine = main.getConfigValues().getDiscordDetails();
-                startTimestamp = OffsetDateTime.now();
-                client = new IPCClient(APPLICATION_ID);
-                client.setListener(this);
-                try {
-                    client.connect();
-                } catch (Exception ex) {
-                    logger.warn("Failed to connect to Discord RPC!");
-                    logger.catching(ex);
-                }
-            } catch (Throwable ex) {
-                logger.error("Discord RPC has thrown an unexpected error while trying to start...");
+            stateLine = main.getConfigValues().getDiscordStatus();
+            detailsLine = main.getConfigValues().getDiscordDetails();
+            startTimestamp = OffsetDateTime.now();
+            client = new IPCClient(APPLICATION_ID);
+            client.setListener(this);
+            try {
+                client.connect();
+            } catch (Exception ex) {
+                logger.warn("Failed to connect to Discord RPC!");
                 logger.catching(ex);
             }
-        });
+        } catch (Throwable ex) {
+            logger.error("Discord RPC has thrown an unexpected error while trying to start...");
+            ex.printStackTrace();
+        }
     }
 
     public void stop() {
-        SkyblockAddons.runAsync(() -> {
-            if (isActive()) {
-                connected = false;
-                client.close();
-            }
-        });
+        if (isActive()) {
+            client.close();
+            connected = false;
+        }
     }
 
     public boolean isActive() {

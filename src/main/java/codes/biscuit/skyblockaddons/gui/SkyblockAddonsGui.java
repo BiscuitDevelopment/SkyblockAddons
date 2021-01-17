@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
@@ -336,7 +335,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         SkyblockAddons.getInstance().getUtils().enableStandardGLOptions();
         textureManager.bindTexture(LOGO);
-        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
 
         int animationMillis = 4000;
         float glowAlpha;
@@ -349,7 +348,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         GlStateManager.color(1,1,1, glowAlpha);
         textureManager.bindTexture(LOGO_GLOW);
-        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
+        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
 
         GlStateManager.color(1,1,1, 1);
         String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
@@ -378,7 +377,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         GlStateManager.pushMatrix();
         GlStateManager.scale(scale, scale, 1);
         if (centered) {
-            DrawUtils.drawCenteredText(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
+            SkyblockAddons.getInstance().getUtils().drawCenteredString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,
                     Math.round((float) y / scale), color);
         } else {
             Minecraft.getMinecraft().fontRendererObj.drawString(text, Math.round((float) guiScreen.width / 2 / scale) + xOffset,

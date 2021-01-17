@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
+import codes.biscuit.skyblockaddons.core.DungeonPlayer;
 import com.google.common.collect.Sets;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -31,8 +31,8 @@ public class RendererLivingEntityHook {
     public static int setOutlineColor(EntityLivingBase entity, int originalColor) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
-                main.getUtils().isInDungeon() && main.getDungeonManager().getPlayers().containsKey(entity.getName())) {
-            DungeonPlayer dungeonPlayer = main.getDungeonManager().getPlayers().get(entity.getName());
+                main.getUtils().isInDungeon() && main.getDungeonUtils().getPlayers().containsKey(entity.getName())) {
+            DungeonPlayer dungeonPlayer = main.getDungeonUtils().getPlayers().get(entity.getName());
 
             if (dungeonPlayer.isCritical()){
                 return Minecraft.getMinecraft().fontRendererObj.getColorCode('c');

@@ -27,12 +27,7 @@ public class CooldownManager {
     }
 
     private static CooldownEntry get(String itemName) {
-        for (Map.Entry<String, CooldownEntry> entry : cooldowns.entrySet()) {
-            if (itemName.contains(entry.getKey())) { // Check if the item name contains what we are trying to look for
-                return entry.getValue();
-            }
-        }
-        return CooldownEntry.NULL_ENTRY; // Return null entry if we found nothing
+        return cooldowns.getOrDefault(itemName, CooldownEntry.NULL_ENTRY);
     }
 
     /**

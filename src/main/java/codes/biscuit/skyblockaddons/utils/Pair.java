@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import jdk.nashorn.internal.objects.annotations.Getter;
+
 public class Pair<K, V> {
     private K key;
     private V value;

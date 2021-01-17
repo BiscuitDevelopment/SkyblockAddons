@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
-import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -21,11 +20,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
-import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.InstanceCreator;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -41,13 +36,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 import java.util.*;
-import java.util.concurrent.Executor;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 @Getter
 @Mod(modid = "skyblockaddons", name = "SkyblockAddons", version = "@VERSION@", clientSideOnly = true, acceptedMinecraftVersions = "@MOD_ACCEPTED@")
@@ -58,18 +47,12 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    private static final Gson GSON = new GsonBuilder()
-            .setPrettyPrinting()
-            .registerTypeAdapter(EnumMap.class, (InstanceCreator<EnumMap>) type -> {
-                Type[] types = (((ParameterizedType) type).getActualTypeArguments());
-                return new EnumMap((Class<?>) types[0]);
-            })
-            .registerTypeAdapterFactory(new GsonInitializableTypeAdapter())
-            .create();
+    private static final Gson GSON = new Gson();
 
-    private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
-            new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
+    private static int threadNumber;
+    public static synchronized int nextThreadNumber() {
+        return threadNumber++;
+    }
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -83,7 +66,7 @@ public class SkyblockAddons {
     private DiscordRPCManager discordRPCManager;
     private Scheduler scheduler;
     private NewScheduler newScheduler;
-    private DungeonManager dungeonManager;
+    private DungeonUtils dungeonUtils;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -103,7 +86,7 @@ public class SkyblockAddons {
         updater = new Updater();
         scheduler = new Scheduler();
         newScheduler = new NewScheduler();
-        dungeonManager = new DungeonManager();
+        dungeonUtils = new DungeonUtils();
         discordRPCManager = new DiscordRPCManager();
     }
 
@@ -216,13 +199,20 @@ public class SkyblockAddons {
         return GSON;
     }
 
+    // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
+    static {
+        if (VERSION.contains("@")) { // Debug environment...
+            VERSION = "1.6.0";
+        }
+    }
+
     /**
      * @return a {@code Logger} containing the name of the calling class in the prefix.
      */
     public static Logger getLogger() {
         String fullClassName = new Throwable().getStackTrace()[1].getClassName();
-        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
 
+        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
         String loggerName = MOD_NAME + "/" + simpleClassName;
 
         if (SkyblockAddonsTransformer.isDeobfuscated()) {
@@ -232,23 +222,7 @@ public class SkyblockAddons {
         }
     }
 
-    public static void runAsync(Runnable runnable) {
-        StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
-        String fullClassName = stackTraceElement.getClassName();
-        String methodName = stackTraceElement.getMethodName();
-        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-
-        THREAD_EXECUTOR.execute(() -> {
-            getLogger().info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
-            runnable.run();
-            getLogger().info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
-        });
-    }
-
-    // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.
-    static {
-        if (VERSION.contains("@")) { // Debug environment...
-            VERSION = "1.6.0";
-        }
+    public static Thread newThread(Runnable runnable) {
+        return new Thread(runnable, MOD_NAME + " #" + nextThreadNumber());
     }
 }

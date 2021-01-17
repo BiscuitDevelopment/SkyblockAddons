@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.tweaker;
 
+import lombok.Getter;
 import net.minecraftforge.common.ForgeVersion;
 import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
 
@@ -9,7 +10,7 @@ import java.util.Map;
 @IFMLLoadingPlugin.MCVersion(ForgeVersion.mcVersion)
 public class SkyblockAddonsLoadingPlugin implements IFMLLoadingPlugin {
 
-    static List<Object> coremodList;
+    @Getter private static List<Object> coremodList;
 
     @Override
     public String[] getASMTransformerClass() {

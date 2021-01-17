@@ -7,17 +7,20 @@ import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.resources.IReloadableResourceManager;
 import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -35,6 +38,8 @@ import java.util.Set;
 public class MinecraftHook {
 
     private static final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
+
+    private static long lastProfileMessage = -1;
 
     @Getter private static long lastLockedSlotItemChange = -1;
 
@@ -99,6 +104,10 @@ public class MinecraftHook {
                 }
             }
         }
+    }
+
+    private static boolean isItemBow(ItemStack item) {
+        return item != null && item.getItem() != null && item.getItem().equals(Items.bow);
     }
 
     public static void updatedCurrentItem() {
@@ -170,8 +179,8 @@ public class MinecraftHook {
                 if ((block.equals(Blocks.log) || block.equals(Blocks.log2))
                         && p.getHeldItem() != null) {
 
-                    final boolean holdingJungleAxeOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
-                    final boolean holdingTreecapitatorOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
+                    final boolean holdingJungleAxeOnCooldown = InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.JUNGLE_AXE_DISPLAYNAME);
+                    final boolean holdingTreecapitatorOnCooldown = InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(p.getHeldItem().getDisplayName()) && CooldownManager.isOnCooldown(InventoryUtils.TREECAPITATOR_DISPLAYNAME);
 
                     if (holdingJungleAxeOnCooldown || holdingTreecapitatorOnCooldown) {
                         returnValue.cancel();

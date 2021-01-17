@@ -13,22 +13,22 @@
     "editLocations": "Redigera GUI-positioner",
     "guiScale": "Skala för GUI: %scale%",
     "resetLocations": "Återställ positioner",
-    "hideDurability": "Dölj hållbarhet för verktyg",
+    "hideDurability": "Hide Tool Durability",
     "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "regular": "Vanlig",
+      "regular": "Regular",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Show Backpack Preview",
     "hideHealthBar": "Dölj standardhälsomätaren",
     "fullMinionWarning": "Full Minion Warning",
     "ignoreItemFrameClicks": "Ignorera klick på föremålsramar",
-    "showOnlyWhenHoldingShift": "Visa endast när du håller Skift",
-    "manaBar": "Manamätare",
-    "manaText": "Mananummer",
+    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaText": "Mana Number",
     "healthBar": "Häslomätare",
     "healthText": "Hälsonummer",
     "defenceIcon": "Försvarssymbol",
@@ -43,7 +43,7 @@
     "avoidBreakingStems": "Undvik att förstöra stjälkar",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "preventMovementOnDeath": "Förhindra att gå efter döden",
-    "showItemAnvilUses": "Visa städanvändningar för föremål",
+    "showItemAnvilUses": "Show Item Anvil Uses",
     "lockSlots": "Tillåt låsning av föremålsrutor",
     "lockSlot": "Lås föremålsruta",
     "dontResetCursorInventory": "Återställ inte muspekaren mellan förråd",
@@ -73,7 +73,7 @@
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
-    "onlyMineOresDeepCaverns": "Bryt endast malmer i deep caverns",
+    "onlyMineOresDeepCaverns": "Only Mine Ores in the Deep Caverns",
     "onlyMineValuablesNether": "Only Mine Valuables in the Nether",
     "revenantIndicator": "Slayer Armor Progress Indicator",
     "specialZealotAlert": "Special Zealot Alert",
@@ -131,28 +131,28 @@
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Rotate Map to Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Center the Rotation Around Your Player",
     "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glödande släppta föremål",
+    "glowingDroppedItems": "Glowing Dropped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
     "colorByRarity": "Färg efter sällsynhet",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Visa glödande föremål på ön",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Visa om föremåls sällsynthet har uppgraderats",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
-    "textMode": "Textläge",
+    "textMode": "Text Mode",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Drakspårare",
+    "dragonStatsTracker": "Dragon Tracker",
     "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
@@ -169,24 +169,22 @@
     "skillProgressBar": "Skill Progress Bar",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Inaktivera bossmeddelanden",
+    "disableBossMessages": "Disable Boss Messages",
     "hideOtherPlayersPresents": "Dölj andra spelares presenter",
     "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "showSwordKills": "Show Sword Kills"
   },
   "messages": {
     "enchants": "Förtrollningar",
     "reforges": "Reforges",
     "dropConfirmation": "Släpp föremålet igen för att bekräfta!",
-    "magmaBossWarning": "Magmakubboss!",
+    "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Fullt förråd!",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
-    "minionIsFull": "En minion på din ö är full!",
+    "minionIsFull": "A minion on your island is full!",
     "typeEnchantmentsHere": "Skriv %type% här!",
-    "separateMultiple": "Separa med kommatecken.",
+    "separateMultiple": "Separate Multiple With Commas.",
     "enchantsToMatch": "%type% för att matcha:",
     "enchantsToExclude": "%type% för att exkludera:",
     "wantToViewPatchNotes": "Behöver du hjälp eller vill läsa ändringsloggen?",
@@ -222,15 +220,15 @@
     "resizeBars": "Ändra storlek för mätare",
     "showColorIcons": "Visa färgikoner",
     "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stadie %stage%",
-    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Klicka för att öppna länken!",
     "clickToOpenFolder": "Klicka för att öppna mappen för moddar!",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Legendarisk fångst!",
-    "cancelledPark": "SkyblockAddons har förhindrat dig från att bryta det här blocket.",
+    "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Aktivera alla",
     "disableAll": "Inaktivera alla",
@@ -240,9 +238,7 @@
     "reforgeExclusionExample": "t.ex. \"odd, clean\"",
     "actionsLeft": "%number% kvar",
     "effectActive": "1 aktiv effekt",
-    "effectsActive": "%number% aktiva effekter",
-    "none": "Ingen",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "effectsActive": "%number% aktiva effekter"
   },
   "discordStatus": {
     "titleNone": "Ingen",
@@ -273,113 +269,53 @@
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "commandUsage": {
-    "sba": {
-      "base": {
-        "help": "Open the main menu"
-      },
-      "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
-      },
-      "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
-      },
-      "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-        "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-          "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
-          }
-        }
-      },
-      "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
-        "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
-          "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
-          }
-        }
-      },
-      "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
-        "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
-        }
-      },
-      "dev": {
-        "help": "Toggle developer mode",
-        "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
-        },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
-      },
-      "edit": {
-        "help": "Edit GUI locations"
-      },
-      "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
-      },
-      "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-        "detailedHelp": {
-          "options": {
-            "command": "the sub-command to get detailed usage for"
-          }
-        }
-      },
-      "set": {
-        "zealotCounter": {
-          "help": "Manually set your zealot counts",
-          "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
-            "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
-            }
-          },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
-        }
-      },
-      "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
-        "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
-          "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
-          }
-        },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
-      },
-      "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
-      },
-      "errors": {
-        "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
-        }
-      }
-    }
+    "sba": "Öppna huvudmenyn",
+    "sba.brand": "§e(Dev) §7Show the server brand",
+    "sba.brand.brandOutput": "Servertyp: %brand%",
+    "sba.brand.notFound": "Servertyp hittades inte!",
+    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+    "sba.copySidebar": "§e(Dev) §7Copy the scoreboard text",
+    "sba.copyTabList": "§e(Dev) §7Copy the tab list header and footer",
+    "sba.dev": "Växla till utvecklarläge",
+    "sba.dev.disabled": "Utvecklarläge inaktiverat!",
+    "sba.dev.enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
+    "sba.edit": "Ändra GUI-positioner",
+    "sba.folder": "Öppna din mapp för moddar",
+    "sba.folder.error": "Ett fel uppstod vid försök att öppna mappen för moddar: %s",
+    "sba.help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data for (e.g. Player, Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+    "sba.help.copyEntity.radius": "The radius(in blocks) around the player to copy entity NBT data from",
+    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copyTabList": "This command copies the header and footer of the tab player list. Formatting codes are included.",
+    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
+    "sba.help.help.command": "the sub-command to get detailed usage for",
+    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
+    "sba.help.set.zealotCounter.eyes": "Lifetime summoning eyes obtained",
+    "sba.help.set.zealotCounter.totalZealots": "Lifetime zealots killed",
+    "sba.help.set.zealotCounter.zealots": "Zealots killed since the last summoning eye drop",
+    "sba.help.slayer": "Manually set slayer stats, press tab for arguments",
+    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+    "sba.help.slayer.number": "Number to set the stat to",
+    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
+    "sba.set.zealotCounter": "Manually set your zealot counts",
+    "sba.set.zealotCounter.eyes": "Set total summoning eye count to %number%!",
+    "sba.set.zealotCounter.totalZealots": "Set total zealot count to %number%!",
+    "sba.set.zealotCounter.wrongUsage": "Invalid selection! Please choose %options%.",
+    "sba.set.zealotCounter.zealots": "Set current zealot count to %number%!",
+    "sba.slayer": "Manually set slayer stats, press tab for arguments",
+    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
+    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
+    "sba.slayer.numberRequired": "You need to add the number you want.",
+    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
+    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
+    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
+    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.wrongUsage.generic": "Fel användning!",
+    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
   "keyBindings": {
     "developerCopyNBT": "Kopiera NBT"
@@ -392,11 +328,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Senaste drakarna:",
-    "dragonsSince": "Drakar sedan:",
+    "recentDragons": "Recent Dragons:",
+    "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Ögon placerade",
+    "eyesPlaced": "Eyes Placed",
     "never": "Aldrig"
   },
   "slayerTracker": {

@@ -3,7 +3,7 @@
   "bannerLink": null,
 
   "latestVersion": "1.5.4",
-  "latestBeta": "1.6.0-beta.7",
+  "latestBeta": "1.6.0-beta.6",
   "videoLink": "https://youtu.be/_BZMJm6JD4Q",
   "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.4",
 
@@ -26,20 +26,7 @@
       "WAND_OF_HEALING",
       "ENCHANTED_GLOWSTONE",
       "AATROX_BATPHONE",
-      "PERSONAL_COMPACTOR_4000",
-      "MATHEMATICAL_HOE_BLUEPRINT",
-      "THEORETICAL_HOE",
-      "THEORETICAL_HOE_CANE_1",
-      "THEORETICAL_HOE_CANE_2",
-      "THEORETICAL_HOE_CARROT_1",
-      "THEORETICAL_HOE_CARROT_2",
-      "THEORETICAL_HOE_POTATO_1",
-      "THEORETICAL_HOE_POTATO_2",
-      "THEORETICAL_HOE_WARTS_1",
-      "THEORETICAL_HOE_WARTS_2",
-      "THEORETICAL_HOE_WHEAT_1",
-      "THEORETICAL_HOE_WHEAT_2",
-      "JUNGLE_AXE"
+      "PERSONAL_COMPACTOR_4000"
     ],
     "allowDroppingTheseItems": [
       "RUNE",
@@ -48,37 +35,5 @@
       "WINTER_DISC",
       "DUNGEON_STONE"
     ]
-  },
-
-  "specialEnchantments": {
-    "Bane of Anthropods": 6,
-    "Critical": 6,
-    "Dragon Hunter": 5,
-    "Ender Slayer": 6,
-    "Experience": 4,
-    "Giant Killer": 6,
-    "Life Steal": 4,
-    "Looting": 4,
-    "Luck": 4,
-    "Scavenger": 5,
-    "Sharpness": 6,
-    "Smite": 7,
-    "Vampirism": 6,
-    "Infinite Quiver": 10,
-    "Power": 6,
-    "Growth": 6,
-    "Protection": 6,
-    "Rejuvenate": 5,
-    "True Protection": 1,
-    "Feather Falling": 10,
-    "Sugar Rush": 3,
-    "Efficiency": 6,
-    "Angler": 6,
-    "Caster": 6,
-    "Expertise": 10,
-    "Frail": 6,
-    "Lure": 6,
-    "Magnet": 6,
-    "Spiked Hook": 6
   }
 }

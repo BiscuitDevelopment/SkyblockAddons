@@ -67,7 +67,7 @@ public class PlayerControllerMPHook {
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                if (heldItem.getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) || heldItem.getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME)) {
+                if (InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName()) || InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(heldItem.getDisplayName())) {
                     CooldownManager.put(heldItem);
                 }
             }

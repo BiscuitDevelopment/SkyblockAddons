@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
@@ -70,7 +69,7 @@ public class ButtonSolid extends ButtonText {
         boxAlpha *= alphaMultiplier;
         int boxColor = main.getUtils().getDefaultColor(boxAlpha);
         if (this.feature == Feature.RESET_LOCATION) {
-            boxColor = ColorUtils.setColorAlpha(0xFF7878, boxAlpha);
+            boxColor = main.getUtils().getColorWithAlpha(0xFF7878, boxAlpha);
         }
         GlStateManager.enableBlend();
         if (alpha < 4) alpha = 4;

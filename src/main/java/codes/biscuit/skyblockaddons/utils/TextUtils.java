@@ -20,9 +20,6 @@ public class TextUtils {
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
     private static final Pattern INTEGER_CHARACTERS = Pattern.compile("[^0-9]");
-    private static final Pattern TRIM_WHITESPACE_RESETS = Pattern.compile("^(?:\\s|§r)*|(?:\\s|§r)*$");
-    private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]+");
-    private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
 
@@ -189,34 +186,4 @@ public class TextUtils {
         return hasDecimal ? (truncated / 10d) + suffix : (truncated / 10) + suffix;
     }
 
-
-    /**
-     * Removes all leading or trailing reset color codes and whitespace from a string.
-     *
-     * @param input Text to trim
-     * @return Text without leading or trailing reset color codes and whitespace
-     */
-    public static String trimWhitespaceAndResets(String input) {
-        return TRIM_WHITESPACE_RESETS.matcher(input).replaceAll("");
-    }
-
-    /**
-     * Checks if text matches a Minecraft username
-     *
-     * @param input Text to check
-     * @return Whether this input can be Minecraft username or not
-     */
-    public static boolean isUsername(String input) {
-        return USERNAME_PATTERN.matcher(input).matches();
-    }
-
-    /**
-     * Removes all reset color codes from a given text
-     *
-     * @param input Text to strip
-     * @return Text with all reset color codes removed
-     */
-    public static String stripResets(String input) {
-        return RESET_CODE_PATTERN.matcher(input).replaceAll("");
-    }
 }

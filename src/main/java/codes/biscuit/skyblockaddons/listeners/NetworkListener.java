@@ -35,7 +35,6 @@ public class NetworkListener {
     public void onSkyblockLeft(SkyblockLeftEvent event) {
         SkyblockAddons.getLogger().info("Detected leaving skyblock!");
         main.getUtils().setOnSkyblock(false);
-        main.getUtils().setProfileName("Unknown");
         if (main.getDiscordRPCManager().isActive()) {
             main.getDiscordRPCManager().stop();
         }

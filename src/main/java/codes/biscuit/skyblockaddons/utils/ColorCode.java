@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
@@ -64,7 +65,7 @@ public enum ColorCode {
 		this.isFormat = isFormat;
 		this.jsonName = jsonName;
 		this.toString = new String(new char[] { COLOR_CHAR, code });
-		this.color = (255 << 24) | (rgb & 0x00FFFFFF);
+		this.color = rgb;
 	}
 
     /**
@@ -87,11 +88,11 @@ public enum ColorCode {
 	}
 
 	public Color getColorObject() {
-		return new Color(color);
+		return new Color(this.color);
 	}
 
 	public int getColor(int alpha) {
-		return ColorUtils.setColorAlpha(color, alpha);
+		return SkyblockAddons.getInstance().getUtils().getColorWithAlpha(this.color, alpha);
 	}
 
 	public String getJsonName() {
@@ -115,17 +116,15 @@ public enum ColorCode {
 	}
 
 	private ColorCode getNextFormat(int ordinal) {
-		ColorCode[] values = values();
 		int nextColor = ordinal + 1;
 
-		if (nextColor > values.length - 1) {
-			return values[0];
-
-		} else if (!values[nextColor].isColor()) {
+		if (nextColor > values().length - 1) {
+			return values()[0];
+		} else if (!values()[nextColor].isColor()) {
 			return getNextFormat(nextColor);
 		}
 
-		return values[nextColor];
+		return values()[nextColor];
 	}
 
 	@Override

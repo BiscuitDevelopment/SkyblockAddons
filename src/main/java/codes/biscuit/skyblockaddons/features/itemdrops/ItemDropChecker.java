@@ -36,7 +36,6 @@ public class ItemDropChecker {
     /**
      * Checks if this item can be dropped or sold.
      * This method is for items in the inventory, not those in the hotbar.
-     * The alert sound will be played if a drop attempt is denied.
      *
      * @param item the item to check
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
@@ -46,7 +45,7 @@ public class ItemDropChecker {
     }
 
     /**
-     * Checks if the item in this slot can be dropped or sold. The alert sound will be played if a drop attempt is denied.
+     * Checks if the item in this slot can be dropped or sold.
      *
      * @param slot the inventory slot to check
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
@@ -60,13 +59,6 @@ public class ItemDropChecker {
         }
     }
 
-    /**
-     * Checks if this item can be dropped or sold. The alert sound will be played if a drop attempt is denied.
-     *
-     * @param item the item to check
-     * @param itemIsInHotbar whether this item is in the player's hotbar
-     * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
-     */
     public boolean canDropItem(ItemStack item, boolean itemIsInHotbar) {
         return canDropItem(item, itemIsInHotbar, true);
     }
@@ -76,7 +68,6 @@ public class ItemDropChecker {
      *
      * @param item the item to check
      * @param itemIsInHotbar whether this item is in the player's hotbar
-     * @param playAlert plays an alert sound if {@code true} and a drop attempt is denied, otherwise the sound doesn't play
      * @return {@code true} if this item can be dropped or sold, {@code false} otherwise
      */
     public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
@@ -122,12 +113,12 @@ public class ItemDropChecker {
                     if (whitelist.contains(itemID)) {
                         return true;
                     } else {
-                        return dropConfirmed(item, 3, playAlert);
+                        return dropConfirmed(item, 3);
                     }
                 }
             }
         } else if (main.getConfigValues().isEnabled(Feature.DROP_CONFIRMATION) && main.getConfigValues().isEnabled(Feature.DOUBLE_DROP_IN_OTHER_GAMES)) {
-            return dropConfirmed(item, 2, playAlert);
+            return dropConfirmed(item, 2);
 
         } else {
             return true;
@@ -137,14 +128,13 @@ public class ItemDropChecker {
     /**
      * Checks if the player has confirmed that they want to drop the given item stack.
      * The player confirms that they want to drop the item when they try to drop it the number of
-     * times specified in {@code numberOfActions}.
+     * times specified in {@code numberOfActions}
      *
      * @param item the item stack the player is attempting to drop
      * @param numberOfActions the number of times the player has to drop the item to confirm
-     * @param playAlert plays an alert sound if {@code true} and a drop attempt is denied, otherwise the sound doesn't play
      * @return {@code true} if the player has dropped the item enough
      */
-    public boolean dropConfirmed(ItemStack item, int numberOfActions, boolean playAlert) {
+    public boolean dropConfirmed(ItemStack item, int numberOfActions) {
         if (item == null) {
             throw new NullPointerException("Item cannot be null!");
 
@@ -164,7 +154,7 @@ public class ItemDropChecker {
             // Reset the current drop confirmation on time out or if the item being dropped changes.
             if (Minecraft.getSystemTime() - timeOfLastDropAttempt > DROP_CONFIRMATION_TIMEOUT || !ItemStack.areItemStacksEqual(item, itemOfLastDropAttempt)) {
                 resetDropConfirmation();
-                return dropConfirmed(item, numberOfActions, playAlert);
+                return dropConfirmed(item, numberOfActions);
 
             } else {
                 if (attemptsRequiredToConfirm >= 1) {

@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ChromaManager;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
@@ -23,12 +22,13 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
+import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
 import java.lang.reflect.Method;
+import java.util.List;
 import java.util.*;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class ConfigValues {
 
@@ -37,8 +37,6 @@ public class ConfigValues {
     private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
-
-    private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
     private Logger logger = SkyblockAddons.getLogger();
@@ -50,7 +48,7 @@ public class ConfigValues {
     private Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
 
     private File settingsConfigFile;
-    private JsonObject loadedConfig = new JsonObject();
+    private JsonObject settingsConfig = new JsonObject();
     @Getter @Setter private JsonObject languageConfig = new JsonObject();
 
     @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
@@ -100,7 +98,7 @@ public class ConfigValues {
                 if (fileElement == null || fileElement.isJsonNull()) {
                     throw new JsonParseException("File is null!");
                 }
-                loadedConfig = fileElement.getAsJsonObject();
+                settingsConfig = fileElement.getAsJsonObject();
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 logger.error("There was an error loading the config. Resetting all settings to default.");
                 logger.catching(ex);
@@ -113,8 +111,8 @@ public class ConfigValues {
             deserializeNumber(warningSeconds, "warningSeconds", int.class);
 
             try {
-                if (loadedConfig.has("language")) {
-                    String languageKey = loadedConfig.get("language").getAsString();
+                if (settingsConfig.has("language")) {
+                    String languageKey = settingsConfig.get("language").getAsString();
                     Language configLanguage = Language.getFromPath(languageKey);
                     if (configLanguage != null) {
                         setLanguage(configLanguage); // TODO Will this crash?
@@ -136,8 +134,8 @@ public class ConfigValues {
                     String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                     String x = property+"X";
                     String y = property+"Y";
-                    if (loadedConfig.has(x)) {
-                        coordinates.put(feature, new FloatPair(loadedConfig.get(x).getAsFloat(), loadedConfig.get(y).getAsFloat()));
+                    if (settingsConfig.has(x)) {
+                        coordinates.put(feature, new FloatPair(settingsConfig.get(x).getAsFloat(), settingsConfig.get(y).getAsFloat()));
                     }
                 }
             } catch (Exception ex) {
@@ -145,16 +143,16 @@ public class ConfigValues {
                 logger.catching(ex);
             }
 
-            if (loadedConfig.has("coordinates")) {
+            if (settingsConfig.has("coordinates")) {
                 deserializeFeatureFloatCoordsMapFromID(coordinates, "coordinates");
             } else {
                 deserializeFeatureFloatCoordsMapFromID(coordinates, "guiPositions"); // TODO Legacy format from 1.4.2/1.5-betas, remove in the future.
             }
             deserializeFeatureIntCoordsMapFromID(barSizes, "barSizes");
 
-            if (loadedConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
+            if (settingsConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
                 try {
-                    for (Map.Entry<String, JsonElement> element : loadedConfig.getAsJsonObject("featureColors").entrySet()) {
+                    for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("featureColors").entrySet()) {
                         Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                         if (feature != null) {
                             ColorCode colorCode = ColorCode.values()[element.getValue().getAsInt()];
@@ -184,8 +182,8 @@ public class ConfigValues {
             deserializeNumber(mapZoom, "mapZoom", float.class);
 
             int configVersion;
-            if (loadedConfig.has("configVersion")) {
-                configVersion = loadedConfig.get("configVersion").getAsInt();
+            if (settingsConfig.has("configVersion")) {
+                configVersion = settingsConfig.get("configVersion").getAsInt();
             } else {
                 configVersion = ConfigValues.CONFIG_VERSION;
             }
@@ -224,8 +222,8 @@ public class ConfigValues {
             }
 
             int lastFeatureID;
-            if (loadedConfig.has("lastFeatureID")) {
-                lastFeatureID = loadedConfig.get("lastFeatureID").getAsInt();
+            if (settingsConfig.has("lastFeatureID")) {
+                lastFeatureID = settingsConfig.get("lastFeatureID").getAsInt();
             } else {
                 // This system was added after this feature.
                 lastFeatureID = Feature.SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU.getId();
@@ -281,133 +279,126 @@ public class ConfigValues {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void saveConfig() {
-        SkyblockAddons.runAsync(() -> {
-            if (!SAVE_LOCK.tryLock()) {
-                return;
+        settingsConfig = new JsonObject();
+        try {
+            settingsConfigFile.createNewFile();
+            FileWriter writer = new FileWriter(settingsConfigFile);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+
+            JsonArray jsonArray = new JsonArray();
+            for (Feature element : disabledFeatures) {
+                jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
             }
+            settingsConfig.add("disabledFeatures", jsonArray);
 
-            try {
-                settingsConfigFile.createNewFile();
-
-                JsonObject saveConfig = new JsonObject();
-
-                JsonArray jsonArray = new JsonArray();
-                for (Feature element : disabledFeatures) {
-                    jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
+            JsonObject profileSlotsObject = new JsonObject();
+            for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
+                JsonArray lockedSlots = new JsonArray();
+                for (int slot : entry.getValue()) {
+                    lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
                 }
-                saveConfig.add("disabledFeatures", jsonArray);
-
-                JsonObject profileSlotsObject = new JsonObject();
-                for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
-                    JsonArray lockedSlots = new JsonArray();
-                    for (int slot : entry.getValue()) {
-                        lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
-                    }
-                    profileSlotsObject.add(entry.getKey(), lockedSlots);
-                }
-                saveConfig.add("profileLockedSlots", profileSlotsObject);
-
-                JsonObject anchorObject = new JsonObject();
-                for (Feature feature : Feature.getGuiFeatures()) {
-                    anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
-                }
-                saveConfig.add("anchorPoints", anchorObject);
-
-                JsonObject scalesObject = new JsonObject();
-                for (Feature feature : guiScales.keySet()) {
-                    scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
-                }
-                saveConfig.add("guiScales", scalesObject);
-
-                JsonObject colorsObject = new JsonObject();
-                for (Feature feature : colors.keySet()) {
-                    int featureColor = colors.get(feature);
-                    if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
-                        colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
-                    }
-                }
-                saveConfig.add("colors", colorsObject);
-
-                // Old gui coordinates, for backwards compatibility...
-                JsonObject coordinatesObject = new JsonObject();
-                for (Feature feature : coordinates.keySet()) {
-                    JsonArray coordinatesArray = new JsonArray();
-                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
-                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
-                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-                }
-                saveConfig.add("guiPositions", coordinatesObject);
-                // New gui coordinates
-                coordinatesObject = new JsonObject();
-                for (Feature feature : coordinates.keySet()) {
-                    JsonArray coordinatesArray = new JsonArray();
-                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
-                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
-                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-                }
-                saveConfig.add("coordinates", coordinatesObject);
-
-                JsonObject barSizesObject = new JsonObject();
-                for (Feature feature : barSizes.keySet()) {
-                    JsonArray sizesArray = new JsonArray();
-                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
-                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
-                    barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
-                }
-                saveConfig.add("barSizes", barSizesObject);
-
-                saveConfig.addProperty("warningSeconds", warningSeconds);
-
-                saveConfig.addProperty("textStyle", textStyle.getValue().ordinal());
-                saveConfig.addProperty("language", language.getValue().getPath());
-                saveConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
-                saveConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
-
-                JsonArray chromaFeaturesArray = new JsonArray();
-                for (Feature feature : chromaFeatures) {
-                    chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
-                }
-                saveConfig.add("chromaFeatures", chromaFeaturesArray);
-                saveConfig.addProperty("chromaSpeed", chromaSpeed);
-                saveConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
-                saveConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
-
-                saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
-                saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
-                saveConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
-
-                JsonArray discordCustomStatusesArray = new JsonArray();
-                for (String string : discordCustomStatuses) {
-                    discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
-                }
-                saveConfig.add("discordCustomStatuses", discordCustomStatusesArray);
-
-                saveConfig.addProperty("mapZoom", mapZoom);
-
-                saveConfig.addProperty("configVersion", CONFIG_VERSION);
-                int largestFeatureID = 0;
-                for (Feature feature : Feature.values()) {
-                    if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
-                }
-                saveConfig.addProperty("lastFeatureID", largestFeatureID);
-
-                try (FileWriter writer = new FileWriter(settingsConfigFile)) {
-                    SkyblockAddons.getGson().toJson(saveConfig, writer);
-                }
-            } catch (Exception ex) {
-                logger.error("An error occurred while attempting to save the config!");
-                logger.catching(ex);
+                profileSlotsObject.add(entry.getKey(), lockedSlots);
             }
+            settingsConfig.add("profileLockedSlots", profileSlotsObject);
 
-            SAVE_LOCK.unlock();
-        });
+            JsonObject anchorObject = new JsonObject();
+            for (Feature feature : Feature.getGuiFeatures()) {
+                anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
+            }
+            settingsConfig.add("anchorPoints", anchorObject);
+
+            JsonObject scalesObject = new JsonObject();
+            for (Feature feature : guiScales.keySet()) {
+                scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
+            }
+            settingsConfig.add("guiScales", scalesObject);
+
+            JsonObject colorsObject = new JsonObject();
+            for (Feature feature : colors.keySet()) {
+                int featureColor = colors.get(feature);
+                if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
+                    colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                }
+            }
+            settingsConfig.add("colors", colorsObject);
+
+            // Old gui coordinates, for backwards compatibility...
+            JsonObject coordinatesObject = new JsonObject();
+            for (Feature feature : coordinates.keySet()) {
+                JsonArray coordinatesArray = new JsonArray();
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
+                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+            }
+            settingsConfig.add("guiPositions", coordinatesObject);
+            // New gui coordinates
+            coordinatesObject = new JsonObject();
+            for (Feature feature : coordinates.keySet()) {
+                JsonArray coordinatesArray = new JsonArray();
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
+                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
+                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+            }
+            settingsConfig.add("coordinates", coordinatesObject);
+
+            JsonObject barSizesObject = new JsonObject();
+            for (Feature feature : barSizes.keySet()) {
+                JsonArray sizesArray = new JsonArray();
+                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
+                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
+                barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
+            }
+            settingsConfig.add("barSizes", barSizesObject);
+
+            settingsConfig.addProperty("warningSeconds", warningSeconds);
+
+            settingsConfig.addProperty("textStyle", textStyle.getValue().ordinal());
+            settingsConfig.addProperty("language", language.getValue().getPath());
+            settingsConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
+            settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
+
+            JsonArray chromaFeaturesArray = new JsonArray();
+            for (Feature feature : chromaFeatures) {
+                chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
+            }
+            settingsConfig.add("chromaFeatures", chromaFeaturesArray);
+            settingsConfig.addProperty("chromaSpeed", chromaSpeed);
+            settingsConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
+            settingsConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
+
+            settingsConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
+            settingsConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
+            settingsConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
+
+            JsonArray discordCustomStatusesArray = new JsonArray();
+            for (String string : discordCustomStatuses) {
+                discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
+            }
+            settingsConfig.add("discordCustomStatuses", discordCustomStatusesArray);
+
+            settingsConfig.addProperty("mapZoom", mapZoom);
+
+            settingsConfig.addProperty("configVersion", CONFIG_VERSION);
+            int largestFeatureID = 0;
+            for (Feature feature : Feature.values()) {
+                if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
+            }
+            settingsConfig.addProperty("lastFeatureID", largestFeatureID);
+
+            bufferedWriter.write(settingsConfig.toString());
+            bufferedWriter.close();
+            writer.close();
+        } catch (Exception ex) {
+            logger.error("An error occurred while attempting to save the config!");
+            logger.catching(ex);
+        }
     }
 
 
     private void deserializeFeatureSetFromID(Collection<Feature> collection, String path) {
         try {
-            if (loadedConfig.has(path)) {
-                for (JsonElement element : loadedConfig.getAsJsonArray(path)) {
+            if (settingsConfig.has(path)) {
+                for (JsonElement element : settingsConfig.getAsJsonArray(path)) {
                     Feature feature = Feature.fromId(element.getAsInt());
                     if (feature != null) {
                         collection.add(feature);
@@ -422,8 +413,8 @@ public class ConfigValues {
 
     private void deserializeStringCollection(Collection<String> collection, String path) {
         try {
-            if (loadedConfig.has(path)) {
-                for (JsonElement element : loadedConfig.getAsJsonArray(path)) {
+            if (settingsConfig.has(path)) {
+                for (JsonElement element : settingsConfig.getAsJsonArray(path)) {
                     String string = element.getAsString();
                     if (string != null) {
                         collection.add(string);
@@ -438,8 +429,8 @@ public class ConfigValues {
 
     private void deserializeStringIntSetMap(Map<String, Set<Integer>> map, String path) {
         try {
-            if (loadedConfig.has(path)) {
-                JsonObject profileSlotsObject = loadedConfig.getAsJsonObject(path);
+            if (settingsConfig.has(path)) {
+                JsonObject profileSlotsObject = settingsConfig.getAsJsonObject(path);
                 for (Map.Entry<String, JsonElement> entry : profileSlotsObject.entrySet()) {
                     Set<Integer> slots = new HashSet<>();
                     for (JsonElement element : entry.getValue().getAsJsonArray()) {
@@ -454,8 +445,10 @@ public class ConfigValues {
         }
     }
 
+
+    @SuppressWarnings("unchecked")
     private <E extends Enum<?>, F extends Enum<?>> void deserializeEnumEnumMapFromIDS(Map<E, F> map, String path, Class<E> keyClass, Class<F> valueClass) {
-        deserializeEnumEnumMapFromIDS(loadedConfig, map, path, keyClass, valueClass);
+        deserializeEnumEnumMapFromIDS(settingsConfig, map, path, keyClass, valueClass);
     }
 
     @SuppressWarnings("unchecked")
@@ -483,7 +476,7 @@ public class ConfigValues {
 
     @SuppressWarnings("unchecked")
     private <E extends Enum<?>, N extends Number> void deserializeEnumNumberMapFromID(Map<E, N> map, String path, Class<E> keyClass, Class<N> numberClass) {
-        deserializeEnumNumberMapFromID(loadedConfig, map, path, keyClass, numberClass);
+        deserializeEnumNumberMapFromID(settingsConfig, map, path, keyClass, numberClass);
     }
 
     @SuppressWarnings("unchecked")
@@ -506,8 +499,8 @@ public class ConfigValues {
 
     private <N extends Number> void deserializeNumber(Mutable<Number> number, String path, Class<N> numberClass) {
         try {
-            if (loadedConfig.has(path)) {
-                number.setValue(getNumber(loadedConfig.get(path), numberClass));
+            if (settingsConfig.has(path)) {
+                number.setValue(getNumber(settingsConfig.get(path), numberClass));
             }
         } catch (Exception ex) {
             logger.error("Failed to deserialize path: "+ path);
@@ -534,8 +527,8 @@ public class ConfigValues {
             Object valuesObject = method.invoke(null);
             E[] values = (E[])valuesObject;
 
-            if (loadedConfig.has(path)) {
-                int ordinal = loadedConfig.get(path).getAsInt();
+            if (settingsConfig.has(path)) {
+                int ordinal = settingsConfig.get(path).getAsInt();
                 if (values.length > ordinal) {
                     E enumValue = values[ordinal];
                     if (enumValue != null) {
@@ -550,7 +543,7 @@ public class ConfigValues {
     }
 
     private void deserializeFeatureFloatCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
-        deserializeFeatureFloatCoordsMapFromID(loadedConfig, map, path);
+        deserializeFeatureFloatCoordsMapFromID(settingsConfig, map, path);
     }
 
     private void deserializeFeatureFloatCoordsMapFromID(JsonObject jsonObject, Map<Feature, FloatPair> map, String path) {
@@ -571,7 +564,7 @@ public class ConfigValues {
     }
 
     private void deserializeFeatureIntCoordsMapFromID(Map<Feature, IntPair> map, String path) {
-        deserializeFeatureIntCoordsMapFromID(loadedConfig, map, path);
+        deserializeFeatureIntCoordsMapFromID(settingsConfig, map, path);
     }
 
     private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, IntPair> map, String path) {
@@ -685,25 +678,29 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public int getColor(Feature feature) {
-        return this.getColor(feature, 255);
+    public Color getColorObject(Feature feature, int alpha) {
+        return new Color(getColor(feature, alpha), true);
+    }
+
+    public Color getColorObject(Feature feature) {
+        return getColorObject(feature, 255);
     }
 
     public int getColor(Feature feature, int alpha) {
         if (alpha < 4) {
-            alpha = 4; // Minimum apparently...
+            alpha = 4; // Minimum apparently
         }
 
         if (chromaFeatures.contains(feature)) {
             return ChromaManager.getChromaColor(0, 0, alpha);
         }
 
-        if (colors.containsKey(feature)) {
-            return ColorUtils.setColorAlpha(colors.get(feature), alpha);
-        }
-
         ColorCode defaultColor = feature.getDefaultColor();
-        return defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor();
+        return colors.getOrDefault(feature, defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor());
+    }
+
+    public int getColor(Feature feature) {
+        return this.getColor(feature, 255);
     }
 
     public ColorCode getRestrictedColor(Feature feature) {

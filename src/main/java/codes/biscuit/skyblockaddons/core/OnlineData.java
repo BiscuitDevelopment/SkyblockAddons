@@ -2,8 +2,8 @@ package codes.biscuit.skyblockaddons.core;
 
 import lombok.Getter;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Getter
 public class OnlineData {
@@ -18,11 +18,9 @@ public class OnlineData {
 
     private String languageJSONFormat;
 
-    private HashMap<String, List<Integer>> disabledFeatures;
+    private Map<String, List<Integer>> disabledFeatures;
 
     private DropSettings dropSettings;
-
-    private HashMap<String, Integer> specialEnchantments;
 
     @Getter
     public static class DropSettings {

@@ -11,12 +11,9 @@ import lombok.Setter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.concurrent.locks.ReentrantLock;
 
 @Setter @Getter
 public class PersistentValuesManager {
-
-    private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
     private final File persistentValuesFile;
 
@@ -63,25 +60,17 @@ public class PersistentValuesManager {
     }
 
     public void saveValues() {
-        SkyblockAddons.runAsync(() -> {
-            if (!SAVE_LOCK.tryLock()) {
-                return;
+        try {
+            //noinspection ResultOfMethodCallIgnored
+            persistentValuesFile.createNewFile();
+
+            try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {
+                SkyblockAddons.getGson().toJson(this.persistentValues, writer);
             }
-
-            try {
-                //noinspection ResultOfMethodCallIgnored
-                persistentValuesFile.createNewFile();
-
-                try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {
-                    SkyblockAddons.getGson().toJson(this.persistentValues, writer);
-                }
-            } catch (Exception ex) {
-                SkyblockAddons.getLogger().error("An error occurred while attempting to save persistent values!");
-                SkyblockAddons.getLogger().catching(ex);
-            }
-
-            SAVE_LOCK.unlock();
-        });
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while attempting to save persistent values!");
+            SkyblockAddons.getLogger().catching(ex);
+        }
     }
 
     public void addEyeResetKills() {

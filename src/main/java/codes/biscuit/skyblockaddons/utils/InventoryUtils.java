@@ -42,8 +42,8 @@ public class InventoryUtils {
     private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
     public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "Jungle Axe";
-    public static final String TREECAPITATOR_DISPLAYNAME = "Treecapitator";
+    public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
+    public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
     public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");

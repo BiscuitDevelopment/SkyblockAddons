@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -41,7 +40,7 @@ public class ButtonResize extends ButtonFeature {
 
         hovered = mouseX >= (x- SIZE)*scale && mouseY >= (y- SIZE)*scale && mouseX < (x+ SIZE)*scale && mouseY < (y+ SIZE)* scale;
         int color = hovered ? ColorCode.WHITE.getColor() : ColorCode.WHITE.getColor(70);
-        DrawUtils.drawRect(x- SIZE,y- SIZE, x+ SIZE, y+ SIZE, color);
+        main.getUtils().drawRect(x- SIZE,y- SIZE, x+ SIZE, y+ SIZE, color);
 
         GlStateManager.popMatrix();
     }

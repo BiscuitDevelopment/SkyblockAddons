@@ -25,7 +25,7 @@ public class SkyblockAddonsDuplicateChecker implements IFMLCallHook {
 
             nameField.setAccessible(true);
 
-            for (Object coreMod : SkyblockAddonsLoadingPlugin.coremodList) {
+            for (Object coreMod : SkyblockAddonsLoadingPlugin.getCoremodList()) {
                 String name = (String) nameField.get(coreMod);
 
                 if (name.equals(SkyblockAddonsLoadingPlugin.class.getSimpleName())) {

@@ -147,34 +147,32 @@
     "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
     "stopBonzoStaffSounds": "静音 Bonzo's Staff",
     "showRarityUpgraded": "显示物品稀有度是否被升级",
-    "revenantSlayerTracker": "猎杀追踪器 - 亡灵/僵尸",
-    "tarantulaSlayerTracker": "猎杀追踪器 - 狼蛛/蜘蛛",
+    "revenantSlayerTracker": "猎杀跟踪器 - 亡灵/僵尸",
+    "tarantulaSlayerTracker": "猎杀跟踪器 - 狼蛛/蜘蛛",
     "svenSlayerTracker": "猎杀追踪器 - 狼王/狼",
     "textMode": "文本模式",
     "dragonsNestOnly": "仅在龙之巢穴显示",
     "dragonStatsTracker": "末影龙击杀计数",
-    "skillActionsLeftUntilNextLevel": "显示到下个等级仍需的动作",
-    "hideWhenNotInCrypts": "当不位于大厅地穴/进行亡灵猎手任务时隐藏",
-    "hideWhenNotInSpidersDen": "当不位于蜘蛛巢穴/进行狼蛛猎手任务时隐藏",
-    "hideWhenNotInCastle": "当不位于大厅城堡/不进行狼王任务时隐藏",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
+    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
+    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
     "dungeonDeathCounter": "地下城死亡计数",
     "showPersonalCompactorPreview": "随身压缩机预览",
     "rockPetTracker": "宠物岩石进度追踪",
     "dolphinPetTracker": "宠物海豚进度追踪",
     "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
     "showExpertiseKills": "显示 Expertise 击杀进度",
-    "dungeonsSecretsDisplay": "地下城秘密数量显示",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "以技能进度百分比代替技能经验值",
     "showSkillXPGained": "显示已获得技能经验值",
     "skillProgressBar": "技能升级进度条",
-    "showSalvageEssencesCounter": "显示 Salvage Essence 计数器",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "隐藏 Mort 的对话",
     "disableBossMessages": "隐藏 Boss 们的台词",
     "hideOtherPlayersPresents": "隐藏其他玩家的礼物",
     "easierPresentOpening": "更容易的打开礼物",
-    "showSwordKills": "显示剑击杀数",
-    "compactTabList": "简洁 Tab 列表",
-    "highlightMaxEnchantments": "高亮特殊附魔"
+    "showSwordKills": "显示剑击杀数"
   },
   "messages": {
     "enchants": "附魔",
@@ -240,9 +238,7 @@
     "reforgeExclusionExample": "例如: \"odd, clean\"",
     "actionsLeft": "剩余 %number%",
     "effectActive": "已激活 1 种药水效果",
-    "effectsActive": "已激活 %number% 种药水效果",
-    "none": "无",
-    "copyModeSet": "开发者复制模式以切换至： %mode% ，请按下 %keyName% 以复制特定NBT！"
+    "effectsActive": "已激活 %number% 种药水效果"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -273,113 +269,53 @@
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
   },
   "commandUsage": {
-    "sba": {
-      "base": {
-        "help": "打开主菜单"
-      },
-      "brand": {
-        "help": "§e(开发者) §7显示服务端名称",
-        "brandOutput": "服务端：%brand%",
-        "notFound": "无法检测到服务端！"
-      },
-      "copyBlock": {
-        "help": "§e(开发者) §7复制准星所指方块的 NBT"
-      },
-      "copyEntity": {
-        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
-        "detailedHelp": {
-          "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
-          "options": {
-            "entityNames": "你想要复制数据的实体种类 (例如 Player, Creeper)。输入指令后按下 \"Tab\" 键来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
-            "radius": "进行复制NBT数据的玩家范围 (按格计算)"
-          }
-        }
-      },
-      "copySidebar": {
-        "help": "§e(开发者) §7复制计分板文本",
-        "detailedHelp": {
-          "description": "复制侧边栏显示的文字",
-          "options": {
-            "formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。"
-          }
-        }
-      },
-      "copyTabList": {
-        "help": "§e(开发者) §7复制页头页脚标签",
-        "detailedHelp": {
-          "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
-        }
-      },
-      "dev": {
-        "help": "启用/禁用 开发者模式",
-        "detailedHelp": {
-          "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
-        },
-        "disabled": "开发者模式已禁用！",
-        "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
-      },
-      "edit": {
-        "help": "编辑 GUI 位置"
-      },
-      "folder": {
-        "help": "打开 mods 文件夹",
-        "error": "试图打开 mods 文件夹时出错：%s"
-      },
-      "help": {
-        "help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
-        "detailedHelp": {
-          "options": {
-            "command": "此子命令来获取详细的用法"
-          }
-        }
-      },
-      "set": {
-        "zealotCounter": {
-          "help": "手动设置末影战士计数器",
-          "detailedHelp": {
-            "description": "手动设置末影战士计数器。",
-            "options": {
-              "eyes": "总计获取召唤之眼数",
-              "totalZealots": "总计末影战士击杀数",
-              "zealots": "自上次掉落召唤之眼后的末影战士击杀数"
-            }
-          },
-          "eyesSet": "已设置召唤之眼掉落数为 %number%！",
-          "totalZealotsSet": "已设置总计末影战士击杀数为 %number%！",
-          "wrongUsage": "无效选项！请选择 %options%。",
-          "zealotsSet": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！"
-        }
-      },
-      "slayer": {
-        "help": "修改猎杀任务统计，按 tab 查看指令参数",
-        "detailedHelp": {
-          "description": "修改猎杀任务统计，按 tab 查看指令参数",
-          "options": {
-            "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
-            "number": "统计设置为的数字",
-            "stat": "可更改统计数据，值可以为 \"kills\"，也可以是掉落物名称，格式如下：\"REVENANT_FLESH\""
-          }
-        },
-        "bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
-        "statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
-        "numberRequired": "你需要添加你想要的数值",
-        "killsSet": "猎杀 %boss% 的击杀统计已设定为 %number%",
-        "statSet": "%boss% 的猎杀统计 %stat% 已设定为 %number%",
-        "invalidBoss": "\"%input%\" 不是有效的统计信息!",
-        "invalidStat": "\"%input%\" 不是有效的 boss!"
-      },
-      "toggleActionBarLogging": {
-        "help": "§e(开发者) §7切换日志操作栏消息",
-        "disabled": "操作栏消息将不再被记录。",
-        "enabled": "操作栏消息现在将被记录。"
-      },
-      "errors": {
-        "wrongUsage": {
-          "generic": "错误用法！",
-          "subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
-        }
-      }
-    }
+    "sba": "打开主菜单",
+    "sba.brand": "§e(开发者) §7显示服务端名称",
+    "sba.brand.brandOutput": "服务端：%brand%",
+    "sba.brand.notFound": "无法检测到服务端！",
+    "sba.copyEntity": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+    "sba.copySidebar": "§e(开发者) §7复制计分板文本",
+    "sba.copyTabList": "§e(开发者) §7复制页头页脚标签",
+    "sba.dev": "启用/禁用 开发者模式",
+    "sba.dev.disabled": "开发者模式已禁用！",
+    "sba.dev.enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
+    "sba.edit": "编辑 GUI 位置",
+    "sba.folder": "打开 mods 文件夹",
+    "sba.folder.error": "试图打开 mods 文件夹时出错：%s",
+    "sba.help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
+    "sba.help.copyEntity": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
+    "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
+    "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
+    "sba.help.copySidebar.formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。",
+    "sba.help.copyTabList": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。",
+    "sba.help.dev": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。",
+    "sba.help.help.command": "此子命令来获取详细的用法",
+    "sba.help.set.zealotCounter": "手动设置末影战士计数器。",
+    "sba.help.set.zealotCounter.eyes": "总计获取召唤之眼数",
+    "sba.help.set.zealotCounter.totalZealots": "总计末影战士击杀数",
+    "sba.help.set.zealotCounter.zealots": "自上次掉落召唤之眼后的末影战士击杀数",
+    "sba.help.slayer": "手动设置 Slayer 数据, 按 tab 以获得参数",
+    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+    "sba.help.slayer.number": "统计设置为的数字",
+    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
+    "sba.set.zealotCounter": "手动设置末影战士计数器",
+    "sba.set.zealotCounter.eyes": "已设置召唤之眼掉落数为 %number%！",
+    "sba.set.zealotCounter.totalZealots": "已设置总计末影战士击杀数为 %number%！",
+    "sba.set.zealotCounter.wrongUsage": "无效选项！请选择 %options%。",
+    "sba.set.zealotCounter.zealots": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！",
+    "sba.slayer": "修改猎杀任务统计，按 tab 查看指令参数",
+    "sba.slayer.bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
+    "sba.slayer.statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
+    "sba.slayer.numberRequired": "你需要添加你想要的数值",
+    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
+    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+    "sba.slayer.invalidBoss": "\"%input%\" 不是有效的统计信息!",
+    "sba.slayer.invalidStat": "\"%input%\" 不是有效的 boss!",
+    "sba.toggleActionBarLogging": "§e(开发者) §7切换日志操作栏消息",
+    "sba.toggleActionBarLogging.disabled": "操作栏消息将不再被记录。",
+    "sba.toggleActionBarLogging.enabled": "操作栏消息现在将被记录。",
+    "sba.wrongUsage.generic": "错误用法！",
+    "sba.wrongUsage.subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"

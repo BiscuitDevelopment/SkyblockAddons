@@ -21,7 +21,7 @@ public enum EssenceType {
 
     EssenceType() {
         niceName = WordUtils.capitalizeFully(this.name());
-        resourceLocation = new ResourceLocation("skyblockaddons", "essences/" + this.name().toLowerCase(Locale.US) + ".png");
+        resourceLocation = new ResourceLocation("skyblockaddons", "essences/"+this.name().toLowerCase(Locale.US)+".png");
     }
 
     public static EssenceType fromName(String name) {

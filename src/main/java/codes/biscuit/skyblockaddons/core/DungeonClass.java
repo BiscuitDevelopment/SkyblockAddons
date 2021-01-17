@@ -1,4 +1,4 @@
-package codes.biscuit.skyblockaddons.core.dungeons;
+package codes.biscuit.skyblockaddons.core;
 
 import lombok.Getter;
 import net.minecraft.init.Items;
@@ -6,26 +6,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public enum DungeonClass {
-
     HEALER(Items.potionitem, "Healer"),
     ARCHER(Items.bow, "Archer"),
     TANK(Items.leather_chestplate, "Tank"),
     MAGE(Items.blaze_rod, "Mage"),
     BERSERKER(Items.iron_sword, "Berserk");
 
-    @Getter private char firstLetter;
+    @Getter private String firstLetter;
     @Getter private ItemStack item;
-    @Getter private String chatDisplayName; // The way Hypixel writes it out in chat
+    @Getter private String chatDisplayName;
 
     DungeonClass(Item item, String chatDisplayName) {
-        this.firstLetter = this.name().charAt(0);
+        this.firstLetter = this.name().substring(0, 1);
         this.item = new ItemStack(item);
         this.chatDisplayName = chatDisplayName;
     }
 
-    public static DungeonClass fromFirstLetter(char firstLetter) {
+    public static DungeonClass fromFirstLetter(String firstLetter) {
         for (DungeonClass dungeonClass : DungeonClass.values()) {
-            if (dungeonClass.firstLetter == firstLetter) {
+            if (dungeonClass.firstLetter.equals(firstLetter)) {
                 return dungeonClass;
             }
         }

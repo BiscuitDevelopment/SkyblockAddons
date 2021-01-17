@@ -2,9 +2,6 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
@@ -63,7 +60,7 @@ public class IslandMarkerButton extends GuiButton {
         }
 
         mc.getTextureManager().bindTexture(PORTAL_ICON);
-        DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height, true);
+        main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height, true);
 
         if (hovered) {
             GlStateManager.pushMatrix();
@@ -74,9 +71,9 @@ public class IslandMarkerButton extends GuiButton {
             int alpha = Math.max((int)(((expansion-1)/0.1)*255), 4);
             int color;
             if (this.unlocked) {
-                color = ColorCode.WHITE.getColor();
+                color = main.getUtils().getColorWithAlpha(0xFFFFFF, alpha);
             } else {
-                color = ColorUtils.setColorAlpha(0x999999, alpha);
+                color = main.getUtils().getColorWithAlpha(0x999999, alpha);
             }
 
             mc.fontRendererObj.drawStringWithShadow(displayString, (x+(width/2))/textScale - mc.fontRendererObj.getStringWidth(displayString)/2F, (y-20)/textScale, color);

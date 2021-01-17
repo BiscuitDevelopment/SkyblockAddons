@@ -55,7 +55,7 @@ public class MapMarker {
     public float getX() {
         EntityPlayer player = getPlayer();
         if (player != null) {
-            float playerMarkerX = ((float) player.posX - DungeonMapManager.getMapStartX()) / 1.5F;
+            float playerMarkerX = ((float) player.posX - main.getRenderListener().getMapStartX()) / 1.5F;
             return x = (playerMarkerX - 64.0F) * 2.0F;
         } else {
             return x;
@@ -65,7 +65,7 @@ public class MapMarker {
     public float getZ() {
         EntityPlayer player = getPlayer();
         if (player != null) {
-            float playerMarkerZ = ((float) player.posZ - DungeonMapManager.getMapStartZ()) / 1.5F;
+            float playerMarkerZ = ((float) player.posZ - main.getRenderListener().getMapStartZ()) / 1.5F;
             return z = (playerMarkerZ - 64.0F) * 2.0F;
         } else {
             return z;

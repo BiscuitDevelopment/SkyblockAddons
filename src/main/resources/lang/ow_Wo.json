@@ -1,5 +1,5 @@
 {
-  "language": "OwO",
+  "language": "OwO wanguage uwu",
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "Hide Swen Puwup Nametags",
     "turnAllFeaturesChroma": "Tuwn Aww Featuwes Chwoma",
     "dungeonMapDisplay": "Dungeon map dispway",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Wotate Map to Your Pwayer's Wotation",
+    "centerRotationOnYourPlayer": "Center da Wotation Awound Your Pwayer",
     "mapZoom": "Map Zwoom",
     "glowingDroppedItems": "Gwowing Dwopped Items",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
@@ -172,9 +172,7 @@
     "disableBossMessages": "Disabwe Boss Messagwes",
     "hideOtherPlayersPresents": "Hide Othew Pwayew's Pwesents",
     "easierPresentOpening": "Opwen Pwesents Easiew",
-    "showSwordKills": "Shwow Swowd Kwills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "showSwordKills": "Shwow Swowd Kwills"
   },
   "messages": {
     "enchants": "Enchants ^-^",
@@ -240,9 +238,7 @@
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Weft",
     "effectActive": "1 Effect Active (>-<)/",
-    "effectsActive": "%number% UwU Effects Active",
-    "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "effectsActive": "%number% UwU Effects Active"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -273,113 +269,53 @@
     "descriptionTarantula": "Showos thwat uwu awe dowing a Tawantuwah qwest."
   },
   "commandUsage": {
-    "sba": {
-      "base": {
-        "help": "Open the main menu"
-      },
-      "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
-      },
-      "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
-      },
-      "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-        "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-          "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
-          }
-        }
-      },
-      "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
-        "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
-          "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
-          }
-        }
-      },
-      "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
-        "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
-        }
-      },
-      "dev": {
-        "help": "Toggle developer mode",
-        "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
-        },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
-      },
-      "edit": {
-        "help": "Edit GUI locations"
-      },
-      "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
-      },
-      "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-        "detailedHelp": {
-          "options": {
-            "command": "the sub-command to get detailed usage for"
-          }
-        }
-      },
-      "set": {
-        "zealotCounter": {
-          "help": "Manually set your zealot counts",
-          "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
-            "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
-            }
-          },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
-        }
-      },
-      "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
-        "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
-          "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
-          }
-        },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
-      },
-      "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
-      },
-      "errors": {
-        "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
-        }
-      }
-    }
+    "sba": "Owpen the main menu",
+    "sba.brand": "§e(Dev) §7Showo the sewvew bwand",
+    "sba.brand.brandOutput": "Sewvew Bwand: %brand%",
+    "sba.brand.notFound": "Serwer bwand not fownd!",
+    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
+    "sba.copySidebar": "§e(Dev) §7Copy the scoweboawd text",
+    "sba.copyTabList": "§e(Dev) §7Copy the tab list headew and footew",
+    "sba.dev": "Toggwe devewopew mode",
+    "sba.dev.disabled": "Dewelower wode wisabled!",
+    "sba.dev.enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!",
+    "sba.edit": "Edit GUI wocations",
+    "sba.folder": "Owpen youw mods fowder",
+    "sba.folder.error": "A werror woccoured whying to wopen da wads wolder: %s",
+    "sba.help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
+    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
+    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data fow (e.g. Player, Creeper). Pwess \"Tab\" aftew typing the command fow a fuww wist. Sepawate muwtipwe names with commas, names are case-sensitive.",
+    "sba.help.copyEntity.radius": "The wadius(in blocks) awound the playew to copy entity NBT data fwom",
+    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
+    "sba.help.copyTabList": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded.",
+    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
+    "sba.help.help.command": "the sub-command to get detailed usage for",
+    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
+    "sba.help.set.zealotCounter.eyes": "Lifewime summoning eyes obwained",
+    "sba.help.set.zealotCounter.totalZealots": "Lifewime Zealots Kiwwed",
+    "sba.help.set.zealotCounter.zealots": "Zealots kiwwed since the wast summoning eye dwop",
+    "sba.help.slayer": "Manuawwy set slayer stats, pwess tab fow awguments",
+    "sba.help.slayer.boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
+    "sba.help.slayer.number": "Nuwmbew to swet the stwat to",
+    "sba.help.slayer.stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\"",
+    "sba.set.zealotCounter": "Manuawwy set youw zeawot counts",
+    "sba.set.zealotCounter.eyes": "Set totaw summoning eye count to %number%!",
+    "sba.set.zealotCounter.totalZealots": "Set totaw zeawot count to %number%!",
+    "sba.set.zealotCounter.wrongUsage": "Invawid sewection! Pwease choose %options%.",
+    "sba.set.zealotCounter.zealots": "Set cuwwent zealot count to %number%!",
+    "sba.slayer": "Manuawwy set slayer stats, pwess tab fow awguments",
+    "sba.slayer.bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
+    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
+    "sba.slayer.numberRequired": "You need to add the number you want.",
+    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
+    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
+    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
+    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
+    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
+    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
+    "sba.wrongUsage.generic": "Wrong usage!",
+    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
   },
   "keyBindings": {
     "developerCopyNBT": "Cowopy NBT"

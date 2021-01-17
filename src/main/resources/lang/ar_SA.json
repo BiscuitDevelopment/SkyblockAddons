@@ -131,8 +131,8 @@
     "hideSvenPupNametags": "اخفاء اسماء جراء سفين",
     "turnAllFeaturesChroma": "تشغيل جميع الميزات Chroma",
     "dungeonMapDisplay": "عرض خريطة الدنجن",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "تدوير الخريطة حسب دوران اللاعب الخاص بك",
+    "centerRotationOnYourPlayer": "تمركز الدوران حول اللاعب",
     "mapZoom": "تكبير الخريطة",
     "glowingDroppedItems": "توهج الادوات المسقطه",
     "glowingDungeonTeammates": "توهج فريق الدنجنز",
@@ -172,9 +172,7 @@
     "disableBossMessages": "إخفاء رسائل الـBoss",
     "hideOtherPlayersPresents": "إخفاء هداية الأخرين",
     "easierPresentOpening": "تسهيل فتح الهدايا",
-    "showSwordKills": "إظهار قتلات السيف",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "showSwordKills": "إظهار قتلات السيف"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -240,9 +238,7 @@
     "reforgeExclusionExample": "مثال: \"odd, clean\"",
     "actionsLeft": "بقي %number%",
     "effectActive": "تأثير 1 فعال",
-    "effectsActive": "التأثيرات الفعالة: %number%",
-    "none": "لا شيء",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "effectsActive": "التأثيرات الفعالة: %number%"
   },
   "discordStatus": {
     "titleNone": "لا شيء",
@@ -273,113 +269,53 @@
     "descriptionTarantula": "تظهر انك تقوم بمهمة الترانتشولا."
   },
   "commandUsage": {
-    "sba": {
-      "base": {
-        "help": "Open the main menu"
-      },
-      "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
-      },
-      "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
-      },
-      "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
-        "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-          "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
-          }
-        }
-      },
-      "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
-        "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
-          "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
-          }
-        }
-      },
-      "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
-        "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
-        }
-      },
-      "dev": {
-        "help": "Toggle developer mode",
-        "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
-        },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
-      },
-      "edit": {
-        "help": "Edit GUI locations"
-      },
-      "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
-      },
-      "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
-        "detailedHelp": {
-          "options": {
-            "command": "the sub-command to get detailed usage for"
-          }
-        }
-      },
-      "set": {
-        "zealotCounter": {
-          "help": "Manually set your zealot counts",
-          "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
-            "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
-            }
-          },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
-        }
-      },
-      "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
-        "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
-          "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
-          }
-        },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
-      },
-      "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
-      },
-      "errors": {
-        "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
-        }
-      }
-    }
+    "sba": "فتح القائمة الرئيسية",
+    "sba.brand": "§e(Dev) §7إظهار نوع الخادم",
+    "sba.brand.brandOutput": "العلامة التجارية للخادم: %brand%",
+    "sba.brand.notFound": "لم يتم العثور على العلامة التجارية للخادم!",
+    "sba.copyEntity": "§e§(Dev) 7نسخ بيانات NBT للأشياء من معطيات الاسم(اء) داخل نصف القطر حول اللاعب",
+    "sba.copySidebar": "§e(Dev) §7نسخ نص لوحة النتائج.",
+    "sba.copyTabList": "§e(Dev) §7نسخ الهامش العلوي والسفلي في التاب",
+    "sba.dev": "تبديل وضعية المطور",
+    "sba.dev.disabled": "وضع المطور معطل!",
+    "sba.dev.enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!",
+    "sba.edit": "تحرير مواقع الواجهة",
+    "sba.folder": "افتح مجلد المودات الخاص بك",
+    "sba.folder.error": "حدث خطأ اثناء محاولة فتح ملف المودات: %s",
+    "sba.help": "إظهار رسالة المساعدة هذه. إذا تم توفير أمر ، يتم عرض مساعدة مفصلة حول هذا الأمر.",
+    "sba.help.copyEntity": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
+    "sba.help.copyEntity.entityNames": "اسماء انواع الأشياء الذي تريد نصخ البيانات (مثل لاعب، المعترش). اضغط على \"Tab\" بعد كتابة الأمر لقائمة كاملة. افصل أسماء متعدده بفواصل، الأسماء حساسة لحالة الأحرف.",
+    "sba.help.copyEntity.radius": "نصف قطر (في كتل) حول اللاعب لنسخ بياناتNBT من الشيء",
+    "sba.help.copySidebar.formatted": "يحدد اذا ينبغي تضمين رموز الألوان عند النسخ. يمكن أن بكون إما \"صحيح\" او \"خطأ\"، الافتراضي هو \"خطأ\" إذا لم يتم توفير أي قيمة. يتم نسخ رموز الألوان إذا \"صحيح\".",
+    "sba.help.copyTabList": "هذا الأمر ينسج الهامش العلوي والسفلي من تاب اللاعب. شفرات التنسيق متضمنة.",
+    "sba.help.dev": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT.",
+    "sba.help.help.command": "الأمر الفرعي للحصول على الاستخدام المفصل لـه",
+    "sba.help.set.zealotCounter": "يضع العد في عداد الزيلوتس يدوياً.",
+    "sba.help.set.zealotCounter.eyes": "عدد عيون الأستدعاء في مدى الحياه",
+    "sba.help.set.zealotCounter.totalZealots": "الزيلوتس الذي قتلوا في مدى الحياة",
+    "sba.help.set.zealotCounter.zealots": "الزيلوتس الذي قتلوا منذ آخر عين استدعاء",
+    "sba.help.slayer": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
+    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", أو \"Wolf\"",
+    "sba.help.slayer.number": "رقم لوضع الاحصائية الى",
+    "sba.help.slayer.stat": "إحصائية الـSlayer للتغير, قد يمكن أن تكون \"kills\" او اسم الغرض الساقط منه منسق هكذا: \"REVENANT_FLESH\"",
+    "sba.set.zealotCounter": "عيّن عدد الزيلوت يدوياً",
+    "sba.set.zealotCounter.eyes": "وضع عدد استدعاء العين الكلي إلى %number%!",
+    "sba.set.zealotCounter.totalZealots": "وضع مجموع الزيلوتس الكلي إلى %number%!",
+    "sba.set.zealotCounter.wrongUsage": "اختيار غير صالح! الرجاء اختيار %options%.",
+    "sba.set.zealotCounter.zealots": "وضع عدد الزيلوتس الحالي إلى %number%!",
+    "sba.slayer": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
+    "sba.slayer.bossRequired": "يجب أن تضع Boss! الرجاء اختيار %bosses%",
+    "sba.slayer.statRequired": "يجب تضع إحصائية. إضعط tab لأعدادات أكثر.",
+    "sba.slayer.numberRequired": "يجب ان تضع الرقم الذي تريده.",
+    "sba.slayer.killsSet": "القتلات للـSlayer %boss% وضعت الى %number%.",
+    "sba.slayer.statSet": "احصائية %stat% للـSlayer %boss% وضع الى %number%.",
+    "sba.slayer.invalidBoss": "\"%input%\" ليس احصائية حقيقية!",
+    "sba.slayer.invalidStat": "\"%input%\" ليس Boss حقيقي!",
+    "sba.toggleActionBarLogging": "§e(Dev) §7إشغال تسجيل شريط إجراءات الرسائل",
+    "sba.toggleActionBarLogging.disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
+    "sba.toggleActionBarLogging.enabled": "سيتم الآن تسجيل رسائل شريط العمل.",
+    "sba.wrongUsage.generic": "استخدام خاطئ!",
+    "sba.wrongUsage.subCommandNotFound": "لم يتم العثور على الأمر الفرعي \"%sub-command%\"."
   },
   "keyBindings": {
     "developerCopyNBT": "نسخ NBT"

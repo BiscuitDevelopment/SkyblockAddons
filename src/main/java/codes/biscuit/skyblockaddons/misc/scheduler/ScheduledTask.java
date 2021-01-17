@@ -153,7 +153,7 @@ public class ScheduledTask {
      */
     public void start() {
         if (this.isAsync()) {
-            SkyblockAddons.runAsync(this.task);
+            new Thread(this.task, SkyblockAddons.MOD_NAME + " - Scheduler #" + SkyblockAddons.nextThreadNumber()).start();
         } else {
             this.task.run();
         }
