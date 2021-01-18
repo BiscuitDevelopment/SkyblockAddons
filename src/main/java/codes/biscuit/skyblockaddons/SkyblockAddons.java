@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.config.PersistentValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.features.CompactCounter;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
@@ -62,7 +63,7 @@ public class SkyblockAddons {
     private DiscordRPCManager discordRPCManager;
     private Scheduler scheduler;
     private NewScheduler newScheduler;
-
+    @Getter CompactCounter compactCounter = new CompactCounter();
     private boolean usingLabymod;
     private boolean usingOofModv1;
     @Setter private boolean devMode;
