@@ -129,6 +129,7 @@ public enum Message {
     SETTING_CHANGE_ZEALOT_COLOR(MessageObject.SETTING, "changeZealotColor"),
     SETTING_HIDE_SVEN_PUP_NAMETAGS(MessageObject.SETTING, "hideSvenPupNametags"),
     SETTING_TURN_ALL_FEATURES_CHROMA(MessageObject.SETTING, "turnAllFeaturesChroma"),
+    SETTINGS_SHOW_COMPACT_COUNTER(MessageObject.SETTING, "showCompactCounter"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -194,6 +195,8 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
+    MESSAGE_COMPACT_COUNTER_GUESSING(MessageObject.MESSAGES, "compactCounterGuessing"),
+    MESSAGE_COMPACT_COUNTER_COMPENSATING(MessageObject.MESSAGES, "compactCounterCompensating"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),

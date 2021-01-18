@@ -5,10 +5,7 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.ItemDiff;
-import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.*;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrb;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
@@ -74,6 +71,7 @@ public class RenderListener {
 
     private final static ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private final static ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
+    private final static ItemStack DIAMOND_PICKAXE = new ItemStack(Items.diamond_pickaxe);
     private static ItemStack NETHER_STAR;
     private static ItemStack WARP_SKULL;
 
@@ -88,6 +86,7 @@ public class RenderListener {
     @Getter @Setter private Feature titleFeature;
 
     @Setter private int arrowsLeft;
+    @Setter private int blocksLeftTillCompact = -1;
 
     @Setter private String cannotReachMobName;
 
@@ -220,6 +219,9 @@ public class RenderListener {
                     break;
                 case BOSS_APPROACH_ALERT:
                     message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    break;
+                case SHOW_COMPACT_COUNTER:
+                    message = Message.SETTINGS_SHOW_COMPACT_COUNTER;
                     break;
             }
             if (message != null) {
@@ -790,6 +792,19 @@ public class RenderListener {
 
             int stageNum = Math.min(stage.ordinal(), 5);
             text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+        } else if (feature == Feature.SHOW_COMPACT_COUNTER) {
+            
+            if (blocksLeftTillCompact != -1) {
+                if (main.getCompactCounter().getState() == CompactCounter.State.guessing) {
+                    text = Message.MESSAGE_COMPACT_COUNTER_GUESSING.getMessage();
+                } else {
+                    text = Message.MESSAGE_COMPACT_COUNTER_COMPENSATING.getMessage();
+                }
+                text += String.valueOf(blocksLeftTillCompact);
+            } else {
+                return;
+            }
+            
         } else {
             return;
         }
@@ -810,7 +825,7 @@ public class RenderListener {
 
         if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY || feature == Feature.SHOW_COMPACT_COUNTER) {
             width += 18;
             height += 9;
         }
@@ -842,6 +857,12 @@ public class RenderListener {
             main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
             ChromaManager.doneRenderingText();
 
+        } else if (feature == Feature.SHOW_COMPACT_COUNTER) {
+            renderItem(DIAMOND_PICKAXE, x, y);
+    
+            ChromaManager.renderingText(feature);
+            main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
+            ChromaManager.doneRenderingText();
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
             main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);

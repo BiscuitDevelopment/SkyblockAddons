@@ -11,7 +11,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
@@ -27,10 +27,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class PlayerControllerMPHook {
 
@@ -93,6 +90,7 @@ public class PlayerControllerMPHook {
         Minecraft mc = Minecraft.getMinecraft();
         EntityPlayerSP p = mc.thePlayer;
         ItemStack heldItem = p.getHeldItem();
+        main.getCompactCounter().checkCompact();
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             long now = System.currentTimeMillis();
@@ -143,6 +141,12 @@ public class PlayerControllerMPHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
         ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
+        SkyblockAddons.getInstance().getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
+            @Override
+            public void run() {
+                main.getCompactCounter().checkCompact();
+            }
+        }, 5);
         if (heldItem != null) {
             Block block = mc.theWorld.getBlockState(loc).getBlock();
             if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
