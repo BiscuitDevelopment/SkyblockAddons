@@ -10,6 +10,9 @@ git checkout -b development --track origin/development
 ```
 
 ### Requirements
+- **JDK 8** (One of them)
+  - [Oracle JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+  - [OpenJDK 8](https://adoptopenjdk.net/index.html?variant=openjdk8&ga=ga)
 - **IDE** (One of them)
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/) **(Recommended)**
   - [Eclipse](https://www.eclipse.org/)
