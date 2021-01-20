@@ -23,11 +23,15 @@ Steps to reproduce the behavior (how did you get this bug to occur):
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Screenshots/Video**
+If applicable, add screenshots, or a video to help explain your problem.
 
 **Crash Report**
-If your game crashed, please paste your crash report here.
+If your game crashed, please paste your crash report below.
+
+```text
+[Paste Here]
+```
 
 **System Information**
  - OS: [e.g. Windows 10]
