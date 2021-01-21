@@ -191,7 +191,7 @@ public class Utils {
 
             if (matcher.find()) {
                 // Group 1 is the server brand.
-                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+                return matcher.group(1).startsWith("Hypixel BungeeCord (") ? true : matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
             }
             else {
                 return false;
@@ -659,7 +659,7 @@ public class Utils {
                     result.write(buffer, 0, length);
                 }
                 String dataString = result.toString("UTF-8");
-                main.getConfigValues().setLanguageConfig(JsonParser.parseString(dataString).getAsJsonObject());
+                main.getConfigValues().setLanguageConfig(new JsonParser().parse(dataString).getAsJsonObject());
                 fileStream.close();
             }
         } catch (JsonParseException | IllegalStateException | IOException ex) {
