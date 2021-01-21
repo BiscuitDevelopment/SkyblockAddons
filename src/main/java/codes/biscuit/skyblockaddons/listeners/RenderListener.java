@@ -96,6 +96,7 @@ public class RenderListener {
     private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null,  "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
     private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
     private static final ItemStack SKULL = ItemUtils.createSkullItemStack("Skull", null, "c659cdd4-e436-4977-a6a7-d5518ebecfbb", "1ae3855f952cd4a03c148a946e3f812a5955ad35cbcb52627ea4acd47d3081");
+    private static final ItemStack ALLIUM = new ItemStack(Blocks.red_flower,1,2);
 
     private static final SlayerArmorProgress[] DUMMY_PROGRESSES = new SlayerArmorProgress[]{new SlayerArmorProgress(new ItemStack(Items.diamond_boots)), new SlayerArmorProgress(new ItemStack(Items.chainmail_leggings)), new SlayerArmorProgress(new ItemStack(Items.diamond_chestplate)), new SlayerArmorProgress(new ItemStack(Items.leather_helmet))};
 
@@ -922,6 +923,20 @@ public class RenderListener {
             }
 
             text = "Secrets";
+        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
+            if (!main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+                return;
+            }
+            ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
+            if (buttonLocation != null) {
+                text = "Spirit Sceptre";
+            } else if (holdingItem == null) {
+                return;
+            } else if (holdingItem.getDisplayName().contains("Spirit Sceptre")) {
+                text = "Spirit Sceptre";
+            } else {
+                return;
+            }
         } else {
             return;
         }
@@ -965,6 +980,12 @@ public class RenderListener {
             int maxNumberWidth = mc.fontRendererObj.getStringWidth("99");
             width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
             height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
+        }
+
+        if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("12345");
+            width += 18 + maxNumberWidth;
+            height += 20;
         }
 
         x = transformXY(x, width, scale);
@@ -1190,6 +1211,21 @@ public class RenderListener {
 
             GlStateManager.color(1, 1, 1, 1);
             renderItem(CHEST, x, y);
+        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES && main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+            int hitEnemies = main.getPlayerListener().getSpiritSceptreHitEnemies();
+            float dealtDamage = main.getPlayerListener().getSpiritSceptreDealtDamage();
+            ChromaManager.renderingText(feature);
+            DrawUtils.drawText(text, x + 16 + 2, y, color);
+            if (hitEnemies <= 1) {
+                DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y+9, color);
+            }
+            else {
+                DrawUtils.drawText(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
+            }
+            DrawUtils.drawText(String.format("%d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y+18, color);
+            ChromaManager.doneRenderingText();
+            renderItem(ALLIUM, x, y);
+
         } else {
             ChromaManager.renderingText(feature);
             DrawUtils.drawText(text, x, y, color);

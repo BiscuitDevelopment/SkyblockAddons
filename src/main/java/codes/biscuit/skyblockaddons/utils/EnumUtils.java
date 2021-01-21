@@ -220,6 +220,8 @@ public class EnumUtils {
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
+
+        SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay", 152)
         ;
 
         private Message message;
@@ -285,7 +287,8 @@ public class EnumUtils {
                 Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS, Feature.ENCHANTMENTS_HIGHLIGHT),
         TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
-        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING);
+        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING),
+        ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES);
 
         private Set<Feature> features;
         private String author;

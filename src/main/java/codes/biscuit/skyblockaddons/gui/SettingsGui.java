@@ -441,6 +441,12 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, settingFeature));
+        } else if (setting == EnumUtils.FeatureSetting.SHOW_SPIRIT_SCEPTRE_DISPLAY) {
+            boxWidth = 31;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY));
         }
         else {
             boxWidth = 31; // Default size and stuff.

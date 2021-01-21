@@ -73,7 +73,9 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -96,6 +98,7 @@ public class PlayerListener {
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
+    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your Spirit Sceptre hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -146,6 +149,9 @@ public class PlayerListener {
     @Getter @Setter private int recentBlazes = 0;
 
     @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
+
+    @Getter private int spiritSceptreHitEnemies = 0;
+    @Getter private float spiritSceptreDealtDamage = 0;
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
@@ -290,6 +296,23 @@ public class PlayerListener {
                     e.setCanceled(true);
 
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
+                    e.setCanceled(true);
+
+                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
+                    e.setCanceled(true);
+
+                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Spirit Sceptre hit")) {
+                    System.out.println(unformattedText);
+                    try {
+                        matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
+                        matcher.find(); // Ensure matcher.group gets what it wants, we don't need the result
+                        this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
+                        this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+
+                    }
+                    catch (java.lang.IllegalStateException matchNotFound){
+                        System.out.printf("Things went south, match not found, original text: %s", unformattedText);
+                    }
                     e.setCanceled(true);
 
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
