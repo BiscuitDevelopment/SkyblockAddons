@@ -182,7 +182,7 @@ public class Utils {
      */
     public boolean isOnHypixel() {
         final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
-        final String HYPIXEL_SERVER_BRAND = "BungeeCord (Hypixel)";
+        final String HYPIXEL_SERVER_BRAND = "Hypixel BungeeCord";
 
         Minecraft mc = Minecraft.getMinecraft();
 
@@ -191,7 +191,7 @@ public class Utils {
 
             if (matcher.find()) {
                 // Group 1 is the server brand.
-                return matcher.group(1).equals(HYPIXEL_SERVER_BRAND);
+                return matcher.group(1).startsWith(HYPIXEL_SERVER_BRAND);
             }
             else {
                 return false;
