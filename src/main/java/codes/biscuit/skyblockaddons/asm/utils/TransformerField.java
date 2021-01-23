@@ -32,6 +32,7 @@ public enum TransformerField {
 
     // Minecraft
     mcResourceManager("mcResourceManager", "field_110451_am", "ay", TransformerClass.IReloadableResourceManager.getName()),
+    currentScreen("currentScreen", "field_71462_r", "m", TransformerClass.GuiScreen.getName()),
 
     // FontRenderer
 //    textColor("textColor", "field_78304_r", "q", "I"),
@@ -48,7 +49,9 @@ public enum TransformerField {
 
     // InventoryPlayer
     currentItem("currentItem", "field_70461_c", "c", "I"),
-    armorInventory("armorInventory", "field_70460_b", "b", "[" + TransformerClass.ItemStack.getName())
+    armorInventory("armorInventory", "field_70460_b", "b", "[" + TransformerClass.ItemStack.getName()),
+
+    renderEndNanoTime("renderEndNanoTime", "field_78510_Z", "F", "J")
 
     ;
 
