@@ -123,7 +123,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (skip == 0) {
                 if (feature == Feature.TEXT_STYLE || feature == Feature.WARNING_TIME || feature == Feature.CHROMA_MODE || feature == Feature.TURN_ALL_FEATURES_CHROMA) {
                     addButton(feature, EnumUtils.ButtonType.SOLID);
-                } else if (feature == Feature.CHROMA_SPEED || feature == Feature.CHROMA_FADE_WIDTH) {
+                } else if (feature == Feature.CHROMA_SPEED || feature == Feature.CHROMA_SIZE || feature == Feature.CHROMA_SATURATION || feature == Feature.CHROMA_BRIGHTNESS) {
                     addButton(feature, EnumUtils.ButtonType.CHROMA_SLIDER);
                 } else {
                     addButton(feature, EnumUtils.ButtonType.TOGGLE);
@@ -143,10 +143,12 @@ public class SkyblockAddonsGui extends GuiScreen {
         textToSearch = textToSearch.toLowerCase();
 
         for (String searchTerm : searchTerms) {
-            if (textToSearch.contains(searchTerm)) return true;
+            if (!textToSearch.contains(searchTerm)) {
+                return false;
+            }
         }
 
-        return false;
+        return true;
     }
 
     private int findDisplayCount() {
@@ -329,7 +331,7 @@ public class SkyblockAddonsGui extends GuiScreen {
     static void drawDefaultTitleText(GuiScreen gui, int alpha) {
         int defaultBlue = SkyblockAddons.getInstance().getUtils().getDefaultBlue(alpha);
 
-        int height = 90;
+        int height = 85;
         int width = height*2;
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
 
@@ -337,7 +339,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         SkyblockAddons.getInstance().getUtils().enableStandardGLOptions();
         textureManager.bindTexture(LOGO);
-        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 5, 0, 0, width, height, width, height, true);
 
         int animationMillis = 4000;
         float glowAlpha;
@@ -350,7 +352,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         GlStateManager.color(1,1,1, glowAlpha);
         textureManager.bindTexture(LOGO_GLOW);
-        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 3, 0, 0, width, height, width, height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 5, 0, 0, width, height, width, height, true);
 
         GlStateManager.color(1,1,1, 1);
         String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
@@ -413,7 +415,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             EnumUtils.FeatureCredit credit = EnumUtils.FeatureCredit.fromFeature(feature);
             if (credit != null) {
                 IntPair coords = button.getCreditsCoords(credit);
-                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, main, credit, feature, button.isMultilineButton()));
+                buttonList.add(new ButtonCredit(coords.getX(), coords.getY(), text, credit, feature, button.isMultilineButton()));
             }
 
             if (feature.getSettings().size() > 0) {
@@ -436,21 +438,22 @@ public class SkyblockAddonsGui extends GuiScreen {
             buttonList.add(new ButtonNormal(x, y, text, main, feature));
 
             if (feature == Feature.CHROMA_SPEED) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSpeed(),
-                        0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
-                    @Override
-                    public void sliderUpdated(float value) {
-                        main.getConfigValues().setChromaSpeed(value);
-                    }
-                }));
-            } else if (feature == Feature.CHROMA_FADE_WIDTH) {
-                buttonList.add(new ButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaFadeWidth(),
-                        1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
-                    @Override
-                    public void sliderUpdated(float value) {
-                        main.getConfigValues().setChromaFadeWidth(value);
-                    }
-                }));
+                buttonList.add(new NewButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSpeed().floatValue(),
+                        0.5F, 20, 0.5F, value -> main.getConfigValues().getChromaSpeed().setValue(value)));
+
+
+            } else if (feature == Feature.CHROMA_SIZE) {
+                buttonList.add(new NewButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSize().floatValue(),
+                        1, 100, 1, value -> main.getConfigValues().getChromaSize().setValue(value)));
+
+            } else if (feature == Feature.CHROMA_BRIGHTNESS) {
+                buttonList.add(new NewButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaBrightness().floatValue(),
+                        0, 1, 0.01F, value -> main.getConfigValues().getChromaBrightness().setValue(value)));
+
+
+            } else if (feature == Feature.CHROMA_SATURATION) {
+                buttonList.add(new NewButtonSlider(x + 35, y + boxHeight - 23, 70, 15, main.getConfigValues().getChromaSaturation().floatValue(),
+                        0, 1, 0.01F, value -> main.getConfigValues().getChromaSaturation().setValue(value)));
             }
         }
 

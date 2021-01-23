@@ -29,7 +29,7 @@ public class DungeonManager {
     private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
     private static final Pattern PATTERN_PLAYER_LINE = Pattern.compile("^§.\\[(?<classLetter>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
-    private static final Pattern PLAYER_LIST_INFO_DEATHS_PATTERN = Pattern.compile("§r§a§l.+: §r§f\\((?<deaths>\\d)\\)§r");
+    private static final Pattern PLAYER_LIST_INFO_DEATHS_PATTERN = Pattern.compile("Deaths: \\((?<deaths>\\d+)\\)");
 
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
@@ -41,7 +41,7 @@ public class DungeonManager {
     @Getter private final Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
 
     /** The current teammates of the dungeon game */
-    @Getter private final Map<String, DungeonPlayer> players = new HashMap<>();
+    @Getter private final Map<String, DungeonPlayer> teammates = new HashMap<>();
 
     /** The current number of secrets found in the room */
     @Getter @Setter private int secrets = -1;
@@ -63,7 +63,7 @@ public class DungeonManager {
     public void reset() {
         dungeonMilestone = null;
         collectedEssences.clear();
-        players.clear();
+        teammates.clear();
         deaths = 0;
         alternateDeaths = 0;
         playerListInfoDeaths = 0;
@@ -76,7 +76,7 @@ public class DungeonManager {
      * @return the {@code DungeonPlayer} object for the player with the given username
      */
     public DungeonPlayer getDungeonPlayerByName(String name) {
-        return players.get(name);
+        return teammates.get(name);
     }
 
     /**
@@ -193,6 +193,12 @@ public class DungeonManager {
 
         if (matcher.matches()) {
             String name = TextUtils.stripColor(matcher.group("name"));
+
+            // This is inconsistent, don't add the player themselves...
+            if (name.equals(Minecraft.getMinecraft().thePlayer.getName())) {
+                return;
+            }
+
             DungeonClass dungeonClass = DungeonClass.fromFirstLetter(matcher.group("classLetter").charAt(0));
             ColorCode healthColor = ColorCode.getByChar(matcher.group("healthColor").charAt(0));
             String healthText = matcher.group("health");
@@ -204,7 +210,7 @@ public class DungeonManager {
                 health = Integer.parseInt(healthText);
             }
 
-            for (DungeonPlayer player: players.values()) {
+            for (DungeonPlayer player: teammates.values()) {
                 if (player.getName().startsWith(name)) {
                     player.setHealthColor(healthColor);
 
@@ -221,7 +227,7 @@ public class DungeonManager {
                 String profileName = networkPlayerInfo.getGameProfile().getName();
 
                 if (profileName.startsWith(name)) {
-                    players.put(profileName, new DungeonPlayer(profileName, dungeonClass, healthColor, health));
+                    teammates.put(profileName, new DungeonPlayer(profileName, dungeonClass, healthColor, health));
                 }
             }
         }
@@ -276,12 +282,13 @@ public class DungeonManager {
 
     public boolean isPlayerListInfoEnabled() {
         NetHandlerPlayClient netHandlerPlayClient = Minecraft.getMinecraft().getNetHandler();
-        List<NetworkPlayerInfo> networkPlayerInfoList = netHandlerPlayClient.getPlayerInfoMap().stream().limit(10)
-                .collect(Collectors.toList());
+        if (netHandlerPlayClient == null) {
+            return false;
+        }
 
-        for (NetworkPlayerInfo networkPlayerInfo: networkPlayerInfoList) {
+        List<NetworkPlayerInfo> networkPlayerInfoList = netHandlerPlayClient.getPlayerInfoMap().stream().limit(10).collect(Collectors.toList());
+        for (NetworkPlayerInfo networkPlayerInfo : networkPlayerInfoList) {
             String username = networkPlayerInfo.getGameProfile().getName();
-
             if (username.startsWith("!")) {
                 return true;
             }

@@ -217,6 +217,7 @@ public class EnumUtils {
         SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP("settings.showSkillPercentageInstead", 144),
         SHOW_SKILL_XP_GAINED("settings.showSkillXPGained", 145),
         SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
+        HEALING_CIRCLE_OPACITY("settings.healingCircleOpacity", 156),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),

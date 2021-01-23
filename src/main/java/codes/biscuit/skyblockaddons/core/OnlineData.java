@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.core;
 import lombok.Getter;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 @Getter
@@ -23,6 +24,8 @@ public class OnlineData {
     private DropSettings dropSettings;
 
     private HashMap<String, Integer> specialEnchantments;
+
+    private HashSet<String> legendarySeaCreatures;
 
     @Getter
     public static class DropSettings {

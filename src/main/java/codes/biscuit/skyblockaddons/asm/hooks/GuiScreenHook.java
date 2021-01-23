@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
@@ -36,13 +35,17 @@ public class GuiScreenHook {
     @Getter @Setter private static long lastBackpackFreezeKey = -1;
 
     //TODO Fix for Hypixel localization
-    public static void renderBackpack(ItemStack stack, int x, int y, ReturnValue<?> returnValue) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
+    public static boolean onRenderTooltip(ItemStack itemStack, int x, int y) {
+        boolean cancelled = false;
 
-        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) && (stack.getItem() == Items.skull ||
-                stack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        if (main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(itemStack)) {
+            return true;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) && (itemStack.getItem() == Items.skull || itemStack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
-                return;
+                return false;
             }
 
             // Avoid showing backpack preview in auction stuff.
@@ -55,22 +58,22 @@ public class GuiScreenHook {
 
                         // Make sure this backpack is in the auction house and not just in your inventory before cancelling.
                         for (int slotNumber = 0; slotNumber < chestInventory.getSizeInventory(); slotNumber++) {
-                            if (chestInventory.getStackInSlot(slotNumber) == stack) {
-                                return;
+                            if (chestInventory.getStackInSlot(slotNumber) == itemStack) {
+                                return false;
                             }
                         }
                     }
                 }
             }
 
-            ContainerPreview containerPreview = BackpackManager.getFromItem(stack);
+            ContainerPreview containerPreview = BackpackManager.getFromItem(itemStack);
             if (containerPreview != null) {
                 /*
                  Don't render the backpack preview if in the backpack is used to represent a crafting recipe or the
                  result of one.
                  */
-                if (ItemUtils.isMenuItem(stack)) {
-                    return;
+                if (ItemUtils.isMenuItem(itemStack)) {
+                    return false;
                 }
 
                 containerPreview.setX(x);
@@ -83,8 +86,8 @@ public class GuiScreenHook {
                 if (!GuiContainerHook.isFreezeBackpack()) {
                     main.getUtils().setContainerPreviewToRender(containerPreview);
                 }
-                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
-                returnValue.cancel();
+                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
+                cancelled = true;
             }
 
             if (main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
@@ -92,19 +95,19 @@ public class GuiScreenHook {
                  Don't render the compactor preview if in the backpack is used to represent a crafting recipe or the
                  result of one.
                  */
-                if (ItemUtils.isMenuItem(stack)) {
-                    return;
+                if (ItemUtils.isMenuItem(itemStack)) {
+                    return cancelled;
                 }
 
-                ItemStack[] items = ItemUtils.getPersonalCompactorContents(stack);
+                ItemStack[] items = ItemUtils.getPersonalCompactorContents(itemStack);
 
                 if (items != null) {
-                    main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(stack, null, null, false));
-                    returnValue.cancel();
-                    String name = TextUtils.stripColor(stack.getDisplayName());
+                    main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
+                    cancelled = true;
+                    String name = TextUtils.stripColor(itemStack.getDisplayName());
 
                     // Remove the reforge like it does in the actual menu
-                    if (ItemUtils.getReforge(stack) != null) {
+                    if (ItemUtils.getReforge(itemStack) != null) {
                         int firstSpace = name.indexOf(' ');
                         if (name.length() > firstSpace + 1) {
                             name = name.substring(firstSpace + 1);
@@ -117,8 +120,10 @@ public class GuiScreenHook {
         }
 
         if (GuiContainerHook.isFreezeBackpack()) {
-            returnValue.cancel();
+            cancelled = true;
         }
+
+        return cancelled;
     }
 
     /**

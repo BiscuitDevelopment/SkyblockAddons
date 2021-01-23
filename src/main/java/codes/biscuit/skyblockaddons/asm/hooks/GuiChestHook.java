@@ -550,16 +550,16 @@ public class GuiChestHook {
     private static void drawTooltipBackground(float x, float y, float width, float height) {
         int l = -267386864;
         SkyblockAddons main = SkyblockAddons.getInstance();
-        DrawUtils.drawRect(x - 3, y - 4, x + width + 3, y - 3, l);
-        DrawUtils.drawRect(x - 3, y + height + 3, x + width + 3, y + height + 4, l);
-        DrawUtils.drawRect(x - 3, y - 3, x + width + 3, y + height + 3, l);
-        DrawUtils.drawRect(x - 4, y - 3, x - 3, y + height + 3, l);
-        DrawUtils.drawRect(x + width + 3, y - 3, x + width + 4, y + height + 3, l);
+        DrawUtils.drawRectAbsolute(x - 3, y - 4, x + width + 3, y - 3, l);
+        DrawUtils.drawRectAbsolute(x - 3, y + height + 3, x + width + 3, y + height + 4, l);
+        DrawUtils.drawRectAbsolute(x - 3, y - 3, x + width + 3, y + height + 3, l);
+        DrawUtils.drawRectAbsolute(x - 4, y - 3, x - 3, y + height + 3, l);
+        DrawUtils.drawRectAbsolute(x + width + 3, y - 3, x + width + 4, y + height + 3, l);
 
         int borderColor = 1347420415;
-        DrawUtils.drawRect(x - 3, y - 3 + 1, x - 3 + 1, y + height + 3 - 1, borderColor);
-        DrawUtils.drawRect(x + width + 2, y - 3 + 1, x + width + 3, y + height + 3 - 1, borderColor);
-        DrawUtils.drawRect(x - 3, y - 3, x + width + 3, y - 3 + 1, borderColor);
-        DrawUtils.drawRect(x - 3, y + height + 2, x + width + 3, y + height + 3, borderColor);
+        DrawUtils.drawRectAbsolute(x - 3, y - 3 + 1, x - 3 + 1, y + height + 3 - 1, borderColor);
+        DrawUtils.drawRectAbsolute(x + width + 2, y - 3 + 1, x + width + 3, y + height + 3 - 1, borderColor);
+        DrawUtils.drawRectAbsolute(x - 3, y - 3, x + width + 3, y - 3 + 1, borderColor);
+        DrawUtils.drawRectAbsolute(x - 3, y + height + 2, x + width + 3, y + height + 3, borderColor);
     }
 }

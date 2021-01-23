@@ -4,10 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
-import net.minecraft.client.Minecraft;
-import net.minecraft.util.IChatComponent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 import java.util.ArrayList;
@@ -91,17 +88,13 @@ public class TabEffectManager {
      * Called by {@link codes.biscuit.skyblockaddons.listeners.PlayerListener#onTick(TickEvent.ClientTickEvent)} every second
      * to update the list of current effect timers.
      */
-    public void updatePotionEffects() {
+    public void update(String tabFooterString, String strippedTabFooterString) {
         potionTimers.clear();
         powerupTimers.clear();
-        IChatComponent tabFooterChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().footer;
 
-        if (tabFooterChatComponent == null) {
+        if (tabFooterString == null) {
             return;
         }
-
-        String tabFooterString = tabFooterChatComponent.getFormattedText();
-        String strippedTabFooterString = TextUtils.stripColor(tabFooterString);
 
         // Match the TabFooterString for Effects
         Matcher matcher = EFFECT_PATTERN.matcher(tabFooterString);

@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
+import codes.biscuit.skyblockaddons.gui.buttons.NewButtonSlider;
 import codes.biscuit.skyblockaddons.gui.elements.CheckBox;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
@@ -263,20 +264,10 @@ public class ColorSelectionGui extends GuiScreen {
     }
 
     private void addChromaButtons() {
-        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35, 70, 15, main.getConfigValues().getChromaSpeed(),
-                0.1F, 10, 0.5F, new ButtonSlider.OnSliderChangeCallback() {
-            @Override
-            public void sliderUpdated(float value) {
-                main.getConfigValues().setChromaSpeed(value);
-            }
-        }));
+        buttonList.add(new NewButtonSlider(width / 2 + 76, 170 + 35, 70, 15, main.getConfigValues().getChromaSpeed().floatValue(),
+                0.5F, 20, 0.5F, updatedValue -> main.getConfigValues().getChromaSpeed().setValue(updatedValue)));
 
-        buttonList.add(new ButtonSlider(width / 2 + 76, 170+35+35, 70, 15, main.getConfigValues().getChromaFadeWidth(),
-                1, 42, 1, new ButtonSlider.OnSliderChangeCallback() {
-            @Override
-            public void sliderUpdated(float value) {
-                main.getConfigValues().setChromaFadeWidth(value);
-            }
-        }));
+        buttonList.add(new NewButtonSlider(width / 2 + 76, 170 + 35+ 35, 70, 15, main.getConfigValues().getChromaSize().floatValue(),
+                1, 100, 1, updatedValue -> main.getConfigValues().getChromaSize().setValue(updatedValue)));
     }
 }

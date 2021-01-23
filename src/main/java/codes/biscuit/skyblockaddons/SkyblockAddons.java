@@ -19,6 +19,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.newgui.GuiManager;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
@@ -84,6 +85,7 @@ public class SkyblockAddons {
     private Scheduler scheduler;
     private NewScheduler newScheduler;
     private DungeonManager dungeonManager;
+    private GuiManager guiManager;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -105,6 +107,7 @@ public class SkyblockAddons {
         newScheduler = new NewScheduler();
         dungeonManager = new DungeonManager();
         discordRPCManager = new DiscordRPCManager();
+        guiManager = new GuiManager();
     }
 
     @Mod.EventHandler

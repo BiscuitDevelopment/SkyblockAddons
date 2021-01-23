@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -15,7 +16,7 @@ public class ButtonSlider extends GuiButton {
     private float max;
     private float step;
 
-    private float sliderValue;
+    private float valuePercentage;
     private boolean dragging;
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
@@ -24,19 +25,18 @@ public class ButtonSlider extends GuiButton {
 
     private String prefix = null;
 
-    public ButtonSlider(double x, double y, int width, int height, float initialValue,
-                        float min, float max, float step, OnSliderChangeCallback sliderCallback) {
+    public ButtonSlider(double x, double y, int width, int height, float initialValue, float min, float max, float step, OnSliderChangeCallback sliderCallback) {
         super(0, (int)x, (int)y, "");
-        this.sliderValue = 0;
+        this.valuePercentage = 0;
         this.displayString = "";
-        this.sliderValue = initialValue;
+        this.valuePercentage = initialValue;
         this.width = width;
         this.height = height;
         this.sliderCallback = sliderCallback;
         this.min = min;
         this.max = max;
         this.step = step;
-        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(sliderValue)));
+        this.displayString = String.valueOf(getRoundedValue(denormalizeScale(valuePercentage)));
     }
 
     @Override
@@ -71,21 +71,21 @@ public class ButtonSlider extends GuiButton {
     protected void mouseDragged(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
             if (this.dragging) {
-                this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
-                this.sliderValue = MathHelper.clamp_float(sliderValue, 0.0F, 1.0F);
+                this.valuePercentage = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
+                this.valuePercentage = MathHelper.clamp_float(valuePercentage, 0.0F, 1.0F);
                 valueUpdated();
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-            drawRect(this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.sliderValue * (float) (this.width - 8))+7, this.yPosition + this.height, ColorCode.GRAY.getColor());
+            drawRect(this.xPosition + (int) (this.valuePercentage * (float) (this.width - 8))+1, this.yPosition, this.xPosition + (int) (this.valuePercentage * (float) (this.width - 8))+7, this.yPosition + this.height, ColorCode.GRAY.getColor());
         }
     }
 
     public boolean mousePressed(Minecraft mc, int mouseX, int mouseY) {
         if (super.mousePressed(mc, mouseX, mouseY)) {
-            this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
-            this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
+            this.valuePercentage = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
+            this.valuePercentage = MathHelper.clamp_float(this.valuePercentage, 0.0F, 1.0F);
             valueUpdated();
             this.dragging = true;
             return true;
@@ -103,12 +103,12 @@ public class ButtonSlider extends GuiButton {
     }
 
     public float denormalizeScale(float value) {
-        return SkyblockAddons.getInstance().getUtils().denormalizeScale(value, min, max, step);
+        return MathUtils.denormalizeSliderValue(value, min, max, step);
     }
 
     public void valueUpdated() {
-        sliderCallback.sliderUpdated(sliderValue);
-        this.displayString = (prefix != null ? prefix : "") + getRoundedValue(denormalizeScale(sliderValue));
+        sliderCallback.sliderUpdated(valuePercentage);
+        this.displayString = (prefix != null ? prefix : "") + getRoundedValue(denormalizeScale(valuePercentage));
     }
 
     public abstract static class OnSliderChangeCallback {
@@ -118,7 +118,7 @@ public class ButtonSlider extends GuiButton {
 
     public ButtonSlider setPrefix(String text) {
         prefix = text;
-        this.displayString = prefix + getRoundedValue(denormalizeScale(sliderValue));
+        this.displayString = prefix + getRoundedValue(denormalizeScale(valuePercentage));
         return this;
     }
 }

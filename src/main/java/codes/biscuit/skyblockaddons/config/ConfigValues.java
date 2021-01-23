@@ -4,10 +4,11 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
-import codes.biscuit.skyblockaddons.misc.ChromaManager;
+import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
@@ -16,10 +17,7 @@ import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.util.MathHelper;
-import org.apache.commons.lang3.mutable.Mutable;
-import org.apache.commons.lang3.mutable.MutableFloat;
-import org.apache.commons.lang3.mutable.MutableInt;
-import org.apache.commons.lang3.mutable.MutableObject;
+import org.apache.commons.lang3.mutable.*;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
@@ -32,7 +30,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 8;
+    private static final int CONFIG_VERSION = 9;
 
     private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
@@ -66,7 +64,7 @@ public class ConfigValues {
     private MutableObject<EnumUtils.TextStyle> textStyle = new MutableObject<>(EnumUtils.TextStyle.STYLE_ONE);
     private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
     @Getter private Set<Feature> chromaFeatures = EnumSet.noneOf(Feature.class);
-    private MutableFloat chromaSpeed = new MutableFloat(0.19354838F); // 2.0
+    @Deprecated private MutableFloat oldChromaSpeed = new MutableFloat(0.19354838F); // 2.0
     private MutableObject<EnumUtils.ChromaMode> chromaMode = new MutableObject<>(EnumUtils.ChromaMode.FADE);
     private MutableFloat chromaFadeWidth = new MutableFloat(0.22580644F); // 10° Hue
     private MutableObject<DiscordStatus> discordDetails =  new MutableObject<>(DiscordStatus.LOCATION);
@@ -74,6 +72,11 @@ public class ConfigValues {
     private MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
     @Getter private List<String> discordCustomStatuses = new ArrayList<>();
     @Getter private MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
+    @Getter private MutableFloat healingCircleOpacity = new MutableFloat(0.4);
+    @Setter @Getter private MutableFloat chromaSize = new MutableFloat(30);
+    @Getter private MutableFloat chromaSpeed = new MutableFloat(6);
+    @Getter private MutableFloat chromaSaturation = new MutableFloat(0.75F);
+    @Getter private MutableFloat chromaBrightness = new MutableFloat(0.9F);
 
     public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
@@ -106,6 +109,13 @@ public class ConfigValues {
                 logger.catching(ex);
                 addDefaultsAndSave();
                 return;
+            }
+
+            int configVersion;
+            if (loadedConfig.has("configVersion")) {
+                configVersion = loadedConfig.get("configVersion").getAsInt();
+            } else {
+                configVersion = ConfigValues.CONFIG_VERSION;
             }
 
             deserializeFeatureSetFromID(disabledFeatures, "disabledFeatures");
@@ -173,7 +183,13 @@ public class ConfigValues {
 
             deserializeEnumValueFromOrdinal(textStyle, "textStyle");
             deserializeFeatureSetFromID(chromaFeatures, "chromaFeatures");
-            deserializeNumber(chromaSpeed, "chromaSpeed", float.class);
+            if (configVersion <= 8) {
+                deserializeNumber(oldChromaSpeed, "chromaSpeed", float.class);
+                chromaSpeed.setValue(MathUtils.denormalizeSliderValue(oldChromaSpeed.floatValue(), 0.1F, 10, 0.5F));
+            } else {
+                deserializeNumber(chromaSpeed, "chromaSpeed", float.class);
+            }
+            deserializeNumber(chromaSize, "chromaSize", float.class);
             deserializeEnumValueFromOrdinal(chromaMode, "chromaMode");
             deserializeNumber(chromaFadeWidth, "chromaFadeWidth", float.class);
             deserializeEnumValueFromOrdinal(discordStatus, "discordStatus");
@@ -182,13 +198,9 @@ public class ConfigValues {
             deserializeStringCollection(discordCustomStatuses, "discordCustomStatuses");
 
             deserializeNumber(mapZoom, "mapZoom", float.class);
+            deserializeNumber(chromaSaturation, "chromaSaturation", float.class);
+            deserializeNumber(chromaBrightness, "chromaBrightness", float.class);
 
-            int configVersion;
-            if (loadedConfig.has("configVersion")) {
-                configVersion = loadedConfig.get("configVersion").getAsInt();
-            } else {
-                configVersion = ConfigValues.CONFIG_VERSION;
-            }
             if (configVersion <= 5) {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
             } else if (configVersion <= 6) {
@@ -370,7 +382,7 @@ public class ConfigValues {
                 saveConfig.add("chromaFeatures", chromaFeaturesArray);
                 saveConfig.addProperty("chromaSpeed", chromaSpeed);
                 saveConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
-                saveConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
+                saveConfig.addProperty("chromaSize", chromaSize);
 
                 saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
                 saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
@@ -383,6 +395,8 @@ public class ConfigValues {
                 saveConfig.add("discordCustomStatuses", discordCustomStatusesArray);
 
                 saveConfig.addProperty("mapZoom", mapZoom);
+                saveConfig.addProperty("chromaSaturation", chromaSaturation);
+                saveConfig.addProperty("chromaBrightness", chromaBrightness);
 
                 saveConfig.addProperty("configVersion", CONFIG_VERSION);
                 int largestFeatureID = 0;
@@ -685,17 +699,19 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
+    // TODO Don't force alpha in the future...
     public int getColor(Feature feature) {
         return this.getColor(feature, 255);
     }
 
     public int getColor(Feature feature, int alpha) {
-        if (alpha < 4) {
-            alpha = 4; // Minimum apparently...
-        }
+        // If the minimum alpha value is being limited let's make sure we are a little higher than that
+//        if (GlStateManager.alphaState.alphaTest && GlStateManager.alphaState.func == GL11.GL_GREATER && alpha / 255F <= GlStateManager.alphaState.ref) {
+//            alpha = ColorUtils.getAlphaIntFromFloat( GlStateManager.alphaState.ref + 0.001F);
+//        }
 
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getChromaColor(0, 0, alpha);
+            return ManualChromaManager.getChromaColor(0, 0, alpha);
         }
 
         if (colors.containsKey(feature)) {
@@ -703,7 +719,7 @@ public class ConfigValues {
         }
 
         ColorCode defaultColor = feature.getDefaultColor();
-        return defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor();
+        return ColorUtils.setColorAlpha(defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor(), alpha);
     }
 
     public ColorCode getRestrictedColor(Feature feature) {
@@ -907,14 +923,6 @@ public class ConfigValues {
 
     public void setTextStyle(EnumUtils.TextStyle textStyle) {
         this.textStyle.setValue(textStyle);
-    }
-
-    public float getChromaSpeed() {
-        return chromaSpeed.getValue();
-    }
-
-    public void setChromaSpeed(float chromaSpeed) {
-        this.chromaSpeed.setValue(chromaSpeed);
     }
 
     public EnumUtils.ChromaMode getChromaMode() {

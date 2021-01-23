@@ -70,7 +70,7 @@ public class ButtonLocation extends ButtonFeature {
             boxAlpha = 120;
         }
         int boxColor = ColorCode.GRAY.getColor(boxAlpha);
-        DrawUtils.drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
+        DrawUtils.drawRectAbsolute(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
 
         this.boxXOne = boxXOne;
         this.boxXTwo = boxXTwo;

@@ -58,6 +58,7 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new EntityPlayerTransformer());
         registerTransformer(new ItemArmorDispenserBehaviorTransformer());
         registerTransformer(new ItemArmorTransformer());
+        registerTransformer(new WorldVertexBufferUploaderTransformer());
     }
 
     private void registerTransformer(ITransformer transformer) {
@@ -68,10 +69,14 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     @Override
     public byte[] transform(String name, String transformedName, byte[] bytes) {
-        if (bytes == null) return null;
+        if (bytes == null) {
+            return null;
+        }
 
         Collection<ITransformer> transformers = transformerMap.get(transformedName);
-        if (transformers.isEmpty()) return bytes;
+        if (transformers.isEmpty()) {
+            return bytes;
+        }
 
         log(Level.INFO, String.format("Found %s transformers for %s", transformers.size(), transformedName));
 

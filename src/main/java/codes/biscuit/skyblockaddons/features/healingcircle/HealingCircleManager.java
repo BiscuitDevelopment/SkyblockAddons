@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.renderer.GlStateManager;
@@ -70,9 +71,9 @@ public class HealingCircleManager {
                     GlStateManager.enableAlpha();
                     GlStateManager.disableTexture2D();
 
-                    int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, (int) (255 * 0.2F));
-                    ColorUtils.bindColor(color);
-                    DrawUtils.drawCylinderInWorld(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
+                    boolean chroma = main.getConfigValues().getChromaFeatures().contains(Feature.SHOW_HEALING_CIRCLE_WALL);
+                    int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, ColorUtils.getAlphaIntFromFloat(MathUtils.clamp(main.getConfigValues().getHealingCircleOpacity().floatValue(), 0, 1)));
+                    DrawUtils.drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.RADIUS, 255, ColorUtils.getDummySkyblockColor(color, chroma));
 
                     GlStateManager.enableCull();
                     GlStateManager.enableTexture2D();

@@ -1,0 +1,110 @@
+{
+  "SQUID": {
+    "name": "Squid",
+    "spawnMessage": "A Squid appeared."
+  },
+  "SEA_WALKER": {
+    "name": "Sea Walker",
+    "spawnMessage": "From the depths of the waters, you've reeled in a Sea Walker."
+  },
+  "NIGHT_SQUID": {
+    "name": "Night Squid",
+    "spawnMessage": "Pitch Darkness reveals you've caught a Night Squid."
+  },
+  "FROZEN_STEVE":  {
+    "name": "Frozen Steve",
+    "spawnMessage": "Frozen Steve fell into the pond long ago, never to resurface... until now!"
+  },
+  "NURSE_SHARK":  {
+    "name": "Nurse Shark",
+    "spawnMessage": "A tiny fin emerges from the water, you've caught a Nurse Shark."
+  },
+  "SEA_GUARDIAN":  {
+    "name": "Sea Guardian",
+    "spawnMessage": "You stumbled upon a Sea Guardian."
+  },
+  "FROSTY":  {
+    "name": "Frosty",
+    "spawnMessage": "Its a Snowman! It looks harmless."
+  },
+  "SCARECROW":  {
+    "name": "Scarecrow",
+    "spawnMessage": "Phew! It's only a scarecrow."
+  },
+  "SEA_WITCH":  {
+    "name": "Sea Witch",
+    "spawnMessage": "It looks like you've disrupted the Sea Witch's brewing session. Watch out, she's furious!"
+  },
+  "BLUE_SHARK":  {
+    "name": "Blue Shark",
+    "spawnMessage": "You spot a fin as blue as the water it came from, it's a Blue Shark."
+  },
+  "SEA_ARCHER":  {
+    "name": "Sea Archer",
+    "spawnMessage": "From the depths of the waters, you've reeled in a Sea Archer."
+  },
+  "MONSTER_OF_THE_DEEP":  {
+    "name": "Monster of The Deep",
+    "spawnMessage": "The Monster of The Deep emerges from the dark depths..."
+  },
+  "GRINCH":  {
+    "name": "Grinch",
+    "spawnMessage": "The Grinch stole Jerry's Gifts...get them back!"
+  },
+  "CATFISH":  {
+    "name": "Catfish",
+    "spawnMessage": "Huh? A Catfish!"
+  },
+  "NIGHTMARE":  {
+    "name": "Nightmare",
+    "spawnMessage": "You hear trotting from beneath the waves, you caught a Nightmare"
+  },
+  "CARROT_KING":  {
+    "name": "Carrot King",
+    "spawnMessage": "Is this even a Fish? It's the Carrot King!"
+  },
+  "SEA_LEECH":  {
+    "name": "Sea Leech",
+    "spawnMessage": "Gross! A Sea Leech!"
+  },
+  "GUARDIAN_DEFENDER":  {
+    "name": "Guardian Defender",
+    "spawnMessage": "You've discovered a Guardian Defender of the sea."
+  },
+  "WAREWOLF":  {
+    "name": "Warewolf",
+    "spawnMessage":  "It must be a full moon, it's a Werewolf!"
+  },
+  "TIGER_SHARK":  {
+    "name": "Tiger Shark",
+    "spawnMessage": "A striped beast bounds from the depths, the wild Tiger Shark!"
+  },
+  "DEEP_SEA_PROTECTOR":  {
+    "name": "Deep Sea Protector",
+    "spawnMessage": "You have awoken the Deep Sea Protector, prepare for a battle!"
+  },
+  "WATER_HYDRA":  {
+    "name": "Water Hydra",
+    "spawnMessage": "The Water Hydra has come to test your strength."
+  },
+  "SEA_EMPEROR":  {
+    "name": "Sea Emperor",
+    "spawnMessage": "The Sea Emperor arises from the depths..."
+  },
+  "PHANTOM_FISHER":  {
+    "name": "Phantom Fisher",
+    "spawnMessage": "The spirit of a long lost Phantom Fisher has come to haunt you."
+  },
+  "GREAT_WHITE_SHARK":  {
+    "name": "Great White Shark",
+    "spawnMessage": "Hide no longer, a Great White Shark has tracked your scent and thirsts for your blood!"
+  },
+  "YETI":  {
+    "name": "Yeti",
+    "spawnMessage": "What is this creature!?"
+  },
+  "GRIM_REAPER":  {
+    "name": "Grim Reaper",
+    "spawnMessage": "This can't be! The manifestation of death himself!"
+  }
+}

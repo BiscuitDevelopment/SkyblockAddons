@@ -22,6 +22,7 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -221,24 +222,25 @@ public class RenderGlobalHook {
         BUF_FLOAT_4.put(1, (float)(color >> 8 & 255) / 255.0F);
         BUF_FLOAT_4.put(2, (float)(color & 255) / 255.0F);
         BUF_FLOAT_4.put(3, 1);
-        GL11.glTexEnv(8960, 8705, BUF_FLOAT_4);
-        GL11.glTexEnvi(8960, 8704, 34160);
-        GL11.glTexEnvi(8960, 34161, 7681);
-        GL11.glTexEnvi(8960, 34176, 34166);
-        GL11.glTexEnvi(8960, 34192, 768);
-        GL11.glTexEnvi(8960, 34162, 7681);
-        GL11.glTexEnvi(8960, 34184, 5890);
-        GL11.glTexEnvi(8960, 34200, 770);
+
+        GL11.glTexEnv(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_COLOR, BUF_FLOAT_4);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL13.GL_COMBINE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_REPLACE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL13.GL_CONSTANT);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_REPLACE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
     }
 
     public static void disableOutlineMode() {
-        GL11.glTexEnvi(8960, 8704, 8448);
-        GL11.glTexEnvi(8960, 34161, 8448);
-        GL11.glTexEnvi(8960, 34162, 8448);
-        GL11.glTexEnvi(8960, 34176, 5890);
-        GL11.glTexEnvi(8960, 34184, 5890);
-        GL11.glTexEnvi(8960, 34192, 768);
-        GL11.glTexEnvi(8960, 34200, 770);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
     }
 
     /*

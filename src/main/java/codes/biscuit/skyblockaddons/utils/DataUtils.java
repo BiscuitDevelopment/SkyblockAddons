@@ -37,7 +37,6 @@ public class DataUtils {
      */
     public static void readLocalAndFetchOnline() {
         readLocalFileData();
-
         fetchFromOnline();
     }
 
@@ -49,15 +48,19 @@ public class DataUtils {
 
         // Enchanted Item Blacklist
         InputStream inputStream = DataUtils.class.getResourceAsStream("/enchantedItemBlacklist.json");
-        JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)));
-
-        EnchantedItemPlacementBlocker.setBlacklist(GSON.fromJson(jsonReader, EnchantedItemBlacklist.class));
+        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
+            EnchantedItemPlacementBlocker.setBlacklist(GSON.fromJson(jsonReader, EnchantedItemBlacklist.class));
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item blacklist!");
+        }
 
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
-        jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)));
-
-        main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
+        try (JsonReader jsonReader =new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))) {
+            main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading local data!");
+        }
     }
 
     /*
@@ -72,7 +75,7 @@ public class DataUtils {
                     "SkyblockAddons/development/src/main/resources/enchantedItemBlacklist.json");
             HttpGet onlineDataGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
                     + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json");
-
+            HttpGet seaCreaturesGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/fishing/seaCreatures.json");
 
             // Enchanted Item Blacklist
             logger.info("Trying to fetch enchanted item blacklist from the server...");

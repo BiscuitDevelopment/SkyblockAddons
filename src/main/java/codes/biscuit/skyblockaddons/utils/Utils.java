@@ -13,7 +13,6 @@ import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParseException;
-import com.google.gson.JsonParser;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
 import com.ibm.icu.text.Bidi;
@@ -22,7 +21,9 @@ import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
@@ -38,13 +39,16 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.util.vector.Matrix4f;
 
+import javax.vecmath.Vector3d;
 import java.awt.*;
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -57,10 +61,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-@Getter @Setter
+@Getter
+@Setter
 public class Utils {
 
-    /** Added to the beginning of messages. */
+    /**
+     * Added to the beginning of messages.
+     */
     public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
 
@@ -69,52 +76,78 @@ public class Utils {
     private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster) (?<level>[IV]+)");
     private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
 
-    /** In English, Chinese Simplified, Traditional Chinese. */
-    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK","\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58");
+    /**
+     * In English, Chinese Simplified, Traditional Chinese.
+     */
+    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK", "\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58");
 
     private static final WorldClient DUMMY_WORLD = new WorldClient(null, new WorldSettings(0L, WorldSettings.GameType.SURVIVAL,
             false, false, WorldType.DEFAULT), 0, null, null);
 
-    /** Used for web requests. */
+    /**
+     * Used for web requests.
+     */
     public static final String USER_AGENT = "SkyblockAddons/" + SkyblockAddons.VERSION;
 
     // I know this is messy af, but frustration led me to take this dark path - said someone not biscuit
     public static boolean blockNextClick;
 
-    /** Get a player's attributes. This includes health, mana, and defence. */
+    /**
+     * Get a player's attributes. This includes health, mana, and defence.
+     */
     private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
 
-    /** This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold. */
+    /**
+     * This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold.
+     */
     private final ItemDropChecker itemDropChecker = new ItemDropChecker();
 
-    /** List of enchantments that the player is looking to find. */
+    /**
+     * List of enchantments that the player is looking to find.
+     */
     private List<String> enchantmentMatches = new LinkedList<>();
 
-    /** List of enchantment substrings that the player doesn't want to match. */
+    /**
+     * List of enchantment substrings that the player doesn't want to match.
+     */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
     private ContainerPreview containerPreviewToRender;
 
-    /** Whether the player is on skyblock. */
+    /**
+     * Whether the player is on skyblock.
+     */
     private boolean onSkyblock;
 
-    /** The player's current location in Skyblock */
+    /**
+     * The player's current location in Skyblock
+     */
     @Getter private Location location = Location.UNKNOWN;
 
-    /** The skyblock profile that the player is currently on. Ex. "Grapefruit" */
+    /**
+     * The skyblock profile that the player is currently on. Ex. "Grapefruit"
+     */
     private String profileName = "Unknown";
 
-    /** Whether or not a loud sound is being played by the mod. */
+    /**
+     * Whether or not a loud sound is being played by the mod.
+     */
     private boolean playingSound;
 
-    /** The current serverID that the player is on. */
+    /**
+     * The current serverID that the player is on.
+     */
     private String serverID = "";
     private int lastHoveredSlot = -1;
 
-    /** Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack. */
+    /**
+     * Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack.
+     */
     private boolean usingOldSkyBlockTexture;
 
-    /** Whether the player is using the default bars packaged into the mod. */
+    /**
+     * Whether the player is using the default bars packaged into the mod.
+     */
     private boolean usingDefaultBarTextures = true;
 
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
@@ -192,12 +225,10 @@ public class Utils {
             if (matcher.find()) {
                 // Group 1 is the server brand.
                 return matcher.group(1).startsWith(HYPIXEL_SERVER_BRAND);
-            }
-            else {
+            } else {
                 return false;
             }
-        }
-        else {
+        } else {
             return false;
         }
     }
@@ -271,9 +302,9 @@ public class Utils {
                             purse = Double.parseDouble(matcher.group("coins"));
 
                             if (oldCoins != purse) {
-                                onCoinsChange(purse-oldCoins);
+                                onCoinsChange(purse - oldCoins);
                             }
-                        } catch(NumberFormatException ignored) {
+                        } catch (NumberFormatException ignored) {
                             purse = 0;
                         }
                     }
@@ -281,11 +312,10 @@ public class Utils {
                     if ((matcher = SERVER_REGEX.matcher(strippedUnformatted)).find()) {
                         String serverType = matcher.group("serverType");
                         if (serverType.equals("m")) {
-                            serverID = "mini";
+                            serverID = "mini" + matcher.group("serverCode");
                         } else if (serverType.equals("M")) {
-                            serverID = "mega";
+                            serverID = "mega" + matcher.group("serverCode");
                         }
-                        serverID += matcher.group("serverCode");
                     }
 
                     if (strippedUnformatted.endsWith("Combat XP") || strippedUnformatted.endsWith("Kills")) {
@@ -431,7 +461,7 @@ public class Utils {
             if (progressString.contains("k")) progress *= 1000;
             if (totalString.contains("k")) total *= 1000;
 
-            float completion = progress/total;
+            float completion = progress / total;
 
             if (completion > 0.85) {
                 if (!triggeredSlayerWarning || (main.getConfigValues().isEnabled(Feature.REPEAT_SLAYER_BOSS_WARNING) && completion != lastCompletion)) {
@@ -475,7 +505,7 @@ public class Utils {
     }
 
     public void playSound(String sound, double volume, double pitch) {
-        Minecraft.getMinecraft().thePlayer.playSound(sound, (float)volume, (float) pitch);
+        Minecraft.getMinecraft().thePlayer.playSound(sound, (float) volume, (float) pitch);
     }
 
     public boolean enchantReforgeMatches(String text) {
@@ -520,7 +550,7 @@ public class Utils {
 
                 long estimate = responseJson.get("estimate").getAsLong();
                 long currentTime = responseJson.get("queryTime").getAsLong();
-                int magmaSpawnTime = (int)((estimate-currentTime)/1000);
+                int magmaSpawnTime = (int) ((estimate - currentTime) / 1000);
 
                 if (!magmaTimerEnabled) {
                     logger.info("Query time was " + currentTime + ", server time estimate is " +
@@ -609,21 +639,25 @@ public class Utils {
     }
 
     public float snapNearDefaultValue(float value) {
-        if (value != 1 && value > 1-0.05 && value < 1+0.05) {
+        if (value != 1 && value > 1 - 0.05 && value < 1 + 0.05) {
             return 1;
         }
 
         return value;
     }
 
-    public float denormalizeScale(float value, float min, float max, float step) {
-        return snapToStepClamp(min + (max - min) *
-                MathHelper.clamp_float(value, 0.0F, 1.0F), min, max, step);
-    }
-
-    private float snapToStepClamp(float value, float min, float max, float step) {
-        value = step * (float) Math.round(value / step);
-        return MathHelper.clamp_float(value, min, max);
+    /**
+     * Rounds a float value for when it is being displayed as a string.
+     * <p>
+     * For example, if the given value is 123.456789 and the decimal places is 2, this will round
+     * to 1.23.
+     *
+     * @param value         The value to round
+     * @param decimalPlaces The decimal places to round to
+     * @return A string representation of the value rounded
+     */
+    public static String roundForString(float value, int decimalPlaces) {
+        return String.format("%." + decimalPlaces + "f", value);
     }
 
     public String[] wrapSplitText(String text, int wrapLength) {
@@ -633,7 +667,7 @@ public class Utils {
     public boolean itemIsInHotbar(ItemStack itemStack) {
         ItemStack[] inventory = Minecraft.getMinecraft().thePlayer.inventory.mainInventory;
 
-        for (int slot = 0; slot < 9; slot ++) {
+        for (int slot = 0; slot < 9; slot++) {
             if (inventory[slot] == itemStack) {
                 return true;
             }
@@ -652,19 +686,15 @@ public class Utils {
         try {
             InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
             if (fileStream != null) {
-                ByteArrayOutputStream result = new ByteArrayOutputStream();
-                byte[] buffer = new byte[1024];
-                int length;
-                while ((length = fileStream.read(buffer)) != -1) {
-                    result.write(buffer, 0, length);
+                try (InputStreamReader inputStreamReader = new InputStreamReader(fileStream, StandardCharsets.UTF_8)) {
+                    JsonObject languageConfig = SkyblockAddons.getGson().fromJson(inputStreamReader, JsonObject.class);
+                    main.getConfigValues().setLanguageConfig(languageConfig);
+                } finally {
+                    fileStream.close();
                 }
-                String dataString = result.toString("UTF-8");
-                main.getConfigValues().setLanguageConfig(JsonParser.parseString(dataString).getAsJsonObject());
-                fileStream.close();
             }
-        } catch (JsonParseException | IllegalStateException | IOException ex) {
-            logger.error("There was an error loading the language file");
-            logger.catching(ex);
+        } catch (Exception ex) {
+            logger.error("There was an error loading the language json file!", ex);
         }
     }
 
@@ -690,8 +720,7 @@ public class Utils {
         });
     }
 
-    public static String getTranslatedString(String parentPath, String value)
-    {
+    public static String getTranslatedString(String parentPath, String value) {
         String text;
         try {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -709,7 +738,7 @@ public class Utils {
         } catch (NullPointerException ex) {
             text = value; // In case of fire...
         }
-        return text ;
+        return text;
     }
 
     private static String bidiReorder(String text) {
@@ -727,7 +756,7 @@ public class Utils {
      * Using this method rather than an overwrite allows new entries in development to still exist.
      *
      * @param onlineObject The object to be merged (online entries).
-     * @param baseObject The object to me merged in to (local entries).
+     * @param baseObject   The object to me merged in to (local entries).
      */
     private void mergeLanguageJsonObject(JsonObject onlineObject, JsonObject baseObject) {
         for (Map.Entry<String, JsonElement> entry : baseObject.entrySet()) {
@@ -742,7 +771,7 @@ public class Utils {
                 if (baseElement.isJsonObject() && onlineElement.isJsonObject()) {
                     mergeLanguageJsonObject(onlineElement.getAsJsonObject(), baseElement.getAsJsonObject());
 
-                // Otherwise, if it's a string, just put in the online version into the base.
+                    // Otherwise, if it's a string, just put in the online version into the base.
                 } else if (baseElement.isJsonPrimitive() && baseElement.getAsJsonPrimitive().isString() &&
                         onlineElement.isJsonPrimitive() && onlineElement.getAsJsonPrimitive().isString()) {
                     baseObject.add(memberName, onlineElement);
@@ -795,7 +824,7 @@ public class Utils {
     /**
      * Check if another mod is loaded.
      *
-     * @param modId The modid to check.
+     * @param modId   The modid to check.
      * @param version The version of the mod to match (optional).
      */
     public boolean isModLoaded(String modId, String version) {
@@ -822,7 +851,7 @@ public class Utils {
         FloatBuffer buf = BufferUtils.createFloatBuffer(16);
         GL11.glGetFloat(GL11.GL_MODELVIEW_MATRIX, buf);
         buf.rewind();
-        org.lwjgl.util.vector.Matrix4f mat = new org.lwjgl.util.vector.Matrix4f();
+        Matrix4f mat = new Matrix4f();
         mat.load(buf);
 
         float x = mat.m30;
@@ -831,10 +860,54 @@ public class Utils {
 
         float scale = (float) Math.sqrt(mat.m00 * mat.m00 + mat.m01 * mat.m01 + mat.m02 * mat.m02);
 
-        return new float[] {x, y, z, scale};
+        return new float[]{x, y, z, scale};
     }
 
     public static EntityPlayer getPlayerFromName(String name) {
-       return Minecraft.getMinecraft().theWorld.getPlayerEntityByName(name);
+        return Minecraft.getMinecraft().theWorld.getPlayerEntityByName(name);
+    }
+
+    public boolean isEmptyGlassPane(ItemStack itemStack) {
+        return itemStack != null && (itemStack.getItem() == Item.getItemFromBlock(Blocks.stained_glass_pane)
+                || itemStack.getItem() == Item.getItemFromBlock(Blocks.glass_pane)) && itemStack.hasDisplayName() && TextUtils.stripColor(itemStack.getDisplayName().trim()).isEmpty();
+    }
+
+    public static float getPartialTicks() {
+        return Minecraft.getMinecraft().timer.renderPartialTicks;
+    }
+
+    public static long getCurrentTick() {
+        return SkyblockAddons.getInstance().getNewScheduler().getTotalTicks();
+    }
+
+    private static final Vector3d interpolatedPlayerPosition = new Vector3d();
+    private static long lastTick;
+    private static float lastPartialTicks;
+
+    public static Vector3d getPlayerViewPosition() {
+        long currentTick = getCurrentTick();
+        float currentPartialTicks = getPartialTicks();
+
+        if (currentTick != lastTick || currentPartialTicks != lastPartialTicks) {
+            Entity renderViewEntity = Minecraft.getMinecraft().getRenderViewEntity();
+            interpolatedPlayerPosition.x = MathUtils.interpolateX(renderViewEntity, currentPartialTicks);
+            interpolatedPlayerPosition.y = MathUtils.interpolateY(renderViewEntity, currentPartialTicks);
+            interpolatedPlayerPosition.z = MathUtils.interpolateZ(renderViewEntity, currentPartialTicks);
+
+            lastTick = currentTick;
+            lastPartialTicks = currentPartialTicks;
+        }
+
+        return interpolatedPlayerPosition;
+    }
+
+    public static byte[] toByteArray(BufferedInputStream inputStream) throws IOException {
+        byte[] bytes;
+        try {
+            bytes = IOUtils.toByteArray(inputStream);
+        } finally {
+            inputStream.close();
+        }
+        return bytes;
     }
 }

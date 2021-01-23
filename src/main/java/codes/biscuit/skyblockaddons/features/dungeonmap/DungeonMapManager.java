@@ -4,8 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.misc.ChromaManager;
+import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -84,10 +85,10 @@ public class DungeonMapManager {
 
         GL11.glDisable(GL11.GL_SCISSOR_TEST);
         int color = main.getConfigValues().getColor(Feature.DUNGEONS_MAP_DISPLAY);
-        DrawUtils.drawRect(x, y, x + size, y + size, 0x55000000);
-        ChromaManager.renderingText(Feature.DUNGEONS_MAP_DISPLAY);
+        DrawUtils.drawRectAbsolute(x, y, x + size, y + size, 0x55000000);
+        ManualChromaManager.renderingText(Feature.DUNGEONS_MAP_DISPLAY);
         DrawUtils.drawRectOutline(x, y, size, size, 1, color, main.getConfigValues().getChromaFeatures().contains(Feature.DUNGEONS_MAP_DISPLAY));
-        ChromaManager.doneRenderingText();
+        ManualChromaManager.doneRenderingText();
         GlStateManager.color(1, 1, 1, 1);
         GL11.glEnable(GL11.GL_SCISSOR_TEST);
 
@@ -97,7 +98,7 @@ public class DungeonMapManager {
 
         float rotation = 180 - MathHelper.wrapAngleTo180_float(mc.thePlayer.rotationYaw);
 
-        float zoomScaleFactor = main.getUtils().denormalizeScale(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+        float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
         if (isScoreSummary) {
             zoomScaleFactor = 1;
         }
@@ -201,7 +202,7 @@ public class DungeonMapManager {
             }
         } else {
             if (rotate) {
-                long ticks = System.currentTimeMillis() % 18000 / 50;
+                float ticks = System.currentTimeMillis() % 18000 / 50F;
 
                 GlStateManager.translate(rotationCenterX, rotationCenterY, 0);
                 GlStateManager.rotate(ticks, 0, 0, 1);
@@ -260,40 +261,22 @@ public class DungeonMapManager {
         // Add these markers later because they are the smooth client side ones
         // and should get priority.
         Set<MapMarker> markersToAdd = new LinkedHashSet<>();
-        Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonManager().getPlayers();
+        Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonManager().getTeammates();
 
+        // Add the player's marker...
+        MapMarker playerMapMarker = getMapMarkerForPlayer(null, Minecraft.getMinecraft().thePlayer);
+        // For the ones that we replaced, lets make sure we skip the vanilla ones later.
+        if (playerMapMarker.getMapMarkerName() != null) {
+            dontAddMarkerNames.add(playerMapMarker.getMapMarkerName());
+        }
+        markersToAdd.add(playerMapMarker);
+
+        // Add teammates...
         for (Map.Entry<String, DungeonPlayer> dungeonPlayerEntry : dungeonPlayers.entrySet()) {
             DungeonPlayer dungeonPlayer = dungeonPlayerEntry.getValue();
             EntityPlayer entityPlayer = Utils.getPlayerFromName(dungeonPlayerEntry.getKey());
 
-            MapMarker mapMarker;
-            // If this player's marker already exists, lets update the saved one instead
-            if (dungeonPlayer.getMapMarker() == null) {
-                dungeonPlayer.setMapMarker(mapMarker = new MapMarker(entityPlayer));
-            } else {
-                mapMarker = dungeonPlayer.getMapMarker();
-            }
-
-            // Check if there is a vanilla marker around the same spot as our custom
-            // marker. If so, we probably found the corresponding marker for this player.
-            int duplicates = 0;
-            Map.Entry<String, Vec4b> duplicate = null;
-            for (Map.Entry<String, Vec4b> vec4b : savedMapDecorations.entrySet()) {
-                if (vec4b.getValue().func_176110_a() == mapMarker.getIconType() &&
-                        Math.abs(vec4b.getValue().func_176112_b() - mapMarker.getX()) <= 5 &&
-                        Math.abs(vec4b.getValue().func_176113_c() - mapMarker.getZ()) <= 5) {
-                    duplicates++;
-                    duplicate = vec4b;
-                }
-            }
-
-            // However, if we find more than one duplicate marker, we can't be
-            // certain that this we found the player's corresponding marker.
-            if (duplicates == 1) {
-                mapMarker.setMapMarkerName(duplicate.getKey());
-            }
-
-            // For the ones that we replaced, lets make sure we skip the vanilla ones later.
+            MapMarker mapMarker = getMapMarkerForPlayer(dungeonPlayer, entityPlayer);
             if (mapMarker.getMapMarkerName() != null) {
                 dontAddMarkerNames.add(mapMarker.getMapMarkerName());
             }
@@ -381,7 +364,7 @@ public class DungeonMapManager {
 
             if (markerNetworkPlayerInfo != null) {
                 GlStateManager.rotate(180, 0.0F, 0.0F, 1.0F);
-                DrawUtils.drawRect(-1.2, -1.2, 1.2, 1.2, 0xFF000000);
+                DrawUtils.drawRectAbsolute(-1.2, -1.2, 1.2, 1.2, 0xFF000000);
 
                 GlStateManager.color(1, 1, 1, 1);
 
@@ -417,4 +400,38 @@ public class DungeonMapManager {
         }
     }
 
+    public static MapMarker getMapMarkerForPlayer(DungeonPlayer dungeonPlayer, EntityPlayer player) {
+        MapMarker mapMarker;
+        if (dungeonPlayer != null) {
+            // If this player's marker already exists, lets update the saved one instead
+            if (dungeonPlayer.getMapMarker() == null) {
+                dungeonPlayer.setMapMarker(mapMarker = new MapMarker(player));
+            } else {
+                mapMarker = dungeonPlayer.getMapMarker();
+            }
+        } else {
+            mapMarker = new MapMarker(player);
+        }
+
+        // Check if there is a vanilla marker around the same spot as our custom
+        // marker. If so, we probably found the corresponding marker for this player.
+        int duplicates = 0;
+        Map.Entry<String, Vec4b> duplicate = null;
+        for (Map.Entry<String, Vec4b> vec4b : savedMapDecorations.entrySet()) {
+            if (vec4b.getValue().func_176110_a() == mapMarker.getIconType() &&
+                    Math.abs(vec4b.getValue().func_176112_b() - mapMarker.getX()) <= 5 &&
+                    Math.abs(vec4b.getValue().func_176113_c() - mapMarker.getZ()) <= 5) {
+                duplicates++;
+                duplicate = vec4b;
+            }
+        }
+
+        // However, if we find more than one duplicate marker, we can't be
+        // certain that this we found the player's corresponding marker.
+        if (duplicates == 1) {
+            mapMarker.setMapMarkerName(duplicate.getKey());
+        }
+
+        return mapMarker;
+    }
 }

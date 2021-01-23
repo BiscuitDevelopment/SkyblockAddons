@@ -4,17 +4,17 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
+import com.google.common.collect.Lists;
 import lombok.Getter;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DragonTracker {
 
-    @Getter private static DragonTracker instance;
-
-    @Getter private List<DragonType> recentDragons = new LinkedList<>();
-    @Getter private Map<DragonsSince, Integer> dragonsSince = new EnumMap<>(DragonsSince.class);
-    @Getter private int eyesPlaced = 0;
+    @Getter private static final List<DragonType> dummyDragons = Lists.newArrayList(DragonType.PROTECTOR, DragonType.SUPERIOR, DragonType.WISE);
+    @Getter private static final DragonTracker instance = new DragonTracker();
 
     private transient boolean contributedToCurrentDragon = false;
     private transient long lastDragonKilled = -1;
@@ -23,33 +23,35 @@ public class DragonTracker {
     // Saves the last second of inventory differences
     private transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
 
-    public DragonTracker() {
-        instance = this;
+    public int getDragsSince(DragonsSince dragonsSince) {
+        DragonTrackerData dragonTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getDragonTracker();
+        return dragonTrackerData.getDragonsSince().getOrDefault(dragonsSince, 0);
     }
 
-    public int getDragsSince(DragonsSince dragonsSince) {
-        return this.dragonsSince.getOrDefault(dragonsSince, 0);
+    public List<DragonType> getRecentDragons() {
+        return SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getDragonTracker().getRecentDragons();
     }
 
     public void dragonSpawned(String dragonTypeText) {
         if (eyesToPlace > 0) {
             contributedToCurrentDragon = true;
 
+            DragonTrackerData dragonTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getDragonTracker();
             DragonType dragonType = DragonType.fromName(dragonTypeText);
             if (dragonType != null) {
-                if (recentDragons.size() == 3) {
-                    recentDragons.remove(0);
+                if (dragonTrackerData.getRecentDragons().size() == 3) {
+                    dragonTrackerData.getRecentDragons().remove(0);
                 }
-                recentDragons.add(dragonType);
+                dragonTrackerData.getRecentDragons().add(dragonType);
             }
             for (DragonsSince dragonsSince : DragonsSince.values()) {
-                this.dragonsSince.put(dragonsSince, this.dragonsSince.getOrDefault(dragonsSince, 0) + 1);
+                dragonTrackerData.getDragonsSince().put(dragonsSince, dragonTrackerData.getDragonsSince().getOrDefault(dragonsSince, 0) + 1);
             }
             if (dragonType == DragonType.SUPERIOR) {
-                dragonsSince.put(DragonsSince.SUPERIOR, 0);
+                dragonTrackerData.getDragonsSince().put(DragonsSince.SUPERIOR, 0);
             }
 
-            eyesPlaced += eyesToPlace;
+            dragonTrackerData.setEyesPlaced(dragonTrackerData.getEyesPlaced() + eyesToPlace);
             eyesToPlace = 0;
 
             SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
@@ -81,16 +83,17 @@ public class DragonTracker {
                     continue;
                 }
 
+                DragonTrackerData dragonTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getDragonTracker();
                 String skyBlockItemID = ItemUtils.getSkyBlockItemID(itemDifference.getExtraAttributes());
                 switch (skyBlockItemID) {
                     case "ASPECT_OF_THE_DRAGON":
-                        dragonsSince.put(DragonsSince.ASPECT_OF_THE_DRAGONS, 0);
+                        dragonTrackerData.getDragonsSince().put(DragonsSince.ASPECT_OF_THE_DRAGONS, 0);
                         SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                         break;
                     case "PET":
                         PetInfo petInfo = ItemUtils.getPetInfo(itemDifference.getExtraAttributes());
                         if (petInfo != null && "ENDER_DRAGON".equals(petInfo.getType())) {
-                            dragonsSince.put(DragonsSince.ENDER_DRAGON_PET, 0);
+                            dragonTrackerData.getDragonsSince().put(DragonsSince.ENDER_DRAGON_PET, 0);
                             SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
                         }
                         break;
@@ -115,9 +118,5 @@ public class DragonTracker {
 
     public void removeEye() {
         eyesToPlace--;
-    }
-
-    public static void setInstance(DragonTracker instance) {
-        DragonTracker.instance = instance;
     }
 }

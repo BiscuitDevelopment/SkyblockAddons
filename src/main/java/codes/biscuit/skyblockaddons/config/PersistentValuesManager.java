@@ -3,8 +3,8 @@ package codes.biscuit.skyblockaddons.config;
 import codes.biscuit.hypixellocalizationlib.HypixelLanguage;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
-import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
-import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
+import codes.biscuit.skyblockaddons.features.dragontracker.DragonTrackerData;
+import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTrackerData;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,8 +29,8 @@ public class PersistentValuesManager {
         private int totalKills = 0; // Lifetime zealots killed
         private int summoningEyeCount = 0; // Lifetime summoning eyes
 
-        private SlayerTracker slayerTracker = new SlayerTracker();
-        private DragonTracker dragonTracker = new DragonTracker();
+        private SlayerTrackerData slayerTracker = new SlayerTrackerData();
+        private DragonTrackerData dragonTracker = new DragonTrackerData();
 
         private boolean blockCraftingIncompletePatterns = true;
         private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;

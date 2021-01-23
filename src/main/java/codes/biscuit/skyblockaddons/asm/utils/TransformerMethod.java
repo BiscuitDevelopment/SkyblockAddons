@@ -76,6 +76,7 @@ public enum TransformerMethod {
     // EntityRenderer
     getMouseOver("getMouseOver", "func_78473_a", "a", "(F)V"),
     getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;F)F", "("+TransformerClass.EntityLivingBase.getName()+"F)F"),
+    updateCameraAndRender("updateCameraAndRender", "func_181560_a", "a", "(FJ)V", "(FJ)V"),
 
     // GuiNewChat
     printChatMessageWithOptionalDeletion("printChatMessageWithOptionalDeletion", "func_146234_a", "a", "(Lnet/minecraft/util/IChatComponent;I)V", "("+TransformerClass.IChatComponent.getName()+"I)V"),
@@ -154,6 +155,13 @@ public enum TransformerMethod {
 
     // BehaviorDefaultDispenseItem
     dispenseStack("dispenseStack", "func_82487_b", "b", "(Lnet/minecraft/dispenser/IBlockSource;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.IBlockSource.getName()+TransformerClass.ItemStack.getName()+")"+TransformerClass.ItemStack.getName()),
+
+    // Word
+    playAuxSFX("playAuxSFX", "func_175718_b", "b", "(ILnet/minecraft/util/BlockPos;I)V", "(I" + TransformerClass.BlockPos.getName() + "I)V"),
+
+    updateFramebufferSize("updateFramebufferSize", "func_147119_ah", "ay", "()V"),
+
+    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V")
     ;
 
     private String name;

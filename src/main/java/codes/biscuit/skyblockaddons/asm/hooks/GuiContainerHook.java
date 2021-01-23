@@ -3,8 +3,8 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
@@ -21,8 +21,6 @@ import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
-
-import javax.lang.model.type.NullType;
 
 public class GuiContainerHook {
 
@@ -174,7 +172,12 @@ public class GuiContainerHook {
 
     public static void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor, Slot theSlot) {
         if (freezeBackpack) return;
+
         SkyblockAddons main = SkyblockAddons.getInstance();
+        if (theSlot != null && theSlot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(theSlot.getStack())) {
+            return;
+        }
+
         Container container = Minecraft.getMinecraft().thePlayer.openContainer;
         if (theSlot != null) {
             int slotNum = theSlot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
@@ -275,15 +278,9 @@ public class GuiContainerHook {
         }
     }
 
-    public static void handleMouseClick(Slot slotIn, int slotId, int clickedButton, int clickType, ReturnValue<NullType> returnValue) {
-/*        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock()) {
-            boolean isOutsideGui = oldMouseX < guiLeft || oldMouseY < guiTop || oldMouseX >= guiLeft + xSize || oldMouseY >= guiTop + ySize;
-            Minecraft mc = Minecraft.getMinecraft();
-            if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) &&
-                    mc.thePlayer.inventory.getItemStack() != null && isOutsideGui &&
-                    main.getInventoryUtils().shouldCancelDrop(mc.thePlayer.inventory.getItemStack())) returnValue.cancel();
-        }*/
+    public static boolean onHandleMouseClick(Slot slot, int slotId, int clickedButton, int clickType) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(slot.getStack());
     }
 
     public static void setFreezeBackpack(boolean freezeBackpack) {

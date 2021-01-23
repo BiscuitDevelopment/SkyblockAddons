@@ -296,7 +296,7 @@ public class LocationEditGui extends GuiScreen {
             if (lastHovered != null && main.getConfigValues().getAnchorPoint(lastHovered) == anchorPoint) {
                 color = ColorCode.YELLOW.getColor(127);
             }
-            DrawUtils.drawRect(x-4, y-4, x+4, y+4, color);
+            DrawUtils.drawRectAbsolute(x-4, y-4, x+4, y+4, color);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
 
@@ -320,9 +320,9 @@ public class LocationEditGui extends GuiScreen {
                     }
 
                     if ((right-left) == 0.5 || (bottom-top) == 0.5) {
-                        DrawUtils.drawRect(left, top, right, bottom, 0xFF00FF00);
+                        DrawUtils.drawRectAbsolute(left, top, right, bottom, 0xFF00FF00);
                     } else {
-                        DrawUtils.drawRect(left, top, right, bottom, 0xFFFF0000);
+                        DrawUtils.drawRectAbsolute(left, top, right, bottom, 0xFFFF0000);
                     }
                 }
             }
@@ -370,7 +370,7 @@ public class LocationEditGui extends GuiScreen {
                             if (thisSnap.getHeight() < SNAPPING_RADIUS) {
                                 if (horizontalSnap == null || thisSnap.getHeight() < horizontalSnap.getHeight()) {
                                     if (main.isDevMode()) {
-                                        DrawUtils.drawRect(snapX - 0.5, 0, snapX + 0.5, mc.displayHeight, 0xFF0000FF);
+                                        DrawUtils.drawRectAbsolute(snapX - 0.5, 0, snapX + 0.5, mc.displayHeight, 0xFF0000FF);
                                     }
                                     horizontalSnap = thisSnap;
                                 }
@@ -402,7 +402,7 @@ public class LocationEditGui extends GuiScreen {
                             if (thisSnap.getWidth() < SNAPPING_RADIUS) {
                                 if (verticalSnap == null || thisSnap.getWidth() < verticalSnap.getWidth()) {
                                     if (main.isDevMode()) {
-                                        DrawUtils.drawRect(0, snapY - 0.5, mc.displayWidth, snapY + 0.5, 0xFF0000FF);
+                                        DrawUtils.drawRectAbsolute(0, snapY - 0.5, mc.displayWidth, snapY + 0.5, 0xFF0000FF);
                                     }
                                     verticalSnap = thisSnap;
                                 }

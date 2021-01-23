@@ -6,13 +6,14 @@ import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import org.lwjgl.input.Keyboard;
 
@@ -22,8 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SettingsGui extends GuiScreen {
-
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
     private int page;
@@ -128,7 +127,6 @@ public class SettingsGui extends GuiScreen {
         SkyblockAddonsGui.drawDefaultTitleText(this, alpha * 2);
 
         if (feature != Feature.LANGUAGE) {
-            mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
             int halfWidth = width / 2;
             int boxWidth = 140;
             int x = halfWidth - 90 - boxWidth;
@@ -158,8 +156,8 @@ public class SettingsGui extends GuiScreen {
             int height = (int) (getRowHeightSetting(numSettings) - 50);
             int y = (int) getRowHeight(1);
             GlStateManager.enableBlend();
-            GlStateManager.color(1, 1, 1, 0.7F);
-            drawModalRectWithCustomSizedTexture(x, y, 0, 0, width, height, width, height);
+            DrawUtils.drawRect(x, y, width, height, ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
+
             SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -180,7 +178,7 @@ public class SettingsGui extends GuiScreen {
             main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
-            ButtonSwitchTab tab = (ButtonSwitchTab)abstractButton;
+            ButtonSwitchTab tab = (ButtonSwitchTab) abstractButton;
             mc.displayGuiScreen(new SkyblockAddonsGui(1, tab.getTab()));
         } else if (abstractButton instanceof ButtonOpenColorMenu) {
             closingGui = true;
@@ -372,7 +370,7 @@ public class SettingsGui extends GuiScreen {
             row += 0.4;
         } else if (setting == EnumUtils.FeatureSetting.MAP_ZOOM) {
             boxWidth = 100; // Default size and stuff.
-            x = halfWidth-(boxWidth/2);
+            x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonSlider(x, y, 100, 20, main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
                 @Override
@@ -380,6 +378,7 @@ public class SettingsGui extends GuiScreen {
                     main.getConfigValues().getMapZoom().setValue(value);
                 }
             }).setPrefix("Map Zoom: "));
+
         } else if (setting == EnumUtils.FeatureSetting.COLOUR_BY_RARITY) {
             boxWidth = 31;
             x = halfWidth - boxWidth / 2;
@@ -402,6 +401,7 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
+
         } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -422,6 +422,7 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_TEXT_MODE.getMessage(), main, settingFeature));
+
         } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -441,8 +442,15 @@ public class SettingsGui extends GuiScreen {
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, settingFeature));
-        }
-        else {
+
+        } else if (setting == EnumUtils.FeatureSetting.HEALING_CIRCLE_OPACITY) {
+            boxWidth = 150;
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new NewButtonSlider(x, y, boxWidth, 20, main.getConfigValues().getHealingCircleOpacity().getValue(), 0, 1, 0.01F,
+                    updatedValue -> main.getConfigValues().getHealingCircleOpacity().setValue(updatedValue)).setPrefix("Healing Circle Opacity: "));
+
+        } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);

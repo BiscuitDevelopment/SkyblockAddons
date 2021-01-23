@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
@@ -15,8 +16,6 @@ import net.minecraft.util.ResourceLocation;
 import java.awt.*;
 
 public class ButtonNormal extends ButtonFeature {
-
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
     private SkyblockAddons main;
 
@@ -64,8 +63,7 @@ public class ButtonNormal extends ButtonFeature {
             if (main.getConfigValues().isRemoteDisabled(feature)) {
                 GlStateManager.color(0.3F,0.3F,0.3F,0.7F);
             }
-            mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+            DrawUtils.drawRect(xPosition, yPosition, width, height, ColorUtils.getDummySkyblockColor(27, 29, 41, 230), 4);
 
             EnumUtils.FeatureCredit creditFeature = EnumUtils.FeatureCredit.fromFeature(feature);
 

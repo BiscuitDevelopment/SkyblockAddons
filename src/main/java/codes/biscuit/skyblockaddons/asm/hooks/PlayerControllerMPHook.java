@@ -4,12 +4,15 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.InventoryUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
+import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
@@ -20,6 +23,8 @@ import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+
+import java.util.Set;
 
 public class PlayerControllerMPHook {
 
@@ -34,6 +39,9 @@ public class PlayerControllerMPHook {
     private static final int CRAFTING_PATTERN_SOUND_COOLDOWN = 400;
 
     private static long lastCraftingSoundPlayed = 0;
+
+    private static final Set<Block> ORES = Sets.newHashSet(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore,
+            Blocks.redstone_ore, Blocks.emerald_ore, Blocks.diamond_ore, Blocks.lapis_ore, Blocks.lit_redstone_ore);
 
     /**
      * Checks if an item is being dropped and if an item is being dropped, whether it is allowed to be dropped.
@@ -60,15 +68,23 @@ public class PlayerControllerMPHook {
         return false;
     }
 
-    public static void onPlayerDestroyBlock(BlockPos loc, ReturnValue<Boolean> returnValue) {
+    public static void onPlayerDestroyBlock(BlockPos blockPos) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
-        if (heldItem != null) {
-            Block block = mc.theWorld.getBlockState(loc).getBlock();
-            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                if (heldItem.getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) || heldItem.getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME)) {
-                    CooldownManager.put(heldItem);
+
+        if (main.getUtils().isOnSkyblock()) {
+            Block block = mc.theWorld.getBlockState(blockPos).getBlock();
+
+            if (ORES.contains(block)) {
+                main.getPersistentValuesManager().getPersistentValues().setOresMined(main.getPersistentValuesManager().getPersistentValues().getOresMined() + 1);
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
+                if (heldItem != null) {
+                    if (heldItem.getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) || heldItem.getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME)) {
+                        CooldownManager.put(heldItem);
+                    }
                 }
             }
         }

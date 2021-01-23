@@ -33,7 +33,9 @@ dependencies {
     implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
         exclude module: 'log4j'
     }
-    implementation 'com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085'
+    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+        exclude module: 'gson'
+    }
     testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
 }
 

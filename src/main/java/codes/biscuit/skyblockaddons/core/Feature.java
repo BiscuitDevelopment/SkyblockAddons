@@ -119,7 +119,7 @@ public enum Feature {
     SHOW_BASE_STAT_BOOST_PERCENTAGE(104, Message.SETTING_SHOW_BASE_STAT_BOOST_PERCENTAGE, new GuiFeatureData(ColorCode.RED, true), false, EnumUtils.FeatureSetting.COLOUR_BY_RARITY),
     BASE_STAT_BOOST_COLOR_BY_RARITY(105, Message.SETTING_COLOR_BY_RARITY, null, true),
     SHOW_PLAYER_HEADS_ON_MAP(106, Message.SETTING_SHOW_PLAYER_HEAD_ON_MAP, null, true),
-    SHOW_HEALING_CIRCLE_WALL(107, Message.SETTING_SHOW_HEALING_CIRCLE_WALL, new GuiFeatureData(ColorCode.GREEN, false), true),
+    SHOW_HEALING_CIRCLE_WALL(107, Message.SETTING_SHOW_HEALING_CIRCLE_WALL, new GuiFeatureData(ColorCode.GREEN, false), true, EnumUtils.FeatureSetting.HEALING_CIRCLE_OPACITY),
     SHOW_CRITICAL_DUNGEONS_TEAMMATES(108, Message.SETTING_SHOW_CRITICAL_TEAMMATES, null, true),
     SHOW_GLOWING_ITEMS_ON_ISLAND(109, Message.SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, null, false),
     SHOW_ITEM_DUNGEON_FLOOR(110, Message.SETTING_SHOW_ITEM_DUNGEON_FLOOR, new GuiFeatureData(ColorCode.RED, true), false),
@@ -166,6 +166,10 @@ public enum Feature {
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
+    DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null,false),
+    CANDY_POINTS_COUNTER(155, "settings.candyPointsCounter", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
+    HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
+    USE_SHADERS_FOR_CHROMA(157, "settings.useShadersForChroma", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -182,7 +186,10 @@ public enum Feature {
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
     CHROMA_MODE(-1, Message.SETTING_CHROMA_MODE, false),
-    CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
+    @Deprecated CHROMA_FADE_WIDTH(-1, Message.SETTING_CHROMA_FADE_WIDTH, false),
+    CHROMA_SIZE(-1, "settings.chromaSize", null, false),
+    CHROMA_SATURATION(-1, "settings.chromaSaturation", null, false),
+    CHROMA_BRIGHTNESS(-1, "settings.chromaBrightness", null, false),
     TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
 
     /**
@@ -199,7 +206,7 @@ public enum Feature {
             TARANTULA_COLOR_BY_RARITY, SVEN_COLOR_BY_RARITY, REVENANT_TEXT_MODE, TARANTULA_TEXT_MODE, SVEN_TEXT_MODE,
             DRAGON_STATS_TRACKER_COLOR_BY_RARITY, HIDE_WHEN_NOT_IN_CASTLE, HIDE_WHEN_NOT_IN_SPIDERS_DEN,
             HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED,
-            SHOW_SALVAGE_ESSENCES_COUNTER);
+            SHOW_SALVAGE_ESSENCES_COUNTER, HEALING_CIRCLE_OPACITY);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
@@ -210,13 +217,13 @@ public enum Feature {
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
-            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR));
+            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR, CANDY_POINTS_COUNTER));
 
     /**
      * These are features that are displayed separate, on the general tab.
      */
     @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
-            CHROMA_FADE_WIDTH, TURN_ALL_FEATURES_CHROMA));
+            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_SHADERS_FOR_CHROMA));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
