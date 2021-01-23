@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
@@ -471,7 +472,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxHeight = 50;
         int x = halfWidth+90;
         double y = getRowHeight(displayCount/3+1);
-        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, "Language: "+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
+        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Translations.getMessage("languageText")+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
     }
 
     private void addEditLocationsButton() {
