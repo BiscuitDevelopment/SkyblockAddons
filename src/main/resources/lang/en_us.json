@@ -448,7 +448,7 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Home",
+    "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
