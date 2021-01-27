@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,6 +33,8 @@ public class ItemUtils {
     public static final int NBT_STRING = 8;
     public static final int NBT_LIST = 9;
     public static final int NBT_COMPOUND = 10;
+
+    public static ItemMap itemMap;
 
     // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
     private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
@@ -231,10 +235,11 @@ public class ItemUtils {
     }
 
     /**
-     * Returns the contents of a personal compactor using the data from an ItemStack
+     * Returns the contents of a personal compactor using the data from the compactor's {@code ItemStack}.
+     * This method guesses the Minecraft item of the items in the compactor form their Skyblock ID.
      *
      * @param compactor the ItemStack to check
-     * @return an {@link ItemStack[]} or {@code null} if it isn't a personal compactor
+     * @return an {@link ItemStack[]} of all the items in the personal compactor or {@code null} if {@code compactor} isn't a personal compactor
      */
     public static ItemStack[] getPersonalCompactorContents(ItemStack compactor) {
         String skyblockID = ItemUtils.getSkyBlockItemID(compactor);
@@ -252,48 +257,29 @@ public class ItemUtils {
                 if (!extraAttributes.hasKey("personal_compact_" + i)) {
                     continue;
                 }
-                String itemName = extraAttributes.getString("personal_compact_" + i);
 
-                boolean enchanted = itemName.contains("ENCHANTED");
-
-                itemName = itemName.replaceFirst("ENCHANTED_", "")
-                        .replaceFirst("RAW_", "").toLowerCase();
-
+                skyblockID = extraAttributes.getString("personal_compact_" + i);
+                String processedSkyblockID = skyblockID.replaceFirst("ENCHANTED_", "")
+                        .replaceFirst("RAW_", "").toLowerCase(Locale.US);
+                boolean enchanted = skyblockID.contains("ENCHANTED");
                 ItemStack itemStack = null;
-                if (itemName.contains("log")) {
-                    switch (itemName) {
-                        case "oak_log":
-                            itemStack = new ItemStack(Blocks.log);
-                            break;
-                        case "birch_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 2);
-                            break;
-                        case "spruce_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 1);
-                            break;
-                        case "jungle_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 3);
-                            break;
-                        case "acacia_log":
-                            itemStack = new ItemStack(Blocks.log2);
-                            break;
-                        case "dark_oak_log":
-                            itemStack = new ItemStack(Blocks.log2, 1, 1);
-                            break;
+
+                if (processedSkyblockID.startsWith("ink_sack:")) {
+                    int meta = processedSkyblockID.charAt(processedSkyblockID.length() - 1);
+
+                    itemStack = new ItemStack(Items.dye, 1, meta);
+                }
+
+                if (itemStack == null) {
+                    Item itemFromName = Item.getByNameOrId(processedSkyblockID.toLowerCase(Locale.US));
+
+                    if (itemFromName != null) {
+                        itemStack = new ItemStack(itemFromName);
                     }
                 }
 
                 if (itemStack == null) {
-                    Item item = Item.getByNameOrId(itemName);
-                    if (item == null) {
-                        Block block = Block.getBlockFromName(itemName);
-                        if (block != null) {
-                            item = Item.getItemFromBlock(block);
-                        }
-                    }
-                    if (item != null) {
-                        itemStack = new ItemStack(item);
-                    }
+                    itemStack = itemMap.getItemStack(skyblockID);
                 }
 
                 if (itemStack != null && enchanted) {

@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.stream.JsonReader;
@@ -28,7 +29,7 @@ public class DataUtils {
 
     private static final Gson GSON = new Gson();
 
-    private static Logger logger = SkyblockAddons.getLogger();
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     //TODO: Migrate all data file loading to this class
 
@@ -59,6 +60,12 @@ public class DataUtils {
             SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!");
         }
 
+        // Item Map
+        inputStream = DataUtils.class.getResourceAsStream("/itemMap.json");
+        jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)));
+
+        ItemUtils.itemMap = GSON.fromJson(jsonReader, ItemMap.class);
+
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
         try (JsonReader jsonReader =new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))) {
@@ -78,12 +85,14 @@ public class DataUtils {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
             HttpGet enchantedItemListsGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
                     "SkyblockAddons/development/src/main/resources/enchantedItemLists.json");
+            HttpGet itemMapGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
+                    "SkyblockAddons/development/src/main/resources/itemMap.json");
             HttpGet onlineDataGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
                     + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json");
             HttpGet seaCreaturesGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/fishing/seaCreatures.json");
 
             // Enchanted Item Blacklist
-            logger.info("Trying to fetch enchanted item lists from the server...");
+            LOGGER.info("Trying to fetch enchanted item lists from the server...");
             EnchantedItemLists receivedBlacklist = httpClient.execute(enchantedItemListsGet, response -> {
                 int status = response.getStatusLine().getStatusCode();
 
@@ -97,12 +106,31 @@ public class DataUtils {
                 }
             });
             if (receivedBlacklist != null) {
-                logger.info("Successfully fetched enchanted item lists!");
+                LOGGER.info("Successfully fetched enchanted item lists!");
                 EnchantedItemPlacementBlocker.setItemLists(receivedBlacklist);
             }
 
+            // Item Map
+            LOGGER.info("Trying to fetch item map from the server...");
+            ItemMap receivedItemMap = httpClient.execute(itemMapGet, response -> {
+                int status = response.getStatusLine().getStatusCode();
+
+                if (status == 200) {
+                    HttpEntity entity = response.getEntity();
+                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
+
+                    return GSON.fromJson(jsonReader, ItemMap.class);
+                } else {
+                    throw new ClientProtocolException("Unexpected response status: " + status);
+                }
+            });
+            if (receivedItemMap != null) {
+                LOGGER.info("Successfully fetched item map!");
+                ItemUtils.itemMap = receivedItemMap;
+            }
+
             // Online Data
-            logger.info("Trying to fetch online data from the server...");
+            LOGGER.info("Trying to fetch online data from the server...");
             OnlineData receivedOnlineData = httpClient.execute(onlineDataGet, response -> {
                 int status = response.getStatusLine().getStatusCode();
 
@@ -116,14 +144,14 @@ public class DataUtils {
                 }
             });
             if (receivedOnlineData != null) {
-                logger.info("Successfully fetched online data!");
+                LOGGER.info("Successfully fetched online data!");
                 main.setOnlineData(receivedOnlineData);
                 main.getUpdater().processUpdateCheckResult();
             }
 
         } catch (IOException | JsonSyntaxException e) {
-            logger.error("There was an error fetching data from the server. The bundled version of the file will be used instead. ");
-            logger.catching(e);
+            LOGGER.error("There was an error fetching data from the server. The bundled version of the file will be used instead. ");
+            LOGGER.catching(e);
         }
     }
 }

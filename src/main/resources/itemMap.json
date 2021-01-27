@@ -1,0 +1,15 @@
+{
+  "itemMap": {
+    "ENCHANTED_SNOW_BLOCK": "snow",
+    "ENCHANTED_COCOA": "dye:3",
+    "ENCHANTED_CACTUS_GREEN": "dye:2",
+    "ENCHANTED_INK_SACK": "dye:0",
+    "ENCHANTED_DANDELION": "yellow_flower",
+    "ENCHANTED_OAK_LOG": "log",
+    "ENCHANTED_BIRCH_LOG": "log:2",
+    "ENCHANTED_ACACIA_LOG": "log2",
+    "ENCHANTED_JUNGLE_LOG": "log:3",
+    "ENCHANTED_SPRUCE_LOG": "log:1",
+    "ENCHANTED_DARK_OAK_LOG": "log2:1"
+  }
+}
