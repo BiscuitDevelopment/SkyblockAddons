@@ -44,7 +44,12 @@
   ],
   "whitelistedIDs": [
     "BASKET_OF_SEEDS",
-    "PRISMAPUMP"
+    "PRISMAPUMP",
+    "BEACON_1",
+    "BEACON_2",
+    "BEACON_3",
+    "BEACON_4",
+    "BEACON_5"
   ],
   "rarityLimit": "RARE"
 }
