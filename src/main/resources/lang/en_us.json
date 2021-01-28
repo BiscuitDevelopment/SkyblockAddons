@@ -174,7 +174,8 @@
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "blockGrapplingHookOnCooldown": "Block Grappling Hook on Cooldown"
   },
   "messages": {
     "enchants": "Enchants",

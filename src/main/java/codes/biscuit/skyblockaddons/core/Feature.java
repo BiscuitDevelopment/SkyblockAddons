@@ -167,6 +167,8 @@ public enum Feature {
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
 
+    BLOCK_GRAPPLING_HOOK_ON_COOLDOWN(152, "settings.blockGrapplingHookOnCooldown", null, false),
+
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
     ADD(-1, null, false),
