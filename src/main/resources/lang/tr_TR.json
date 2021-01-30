@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Türkçe",
   "settings": {
     "settings": "Ayarlar",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Hediyeleri Kolay Aç",
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
-    "highlightMaxEnchantments": "Özel Büyüleri Vurgula"
+    "highlightMaxEnchantments": "Özel Büyüleri Vurgula",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Geliştirici modunu aç",
         "detailedHelp": {
-          "description": "Bu komut geliştirici modunu değiştirir. Bu mod Skyblock mods/araç geliştiricileri içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Geliştirici modu kapatıldı!",
         "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosslar Öldürüldü"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
