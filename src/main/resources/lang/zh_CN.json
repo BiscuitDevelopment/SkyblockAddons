@@ -321,7 +321,7 @@
       "dev": {
         "help": "启用/禁用 开发者模式",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
         },
         "disabled": "开发者模式已禁用！",
         "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
