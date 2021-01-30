@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleNew;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandButton;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandMarkerButton;
@@ -164,8 +165,8 @@ public class IslandWarpGui extends GuiScreen {
         int endColor = new Color(0,0, 0, Math.round(255/2F)).getRGB();
         drawGradientRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(), startColor, endColor);
 
-        drawCenteredString(mc.fontRendererObj, "Click a warp point to travel there!", sr.getScaledWidth()/2, 10, 0xFFFFFFFF);
-        drawCenteredString(mc.fontRendererObj, "Must have the specific scroll unlocked.", sr.getScaledWidth()/2, 20, 0xFFFFFFFF);
+        drawCenteredString(mc.fontRendererObj, Translations.getMessage("warpMenu.click"), sr.getScaledWidth()/2, 10, 0xFFFFFFFF);
+        drawCenteredString(mc.fontRendererObj, Translations.getMessage("warpMenu.mustUnlock"), sr.getScaledWidth()/2, 20, 0xFFFFFFFF);
 
         GlStateManager.pushMatrix();
         ISLAND_SCALE = 0.7F/1080*mc.displayHeight;
@@ -355,33 +356,33 @@ public class IslandWarpGui extends GuiScreen {
 
     @Getter
     public enum Marker {
-        PRIVATE_ISLAND("home", "Home", Island.PRIVATE_ISLAND, true, 72, 90),
+        PRIVATE_ISLAND("home", Translations.getMessage("warpMenu.home"), Island.PRIVATE_ISLAND, true, 72, 90),
 
-        HUB("hub", "Spawn", Island.HUB, true, 653, 217),
+        HUB("hub", Translations.getMessage("warpMenu.spawn"), Island.HUB, true, 653, 217),
         CASTLE("castle", "Castle", Island.HUB, 195, 153),
         DARK_AUCTION("da", "Sirius Shack", Island.HUB, 452, 457),
         CRYPT("crypt", "Crypts", Island.HUB, 585, 84),
 
-        SPIDERS_DEN("spider", "Spawn", Island.SPIDERS_DEN, true, 308, 284),
+        SPIDERS_DEN("spider", Translations.getMessage("warpMenu.spawn"), Island.SPIDERS_DEN, true, 308, 284),
         SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 291, 40),
 
-        THE_PARK("park", "Spawn", Island.THE_PARK, true, 263, 308),
+        THE_PARK("park", Translations.getMessage("warpMenu.spawn"), Island.THE_PARK, true, 263, 308),
         HOWLING_CAVE("howl", "Howling Cave", Island.THE_PARK, 254, 202),
         THE_PARK_JUNGLE("jungle", "Jungle", Island.THE_PARK, 194, 82),
 
-        THE_END("end", "Spawn", Island.THE_END, true, 440, 291),
+        THE_END("end", Translations.getMessage("warpMenu.spawn"), Island.THE_END, true, 440, 291),
         DRAGONS_NEST("drag", "Dragon's Nest", Island.THE_END, 260, 248),
 
-        BLAZING_FORTRESS("nether", "Spawn", Island.BLAZING_FORTRESS, true, 115, 413),
+        BLAZING_FORTRESS("nether", Translations.getMessage("warpMenu.spawn"), Island.BLAZING_FORTRESS, true, 115, 413),
         BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 359, 284),
 
-        THE_BARN("barn", "Spawn", Island.THE_BARN, true, 40, 163),
-        MUSHROOM_DESERT("desert", "Spawn", Island.MUSHROOM_DESERT, true, 51, 73),
+        THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 40, 163),
+        MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 51, 73),
 
-        GOLD_MINE("gold", "Spawn", Island.GOLD_MINE, true, 106, 159),
-        DEEP_CAVERNS("deep", "Spawn", Island.DEEP_CAVERNS, true, 97, 213),
+        GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 106, 159),
+        DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
 
-        DUNGEON_HUB("dungeon_hub", "Spawn", Island.DUNGEON_HUB, false, 35, 80),
+        DUNGEON_HUB("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;
 
         private String warpName;
@@ -417,9 +418,9 @@ public class IslandWarpGui extends GuiScreen {
 
     @Getter
     public enum UnlockedStatus {
-        UNKNOWN("Haven't Visited"),
-        NOT_UNLOCKED("Not Unlocked"),
-        IN_COMBAT("In Combat..."),
+        UNKNOWN(Translations.getMessage("warpMenu.unknown")),
+        NOT_UNLOCKED(Translations.getMessage("warpMenu.notUnlocked")),
+        IN_COMBAT(Translations.getMessage("warpMenu.inCombat")),
         UNLOCKED(null),
         ;
 
