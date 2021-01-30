@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Idioma: ",
   "language": "Español (México)",
   "settings": {
     "settings": "Opciones",
@@ -140,7 +140,7 @@
     "baseStatBoostPercentage": "Mostrar Aumento de Atributos Base Para los Objetos de Dungeon",
     "colorByRarity": "Color por Rareza",
     "showPlayerHeadsOnMap": "Mostrar Cabezas de Jugadores en el Mapa de Dungeon",
-    "showHealingCircleWall": "Mostrar Healing Circle Wall de Dungeon",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Mostrar Compañeros de Dungeon en Estado Crítico",
     "showGlowingItemsOnIsland": "Objetos Sueltos Brillantes",
     "showItemDungeonFloor": "Mostrar el Piso Donde se Obtuvo el Objeto de Dungeon",
@@ -176,12 +176,12 @@
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Pestañas Compacta",
     "highlightMaxEnchantments": "Resaltar Encantamientos Especiales",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "disableEmptyGlassPanes": "Deshabilitar Paneles de Cristal Vacíos",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
+    "chromaSize": "Tamaño del Croma",
+    "chromaSaturation": "Saturación del Croma",
+    "chromaBrightness": "Brillo del Croma",
     "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
@@ -321,7 +321,7 @@
       "dev": {
         "help": "Activar el modo de desarrollador",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Este comando alterna el modo de desarrollador. Este modo está destinado a los desarrolladores de mods y herramientas de Skyblock. Proporciona datos del juego como NBT de entidad y objetos."
         },
         "disabled": "¡Modo desarrollador desactivado!",
         "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
@@ -439,12 +439,12 @@
     "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
+    "click": "¡Haz clic en un punto de teletransporte para viajar allí!",
+    "mustUnlock": "Debes tener el scroll específico desbloqueado.",
+    "home": "Tú Isla",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "unknown": "No Visitado",
+    "notUnlocked": "No Desbloqueado",
+    "inCombat": "En Combate..."
   }
 }
