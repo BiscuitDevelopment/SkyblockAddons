@@ -321,7 +321,7 @@
       "dev": {
         "help": "Twoggle dwevewopew mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
         "disabled": "Dewelower wode dwisabled!",
         "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
