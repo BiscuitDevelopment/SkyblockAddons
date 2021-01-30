@@ -219,7 +219,7 @@
     "selectedColor": "Ausgewählte Farbe",
     "setHexColor": "Lege Hex Farbe fest",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
+    "resizeBars": "Größe der Balken ändern",
     "showColorIcons": "Show Color Icons",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stufe %stage%",
@@ -263,7 +263,7 @@
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Custom Status",
     "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
+    "titleAuto": "Automatischer Status",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
     "titleRevenants": "Revenant-Quest",
     "descriptionRevenants": "Zeigt, dass du ein Revenant-Quest machst.",
@@ -375,7 +375,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Falsche Verwendung!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
