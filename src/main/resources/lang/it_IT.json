@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Lingua: ",
   "language": "Italiano",
   "settings": {
     "settings": "Impostazioni",
@@ -176,9 +176,9 @@
     "showSwordKills": "Mostra uccisioni con spada",
     "compactTabList": "Lista giocatori compatta",
     "highlightMaxEnchantments": "Evidenzia gli incantesimi speciali",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
+    "disableEmptyGlassPanes": "Disabilita pannelli di vetro vuoti",
+    "candyPointsCounter": "Caramelle Spooky Event/Contatore di punti",
+    "healingCircleOpacity": "Opacità del circolo di cura",
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
@@ -321,7 +321,7 @@
       "dev": {
         "help": "Attiva/Disattiva modalità sviluppatore",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati dal gioco come entità ed elementi NBT."
         },
         "disabled": "Modalità sviluppatore disabilitata!",
         "enabled": "Modalità sviluppatore abilitata! SUGGERIMENTO: Premi \"%keyName%\" per copiare i dati NBT!"
@@ -439,12 +439,12 @@
     "bossesKilled": "Boss Uccisi"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
+    "click": "Clicca su un punto di teletrasporto per viaggiarci!",
+    "mustUnlock": "Devi aver sbloccato la pergamena specifica.",
+    "home": "La tua isola",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "unknown": "Non visitato",
+    "notUnlocked": "Non sbloccato",
+    "inCombat": "In combattimento..."
   }
 }
