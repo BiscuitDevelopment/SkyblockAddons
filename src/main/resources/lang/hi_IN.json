@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "हिन्दी",
   "settings": {
     "settings": "Settings",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Enchants",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Toggle developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
