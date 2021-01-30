@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "更容易的打开礼物",
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
-    "highlightMaxEnchantments": "高亮特殊附魔"
+    "highlightMaxEnchantments": "高亮特殊附魔",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "附魔",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "启用/禁用 开发者模式",
         "detailedHelp": {
-          "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "开发者模式已禁用！",
         "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "过载电容",
     "coutureRune": "时装符文",
     "bossesKilled": "Boss 击杀数"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
