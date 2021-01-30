@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Idioma: ",
   "language": "Português",
   "settings": {
     "settings": "Definições",
@@ -98,8 +98,8 @@
     "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar uma previsualização da Backpack para os teus itens enquanto estás na AH",
     "enableDevFeatures": "Mostrar opções de programador",
-    "chromaSpeed": "Velocidade do Chroma",
-    "chromaMode": "Modo da cor do chroma",
+    "chromaSpeed": "Velocidade do Croma",
+    "chromaMode": "Modo da cor do croma",
     "chromaModes": {
       "allTheSame": "Tudo na mesma cor",
       "fade": "Desvanecimento da cor"
@@ -130,7 +130,7 @@
     "disableEndermanTeleportation": "Desativar o teleporte dos Endermen",
     "changeZealotColor": "Mudar a cor dos Zealots",
     "hideSvenPupNametags": "Esconder o nome dos Sven Pups",
-    "turnAllFeaturesChroma": "Colocar todas as opções em chroma",
+    "turnAllFeaturesChroma": "Colocar todas as opções em croma",
     "dungeonMapDisplay": "Mostrar o mapa da Dungeon",
     "rotateMap": "Rodar o mapa de acordo com a orientação do jogador",
     "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
@@ -176,12 +176,12 @@
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
     "highlightMaxEnchantments": "Destacar encantamentos especiais",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
+    "disableEmptyGlassPanes": "Desativar painéis de vidro vazios",
+    "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
+    "healingCircleOpacity": "Opacidade do healing circle",
+    "chromaSize": "Tamanho do croma",
+    "chromaSaturation": "Saturação do croma",
+    "chromaBrightness": "Brilho do croma",
     "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
@@ -321,7 +321,7 @@
       "dev": {
         "help": "Ativar o modo de programador",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens."
         },
         "disabled": "Modo de programador desativado!",
         "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!"
@@ -439,12 +439,12 @@
     "bossesKilled": "Bosses derrotados"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Clica uma localização para viajares até lá!",
+    "mustUnlock": "Tens de ter o respetivo scroll desbloqueado.",
+    "home": "A tua ilha",
+    "spawn": "Origem",
+    "unknown": "Não visitado",
+    "notUnlocked": "Não desbloqueado",
+    "inCombat": "Em combate..."
   }
 }
