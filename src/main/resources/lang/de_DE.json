@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Deutsch",
   "settings": {
     "settings": "Einstellungen",
@@ -127,15 +128,15 @@
     "hideGreyEnchants": "Verstecke Graue Verzauberungen",
     "zealotCounterExplosiveBow": "Explosive-Bow-Unterstützung für den Zealot-Counter",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "changeZealotColor": "Ändere die Farbe von Zealots",
+    "hideSvenPupNametags": "Verstecke die Nametags von Sven Pups",
+    "turnAllFeaturesChroma": "Zeige alle Features in Chroma",
+    "dungeonMapDisplay": "Dungeonkartenanzeige",
     "rotateMap": "Rotate The Map With Your Player's Rotation",
     "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
     "mapZoom": "Karte vergrößern",
     "glowingDroppedItems": "Lass gedroppte Items leuchten",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "glowingDungeonTeammates": "Leuchtende Dungeon Teamkollegen",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
     "colorByRarity": "Farbe nach Seltenheit",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
@@ -145,11 +146,11 @@
     "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "stopBonzoStaffSounds": "Stoppt Bonzo Staff Geräusche",
     "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayertracker - Tarantula/Spinne",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "svenSlayerTracker": "Slayertracker - Sven/Wolf",
     "textMode": "Textmodus",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
     "dragonStatsTracker": "Drachen Tracker",
@@ -162,19 +163,26 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Delfin Haustier Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showExpertiseKills": "Expertisekills Anzeigen",
+    "dungeonsSecretsDisplay": "Dungeons Geheimnisse anzeigen",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
     "skillProgressBar": "Skill Progress Bar",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
+    "disableMortMessages": "Mort Nachrichten Deaktivieren",
+    "disableBossMessages": "Boss Nachrichten Deaktivieren",
     "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills",
+    "easierPresentOpening": "Einfacher Geschenke Öffnen",
+    "showSwordKills": "Zeige Schwert Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -221,10 +229,10 @@
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Größe der Balken ändern",
     "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "Erlaube Feature-Snapping",
     "stage": "Stufe %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenLink": "Klicke, um diesen Link zu öffnen!",
     "clickToOpenFolder": "Click to open your mods folder!",
     "firstStatus": "This status will appear at the top",
     "secondStatus": "This status will appear under your first status",
@@ -234,34 +242,34 @@
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Aktiviere alle",
     "disableAll": "Deaktiviere alle",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentInclusionExample": "z.B. \"prot, feather\"",
     "enchantmentExclusionExample": "z.B. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeInclusionExample": "z.B. \"godly, strong\"",
     "reforgeExclusionExample": "z.B. \"odd, clean\"",
     "actionsLeft": "%number% übrich",
     "effectActive": "1 Effekt aktiv",
-    "effectsActive": "%number% Effects Active",
+    "effectsActive": "%number% Effekte Aktiv",
     "none": "Keine",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
   },
   "discordStatus": {
     "titleNone": "Keine",
-    "descriptionNone": "No text is displayed",
+    "descriptionNone": "Es wird kein Text angezeigt",
     "titleLocation": "Ort",
-    "descriptionLocation": "Shows your current location",
+    "descriptionLocation": "Zeigt deine derzeitige Position",
     "titlePurse": "Geldbörse",
     "descriptionPurse": "Shows the amount of coins in your purse",
     "titleStats": "Stats",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
+    "descriptionZealots": "Zeigt deinen Zealot-Zähler",
     "titleItem": "Held Item",
     "descriptionItem": "Shows the name of the item you're holding",
     "titleProfile": "Profil",
-    "descriptionProfile": "Shows your Profile name",
+    "descriptionProfile": "Zeigt deinen Profil-Namen",
     "titleTime": "Skyblock-Zeit",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
+    "titleCustom": "Benutzerdefinierter Status",
     "descriptionCustom": "Enter a custom status",
     "titleAuto": "Automatischer Status",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
@@ -275,12 +283,12 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Hauptmenü öffnen"
       },
       "brand": {
         "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "brandOutput": "Servername: %brand%",
+        "notFound": "Servername nicht gefunden!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
@@ -311,18 +319,18 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Entwickler-Modus ein/aus",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
+        "disabled": "Entwicklermodus deaktiviert!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "GUI Locations bearbeiten"
       },
       "folder": {
-        "help": "Open your mods folder",
+        "help": "Mods-Ordner öffnen",
         "error": "An error occurred trying to open the mods folder: %s"
       },
       "help": {
@@ -340,7 +348,7 @@
             "description": "Manually sets counts in the zealot counter.",
             "options": {
               "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
+              "totalZealots": "Insgesamt getötete Zealots",
               "zealots": "Zealots killed since the last summoning eye drop"
             }
           },
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosse getötet"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
