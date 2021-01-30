@@ -321,7 +321,7 @@
       "dev": {
         "help": "Bật/Tắt chế độ dành cho Nhà Phát Triển (NPT)",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Lệnh này sẽ bật chế độ cho nhà phát triển. Thường được dùng bởi những nhà phát triển những bản mod/dụng cụ cho Skyblock. Lệnh này sẽ cho bạn dữ liệu gốc từ trò chơi, ví dụ như dữ liệu NBT của thực thể (entity) và vật phẩm."
         },
         "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
         "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!"
