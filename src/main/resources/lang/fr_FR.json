@@ -321,7 +321,7 @@
       "dev": {
         "help": "Activer le mode développeur",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
         },
         "disabled": "Mode développeur désactivé !",
         "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !"
