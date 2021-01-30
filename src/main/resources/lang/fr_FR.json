@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Français",
   "settings": {
     "settings": "Paramètres",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Ouvrir les cadeaux plus facilement",
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
-    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux"
+    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Activer le mode développeur",
         "detailedHelp": {
-          "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Mode développeur désactivé !",
         "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Boss tués"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
