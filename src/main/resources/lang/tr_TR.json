@@ -321,7 +321,7 @@
       "dev": {
         "help": "Geliştirici modunu aç",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Bu komut geliştirici modunu değiştirir. Bu mod Skyblock mods/araç geliştiricileri içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar."
         },
         "disabled": "Geliştirici modu kapatıldı!",
         "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
