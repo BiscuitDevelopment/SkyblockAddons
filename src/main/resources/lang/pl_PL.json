@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Polski",
   "settings": {
     "settings": "Ustawienia",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Łatwiejsze otwieranie prezentów",
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
-    "highlightMaxEnchantments": "Podświetl specjalne zaklęcia"
+    "highlightMaxEnchantments": "Podświetl specjalne zaklęcia",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Włącz tryb programisty",
         "detailedHelp": {
-          "description": "To polecenie włącza tryb programisty. Ten tryb jest przeznaczony dla deweloperów modów/narzędzi dla Skyblock. Dostarcza surowych danych z gry, takich jak tagi NBT przedmiotów i bytów."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Tryb programisty wyłączony!",
         "enabled": "Tryb programisty włączony! Kliknij „%keyName%”, aby skopiować dane NBT!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Liczba zabitych bossów"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
