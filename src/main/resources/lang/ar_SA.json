@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "العربية",
   "settings": {
     "settings": "الإعدادات",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "تسهيل فتح الهدايا",
     "showSwordKills": "إظهار قتلات السيف",
     "compactTabList": "قائمة الـTab المتراصة",
-    "highlightMaxEnchantments": "تمييز التطويرات الخاصة"
+    "highlightMaxEnchantments": "تمييز التطويرات الخاصة",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "تثبيت وضعية المطور",
         "detailedHelp": {
-          "description": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "وضع المطور معطل!",
         "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "الرئساء المقتولون"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
