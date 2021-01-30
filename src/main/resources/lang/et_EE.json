@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Eesti",
   "settings": {
     "settings": "Sätted",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Ava kingitusi kergemalt",
     "showSwordKills": "Näita mõõga tapmisi",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Pane spetsiaalsed loitsud välja paistma"
+    "highlightMaxEnchantments": "Pane spetsiaalsed loitsud välja paistma",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Lülita arendaja režiim sisse/välja",
         "detailedHelp": {
-          "description": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Arendaja režiim välja lülitatud!",
         "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Boss 'e tapetud"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
