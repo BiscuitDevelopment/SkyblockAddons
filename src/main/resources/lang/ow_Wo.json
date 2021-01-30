@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "OwO",
   "settings": {
     "settings": "Settings",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Opwen Pwesents Easiew",
     "showSwordKills": "Shwow Swowd Kwills",
     "compactTabList": "Cwompwact Twab Wist",
-    "highlightMaxEnchantments": "Highwight Spwscial Encwantments"
+    "highlightMaxEnchantments": "Highwight Spwscial Encwantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Enchants ^-^",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Twoggle dwevewopew mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Dewelower wode dwisabled!",
         "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Kiwwed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
