@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "suomi",
   "settings": {
     "settings": "Asetukset",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Avaa lahjat helpommin",
     "showSwordKills": "Näytä miekan tapot",
     "compactTabList": "Tiivis Tab-lista",
-    "highlightMaxEnchantments": "Korosta erikoislumoukset"
+    "highlightMaxEnchantments": "Korosta erikoislumoukset",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Kehittäjätyökalut päälle/pois",
         "detailedHelp": {
-          "description": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock modien/työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteettien ja esineiden NBT:t."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Kehittäjätila pois käytöstä!",
         "enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Johtajia tapettu"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
