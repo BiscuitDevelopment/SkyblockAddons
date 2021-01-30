@@ -176,12 +176,12 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightMaxEnchantments": "Highlight Speshul Enchantments",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
+    "disableEmptyGlassPanes": "Disable Empty Glas Panez",
+    "candyPointsCounter": "Spooky Event Candy/Points Countr",
+    "healingCircleOpacity": "Healin Circle Opacity",
     "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
+    "chromaSaturation": "Chroma Saturashun",
+    "chromaBrightness": "Chroma Brightnes",
     "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
@@ -321,7 +321,7 @@
       "dev": {
         "help": "Toggle developr mod",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez game data such as entity an item NBT."
         },
         "disabled": "Developr mode disabld!",
         "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
@@ -439,12 +439,12 @@
     "bossesKilled": "Bosez Killd"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
+    "click": "Click warp point 2 travel thar!",
+    "mustUnlock": "Must has teh specific scroll unlockd.",
+    "home": "Ur Island",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
+    "unknown": "Havent Visietd",
+    "notUnlocked": "Not Unlockd",
     "inCombat": "In Combat..."
   }
 }
