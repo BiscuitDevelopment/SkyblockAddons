@@ -321,7 +321,7 @@
       "dev": {
         "help": "Kehittäjätyökalut päälle/pois",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock modien/työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteettien ja esineiden NBT:t."
         },
         "disabled": "Kehittäjätila pois käytöstä!",
         "enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!"
