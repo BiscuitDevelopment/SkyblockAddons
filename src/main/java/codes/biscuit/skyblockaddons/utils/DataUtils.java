@@ -51,10 +51,11 @@ public class DataUtils {
      */
     public static void readLocalFileData() {
         SkyblockAddons main = SkyblockAddons.getInstance();
-
+        JsonReader jsonReader;
         // Enchanted Item Blacklist
         InputStream inputStream = DataUtils.class.getResourceAsStream("/enchantedItemLists.json");
-        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
+        jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)));
+        try {
             EnchantedItemPlacementBlocker.setItemLists(GSON.fromJson(jsonReader, EnchantedItemLists.class));
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!");
@@ -70,7 +71,8 @@ public class DataUtils {
 
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
-        try (JsonReader jsonReader =new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))) {
+        jsonReader =new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)));
+        try {
             main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while reading local data!");
