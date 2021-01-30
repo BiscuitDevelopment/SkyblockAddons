@@ -321,7 +321,7 @@
       "dev": {
         "help": "Lülita arendaja režiim sisse/välja",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info."
         },
         "disabled": "Arendaja režiim välja lülitatud!",
         "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!"
