@@ -277,7 +277,7 @@ public class RenderListener {
                 GlStateManager.scale(scale, scale, scale); // TODO Check if changing this scale breaks anything...
 
                 ManualChromaManager.renderingText(titleFeature);
-                mc.fontRendererObj.drawString(text, (float) (-mc.fontRendererObj.getStringWidth(text) / 2), -20.0F, main.getConfigValues().getColor(titleFeature), true);
+                DrawUtils.drawText(text, (float) (-mc.fontRendererObj.getStringWidth(text) / 2), -20.0F, main.getConfigValues().getColor(titleFeature));
                 ManualChromaManager.doneRenderingText();
 
                 GlStateManager.popMatrix();
@@ -321,8 +321,7 @@ public class RenderListener {
                 GlStateManager.scale(scale, scale, scale);  // TODO Check if changing this scale breaks anything...
 
                 ManualChromaManager.renderingText(subtitleFeature);
-                mc.fontRendererObj.drawString(text, -mc.fontRendererObj.getStringWidth(text) / 2F, -23.0F,
-                        main.getConfigValues().getColor(subtitleFeature), true);
+                DrawUtils.drawText(text, -mc.fontRendererObj.getStringWidth(text) / 2F, -23.0F, main.getConfigValues().getColor(subtitleFeature));
                 ManualChromaManager.doneRenderingText();
 
                 GlStateManager.popMatrix();
@@ -480,7 +479,7 @@ public class RenderListener {
         // It doesn't always work out nicely when using like custom textures though.
         if (fillWidth < maxWidth - 1 && fillWidth > 0 && main.getUtils().isUsingDefaultBarTextures()) {
             ColorUtils.bindColor(color.getColor(), 0.8F);
-            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 2, fillWidth, 2);
+            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 1, fillWidth, 2);
         }
     }
 
@@ -2028,17 +2027,19 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        EntityArmorStand powerOrbArmorStand;
-        if (buttonLocation != null) {
-            powerOrbArmorStand = getRadiantDummyArmorStand();
-        } else {
-            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        Entity entity = null;
+        if (PowerOrbManager.getInstance().getActivePowerOrb() != null && PowerOrbManager.getInstance().getActivePowerOrb().getUuid() != null) {
+            entity = Utils.getEntityByUUID(PowerOrbManager.getInstance().getActivePowerOrb().getUuid());
+        }
+
+        if (entity == null && buttonLocation != null) {
+            entity = getRadiantDummyArmorStand();
         }
 
         main.getUtils().enableStandardGLOptions();
 
-        if (powerOrbArmorStand != null) {
-            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        if (entity instanceof EntityArmorStand) {
+            drawPowerOrbArmorStand((EntityArmorStand) entity, x + 1, y + 4);
         } else {
             mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
@@ -2102,17 +2103,19 @@ public class RenderListener {
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
         }
 
-        EntityArmorStand powerOrbArmorStand;
-        if (buttonLocation != null) {
-            powerOrbArmorStand = getRadiantDummyArmorStand();
-        } else {
-            powerOrbArmorStand = PowerOrbManager.getInstance().getPowerOrbArmorStand();
+        Entity entity = null;
+        if (PowerOrbManager.getInstance().getActivePowerOrb() != null && PowerOrbManager.getInstance().getActivePowerOrb().getUuid() != null) {
+            entity = Utils.getEntityByUUID(PowerOrbManager.getInstance().getActivePowerOrb().getUuid());
+        }
+
+        if (entity == null && buttonLocation != null) {
+            entity = getRadiantDummyArmorStand();
         }
 
         main.getUtils().enableStandardGLOptions();
 
-        if (powerOrbArmorStand != null) {
-            drawPowerOrbArmorStand(powerOrbArmorStand, x + 1, y + 4);
+        if (entity instanceof EntityArmorStand) {
+            drawPowerOrbArmorStand((EntityArmorStand) entity, x + 1, y + 4);
         } else {
             mc.getTextureManager().bindTexture(powerOrb.getResourceLocation());
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, iconSize, iconSize, iconSize, iconSize);
@@ -2320,6 +2323,9 @@ public class RenderListener {
     }
 
     private void drawPowerOrbArmorStand(EntityArmorStand powerOrbArmorStand, float x, float y) {
+        float prevRenderYawOffset = powerOrbArmorStand.renderYawOffset;
+        float prevPrevRenderYawOffset = powerOrbArmorStand.prevRenderYawOffset;
+
         GlStateManager.pushMatrix();
 
         GlStateManager.enableDepth();
@@ -2353,6 +2359,9 @@ public class RenderListener {
         GlStateManager.setActiveTexture(OpenGlHelper.defaultTexUnit);
 
         GlStateManager.popMatrix();
+
+        powerOrbArmorStand.renderYawOffset = prevRenderYawOffset;
+        powerOrbArmorStand.prevRenderYawOffset = prevPrevRenderYawOffset;
     }
 
     private void drawEntity(EntityLivingBase entity, float x, float y, float yaw) {

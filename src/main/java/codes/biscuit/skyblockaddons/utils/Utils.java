@@ -7,8 +7,6 @@ import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -27,10 +25,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.scoreboard.Score;
-import net.minecraft.scoreboard.ScoreObjective;
-import net.minecraft.scoreboard.ScorePlayerTeam;
-import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.WorldSettings;
@@ -59,7 +53,6 @@ import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -214,26 +207,8 @@ public class Utils {
      * @return {@code true} if the player is on Hypixel, {@code false} otherwise
      */
     public boolean isOnHypixel() {
-        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
-        final String HYPIXEL_SERVER_BRAND = "Hypixel BungeeCord";
-
-        Minecraft mc = Minecraft.getMinecraft();
-
-        if (!mc.isSingleplayer() && mc.thePlayer.getClientBrand() != null) {
-            Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
-
-            if (matcher.find()) {
-                // Group 1 is the server brand.
-                return matcher.group(1).startsWith(HYPIXEL_SERVER_BRAND);
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
+        return ScoreboardManager.hasScoreboard() && ScoreboardManager.getStrippedScoreboardLines().contains("www.hypixel.net");
     }
-
-    private long lastFoundScoreboard = -1;
 
     public void parseSidebar() {
         boolean foundScoreboard = false;
@@ -245,172 +220,155 @@ public class Utils {
         boolean foundSlayerQuest = false;
         boolean foundBossAlive = false;
         boolean foundSkyblockTitle = false;
-        Minecraft mc = Minecraft.getMinecraft();
 
-        if (mc != null && mc.theWorld != null && !mc.isSingleplayer() && isOnHypixel()) {
-            Scoreboard scoreboard = mc.theWorld.getScoreboard();
-            ScoreObjective sidebarObjective = mc.theWorld.getScoreboard().getObjectiveInDisplaySlot(1);
+        if (isOnHypixel()) {
+            foundScoreboard = true;
 
-            if (sidebarObjective != null) {
-                foundScoreboard = true;
-                lastFoundScoreboard = System.currentTimeMillis();
-
-                String objectiveName = TextUtils.stripColor(sidebarObjective.getDisplayName());
-
-                for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
-                    if (objectiveName.startsWith(skyblock)) {
-                        foundSkyblockTitle = true;
-                        break;
-                    }
+            // Check title for skyblock
+            String strippedScoreboardTitle = ScoreboardManager.getStrippedScoreboardTitle();
+            for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
+                if (strippedScoreboardTitle.startsWith(skyblock)) {
+                    foundSkyblockTitle = true;
+                    break;
                 }
-
-                // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
-                // this indicates that he did so.
-                if (foundSkyblockTitle && !this.isOnSkyblock()) {
-                    MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
-                }
-
-                Collection<Score> scoreboardLines = scoreboard.getSortedScores(sidebarObjective);
-                List<Score> list = scoreboardLines.stream().filter(p_apply_1_ -> p_apply_1_.getPlayerName() != null && !p_apply_1_.getPlayerName().startsWith("#")).collect(Collectors.toList());
-                if (list.size() > 15) {
-                    scoreboardLines = Lists.newArrayList(Iterables.skip(list, scoreboardLines.size() - 15));
-                } else {
-                    scoreboardLines = list;
-                }
-
-                String timeString = null;
-                String dateString = null;
-
-                for (Score line : scoreboardLines) {
-
-                    ScorePlayerTeam scorePlayerTeam = scoreboard.getPlayersTeam(line.getPlayerName());
-                    String strippedUnformatted = TextUtils.keepScoreboardCharacters(TextUtils.stripColor(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, line.getPlayerName()))).trim();
-                    String strippedColored = TextUtils.keepScoreboardCharacters(ScorePlayerTeam.formatPlayerName(scorePlayerTeam, line.getPlayerName())).trim();
-
-                    if (strippedUnformatted.endsWith("am") || strippedUnformatted.endsWith("pm")) {
-                        timeString = strippedUnformatted;
-                    }
-
-                    if (strippedUnformatted.endsWith("st") || strippedUnformatted.endsWith("nd") || strippedUnformatted.endsWith("rd") || strippedUnformatted.endsWith("th")) {
-                        dateString = strippedUnformatted;
-                    }
-
-                    Matcher matcher = PURSE_REGEX.matcher(strippedUnformatted);
-                    if (matcher.matches()) {
-                        try {
-                            double oldCoins = purse;
-                            purse = Double.parseDouble(matcher.group("coins"));
-
-                            if (oldCoins != purse) {
-                                onCoinsChange(purse - oldCoins);
-                            }
-                        } catch (NumberFormatException ignored) {
-                            purse = 0;
-                        }
-                    }
-
-                    if ((matcher = SERVER_REGEX.matcher(strippedUnformatted)).find()) {
-                        String serverType = matcher.group("serverType");
-                        if (serverType.equals("m")) {
-                            serverID = "mini" + matcher.group("serverCode");
-                        } else if (serverType.equals("M")) {
-                            serverID = "mega" + matcher.group("serverCode");
-                        }
-                    }
-
-                    if (strippedUnformatted.endsWith("Combat XP") || strippedUnformatted.endsWith("Kills")) {
-                        parseSlayerProgress(strippedUnformatted);
-                    }
-
-                    if (!foundLocation) {
-                        // Catacombs contains the floor number so it's a special case...
-                        if (strippedUnformatted.contains(Location.THE_CATACOMBS.getScoreboardName())) {
-                            location = Location.THE_CATACOMBS;
-                            foundLocation = true;
-                        } else {
-                            for (Location loopLocation : Location.values()) {
-                                if (strippedUnformatted.endsWith(loopLocation.getScoreboardName())) {
-                                    if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                        sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                        fetchMagmaBossEstimate();
-                                    }
-
-                                    location = loopLocation;
-                                    foundLocation = true;
-                                    break;
-                                }
-                            }
-                        }
-                    }
-
-                    if (!foundJerryWave && (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND)) {
-                        if (strippedUnformatted.startsWith("Wave")) {
-                            foundJerryWave = true;
-
-                            int newJerryWave;
-                            try {
-                                newJerryWave = Integer.parseInt(TextUtils.keepIntegerCharactersOnly(strippedUnformatted));
-                            } catch (NumberFormatException ignored) {
-                                newJerryWave = 0;
-                            }
-                            if (jerryWave != newJerryWave) {
-                                jerryWave = newJerryWave;
-                            }
-                        }
-                    }
-
-                    if (!foundAlphaIP && strippedUnformatted.contains("alpha.hypixel.net")) {
-                        foundAlphaIP = true;
-                        alpha = true;
-                        profileName = "Alpha";
-                    }
-
-                    if (!foundInDungeon && strippedUnformatted.contains("Dungeon Cleared: ")) {
-                        foundInDungeon = true;
-                        inDungeon = true;
-
-                        String lastServer = main.getDungeonManager().getLastServerId();
-                        if (lastServer != null && !lastServer.equals(serverID)) {
-                            main.getDungeonManager().reset();
-                        }
-                        main.getDungeonManager().setLastServerId(serverID);
-                    }
-
-                    matcher = SLAYER_TYPE_REGEX.matcher(strippedUnformatted);
-                    if (matcher.matches()) {
-                        String type = matcher.group("type");
-                        String levelRomanNumeral = matcher.group("level");
-
-                        EnumUtils.SlayerQuest detectedSlayerQuest = EnumUtils.SlayerQuest.fromName(type);
-                        if (detectedSlayerQuest != null) {
-                            try {
-                                int level = RomanNumeralParser.parseNumeral(levelRomanNumeral);
-                                slayerQuest = detectedSlayerQuest;
-                                slayerQuestLevel = level;
-                                foundSlayerQuest = true;
-
-                            } catch (IllegalArgumentException ex) {
-                                ex.printStackTrace();
-                            }
-                        }
-                    }
-
-                    if (strippedUnformatted.equals("Slay the boss!")) {
-                        foundBossAlive = true;
-                        slayerBossAlive = true;
-                    }
-
-                    if (inDungeon) {
-                        try {
-                            main.getDungeonManager().updateDungeonPlayer(strippedColored);
-                        } catch (NumberFormatException ex) {
-                            logger.error("Failed to update a dungeon player from the line " + strippedColored + ".", ex);
-                        }
-                    }
-                }
-
-                currentDate = SkyblockDate.parse(dateString, timeString);
             }
+
+            // If it's a Skyblock scoreboard and the player has not joined Skyblock yet,
+            // this indicates that he did so.
+            if (foundSkyblockTitle && !this.isOnSkyblock()) {
+                MinecraftForge.EVENT_BUS.post(new SkyblockJoinedEvent());
+            }
+
+            String timeString = null;
+            String dateString = null;
+
+            for (int lineNumber = 0; lineNumber < ScoreboardManager.getNumberOfLines(); lineNumber++) {
+                String scoreboardLine = ScoreboardManager.getScoreboardLines().get(lineNumber);
+                String strippedScoreboardLine = ScoreboardManager.getStrippedScoreboardLines().get(lineNumber);
+
+                if (strippedScoreboardLine.endsWith("am") || strippedScoreboardLine.endsWith("pm")) {
+                    timeString = strippedScoreboardLine;
+                }
+
+                if (strippedScoreboardLine.endsWith("st") || strippedScoreboardLine.endsWith("nd") || strippedScoreboardLine.endsWith("rd") || strippedScoreboardLine.endsWith("th")) {
+                    dateString = strippedScoreboardLine;
+                }
+
+                Matcher matcher = PURSE_REGEX.matcher(strippedScoreboardLine);
+                if (matcher.matches()) {
+                    try {
+                        double oldCoins = purse;
+                        purse = Double.parseDouble(matcher.group("coins"));
+
+                        if (oldCoins != purse) {
+                            onCoinsChange(purse - oldCoins);
+                        }
+                    } catch (NumberFormatException ignored) {
+                        purse = 0;
+                    }
+                }
+
+                if ((matcher = SERVER_REGEX.matcher(strippedScoreboardLine)).find()) {
+                    String serverType = matcher.group("serverType");
+                    if (serverType.equals("m")) {
+                        serverID = "mini" + matcher.group("serverCode");
+                    } else if (serverType.equals("M")) {
+                        serverID = "mega" + matcher.group("serverCode");
+                    }
+                }
+
+                if (strippedScoreboardLine.endsWith("Combat XP") || strippedScoreboardLine.endsWith("Kills")) {
+                    parseSlayerProgress(strippedScoreboardLine);
+                }
+
+                if (!foundLocation) {
+                    // Catacombs contains the floor number so it's a special case...
+                    if (strippedScoreboardLine.contains(Location.THE_CATACOMBS.getScoreboardName())) {
+                        location = Location.THE_CATACOMBS;
+                        foundLocation = true;
+                    } else {
+                        for (Location loopLocation : Location.values()) {
+                            if (strippedScoreboardLine.endsWith(loopLocation.getScoreboardName())) {
+                                if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
+                                    sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
+                                    fetchMagmaBossEstimate();
+                                }
+
+                                location = loopLocation;
+                                foundLocation = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (!foundJerryWave && (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND)) {
+                    if (strippedScoreboardLine.startsWith("Wave")) {
+                        foundJerryWave = true;
+
+                        int newJerryWave;
+                        try {
+                            newJerryWave = Integer.parseInt(TextUtils.keepIntegerCharactersOnly(strippedScoreboardLine));
+                        } catch (NumberFormatException ignored) {
+                            newJerryWave = 0;
+                        }
+                        if (jerryWave != newJerryWave) {
+                            jerryWave = newJerryWave;
+                        }
+                    }
+                }
+
+                if (!foundAlphaIP && strippedScoreboardLine.contains("alpha.hypixel.net")) {
+                    foundAlphaIP = true;
+                    alpha = true;
+                    profileName = "Alpha";
+                }
+
+                if (!foundInDungeon && strippedScoreboardLine.contains("Dungeon Cleared: ")) {
+                    foundInDungeon = true;
+                    inDungeon = true;
+
+                    String lastServer = main.getDungeonManager().getLastServerId();
+                    if (lastServer != null && !lastServer.equals(serverID)) {
+                        main.getDungeonManager().reset();
+                    }
+                    main.getDungeonManager().setLastServerId(serverID);
+                }
+
+                matcher = SLAYER_TYPE_REGEX.matcher(strippedScoreboardLine);
+                if (matcher.matches()) {
+                    String type = matcher.group("type");
+                    String levelRomanNumeral = matcher.group("level");
+
+                    EnumUtils.SlayerQuest detectedSlayerQuest = EnumUtils.SlayerQuest.fromName(type);
+                    if (detectedSlayerQuest != null) {
+                        try {
+                            int level = RomanNumeralParser.parseNumeral(levelRomanNumeral);
+                            slayerQuest = detectedSlayerQuest;
+                            slayerQuestLevel = level;
+                            foundSlayerQuest = true;
+
+                        } catch (IllegalArgumentException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+
+                if (strippedScoreboardLine.equals("Slay the boss!")) {
+                    foundBossAlive = true;
+                    slayerBossAlive = true;
+                }
+
+                if (inDungeon) {
+                    try {
+                        main.getDungeonManager().updateDungeonPlayer(scoreboardLine);
+                    } catch (NumberFormatException ex) {
+                        logger.error("Failed to update a dungeon player from the line " + scoreboardLine + ".", ex);
+                    }
+                }
+            }
+
+            currentDate = SkyblockDate.parse(dateString, timeString);
         }
         if (!foundLocation) {
             location = Location.UNKNOWN;
@@ -438,7 +396,7 @@ public class Utils {
 
             // Check if we found a scoreboard in general. If not, its possible they are switching worlds.
             // If we don't find a scoreboard for 10s, then we know they actually left the server.
-            if (foundScoreboard || System.currentTimeMillis() - lastFoundScoreboard > 10000) {
+            if (foundScoreboard || System.currentTimeMillis() - ScoreboardManager.getLastFoundScoreboard() > 10000) {
                 MinecraftForge.EVENT_BUS.post(new SkyblockLeftEvent());
             }
         }
@@ -909,5 +867,19 @@ public class Utils {
             inputStream.close();
         }
         return bytes;
+    }
+
+    public static Entity getEntityByUUID(UUID uuid) {
+        if (uuid == null) {
+            return null;
+        }
+
+        for (Entity entity : Minecraft.getMinecraft().theWorld.loadedEntityList) {
+            if (entity.getUniqueID().equals(uuid)) {
+                return entity;
+            }
+        }
+
+        return null;
     }
 }

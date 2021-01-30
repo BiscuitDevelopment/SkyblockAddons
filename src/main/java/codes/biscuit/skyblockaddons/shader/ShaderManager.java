@@ -2,13 +2,7 @@ package codes.biscuit.skyblockaddons.shader;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
-import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.renderer.WorldRenderer;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
 
-import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,12 +11,13 @@ public class ShaderManager {
 
     @Getter public static final ShaderManager instance = new ShaderManager();
 
-    private ByteBuffer dataBuffer = BufferUtils.createByteBuffer(1_000); // TODO Make this larger when it actually gets used
-    private int vertexArrayObject = ShaderHelper.getInstance().glGenVertexArrays();
-    private int vertexBufferObject = ShaderHelper.getInstance().glGenBuffers();
+    // TODO Disable this code until there is a shader that actually uses a custom pipeline
+//    private ByteBuffer dataBuffer = BufferUtils.createByteBuffer(1_000);
+//    private int vertexArrayObject = ShaderHelper.getInstance().glGenVertexArrays();
+//    private int vertexBufferObject = ShaderHelper.getInstance().glGenBuffers();
 
-    private FloatBuffer projectionMatrixBuffer = BufferUtils.createFloatBuffer(16);
-    private FloatBuffer modelViewMatrixBuffer = BufferUtils.createFloatBuffer(16);
+//    private FloatBuffer projectionMatrixBuffer = BufferUtils.createFloatBuffer(16);
+//    private FloatBuffer modelViewMatrixBuffer = BufferUtils.createFloatBuffer(16);
 
     private Map<Class<? extends Shader>, Shader> shaders = new HashMap<>();
     private Class<? extends Shader> activeShaderType;
@@ -88,22 +83,23 @@ public class ShaderManager {
             return false;
         }
 
+        // TODO Disable this code until there is a shader that actually uses a custom pipeline
         // Copy world renderer buffer...
-        WorldRenderer worldRenderer = Tessellator.getInstance().getWorldRenderer();
-        ByteBuffer worldRendererBuffer = worldRenderer.getByteBuffer();
+//        WorldRenderer worldRenderer = Tessellator.getInstance().getWorldRenderer();
+//        ByteBuffer worldRendererBuffer = worldRenderer.getByteBuffer();
 
         // Update buffer data
-        ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
-        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
-        ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, worldRendererBuffer, ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
+//        ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
+//        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
+//        ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, worldRendererBuffer, ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
 
         // Render
-        ShaderHelper.getInstance().glBindVertexArray(vertexArrayObject);
-        GL11.glDrawArrays(GL11.GL_QUADS, 0, worldRenderer.getVertexCount());
+//        ShaderHelper.getInstance().glBindVertexArray(vertexArrayObject);
+//        GL11.glDrawArrays(GL11.GL_QUADS, 0, worldRenderer.getVertexCount());
 
         // Finish
-        ShaderHelper.getInstance().glBindVertexArray(0);
-        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
+//        ShaderHelper.getInstance().glBindVertexArray(0);
+//        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
         return true;
     }
 

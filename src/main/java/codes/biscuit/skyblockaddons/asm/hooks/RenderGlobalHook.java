@@ -85,8 +85,7 @@ public class RenderGlobalHook {
                 isShadersValue = (boolean) isShaders.invoke(null);
                 isAntialiasingValue = (boolean) isAntialiasing.invoke(null);
             } catch (IllegalAccessException | InvocationTargetException ex) {
-                logger.warn("An error occurred while calling Optifine methods for entity outlines...");
-                logger.catching(ex);
+                logger.warn("An error occurred while calling Optifine methods for entity outlines...", ex);
             }
         }
 

@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.shader;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.shader.ShaderLinkHelper;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.OpenGLException;
@@ -54,34 +53,36 @@ public abstract class Shader {
                     + ShaderHelper.getInstance().glGetProgramInfoLog(program, 32768));
         }
 
+        // TODO Disable this code until there is a shader that actually uses a custom pipeline
         // If the vertex format is null we are using the fixed pipeline instead
-        if (!isUsingFixedPipeline()) {
+//        if (!isUsingFixedPipeline()) {
             // Set up VAOs & VBOs
-            ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
-            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
-//              ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getDataBuffer(), ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
-            ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, Tessellator.getInstance().getWorldRenderer().getByteBuffer(), ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
+//            ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
+//            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
+            // or ShaderManager.getInstance().getDataBuffer()
+//            ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, Tessellator.getInstance().getWorldRenderer().getByteBuffer(), ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
 
-            int stride = vertexFormat.getVertexFormatElements().stream().mapToInt(VertexFormatElement::getTotalSize).sum();
-            int index = 0;
-            int bufferOffset = 0;
-            for (VertexFormatElement bufferElementType : vertexFormat.getVertexFormatElements()) {
-                ShaderHelper.getInstance().glEnableVertexAttribArray(index);
-                ShaderHelper.getInstance().glVertexAttribPointer(index, bufferElementType.getCount(), bufferElementType.getElementType().getGlType(),
-                        bufferElementType.getElementType().isNormalize(), stride, bufferOffset);
-                index++;
-                bufferOffset += bufferElementType.getTotalSize();
-            }
-        }
+//            int stride = vertexFormat.getVertexFormatElements().stream().mapToInt(VertexFormatElement::getTotalSize).sum();
+//            int index = 0;
+//            int bufferOffset = 0;
+//            for (VertexFormatElement bufferElementType : vertexFormat.getVertexFormatElements()) {
+//                ShaderHelper.getInstance().glEnableVertexAttribArray(index);
+//                ShaderHelper.getInstance().glVertexAttribPointer(index, bufferElementType.getCount(), bufferElementType.getElementType().getGlType(),
+//                        bufferElementType.getElementType().isNormalize(), stride, bufferOffset);
+//                index++;
+//                bufferOffset += bufferElementType.getTotalSize();
+//            }
+//        }
 
         // Add uniforms
         this.registerUniforms();
 
-        if (!isUsingFixedPipeline()) {
+        // TODO Disable this code until there is a shader that actually uses a custom pipeline
+//        if (!isUsingFixedPipeline()) {
             // Unbind all
-            ShaderHelper.getInstance().glBindVertexArray(0);
-            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
-        }
+//            ShaderHelper.getInstance().glBindVertexArray(0);
+//            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
+//        }
     }
 
     protected void registerUniforms() {

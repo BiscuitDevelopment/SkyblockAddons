@@ -28,7 +28,7 @@ public class WorldVertexBufferUploaderTransformer implements ITransformer {
                         .startCode()
                             .callStaticMethod("codes/biscuit/skyblockaddons/asm/hooks/WorldVertexBufferUploaderHook", "onRenderWorldRendererBuffer", "()Z")
                             .startIfEqual()
-                                .rеturn()
+                                .reeturn()
                             .endIf()
                         .endCode()
 

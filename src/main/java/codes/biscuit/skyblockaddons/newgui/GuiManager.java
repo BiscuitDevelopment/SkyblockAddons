@@ -15,6 +15,8 @@ public class GuiManager {
     private GuiBase focused;
 
     public void render() {
+        if (true) return;
+
         openGuis.clear();
         new ChronomatronGui().openAsOverlay();
 

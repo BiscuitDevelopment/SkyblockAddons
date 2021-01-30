@@ -169,7 +169,7 @@ public class InstructionBuilder {
 
     // Return
     @SuppressWarnings("SpellCheckingInspection")
-    public InstructionBuilder rеturn() { // TODO Does returning in a void method work?
+    public InstructionBuilder reeturn() { // TODO Does returning in a void method work?
         // TODO Do we need to pop the variable for void or?
         if (this.currentType != VariableType.VOID && this.currentType != VariableType.getTypeFromDescriptor(this.methodNode.desc)) {
             throw new IllegalArgumentException("This type of variable cannot be returned for this method!");

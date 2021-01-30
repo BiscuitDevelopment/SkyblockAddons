@@ -16,6 +16,6 @@ public enum DragonsSince {
     @Getter private ItemRarity itemRarity;
 
     public String getDisplayName() {
-        return Translations.getMessage("dragonTracker." +  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, this.name()));
+        return Translations.getMessage("dragonTracker." +  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, this.name()));
     }
 }

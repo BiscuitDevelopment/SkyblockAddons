@@ -473,6 +473,8 @@ public class PlayerListener {
 
             if (mc != null) { // Predict health every tick if needed.
 
+                ScoreboardManager.tick();
+
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
                     actionBarParser.setHealthUpdate(null);
                 }

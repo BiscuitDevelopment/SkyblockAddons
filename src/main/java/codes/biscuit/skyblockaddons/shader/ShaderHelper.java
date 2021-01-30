@@ -39,29 +39,29 @@ public class ShaderHelper {
 
         ContextCapabilities capabilities = GLContext.getCapabilities();
 
-        // Check OpenGL 3.3
-        boolean openGL33Supported = capabilities.OpenGL33;
+        // Check OpenGL 3.0
+        boolean openGL33Supported = capabilities.OpenGL30;
         vaosSupported = openGL33Supported || capabilities.GL_ARB_vertex_array_object;
         infoBuilder.append("VAOs are ").append(vaosSupported ? "" : "not ").append("available. ");
         if (vaosSupported) {
-            if (capabilities.OpenGL33) {
-                infoBuilder.append("OpenGL 3.3 is supported. ");
+            if (capabilities.OpenGL30) {
+                infoBuilder.append("OpenGL 3.0 is supported. ");
                 usingARBVaos = false;
             } else {
                 infoBuilder.append("GL_ARB_vertex_array_object is supported. ");
                 usingARBVaos = true;
             }
         } else {
-            infoBuilder.append("OpenGL 3.3 is not supported and GL_ARB_vertex_array_object is not supported. ");
+            infoBuilder.append("OpenGL 3.0 is not supported and GL_ARB_vertex_array_object is not supported. ");
         }
 
-        // Check OpenGL 2.1
-        boolean openGL21Supported = capabilities.OpenGL21;
+        // Check OpenGL 2.0
+        boolean openGL21Supported = capabilities.OpenGL20;
         shadersSupported = openGL21Supported || capabilities.GL_ARB_vertex_shader && capabilities.GL_ARB_fragment_shader && capabilities.GL_ARB_shader_objects;
         infoBuilder.append("Shaders are ").append(shadersSupported ? "" : "not ").append("available. ");
         if (shadersSupported) {
-            if (capabilities.OpenGL21) {
-                infoBuilder.append("OpenGL 2.1 is supported. ");
+            if (capabilities.OpenGL20) {
+                infoBuilder.append("OpenGL 2.0 is supported. ");
                 usingARBShaders = false;
                 GL_LINK_STATUS = GL20.GL_LINK_STATUS;
                 GL_COMPILE_STATUS = GL20.GL_COMPILE_STATUS;
@@ -76,7 +76,7 @@ public class ShaderHelper {
                 GL_FRAGMENT_SHADER = ARBFragmentShader.GL_FRAGMENT_SHADER_ARB;
             }
         } else {
-            infoBuilder.append("OpenGL 2.1 is not supported and ARB_shader_objects, ARB_vertex_shader, and ARB_fragment_shader are not supported. ");
+            infoBuilder.append("OpenGL 2.0 is not supported and ARB_shader_objects, ARB_vertex_shader, and ARB_fragment_shader are not supported. ");
         }
 
         // Check OpenGL 1.5

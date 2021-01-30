@@ -51,7 +51,7 @@ public class EntityRendererTransformer implements ITransformer {
                             .startIfEqual()
                                 // return 1.0F;
                                 .constantValue(1.0F)
-                                .rеturn()
+                                .reeturn()
                             // }
                             .endIf()
                             .endCode()
