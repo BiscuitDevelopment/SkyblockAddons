@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Italiano",
   "settings": {
     "settings": "Impostazioni",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Apri i regali più facilmente",
     "showSwordKills": "Mostra uccisioni con spada",
     "compactTabList": "Lista giocatori compatta",
-    "highlightMaxEnchantments": "Evidenzia gli incantesimi speciali"
+    "highlightMaxEnchantments": "Evidenzia gli incantesimi speciali",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Attiva/Disattiva modalità sviluppatore",
         "detailedHelp": {
-          "description": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati grezzi dal gioco come entità ed elementi NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Modalità sviluppatore disabilitata!",
         "enabled": "Modalità sviluppatore abilitata! SUGGERIMENTO: Premi \"%keyName%\" per copiare i dati NBT!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Boss Uccisi"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
