@@ -62,9 +62,11 @@ public class DataUtils {
 
         // Item Map
         inputStream = DataUtils.class.getResourceAsStream("/itemMap.json");
-        jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)));
-
-        ItemUtils.itemMap = GSON.fromJson(jsonReader, ItemMap.class);
+        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
+            ItemUtils.itemMap = GSON.fromJson(jsonReader, ItemMap.class);
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading local item map!");
+        }
 
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
