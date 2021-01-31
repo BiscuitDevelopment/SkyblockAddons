@@ -1,4 +1,5 @@
 {
+  "languageText": "Langue: ",
   "language": "Français",
   "settings": {
     "settings": "Paramètres",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Ouvrir les cadeaux plus facilement",
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
-    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux"
+    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux",
+    "disableEmptyGlassPanes": "Désactiver les vitres vides",
+    "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
+    "healingCircleOpacity": "Opacité du cercle de soin",
+    "chromaSize": "Taille Chroma",
+    "chromaSaturation": "Saturation Chroma",
+    "chromaBrightness": "Luminosité Chroma",
+    "useShadersForChroma": "Utiliser les shaders pour chroma"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Boss tués"
+  },
+  "warpMenu": {
+    "click": "Cliquez sur un point de téléportation pour vous y rendre!",
+    "mustUnlock": "Doit avoir le scroll spécifique déverrouillé.",
+    "home": "Votre Île",
+    "spawn": "Spawn",
+    "unknown": "Pas visité",
+    "notUnlocked": "Non débloqué",
+    "inCombat": "En combat..."
   }
 }

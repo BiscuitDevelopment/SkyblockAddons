@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Tiếng Việt",
   "settings": {
     "settings": "Cài Đặt",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Mở Quà Dễ hơn",
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
-    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt"
+    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Số trùm Đã giết"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }

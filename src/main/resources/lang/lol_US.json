@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "LOLCAT",
   "settings": {
     "settings": "Settings",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Open Prezints Easir",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Speshul Enchantments"
+    "highlightMaxEnchantments": "Highlight Speshul Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glas Panez",
+    "candyPointsCounter": "Spooky Event Candy/Points Countr",
+    "healingCircleOpacity": "Healin Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturashun",
+    "chromaBrightness": "Chroma Brightnes",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Enchants",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Toggle developr mod",
         "detailedHelp": {
-          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez raw data frum the game such as entity an item NBT."
+          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez game data such as entity an item NBT."
         },
         "disabled": "Developr mode disabld!",
         "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosez Killd"
+  },
+  "warpMenu": {
+    "click": "Click warp point 2 travel thar!",
+    "mustUnlock": "Must has teh specific scroll unlockd.",
+    "home": "Ur Island",
+    "spawn": "Spawn",
+    "unknown": "Havent Visietd",
+    "notUnlocked": "Not Unlockd",
+    "inCombat": "In Combat..."
   }
 }

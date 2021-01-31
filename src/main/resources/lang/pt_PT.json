@@ -1,4 +1,5 @@
 {
+  "languageText": "Idioma: ",
   "language": "Português",
   "settings": {
     "settings": "Definições",
@@ -97,8 +98,8 @@
     "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar uma previsualização da Backpack para os teus itens enquanto estás na AH",
     "enableDevFeatures": "Mostrar opções de programador",
-    "chromaSpeed": "Velocidade do Chroma",
-    "chromaMode": "Modo da cor do chroma",
+    "chromaSpeed": "Velocidade do Croma",
+    "chromaMode": "Modo da cor do croma",
     "chromaModes": {
       "allTheSame": "Tudo na mesma cor",
       "fade": "Desvanecimento da cor"
@@ -129,7 +130,7 @@
     "disableEndermanTeleportation": "Desativar o teleporte dos Endermen",
     "changeZealotColor": "Mudar a cor dos Zealots",
     "hideSvenPupNametags": "Esconder o nome dos Sven Pups",
-    "turnAllFeaturesChroma": "Colocar todas as opções em chroma",
+    "turnAllFeaturesChroma": "Colocar todas as opções em croma",
     "dungeonMapDisplay": "Mostrar o mapa da Dungeon",
     "rotateMap": "Rodar o mapa de acordo com a orientação do jogador",
     "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Abrir presentes mais facilmente",
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
-    "highlightMaxEnchantments": "Destacar encantamentos especiais"
+    "highlightMaxEnchantments": "Destacar encantamentos especiais",
+    "disableEmptyGlassPanes": "Desativar painéis de vidro vazios",
+    "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
+    "healingCircleOpacity": "Opacidade do healing circle",
+    "chromaSize": "Tamanho do croma",
+    "chromaSaturation": "Saturação do croma",
+    "chromaBrightness": "Brilho do croma",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses derrotados"
+  },
+  "warpMenu": {
+    "click": "Clica uma localização para viajares até lá!",
+    "mustUnlock": "Tens de ter o respetivo scroll desbloqueado.",
+    "home": "A tua ilha",
+    "spawn": "Origem",
+    "unknown": "Não visitado",
+    "notUnlocked": "Não desbloqueado",
+    "inCombat": "Em combate..."
   }
 }

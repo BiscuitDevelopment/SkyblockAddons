@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Nederlands",
   "settings": {
     "settings": "Instellingen",
@@ -131,8 +132,8 @@
     "hideSvenPupNametags": "Svenpupnaamkaartjes verbergen",
     "turnAllFeaturesChroma": "Alle functies Chroma maken",
     "dungeonMapDisplay": "Dungeonkaartweergave",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Kaart draaien op basis van spelersoriëntatie",
+    "centerRotationOnYourPlayer": "Rotatie centreren rond je speler",
     "mapZoom": "Kaartzoom",
     "glowingDroppedItems": "Voorwerpen laten gloeien",
     "glowingDungeonTeammates": "Dungeonteamgenoten laten gloeien",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Cadeaus makkelijker uitpakken",
     "showSwordKills": "Kills met zwaard tonen",
     "compactTabList": "Compacte spelerslijst",
-    "highlightMaxEnchantments": "Speciale betoveringen markeren"
+    "highlightMaxEnchantments": "Speciale betoveringen markeren",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bazen gedood"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }

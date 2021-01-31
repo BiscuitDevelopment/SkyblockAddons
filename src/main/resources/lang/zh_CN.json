@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -41,10 +42,10 @@
     "itemPickupLog": "物品拾取记录",
     "avoidPlacingEnchantedItems": "阻止放置附魔物品",
     "avoidBreakingStems": "阻止破坏作西瓜梗与南瓜梗",
-    "stopBowChargeFromResetting": "弓在命中生物时不需要重新拉弓",
+    "stopBowChargeFromResetting": "阻止拉弓进度重置",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
-    "lockSlots": "锁定快捷栏",
+    "lockSlots": "允许锁定物品栏中的物品",
     "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止打开菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
@@ -66,7 +67,7 @@
     "changeBarColorForPotions": "凋零/中毒 时更改生命条颜色",
     "craftingPatterns": "选择合成样式",
     "soundIndicatorForFishing": "钓鱼声音指示",
-    "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
+    "avoidBlinkingNightVision": "夜视耗尽时禁用闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
     "jungleAxeCooldown": "阻止在冷却时使用丛林斧/Treecapitator",
     "organizeLongEnchantmentLists": "整理长版附魔列表",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "更容易的打开礼物",
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
-    "highlightMaxEnchantments": "高亮特殊附魔"
+    "highlightMaxEnchantments": "高亮特殊附魔",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "附魔",
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "过载电容",
     "coutureRune": "时装符文",
     "bossesKilled": "Boss 击杀数"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }

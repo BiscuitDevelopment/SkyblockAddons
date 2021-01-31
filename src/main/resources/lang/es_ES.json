@@ -1,4 +1,5 @@
 {
+  "languageText": "Idioma: ",
   "language": "Español (España)",
   "settings": {
     "settings": "Opciones",
@@ -139,7 +140,7 @@
     "baseStatBoostPercentage": "Mostrar Potenciador Base para Objetos de Dungeon",
     "colorByRarity": "Color por Rareza",
     "showPlayerHeadsOnMap": "Mostrar Cabezas de Jugadores en el Mapa de Dungeons",
-    "showHealingCircleWall": "Mostrar Healing Circle Wall de Dungeon",
+    "showHealingCircleWall": "Mostrar Círculo de Sanación de Dungeon",
     "showCriticalTeammates": "Mostrar Compañeros de Dungeon en Estado Crítico",
     "showGlowingItemsOnIsland": "Hacer Que los Objetos Brillan en la Isla",
     "showItemDungeonFloor": "Mostrar el Piso Donde se Obtuvo el Objeto de Dungeon",
@@ -174,7 +175,14 @@
     "easierPresentOpening": "Abrir Regalos Más Fácilmente",
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Tab Compacta",
-    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales"
+    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales",
+    "disableEmptyGlassPanes": "Deshabilitar Paneles de Cristal Vacíos",
+    "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
+    "healingCircleOpacity": "Opacidad del Círculo de Sanación",
+    "chromaSize": "Tamaño del Croma",
+    "chromaSaturation": "Saturación del Croma",
+    "chromaBrightness": "Brillo del Croma",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -313,7 +321,7 @@
       "dev": {
         "help": "Activar modo desarrollador",
         "detailedHelp": {
-          "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos crudos del juego como NBT de entidad y objetos."
+          "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos del juego como NBT de entidad y objetos."
         },
         "disabled": "¡Modo desarrollador desactivado!",
         "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"
+  },
+  "warpMenu": {
+    "click": "¡Haz clic en un punto de teletransporte para viajar allí!",
+    "mustUnlock": "Debes tener el scroll específico desbloqueado.",
+    "home": "Tú Isla",
+    "spawn": "Spawn",
+    "unknown": "No Visitado",
+    "notUnlocked": "No Desbloqueado",
+    "inCombat": "En Combate..."
   }
 }

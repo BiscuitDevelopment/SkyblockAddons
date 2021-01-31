@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "العربية",
   "settings": {
     "settings": "الإعدادات",
@@ -131,8 +132,8 @@
     "hideSvenPupNametags": "اخفاء اسماء جراء سفين",
     "turnAllFeaturesChroma": "تشغيل جميع الميزات Chroma",
     "dungeonMapDisplay": "عرض خريطة الدنجن",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "تدوير الخريطة حسب دوران اللاعب الخاص بك",
+    "centerRotationOnYourPlayer": "تمركز الدوران حول اللاعب",
     "mapZoom": "تكبير الخريطة",
     "glowingDroppedItems": "توهج الادوات المسقطه",
     "glowingDungeonTeammates": "توهج فريق الدنجنز",
@@ -173,8 +174,15 @@
     "hideOtherPlayersPresents": "إخفاء هداية الأخرين",
     "easierPresentOpening": "تسهيل فتح الهدايا",
     "showSwordKills": "إظهار قتلات السيف",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "قائمة الـTab المتراصة",
+    "highlightMaxEnchantments": "تمييز التطويرات الخاصة",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -275,108 +283,108 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "فتح القائمة الرئيسية"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7إظهار نوع الخادم",
+        "brandOutput": "العلامة التجارية للخادم: %brand%",
+        "notFound": "لم يتم العثور على العلامة التجارية للخادم!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e§(Dev) 7نسخ بيانات NBT للأشياء من معطيات الاسم(اء) داخل نصف القطر حول اللاعب",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "اسماء انواع الأشياء الذي تريد نصخ البيانات (مثل لاعب، كريبر). اضغط على \"Tab\" بعد كتابة الأمر للقائمة كاملة. افصل أسماء متعدده بفواصل، الأسماء حساسة لحالة الأحرف.",
+            "radius": "المجال في البلوكات حول اللاعب لنسخ بياناتNBT منه"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7نسخ نص لوحة النتائج.",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "ينسخ النص المعرض في الـscoreboard القائمة الجانبية",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "يحدد اذا ينبغي تضمين رموز الألوان عند النسخ. يمكن أن بكون إما \"صحيح\" او \"خطأ\"، الافتراضي هو \"خطأ\" إذا لم يتم توفير أي قيمة. يتم نسخ رموز الألوان إذا \"صحيح\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7نسخ الهامش العلوي والسفلي في التاب",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "هذا الأمر ينسج الهامش العلوي والسفلي من تاب اللاعب. شفرات التنسيق متضمنة."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "تثبيت وضعية المطور",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "وضع المطور معطل!",
+        "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "تحرير أماكن الواجهة"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "افتح مجلد المودات الخاص بك",
+        "error": "حدث خطأ اثناء محاولة فتح ملف المودات: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "إظهار رسالة المساعدة هذه. إذا تم توفير أمر ، يتم عرض مساعدة مفصلة حول هذا الأمر.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "الأمر الفرعي للحصول على الاستخدام المفصل لـه"
           }
         }
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "عيّن عدد الزيلوت يدوياً",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "يضع العد في عداد الزيلوتس يدوياً.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "عدد عيون الأستدعاء في حياتك",
+              "totalZealots": "الزيلوتس الذي قتلوا في حياتك",
+              "zealots": "الزيلوتس الذي قتلوا منذ آخر عين استدعاء"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "وضع عدد استدعاء العين الكلي إلى %number%!",
+          "totalZealotsSet": "وضع مجموع الزيلوتس الكلي إلى %number%!",
+          "wrongUsage": "اختيار غير صالح! الرجاء اختيار %options%.",
+          "zealotsSet": "وضع عدد الزيلوتس الحالي إلى %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", أو \"Wolf\"",
+            "number": "رقم لوضع الاحصائية الى",
+            "stat": "احصائية السلاير للتغير, قد يكون \"kills\" او اسم الغرض المسقوط منسق هكذا: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "يجب أن تضع Boss! الرجاء اختيار %bosses%",
+        "statRequired": "يجب تضع إحصائية. إضعط tab لأعدادات أكثر.",
+        "numberRequired": "يجب ان تضع الرقم الذي تريده.",
+        "killsSet": "القتلات للـSlayer %boss% وضعت الى %number%.",
+        "statSet": "احصائية %stat% للـSlayer %boss% وضع الى %number%.",
+        "invalidBoss": "\"%input%\" ليس احصائية حقيقية!",
+        "invalidStat": "\"%input%\" ليس Boss حقيقي!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7إشغال تسجيل شريط إجراءات الرسائل",
+        "disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
+        "enabled": "سيتم الآن تسجيل رسائل شريط العمل."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "استخدام خاطئ!",
+          "subCommandNotFound": "لم يتم العثور على الأمر الفرعي \"%sub-command%\"."
         }
       }
     }
@@ -429,5 +437,14 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "الرئساء المقتولون"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
   }
 }
