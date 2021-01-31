@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.core.seacreatures;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.ConnectUtils;
 import codes.biscuit.skyblockaddons.utils.DataUtils;
 import com.google.gson.reflect.TypeToken;
@@ -16,6 +17,9 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
 
+import static codes.biscuit.skyblockaddons.core.ItemRarity.LEGENDARY;
+
+
 public class SeaCreatureManager {
 
     private static final SeaCreatureManager INSTANCE = new SeaCreatureManager();
@@ -28,22 +32,36 @@ public class SeaCreatureManager {
         pullSeaCreatures();
     }
 
+    /**
+     * Populate sea creature information from local and online sources
+     */
     private void pullSeaCreatures() {
         InputStream localStream = DataUtils.class.getResourceAsStream("/seaCreatures.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(localStream, StandardCharsets.UTF_8)))) {
             seaCreatures = SkyblockAddons.getGson().fromJson(jsonReader, new TypeToken<Map<String, SeaCreature>>() {}.getType());
+
+            for (SeaCreature sc : seaCreatures.values()) {
+                allSeaCreatureSpawnMessages.add(sc.getSpawnMessage());
+                if (sc.getRarity() == LEGENDARY) {
+                    legendarySeaCreatureSpawnMessages.add(sc.getSpawnMessage());
+                }
+            }
+
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while reading local sea creatures!");
         }
 
+        // Assume online asset has most up-to-date information
         ConnectUtils.get("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/fishing/seaCreatures.json", onlineStream -> {
             try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(onlineStream, StandardCharsets.UTF_8)))) {
                 seaCreatures = SkyblockAddons.getGson().fromJson(jsonReader, new TypeToken<Map<String, SeaCreature>>() {}.getType());
+                allSeaCreatureSpawnMessages.clear();
+                legendarySeaCreatureSpawnMessages.clear();
 
-                for (Map.Entry<String, SeaCreature> entry : seaCreatures.entrySet()) {
-                    allSeaCreatureSpawnMessages.add(entry.getValue().getSpawnMessage());
-                    if (SkyblockAddons.getInstance().getOnlineData().getLegendarySeaCreatures().contains(entry.getKey())) {
-                        legendarySeaCreatureSpawnMessages.add(entry.getValue().getSpawnMessage());
+                for (SeaCreature sc : seaCreatures.values()) {
+                    allSeaCreatureSpawnMessages.add(sc.getSpawnMessage());
+                    if (sc.getRarity() == LEGENDARY) {
+                        legendarySeaCreatureSpawnMessages.add(sc.getSpawnMessage());
                     }
                 }
             } catch (Exception ex) {
