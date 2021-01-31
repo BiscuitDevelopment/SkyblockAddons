@@ -7,7 +7,7 @@
   "SEA_WALKER": {
     "name": "Sea Walker",
     "rarity": "COMMON",
-    "spawnMessage": "From the depths of the waters, you've reeled in a Sea Walker."
+    "spawnMessage": "You caught a Sea Walker."
   },
   "NIGHT_SQUID": {
     "name": "Night Squid",
@@ -52,7 +52,7 @@
   "SEA_ARCHER":  {
     "name": "Sea Archer",
     "rarity": "UNCOMMON",
-    "spawnMessage": "From the depths of the waters, you've reeled in a Sea Archer."
+    "spawnMessage": "You reeled in a Sea Archer."
   },
   "MONSTER_OF_THE_DEEP":  {
     "name": "Monster of The Deep",
@@ -89,8 +89,8 @@
     "rarity": "EPIC",
     "spawnMessage": "You've discovered a Guardian Defender of the sea."
   },
-  "WAREWOLF":  {
-    "name": "Warewolf",
+  "WEREWOLF":  {
+    "name": "Werewolf",
     "rarity": "EPIC",
     "spawnMessage":  "It must be a full moon, it's a Werewolf!"
   },
