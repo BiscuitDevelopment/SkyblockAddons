@@ -38,7 +38,7 @@ public class EntityRendererHook {
         }
 
         if (!GuiScreen.isCtrlKeyDown() && isUseKeyDown && main.getConfigValues().isEnabled(Feature.IGNORE_ITEM_FRAME_CLICKS)) {
-            list.removeIf(listEntity -> listEntity instanceof EntityItemFrame &&
+            list.removeIf(listEntity -> listEntity instanceof EntityItemFrame && !main.getUtils().isInDungeon() &&
                     (((EntityItemFrame)listEntity).getDisplayedItem() != null || Minecraft.getMinecraft().thePlayer.getHeldItem() == null));
         }
 

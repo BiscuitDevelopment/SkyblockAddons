@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
@@ -280,7 +281,8 @@ public class GuiContainerHook {
 
     public static boolean onHandleMouseClick(Slot slot, int slotId, int clickedButton, int clickType) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(slot.getStack());
+        return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(slot.getStack()) &&
+                main.getUtils().isOnSkyblock() && !main.getUtils().isInDungeon() && main.getInventoryUtils().getInventoryType() != InventoryType.ULTRASEQUENCER;
     }
 
     public static void setFreezeBackpack(boolean freezeBackpack) {

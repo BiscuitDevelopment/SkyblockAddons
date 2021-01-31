@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -40,6 +41,11 @@ public class GuiScreenHook {
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(itemStack)) {
+            return true;
+        }
+
+        // TODO: Make this a feature?
+        if (main.getInventoryUtils().getInventoryType() == InventoryType.ULTRASEQUENCER) {
             return true;
         }
 
