@@ -44,8 +44,9 @@ public class GuiScreenHook {
             return true;
         }
 
-        // TODO: Make this a feature?
-        if (main.getInventoryUtils().getInventoryType() == InventoryType.ULTRASEQUENCER) {
+        if (main.getConfigValues().isDisabled(Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS) &&
+                (main.getInventoryUtils().getInventoryType() == InventoryType.ULTRASEQUENCER ||
+                main.getInventoryUtils().getInventoryType() == InventoryType.CHRONOMATRON)) {
             return true;
         }
 

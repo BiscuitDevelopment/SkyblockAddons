@@ -19,7 +19,8 @@ public enum InventoryType {
     BAKER("Baker", "Baker"),
     CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
     SALVAGING("Salvage Dungeon Item", "Salvage Dungeon Item"),
-    ULTRASEQUENCER("Ultrasequencer", "Ultrasequencer \\((?<type>[a-zA-Z]+)\\)");
+    ULTRASEQUENCER("Ultrasequencer", "Ultrasequencer \\((?<type>[a-zA-Z]+)\\)"),
+    CHRONOMATRON("Chronomatron", "Chronomatron \\((?<type>[a-zA-Z]+)\\)");
 
     @Getter
     private final String inventoryName;

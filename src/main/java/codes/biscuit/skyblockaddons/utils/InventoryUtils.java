@@ -369,7 +369,6 @@ public class InventoryUtils {
 
         for (InventoryType inventoryType : InventoryType.values()) {
             if (inventoryType.getInventoryPattern().matcher(inventory.getDisplayName().getUnformattedText()).matches()) {
-                SkyblockAddons.getLogger().info(inventoryType.getInventoryName());
                 if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                     return this.inventoryType = getReforgeInventoryType(inventoryType, inventory);
 

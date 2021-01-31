@@ -22,6 +22,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemStack;
@@ -828,6 +829,10 @@ public class Utils {
     public boolean isEmptyGlassPane(ItemStack itemStack) {
         return itemStack != null && (itemStack.getItem() == Item.getItemFromBlock(Blocks.stained_glass_pane)
                 || itemStack.getItem() == Item.getItemFromBlock(Blocks.glass_pane)) && itemStack.hasDisplayName() && TextUtils.stripColor(itemStack.getDisplayName().trim()).isEmpty();
+    }
+
+    public boolean isGlassPaneColor(ItemStack itemStack, EnumDyeColor color) {
+        return itemStack != null && itemStack.getMetadata() == color.getMetadata();
     }
 
     public static float getPartialTicks() {

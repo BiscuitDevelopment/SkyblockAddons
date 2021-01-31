@@ -170,6 +170,7 @@ public enum Feature {
     CANDY_POINTS_COUNTER(155, "settings.candyPointsCounter", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
     HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
     USE_SHADERS_FOR_CHROMA(157, "settings.useShadersForChroma", null, false),
+    SHOW_EXPERIMENTATION_TABLE_TOOLTIPS(158, "settings.showExperimentationTableTooltips", null, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),

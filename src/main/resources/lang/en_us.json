@@ -182,7 +182,8 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useShadersForChroma": "Use Shaders For Chroma",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips"
   },
   "messages": {
     "enchants": "Enchants",

@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import lombok.Getter;
+import net.minecraft.block.BlockStainedGlassPane;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -20,6 +21,7 @@ import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
@@ -279,10 +281,14 @@ public class GuiContainerHook {
         }
     }
 
+    /**
+     * This method returns true to CANCEL the click in a GUI (lol I get confused)
+     */
     public static boolean onHandleMouseClick(Slot slot, int slotId, int clickedButton, int clickType) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(slot.getStack()) &&
-                main.getUtils().isOnSkyblock() && !main.getUtils().isInDungeon() && main.getInventoryUtils().getInventoryType() != InventoryType.ULTRASEQUENCER;
+        return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) &&
+                main.getUtils().isEmptyGlassPane(slot.getStack()) && main.getUtils().isOnSkyblock() && !main.getUtils().isInDungeon() &&
+                (main.getInventoryUtils().getInventoryType() != InventoryType.ULTRASEQUENCER || main.getUtils().isGlassPaneColor(slot.getStack(), EnumDyeColor.BLACK));
     }
 
     public static void setFreezeBackpack(boolean freezeBackpack) {
