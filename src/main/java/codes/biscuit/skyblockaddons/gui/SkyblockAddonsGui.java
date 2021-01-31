@@ -28,6 +28,7 @@ import java.net.URI;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class SkyblockAddonsGui extends GuiScreen {
 
@@ -82,7 +83,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         }
 
         // Add the buttons for each page.
-        List<Feature> features = new LinkedList<>();
+        TreeSet<Feature> features = new TreeSet<>(Comparator.comparing(Feature::getMessage));
         for (Feature feature : tab != EnumUtils.GuiTab.GENERAL_SETTINGS ? Sets.newHashSet(Feature.values()) : Feature.getGeneralTabFeatures()) {
             if ((feature.isActualFeature() || tab == EnumUtils.GuiTab.GENERAL_SETTINGS) && !main.getConfigValues().isRemoteDisabled(feature)) { // Don't add disabled features yet
                 if (matchesSearch(feature.getMessage())) { // Matches search.
@@ -98,8 +99,6 @@ public class SkyblockAddonsGui extends GuiScreen {
                 }
             }
         }
-
-        features.sort(Comparator.comparing(Feature::getMessage));
 
         if (tab != EnumUtils.GuiTab.GENERAL_SETTINGS) {
             for (Feature feature : Feature.values())
