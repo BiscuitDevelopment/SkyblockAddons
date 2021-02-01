@@ -86,7 +86,7 @@ public class GuiScreenHook {
                 containerPreview.setX(x);
                 containerPreview.setY(y);
                 if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
-                    lastBackpackFreezeKey = Minecraft.getSystemTime();
+                    lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
                     main.getUtils().setContainerPreviewToRender(containerPreview);
                 }
