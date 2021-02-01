@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Kieli: ",
   "language": "suomi",
   "settings": {
     "settings": "Asetukset",
@@ -178,10 +178,10 @@
     "highlightMaxEnchantments": "Korosta erikoislumoukset",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
+    "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
+    "chromaSize": "Väriefektin koko",
+    "chromaSaturation": "Väriefektin kylläisyys",
+    "chromaBrightness": "Väriefektin kirkkaus",
     "useShadersForChroma": "Use Shaders For Chroma"
   },
   "messages": {
@@ -439,12 +439,12 @@
     "bossesKilled": "Johtajia tapettu"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "Paina siirtymispistettä matkustaaksesi sinne!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
+    "home": "Oma saari",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "notUnlocked": "Ei avattu",
+    "inCombat": "Taistelussa..."
   }
 }
