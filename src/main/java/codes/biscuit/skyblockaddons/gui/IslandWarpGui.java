@@ -237,7 +237,7 @@ public class IslandWarpGui extends GuiScreen {
         THE_BARN("The Barn", 1223, 782),
         HUB("Hub", 215, 724),
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
-        PRIVATE_ISLAND("Private Island", 216, 1122),
+        PRIVATE_ISLAND(Translations.getMessage("warpMenu.privateIsland"), 216, 1122),
         DUNGEON_HUB("Dungeon Hub", 1200, 1100),
         ;
 
