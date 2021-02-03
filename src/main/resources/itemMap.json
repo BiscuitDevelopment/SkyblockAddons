@@ -1,528 +1,612 @@
 {
-  "items": {
+  "compactorItems": {
     "ENCHANTED_ACACIA_LOG": {
-      "itemid": "log2",
-      "displayname": "§aEnchanted Acacia Wood",
-      "ench": true
+      "itemId": "log2",
+      "displayName": "§aEnchanted Acacia Wood",
+      "enchanted": true
     },
     "ENCHANTED_ANCIENT_CLAW": {
-      "itemid": "flint",
-      "displayname": "§5Enchanted Ancient Claw",
-      "ench": true
+      "itemId": "flint",
+      "displayName": "§5Enchanted Ancient Claw",
+      "enchanted": true
     },
     "ENCHANTED_BAKED_POTATO": {
-      "itemid": "baked_potato",
-      "displayname": "§aEnchanted Baked Potato",
-      "ench": true
+      "itemId": "baked_potato",
+      "displayName": "§aEnchanted Baked Potato",
+      "enchanted": true
     },
     "ENCHANTED_BIRCH_LOG": {
-      "itemid": "log:2",
-      "displayname": "§aEnchanted Birch Wood",
-      "ench": true
+      "itemId": "log:2",
+      "displayName": "§aEnchanted Birch Wood",
+      "enchanted": true
     },
     "ENCHANTED_BLAZE_POWDER": {
-      "itemid": "blaze_powder",
-      "displayname": "§aEnchanted Blaze Powder",
-      "ench": true
+      "itemId": "blaze_powder",
+      "displayName": "§aEnchanted Blaze Powder",
+      "enchanted": true
     },
     "ENCHANTED_BLAZE_ROD": {
-      "itemid": "blaze_rod",
-      "displayname": "§aEnchanted Blaze Rod",
-      "ench": true
+      "itemId": "blaze_rod",
+      "displayName": "§aEnchanted Blaze Rod",
+      "enchanted": true
     },
     "ENCHANTED_BONE": {
-      "itemid": "bone",
-      "displayname": "§fEnchanted Bone",
-      "ench": true
+      "itemId": "bone",
+      "displayName": "§fEnchanted Bone",
+      "enchanted": true
     },
     "ENCHANTED_BONE_BLOCK": {
-      "itemid": "quartz_block",
-      "displayname": "§9Enchanted Bone Block",
-      "ench": true
+      "itemId": "quartz_block",
+      "displayName": "§9Enchanted Bone Block",
+      "enchanted": true
     },
     "ENCHANTED_BREAD": {
-      "itemid": "bread",
-      "displayname": "§fEnchanted Bread",
-      "ench": true
+      "itemId": "bread",
+      "displayName": "§fEnchanted Bread",
+      "enchanted": true
     },
     "ENCHANTED_BROWN_MUSHROOM": {
-      "itemid": "brown_mushroom",
-      "displayname": "§fEnchanted Brown Mushroom",
-      "ench": true
+      "itemId": "brown_mushroom",
+      "displayName": "§fEnchanted Brown Mushroom",
+      "enchanted": true
     },
     "ENCHANTED_CACTUS_GREEN": {
-      "itemid": "dye:2",
-      "displayname": "§aEnchanted Cactus Green",
-      "ench": true
+      "itemId": "dye:2",
+      "displayName": "§aEnchanted Cactus Green",
+      "enchanted": true
     },
     "ENCHANTED_CARROT": {
-      "itemid": "carrot",
-      "displayname": "§aEnchanted Carrot",
-      "ench": true
+      "itemId": "carrot",
+      "displayName": "§aEnchanted Carrot",
+      "enchanted": true
     },
     "ENCHANTED_CLAY_BALL": {
-      "itemid": "clay_ball",
-      "displayname": "§aEnchanted Clay",
-      "ench": true
+      "itemId": "clay_ball",
+      "displayName": "§aEnchanted Clay",
+      "enchanted": true
     },
     "ENCHANTED_CLOWNFISH": {
-      "itemid": "fish:2",
-      "displayname": "§aEnchanted Clownfish",
-      "ench": true
+      "itemId": "fish:2",
+      "displayName": "§aEnchanted Clownfish",
+      "enchanted": true
     },
     "ENCHANTED_COAL": {
-      "itemid": "coal",
-      "displayname": "§aEnchanted Coal",
-      "ench": true
+      "itemId": "coal",
+      "displayName": "§aEnchanted Coal",
+      "enchanted": true
     },
     "ENCHANTED_COAL_BLOCK": {
-      "itemid": "coal_block",
-      "displayname": "§9Enchanted Block of Coal",
-      "ench": true
+      "itemId": "coal_block",
+      "displayName": "§9Enchanted Block of Coal",
+      "enchanted": true
     },
     "ENCHANTED_COBBLESTONE": {
-      "itemid": "cobblestone",
-      "displayname": "§aEnchanted Cobblestone",
-      "ench": true
+      "itemId": "cobblestone",
+      "displayName": "§aEnchanted Cobblestone",
+      "enchanted": true
     },
     "ENCHANTED_COCOA": {
-      "itemid": "dye:3",
-      "displayname": "§aEnchanted Cocoa Bean",
-      "ench": true
+      "itemId": "dye:3",
+      "displayName": "§aEnchanted Cocoa Bean",
+      "enchanted": true
     },
     "ENCHANTED_COOKED_FISH": {
-      "itemid": "cooked_fish",
-      "displayname": "§9Enchanted Cooked Fish",
-      "ench": true
+      "itemId": "cooked_fish",
+      "displayName": "§9Enchanted Cooked Fish",
+      "enchanted": true
     },
     "ENCHANTED_COOKED_MUTTON": {
-      "itemid": "cooked_mutton",
-      "displayname": "§9Enchanted Cooked Mutton",
-      "ench": true
+      "itemId": "cooked_mutton",
+      "displayName": "§9Enchanted Cooked Mutton",
+      "enchanted": true
     },
     "ENCHANTED_COOKED_SALMON": {
-      "itemid": "cooked_fish:1",
-      "displayname": "§9Enchanted Cooked Salmon",
-      "ench": true
+      "itemId": "cooked_fish:1",
+      "displayName": "§9Enchanted Cooked Salmon",
+      "enchanted": true
     },
     "ENCHANTED_DANDELION": {
-      "itemid": "yellow_flower",
-      "displayname": "§aEnchanted Dandelion",
-      "ench": true
+      "itemId": "yellow_flower",
+      "displayName": "§aEnchanted Dandelion",
+      "enchanted": true
     },
     "ENCHANTED_DARK_OAK_LOG": {
-      "itemid": "log2:1",
-      "displayname": "§aEnchanted Dark Oak Wood",
-      "ench": true
+      "itemId": "log2:1",
+      "displayName": "§aEnchanted Dark Oak Wood",
+      "enchanted": true
     },
     "ENCHANTED_DIAMOND": {
-      "itemid": "diamond",
-      "displayname": "§aEnchanted Diamond",
-      "ench": true
+      "itemId": "diamond",
+      "displayName": "§aEnchanted Diamond",
+      "enchanted": true
     },
     "ENCHANTED_DIAMOND_BLOCK": {
-      "itemid": "diamond_block",
-      "displayname": "§9Enchanted Diamond Block",
-      "ench": true
+      "itemId": "diamond_block",
+      "displayName": "§9Enchanted Diamond Block",
+      "enchanted": true
     },
     "ENCHANTED_EGG": {
-      "itemid": "egg",
-      "displayname": "§9Enchanted Egg",
-      "ench": true
+      "itemId": "egg",
+      "displayName": "§9Enchanted Egg",
+      "enchanted": true
     },
     "ENCHANTED_EMERALD": {
-      "itemid": "emerald",
-      "displayname": "§aEnchanted Emerald",
-      "ench": true
+      "itemId": "emerald",
+      "displayName": "§aEnchanted Emerald",
+      "enchanted": true
     },
     "ENCHANTED_EMERALD_BLOCK": {
-      "itemid": "emerald_block",
-      "displayname": "§9Enchanted Emerald Block",
-      "ench": true
+      "itemId": "emerald_block",
+      "displayName": "§9Enchanted Emerald Block",
+      "enchanted": true
     },
     "ENCHANTED_ENDER_PEARL": {
-      "itemid": "ender_pearl",
-      "displayname": "§aEnchanted Ender Pearl",
-      "ench": true
+      "itemId": "ender_pearl",
+      "displayName": "§aEnchanted Ender Pearl",
+      "enchanted": true
     },
     "ENCHANTED_ENDSTONE": {
-      "itemid": "end_stone",
-      "displayname": "§fEnchanted End Stone",
-      "ench": true
+      "itemId": "end_stone",
+      "displayName": "§fEnchanted End Stone",
+      "enchanted": true
     },
     "ENCHANTED_FEATHER": {
-      "itemid": "feather",
-      "displayname": "§aEnchanted Feather",
-      "ench": true
+      "itemId": "feather",
+      "displayName": "§aEnchanted Feather",
+      "enchanted": true
     },
     "ENCHANTED_FERMENTED_SPIDER_EYE": {
-      "itemid": "fermented_spider_eye",
-      "displayname": "§aEnchanted Fermented Spider Eye",
-      "ench": true
+      "itemId": "fermented_spider_eye",
+      "displayName": "§aEnchanted Fermented Spider Eye",
+      "enchanted": true
     },
     "ENCHANTED_FLINT": {
-      "itemid": "flint",
-      "displayname": "§aEnchanted Flint",
-      "ench": true
+      "itemId": "flint",
+      "displayName": "§aEnchanted Flint",
+      "enchanted": true
     },
     "ENCHANTED_GHAST_TEAR": {
-      "itemid": "ghast_tear",
-      "displayname": "§aEnchanted Ghast Tear",
-      "ench": true
+      "itemId": "ghast_tear",
+      "displayName": "§aEnchanted Ghast Tear",
+      "enchanted": true
     },
     "ENCHANTED_GLISTERING_MELON": {
-      "itemid": "speckled_melon",
-      "displayname": "§9Enchanted Glistering Melon",
-      "ench": true
+      "itemId": "speckled_melon",
+      "displayName": "§9Enchanted Glistering Melon",
+      "enchanted": true
     },
     "ENCHANTED_GLOWSTONE": {
-      "itemid": "glowstone",
-      "displayname": "§aEnchanted Glowstone",
-      "ench": true
+      "itemId": "glowstone",
+      "displayName": "§aEnchanted Glowstone",
+      "enchanted": true
     },
     "ENCHANTED_GLOWSTONE_DUST": {
-      "itemid": "glowstone_dust",
-      "displayname": "§aEnchanted Glowstone Dust",
-      "ench": true
+      "itemId": "glowstone_dust",
+      "displayName": "§aEnchanted Glowstone Dust",
+      "enchanted": true
     },
     "ENCHANTED_GOLD": {
-      "itemid": "gold_ingot",
-      "displayname": "§aEnchanted Gold",
-      "ench": true
+      "itemId": "gold_ingot",
+      "displayName": "§aEnchanted Gold",
+      "enchanted": true
     },
     "ENCHANTED_GOLD_BLOCK": {
-      "itemid": "gold_block",
-      "displayname": "§9Enchanted Gold Block",
-      "ench": true
+      "itemId": "gold_block",
+      "displayName": "§9Enchanted Gold Block",
+      "enchanted": true
     },
     "ENCHANTED_GRILLED_PORK": {
-      "itemid": "cooked_porkchop",
-      "displayname": "§9Enchanted Grilled Pork",
-      "ench": true
+      "itemId": "cooked_porkchop",
+      "displayName": "§9Enchanted Grilled Pork",
+      "enchanted": true
     },
     "ENCHANTED_GUNPOWDER": {
-      "itemid": "gunpowder",
-      "displayname": "§aEnchanted Gunpowder",
-      "ench": true
+      "itemId": "gunpowder",
+      "displayName": "§aEnchanted Gunpowder",
+      "enchanted": true
     },
     "ENCHANTED_HAY_BLOCK": {
-      "itemid": "hay_block",
-      "displayname": "§aEnchanted Hay Bale",
-      "ench": true
+      "itemId": "hay_block",
+      "displayName": "§aEnchanted Hay Bale",
+      "enchanted": true
     },
     "ENCHANTED_HUGE_MUSHROOM_1": {
-      "itemid": "brown_mushroom_block",
-      "displayname": "§fEnchanted Brown Mushroom Block",
-      "ench": true
+      "itemId": "brown_mushroom_block",
+      "displayName": "§fEnchanted Brown Mushroom Block",
+      "enchanted": true
     },
     "ENCHANTED_HUGE_MUSHROOM_2": {
-      "itemid": "red_mushroom_block",
-      "displayname": "§fEnchanted Red Mushroom Block",
-      "ench": true
+      "itemId": "red_mushroom_block",
+      "displayName": "§fEnchanted Red Mushroom Block",
+      "enchanted": true
     },
     "ENCHANTED_ICE": {
-      "itemid": "ice",
-      "displayname": "§aEnchanted Ice",
-      "ench": true
+      "itemId": "ice",
+      "displayName": "§aEnchanted Ice",
+      "enchanted": true
     },
     "ENCHANTED_INK_SACK": {
-      "itemid": "dye:0",
-      "displayname": "§aEnchanted Ink Sack",
-      "ench": true
+      "itemId": "dye:0",
+      "displayName": "§aEnchanted Ink Sack",
+      "enchanted": true
     },
     "ENCHANTED_IRON": {
-      "itemid": "iron_ingot",
-      "displayname": "§aEnchanted Iron",
-      "ench": true
+      "itemId": "iron_ingot",
+      "displayName": "§aEnchanted Iron",
+      "enchanted": true
     },
     "ENCHANTED_IRON_BLOCK": {
-      "itemid": "iron_block",
-      "displayname": "§9Enchanted Iron Block",
-      "ench": true
+      "itemId": "iron_block",
+      "displayName": "§9Enchanted Iron Block",
+      "enchanted": true
     },
     "ENCHANTED_JUNGLE_LOG": {
-      "itemid": "log:3",
-      "displayname": "§aEnchanted Jungle Wood",
-      "ench": true
+      "itemId": "log:3",
+      "displayName": "§aEnchanted Jungle Wood",
+      "enchanted": true
     },
     "ENCHANTED_LAPIS_LAZULI": {
-      "itemid": "dye:4",
-      "displayname": "§aEnchanted Lapis Lazuli",
-      "ench": true
+      "itemId": "dye:4",
+      "displayName": "§aEnchanted Lapis Lazuli",
+      "enchanted": true
     },
     "ENCHANTED_LAPIS_LAZULI_BLOCK": {
-      "itemid": "lapis_block",
-      "displayname": "§9Enchanted Lapis Block",
-      "ench": true
+      "itemId": "lapis_block",
+      "displayName": "§9Enchanted Lapis Block",
+      "enchanted": true
     },
     "ENCHANTED_LEATHER": {
-      "itemid": "leather",
-      "displayname": "§aEnchanted Leather",
-      "ench": true
+      "itemId": "leather",
+      "displayName": "§aEnchanted Leather",
+      "enchanted": true
     },
     "ENCHANTED_MAGMA_CREAM": {
-      "itemid": "magma_cream",
-      "displayname": "§aEnchanted Magma Cream",
-      "ench": true
+      "itemId": "magma_cream",
+      "displayName": "§aEnchanted Magma Cream",
+      "enchanted": true
     },
     "ENCHANTED_MELON": {
-      "itemid": "melon",
-      "displayname": "§aEnchanted Melon",
-      "ench": true
+      "itemId": "melon",
+      "displayName": "§aEnchanted Melon",
+      "enchanted": true
     },
     "ENCHANTED_MELON_BLOCK": {
-      "itemid": "melon_block",
-      "displayname": "§9Enchanted Melon Block",
-      "ench": true
+      "itemId": "melon_block",
+      "displayName": "§9Enchanted Melon Block",
+      "enchanted": true
     },
     "ENCHANTED_MITHRIL": {
-      "itemid": "prismarine_crystals",
-      "displayname": "§9Enchanted Mithril",
-      "ench": true
+      "itemId": "prismarine_crystals",
+      "displayName": "§9Enchanted Mithril",
+      "enchanted": true
     },
     "ENCHANTED_MUTTON": {
-      "itemid": "mutton",
-      "displayname": "§aEnchanted Mutton",
-      "ench": true
+      "itemId": "mutton",
+      "displayName": "§aEnchanted Mutton",
+      "enchanted": true
     },
     "ENCHANTED_NETHER_STALK": {
-      "itemid": "nether_wart",
-      "displayname": "§aEnchanted Nether Wart",
-      "ench": true
+      "itemId": "nether_wart",
+      "displayName": "§aEnchanted Nether Wart",
+      "enchanted": true
     },
     "ENCHANTED_OAK_LOG": {
-      "itemid": "log",
-      "displayname": "§aEnchanted Oak Wood",
-      "ench": true
+      "itemId": "log",
+      "displayName": "§aEnchanted Oak Wood",
+      "enchanted": true
     },
     "ENCHANTED_OBSIDIAN": {
-      "itemid": "obsidian",
-      "displayname": "§aEnchanted Obsidian",
-      "ench": true
+      "itemId": "obsidian",
+      "displayName": "§aEnchanted Obsidian",
+      "enchanted": true
     },
     "ENCHANTED_PACKED_ICE": {
-      "itemid": "packed_ice",
-      "displayname": "§9Enchanted Packed Ice",
-      "ench": true
+      "itemId": "packed_ice",
+      "displayName": "§9Enchanted Packed Ice",
+      "enchanted": true
     },
     "ENCHANTED_PAPER": {
-      "itemid": "paper",
-      "displayname": "§aEnchanted Paper",
-      "ench": true
+      "itemId": "paper",
+      "displayName": "§aEnchanted Paper",
+      "enchanted": true
     },
     "ENCHANTED_POISONOUS_POTATO": {
-      "itemid": "poisonous_potato",
-      "displayname": "§aEnchanted Poisonous Potato",
-      "ench": true
+      "itemId": "poisonous_potato",
+      "displayName": "§aEnchanted Poisonous Potato",
+      "enchanted": true
     },
     "ENCHANTED_POPPY": {
-      "itemid": "red_flower",
-      "displayname": "§aEnchanted Poppy",
-      "ench": true
+      "itemId": "red_flower",
+      "displayName": "§aEnchanted Poppy",
+      "enchanted": true
     },
     "ENCHANTED_PORK": {
-      "itemid": "porkchop",
-      "displayname": "§aEnchanted Pork",
-      "ench": true
+      "itemId": "porkchop",
+      "displayName": "§aEnchanted Pork",
+      "enchanted": true
     },
     "ENCHANTED_POTATO": {
-      "itemid": "potato",
-      "displayname": "§aEnchanted Potato",
-      "ench": true
+      "itemId": "potato",
+      "displayName": "§aEnchanted Potato",
+      "enchanted": true
     },
     "ENCHANTED_PRISMARINE_CRYSTALS": {
-      "itemid": "prismarine_crystals",
-      "displayname": "§aEnchanted Prismarine Crystals",
-      "ench": true
+      "itemId": "prismarine_crystals",
+      "displayName": "§aEnchanted Prismarine Crystals",
+      "enchanted": true
     },
     "ENCHANTED_PRISMARINE_SHARD": {
-      "itemid": "prismarine_shard",
-      "displayname": "§aEnchanted Prismarine Shard",
-      "ench": true
+      "itemId": "prismarine_shard",
+      "displayName": "§aEnchanted Prismarine Shard",
+      "enchanted": true
     },
     "ENCHANTED_PUFFERFISH": {
-      "itemid": "fish:3",
-      "displayname": "§aEnchanted Pufferfish",
-      "ench": true
+      "itemId": "fish:3",
+      "displayName": "§aEnchanted Pufferfish",
+      "enchanted": true
     },
     "ENCHANTED_PUMPKIN": {
-      "itemid": "pumpkin",
-      "displayname": "§aEnchanted Pumpkin",
-      "ench": true
+      "itemId": "pumpkin",
+      "displayName": "§aEnchanted Pumpkin",
+      "enchanted": true
     },
     "ENCHANTED_QUARTZ": {
-      "itemid": "quartz",
-      "displayname": "§aEnchanted Quartz",
-      "ench": true
+      "itemId": "quartz",
+      "displayName": "§aEnchanted Quartz",
+      "enchanted": true
     },
     "ENCHANTED_QUARTZ_BLOCK": {
-      "itemid": "quartz_block",
-      "displayname": "§9Enchanted Quartz Block",
-      "ench": true
+      "itemId": "quartz_block",
+      "displayName": "§9Enchanted Quartz Block",
+      "enchanted": true
     },
     "ENCHANTED_RABBIT": {
-      "itemid": "rabbit",
-      "displayname": "§aEnchanted Raw Rabbit",
-      "ench": true
+      "itemId": "rabbit",
+      "displayName": "§aEnchanted Raw Rabbit",
+      "enchanted": true
     },
     "ENCHANTED_RABBIT_FOOT": {
-      "itemid": "rabbit_foot",
-      "displayname": "§9Enchanted Rabbit Foot",
-      "ench": true
+      "itemId": "rabbit_foot",
+      "displayName": "§9Enchanted Rabbit Foot",
+      "enchanted": true
     },
     "ENCHANTED_RABBIT_HIDE": {
-      "itemid": "rabbit_hide",
-      "displayname": "§9Enchanted Rabbit Hide",
-      "ench": true
+      "itemId": "rabbit_hide",
+      "displayName": "§9Enchanted Rabbit Hide",
+      "enchanted": true
     },
     "ENCHANTED_RAW_BEEF": {
-      "itemid": "beef",
-      "displayname": "§aEnchanted Raw Beef",
-      "ench": true
+      "itemId": "beef",
+      "displayName": "§aEnchanted Raw Beef",
+      "enchanted": true
     },
     "ENCHANTED_RAW_CHICKEN": {
-      "itemid": "chicken",
-      "displayname": "§aEnchanted Raw Chicken",
-      "ench": true
+      "itemId": "chicken",
+      "displayName": "§aEnchanted Raw Chicken",
+      "enchanted": true
     },
     "ENCHANTED_RAW_FISH": {
-      "itemid": "fish",
-      "displayname": "§aEnchanted Raw Fish",
-      "ench": true
+      "itemId": "fish",
+      "displayName": "§aEnchanted Raw Fish",
+      "enchanted": true
     },
     "ENCHANTED_RAW_SALMON": {
-      "itemid": "fish:1",
-      "displayname": "§aEnchanted Raw Salmon",
-      "ench": true
+      "itemId": "fish:1",
+      "displayName": "§aEnchanted Raw Salmon",
+      "enchanted": true
     },
     "ENCHANTED_REDSTONE": {
-      "itemid": "redstone",
-      "displayname": "§aEnchanted Redstone",
-      "ench": true
+      "itemId": "redstone",
+      "displayName": "§aEnchanted Redstone",
+      "enchanted": true
     },
     "ENCHANTED_REDSTONE_BLOCK": {
-      "itemid": "redstone_block",
-      "displayname": "§9Enchanted Redstone Block",
-      "ench": true
+      "itemId": "redstone_block",
+      "displayName": "§9Enchanted Redstone Block",
+      "enchanted": true
     },
     "ENCHANTED_RED_MUSHROOM": {
-      "itemid": "red_mushroom",
-      "displayname": "§fEnchanted Red Mushroom",
-      "ench": true
+      "itemId": "red_mushroom",
+      "displayName": "§fEnchanted Red Mushroom",
+      "enchanted": true
     },
     "ENCHANTED_ROTTEN_FLESH": {
-      "itemid": "rotten_flesh",
-      "displayname": "§fEnchanted Rotten Flesh",
-      "ench": true
+      "itemId": "rotten_flesh",
+      "displayName": "§fEnchanted Rotten Flesh",
+      "enchanted": true
     },
     "ENCHANTED_SAND": {
-      "itemid": "sand",
-      "displayname": "§aEnchanted Sand",
-      "ench": true
+      "itemId": "sand",
+      "displayName": "§aEnchanted Sand",
+      "enchanted": true
     },
     "ENCHANTED_SEEDS": {
-      "itemid": "wheat_seeds",
-      "displayname": "§fEnchanted Seeds",
-      "ench": true
+      "itemId": "wheat_seeds",
+      "displayName": "§fEnchanted Seeds",
+      "enchanted": true
     },
     "ENCHANTED_SHARK_FIN": {
-      "itemid": "prismarine_shard",
-      "displayname": "§5Enchanted Shark Fin",
-      "ench": true
+      "itemId": "prismarine_shard",
+      "displayName": "§5Enchanted Shark Fin",
+      "enchanted": true
     },
     "ENCHANTED_SLIME_BALL": {
-      "itemid": "slime_ball",
-      "displayname": "§aEnchanted Slimeball",
-      "ench": true
+      "itemId": "slime_ball",
+      "displayName": "§aEnchanted Slimeball",
+      "enchanted": true
     },
     "ENCHANTED_SLIME_BLOCK": {
-      "itemid": "slime",
-      "displayname": "§9Enchanted Slime Block",
-      "ench": true
+      "itemId": "slime",
+      "displayName": "§9Enchanted Slime Block",
+      "enchanted": true
     },
     "ENCHANTED_SNOW_BLOCK": {
-      "itemid": "snow",
-      "displayname": "§aEnchanted Snow Block",
-      "ench": true
+      "itemId": "snow",
+      "displayName": "§aEnchanted Snow Block",
+      "enchanted": true
     },
     "ENCHANTED_SPIDER_EYE": {
-      "itemid": "spider_eye",
-      "displayname": "§aEnchanted Spider Eye",
-      "ench": true
+      "itemId": "spider_eye",
+      "displayName": "§aEnchanted Spider Eye",
+      "enchanted": true
     },
     "ENCHANTED_SPONGE": {
-      "itemid": "sponge",
-      "displayname": "§aEnchanted Sponge",
-      "ench": true
+      "itemId": "sponge",
+      "displayName": "§aEnchanted Sponge",
+      "enchanted": true
     },
     "ENCHANTED_SPRUCE_LOG": {
-      "itemid": "log:1",
-      "displayname": "§aEnchanted Spruce Wood",
-      "ench": true
+      "itemId": "log:1",
+      "displayName": "§aEnchanted Spruce Wood",
+      "enchanted": true
     },
     "ENCHANTED_STRING": {
-      "itemid": "string",
-      "displayname": "§aEnchanted String",
-      "ench": true
+      "itemId": "string",
+      "displayName": "§aEnchanted String",
+      "enchanted": true
     },
     "ENCHANTED_SUGAR": {
-      "itemid": "sugar",
-      "displayname": "§aEnchanted Sugar",
-      "ench": true
+      "itemId": "sugar",
+      "displayName": "§aEnchanted Sugar",
+      "enchanted": true
     },
     "ENCHANTED_SUGAR_CANE": {
-      "itemid": "reeds",
-      "displayname": "§9Enchanted Sugar Cane",
-      "ench": true
+      "itemId": "reeds",
+      "displayName": "§9Enchanted Sugar Cane",
+      "enchanted": true
     },
     "ENCHANTED_TITANIUM": {
-      "itemid": "skull",
-      "displayname": "§5Enchanted Titanium",
-      "skullid": "deb23698-94ea-3571-bb89-cd37ba5d15d8",
+      "itemId": "skull",
+      "displayName": "§5Enchanted Titanium",
+      "skullId": "deb23698-94ea-3571-bb89-cd37ba5d15d8",
       "texture": "3dcc0ec9873f4f8d407ba0a0f983e257787772eaf8784e226a61c7f727ac9e26"
     },
     "ENCHANTED_WATER_LILY": {
-      "itemid": "waterlily",
-      "displayname": "§aEnchanted Lily Pad",
-      "ench": true
+      "itemId": "waterlily",
+      "displayName": "§aEnchanted Lily Pad",
+      "enchanted": true
     },
     "ENCHANTED_WET_SPONGE": {
-      "itemid": "sponge",
-      "displayname": "§9Enchanted Wet Sponge",
-      "ench": true
+      "itemId": "sponge",
+      "displayName": "§9Enchanted Wet Sponge",
+      "enchanted": true
     },
     "ENCHANTED_WOOL": {
-      "itemid": "wool",
-      "displayname": "§aEnchanted Wool",
-      "ench": true
+      "itemId": "wool",
+      "displayName": "§aEnchanted Wool",
+      "enchanted": true
     },
     "HAY_BLOCK": {
-      "itemid": "hay_block",
-      "displayname": "§fHay Bale",
-      "ench": false
+      "itemId": "hay_block",
+      "displayName": "§fHay Bale",
+      "enchanted": false
     },
     "MUTANT_NETHER_STALK": {
-      "itemid": "skull",
-      "displayname": "§9Mutant Nether Wart",
-      "skullid": "94c29902-dee6-3e1a-ba2e-e13e2bc243a4",
+      "itemId": "skull",
+      "displayName": "§9Mutant Nether Wart",
+      "skullId": "94c29902-dee6-3e1a-ba2e-e13e2bc243a4",
       "texture": "111a3cec7aaf904212ccf93bb67a3caf3d649783ba90b8b60bb63c7687eb39f"
     },
     "POLISHED_PUMPKIN": {
-      "itemid": "skull",
-      "displayname": "§9Polished Pumpkin",
-      "skullid": "3508645c-9fd9-3501-b79c-d490f6c4d028",
+      "itemId": "skull",
+      "displayName": "§9Polished Pumpkin",
+      "skullId": "3508645c-9fd9-3501-b79c-d490f6c4d028",
       "texture": "8db711ff52eedda59c434bb03169763d7c40b5b89127778feacd63aa94dfc"
     },
     "SNOW_BLOCK": {
-      "itemid": "snow",
-      "displayname": "§fSnow Block",
-      "ench": false
+      "itemId": "snow",
+      "displayName": "§fSnow Block",
+      "enchanted": false
     },
     "TIGHTLY_TIED_HAY_BALE": {
-      "itemid": "skull",
-      "displayname": "§9Tightly-Tied Hay Bale",
-      "skullid": "dedecf64-1ed4-3413-855f-0a38789cd63e",
+      "itemId": "skull",
+      "displayName": "§9Tightly-Tied Hay Bale",
+      "skullId": "dedecf64-1ed4-3413-855f-0a38789cd63e",
       "texture": "f7c33cd0c14ba830da149907f7a6aae835b6a35aea01e0ce073fb3c59cc46326"
+    }
+  },
+  "containerItems": {
+    "GREATER_BACKPACK": {
+      "containerSize": 36,
+      "compressedTag": "greater_backpack_data",
+      "colorTag": "backpack_color",
+      "standardChest": true
+    },
+    "JUMBO_BACKPACK": {
+      "containerSize": 54,
+      "compressedTag": "jumbo_backpack_data",
+      "colorTag": "backpack_color",
+      "standardChest": true
+    },
+    "LARGE_BACKPACK": {
+      "containerSize": 27,
+      "compressedTag": "large_backpack_data",
+      "colorTag": "backpack_color",
+      "standardChest": true
+    },
+    "MEDIUM_BACKPACK": {
+      "containerSize": 18,
+      "compressedTag": "medium_backpack_data",
+      "colorTag": "backpack_color",
+      "standardChest": true
+    },
+    "NEW_YEAR_CAKE_BAG": {
+      "containerSize": 54,
+      "compressedTag": "new_year_cake_bag_data",
+      "standardChest": true
+    },
+    "PERSONAL_COMPACTOR_4000": {
+      "containerSize": 1,
+      "itemTags": [
+        "personal_compact_0"
+      ],
+      "standardChest": false
+    },
+    "PERSONAL_COMPACTOR_5000": {
+      "containerSize": 3,
+      "itemTags": [
+        "personal_compact_0",
+        "personal_compact_1",
+        "personal_compact_2"
+      ],
+      "standardChest": false
+    },
+    "PERSONAL_COMPACTOR_6000": {
+      "containerSize": 7,
+      "itemTags": [
+        "personal_compact_0",
+        "personal_compact_1",
+        "personal_compact_2",
+        "personal_compact_3",
+        "personal_compact_4",
+        "personal_compact_5",
+        "personal_compact_6"
+      ],
+      "standardChest": false
+    },
+    "PERSONAL_COMPACTOR_7000": {
+      "containerSize": 12,
+      "itemTags": [
+        "personal_compact_0",
+        "personal_compact_1",
+        "personal_compact_2",
+        "personal_compact_3",
+        "personal_compact_4",
+        "personal_compact_5",
+        "personal_compact_6",
+        "personal_compact_7",
+        "personal_compact_8",
+        "personal_compact_9",
+        "personal_compact_10",
+        "personal_compact_11"
+      ],
+      "standardChest": false
+    },
+    "SMALL_BACKPACK": {
+      "containerSize": 9,
+      "compressedTag": "small_backpack_data",
+      "colorTag": "backpack_color",
+      "standardChest": true
     }
   }
 }

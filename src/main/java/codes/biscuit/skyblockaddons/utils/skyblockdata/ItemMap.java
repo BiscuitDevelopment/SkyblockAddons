@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.utils.skyblockdata;
 
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 
@@ -13,10 +12,13 @@ import java.util.Map;
 public class ItemMap {
     // Updated when the map is deserialized by GSON, field is required to be a variable
     @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "FieldMayBeFinal"})
-    private HashMap<String,SkyblockItem> items = new HashMap<>();
-    private final SkyblockItem BISCUIT_HEAD = new SkyblockItem("skull", EnumChatFormatting.GOLD+"Unknown Item", false,
+    private HashMap<String, CompactorItem> compactorItems = new HashMap<>();
+    private HashMap<String, ContainerItem> containerItems = new HashMap<>();
+
+
+    private final CompactorItem BISCUIT_HEAD = new CompactorItem("skull", EnumChatFormatting.GOLD+"Unknown Item", false,
             "724c64a2-fc8b-4842-852b-6b4c2c6ef241", "e0180f4aeb6929f133c9ff10476ab496f74c46cf8b3be6809798a974929ccca3");
-    private final SkyblockItem GLASS_FILLER = new SkyblockItem("stained_glass_pane:15", " ", false);
+    private final CompactorItem GLASS_FILLER = new CompactorItem("stained_glass_pane:15", " ", false);
 
     /**
      * This method returns an {@code ItemStack} of the Minecraft item corresponding to the given Skyblock item ID. The
@@ -27,7 +29,7 @@ public class ItemMap {
      * or {@link #BISCUIT_HEAD} if {@code skyblockItemId} isn't in the item map
      */
     public ItemStack getItemStack(String skyblockItemId) {
-        return items.get(skyblockItemId) == null ? BISCUIT_HEAD.getItemStack() : items.get(skyblockItemId).getItemStack();
+        return compactorItems.get(skyblockItemId) == null ? BISCUIT_HEAD.getItemStack() : compactorItems.get(skyblockItemId).getItemStack();
     }
 
     public ItemStack getGlassFiller() {
@@ -37,7 +39,7 @@ public class ItemMap {
     @Override
     public String toString() {
         StringBuilder b = new StringBuilder();
-        for (Map.Entry<String, SkyblockItem> entry : items.entrySet()) {
+        for (Map.Entry<String, CompactorItem> entry : compactorItems.entrySet()) {
             b.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
         }
         return b.toString();
