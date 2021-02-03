@@ -182,7 +182,7 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -441,6 +441,7 @@
   "warpMenu": {
     "click": "Clicca su un punto di teletrasporto per viaggiarci!",
     "mustUnlock": "Devi aver sbloccato la pergamena specifica.",
+    "privateIsland": "Private Island",
     "home": "La tua isola",
     "spawn": "Spawn",
     "unknown": "Non visitato",
