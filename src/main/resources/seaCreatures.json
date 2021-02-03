@@ -92,7 +92,7 @@
   "WEREWOLF":  {
     "name": "Werewolf",
     "rarity": "EPIC",
-    "spawnMessage":  "It must be a full moon, it's a Werewolf!"
+    "spawnMessage":  "It must be a full moon, a Werewolf appears!"
   },
   "TIGER_SHARK":  {
     "name": "Tiger Shark",
