@@ -182,7 +182,7 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturashun",
     "chromaBrightness": "Chroma Brightnes",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect"
   },
   "messages": {
     "enchants": "Enchants",
@@ -441,6 +441,7 @@
   "warpMenu": {
     "click": "Click warp point 2 travel thar!",
     "mustUnlock": "Must has teh specific scroll unlockd.",
+    "privateIsland": "Private Island",
     "home": "Ur Island",
     "spawn": "Spawn",
     "unknown": "Havent Visietd",
