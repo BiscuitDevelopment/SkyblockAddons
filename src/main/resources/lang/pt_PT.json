@@ -182,7 +182,7 @@
     "chromaSize": "Tamanho do croma",
     "chromaSaturation": "Saturação do croma",
     "chromaBrightness": "Brilho do croma",
-    "useNewChromaEffect": "Use New Chroma Effect"
+    "useNewChromaEffect": "Usar o novo efeito croma"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -441,7 +441,7 @@
   "warpMenu": {
     "click": "Clica uma localização para viajares até lá!",
     "mustUnlock": "Tens de ter o respetivo scroll desbloqueado.",
-    "privateIsland": "Private Island",
+    "privateIsland": "Ilha privada",
     "home": "A tua ilha",
     "spawn": "Origem",
     "unknown": "Não visitado",
