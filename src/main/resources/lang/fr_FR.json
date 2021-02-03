@@ -182,7 +182,7 @@
     "chromaSize": "Taille Chroma",
     "chromaSaturation": "Saturation Chroma",
     "chromaBrightness": "Luminosité Chroma",
-    "useShadersForChroma": "Utiliser les shaders pour chroma"
+    "useNewChromaEffect": "Use New Chroma Effect"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -441,6 +441,7 @@
   "warpMenu": {
     "click": "Cliquez sur un point de téléportation pour vous y rendre!",
     "mustUnlock": "Doit avoir le scroll spécifique déverrouillé.",
+    "privateIsland": "Private Island",
     "home": "Votre Île",
     "spawn": "Spawn",
     "unknown": "Pas visité",
