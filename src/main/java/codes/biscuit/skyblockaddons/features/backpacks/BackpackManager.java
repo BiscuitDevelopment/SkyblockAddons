@@ -94,7 +94,7 @@ public class BackpackManager {
                             color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
                         } catch (IllegalArgumentException ignored) {}
                     }
-                    return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color);
+                    return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, length/9, 9);
                 } catch (IOException ex) {
                     SkyblockAddons.getLogger().error("There was an error parsing backpack data.");
                     SkyblockAddons.getLogger().catching(ex);

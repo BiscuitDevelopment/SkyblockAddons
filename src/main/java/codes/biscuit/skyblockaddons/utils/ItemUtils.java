@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.SkyblockItem;
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -17,10 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,7 +32,7 @@ public class ItemUtils {
     public static final int NBT_LIST = 9;
     public static final int NBT_COMPOUND = 10;
 
-    public static ItemMap itemMap;
+    public static ItemMap itemMap = new ItemMap();
 
     // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
     private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
@@ -251,42 +249,20 @@ public class ItemUtils {
         NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(compactor);
 
         if (extraAttributes != null) {
-            ItemStack[] items = new ItemStack[9];
-
+            int length = 18;
+            switch (skyblockID) { // because sometimes the size of the tag is not updated (eg. when you upgrade it)
+                case "PERSONAL_COMPACTOR_4000": length = 1; break;
+                case "PERSONAL_COMPACTOR_5000": length = 3; break;
+                case "PERSONAL_COMPACTOR_6000": length = 7; break;
+                case "PERSONAL_COMPACTOR_7000": length = 12; break;
+            }
+            ItemStack[] items = new ItemStack[length];
             for (int i = 0; i < items.length; i++) {
                 if (!extraAttributes.hasKey("personal_compact_" + i)) {
                     continue;
                 }
-
                 skyblockID = extraAttributes.getString("personal_compact_" + i);
-                String processedSkyblockID = skyblockID.replaceFirst("ENCHANTED_", "")
-                        .replaceFirst("RAW_", "").toLowerCase(Locale.US);
-                boolean enchanted = skyblockID.contains("ENCHANTED");
-                ItemStack itemStack = null;
-
-                if (processedSkyblockID.startsWith("ink_sack:")) {
-                    int meta = processedSkyblockID.charAt(processedSkyblockID.length() - 1);
-
-                    itemStack = new ItemStack(Items.dye, 1, meta);
-                }
-
-                if (itemStack == null) {
-                    Item itemFromName = Item.getByNameOrId(processedSkyblockID.toLowerCase(Locale.US));
-
-                    if (itemFromName != null) {
-                        itemStack = new ItemStack(itemFromName);
-                    }
-                }
-
-                if (itemStack == null) {
-                    itemStack = itemMap.getItemStack(skyblockID);
-                }
-
-                if (itemStack != null && enchanted) {
-                    itemStack.addEnchantment(Enchantment.protection, 1);
-                }
-
-                items[i] = itemStack;
+                items[i] = itemMap.getItemStack(skyblockID);
             }
 
             return items;

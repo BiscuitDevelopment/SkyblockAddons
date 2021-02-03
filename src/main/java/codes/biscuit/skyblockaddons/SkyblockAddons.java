@@ -109,9 +109,6 @@ public class SkyblockAddons {
         dungeonManager = new DungeonManager();
         discordRPCManager = new DiscordRPCManager();
         guiManager = new GuiManager();
-        //new SeaCreatureManager();
-        getLogger().info("Hello");
-        getLogger().info(SeaCreatureManager.getInstance().getAllSeaCreatureSpawnMessages());
     }
 
     @Mod.EventHandler

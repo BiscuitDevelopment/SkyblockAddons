@@ -61,6 +61,8 @@ public class GuiContainerHook {
 
             ItemStack[] items = containerPreview.getItems();
             int length = items.length;
+            int rows = containerPreview.getNumRows();
+            int cols = containerPreview.getNumCols();
 
             int screenHeight = guiContainer.height;
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -69,7 +71,6 @@ public class GuiContainerHook {
 
             if (main.getConfigValues().getBackpackStyle() == EnumUtils.BackpackStyle.GUI) {
                 mc.getTextureManager().bindTexture(CHEST_GUI_TEXTURE);
-                int rows = length/9;
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0,300);
@@ -81,18 +82,29 @@ public class GuiContainerHook {
                         textColor = color.getInventoryTextColor();
                     }
                 }
+                final int border = 7;
+                final int topBorder = 17;
+                final int boxSize = 18;
+                int totalWidth = cols * boxSize + 2 * border;
+                int totalHeight = rows * boxSize + topBorder + border;
+                int boxEndWidth = totalWidth - border;
+                int boxEndHeight = totalHeight - border;
 
-                int totalWidth = 176;
                 if (x + totalWidth > guiContainer.width) {
                     x -= totalWidth;
                 }
-                int totalHeight = rows * 18 + 17 + 7;
+
                 if (y + totalHeight > screenHeight) {
                     y = screenHeight - totalHeight;
                 }
-
-                guiContainer.drawTexturedModalRect(x, y, 0, 0, 176, rows * 18 + 17);
-                guiContainer.drawTexturedModalRect(x, y + rows * 18 + 17, 0, 215, 176, 7);
+                // Draw the top-left of the container
+                guiContainer.drawTexturedModalRect(x, y, 0, 0, boxEndWidth, boxEndHeight);
+                // Draw the bottom-left of the container
+                guiContainer.drawTexturedModalRect(x, y + boxEndHeight, 0, 215, boxEndWidth, border);
+                // Draw the top-right of the container
+                guiContainer.drawTexturedModalRect(x + boxEndWidth, y, 169, 0, border, boxEndHeight);
+                // Draw the bottom-right of the container
+                guiContainer.drawTexturedModalRect(x + boxEndWidth, y + boxEndHeight, 169, 215, border, border);
                 mc.fontRendererObj.drawString(containerPreview.getName(), x+8, y+6, textColor);
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
@@ -119,11 +131,11 @@ public class GuiContainerHook {
                     }
                 }
             } else {
-                int totalWidth = (16 * 9) + 3;
+                int totalWidth = (16 * cols) + 3;
                 if (x + totalWidth > guiContainer.width) {
                     x -= totalWidth;
                 }
-                int totalHeight = (16 * (length / 9)) + 3;
+                int totalHeight = (16 * rows) + 3;
                 if (y + totalHeight > screenHeight) {
                     y = screenHeight - totalHeight;
                 }
@@ -131,7 +143,7 @@ public class GuiContainerHook {
                 GlStateManager.disableLighting();
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 300);
-                Gui.drawRect(x, y, x + (16 * 9) + 3, y + (16 * (length / 9)) + 3, ColorCode.DARK_GRAY.getColor(250));
+                Gui.drawRect(x, y, x + totalWidth, y + totalHeight, ColorCode.DARK_GRAY.getColor(250));
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 

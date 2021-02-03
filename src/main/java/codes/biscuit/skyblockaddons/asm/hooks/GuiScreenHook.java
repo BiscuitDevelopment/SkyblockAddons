@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -23,6 +24,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
+
+import java.util.Arrays;
 
 public class GuiScreenHook {
 
@@ -120,8 +123,26 @@ public class GuiScreenHook {
                             name = name.substring(firstSpace + 1);
                         }
                     }
+                    int numCols = Math.min(items.length, 9);
+                    int numRows = items.length/9 + 1;
 
-                    main.getUtils().setContainerPreviewToRender(new ContainerPreview(items, name, null, x, y));
+                    // Pad with glass if need be
+                    if (numRows > 1) {
+                        ItemStack[] tmp = Arrays.copyOf(items, numRows*9);
+                        ItemStack glassFiller = ItemUtils.itemMap.getGlassFiller();
+                        Arrays.fill(tmp, items.length, tmp.length, glassFiller);
+                        items = tmp;
+                    }
+
+                    // Hacky way to reduce string space
+                    if (numCols == 1) {
+                        name = "PC3";
+                    }
+                    else if (name.length() > 3*numCols) {
+                        name = name.replaceAll("Personal Compactor", "PC").replaceAll("000", "k");
+                    }
+
+                    main.getUtils().setContainerPreviewToRender(new ContainerPreview(items, name, null, numRows, numCols, x, y));
                 }
             }
         }
