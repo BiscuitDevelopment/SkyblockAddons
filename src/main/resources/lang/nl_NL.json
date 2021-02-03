@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Taal: ",
   "language": "Nederlands",
   "settings": {
     "settings": "Instellingen",
@@ -140,7 +140,7 @@
     "baseStatBoostPercentage": "Basisstatistiekboost voor Dungeonvoorwerpen tonen",
     "colorByRarity": "Kleuren op zeldzaamheid",
     "showPlayerHeadsOnMap": "Spelerhoofden tonen op Dungeonkaart",
-    "showHealingCircleWall": "Dungeon Healing Circle Wall tonen (Onstabiel)",
+    "showHealingCircleWall": "Dungeon Healing Circle Wall weergeven",
     "showCriticalTeammates": "Kritieke Dungeonteamgenoten tonen",
     "showGlowingItemsOnIsland": "Gloeiende voorwerpen op eiland tonen",
     "showItemDungeonFloor": "Verdieping waar Dungeonvoorwerp verkregen is tonen",
@@ -176,13 +176,13 @@
     "showSwordKills": "Kills met zwaard tonen",
     "compactTabList": "Compacte spelerslijst",
     "highlightMaxEnchantments": "Speciale betoveringen markeren",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect"
+    "disableEmptyGlassPanes": "Lege glazen ruiten verbergen",
+    "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
+    "healingCircleOpacity": "Healing Circle-doorzichtigheid",
+    "chromaSize": "Chromagrootte",
+    "chromaSaturation": "Chromaverzadiging",
+    "chromaBrightness": "Chromahelderheid",
+    "useNewChromaEffect": "Nieuw Chroma-effect gebruiken"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -439,13 +439,13 @@
     "bossesKilled": "Bazen gedood"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Klik op een warppunt om erheen te gaan!",
+    "mustUnlock": "Specifieke Scroll moet ontgrendeld zijn.",
+    "privateIsland": "Privé-eiland",
+    "home": "Privé-eiland",
+    "spawn": "Startpunt",
+    "unknown": "Niet bezocht",
+    "notUnlocked": "Niet ontgrendeld",
+    "inCombat": "In gevecht..."
   }
 }
