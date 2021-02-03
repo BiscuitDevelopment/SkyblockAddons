@@ -182,7 +182,7 @@
     "chromaSize": "Väriefektin koko",
     "chromaSaturation": "Väriefektin kylläisyys",
     "chromaBrightness": "Väriefektin kirkkaus",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -441,6 +441,7 @@
   "warpMenu": {
     "click": "Paina siirtymispistettä matkustaaksesi sinne!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Oma saari",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
