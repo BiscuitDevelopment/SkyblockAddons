@@ -649,24 +649,14 @@ public class RenderListener {
         int width = 9;
         float x = main.getConfigValues().getActualX(Feature.DEFENCE_ICON);
         float y = main.getConfigValues().getActualY(Feature.DEFENCE_ICON);
+        x = main.getRenderListener().transformXY(x, width, scale);
+        y = main.getRenderListener().transformXY(y, height, scale);
 
         main.getUtils().enableStandardGLOptions();
 
         if (buttonLocation == null) {
-            float newScale = scale * 1.5F;
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(newScale, newScale, 1);
-            newScale *= scale;
-            x -= (float) width * newScale / 2;
-            y -= (float) height * newScale / 2;
-            mc.ingameGUI.drawTexturedModalRect(x / newScale, y / newScale, 34, 9, width, height);
-            GlStateManager.popMatrix();
+            mc.ingameGUI.drawTexturedModalRect(x, y, 34, 9, width, height);
         } else {
-            scale *= (scale / 1.5);
-            x -= Math.round((float) width * scale / 2);
-            y -= Math.round((float) height * scale / 2);
-            x /= scale;
-            y /= scale;
             buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
             GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
             buttonLocation.drawTexturedModalRect(x, y, 34, 9, width, height);

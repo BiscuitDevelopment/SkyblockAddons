@@ -40,11 +40,7 @@ public class ButtonLocation extends ButtonFeature {
         GlStateManager.scale(scale, scale, 1);
 
         if (feature == Feature.DEFENCE_ICON) { // this one is just a little different
-            scale *= 1.5;
-            GlStateManager.scale(scale,scale,1);
             main.getRenderListener().drawIcon(scale, mc, this);
-            scale /= 1.5;
-            GlStateManager.scale(scale,scale,1);
         } else {
             feature.draw(scale, mc, this);
         }
@@ -76,14 +72,6 @@ public class ButtonLocation extends ButtonFeature {
         this.boxXTwo = boxXTwo;
         this.boxYOne = boxYOne;
         this.boxYTwo = boxYTwo;
-
-        if (this.feature == Feature.DEFENCE_ICON) {
-            this.boxXOne *= scale;
-            this.boxXTwo *= scale;
-            this.boxYOne *= scale;
-            this.boxYTwo *= scale;
-        }
-
         this.scale = scale;
     }
 

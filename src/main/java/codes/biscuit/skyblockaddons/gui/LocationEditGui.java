@@ -223,13 +223,6 @@ public class LocationEditGui extends GuiScreen {
                 float boxYOne = buttonLocation.getBoxYOne();
                 float boxYTwo = buttonLocation.getBoxYTwo();
 
-                if (feature == Feature.DEFENCE_ICON) {
-                    boxXOne /= main.getConfigValues().getGuiScale(feature);
-                    boxXTwo /= main.getConfigValues().getGuiScale(feature);
-                    boxYOne /= main.getConfigValues().getGuiScale(feature);
-                    boxYTwo /= main.getConfigValues().getGuiScale(feature);
-                }
-
                 if (corner == ButtonResize.Corner.TOP_LEFT) {
                     buttonResize.x = boxXOne;
                     buttonResize.y = boxYOne;
