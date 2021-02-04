@@ -9,7 +9,8 @@ public class ContainerItem {
     private enum ContainerType {
         BACKPACK(0),
         NEW_YEARS_CAKE(1),
-        PERSONAL_COMPACTOR(2);
+        PERSONAL_COMPACTOR(2),
+        BUILDERS_WAND(3);
 
         @Getter int type;
         ContainerType(int theType) {
@@ -55,6 +56,9 @@ public class ContainerItem {
         return type == ContainerType.PERSONAL_COMPACTOR.getType();
     }
 
+    public boolean isBuildersWand() {
+        return type == ContainerType.BUILDERS_WAND.getType();
+    }
 
     /* Functions that check the size of the container */
 

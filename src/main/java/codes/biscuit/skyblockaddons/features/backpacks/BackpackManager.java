@@ -50,7 +50,7 @@ public class BackpackManager {
 
             // Parse out a list of items in the container
             ItemStack[] items = null;
-            if (containerItem.isBackpack() || containerItem.isCakeBag()) {
+            if (containerItem.isBackpack() || containerItem.isCakeBag() || containerItem.isBuildersWand()) {
                 String compressedDataTag = containerItem.getCompressedDataTag();
                 if (compressedDataTag != null && extraAttributes.hasKey(compressedDataTag, TAG_BYTE_ARRAY)) {
                     byte[] bytes = extraAttributes.getByteArray(compressedDataTag);

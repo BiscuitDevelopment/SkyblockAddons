@@ -561,7 +561,7 @@
       "dimensions": [6, 9]
     },
     "BUILDERS_WAND": {
-      "type": 1,
+      "type": 3,
       "size": 54,
       "dataTags": ["builder's_wand_data"],
       "dimensions": [6, 9]
