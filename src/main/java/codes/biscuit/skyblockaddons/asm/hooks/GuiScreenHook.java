@@ -55,8 +55,7 @@ public class GuiScreenHook {
             return true;
         }
 
-        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
-                (itemStack.getItem() == Items.skull || itemStack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
             // Don't show if we only want to show while holding shift, and the player isn't holding shift
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return false;

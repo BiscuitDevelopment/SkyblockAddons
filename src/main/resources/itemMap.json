@@ -560,6 +560,12 @@
       "dataTags": ["new_year_cake_bag_data"],
       "dimensions": [6, 9]
     },
+    "BUILDERS_WAND": {
+      "type": 1,
+      "size": 54,
+      "dataTags": ["builder's_wand_data"],
+      "dimensions": [6, 9]
+    },
     "PERSONAL_COMPACTOR_4000": {
       "type": 2,
       "size": 1,
