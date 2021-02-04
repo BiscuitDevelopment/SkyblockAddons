@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,6 +22,7 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
@@ -53,11 +55,27 @@ public class GuiScreenHook {
             return true;
         }
 
-        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) && (itemStack.getItem() == Items.skull || itemStack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
+        if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
+                (itemStack.getItem() == Items.skull || itemStack.getItem() == Item.getItemFromBlock(Blocks.dropper)) ) {
+            // Don't show if we only want to show while holding shift, and the player isn't holding shift
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_HOLDING_SHIFT) && !GuiScreen.isShiftKeyDown()) {
                 return false;
             }
+            // Don't render the preview the item represents a crafting recipe or the result of one.
+            if (ItemUtils.isMenuItem(itemStack)) {
+                return false;
+            }
+            // Check the subfeature conditions
+            NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(itemStack);
+            ContainerItem containerItem = ItemUtils.itemMap.getContainerItem(ItemUtils.getSkyBlockItemID(extraAttributes));
+            // TODO: Does checking menu item handle the baker inventory thing?
+            if (containerItem == null ||
+                    (containerItem.isCakeBag() && (main.getConfigValues().isDisabled(Feature.CAKE_BAG_PREVIEW))) /*|| main.getInventoryUtils().getInventoryType() != InventoryType.BAKER) */||
+                    (containerItem.isPersonalCompactor() && main.getConfigValues().isDisabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW))) {
+                return false;
+            }
 
+            //TODO: Probably some optimizations here we can do. Can we check chest equivalence?
             // Avoid showing backpack preview in auction stuff.
             Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
             if (playerContainer instanceof ContainerChest) {
@@ -78,16 +96,11 @@ public class GuiScreenHook {
 
             ContainerPreview containerPreview = BackpackManager.getFromItem(itemStack);
             if (containerPreview != null) {
-                /*
-                 Don't render the backpack preview if in the backpack is used to represent a crafting recipe or the
-                 result of one.
-                 */
-                if (ItemUtils.isMenuItem(itemStack)) {
-                    return false;
-                }
 
                 containerPreview.setX(x);
                 containerPreview.setY(y);
+
+                // Handle the freeze container toggle
                 if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
                     lastBackpackFreezeKey = System.currentTimeMillis();
                     GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
@@ -98,52 +111,6 @@ public class GuiScreenHook {
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
                 cancelled = true;
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW)) {
-                /*
-                 Don't render the compactor preview if in the backpack is used to represent a crafting recipe or the
-                 result of one.
-                 */
-                if (ItemUtils.isMenuItem(itemStack)) {
-                    return cancelled;
-                }
-
-                ItemStack[] items = ItemUtils.getPersonalCompactorContents(itemStack);
-
-                if (items != null) {
-                    main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
-                    cancelled = true;
-                    String name = TextUtils.stripColor(itemStack.getDisplayName());
-
-                    // Remove the reforge like it does in the actual menu
-                    if (ItemUtils.getReforge(itemStack) != null) {
-                        int firstSpace = name.indexOf(' ');
-                        if (name.length() > firstSpace + 1) {
-                            name = name.substring(firstSpace + 1);
-                        }
-                    }
-                    int numCols = Math.min(items.length, 9);
-                    int numRows = items.length/9 + 1;
-
-                    // Pad with glass if need be
-                    if (numRows > 1) {
-                        ItemStack[] tmp = Arrays.copyOf(items, numRows*9);
-                        ItemStack glassFiller = ItemUtils.itemMap.getGlassFiller();
-                        Arrays.fill(tmp, items.length, tmp.length, glassFiller);
-                        items = tmp;
-                    }
-
-                    // Hacky way to reduce string space
-                    if (numCols == 1) {
-                        name = "PC3";
-                    }
-                    else if (name.length() > 3*numCols) {
-                        name = name.replaceAll("Personal Compactor", "PC").replaceAll("000", "k");
-                    }
-
-                    main.getUtils().setContainerPreviewToRender(new ContainerPreview(items, name, null, numRows, numCols, x, y));
-                }
             }
         }
 

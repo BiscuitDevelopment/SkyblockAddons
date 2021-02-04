@@ -115,8 +115,8 @@ public class GuiContainerHook {
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
-                        int itemX = x+8 + ((i % 9) * 18);
-                        int itemY = y+18 + ((i / 9) * 18);
+                        int itemX = x+8 + ((i % cols) * 18);
+                        int itemY = y+18 + ((i / cols) * 18);
                         RenderItem renderItem = mc.getRenderItem();
                         guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;
@@ -153,8 +153,8 @@ public class GuiContainerHook {
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
-                        int itemX = x + ((i % 9) * 16);
-                        int itemY = y + ((i / 9) * 16);
+                        int itemX = x + ((i % cols) * 16);
+                        int itemY = y + ((i / cols) * 16);
                         RenderItem renderItem = mc.getRenderItem();
                         guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;

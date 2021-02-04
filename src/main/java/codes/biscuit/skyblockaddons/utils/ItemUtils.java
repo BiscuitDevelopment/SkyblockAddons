@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
@@ -177,6 +179,35 @@ public class ItemUtils {
     }
 
     /**
+     * Checks if the given {@code ItemStack} is a backpack
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
+     */
+    public static boolean isBackpack(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerItem container = itemMap.getContainerItem(getSkyBlockItemID(extraAttributes));
+        return container != null && container.isBackpack();
+    }
+
+    /**
+     * Gets the color of the container
+     * @param stack
+     * @return The color of the backpack; or {@code WHITE} if there is no color; or {@code null} if it is not a container
+     */
+    public static BackpackColor getBackpackColor(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerItem container = itemMap.getContainerItem(getSkyBlockItemID(extraAttributes));
+        if (container != null) {
+            try {
+                return BackpackColor.valueOf(extraAttributes.getString(container.getColorTag()));
+            } catch (IllegalArgumentException ignored) {}
+            return BackpackColor.WHITE;
+        }
+        return null;
+    }
+
+    /**
      * Returns the Skyblock Reforge of a given Skyblock Extra Attributes NBT Compound
      *
      * @param extraAttributes the NBT to check
@@ -259,7 +290,7 @@ public class ItemUtils {
                     continue;
                 }
                 skyblockID = extraAttributes.getString("personal_compact_" + i);
-                items[i] = itemMap.getItemStack(skyblockID);
+                items[i] = itemMap.getPersonalCompactorItem(skyblockID);
             }
 
             return items;

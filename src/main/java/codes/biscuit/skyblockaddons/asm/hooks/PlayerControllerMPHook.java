@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
@@ -126,9 +127,9 @@ public class PlayerControllerMPHook {
                 }
 
                 if (mouseButtonClicked == 1 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
-                    ContainerPreview containerPreview = BackpackManager.getFromItem(slotIn.getStack());
-                    if (containerPreview != null && containerPreview.getBackpackColor() != null) {
-                        BackpackManager.setOpenedBackpackColor(containerPreview.getBackpackColor());
+                    BackpackColor color = ItemUtils.getBackpackColor(slotIn.getStack());
+                    if (color != null) {
+                        BackpackManager.setOpenedBackpackColor(color);
                     }
                 }
 
@@ -141,7 +142,7 @@ public class PlayerControllerMPHook {
                         String itemID = ItemUtils.getSkyBlockItemID(slotIn.getStack());
                         if (itemID == null) itemID = "";
 
-                        if (BackpackManager.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {
+                        if (ItemUtils.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {
                             return;
                         }
                     }

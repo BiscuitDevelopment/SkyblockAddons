@@ -28,8 +28,16 @@ public class ItemMap {
      * @return an {@code ItemStack} of the Minecraft item corresponding to {@code skyblockItemId} with a quantity of one
      * or {@link #BISCUIT_HEAD} if {@code skyblockItemId} isn't in the item map
      */
-    public ItemStack getItemStack(String skyblockItemId) {
+    public ItemStack getPersonalCompactorItem(String skyblockItemId) {
         return compactorItems.get(skyblockItemId) == null ? BISCUIT_HEAD.getItemStack() : compactorItems.get(skyblockItemId).getItemStack();
+    }
+
+    public boolean isContainer(String skyblockItemId) {
+        return containerItems.containsKey(skyblockItemId);
+    }
+
+    public ContainerItem getContainerItem(String skyblockItemId) {
+        return containerItems.get(skyblockItemId);
     }
 
     public ItemStack getGlassFiller() {

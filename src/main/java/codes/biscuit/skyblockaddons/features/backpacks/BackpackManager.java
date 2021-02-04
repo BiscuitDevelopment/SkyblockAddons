@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,8 +14,11 @@ import net.minecraftforge.common.util.Constants;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static net.minecraftforge.common.util.Constants.NBT.TAG_BYTE_ARRAY;
 
 /**
  * This class contains utility methods for backpacks and stores the color of the backpack the player has open.
@@ -32,91 +36,80 @@ public class BackpackManager {
      * @return a {@code ContainerPreview} object representing {@code stack} if it is a backpack, or {@code null} otherwise
      */
     public static ContainerPreview getFromItem(ItemStack stack) {
-        if (stack == null) return null;
 
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        String id = ItemUtils.getSkyBlockItemID(stack);
+        if (stack == null) {
+            return null;
+        }
 
-        if (id != null) {
-            NBTTagCompound extraAttributes = stack.getSubCompound("ExtraAttributes", false);
-            Matcher matcher = BACKPACK_ID_PATTERN.matcher(id);
-            boolean matches = matcher.matches();
-            boolean isCakeBag = main.getConfigValues().isEnabled(Feature.CAKE_BAG_PREVIEW) &&
-                    "NEW_YEAR_CAKE_BAG".equals(id) && main.getInventoryUtils().getInventoryType() != InventoryType.BAKER;
+        NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(stack);
+        String id = ItemUtils.getSkyBlockItemID(extraAttributes);
+        ContainerItem containerItem;
+        if (id != null && (containerItem = ItemUtils.itemMap.getContainerItem(id)) != null) {
 
-            // If it's a backpack OR it's a cake bag and they have the setting enabled.
-            if (matches || isCakeBag) {
-                byte[] bytes = null;
-                for (String key : extraAttributes.getKeySet()) {
-                    if (key.endsWith("backpack_data") || key.equals("new_year_cake_bag_data")) {
-                        bytes = extraAttributes.getByteArray(key);
-                        break;
-                    }
-                }
-                try {
-                    int length = 0;
-                    if (matches) {
-                        String backpackType = matcher.group(1);
-                        switch (backpackType) { // because sometimes the size of the tag is not updated (eg. when you upgrade it)
-                            case "SMALL": length = 9; break;
-                            case "MEDIUM": length = 18; break;
-                            case "LARGE": length = 27; break;
-                            case "GREATER": length = 36; break;
-                            case "JUMBO": length = 54; break;
-                        }
-                    }
-                    ItemStack[] items = new ItemStack[length];
-                    if (bytes != null) {
-                        NBTTagCompound nbtTagCompound = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
-                        NBTTagList list = nbtTagCompound.getTagList("i", Constants.NBT.TAG_COMPOUND);
+            int containerSize = containerItem.getSize();
 
-                        if (list.tagCount() > length) {
-                            length = list.tagCount();
-                            items = new ItemStack[length];
-                        }
-
-                        for (int i = 0; i < length; i++) {
-                            NBTTagCompound item = list.getCompoundTagAt(i);
-                            // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
-                            short itemID = item.getShort("id");
-                            if (itemID == 142) { // Potato Block -> Potato Item
-                                item.setShort("id", (short) 392);
-                            } else if (itemID == 141) { // Carrot Block -> Carrot Item
-                                item.setShort("id", (short) 391);
-                            }
-                            ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
-                            items[i] = itemStack;
-                        }
-                    }
-                    BackpackColor color = BackpackColor.WHITE;
-                    if (extraAttributes.hasKey("backpack_color")) {
-                        try {
-                            color = BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
-                        } catch (IllegalArgumentException ignored) {}
-                    }
-                    return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, length/9, 9);
-                } catch (IOException ex) {
-                    SkyblockAddons.getLogger().error("There was an error parsing backpack data.");
-                    SkyblockAddons.getLogger().catching(ex);
+            // Parse out a list of items in the container
+            ItemStack[] items = null;
+            if (containerItem.isBackpack() || containerItem.isCakeBag()) {
+                String compressedDataTag = containerItem.getCompressedDataTag();
+                if (compressedDataTag != null && extraAttributes.hasKey(compressedDataTag, TAG_BYTE_ARRAY)) {
+                    byte[] bytes = extraAttributes.getByteArray(compressedDataTag);
+                    items = decompressItems(bytes, containerSize);
                 }
             }
+            else if (containerItem.isPersonalCompactor()) {
+                items = new ItemStack[containerSize];
+                Iterator<String> itr = containerItem.getDataTags().iterator();
+                for (int i = 0; i < containerSize && itr.hasNext(); i++) {
+                    String key = itr.next();
+                    if (!extraAttributes.hasKey(key)) {
+                        continue;
+                    }
+                    items[i] = ItemUtils.itemMap.getPersonalCompactorItem(extraAttributes.getString(key));
+                }
+            }
+            if (items == null) {
+                SkyblockAddons.getLogger().error("There was an error parsing container data.");
+                return null;
+            }
+
+            // Get the container color
+            BackpackColor color = ItemUtils.getBackpackColor(stack);
+            String name = containerItem.isPersonalCompactor() ? "" : TextUtils.stripColor(stack.getDisplayName());
+
+            return new ContainerPreview(items, name, color, containerItem.getNumRows(), containerItem.getNumCols());
         }
         return null;
     }
 
-    /**
-     * Checks if the given {@code ItemStack} is a backpack
-     *
-     * @param stack the {@code ItemStack} to check
-     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
-     */
-    public static boolean isBackpack(ItemStack stack) {
-        if (stack == null) {
-            return false;
-        }
+    private static ItemStack[] decompressItems(byte[] bytes, int maxItems) {
+        ItemStack[] items = null;
+        try {
+            NBTTagCompound decompressedData = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
+            NBTTagList list = decompressedData.getTagList("i", Constants.NBT.TAG_COMPOUND);
+            if (list.hasNoTags()) {
+                throw new Exception("Decompressed container list has no item tags");
+            }
+            int size = Math.min(list.tagCount(), maxItems);
+            items = new ItemStack[size];
 
-        String id = ItemUtils.getSkyBlockItemID(stack);
-        return id != null && BACKPACK_ID_PATTERN.matcher(id).matches();
+            for (int i = 0; i < size; i++) {
+                NBTTagCompound item = list.getCompoundTagAt(i);
+                // This fixes an issue in Hypixel where enchanted potatoes have the wrong id (potato block instead of item).
+                short itemID = item.getShort("id");
+                if (itemID == 142) { // Potato Block -> Potato Item
+                    item.setShort("id", (short) 392);
+                } else if (itemID == 141) { // Carrot Block -> Carrot Item
+                    item.setShort("id", (short) 391);
+                }
+                ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
+                items[i] = itemStack;
+            }
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("There was an error decompressing container data.");
+            SkyblockAddons.getLogger().catching(ex);
+        }
+        return items;
     }
 
     /**
