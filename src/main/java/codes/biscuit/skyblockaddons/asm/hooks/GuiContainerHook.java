@@ -82,13 +82,17 @@ public class GuiContainerHook {
                         textColor = color.getInventoryTextColor();
                     }
                 }
-                final int border = 7;
-                final int topBorder = 17;
-                final int boxSize = 18;
-                int totalWidth = cols * boxSize + 2 * border;
-                int totalHeight = rows * boxSize + topBorder + border;
-                int boxEndWidth = totalWidth - border;
-                int boxEndHeight = totalHeight - border;
+
+                final int textureBorder = 7;
+                final int textureTopBorder = 17;
+                final int textureItemSquare = 18;
+
+                // Our chest has these properties
+                final int topBorder = containerPreview.getName() == null ? textureBorder : textureTopBorder;
+                int totalWidth = cols * textureItemSquare + 2 * textureBorder;
+                int totalHeight = rows * textureItemSquare + topBorder + textureBorder;
+                int squaresEndWidth = totalWidth - textureBorder;
+                int squaresEndHeight = totalHeight - textureBorder;
 
                 if (x + totalWidth > guiContainer.width) {
                     x -= totalWidth;
@@ -97,26 +101,42 @@ public class GuiContainerHook {
                 if (y + totalHeight > screenHeight) {
                     y = screenHeight - totalHeight;
                 }
-                // Draw the top-left of the container
-                guiContainer.drawTexturedModalRect(x, y, 0, 0, boxEndWidth, boxEndHeight);
+
+                // If there is no name, don't render the full top of the chest to make things look cleaner
+                if (containerPreview.getName() == null) {
+                    // Draw top border
+                    guiContainer.drawTexturedModalRect(x, y, 0, 0, squaresEndWidth, topBorder);
+                    // Draw left-side and all GUI display rows ("squares")
+                    guiContainer.drawTexturedModalRect(x, y + topBorder, 0, textureTopBorder, squaresEndWidth, squaresEndHeight - topBorder);
+                }
+                else {
+                    // Draw the top-left of the container
+                    guiContainer.drawTexturedModalRect(x, y, 0, 0, squaresEndWidth, squaresEndHeight);
+                }
                 // Draw the bottom-left of the container
-                guiContainer.drawTexturedModalRect(x, y + boxEndHeight, 0, 215, boxEndWidth, border);
+                guiContainer.drawTexturedModalRect(x, y + squaresEndHeight, 0, 215, squaresEndWidth, textureBorder);
                 // Draw the top-right of the container
-                guiContainer.drawTexturedModalRect(x + boxEndWidth, y, 169, 0, border, boxEndHeight);
+                guiContainer.drawTexturedModalRect(x + squaresEndWidth, y, 169, 0, textureBorder, squaresEndHeight);
                 // Draw the bottom-right of the container
-                guiContainer.drawTexturedModalRect(x + boxEndWidth, y + boxEndHeight, 169, 215, border, border);
-                mc.fontRendererObj.drawString(containerPreview.getName(), x+8, y+6, textColor);
+                guiContainer.drawTexturedModalRect(x + squaresEndWidth, y + squaresEndHeight, 169, 215, textureBorder, textureBorder);
+
+                if (containerPreview.getName() != null) {
+                    mc.fontRendererObj.drawString(containerPreview.getName(), x + 8, y + 6, textColor);
+                }
+
                 GlStateManager.popMatrix();
                 GlStateManager.enableLighting();
 
                 RenderHelper.enableGUIStandardItemLighting();
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
+                int itemStartX = x + textureBorder + 1;
+                int itemStartY = y + topBorder + 1;
                 for (int i = 0; i < length; i++) {
                     ItemStack item = items[i];
                     if (item != null) {
-                        int itemX = x+8 + ((i % cols) * 18);
-                        int itemY = y+18 + ((i / cols) * 18);
+                        int itemX = itemStartX + ((i % cols) * textureItemSquare);
+                        int itemY = itemStartY + ((i / cols) * textureItemSquare);
                         RenderItem renderItem = mc.getRenderItem();
                         guiContainer.zLevel = 200;
                         renderItem.zLevel = 200;

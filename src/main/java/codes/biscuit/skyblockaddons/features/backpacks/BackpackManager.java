@@ -75,7 +75,7 @@ public class BackpackManager {
 
             // Get the container color
             BackpackColor color = ItemUtils.getBackpackColor(stack);
-            String name = containerItem.isPersonalCompactor() ? "" : TextUtils.stripColor(stack.getDisplayName());
+            String name = containerItem.isPersonalCompactor() ? null : TextUtils.stripColor(stack.getDisplayName());
 
             return new ContainerPreview(items, name, color, containerItem.getNumRows(), containerItem.getNumCols());
         }
