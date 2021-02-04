@@ -75,6 +75,27 @@ public enum Location {
     THE_CATACOMBS("The Catacombs"), // TODO RPC
     DUNGEON_HUB("Dungeon Hub"), // TODO RPC
 
+    // Dwarven mines
+    THE_FORGE("The Forge"),
+    FORGE_BASIN("Forge Basin"),
+    LAVA_SPRINGS("Lava Springs"),
+    PALACE_BRIDGE("Palace Bridge"),
+    ROYAL_PALACE("Royal Palace"),
+    ARISTOCRAT_PASSAGE("Aristocrat Passage"),
+    HANGING_TERRACE("Hanging Terrace"),
+    CLIFFSIDE_VEINS("Cliffside Veins"),
+    RAMPARTS_QUARRY("Rampart's Quarry"),
+    DIVANS_GATEWAY("Divan's Gateway"),
+    FAR_RESERVE("Far Reserve"),
+    GOBLINS_BURROW("Goblins' Burrow"),
+    UPPER_MINES("Upper Mines"),
+    MINERS_GUILD("Miner's Guild"),
+    GREAT_ICE_WALL("Great Ice Wall"),
+    THE_MIST("The Mist"),
+    CC_MINECARTS_CO("C&C Minecarts Co."),
+    GRAND_LIBRARY("Grand Library"),
+    HANGING_COURT("Hanging Court"),
+
     /*
     Out of Bounds
     This is a valid location in Skyblock, it isn't a placeholder or a made up location.
