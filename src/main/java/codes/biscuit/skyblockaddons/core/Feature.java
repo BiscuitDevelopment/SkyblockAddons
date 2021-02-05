@@ -171,6 +171,7 @@ public enum Feature {
     HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
     USE_SHADERS_FOR_CHROMA(157, "settings.useShadersForChroma", null, false),
     SHOW_EXPERIMENTATION_TABLE_TOOLTIPS(158, "settings.showExperimentationTableTooltips", null, true),
+    ONLY_MINE_ORES_DWARVEN_MINES(159, "settings.onlyMineOresDwarvenMines", new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),

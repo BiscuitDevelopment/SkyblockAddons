@@ -183,7 +183,8 @@
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useShadersForChroma": "Use Shaders For Chroma",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips"
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines"
   },
   "messages": {
     "enchants": "Enchants",

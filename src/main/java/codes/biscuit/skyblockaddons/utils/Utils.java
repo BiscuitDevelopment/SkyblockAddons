@@ -294,7 +294,11 @@ public class Utils {
                                     sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
                                     fetchMagmaBossEstimate();
                                 }
-
+                                // TODO: Special case causes Dwarven Village to map to Village since endsWith...idk if
+                                //  changing to "equals" will mess it up for other locations
+                                if (loopLocation == Location.VILLAGE && strippedScoreboardLine.contains("Dwarven")) {
+                                    continue;
+                                }
                                 location = loopLocation;
                                 foundLocation = true;
                                 break;

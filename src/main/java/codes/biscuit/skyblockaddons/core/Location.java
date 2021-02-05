@@ -10,6 +10,7 @@ import java.util.Set;
  */
 @Getter
 public enum Location {
+    // TODO: Jsonify all of these
     ISLAND("Your Island"), // TODO RPC
     GUEST_ISLAND("'s Island", "island"), // TODO RPC
 
@@ -76,6 +77,10 @@ public enum Location {
     DUNGEON_HUB("Dungeon Hub"), // TODO RPC
 
     // Dwarven mines
+    DWARVEN_MINES("Dwarven Mines"),
+    DWARVEN_VILLAGE("Dwarven Village"),
+    GATES_TO_THE_MINES("Gates to the Mines"),
+    THE_LIFT("The Lift"),
     THE_FORGE("The Forge"),
     FORGE_BASIN("Forge Basin"),
     LAVA_SPRINGS("Lava Springs"),
@@ -87,7 +92,7 @@ public enum Location {
     RAMPARTS_QUARRY("Rampart's Quarry"),
     DIVANS_GATEWAY("Divan's Gateway"),
     FAR_RESERVE("Far Reserve"),
-    GOBLINS_BURROW("Goblins' Burrow"),
+    GOBLIN_BURROWs("Goblin Burrows"),
     UPPER_MINES("Upper Mines"),
     MINERS_GUILD("Miner's Guild"),
     GREAT_ICE_WALL("Great Ice Wall"),
@@ -119,7 +124,10 @@ public enum Location {
     Location(String scoreboardName) {
         this.scoreboardName = scoreboardName;
 
-        Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND");
+        Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND",
+                "DWARVEN_MINES", "DWARVEN_VILLAGE", "GATES_TO_THE_MINES", "THE_LIFT", "THE_FORGE", "FORGE_BASIN", "LAVA_SPRINGS", "PALACE_BRIDGE", "ROYAL_PALACE",
+                "ARISTOCRAT_PASSAGE", "HANGING_TERRACE", "CLIFFSIDE_VEINS", "RAMPARTS_QUARRY", "DIVANS_GATEWAY", "FAR_RESERVE", "GOBLIN_BURROWs", "UPPER_MINES",
+                "MINERS_GUILD", "GREAT_ICE_WALL", "THE_MIST", "CC_MINECARTS_CO", "GRAND_LIBRARY", "HANGING_COURT");
 
         if (NO_DISCORD_RPC.contains(name())) {
             discordIconKey = "skyblock";

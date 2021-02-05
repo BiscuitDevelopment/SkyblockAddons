@@ -156,8 +156,11 @@ public class ItemUtils {
      * @param item the item to check
      * @return {@code true} if this item is a pickaxe, {@code false} otherwise
      */
-    public static boolean isPickaxe(Item item) {
-        return item instanceof ItemPickaxe;
+    // TODO: Not sure if the function name applies. Also this is a hotfix until we come up with a way to jsonify
+    public static boolean isPickaxe(ItemStack itemStack) {
+        String id;
+        return itemStack.getItem() instanceof ItemPickaxe ||
+                (id = getSkyBlockItemID(itemStack)) != null && (id.startsWith("MITHRIL_DRILL_") || id.startsWith("TITANIUM_DRILL_"));
     }
 
     /**
