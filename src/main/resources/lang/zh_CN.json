@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "语言：",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -178,11 +178,11 @@
     "highlightMaxEnchantments": "高亮特殊附魔",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
+    "healingCircleOpacity": "治疗光环不透明度",
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect"
+    "useNewChromaEffect": "使用新版渐变效果"
   },
   "messages": {
     "enchants": "附魔",
@@ -359,9 +359,9 @@
         }
       },
       "slayer": {
-        "help": "修改猎杀任务统计，按 tab 查看指令参数",
+        "help": "修改猎手任务统计数据，按 tab 查看指令参数",
         "detailedHelp": {
-          "description": "修改猎杀任务统计，按 tab 查看指令参数",
+          "description": "修改猎手任务统计数据，按 tab 查看指令参数",
           "options": {
             "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "统计设置为的数字",
@@ -439,13 +439,13 @@
     "bossesKilled": "Boss 击杀数"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "点击传送点以传送！",
+    "mustUnlock": "必须先解锁该地的传送卷轴",
+    "privateIsland": "私人岛屿",
+    "home": "你的岛屿",
+    "spawn": "出生点",
+    "unknown": "尚未探索",
+    "notUnlocked": "尚未解锁",
+    "inCombat": "战斗中..."
   }
 }
