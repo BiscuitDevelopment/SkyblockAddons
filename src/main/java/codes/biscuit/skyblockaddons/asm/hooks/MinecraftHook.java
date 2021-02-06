@@ -214,5 +214,14 @@ public class MinecraftHook {
             return;
         }
         onClickMouse(returnValue);
+        // Canceling this is tricky. Not only do we have to reset block removing, but also reset the position we are breaking
+        // This is because we want playerController.onClick to be called when they go back to that block
+        // It's also important to resetBlockRemoving before changing current block, since then we'd be sending the server inaccurate info that could trigger wdr
+        // This mirrors PlayerControllerMP.clickBlock(), which sends an ABORT_DESTROY message, before calling onPlayerDestroyBlock, which changes "currentBlock"
+        if (returnValue.isCancelled()) {
+            Minecraft.getMinecraft().playerController.resetBlockRemoving();
+            Minecraft.getMinecraft().playerController.currentBlock = new BlockPos(-1, -1, -1);
+        }
     }
+
 }
