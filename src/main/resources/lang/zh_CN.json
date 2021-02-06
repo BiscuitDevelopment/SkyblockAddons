@@ -250,7 +250,7 @@
     "effectActive": "已激活 1 种药水效果",
     "effectsActive": "已激活 %number% 种药水效果",
     "none": "无",
-    "copyModeSet": "开发者复制模式以切换至： %mode% ，请按下 %keyName% 以复制特定NBT！"
+    "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！"
   },
   "discordStatus": {
     "titleNone": "无",
