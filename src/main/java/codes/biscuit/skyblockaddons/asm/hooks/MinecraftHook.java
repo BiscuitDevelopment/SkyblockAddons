@@ -21,9 +21,7 @@ import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.*;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
@@ -47,7 +45,10 @@ public class MinecraftHook {
             Location.ROYAL_PALACE, Location.ARISTOCRAT_PASSAGE, Location.HANGING_TERRACE, Location.CLIFFSIDE_VEINS,
             Location.RAMPARTS_QUARRY, Location.DIVANS_GATEWAY, Location.FAR_RESERVE, Location.GOBLIN_BURROWs, Location.UPPER_MINES,
             Location.MINERS_GUILD, Location.GREAT_ICE_WALL, Location.THE_MIST, Location.CC_MINECARTS_CO, Location.GRAND_LIBRARY,
-            Location.HANGING_COURT);
+            Location.HANGING_COURT, Location.ROYAL_MINES);
+
+    // The room with the puzzle is made of wood that you have to mine
+    private static final AxisAlignedBB DWARVEN_PUZZLE_ROOM = new AxisAlignedBB(171, 195, 125, 192, 196, 146);
 
     private static final Set<Block> DEEP_CAVERNS_MINEABLE_BLOCKS = new HashSet<>(Arrays.asList(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore, Blocks.redstone_ore, Blocks.emerald_ore,
             Blocks.diamond_ore, Blocks.diamond_block, Blocks.obsidian, Blocks.lapis_ore, Blocks.lit_redstone_ore));
@@ -185,7 +186,8 @@ public class MinecraftHook {
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DWARVEN_MINES) && DWARVEN_MINES_LOCATIONS.contains(main.getUtils().getLocation())
-                    && ItemUtils.isPickaxe(heldItem) && (!DWARVEN_MINEABLE_BLOCKS.contains(id) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block))) {
+                    && ItemUtils.isPickaxe(heldItem) && (!DWARVEN_MINEABLE_BLOCKS.contains(id) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) &&
+                    !(block == Blocks.planks && DWARVEN_PUZZLE_ROOM.isVecInside(new Vec3(blockPos.getX() + .5, blockPos.getY() + .5, blockPos.getZ() + .5)))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_ORES_DWARVEN_MINES) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
