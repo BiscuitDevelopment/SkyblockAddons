@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Ngôn ngữ: ",
   "language": "Tiếng Việt",
   "settings": {
     "settings": "Cài Đặt",
@@ -177,8 +177,8 @@
     "compactTabList": "Danh sách Tab Gọn gàng",
     "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
+    "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
+    "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
@@ -439,13 +439,13 @@
     "bossesKilled": "Số trùm Đã giết"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "Bấm vào một địa điểm để di chuyển đến đó!",
     "mustUnlock": "Must have the specific scroll unlocked.",
     "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
+    "home": "Đảo của bạn",
+    "spawn": "Địa điểm xuất phát",
     "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "notUnlocked": "Chưa mở khóa",
+    "inCombat": "Trong chiến đấu..."
   }
 }
