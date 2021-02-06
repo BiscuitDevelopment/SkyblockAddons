@@ -14,8 +14,7 @@ public enum PowerOrb {
     RADIANT("§aRadiant", 0.01, 0, 0, 0, 18*18, "radiant"),
     MANA_FLUX("§9Mana Flux", 0.02, 0.5, 10, 0, 18*18, "manaflux"),
     OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, 18*18, "overflux"),
-    // TODO: Idk how to render the resource pngs, so for now the plasma is gonna stay rendered as an overflux
-    PLASMAFLUX("§6Plasmaflux", 0.03, 1.25, 35, 0.075, 20*20, "overflux");
+    PLASMAFLUX("§d§lPlasmaflux", 0.03, 1.25, 35, 0.075, 20*20, "plasmaflux");
 
     /**
      * Start of the display name of the actual floating orb entity.
