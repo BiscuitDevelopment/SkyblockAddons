@@ -94,6 +94,7 @@ public enum Location {
     FAR_RESERVE("Far Reserve"),
     GOBLIN_BURROWs("Goblin Burrows"),
     UPPER_MINES("Upper Mines"),
+    ROYAL_MINES("Royal Mines"),
     MINERS_GUILD("Miner's Guild"),
     GREAT_ICE_WALL("Great Ice Wall"),
     THE_MIST("The Mist"),
@@ -127,7 +128,7 @@ public enum Location {
         Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND",
                 "DWARVEN_MINES", "DWARVEN_VILLAGE", "GATES_TO_THE_MINES", "THE_LIFT", "THE_FORGE", "FORGE_BASIN", "LAVA_SPRINGS", "PALACE_BRIDGE", "ROYAL_PALACE",
                 "ARISTOCRAT_PASSAGE", "HANGING_TERRACE", "CLIFFSIDE_VEINS", "RAMPARTS_QUARRY", "DIVANS_GATEWAY", "FAR_RESERVE", "GOBLIN_BURROWs", "UPPER_MINES",
-                "MINERS_GUILD", "GREAT_ICE_WALL", "THE_MIST", "CC_MINECARTS_CO", "GRAND_LIBRARY", "HANGING_COURT");
+                "MINERS_GUILD", "GREAT_ICE_WALL", "THE_MIST", "CC_MINECARTS_CO", "GRAND_LIBRARY", "HANGING_COURT", "ROYAL_MINES");
 
         if (NO_DISCORD_RPC.contains(name())) {
             discordIconKey = "skyblock";
