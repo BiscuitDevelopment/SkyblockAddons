@@ -343,6 +343,15 @@
           }
         }
       },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+      },
       "set": {
         "zealotCounter": {
           "help": "Manually set your zealot counts",

@@ -7,10 +7,7 @@ import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.DevUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import net.minecraft.command.*;
@@ -79,6 +76,9 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Translations.getMessage("commandUsage.sba.copyEntity.help") + "\n" +
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.copySidebar.help") + "\n" +
                     "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.copyTabList.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD + " §7- " + Translations.getMessage("commandUsage.sba.reload.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + Translations.getMessage("commandUsage.sba.reloadConfig.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD_RES + " §7- " + Translations.getMessage("commandUsage.sba.reloadRes.help") + "\n" +
                     "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleActionBarLogging.help");
         }
 
@@ -254,6 +254,10 @@ public class SkyblockAddonsCommand extends CommandBase {
                         } else {
                             throw new CommandException(Message.COMMAND_USAGE_SBA_BRAND_NOT_FOUND.getMessage());
                         }
+                    } else if (args[0].equalsIgnoreCase("copyBlock")) {
+                        DevUtils.setCopyMode(DevUtils.CopyMode.BLOCK);
+                        DevUtils.copyData();
+
                     } else if (args[0].equalsIgnoreCase("copyEntity")) {
                         try {
                             // Use default options if no options are provided and use defaults for any options that are missing.
@@ -288,6 +292,12 @@ public class SkyblockAddonsCommand extends CommandBase {
                         DevUtils.setCopyMode(DevUtils.CopyMode.TAB_LIST);
                         DevUtils.copyData();
 
+                    } else if (args[0].equalsIgnoreCase("reload")) {
+                        DevUtils.reloadAll();
+                    } else if (args[0].equalsIgnoreCase("reloadConfig")) {
+                        DevUtils.reloadConfig();
+                    } else if (args[0].equalsIgnoreCase("reloadRes")) {
+                        DevUtils.reloadResources();
                     } else if (args[0].equalsIgnoreCase("toggleActionBarLogging")) {
                         DevUtils.setLoggingActionBarMessages(!DevUtils.isLoggingActionBarMessages());
 
@@ -298,10 +308,6 @@ public class SkyblockAddonsCommand extends CommandBase {
                             main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
                                     "commandUsage.sba.toggleActionBarLogging.disabled"));
                         }
-                    } else if (args[0].equalsIgnoreCase("copyBlock")) {
-                        DevUtils.setCopyMode(DevUtils.CopyMode.BLOCK);
-                        DevUtils.copyData();
-
                     } else {
                         throw new WrongUsageException(Translations.getMessage(
                                 "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
@@ -388,6 +394,9 @@ public class SkyblockAddonsCommand extends CommandBase {
         TOGGLE_ACTION_BAR_LOGGING("/sba toggleActionBarLogging"),
         SLAYER("/sba slayer <boss> <stat> <number>"),
         COPY_BLOCK("/sba copyBlock"),
+        RELOAD("/sba reload"),
+        RELOAD_CONFIG("/sba reloadConfig"),
+        RELOAD_RES("/sba reloadRes")
         ;
 
         @Getter
@@ -417,6 +426,9 @@ public class SkyblockAddonsCommand extends CommandBase {
         TOGGLE_ACTION_BAR_LOGGING(CommandSyntax.TOGGLE_ACTION_BAR_LOGGING, "commandUsage.sba.toggleActionBarLogging.help", null),
         SLAYER(CommandSyntax.SLAYER, "commandUsage.sba.slayer.detailedHelp.description", Arrays.asList(CommandOption.SLAYER_BOSS, CommandOption.SLAYER_STAT, CommandOption.SLAYER_NUMBER)),
         COPY_BLOCK(CommandSyntax.COPY_BLOCK, "commandUsage.sba.copyBlock.help", null),
+        RELOAD(CommandSyntax.RELOAD, "commandUsage.sba.reload.help", null),
+        RELOAD_CONFIG(CommandSyntax.RELOAD_CONFIG, "commandUsage.sba.reloadConfig.help", null),
+        RELOAD_RES(CommandSyntax.RELOAD_RES, "commandUsage.sba.reloadRes.help", null)
         ;
 
         private final CommandSyntax syntax;

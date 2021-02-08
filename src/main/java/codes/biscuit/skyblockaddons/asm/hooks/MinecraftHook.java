@@ -165,14 +165,14 @@ public class MinecraftHook {
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) && DEEP_CAVERNS_LOCATIONS.contains(main.getUtils().getLocation())
-                    && ItemUtils.isPickaxe(heldItem) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) {
+                    && ItemUtils.isMiningTool(heldItem) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_ORES_DEEP_CAVERNS) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_VALUABLES_NETHER) && Location.BLAZING_FORTRESS.equals(main.getUtils().getLocation()) &&
-                    ItemUtils.isPickaxe(heldItem) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
+                    ItemUtils.isMiningTool(heldItem) && !NETHER_MINEABLE_BLOCKS.contains(block)) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_VALUABLES_NETHER) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());
@@ -186,7 +186,7 @@ public class MinecraftHook {
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DWARVEN_MINES) && DWARVEN_MINES_LOCATIONS.contains(main.getUtils().getLocation())
-                    && ItemUtils.isPickaxe(heldItem) && (!DWARVEN_MINEABLE_BLOCKS.contains(id) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) &&
+                    && ItemUtils.isMiningTool(heldItem) && (!DWARVEN_MINEABLE_BLOCKS.contains(id) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) &&
                     !(block == Blocks.planks && DWARVEN_PUZZLE_ROOM.isVecInside(new Vec3(blockPos.getX() + .5, blockPos.getY() + .5, blockPos.getZ() + .5)))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;

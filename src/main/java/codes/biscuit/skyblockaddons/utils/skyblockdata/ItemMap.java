@@ -11,8 +11,9 @@ import java.util.Map;
  */
 public class ItemMap {
     // Updated when the map is deserialized by GSON, field is required to be a variable
-    @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "FieldMayBeFinal"})
+    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     private HashMap<String, CompactorItem> compactorItems = new HashMap<>();
+    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     private HashMap<String, ContainerItem> containerItems = new HashMap<>();
 
 

@@ -57,7 +57,7 @@ public class DataUtils {
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))){
             EnchantedItemPlacementBlocker.setItemLists(GSON.fromJson(jsonReader, EnchantedItemLists.class));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!");
+            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!", ex);
         }
 
         // Item Map
@@ -65,16 +65,15 @@ public class DataUtils {
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
             ItemUtils.itemMap = GSON.fromJson(jsonReader, ItemMap.class);
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local item map!");
+            SkyblockAddons.getLogger().error("An error occurred while reading local item map!", ex);
         }
-        //SkyblockAddons.getLogger().info(ItemUtils.itemMap.toString());
 
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
             main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local data!");
+            SkyblockAddons.getLogger().error("An error occurred while reading local data!", ex);
         }
     }
 

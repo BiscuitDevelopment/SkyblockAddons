@@ -9,6 +9,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.resources.SimpleReloadableResourceManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
@@ -25,6 +26,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.util.Constants;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -32,6 +35,8 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -48,6 +53,7 @@ public class DevUtils {
 
     private static final Minecraft mc = Minecraft.getMinecraft();
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     /** Pattern used for removing the placeholder emoji player names from the Hypixel scoreboard */
     public static final Pattern SIDEBAR_PLAYER_NAME_PATTERN = Pattern.compile("[\uD83D\uDD2B\uD83C\uDF6B\uD83D\uDCA3\uD83D\uDC7D\uD83D\uDD2E\uD83D\uDC0D\uD83D\uDC7E\uD83C\uDF20\uD83C\uDF6D\u26BD\uD83C\uDFC0\uD83D\uDC79\uD83C\uDF81\uD83C\uDF89\uD83C\uDF82]+");
@@ -508,7 +514,7 @@ public class DevUtils {
                             stringBuilder.append(key).append("(decoded): ").append(
                                     prettyPrintNBT(backpackData));
                         } catch (IOException e) {
-                            e.printStackTrace();
+                            logger.error("Couldn't decompress backpack data into NBT, skipping!", e);
                         }
                     }
 
@@ -531,6 +537,41 @@ public class DevUtils {
         }
 
         return stringBuilder.toString();
+    }
+
+    /**
+     * This method reloads all of the mod's settings and resources from the corresponding files.
+     */
+    public static void reloadAll() {
+        reloadConfig();
+        reloadResources();
+    }
+
+    /**
+     * This method reloads all of the mod's settings from the settings file.
+     */
+    public static void reloadConfig() {
+        logger.info("Reloading settings...");
+        main.getConfigValues().loadValues();
+        logger.info("Settings reloaded");
+    }
+
+    /**
+     * This method reloads all of the mod's resources from the corresponding files.
+     */
+    public static void reloadResources() {
+        logger.info("Reloading resources...");
+        DataUtils.readLocalAndFetchOnline();
+        main.getPersistentValuesManager().loadValues();
+        ((SimpleReloadableResourceManager) mc.getResourceManager()).reloadResourcePack(FMLClientHandler.instance().getResourcePackFor(SkyblockAddons.MOD_ID));
+        try {
+            Method notifyReloadListenersMethod = SimpleReloadableResourceManager.class.getDeclaredMethod("notifyReloadListeners");
+            notifyReloadListenersMethod.setAccessible(true);
+            notifyReloadListenersMethod.invoke(mc.getResourceManager());
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            logger.error("An error occurred while reloading the mod's resources.", e);
+        }
+        logger.info("Resources reloaded");
     }
 
     /*
