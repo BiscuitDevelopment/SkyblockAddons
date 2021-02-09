@@ -140,6 +140,7 @@ public class ItemUtils {
      * @param itemStack the item to check
      * @return {@code true} if this item is a material, {@code false} otherwise
      */
+    //TODO: Fix for Hypixel localization
     public static boolean isMaterialForRecipe(ItemStack itemStack) {
         List<String> lore = ItemUtils.getItemLore(itemStack);
         for (String loreLine : lore) {
@@ -153,15 +154,26 @@ public class ItemUtils {
     /**
      * Checks if the given item is a pickaxe.
      *
-     * @param item the item to check
+     * @param itemStack the item to check
      * @return {@code true} if this item is a pickaxe, {@code false} otherwise
      */
-    // TODO: Not sure if the function name applies. Also this is a hotfix until we come up with a way to jsonify
-    public static boolean isPickaxe(ItemStack itemStack) {
-        String id;
-        return itemStack.getItem() instanceof ItemPickaxe ||
-                (id = getSkyBlockItemID(itemStack)) != null && (id.startsWith("MITHRIL_DRILL_") || id.startsWith("TITANIUM_DRILL_"));
+    public static boolean isMiningTool(ItemStack itemStack) {
+        return itemStack.getItem() instanceof ItemPickaxe || isDrill(itemStack);
     }
+
+
+    /**
+     * Checks if the given item is a pickaxe.
+     *
+     * @param itemStack the item to check
+     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     */
+    // TODO: This is a hotfix until we come up with a way to jsonify
+    public static boolean isDrill(ItemStack itemStack) {
+        String id = getSkyBlockItemID(itemStack);
+        return id != null && (id.startsWith("MITHRIL_DRILL_") || id.startsWith("TITANIUM_DRILL_"));
+    }
+
 
     /**
      * Returns the Skyblock Item ID of a given Skyblock Extra Attributes NBT Compound
@@ -194,8 +206,8 @@ public class ItemUtils {
     }
 
     /**
-     * Gets the color of the container
-     * @param stack
+     * Gets the color of the backpack in the given {@code ItemStack}
+     * @param stack the {@code ItemStack} containing the backpack
      * @return The color of the backpack; or {@code WHITE} if there is no color; or {@code null} if it is not a container
      */
     public static BackpackColor getBackpackColor(ItemStack stack) {
