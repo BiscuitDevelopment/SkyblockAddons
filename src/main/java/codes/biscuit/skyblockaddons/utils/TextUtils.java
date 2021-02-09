@@ -23,6 +23,8 @@ public class TextUtils {
     private static final Pattern TRIM_WHITESPACE_RESETS = Pattern.compile("^(?:\\s|§r)*|(?:\\s|§r)*$");
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]+");
     private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
+    private static final Pattern THOUSANDS = Pattern.compile("(\\d)[kK]");
+    private static final Pattern MILLIONS = Pattern.compile("(\\d)[mM]");
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
 
@@ -93,6 +95,15 @@ public class TextUtils {
      */
     public static String getNumbersOnly(String text) {
         return NUMBERS_SLASHES.matcher(text).replaceAll("");
+    }
+
+    /**
+     * Converts strings with "k" or "M" magnitudes, e.g. "10k" -> "10000" and "10M" -> "10000000"
+     * @param text - Input text
+     * @return Input text with converted magnitudes
+     */
+    public static String convertMagnitudes(String text) {
+        return MILLIONS.matcher(THOUSANDS.matcher(text).replaceAll("$1000")).replaceAll("$1000000");
     }
 
     /**

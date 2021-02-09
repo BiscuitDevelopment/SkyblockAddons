@@ -376,6 +376,8 @@ public class RenderListener {
         float fill;
         if (feature == Feature.MANA_BAR) {
             fill = (float) getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
+        } else if (feature == Feature.DRILL_FUEL_BAR) {
+            fill = (float) getAttribute(Attribute.FUEL) / getAttribute(Attribute.MAX_FUEL);
         } else if (feature == Feature.SKILL_PROGRESS_BAR) {
             if (main.getPlayerListener().getActionBarParser().getTotalSkillXP() == 0) {
                 if (buttonLocation == null) {
@@ -414,6 +416,10 @@ public class RenderListener {
                 int textAlpha = Math.round(255 - (-remainingTime / 2000F * 255F));
                 color = ColorUtils.getDummySkyblockColor(main.getConfigValues().getColor(feature, textAlpha), main.getConfigValues().getChromaFeatures().contains(feature)); // so it fades out, 0.016 is the minimum alpha
             }
+        }
+
+        if (feature == Feature.DRILL_FUEL_BAR && buttonLocation == null && !ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
+            return;
         }
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
@@ -681,7 +687,14 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
 
-        } else if (feature == Feature.DEFENCE_PERCENTAGE) {
+        } else if (feature == Feature.DRILL_FUEL_TEXT) {
+            if (!ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
+                return;
+            }
+            text = (getAttribute(Attribute.FUEL) + "/" + getAttribute(Attribute.MAX_FUEL)).replaceAll("000$", "k");
+        }
+
+        else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = getAttribute(Attribute.DEFENCE);
             double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);

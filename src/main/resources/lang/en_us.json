@@ -184,7 +184,9 @@
     "chromaBrightness": "Chroma Brightness",
     "useShadersForChroma": "Use Shaders For Chroma",
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines"
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Text"
   },
   "messages": {
     "enchants": "Enchants",

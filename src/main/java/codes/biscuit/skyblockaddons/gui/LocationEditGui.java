@@ -500,7 +500,7 @@ public class LocationEditGui extends GuiScreen {
                 main.getConfigValues().putDefaultBarSizes();
                 for (Feature guiFeature : Feature.getGuiFeatures()) {
                     if (!main.getConfigValues().isDisabled(guiFeature)) { // Don't display features that have been disabled
-                        if (guiFeature == Feature.HEALTH_BAR || guiFeature == Feature.MANA_BAR) {
+                        if (guiFeature == Feature.HEALTH_BAR || guiFeature == Feature.MANA_BAR || guiFeature == Feature.DRILL_FUEL_BAR) {
                             addResizeCorners(guiFeature);
                         }
                     }
@@ -731,7 +731,7 @@ public class LocationEditGui extends GuiScreen {
 
             main.getConfigValues().setCoords(dragging, x, y);
             main.getConfigValues().setClosestAnchorPoint(dragging);
-            if (dragging == Feature.HEALTH_BAR || dragging == Feature.MANA_BAR) {
+            if (dragging == Feature.HEALTH_BAR || dragging == Feature.MANA_BAR || dragging == Feature.DRILL_FUEL_BAR) {
                 addResizeCorners(dragging);
             }
         }

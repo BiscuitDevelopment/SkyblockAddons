@@ -43,7 +43,6 @@ import java.util.regex.Pattern;
 public class ActionBarParser {
 
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
-
     private final SkyblockAddons main;
 
     /** The amount of usable tickers or -1 if none are in the action bar. */
@@ -113,7 +112,9 @@ public class ActionBarParser {
      * @return Text to keep displaying or null
      */
     private String parseSection(String section) {
-        String numbersOnly = TextUtils.getNumbersOnly(section).trim(); // keeps numbers and slashes
+        String stripColoring = TextUtils.stripColor(section);
+        String convertMag = TextUtils.convertMagnitudes(stripColoring);
+        String numbersOnly = TextUtils.getNumbersOnly(convertMag).trim(); // keeps numbers and slashes
         String[] splitStats = numbersOnly.split("/");
 
         if (section.contains("❤")) {
@@ -128,6 +129,8 @@ public class ActionBarParser {
             return parseSkill(section);
         } else if (section.contains("Ⓞ") || section.contains("ⓩ")) {
             return parseTickers(section);
+        } else if (section.contains("Drill")) {
+            return parseDrill(section, splitStats);
         }
 
         return section;
@@ -150,7 +153,6 @@ public class ActionBarParser {
         int maxHealth;
         if (healthSection.startsWith("§6")) { // Absorption chances §c to §6. Remove §6 to make sure it isn't detected as a number of health.
             healthSection = healthSection.substring(2);
-            splitStats[0] = splitStats[0].substring(1); // One less because the '§' was already removed.
         }
         if (healthSection.contains("+")) {
             // Contains the Wand indicator so it has to be split differently
@@ -295,6 +297,28 @@ public class ActionBarParser {
             return null;
         } else {
             return tickerSection;
+        }
+    }
+
+
+
+    /**
+     * Parses the drill section
+     *
+     * @param drillSection Drill fuel section of the action bar
+     * @return null or {@code drillSection} if wrong format or drill display is disabled
+     */
+    private String parseDrill(String drillSection, String[] splitStats) {
+        // §21,798/3k Drill Fuel§r
+        // splitStats should convert into [1798, 3000]
+        int fuel = Math.max(0, Integer.parseInt(splitStats[0]));
+        int maxFuel = Math.max(1, Integer.parseInt(splitStats[1]));
+        setAttribute(Attribute.FUEL, fuel);
+        setAttribute(Attribute.MAX_FUEL, maxFuel);
+        if (main.getConfigValues().isEnabled(Feature.DRILL_FUEL_BAR) || main.getConfigValues().isEnabled(Feature.DRILL_FUEL_TEXT)) {
+            return null;
+        } else {
+            return drillSection;
         }
     }
 
