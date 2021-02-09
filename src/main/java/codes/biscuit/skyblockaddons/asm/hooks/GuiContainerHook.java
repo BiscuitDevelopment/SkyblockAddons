@@ -190,7 +190,11 @@ public class GuiContainerHook {
                 }
             }
             if (tooltipItem != null) {
+                // Translate up to fix patcher glitch
+                GlStateManager.pushMatrix();
+                GlStateManager.translate(0,0, 302);
                 guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+                GlStateManager.popMatrix();
             }
             if (!freezeBackpack) {
                 main.getUtils().setContainerPreviewToRender(null);
