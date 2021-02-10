@@ -33,6 +33,24 @@ public class DungeonMapManager {
 
     private static SkyblockAddons main = SkyblockAddons.getInstance();
     private static final ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
+    private static final Comparator<MapMarker> MAP_MARKER_COMPARATOR = (first, second) -> {
+        boolean firstIsNull = first.getMapMarkerName() == null;
+        boolean secondIsNull = second.getMapMarkerName() == null;
+
+        if (first.getIconType() != second.getIconType()) {
+            return Byte.compare(second.getIconType(), first.getIconType());
+        }
+
+        if (firstIsNull && secondIsNull) {
+            return 0;
+        } else if (firstIsNull) {
+            return 1;
+        } else if (secondIsNull) {
+            return -1;
+        }
+
+        return second.getMapMarkerName().compareTo(first.getMapMarkerName());
+    };
 
     private static MapData mapData;
     @Getter private static float mapStartX = -1;
@@ -255,62 +273,45 @@ public class DungeonMapManager {
             savedMapDecorations.putAll(instance.mapData.mapDecorations);
         }
 
-        // Don't add markers that we replaced with smooth client side ones...
+        // Don't add markers that we replaced with smooth client side ones
         Set<String> dontAddMarkerNames = new HashSet<>();
 
-        // Add these markers later because they are the smooth client side ones
-        // and should get priority.
-        Set<MapMarker> markersToAdd = new LinkedHashSet<>();
-        Map<String, DungeonPlayer> dungeonPlayers = main.getDungeonManager().getTeammates();
+        // The final set of markers that will be used
+        Set<MapMarker> allMarkers = new TreeSet<>(MAP_MARKER_COMPARATOR);
 
-        // Add the player's marker...
-        MapMarker playerMapMarker = getMapMarkerForPlayer(null, Minecraft.getMinecraft().thePlayer);
-        // For the ones that we replaced, lets make sure we skip the vanilla ones later.
-        if (playerMapMarker.getMapMarkerName() != null) {
-            dontAddMarkerNames.add(playerMapMarker.getMapMarkerName());
+        Map<String, DungeonPlayer> teammates = main.getDungeonManager().getTeammates();
+
+        // Grab all the world player entities and try to correlate them to the map
+        for (EntityPlayer player : mc.theWorld.playerEntities) {
+            // Try to find the player's map marker
+            MapMarker playerMarker = null;
+            if (teammates.containsKey(player.getName())) {
+                DungeonPlayer dungeonTeammate = teammates.get(player.getName());
+                playerMarker = getMapMarkerForPlayer(dungeonTeammate, player);
+            }
+            else if (player == mc.thePlayer) {
+                playerMarker = getMapMarkerForPlayer(null, player);
+            }
+
+            if (playerMarker != null) {
+                if (playerMarker.getMapMarkerName() != null) {
+                    dontAddMarkerNames.add(playerMarker.getMapMarkerName());
+                }
+                allMarkers.add(playerMarker);
+            }
         }
-        markersToAdd.add(playerMapMarker);
 
-        // Add teammates...
-        for (Map.Entry<String, DungeonPlayer> dungeonPlayerEntry : dungeonPlayers.entrySet()) {
-            DungeonPlayer dungeonPlayer = dungeonPlayerEntry.getValue();
-            EntityPlayer entityPlayer = Utils.getPlayerFromName(dungeonPlayerEntry.getKey());
-
-            MapMarker mapMarker = getMapMarkerForPlayer(dungeonPlayer, entityPlayer);
-            if (mapMarker.getMapMarkerName() != null) {
-                dontAddMarkerNames.add(mapMarker.getMapMarkerName());
-            }
-            markersToAdd.add(mapMarker);
-        }
-
-        // The final set of markers that will be used....
-        Set<MapMarker> allMarkers = new TreeSet<>((first, second) -> {
-            boolean firstIsNull = first.getMapMarkerName() == null;
-            boolean secondIsNull = second.getMapMarkerName() == null;
-
-            if (first.getIconType() != second.getIconType()) {
-                return Byte.compare(second.getIconType(), first.getIconType());
-            }
-
-            if (firstIsNull && secondIsNull) {
-                return 0;
-            } else if (firstIsNull) {
-                return 1;
-            } else if (secondIsNull) {
-                return -1;
-            }
-
-            return second.getMapMarkerName().compareTo(first.getMapMarkerName());
-        });
-
+        // Grab all of the map icons to make sure we don't miss any that weren't correlated before
         for (Map.Entry<String, Vec4b> vec4b : savedMapDecorations.entrySet()) {
             // If we replaced this marker with a smooth one OR this is the player's marker, lets skip.
-            if (dontAddMarkerNames.contains(vec4b.getKey()) || vec4b.getValue().func_176110_a() == 1) continue;
+            if (dontAddMarkerNames.contains(vec4b.getKey()) || vec4b.getValue().func_176110_a() == 1) {
+                continue;
+            }
 
             // Check if this marker key is linked to a player
             DungeonPlayer foundDungeonPlayer = null;
             boolean linkedToPlayer = false;
-            for (DungeonPlayer dungeonPlayer : dungeonPlayers.values()) {
+            for (DungeonPlayer dungeonPlayer : teammates.values()) {
                 if (dungeonPlayer.getMapMarker() != null && dungeonPlayer.getMapMarker().getMapMarkerName() != null &&
                         vec4b.getKey().equals(dungeonPlayer.getMapMarker().getMapMarkerName())) {
                     linkedToPlayer = true;
@@ -338,8 +339,6 @@ public class DungeonMapManager {
                 allMarkers.add(mapMarker);
             }
         }
-        // Add the smooth markers from before
-        allMarkers.addAll(markersToAdd);
 
         for (MapMarker mapMarker : allMarkers) {
             GlStateManager.pushMatrix();
@@ -369,8 +368,8 @@ public class DungeonMapManager {
                 GlStateManager.color(1, 1, 1, 1);
 
                 if (main.getConfigValues().isEnabled(Feature.SHOW_CRITICAL_DUNGEONS_TEAMMATES) &&
-                        dungeonPlayers.containsKey(mapMarker.getPlayerName())) {
-                    DungeonPlayer dungeonPlayer = dungeonPlayers.get(mapMarker.getPlayerName());
+                        teammates.containsKey(mapMarker.getPlayerName())) {
+                    DungeonPlayer dungeonPlayer = teammates.get(mapMarker.getPlayerName());
                     if (dungeonPlayer.isLow()) {
                         GlStateManager.color(1, 1, 0.5F, 1);
                     } else if (dungeonPlayer.isCritical()) {
@@ -408,6 +407,7 @@ public class DungeonMapManager {
                 dungeonPlayer.setMapMarker(mapMarker = new MapMarker(player));
             } else {
                 mapMarker = dungeonPlayer.getMapMarker();
+                mapMarker.updateXZRot(player);
             }
         } else {
             mapMarker = new MapMarker(player);
