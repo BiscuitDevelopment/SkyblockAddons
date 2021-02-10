@@ -177,7 +177,7 @@
     "compactTabList": "간단 Tab 리스트",
     "highlightMaxEnchantments": "특별한 인챈트 강조하기",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
@@ -439,7 +439,7 @@
     "bossesKilled": "죽인 보스"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "워프 포인트를 클릭하여 워프하세요!",
     "mustUnlock": "Must have the specific scroll unlocked.",
     "privateIsland": "Private Island",
     "home": "Your Island",
