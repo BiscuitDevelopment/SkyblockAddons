@@ -1,7 +1,13 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.EssenceType;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.SkillType;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonClass;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
@@ -34,7 +40,15 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
+import codes.biscuit.skyblockaddons.utils.SkyblockColor;
+import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
@@ -68,11 +82,19 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import javax.vecmath.Vector3d;
-import java.awt.*;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.*;
+import java.util.Map;
+import java.util.Optional;
+import java.util.TimeZone;
 
 import static net.minecraft.client.gui.Gui.icons;
 
