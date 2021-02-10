@@ -125,6 +125,7 @@ public class GuiScreenHook {
         return false;
     }
 
+    //TODO: Fix for Hypixel localization
     public static void handleComponentClick(IChatComponent component) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && component != null && "§2§l[OPEN MENU]".equals(component.getUnformattedText()) &&

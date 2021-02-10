@@ -424,9 +424,9 @@ public class RenderListener {
 
         if (feature == Feature.HEALTH_BAR && main.getConfigValues().isEnabled(Feature.CHANGE_BAR_COLOR_FOR_POTIONS)) {
             if (mc.thePlayer.isPotionActive(19/* Poison */)) {
-                color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GREEN.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));;
+                color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GREEN.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
-                color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GRAY.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));;
+                color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GRAY.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
             }
         }
 
@@ -1202,12 +1202,17 @@ public class RenderListener {
                 maxSecrets = 10;
             }
 
-            if (secrets == -1) {
+            if (secrets == -1 | maxSecrets == 0) {
                 ManualChromaManager.renderingText(feature);
                 String none = Translations.getMessage("messages.none");
                 DrawUtils.drawText(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 9, color);
                 ManualChromaManager.doneRenderingText();
             } else {
+                if (secrets > maxSecrets) {
+                    // Assume the max secrets equals to found secrets
+                    maxSecrets = secrets;
+                }
+
                 float percent = secrets / (float) maxSecrets;
                 if (percent < 0) {
                     percent = 0;

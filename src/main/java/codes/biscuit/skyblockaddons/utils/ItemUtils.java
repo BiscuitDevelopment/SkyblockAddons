@@ -152,10 +152,10 @@ public class ItemUtils {
     }
 
     /**
-     * Checks if the given item is a pickaxe.
+     * Checks if the given item is a mining tool (pickaxe or drill).
      *
      * @param itemStack the item to check
-     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     * @return {@code true} if this item is a pickaxe/drill, {@code false} otherwise
      */
     public static boolean isMiningTool(ItemStack itemStack) {
         return itemStack.getItem() instanceof ItemPickaxe || isDrill(itemStack);
@@ -163,10 +163,10 @@ public class ItemUtils {
 
 
     /**
-     * Checks if the given item is a pickaxe.
+     * Checks if the given item is a drill.
      *
      * @param itemStack the item to check
-     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     * @return {@code true} if this item is a drill, {@code false} otherwise
      */
     // TODO: This is a hotfix until we come up with a way to jsonify
     public static boolean isDrill(ItemStack itemStack) {
