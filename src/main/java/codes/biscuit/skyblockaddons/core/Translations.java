@@ -54,9 +54,8 @@ public class Translations {
                     !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
                 text = bidiReorder(text);
             }
-        } catch (NullPointerException ex) {
-            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path);
-            SkyblockAddons.getLogger().catching(ex);
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path, ex);
             text = path; // In case of fire...
         }
         return text;

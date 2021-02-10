@@ -673,7 +673,7 @@ public class Utils {
                 JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8), JsonObject.class);
                 connection.disconnect();
 
-                mergeLanguageJsonObject(onlineMessages, main.getConfigValues().getLanguageConfig());
+                overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(), onlineMessages);
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 logger.error("There was an error loading the language file online");
                 logger.catching(ex);
@@ -716,27 +716,30 @@ public class Utils {
      * This is used to merge in the online language entries into the existing ones.
      * Using this method rather than an overwrite allows new entries in development to still exist.
      *
-     * @param onlineObject The object to be merged (online entries).
+     * @param otherObject The object to be merged (online entries).
      * @param baseObject   The object to me merged in to (local entries).
      */
-    private void mergeLanguageJsonObject(JsonObject onlineObject, JsonObject baseObject) {
-        for (Map.Entry<String, JsonElement> entry : baseObject.entrySet()) {
+    private void overwriteCommonJsonMembers(JsonObject baseObject, JsonObject otherObject) {
+        for (Map.Entry<String, JsonElement> entry : otherObject.entrySet()) {
             String memberName = entry.getKey();
-            JsonElement baseElement = entry.getValue();
+            JsonElement otherElement = entry.getValue();
 
-            // Online has this same entry...
-            if (onlineObject.has(memberName)) {
-                JsonElement onlineElement = onlineObject.get(memberName);
+            if (otherElement.isJsonObject()) {
+                // If the base object already has this object, then recurse
+                if (baseObject.has(memberName) && baseObject.get(memberName).isJsonObject()) {
+                    JsonObject baseElementObject = baseObject.getAsJsonObject(memberName);
+                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
 
-                // If this is a json object, then recurse.
-                if (baseElement.isJsonObject() && onlineElement.isJsonObject()) {
-                    mergeLanguageJsonObject(onlineElement.getAsJsonObject(), baseElement.getAsJsonObject());
-
-                    // Otherwise, if it's a string, just put in the online version into the base.
-                } else if (baseElement.isJsonPrimitive() && baseElement.getAsJsonPrimitive().isString() &&
-                        onlineElement.isJsonPrimitive() && onlineElement.getAsJsonPrimitive().isString()) {
-                    baseObject.add(memberName, onlineElement);
+                // Otherwise we have to add a new object first, then recurse
+                } else {
+                    JsonObject baseElementObject = new JsonObject();
+                    baseObject.add(memberName, baseElementObject);
+                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
                 }
+
+            // If it's a string, then just add or overwrite the base version
+            } else if (otherElement.isJsonPrimitive() && otherElement.getAsJsonPrimitive().isString()) {
+                baseObject.add(memberName, otherElement);
             }
         }
     }

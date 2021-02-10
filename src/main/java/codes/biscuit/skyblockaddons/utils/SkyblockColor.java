@@ -96,7 +96,7 @@ public class SkyblockColor {
     }
 
     public static boolean shouldUseChromaShaders() {
-        return ShaderManager.getInstance().areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_SHADERS_FOR_CHROMA);
+        return ShaderManager.getInstance().areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
     }
 
     public enum ColorAnimation {

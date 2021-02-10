@@ -169,7 +169,7 @@ public enum Feature {
     DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null,false),
     CANDY_POINTS_COUNTER(155, "settings.candyPointsCounter", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
     HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
-    USE_SHADERS_FOR_CHROMA(157, "settings.useShadersForChroma", null, false),
+    USE_NEW_CHROMA_EFFECT(157, "settings.useNewChromaEffect", null, false),
     SHOW_EXPERIMENTATION_TABLE_TOOLTIPS(158, "settings.showExperimentationTableTooltips", null, true),
     ONLY_MINE_ORES_DWARVEN_MINES(159, "settings.onlyMineOresDwarvenMines", new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     DRILL_FUEL_BAR(160, "settings.drillFuelBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.DARK_GREEN), false),
@@ -227,7 +227,7 @@ public enum Feature {
      * These are features that are displayed separate, on the general tab.
      */
     @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
-            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_SHADERS_FOR_CHROMA));
+            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 

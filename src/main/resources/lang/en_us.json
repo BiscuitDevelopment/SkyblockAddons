@@ -182,7 +182,7 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma",
+    "useNewChromaEffect": "Use New Chroma Effect",
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
@@ -254,7 +254,8 @@
     "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active",
     "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "None",

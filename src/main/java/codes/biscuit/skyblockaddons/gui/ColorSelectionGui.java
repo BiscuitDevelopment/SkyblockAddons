@@ -3,8 +3,8 @@ package codes.biscuit.skyblockaddons.gui;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
-import codes.biscuit.skyblockaddons.gui.buttons.ButtonSlider;
 import codes.biscuit.skyblockaddons.gui.buttons.NewButtonSlider;
 import codes.biscuit.skyblockaddons.gui.elements.CheckBox;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -68,7 +68,7 @@ public class ColorSelectionGui extends GuiScreen {
 
     @Override
     public void initGui() {
-        chromaCheckbox = new CheckBox(mc, width / 2 + 88, 170, 12, "Chroma", false);
+        chromaCheckbox = new CheckBox(mc, width / 2 + 88, 170, 12, Translations.getMessage("messages.chroma"), false);
         chromaCheckbox.setValue(main.getConfigValues().getChromaFeatures().contains(feature));
 
         chromaCheckbox.setOnToggleListener(value -> {
@@ -260,7 +260,7 @@ public class ColorSelectionGui extends GuiScreen {
     }
 
     private void removeChromaButtons() {
-        this.buttonList.removeIf(button -> button instanceof ButtonSlider);
+        this.buttonList.removeIf(button -> button instanceof NewButtonSlider);
     }
 
     private void addChromaButtons() {
