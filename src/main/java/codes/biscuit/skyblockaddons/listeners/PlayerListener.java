@@ -13,8 +13,8 @@ import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
@@ -431,7 +431,7 @@ public class PlayerListener {
             if (heldItem.getItem() == Items.skull) {
                 BackpackColor color = ItemUtils.getBackpackColor(heldItem);
                 if (color != null) {
-                    BackpackManager.setOpenedBackpackColor(color);
+                    BackpackInventoryManager.setBackpackColor(color);
                 }
             } else if (heldItem.getItem().equals(Items.fishing_rod)
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {

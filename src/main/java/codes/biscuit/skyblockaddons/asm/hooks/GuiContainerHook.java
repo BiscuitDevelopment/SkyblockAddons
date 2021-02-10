@@ -6,11 +6,10 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import lombok.Getter;
-import net.minecraft.block.BlockStainedGlassPane;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -32,28 +31,22 @@ public class GuiContainerHook {
     private static final int OVERLAY_RED = ColorCode.RED.getColor(127);
     private static final int OVERLAY_GREEN = ColorCode.GREEN.getColor(127);
 
-    /**
-     * This controls whether or not the backpack preview is frozen- allowing you
-     * to hover over a backpack's contents in full detail!
-     */
-    @Getter private static boolean freezeBackpack;
-
     public static void keyTyped(int keyCode) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
-            freezeBackpack = false;
-            main.getUtils().setContainerPreviewToRender(null);
+            ContainerPreviewManager.setFrozen(false);
+            ContainerPreviewManager.setContainerPreview(null);
         }
-        if (keyCode == main.getFreezeBackpackKey().getKeyCode() && freezeBackpack &&
-                System.currentTimeMillis() - GuiScreenHook.getLastBackpackFreezeKey() > 500) {
-            GuiScreenHook.setLastBackpackFreezeKey(System.currentTimeMillis());
-            freezeBackpack = false;
+        if (keyCode == main.getFreezeBackpackKey().getKeyCode() && ContainerPreviewManager.isFrozen() &&
+                System.currentTimeMillis() - ContainerPreviewManager.getLastToggleFreezeTime() > 500) {
+            ContainerPreviewManager.setLastToggleFreezeTime(System.currentTimeMillis());
+            ContainerPreviewManager.setFrozen(false);
         }
     }
 
     public static void drawBackpacks(GuiContainer guiContainer, int mouseX, int mouseY, FontRenderer fontRendererObj) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        ContainerPreview containerPreview = main.getUtils().getContainerPreviewToRender();
+        ContainerPreview containerPreview = ContainerPreviewManager.getContainerPreview();
         Minecraft mc = Minecraft.getMinecraft();
         if (containerPreview != null) {
             int x = containerPreview.getX();
@@ -145,7 +138,7 @@ public class GuiContainerHook {
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
 
-                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                        if (ContainerPreviewManager.isFrozen() && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
                             tooltipItem = item;
                         }
                     }
@@ -183,7 +176,7 @@ public class GuiContainerHook {
                         guiContainer.zLevel = 0;
                         renderItem.zLevel = 0;
 
-                        if (freezeBackpack && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
+                        if (ContainerPreviewManager.isFrozen() && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {
                             tooltipItem = item;
                         }
                     }
@@ -193,11 +186,13 @@ public class GuiContainerHook {
                 // Translate up to fix patcher glitch
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 302);
+                ContainerPreviewManager.setRenderingBackpackTooltip(true);
                 guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+                ContainerPreviewManager.setRenderingBackpackTooltip(false);
                 GlStateManager.popMatrix();
             }
-            if (!freezeBackpack) {
-                main.getUtils().setContainerPreviewToRender(null);
+            if (!ContainerPreviewManager.isFrozen()) {
+                ContainerPreviewManager.setContainerPreview(null);
             }
             GlStateManager.enableLighting();
             GlStateManager.enableDepth();
@@ -210,13 +205,12 @@ public class GuiContainerHook {
     }
 
     public static void drawGradientRect(GuiContainer guiContainer, int left, int top, int right, int bottom, int startColor, int endColor, Slot theSlot) {
-        if (freezeBackpack) return;
+        if (ContainerPreviewManager.isFrozen()) return;
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (theSlot != null && theSlot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(theSlot.getStack())) {
             return;
         }
-
         Container container = Minecraft.getMinecraft().thePlayer.openContainer;
         if (theSlot != null) {
             int slotNum = theSlot.slotNumber + main.getInventoryUtils().getSlotDifference(container);
@@ -325,9 +319,5 @@ public class GuiContainerHook {
         return slot != null && slot.getHasStack() && main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) &&
                 main.getUtils().isEmptyGlassPane(slot.getStack()) && main.getUtils().isOnSkyblock() && !main.getUtils().isInDungeon() &&
                 (main.getInventoryUtils().getInventoryType() != InventoryType.ULTRASEQUENCER || main.getUtils().isGlassPaneColor(slot.getStack(), EnumDyeColor.BLACK));
-    }
-
-    public static void setFreezeBackpack(boolean freezeBackpack) {
-        GuiContainerHook.freezeBackpack = freezeBackpack;
     }
 }

@@ -3,42 +3,26 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerItem;
-import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
-import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IChatComponent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
 
-import java.util.Arrays;
-
 public class GuiScreenHook {
 
     private static final int MADDOX_BATPHONE_COOLDOWN = 20 * 1000;
-
-    /**
-     * The last time the backpack preview freeze key was pressed.
-     * This is to stop multiple methods that handle similar logic from
-     * performing the same actions multiple times.
-     */
-    @Getter @Setter private static long lastBackpackFreezeKey = -1;
 
     //TODO Fix for Hypixel localization
     public static boolean onRenderTooltip(ItemStack itemStack, int x, int y) {
@@ -46,6 +30,11 @@ public class GuiScreenHook {
 
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getConfigValues().isEnabled(Feature.DISABLE_EMPTY_GLASS_PANES) && main.getUtils().isEmptyGlassPane(itemStack)) {
+            return true;
+        }
+
+        // Cancel tooltips while containers are frozen and we aren't trying to render a tooltip in the backpack
+        if (ContainerPreviewManager.isFrozen() && !ContainerPreviewManager.isRenderingBackpackTooltip()) {
             return true;
         }
 
@@ -93,27 +82,28 @@ public class GuiScreenHook {
                 }
             }
 
-            ContainerPreview containerPreview = BackpackManager.getFromItem(itemStack);
+            ContainerPreview containerPreview = ContainerPreviewManager.getFromItem(itemStack);
             if (containerPreview != null) {
-
                 containerPreview.setX(x);
                 containerPreview.setY(y);
 
                 // Handle the freeze container toggle
-                if (isFreezeKeyDown() && System.currentTimeMillis() - lastBackpackFreezeKey > 500) {
-                    lastBackpackFreezeKey = System.currentTimeMillis();
-                    GuiContainerHook.setFreezeBackpack(!GuiContainerHook.isFreezeBackpack());
-                    main.getUtils().setContainerPreviewToRender(containerPreview);
+
+                if (isFreezeKeyDown() && System.currentTimeMillis() - ContainerPreviewManager.getLastToggleFreezeTime() > 500) {
+                    ContainerPreviewManager.setLastToggleFreezeTime(System.currentTimeMillis());
+                    ContainerPreviewManager.setFrozen(!ContainerPreviewManager.isFrozen());
+                    ContainerPreviewManager.setContainerPreview(containerPreview);
                 }
-                if (!GuiContainerHook.isFreezeBackpack()) {
-                    main.getUtils().setContainerPreviewToRender(containerPreview);
+
+                if (!ContainerPreviewManager.isFrozen()) {
+                    ContainerPreviewManager.setContainerPreview(containerPreview);
                 }
                 main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
                 cancelled = true;
             }
         }
 
-        if (GuiContainerHook.isFreezeBackpack()) {
+        if (ContainerPreviewManager.isFrozen()) {
             cancelled = true;
         }
 
@@ -127,9 +117,7 @@ public class GuiScreenHook {
      */
     private static boolean isFreezeKeyDown() {
         SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (main.getFreezeBackpackKey().isKeyDown()) return true;
-        if (main.getFreezeBackpackKey().isPressed()) return true;
         try {
             if (Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode())) return true;
         } catch (Exception ignored) {}

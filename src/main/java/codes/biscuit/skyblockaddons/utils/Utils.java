@@ -106,8 +106,6 @@ public class Utils {
      */
     private List<String> enchantmentExclusions = new LinkedList<>();
 
-    private ContainerPreview containerPreviewToRender;
-
     /**
      * Whether the player is on skyblock.
      */

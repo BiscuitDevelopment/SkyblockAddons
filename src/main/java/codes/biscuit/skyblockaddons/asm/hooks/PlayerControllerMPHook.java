@@ -5,8 +5,8 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
@@ -129,7 +129,7 @@ public class PlayerControllerMPHook {
                 if (mouseButtonClicked == 1 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
                     BackpackColor color = ItemUtils.getBackpackColor(slotIn.getStack());
                     if (color != null) {
-                        BackpackManager.setOpenedBackpackColor(color);
+                        BackpackInventoryManager.setBackpackColor(color);
                     }
                 }
 

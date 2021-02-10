@@ -7,7 +7,7 @@ import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -71,7 +71,7 @@ public class GuiChestHook {
         }
 
         islandWarpGui = null;
-        BackpackManager.setOpenedBackpackColor(null);
+        BackpackInventoryManager.setBackpackColor(null);
     }
 
     public static void drawScreenIslands(int mouseX, int mouseY, ReturnValue<?> returnValue) {
@@ -397,8 +397,8 @@ public class GuiChestHook {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && lowerChestInventory.hasCustomName()) {
             if (lowerChestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-                if (BackpackManager.getOpenedBackpackColor() != null) {
-                    BackpackColor color = BackpackManager.getOpenedBackpackColor();
+                if (BackpackInventoryManager.getBackpackColor() != null) {
+                    BackpackColor color = BackpackInventoryManager.getBackpackColor();
                     GlStateManager.color(color.getR(), color.getG(), color.getB(), 1);
                     return;
                 }
@@ -418,8 +418,8 @@ public class GuiChestHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
-                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && BackpackManager.getOpenedBackpackColor() != null) {
-            return fontRenderer.drawString(text, x,y, BackpackManager.getOpenedBackpackColor().getInventoryTextColor());
+                main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && BackpackInventoryManager.getBackpackColor() != null) {
+            return fontRenderer.drawString(text, x,y, BackpackInventoryManager.getBackpackColor().getInventoryTextColor());
         }
         return fontRenderer.drawString(text,x,y,color);
     }

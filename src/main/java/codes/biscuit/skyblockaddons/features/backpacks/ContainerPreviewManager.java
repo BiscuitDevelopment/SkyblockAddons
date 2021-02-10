@@ -1,11 +1,12 @@
 package codes.biscuit.skyblockaddons.features.backpacks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerItem;
+import lombok.Getter;
+import lombok.Setter;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,9 +14,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.util.Constants;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 import java.util.Iterator;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static net.minecraftforge.common.util.Constants.NBT.TAG_BYTE_ARRAY;
@@ -23,11 +22,28 @@ import static net.minecraftforge.common.util.Constants.NBT.TAG_BYTE_ARRAY;
 /**
  * This class contains utility methods for backpacks and stores the color of the backpack the player has open.
  */
-public class BackpackManager {
+public class ContainerPreviewManager {
 
-    private static final Pattern BACKPACK_ID_PATTERN = Pattern.compile("([A-Z]+)_BACKPACK");
-
-    private static BackpackColor openedBackpackColor = null;
+    /**
+     * The container preview to render
+     */
+    @Getter @Setter private static ContainerPreview containerPreview;
+    /**
+     * The stack we are currently previewing
+     */
+    @Getter @Setter private static ItemStack containerStack;
+    /**
+     * Whether we are currently frozen in the container preview
+     */
+    @Getter @Setter private static boolean isFrozen;
+    /**
+     * The last (epoch) time we toggled the freeze button
+     */
+    @Getter @Setter private static long lastToggleFreezeTime;
+    /**
+     * True only during the split second that we are rendering the backpack tooltip.
+     */
+    @Getter @Setter private static boolean isRenderingBackpackTooltip;
 
     /**
      * Creates and returns a {@code ContainerPreview} object representing the given {@code ItemStack} if it is a backpack
@@ -112,22 +128,4 @@ public class BackpackManager {
         return items;
     }
 
-    /**
-     * Returns the color of the backpack the player currently has open
-     *
-     * @return the color of the backpack the player currently has open
-     */
-    public static BackpackColor getOpenedBackpackColor() {
-        return openedBackpackColor;
-    }
-
-    /**
-     * <p>Sets {@code openedBackpackColor}</p>
-     * <p>This variable is used when rendering the backpack inventory to change the background color to the backpack's color.</p>
-     *
-     * @param openedBackpackColor the color of the backpack that the player has open
-     */
-    public static void setOpenedBackpackColor(BackpackColor openedBackpackColor) {
-        BackpackManager.openedBackpackColor = openedBackpackColor;
-    }
 }
