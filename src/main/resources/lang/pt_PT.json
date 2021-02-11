@@ -186,7 +186,7 @@
     "showExperimentationTableTooltips": "Mostrar descrições dos itens na Experimentation Table",
     "onlyMineOresDwarvenMines": "Só partir minérios nas Dwarven Mines",
     "drillFuelBar": "Barra de combustível da Drill",
-    "drillFuelText": "Drill Fuel Text"
+    "drillFuelText": "Número de combustível da Drill"
   },
   "messages": {
     "enchants": "encantamentos",
