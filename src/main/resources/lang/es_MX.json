@@ -182,7 +182,11 @@
     "chromaSize": "Tamaño del Croma",
     "chromaSaturation": "Saturación del Croma",
     "chromaBrightness": "Brillo del Croma",
-    "useNewChromaEffect": "Usar Nuevo Efecto Croma"
+    "useNewChromaEffect": "Usar Nuevo Efecto Croma",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Text"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -250,7 +254,8 @@
     "effectActive": "1 Efecto Activo",
     "effectsActive": "%number% Efectos Activos",
     "none": "Ninguno",
-    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!"
+    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -340,6 +345,15 @@
             "command": "el sub-comando para obtener información del uso de"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
