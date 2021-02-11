@@ -14,7 +14,7 @@
     "editLocations": "GUI Locaties Bewerken",
     "guiScale": "GUI Grootte: %scale%",
     "resetLocations": "Locaties Resetten",
-    "hideDurability": "Verberg Duurzaamheid Gereedschap",
+    "hideDurability": "Gereedschapsduurzaamheid verbergen",
     "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "\"Minion kan niet bereiken\"-waarschuwing",
     "hidePlayersNearNPCs": "Spelers vlakbij belangrijke NPC's verbergen",
@@ -23,7 +23,7 @@
       "regular": "Normaal",
       "compact": "Compact"
     },
-    "showBackpackPreview": "Toon Inhoud Rugzak",
+    "showBackpackPreview": "Rugzakvoorbeeld weergeven",
     "hideHealthBar": "Verberg Originele Gezondheids Balk",
     "fullMinionWarning": "Volle Minion Waarschuwing",
     "ignoreItemFrameClicks": "Negeer Klikken Op Item Frames",
@@ -36,7 +36,7 @@
     "defenceText": "Verdediging Hoeveelheid",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
-    "hidePlayersInLobby": "Verberg Verre Entiteiten in Lobby",
+    "hidePlayersInLobby": "Verre entiteiten in lobby verbergen",
     "darkAuctionTimer": "Timer Donkere Veiling",
     "magmaBossTimer": "Magma Baas Timer",
     "itemPickupLog": "Lijst Opgepakte Items",
@@ -51,8 +51,8 @@
     "summoningEyeAlert": "Summoning Eye-alarm",
     "makeEnderchestsInEndGreen": "Enderkistkleur veranderen in De End",
     "changeColor": "Kleur wijzigen",
-    "showInOtherGames": "In andere spellen tonen",
-    "useVanillaTexture": "Gebruik Vanilla Achtergrond",
+    "showInOtherGames": "In andere spellen weergeven",
+    "useVanillaTexture": "Standaardtextuur gebruiken",
     "textStyle": "Tekststijl",
     "textStyles": {
       "one": "Stijl één",
@@ -71,14 +71,14 @@
     "disableMinionLocationWarning": "Locatie Niet Perfect-waarschuwingen uitschakelen",
     "jungleAxeCooldown": "Junglebijl/Treecapacitor blokkeren bij afkoeltijd",
     "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
-    "showItemCooldowns": "Toon Item Afkoelingstijd",
+    "showItemCooldowns": "Voorwerpafkoeltijd weergeven",
     "speedPercentage": "Snelheidspercentage",
     "collectionDisplay": "Vaardigheid Voortgang Weergave",
     "onlyMineOresDeepCaverns": "Breek Alleen Erts in de Diepe Grotten",
     "onlyMineValuablesNether": "Breek Alleen Kostbaarheden in de Nether",
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
     "specialZealotAlert": "Speciale Zealot Melding",
-    "enableMessageWhenActionPrevented": "Een bericht tonen als een actie gestopt wordt",
+    "enableMessageWhenActionPrevented": "Bericht weergeven bij geblokkeerde actie",
     "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
     "powerOrbDisplay": "Power Orb-weergave",
     "powerOrbDisplayStyle": "Power Orb-stijl: %style%",
@@ -95,8 +95,8 @@
     "tabEffectTimers": "Drank- en power-uptimers",
     "noArrowsLeftAlert": "Pijlen op-waarschuwing",
     "hideNightVisionEffectTimer": "Nachtzichteffecttimer verbergen",
-    "showCakeBagPreview": "Voorbeeld Cake Bags tonen",
-    "showBackpackPreviewInAH": "Rugzakvoorbeeld voor je voorwerpen tonen als Veilinghuis open is",
+    "showCakeBagPreview": "Cake Bag-voorbeelden weergeven",
+    "showBackpackPreviewInAH": "Rugzakvoorbeeld voor je voorwerpen weergeven als Veilinghuis open is",
     "enableDevFeatures": "Ontwikkelaarsfuncties inschakelen",
     "chromaSpeed": "Chromasnelheid",
     "chromaMode": "Chromakleurmodus",
@@ -106,8 +106,8 @@
     },
     "chromaFadeWidth": "Chromavervagingsbreedte",
     "sortTabEffectTimers": "Timers sorteren op duur",
-    "showBrokenFragments": "Gebroken Draakfragmenten tonen",
-    "skyblockAddonsButtonInPauseMenu": "SBA-knop tonen in pauzemenu",
+    "showBrokenFragments": "Defecte Dragon Fragments weergeven",
+    "skyblockAddonsButtonInPauseMenu": "SBA-knop weergeven in pauzemenu",
     "showTotalZealotCount": "Zealotteller - Aantal Zealots",
     "showSummoningEyeCount": "Zealotteller - Aantal Eyes",
     "showZealotsPerEye": "Zealotteller - Zealots per Eye",
@@ -123,7 +123,7 @@
     "onlyBreakLogsPark": "Alleen boomstammen breken in het Park",
     "bossApproachAlert": "Slayerbaas-benaderingsalarm",
     "disableTeleportPadMessages": "Teleportatiepadberichten uitschakelen",
-    "baitListDisplay": "Aaslijst tonen als je een hengel vasthoudt",
+    "baitListDisplay": "Aaslijst weergeven als je een hengel vasthoudt",
     "freezeBackpackPreview": "Rugzakvoorbeeld bevriezen",
     "hideGreyEnchants": "Normale grijze betoveringen verbergen",
     "zealotCounterExplosiveBow": "Zealotteller Explosieve Boog-ondersteuning",
@@ -137,17 +137,17 @@
     "mapZoom": "Kaartzoom",
     "glowingDroppedItems": "Voorwerpen laten gloeien",
     "glowingDungeonTeammates": "Dungeonteamgenoten laten gloeien",
-    "baseStatBoostPercentage": "Basisstatistiekboost voor Dungeonvoorwerpen tonen",
+    "baseStatBoostPercentage": "Basisstatistiekboost voor Dungeonvoorwerpen weergeven",
     "colorByRarity": "Kleuren op zeldzaamheid",
-    "showPlayerHeadsOnMap": "Spelerhoofden tonen op Dungeonkaart",
+    "showPlayerHeadsOnMap": "Spelerhoofden weergeven op Dungeonkaart",
     "showHealingCircleWall": "Dungeon Healing Circle Wall weergeven",
-    "showCriticalTeammates": "Kritieke Dungeonteamgenoten tonen",
-    "showGlowingItemsOnIsland": "Gloeiende voorwerpen op eiland tonen",
-    "showItemDungeonFloor": "Verdieping waar Dungeonvoorwerp verkregen is tonen",
-    "showDungeonMilestone": "Dungeonmijlpaal tonen",
+    "showCriticalTeammates": "Kritieke Dungeonteamgenoten weergeven",
+    "showGlowingItemsOnIsland": "Gloeiende voorwerpen op eiland weergeven",
+    "showItemDungeonFloor": "Verdieping waar Dungeonvoorwerp verkregen is weergeven",
+    "showDungeonMilestone": "Dungeonmijlpaal weergeven",
     "dungeonsCollectedEssencesDisplay": "Verzamelde Dungeons-Essencesweergave",
     "stopBonzoStaffSounds": "Bonzos staffgeluiden stoppen",
-    "showRarityUpgraded": "Tonen of voorwerpzeldzaamheid verhoogd is",
+    "showRarityUpgraded": "Verhoogde voorwerpzeldzaamheid weergeven",
     "revenantSlayerTracker": "Slayertracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayertracker - Tarantula/Spin",
     "svenSlayerTracker": "Slayertracker - Sven/Wolf",
@@ -159,7 +159,7 @@
     "hideWhenNotInSpidersDen": "Verbergen als je niet in het Hol van de Spin bent/geen Tarantulaquest doet",
     "hideWhenNotInCastle": "Verbergen als je niet in het Kasteel bent/geen Svenquest doet",
     "dungeonDeathCounter": "Dugeon-deathteller",
-    "showPersonalCompactorPreview": "Personal Compactor voorvertonen",
+    "showPersonalCompactorPreview": "Personal Compactor-voorbeelden weergeven",
     "rockPetTracker": "Rock Pet-tracker",
     "dolphinPetTracker": "Dolphin Pet-tracker",
     "dungeonsTeammateNameOverlay": "Namen Dungeons teamgenoten weergeven",
@@ -173,7 +173,7 @@
     "disableBossMessages": "Baasberichten uitschakelen",
     "hideOtherPlayersPresents": "Cadeaus van anderen verbergen",
     "easierPresentOpening": "Cadeaus makkelijker uitpakken",
-    "showSwordKills": "Kills met zwaard tonen",
+    "showSwordKills": "Kills met zwaard weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightMaxEnchantments": "Speciale betoveringen markeren",
     "disableEmptyGlassPanes": "Lege glazen ruiten verbergen",
@@ -184,9 +184,9 @@
     "chromaBrightness": "Chromahelderheid",
     "useNewChromaEffect": "Nieuw Chroma-effect gebruiken",
     "showExperimentationTableTooltips": "Experimentation Table-tooltips weergeven",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Text"
+    "onlyMineOresDwarvenMines": "Alleen erts breken in Dwarven Mines",
+    "drillFuelBar": "Drill-brandstofbalk",
+    "drillFuelText": "Drill-brandstoftekst"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -211,7 +211,7 @@
       "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
       "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Kijk in de chat voor download opties!"
     },
-    "slotLocked": "Deze Slot is vergrendeld!",
+    "slotLocked": "Dit vakje is vergrendeld!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Een functie heeft je ervan weerhouden deze stam te breken. Gebruik je lege hand als je hem toch wilt breken.",
     "cancelledProfileOpening": "Een functie heeft je ervan weerhouden het profiel van deze speler te openen omdat je een boog vast had.",
@@ -232,7 +232,7 @@
     "setHexColor": "Hexkleur instellen",
     "rescaleFeatures": "Functies herschalen",
     "resizeBars": "Balkformaten aanpassen",
-    "showColorIcons": "Kleurenpictogrammen tonen",
+    "showColorIcons": "Kleurenpictogrammen weergeven",
     "enableFeatureSnapping": "Functie-uitlijning inschakelen",
     "stage": "Fase %stage%",
     "switchedSlots": "Je hebt zojuist gewisseld van een vergrendeld vakje of een zeldzaam voorwerp. Wacht even voor je het laat vallen!",
@@ -291,7 +291,7 @@
         "help": "Hoofdmenu openen"
       },
       "brand": {
-        "help": "§e(Dev) §7Servermerk tonen",
+        "help": "§e(Dev) §7Servermerk weergeven",
         "brandOutput": "Servermerk: %brand%",
         "notFound": "Servermerk niet gevonden!"
       },
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Herlaadt alle modinstellingen"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Herlaadt alle modbronnen. Het spel zal een paar seconden stilstaan."
       },
       "set": {
         "zealotCounter": {
