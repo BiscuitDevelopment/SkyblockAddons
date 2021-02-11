@@ -29,11 +29,11 @@
     "ignoreItemFrameClicks": "Negeer Klikken Op Item Frames",
     "showOnlyWhenHoldingShift": "Alleen weergeven wanneer Shift is ingedrukt",
     "manaBar": "Manabalk",
-    "manaText": "Mananummer",
+    "manaText": "Managetal",
     "healthBar": "Gezondheidsbalk",
-    "healthText": "Gezondheid Hoeveelheid",
+    "healthText": "Gezondheidsgetal",
     "defenceIcon": "Verdedigings Symbool",
-    "defenceText": "Verdediging Hoeveelheid",
+    "defenceText": "Verdedigingsgetal",
     "defencePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheid Hoeveelheid Aanpassen",
     "hidePlayersInLobby": "Verre entiteiten in lobby verbergen",
@@ -186,7 +186,7 @@
     "showExperimentationTableTooltips": "Experimentation Table-tooltips weergeven",
     "onlyMineOresDwarvenMines": "Alleen erts breken in Dwarven Mines",
     "drillFuelBar": "Drill-brandstofbalk",
-    "drillFuelText": "Drill-brandstoftekst"
+    "drillFuelText": "Drill-brandstofgetal"
   },
   "messages": {
     "enchants": "Betoveringen",
