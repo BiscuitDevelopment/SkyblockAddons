@@ -186,7 +186,7 @@
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Text"
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Enchantements",
