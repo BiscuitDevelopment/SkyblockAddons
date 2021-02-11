@@ -81,7 +81,7 @@ public class ItemDropChecker {
      */
     public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
         if (main.getUtils().isOnSkyblock()) {
-            if (ItemUtils.getSkyBlockItemID(item) == null) {
+            if (ItemUtils.getSkyblockItemID(item) == null) {
                 // Allow dropping of Skyblock items without IDs
                 return true;
             } else if (ItemUtils.getRarity(item) == null) {
@@ -92,7 +92,7 @@ public class ItemDropChecker {
                 return true;
             }
 
-            String itemID = ItemUtils.getSkyBlockItemID(item);
+            String itemID = ItemUtils.getSkyblockItemID(item);
             ItemRarity itemRarity = ItemUtils.getRarity(item);
             List<String> blacklist = main.getOnlineData().getDropSettings().getDontDropTheseItems();
             List<String> whitelist = main.getOnlineData().getDropSettings().getAllowDroppingTheseItems();

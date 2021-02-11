@@ -41,7 +41,7 @@ public class EnchantedItemPlacementBlocker {
      * @return {@code true} if the usage should be blocked, {@code false} otherwise.
      */
     public static boolean shouldBlockPlacement(@NonNull ItemStack itemStack, PlayerInteractEvent interactEvent) {
-        String heldItemId = ItemUtils.getSkyBlockItemID(itemStack);
+        String heldItemId = ItemUtils.getSkyblockItemID(itemStack);
 
         // Don't block non-Skyblock items.
         if (heldItemId == null) {

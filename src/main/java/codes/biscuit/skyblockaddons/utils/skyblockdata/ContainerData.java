@@ -4,38 +4,40 @@ import lombok.Getter;
 
 import java.util.List;
 
-public class ContainerItem {
+public class ContainerData {
 
     private enum ContainerType {
-        BACKPACK(0),
-        NEW_YEARS_CAKE(1),
-        PERSONAL_COMPACTOR(2),
-        BUILDERS_WAND(3);
-
-        @Getter int type;
-        ContainerType(int theType) {
-            type = theType;
-        }
+        BACKPACK,
+        NEW_YEARS_CAKE,
+        PERSONAL_COMPACTOR,
+        BUILDERS_WAND;
     }
-
-
 
     /**
      * The container type (see {@link ContainerType}).
      */
-    private int type;
+    private ContainerType type;
+
     /**
      * The size of the container
      */
     private int size;
+
     /**
-     * The important ExtraAttributes NBT tags for retrieving data
+     * The data tag where a compressed array of item stacks are stored.
      */
-    private List<String> dataTags;
+    private String compressedItemStacksTag;
+
+    /**
+     * Data tags where individual item stacks are stored.
+     */
+    private List<String> itemStackDataTags;
+
     /**
      * The ExtraAttributes NBT tag for retrieving backpack color
      */
     @Getter private String colorTag;
+
     /**
      * The container (item array) dimensions
      */
@@ -45,19 +47,19 @@ public class ContainerItem {
     /* Functions that check the container type */
 
     public boolean isBackpack() {
-        return type == ContainerType.BACKPACK.getType();
+        return type == ContainerType.BACKPACK;
     }
 
     public boolean isCakeBag() {
-        return type == ContainerType.NEW_YEARS_CAKE.getType();
+        return type == ContainerType.NEW_YEARS_CAKE;
     }
 
     public boolean isPersonalCompactor() {
-        return type == ContainerType.PERSONAL_COMPACTOR.getType();
+        return type == ContainerType.PERSONAL_COMPACTOR;
     }
 
     public boolean isBuildersWand() {
-        return type == ContainerType.BUILDERS_WAND.getType();
+        return type == ContainerType.BUILDERS_WAND;
     }
 
     /* Functions that check the size of the container */
@@ -83,28 +85,12 @@ public class ContainerItem {
         return dimensions.length == 2 ? Math.min(dimensions[1], 9) : 9;
     }
 
-    /* Functions that check the important ExtraAttributes NBT tags */
-
-
-    public boolean hasDataTags() {
-        return hasDataTags(0);
-    }
-
-
-
-    private boolean hasDataTags(int num) {
-        return dataTags != null && dataTags.size() >= num;
-    }
-
     public String getCompressedDataTag() {
-        if ((isCakeBag() || isBackpack()) && hasDataTags(0)) {
-            return dataTags.get(0);
-        }
-        return null;
+        return compressedItemStacksTag;
     }
 
-    public List<String> getDataTags() {
-        return isPersonalCompactor() ? dataTags : null;
+    public List<String> getItemStackDataTags() {
+        return itemStackDataTags;
     }
 
 

@@ -62,7 +62,7 @@ public class SlayerTracker {
                 }
 
                 for (SlayerDrop drop : slayerTrackerData.getLastKilledBoss().getDrops()) {
-                    if (drop.getSkyblockID().equals(ItemUtils.getSkyBlockItemID(itemDifference.getExtraAttributes()))) {
+                    if (drop.getSkyblockID().equals(ItemUtils.getSkyblockItemID(itemDifference.getExtraAttributes()))) {
 
                         // If this is a rune and it doesn't match, continue
                         Rune rune = ItemUtils.getRuneData(itemDifference.getExtraAttributes());

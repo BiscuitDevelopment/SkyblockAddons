@@ -84,7 +84,7 @@ public class DragonTracker {
                 }
 
                 DragonTrackerData dragonTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getDragonTracker();
-                String skyBlockItemID = ItemUtils.getSkyBlockItemID(itemDifference.getExtraAttributes());
+                String skyBlockItemID = ItemUtils.getSkyblockItemID(itemDifference.getExtraAttributes());
                 switch (skyBlockItemID) {
                     case "ASPECT_OF_THE_DRAGON":
                         dragonTrackerData.getDragonsSince().put(DragonsSince.ASPECT_OF_THE_DRAGONS, 0);

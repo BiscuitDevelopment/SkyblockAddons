@@ -2,12 +2,15 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
-import codes.biscuit.skyblockaddons.utils.skyblockdata.ItemMap;
+import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
@@ -21,6 +24,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class reads data from the JSON files in the mod's resources or on the mod's Github repo and loads it into memory.
@@ -41,9 +46,11 @@ public class DataUtils {
     public static void readLocalAndFetchOnline() {
         readLocalFileData();
 
-        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
+        // TODO Let's leave this enabled so we can see errors with the endpoints.
+        //  If you need to change any files locally, just disable this manually.
+//        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
             fetchFromOnline();
-        }
+//        }
     }
 
     /**
@@ -57,15 +64,23 @@ public class DataUtils {
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))){
             EnchantedItemPlacementBlocker.setItemLists(GSON.fromJson(jsonReader, EnchantedItemLists.class));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local enchanted item lists!", ex);
+            SkyblockAddons.getLogger().error("An error occurred while reading the local enchanted item lists!", ex);
         }
 
-        // Item Map
-        inputStream = DataUtils.class.getResourceAsStream("/itemMap.json");
+        // Containers
+        inputStream = DataUtils.class.getResourceAsStream("/containers.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
-            ItemUtils.itemMap = GSON.fromJson(jsonReader, ItemMap.class);
+            ItemUtils.setContainers(GSON.fromJson(jsonReader, new TypeToken<HashMap<String, ContainerData>>() {}.getType()));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local item map!", ex);
+            SkyblockAddons.getLogger().error("An error occurred while reading the containers map!", ex);
+        }
+
+        // Compactor Items
+        inputStream = DataUtils.class.getResourceAsStream("/compactorItems.json");
+        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8)))) {
+            ItemUtils.setCompactorItems(GSON.fromJson(jsonReader, new TypeToken<HashMap<String, CompactorItem>>() {}.getType()));
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading the compactor items map!", ex);
         }
 
         // Online Data
@@ -73,7 +88,7 @@ public class DataUtils {
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
             main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while reading local data!", ex);
+            SkyblockAddons.getLogger().error("An error occurred while reading the local data file!", ex);
         }
     }
 
@@ -85,25 +100,17 @@ public class DataUtils {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
-            HttpGet enchantedItemListsGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
-                    "SkyblockAddons/development/src/main/resources/enchantedItemLists.json");
-            HttpGet itemMapGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/" +
-                    "SkyblockAddons/development/src/main/resources/itemMap.json");
-            HttpGet onlineDataGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
-                    + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json");
-            @Deprecated
-            HttpGet seaCreaturesGet = new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/fishing/seaCreatures.json");
-
             // Enchanted Item Blacklist
             LOGGER.info("Trying to fetch enchanted item lists from the server...");
-            EnchantedItemLists receivedBlacklist = httpClient.execute(enchantedItemListsGet, response -> {
+            EnchantedItemLists receivedBlacklist = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblockaddons/enchantedItemLists"), response -> {
                 int status = response.getStatusLine().getStatusCode();
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
 
-                    return GSON.fromJson(jsonReader, EnchantedItemLists.class);
+                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
+                    return GSON.fromJson(apiResponse.getResponse(), EnchantedItemLists.class);
                 } else {
                     throw new ClientProtocolException("Unexpected response status: " + status);
                 }
@@ -113,29 +120,50 @@ public class DataUtils {
                 EnchantedItemPlacementBlocker.setItemLists(receivedBlacklist);
             }
 
-            // Item Map
-            LOGGER.info("Trying to fetch item map from the server...");
-            ItemMap receivedItemMap = httpClient.execute(itemMapGet, response -> {
+            // Containers
+            LOGGER.info("Trying to fetch containers from the server...");
+            Map<String, ContainerData> receivedContainers = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/containers"), response -> {
                 int status = response.getStatusLine().getStatusCode();
 
                 if (status == 200) {
                     HttpEntity entity = response.getEntity();
                     JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
 
-                    return GSON.fromJson(jsonReader, ItemMap.class);
+                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
+                    return GSON.fromJson(apiResponse.getResponse(), new TypeToken<HashMap<String, ContainerData>>() {}.getType());
                 } else {
                     throw new ClientProtocolException("Unexpected response status: " + status);
                 }
             });
-            if (receivedItemMap != null) {
-                LOGGER.info("Successfully fetched item map!");
-                // TODO: Link back up to online
-                //ItemUtils.itemMap = receivedItemMap;
+            if (receivedContainers != null) {
+                LOGGER.info("Successfully fetched containers!");
+                ItemUtils.setContainers(receivedContainers);
+            }
+
+            // Compactor Items
+            LOGGER.info("Trying to fetch compactor items from the server...");
+            Map<String, CompactorItem> receivedCompactorItems = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/compactorItems"), response -> {
+                int status = response.getStatusLine().getStatusCode();
+
+                if (status == 200) {
+                    HttpEntity entity = response.getEntity();
+                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
+
+                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
+                    return GSON.fromJson(apiResponse.getResponse(), new TypeToken<HashMap<String, CompactorItem>>() {}.getType());
+                } else {
+                    throw new ClientProtocolException("Unexpected response status: " + status);
+                }
+            });
+            if (receivedCompactorItems != null) {
+                LOGGER.info("Successfully fetched compactor items!");
+                ItemUtils.setCompactorItems(receivedCompactorItems);
             }
 
             // Online Data
             LOGGER.info("Trying to fetch online data from the server...");
-            OnlineData receivedOnlineData = httpClient.execute(onlineDataGet, response -> {
+            OnlineData receivedOnlineData = httpClient.execute(new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
+                    + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json"), response -> {
                 int status = response.getStatusLine().getStatusCode();
 
                 if (status == 200) {
@@ -152,6 +180,9 @@ public class DataUtils {
                 main.setOnlineData(receivedOnlineData);
                 main.getUpdater().processUpdateCheckResult();
             }
+
+            // Sea Creatures
+            SeaCreatureManager.getInstance().pullSeaCreatures();
 
         } catch (IOException | JsonSyntaxException e) {
             LOGGER.error("There was an error fetching data from the server. The bundled version of the file will be used instead. ");

@@ -48,7 +48,7 @@ public class BaitManager {
             ItemStack item = player.getHeldItem();
             if (item == null || item.getItem() != Items.fishing_rod) return false;
 
-            return !"GRAPPLING_HOOK".equals(ItemUtils.getSkyBlockItemID(item));
+            return !"GRAPPLING_HOOK".equals(ItemUtils.getSkyblockItemID(item));
         }
         return false;
     }
@@ -61,7 +61,7 @@ public class BaitManager {
 
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         for (ItemStack itemStack : player.inventory.mainInventory) {
-            String skyblockID = ItemUtils.getSkyBlockItemID(itemStack);
+            String skyblockID = ItemUtils.getSkyblockItemID(itemStack);
             if (skyblockID == null) {
                 continue;
             }

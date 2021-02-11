@@ -6,7 +6,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
@@ -139,7 +138,7 @@ public class PlayerControllerMPHook {
                         && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
                     if (mouseButtonClicked == 1 && mode == 0 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
 
-                        String itemID = ItemUtils.getSkyBlockItemID(slotIn.getStack());
+                        String itemID = ItemUtils.getSkyblockItemID(slotIn.getStack());
                         if (itemID == null) itemID = "";
 
                         if (ItemUtils.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {

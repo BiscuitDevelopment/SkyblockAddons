@@ -14,7 +14,6 @@ import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
@@ -445,7 +444,7 @@ public class PlayerListener {
                     CooldownManager.put(mc.thePlayer.getHeldItem());
                 }
             } else if (heldItem.getItem().equals(Items.blaze_rod)) {
-                String itemId = ItemUtils.getSkyBlockItemID(heldItem);
+                String itemId = ItemUtils.getSkyblockItemID(heldItem);
 
                 if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == Location.ISLAND
                         && itemId != null && itemId.equals("EMBER_ROD")) {
@@ -767,7 +766,7 @@ public class PlayerListener {
 
             EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
             ItemStack heldItem = p.getHeldItem();
-            if (heldItem != null && "EXPLOSIVE_BOW".equals(ItemUtils.getSkyBlockItemID(heldItem))) {
+            if (heldItem != null && "EXPLOSIVE_BOW".equals(ItemUtils.getSkyblockItemID(heldItem))) {
 
                 AxisAlignedBB playerRadius = new AxisAlignedBB(p.posX - 3, p.posY - 3, p.posZ - 3, p.posX + 3, p.posY + 3, p.posZ + 3);
                 if (playerRadius.isVecInside(arrow.getPositionVector())) {
@@ -1039,7 +1038,7 @@ public class PlayerListener {
 
             // Append Skyblock Item ID to end of tooltip if in developer mode
             if (main.isDevMode() && e.showAdvancedItemTooltips) {
-                String itemId = ItemUtils.getSkyBlockItemID(e.itemStack);
+                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
 
                 if (itemId != null) {
                     if (!Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {

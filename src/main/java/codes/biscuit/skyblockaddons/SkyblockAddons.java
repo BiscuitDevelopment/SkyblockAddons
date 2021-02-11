@@ -7,7 +7,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
-import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;

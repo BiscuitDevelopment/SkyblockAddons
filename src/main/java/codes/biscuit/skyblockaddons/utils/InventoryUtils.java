@@ -259,7 +259,7 @@ public class InventoryUtils {
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) {
             ItemStack item = p.getEquipmentInSlot(4);
-            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyblockItemID(item))) {
                 wearingSkeletonHelmet = true;
                 return;
             }
@@ -275,7 +275,7 @@ public class InventoryUtils {
     public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
             for (ItemStack item : p.inventory.mainInventory) {
-                if (item != null && TOXIC_ARROW_POISON_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+                if (item != null && TOXIC_ARROW_POISON_ID.equals(ItemUtils.getSkyblockItemID(item))) {
                     this.usingToxicArrowPoison = true;
                     return;
                 }
@@ -305,7 +305,7 @@ public class InventoryUtils {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             for (int i = 3; i >= 0; i--) {
                 ItemStack itemStack = p.inventory.armorInventory[i];
-                String itemID = itemStack != null ? ItemUtils.getSkyBlockItemID(itemStack) : null;
+                String itemID = itemStack != null ? ItemUtils.getSkyblockItemID(itemStack) : null;
 
                 if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
                     String percent = null;
