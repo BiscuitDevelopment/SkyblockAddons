@@ -255,7 +255,7 @@
     "effectsActive": "%number% Efectos Activos",
     "none": "Ninguno",
     "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
-    "chroma": "Chroma"
+    "chroma": "Croma"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
