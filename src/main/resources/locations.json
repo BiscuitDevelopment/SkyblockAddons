@@ -1,0 +1,342 @@
+{
+  "BLAZING_FORTRESS": {
+    "Blazing Fortress": {
+      "display": "Blazing Fortress",
+      "location": "blazing-fortress"
+    }
+  },
+  "DEEP_CAVERNS": {
+    "Deep Caverns": {
+      "display": "The Deep Caverns",
+      "location": "deep-caverns"
+    },
+    "Gunpowder Mines": {
+      "display": "The Gunpowder Mines",
+      "location": "deep-caverns"
+    },
+    "Lapis Quarry": {
+      "display": "The Lapis Quarry",
+      "location": "deep-caverns"
+    },
+    "Pigmen's Den": {
+      "display": "The Pigmen's Den",
+      "location": "deep-caverns"
+    },
+    "Slimehill": {
+      "display": "The Slimehill",
+      "location": "deep-caverns"
+    },
+    "Diamond Reserve": {
+      "display": "The Diamond Reserve",
+      "location": "deep-caverns"
+    },
+    "Obsidian Sanctuary": {
+      "display": "The Obsidian Sanctuary",
+      "location": "deep-caverns"
+    }
+  },
+  "DUNGEONS": {
+    "The Catacombs": {
+      "display": "The Catacombs",
+      "location": "dungeons"
+    },
+    "Dungeon Hub": {
+      "display": "Dungeon Hub",
+      "location": "dungeons"
+    }
+  },
+  "DWARVEN_MINES": {
+    "Dwarven Mines": {
+      "display": "Dwarven Mines",
+      "location": "dwarven-mines"
+    },
+    "Dwarven Village": {
+      "display": "Dwarven Village",
+      "location": "dwarven-mines"
+    },
+    "Gates to the Mines": {
+      "display": "Gates to the Mines",
+      "location": "dwarven-mines"
+    },
+    "The Lift": {
+      "display": "The Lift",
+      "location": "dwarven-mines"
+    },
+    "The Forge": {
+      "display": "The Forge",
+      "location": "dwarven-mines"
+    },
+    "Forge Basin": {
+      "display": "Forge Basin",
+      "location": "dwarven-mines"
+    },
+    "Lava Springs": {
+      "display": "Lava Springs",
+      "location": "dwarven-mines"
+    },
+    "Palace Bridge": {
+      "display": "Palace Bridge",
+      "location": "dwarven-mines"
+    },
+    "Royal Palace": {
+      "display": "Royal Palace",
+      "location": "dwarven-mines"
+    },
+    "Aristocrat Passage": {
+      "display": "Aristocrat Passage",
+      "location": "dwarven-mines"
+    },
+    "Hanging Terrace": {
+      "display": "Hanging Terrace",
+      "location": "dwarven-mines"
+    },
+    "Cliffside Veins": {
+      "display": "Cliffside Veins",
+      "location": "dwarven-mines"
+    },
+    "Rampart's Quarry": {
+      "display": "Rampart's Quarry",
+      "location": "dwarven-mines"
+    },
+    "Divan's Gateway": {
+      "display": "Divan's Gateway",
+      "location": "dwarven-mines"
+    },
+    "Far Reserve": {
+      "display": "Far Reserve",
+      "location": "dwarven-mines"
+    },
+    "Goblin Burrows": {
+      "display": "Goblin Burrows",
+      "location": "dwarven-mines"
+    },
+    "Upper Mines": {
+      "display": "Upper Mines",
+      "location": "dwarven-mines"
+    },
+    "Royal Mines": {
+      "display": "Royal Mines",
+      "location": "dwarven-mines"
+    },
+    "Miner's Guild": {
+      "display": "Miner's Guild",
+      "location": "dwarven-mines"
+    },
+    "Great Ice Wall": {
+      "display": "Great Ice Wall",
+      "location": "dwarven-mines"
+    },
+    "The Mist": {
+      "display": "The Mist",
+      "location": "dwarven-mines"
+    },
+    "C&C Minecarts Co.": {
+      "display": "C&C Minecarts Co.",
+      "location": "dwarven-mines"
+    },
+    "Grand Library": {
+      "display": "Grand Library",
+      "location": "dwarven-mines"
+    },
+    "Hanging Court": {
+      "display": "Hanging Court",
+      "location": "dwarven-mines"
+    }
+  },
+  "GOLD_MINE": {
+    "Gold Mine": {
+      "display": "The Gold Mine",
+      "location": "gold-mine"
+    }
+  },
+  "JERRYS_WORKSHOP": {
+    "Jerry Pond": {
+      "display": "Jerry Pond",
+      "location": "jerrys-workshop"
+    },
+    "Jerry's Workshop": {
+      "display": "Jerry's Workshop",
+      "location": "jerrys-workshop"
+    }
+  },
+  "MUSHROOM_DESERT": {
+    "Mushroom Desert": {
+      "display": "Mushroom Desert",
+      "location": "mushroom-desert"
+    }
+  },
+  "OTHER": {
+    "None": {
+      "display": "None",
+      "location": "skyblock"
+    },
+    "Unknown": {
+      "display": "Unknown",
+      "location": "skyblock"
+    }
+  },
+  "PERSONAL_ISLAND": {
+    "Your Island": {
+      "display": "Their Island",
+      "location": "island"
+    },
+    "(.+)'s Island": {
+      "display": "$1's Island",
+      "location": "island"
+    }
+  },
+  "SPIDERS_DEN": {
+    "Spider's Den": {
+      "display": "The Spider's Den",
+      "location": "spiders-den"
+    }
+  },
+  "THE_BARN": {
+    "The Barn": {
+      "display": "The Barn",
+      "location": "the-barn"
+    }
+  },
+  "THE_END": {
+    "The End": {
+      "display": "The End",
+      "location": "the-end"
+    },
+    "Dragon's Nest": {
+      "display": "Dragon's Nest",
+      "location": "the-end"
+    }
+  },
+  "THE_HUB": {
+    "Auction House": {
+      "display": "The Auction House",
+      "location": "auction-house"
+    },
+    "Bank": {
+      "display": "The Bank",
+      "location": "village"
+    },
+    "Bazaar Alley": {
+      "display": "Bazaar Alley",
+      "location": "bazaar-alley"
+    },
+    "Blacksmith": {
+      "display": "The Blacksmith",
+      "location": "village"
+    },
+    "Builder's House": {
+      "display": "Builder's House",
+      "location": "village"
+    },
+    "Canvas Room": {
+      "display": "The Canvas Room",
+      "location": "village"
+    },
+    "Coal Mine": {
+      "display": "The Coal Mine",
+      "location": "coal-mine"
+    },
+    "Colosseum": {
+      "display": "The Colosseum",
+      "location": "colosseum"
+    },
+    "Colosseum Arena": {
+      "display": "The Colosseum",
+      "location": "colosseum"
+    },
+    "Community Center": {
+      "display": "Community Center",
+      "location": "village"
+    },
+    "Duel Zone": {
+      "display": "Duel Zone",
+      "location": "colosseum"
+    },
+    "Election Room": {
+      "display": "Election Room",
+      "location": "village"
+    },
+    "Farm": {
+      "display": "The Farm",
+      "location": "skyblock"
+    },
+    "Farmhouse": {
+      "display": "The Farmhouse",
+      "location": "village"
+    },
+    "Fashion Shop": {
+      "display": "The Fashion Shop",
+      "location": "village"
+    },
+    "Fisherman's Hut": {
+      "display": "The Fisherman's Hut",
+      "location": "skyblock"
+    },
+    "Flower House": {
+      "display": "The Flower House",
+      "location": "village"
+    },
+    "Forest": {
+      "display": "The Forest",
+      "location": "skyblock"
+    },
+    "Graveyard": {
+      "display": "The Graveyard",
+      "location": "skyblock"
+    },
+    "High Level": {
+      "display": "High Level",
+      "location": "skyblock"
+    },
+    "Library": {
+      "display": "The Library",
+      "location": "village"
+    },
+    "Mountain": {
+      "display": "The Mountain",
+      "location": "mountain"
+    },
+    "Ruins": {
+      "display": "The Ruins",
+      "location": "ruins"
+    },
+    "Tavern": {
+      "display": "The Tavern",
+      "location": "village"
+    },
+    "Village": {
+      "display": "The Village",
+      "location": "village"
+    },
+    "Wilderness": {
+      "display": "The Wilderness",
+      "location": "skyblock"
+    },
+    "Wizard Tower": {
+      "display": "The Wizard Tower",
+      "location": "wizard-tower"
+    }
+  },
+  "THE_PARK": {
+    "Birch Park": {
+      "display": "The Birch Park",
+      "location": "the-park"
+    },
+    "Spruce Woods": {
+      "display": "The Spruce Woods",
+      "location": "the-park"
+    },
+    "Savanna Woodland": {
+      "display": "The Savanna Woodland",
+      "location": "the-park"
+    },
+    "Dark Thicket": {
+      "display": "The Dark Thicket",
+      "location": "the-park"
+    },
+    "Jungle Island": {
+      "display": "The Jungle Island",
+      "location": "the-park"
+    }
+  }
+}
