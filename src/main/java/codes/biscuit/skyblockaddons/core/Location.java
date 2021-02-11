@@ -23,6 +23,7 @@ public enum Location {
     COLOSSEUM("Colosseum"),
     COLOSSEUM_ARENA("Colosseum Arena", "colosseum"),
     DUEL_ZONE("Duel Zone", "colosseum"),
+    ELECTION_ROOM("Election Room"),
     FARM("Farm"),
     FASHION_SHOP("Fashion Shop"),
     FISHERMANS_HUT("Fisherman's Hut"),
