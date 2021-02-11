@@ -74,7 +74,7 @@
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
-    "onlyMineOresDeepCaverns": "Partir minérios só nas Deep Caverns",
+    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns",
     "onlyMineValuablesNether": "Partir apenas coisas valiosas no Nether",
     "revenantIndicator": "Indicador de progresso da armadura de Slayer",
     "specialZealotAlert": "Alerta para Zealots especiais",
@@ -183,10 +183,10 @@
     "chromaSaturation": "Saturação do croma",
     "chromaBrightness": "Brilho do croma",
     "useNewChromaEffect": "Usar o novo efeito croma",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Text"
+    "showExperimentationTableTooltips": "Mostrar descrições dos itens na Experimentation Table",
+    "onlyMineOresDwarvenMines": "Só partir minérios nas Dwarven Mines",
+    "drillFuelBar": "Barra de combustível da Drill",
+    "drillFuelText": "Número de combustível da Drill"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -255,7 +255,7 @@
     "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
-    "chroma": "Chroma"
+    "chroma": "Croma"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Program) §7Recarrega todas as definições e recursos do mod. O jogo irá congelar durante uns segundos."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Program) §7Recarrega as definições do mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Program) §7Recarrega os recursos do mod. O jogo irá congelar durante uns segundos."
       },
       "set": {
         "zealotCounter": {
