@@ -53,7 +53,6 @@ public class HealingCircle {
     }
 
     public Point2D.Double getCircleCenter() {
-        if (true) return new Point2D.Double(this.healingCircleParticles.get(0).getPoint().x + 10, this.healingCircleParticles.get(0).getPoint().y);
 
         if (cachedCenterPoint != null) {
             return cachedCenterPoint;
