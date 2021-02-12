@@ -248,6 +248,10 @@
       "display": "Community Center",
       "location": "village"
     },
+    "Dark Auction": {
+      "display": "Dark Auction",
+      "location": "dark-auction"
+    },
     "Duel Zone": {
       "display": "Duel Zone",
       "location": "colosseum"
