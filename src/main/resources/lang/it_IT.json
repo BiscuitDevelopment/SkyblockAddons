@@ -183,10 +183,10 @@
     "chromaSaturation": "Saturazione Chroma",
     "chromaBrightness": "Luminosità Chroma",
     "useNewChromaEffect": "Usa un nuovo effetto Chroma",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "showExperimentationTableTooltips": "Mostra descrizioni dell'Experimentation Table",
+    "onlyMineOresDwarvenMines": "Estrai minerali solo nelle Dwarven Miles",
+    "drillFuelBar": "Barra di combustibile Drill",
+    "drillFuelText": "Numero di combustibile Drill"
   },
   "messages": {
     "enchants": "Incantesimi",
