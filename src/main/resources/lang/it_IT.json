@@ -182,7 +182,11 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -250,7 +254,8 @@
     "effectActive": "1 Effetto Attivo",
     "effectsActive": "%number% Effetti Attivi",
     "none": "Nessuno",
-    "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!"
+    "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -340,6 +345,15 @@
             "command": "il sottocomando per ottenere un utilizzo dettagliato per"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Clicca su un punto di teletrasporto per viaggiarci!",
     "mustUnlock": "Devi aver sbloccato la pergamena specifica.",
+    "privateIsland": "Private Island",
     "home": "La tua isola",
     "spawn": "Spawn",
     "unknown": "Non visitato",

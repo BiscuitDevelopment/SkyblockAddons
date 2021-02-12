@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Dil: ",
   "language": "Türkçe",
   "settings": {
     "settings": "Ayarlar",
@@ -182,7 +182,11 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -250,7 +254,8 @@
     "effectActive": "1 Efekt Aktif",
     "effectsActive": "%number% Efekt Aktif",
     "none": "Hiçbiri",
-    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!"
+    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -340,6 +345,15 @@
             "command": "ayrıntılı kullanım için alt komut"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",

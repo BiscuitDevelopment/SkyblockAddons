@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Kieli: ",
   "language": "suomi",
   "settings": {
     "settings": "Asetukset",
@@ -178,11 +178,15 @@
     "highlightMaxEnchantments": "Korosta erikoislumoukset",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
+    "chromaSize": "Väriefektin koko",
+    "chromaSaturation": "Väriefektin kylläisyys",
+    "chromaBrightness": "Väriefektin kirkkaus",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -250,7 +254,8 @@
     "effectActive": "1 tehoste aktiivisena",
     "effectsActive": "%number% tehostetta aktiivisena",
     "none": "Ei mikään",
-    "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!"
+    "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -340,6 +345,15 @@
             "command": "alakomento, josta saa yksityiskohtaisen käyttökohteet"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -439,12 +453,13 @@
     "bossesKilled": "Johtajia tapettu"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "Paina siirtymispistettä matkustaaksesi sinne!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
+    "privateIsland": "Private Island",
+    "home": "Oma saari",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "notUnlocked": "Ei avattu",
+    "inCombat": "Taistelussa..."
   }
 }

@@ -37,7 +37,7 @@
     "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
     "hidePlayersInLobby": "Verstecke weit entfernte Spieler in der Lobby",
-    "darkAuctionTimer": "Dunkelauktionstimer",
+    "darkAuctionTimer": "Dark Auction Timer",
     "magmaBossTimer": "Magma Boss Timer",
     "itemPickupLog": "Aufgehobene Items-Liste",
     "avoidPlacingEnchantedItems": "Platziere keine Verzauberten Blöcke/Items",
@@ -60,7 +60,7 @@
     },
     "warningDuration": "Warnungsdauer",
     "dontOpenProfileWithBow": "Profile nicht mit dem Bogen öffnen",
-    "stopDroppingSellingRareItems": "Stoppe entfernen/verkaufen von seltenen Items",
+    "stopDroppingSellingRareItems": "Stoppe Entfernen/Verkaufen von seltenen Items",
     "makeBackpackInventoriesColored": "Rucksäcke färben",
     "avoidBreakingBottomSugarCane": "Zerstören des unteren Zuckerrohrs blockieren",
     "replaceRomanNumeralsWithNumbers": "Ersetze Römische Nummern auf Gegenständen",
@@ -69,7 +69,7 @@
     "soundIndicatorForFishing": "Ton für Fischen",
     "avoidBlinkingNightVision": "Deaktiviere Nachtsicht Blinken",
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
-    "jungleAxeCooldown": "Dschungelaxt Abklingzeit",
+    "jungleAxeCooldown": "Jungle Axe/Treecapitator während Abklingzeit blockieren",
     "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
     "showItemCooldowns": "Item Abklingzeit anzeigen",
     "speedPercentage": "Geschwindigkeit in Prozent",
@@ -182,7 +182,11 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -250,7 +254,8 @@
     "effectActive": "1 Effekt aktiv",
     "effectsActive": "%number% Effekte Aktiv",
     "none": "Keine",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Keine",
@@ -340,6 +345,15 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",

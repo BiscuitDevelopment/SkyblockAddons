@@ -182,7 +182,11 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -250,7 +254,8 @@
     "effectActive": "1 effekt aktiivne",
     "effectsActive": "%number% efekte aktiivne",
     "none": "Mitte ühtegi",
-    "copyModeSet": "Arendaja kopeerimise režiimiks on pandud: %mode%. Vajuta \"%keyName%\", et kopeerida andmeid!"
+    "copyModeSet": "Arendaja kopeerimise režiimiks on pandud: %mode%. Vajuta \"%keyName%\", et kopeerida andmeid!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
@@ -340,6 +345,15 @@
             "command": "ala-käsk mille kohta saada üksikasjalikku kasutamist"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",

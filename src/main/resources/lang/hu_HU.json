@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Nyelv: ",
   "language": "Magyar",
   "settings": {
     "settings": "Beállítások",
@@ -49,7 +49,7 @@
     "lockSlot": "Gyorstár lezárása",
     "dontResetCursorInventory": "Ne állítsa vissza a kurzort az eszköztárak között",
     "summoningEyeAlert": "Summoning Eye figyelmeztetés",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "Végzetláda színének megváltoztatása End-ben",
     "changeColor": "Színváltoztatás",
     "showInOtherGames": "Mutatás más játékokban",
     "useVanillaTexture": "Használja az alapértelmezett textúrát",
@@ -87,106 +87,110 @@
       "compact": "Tömörített"
     },
     "disableMagicalSoupMessage": "\"Magical Mushroom Soup\" üzeneteinek letiltása",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Zealot számláló - Számlálás legutóbbi szemtől",
     "tickerChargesDisplay": "Energia mutató",
     "tab": {
       "generalSettings": "Általános beállítások"
     },
     "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "noArrowsLeftAlert": "Elfogytak a nyilaid! figyelmeztetés",
+    "hideNightVisionEffectTimer": "Éjjellátás effekt elrejtése",
+    "showCakeBagPreview": "Cake Bag előnézet mutatása",
+    "showBackpackPreviewInAH": "Hátizsák előnézet mutatása aukcióház böngészés közben",
+    "enableDevFeatures": "Fejlesztői beállítások engedélyezése",
+    "chromaSpeed": "Színátmenet gyorsasága",
+    "chromaMode": "Színátmenet",
     "chromaModes": {
       "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "fade": "Szín árnyalata"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "chromaFadeWidth": "Színátmenet szélessége",
+    "sortTabEffectTimers": "Rendszerezés hátralévő idő szerint",
+    "showBrokenFragments": "Buggos Dragon Fragment kiemelése",
+    "skyblockAddonsButtonInPauseMenu": "SBA gomb mutatása Játékmenüben",
+    "showTotalZealotCount": "Zealot számláló - Összes megölt Zealot",
+    "showSummoningEyeCount": "Zealot számláló - Összes Summoning Eye",
+    "showZealotsPerEye": "Zealot számláló - Zealot / Summoning Eye mutatása",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Íj zöldre színezése mérgezett nyíl használatakor",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker hátralévő idő",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
-    "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
-    "mapZoom": "Map Zoom",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
-    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
-    "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "discordRP": "Discord Játék Tevékenység mutatása",
+    "endstoneProtectorDisplay": "Endstone Protector jelző",
+    "fancyWarpMenu": "Díszes Teleport Menü",
+    "doubleWarp": "Dupla teleportálás",
+    "advancedMode": "Haladó mód",
+    "legendarySeaCreatureWarning": "Legendás Sea Creature figyelmeztetés",
+    "onlyBreakLogsPark": "Csak fa kiütése Park-ban",
+    "bossApproachAlert": "Slayer idéződés figyelmeztetés",
+    "disableTeleportPadMessages": "Teleport Pad üzenet elrejtése",
+    "baitListDisplay": "Csali lista mutatása horgászbot használata közben",
+    "freezeBackpackPreview": "Hátizsák előnézet fagyasztása",
+    "hideGreyEnchants": "Vanilla varázslatok elrejtése",
+    "zealotCounterExplosiveBow": "Zealot számláló Explosive Bow használatával",
+    "disableEndermanTeleportation": "Enderman teleportálás kikapcsolása",
+    "changeZealotColor": "Zealot színének megváltoztatása",
+    "hideSvenPupNametags": "Sven Pup név elrejtése",
+    "turnAllFeaturesChroma": "Színátmenet az összes funkcióra",
+    "dungeonMapDisplay": "Dungeon térkép megjelenítése",
+    "rotateMap": "A térkép forgatása a te irányodba",
+    "centerRotationOnYourPlayer": "Forgatás a játékos körül",
+    "mapZoom": "Térkép nagyítása",
+    "glowingDroppedItems": "Eldobott tágyak ragyogása",
+    "glowingDungeonTeammates": "Dungeon társak ragyogása",
+    "baseStatBoostPercentage": "Dungeon tárgyak alap értékeinek a mutatása",
+    "colorByRarity": "Színezés ritkaság alapján",
+    "showPlayerHeadsOnMap": "Játékos fejek mutatása a dungeon térképen",
+    "showHealingCircleWall": "Gyógyítási kör fainak mutatása",
+    "showCriticalTeammates": "Kritikus állapotú Dungeon társak mutatása",
+    "showGlowingItemsOnIsland": "Tárgyak ragyogása saját szigeten",
+    "showItemDungeonFloor": "Megszerzés emeletének mutatása a Dungeon tátgyakon",
+    "showDungeonMilestone": "Dungeon Milestone mutatása",
+    "dungeonsCollectedEssencesDisplay": "Összegyűjtött esszenciák mutatása",
+    "stopBonzoStaffSounds": "Bonzo's Staff némítása",
+    "showRarityUpgraded": "Mutassa, ha a tárgy ritkasága fejlesztve van",
+    "revenantSlayerTracker": "Slayer követő - Revenant/Zombi",
+    "tarantulaSlayerTracker": "Slayer követő - Tarantula/Pók",
+    "svenSlayerTracker": "Slayer követő - Sven/Farkas",
     "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dragonsNestOnly": "Csak Dragon's Nest-ben jelenjen meg",
+    "dragonStatsTracker": "Sárkány követő",
+    "skillActionsLeftUntilNextLevel": "Akciók mutatása a következő szintig",
+    "hideWhenNotInCrypts": "Elrejtés mikor nem csinálod a Revenant küldetést",
+    "hideWhenNotInSpidersDen": "Elrejtés mikor nem csinálod a Tarantula küldetést",
+    "hideWhenNotInCastle": "Elrejtés mikor nem csinálod a Sven küldetést",
+    "dungeonDeathCounter": "Dungeon halál számláló",
+    "showPersonalCompactorPreview": "Personal Compactor előnézetének mutatása",
+    "rockPetTracker": "Rock Pet követő",
+    "dolphinPetTracker": "Dolphin Pet követő",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
-    "showSkillPercentageInstead": "Show Percentage Instead of XP",
-    "showSkillXPGained": "Show XP Gained",
-    "skillProgressBar": "Skill Progress Bar",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
-    "disableMortMessages": "Disable Mort Messages",
-    "disableBossMessages": "Disable Boss Messages",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
-    "easierPresentOpening": "Open Presents Easier",
-    "showSwordKills": "Show Sword Kills",
+    "showExpertiseKills": "Expertise ölések mutatása",
+    "dungeonsSecretsDisplay": "Dungeon rejtvények megjelenítése",
+    "showSkillPercentageInstead": "Százalék mutatása XP helyett",
+    "showSkillXPGained": "Megszerzett XP mutatása",
+    "skillProgressBar": "Skill Progress sáv mutatása",
+    "showSalvageEssencesCounter": "Salvage Essences számláló mutatása",
+    "disableMortMessages": "Mort üzenetek kikapcsolása",
+    "disableBossMessages": "Boss üzenetek kikapcsolása",
+    "hideOtherPlayersPresents": "Mások ajándékának elrejtése",
+    "easierPresentOpening": "Könnyebb ajándéknyitás",
+    "showSwordKills": "Kard ölések mutatása",
     "compactTabList": "Tab lista kicsinyítése",
-    "highlightMaxEnchantments": "Highlight Special Enchantments",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "highlightMaxEnchantments": "Speciális varázslatok kiemelése",
+    "disableEmptyGlassPanes": "Névtelen üveglapok elrejtése",
+    "candyPointsCounter": "Spooky Event Candy/Pont számláló",
+    "healingCircleOpacity": "Gyógyító kör átlátszóság",
+    "chromaSize": "Színátmenet nagyság",
+    "chromaSaturation": "Színátmenet telítettség",
+    "chromaBrightness": "Színátmente világosság",
+    "useNewChromaEffect": "Új színátmenet hatás használata",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
-    "enchants": "Enchants",
-    "reforges": "Reforges",
+    "enchants": "Varázslatok",
+    "reforges": "Reforgeok",
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
     "fullInventory": "Megtelt a felszerelésed!",
@@ -197,189 +201,199 @@
     "separateMultiple": "Több lehetőséget vesszővel válaszd el",
     "enchantsToMatch": "%type% egyezése:",
     "enchantsToExclude": "%type% kihagyása:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
+    "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
+    "downloadLink": "FRISSITÉSI LINK",
+    "directDownload": "LETÖLTÉSI LINK",
+    "openModFolder": "MODS MAPPA MEGNYITÁSA",
     "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
+    "newUpdateAvailable": "Egy új frissítés (%version%) áll rendelkezésre!",
     "update": {
       "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
       "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
     },
     "slotLocked": "Ez a gyorstár le van zárva!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
+    "cancelledStemBreak": "Egy funkció megállította, hogy kiüsd a növény szárát. Használd az öklöd, ha ki szeretnéd ütni.",
+    "cancelledProfileOpening": "Egy funkció megállította, hogy megnyisd ennek a játékosnak a profilját, amíg íj van a kezedben.",
+    "cancelledDropping": "Egy funkció megállította, hogy eldobd ezt a ritka tárgyat, vagy eszközt.",
     "clickMoreTimes": "Kattints/dobd el ezt a tárgyat még %times% alkalommal, ha tényleg ezt szeretnéd.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
+    "clickOneMoreTime": "Erősítsd meg még egy gombnyomással, ha ezt el szeretnéd adni/dobni.",
+    "cancelledDeepCaverns": "Egy funkció megállított téged, hogy kiüsd ezt a blokkot.",
     "featureDisabled": "Funkció kikapcsolva",
     "anvilUses": "Üllő használat: %uses%",
     "specialZealotFound": "Különleges Zealot!",
     "blockIncompletePatterns": "Félkész minták tiltása (ajánlott)",
     "searchFeatures": "Keresési funkciók",
     "downloadingUpdateFile": "Frissítés letöltése...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active",
-    "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "onlyFewArrowsLeft": "Csak %arrows% nyíl maradt hátra!",
+    "noArrowsLeft": "Elfogytak a nyilaid!",
+    "chooseAColor": "Válassz egy színt",
+    "selectedColor": "Kiválasztott szín",
+    "setHexColor": "Hexadecimális szín beállítása",
+    "rescaleFeatures": "Funkciók átméretezése",
+    "resizeBars": "Sávok átméretezése",
+    "showColorIcons": "Átszínező ikonok mutatása",
+    "enableFeatureSnapping": "Elemek Igazítása",
+    "stage": "%stage%. fázis",
+    "switchedSlots": "Épp most váltottál át egy itemről, ami zárolt volt, vagy értékes. Várj egy kicsit mielőtt eldobod!",
+    "clickToOpenLink": "Kattints a link megnyitásához!",
+    "clickToOpenFolder": "Kattints a mod mappád megnyitásához!",
+    "firstStatus": "A statisztika fölül fog megjelenni",
+    "secondStatus": "Az állapot az első állapotod alatt fog megjelenni",
+    "fallbackStatus": "Ez az állapot fog megjeleni amikor az autómatikus állapotod nem jelenít meg semmit",
+    "legendarySeaCreatureWarning": "Legendás kapás!",
+    "cancelledPark": "Egy funkció megállított ennek a blokknak a kiütésében.",
+    "bossApproaching": "Közel vagy a Boss megidézéséhez!",
+    "enableAll": "Összes bekapcsolása",
+    "disableAll": "Összes kikapcsolása",
+    "enchantmentInclusionExample": "pl.: \"prot, feather\"",
+    "enchantmentExclusionExample": "pl.: \"proj, blast\"",
+    "reforgeInclusionExample": "pl.: \"godly, strong\"",
+    "reforgeExclusionExample": "pl.: \"odd, clean\"",
+    "actionsLeft": "%number% van még hátra",
+    "effectActive": "1 Aktív Hatás",
+    "effectsActive": "%number% Aktív Hatás",
+    "none": "Semmi",
+    "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "Semmi",
+    "descriptionNone": "Semmilyen szöveg nincs mutatva",
+    "titleLocation": "Tartózkodási hely",
+    "descriptionLocation": "Tartózkodási helyedet mutatja",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "A pénztárcában lévő összeget mutatja",
+    "titleStats": "Statisztikák",
+    "descriptionStats": "Az életedet, védelmedet és az én manádat mutatja",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionZealots": "A Zealot számlálódat mutatja",
+    "titleItem": "Kézben lévő tárgy",
+    "descriptionItem": "Mutasd a tartott tárgy nevét",
+    "titleProfile": "Profil",
+    "descriptionProfile": "Megmutatja a jelenlegi Profilod nevét",
+    "titleTime": "SkyBlock idő",
+    "descriptionTime": "A SkyBlock időt pl.: \"12:00am 1st Early Winter\" mutatja",
+    "titleCustom": "Egyedi státusz",
+    "descriptionCustom": "Adj meg egy egyedi státuszt",
+    "titleAuto": "Automatikus státusz",
+    "descriptionAuto": "Autómatikusan megjeleníti a státuszodat pl.: a Zealot számlálód amikor az End-ben vagy.",
+    "titleRevenants": "Revenant küldetés",
+    "descriptionRevenants": "Ezt mutatja amikor Revenant küldetést csinálsz.",
+    "titleSvens": "Sven küldetés",
+    "descriptionSvens": "Ezt mutatja amikor Sven küldetést csinálsz.",
+    "titleTarantula": "Tarantula küldetés",
+    "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz."
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "A fő menü megnyitása"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Szerver címének mutatása",
+        "brandOutput": "Szerver címe: %brand%",
+        "notFound": "A szerver címe nem található!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Adatokat másol arról a blokkról amire nézel"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Az adott méretű körben a játékos körül az adott nevű entitás(ok)nak az NBT értékének a másolása",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Entitások NBT értékét másolja. Meg lehet adni az entitás fajtája és a játékostól való távolságot ahonnan az adatot másolja. Ha nem választasz semmit, akkor az alap érték lesz használva. Az alap beállítások: másolás Játékosokról, páncélálványokról, és mobokról akik a játékostól 3 blokkra állnak. Ha nincs rádiusz megadva, az alap érték lesz használva.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Az entitások nevei ahonnan adatokat akarsz másolni (pl. Player,Creeper). Nyomd meg a tabot a parancs beírása után, hogy lásd a teljes listát. A külön neveket vesszővel válaszd el, a nevek megkülönböztetik a kis- és nagybetűket.",
+            "radius": "A távolság (blokkokban mérve) a játékos körül, ahonnan az NBT érték másolva legyen"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Scoreboard szövegének másolása",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Kimásolja az oldalsó scoreboard szövegét",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Megmondja, hogy a formai kódokat is másolja-e. Lehet \"true\" vagy \"false\", az alap beállítás \"false\" ha nincs érték megadva. A formai kódok másolódnak, ha az érték \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Játékos lista fej- és láblécének másolása",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Ez a parancs kimásolja a játékos lista fej- és láblécét. A formai kódokat is tartalmazza."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Fejlesztő mód ki-/ bekapcsolása",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Ez a parancs átváltja a fejlesztő módot. Ezt a módot Skyblock modok/eszközök fejlesztőinek szántuk. Ez nyers adatokat szolgáltat a játékból, mint például entitások és tárgyak NBT értékei."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Developer mód kikapcsolva!",
+        "enabled": "Fejlesztő mód bekapcsolva! Tipp: Nyomd meg a \"%keyName%\"-t az NBT érték másolásához!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "A GUI szerkesztése"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Mods mappa megnyitása",
+        "error": "Hiba történt a mods mappa megnyitása közben: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Megmutatja ezt az üzenetet. Ha megadsz egy parancsot, akkor részletes segítséget kapsz róla.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "az al-parancs, amiről információt szeretnél kapni"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Zealotok számának manuális beállítása",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Manuálisan beállítja a zealot számláló értékét.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Összes megszerzett Summoning Eye",
+              "totalZealots": "Az eddig összes megölt Zealot",
+              "zealots": "A megölt Zealotok száma az utolsó Summoning Eye óta"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Az összesített Summoning Eye számláló beállítva: %number%!",
+          "totalZealotsSet": "Az összesített Zealot számláló beállítva: %number%!",
+          "wrongUsage": "Érvénytelen választás! Kérlek válassz %options%.",
+          "zealotsSet": "A jelenlegi Zealot számláló beállítva: %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Slayer statisztikák manuális beállítása, nyomj tabot a részletekhez",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Slayer statisztikák manuális beállítása, nyomj tabot a részletekhez",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", vagy \"Wolf\"",
+            "number": "A szám amire a statisztikát állítsuk",
+            "stat": "Megváltoztatandó slayer statisztikailyen, lehet \"kill\" vagy egy általa dobott tárgy neve ilyen formátumban: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Ki kell választanod egy bosst! Kérlek válassz %bosses%",
+        "statRequired": "Ki kell választanod egy statisztikát. Nyomd meg a tabot a lehetőségekhez.",
+        "numberRequired": "Meg kell adnod a számot amit szeretnél.",
+        "killsSet": "A %boss% slayer ölések száma be lett állítva: %number%.",
+        "statSet": "A %stat% statisztika %boss% slayerre be lett állítva: %number%.",
+        "invalidBoss": "\"%input%\" nem érvényes statisztika!",
+        "invalidStat": "\"%input%\" nem érvényes boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §Action bar üzenetek naplózása",
+        "disabled": "Action bar üzenetek nem lesznek naplózva.",
+        "enabled": "Action bar üzenetek naplózva lesznek."
       },
       "errors": {
         "wrongUsage": {
@@ -390,7 +404,7 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBT másolása"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -400,12 +414,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Eddigi sárkányok:",
+    "dragonsSince": "Sárkányok ez óta:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Lerakott Szemek",
+    "never": "Soha"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -436,15 +450,16 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Megölt Bossok"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Kattints egy warp pontra hogy odamenj!",
+    "mustUnlock": "Fel kell oldanod a hozzávaló teleport tekercset.",
+    "privateIsland": "Saját sziget",
+    "home": "Saját Sziget",
+    "spawn": "Kezdőpont",
+    "unknown": "Még nem láogattad meg",
+    "notUnlocked": "Nincs feloldva",
+    "inCombat": "Harcban vagy..."
   }
 }

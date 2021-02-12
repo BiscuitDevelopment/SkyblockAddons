@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "语言：",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -9,8 +9,8 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "物品栏空间不足警告",
-    "repeating": "再次警告",
-    "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
+    "repeating": "重复警告",
+    "disableEmberRodAbility": "在私人岛屿上禁用余烬之杖技能",
     "editLocations": "调整 GUI 位置",
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置 GUI 位置",
@@ -178,11 +178,15 @@
     "highlightMaxEnchantments": "高亮特殊附魔",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "healingCircleOpacity": "治疗光环不透明度",
+    "chromaSize": "渐变色彩尺寸",
+    "chromaSaturation": "渐变色彩饱和度",
+    "chromaBrightness": "渐变色彩亮度",
+    "useNewChromaEffect": "使用新版渐变效果",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "附魔",
@@ -229,7 +233,7 @@
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
-    "enableFeatureSnapping": "启用功能对齐",
+    "enableFeatureSnapping": "启用自动对齐",
     "stage": "第 %stage% 阶段",
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
@@ -250,7 +254,8 @@
     "effectActive": "已激活 1 种药水效果",
     "effectsActive": "已激活 %number% 种药水效果",
     "none": "无",
-    "copyModeSet": "开发者复制模式以切换至： %mode% ，请按下 %keyName% 以复制特定NBT！"
+    "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -341,6 +346,15 @@
           }
         }
       },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+      },
       "set": {
         "zealotCounter": {
           "help": "手动设置末影战士计数器",
@@ -359,9 +373,9 @@
         }
       },
       "slayer": {
-        "help": "修改猎杀任务统计，按 tab 查看指令参数",
+        "help": "修改猎手任务统计数据，按 tab 查看指令参数",
         "detailedHelp": {
-          "description": "修改猎杀任务统计，按 tab 查看指令参数",
+          "description": "修改猎手任务统计数据，按 tab 查看指令参数",
           "options": {
             "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "统计设置为的数字",
@@ -439,12 +453,13 @@
     "bossesKilled": "Boss 击杀数"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "点击传送点以传送！",
+    "mustUnlock": "必须先解锁该地的传送卷轴",
+    "privateIsland": "私人岛屿",
+    "home": "你的岛屿",
+    "spawn": "出生点",
+    "unknown": "尚未探索",
+    "notUnlocked": "尚未解锁",
+    "inCombat": "战斗中..."
   }
 }

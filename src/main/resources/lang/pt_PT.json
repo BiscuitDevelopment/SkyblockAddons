@@ -74,12 +74,12 @@
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
-    "onlyMineOresDeepCaverns": "Partir minérios só nas Deep Caverns",
+    "onlyMineOresDeepCaverns": "Só partir minérios nas Deep Caverns",
     "onlyMineValuablesNether": "Partir apenas coisas valiosas no Nether",
     "revenantIndicator": "Indicador de progresso da armadura de Slayer",
     "specialZealotAlert": "Alerta para Zealots especiais",
     "enableMessageWhenActionPrevented": "Enviar uma mensagem sempre que uma ação é prevenida",
-    "hidePetHealthBar": "Esconder a barra de vida dos animais",
+    "hidePetHealthBar": "Esconder a barra de vida das mascotes",
     "powerOrbDisplay": "Mostrador de Power Orbs",
     "powerOrbDisplayStyle": "Estilo da Power Orb: %style%",
     "powerOrbStyle": {
@@ -182,7 +182,11 @@
     "chromaSize": "Tamanho do croma",
     "chromaSaturation": "Saturação do croma",
     "chromaBrightness": "Brilho do croma",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Usar o novo efeito croma",
+    "showExperimentationTableTooltips": "Mostrar descrições dos itens na Experimentation Table",
+    "onlyMineOresDwarvenMines": "Só partir minérios nas Dwarven Mines",
+    "drillFuelBar": "Barra de combustível da Drill",
+    "drillFuelText": "Número de combustível da Drill"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -250,7 +254,8 @@
     "effectActive": "1 efeito ativo",
     "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
-    "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!"
+    "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
+    "chroma": "Croma"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -340,6 +345,15 @@
             "command": "o comando para o qual desejas obter informação detalhada"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Program) §7Recarrega todas as definições e recursos do mod. O jogo irá congelar durante uns segundos."
+      },
+      "reloadConfig": {
+        "help": "§e(Program) §7Recarrega as definições do mod"
+      },
+      "reloadRes": {
+        "help": "§e(Program) §7Recarrega os recursos do mod. O jogo irá congelar durante uns segundos."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Clica uma localização para viajares até lá!",
     "mustUnlock": "Tens de ter o respetivo scroll desbloqueado.",
+    "privateIsland": "Ilha privada",
     "home": "A tua ilha",
     "spawn": "Origem",
     "unknown": "Não visitado",

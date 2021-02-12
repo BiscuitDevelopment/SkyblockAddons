@@ -177,12 +177,16 @@
     "compactTabList": "간단 Tab 리스트",
     "highlightMaxEnchantments": "특별한 인챈트 강조하기",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "인챈트",
@@ -216,16 +220,16 @@
     "clickOneMoreTime": "정말 이 아이템을 떨어뜨리려면 한 번 더 클릭하거나 떨어뜨리세요.",
     "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
     "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
+    "anvilUses": "모루 사용 횟수: %uses%",
+    "specialZealotFound": "특별한 Zealot!",
+    "blockIncompletePatterns": "미완성 패턴으로 제작하기 막기 (추천됨)",
+    "searchFeatures": "기능 검색하기",
+    "downloadingUpdateFile": "업데이트 파일 다운로드 중...",
+    "onlyFewArrowsLeft": "화살이 %arrows%개 밖에 남지 않았습니다!",
+    "noArrowsLeft": "화살이 없습니다!",
     "chooseAColor": "색상 선택하기",
     "selectedColor": "선택한 색상",
-    "setHexColor": "Set Hex Color",
+    "setHexColor": "헥스 색상 정하기",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Resize Bars",
     "showColorIcons": "Show Color Icons",
@@ -250,7 +254,8 @@
     "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active",
     "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -340,6 +345,15 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -439,8 +453,9 @@
     "bossesKilled": "죽인 보스"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "워프 포인트를 클릭하여 워프하세요!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",

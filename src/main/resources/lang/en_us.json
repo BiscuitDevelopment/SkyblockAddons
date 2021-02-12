@@ -96,7 +96,7 @@
     "noArrowsLeftAlert": "No Arrows Left Alert",
     "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH" : "Show Backpack Preview for Your Items While AH is Open",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
     "chromaSpeed": "Chroma Speed",
     "chromaMode": "Chroma Color Mode",
@@ -123,7 +123,7 @@
     "onlyBreakLogsPark": "Only Break Logs in the Park",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay" : "Show Bait List While Holding a Rod",
+    "baitListDisplay": "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
@@ -186,7 +186,7 @@
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Text"
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Enchants",
@@ -414,15 +414,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-
     "recentDragons": "Recent Dragons:",
-
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-
     "eyesPlaced": "Eyes Placed",
-
     "never": "Never"
   },
   "slayerTracker": {
@@ -436,7 +432,6 @@
     "revenantCatalyst": "Revenant Catalyst",
     "snakeRune": "Snake Rune",
     "scytheBlade": "Scythe Blade",
-
     "tarantula": "Tarantula Broodfather:",
     "tarantulaWeb": "Tarantula Web",
     "toxicArrowPoison": "Toxic Arrow Poison",
@@ -446,7 +441,6 @@
     "flySwatter": "Fly Swatter",
     "tarantulaTalisman": "Tarantula Talisman",
     "digestedMosquito": "Digested Mosquito",
-
     "sven": "Sven Packmaster:",
     "wolfTooth": "Wolf Tooth",
     "hamsterWheel": "Hamster Wheel",
@@ -456,7 +450,6 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-
     "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {

@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Język: ",
   "language": "Polski",
   "settings": {
     "settings": "Ustawienia",
@@ -182,7 +182,11 @@
     "chromaSize": "Chroma Size",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
-    "useShadersForChroma": "Use Shaders For Chroma"
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -250,7 +254,8 @@
     "effectActive": "Jeden aktywny efekt",
     "effectsActive": "%number% Aktywnych efektów",
     "none": "Brak",
-    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!"
+    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -340,6 +345,15 @@
             "command": "pod-komenda, aby uzyskać szczegółowe użycie dla"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -441,6 +455,7 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
