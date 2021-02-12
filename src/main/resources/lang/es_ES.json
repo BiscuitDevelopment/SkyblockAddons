@@ -183,7 +183,7 @@
     "chromaSaturation": "Saturación del Croma",
     "chromaBrightness": "Brillo del Croma",
     "useNewChromaEffect": "Usar el Nuevo Efecto Croma",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "showExperimentationTableTooltips": "Mostrar Información de Objeto en la Experimentation Table",
     "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
     "drillFuelBar": "Barra de Drill Fuel",
     "drillFuelText": "Número de Drill Fuel"
