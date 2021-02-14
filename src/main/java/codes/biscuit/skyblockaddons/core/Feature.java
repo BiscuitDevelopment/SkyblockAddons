@@ -174,6 +174,7 @@ public enum Feature {
     ONLY_MINE_ORES_DWARVEN_MINES(159, "settings.onlyMineOresDwarvenMines", new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     DRILL_FUEL_BAR(160, "settings.drillFuelBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.DARK_GREEN), false),
     DRILL_FUEL_TEXT(161, "settings.drillFuelText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_GREEN), false),
+    FISHING_PARTICLE_OVERLAY(162, "settings.fishingParticleOverlay", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),

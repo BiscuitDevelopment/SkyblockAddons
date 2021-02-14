@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
@@ -473,6 +474,10 @@ public class PlayerListener {
             if (mc != null) { // Predict health every tick if needed.
 
                 ScoreboardManager.tick();
+
+                if (main.getConfigValues().isEnabled(Feature.FISHING_PARTICLE_OVERLAY)) {
+                    FishParticleManager.onTick();
+                }
 
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
                     actionBarParser.setHealthUpdate(null);
