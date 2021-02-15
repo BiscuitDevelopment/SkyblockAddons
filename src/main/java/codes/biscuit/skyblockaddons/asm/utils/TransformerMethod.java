@@ -161,7 +161,10 @@ public enum TransformerMethod {
 
     updateFramebufferSize("updateFramebufferSize", "func_147119_ah", "ay", "()V"),
 
-    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V")
+    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V"),
+
+    renderStringAtPos("renderStringAtPos", "func_78255_a", "a", "(Ljava/lang/String;Z)V"),
+    resetStyles("resetStyles", "func_78265_b", "e", "()V")
     ;
 
     private String name;

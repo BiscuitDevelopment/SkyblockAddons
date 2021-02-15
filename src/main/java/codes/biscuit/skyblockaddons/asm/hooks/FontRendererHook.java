@@ -1,14 +1,25 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
+import codes.biscuit.skyblockaddons.shader.Shader;
+import codes.biscuit.skyblockaddons.shader.ShaderManager;
+import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenShader;
+import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
+import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
 
 public class FontRendererHook {
+
+
+    private static  Class<? extends Shader> savedShader = null;
+
 
     public static void changeTextColor() {
         if (ManualChromaManager.isColoringTextChroma() && !SkyblockColor.shouldUseChromaShaders()) {
@@ -24,5 +35,31 @@ public class FontRendererHook {
             // Swap blue & green because they are swapped in FontRenderer's color model.
             GlStateManager.color(fontRenderer.red, fontRenderer.blue, fontRenderer.green, fontRenderer.alpha);
         }
+    }
+
+
+    public static void saveShaderState() {
+        savedShader = ShaderManager.getInstance().getActiveShaderType();
+    }
+
+    public static void restoreShaderState() {
+        if (savedShader == null) {
+            ShaderManager.getInstance().disableShader();
+        }
+        else {
+            ShaderManager.getInstance().enableShader(savedShader);
+        }
+    }
+
+    public static void toggleChromaOn() {
+        //ColorUtils.getDummySkyblockColor(28, 29, 41, 230)
+        //DrawUtils.begin2D(GL11.GL_TRIANGLE_STRIP, ColorUtils.getDummySkyblockColor(SkyblockColor.ColorAnimation.CHROMA));
+        ColorUtils.bindWhite();
+        ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
+    }
+
+    public static void toggleChromaOff() {
+        // TODO: use DrawUtils.end to have manual chroma
+        ShaderManager.getInstance().disableShader();
     }
 }
