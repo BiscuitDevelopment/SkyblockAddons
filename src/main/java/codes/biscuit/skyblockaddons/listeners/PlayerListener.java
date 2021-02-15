@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
+import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
@@ -501,9 +502,11 @@ public class PlayerListener {
                 if (timerTick == 20) {
                     // Add natural mana every second (increase is based on your max mana).
                     if (main.getRenderListener().isPredictMana()) {
-                        changeMana(getAttribute(Attribute.MAX_MANA) / 50);
-                        if (getAttribute(Attribute.MANA) > getAttribute(Attribute.MAX_MANA))
-                            setAttribute(Attribute.MANA, getAttribute(Attribute.MAX_MANA));
+                        // If regen-ing, cap at the max mana
+                        if (getAttribute(Attribute.MANA) < getAttribute(Attribute.MAX_MANA)) {
+                            setAttribute(Attribute.MANA, Math.min(getAttribute(Attribute.MANA) + getAttribute(Attribute.MAX_MANA) / 50, getAttribute(Attribute.MAX_MANA)));
+                        }
+                        // If above mana cap, do nothing
                     }
 
                     this.parseTabList();
@@ -896,6 +899,7 @@ public class PlayerListener {
                 }
             }
 
+
             if (main.getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
                 Map<String, Integer> maxEnchantments = main.getOnlineData().getSpecialEnchantments();
                 if (maxEnchantments != null) {
@@ -936,39 +940,9 @@ public class PlayerListener {
             }
 
             if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
-                Deque<String> enchants = new ArrayDeque<>();
-
-                int enchantStartIndex = e.toolTip.size();
-                int enchantEndIndex = 0;
-
-                for (int i = 0; i < e.toolTip.size(); i++) {
-                    String line = e.toolTip.get(i);
-
-                    if (line.startsWith(ENCHANT_LINE_STARTS_WITH) && ENCHANTMENT_LINE_PATTERN.matcher(TextUtils.stripColor(line)).matches()) {
-                        enchantStartIndex = Math.min(enchantStartIndex, i);
-                        enchantEndIndex = i;
-
-                        Matcher matcher = ENCHANTMENT_PATTERN.matcher(line);
-                        while (matcher.find()) {
-                            enchants.add(matcher.group().trim());
-                        }
-                    }
-                }
-
-                if (enchants.size() > 5) {
-                    e.toolTip.subList(enchantStartIndex, enchantEndIndex + 1).clear(); // Remove old enchantments
-
-                    int columns = enchants.size() <= 14 ? 2 : 3;
-                    for (int y = 0; !enchants.isEmpty(); y++) {
-                        StringBuilder enchantmentsBuilder = new StringBuilder();
-
-                        for (int x = 0; x < columns && !enchants.isEmpty(); x++) {
-                            enchantmentsBuilder.append(enchants.pollFirst()).append(", ");
-                        }
-                        enchantmentsBuilder.setLength(enchantmentsBuilder.length() - 2);
-
-                        e.toolTip.add(enchantStartIndex + y, enchantmentsBuilder.toString());
-                    }
+                NBTTagCompound enchants = ItemUtils.getEnchantments(e.itemStack);
+                if (enchants != null) {
+                    EnchantManager.organizeEnchants(e.toolTip, enchants);
                 }
             }
 

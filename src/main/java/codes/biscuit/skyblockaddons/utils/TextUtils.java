@@ -8,6 +8,7 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -16,6 +17,7 @@ import java.util.regex.Pattern;
 public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
+    private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-OR])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
@@ -56,6 +58,16 @@ public class TextUtils {
     public static String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
     }
+
+    /**
+     * Computationally efficient way to test if a given string has a rendered length of 0
+     * @param input string to test
+     * @return {@code true} if the input string is length 0 or only contains repeated formatting codes
+     */
+    public static boolean isZeroLength(String input) {
+        return input.length() == 0 || REPEATED_COLOR_PATTERN.matcher(input).matches();
+    }
+
 
     /**
      * Removes any character that isn't a number, letter, or common symbol from a given text.
@@ -229,5 +241,22 @@ public class TextUtils {
      */
     public static String stripResets(String input) {
         return RESET_CODE_PATTERN.matcher(input).replaceAll("");
+    }
+
+
+    /**
+     * Converts a string into proper case (Source: <a href="https://dev-notes.com">Dev Notes</a>)
+     * @param inputString a string
+     * @return a new string in which the first letter of each word is capitalized
+     */
+    public static String toProperCase(String inputString) {
+        String ret = "";
+        StringBuffer sb = new StringBuffer();
+        Matcher match = Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(inputString);
+        while (match.find()) {
+            match.appendReplacement(sb, match.group(1).toUpperCase() + match.group(2).toLowerCase());
+        }
+        ret = match.appendTail(sb).toString();
+        return ret;
     }
 }

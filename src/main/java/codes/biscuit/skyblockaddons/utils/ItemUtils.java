@@ -140,6 +140,18 @@ public class ItemUtils {
         return item.getSubCompound("ExtraAttributes", false);
     }
 
+
+    /**
+     * Returns the {@code enchantments} compound tag from the item's NBT data.
+     *
+     * @param item the item to get the tag from
+     * @return the item's {@code enchantments} compound tag or {@code null} if the item doesn't have one
+     */
+    public static NBTTagCompound getEnchantments(ItemStack item) {
+        NBTTagCompound extraAttributes = getExtraAttributes(item);
+        return extraAttributes == null ? null : extraAttributes.getCompoundTag("enchantments");
+    }
+
     /**
      * @return The Skyblock reforge of a given itemstack
      */

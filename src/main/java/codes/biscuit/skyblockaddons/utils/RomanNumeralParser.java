@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,6 +18,27 @@ public class RomanNumeralParser {
      * Pattern that finds words that begin with a Roman numeral
      */
     private static final Pattern NUMERAL_FINDING_PATTERN = Pattern.compile(" (?=[MDCLXVI])(M*(?:C[MD]|D?C{0,3})(?:X[CL]|L?X{0,3})(?:I[XV]|V?I{0,3}))(.?)");
+
+    /**
+     * Map that contains mappings for decimal-to-roman conversion
+     */
+    private static final TreeMap<Integer, String> INT_ROMAN_MAP = new TreeMap<Integer, String>();
+    static {
+        INT_ROMAN_MAP.put(1000, "M");
+        INT_ROMAN_MAP.put(900, "CM");
+        INT_ROMAN_MAP.put(500, "D");
+        INT_ROMAN_MAP.put(400, "CD");
+        INT_ROMAN_MAP.put(100, "C");
+        INT_ROMAN_MAP.put(90, "XC");
+        INT_ROMAN_MAP.put(50, "L");
+        INT_ROMAN_MAP.put(40, "XL");
+        INT_ROMAN_MAP.put(10, "X");
+        INT_ROMAN_MAP.put(9, "IX");
+        INT_ROMAN_MAP.put(5, "V");
+        INT_ROMAN_MAP.put(4, "IV");
+        INT_ROMAN_MAP.put(1, "I");
+
+    }
 
     private enum Numeral {
 
@@ -41,6 +63,15 @@ public class RomanNumeralParser {
                 throw new IllegalArgumentException("Expected valid Roman numeral, received '" + c + "'.");
             }
         }
+    }
+
+
+    public static String integerToRoman(int number) {
+        int l = INT_ROMAN_MAP.floorKey(number);
+        if (number == l) {
+            return INT_ROMAN_MAP.get(number);
+        }
+        return INT_ROMAN_MAP.get(l) + integerToRoman(number - l);
     }
 
     /**

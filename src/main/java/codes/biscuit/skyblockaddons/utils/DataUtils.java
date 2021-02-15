@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
+import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
@@ -83,6 +84,14 @@ public class DataUtils {
             SkyblockAddons.getLogger().error("An error occurred while reading the compactor items map!", ex);
         }
 
+        // Enchantment data
+        inputStream = DataUtils.class.getResourceAsStream("/enchants.json");
+        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
+            EnchantManager.setEnchants(GSON.fromJson(jsonReader, new TypeToken<HashMap<String, EnchantManager.ItemEnchants>>() {}.getType()));
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading the enchantments file!", ex);
+        }
+
         // Online Data
         inputStream = DataUtils.class.getResourceAsStream("/data.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
@@ -90,6 +99,8 @@ public class DataUtils {
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while reading the local data file!", ex);
         }
+
+
     }
 
     /*
