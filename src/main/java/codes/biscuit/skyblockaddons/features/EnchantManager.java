@@ -4,8 +4,6 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
-import com.sun.javafx.UnmodifiableArrayList;
-import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -15,7 +13,6 @@ import net.minecraft.util.EnumChatFormatting;
 import org.lwjgl.input.Mouse;
 
 import java.util.*;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EnchantManager {
