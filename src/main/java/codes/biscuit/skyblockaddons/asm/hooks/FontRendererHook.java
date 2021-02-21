@@ -3,24 +3,25 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
 import codes.biscuit.skyblockaddons.shader.Shader;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
-import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenShader;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
-import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
+import java.util.concurrent.TimeUnit;
 
 public class FontRendererHook {
 
 
     private static  Class<? extends Shader> savedShader = null;
+    //private static final Cache<Object, Object> chromaStrings = CacheBuilder.newBuilder().expireAfterWrite(1, TimeUnit.MINUTES).build();
 
-
+    @SuppressWarnings("unused")
     public static void changeTextColor() {
         if (ManualChromaManager.isColoringTextChroma() && !SkyblockColor.shouldUseChromaShaders()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
@@ -37,11 +38,29 @@ public class FontRendererHook {
         }
     }
 
+    /**
+     * Called in patcher code to stop patcher optimization and do vanilla render
+     * @param s string to render
+     * @return true to override
+     */
+    @SuppressWarnings("unused")
+    public static boolean shouldOverridePatcher(String s) {
+        //return chromaStrings.getIfPresent(s) == null || chromaStrings.get(s);
+        return true;
+    }
 
+    /**
+     * Called to save the current shader state
+     */
+    @SuppressWarnings("unused")
     public static void saveShaderState() {
         savedShader = ShaderManager.getInstance().getActiveShaderType();
     }
 
+    /**
+     * Called to restore the saved shader state
+     */
+    @SuppressWarnings("unused")
     public static void restoreShaderState() {
         if (savedShader == null) {
             ShaderManager.getInstance().disableShader();
@@ -51,15 +70,45 @@ public class FontRendererHook {
         }
     }
 
+    /**
+     * Called on chroma string to update cache
+     * @param s string with chroma format tag
+     */
+    @SuppressWarnings("unused")
+    public static void stringWithChroma(String s) {
+        //chromaStrings.put(s, true);
+    }
+
+    /**
+     * Called on string termination to update cache
+     * @param s string with chroma format tag
+     */
+    @SuppressWarnings("unused")
+    public static void endOfString(String s) {
+        //if (!chromaStrings.containsKey(s)) {
+        //    chromaStrings.put(s, false);
+        //}
+    }
+
+    /**
+     * Called to turn chroma on
+     * TODO: Manual Chroma?
+     * TODO: What if chroma already on? Will bind white ruin?
+     */
+    @SuppressWarnings("unused")
     public static void toggleChromaOn() {
-        //ColorUtils.getDummySkyblockColor(28, 29, 41, 230)
-        //DrawUtils.begin2D(GL11.GL_TRIANGLE_STRIP, ColorUtils.getDummySkyblockColor(SkyblockColor.ColorAnimation.CHROMA));
         ColorUtils.bindWhite();
         ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
     }
 
+    /**
+     * Called to turn chroma off
+     * TODO: Manual Chroma?
+     */
+    @SuppressWarnings("unused")
     public static void toggleChromaOff() {
-        // TODO: use DrawUtils.end to have manual chroma
-        ShaderManager.getInstance().disableShader();
+        if (savedShader == null) {
+            ShaderManager.getInstance().disableShader();
+        }
     }
 }

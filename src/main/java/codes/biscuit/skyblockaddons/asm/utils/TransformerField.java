@@ -40,6 +40,7 @@ public enum TransformerField {
     green("green", "field_179186_b", "b", "F"),
     blue("blue", "field_78292_o", "n", "F"),
     alpha("alpha", "field_78305_q", "p", "F"),
+    italicStyle("italicStyle", "field_78301_u", "t", "Z"),
 
     // EntityLivingBase
     hurtTime("hurtTime", "field_70737_aN ", "au", "I"),

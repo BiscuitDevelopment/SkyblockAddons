@@ -118,6 +118,8 @@ public enum TransformerMethod {
 
     // FontRenderer
     renderChar("renderChar", "func_181559_a", "a", "(CZ)F"),
+    renderStringAtPos("renderStringAtPos", "func_78255_a", "a", "(Ljava/lang/String;Z)V"),
+    resetStyles("resetStyles", "func_78265_b", "e", "()V"),
 
     // EntityLivingBase
     handleStatusUpdate("handleStatusUpdate", "func_70103_a", "a", "(B)V"),
@@ -161,10 +163,7 @@ public enum TransformerMethod {
 
     updateFramebufferSize("updateFramebufferSize", "func_147119_ah", "ay", "()V"),
 
-    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V"),
-
-    renderStringAtPos("renderStringAtPos", "func_78255_a", "a", "(Ljava/lang/String;Z)V"),
-    resetStyles("resetStyles", "func_78265_b", "e", "()V")
+    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V")
     ;
 
     private String name;
