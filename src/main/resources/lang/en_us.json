@@ -187,7 +187,8 @@
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Text",
-    "fishingParticleOverlay": "Predict Lured-Fish Position"
+    "fishingParticleOverlay": "Predict Lured-Fish Position",
+    "enchantmentLoreParsing": "Parse Enchantment Lore"
   },
   "messages": {
     "enchants": "Enchants",
