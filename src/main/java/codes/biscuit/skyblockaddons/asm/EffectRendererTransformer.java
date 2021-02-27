@@ -20,12 +20,12 @@ public class EffectRendererTransformer implements ITransformer {
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
             if (TransformerMethod.addEffect.matches(methodNode)) {
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertAddMenuButtons());
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnAddParticle());
             }
         }
     }
 
-    private InsnList insertAddMenuButtons() {
+    private InsnList insertOnAddParticle() {
         InsnList list = new InsnList();
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // effect

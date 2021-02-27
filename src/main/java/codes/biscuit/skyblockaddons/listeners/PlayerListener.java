@@ -477,7 +477,7 @@ public class PlayerListener {
                 ScoreboardManager.tick();
 
                 if (main.getConfigValues().isEnabled(Feature.FISHING_PARTICLE_OVERLAY)) {
-                    FishParticleManager.onTick();
+                    FishParticleManager.displayFishOverlay();
                 }
 
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {

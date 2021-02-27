@@ -148,6 +148,7 @@ public enum TransformerMethod {
 
     // EffectRenderer
     addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V"),
+    renderParticles("renderParticles", "func_78874_a", "a", "(Lnet/minecraft/entity/Entity;F)V"),
 
     // WorldClient
     onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
@@ -163,7 +164,10 @@ public enum TransformerMethod {
 
     updateFramebufferSize("updateFramebufferSize", "func_147119_ah", "ay", "()V"),
 
-    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V")
+    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V"),
+
+    // EntityFX
+    renderParticle("renderParticle", "func_180434_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;Lnet/minecraft/entity/Entity;FFFFFF)V")
     ;
 
     private String name;

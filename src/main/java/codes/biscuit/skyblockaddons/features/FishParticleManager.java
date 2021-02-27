@@ -1,13 +1,17 @@
 package codes.biscuit.skyblockaddons.features;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.EntityFishWakeFX;
+import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  *
@@ -84,11 +88,11 @@ public class FishParticleManager {
     /**
      * A set of the positions (designed to filter out the double particles that spawn at the same position)
      */
-    private static final HashSet<Double> particleHash = new HashSet<>(64);
+    private static final LinkedHashSet<Double> particleHash = new LinkedHashSet<>(64);
     /**
      * Stores the results of matrix multiplication
      */
-    private static final boolean[] matches = new boolean[64];
+    public static final LinkedHashMap<Vec3, Long> matches = new LinkedHashMap<>();
     /**
      * The time each particle spawned
      */
@@ -101,15 +105,6 @@ public class FishParticleManager {
      * True if particles have spawned/been processed and are currently stored in memory
      */
     private static boolean cacheEmpty = true;
-    /**
-     * True if any particles have spawned since the last tick calculation
-     */
-    private static boolean newParticles = true;
-    /**
-     * The epoch time of the last trail identified during the per-tick calculation
-     */
-    private static long lastMatch = 0;
-
 
     /**
      * When a new particle spawns, check if it matches these conditions for each recently-spawned particle.
@@ -138,7 +133,6 @@ public class FishParticleManager {
             particleAngl[idx] = MathHelper.atan2(xCoord - hook.posX, zCoord - hook.posZ) * 180 / Math.PI;
             particlePos[idx] = new Vec3(xCoord, yCoord, zCoord);
             particleTime[idx] = Minecraft.getMinecraft().theWorld.getTotalWorldTime();
-            //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(particleAngl[idx] + " " + particleDist[idx]));
             // Begin with a clean row
             long particleRowTmp1 = 0;
             long particleRowTmp2 = 0;
@@ -154,7 +148,7 @@ public class FishParticleManager {
                 double distDiff1 = Math.abs(particleDist[i] - particleDist[idx] - DIST_EXPECTED);
                 double distDiff2 = Math.abs(particleDist[i] - particleDist[idx] - 2 * DIST_EXPECTED);
                 // The newest spawned particle should be within a few ticks of the previous particle in the trail
-                boolean timeMatch = (particleTime[idx] - particleTime[i]) < TIME_VARIATION; // Negative (okay) if uninitialized
+                boolean timeMatch = (particleTime[idx] - particleTime[i]) <= TIME_VARIATION; // Negative (okay) if uninitialized
                 // Matrix multiplication assumes we are little endian (most significant bit is column 0)
                 // Default: if it's not raining and particles aren't being dropped, we expect .1 block distance
                 particleRowTmp1 |= (distDiff1 < DIST_VARIATION && anglMatch && timeMatch ? 1L : 0L) << (63 - i);
@@ -169,10 +163,14 @@ public class FishParticleManager {
             particleMatrixRows[idx] = particleRowTmp1 != 0 ? particleRowTmp1 : particleRowTmp2;
             // Add hash to the set
             particleHash.add(hash);
-            newParticles = true;
             cacheEmpty = false;
+            // Recalculate the fish trails with the new particle
+            calculateTrails();
             // Wrap from 63 to 0
             idx = idx < 63 ? idx + 1 : 0;
+        }
+        else if (hook == null && !cacheEmpty) {
+            clearParticleCache();
         }
         // Clean up every once in a while in case someone casts their rod for a long time
         if (particleHash.size() > 100) {
@@ -182,64 +180,63 @@ public class FishParticleManager {
 
 
     /**
-     * Every game tick, find a few (i.e. a "trail" of) particles that each meet the criteria for the subsequent particle in the trail
+     * Find a few (i.e. a "trail" of) particles that each meet the criteria for the subsequent particle in the trail
      * E.g. we find a trail 1 -> 5 -> 6 -> 10 (particle 1 meets the criteria for 5, 5 meets the criteria for 6, and so on)
-     * These particles form a particle trail that not many (hopefully not any) other particles can form.
      * Finding the trail of length n is found by computing M^n, where M is the pairwise matchings for each particle combination
      *
      * Given the particle trail, spawn a distinct particle (lava drip) at the most recently spawned particle in the particle trail.
      */
-    public static void onTick() {
-        Minecraft mc = Minecraft.getMinecraft();
-        if (mc != null && mc.thePlayer != null) {
-            // No need to check if the feature is enabled...if it isn't the cache will be empty
-            if (mc.thePlayer.fishEntity != null && !cacheEmpty) {
-                if (newParticles) {
-                    long[] pow2 = new long[64];
-                    long[] pow4 = new long[64];
+    public static void calculateTrails() {
+        long[] pow2 = new long[64];
+        long[] pow4 = new long[64];
 
-                    // Main computation:
-                    // Binary matrix multiplication (wherein we OR the bitwise AND of each row/column to get a matrix entry)
-                    // This is like a markoff chain, except node connections are binary (either there is one or there isn't)
-                    // Squaring the adjacency matrix gives the connections "links" between nodes with two degrees of separation.
-                    // Here we link four particles together, which involves an particleMatrixRows^4 computation
-                    // After matrix multiplication, any '1's indicate there exists a path with <= matrix power
-                    bitwiseMatrixSquare(pow2, particleMatrixRows);  // Square the matrix
-                    bitwiseMatrixSquare(pow4, pow2);                // Quart the matrix
+        // Main computation:
+        // Binary matrix multiplication (wherein we OR the bitwise AND of each row/column to get a matrix entry)
+        // This is like a markoff chain, except node connections are binary (either there is one or there isn't)
+        // Squaring the adjacency matrix gives the connections "links" between nodes with two degrees of separation.
+        // Here we link four particles together, which involves an particleMatrixRows^4 computation
+        // After matrix multiplication, any '1's indicate there exists a path with <= matrix power
+        bitwiseMatrixSquare(pow2, particleMatrixRows);  // Square the matrix
+        bitwiseMatrixSquare(pow4, pow2);                // Quart the matrix
 
-                    // Get the particles with a trail of >= 4 particles
-                    boolean flag = false;
-                    for (int i = 0; i < 64; i++) {
-                        matches[i] = pow4[i] != 0;
-                        if (matches[i]) flag = true;
-                    }
-                    // We are up-to-date
-                    newParticles = false;
-                    // Last successful computed time
-                    if (flag) {
-                        lastMatch = System.currentTimeMillis();
-                    }
+        matches.clear();
+
+        // Get the particles at the "head" of any trails of >= 4 particles, beginning at the most recently spawned particle
+        // Track which particles have "linked" to previously-iterated particles
+        long trailHeadTracker = 0;
+        boolean first = true;
+        long currTick = Minecraft.getMinecraft().theWorld.getTotalWorldTime();
+        // Particle idx was the most recently spawned. Start there and go back through the particles.
+        for (int i = idx; first || i != idx; i = i == 0 ? 63 : i - 1) {
+            // If this particle is at the head of >= 4 particles
+            if (pow4[i] != 0) {
+                // If this particle is at the head of the trail, then it won't link to any other previously iterated particles
+                long mask = 1L << (63 - i);
+                if ((trailHeadTracker & mask) == 0 && currTick - particleTime[i] < 10) {
+                    matches.put(particlePos[i], particleTime[i]);
+                    //System.out.println(Minecraft.getMinecraft().theWorld.getTotalWorldTime() - particleTime[i]);
+
                 }
-                // Matches[i] tells us whether the particle i has a 4 particle "link" (4 degrees of separation).
-                // Only show a particle if the we are within .5s of the last computed link time
-                if (System.currentTimeMillis() - lastMatch < 500) {
-                    int i = idx;
-                    do {
-                        // TODO: Change this to render a fish entity into the world? Or something like animal crossing? But switch from using another particle.
-                        if (matches[i] && particlePos[i] != null) {
-                            Minecraft.getMinecraft().renderGlobal.spawnParticle(LAVA_DRIP_ID, true,
-                                    particlePos[i].xCoord, particlePos[i].yCoord + .1, particlePos[i].zCoord, 0, 0, 0);
-                            // Just spawn one particle (the most recent linked one) per tick
-                            break;
-                        }
-                        i = i == 0 ? 63 : i - 1;
-                    }
-                    while (i != idx);
-                }
+                //else {
+                //    System.out.println("Ignored");
+                //}
+                // Keep track of all particles that linked to this particle.
+                // Don't add these particles later, as they're not the head of the trail
+                trailHeadTracker |= particleMatrixRows[i];
             }
-            // Reset override
-            else if (mc.thePlayer.fishEntity == null) {
-                clearParticleCache();
+            first = false;
+        }
+    }
+
+    public static void displayFishOverlay() {
+        // Matches[i] tells us whether the particle i has a 4 particle "link" (4 degrees of separation).
+        // Only show a particle if the we are within .5s of the last computed link time
+        RenderGlobal rg = Minecraft.getMinecraft().renderGlobal;
+        for (Map.Entry<Vec3, Long> particle : matches.entrySet()) {
+            Vec3 pos = particle.getKey();
+            Long time = particle.getValue();
+            if (Minecraft.getMinecraft().theWorld.getTotalWorldTime() - time < 10) {
+                rg.spawnParticle(LAVA_DRIP_ID, true, pos.xCoord, pos.yCoord + .1, pos.zCoord, 0, 0, 0);
             }
         }
     }
@@ -255,13 +252,12 @@ public class FishParticleManager {
             particleDist[i] = Double.MAX_VALUE;
             particleAngl[i] = Double.MAX_VALUE;
             particlePos[i] = null;
-            matches[i] = false;
             particleTime[i] = Long.MAX_VALUE;
         }
+        matches.clear();
         particleHash.clear();
         idx = 0;
         cacheEmpty = true;
-        newParticles = false;
     }
 
 
