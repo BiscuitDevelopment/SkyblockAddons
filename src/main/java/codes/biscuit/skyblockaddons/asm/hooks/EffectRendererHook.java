@@ -7,7 +7,7 @@ import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleManager;
 import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.SkyblockColor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.EntityAuraFX;
@@ -108,9 +108,11 @@ public class EffectRendererHook {
         GlStateManager.disableFog();
         RenderHelper.disableStandardItemLighting();
 
-        // Use chroma shader for now... TODO: Add option to change particle color
-        ColorUtils.bindWhite();
-        ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
+        SkyblockColor color = SkyblockAddons.getInstance().getConfigValues().getSkyblockColor(Feature.FISHING_PARTICLE_OVERLAY);
+        // Enable shader if needed
+        if (color.drawMulticolorUsingShader()) {
+            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
+        }
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 2; j++) {
@@ -124,12 +126,13 @@ public class EffectRendererHook {
                     }
 
                     GlStateManager.enableColorMaterial();
-                    RenderGlobalHook.enableOutlineMode(0xFFFFFF); // white TODO: Option to change color...
+                    RenderGlobalHook.enableOutlineMode(color.getColor());
 
                     worldRenderer.begin(7, DefaultVertexFormats.PARTICLE_POSITION_TEX_COLOR_LMAP);
 
                     for (EntityFX effect : particlesToOutline[i][j]) {
                         try {
+                            // TODO: Patcher particle culling
                             effect.renderParticle(worldRenderer, entity, partialTicks, rotationX, rotationXZ, rotationZ, rotationYZ, rotationXY);
                         }
                         catch (Throwable ex) {
@@ -143,6 +146,8 @@ public class EffectRendererHook {
                 }
             }
         }
-        ShaderManager.getInstance().disableShader();
+        if (color.drawMulticolorUsingShader()) {
+            ShaderManager.getInstance().disableShader();
+        }
     }
 }

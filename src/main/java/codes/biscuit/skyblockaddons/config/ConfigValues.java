@@ -5,10 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.MathUtils;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
@@ -720,6 +717,20 @@ public class ConfigValues {
 
         ColorCode defaultColor = feature.getDefaultColor();
         return ColorUtils.setColorAlpha(defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor(), alpha);
+    }
+
+    /**
+     * Return skyblock color compatible with new shaders. Can bind the color (white) unconditionally
+     * @param feature the feature
+     * @return the color
+     */
+    public SkyblockColor getSkyblockColor(Feature feature) {
+        SkyblockColor color = ColorUtils.getDummySkyblockColor(getColor(feature), chromaFeatures.contains(feature));
+        // If chroma is enabled, and we are using shaders, set color to white
+        if (color.drawMulticolorUsingShader()) {
+            color.setColor(0xFFFFFFFF);
+        }
+        return color;
     }
 
     public ColorCode getRestrictedColor(Feature feature) {
