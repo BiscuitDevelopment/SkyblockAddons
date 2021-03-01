@@ -49,6 +49,8 @@ public enum TransformerMethod {
     // GlStateManager
     color("color", "func_179131_c", "c", "(FFFF)V"),
     drawString("drawString", "func_78276_b", "a", "(Ljava/lang/String;III)I"),
+    depthMask("depthMask", "func_179132_a", "a", "(Z)V"),
+    alphaFunc("alphaFunc", "func_179092_a", "a", "(IF)V"),
 
     // IChatComponent
     getUnformattedText("getUnformattedText", "func_150260_c", "c", "()Ljava/lang/String;"),

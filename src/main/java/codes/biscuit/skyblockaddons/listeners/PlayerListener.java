@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook;
 import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
@@ -172,6 +173,8 @@ public class PlayerListener {
 
             NPCUtils.getNpcLocations().clear();
             JerryPresent.getJerryPresents().clear();
+            FishParticleManager.clearParticleCache();
+            EffectRendererHook.clearParticleCache();
         }
     }
 
@@ -475,10 +478,6 @@ public class PlayerListener {
             if (mc != null) { // Predict health every tick if needed.
 
                 ScoreboardManager.tick();
-
-                if (main.getConfigValues().isEnabled(Feature.FISHING_PARTICLE_OVERLAY)) {
-                    FishParticleManager.displayFishOverlay();
-                }
 
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
                     actionBarParser.setHealthUpdate(null);

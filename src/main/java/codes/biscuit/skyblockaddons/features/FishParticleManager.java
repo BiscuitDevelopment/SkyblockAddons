@@ -1,17 +1,13 @@
 package codes.biscuit.skyblockaddons.features;
 
+import codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.EntityFishWakeFX;
-import net.minecraft.client.renderer.RenderGlobal;
 import net.minecraft.entity.projectile.EntityFishHook;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
 
-import java.util.LinkedHashSet;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  *
@@ -47,8 +43,6 @@ import java.util.Map;
 
 public class FishParticleManager {
 
-    private static final int LAVA_DRIP_ID = EnumParticleTypes.DRIP_LAVA.getParticleID();
-
     /**
      * Fish approach particles converge to the hook at a rate of .1 blocks
      */
@@ -63,9 +57,9 @@ public class FishParticleManager {
      */
     private static final double ANGLE_EXPECTED = 12;
     /**
-     * Allow for 2 ticks between particles in a trail
+     * Allow for 4 ticks between particles in a trail
      */
-    private static final int TIME_VARIATION = 2;
+    private static final int TIME_VARIATION = 4;
 
     /* Store several metrics about recently spawned particles */
 
@@ -84,15 +78,12 @@ public class FishParticleManager {
     /**
      * The position of each particle
      */
-    private static final Vec3[] particlePos = new Vec3[64];
+    @SuppressWarnings("unchecked")
+    private static final ArrayList<EntityFX>[] particleList = new ArrayList[64];
     /**
      * A set of the positions (designed to filter out the double particles that spawn at the same position)
      */
-    private static final LinkedHashSet<Double> particleHash = new LinkedHashSet<>(64);
-    /**
-     * Stores the results of matrix multiplication
-     */
-    public static final LinkedHashMap<Vec3, Long> matches = new LinkedHashMap<>();
+    private static final LinkedHashMap<Double, List<EntityFX>> particleHash = new LinkedHashMap<>(64);
     /**
      * The time each particle spawned
      */
@@ -118,21 +109,33 @@ public class FishParticleManager {
 
         EntityFishHook hook = Minecraft.getMinecraft().thePlayer.fishEntity;
         double xCoord = fishWakeParticle.posX;
-        double yCoord = fishWakeParticle.posY;
         double zCoord = fishWakeParticle.posZ;
 
         // It's extremely unlikely that two unrelated particles hash to the same place
         // However, normal fish particles come in pairs of two--the extra one is extraneous and we wish to ignore it
         double hash = 31 * (31 * 23 + xCoord) + zCoord;
-        if (hook != null && !particleHash.contains(hash)) {
+        if (hook != null && !particleHash.containsKey(hash)) {
             double distToHook = Math.sqrt((xCoord - hook.posX) * (xCoord - hook.posX) + (zCoord - hook.posZ) * (zCoord - hook.posZ));
             // Particle trails start 2-8 blocks away. Ignore any that are far away
             if (distToHook > 8) { return; }
             // Save several particle metrics
             particleDist[idx] = distToHook;
             particleAngl[idx] = MathHelper.atan2(xCoord - hook.posX, zCoord - hook.posZ) * 180 / Math.PI;
-            particlePos[idx] = new Vec3(xCoord, yCoord, zCoord);
             particleTime[idx] = Minecraft.getMinecraft().theWorld.getTotalWorldTime();
+            // We want O(1) index lookup and position-hash lookup. Use hashmap and array
+            ArrayList<EntityFX> tmp = new ArrayList<>(Collections.singletonList(fishWakeParticle));
+            particleList[idx] = tmp;
+            particleHash.put(hash, tmp);
+            // Use linked hash map's FIFO order to keep the hash at 64 elements
+            if (particleHash.size() > 64) {
+                Iterator<Map.Entry<Double, List<EntityFX>>> itr = particleHash.entrySet().iterator();
+                while(particleHash.size() > 64) {
+                    itr.next();
+                    itr.remove();
+                }
+            }
+            cacheEmpty = false;
+
             // Begin with a clean row
             long particleRowTmp1 = 0;
             long particleRowTmp2 = 0;
@@ -161,20 +164,18 @@ public class FishParticleManager {
             }
             // If we find no .1 distance particles, go to .2 distance particles...it's not perfect by any means lol
             particleMatrixRows[idx] = particleRowTmp1 != 0 ? particleRowTmp1 : particleRowTmp2;
-            // Add hash to the set
-            particleHash.add(hash);
-            cacheEmpty = false;
             // Recalculate the fish trails with the new particle
             calculateTrails();
             // Wrap from 63 to 0
             idx = idx < 63 ? idx + 1 : 0;
         }
-        else if (hook == null && !cacheEmpty) {
-            clearParticleCache();
+        // Two fish-wake particles particles spawn at the same position. To get both, add the 2nd to the list
+        else if (hook != null) {
+            particleHash.get(hash).add(fishWakeParticle);
         }
-        // Clean up every once in a while in case someone casts their rod for a long time
-        if (particleHash.size() > 100) {
-            particleHash.clear();
+        // Clear the cache if the player's hook isn't cast
+        else {
+            clearParticleCache();
         }
     }
 
@@ -186,7 +187,7 @@ public class FishParticleManager {
      *
      * Given the particle trail, spawn a distinct particle (lava drip) at the most recently spawned particle in the particle trail.
      */
-    public static void calculateTrails() {
+    private static void calculateTrails() {
         long[] pow2 = new long[64];
         long[] pow4 = new long[64];
 
@@ -199,8 +200,6 @@ public class FishParticleManager {
         bitwiseMatrixSquare(pow2, particleMatrixRows);  // Square the matrix
         bitwiseMatrixSquare(pow4, pow2);                // Quart the matrix
 
-        matches.clear();
-
         // Get the particles at the "head" of any trails of >= 4 particles, beginning at the most recently spawned particle
         // Track which particles have "linked" to previously-iterated particles
         long trailHeadTracker = 0;
@@ -212,32 +211,16 @@ public class FishParticleManager {
             if (pow4[i] != 0) {
                 // If this particle is at the head of the trail, then it won't link to any other previously iterated particles
                 long mask = 1L << (63 - i);
-                if ((trailHeadTracker & mask) == 0 && currTick - particleTime[i] < 10) {
-                    matches.put(particlePos[i], particleTime[i]);
-                    //System.out.println(Minecraft.getMinecraft().theWorld.getTotalWorldTime() - particleTime[i]);
-
+                if ((trailHeadTracker & mask) == 0 && currTick - particleTime[i] < 5) {
+                    for (EntityFX entityFX : particleList[i]) {
+                        EffectRendererHook.addParticleToOutline(entityFX);
+                    }
                 }
-                //else {
-                //    System.out.println("Ignored");
-                //}
                 // Keep track of all particles that linked to this particle.
                 // Don't add these particles later, as they're not the head of the trail
                 trailHeadTracker |= particleMatrixRows[i];
             }
             first = false;
-        }
-    }
-
-    public static void displayFishOverlay() {
-        // Matches[i] tells us whether the particle i has a 4 particle "link" (4 degrees of separation).
-        // Only show a particle if the we are within .5s of the last computed link time
-        RenderGlobal rg = Minecraft.getMinecraft().renderGlobal;
-        for (Map.Entry<Vec3, Long> particle : matches.entrySet()) {
-            Vec3 pos = particle.getKey();
-            Long time = particle.getValue();
-            if (Minecraft.getMinecraft().theWorld.getTotalWorldTime() - time < 10) {
-                rg.spawnParticle(LAVA_DRIP_ID, true, pos.xCoord, pos.yCoord + .1, pos.zCoord, 0, 0, 0);
-            }
         }
     }
 
@@ -251,10 +234,9 @@ public class FishParticleManager {
             particleMatrixRows[i] = 0;
             particleDist[i] = Double.MAX_VALUE;
             particleAngl[i] = Double.MAX_VALUE;
-            particlePos[i] = null;
+            particleList[i] = null;
             particleTime[i] = Long.MAX_VALUE;
         }
-        matches.clear();
         particleHash.clear();
         idx = 0;
         cacheEmpty = true;
@@ -292,5 +274,4 @@ public class FishParticleManager {
             }
         }
     }
-
 }
