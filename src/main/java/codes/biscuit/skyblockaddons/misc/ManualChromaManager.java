@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 
@@ -16,7 +17,7 @@ import java.awt.*;
  */
 public class ManualChromaManager {
 
-    @Getter private static boolean coloringTextChroma;
+    @Getter @Setter private static boolean coloringTextChroma;
     @Getter private static float featureScale;
 
     private static float[] defaultColorHSB = {0, 0.75F, 0.9F};
