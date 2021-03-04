@@ -1,4 +1,24 @@
 {
+  "CLAY": {
+    "itemId": "clay",
+    "displayName": "§fClay",
+    "enchanted": false
+  },
+  "COAL_BLOCK": {
+    "itemId": "coal_block",
+    "displayName": "§fBlock of Coal",
+    "enchanted": false
+  },
+  "DIAMOND_BLOCK": {
+    "itemId": "diamond_block",
+    "displayName": "§fBlock of Diamond",
+    "enchanted": false
+  },
+  "EMERALD_BLOCK": {
+    "itemId": "emerald_block",
+    "displayName": "§fBlock of Emerald",
+    "enchanted": false
+  },
   "ENCHANTED_ACACIA_LOG": {
     "itemId": "log2",
     "displayName": "§aEnchanted Acacia Wood",
@@ -495,9 +515,44 @@
     "displayName": "§aEnchanted Wool",
     "enchanted": true
   },
+  "GLOWSTONE": {
+    "itemId": "glowstone",
+    "displayName": "§fGlowstone",
+    "enchanted": false
+  },
+  "GOLD_BLOCK": {
+    "itemId": "gold_block",
+    "displayName": "§fBlock of Gold",
+    "enchanted": false
+  },
   "HAY_BLOCK": {
     "itemId": "hay_block",
     "displayName": "§fHay Bale",
+    "enchanted": false
+  },
+  "HUGE_MUSHROOM_1": {
+    "itemId": "brown_mushroom_block",
+    "displayName": "§fBrown Mushroom Block",
+    "enchanted": false
+  },
+  "HUGE_MUSHROOM_2": {
+    "itemId": "red_mushroom_block",
+    "displayName": "§fRed Mushroom Block",
+    "enchanted": false
+  },
+  "IRON_BLOCK": {
+    "itemId": "iron_block",
+    "displayName": "§fBlock of Iron",
+    "enchanted": false
+  },
+  "LAPIS_BLOCK": {
+    "itemId": "lapis_block",
+    "displayName": "§fLapis Lazuli Block",
+    "enchanted": false
+  },
+  "MELON_BLOCK": {
+    "itemId": "melon_block",
+    "displayName": "§fMelon",
     "enchanted": false
   },
   "MUTANT_NETHER_STALK": {
@@ -506,11 +561,26 @@
     "skullId": "94c29902-dee6-3e1a-ba2e-e13e2bc243a4",
     "texture": "111a3cec7aaf904212ccf93bb67a3caf3d649783ba90b8b60bb63c7687eb39f"
   },
+  "PACKED_ICE": {
+    "itemId": "packed_ice",
+    "displayName": "§fPacked Ice",
+    "enchanted": false
+  },
   "POLISHED_PUMPKIN": {
     "itemId": "skull",
     "displayName": "§9Polished Pumpkin",
     "skullId": "3508645c-9fd9-3501-b79c-d490f6c4d028",
     "texture": "8db711ff52eedda59c434bb03169763d7c40b5b89127778feacd63aa94dfc"
+  },
+  "QUARTZ_BLOCK": {
+    "itemId": "quartz_block",
+    "displayName": "§fBlock of Quartz",
+    "enchanted": false
+  },
+  "REDSTONE_BLOCK": {
+    "itemId": "redstone_block",
+    "displayName": "§fBlock of Redstone",
+    "enchanted": false
   },
   "SNOW_BLOCK": {
     "itemId": "snow",
