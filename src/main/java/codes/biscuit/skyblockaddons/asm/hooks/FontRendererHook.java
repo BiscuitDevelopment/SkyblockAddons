@@ -30,11 +30,15 @@ public class FontRendererHook {
             float[] HSB = Color.RGBtoHSB((int)(fontRenderer.red * 255), (int)(fontRenderer.green * 255), (int)(fontRenderer.blue * 255), null);
             int newColor = ManualChromaManager.getChromaColor(fontRenderer.posX, fontRenderer.posY, HSB, (int)(fontRenderer.alpha * 255));
 
-            fontRenderer.red = (float)(newColor >> 16 & 255) / 255.0F;
-            fontRenderer.green = (float)(newColor >> 8 & 255) / 255.0F;
-            fontRenderer.blue = (float)(newColor & 255) / 255.0F;
+            //fontRenderer.red = (float)(newColor >> 16 & 255) / 255.0F;
+            //fontRenderer.green = (float)(newColor >> 8 & 255) / 255.0F;
+            //fontRenderer.blue = (float)(newColor & 255) / 255.0F;
+            float red = (float)(newColor >> 16 & 255) / 255.0F;
+            float green = (float)(newColor >> 8 & 255) / 255.0F;
+            float blue = (float)(newColor & 255) / 255.0F;
             // Swap blue & green because they are swapped in FontRenderer's color model.
-            GlStateManager.color(fontRenderer.red, fontRenderer.blue, fontRenderer.green, fontRenderer.alpha);
+            //GlStateManager.color(fontRenderer.red, fontRenderer.blue, fontRenderer.green, fontRenderer.alpha);
+            GlStateManager.color(red, blue, green, fontRenderer.alpha);
         }
     }
 
@@ -43,12 +47,13 @@ public class FontRendererHook {
         return style == 22 ? 1F : color;
     }
 
+    // WILL NOT WORK WITH SHADOW
     public static void patcherToggleChroma(int style) {
         if (style == 22) {
-            toggleChromaOn();
+            toggleChromaOn(false);
         }
         else {
-            restoreChromaState();
+            restoreChromaState(false);
         }
     }
 
@@ -97,9 +102,9 @@ public class FontRendererHook {
      * Called to restore the saved chroma state
      */
     @SuppressWarnings("unused")
-    public static void restoreChromaState() {
+    public static void restoreChromaState(boolean shadow) {
         // Online data not fetched before a color code will cause null pointer exception
-        if (SkyblockAddons.getInstance().getOnlineData() == null) {
+        if (shadow || SkyblockAddons.getInstance().getOnlineData() == null) {
             return;
         }
         if (SkyblockColor.shouldUseChromaShaders()) {
@@ -119,21 +124,23 @@ public class FontRendererHook {
      * Called to turn chroma on
      */
     @SuppressWarnings("unused")
-    public static void toggleChromaOn() {
+    public static void toggleChromaOn(boolean shadow) {
         // Online data not fetched before a color code will cause null pointer exception
-        if (SkyblockAddons.getInstance().getOnlineData() == null) {
+        if (shadow || SkyblockAddons.getInstance().getOnlineData() == null) {
             return;
         }
         if (SkyblockColor.shouldUseChromaShaders()) {
+
             ColorUtils.bindWhite();
             ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
         }
         else {
+            //System.out.println("Hi on");
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-            fontRenderer.red = 1F;
-            fontRenderer.green = 1F;
-            fontRenderer.blue = 1F;
-            fontRenderer.alpha = 1F;
+            //fontRenderer.red = 1F;
+            //fontRenderer.green = 1F;
+            //fontRenderer.blue = 1F;
+            //fontRenderer.alpha = 1F;
             ManualChromaManager.setColoringTextChroma(true);
         }
     }

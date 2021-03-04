@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
+import scala.tools.cmd.gen.AnyValReps;
 
 import java.util.Iterator;
 
@@ -161,8 +162,7 @@ public class FontRendererTransformer implements ITransformer {
                         italicStyleCount++;
                         // Insert a chroma reset, as the new format code is between 0 and 15 (regular colors)
                         if (italicStyleCount == 1 || italicStyleCount == 3) {
-                            methodNode.instructions.insert(abstractNode,
-                                    new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "restoreChromaState", "()V", false));
+                            methodNode.instructions.insert(abstractNode, insertRestoreChromaState());
                         }
                     }
                     // Find if (i1 == 20) { }
@@ -182,8 +182,7 @@ public class FontRendererTransformer implements ITransformer {
                     }
                     // Insert a call to FontRendererHook.restoreChromaState() before calls to return
                     else if (insertedChroma && abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
-                        methodNode.instructions.insertBefore(abstractNode,
-                                new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "restoreChromaState", "()V", false));
+                        methodNode.instructions.insertBefore(abstractNode, insertRestoreChromaState());
                         methodNode.instructions.insertBefore(abstractNode, saveStringChroma());
                     }
                 }
@@ -219,6 +218,15 @@ public class FontRendererTransformer implements ITransformer {
         return list;
     }
 
+    private InsnList insertRestoreChromaState() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "restoreChromaState", "(Z)V", false));
+        return list;
+    }
+
+
     /**
      * Insert instructions on line 419:
      * else if (i1 == 22) {
@@ -241,7 +249,8 @@ public class FontRendererTransformer implements ITransformer {
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.FontRenderer.getNameRaw(), TransformerMethod.resetStyles.getName(), TransformerMethod.resetStyles.getDescription(), false));
 
         // Call shader manager
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "toggleChromaOn", "()V", false));
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "toggleChromaOn", "(Z)V", false));
 
         // Save string chroma
         list.add(new VarInsnNode(Opcodes.ALOAD, 1));
