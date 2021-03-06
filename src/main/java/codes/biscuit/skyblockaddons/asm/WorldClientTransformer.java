@@ -21,7 +21,9 @@ public class WorldClientTransformer implements ITransformer {
         for (MethodNode methodNode : classNode.methods) {
             if (TransformerMethod.onEntityRemoved.matches(methodNode)) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), onEntityRemoved());
-                return;
+            }
+            else if (TransformerMethod.invalidateRegionAndSetBlock.matches(methodNode)) {
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertBlockUpdated());
             }
         }
     }
@@ -32,6 +34,17 @@ public class WorldClientTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // entityIn
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/WorldClientHook", "onEntityRemoved",
                 "("+TransformerClass.Entity.getName()+")V", false)); // WorldClientHook.onEntityRemoved(entityIn);
+
+        return list;
+    }
+
+    private InsnList insertBlockUpdated() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // pos
+        list.add(new VarInsnNode(Opcodes.ALOAD, 2)); // state
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/WorldClientHook", "blockUpdated",
+                "("+TransformerClass.BlockPos.getName()+TransformerClass.IBlockState.getName()+")V", false)); // WorldClientHook.blockUpdated(pos, state);
 
         return list;
     }

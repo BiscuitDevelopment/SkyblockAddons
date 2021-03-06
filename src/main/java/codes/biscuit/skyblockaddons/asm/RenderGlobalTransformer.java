@@ -46,7 +46,6 @@ public class RenderGlobalTransformer implements ITransformer {
                     if (newLabel != null && abstractNode instanceof LabelNode) {
                         if (abstractNode == existingLabel) {
                             methodNode.instructions.insertBefore(abstractNode, newLabel);
-                            return;
                         }
                     }
                 }
@@ -65,7 +64,24 @@ public class RenderGlobalTransformer implements ITransformer {
                     }
                 }
             }
+
+            else if (TransformerMethod.sendBlockBreakProgress.matches(methodNode)) {
+
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnAddBlockBreakParticle());
+
+            }
         }
+    }
+
+    private InsnList insertOnAddBlockBreakParticle() {
+        InsnList list = new InsnList();
+
+        list.add(new VarInsnNode(Opcodes.ILOAD, 1));
+        list.add(new VarInsnNode(Opcodes.ALOAD, 2));
+        list.add(new VarInsnNode(Opcodes.ILOAD, 3));
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC,
+                "codes/biscuit/skyblockaddons/asm/hooks/RenderGlobalHook", "onAddBlockBreakParticle", "(I"+TransformerClass.BlockPos.getName()+"I)V", false));
+        return list;
     }
 
     private InsnList shouldRenderEntityOutlinesExtraCondition(LabelNode labelNode) {

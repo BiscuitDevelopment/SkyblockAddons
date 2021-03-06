@@ -218,6 +218,7 @@ public class EnumUtils {
         SHOW_SKILL_XP_GAINED("settings.showSkillXPGained", 145),
         SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
         HEALING_CIRCLE_OPACITY("settings.healingCircleOpacity", 156),
+        COOLDOWN_PREDICTION("settings.cooldownPrediction", 164),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -288,7 +289,7 @@ public class EnumUtils {
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
         PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING,
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS, Feature.ONLY_MINE_ORES_DWARVEN_MINES, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
-                Feature.FISHING_PARTICLE_OVERLAY);
+                Feature.FISHING_PARTICLE_OVERLAY, Feature.ENCHANTMENT_LORE_PARSING, Feature.COOLDOWN_PREDICTION);
 
         private Set<Feature> features;
         private String author;

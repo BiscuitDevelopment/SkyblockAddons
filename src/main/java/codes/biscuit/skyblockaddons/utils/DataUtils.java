@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.features.EnchantManager;
+import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
@@ -100,7 +101,14 @@ public class DataUtils {
             SkyblockAddons.getLogger().error("An error occurred while reading the local data file!", ex);
         }
 
-
+        // TODO: pull from online as well
+        // Cooldown Data
+        inputStream = DataUtils.class.getResourceAsStream("/cooldowns.json");
+        try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
+            CooldownManager.setItemCooldowns(GSON.fromJson(jsonReader, new TypeToken<HashMap<String, Integer>>() {}.getType()));
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("An error occurred while reading the local data file!", ex);
+        }
     }
 
     /*

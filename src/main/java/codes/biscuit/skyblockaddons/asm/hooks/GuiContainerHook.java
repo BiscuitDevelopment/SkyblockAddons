@@ -111,10 +111,12 @@ public class GuiContainerHook {
         if (main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && (keyCode != 1 && keyCode != mc.gameSettings.keyBindInventory.getKeyCode())) {
                 int slot = main.getUtils().getLastHoveredSlot();
+                boolean isHotkeying = false;
                 if (mc.thePlayer.inventory.getItemStack() == null && theSlot != null) {
                     for (int i = 0; i < 9; ++i) {
                         if (keyCode == mc.gameSettings.keyBindsHotbar[i].getKeyCode()) {
                             slot = i + 36; // They are hotkeying, the actual slot is the targeted one, +36 because
+                            isHotkeying = true;
                         }
                     }
                 }
@@ -124,9 +126,10 @@ public class GuiContainerHook {
                             main.getUtils().playLoudSound("random.orb", 1);
                             main.getConfigValues().getLockedSlots().remove(slot);
                             main.getConfigValues().saveConfig();
-                        } else {
-                            main.getUtils().playLoudSound("note.bass", 0.5);
+                        } else if (isHotkeying || mc.gameSettings.keyBindDrop.getKeyCode() == keyCode) {
+                            // Only buttons that would cause an item to move/drop out of the slot will be canceled
                             returnValue.cancel(); // slot is locked
+                            main.getUtils().playLoudSound("note.bass", 0.5);
                             return;
                         }
                     } else {

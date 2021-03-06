@@ -4,16 +4,20 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
-import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockHardenedClay;
+import net.minecraft.block.BlockPrismarine;
+import net.minecraft.block.BlockStone;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -21,8 +25,10 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraftforge.common.MinecraftForge;
 
 import java.util.Set;
 
@@ -40,8 +46,16 @@ public class PlayerControllerMPHook {
 
     private static long lastCraftingSoundPlayed = 0;
 
-    private static final Set<Block> ORES = Sets.newHashSet(Blocks.coal_ore, Blocks.iron_ore, Blocks.gold_ore,
-            Blocks.redstone_ore, Blocks.emerald_ore, Blocks.diamond_ore, Blocks.lapis_ore, Blocks.lit_redstone_ore);
+    private static final Set<Integer> ORES = Sets.newHashSet(Block.getIdFromBlock(Blocks.coal_ore), Block.getIdFromBlock(Blocks.iron_ore),
+            Block.getIdFromBlock(Blocks.gold_ore), Block.getIdFromBlock(Blocks.redstone_ore), Block.getIdFromBlock(Blocks.emerald_ore),
+            Block.getIdFromBlock(Blocks.lapis_ore), Block.getIdFromBlock(Blocks.diamond_ore), Block.getIdFromBlock(Blocks.lit_redstone_ore),
+            Utils.getBlockMetaId(Blocks.stone, BlockStone.EnumType.DIORITE_SMOOTH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.stained_hardened_clay, EnumDyeColor.CYAN.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.ROUGH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.DARK.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.BRICKS.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.LIGHT_BLUE.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.GRAY.getMetadata()));
 
     /**
      * Checks if an item is being dropped and if an item is being dropped, whether it is allowed to be dropped.
@@ -73,21 +87,19 @@ public class PlayerControllerMPHook {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (main.getUtils().isOnSkyblock()) {
-            Block block = mc.theWorld.getBlockState(blockPos).getBlock();
-
-            if (ORES.contains(block)) {
-                main.getPersistentValuesManager().getPersistentValues().setOresMined(main.getPersistentValuesManager().getPersistentValues().getOresMined() + 1);
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
-                if (heldItem != null) {
-                    if (heldItem.getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) || heldItem.getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME)) {
-                        CooldownManager.put(heldItem);
-                    }
-                }
+            Location location = main.getUtils().getLocation();
+            if (location == Location.ISLAND || location == Location.GUEST_ISLAND) {
+                IBlockState block = mc.theWorld.getBlockState(blockPos);
+                // Use vanilla break mechanic to get breaking time
+                double perTickIncrease = block.getBlock().getPlayerRelativeBlockHardness(mc.thePlayer, mc.thePlayer.worldObj, blockPos);
+                int MILLISECONDS_PER_TICK = 1000 / 20;
+                MinecraftForge.EVENT_BUS.post(new SkyblockBlockBreakEvent(blockPos, (long) (MILLISECONDS_PER_TICK / perTickIncrease)));
             }
         }
+    }
+
+    public static void onResetBlockRemoving() {
+        MinecraftHook.prevClickBlock = new BlockPos(-1, -1, -1);
     }
 
     /**

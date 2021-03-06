@@ -35,8 +35,8 @@ public class GuiScreenHook {
     public static void handleComponentClick(IChatComponent component) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main.getUtils().isOnSkyblock() && component != null && "§2§l[OPEN MENU]".equals(component.getUnformattedText()) &&
-                !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME)) {// The prompt when Maddox picks up the phone.
-            CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_DISPLAYNAME, MADDOX_BATPHONE_COOLDOWN);
+                !CooldownManager.isOnCooldown(InventoryUtils.MADDOX_BATPHONE_ID)) {// The prompt when Maddox picks up the phone.
+            CooldownManager.put(InventoryUtils.MADDOX_BATPHONE_ID);
         }
     }
 }

@@ -102,6 +102,7 @@ public enum TransformerMethod {
     clickBlock("clickBlock", "func_180511_b", "b", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/util/EnumFacing;)Z", "("+TransformerClass.BlockPos.getName()+TransformerClass.EnumFacing.getName()+")Z"),
     onPlayerDestroyBlock("onPlayerDestroyBlock", "func_178888_a", "a", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/util/EnumFacing;)Z", "("+TransformerClass.BlockPos.getName()+TransformerClass.EnumFacing.getName()+")Z"),
     windowClick("windowClick", "func_78753_a", "a", "(IIIILnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "(IIII"+TransformerClass.EntityPlayer.getName()+")"+TransformerClass.ItemStack.getName()),
+    resetBlockRemoving("resetBlockRemoving", "func_78767_c", "c", "()V", "()V"),
 
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
@@ -144,6 +145,7 @@ public enum TransformerMethod {
     isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
     renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
     renderEntityOutlineFramebuffer("renderEntityOutlineFramebuffer", "func_174975_c", "c", "()V"),
+    sendBlockBreakProgress("sendBlockBreakProgress", "func_180441_b", "b", "(I"+TransformerClass.BlockPos.getName()+"I)V"),
 
     // TileEntityItemStackRenderer
     renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
@@ -154,6 +156,7 @@ public enum TransformerMethod {
 
     // WorldClient
     onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
+    invalidateRegionAndSetBlock("invalidateRegionAndSetBlock", "func_180503_b", "b", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/state/IBlockState;)Z", "("+TransformerClass.BlockPos.getName()+TransformerClass.IBlockState.getName()+")Z"),
 
     // ItemArmor
     onItemRightClick("onItemRightClick", "func_77659_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "("+TransformerClass.ItemStack.getName()+TransformerClass.World.getName()+TransformerClass.EntityPlayer.getName()+")"+TransformerClass.ItemStack.getName()),

@@ -16,6 +16,7 @@ import com.ibm.icu.text.ArabicShapingException;
 import com.ibm.icu.text.Bidi;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
@@ -891,5 +892,9 @@ public class Utils {
         }
 
         return null;
+    }
+
+    public static int getBlockMetaId(Block block, int meta) {
+        return Block.getStateId(block.getStateFromMeta(meta));
     }
 }

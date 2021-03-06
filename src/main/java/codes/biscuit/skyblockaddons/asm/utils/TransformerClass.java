@@ -68,6 +68,7 @@ public enum TransformerClass {
     IBlockSource("net/minecraft/dispenser/IBlockSource", "ck"),
     WorldRenderer("net/minecraft/client/renderer/WorldRenderer", "bfd"),
     WorldVertexBufferUploader("net/minecraft/client/renderer/WorldVertexBufferUploader", "bfe"),
+    IBlockState("net/minecraft/block/state/IBlockState", "alz")
 
     ;
 

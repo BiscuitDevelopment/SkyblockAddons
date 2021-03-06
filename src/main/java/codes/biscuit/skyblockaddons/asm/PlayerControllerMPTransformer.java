@@ -47,6 +47,10 @@ public class PlayerControllerMPTransformer implements ITransformer {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnWindowClick());
 
             }
+            else if (TransformerMethod.resetBlockRemoving.matches(methodNode)) {
+                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(),
+                        new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/PlayerControllerMPHook", "onResetBlockRemoving", "()V", false));
+           }
         }
     }
 

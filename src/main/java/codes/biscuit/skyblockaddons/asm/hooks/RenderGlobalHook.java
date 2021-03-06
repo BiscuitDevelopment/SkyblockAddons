@@ -19,6 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.util.BlockPos;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
@@ -28,6 +29,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.FloatBuffer;
 import java.util.List;
+import java.util.Map;
 
 public class RenderGlobalHook {
 
@@ -255,5 +257,16 @@ public class RenderGlobalHook {
         }
 
         return false;
+    }
+
+    public static void onAddBlockBreakParticle(int breakerId, BlockPos pos, int progress) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+        // On public islands, hypixel sends a progress = 10 update once it registers the start of block breaking
+        if (breakerId == 0 && main.getUtils().getLocation() != Location.ISLAND &&
+                pos.equals(MinecraftHook.prevClickBlock) && progress == 10) {
+            //System.out.println(progress);
+            MinecraftHook.startMineTime = System.currentTimeMillis();
+        }
+
     }
 }

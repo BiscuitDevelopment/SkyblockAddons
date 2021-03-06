@@ -188,7 +188,8 @@
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Text",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchantment Lore"
+    "enchantmentLoreParsing": "Parse Enchantment Lore",
+    "cooldownPrediction": "Predict and Shorten Cooldown"
   },
   "messages": {
     "enchants": "Enchants",

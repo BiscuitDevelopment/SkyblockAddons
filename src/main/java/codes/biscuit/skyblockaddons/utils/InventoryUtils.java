@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
@@ -41,10 +42,12 @@ public class InventoryUtils {
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
     private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "Jungle Axe";
-    public static final String TREECAPITATOR_DISPLAYNAME = "Treecapitator";
-    public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
+    public static final String MADDOX_BATPHONE_ID = "AATROX_BATPHONE";
+    public static final String JUNGLE_AXE_ID = "JUNGLE_AXE";
+    public static final String TREECAPITATOR_ID = "TREECAPITATOR_AXE";
+    public static final String CHICKEN_HEAD_ID = "CHICKEN_HEAD";
+    public static final HashSet<String> BAT_PERSON_SET_IDS = new HashSet<>(Arrays.asList("BAT_PERSON_BOOTS", "BAT_PERSON_LEGGINGS", "BAT_PERSON_CHESTPLATE", "BAT_PERSON_HELMET"));
+    public static final String GRAPPLING_HOOK_ID = "GRAPPLING_HOOK";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");
 
@@ -342,6 +345,25 @@ public class InventoryUtils {
                 }
             }
         }
+    }
+
+    /**
+     * Returns true iff the player is wearing a full armor set with IDs contained in the given set
+     * @param player the player
+     * @param armorSetIds the given set of armor IDs
+     * @return {@code true} iff all player armor contained in given set, {@code false} otherwise.
+     */
+    public static boolean isWearingFullSet(EntityPlayer player, Set<String> armorSetIds) {
+        boolean flag = true;
+        ItemStack[] armorInventory = player.inventory.armorInventory;
+        for (int i = 0; i < 4; i++) {
+            String itemID = ItemUtils.getSkyblockItemID(armorInventory[i]);
+            if (itemID == null || !armorSetIds.contains(itemID)) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
     }
 
     /**

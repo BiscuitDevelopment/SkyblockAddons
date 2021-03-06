@@ -26,10 +26,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.EnumSet;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class MinecraftHook {
 
@@ -67,6 +64,10 @@ public class MinecraftHook {
 
     private static long lastStemMessage = -1;
     private static long lastUnmineableMessage = -1;
+    public static BlockPos prevClickBlock = new BlockPos(-1, -1, -1);
+    public static long startMineTime = Long.MAX_VALUE;
+
+    public static LinkedHashMap<BlockPos, Long> recentlyClickedBlocks = new LinkedHashMap<>();
 
     public static void onRefreshResources(IReloadableResourceManager resourceManager) {
         boolean usingOldPackTexture = false;
@@ -194,17 +195,27 @@ public class MinecraftHook {
                 }
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.JUNGLE_AXE_COOLDOWN)) {
-                if ((block.equals(Blocks.log) || block.equals(Blocks.log2))
-                        && p.getHeldItem() != null) {
+                if ((block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                    String itemId = ItemUtils.getSkyblockItemID(p.getHeldItem());
+                    if (itemId != null) {
+                        final boolean holdingJungleAxeOnCooldown = itemId.equals(InventoryUtils.JUNGLE_AXE_ID) && CooldownManager.isOnCooldown(itemId);
+                        final boolean holdingTreecapitatorOnCooldown = itemId.equals(InventoryUtils.TREECAPITATOR_ID) && CooldownManager.isOnCooldown(itemId);
 
-                    final boolean holdingJungleAxeOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.JUNGLE_AXE_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
-                    final boolean holdingTreecapitatorOnCooldown = p.getHeldItem().getDisplayName().contains(InventoryUtils.TREECAPITATOR_DISPLAYNAME) && CooldownManager.isOnCooldown(p.getHeldItem().getDisplayName());
-
-                    if (holdingJungleAxeOnCooldown || holdingTreecapitatorOnCooldown) {
-                        returnValue.cancel();
+                        if (holdingJungleAxeOnCooldown || holdingTreecapitatorOnCooldown) {
+                            returnValue.cancel();
+                        }
                     }
                 }
             }
+        }
+
+
+        if (!returnValue.isCancelled() && !prevClickBlock.equals(blockPos)) {
+            startMineTime = System.currentTimeMillis();
+        }
+        prevClickBlock = blockPos;
+        if (!returnValue.isCancelled()) {
+            recentlyClickedBlocks.put(blockPos, System.currentTimeMillis());
         }
     }
 

@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
+import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantManager;
@@ -33,6 +34,10 @@ import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import lombok.Setter;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockPrismarine;
+import net.minecraft.block.BlockStone;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -48,10 +53,12 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
@@ -110,6 +117,18 @@ public class PlayerListener {
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
     private static final NavigableSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
+
+    private static final Set<Integer> ORES = Sets.newHashSet(Block.getIdFromBlock(Blocks.coal_ore), Block.getIdFromBlock(Blocks.iron_ore),
+            Block.getIdFromBlock(Blocks.gold_ore), Block.getIdFromBlock(Blocks.redstone_ore), Block.getIdFromBlock(Blocks.emerald_ore),
+            Block.getIdFromBlock(Blocks.lapis_ore), Block.getIdFromBlock(Blocks.diamond_ore), Block.getIdFromBlock(Blocks.lit_redstone_ore),
+            Block.getIdFromBlock(Blocks.obsidian), Block.getIdFromBlock(Blocks.diamond_block),
+            Utils.getBlockMetaId(Blocks.stone, BlockStone.EnumType.DIORITE_SMOOTH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.stained_hardened_clay, EnumDyeColor.CYAN.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.ROUGH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.DARK.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.BRICKS.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.LIGHT_BLUE.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.GRAY.getMetadata()));
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
@@ -312,7 +331,7 @@ public class PlayerListener {
                     DragonTracker.getInstance().dragonKilled();
 
                 } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
-                    CooldownManager.put(InventoryUtils.CHICKEN_HEAD_DISPLAYNAME, 20000);
+                    CooldownManager.put(InventoryUtils.CHICKEN_HEAD_ID);
 
                 } else if (formattedText.startsWith("§r§eYou added a minute of rain!")) {
                     if (this.rainmakerTimeEnd == -1 || this.rainmakerTimeEnd < System.currentTimeMillis()) {
@@ -445,8 +464,14 @@ public class PlayerListener {
                     lastBobberEnteredWater = Long.MAX_VALUE;
                     oldBobberPosY = 0;
                 }
-                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && mc.thePlayer.fishEntity != null) {
-                    CooldownManager.put(mc.thePlayer.getHeldItem());
+                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
+                    String itemId = ItemUtils.getSkyblockItemID(heldItem);
+                    // Grappling hook cooldown
+                    if (itemId.equals(InventoryUtils.GRAPPLING_HOOK_ID) && mc.thePlayer.fishEntity != null) {
+                        boolean wearingFullBatPerson = InventoryUtils.isWearingFullSet(mc.thePlayer, InventoryUtils.BAT_PERSON_SET_IDS);
+                        int cooldownTime = wearingFullBatPerson ? 0 : CooldownManager.getItemCooldown(itemId);
+                        CooldownManager.put(itemId, cooldownTime);
+                    }
                 }
             } else if (heldItem.getItem().equals(Items.blaze_rod)) {
                 String itemId = ItemUtils.getSkyblockItemID(heldItem);
@@ -476,6 +501,7 @@ public class PlayerListener {
             timerTick++;
 
             if (mc != null) { // Predict health every tick if needed.
+
 
                 ScoreboardManager.tick();
 
@@ -1164,6 +1190,36 @@ public class PlayerListener {
         // Reset the previous inventory so the screen doesn't get spammed with a large pickup log
         if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG)) {
             main.getInventoryUtils().resetPreviousInventory();
+        }
+    }
+
+    @SubscribeEvent
+    public void onBlockBreak(SkyblockBlockBreakEvent e) {
+        IBlockState blockState = Minecraft.getMinecraft().theWorld.getBlockState(e.blockPos);
+        if (ORES.contains(Block.getStateId(blockState))) {
+            boolean shouldIncrement = true;
+            if (main.getUtils().getLocation() == Location.ISLAND) {
+                if (blockState.getBlock() == Blocks.diamond_ore) {
+                    shouldIncrement = false;
+                }
+                // TODO: Check if a minion is nearby to eliminate false positives
+            }
+            if (shouldIncrement) {
+                main.getPersistentValuesManager().getPersistentValues().setOresMined(main.getPersistentValuesManager().getPersistentValues().getOresMined() + 1);
+            }
+        }
+        if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
+            String itemId = ItemUtils.getSkyblockItemID(Minecraft.getMinecraft().thePlayer.getHeldItem());
+            if (itemId != null) {
+                Block block = blockState.getBlock();
+                if ((itemId.equals(InventoryUtils.JUNGLE_AXE_ID) || itemId.equals(InventoryUtils.TREECAPITATOR_ID)) &&
+                        (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
+                    long cooldownTime = CooldownManager.getItemCooldown(itemId);
+                    cooldownTime -= (main.getConfigValues().isEnabled(Feature.COOLDOWN_PREDICTION) ? e.timeToBreak - 50 : 0);
+                    // TODO: Pet detection
+                    CooldownManager.put(itemId, Math.max(cooldownTime, 400));
+                }
+            }
         }
     }
 
