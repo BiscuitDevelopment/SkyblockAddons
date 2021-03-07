@@ -239,6 +239,7 @@ public class IslandWarpGui extends GuiScreen {
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
         PRIVATE_ISLAND("Private Island", 216, 1122),
         DUNGEON_HUB("Dungeon Hub", 1200, 1100),
+        DWARVEN_MINES("Dwarven Mines", 1450, 1050)
         ;
 
         private String label;
@@ -381,6 +382,7 @@ public class IslandWarpGui extends GuiScreen {
 
         GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 106, 159),
         DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
+        DWARVEN_MINES("mines", Translations.getMessage("warpMenu.spawn"), Island.DWARVEN_MINES, false, 35, 80),
 
         DUNGEON_HUB("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;

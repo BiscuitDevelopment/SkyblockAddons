@@ -116,6 +116,7 @@ public class GuiContainerHook {
                     for (int i = 0; i < 9; ++i) {
                         if (keyCode == mc.gameSettings.keyBindsHotbar[i].getKeyCode()) {
                             slot = i + 36; // They are hotkeying, the actual slot is the targeted one, +36 because
+                            isHotkeying = true;
                         }
                     }
                 }
