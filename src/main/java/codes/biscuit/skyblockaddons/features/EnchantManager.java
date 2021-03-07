@@ -18,6 +18,7 @@ import java.util.regex.Pattern;
 public class EnchantManager {
 
     private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("^((?:[\\w ]+) (?:[\\dIVXLCDM]+)(, |$))+");
+    private static final Pattern ENCHANTMENT_FORMAT_START = Pattern.compile("^(§[a-f0-9k-or])*§9(§[k-o])?.*");
     private static final String COMMA = "§r, ";
     private static final int COMMA_LENGTH = COMMA.length();
     private static final int COMMA_SIZE = Minecraft.getMinecraft().fontRendererObj.getStringWidth(COMMA);
@@ -28,6 +29,12 @@ public class EnchantManager {
      * Place ultimate enchantments at the beginning, and alphabetize
      */
     private static final Comparator<String> ENCHANT_COMPARATOR = (s1, s2) -> {
+        if (s1 == null) {
+            return -1;
+        }
+        if (s2 == null) {
+            return 1;
+        }
         ItemEnchants i1 = enchants.get(s1);
         ItemEnchants i2 = enchants.get(s2);
         // If both are ultimates (shouldn't happen) or both are not ultimates, compare lore names, otherwise order ultimates first
@@ -98,19 +105,21 @@ public class EnchantManager {
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
         int startEnchant = -1, endEnchant = -1, maxTooltipWidth = 0;
         for (int i = 0; i < loreList.size(); i++) {
-            String s = TextUtils.stripColor(loreList.get(i));
+            String u = loreList.get(i);
+            String s = TextUtils.stripColor(u);
+
             int width = fontRenderer.getStringWidth(loreList.get(i));
             // Get max tooltip size, disregarding the enchants section
             if (startEnchant == -1 || endEnchant != -1) {
                 maxTooltipWidth = Math.max(width, maxTooltipWidth);
             }
             if (startEnchant == -1) {
-                if (ENCHANTMENT_PATTERN.matcher(s).matches()) {
+                if (ENCHANTMENT_FORMAT_START.matcher(u).matches() && ENCHANTMENT_PATTERN.matcher(s).matches()) {
                     startEnchant = i;
                 }
             }
             // Assume enchants end with an empty line "break"
-            else if (width == 0 && endEnchant == -1) {
+            else if (s.trim().length() == 0 && endEnchant == -1) {
                 endEnchant = i - 1;
             }
         }
@@ -126,7 +135,6 @@ public class EnchantManager {
         // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
         maxTooltipWidth = correctTooltipWidth(maxTooltipWidth);
 
-        orderedEnchants.remove(null);
         numEnchants = orderedEnchants.size();
         List<String> enchantList = new ArrayList<>(numEnchants);
         List<Integer> enchantSizes = new ArrayList<>(numEnchants);
