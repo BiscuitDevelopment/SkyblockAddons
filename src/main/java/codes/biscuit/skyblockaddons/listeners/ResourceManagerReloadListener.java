@@ -8,6 +8,7 @@ import net.minecraft.util.ResourceLocation;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 public class ResourceManagerReloadListener implements IResourceManagerReloadListener {
     private static final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
@@ -21,9 +22,8 @@ public class ResourceManagerReloadListener implements IResourceManagerReloadList
     public void onResourceManagerReload(IResourceManager resourceManager) {
         boolean usingOldPackTexture = false;
         boolean usingDefaultTexture = true;
-        try {
-            IResource currentResource = resourceManager.getResource(currentLocation);
-            String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
+        try(InputStream inputStream = resourceManager.getResource(currentLocation).getInputStream()) {
+            String currentHash = DigestUtils.md5Hex(inputStream);
 
             // Hash for "assets/skyblockaddons/imperialoldbars.png"
             String oldHash = "ee7d133914d95f4cd840b62ebb862fb2";
