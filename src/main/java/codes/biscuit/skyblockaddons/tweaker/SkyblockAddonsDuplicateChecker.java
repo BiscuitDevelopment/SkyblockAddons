@@ -30,6 +30,7 @@ public class SkyblockAddonsDuplicateChecker implements IFMLCallHook {
 
             @SuppressWarnings("unchecked")
             List<Object> coremodList = (List<Object>) loadPluginsField.get(null);
+            loadPluginsField.setAccessible(false);
 
             Field nameField = coremodList.get(0).getClass().getField("name");
             boolean coreFound = false;
@@ -51,7 +52,7 @@ public class SkyblockAddonsDuplicateChecker implements IFMLCallHook {
 
             nameField.setAccessible(false);
 
-            logDebug("No duplicates installations were found");
+            logDebug("No duplicate installations were found");
         } catch (ReflectiveOperationException ex) {
             log(Level.ERROR, ex, "An error occurred while checking for duplicate SkyblockAddons installations!");
             // It's okay, this is just for duplicate detection anyways...
