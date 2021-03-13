@@ -104,7 +104,7 @@ public class FontRendererHook {
     @SuppressWarnings("unused")
     public static void restoreChromaState(boolean shadow) {
         // Online data not fetched before a color code will cause null pointer exception
-        if (shadow || SkyblockAddons.getInstance().getOnlineData() == null) {
+        if (shadow || SkyblockAddons.getInstance() == null || SkyblockAddons.getInstance().getOnlineData() == null) {
             return;
         }
         if (SkyblockColor.shouldUseChromaShaders()) {

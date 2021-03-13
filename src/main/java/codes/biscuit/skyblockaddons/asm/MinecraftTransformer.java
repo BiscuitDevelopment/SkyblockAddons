@@ -22,21 +22,6 @@ public class MinecraftTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            if (TransformerMethod.refreshResources.matches(methodNode)) {
-
-                // Objective:
-                // Find: Method return.
-                // Insert: MinecraftHook.refreshResources(this.mcResourceManager);
-
-                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
-                while (iterator.hasNext()) {
-                    AbstractInsnNode abstractNode = iterator.next();
-                    if (abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
-                        methodNode.instructions.insertBefore(abstractNode, insertOnRefreshResources());
-                        break;
-                    }
-                }
-            }
             if (TransformerMethod.rightClickMouse.matches(methodNode)) {
 
                 // Objective:
@@ -83,19 +68,6 @@ public class MinecraftTransformer implements ITransformer {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnSendClickBlockToController());
             }
         }
-    }
-
-    private InsnList insertOnRefreshResources() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0)); // this.
-
-        list.add(TransformerField.mcResourceManager.getField(TransformerClass.Minecraft));
-
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/MinecraftHook", "onRefreshResources",
-                "("+TransformerClass.IReloadableResourceManager.getName()+")V", false)); // MinecraftHook.refreshResources(this.mcResourceManager);
-
-        return list;
     }
 
     private InsnList insertRightClickMouse() {

@@ -10,10 +10,7 @@ import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
-import codes.biscuit.skyblockaddons.listeners.GuiScreenListener;
-import codes.biscuit.skyblockaddons.listeners.NetworkListener;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.listeners.RenderListener;
+import codes.biscuit.skyblockaddons.listeners.*;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
@@ -30,6 +27,7 @@ import com.google.gson.InstanceCreator;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.SimpleReloadableResourceManager;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -77,6 +75,7 @@ public class SkyblockAddons {
     private PlayerListener playerListener;
     private GuiScreenListener guiScreenListener;
     private RenderListener renderListener;
+    private ResourceManagerReloadListener resourceManagerReloadListener;
     private InventoryUtils inventoryUtils;
     private Utils utils;
     private Updater updater;
@@ -100,6 +99,7 @@ public class SkyblockAddons {
         playerListener = new PlayerListener();
         guiScreenListener = new GuiScreenListener();
         renderListener = new RenderListener();
+        resourceManagerReloadListener = new ResourceManagerReloadListener();
         inventoryUtils = new InventoryUtils();
         utils = new Utils();
         updater = new Updater();
@@ -124,6 +124,7 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(newScheduler);
+        ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 

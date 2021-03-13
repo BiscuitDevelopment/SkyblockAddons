@@ -14,23 +14,19 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.resources.IReloadableResourceManager;
-import net.minecraft.client.resources.IResource;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
-import org.apache.commons.codec.digest.DigestUtils;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 public class MinecraftHook {
-
-    private static final ResourceLocation currentLocation = new ResourceLocation("skyblockaddons", "bars.png");
 
     @Getter private static long lastLockedSlotItemChange = -1;
 
@@ -68,35 +64,6 @@ public class MinecraftHook {
     public static long startMineTime = Long.MAX_VALUE;
 
     public static LinkedHashMap<BlockPos, Long> recentlyClickedBlocks = new LinkedHashMap<>();
-
-    public static void onRefreshResources(IReloadableResourceManager resourceManager) {
-        boolean usingOldPackTexture = false;
-        boolean usingDefaultTexture = true;
-        try {
-            IResource currentResource = resourceManager.getResource(currentLocation);
-            String currentHash = DigestUtils.md5Hex(currentResource.getInputStream());
-
-            InputStream oldStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/imperialoldbars.png");
-            if (oldStream != null) {
-                String oldHash = DigestUtils.md5Hex(oldStream);
-                usingOldPackTexture = currentHash.equals(oldHash);
-            }
-
-            InputStream barsStream = SkyblockAddons.class.getClassLoader().getResourceAsStream("assets/skyblockaddons/bars.png");
-            if (barsStream != null) {
-                String barsHash = DigestUtils.md5Hex(barsStream);
-                usingDefaultTexture = currentHash.equals(barsHash);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized.
-            main.getUtils().setUsingOldSkyBlockTexture(usingOldPackTexture);
-            main.getUtils().setUsingDefaultBarTextures(usingDefaultTexture);
-        }
-    }
 
     public static void rightClickMouse(ReturnValue<?> returnValue) {
         SkyblockAddons main = SkyblockAddons.getInstance();
