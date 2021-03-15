@@ -1,47 +1,42 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
-import codes.biscuit.skyblockaddons.shader.Shader;
-import codes.biscuit.skyblockaddons.shader.ShaderManager;
-import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.GlStateManager;
-
-import java.awt.*;
-import java.util.HashMap;
 
 public class FontRendererHook {
 
-
-    private static  Class<? extends Shader> savedShader = null;
-    private static boolean wasManuallyChromaShading = false;
-    private static final HashMap<String, Boolean> chromaStrings = new HashMap<>();
+    private static final SkyblockColor CHROMA_COLOR = new SkyblockColor(0xFFFFFFFF).setColorAnimation(SkyblockColor.ColorAnimation.CHROMA);
+    private static final DrawStateFontRenderer DRAW_CHROMA = new DrawStateFontRenderer(CHROMA_COLOR);
+    private static final SkyblockColor CHROMA_COLOR_SHADOW = new SkyblockColor(0xFF555555).setColorAnimation(SkyblockColor.ColorAnimation.CHROMA);
+    private static final DrawStateFontRenderer DRAW_CHROMA_SHADOW = new DrawStateFontRenderer(CHROMA_COLOR_SHADOW);
+    private static DrawStateFontRenderer currentDrawState = null;
 
     @SuppressWarnings("unused")
     public static void changeTextColor() {
-        if (ManualChromaManager.isColoringTextChroma() && !SkyblockColor.shouldUseChromaShaders()) {
+        if (currentDrawState.shouldManuallyRecolorFont()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-
-            float[] HSB = Color.RGBtoHSB((int)(fontRenderer.red * 255), (int)(fontRenderer.green * 255), (int)(fontRenderer.blue * 255), null);
-            int newColor = ManualChromaManager.getChromaColor(fontRenderer.posX, fontRenderer.posY, HSB, (int)(fontRenderer.alpha * 255));
-
-            //fontRenderer.red = (float)(newColor >> 16 & 255) / 255.0F;
-            //fontRenderer.green = (float)(newColor >> 8 & 255) / 255.0F;
-            //fontRenderer.blue = (float)(newColor & 255) / 255.0F;
-            float red = (float)(newColor >> 16 & 255) / 255.0F;
-            float green = (float)(newColor >> 8 & 255) / 255.0F;
-            float blue = (float)(newColor & 255) / 255.0F;
-            // Swap blue & green because they are swapped in FontRenderer's color model.
-            //GlStateManager.color(fontRenderer.red, fontRenderer.blue, fontRenderer.green, fontRenderer.alpha);
-            GlStateManager.color(red, blue, green, fontRenderer.alpha);
+            currentDrawState.bindAnimatedColor(fontRenderer.posX, fontRenderer.posY);
         }
     }
 
+
+    public static void setupFeatureFont(Feature feature) {
+        if (SkyblockAddons.getInstance().getConfigValues().getChromaMode() == EnumUtils.ChromaMode.FADE &&
+                SkyblockAddons.getInstance().getConfigValues().getChromaFeatures().contains(feature)) {
+            DRAW_CHROMA.setupMulticolorFeature(SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature));
+            DRAW_CHROMA_SHADOW.setupMulticolorFeature(SkyblockAddons.getInstance().getConfigValues().getGuiScale(feature));
+        }
+    }
+
+    public static void endFeatureFont() {
+        DRAW_CHROMA.endMulticolorFeature();
+        DRAW_CHROMA_SHADOW.endMulticolorFeature();
+    }
 
     public static float patcherColorChange(int style, float color) {
         return style == 22 ? 1F : color;
@@ -50,10 +45,10 @@ public class FontRendererHook {
     // WILL NOT WORK WITH SHADOW
     public static void patcherToggleChroma(int style) {
         if (style == 22) {
-            toggleChromaOn(false);
+            toggleChromaOn();
         }
         else {
-            restoreChromaState(false);
+            restoreChromaState();
         }
     }
 
@@ -93,30 +88,20 @@ public class FontRendererHook {
      * Called to save the current shader state
      */
     @SuppressWarnings("unused")
-    public static void saveChromaState() {
-        savedShader = ShaderManager.getInstance().getActiveShaderType();
-        wasManuallyChromaShading = ManualChromaManager.isColoringTextChroma();
+    public static void beginRenderString(boolean shadow) {
+        currentDrawState = shadow ? DRAW_CHROMA_SHADOW : DRAW_CHROMA;
+        if (SkyblockAddons.isFullyInitialized()) {
+            currentDrawState.loadFeatureColorEnv();
+        }
     }
 
     /**
      * Called to restore the saved chroma state
      */
     @SuppressWarnings("unused")
-    public static void restoreChromaState(boolean shadow) {
-        // Online data not fetched before a color code will cause null pointer exception
-        if (shadow || SkyblockAddons.getInstance() == null || SkyblockAddons.getInstance().getOnlineData() == null) {
-            return;
-        }
-        if (SkyblockColor.shouldUseChromaShaders()) {
-            if (savedShader == null) {
-                ShaderManager.getInstance().disableShader();
-            }
-            else {
-                ShaderManager.getInstance().enableShader(savedShader);
-            }
-        }
-        else {
-            ManualChromaManager.setColoringTextChroma(wasManuallyChromaShading);
+    public static void restoreChromaState() {
+        if (SkyblockAddons.isFullyInitialized()) {
+            currentDrawState.restoreColorEnv();
         }
     }
 
@@ -124,24 +109,16 @@ public class FontRendererHook {
      * Called to turn chroma on
      */
     @SuppressWarnings("unused")
-    public static void toggleChromaOn(boolean shadow) {
-        // Online data not fetched before a color code will cause null pointer exception
-        if (shadow || SkyblockAddons.getInstance().getOnlineData() == null) {
-            return;
+    public static void toggleChromaOn() {
+        if (SkyblockAddons.isFullyInitialized()) {
+            currentDrawState.newColorEnv().bindActualColor();
         }
-        if (SkyblockColor.shouldUseChromaShaders()) {
+    }
 
-            ColorUtils.bindWhite();
-            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
-        }
-        else {
-            //System.out.println("Hi on");
-            FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-            //fontRenderer.red = 1F;
-            //fontRenderer.green = 1F;
-            //fontRenderer.blue = 1F;
-            //fontRenderer.alpha = 1F;
-            ManualChromaManager.setColoringTextChroma(true);
+    @SuppressWarnings("unused")
+    public static void endRenderString() {
+        if (SkyblockAddons.isFullyInitialized()) {
+            currentDrawState.endColorEnv();
         }
     }
 }

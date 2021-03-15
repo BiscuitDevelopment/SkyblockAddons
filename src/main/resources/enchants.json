@@ -1,566 +1,596 @@
 {
-  "aiming": {
-    "loreName": "Aiming",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "angler": {
-    "loreName": "Angler",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "aqua_affinity": {
-    "loreName": "Aqua Affinity",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "bane_of_arthropods": {
-    "loreName": "Bane of Arthropods",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "big_brain": {
-    "loreName": "Big Brain",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "blast_protection": {
-    "loreName": "Blast Protection",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "blessing": {
-    "loreName": "Blessing",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "caster": {
-    "loreName": "Caster",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "chance": {
-    "loreName": "Chance",
-    "maxCraft": 3,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "cleave": {
-    "loreName": "Cleave",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "compact": {
-    "loreName": "Compact",
-    "maxCraft": 0,
-    "maxLevel": 10,
-    "isUltimate": false
-  },
-  "counter_strike": {
-    "loreName": "Counter Strike",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "critical": {
-    "loreName": "Critical",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "cubism": {
-    "loreName": "Cubism",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "depth_strider": {
-    "loreName": "Depth Strider",
-    "maxCraft": 3,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "dragon_hunter": {
-    "loreName": "Dragon Hunter",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "efficiency": {
-    "loreName": "Efficiency",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "ender_slayer": {
-    "loreName": "Ender Slayer",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "execute": {
-    "loreName": "Execute",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "experience": {
-    "loreName": "Experience",
-    "maxCraft": 3,
-    "maxLevel": 4,
-    "isUltimate": false
-  },
-  "expertise": {
-    "loreName": "Expertise",
-    "maxCraft": 0,
-    "maxLevel": 10,
-    "isUltimate": false
-  },
-  "feather_falling": {
-    "loreName": "Feather Falling",
-    "maxCraft": 5,
-    "maxLevel": 10,
-    "isUltimate": false
-  },
-  "fire_aspect": {
-    "loreName": "Fire Aspect",
-    "maxCraft": 2,
-    "maxLevel": 2,
-    "isUltimate": false
-  },
-  "fire_protection": {
-    "loreName": "Fire Protection",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "first_strike": {
-    "loreName": "First Strike",
-    "maxCraft": 4,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "flame": {
-    "loreName": "Flame",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "fortune": {
-    "loreName": "Fortune",
-    "maxCraft": 3,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "frail": {
-    "loreName": "Frail",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "frost_walker": {
-    "loreName": "Frost Walker",
-    "maxCraft": 2,
-    "maxLevel": 2,
-    "isUltimate": false
-  },
-  "giant_killer": {
-    "loreName": "Giant Killer",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "growth": {
-    "loreName": "Growth",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "harvesting": {
-    "loreName": "Harvesting",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "impaling": {
-    "loreName": "Impaling",
-    "maxCraft": 3,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "infinite_quiver": {
-    "loreName": "Infinite Quiver",
-    "maxCraft": 5,
-    "maxLevel": 10,
-    "isUltimate": false
-  },
-  "knockback": {
-    "loreName": "Knockback",
-    "maxCraft": 2,
-    "maxLevel": 2,
-    "isUltimate": false
-  },
-  "lethality": {
-    "loreName": "Lethality",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "life_steal": {
-    "loreName": "Life Steal",
-    "maxCraft": 3,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "looting": {
-    "loreName": "Looting",
-    "maxCraft": 3,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "luck": {
-    "loreName": "Luck",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "luck_of_the_sea": {
-    "loreName": "Luck Of The Sea",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "lure": {
-    "loreName": "Lure",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "magnet": {
-    "loreName": "Magnet",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "overload": {
-    "loreName": "Overload",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "piercing": {
-    "loreName": "Piercing",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "power": {
-    "loreName": "Power",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "projectile_protection": {
-    "loreName": "Projectile Protection",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "prosecute": {
-    "loreName": "Prosecute",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "protection": {
-    "loreName": "Protection",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "punch": {
-    "loreName": "Punch",
-    "maxCraft": 2,
-    "maxLevel": 2,
-    "isUltimate": false
-  },
-  "rejuvenate": {
-    "loreName": "Rejuvenate",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "replenish": {
-    "loreName": "Replenish",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "respiration": {
-    "loreName": "Respiration",
-    "maxCraft": 3,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "respite": {
-    "loreName": "Respite",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "scavenger": {
-    "loreName": "Scavenger",
-    "maxCraft": 3,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "sharpness": {
-    "loreName": "Sharpness",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "silk_touch": {
-    "loreName": "Silk Touch",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "smelting_touch": {
-    "loreName": "Smelting Touch",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "smite": {
-    "loreName": "Smite",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "snipe": {
-    "loreName": "Snipe",
-    "maxCraft": 3,
-    "maxLevel": 4,
-    "isUltimate": false
-  },
-  "spiked_hook": {
-    "loreName": "Spiked Hook",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "sugar_rush": {
-    "loreName": "Sugar Rush",
-    "maxCraft": 0,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "syphon": {
-    "loreName": "Syphon",
-    "maxCraft": 3,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "telekinesis": {
-    "loreName": "Telekinesis",
-    "maxCraft": 1,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "thorns": {
-    "loreName": "Thorns",
-    "maxCraft": 3,
-    "maxLevel": 3,
-    "isUltimate": false
-  },
-  "thunderbolt": {
-    "loreName": "Thunderbolt",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "thunderlord": {
-    "loreName": "Thunderlord",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "titan_killer": {
-    "loreName": "Titan Killer",
-    "maxCraft": 5,
-    "maxLevel": 7,
-    "isUltimate": false
-  },
-  "triple_strike": {
-    "loreName": "Triple Strike",
-    "maxCraft": 5,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "true_protection": {
-    "loreName": "True Protection",
-    "maxCraft": 0,
-    "maxLevel": 1,
-    "isUltimate": false
-  },
-  "turbo_cactus": {
-    "loreName": "Turbo Cactus",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_cane": {
-    "loreName": "Turbo Cane",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_carrot": {
-    "loreName": "Turbo Carrot",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_coco": {
-    "loreName": "Turbo Coco",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_melon": {
-    "loreName": "Turbo Melon",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_mushrooms": {
-    "loreName": "Turbo Mushroom",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_potato": {
-    "loreName": "Turbo Potato",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_pumpkin": {
-    "loreName": "Turbo Pumpkin",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_warts": {
-    "loreName": "Turbo Warts",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "turbo_wheat": {
-    "loreName": "Turbo Wheat",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
-  },
-  "ultimate_bank": {
-    "loreName": "Bank",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_chimera": {
-    "loreName": "Chimera",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_combo": {
-    "loreName": "Combo",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_last_stand": {
-    "loreName": "Last Stand",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_legion": {
-    "loreName": "Legion",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_no_pain_no_gain": {
-    "loreName": "No Pain No Gain",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_one_for_all": {
-    "loreName": "One For All",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_rend": {
-    "loreName": "Rend",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_soul_eater": {
-    "loreName": "Soul Eater",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_swarm": {
-    "loreName": "Swarm",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_wisdom": {
-    "loreName": "Wisdom",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "ultimate_wise": {
-    "loreName": "Ultimate Wise",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": true
-  },
-  "vampirism": {
-    "loreName": "Vampirism",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "venomous": {
-    "loreName": "Venomous",
-    "maxCraft": 5,
-    "maxLevel": 6,
-    "isUltimate": false
-  },
-  "vicious": {
-    "loreName": "Vicious",
-    "maxCraft": 0,
-    "maxLevel": 5,
-    "isUltimate": false
+  "NORMAL": {
+    "Aiming": {
+      "loreName": "Aiming",
+      "nbtName": "aiming",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "Angler": {
+      "loreName": "Angler",
+      "nbtName": "angler",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Aqua Affinity": {
+      "loreName": "Aqua Affinity",
+      "nbtName": "aqua_affinity",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Bane of Arthropods": {
+      "loreName": "Bane of Arthropods",
+      "nbtName": "bane_of_arthropods",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Big Brain": {
+      "loreName": "Big Brain",
+      "nbtName": "big_brain",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Blast Protection": {
+      "loreName": "Blast Protection",
+      "nbtName": "blast_protection",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Blessing": {
+      "loreName": "Blessing",
+      "nbtName": "blessing",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "Caster": {
+      "loreName": "Caster",
+      "nbtName": "caster",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Chance": {
+      "loreName": "Chance",
+      "nbtName": "chance",
+      "maxCraft": 3,
+      "maxLevel": 5
+    },
+    "Cleave": {
+      "loreName": "Cleave",
+      "nbtName": "cleave",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Counter-Strike": {
+      "loreName": "Counter-Strike",
+      "nbtName": "counter_strike",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Critical": {
+      "loreName": "Critical",
+      "nbtName": "critical",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Cubism": {
+      "loreName": "Cubism",
+      "nbtName": "cubism",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Depth Strider": {
+      "loreName": "Depth Strider",
+      "nbtName": "depth_strider",
+      "maxCraft": 3,
+      "maxLevel": 3
+    },
+    "Dragon Hunter": {
+      "loreName": "Dragon Hunter",
+      "nbtName": "dragon_hunter",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Efficiency": {
+      "loreName": "Efficiency",
+      "nbtName": "efficiency",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "Ender Slayer": {
+      "loreName": "Ender Slayer",
+      "nbtName": "ender_slayer",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Execute": {
+      "loreName": "Execute",
+      "nbtName": "execute",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Experience": {
+      "loreName": "Experience",
+      "nbtName": "experience",
+      "maxCraft": 3,
+      "maxLevel": 4
+    },
+    "Feather Falling": {
+      "loreName": "Feather Falling",
+      "nbtName": "feather_falling",
+      "maxCraft": 5,
+      "maxLevel": 10
+    },
+    "Fire Aspect": {
+      "loreName": "Fire Aspect",
+      "nbtName": "fire_aspect",
+      "maxCraft": 2,
+      "maxLevel": 2
+    },
+    "Fire Protection": {
+      "loreName": "Fire Protection",
+      "nbtName": "fire_protection",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "First Strike": {
+      "loreName": "First Strike",
+      "nbtName": "first_strike",
+      "maxCraft": 4,
+      "maxLevel": 5
+    },
+    "Flame": {
+      "loreName": "Flame",
+      "nbtName": "flame",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Fortune": {
+      "loreName": "Fortune",
+      "nbtName": "fortune",
+      "maxCraft": 3,
+      "maxLevel": 3
+    },
+    "Frail": {
+      "loreName": "Frail",
+      "nbtName": "frail",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Frost Walker": {
+      "loreName": "Frost Walker",
+      "nbtName": "frost_walker",
+      "maxCraft": 2,
+      "maxLevel": 2
+    },
+    "Giant Killer": {
+      "loreName": "Giant Killer",
+      "nbtName": "giant_killer",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Growth": {
+      "loreName": "Growth",
+      "nbtName": "growth",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Harvesting": {
+      "loreName": "Harvesting",
+      "nbtName": "harvesting",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "Impaling": {
+      "loreName": "Impaling",
+      "nbtName": "impaling",
+      "maxCraft": 3,
+      "maxLevel": 3
+    },
+    "Infinite Quiver": {
+      "loreName": "Infinite Quiver",
+      "nbtName": "infinite_quiver",
+      "maxCraft": 5,
+      "maxLevel": 10
+    },
+    "Knockback": {
+      "loreName": "Knockback",
+      "nbtName": "knockback",
+      "maxCraft": 2,
+      "maxLevel": 2
+    },
+    "Lethality": {
+      "loreName": "Lethality",
+      "nbtName": "lethality",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Life Steal": {
+      "loreName": "Life Steal",
+      "nbtName": "life_steal",
+      "maxCraft": 3,
+      "maxLevel": 5
+    },
+    "Looting": {
+      "loreName": "Looting",
+      "nbtName": "looting",
+      "maxCraft": 3,
+      "maxLevel": 5
+    },
+    "Luck": {
+      "loreName": "Luck",
+      "nbtName": "luck",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Luck of the Sea": {
+      "loreName": "Luck Of The Sea",
+      "nbtName": "luck_of_the_sea",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Lure": {
+      "loreName": "Lure",
+      "nbtName": "lure",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Magnet": {
+      "loreName": "Magnet",
+      "nbtName": "magnet",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Overload": {
+      "loreName": "Overload",
+      "nbtName": "overload",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Piercing": {
+      "loreName": "Piercing",
+      "nbtName": "piercing",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Power": {
+      "loreName": "Power",
+      "nbtName": "power",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Projectile Protection": {
+      "loreName": "Projectile Protection",
+      "nbtName": "projectile_protection",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Prosecute": {
+      "loreName": "Prosecute",
+      "nbtName": "prosecute",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Protection": {
+      "loreName": "Protection",
+      "nbtName": "protection",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Punch": {
+      "loreName": "Punch",
+      "nbtName": "punch",
+      "maxCraft": 2,
+      "maxLevel": 2
+    },
+    "Rainbow": {
+      "loreName": "Rainbow",
+      "nbtName": "rainbow",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Rejuvenate": {
+      "loreName": "Rejuvenate",
+      "nbtName": "rejuvenate",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Replenish": {
+      "loreName": "Replenish",
+      "nbtName": "replenish",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Respiration": {
+      "loreName": "Respiration",
+      "nbtName": "respiration",
+      "maxCraft": 3,
+      "maxLevel": 3
+    },
+    "Respite": {
+      "loreName": "Respite",
+      "nbtName": "respite",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "Scavenger": {
+      "loreName": "Scavenger",
+      "nbtName": "scavenger",
+      "maxCraft": 3,
+      "maxLevel": 5
+    },
+    "Sharpness": {
+      "loreName": "Sharpness",
+      "nbtName": "sharpness",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Silk Touch": {
+      "loreName": "Silk Touch",
+      "nbtName": "silk_touch",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Smelting Touch": {
+      "loreName": "Smelting Touch",
+      "nbtName": "smelting_touch",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Smite": {
+      "loreName": "Smite",
+      "nbtName": "smite",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Snipe": {
+      "loreName": "Snipe",
+      "nbtName": "snipe",
+      "maxCraft": 3,
+      "maxLevel": 4
+    },
+    "Spiked Hook": {
+      "loreName": "Spiked Hook",
+      "nbtName": "spiked_hook",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Sugar Rush": {
+      "loreName": "Sugar Rush",
+      "nbtName": "sugar_rush",
+      "maxCraft": 0,
+      "maxLevel": 3
+    },
+    "Syphon": {
+      "loreName": "Syphon",
+      "nbtName": "syphon",
+      "maxCraft": 3,
+      "maxLevel": 5
+    },
+    "Telekinesis": {
+      "loreName": "Telekinesis",
+      "nbtName": "telekinesis",
+      "maxCraft": 1,
+      "maxLevel": 1
+    },
+    "Thorns": {
+      "loreName": "Thorns",
+      "nbtName": "thorns",
+      "maxCraft": 3,
+      "maxLevel": 3
+    },
+    "Thunderbolt": {
+      "loreName": "Thunderbolt",
+      "nbtName": "thunderbolt",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Thunderlord": {
+      "loreName": "Thunderlord",
+      "nbtName": "thunderlord",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Titan Killer": {
+      "loreName": "Titan Killer",
+      "nbtName": "titan_killer",
+      "maxCraft": 5,
+      "maxLevel": 7
+    },
+    "Triple-Strike": {
+      "loreName": "Triple-Strike",
+      "nbtName": "triple_strike",
+      "maxCraft": 5,
+      "maxLevel": 5
+    },
+    "True Protection": {
+      "loreName": "True Protection",
+      "nbtName": "true_protection",
+      "maxCraft": 0,
+      "maxLevel": 1
+    },
+    "Turbo-Cacti": {
+      "loreName": "Turbo-Cacti",
+      "nbtName": "turbo_cactus",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Cane": {
+      "loreName": "Turbo-Cane",
+      "nbtName": "turbo_cane",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Carrot": {
+      "loreName": "Turbo-Carrot",
+      "nbtName": "turbo_carrot",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Coco": {
+      "loreName": "Turbo-Coco",
+      "nbtName": "turbo_coco",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Melon": {
+      "loreName": "Turbo-Melon",
+      "nbtName": "turbo_melon",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Mushrooms": {
+      "loreName": "Turbo-Mushrooms",
+      "nbtName": "turbo_mushrooms",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Potato": {
+      "loreName": "Turbo-Potato",
+      "nbtName": "turbo_potato",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Pumpkin": {
+      "loreName": "Turbo-Pumpkin",
+      "nbtName": "turbo_pumpkin",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Warts": {
+      "loreName": "Turbo-Warts",
+      "nbtName": "turbo_warts",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Turbo-Wheat": {
+      "loreName": "Turbo-Wheat",
+      "nbtName": "turbo_wheat",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Vampirism": {
+      "loreName": "Vampirism",
+      "nbtName": "vampirism",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Venomous": {
+      "loreName": "Venomous",
+      "nbtName": "venomous",
+      "maxCraft": 5,
+      "maxLevel": 6
+    },
+    "Vicious": {
+      "loreName": "Vicious",
+      "nbtName": "vicious",
+      "maxCraft": 0,
+      "maxLevel": 5
+    }
+  },
+  "ULTIMATE": {
+    "Bank": {
+      "loreName": "Bank",
+      "nbtName": "ultimate_bank",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Chimera": {
+      "loreName": "Chimera",
+      "nbtName": "ultimate_chimera",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Combo": {
+      "loreName": "Combo",
+      "nbtName": "ultimate_combo",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Last Stand": {
+      "loreName": "Last Stand",
+      "nbtName": "ultimate_last_stand",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Ultimate Jerry": {
+      "loreName": "Ultimate Jerry",
+      "nbtName": "ultimate_jerry",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Legion": {
+      "loreName": "Legion",
+      "nbtName": "ultimate_legion",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "No Pain No Gain": {
+      "loreName": "No Pain No Gain",
+      "nbtName": "ultimate_no_pain_no_gain",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "One For All": {
+      "loreName": "One For All",
+      "nbtName": "ultimate_one_for_all",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Rend": {
+      "loreName": "Rend",
+      "nbtName": "ultimate_rend",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Soul Eater": {
+      "loreName": "Soul Eater",
+      "nbtName": "ultimate_soul_eater",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Swarm": {
+      "loreName": "Swarm",
+      "nbtName": "ultimate_swarm",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Ultimate Wise": {
+      "loreName": "Ultimate Wise",
+      "nbtName": "ultimate_wise",
+      "maxCraft": 0,
+      "maxLevel": 5
+    },
+    "Wisdom": {
+      "loreName": "Wisdom",
+      "nbtName": "ultimate_wisdom",
+      "maxCraft": 0,
+      "maxLevel": 5
+    }
+  },
+  "STACKING": {
+    "Compact": {
+      "loreName": "Compact",
+      "nbtName": "compact",
+      "nbtNum": "compact_blocks",
+      "maxCraft": 0,
+      "maxLevel": 10,
+      "stackLevel": [0, 100, 500, 1500, 5000, 15000, 50000, 150000, 500000, 1000000]
+    },
+    "Cultivating": {
+      "loreName": "Cultivating",
+      "nbtName": "cultivating",
+      "nbtNum": "farmed_cultivating",
+      "maxCraft": 0,
+      "maxLevel": 10,
+      "stackLevel": [0, 1000, 5000, 25000, 100000, 300000, 1500000, 5000000, 20000000, 100000000]
+    },
+    "Expertise": {
+      "loreName": "Expertise",
+      "nbtName": "expertise",
+      "nbtNum": "expertise_kills",
+      "maxCraft": 0,
+      "maxLevel": 10,
+      "stackLevel": [0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000]
+    }
   }
 }

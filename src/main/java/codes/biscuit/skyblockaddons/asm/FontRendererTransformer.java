@@ -182,17 +182,26 @@ public class FontRendererTransformer implements ITransformer {
                     }
                     // Insert a call to FontRendererHook.restoreChromaState() before calls to return
                     else if (insertedChroma && abstractNode instanceof InsnNode && abstractNode.getOpcode() == Opcodes.RETURN) {
-                        methodNode.instructions.insertBefore(abstractNode, insertRestoreChromaState());
-                        methodNode.instructions.insertBefore(abstractNode, saveStringChroma());
+                        methodNode.instructions.insertBefore(abstractNode, insertEndOfString());
+                        //methodNode.instructions.insertBefore(abstractNode, saveStringChroma());
                     }
                 }
-                // Insert a call to FontRendererHook.saveChromaSate() as the first instruction
+                // Insert a call to FontRendererHook.beginRenderString(shadow) as the first instruction
                 if (insertedChroma) {
-                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(),
-                            new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "saveChromaState", "()V", false));
+                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertBeginRenderString());
                 }
             }
         }
+    }
+
+    private InsnList insertBeginRenderString() {
+        InsnList list = new InsnList();
+
+        // FontRendererHook.beginRenderString(shadow);
+        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "beginRenderString", "(Z)V", false));
+
+        return list;
     }
 
     private InsnList patcherOverride(LabelNode endIf) {
@@ -221,8 +230,16 @@ public class FontRendererTransformer implements ITransformer {
     private InsnList insertRestoreChromaState() {
         InsnList list = new InsnList();
 
-        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "restoreChromaState", "(Z)V", false));
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "restoreChromaState", "()V", false));
+
+        return list;
+    }
+
+    private InsnList insertEndOfString() {
+        InsnList list = new InsnList();
+
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "endRenderString", "()V", false));
+
         return list;
     }
 
@@ -249,13 +266,14 @@ public class FontRendererTransformer implements ITransformer {
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.FontRenderer.getNameRaw(), TransformerMethod.resetStyles.getName(), TransformerMethod.resetStyles.getDescription(), false));
 
         // Call shader manager
-        list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "toggleChromaOn", "(Z)V", false));
+        //list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // shadow
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "toggleChromaOn", "()V", false));
 
+        /*
         // Save string chroma
         list.add(new VarInsnNode(Opcodes.ALOAD, 1));
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "stringWithChroma", "(Ljava/lang/String;)V", false));
-
+*/
         // Go to end of else if chain
         list.add(new JumpInsnNode(Opcodes.GOTO, endIf));
 

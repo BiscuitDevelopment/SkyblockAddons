@@ -25,7 +25,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class ColorSelectionGui extends GuiScreen {
-    
+
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
     private static final ResourceLocation COLOR_PICKER = new ResourceLocation("skyblockaddons", "gui/colorpicker.png");
@@ -110,7 +110,7 @@ public class ColorSelectionGui extends GuiScreen {
             }
         }
 
-        if (main.getConfigValues().getChromaFeatures().contains(feature)) {
+        if (main.getConfigValues().getChromaFeatures().contains(feature) && !feature.getGuiFeatureData().isColorsRestricted()) {
             ColorSelectionGui.this.addChromaButtons();
         }
 
@@ -238,6 +238,12 @@ public class ColorSelectionGui extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button instanceof ButtonColorBox) {
             ButtonColorBox colorBox = (ButtonColorBox)button;
+            if (colorBox.getColor() == ColorCode.CHROMA) {
+                main.getConfigValues().setChroma(feature, true);
+            }
+            else {
+                main.getConfigValues().setChroma(feature, false);
+            }
             main.getConfigValues().setColor(feature, colorBox.getColor().getColor());
             this.mc.displayGuiScreen(null);
         }
@@ -256,7 +262,14 @@ public class ColorSelectionGui extends GuiScreen {
     public void onGuiClosed() {
         Keyboard.enableRepeatEvents(false);
 
-        main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, feature);
+        // Hardcode until feature refactor...
+        if (feature == Feature.ENCHANTMENT_PERFECT_COLOR || feature == Feature.ENCHANTMENT_GREAT_COLOR ||
+                feature == Feature.ENCHANTMENT_GOOD_COLOR || feature == Feature.ENCHANTMENT_POOR_COLOR) {
+            main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, Feature.ENCHANTMENTS_HIGHLIGHT);
+        }
+        else {
+            main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, feature);
+        }
     }
 
     private void removeChromaButtons() {

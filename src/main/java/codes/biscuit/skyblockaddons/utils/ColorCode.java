@@ -30,7 +30,8 @@ public enum ColorCode {
 	STRIKETHROUGH('m', true),
 	UNDERLINE('n', true, "underlined"),
 	ITALIC('o', true),
-	RESET('r');
+	RESET('r'),
+	CHROMA('z', 0xFFFFFE);
 
 	public static final char COLOR_CHAR = '\u00a7';
 	private char code;
@@ -67,12 +68,12 @@ public enum ColorCode {
 		this.color = (255 << 24) | (rgb & 0x00FFFFFF);
 	}
 
-    /**
-     * Get the color represented by the specified code.
-     *
-     * @param code The code to search for.
-     * @return The mapped color, or null if non exists.
-     */
+	/**
+	 * Get the color represented by the specified code.
+	 *
+	 * @param code The code to search for.
+	 * @return The mapped color, or null if non exists.
+	 */
 	public static ColorCode getByChar(char code) {
 		for (ColorCode color : values()) {
 			if (color.code == code)

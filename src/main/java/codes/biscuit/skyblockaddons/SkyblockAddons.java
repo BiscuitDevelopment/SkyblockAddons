@@ -57,6 +57,8 @@ public class SkyblockAddons {
     public static String VERSION = "@VERSION@";
 
     @Getter private static SkyblockAddons instance;
+    @Getter private static boolean fullyInitialized;
+
     @SuppressWarnings({"rawtypes", "unchecked"})
     private static final Gson GSON = new GsonBuilder()
             .setPrettyPrinting()
@@ -164,6 +166,7 @@ public class SkyblockAddons {
         }
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO);
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO_GLOW);
+        fullyInitialized = true;
     }
 
     @Mod.EventHandler

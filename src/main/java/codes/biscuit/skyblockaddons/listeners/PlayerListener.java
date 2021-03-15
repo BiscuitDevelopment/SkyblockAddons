@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook;
 import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
@@ -14,7 +13,7 @@ import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.FishParticleManager;
+import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
@@ -93,8 +92,6 @@ public class PlayerListener {
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
-    private static final Pattern ENCHANTMENT_LINE_PATTERN = Pattern.compile("(?:(?:[\\w ]+ [\\dIVXLCDM]+(?:, )?)+)");
-    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[\\w§ ]+) (?<enchantLevel>[\\dIVXLCDM]+)");
     private static final String ENCHANT_LINE_STARTS_WITH = "§5§o§9";
     private static final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("You are playing on profile: ([A-Za-z]+).*");
@@ -103,6 +100,8 @@ public class PlayerListener {
     private static final Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
     private static final Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
     private static final Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
+    private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO1 = Pattern.compile(" *(?<slayerType>[A-Za-z]+) Slayer LVL \\d+ - Next LVL in [\\d,]+ XP!");
+    private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO2 = Pattern.compile(" *SLAYER QUEST STARTED!");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
@@ -147,6 +146,8 @@ public class PlayerListener {
     private long lastSkyblockServerJoinAttempt = 0;
     private long lastDeath = 0;
     private long lastRevive = 0;
+    private long lastMaddoxLevelTime;
+    private String lastMaddoxSlayerType;
 
     @Getter private long rainmakerTimeEnd = -1;
 
@@ -167,6 +168,9 @@ public class PlayerListener {
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
+
+    private String theChangedMessage;
+    private boolean changedMessage;
 
     /**
      * Reset all the timers and stuff when joining a new world.
@@ -194,7 +198,6 @@ public class PlayerListener {
             NPCUtils.getNpcLocations().clear();
             JerryPresent.getJerryPresents().clear();
             FishParticleManager.clearParticleCache();
-            EffectRendererHook.clearParticleCache();
         }
     }
 
@@ -218,6 +221,7 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
+        changedMessage = false;
         String formattedText = e.message.getFormattedText();
         String unformattedText = e.message.getUnformattedText();
         String strippedText = TextUtils.stripColor(formattedText);
@@ -252,8 +256,9 @@ public class PlayerListener {
                         restMessage = main.getDungeonManager().addSecrets(restMessage);
                     }
                 }
-
-                e.message = new ChatComponentText(restMessage);
+                // Mark the message for change
+                changedMessage = true;
+                theChangedMessage = restMessage;
             } else {
                 Matcher matcher;
 
@@ -292,10 +297,11 @@ public class PlayerListener {
                     }
                     if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                         // Edit the message to include counter.
-                        e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")");
+                        changedMessage = true;
+                        theChangedMessage = formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")";
                     }
                     main.getPersistentValuesManager().addEyeResetKills();
-                // TODO: Seems like leg warning and num sc killed should be separate features
+                    // TODO: Seems like leg warning and num sc killed should be separate features
                 } else if (main.getConfigValues().isEnabled(Feature.LEGENDARY_SEA_CREATURE_WARNING) && SeaCreatureManager.getInstance().getAllSeaCreatureSpawnMessages().contains(unformattedText)) {
                     main.getPersistentValuesManager().getPersistentValues().setSeaCreaturesKilled(main.getPersistentValuesManager().getPersistentValues().getSeaCreaturesKilled() + 1);
                     if (SeaCreatureManager.getInstance().getLegendarySeaCreatureSpawnMessages().contains(unformattedText)) {
@@ -318,6 +324,12 @@ public class PlayerListener {
 
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
+
+                } else if ((matcher = SLAYER_COMPLETED_PATTERN_AUTO1.matcher(strippedText)).matches()) { // Spider Slayer LVL 7 - Next LVL in 181,000 XP!
+                    lastMaddoxLevelTime = System.currentTimeMillis();
+                    lastMaddoxSlayerType = matcher.group("slayerType");
+                } else if (SLAYER_COMPLETED_PATTERN_AUTO2.matcher(strippedText).matches() && System.currentTimeMillis() - lastMaddoxLevelTime < 100) {
+                    SlayerTracker.getInstance().completedSlayer(lastMaddoxSlayerType);
 
                 } else if (strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
                     DragonTracker.getInstance().addEye();
@@ -429,6 +441,16 @@ public class PlayerListener {
                     main.getUtils().setProfileName(profile);
                 }
             }
+        }
+    }
+
+    /**
+     * Acts as a callback to set the actionbar message after other mods have a chance to look at the message
+     */
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public void onChatReceiveLast(ClientChatReceivedEvent e) {
+        if (changedMessage) {
+            e.message = new ChatComponentText(theChangedMessage);
         }
     }
 
@@ -939,57 +961,8 @@ public class PlayerListener {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
-                for (int i = 0; i < e.toolTip.size(); i++) {
-                    e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
-                }
-            }
-
-
-            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
-                Map<String, Integer> maxEnchantments = main.getOnlineData().getSpecialEnchantments();
-                if (maxEnchantments != null) {
-                    for (int i = 0; i < e.toolTip.size(); i++) {
-                        String line = e.toolTip.get(i);
-
-                        if (line.startsWith(ENCHANT_LINE_STARTS_WITH) && ENCHANTMENT_LINE_PATTERN.matcher(TextUtils.stripColor(line)).matches()) {
-                            Matcher matcher = ENCHANTMENT_PATTERN.matcher(line);
-                            while (matcher.find()) {
-                                String fullEnchant = matcher.group().trim();
-                                String enchant = matcher.group("enchant");
-                                String strippedEnchant = TextUtils.stripColor(enchant);
-
-                                if (maxEnchantments.containsKey(strippedEnchant)) {
-                                    String enchantLevelString = matcher.group("enchantLevel");
-
-                                    int enchantLevel = -1;
-                                    if (RomanNumeralParser.isNumeralValid(enchantLevelString)) {
-                                        enchantLevel = RomanNumeralParser.parseNumeral(enchantLevelString);
-                                    } else {
-                                        try {
-                                            enchantLevel = Integer.parseInt(enchantLevelString);
-                                        } catch (NumberFormatException ignored) {
-                                        }
-                                    }
-
-                                    if (enchantLevel != -1 && maxEnchantments.get(strippedEnchant) <= enchantLevel) {
-                                        String recoloredEnchant = fullEnchant.replace("§9", "§9" + main.getConfigValues().getRestrictedColor(Feature.ENCHANTMENTS_HIGHLIGHT).toString());
-                                        line = line.replace(fullEnchant, recoloredEnchant);
-                                    }
-                                }
-                            }
-                        }
-
-                        e.toolTip.set(i, line);
-                    }
-                }
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.ORGANIZE_ENCHANTMENTS)) {
-                NBTTagCompound enchants = ItemUtils.getEnchantments(e.itemStack);
-                if (enchants != null) {
-                    EnchantManager.organizeEnchants(e.toolTip, enchants);
-                }
+            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENT_LORE_PARSING)) {
+                EnchantManager.organizeEnchants(e.toolTip, ItemUtils.getExtraAttributes(e.itemStack));
             }
 
             int insertAt = e.toolTip.size();
@@ -1032,17 +1005,6 @@ public class PlayerListener {
                         colorCode = ItemRarity.values()[rarityIndex].getColorCode();
                     }
                     e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
-                }
-
-                if (main.getConfigValues().isEnabled(Feature.SHOW_EXPERTISE_KILLS) && hoveredItem.getItem() == Items.fishing_rod && extraAttributes.hasKey("expertise_kills", ItemUtils.NBT_INTEGER)) {
-
-                    int expertiseKills = extraAttributes.getInteger("expertise_kills");
-                    ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.SHOW_EXPERTISE_KILLS);
-                    if (expertiseKills >= EXPERTISE_KILL_TIERS.last()) {
-                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " (Maxed)");
-                    } else {
-                        e.toolTip.add(insertAt++, "§7Expertise Kills: " + colorCode + expertiseKills + " / " + EXPERTISE_KILL_TIERS.higher(expertiseKills));
-                    }
                 }
 
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SWORD_KILLS) && extraAttributes.hasKey("sword_kills", ItemUtils.NBT_INTEGER)) {
@@ -1220,7 +1182,7 @@ public class PlayerListener {
         if (ORES.contains(Block.getStateId(blockState))) {
             boolean shouldIncrement = true;
             if (main.getUtils().getLocation() == Location.ISLAND) {
-                if (blockState.getBlock() == Blocks.diamond_ore) {
+                if (blockState.getBlock() == Blocks.diamond_block) {
                     shouldIncrement = false;
                 }
                 // TODO: Check if a minion is nearby to eliminate false positives
@@ -1235,9 +1197,12 @@ public class PlayerListener {
                 Block block = blockState.getBlock();
                 if ((itemId.equals(InventoryUtils.JUNGLE_AXE_ID) || itemId.equals(InventoryUtils.TREECAPITATOR_ID)) &&
                         (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                    long cooldownTime = CooldownManager.getItemCooldown(itemId);
+                    // Weirdly, the level 100 leg monkey doesn't seem to be a full 50% reduction when accounting for break time
+                    float multiplier = main.getConfigValues().isEnabled(Feature.LEG_MONKEY_LEVEL_100) ? .6F : 1;
+                    long cooldownTime = (long) (CooldownManager.getItemCooldown(itemId) * multiplier);
                     cooldownTime -= (main.getConfigValues().isEnabled(Feature.COOLDOWN_PREDICTION) ? e.timeToBreak - 50 : 0);
                     // TODO: Pet detection
+                    // Min cooldown time is 400 because anything lower than that can allow the player to hit a block already marked for block removal by treecap/jungle axe ability
                     CooldownManager.put(itemId, Math.max(cooldownTime, 400));
                 }
             }

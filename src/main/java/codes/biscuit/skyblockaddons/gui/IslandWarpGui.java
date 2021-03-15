@@ -382,7 +382,7 @@ public class IslandWarpGui extends GuiScreen {
 
         GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 106, 159),
         DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
-        DWARVEN_MINES("mines", Translations.getMessage("warpMenu.spawn"), Island.DWARVEN_MINES, false, 35, 80),
+        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 190, 380),
 
         DUNGEON_HUB("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;

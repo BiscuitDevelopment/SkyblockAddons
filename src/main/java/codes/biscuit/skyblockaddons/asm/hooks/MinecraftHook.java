@@ -155,7 +155,7 @@ public class MinecraftHook {
                 returnValue.cancel();
             } else if (main.getConfigValues().isEnabled(Feature.ONLY_MINE_ORES_DWARVEN_MINES) && DWARVEN_MINES_LOCATIONS.contains(main.getUtils().getLocation())
                     && ItemUtils.isMiningTool(heldItem) && (!DWARVEN_MINEABLE_BLOCKS.contains(id) && !DEEP_CAVERNS_MINEABLE_BLOCKS.contains(block)) && !block.equals(Blocks.dragon_egg) &&
-                    !(block == Blocks.planks && DWARVEN_PUZZLE_ROOM.isVecInside(new Vec3(blockPos.getX() + .5, blockPos.getY() + .5, blockPos.getZ() + .5)))) {
+                    !(DWARVEN_PUZZLE_ROOM.isVecInside(new Vec3(blockPos.getX() + .5, blockPos.getY() + .5, blockPos.getZ() + .5)))) {
                 if (main.getConfigValues().isEnabled(Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK) && now - lastUnmineableMessage > 60000) {
                     lastUnmineableMessage = now;
                     main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.ONLY_MINE_ORES_DWARVEN_MINES) + Message.MESSAGE_CANCELLED_NON_ORES_BREAK.getMessage());

@@ -1,6 +1,5 @@
-package codes.biscuit.skyblockaddons.features;
+package codes.biscuit.skyblockaddons.features.fishParticles;
 
-import codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.particle.EntityFishWakeFX;
@@ -96,6 +95,10 @@ public class FishParticleManager {
      * True if particles have spawned/been processed and are currently stored in memory
      */
     private static boolean cacheEmpty = true;
+    /**
+     * The object reference to the overlay renderer
+     */
+    private static final FishParticleOverlay overlay = new FishParticleOverlay();
 
     /**
      * When a new particle spawns, check if it matches these conditions for each recently-spawned particle.
@@ -213,7 +216,7 @@ public class FishParticleManager {
                 long mask = 1L << (63 - i);
                 if ((trailHeadTracker & mask) == 0 && currTick - particleTime[i] < 5) {
                     for (EntityFX entityFX : particleList[i]) {
-                        EffectRendererHook.addParticleToOutline(entityFX);
+                        overlay.addParticle(entityFX);
                     }
                 }
                 // Keep track of all particles that linked to this particle.
@@ -239,6 +242,7 @@ public class FishParticleManager {
         }
         particleHash.clear();
         idx = 0;
+        overlay.clearParticles();
         cacheEmpty = true;
     }
 

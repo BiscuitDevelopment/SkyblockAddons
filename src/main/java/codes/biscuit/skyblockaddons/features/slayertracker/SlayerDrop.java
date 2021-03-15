@@ -23,6 +23,8 @@ public enum SlayerDrop {
     REVENANT_CATALYST("Revenant Catalyst", "REVENANT_CATALYST", ItemRarity.EPIC, "5ace63c5-b3c9-306a-887c-16db7efea0f0", "b88cfafa5f03f8aef042a143799e964342df76b7c1eb461f618e398f84a99a63"),
     SNAKE_RUNE("Snake Rune", "RUNE", "SNAKE", ItemRarity.LEGENDARY, "b8480d6d-7769-33ea-8dba-3cb5a01a69c0", "2c4a65c689b2d36409100a60c2ab8d3d0a67ce94eea3c1f7ac974fd893568b5d"),
     SCYTHE_BLADE(Items.diamond, "Scythe Blade", "SCYTHE_BLADE", ItemRarity.LEGENDARY, true),
+    SHARD_OF_SHREDDED("Shard of the Shredded", "SHARD_OF_THE_SHREDDED", ItemRarity.LEGENDARY, "9ddf6967-40de-3534-903f-4d5d9c933d55", "70c5cc728c869ecf3c6e0979e8aa09c10147ed770417e4ba541aac382f0"),
+    WARDEN_HEART("Warden Heart", "WARDEN_HEART", ItemRarity.LEGENDARY, "7adc7613-256a-3593-899b-d4d9bbf50387", "d45f4d139c9e89262ec06b27aaad73fa488ab49290d2ccd685a2554725373c9b"),
 
     // Tarantula Drops
     TARANTULA_WEB(Items.string, "Tarantula Web", "TARANTULA_WEB", ItemRarity.UNCOMMON, true),

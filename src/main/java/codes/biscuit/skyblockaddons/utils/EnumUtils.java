@@ -219,6 +219,12 @@ public class EnumUtils {
         SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
         HEALING_CIRCLE_OPACITY("settings.healingCircleOpacity", 156),
         COOLDOWN_PREDICTION("settings.cooldownPrediction", 164),
+        PERFECT_ENCHANT_COLOR("enchants.superTier", 165),
+        GREAT_ENCHANT_COLOR("enchants.highTier", 166),
+        GOOD_ENCHANT_COLOR("enchants.midTier", 167),
+        POOR_ENCHANT_COLOR("enchants.lowTier", 168),
+        LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
+        BIGGER_WAKE("settings.biggerWake", 170),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -280,8 +286,8 @@ public class EnumUtils {
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
         ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
-                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
-                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS,
+                Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
+                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_STACKING_ENCHANT_PROGRESS,
                 Feature.STOP_BONZO_STAFF_SOUNDS, Feature.DISABLE_MORT_MESSAGES, Feature.DISABLE_BOSS_MESSAGES),
         IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY,
                 Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS, Feature.ENCHANTMENTS_HIGHLIGHT),
@@ -289,7 +295,7 @@ public class EnumUtils {
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
         PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING,
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS, Feature.ONLY_MINE_ORES_DWARVEN_MINES, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
-                Feature.FISHING_PARTICLE_OVERLAY, Feature.ENCHANTMENT_LORE_PARSING, Feature.COOLDOWN_PREDICTION);
+                Feature.FISHING_PARTICLE_OVERLAY, Feature.ENCHANTMENT_LORE_PARSING, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE);
 
         private Set<Feature> features;
         private String author;

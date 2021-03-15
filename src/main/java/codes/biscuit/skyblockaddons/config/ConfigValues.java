@@ -4,7 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
-import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
+import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;

@@ -70,7 +70,7 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
+    "organizeLongEnchantmentLists": "[REMOVED] Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
@@ -163,7 +163,7 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
+    "showExpertiseKills": "Show Stacking Enchant Progress",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -189,7 +189,9 @@
     "drillFuelText": "Drill Fuel Text",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchantment Lore",
-    "cooldownPrediction": "Predict and Shorten Cooldown"
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles"
   },
   "messages": {
     "enchants": "Enchants",
@@ -470,5 +472,11 @@
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
     "inCombat": "In Combat..."
+  },
+  "enchants" : {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier"
   }
 }

@@ -182,7 +182,15 @@ public class SettingsGui extends GuiScreen {
             mc.displayGuiScreen(new SkyblockAddonsGui(1, tab.getTab()));
         } else if (abstractButton instanceof ButtonOpenColorMenu) {
             closingGui = true;
-            mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
+            // Temp fix until feature re-write. Open a color selection panel specific to the color setting
+            Feature f = ((ButtonOpenColorMenu) abstractButton).feature;
+            if (f == Feature.ENCHANTMENT_PERFECT_COLOR || f == Feature.ENCHANTMENT_GREAT_COLOR ||
+                    f == Feature.ENCHANTMENT_GOOD_COLOR ||f == Feature.ENCHANTMENT_POOR_COLOR) {
+                mc.displayGuiScreen(new ColorSelectionGui(f, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
+            }
+            else {
+                mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
+            }
         } else if (abstractButton instanceof ButtonToggleTitle) {
             ButtonFeature button = (ButtonFeature) abstractButton;
             Feature feature = button.getFeature();
@@ -255,6 +263,10 @@ public class SettingsGui extends GuiScreen {
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
+            // Temp hardcode until feature rewrite
+        } else if (setting == EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR ||
+                setting == EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR) {
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, setting.getMessage(), main, setting.getFeatureEquivalent()));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
         } else if (setting == EnumUtils.FeatureSetting.REPEATING) {

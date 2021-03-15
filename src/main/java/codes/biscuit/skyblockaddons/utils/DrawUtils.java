@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.misc.ManualChromaManager;
+import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.Chroma3DShader;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenShader;
@@ -14,6 +14,7 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL13;
 
 import javax.vecmath.Vector3d;
 import java.awt.*;
@@ -449,10 +450,6 @@ public class DrawUtils {
     }
 
     public static void drawText(String text, float x, float y, int color) {
-        if (ManualChromaManager.isColoringTextChroma() && SkyblockColor.shouldUseChromaShaders()) {
-            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
-        }
-
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
         if (SkyblockAddons.getInstance().getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorAlpha = Math.max(ColorUtils.getAlpha(color), 4);
@@ -465,10 +462,6 @@ public class DrawUtils {
             fontRenderer.drawString(text, x + 0, y + 0, color, false);
         } else {
             fontRenderer.drawString(text, x + 0, y + 0, color, true);
-        }
-
-        if (ManualChromaManager.isColoringTextChroma() && SkyblockColor.shouldUseChromaShaders()) {
-            ShaderManager.getInstance().disableShader();
         }
     }
 
@@ -545,5 +538,37 @@ public class DrawUtils {
         } else {
             GlStateManager.disableTexture2D();
         }
+    }
+
+
+    private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
+
+    public static void enableOutlineMode() {
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL13.GL_COMBINE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_REPLACE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL13.GL_CONSTANT);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_REPLACE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
+    }
+
+    public static void outlineColor(int color) {
+        BUF_FLOAT_4.put(0, (float)(color >> 16 & 255) / 255.0F);
+        BUF_FLOAT_4.put(1, (float)(color >> 8 & 255) / 255.0F);
+        BUF_FLOAT_4.put(2, (float)(color & 255) / 255.0F);
+        BUF_FLOAT_4.put(3, 1);
+
+        GL11.glTexEnv(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_COLOR, BUF_FLOAT_4);
+    }
+
+    public static void disableOutlineMode() {
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_MODULATE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
+        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
     }
 }

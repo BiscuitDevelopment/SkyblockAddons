@@ -10,7 +10,7 @@ import java.util.Locale;
 public enum SlayerBoss {
 
     REVENANT("Zombie", SlayerDrop.REVENANT_FLESH, SlayerDrop.FOUL_FLESH, SlayerDrop.PESTILENCE_RUNE, SlayerDrop.UNDEAD_CATALYST, SlayerDrop.SMITE_SIX,
-            SlayerDrop.BEHEADED_HORROR, SlayerDrop.REVENANT_CATALYST, SlayerDrop.SNAKE_RUNE, SlayerDrop.SCYTHE_BLADE),
+            SlayerDrop.BEHEADED_HORROR, SlayerDrop.REVENANT_CATALYST, SlayerDrop.SNAKE_RUNE, SlayerDrop.SCYTHE_BLADE, SlayerDrop.SHARD_OF_SHREDDED, SlayerDrop.WARDEN_HEART),
 
     TARANTULA("Spider", SlayerDrop.TARANTULA_WEB, SlayerDrop.TOXIC_ARROW_POISON, SlayerDrop.SPIDER_CATALYST, SlayerDrop.BANE_OF_ARTHROPODS_SIX,
             SlayerDrop.BITE_RUNE, SlayerDrop.FLY_SWATTER, SlayerDrop.TARANTULA_TALISMAN, SlayerDrop.DIGESTED_MOSQUITO),

@@ -88,7 +88,7 @@ public class DataUtils {
         // Enchantment data
         inputStream = DataUtils.class.getResourceAsStream("/enchants.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
-            EnchantManager.setEnchants(GSON.fromJson(jsonReader, new TypeToken<HashMap<String, EnchantManager.ItemEnchants>>() {}.getType()));
+            EnchantManager.setEnchants(GSON.fromJson(jsonReader, new TypeToken<EnchantManager.Enchants>() {}.getType()));
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while reading the enchantments file!", ex);
         }
