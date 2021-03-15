@@ -219,7 +219,7 @@
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
     "clickOneMoreTime": "정말 이 아이템을 떨어뜨리려면 한 번 더 클릭하거나 떨어뜨리세요.",
     "cancelledDeepCaverns": "기능으로 인해 이 블럭을 채굴하지 못했습니다.",
-    "featureDisabled": "Feature Disabled",
+    "featureDisabled": "기능 비활성화 됨",
     "anvilUses": "모루 사용 횟수: %uses%",
     "specialZealotFound": "특별한 Zealot!",
     "blockIncompletePatterns": "미완성 패턴으로 제작하기 막기 (추천됨)",
