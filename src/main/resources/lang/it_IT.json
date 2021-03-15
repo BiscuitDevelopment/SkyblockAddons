@@ -179,14 +179,14 @@
     "disableEmptyGlassPanes": "Disabilita pannelli di vetro vuoti",
     "candyPointsCounter": "Caramelle Spooky Event/Contatore di punti",
     "healingCircleOpacity": "Opacità del circolo di cura",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "chromaSize": "Dimensione Chroma",
+    "chromaSaturation": "Saturazione Chroma",
+    "chromaBrightness": "Luminosità Chroma",
+    "useNewChromaEffect": "Usa un nuovo effetto Chroma",
+    "showExperimentationTableTooltips": "Mostra descrizioni dell'Experimentation Table",
+    "onlyMineOresDwarvenMines": "Estrai minerali solo nelle Dwarven Miles",
+    "drillFuelBar": "Barra di combustibile Drill",
+    "drillFuelText": "Numero di combustibile Drill"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Carica tutte le impostazioni e risorse del mod. Il gioco si bloccherà per alcuni secondi."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Carica le impostazioni del mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Carica le risorse del mod. Il gioco si bloccherà per alcuni secondi."
       },
       "set": {
         "zealotCounter": {
@@ -455,7 +455,7 @@
   "warpMenu": {
     "click": "Clicca su un punto di teletrasporto per viaggiarci!",
     "mustUnlock": "Devi aver sbloccato la pergamena specifica.",
-    "privateIsland": "Private Island",
+    "privateIsland": "Isola Privata",
     "home": "La tua isola",
     "spawn": "Spawn",
     "unknown": "Non visitato",

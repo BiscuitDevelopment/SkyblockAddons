@@ -176,17 +176,17 @@
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
     "highlightMaxEnchantments": "高亮特殊附魔",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "disableEmptyGlassPanes": "阻止点击界面菜单内的无名玻璃板",
+    "candyPointsCounter": "Spooky Event 糖果/分数统计器",
     "healingCircleOpacity": "治疗光环不透明度",
     "chromaSize": "渐变色彩尺寸",
     "chromaSaturation": "渐变色彩饱和度",
     "chromaBrightness": "渐变色彩亮度",
     "useNewChromaEffect": "使用新版渐变效果",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
+    "onlyMineOresDwarvenMines": "在 Dwarven Mines 中只挖掘矿物",
+    "drillFuelBar": "Drill 燃料计量条",
+    "drillFuelText": "Drill 燃料值"
   },
   "messages": {
     "enchants": "附魔",
@@ -255,7 +255,7 @@
     "effectsActive": "已激活 %number% 种药水效果",
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
-    "chroma": "Chroma"
+    "chroma": "渐变"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(开发者) §7重载 mod 设定"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
       },
       "set": {
         "zealotCounter": {

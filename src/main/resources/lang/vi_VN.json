@@ -176,17 +176,17 @@
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
     "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "disableEmptyGlassPanes": "Xóa các chỗ trống phủ bằng kính",
     "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
     "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "chromaSize": "Mức sắc độ",
+    "chromaSaturation": "Độ nét sắc độ",
+    "chromaBrightness": "Độ sáng sắc độ",
+    "useNewChromaEffect": "Dùng hiệu ứng sắc độ mới",
+    "showExperimentationTableTooltips": "Hiện đáp án Experimentation Table",
+    "onlyMineOresDwarvenMines": "Chỉ đào quặng trong Dwarven Mines",
+    "drillFuelBar": "Thanh nguyên liệu của Drill",
+    "drillFuelText": "Số nguyên liệu của Drill"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -255,7 +255,7 @@
     "effectsActive": "%number% H.ứng thuốc đang H.động",
     "none": "Không có",
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
-    "chroma": "Chroma"
+    "chroma": "Sắc độ"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Áp dụng tất cả cài đặt và tài nguyên của mod. Game sẽ đứng hình trong vài giây."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Áp dụng cài đặt mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Tải lại các tài nguyên của mod. Game sẽ đứng hình trong vài giây."
       },
       "set": {
         "zealotCounter": {
@@ -454,7 +454,7 @@
   },
   "warpMenu": {
     "click": "Bấm vào một địa điểm để di chuyển đến đó!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
+    "mustUnlock": "Phải mở khoá giấy dịch chuyển đến đây.",
     "privateIsland": "Private Island",
     "home": "Đảo của bạn",
     "spawn": "Địa điểm xuất phát",

@@ -176,17 +176,17 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightMaxEnchantments": "Podświetl specjalne zaklęcia",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "disableEmptyGlassPanes": "Wyłącz puste okienka",
+    "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
+    "healingCircleOpacity": "Przeźroczystość koła leczącego",
+    "chromaSize": "Rozmiar koloru Chroma",
+    "chromaSaturation": "Nasycenie koloru Chroma",
+    "chromaBrightness": "Jasność koloru Chroma",
+    "useNewChromaEffect": "Użyj nowego efektu Chroma",
+    "showExperimentationTableTooltips": "Pokaż dymki w Experimentation Table",
+    "onlyMineOresDwarvenMines": "Wykopuj rudy tylko w Dwarven Mines",
+    "drillFuelBar": "Pasek paliwa wiertła",
+    "drillFuelText": "Tekst paliwa wiertła"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Wczytuje ponownie ustawienia moda"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "set": {
         "zealotCounter": {
@@ -453,13 +453,13 @@
     "bossesKilled": "Liczba zabitych bossów"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Kliknij punkt przeniesienia, aby tam podróżować!",
+    "mustUnlock": "Musisz mieć odblokowany konkretny zwój.",
+    "privateIsland": "Prywatna wyspa",
+    "home": "Twoja wyspa",
+    "spawn": "Miejsce odrodzenia",
+    "unknown": "Nieodwiedzone",
+    "notUnlocked": "Nieodblokowane",
+    "inCombat": "Podczas walki..."
   }
 }

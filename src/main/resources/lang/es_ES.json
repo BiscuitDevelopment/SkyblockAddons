@@ -183,10 +183,10 @@
     "chromaSaturation": "Saturación del Croma",
     "chromaBrightness": "Brillo del Croma",
     "useNewChromaEffect": "Usar el Nuevo Efecto Croma",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "showExperimentationTableTooltips": "Mostrar Información de Objeto en la Experimentation Table",
+    "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
+    "drillFuelBar": "Barra de Drill Fuel",
+    "drillFuelText": "Número de Drill Fuel"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Des) §7Recarga todas las configuraciones y recursos del mod. El juego se congelará durante unos segundos."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Des) §7Recarga la configuración del mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Des) §7Recarga los recursos del mod. El juego se congelará durante unos segundos."
       },
       "set": {
         "zealotCounter": {
