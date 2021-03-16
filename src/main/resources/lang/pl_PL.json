@@ -16,7 +16,7 @@
     "resetLocations": "Zresetuj położenie elementów",
     "hideDurability": "Wyłącz pasek wytrzymałości narzędzi",
     "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
-    "minionStopWarning": "Ostrzeżenie \"Minion Cannot Reach\"",
+    "minionStopWarning": "Ostrzeżenie „Minion Cannot Reach”",
     "hidePlayersNearNPCs": "Ukryj graczy blisko ważnych NPC",
     "backpackStyle": "Styl Backpacka: %style%",
     "backpackStyles": {
@@ -387,8 +387,8 @@
         "numberRequired": "Musisz dodać cyfrę, jaką chcesz.",
         "killsSet": "Zabicia dla slayera %boss% zostały ustawione na %number%.",
         "statSet": "Statystyki %stat% dla slayera %boss% zostały ustawione na %number%.",
-        "invalidBoss": "\"%input%\" nie jest prawidłową statystyką!",
-        "invalidStat": "\"%input%\" nie jest prawidłowym bossem!"
+        "invalidBoss": "„%input%” nie jest prawidłową statystyką!",
+        "invalidStat": "„%input%” nie jest prawidłowym bossem!"
       },
       "toggleActionBarLogging": {
         "help": "e(Dev) §7Przełącz rejestrowanie wiadomości na pasku akcji",
@@ -398,7 +398,7 @@
       "errors": {
         "wrongUsage": {
           "generic": "Złe zastosowanie!",
-          "subCommandNotFound": "Podkomenda \"%sub-command%\" nie została odnaleziona."
+          "subCommandNotFound": "Podkomenda „%sub-command%” nie została odnaleziona."
         }
       }
     }
