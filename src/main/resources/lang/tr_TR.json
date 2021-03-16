@@ -36,7 +36,7 @@
     "defenceText": "Savunma Sayısı",
     "defencePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Lobide Uzaktaki Kişileri Gizle",
+    "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
     "itemPickupLog": "Toplanan Eşya Günlüğü",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Mod kaynaklarının hepsi yeniden yüklenecek. Oyununuz birkaç saniye donabilir."
+        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "reloadConfig": {
         "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "set": {
         "zealotCounter": {
@@ -453,13 +453,13 @@
     "bossesKilled": "Bosslar Öldürüldü"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Buraya gitmek için bir ışınlanma noktasına tıkla!",
+    "mustUnlock": "Belirli bir Scroll kilidi açılmış olmalı.",
+    "privateIsland": "Özel Ada",
+    "home": "Senin Adan",
+    "spawn": "Başlangıç Noktası",
+    "unknown": "Ziyaret Edilmemiş",
+    "notUnlocked": "Açılmamış",
+    "inCombat": "Savaşta..."
   }
 }
