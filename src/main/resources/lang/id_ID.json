@@ -263,9 +263,9 @@
     "titleLocation": "Lokasi",
     "descriptionLocation": "Menunjukkan Lokasi Anda Saat Ini",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
+    "descriptionPurse": "Perlihatkan coins yang terdapat di purse anda",
     "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionStats": "Perlihatkan Stat HP, Defense dan Mana",
     "titleZealots": "Zealots",
     "descriptionZealots": "Perlihatkan Zealot Counter anda",
     "titleItem": "Held Item",
@@ -335,7 +335,7 @@
         "help": "Edit GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
+        "help": "Buka berkas mod anda",
         "error": "An error occurred trying to open the mods folder: %s"
       },
       "help": {
