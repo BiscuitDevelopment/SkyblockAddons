@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Език: ",
   "language": "Български",
   "settings": {
     "settings": "Настройки",
@@ -9,7 +9,7 @@
     "skeletonHatBonesBar": "Лента за Костите на Скелетната Каска",
     "hideFoodAndArmor": "Скрий Лентите за Храна и Броня",
     "fullInventoryWarning": "Предупреждение за Пълен Инвентар",
-    "repeating": "Repeat Warning",
+    "repeating": "Повтаряне на Предопреждение",
     "disableEmberRodAbility": "Изклюване на Използването на Ember Rod на Острова",
     "editLocations": "Редактиране на Местоположенията в GUI",
     "guiScale": "Gui Мащаб: %scale%",
@@ -49,7 +49,7 @@
     "lockSlot": "Зaключи слот",
     "dontResetCursorInventory": "Не Рестартирай Курсора Между Инвентари",
     "summoningEyeAlert": "Предупреждение за Summoning Eye",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "Промени цвета на Enderchest",
     "changeColor": "Смени Цвeтa",
     "showInOtherGames": "Покaжи в Други Игри",
     "useVanillaTexture": "Използвaй Обикновените Текстури",
@@ -335,7 +335,7 @@
         "help": "Edit GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
+        "help": "Отвори твоята папка с модове",
         "error": "An error occurred trying to open the mods folder: %s"
       },
       "help": {
@@ -453,8 +453,8 @@
     "bossesKilled": "Босове убити"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
+    "click": "Натисни точка за Телепортация, за да пътуваш там!",
+    "mustUnlock": "Трябва да имаш определеният scroll отключен.",
     "privateIsland": "Частен Остров",
     "home": "Твоя Остров",
     "spawn": "Spawn",
