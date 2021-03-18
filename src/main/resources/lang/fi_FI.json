@@ -177,16 +177,16 @@
     "compactTabList": "Tiivis Tab-lista",
     "highlightMaxEnchantments": "Korosta erikoislumoukset",
     "disableEmptyGlassPanes": "Piilota tyhjät lasiruudut",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "candyPointsCounter": "Spooky-tapahtuman Candy/Piste -laskuri",
     "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
     "chromaSize": "Väriefektin koko",
     "chromaSaturation": "Väriefektin kylläisyys",
     "chromaBrightness": "Väriefektin kirkkaus",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "useNewChromaEffect": "Käytä uutta väriefektiä",
+    "showExperimentationTableTooltips": "Näytä Experimentation-pöydän esineiden tiedot",
+    "onlyMineOresDwarvenMines": "Kaiva vain malmeja Dwarven-kaivoksissa",
+    "drillFuelBar": "Poran polttoainetankki",
+    "drillFuelText": "Poran polttoainearvo"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -255,7 +255,7 @@
     "effectsActive": "%number% tehostetta aktiivisena",
     "none": "Ei mikään",
     "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
-    "chroma": "Chroma"
+    "chroma": "Väriefekti"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -291,15 +291,15 @@
         "help": "Avaa päävalikko"
       },
       "brand": {
-        "help": "§e(Dev) §7Show palvelimen tunnus",
+        "help": "§e(Kehittäjä) §7Näytä palvelimen tunnus",
         "brandOutput": "Palvelimen tunnus: %brand%",
         "notFound": "Palvelimen tunnusta ei löytynyt!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies tiedot palikasta jota katsot"
+        "help": "§e(Kehittäjä) §7Kopioi tiedot palikasta jota katsot"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
+        "help": "§e(Kehittäjä) §7Kopioi NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
         "detailedHelp": {
           "description": "Kopioi entiteetin NBT tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta tiedot kopioidaan voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
           "options": {
@@ -309,7 +309,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy tulostaulun teksti",
+        "help": "§e(Kehittäjä) §7Kopioi tulostaulun teksti",
         "detailedHelp": {
           "description": "Kopioi tulostaulun sivupalkin kohdassa näytetyn tekstin",
           "options": {
@@ -318,7 +318,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy tab-listan otsikko ja alatunniste",
+        "help": "§e(Kehittäjä) §7Kopioi tab-listan otsikko ja alatunniste",
         "detailedHelp": {
           "description": "Tämä komento kopioi otsikon ja alatunnisteen tab-pelaajalistasta. Muunnoskoodit sisällytetään."
         }
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Kehittäjä) §7Uudelleenlataa kaikki modin asetukset ja resurssit. Peli pysähtyy muutamaksi sekunniksi."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Kehittäjä) §7Uudelleenlataa modin asetukset"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Kehittäjä) §7Uudelleenlataa modin resurssit. Peli pysähtyy muutamaksi sekunniksi."
       },
       "set": {
         "zealotCounter": {
@@ -391,7 +391,7 @@
         "invalidStat": "\"%input%\" ei ole pätevä johtaja!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle toimintopalkin viestien kirjaaminen lokiin",
+        "help": "§e(Kehittäjä) §7Aseta päälle/pois toimintopalkin viestien kirjaaminen lokiin",
         "disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
         "enabled": "Toimintopalkin viestit kirjataan nyt lokiin."
       },
@@ -454,11 +454,11 @@
   },
   "warpMenu": {
     "click": "Paina siirtymispistettä matkustaaksesi sinne!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
+    "mustUnlock": "Kyseinen scroll pitää olla avattuna.",
+    "privateIsland": "Oma saari",
     "home": "Oma saari",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
+    "spawn": "Keskusta",
+    "unknown": "Et ole vielä vieraillut",
     "notUnlocked": "Ei avattu",
     "inCombat": "Taistelussa..."
   }
