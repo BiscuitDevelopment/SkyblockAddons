@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.tweaker;
 
-import net.minecraftforge.fml.relauncher.CoreModManager;
 import net.minecraftforge.fml.relauncher.FMLRelaunchLog;
 import net.minecraftforge.fml.relauncher.IFMLCallHook;
 import org.apache.logging.log4j.Level;
@@ -25,12 +24,7 @@ public class SkyblockAddonsDuplicateChecker implements IFMLCallHook {
         logDebug("Searching for duplicate SkyblockAddons installations...");
 
         try {
-            Field loadPluginsField = CoreModManager.class.getDeclaredField("loadPlugins");
-            loadPluginsField.setAccessible(true);
-
-            @SuppressWarnings("unchecked")
-            List<Object> coremodList = (List<Object>) loadPluginsField.get(null);
-            loadPluginsField.setAccessible(false);
+            List<Object> coremodList = SkyblockAddonsLoadingPlugin.coremodList;
 
             Field nameField = coremodList.get(0).getClass().getField("name");
             boolean coreFound = false;
