@@ -73,6 +73,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
+import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -492,6 +493,26 @@ public class PlayerListener {
     }
 
     /**
+     * Block emptying of buckets separately because they aren't handled like blocks.
+     * The event name {@code FillBucketEvent} is misleading. The event is fired when buckets are emptied also so
+     * it should really be called {@code BucketEvent}.
+     *
+     * @param bucketEvent the event
+     */
+    @SubscribeEvent
+    public void onBucketEvent(FillBucketEvent bucketEvent) {
+        ItemStack bucket = bucketEvent.current;
+        EntityPlayer player = bucketEvent.entityPlayer;
+
+        if (main.getUtils().isOnSkyblock() && player instanceof EntityPlayerSP) {
+            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) &&
+                    EnchantedItemPlacementBlocker.shouldBlockPlacement(bucket, bucketEvent)) {
+                bucketEvent.setCanceled(true);
+            }
+        }
+    }
+
+    /**
      * The main timer for a bunch of stuff.
      */
     @SubscribeEvent()
@@ -701,7 +722,7 @@ public class PlayerListener {
 
                     Vec3 deathLocation = e.entity.getPositionVector();
 
-                    double distance = explosionLocation.distanceTo(deathLocation);
+//                    double distance = explosionLocation.distanceTo(deathLocation);
 //                    System.out.println("Distance was "+distance+"!");
                     if (explosionLocation.distanceTo(deathLocation) < 4.6) {
 //                        possibleZealotsKilled--;
