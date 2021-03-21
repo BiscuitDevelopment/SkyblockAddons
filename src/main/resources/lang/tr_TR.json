@@ -32,16 +32,16 @@
     "manaText": "Mana'yı Göster (sayı ile)",
     "healthBar": "Can Çubuğu",
     "healthText": "Can'ı Göster (sayı ile)",
-    "defenceIcon": "Zırh İmgesi",
-    "defenceText": "Zırh'ı Göster (sayı ile)",
+    "defenceIcon": "Savunma Sembolü",
+    "defenceText": "Savunma Sayısı",
     "defencePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Lobide Uzaktaki Kişileri Gizle",
+    "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
-    "itemPickupLog": "Toplanan Eşya'yı Yaz",
-    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Kapat",
-    "avoidBreakingStems": "Ekinleri Kırmayı Önleme",
+    "itemPickupLog": "Toplanan Eşya Günlüğü",
+    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Engelle",
+    "avoidBreakingStems": "Kökleri Kımayı Engelle",
     "stopBowChargeFromResetting": "Yay Doldururken Sıfırlanmayı Engelle",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
@@ -176,29 +176,29 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightMaxEnchantments": "Özel Büyüleri Vurgula",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "disableEmptyGlassPanes": "Boş İnce Camları Devre Dışı Bırak",
+    "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
+    "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
+    "chromaSize": "Chroma Ölçüsü",
+    "chromaSaturation": "Chroma Doygunluğu",
+    "chromaBrightness": "Chroma Parlaklığı",
+    "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
+    "showExperimentationTableTooltips": "Experimentation Table İpuçlarını Göster",
+    "onlyMineOresDwarvenMines": "Dwarven Mines'da Sadece Cevherleri Kaz",
+    "drillFuelBar": "Drill Yakıt Barı",
+    "drillFuelText": "Drill Yakıt Sayısı"
   },
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
     "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
-    "magmaBossWarning": "Magma Kübü Boss!",
+    "magmaBossWarning": "Magma Küp Bossu!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
-    "minionCannotReach": "%type% türü bir minyon çıkardığı %type%'lara erişemediğinden çalışmayı durdurdu!",
-    "minionIsFull": "Adandaki bir minyon'un alanı doldu!",
+    "minionCannotReach": "%type% minyona ulaşılamadığından çalışmayı durdurdu!",
+    "minionIsFull": "Adanda ki bir minyonun alanı doldu!",
     "typeEnchantmentsHere": "Buraya %type%i Yaz!",
-    "separateMultiple": "Birden Fazla Gireceksen Virgül ile Ayır.",
+    "separateMultiple": "Birden Fazla Parametreyi Virgül ile Ayır.",
     "enchantsToMatch": "Eşleşecek %type%:",
     "enchantsToExclude": "İstenmeyen %type% :",
     "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
@@ -255,7 +255,7 @@
     "effectsActive": "%number% Efekt Aktif",
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
-    "chroma": "Chroma"
+    "chroma": "Renk parlaklığı"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "set": {
         "zealotCounter": {
@@ -453,13 +453,13 @@
     "bossesKilled": "Bosslar Öldürüldü"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Buraya gitmek için bir ışınlanma noktasına tıkla!",
+    "mustUnlock": "Belirli bir Scroll kilidi açılmış olmalı.",
+    "privateIsland": "Özel Ada",
+    "home": "Senin Adan",
+    "spawn": "Başlangıç Noktası",
+    "unknown": "Ziyaret Edilmemiş",
+    "notUnlocked": "Açılmamış",
+    "inCombat": "Savaşta..."
   }
 }
