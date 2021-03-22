@@ -116,8 +116,18 @@ processResources {
     }
 }
 
+task copyLicenses (type: Copy) {
+    from(project.projectDir) {
+        include('LICENSE')
+        include('NOTICE')
+        include('dependencyLicenses/**')
+    }
+    into(sourceSets.main.output.resourcesDir)
+}
+
 test {
     useJUnitPlatform()
 }
 
+tasks.jar.dependsOn(tasks.copyLicenses)
 tasks.reobfJar.dependsOn(tasks.shadowJar)
