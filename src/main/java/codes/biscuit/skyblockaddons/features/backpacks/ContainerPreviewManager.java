@@ -391,13 +391,16 @@ public class ContainerPreviewManager {
 
     public static void onContainerKeyTyped(int keyCode) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
-            frozen = false;
-            currentContainerPreview = null;
-        }
-        if (keyCode == main.getFreezeBackpackKey().getKeyCode() && frozen && System.currentTimeMillis() - lastToggleFreezeTime > 500) {
-            lastToggleFreezeTime = System.currentTimeMillis();
-            frozen = false;
+
+        if (main.getUtils().isOnSkyblock()) {
+            if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
+                frozen = false;
+                currentContainerPreview = null;
+            }
+            if (keyCode == main.getFreezeBackpackKey().getKeyCode() && frozen && System.currentTimeMillis() - lastToggleFreezeTime > 500) {
+                lastToggleFreezeTime = System.currentTimeMillis();
+                frozen = false;
+            }
         }
     }
 }

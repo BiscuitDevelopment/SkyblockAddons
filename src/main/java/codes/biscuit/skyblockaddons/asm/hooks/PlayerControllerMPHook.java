@@ -106,6 +106,10 @@ public class PlayerControllerMPHook {
      * Cancels clicking a locked inventory slot, even from other mods
      */
     public static void onWindowClick(int slotNum, int mouseButtonClicked, int mode, EntityPlayer player, ReturnValue<ItemStack> returnValue) { // return null
+        if (Minecraft.getMinecraft().thePlayer.openContainer != null) {
+            SkyblockAddons.getLogger().info("Handling windowclick--slotnum: " + slotNum + " should be locked: " + SkyblockAddons.getInstance().getConfigValues().getLockedSlots().contains(slotNum) + " mousebutton: " + mouseButtonClicked + " mode: " + mode + " container class: " + player.openContainer.getClass().toString());
+        }
+
         // Handle blocking the next click, sorry I did it this way
         if (Utils.blockNextClick) {
             Utils.blockNextClick = false;
