@@ -28,7 +28,7 @@ Special Credits
 -----
 InventiveTalent for allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
 
-TirelessTraveler for helping maintain the project in the past.
+TirelessTraveler (aka ILikePlayingGames) for helping maintain the project.
 
 DidiSkywalker & CraftedFury (Nahydrin) for adding/PRing many incredible features!
 
