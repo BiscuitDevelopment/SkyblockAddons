@@ -44,9 +44,10 @@ git checkout -b development --track origin/development
       - Go to `Window` -> `Preferences` -> `General` -> `Workspace`
       - Change `Text File Encoding` from `Default` to `UTF-8`
 
-4. Make sure to add the **VM** argument to your debug configuration
+4. Make sure to add the **VM** arguments to your debug configuration:
     ```text
     -Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin
+    -Dlog4j.configurationFile=file:$ProjectFileDir$/log-config.xml
     ```
 5. Include your **Minecraft** username and password as arguments in the **debug configuration**.
    In order, to login into [Hypixel](https://hypixel.net) by your account.
