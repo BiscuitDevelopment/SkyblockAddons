@@ -185,7 +185,7 @@
     "useNewChromaEffect": "새로운 무지개 이펙트 사용하기",
     "showExperimentationTableTooltips": "Experimentation Table 팁 보이기",
     "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
-    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelBar": "Drill 연료 바",
     "drillFuelText": "Drill 연료 숫자"
   },
   "messages": {
@@ -267,43 +267,43 @@
     "titleStats": "스텟",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
+    "descriptionZealots": "당신의 Zealot 카운터를 보여줍니다",
+    "titleItem": "들고 있는 아이템",
+    "descriptionItem": "당신이 들고 있는 아이템의 이름을 보여줍니다",
+    "titleProfile": "프로필",
+    "descriptionProfile": "당신의 프로필 이름을 보여줍니다",
+    "titleTime": "스카이블럭 시간",
+    "descriptionTime": "현재 스카이블럭 시간을 보여줍니다. 예: 12:00am 1st Early Winter",
+    "titleCustom": "사용자 지정 상태",
     "descriptionCustom": "사용자 지정 상태를 입력하세요",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleAuto": "자동으로 표시되는 상태",
+    "descriptionAuto": "자동으로 상태를 표시합니다. 예: The End에서의 당신의 Zealot 카운트.",
+    "titleRevenants": "Revenant 퀘스트",
+    "descriptionRevenants": "당신이 Revenant 퀘스트를 하는 것을 보여줍니다.",
+    "titleSvens": "Sven 퀘스트",
+    "descriptionSvens": "당신이 Sven 퀘스트를 하는 것을 보여줍니다.",
     "titleTarantula": "Tarantula 퀘스트",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "당신이 Tarantula 퀘스트를 하는 것을 보여줍니다."
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "메인 메뉴 열기"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(개발자 모드) §7서버 브랜드 보이기",
+        "brandOutput": "서버 브랜드: %brand%",
+        "notFound": "서버 브랜드를 찾을 수 없습니다!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(개발자 모드) §7특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
             "radius": "The radius (in blocks) around the player to copy entity NBT data from"
           }
         }
@@ -332,14 +332,14 @@
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "GUI 위치 편집"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "모드 폴더 열기",
+        "error": "모드 폴더를 여는 도중 오류가 발생하였습니다: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "이 도움 메시지를 보여줍니다. 만약 명령어를 입력받았다면, 그 명령어에 대한 자세한 도움말도 보여줍니다.",
         "detailedHelp": {
           "options": {
             "command": "the sub-command to get detailed usage for"
@@ -357,48 +357,48 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "직접 질럿 카운트를 설정하세요.",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "직접 질럿 카운터의 값을 설정합니다.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "총 서머닝 눈 획득 수",
+              "totalZealots": "총 질럿 킬 수",
+              "zealots": "최근 서머닝 눈 드랍 이후 죽인 질럿들"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "전체 서머닝 눈 카운트를 %number% (으)로 설정했습니다!",
+          "totalZealotsSet": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+          "wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
+          "zealotsSet": "현재 질럿 카운트를 %number% (으)로 설정했습니다!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "직접 슬레이어 스탯을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "직접 슬레이어 스탯을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "슬레이어 보스: \"Zombie\", \"Spider, 또는 \"Wolf\"",
+            "number": "스탯으로 만들 숫자",
+            "stat": "바꿀 Slayer 스탯, \"kills\" 또는 그 Slayer가 떨어트리는 아이템을 이렇게 포매팅 한 것일수도 있읍니다: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "보스를 선택해야 합니다! %bosses% 를 골라 주세요!",
+        "statRequired": "스탯을 골라야 합니다. 선택 가능 스탯을 보려면 Tab를 누르세요.",
+        "numberRequired": "당신이 원하는 숫자를 넣어야 합니다.",
+        "killsSet": "%boss% Slayer의 킬 숫자가 %number% 로 바뀌었습니다",
+        "statSet": "%boss% Slayer 스탯 %stat% 이 %number% 로 바뀌었습니다",
+        "invalidBoss": "\"%input%\"은 유효한 스텟이 아닙니다!",
+        "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "잘못된 사용법입니다!",
+          "subCommandNotFound": "부 명령어 \"%sub-command%\" (을)를 찾을 수 없습니다."
         }
       }
     }
@@ -414,11 +414,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "최근 드래곤:",
+    "dragonsSince": "드래곤 통계:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "설치한 눈",
     "never": "안 함"
   },
   "slayerTracker": {
@@ -454,12 +454,12 @@
   },
   "warpMenu": {
     "click": "워프 포인트를 클릭하여 워프하세요!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "mustUnlock": "이 Scroll를 반드시 잠금 해제 해야 합니다.",
+    "privateIsland": "개인 섬",
+    "home": "당신의 섬",
+    "spawn": "스폰",
+    "unknown": "방문하지 않음.",
+    "notUnlocked": "해금 안 됨",
+    "inCombat": "전투 중..."
   }
 }
