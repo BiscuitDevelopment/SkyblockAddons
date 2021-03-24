@@ -125,7 +125,7 @@
     "disableTeleportPadMessages": "Matikan Pesan-Pesan Teleport Pad",
     "baitListDisplay": "Memperlihatkan Daftar Umpan Sambil Memegang Tongkat Pancing",
     "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "hideGreyEnchants": "Sembunyikan Enchants Biasa Berwarna Abu-abu",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
     "changeZealotColor": "Ubah Warna Zealot",
@@ -154,7 +154,7 @@
     "textMode": "Mode Teks",
     "dragonsNestOnly": "Hanya Memperlihatkan Di Dragon's Nest",
     "dragonStatsTracker": "Tracker Naga",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "skillActionsLeftUntilNextLevel": "Perlihatkan Sisa Aksi Sebelum Naik Level",
     "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
     "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
     "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
@@ -175,7 +175,7 @@
     "easierPresentOpening": "Buka Kado Lebih Mudah",
     "showSwordKills": "Memperlihatkan Jumlah Pembunuhan Pedang",
     "compactTabList": "Daftar Tab Kompak",
-    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "highlightMaxEnchantments": "Soroti Enchantment-Enchantment Spesial",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
@@ -199,7 +199,7 @@
     "minionIsFull": "Sebuah Minion Di Pulau Anda Penuh!",
     "typeEnchantmentsHere": "Ketik %type% Disini!",
     "separateMultiple": "Pisahkan lebih dari satu Dengan Koma.",
-    "enchantsToMatch": "%type% To Match:",
+    "enchantsToMatch": "%type% Untuk Mencocokkan:",
     "enchantsToExclude": "%type% Untuk Mengecualikan:",
     "wantToViewPatchNotes": "Butuh Bantuan Atau Mau Baca Changelog Penuh?",
     "downloadLink": "VIDEO/TAUTAN UPDATE",
@@ -211,7 +211,7 @@
       "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Slot Ini Terkunci!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledStemBreak": "Sebuah fitur telah mencegah anda untuk menghancurkan akar ini. Pakai tangan anda jika anda yakin ingin menghancurkannya.",
     "cancelledProfileOpening": "Sebuah fitur telah mencegah anda untuk membuka profil player ini karena anda memegang busur.",
@@ -234,12 +234,12 @@
     "resizeBars": "Ubah ukuran bar",
     "showColorIcons": "Perlihatkan ikon-ikon warna",
     "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
+    "stage": "Tahap %stage%",
     "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
     "clickToOpenLink": "Klik Untuk Membuka Link Ini!",
     "clickToOpenFolder": "Click to open your mods folder!",
     "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
+    "secondStatus": "Status ini akan muncul dibawah status pertama Anda",
     "fallbackStatus": "Status ini akan muncul saat status otomatis anda tidak memiliki apapun untuk ditunjukkan",
     "legendarySeaCreatureWarning": "Tangkapan Legendaris!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
@@ -254,7 +254,7 @@
     "effectActive": "1 Efek Aktif",
     "effectsActive": "%number% Efek Aktif",
     "none": "Tidak Ada",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
     "chroma": "Chroma"
   },
   "discordStatus": {
@@ -271,7 +271,7 @@
     "titleItem": "Held Item",
     "descriptionItem": "Perlihatkan nama benda yang sedang anda pegang",
     "titleProfile": "Profil",
-    "descriptionProfile": "Shows your Profile name",
+    "descriptionProfile": "Perlihatkan nama Profil anda",
     "titleTime": "Waktu Skyblock",
     "descriptionTime": "Perlihatkan Skyblock time saat ini. Contoh 12:00am 1st Early Winter",
     "titleCustom": "Custom Status",
@@ -288,7 +288,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Buka menu utama"
       },
       "brand": {
         "help": "§e(Dev) §7Show the server brand",
@@ -296,7 +296,7 @@
         "notFound": "Server brand not found!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -304,12 +304,12 @@
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
             "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "radius": "Radius (dalam blok) sekitar player untuk menyalin data dari entity NBT"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Salin teks scoreboard",
         "detailedHelp": {
           "description": "Salinkan Teks Yang Tampil Di Slot Tampilan Sidebar Papan Angka",
           "options": {
@@ -332,17 +332,17 @@
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edit Lokasi GUI"
       },
       "folder": {
         "help": "Buka berkas mod anda",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "error": "Sebuah error terjadi ketika ingin membuka berkas mod: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "sub-command untuk mendapat penggunaan lebih detil"
           }
         }
       },
@@ -357,9 +357,9 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Mengatur penghitung zealot secara manual",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Mengatur penghitung zealot secara manual.",
             "options": {
               "eyes": "Lifetime summoning eyes obtained",
               "totalZealots": "Lifetime zealots killed",
@@ -368,24 +368,24 @@
           },
           "eyesSet": "Set total summoning eye count to %number%!",
           "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "wrongUsage": "Bagian tidak valid! Mohon pilih %options%.",
+          "zealotsSet": "Jadikan hitungan zealot menjadi %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Atur stat Slayer secara manual, tekan tab untuk arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Atur stat Slayer secara manual, tekan tab untuk arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
+            "number": "Angka stat yang ingin diubah",
             "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
           }
         },
         "bossRequired": "You need to select a boss! Please choose %bosses%",
         "statRequired": "You need to select a stat. Press tab for options.",
         "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "killsSet": "Kills untuk slayer %boss% diubah menjadi %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
         "invalidBoss": "\"%input%\" is not a valid statistic!",
         "invalidStat": "\"%input%\" is not a valid boss!"
