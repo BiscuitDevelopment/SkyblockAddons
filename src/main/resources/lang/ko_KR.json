@@ -309,9 +309,9 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(개발자 모드) §7스코어보드 텍스트 복사하기",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
             "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
           }
@@ -324,12 +324,12 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "개발자 모드 켜기/끄기",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "이 명령은 개발자 모드를 키고 끕니다. 이 모드는 스카이블럭 모드/툴 개발자를 위한 모드입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "개발자 모드가 꺼졌습니다!",
+        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
       },
       "edit": {
         "help": "GUI 위치 편집"
@@ -342,7 +342,7 @@
         "help": "이 도움 메시지를 보여줍니다. 만약 명령어를 입력받았다면, 그 명령어에 대한 자세한 도움말도 보여줍니다.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "자세한 사용법을 얻을 부명령어"
           }
         }
       },
