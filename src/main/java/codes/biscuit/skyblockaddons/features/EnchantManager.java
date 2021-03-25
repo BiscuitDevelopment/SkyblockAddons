@@ -97,19 +97,22 @@ public class EnchantManager {
             return nbtName + " " + maxCraft + " " + maxLevel + "\n";
         }
 
+
+        /**
+         * Orders enchants by type in the following way:
+         *  1) Ultimates (alphabetically)
+         *  2) Stacking (alphabetically)
+         *  3) Normal (alphabetically)
+         */
         @Override
         public int compareTo(Enchant o) {
-            if (o != null) {
-                // ORDER: Ultimates (alphabetically), Stacking (alphabetically), Normal (alphabetically)
-                if (this.isUltimate() == o.isUltimate()) {
-                    if (this.isStacking() == o.isStacking()) {
-                        return this.loreName.compareTo(o.loreName);
-                    }
-                    return this.isStacking() ? -1 : 1;
+            if (this.isUltimate() == o.isUltimate()) {
+                if (this.isStacking() == o.isStacking()) {
+                    return this.loreName.compareTo(o.loreName);
                 }
-                return this.isUltimate() ? -1 : 1;
+                return this.isStacking() ? -1 : 1;
             }
-            return -1;
+            return this.isUltimate() ? -1 : 1;
         }
 
 
@@ -197,7 +200,7 @@ public class EnchantManager {
         if (enchantNBT == null) {
             endEnchant = startEnchant;
         }
-        else if (endEnchant == -1) {
+        if (endEnchant == -1) {
             return;
         }
         // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
@@ -279,7 +282,6 @@ public class EnchantManager {
         if (extraAttributes == null) {
             return;
         }
-        // TODO: Make into a single function
         ConfigValues config = SkyblockAddons.getInstance().getConfigValues();
         if (config.isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
             Enchant.Stacking enchant = enchants.STACKING.get("Expertise");
