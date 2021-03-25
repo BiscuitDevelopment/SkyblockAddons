@@ -24,7 +24,6 @@ public class EnchantManager {
     // Catches successive [ENCHANT] [ROMAN NUMERALS OR DIGITS], as well as stacking enchants listing total stacked number
     private static final Pattern ENCHANTMENT_LINE_PATTERN = Pattern.compile("^((?:[\\w -]+) (?:[\\dIVXLCDM]+)(, |$| [\\d,]+$))+");
     private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[\\w -]+) ((?<levelNumeral>[IVXLCDM]+)|(?<levelDigit>[\\d]+))(, |$| [\\d,]+$)");
-    private static final Pattern ENCHANTMENT_FORMAT_START = Pattern.compile("^(§[a-f0-9k-or])*§9(§[k-o])?.*");
     private static final String COMMA = "§r, ";
     private static final int COMMA_LENGTH = COMMA.length();
     private static final int COMMA_SIZE = Minecraft.getMinecraft().fontRendererObj.getStringWidth(COMMA);
@@ -45,7 +44,7 @@ public class EnchantManager {
                 enchant = STACKING.get(loreName);
             }
             if (enchant == null) {
-                enchant = new Enchant.Dummy("loreName");
+                enchant = new Enchant.Dummy(loreName);
             }
             return enchant;
         }
@@ -137,6 +136,7 @@ public class EnchantManager {
 
             public Dummy (String name) {
                 loreName = name;
+                nbtName = name.toLowerCase().replaceAll(" ", "_");
             }
 
             @Override
@@ -146,8 +146,34 @@ public class EnchantManager {
         }
     }
 
+    /**
+     * Helper method to determine whether we should skip this line in parsing the lore.
+     * E.g. we want to skip "Breaking Power X" seen on pickaxes.
+     * @param enchantNBT the enchantments extraAttributes NBT of the item
+     * @param s the line of lore we are parsing
+     * @return {@code true} if no enchants on the line are in the enchants table, {@code false} otherwise.
+     */
+    public static boolean shouldIgnoreLine(NBTTagCompound enchantNBT, String s) {
+        if (enchantNBT == null) {
+            return false;
+        }
+        Matcher m = ENCHANTMENT_PATTERN.matcher(s);
+        while (m.find()) {
+            Enchant enchant = enchants.getFromLore(m.group("enchant"));
+            if (enchantNBT.hasKey(enchant.nbtName)) {
+
+                return false;
+            }
+        }
+        return true;
+    }
 
     public static void organizeEnchants(List<String> loreList, NBTTagCompound extraAttributes) {
+        NBTTagCompound enchantNBT = extraAttributes == null ? null : extraAttributes.getCompoundTag("enchantments");
+        if (enchantNBT == null && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() != InventoryType.SUPERPAIRS) {
+            return;
+        }
+
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
         int startEnchant = -1, endEnchant = -1, maxTooltipWidth = 0;
         for (int i = 0; i < loreList.size(); i++) {
@@ -155,7 +181,7 @@ public class EnchantManager {
             String s = TextUtils.stripColor(u);
 
             if (startEnchant == -1) {
-                if (ENCHANTMENT_FORMAT_START.matcher(u).matches() && ENCHANTMENT_LINE_PATTERN.matcher(s).matches()) {
+                if (ENCHANTMENT_LINE_PATTERN.matcher(s).matches() && !shouldIgnoreLine(enchantNBT, s)) {
                     startEnchant = i;
                 }
             }
@@ -168,13 +194,11 @@ public class EnchantManager {
                 maxTooltipWidth = Math.max(fontRenderer.getStringWidth(loreList.get(i)), maxTooltipWidth);
             }
         }
-        if (endEnchant == -1) {
-
-            if (startEnchant != -1 && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() == InventoryType.SUPERPAIRS) {
-                endEnchant = startEnchant;
-            } else {
-                return;
-            }
+        if (enchantNBT == null) {
+            endEnchant = startEnchant;
+        }
+        else if (endEnchant == -1) {
+            return;
         }
         // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
         maxTooltipWidth = correctTooltipWidth(maxTooltipWidth);
@@ -182,15 +206,13 @@ public class EnchantManager {
         TreeMap<Enchant, Integer> orderedEnchants = new TreeMap<>();
         // Order all enchants
         for (int i = startEnchant; i <= endEnchant; i++) {
-            if (ENCHANTMENT_FORMAT_START.matcher(loreList.get(i)).matches()) {
-                String currLine = TextUtils.stripColor(loreList.get(i));
-                Matcher m = ENCHANTMENT_PATTERN.matcher(currLine);
-                while (m.find()) {
-                    Enchant enchant = enchants.getFromLore(m.group("enchant"));
-                    int level = m.group("levelDigit") == null ? RomanNumeralParser.parseNumeral(m.group("levelNumeral")) : Integer.parseInt(m.group("levelDigit"));
-                    if (enchant != null) {
-                        orderedEnchants.put(enchant, level);
-                    }
+            String currLine = TextUtils.stripColor(loreList.get(i));
+            Matcher m = ENCHANTMENT_PATTERN.matcher(currLine);
+            while (m.find()) {
+                Enchant enchant = enchants.getFromLore(m.group("enchant"));
+                int level = m.group("levelDigit") == null ? RomanNumeralParser.parseNumeral(m.group("levelNumeral")) : Integer.parseInt(m.group("levelDigit"));
+                if (enchant != null) {
+                    orderedEnchants.put(enchant, level);
                 }
             }
         }
