@@ -142,7 +142,7 @@
     "showPlayerHeadsOnMap": "Perlihatkan Kepala-Kepala Player di Peta Dungeon",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Perlihatkan Rekan-Rekan Sekarat",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showGlowingItemsOnIsland": "Perlihatkan Benda-Benda Bersinar Di Pulau Privat",
     "showItemDungeonFloor": "Perlihatkan Didapatkannya Benda-Benda Dungeon Dari Lantai Apa",
     "showDungeonMilestone": "Perlihatkan Milestone Dungeon",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
@@ -382,29 +382,29 @@
             "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
+        "bossRequired": "Anda perlu memilih sebuah boss! Mohon pilih %bosses%",
+        "statRequired": "Anda perlu memilih stat. Tekan tab untuk opsi-opsi.",
+        "numberRequired": "Anda perlu menambahkan angka yang anda inginkan.",
         "killsSet": "Kills untuk slayer %boss% diubah menjadi %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "statSet": "Statistik %stat% untuk slayer %boss% telah diubah menjadi %number%.",
+        "invalidBoss": "\"%input%\" bukan sebuah statistik valid!",
+        "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Aktif/nonaktifkan pesan-pesan bar aksi dicatat",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "disabled": "Pesan-Pesan bar aksi tidak akan dicatat.",
+        "enabled": "Pesan-Pesan bar aksi akan dicatat."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Penggunaan Salah!",
+          "subCommandNotFound": "Sub-command \"%sub-command%\" tidak dapat ditemukan."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Salin NBT"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -414,7 +414,7 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
+    "recentDragons": "Naga-Naga terakhir:",
     "dragonsSince": "Naga-Naga Sejak:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
