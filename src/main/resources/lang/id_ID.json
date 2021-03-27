@@ -301,7 +301,7 @@
       "copyEntity": {
         "help": "§e(Dev) §7Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, stand armor, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
             "entityNames": "Nama-nama tipe entity yang anda ingin menyalin datanya (contoh Player,Creeper). Tekan \"Tab\" setelah mengetik command untuk list yang penuh. Pisahkan nama-nama dengan koma, nama-nama peka huruf kapital.",
             "radius": "Radius (dalam blok) sekitar player untuk menyalin data dari entity NBT"
@@ -313,23 +313,23 @@
         "detailedHelp": {
           "description": "Salinkan Teks Yang Tampil Di Slot Tampilan Sidebar Papan Angka",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Menentukan jika kode format harus di masukkan saat menyalin. Bisa menjadi \"benar\" atau \"salah\", biasanya menjadi \"salah\" jika tidak ada nilai yang diberikan. Kode format disalin jika \"benar\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Salin list tab header dan footer",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
         }
       },
       "dev": {
         "help": "Toggle developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod/alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
         },
         "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!"
       },
       "edit": {
         "help": "Edit Lokasi GUI"
@@ -339,7 +339,7 @@
         "error": "Sebuah error terjadi ketika ingin membuka berkas mod: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Perlihatkan pesan pembantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
         "detailedHelp": {
           "options": {
             "command": "sub-command untuk mendapat penggunaan lebih detil"
@@ -377,9 +377,9 @@
         "detailedHelp": {
           "description": "Atur stat Slayer secara manual, tekan tab untuk arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
             "number": "Angka stat yang ingin diubah",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "stat": "Stat slayer untuk diubah, dapat menjadi \"kills\" atau nama benda yang dijatuhkan dengan format: \"REVENANT_FLESH\""
           }
         },
         "bossRequired": "Anda perlu memilih sebuah boss! Mohon pilih %bosses%",
@@ -418,8 +418,8 @@
     "dragonsSince": "Naga-Naga Sejak:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyes Ditaruh",
+    "never": "Tidak Pernah"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
