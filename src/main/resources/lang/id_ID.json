@@ -132,12 +132,12 @@
     "hideSvenPupNametags": "Sembunyikan Tanda Nama Sven Pup",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Tampilan Peta Dungeon",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Putar Peta Dengan Rotasi Player Anda",
+    "centerRotationOnYourPlayer": "Putar Sekeliling Penanda Player Anda",
     "mapZoom": "Perbesar Peta",
-    "glowingDroppedItems": "Glowing Dropped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "glowingDroppedItems": "Benda-Benda Jatuh Bersinar",
+    "glowingDungeonTeammates": "Rekan-Rekan Dungeons Bersinar",
+    "baseStatBoostPercentage": "Perlihatkan Tambahan Stat Dasar untuk Benda-Benda Dungeons",
     "colorByRarity": "Color By Rarity",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
@@ -299,7 +299,7 @@
         "help": "§e(Dev) §7Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -366,8 +366,8 @@
               "zealots": "Zealots killed since the last summoning eye drop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
+          "eyesSet": "Jadikan hitungan total summoning eye menjadi %number%!",
+          "totalZealotsSet": "Jadikan hitungan total zealot menjadi %number%!",
           "wrongUsage": "Bagian tidak valid! Mohon pilih %options%.",
           "zealotsSet": "Jadikan hitungan zealot menjadi %number%!"
         }
@@ -391,7 +391,7 @@
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "§e(Dev) §7Aktif/nonaktifkan pesan-pesan bar aksi dicatat",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
