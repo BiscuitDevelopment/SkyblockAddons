@@ -291,7 +291,7 @@
         "help": "Buka menu utama"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
+        "help": "§e(Dev) §7Perlihatkan merek server",
         "brandOutput": "Merek Server: %brand%",
         "notFound": "Merek server tidak ditemukan!"
       },
