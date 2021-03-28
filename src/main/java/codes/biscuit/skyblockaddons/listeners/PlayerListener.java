@@ -352,7 +352,7 @@ public class PlayerListener {
                     } else {
                         this.rainmakerTimeEnd += (1000 * 60); // Extend the timer one minute.
                     }
-                } else if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES) &&
+                } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
                 }
@@ -447,7 +447,7 @@ public class PlayerListener {
     /**
      * Acts as a callback to set the actionbar message after other mods have a chance to look at the message
      */
-    @SubscribeEvent(priority = EventPriority.LOWEST)
+    @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatReceiveLast(ClientChatReceivedEvent e) {
         if (changedMessage) {
             e.message = new ChatComponentText(theChangedMessage);
@@ -933,7 +933,7 @@ public class PlayerListener {
     /**
      * Modifies item tooltips and activates the copy item nbt feature
      */
-    @SubscribeEvent()
+    @SubscribeEvent(priority = EventPriority.LOW)
     public void onItemTooltip(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
@@ -962,7 +962,7 @@ public class PlayerListener {
             }
 
             if (main.getConfigValues().isEnabled(Feature.ENCHANTMENT_LORE_PARSING)) {
-                EnchantManager.organizeEnchants(e.toolTip, ItemUtils.getExtraAttributes(e.itemStack));
+                EnchantManager.parseEnchants(e.toolTip, ItemUtils.getExtraAttributes(e.itemStack));
             }
 
             int insertAt = e.toolTip.size();
@@ -1005,6 +1005,10 @@ public class PlayerListener {
                         colorCode = ItemRarity.values()[rarityIndex].getColorCode();
                     }
                     e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
+                }
+
+                if (main.getConfigValues().isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
+                    insertAt = EnchantManager.insertStackingEnchantProgress(e.toolTip, extraAttributes, insertAt);
                 }
 
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SWORD_KILLS) && extraAttributes.hasKey("sword_kills", ItemUtils.NBT_INTEGER)) {

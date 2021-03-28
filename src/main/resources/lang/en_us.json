@@ -163,7 +163,7 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Stacking Enchant Progress",
+    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -188,10 +188,12 @@
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Text",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchantment Lore",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles"
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -477,6 +479,10 @@
     "superTier": "Max Tier",
     "highTier": "High Tier",
     "midTier": "Mid Tier",
-    "lowTier": "Low Tier"
+    "lowTier": "Low Tier",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

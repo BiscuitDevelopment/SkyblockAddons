@@ -166,12 +166,12 @@ public class GuiChestHook {
             SkyblockAddons.getInstance().getRenderListener().drawCollectedEssences(x, y, false, false);
         }
 
-        if (textFieldMatch != null && (inventoryType == InventoryType.ENCHANTMENT_TABLE ||
+        if (textFieldMatch != null && (/*inventoryType == InventoryType.ENCHANTMENT_TABLE ||*/
                 inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
             Minecraft mc = Minecraft.getMinecraft();
             SkyblockAddons main = SkyblockAddons.getInstance();
-            String typeToMatch = inventoryType == InventoryType.ENCHANTMENT_TABLE ? Message.MESSAGE_ENCHANTS.getMessage()
-                    : Message.MESSAGE_REFORGES.getMessage();
+            String typeToMatch = /*inventoryType == InventoryType.ENCHANTMENT_TABLE ? Message.MESSAGE_ENCHANTS.getMessage()
+                    : */Message.MESSAGE_REFORGES.getMessage();
             String inclusionExample;
             String exclusionExample;
             int defaultBlue = main.getUtils().getDefaultBlue(255);
@@ -181,14 +181,16 @@ public class GuiChestHook {
                 x = 20;
             }
 
+            /*
             if (inventoryType == InventoryType.ENCHANTMENT_TABLE) {
                 inclusionExample = Message.MESSAGE_ENCHANTMENT_INCLUSION_EXAMPLE.getMessage();
                 exclusionExample = Message.MESSAGE_ENCHANTMENT_EXCLUSION_EXAMPLE.getMessage();
             }
-            else {
+             */
+            //else {
                 inclusionExample = Message.MESSAGE_REFORGE_INCLUSION_EXAMPLE.getMessage();
                 exclusionExample = Message.MESSAGE_REFORGE_EXCLUSION_EXAMPLE.getMessage();
-            }
+            //}
 
             GlStateManager.color(1F, 1F, 1F);
             GlStateManager.pushMatrix();
@@ -439,8 +441,9 @@ public class GuiChestHook {
     public static void onRenderChestForegroundLayer(GuiChest guiChest) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
-        if (main.getConfigValues().isEnabled(Feature.SHOW_ENCHANTMENTS_REFORGES)) {
+        if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY)) {
             Minecraft mc = Minecraft.getMinecraft();
+            /*
             for (Slot slot : guiChest.inventorySlots.inventorySlots) {
                 ItemStack itemStack = slot.getStack();
 
@@ -509,6 +512,7 @@ public class GuiChestHook {
                     }
                 }
             }
+            */
 
             if (guiChest.inventorySlots.inventorySlots.size() > 13) {
                 Slot slot = guiChest.inventorySlots.inventorySlots.get(13);

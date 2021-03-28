@@ -265,7 +265,7 @@ public class ColorSelectionGui extends GuiScreen {
         // Hardcode until feature refactor...
         if (feature == Feature.ENCHANTMENT_PERFECT_COLOR || feature == Feature.ENCHANTMENT_GREAT_COLOR ||
                 feature == Feature.ENCHANTMENT_GOOD_COLOR || feature == Feature.ENCHANTMENT_POOR_COLOR) {
-            main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, Feature.ENCHANTMENTS_HIGHLIGHT);
+            main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, Feature.ENCHANTMENT_LORE_PARSING);
         }
         else {
             main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, feature);

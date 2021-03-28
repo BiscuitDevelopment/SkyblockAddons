@@ -239,7 +239,6 @@ public class IslandWarpGui extends GuiScreen {
         MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
         PRIVATE_ISLAND("Private Island", 216, 1122),
         DUNGEON_HUB("Dungeon Hub", 1200, 1100),
-        DWARVEN_MINES("Dwarven Mines", 1450, 1050)
         ;
 
         private String label;

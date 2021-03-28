@@ -225,6 +225,7 @@ public class EnumUtils {
         POOR_ENCHANT_COLOR("enchants.lowTier", 168),
         LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
         BIGGER_WAKE("settings.biggerWake", 170),
+        HIGHLIGHT_ENCHANTMENTS("settings.highlightMaxEnchantments", 153),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -269,7 +270,7 @@ public class EnumUtils {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
         INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
-        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
+        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ENCHANTMENT_LORE_PARSING),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
         TOMOCRAFTER("tomocrafter", "github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
@@ -295,7 +296,7 @@ public class EnumUtils {
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
         PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING,
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS, Feature.ONLY_MINE_ORES_DWARVEN_MINES, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
-                Feature.FISHING_PARTICLE_OVERLAY, Feature.ENCHANTMENT_LORE_PARSING, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE);
+                Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE);
 
         private Set<Feature> features;
         private String author;

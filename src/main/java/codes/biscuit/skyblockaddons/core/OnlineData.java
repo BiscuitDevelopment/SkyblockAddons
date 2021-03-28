@@ -5,6 +5,7 @@ import lombok.Getter;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Getter
 public class OnlineData {
@@ -26,6 +27,10 @@ public class OnlineData {
     private HashMap<String, Integer> specialEnchantments;
 
     private HashSet<String> legendarySeaCreatures;
+
+    private HashSet<Pattern> hypixelBrands;
+
+    private HashSet<Pattern> hypixelDomains;
 
     @Getter
     public static class DropSettings {

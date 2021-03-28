@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.RomanNumeralParser;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
@@ -22,8 +23,7 @@ import java.util.regex.Pattern;
 public class EnchantManager {
 
     // Catches successive [ENCHANT] [ROMAN NUMERALS OR DIGITS], as well as stacking enchants listing total stacked number
-    private static final Pattern ENCHANTMENT_LINE_PATTERN = Pattern.compile("^((?:[\\w -]+) (?:[\\dIVXLCDM]+)(, |$| [\\d,]+$))+");
-    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[\\w -]+) ((?<levelNumeral>[IVXLCDM]+)|(?<levelDigit>[\\d]+))(, |$| [\\d,]+$)");
+    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[A-Za-z -]+) ((?<levelNumeral>[IVXLCDM]+)|(?<levelDigit>[\\d]+))(, |$| [\\d,]+$)");
     private static final String COMMA = "§r, ";
     private static final int COMMA_LENGTH = COMMA.length();
     private static final int COMMA_SIZE = Minecraft.getMinecraft().fontRendererObj.getStringWidth(COMMA);
@@ -36,6 +36,7 @@ public class EnchantManager {
         HashMap<String, Enchant.Stacking> STACKING = new HashMap<>();
 
         public Enchant getFromLore(String loreName) {
+            loreName = loreName.toLowerCase(Locale.US);
             Enchant enchant = NORMAL.get(loreName);
             if (enchant == null) {
                 enchant = ULTIMATE.get(loreName);
@@ -57,7 +58,7 @@ public class EnchantManager {
     static class Enchant implements Comparable<Enchant> {
         String nbtName;
         String loreName;
-        int maxCraft;
+        int goodLevel;
         int maxLevel;
 
         public boolean isNormal() {
@@ -78,23 +79,20 @@ public class EnchantManager {
 
         public String getFormat(int level) {
             ConfigValues config = SkyblockAddons.getInstance().getConfigValues();
-            if (config.isDisabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
-                return ColorCode.BLUE.toString();
-            }
             if (level >= maxLevel) {
                 return config.getRestrictedColor(Feature.ENCHANTMENT_PERFECT_COLOR).toString();
             }
-            if (level > maxCraft) {
+            if (level > goodLevel) {
                 return config.getRestrictedColor(Feature.ENCHANTMENT_GREAT_COLOR).toString();
             }
-            if (level == maxCraft) {
+            if (level == goodLevel) {
                 return config.getRestrictedColor(Feature.ENCHANTMENT_GOOD_COLOR).toString();
             }
             return config.getRestrictedColor(Feature.ENCHANTMENT_POOR_COLOR).toString();
         }
 
         public String toString() {
-            return nbtName + " " + maxCraft + " " + maxLevel + "\n";
+            return nbtName + " " + goodLevel + " " + maxLevel + "\n";
         }
 
 
@@ -128,6 +126,7 @@ public class EnchantManager {
 
         static class Stacking extends Enchant {
             String nbtNum;
+            String statLabel;
             TreeSet<Integer> stackLevel;
 
             public String toString() {
@@ -156,102 +155,96 @@ public class EnchantManager {
      * @param s the line of lore we are parsing
      * @return {@code true} if no enchants on the line are in the enchants table, {@code false} otherwise.
      */
-    public static boolean shouldIgnoreLine(NBTTagCompound enchantNBT, String s) {
-        if (enchantNBT == null) {
-            return false;
-        }
+    public static boolean containsEnchantment(NBTTagCompound enchantNBT, String s) {
         Matcher m = ENCHANTMENT_PATTERN.matcher(s);
         while (m.find()) {
             Enchant enchant = enchants.getFromLore(m.group("enchant"));
-            if (enchantNBT.hasKey(enchant.nbtName)) {
-
-                return false;
+            if (enchantNBT == null || enchantNBT.hasKey(enchant.nbtName)) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    public static void organizeEnchants(List<String> loreList, NBTTagCompound extraAttributes) {
+    public static void parseEnchants(List<String> loreList, NBTTagCompound extraAttributes) {
         NBTTagCompound enchantNBT = extraAttributes == null ? null : extraAttributes.getCompoundTag("enchantments");
         if (enchantNBT == null && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() != InventoryType.SUPERPAIRS) {
             return;
         }
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.ENCHANTMENTS_HIGHLIGHT)) {
 
-        FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-        int startEnchant = -1, endEnchant = -1, maxTooltipWidth = 0;
-        for (int i = 0; i < loreList.size(); i++) {
-            String u = loreList.get(i);
-            String s = TextUtils.stripColor(u);
-
-            if (startEnchant == -1) {
-                if (ENCHANTMENT_LINE_PATTERN.matcher(s).matches() && !shouldIgnoreLine(enchantNBT, s)) {
-                    startEnchant = i;
+            FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
+            int startEnchant = -1, endEnchant = -1, maxTooltipWidth = 0;
+            for (int i = 0; i < loreList.size(); i++) {
+                String u = loreList.get(i);
+                String s = TextUtils.stripColor(u);
+                if (startEnchant == -1) {
+                    if (containsEnchantment(enchantNBT, s)) {
+                        startEnchant = i;
+                    }
+                }
+                // Assume enchants end with an empty line "break"
+                else if (s.trim().length() == 0 && endEnchant == -1) {
+                    endEnchant = i - 1;
+                }
+                // Get max tooltip size, disregarding the enchants section
+                if (startEnchant == -1 || endEnchant != -1) {
+                    maxTooltipWidth = Math.max(fontRenderer.getStringWidth(loreList.get(i)), maxTooltipWidth);
                 }
             }
-            // Assume enchants end with an empty line "break"
-            else if (s.trim().length() == 0 && endEnchant == -1) {
-                endEnchant = i - 1;
+            if (enchantNBT == null && endEnchant == -1) {
+                endEnchant = startEnchant;
             }
-            // Get max tooltip size, disregarding the enchants section
-            if (startEnchant == -1 || endEnchant != -1) {
-                maxTooltipWidth = Math.max(fontRenderer.getStringWidth(loreList.get(i)), maxTooltipWidth);
+            if (endEnchant == -1) {
+                return;
             }
-        }
-        if (enchantNBT == null) {
-            endEnchant = startEnchant;
-        }
-        if (endEnchant == -1) {
-            return;
-        }
-        // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
-        maxTooltipWidth = correctTooltipWidth(maxTooltipWidth);
+            // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
+            maxTooltipWidth = correctTooltipWidth(maxTooltipWidth);
 
-        TreeMap<Enchant, Integer> orderedEnchants = new TreeMap<>();
-        // Order all enchants
-        for (int i = startEnchant; i <= endEnchant; i++) {
-            String currLine = TextUtils.stripColor(loreList.get(i));
-            Matcher m = ENCHANTMENT_PATTERN.matcher(currLine);
-            while (m.find()) {
-                Enchant enchant = enchants.getFromLore(m.group("enchant"));
-                int level = m.group("levelDigit") == null ? RomanNumeralParser.parseNumeral(m.group("levelNumeral")) : Integer.parseInt(m.group("levelDigit"));
-                if (enchant != null) {
-                    orderedEnchants.put(enchant, level);
+            TreeMap<Enchant, Integer> orderedEnchants = new TreeMap<>();
+            // Order all enchants
+            for (int i = startEnchant; i <= endEnchant; i++) {
+                String currLine = TextUtils.stripColor(loreList.get(i));
+                Matcher m = ENCHANTMENT_PATTERN.matcher(currLine);
+                while (m.find()) {
+                    Enchant enchant = enchants.getFromLore(m.group("enchant"));
+                    int level = m.group("levelDigit") == null ? RomanNumeralParser.parseNumeral(m.group("levelNumeral")) : Integer.parseInt(m.group("levelDigit"));
+                    if (enchant != null) {
+                        orderedEnchants.put(enchant, level);
+                    }
                 }
             }
-        }
-
-        int numEnchants = orderedEnchants.size();
-        List<String> enchantList = new ArrayList<>(numEnchants);
-        List<Integer> enchantSizes = new ArrayList<>(numEnchants);
-        for (Map.Entry<Enchant, Integer> currEnchant : orderedEnchants.entrySet()) {
-            int level = currEnchant.getValue();
-            String formattedName = currEnchant.getKey().getFormattedName(level);
-            String formattedLevel = SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) ?
-                    String.valueOf(level) : RomanNumeralParser.integerToRoman(level);
-            String fullEnchantName = formattedName + " " + formattedLevel;
-            int enchantRenderLength = fontRenderer.getStringWidth(fullEnchantName);
-            enchantList.add(fullEnchantName);
-            enchantSizes.add(enchantRenderLength);
-            maxTooltipWidth = Math.max(enchantRenderLength, maxTooltipWidth);
-        }
-
-        if (enchantList.size() == 0) {
-            return;
-        }
-        // Remove enchantment lines
-        loreList.subList(startEnchant, endEnchant + 1).clear();
-        int i, e;
-        for (i = 0, e = 0; e < numEnchants; i++) {
-            StringBuilder builder = new StringBuilder(maxTooltipWidth);
-            for (int sum = 0; e < numEnchants && sum + enchantSizes.get(e) <= maxTooltipWidth; e++) {
-                builder.append(enchantList.get(e)).append(COMMA);
-                sum += enchantSizes.get(e) + COMMA_SIZE;
+            int numEnchants = orderedEnchants.size();
+            List<String> enchantList = new ArrayList<>(numEnchants);
+            List<Integer> enchantSizes = new ArrayList<>(numEnchants);
+            for (Map.Entry<Enchant, Integer> currEnchant : orderedEnchants.entrySet()) {
+                int level = currEnchant.getValue();
+                String formattedName = currEnchant.getKey().getFormattedName(level);
+                String formattedLevel = SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS) ?
+                        String.valueOf(level) : RomanNumeralParser.integerToRoman(level);
+                String fullEnchantName = formattedName + " " + formattedLevel;
+                int enchantRenderLength = fontRenderer.getStringWidth(fullEnchantName);
+                enchantList.add(fullEnchantName);
+                enchantSizes.add(enchantRenderLength);
+                maxTooltipWidth = Math.max(enchantRenderLength, maxTooltipWidth);
             }
-            builder.delete(builder.length() - COMMA_LENGTH, builder.length());
-            loreList.add(startEnchant + i, builder.toString());
-        }
 
-        insertStackingEnchantProgress(loreList, extraAttributes, startEnchant + i);
+            if (enchantList.size() == 0) {
+                return;
+            }
+            // Remove enchantment lines
+            loreList.subList(startEnchant, endEnchant + 1).clear();
+            int i, e;
+            for (i = 0, e = 0; e < numEnchants; i++) {
+                StringBuilder builder = new StringBuilder(maxTooltipWidth);
+                for (int sum = 0; e < numEnchants && sum + enchantSizes.get(e) <= maxTooltipWidth; e++) {
+                    builder.append(enchantList.get(e)).append(COMMA);
+                    sum += enchantSizes.get(e) + COMMA_SIZE;
+                }
+                builder.delete(builder.length() - COMMA_LENGTH, builder.length());
+                loreList.add(startEnchant + i, builder.toString());
+            }
+        }
     }
 
 
@@ -278,49 +271,28 @@ public class EnchantManager {
         return maxTooltipWidth;
     }
 
-    private static void insertStackingEnchantProgress(List<String> loreList, NBTTagCompound extraAttributes, int insertAt) {
-        if (extraAttributes == null) {
-            return;
+    public static int insertStackingEnchantProgress(List<String> loreList, NBTTagCompound extraAttributes, int insertAt) {
+        if (extraAttributes == null || SkyblockAddons.getInstance().getConfigValues().isDisabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
+            return insertAt;
         }
-        ConfigValues config = SkyblockAddons.getInstance().getConfigValues();
-        if (config.isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
-            Enchant.Stacking enchant = enchants.STACKING.get("Expertise");
+        for (Enchant.Stacking enchant : enchants.STACKING.values()) {
             if (extraAttributes.hasKey(enchant.nbtNum, Constants.NBT.TAG_ANY_NUMERIC)) {
                 int stackedEnchantNum = extraAttributes.getInteger(enchant.nbtNum);
                 Integer nextLevel = enchant.stackLevel.higher(stackedEnchantNum);
-                ColorCode colorCode = config.getRestrictedColor(Feature.SHOW_STACKING_ENCHANT_PROGRESS);
+                String statLabel = Translations.getMessage("enchants." + enchant.statLabel);
+                ColorCode colorCode = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.SHOW_STACKING_ENCHANT_PROGRESS);
+                StringBuilder b = new StringBuilder();
+                b.append("§7").append(statLabel).append(": ").append(colorCode);
                 if (nextLevel == null) {
-                    loreList.add(insertAt++, "§7Expertise Kills: " + colorCode + TextUtils.abbreviate(stackedEnchantNum) + " §7(Maxed)");
+                    // §7Expertise Kills: §a5000000000 §7(Maxed)
+                    b.append(TextUtils.abbreviate(stackedEnchantNum)).append(" §7(").append(Translations.getMessage("enchants.maxed")).append(")");
                 } else {
-                    loreList.add(insertAt++, "§7Expertise Kills: " + colorCode + stackedEnchantNum + "§7 / " + TextUtils.abbreviate(nextLevel));
+                    // §7Expertise Kills: §a500 §7/ 1k
+                    b.append(stackedEnchantNum).append(" §7/ ").append(TextUtils.abbreviate(nextLevel));
                 }
+                loreList.add(insertAt++, b.toString());
             }
         }
-        if (config.isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
-            Enchant.Stacking enchant = enchants.STACKING.get("Compact");
-            if (extraAttributes.hasKey(enchant.nbtNum, Constants.NBT.TAG_ANY_NUMERIC)) {
-                int stackedEnchantNum = extraAttributes.getInteger(enchant.nbtNum);
-                Integer nextLevel = enchant.stackLevel.higher(stackedEnchantNum);
-                ColorCode colorCode = config.getRestrictedColor(Feature.SHOW_STACKING_ENCHANT_PROGRESS);
-                if (nextLevel == null) {
-                    loreList.add(insertAt++, "§7Compacted Blocks: " + colorCode + stackedEnchantNum + "§7 (Maxed)");
-                } else {
-                    loreList.add(insertAt++, "§7Compacted Blocks: " + colorCode + stackedEnchantNum + "§7 / " + TextUtils.abbreviate(nextLevel));
-                }
-            }
-        }
-        if (config.isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
-            Enchant.Stacking enchant = enchants.STACKING.get("Cultivating");
-            if (extraAttributes.hasKey(enchant.nbtNum, Constants.NBT.TAG_ANY_NUMERIC)) {
-                int stackedEnchantNum = extraAttributes.getInteger(enchant.nbtNum);
-                Integer nextLevel = enchant.stackLevel.higher(stackedEnchantNum);
-                ColorCode colorCode = config.getRestrictedColor(Feature.SHOW_STACKING_ENCHANT_PROGRESS);
-                if (nextLevel == null) {
-                    loreList.add(insertAt, "§7Cultivated Crops: " + colorCode + stackedEnchantNum + "§7 (Maxed)");
-                } else {
-                    loreList.add(insertAt, "§7Cultivated Crops: " + colorCode + stackedEnchantNum + "§7 / " + TextUtils.abbreviate(nextLevel));
-                }
-            }
-        }
+        return insertAt;
     }
 }

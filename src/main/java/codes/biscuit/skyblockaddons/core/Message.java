@@ -32,7 +32,7 @@ public enum Message {
     SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
     SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
-    SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
+    SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showReforgeOverlay"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_HIDE_PLAYERS_NEAR_NPCS(MessageObject.SETTING, "hidePlayersNearNPCs"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),

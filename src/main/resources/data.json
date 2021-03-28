@@ -89,5 +89,8 @@
     "GREAT_WHITE_SHARK",
     "YETI",
     "GRIM_REAPER"
+  ],
+  "hypixelBrands": [
+    ".*Hypixel BungeeCord.*"
   ]
 }
