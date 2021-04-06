@@ -1,12 +1,12 @@
 {
-  "languageText": "Language: ",
+  "languageText": "言語: ",
   "language": "日本語",
   "settings": {
     "settings": "設定",
-    "magmaBossWarning": "マグマボスのアラート",
+    "magmaBossWarning": "Magma Bossのアラート",
     "itemDropConfirmation": "アイテムを捨てる確認",
-    "hideSkeletonHatBones": "スケルトンヘルメットの骨を非表示",
-    "skeletonHatBonesBar": "スケルトンヘルメットの骨のゲージ",
+    "hideSkeletonHatBones": "Skeleton's Helmet骨を非表示",
+    "skeletonHatBonesBar": "Skeleton's Helmetの骨のゲージ",
     "hideFoodAndArmor": "食料とアーマーのゲージを非表示",
     "fullInventoryWarning": "インベントリが満タンの時のアラート",
     "repeating": "Repeat Warning",
