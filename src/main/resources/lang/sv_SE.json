@@ -253,12 +253,12 @@
     "actionsLeft": "%number% kvar",
     "effectActive": "1 aktiv effekt",
     "effectsActive": "%number% aktiva effekter",
-    "none": "Ingen",
+    "none": "None",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma"
   },
   "discordStatus": {
-    "titleNone": "Ingen",
+    "titleNone": "None",
     "descriptionNone": "Ingen text visas",
     "titleLocation": "Position",
     "descriptionLocation": "Visar din nuvarande position",
