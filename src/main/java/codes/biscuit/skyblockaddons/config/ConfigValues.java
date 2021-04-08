@@ -81,8 +81,9 @@ public class ConfigValues {
 
     public void loadValues() {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("default.json")));
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("default.json"))));
             defaultValues = SkyblockAddons.getGson().fromJson(bufferedReader, JsonObject.class);
+            bufferedReader.close();
 
             deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
             deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);
@@ -658,23 +659,43 @@ public class ConfigValues {
     }
 
     /**
-     * @param feature The feature to check.
-     * @return Whether the feature is remotely disabled.d
+     * Checks the received {@code OnlineData} to determine if the given feature should be disabled.
+     * This method checks the list of features to be disabled for all versions first and then checks the list of features that
+     * should be disabled for this specific version.
+     *
+     * @param feature The feature to check
+     * @return {@code true} if the feature should be disabled, {@code false} otherwise
      */
     public boolean isRemoteDisabled(Feature feature) {
         if (feature == null) return false;
 
-        if (main.getOnlineData().getDisabledFeatures().containsKey("all")) {
-            return main.getOnlineData().getDisabledFeatures().get("all").contains(feature.getId());
+        HashMap<String, List<Integer>> disabledFeatures = main.getOnlineData().getDisabledFeatures();
+
+        if (disabledFeatures.containsKey("all")) {
+            if (disabledFeatures.get("all") != null) {
+                if (disabledFeatures.get("all").contains(feature.getId())) {
+                    return true;
+                }
+            } else {
+                logger.error("\"all\" key in disabled features map has value of null. Please fix online data.");
+            }
         }
 
-        // Check this version.
+        /*
+        Check for disabled features for this mod version. Pre-release versions will follow the disabled features
+        list for their release version. For example, the version {@code 1.6.0-beta.10} will adhere to the list
+        for version {@code 1.6.0}
+         */
         String version = SkyblockAddons.VERSION;
         if (version.contains("-")) {
             version = version.split("-")[0];
         }
-        if (main.getOnlineData().getDisabledFeatures().containsKey(version)) {
-            return main.getOnlineData().getDisabledFeatures().get(version).contains(feature.getId());
+        if (disabledFeatures.containsKey(version)) {
+            if (disabledFeatures.get(version) != null) {
+                return disabledFeatures.get(version).contains(feature.getId());
+            } else {
+                logger.error("\"" + version + "\" key in disabled features map has value of null. Please fix online data.");
+            }
         }
 
         return false;
