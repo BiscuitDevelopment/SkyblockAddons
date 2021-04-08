@@ -2,11 +2,13 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -60,37 +62,40 @@ public class GuiScreenListener {
             return;
         }
 
-        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && event.gui instanceof GuiContainer) {
+        // Lock slots compatibility for Patcher mouse bind fix
+        if (main.isUsingPatcher() && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && event.gui instanceof GuiContainer) {
             GuiContainer guiContainer = (GuiContainer) event.gui;
 
             if (eventButton >= 0) {
-                SkyblockAddons.getLogger().info("Mouse clicked: button " + eventButton);
-            }
+                /*
+                This prevents swapping items in/out of locked hotbar slots when using a hotbar key binding that is bound
+                to a mouse button.
+                 */
+                for (int i = 0; i < 9; i++) {
+                    if (eventButton - 100 == Minecraft.getMinecraft().gameSettings.keyBindsHotbar[i].getKeyCode()) {
+                        Slot slot = guiContainer.getSlotUnderMouse();
+                        Slot hotbarSlot = guiContainer.inventorySlots.getSlot(guiContainer.inventorySlots.inventorySlots.size() - (9 - i));
 
-            for (int i = 0; i < 9; i++) {
-                if (eventButton - 100 == Minecraft.getMinecraft().gameSettings.keyBindsHotbar[i].getKeyCode()) {
-                    Slot slot = guiContainer.getSlotUnderMouse();
-                    Slot hotbarSlot = guiContainer.inventorySlots.getSlot(guiContainer.inventorySlots.inventorySlots.size() - (9 - i));
-
-                    if (slot == null) {
-                        SkyblockAddons.getLogger().error("Slot is null.");
-                        return;
-                    } else if (hotbarSlot == null) {
-                        SkyblockAddons.getLogger().error("Hotbar slot is null.");
-                        return;
-                    }
-
-                    SkyblockAddons.getLogger().info("Slot " + slot.slotNumber + ": " + (slot.getHasStack() ? slot.getStack().toString() : "Empty"));
-                    SkyblockAddons.getLogger().info("Hotbar Slot: " + hotbarSlot.slotNumber + ": " + (hotbarSlot.getHasStack() ? hotbarSlot.getStack().toString() : "Empty"));
-
-                    if (main.getConfigValues().getLockedSlots().contains(i + 36)) {
-                        if (!slot.getHasStack() && !hotbarSlot.getHasStack()) {
+                        if (slot == null || hotbarSlot == null) {
                             return;
-                        } else {
-                            event.setCanceled(true);
+                        }
+
+                        SkyblockAddons.getLogger().debug("Slot " + slot.slotNumber + ": " + (slot.getHasStack() ? slot.getStack().toString() : "Empty"));
+                        SkyblockAddons.getLogger().debug("Hotbar Slot: " + hotbarSlot.slotNumber + ": " + (hotbarSlot.getHasStack() ? hotbarSlot.getStack().toString() : "Empty"));
+
+                        if (main.getConfigValues().getLockedSlots().contains(i + 36)) {
+                            if (!slot.getHasStack() && !hotbarSlot.getHasStack()) {
+                                return;
+                            } else {
+                                main.getUtils().playLoudSound("note.bass", 0.5);
+                                main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
+                                event.setCanceled(true);
+                            }
                         }
                     }
                 }
+
+                //TODO: Cover shift-clicking into locked slots
             }
         }
     }

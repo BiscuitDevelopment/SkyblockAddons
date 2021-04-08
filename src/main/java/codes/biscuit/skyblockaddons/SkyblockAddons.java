@@ -93,6 +93,7 @@ public class SkyblockAddons {
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
+    private boolean usingPatcher;
     @Setter private boolean devMode;
     private List<SkyblockKeyBinding> keyBindings = new LinkedList<>();
 
@@ -153,6 +154,7 @@ public class SkyblockAddons {
 
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
+        usingPatcher = utils.isModLoaded("patcher");
 
         scheduleMagmaBossCheck();
 
