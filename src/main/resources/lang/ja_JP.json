@@ -450,16 +450,16 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Boss が倒されました"
   },
   "warpMenu": {
     "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
+    "mustUnlock": "特定の scroll を解放する必要があります。",
     "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "home": "自分の島",
+    "spawn": "スポーン",
+    "unknown": "未訪問",
+    "notUnlocked": "未解放",
+    "inCombat": "戦闘中…"
   }
 }
