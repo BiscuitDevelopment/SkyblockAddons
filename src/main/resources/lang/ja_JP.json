@@ -109,14 +109,14 @@
     "showBrokenFragments": "壊れた Dragon Fragments を表示",
     "skyblockAddonsButtonInPauseMenu": "ポーズメニューに SBA のボタンを表示",
     "showTotalZealotCount": "Zealot カウンター - Zealot の合計カウント",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display",
+    "showSummoningEyeCount": "Zealot カウンター - Eye の合計カウント",
+    "showZealotsPerEye": "Zealot カウンター - Eye 毎の Zealot 数を表示",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Toxic Arrow Poison 使用時に弓を緑色に",
+    "birchParkRainmakerTimer": "Birch Park の Rainmaker タイマー",
+    "combatTimerDisplay": "Combat タイマーを表示",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
-    "fancyWarpMenu": "Fancy Warp Menu",
+    "endstoneProtectorDisplay": "Endstone Protector の表示",
+    "fancyWarpMenu": "ファンシーなワープメニュー",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode",
     "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
@@ -126,9 +126,9 @@
     "baitListDisplay": "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "zealotCounterExplosiveBow": "Zealot カウンターに Explosive Bow を対応させる",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "changeZealotColor": "Zealot の色を変更",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
@@ -266,8 +266,8 @@
     "descriptionPurse": "Shows the amount of coins in your purse",
     "titleStats": "Stats",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
-    "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
+    "titleZealots": "Zealot",
+    "descriptionZealots": "Zealot カウンターを表示",
     "titleItem": "Held Item",
     "descriptionItem": "Shows the name of the item you're holding",
     "titleProfile": "Profile",
@@ -357,19 +357,19 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Zealot カウンターの手動設定",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Zealot カウンターのカウントを手動設定。",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "入手した summoning eyes の合計数",
+              "totalZealots": "Zealot を倒した数の合計",
+              "zealots": "summoning eye ドロップまでに倒した Zealot の合計"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "summoning eye カウントの合計を %number% に設定しました！",
+          "totalZealotsSet": "Zealot カウントの合計を %number% に設定しました！",
+          "wrongUsage": "無効な選択です！%options% を選択してください。",
+          "zealotsSet": "現在の Zealot カウントを %number% に設定しました！"
         }
       },
       "slayer": {
