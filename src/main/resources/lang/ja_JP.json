@@ -98,13 +98,13 @@
     "showCakeBagPreview": "Cake Bags のプレビューを表示",
     "showBackpackPreviewInAH": "Auction House 内で Backpack のプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "色変化の速度",
+    "chromaMode": "色変化モード",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "すべて同じ色",
+      "fade": "色のフェード"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "色変化の幅",
     "sortTabEffectTimers": "タイマーを時間で並び替え",
     "showBrokenFragments": "壊れた Dragon Fragments を表示",
     "skyblockAddonsButtonInPauseMenu": "ポーズメニューに SBA のボタンを表示",
@@ -130,10 +130,10 @@
     "disableEndermanTeleportation": "エンダーマンのテレポートを無効化",
     "changeZealotColor": "Zealot の色を変更",
     "hideSvenPupNametags": "Sven Pup のネームタグを非表示",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
+    "turnAllFeaturesChroma": "すべての機能で色変化を有効に",
     "dungeonMapDisplay": "Dungeon の地図を表示",
     "rotateMap": "プレイヤーの回転によって地図を回転",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "centerRotationOnYourPlayer": "プレイヤーを軸に回転",
     "mapZoom": "地図ズーム",
     "glowingDroppedItems": "捨てられたアイテムを発光",
     "glowingDungeonTeammates": "Dungeon の仲間を発光",
@@ -154,7 +154,7 @@
     "textMode": "テキストモード",
     "dragonsNestOnly": "Dragon's Nest 内でのみ表示",
     "dragonStatsTracker": "ドラゴントラッカー",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "skillActionsLeftUntilNextLevel": "次のレベルまでの残りアクションを表示",
     "hideWhenNotInCrypts": "Crypts にいない時/Revenant クエストをやっていない時に非表示",
     "hideWhenNotInSpidersDen": "Spider's Den にいない時/Tarantula クエストをやっていない時に非表示",
     "hideWhenNotInCastle": "Castle にいない時/Sven クエストをやっていない時に非表示",
@@ -179,10 +179,10 @@
     "disableEmptyGlassPanes": "空の板ガラスを無効化",
     "candyPointsCounter": "Spooky イベントの Candy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circle の不透明度",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
+    "chromaSize": "色変化サイズ",
+    "chromaSaturation": "色変化の彩度",
+    "chromaBrightness": "色変化の明度",
+    "useNewChromaEffect": "新しい色変化の効果を使用",
     "showExperimentationTableTooltips": "Experimentation Table でアイテム説明文を表示",
     "onlyMineOresDwarvenMines": "Dwarven Mines 内で鉱石のみを採掘",
     "drillFuelBar": "Drill Fuel ゲージ",
@@ -255,7 +255,7 @@
     "effectsActive": "%number% 個の効果が有効",
     "none": "なし",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "chroma": "Chroma"
+    "chroma": "色変化"
   },
   "discordStatus": {
     "titleNone": "なし",
@@ -404,7 +404,7 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "NBT をコピー"
   },
   "dragonTracker": {
     "protector": "Protector",
