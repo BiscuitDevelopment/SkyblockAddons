@@ -386,19 +386,19 @@
         "statRequired": "You need to select a stat. Press tab for options.",
         "numberRequired": "You need to add the number you want.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "statSet": "スレイヤー %boss% の統計 %stat% が %number% に設定されました。",
+        "invalidBoss": "「%input%」は有効な統計ではありません！",
+        "invalidStat": "「%input%」は有効なボスではありません！"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7アクションバーのメッセージの記録を切り替えます",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "disabled": "アクションバーのメッセージは現在記録されません。",
+        "enabled": "アクションバーのメッセージは現在記録されます。"
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "間違った使用法です！",
+          "subCommandNotFound": "サブコマンド「%sub-command%」は見つかりませんでした。"
         }
       }
     }
@@ -419,7 +419,7 @@
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eye を設置した数",
-    "never": "Never"
+    "never": "なし"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
