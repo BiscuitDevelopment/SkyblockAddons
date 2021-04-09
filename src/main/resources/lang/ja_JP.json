@@ -301,26 +301,26 @@
       "copyEntity": {
         "help": "§e(Dev) §7プレイヤーの周囲の指定された半径内にいる指定された名前のエンティティの NBT データをコピーします",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "エンティティの NBT データをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mob を含み、半径は 3 ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "データをコピーするエンティティの種類の名前 (例 Player、Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
+            "radius": "エンティティの NBT データをコピーするプレイヤーの周囲の半径 (ブロック)"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7スコアボードのテキストをコピーします",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "コピー時に書式コードを含めるかどうかを決定します。「true」または「false」のいずれかを選択可能で、値が指定されていない場合、デフォルトでは「false」になります。「true」の場合、書式コードがコピーされます。"
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Tab リストのヘッダーとフッターをコピーします",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "このコマンドは、Tab のプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
         }
       },
       "dev": {
@@ -347,13 +347,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod のすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Mod の設定を再読み込みします"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod のリソースを再読み込みします。ゲームは数秒間フリーズします。"
       },
       "set": {
         "zealotCounter": {
@@ -391,7 +391,7 @@
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "§e(Dev) §7アクションバーのメッセージの記録を切り替えます",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
