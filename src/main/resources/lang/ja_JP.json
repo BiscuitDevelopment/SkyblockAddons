@@ -134,7 +134,7 @@
     "dungeonMapDisplay": "Dungeon の地図を表示",
     "rotateMap": "プレイヤーの回転によって地図を回転",
     "centerRotationOnYourPlayer": "プレイヤーを軸に回転",
-    "mapZoom": "地図ズーム",
+    "mapZoom": "地図の拡大",
     "glowingDroppedItems": "捨てられたアイテムを発光",
     "glowingDungeonTeammates": "Dungeon の仲間を発光",
     "baseStatBoostPercentage": "Dungeon アイテムによる基礎ステータスブーストを表示",
@@ -233,14 +233,14 @@
     "rescaleFeatures": "機能のサイズを変更",
     "resizeBars": "ゲージのサイズを変更",
     "showColorIcons": "色アイコンを表示",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "enableFeatureSnapping": "ガイドを有効化",
     "stage": "ステージ %stage%",
     "switchedSlots": "ロックされたスロットまたはレアアイテムから切り替えました。捨てる前に少しお待ちください！",
     "clickToOpenLink": "クリックしてリンクを開く！",
     "clickToOpenFolder": "クリックして mods フォルダーを開く！",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "firstStatus": "このステータスは一番上に表示されます",
+    "secondStatus": "このステータスは最初のステータスの下に表示されます",
+    "fallbackStatus": "このステータスは自動ステータスに表示するものがない時に表示されます",
     "legendarySeaCreatureWarning": "レジェンダリーを捕まえました！",
     "cancelledPark": "機能がここでこのブロックの破壊を阻止しました。",
     "bossApproaching": "Boss のスポーンが近いです！",
@@ -254,7 +254,7 @@
     "effectActive": "1 個の効果が有効",
     "effectsActive": "%number% 個の効果が有効",
     "none": "なし",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "開発者コピーモードは %mode% に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化"
   },
   "discordStatus": {
@@ -277,7 +277,7 @@
     "titleCustom": "カスタムステータス",
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "descriptionAuto": "ステータスを自動表示します。例「The End にいる間の Zealot カウント」",
     "titleRevenants": "Revenant クエスト",
     "descriptionRevenants": "Revenant クエストを行っていることを表示します。",
     "titleSvens": "Sven クエスト",
@@ -291,15 +291,15 @@
         "help": "メインメニューを開く"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7サーバーのブランドを表示します",
+        "brandOutput": "サーバーのブランド：%brand%",
+        "notFound": "サーバーのブランドが見つかりません！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7見つめているブロックに関するデータをコピーします"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7プレイヤーの周囲の指定された半径内にいる指定された名前のエンティティの NBT データをコピーします",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -418,7 +418,7 @@
     "dragonsSince": "今までのドラゴン：",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "Eye を設置した数",
     "never": "Never"
   },
   "slayerTracker": {
@@ -453,7 +453,7 @@
     "bossesKilled": "ボスを倒した数"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "ワープ地点をクリックしてそこへ移動します！",
     "mustUnlock": "特定の scroll を解放する必要があります。",
     "privateIsland": "Private Island",
     "home": "自分の島",
