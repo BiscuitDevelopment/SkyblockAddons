@@ -161,7 +161,7 @@
     "dungeonDeathCounter": "Dungeon 死亡数カウンター",
     "showPersonalCompactorPreview": "Personal Compactor のプレビューを表示",
     "rockPetTracker": "Rock Pet トラッカー",
-    "dolphinPetTracker": "Dolphin ペットトラッカー",
+    "dolphinPetTracker": "Dolphin Pet トラッカー",
     "dungeonsTeammateNameOverlay": "Dungeons で仲間の名前のオーバーレイを表示",
     "showExpertiseKills": "Expertise で倒した数を表示",
     "dungeonsSecretsDisplay": "Dungeons の Secrets を表示",
@@ -230,9 +230,9 @@
     "chooseAColor": "色を選択",
     "selectedColor": "選択中の色",
     "setHexColor": "16進数で色を設定",
-    "rescaleFeatures": "Rescale Features",
+    "rescaleFeatures": "機能のサイズを変更",
     "resizeBars": "ゲージのサイズを変更",
-    "showColorIcons": "Show Color Icons",
+    "showColorIcons": "色アイコンを表示",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "ステージ %stage%",
     "switchedSlots": "ロックされたスロットまたはレアアイテムから切り替えました。捨てる前に少しお待ちください！",
@@ -246,49 +246,49 @@
     "bossApproaching": "Boss のスポーンが近いです！",
     "enableAll": "すべて有効化",
     "disableAll": "すべて無効化",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active",
-    "none": "None",
+    "enchantmentInclusionExample": "例 \"prot, feather\"",
+    "enchantmentExclusionExample": "例 \"proj, blast\"",
+    "reforgeInclusionExample": "例 \"godly, strong\"",
+    "reforgeExclusionExample": "例 \"odd, clean\"",
+    "actionsLeft": "残り %number%",
+    "effectActive": "1 個の効果が有効",
+    "effectsActive": "%number% 個の効果が有効",
+    "none": "なし",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "なし",
+    "descriptionNone": "テキストが表示されていません",
+    "titleLocation": "場所",
+    "descriptionLocation": "現在いる場所を表示",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "purse 内の総額を表示",
+    "titleStats": "ステータス",
+    "descriptionStats": "HP、防御力、Mana のステータスを表示",
     "titleZealots": "Zealot",
     "descriptionZealots": "Zealot カウンターを表示",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
+    "titleItem": "所持アイテム",
+    "descriptionItem": "所持中のアイテム名を表示",
+    "titleProfile": "プロファイル",
+    "descriptionProfile": "プロファイル名を表示",
+    "titleTime": "Skyblock 時刻",
+    "descriptionTime": "現在の Skyblock 時刻を表示。例 12:00am 1st Early Winter",
+    "titleCustom": "カスタムステータス",
+    "descriptionCustom": "カスタムステータスを入力",
+    "titleAuto": "自動ステータス",
     "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleRevenants": "Revenant クエスト",
+    "descriptionRevenants": "Revenant クエストを行っていることを表示します。",
+    "titleSvens": "Sven クエスト",
+    "descriptionSvens": "Sven クエストを行っていることを表示します。",
+    "titleTarantula": "Tarantula クエスト",
+    "descriptionTarantula": "Tarantula クエストを行っていることを表示します。"
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "メインメニューを開く"
       },
       "brand": {
         "help": "§e(Dev) §7Show the server brand",
@@ -324,19 +324,19 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "開発者モードに切り替える",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "開発者モードを無効にしました！",
+        "enabled": "開発者モードが有効になりました！ヒント: \"%keyName%\" を押してNBTデータをコピーできます！"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "GUI の場所を編集"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Mods フォルダーを開く",
+        "error": "Mods フォルダーを開いているときにエラーが発生しました：%s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
@@ -377,7 +377,7 @@
         "detailedHelp": {
           "description": "Manually set slayer stats, press tab for arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
             "number": "Number to set the stat to",
             "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
           }
@@ -414,8 +414,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "最近のドラゴン：",
+    "dragonsSince": "今までのドラゴン：",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eyes Placed",
