@@ -79,7 +79,7 @@
     "revenantIndicator": "Slayer 装備の進捗を表示",
     "specialZealotAlert": "特別な Zealot のアラート",
     "enableMessageWhenActionPrevented": "動作を防止したときにメッセージを表示する",
-    "hidePetHealthBar": "ペットの体力バーを非表示",
+    "hidePetHealthBar": "Pet の体力ゲージを非表示",
     "powerOrbDisplay": "Power Orb の表示",
     "powerOrbDisplayStyle": "Power Orb のスタイル：%style%",
     "powerOrbStyle": {
@@ -160,7 +160,7 @@
     "hideWhenNotInCastle": "Castle にいない時/Sven クエストをやっていない時に非表示",
     "dungeonDeathCounter": "Dungeon 死亡数カウンター",
     "showPersonalCompactorPreview": "Personal Compactor のプレビューを表示",
-    "rockPetTracker": "Rock ペットトラッカー",
+    "rockPetTracker": "Rock Pet トラッカー",
     "dolphinPetTracker": "Dolphin ペットトラッカー",
     "dungeonsTeammateNameOverlay": "Dungeons で仲間の名前のオーバーレイを表示",
     "showExpertiseKills": "Expertise で倒した数を表示",
