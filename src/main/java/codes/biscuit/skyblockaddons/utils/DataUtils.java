@@ -181,8 +181,7 @@ public class DataUtils {
 
             // Online Data
             LOGGER.info("Trying to fetch online data from the server...");
-            OnlineData receivedOnlineData = httpClient.execute(new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/"
-                    + (SkyblockAddons.VERSION.contains("b") ? "development" : "master") + "/src/main/resources/data.json"), response -> {
+            OnlineData receivedOnlineData = httpClient.execute(new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/data.json"), response -> {
                 int status = response.getStatusLine().getStatusCode();
 
                 if (status == 200) {
