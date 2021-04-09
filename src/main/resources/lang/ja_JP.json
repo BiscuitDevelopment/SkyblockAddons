@@ -326,7 +326,7 @@
       "dev": {
         "help": "開発者モードに切り替える",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "このコマンドは開発者モードに切り替えます。このモードは、Skyblock の Mod とツールの開発者を対象としています。エンティティやアイテムの NBT などのゲームデータを提供します。"
         },
         "disabled": "開発者モードを無効にしました！",
         "enabled": "開発者モードが有効になりました！ヒント: \"%keyName%\" を押してNBTデータをコピーできます！"
@@ -339,10 +339,10 @@
         "error": "Mods フォルダーを開いているときにエラーが発生しました：%s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "詳細な使用法を取得するためのサブコマンドです"
           }
         }
       },
@@ -373,19 +373,19 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "手動でスレイヤーの統計を設定し、Tab を押して引数を入力します",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "手動でスレイヤーの統計を設定し、Tab を押して引数を入力します",
           "options": {
             "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "number": "統計を設定する数字",
+            "stat": "変更するスレイヤーの統計は、「kills」またはドロップアイテムの名前で、次のような形式になります：「REVENANT_FLESH」"
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "bossRequired": "boss を選択する必要があります！%bosses% を選択",
+        "statRequired": "統計を選択する必要があります。Tab でオプション。",
+        "numberRequired": "設定したい数字を追加する必要があります。",
+        "killsSet": "Slayer %boss% のキル数は %number% に設定されました。",
         "statSet": "スレイヤー %boss% の統計 %stat% が %number% に設定されました。",
         "invalidBoss": "「%input%」は有効な統計ではありません！",
         "invalidStat": "「%input%」は有効なボスではありません！"
@@ -422,7 +422,7 @@
     "never": "なし"
   },
   "slayerTracker": {
-    "revenant": "Revenant Horror:",
+    "revenant": "Revenant Horror：",
     "revenantFlesh": "Revenant Flesh",
     "foulFlesh": "Foul Flesh",
     "pestilenceRune": "Pestilence Rune",
