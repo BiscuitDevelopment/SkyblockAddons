@@ -15,7 +15,7 @@
     "guiScale": "Escala del GUI: %scale%",
     "resetLocations": "Restablecer Posiciones",
     "hideDurability": "Ocultar Durabilidad de Herramientas",
-    "showEnchantmentsReforges": "Encantamientos y Reforjes",
+    "showEnchantmentsReforges": "Encantamientos y Reforges",
     "minionStopWarning": "Aviso de Detención de Minion",
     "hidePlayersNearNPCs": "Ocultar Jugadores cerca de PNJs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
@@ -190,7 +190,7 @@
   },
   "messages": {
     "enchants": "Encantamientos",
-    "reforges": "Reforjes",
+    "reforges": "Reforges",
     "dropConfirmation": "¡Suelta el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Jefe Magma!",
     "fullInventory": "¡Inventario Lleno!",
