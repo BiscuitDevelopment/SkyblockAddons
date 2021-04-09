@@ -1,0 +1,97 @@
+{
+  "bannerImageURL": null,
+  "bannerLink": null,
+
+  "latestVersion": "1.5.5",
+  "latestBeta": "1.6.0-beta.7",
+  "videoLink": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.5.5",
+  "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.5",
+
+  "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
+
+  "disabledFeatures": {
+    "all": [31, 41, 44],
+    "1.5.0": [],
+    "1.5.1": [],
+    "1.5.5": []
+  },
+
+  "dropSettings": {
+    "minimumInventoryRarity": "RARE",
+    "minimumHotbarRarity": "RARE",
+    "dontDropTheseItems": [
+      "PIGGY_BANK",
+      "SMALL_BACKPACK",
+      "RADIANT_POWER_ORB",
+      "GRAPPLING_HOOK",
+      "WAND_OF_HEALING",
+      "ENCHANTED_GLOWSTONE",
+      "AATROX_BATPHONE",
+      "PERSONAL_COMPACTOR_4000",
+      "MATHEMATICAL_HOE_BLUEPRINT",
+      "THEORETICAL_HOE",
+      "THEORETICAL_HOE_CANE_1",
+      "THEORETICAL_HOE_CANE_2",
+      "THEORETICAL_HOE_CARROT_1",
+      "THEORETICAL_HOE_CARROT_2",
+      "THEORETICAL_HOE_POTATO_1",
+      "THEORETICAL_HOE_POTATO_2",
+      "THEORETICAL_HOE_WARTS_1",
+      "THEORETICAL_HOE_WARTS_2",
+      "THEORETICAL_HOE_WHEAT_1",
+      "THEORETICAL_HOE_WHEAT_2",
+      "JUNGLE_AXE"
+    ],
+    "allowDroppingTheseItems": [
+      "RUNE",
+      "REMNANT_OF_THE_EYE",
+      "DUNGEON_LORE_PAPER",
+      "WINTER_DISC",
+      "DUNGEON_STONE"
+    ]
+  },
+
+  "specialEnchantments": {
+    "Bane of Anthropods": 6,
+    "Critical": 6,
+    "Dragon Hunter": 5,
+    "Ender Slayer": 6,
+    "Experience": 4,
+    "Giant Killer": 6,
+    "Life Steal": 4,
+    "Looting": 4,
+    "Luck": 4,
+    "Scavenger": 5,
+    "Sharpness": 6,
+    "Smite": 7,
+    "Vampirism": 6,
+    "Infinite Quiver": 10,
+    "Power": 6,
+    "Growth": 6,
+    "Protection": 6,
+    "Rejuvenate": 5,
+    "True Protection": 1,
+    "Feather Falling": 10,
+    "Sugar Rush": 3,
+    "Efficiency": 6,
+    "Angler": 6,
+    "Caster": 6,
+    "Expertise": 10,
+    "Frail": 6,
+    "Lure": 6,
+    "Magnet": 6,
+    "Spiked Hook": 6
+  },
+
+  "legendarySeaCreatures": [
+    "WATER_HYDRA",
+    "SEA_EMPEROR",
+    "PHANTOM_FISHER",
+    "GREAT_WHITE_SHARK",
+    "YETI",
+    "GRIM_REAPER"
+  ],
+  "hypixelBrands": [
+    ".*Hypixel BungeeCord.*"
+  ]
+}
