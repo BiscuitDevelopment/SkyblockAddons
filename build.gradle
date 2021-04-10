@@ -92,6 +92,9 @@ shadowJar {
     exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
+
+    // Relocate Discord RPC into the main codebase
+    relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
 }
 
 sourceJar {
