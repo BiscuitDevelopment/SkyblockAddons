@@ -92,7 +92,7 @@
     "tab": {
       "generalSettings": "Általános beállítások"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
+    "tabEffectTimers": "Bájitalok és Stat Booster számláló",
     "noArrowsLeftAlert": "Elfogytak a nyilaid! figyelmeztetés",
     "hideNightVisionEffectTimer": "Éjjellátás effekt elrejtése",
     "showCakeBagPreview": "Cake Bag előnézet mutatása",
@@ -113,7 +113,7 @@
     "showZealotsPerEye": "Zealot számláló - Zealot / Summoning Eye mutatása",
     "turnBowGreenWhenUsingToxicArrowPoison": "Íj zöldre színezése mérgezett nyíl használatakor",
     "birchParkRainmakerTimer": "Birch Park Rainmaker hátralévő idő",
-    "combatTimerDisplay": "Combat Timer Display",
+    "combatTimerDisplay": "Harc időzítő mutató",
     "discordRP": "Discord Játék Tevékenység mutatása",
     "endstoneProtectorDisplay": "Endstone Protector jelző",
     "fancyWarpMenu": "Díszes Teleport Menü",
@@ -162,7 +162,7 @@
     "showPersonalCompactorPreview": "Personal Compactor előnézetének mutatása",
     "rockPetTracker": "Rock Pet követő",
     "dolphinPetTracker": "Dolphin Pet követő",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate név kiemelése",
     "showExpertiseKills": "Expertise ölések mutatása",
     "dungeonsSecretsDisplay": "Dungeon rejtvények megjelenítése",
     "showSkillPercentageInstead": "Százalék mutatása XP helyett",
@@ -183,9 +183,9 @@
     "chromaSaturation": "Színátmenet telítettség",
     "chromaBrightness": "Színátmente világosság",
     "useNewChromaEffect": "Új színátmenet hatás használata",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
+    "showExperimentationTableTooltips": "Experimentation Table Tooltip Mutató",
+    "onlyMineOresDwarvenMines": "Csak ércek bányászása a \"Dwarven Mines\"-ban",
+    "drillFuelBar": "Drill üzemanyag jelző",
     "drillFuelText": "Drill Fuel Number"
   },
   "messages": {
