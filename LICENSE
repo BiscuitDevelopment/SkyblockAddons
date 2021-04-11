@@ -20,6 +20,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
+
+
 This product bundles DiscordIPC e29d6d8, which is available under the Apache 2.0 license. The full license is available
 at dependencyLicenses/discordIPC/APACHE_2.0.txt.
 
@@ -29,9 +31,9 @@ dependencyLicenses/json/JSON.txt.
 This product bundles junixsocket 2.0.4, which is available under the Apache 2.0 license. The full license is available
 at dependencyLicenses/junixsocket/APACHE_2.0.txt.
 
-The file log-config.xml is a modified version of the file log4j2.xml included in MinecraftForge 11.15.1.2318-1.8.9,
-which is available under the Minecraft Forge Public Licence. The full license is available at
-dependencyLicenses/minecraftForge/MINECRAFT_FORGE_LICENSE.txt.
+The files log-config.xml and log-config-packets-only-console.xml are modified versions of the file log4j2.xml included
+in MinecraftForge 11.15.1.2318-1.8.9, which is available under the Minecraft Forge Public Licence. The full license is
+available at dependencyLicenses/minecraftForge/MINECRAFT_FORGE_LICENSE.txt.
 
 This product bundles SLF4J API Module 1.7.25, which is available under the MIT license. The full license is available at
 dependencyLicenses/slf4j-api/MIT.txt.
