@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
@@ -25,6 +26,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -101,7 +103,6 @@ public class DataUtils {
             SkyblockAddons.getLogger().error("An error occurred while reading the local data file!", ex);
         }
 
-        // TODO: pull from online as well
         // Cooldown Data
         inputStream = DataUtils.class.getResourceAsStream("/cooldowns.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
@@ -121,19 +122,8 @@ public class DataUtils {
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
             // Enchanted Item Blacklist
             LOGGER.info("Trying to fetch enchanted item lists from the server...");
-            EnchantedItemLists receivedBlacklist = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblockaddons/enchantedItemLists"), response -> {
-                int status = response.getStatusLine().getStatusCode();
-
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
-                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
-
-                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
-                    return GSON.fromJson(apiResponse.getResponse(), EnchantedItemLists.class);
-                } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
-                }
-            });
+            EnchantedItemLists receivedBlacklist = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblockaddons/enchantedItemLists"),
+                    createResponseHandler(EnchantedItemLists.class));
             if (receivedBlacklist != null) {
                 LOGGER.info("Successfully fetched enchanted item lists!");
                 EnchantedItemPlacementBlocker.setItemLists(receivedBlacklist);
@@ -141,19 +131,8 @@ public class DataUtils {
 
             // Containers
             LOGGER.info("Trying to fetch containers from the server...");
-            Map<String, ContainerData> receivedContainers = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/containers"), response -> {
-                int status = response.getStatusLine().getStatusCode();
-
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
-                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
-
-                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
-                    return GSON.fromJson(apiResponse.getResponse(), new TypeToken<HashMap<String, ContainerData>>() {}.getType());
-                } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
-                }
-            });
+            Map<String, ContainerData> receivedContainers = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/containers"),
+                    createResponseHandler(new TypeToken<HashMap<String, ContainerData>>() {}.getType()));
             if (receivedContainers != null) {
                 LOGGER.info("Successfully fetched containers!");
                 ItemUtils.setContainers(receivedContainers);
@@ -161,19 +140,8 @@ public class DataUtils {
 
             // Compactor Items
             LOGGER.info("Trying to fetch compactor items from the server...");
-            Map<String, CompactorItem> receivedCompactorItems = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/compactorItems"), response -> {
-                int status = response.getStatusLine().getStatusCode();
-
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
-                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
-
-                    SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
-                    return GSON.fromJson(apiResponse.getResponse(), new TypeToken<HashMap<String, CompactorItem>>() {}.getType());
-                } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
-                }
-            });
+            Map<String, CompactorItem> receivedCompactorItems = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/compactorItems"),
+                    createResponseHandler(new TypeToken<HashMap<String, CompactorItem>>() {}.getType()));
             if (receivedCompactorItems != null) {
                 LOGGER.info("Successfully fetched compactor items!");
                 ItemUtils.setCompactorItems(receivedCompactorItems);
@@ -181,18 +149,8 @@ public class DataUtils {
 
             // Online Data
             LOGGER.info("Trying to fetch online data from the server...");
-            OnlineData receivedOnlineData = httpClient.execute(new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/test-data.json"), response -> {
-                int status = response.getStatusLine().getStatusCode();
-
-                if (status == 200) {
-                    HttpEntity entity = response.getEntity();
-                    JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
-
-                    return GSON.fromJson(jsonReader, OnlineData.class);
-                } else {
-                    throw new ClientProtocolException("Unexpected response status: " + status);
-                }
-            });
+            OnlineData receivedOnlineData = httpClient.execute(new HttpGet("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/test-data.json"),
+                    createResponseHandler(OnlineData.class));
             if (receivedOnlineData != null) {
                 LOGGER.info("Successfully fetched online data!");
                 main.setOnlineData(receivedOnlineData);
@@ -202,9 +160,43 @@ public class DataUtils {
             // Sea Creatures
             SeaCreatureManager.getInstance().pullSeaCreatures();
 
+            // Enchantments
+            LOGGER.info("Trying to fetch item enchantments from the server...");
+            EnchantManager.Enchants receivedEnchants = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/enchants"),
+                    createResponseHandler(new TypeToken<EnchantManager.Enchants>() {}.getType()));
+            if (receivedEnchants != null) {
+                LOGGER.info("Successfully fetched item enchantments!");
+                EnchantManager.setEnchants(receivedEnchants);
+            }
+
+            // Cooldowns
+            LOGGER.info("Trying to fetch cooldowns from the server...");
+            Map<String, Integer> receivedCooldowns = httpClient.execute(new HttpGet("https://api.skyblockaddons.com/api/v1/skyblock/cooldowns"),
+                    createResponseHandler(new TypeToken<HashMap<String, Integer>>() {}.getType()));
+            if (receivedCooldowns != null) {
+                LOGGER.info("Successfully fetched cooldowns!");
+                CooldownManager.setItemCooldowns(receivedCooldowns);
+            }
+
         } catch (IOException | JsonSyntaxException e) {
             LOGGER.error("There was an error fetching data from the server. The bundled version of the file will be used instead. ");
             LOGGER.catching(e);
         }
+    }
+
+    private static <T> ResponseHandler<T> createResponseHandler(Type T) {
+        return response -> {
+            int status = response.getStatusLine().getStatusCode();
+
+            if (status == 200) {
+                HttpEntity entity = response.getEntity();
+                JsonReader jsonReader = new JsonReader(new InputStreamReader(entity.getContent(), StandardCharsets.UTF_8));
+
+                SkyblockAddonsAPIResponse apiResponse = SkyblockAddons.getGson().fromJson(jsonReader, SkyblockAddonsAPIResponse.class);
+                return GSON.fromJson(apiResponse.getResponse(), T);
+            } else {
+                throw new ClientProtocolException("Unexpected response status: " + status);
+            }
+        };
     }
 }

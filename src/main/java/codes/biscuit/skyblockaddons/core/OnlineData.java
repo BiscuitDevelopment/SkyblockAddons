@@ -43,8 +43,6 @@ public class OnlineData {
 
     private HashSet<Pattern> hypixelBrands;
 
-    private HashSet<Pattern> hypixelDomains;
-
     @Getter
     public static class DropSettings {
 

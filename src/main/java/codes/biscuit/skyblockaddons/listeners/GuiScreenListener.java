@@ -62,8 +62,7 @@ public class GuiScreenListener {
             return;
         }
 
-        // Lock slots compatibility for Patcher mouse bind fix
-        if (main.isUsingPatcher() && main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && event.gui instanceof GuiContainer) {
+        if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) && event.gui instanceof GuiContainer) {
             GuiContainer guiContainer = (GuiContainer) event.gui;
 
             if (eventButton >= 0) {

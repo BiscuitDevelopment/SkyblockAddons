@@ -18,6 +18,7 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
@@ -207,7 +208,19 @@ public class Utils {
      * @return {@code true} if the player is on Hypixel, {@code false} otherwise
      */
     public boolean isOnHypixel() {
-        return ScoreboardManager.hasScoreboard() && ScoreboardManager.getStrippedScoreboardLines().contains("www.hypixel.net");
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        if (player == null) {
+            return false;
+        }
+        String brand = player.getClientBrand();
+        if (brand != null) {
+            for (Pattern p : main.getOnlineData().getHypixelBrands()) {
+                if (p.matcher(brand).matches()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void parseSidebar() {
