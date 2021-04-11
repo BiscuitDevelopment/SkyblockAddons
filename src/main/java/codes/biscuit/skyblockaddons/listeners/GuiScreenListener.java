@@ -79,8 +79,8 @@ public class GuiScreenListener {
                             return;
                         }
 
-                        SkyblockAddons.getLogger().debug("Slot " + slot.slotNumber + ": " + (slot.getHasStack() ? slot.getStack().toString() : "Empty"));
-                        SkyblockAddons.getLogger().debug("Hotbar Slot: " + hotbarSlot.slotNumber + ": " + (hotbarSlot.getHasStack() ? hotbarSlot.getStack().toString() : "Empty"));
+                        //SkyblockAddons.getLogger().debug("Slot " + slot.slotNumber + ": " + (slot.getHasStack() ? slot.getStack().toString() : "Empty"));
+                        //SkyblockAddons.getLogger().debug("Hotbar Slot: " + hotbarSlot.slotNumber + ": " + (hotbarSlot.getHasStack() ? hotbarSlot.getStack().toString() : "Empty"));
 
                         if (main.getConfigValues().getLockedSlots().contains(i + 36)) {
                             if (!slot.getHasStack() && !hotbarSlot.getHasStack()) {
