@@ -125,7 +125,7 @@ public class Updater {
         main.getUtils().sendMessage(buttonsMessage, false);
 
         ChatComponentText discord = new ChatComponentText("§b" + Message.MESSAGE_VIEW_PATCH_NOTES.getMessage() + " §9§l[" + Message.MESSAGE_JOIN_DISCORD.getMessage() + "]");
-        discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/biscuit"))
+        discord.setChatStyle(discord.getChatStyle().setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/zWyr3f5GXz"))
                 .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" + Message.MESSAGE_CLICK_TO_OPEN_LINK.getMessage()))));
         main.getUtils().sendMessage(discord, false);
 
