@@ -62,9 +62,11 @@
         </Logger>
         <Logger level="debug" name="net.minecraft" additivity="false">
             <AppenderRef ref="AsyncPackets" />
-            <AppenderRef ref="File" >
-                <ThresholdFilter level="INFO" onMatch="NEUTRAL" onMismatch="DENY" />
-                <MarkerFilter marker="NETWORK_PACKETS" onMatch="DENY" onMismatch="NEUTRAL" />
+            <AppenderRef ref="File">
+                <filters>
+                    <ThresholdFilter level="INFO" onMatch="NEUTRAL" onMismatch="DENY" />
+                    <MarkerFilter marker="NETWORK_PACKETS" onMatch="DENY" onMismatch="NEUTRAL" />
+                </filters>
             </AppenderRef>
         </Logger>
         <Root level="all">
