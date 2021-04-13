@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Pokaż dymki w Experimentation Table",
     "onlyMineOresDwarvenMines": "Wykopuj rudy tylko w Dwarven Mines",
     "drillFuelBar": "Pasek paliwa wiertła",
-    "drillFuelText": "Tekst paliwa wiertła"
+    "drillFuelText": "Tekst paliwa wiertła",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
       "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
+      }
     },
     "slotLocked": "To okienko jest zablokowane!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Nieodwiedzone",
     "notUnlocked": "Nieodblokowane",
     "inCombat": "Podczas walki..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
