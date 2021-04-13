@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Experimentation Table 팁 보이기",
     "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
     "drillFuelBar": "Drill 연료 바",
-    "drillFuelText": "Drill 연료 숫자"
+    "drillFuelText": "Drill 연료 숫자",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "인챈트",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
       "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
+      }
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "방문하지 않음.",
     "notUnlocked": "해금 안 됨",
     "inCombat": "전투 중..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
