@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
     "onlyMineOresDwarvenMines": "在 Dwarven Mines 中只挖掘矿物",
     "drillFuelBar": "Drill 燃料计量条",
-    "drillFuelText": "Drill 燃料值"
+    "drillFuelText": "Drill 燃料值",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "附魔",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
       "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要帮助或查看更新内容？",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "新版本 (%version%) 现已发布！",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+      }
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
@@ -461,5 +483,16 @@
     "unknown": "尚未探索",
     "notUnlocked": "尚未解锁",
     "inCombat": "战斗中..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
