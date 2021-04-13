@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Mostrar Información de Objeto en la Experimentation Table",
     "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
     "drillFuelBar": "Barra de Drill Fuel",
-    "drillFuelText": "Número de Drill Fuel"
+    "drillFuelText": "Número de Drill Fuel",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link de descarga está en el chat.",
       "patchAvailable": "¡Un nuevo parche de actualización (%version%) está disponible! Las opciones de descarga están en el chat!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "¿Quieres leer los cambios?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link de descarga está en el chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "¡Un nuevo parche de actualización (%version%) está disponible! Las opciones de descarga están en el chat!"
+      }
     },
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "¡Ojo de Invocación!",
@@ -461,5 +483,16 @@
     "unknown": "No Visitado",
     "notUnlocked": "No Desbloqueado",
     "inCombat": "En Combate..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
