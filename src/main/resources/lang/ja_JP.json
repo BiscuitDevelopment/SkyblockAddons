@@ -220,11 +220,11 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "私たちの Discord サーバーに参加しましょう！",
+      "watchShowcase": "動画を視聴",
+      "downloadButton": "ダウンロード",
+      "openModFolderButton": "Mods フォルダーを開く",
+      "joinDiscordButton": "Discord に参加",
       "newUpdateAvailable": "新しいアップデート (%version%) が利用可能です！",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
