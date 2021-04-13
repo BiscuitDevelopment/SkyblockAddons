@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Покажи подсказки в Experimentation Table",
     "onlyMineOresDwarvenMines": "Копай само руди в Dwarven Mines",
     "drillFuelBar": "Drill лента за гориво",
-    "drillFuelText": "Количество гориво в Drill"
+    "drillFuelText": "Количество гориво в Drill",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
       "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Трябва ви помощ или искате да видите целите промените?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Нова версия (%version%) е налична!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
+      }
     },
     "slotLocked": "Този слот е зaлючен!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Не е посещено",
     "notUnlocked": "Не е отключено",
     "inCombat": "В битка..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
