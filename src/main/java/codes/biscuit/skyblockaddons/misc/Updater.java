@@ -211,7 +211,9 @@ public class Updater {
                 "messages.updateChecker.newUpdateAvailable", targetVersion) + "\n");
         ChatComponentText viewChangelog = new ChatComponentText("§b" + Translations.getMessage(
                 "messages.updateChecker.wantToViewPatchNotes") + "\n");
-        newUpdate.appendSibling(viewChangelog);
+        ChatComponentText joinDiscord = new ChatComponentText("§b" + Translations.getMessage(
+                "messages.updateChecker.joinDiscord") + "\n");
+        newUpdate.appendSibling(viewChangelog).appendSibling(joinDiscord);
         main.getUtils().sendMessage(newUpdate, false);
 
         ChatComponentText showcaseButton = null;
