@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
       "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Trenger du hjelp eller vill du lese alle endringene?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "En ny oppdatering (%version%) er tilgjengelig!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
+      }
     },
     "slotLocked": "Denne plassen er låst!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
     "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
