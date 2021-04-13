@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Mostra descrizioni dell'Experimentation Table",
     "onlyMineOresDwarvenMines": "Estrai minerali solo nelle Dwarven Miles",
     "drillFuelBar": "Barra di combustibile Drill",
-    "drillFuelText": "Numero di combustibile Drill"
+    "drillFuelText": "Numero di combustibile Drill",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
       "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
+      }
     },
     "slotLocked": "Questo slot è bloccato!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Non visitato",
     "notUnlocked": "Non sbloccato",
     "inCombat": "In combattimento..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
