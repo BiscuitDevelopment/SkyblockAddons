@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Experimentation Table İpuçlarını Göster",
     "onlyMineOresDwarvenMines": "Dwarven Mines'da Sadece Cevherleri Kaz",
     "drillFuelBar": "Drill Yakıt Barı",
-    "drillFuelText": "Drill Yakıt Sayısı"
+    "drillFuelText": "Drill Yakıt Sayısı",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
       "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+      }
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Ziyaret Edilmemiş",
     "notUnlocked": "Açılmamış",
     "inCombat": "Savaşta..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
