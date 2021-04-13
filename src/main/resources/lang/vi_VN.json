@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Hiện đáp án Experimentation Table",
     "onlyMineOresDwarvenMines": "Chỉ đào quặng trong Dwarven Mines",
     "drillFuelBar": "Thanh nguyên liệu của Drill",
-    "drillFuelText": "Số nguyên liệu của Drill"
+    "drillFuelText": "Số nguyên liệu của Drill",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
       "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
+      }
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Haven't Visited",
     "notUnlocked": "Chưa mở khóa",
     "inCombat": "Trong chiến đấu..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
