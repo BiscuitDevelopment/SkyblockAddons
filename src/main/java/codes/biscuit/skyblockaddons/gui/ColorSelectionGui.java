@@ -26,18 +26,18 @@ import java.io.IOException;
 
 public class ColorSelectionGui extends GuiScreen {
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
     private static final ResourceLocation COLOR_PICKER = new ResourceLocation("skyblockaddons", "gui/colorpicker.png");
     private BufferedImage COLOR_PICKER_IMAGE;
 
     // The feature that this color is for.
-    private Feature feature;
+    private final Feature feature;
 
     // Previous pages for when they return.
-    private EnumUtils.GUIType lastGUI;
-    private EnumUtils.GuiTab lastTab;
-    private int lastPage;
+    private final EnumUtils.GUIType lastGUI;
+    private final EnumUtils.GuiTab lastTab;
+    private final int lastPage;
 
     private int imageX;
     private int imageY;
@@ -238,12 +238,7 @@ public class ColorSelectionGui extends GuiScreen {
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button instanceof ButtonColorBox) {
             ButtonColorBox colorBox = (ButtonColorBox)button;
-            if (colorBox.getColor() == ColorCode.CHROMA) {
-                main.getConfigValues().setChroma(feature, true);
-            }
-            else {
-                main.getConfigValues().setChroma(feature, false);
-            }
+            main.getConfigValues().setChroma(feature, colorBox.getColor() == ColorCode.CHROMA);
             main.getConfigValues().setColor(feature, colorBox.getColor().getColor());
             this.mc.displayGuiScreen(null);
         }
@@ -264,10 +259,10 @@ public class ColorSelectionGui extends GuiScreen {
 
         // Hardcode until feature refactor...
         if (feature == Feature.ENCHANTMENT_PERFECT_COLOR || feature == Feature.ENCHANTMENT_GREAT_COLOR ||
-                feature == Feature.ENCHANTMENT_GOOD_COLOR || feature == Feature.ENCHANTMENT_POOR_COLOR) {
+                feature == Feature.ENCHANTMENT_GOOD_COLOR || feature == Feature.ENCHANTMENT_POOR_COLOR ||
+                feature == Feature.ENCHANTMENT_COMMA_COLOR) {
             main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, Feature.ENCHANTMENT_LORE_PARSING);
-        }
-        else {
+        } else {
             main.getRenderListener().setGuiToOpen(lastGUI, lastPage, lastTab, feature);
         }
     }

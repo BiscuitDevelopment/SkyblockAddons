@@ -23,7 +23,8 @@ public class EnumUtils {
         BOTTOM_RIGHT(3),
         BOTTOM_MIDDLE(4);
 
-        @Getter private int id;
+        @Getter
+        private final int id;
 
         AnchorPoint(int id) {
             this.id = id;
@@ -75,7 +76,7 @@ public class EnumUtils {
         GUI(BACKPACK_STYLE_REGULAR),
         BOX(BACKPACK_STYLE_COMPACT);
 
-        private Message message;
+        private final Message message;
 
         BackpackStyle(Message message) {
             this.message = message;
@@ -121,7 +122,7 @@ public class EnumUtils {
         STYLE_ONE(TEXT_STYLE_ONE),
         STYLE_TWO(TEXT_STYLE_TWO);
 
-        private Message message;
+        private final Message message;
 
         TextStyle(Message message) {
             this.message = message;
@@ -149,7 +150,7 @@ public class EnumUtils {
         EXACTLY(""),
         ABOUT("");
 
-        private String symbol;
+        private final String symbol;
 
         MagmaTimerAccuracy(String symbol) {
             this.symbol = symbol;
@@ -167,7 +168,7 @@ public class EnumUtils {
         PING("ping");
 
         // The event name used by InventiveTalent's API
-        private String inventiveTalentEvent;
+        private final String inventiveTalentEvent;
 
         MagmaEvent(String inventiveTalentEvent) {
             this.inventiveTalentEvent = inventiveTalentEvent;
@@ -223,16 +224,18 @@ public class EnumUtils {
         GREAT_ENCHANT_COLOR("enchants.highTier", 166),
         GOOD_ENCHANT_COLOR("enchants.midTier", 167),
         POOR_ENCHANT_COLOR("enchants.lowTier", 168),
+        COMMA_ENCHANT_COLOR("enchants.commas", 171),
         LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
         BIGGER_WAKE("settings.biggerWake", 170),
         HIGHLIGHT_ENCHANTMENTS("settings.highlightMaxEnchantments", 153),
+
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
         ;
 
         private Message message;
-        private int featureEquivalent;
+        private final int featureEquivalent;
         private String messagePath;
 
         FeatureSetting(Message message, int featureEquivalent) {
@@ -298,9 +301,9 @@ public class EnumUtils {
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS, Feature.ONLY_MINE_ORES_DWARVEN_MINES, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
                 Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE);
 
-        private Set<Feature> features;
-        private String author;
-        private String url;
+        private final Set<Feature> features;
+        private final String author;
+        private final String url;
 
         FeatureCredit(String author, String url, Feature... features) {
             this.features = EnumSet.of(features[0], features);
@@ -347,7 +350,7 @@ public class EnumUtils {
         GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons"),
         PATREON("patreon", "https://www.patreon.com/biscuitdev");
 
-        private ResourceLocation resourceLocation;
+        private final ResourceLocation resourceLocation;
         private URI url;
 
         Social(String resourcePath, String url) {
@@ -371,7 +374,7 @@ public class EnumUtils {
         ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
         FADE(CHROME_MODE_FADE);
 
-        private Message message;
+        private final Message message;
 
         ChromaMode(Message message) {
             this.message = message;
@@ -395,7 +398,7 @@ public class EnumUtils {
         DETAILS(0),
         STATE(1);
 
-        private int id;
+        private final int id;
 
         DiscordStatusEntry(int id) {
             this.id = id;
@@ -408,7 +411,7 @@ public class EnumUtils {
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
         SVEN_PACKMASTER("Sven Packmaster");
 
-        private String scoreboardName;
+        private final String scoreboardName;
 
         SlayerQuest(String scoreboardName) {
             this.scoreboardName = scoreboardName;

@@ -24,19 +24,19 @@ import java.util.List;
 
 public class SettingsGui extends GuiScreen {
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
     private int page;
     private float row = 1;
     private int collumn = 1;
     private int displayCount;
-    private Feature feature;
-    private int lastPage;
-    private EnumUtils.GuiTab lastTab;
+    private final Feature feature;
+    private final int lastPage;
+    private final EnumUtils.GuiTab lastTab;
     private boolean closingGui;
-    private List<EnumUtils.FeatureSetting> settings;
+    private final List<EnumUtils.FeatureSetting> settings;
     private boolean reInit = false;
 
-    private long timeOpened = System.currentTimeMillis();
+    private final long timeOpened = System.currentTimeMillis();
 
     /**
      * The main gui, opened with /sba.
@@ -185,10 +185,10 @@ public class SettingsGui extends GuiScreen {
             // Temp fix until feature re-write. Open a color selection panel specific to the color setting
             Feature f = ((ButtonOpenColorMenu) abstractButton).feature;
             if (f == Feature.ENCHANTMENT_PERFECT_COLOR || f == Feature.ENCHANTMENT_GREAT_COLOR ||
-                    f == Feature.ENCHANTMENT_GOOD_COLOR ||f == Feature.ENCHANTMENT_POOR_COLOR) {
+                    f == Feature.ENCHANTMENT_GOOD_COLOR || f == Feature.ENCHANTMENT_POOR_COLOR ||
+                    f == Feature.ENCHANTMENT_COMMA_COLOR) {
                 mc.displayGuiScreen(new ColorSelectionGui(f, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
-            }
-            else {
+            } else {
                 mc.displayGuiScreen(new ColorSelectionGui(feature, EnumUtils.GUIType.SETTINGS, lastTab, lastPage));
             }
         } else if (abstractButton instanceof ButtonToggleTitle) {
@@ -265,7 +265,8 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
             // Temp hardcode until feature rewrite
         } else if (setting == EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR ||
-                setting == EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR) {
+                setting == EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR ||
+                setting == EnumUtils.FeatureSetting.COMMA_ENCHANT_COLOR) {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, setting.getMessage(), main, setting.getFeatureEquivalent()));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));

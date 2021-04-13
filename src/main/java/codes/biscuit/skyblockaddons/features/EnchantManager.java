@@ -24,9 +24,7 @@ public class EnchantManager {
 
     // Catches successive [ENCHANT] [ROMAN NUMERALS OR DIGITS], as well as stacking enchants listing total stacked number
     private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[A-Za-z -]+) ((?<levelNumeral>[IVXLCDM]+)|(?<levelDigit>[\\d]+))(, |$| [\\d,]+$)");
-    private static final String COMMA = "§r, ";
-    private static final int COMMA_LENGTH = COMMA.length();
-    private static final int COMMA_SIZE = Minecraft.getMinecraft().fontRendererObj.getStringWidth(COMMA);
+    private static final String COMMA = ", ";
     @Setter
     private static Enchants enchants = new Enchants();
 
@@ -234,14 +232,19 @@ public class EnchantManager {
             }
             // Remove enchantment lines
             loreList.subList(startEnchant, endEnchant + 1).clear();
+
+            // Get format for comma
+            String comma = SkyblockAddons.getInstance().getConfigValues().getRestrictedColor(Feature.ENCHANTMENT_COMMA_COLOR) + COMMA;
+            int commaLength = fontRenderer.getStringWidth(comma);
+
             int i, e;
             for (i = 0, e = 0; e < numEnchants; i++) {
                 StringBuilder builder = new StringBuilder(maxTooltipWidth);
                 for (int sum = 0; e < numEnchants && sum + enchantSizes.get(e) <= maxTooltipWidth; e++) {
-                    builder.append(enchantList.get(e)).append(COMMA);
-                    sum += enchantSizes.get(e) + COMMA_SIZE;
+                    builder.append(enchantList.get(e)).append(comma);
+                    sum += enchantSizes.get(e) + commaLength;
                 }
-                builder.delete(builder.length() - COMMA_LENGTH, builder.length());
+                builder.delete(builder.length() - comma.length(), builder.length());
                 loreList.add(startEnchant + i, builder.toString());
             }
         }

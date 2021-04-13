@@ -62,11 +62,11 @@ public enum Feature {
     AVOID_BLINKING_NIGHT_VISION(49, Message.SETTING_AVOID_BLINKING_NIGHT_VISION, false),
     MINION_DISABLE_LOCATION_WARNING(50, Message.SETTING_DISABLE_MINION_LOCATION_WARNING, false),
     JUNGLE_AXE_COOLDOWN(51, Message.SETTING_JUNGLE_AXE_COOLDOWN, true, EnumUtils.FeatureSetting.COOLDOWN_PREDICTION, EnumUtils.FeatureSetting.LEVEL_100_LEG_MONKEY),
-    ENCHANTMENT_LORE_PARSING(52, "settings.enchantmentLoreParsing", null, false, EnumUtils.FeatureSetting.HIGHLIGHT_ENCHANTMENTS, EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR, EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR),
+    ENCHANTMENT_LORE_PARSING(52, "settings.enchantmentLoreParsing", null, false, EnumUtils.FeatureSetting.HIGHLIGHT_ENCHANTMENTS, EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR, EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR, EnumUtils.FeatureSetting.COMMA_ENCHANT_COLOR),
     SHOW_ITEM_COOLDOWNS(53, Message.SETTING_SHOW_ITEM_COOLDOWNS, false),
     SKILL_DISPLAY(54, Message.SETTING_COLLECTION_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.AQUA), false, EnumUtils.FeatureSetting.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL, EnumUtils.FeatureSetting.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, EnumUtils.FeatureSetting.SHOW_SKILL_XP_GAINED),
     SPEED_PERCENTAGE(55, Message.SETTING_SPEED_PERCENTAGE, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.WHITE), false),
-    ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, new GuiFeatureData(ColorCode.RED, true),true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
+    ONLY_MINE_ORES_DEEP_CAVERNS(56, Message.SETTING_ONLY_MINE_ORES_DEEP_CAVERNS, new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
     SLAYER_INDICATOR(57, Message.SETTING_SLAYER_INDICATOR, new GuiFeatureData(EnumUtils.DrawType.REVENANT_PROGRESS, ColorCode.AQUA), true),
     SPECIAL_ZEALOT_ALERT(58, Message.SETTING_SPECIAL_ZEALOT_ALERT, new GuiFeatureData(ColorCode.RED), false),
     ONLY_MINE_VALUABLES_NETHER(59, Message.SETTING_ONLY_MINE_VALUABLES_NETHER, new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED),
@@ -175,7 +175,6 @@ public enum Feature {
     DRILL_FUEL_BAR(160, "settings.drillFuelBar", new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.DARK_GREEN), false),
     DRILL_FUEL_TEXT(161, "settings.drillFuelText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_GREEN), false),
     FISHING_PARTICLE_OVERLAY(162, "settings.fishingParticleOverlay", new GuiFeatureData(ColorCode.WHITE), false, EnumUtils.FeatureSetting.BIGGER_WAKE),
-    //ENCHANTMENT_LORE_PARSING(163, "settings.enchantmentLoreParsing", null, false, EnumUtils.FeatureSetting.HIGHLIGHT_ENCHANTMENTS, EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR, EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR, EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR,  EnumUtils.FeatureSetting.STACKING_ENCHANT_PROGRESS),
     COOLDOWN_PREDICTION(164, "settings.cooldownPrediction", null, false),
     ENCHANTMENT_PERFECT_COLOR(165, "enchants.superTier", new GuiFeatureData(ColorCode.CHROMA, true), false),
     ENCHANTMENT_GREAT_COLOR(166, "enchants.highTier", new GuiFeatureData(ColorCode.GOLD, true), false),
@@ -183,7 +182,7 @@ public enum Feature {
     ENCHANTMENT_POOR_COLOR(168, "enchants.lowTier", new GuiFeatureData(ColorCode.GRAY, true), false),
     LEG_MONKEY_LEVEL_100(169, "settings.legendaryMonkeyLevel100", null, true),
     BIGGER_WAKE(170, "settings.biggerWake", null, false),
-
+    ENCHANTMENT_COMMA_COLOR(171, "enchants.commas", new GuiFeatureData(ColorCode.BLUE, true), false),
 
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
@@ -221,7 +220,9 @@ public enum Feature {
             TARANTULA_COLOR_BY_RARITY, SVEN_COLOR_BY_RARITY, REVENANT_TEXT_MODE, TARANTULA_TEXT_MODE, SVEN_TEXT_MODE,
             DRAGON_STATS_TRACKER_COLOR_BY_RARITY, HIDE_WHEN_NOT_IN_CASTLE, HIDE_WHEN_NOT_IN_SPIDERS_DEN,
             HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED,
-            SHOW_SALVAGE_ESSENCES_COUNTER, HEALING_CIRCLE_OPACITY, COOLDOWN_PREDICTION, ENCHANTMENTS_HIGHLIGHT);
+            SHOW_SALVAGE_ESSENCES_COUNTER, HEALING_CIRCLE_OPACITY, COOLDOWN_PREDICTION, ENCHANTMENTS_HIGHLIGHT,
+            ENCHANTMENT_COMMA_COLOR, ENCHANTMENT_PERFECT_COLOR, ENCHANTMENT_GREAT_COLOR, ENCHANTMENT_GOOD_COLOR,
+            ENCHANTMENT_POOR_COLOR);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
@@ -237,16 +238,17 @@ public enum Feature {
     /**
      * These are features that are displayed separate, on the general tab.
      */
-    @Getter private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
+    @Getter
+    private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
             CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 63;
 
-    private int id;
+    private final int id;
     private Message message;
-    private List<EnumUtils.FeatureSetting> settings;
-    private GuiFeatureData guiFeatureData;
-    private boolean defaultDisabled;
+    private final List<EnumUtils.FeatureSetting> settings;
+    private final GuiFeatureData guiFeatureData;
+    private final boolean defaultDisabled;
     private String messagePath;
 
     Feature(int id, Message settingMessage, GuiFeatureData guiFeatureData, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) { // color & gui scale settings added automatically
