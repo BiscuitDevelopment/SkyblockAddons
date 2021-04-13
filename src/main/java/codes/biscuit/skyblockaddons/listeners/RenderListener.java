@@ -2,13 +2,8 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.hooks.FontRendererHook;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.EssenceType;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.core.SkillType;
-import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
+import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonClass;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
@@ -36,20 +31,11 @@ import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.gui.SettingsGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.DrawUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.MathUtils;
-import codes.biscuit.skyblockaddons.utils.SkyblockColor;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
@@ -83,19 +69,11 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.opengl.GL11;
 
 import javax.vecmath.Vector3d;
-import java.awt.Color;
+import java.awt.*;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.TimeZone;
+import java.util.*;
 
 import static net.minecraft.client.gui.Gui.icons;
 
@@ -138,7 +116,7 @@ public class RenderListener {
     private static EntityCaveSpider caveSpider;
     private static EntityWolf sven;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
     @Getter @Setter private boolean predictHealth;
     @Getter @Setter private boolean predictMana;
@@ -1418,40 +1396,43 @@ public class RenderListener {
         boolean colorByRarity;
         boolean textMode;
         SlayerBoss slayerBoss;
+        EnumUtils.SlayerQuest quest = main.getUtils().getSlayerQuest();
+        Location location = main.getUtils().getLocation();
+        ConfigValues config = main.getConfigValues();
         if (feature == Feature.REVENANT_SLAYER_TRACKER) {
-            if (buttonLocation == null && main.getConfigValues().isEnabled(Feature.HIDE_WHEN_NOT_IN_CRYPTS) && main.getUtils().getSlayerQuest() != EnumUtils.SlayerQuest.REVENANT_HORROR &&
-                    main.getUtils().getLocation() != Location.GRAVEYARD && main.getUtils().getLocation() != Location.COAL_MINE) {
+            if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_CRYPTS) &&
+                    (quest != EnumUtils.SlayerQuest.REVENANT_HORROR || location != Location.GRAVEYARD && location != Location.COAL_MINE)) {
                 return;
             }
 
-            colorByRarity = main.getConfigValues().isEnabled(Feature.REVENANT_COLOR_BY_RARITY);
-            textMode = main.getConfigValues().isEnabled(Feature.REVENANT_TEXT_MODE);
+            colorByRarity = config.isEnabled(Feature.REVENANT_COLOR_BY_RARITY);
+            textMode = config.isEnabled(Feature.REVENANT_TEXT_MODE);
             slayerBoss = SlayerBoss.REVENANT;
         } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
-            if (buttonLocation == null && main.getConfigValues().isEnabled(Feature.HIDE_WHEN_NOT_IN_SPIDERS_DEN) &&
-                    main.getUtils().getSlayerQuest() != EnumUtils.SlayerQuest.TARANTULA_BROODFATHER && main.getUtils().getLocation() != Location.SPIDERS_DEN) {
+            if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_SPIDERS_DEN) &&
+                    (quest != EnumUtils.SlayerQuest.TARANTULA_BROODFATHER || location != Location.SPIDERS_DEN)) {
                 return;
             }
 
-            colorByRarity = main.getConfigValues().isEnabled(Feature.TARANTULA_COLOR_BY_RARITY);
-            textMode = main.getConfigValues().isEnabled(Feature.TARANTULA_TEXT_MODE);
+            colorByRarity = config.isEnabled(Feature.TARANTULA_COLOR_BY_RARITY);
+            textMode = config.isEnabled(Feature.TARANTULA_TEXT_MODE);
             slayerBoss = SlayerBoss.TARANTULA;
         } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
-            if (buttonLocation == null && main.getConfigValues().isEnabled(Feature.HIDE_WHEN_NOT_IN_CASTLE) &&
-                    main.getUtils().getSlayerQuest() != EnumUtils.SlayerQuest.SVEN_PACKMASTER && main.getUtils().getLocation() != Location.RUINS) {
+            if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_CASTLE) &&
+                    (quest != EnumUtils.SlayerQuest.SVEN_PACKMASTER || location != Location.RUINS)) {
                 return;
             }
 
-            colorByRarity = main.getConfigValues().isEnabled(Feature.SVEN_COLOR_BY_RARITY);
-            textMode = main.getConfigValues().isEnabled(Feature.SVEN_TEXT_MODE);
+            colorByRarity = config.isEnabled(Feature.SVEN_COLOR_BY_RARITY);
+            textMode = config.isEnabled(Feature.SVEN_TEXT_MODE);
             slayerBoss = SlayerBoss.SVEN;
         } else {
             return;
         }
 
-        float x = main.getConfigValues().getActualX(feature);
-        float y = main.getConfigValues().getActualY(feature);
-        int color = main.getConfigValues().getColor(feature);
+        float x = config.getActualX(feature);
+        float y = config.getActualY(feature);
+        int color = config.getColor(feature);
 
         if (textMode) {
             int lineHeight = 8;

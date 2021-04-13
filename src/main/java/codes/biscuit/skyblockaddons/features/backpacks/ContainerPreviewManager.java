@@ -98,7 +98,7 @@ public class ContainerPreviewManager {
                 }
             }
             if (items == null) {
-                SkyblockAddons.getLogger().error("There was an error parsing container data.");
+                //SkyblockAddons.getLogger().error("There was an error parsing container data.");
                 return null;
             }
 
@@ -365,11 +365,7 @@ public class ContainerPreviewManager {
             }
         }
 
-        if (frozen) {
-            return true;
-        }
-
-        return false;
+        return frozen;
     }
 
 
