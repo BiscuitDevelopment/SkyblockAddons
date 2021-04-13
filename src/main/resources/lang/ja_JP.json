@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Experimentation Table でアイテム説明文を表示",
     "onlyMineOresDwarvenMines": "Dwarven Mines 内で鉱石のみを採掘",
     "drillFuelBar": "Drill Fuel ゲージ",
-    "drillFuelText": "Drill Fuel 数"
+    "drillFuelText": "Drill Fuel 数",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！ダウンロードリンクはチャットにあります。",
       "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください！"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "新しいアップデート (%version%) が利用可能です！",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！ダウンロードリンクはチャットにあります。",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください！"
+      }
     },
     "slotLocked": "このスロットはロックされています！",
     "summoningEyeFound": "Summoning Eye！",
@@ -461,5 +483,16 @@
     "unknown": "未訪問",
     "notUnlocked": "未解放",
     "inCombat": "戦闘中…"
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
