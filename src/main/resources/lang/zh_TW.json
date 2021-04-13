@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "顯示 Experimentation Table 工具提示",
     "onlyMineOresDwarvenMines": "只在 Dwarven Mines 中挖掘礦物",
     "drillFuelBar": "Drill 燃料計量條",
-    "drillFuelText": "Drill 燃料值"
+    "drillFuelText": "Drill 燃料值",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "附魔",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
       "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "有一個可用更新！ (%version%)",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+      }
     },
     "slotLocked": "此欄位已被鎖定！",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "尚未探索",
     "notUnlocked": "尚未解鎖",
     "inCombat": "戰鬥中..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
