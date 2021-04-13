@@ -585,7 +585,9 @@ public class RenderListener {
 
             main.getScheduler().schedule(Scheduler.CommandType.ERASE_UPDATE_MESSAGE, 10);
 
-            main.getUpdater().sendUpdateMessage();
+            if (!main.getUpdater().hasSentUpdateMessage()) {
+                main.getUpdater().sendUpdateMessage();
+            }
         }
     }
 

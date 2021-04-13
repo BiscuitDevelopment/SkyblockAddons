@@ -142,7 +142,7 @@ public class Scheduler {
         SET_LAST_SECOND_HEALTH,
         DELETE_RECENT_CHUNK,
         SHOW_FULL_INVENTORY_WARNING,
-        PROCESS_UPDATE_CHECK_RESULT;
+        CHECK_FOR_UPDATE;
 
         public void execute(Command command, int count) {
             SkyblockAddons main = SkyblockAddons.getInstance();
@@ -183,8 +183,8 @@ public class Scheduler {
                 main.getRenderListener().setUpdateMessageDisplayed(true);
             } else if (this == SET_LAST_SECOND_HEALTH) {
                 main.getPlayerListener().setLastSecondHealth((int) commandData[0]);
-            } else if (this == PROCESS_UPDATE_CHECK_RESULT) {
-                main.getUpdater().processUpdateCheckResult();
+            } else if (this == CHECK_FOR_UPDATE) {
+                main.getUpdater().checkForUpdate();
             }
         }
     }

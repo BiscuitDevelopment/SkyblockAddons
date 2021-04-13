@@ -187,12 +187,6 @@ public enum Message {
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
     MESSAGE_CLICK_ONE_MORE_TIME(MessageObject.MESSAGES, "clickOneMoreTime"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
-    MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
-    MESSAGE_DOWNLOAD_LINK(MessageObject.MESSAGES, "downloadLink"),
-    MESSAGE_DIRECT_DOWNLOAD(MessageObject.MESSAGES, "directDownload"),
-    MESSAGE_DOWNLOAD_AUTOMATICALLY(MessageObject.MESSAGES, "downloadAutomatically"),
-    MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
-    MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
@@ -211,7 +205,6 @@ public enum Message {
     MESSAGE_ENABLE_FEATURE_SNAPPING(MessageObject.MESSAGES, "enableFeatureSnapping"),
     MESSAGE_STAGE(MessageObject.MESSAGES, "stage"),
     MESSAGE_SWITCHED_SLOTS(MessageObject.MESSAGES, "switchedSlots"),
-    MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
     MESSAGE_CLICK_TO_OPEN_LINK(MessageObject.MESSAGES, "clickToOpenLink"),
     MESSAGE_CLICK_TO_OPEN_FOLDER(MessageObject.MESSAGES, "clickToOpenFolder"),
     MESSAGE_FIRST_STATUS(MessageObject.MESSAGES, "firstStatus"),
@@ -234,12 +227,6 @@ public enum Message {
     @Deprecated ANCHOR_POINT_BOTTOM_LEFT(MessageObject.ANCHOR_POINT, "bottomLeft"),
     @Deprecated ANCHOR_POINT_BOTTOM_RIGHT(MessageObject.ANCHOR_POINT, "bottomRight"),
     @Deprecated ANCHOR_POINT_HEALTH_BAR(MessageObject.ANCHOR_POINT, "healthBar"),
-
-    UPDATE_MESSAGE_MAJOR(MessageObject.UPDATE_MESSAGES, "majorAvailable"),
-    UPDATE_MESSAGE_PATCH(MessageObject.UPDATE_MESSAGES, "patchAvailable"),
-    UPDATE_MESSAGE_DOWNLOAD(MessageObject.UPDATE_MESSAGES, "downloading"),
-    UPDATE_MESSAGE_FAILED(MessageObject.UPDATE_MESSAGES, "failed"),
-    UPDATE_MESSAGE_DOWNLOAD_FINISHED(MessageObject.UPDATE_MESSAGES, "downloadFinished"),
 
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
@@ -351,8 +338,6 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
-                } else if (this == MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
-                    text = text.replace("%version%", variables[0]);
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
@@ -360,10 +345,6 @@ public enum Message {
                     text = text.replace("%type%", variables[0]);
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);
-                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD) {
-                    text = text.replace("%downloaded%", variables[0]).replace("%total%", variables[1]);
-                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
-                    text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
                     text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ ColorCode.GRAY.toString());
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
@@ -416,7 +397,6 @@ public enum Message {
         POWER_ORB_STYLE("settings.powerOrbStyle"),
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
-        UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints"),
         CHROMA_MODE("settings.chromaModes"),
         DISCORD_STATUS("discordStatus"),

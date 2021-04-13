@@ -12,6 +12,9 @@ public class OnlineData {
 
     private String bannerImageURL;
     private String bannerLink;
+
+    private UpdateInfo updateInfo;
+
     private String videoLink;
 
     private String latestVersion;

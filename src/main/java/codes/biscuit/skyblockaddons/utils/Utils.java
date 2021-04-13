@@ -234,7 +234,7 @@ public class Utils {
         boolean foundBossAlive = false;
         boolean foundSkyblockTitle = false;
 
-        if (isOnHypixel()) {
+        if (isOnHypixel() && ScoreboardManager.hasScoreboard()) {
             foundScoreboard = true;
 
             // Check title for skyblock
@@ -674,7 +674,7 @@ public class Utils {
     }
 
     public void tryPullingLanguageOnline(Language language) {
-        logger.info("Attempting to pull updated language files from online.");
+/*        logger.info("Attempting to pull updated language files from online.");
         SkyblockAddons.runAsync(() -> {
             try {
                 URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
@@ -692,7 +692,7 @@ public class Utils {
                 logger.error("There was an error loading the language file online");
                 logger.catching(ex);
             }
-        });
+        });*/
     }
 
     public static String getTranslatedString(String parentPath, String value) {

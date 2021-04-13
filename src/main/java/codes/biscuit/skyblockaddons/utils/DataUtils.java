@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
@@ -54,7 +55,9 @@ public class DataUtils {
         //  If you need to change any files locally, just disable this manually.
 //        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
             fetchFromOnline();
-//        }
+/*        } else {
+            SkyblockAddons.getInstance().getUpdater().checkForUpdate();
+        }*/
     }
 
     /**
@@ -62,6 +65,9 @@ public class DataUtils {
      */
     public static void readLocalFileData() {
         SkyblockAddons main = SkyblockAddons.getInstance();
+
+        // Workaround for language files until they get ported over
+        main.getUtils().loadLanguageFile(false);
 
         // Enchanted Item Blacklist
         InputStream inputStream = DataUtils.class.getResourceAsStream("/enchantedItemLists.json");
@@ -96,7 +102,7 @@ public class DataUtils {
         }
 
         // Online Data
-        inputStream = DataUtils.class.getResourceAsStream("/data.json");
+        inputStream = DataUtils.class.getResourceAsStream("/test-data.json");
         try (JsonReader jsonReader = new JsonReader(new BufferedReader(new InputStreamReader(inputStream,StandardCharsets.UTF_8)))){
             main.setOnlineData(GSON.fromJson(jsonReader, OnlineData.class));
         } catch (Exception ex) {
@@ -118,6 +124,9 @@ public class DataUtils {
      */
     private static void fetchFromOnline() {
         SkyblockAddons main = SkyblockAddons.getInstance();
+
+        // Workaround for language files until they get ported over
+        main.getUtils().loadLanguageFile(true);
 
         try (CloseableHttpClient httpClient = HttpClientBuilder.create().setUserAgent(Utils.USER_AGENT).build()) {
             // Enchanted Item Blacklist
@@ -154,7 +163,7 @@ public class DataUtils {
             if (receivedOnlineData != null) {
                 LOGGER.info("Successfully fetched online data!");
                 main.setOnlineData(receivedOnlineData);
-                main.getUpdater().processUpdateCheckResult();
+                main.getUpdater().checkForUpdate();
             }
 
             // Sea Creatures

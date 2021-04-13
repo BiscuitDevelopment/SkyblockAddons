@@ -250,7 +250,6 @@ public class ConfigValues {
         } else {
             addDefaultsAndSave();
         }
-        main.getUtils().loadLanguageFile(true);
     }
 
     private void addDefaultsAndSave() {
