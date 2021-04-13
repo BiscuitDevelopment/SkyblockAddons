@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Show Experimentashun Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Orez in da Dwarven Minez",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Numbr"
+    "drillFuelText": "Drill Fuel Numbr",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "A new major update (%version%) iz available! Teh link 4 da download can be findz in chat.",
       "patchAvailable": "A new patch update (%version%) iz available! Look in chat 4 download opshuns!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Ned support or wants 2 read teh full changelog?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "A new update (%version%) iz available!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "A new major update (%version%) iz available! Teh link 4 da download can be findz in chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "patchAvailable": "A new patch update (%version%) iz available! Look in chat 4 download opshuns!"
+      }
     },
     "slotLocked": "Dis slot iz lockd!",
     "summoningEyeFound": "Summonin Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Havent Visietd",
     "notUnlocked": "Not Unlockd",
     "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
