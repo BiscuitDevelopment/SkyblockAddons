@@ -192,7 +192,7 @@
     "cooldownPrediction": "Prever e diminuir o tempo de espera",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
     "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
