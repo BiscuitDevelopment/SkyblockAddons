@@ -222,9 +222,9 @@
       "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
       "joinDiscord": "Join our Discord server!",
       "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
+      "downloadButton": "Ladda ned",
       "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscordButton": "Anslut till Discord",
       "newUpdateAvailable": "En ny uppdatering (%version%) finns tillgänglig!",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
