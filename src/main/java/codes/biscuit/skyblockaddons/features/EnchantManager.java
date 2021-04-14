@@ -253,16 +253,15 @@ public class EnchantManager {
 
     private static int correctTooltipWidth(int maxTooltipWidth) {
         // Figure out whether the item tooltip is gonna wrap, and if so, try to make our enchantments wrap
-        final ScaledResolution scaledresolution = new ScaledResolution(Minecraft.getMinecraft().currentScreen.mc);
-        final int mouseX = Mouse.getX() * scaledresolution.getScaledWidth() / Minecraft.getMinecraft().currentScreen.mc.displayWidth;
+        final ScaledResolution scaledresolution = new ScaledResolution(Minecraft.getMinecraft());
+        final int mouseX = Mouse.getX() * scaledresolution.getScaledWidth() / Minecraft.getMinecraft().displayWidth;
         int tooltipX = mouseX + 12;
         if (tooltipX + maxTooltipWidth + 4 > scaledresolution.getScaledWidth()) {
             tooltipX = mouseX - 16 - maxTooltipWidth;
             if (tooltipX < 4) {
                 if (mouseX > scaledresolution.getScaledWidth() / 2) {
                     maxTooltipWidth = mouseX - 12 - 8;
-                }
-                else {
+                } else {
                     maxTooltipWidth = scaledresolution.getScaledWidth() - 16 - mouseX;
                 }
             }

@@ -13,13 +13,13 @@ import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
+import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.features.spookyevent.SpookyEventManager;
@@ -149,22 +149,35 @@ public class PlayerListener {
     private long lastMaddoxLevelTime;
     private String lastMaddoxSlayerType;
 
-    @Getter private long rainmakerTimeEnd = -1;
+    @Getter
+    private long rainmakerTimeEnd = -1;
 
     private boolean oldBobberIsInWater;
     private double oldBobberPosY = 0;
 
-    @Getter private Set<UUID> countedEndermen = new HashSet<>();
-    @Getter private TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
+    @Getter
+    private final Set<UUID> countedEndermen = new HashSet<>();
+    @Getter
+    private final TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
 
-    @Getter private Set<IntPair> recentlyLoadedChunks = new HashSet<>();
+    @Getter
+    private final Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
-    @Getter @Setter private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    @Getter @Setter private int magmaTime = 0;
-    @Getter @Setter private int recentMagmaCubes = 0;
-    @Getter @Setter private int recentBlazes = 0;
+    @Getter
+    @Setter
+    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter
+    @Setter
+    private int magmaTime = 0;
+    @Getter
+    @Setter
+    private int recentMagmaCubes = 0;
+    @Getter
+    @Setter
+    private int recentBlazes = 0;
 
-    @Getter private TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
+    @Getter
+    private final TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
@@ -449,6 +462,10 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatReceiveLast(ClientChatReceivedEvent e) {
+        // Some mods have an option to turn off actionbar messages. Until we do too, here's a temp fix.
+        if (e.message == null || e.message.getUnformattedText().trim().length() == 0) {
+            return;
+        }
         if (changedMessage) {
             e.message = new ChatComponentText(theChangedMessage);
         }
