@@ -23,7 +23,7 @@ import java.util.regex.Pattern;
 public class EnchantManager {
 
     // Catches successive [ENCHANT] [ROMAN NUMERALS OR DIGITS], as well as stacking enchants listing total stacked number
-    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[A-Za-z -]+) ((?<levelNumeral>[IVXLCDM]+)|(?<levelDigit>[\\d]+))(, |$| [\\d,]+$)");
+    private static final Pattern ENCHANTMENT_PATTERN = Pattern.compile("(?<enchant>[A-Za-z -]+) (?<levelNumeral>[IVXLCDM]+)(, |$| [\\d,]+$)");
     private static final String COMMA = ", ";
     @Setter
     private static Enchants enchants = new Enchants();
@@ -204,9 +204,10 @@ public class EnchantManager {
             for (int i = startEnchant; i <= endEnchant; i++) {
                 String currLine = TextUtils.stripColor(loreList.get(i));
                 Matcher m = ENCHANTMENT_PATTERN.matcher(currLine);
+
                 while (m.find()) {
                     Enchant enchant = enchants.getFromLore(m.group("enchant"));
-                    int level = m.group("levelDigit") == null ? RomanNumeralParser.parseNumeral(m.group("levelNumeral")) : Integer.parseInt(m.group("levelDigit"));
+                    int level = RomanNumeralParser.parseNumeral(m.group("levelNumeral"));
                     if (enchant != null) {
                         orderedEnchants.put(enchant, level);
                     }

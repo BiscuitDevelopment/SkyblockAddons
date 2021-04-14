@@ -982,6 +982,12 @@ public class PlayerListener {
                 EnchantManager.parseEnchants(e.toolTip, ItemUtils.getExtraAttributes(e.itemStack));
             }
 
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
+                for (int i = 0; i < e.toolTip.size(); i++) {
+                    e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
+                }
+            }
+
             int insertAt = e.toolTip.size();
             insertAt--; // 1 line for the rarity
             if (e.showAdvancedItemTooltips) {
