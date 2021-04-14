@@ -187,13 +187,13 @@
     "onlyMineOresDwarvenMines": "只在 Dwarven Mines 中挖掘礦物",
     "drillFuelBar": "Drill 燃料計量條",
     "drillFuelText": "Drill 燃料值",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "fishingParticleOverlay": "釣魚粒子提示",
+    "enchantmentLoreParsing": "解析附魔信息",
+    "cooldownPrediction": "預測並縮短冷卻時間",
+    "legendaryMonkeyLevel100": "[TEMP] 等級 100 傳說 Monkey",
+    "biggerWake": "放大提示粒子",
+    "stackingEnchantProgress": "顯示疊加附魔進度",
+    "showReforgeOverlay": "顯示 Reforge 提示"
   },
   "messages": {
     "enchants": "附魔",
@@ -220,16 +220,16 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "加入我們的 Discord 伺服器！",
+      "watchShowcase": "觀看影片",
+      "downloadButton": "下載",
+      "openModFolderButton": "開啟模組資料夾",
+      "joinDiscordButton": "加入 Discord",
       "newUpdateAvailable": "有一個可用更新！ (%version%)",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "無可用的下載連結，請查看我們的 Discord 伺服器。",
       "notificationBox": {
         "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "有一個可用的測試版更新！ (%version%) 聊天室中有下載連結！",
         "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
       }
     },
@@ -485,14 +485,14 @@
     "inCombat": "戰鬥中..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "最高級",
+    "highTier": "高級",
+    "midTier": "中級",
+    "lowTier": "低級",
+    "commas": "逗號",
+    "expertiseKills": "Expertise 擊殺數",
+    "compactedBlocks": "Compact 方塊數",
+    "cultivatedCrops": "Cultivate 作物數",
+    "maxed": "已達上限"
   }
 }
