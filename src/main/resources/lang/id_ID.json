@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Sebuah update besar (%version%) telah hadir! Tautan untuk mengunggah terdapat di chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Sebuah update tambalan (%version%) telah hadir! Lihat di chat untuk opsi-opsi mengunggah!"
       }
     },
