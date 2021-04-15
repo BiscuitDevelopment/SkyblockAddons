@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
       }
     },
