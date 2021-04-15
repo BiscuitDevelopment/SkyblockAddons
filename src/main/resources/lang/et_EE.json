@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Uus suurem uuendus (%version%) on saadaval! Link allalaadimisele on chat 'is.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Uus parandus uuendus (%version%) on saadaval! Vaata chat 'i allalaadimise variantide jaoks!"
       }
     },
