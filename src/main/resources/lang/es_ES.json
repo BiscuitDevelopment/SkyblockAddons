@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El enlace para la descarga se puede encontrar en el chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "¡Una nueva actualización de parche (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!"
       }
     },
