@@ -183,6 +183,7 @@ public enum Feature {
     LEG_MONKEY_LEVEL_100(169, "settings.legendaryMonkeyLevel100", null, true),
     BIGGER_WAKE(170, "settings.biggerWake", null, false),
     ENCHANTMENT_COMMA_COLOR(171, "enchants.commas", new GuiFeatureData(ColorCode.BLUE, true), false),
+    REFORGE_FILTER(172, "settings.reforgeFilter", null, false),
 
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),

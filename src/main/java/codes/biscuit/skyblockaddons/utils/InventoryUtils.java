@@ -373,6 +373,7 @@ public class InventoryUtils {
         return itemPickupLog.values();
     }
 
+    //TODO: Fix for Hypixel localization
     /**
      * Detects and stores, and returns the current Skyblock inventory type. The inventory type is the kind of menu the
      * player has open, like a crafting table or an enchanting table for example.
@@ -403,6 +404,7 @@ public class InventoryUtils {
         return this.inventoryType = null;
     }
 
+    // TODO: Fix for Hypixel localization
     // Gets the reforge inventory type from a given reforge inventory
     private InventoryType getReforgeInventoryType(InventoryType baseType, IInventory inventory) {
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.

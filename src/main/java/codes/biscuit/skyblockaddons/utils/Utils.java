@@ -4,13 +4,11 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonParseException;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
 import com.ibm.icu.text.Bidi;
@@ -99,14 +97,14 @@ public class Utils {
     private final ItemDropChecker itemDropChecker = new ItemDropChecker();
 
     /**
-     * List of enchantments that the player is looking to find.
+     * List of reforges that the player is looking to find.
      */
-    private List<String> enchantmentMatches = new LinkedList<>();
+    private List<String> reforgeMatches = new LinkedList<>();
 
     /**
-     * List of enchantment substrings that the player doesn't want to match.
+     * List of reforge substrings that the player doesn't want to match.
      */
-    private List<String> enchantmentExclusions = new LinkedList<>();
+    private List<String> reforgeExclusions = new LinkedList<>();
 
     /**
      * Whether the player is on skyblock.
@@ -483,15 +481,22 @@ public class Utils {
         Minecraft.getMinecraft().thePlayer.playSound(sound, (float) volume, (float) pitch);
     }
 
-    public boolean enchantReforgeMatches(String text) {
-        text = text.toLowerCase(Locale.US);
-        for (String enchant : enchantmentMatches) {
-            enchant = enchant.trim().toLowerCase(Locale.US);
-            if (StringUtils.isNotEmpty(enchant) && text.contains(enchant)) {
+    /**
+     * Checks if the given reforge is similar to any reforges on the desired/exclusions lists from the reforge filter feature.
+     *
+     * @param reforge the reforge to check
+     * @return {@code true} if the given reforge is similar to a desired reforge and dissimilar to all excluded reforges,
+     * {@code false} otherwise
+     */
+    public boolean enchantReforgeMatches(String reforge) {
+        reforge = reforge.trim().toLowerCase(Locale.US);
+        for (String desiredReforge : reforgeMatches) {
+            desiredReforge = desiredReforge.trim().toLowerCase(Locale.US);
+            if (StringUtils.isNotEmpty(desiredReforge) && reforge.contains(desiredReforge)) {
                 boolean foundExclusion = false;
-                for (String exclusion : enchantmentExclusions) {
-                    exclusion = exclusion.trim().toLowerCase(Locale.US);
-                    if (StringUtils.isNotEmpty(exclusion) && text.contains(exclusion)) {
+                for (String excludedReforge : reforgeExclusions) {
+                    excludedReforge = excludedReforge.trim().toLowerCase(Locale.US);
+                    if (StringUtils.isNotEmpty(excludedReforge) && reforge.contains(excludedReforge)) {
                         foundExclusion = true;
                         break;
                     }
