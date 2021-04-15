@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Nova večja posodobitev (%version%) je na voljo! Link za prenos je v chatu.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!"
       }
     },
