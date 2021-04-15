@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
       }
     },
