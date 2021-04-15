@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
       }
     },
