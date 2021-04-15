@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
       }
     },
