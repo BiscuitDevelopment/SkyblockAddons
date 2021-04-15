@@ -229,7 +229,7 @@
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link!",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท"
       }
     },
