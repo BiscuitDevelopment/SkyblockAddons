@@ -193,7 +193,7 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Reforge オーバーレイを表示"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -226,10 +226,10 @@
       "openModFolderButton": "Mods フォルダーを開く",
       "joinDiscordButton": "Discord に参加",
       "newUpdateAvailable": "新しいアップデート (%version%) が利用可能です！",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "利用可能なダウンロードリンクがありません、私たちの Discord サーバーを確認してください。",
       "notificationBox": {
         "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！ダウンロードリンクはチャットにあります。",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "新しいベータアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください。",
         "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください！"
       }
     },
@@ -241,7 +241,7 @@
     "clickMoreTimes": "本当に捨てたい場合は、このアイテムを %times% 回クリック/捨ててください。",
     "clickOneMoreTime": "本当に捨てたい場合は、このアイテムを 1 回クリック/捨ててください。",
     "cancelledDeepCaverns": "機能がここでこのブロックの採掘を阻止しました。",
-    "featureDisabled": "機能は無効化されています",
+    "featureDisabled": "機能は無効です",
     "anvilUses": "金床の使用回数：%uses%",
     "specialZealotFound": "スペシャル Zealot！",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
@@ -490,7 +490,7 @@
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
     "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
+    "expertiseKills": "Expertise で倒した数",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
     "maxed": "Maxed"
