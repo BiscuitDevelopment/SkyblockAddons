@@ -187,13 +187,13 @@
     "onlyMineOresDwarvenMines": "Копай само руди в Dwarven Mines",
     "drillFuelBar": "Drill лента за гориво",
     "drillFuelText": "Количество гориво в Drill",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "fishingParticleOverlay": "Overlay за модифициране цвета на Fishing Particle",
+    "enchantmentLoreParsing": "Анализиране на подсказки прогрес Enchant",
+    "cooldownPrediction": "Предскажи и съкрати времето за изчакване",
+    "legendaryMonkeyLevel100": "[TEMP] Ниво 100 Легендарна маймуна",
+    "biggerWake": "Увеличаване на Overlay Particles",
+    "stackingEnchantProgress": "Покажи Натрупване на Enchant прогреса",
+    "showReforgeOverlay": "Покажи Reforge Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -220,16 +220,16 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "Трябва ви помощ или искате да видите целите промените?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Присъединете се в нашият Discord сървър!",
+      "watchShowcase": "Гледане на видео",
+      "downloadButton": "Изтегляне",
+      "openModFolderButton": "Отвори папката за Mods",
+      "joinDiscordButton": "Влез в Discord",
       "newUpdateAvailable": "Нова версия (%version%) е налична!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Няма налична връзка за изтегляне, моля проверете нашият Discord сървър.",
       "notificationBox": {
         "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Нова beta актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!",
         "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
       }
     },
@@ -485,13 +485,13 @@
     "inCombat": "В битка..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
+    "superTier": "Максимално Ниво",
+    "highTier": "Високо Ниво",
+    "midTier": "Средно Ниво",
+    "lowTier": "Ниско Ниво",
+    "commas": "Запетаи",
+    "expertiseKills": "Покажи убийствата за Expertise",
+    "compactedBlocks": "Компактни Блокове",
     "cultivatedCrops": "Cultivated Crops",
     "maxed": "Maxed"
   }
