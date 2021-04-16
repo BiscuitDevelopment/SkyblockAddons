@@ -222,11 +222,11 @@
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
       "joinDiscord": "Entre no nosso servidor Discord!",
       "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
+      "downloadButton": "Baixar",
       "openModFolderButton": "Abrir Pasta de Mods",
       "joinDiscordButton": "Join Discord",
       "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-      "noDownloadAvailable": "Nenhum link de download disponível, por favor verifique nosso servidor Discord.",
+      "noDownloadAvailable": "Nenhum link para baixar disponível, por favor verifique nosso servidor Discord.",
       "notificationBox": {
         "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
         "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe no chat para o link do download.",
