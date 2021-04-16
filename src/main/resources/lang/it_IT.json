@@ -220,13 +220,13 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
+      "joinDiscord": "Unisciti al nostro server di Discord!",
+      "watchShowcase": "Guarda il video",
       "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "openModFolderButton": "Apri la cartella delle mod",
+      "joinDiscordButton": "Unisciti a Discord",
       "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Nessun link di download disponibile, per favore controlla il nostro server di Discord.",
       "notificationBox": {
         "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
         "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
@@ -485,14 +485,14 @@
     "inCombat": "In combattimento..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Livello Massimo",
+    "highTier": "Livello Alto",
+    "midTier": "Livello Medio",
+    "lowTier": "Livello Basso",
+    "commas": "Virgole",
+    "expertiseKills": "Uccisioni con Expertise",
+    "compactedBlocks": "Blocchi Compatti",
+    "cultivatedCrops": "Raccolti coltivati",
+    "maxed": "Massimizzato"
   }
 }
