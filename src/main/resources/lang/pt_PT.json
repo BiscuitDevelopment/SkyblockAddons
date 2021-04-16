@@ -188,7 +188,7 @@
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelText": "Número de combustível da Drill",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Customizar listas de encantamentos",
     "cooldownPrediction": "Prever e diminuir o tempo de espera",
     "legendaryMonkeyLevel100": "[TEMP] Monkey lendário de nível 100",
     "biggerWake": "Enlarge Overlay Particles",
@@ -491,8 +491,8 @@
     "lowTier": "Nível baixo",
     "commas": "Vírgulas",
     "expertiseKills": "Kills com Expertise",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
+    "compactedBlocks": "Blocos compactados",
+    "cultivatedCrops": "Plantas cultivadas",
     "maxed": "Maximizado"
   }
 }
