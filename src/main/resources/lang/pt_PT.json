@@ -190,7 +190,7 @@
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Prever e diminuir o tempo de espera",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey lendário de nível 100",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
     "showReforgeOverlay": "Show Reforge Overlay"
@@ -229,7 +229,7 @@
       "noDownloadAvailable": "O link para o download não está disponível, procura-o no nosso servidor de Discord.",
       "notificationBox": {
         "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Está disponível uma nova atualização beta (%version%)! O link para o download pode ser encontrado no chat.",
         "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
       }
     },
