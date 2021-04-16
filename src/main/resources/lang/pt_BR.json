@@ -220,16 +220,16 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
-      "joinDiscord": "Join our Discord server!",
+      "joinDiscord": "Entre no nosso servidor Discord!",
       "watchShowcase": "Watch Video",
       "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
+      "openModFolderButton": "Abrir Pasta de Mods",
       "joinDiscordButton": "Join Discord",
       "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
         "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe no chat para o link do download.",
         "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
       }
     },
@@ -489,9 +489,9 @@
     "highTier": "High Tier",
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
-    "commas": "Commas",
+    "commas": "Vírgulas",
     "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
+    "compactedBlocks": "Blocos Compactados",
     "cultivatedCrops": "Cultivated Crops",
     "maxed": "Maxed"
   }
