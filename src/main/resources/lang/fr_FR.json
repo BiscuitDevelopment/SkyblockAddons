@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Afficher l'aide pour l'Experimentation Table",
     "onlyMineOresDwarvenMines": "Miner uniquement les minerais dans la Dwarven Mines",
     "drillFuelBar": "Barre de carburant du Drill",
-    "drillFuelText": "Quantité de carburant du Drill"
+    "drillFuelText": "Quantité de carburant du Drill",
+    "fishingParticleOverlay": "Overlay des particules de pêche",
+    "enchantmentLoreParsing": "Trier les outils d'enchantements",
+    "cooldownPrediction": "Prédire et réduire le temps de recharge",
+    "legendaryMonkeyLevel100": "[TEMP] Niveau 100 Monkey légendaire",
+    "biggerWake": "Agrandir la superposition des particules",
+    "stackingEnchantProgress": "Afficher la progression de la charge des enchantements",
+    "showReforgeOverlay": "Afficher l'overlay des reforges"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
       "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Besoin d'aide ou voulez-vous lire les changements?",
+      "joinDiscord": "Rejoignez notre serveur Discord!",
+      "watchShowcase": "Regarder la vidéo",
+      "downloadButton": "Télécharger",
+      "openModFolderButton": "Dossier des mods",
+      "joinDiscordButton": "Rejoindre Discord",
+      "newUpdateAvailable": "La mise à jour (%version%) est disponible!",
+      "noDownloadAvailable": "Aucun lien de téléchargement disponible, veuillez consulter notre serveur Discord.",
+      "notificationBox": {
+        "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
+        "betaAvailable": "Une nouvelle mise à jour bêta (%version%) est disponible ! Regardez dans le chat le lien de téléchargement.",
+        "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!"
+      }
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
@@ -461,5 +483,16 @@
     "unknown": "Pas visité",
     "notUnlocked": "Non débloqué",
     "inCombat": "En combat..."
+  },
+  "enchants": {
+    "superTier": "Niveau max",
+    "highTier": "Haut niveau",
+    "midTier": "Niveau moyen",
+    "lowTier": "Niveau bas",
+    "commas": "Virgules",
+    "expertiseKills": "Montrer les morts de Expertise",
+    "compactedBlocks": "Blocs compacts",
+    "cultivatedCrops": "Graines cultivées",
+    "maxed": "Maxée"
   }
 }

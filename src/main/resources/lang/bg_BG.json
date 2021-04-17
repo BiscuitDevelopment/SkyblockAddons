@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Покажи подсказки в Experimentation Table",
     "onlyMineOresDwarvenMines": "Копай само руди в Dwarven Mines",
     "drillFuelBar": "Drill лента за гориво",
-    "drillFuelText": "Количество гориво в Drill"
+    "drillFuelText": "Количество гориво в Drill",
+    "fishingParticleOverlay": "Overlay за модифициране цвета на Fishing Particle",
+    "enchantmentLoreParsing": "Анализиране на подсказки прогрес Enchant",
+    "cooldownPrediction": "Предскажи и съкрати времето за изчакване",
+    "legendaryMonkeyLevel100": "[TEMP] Ниво 100 Легендарна маймуна",
+    "biggerWake": "Увеличаване на Overlay Particles",
+    "stackingEnchantProgress": "Покажи Натрупване на Enchant прогреса",
+    "showReforgeOverlay": "Покажи Reforge Overlay"
   },
   "messages": {
     "enchants": "Enchants",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
       "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Трябва ви помощ или искате да видите целите промените?",
+      "joinDiscord": "Присъединете се в нашият Discord сървър!",
+      "watchShowcase": "Гледане на видео",
+      "downloadButton": "Изтегляне",
+      "openModFolderButton": "Отвори папката за Mods",
+      "joinDiscordButton": "Влез в Discord",
+      "newUpdateAvailable": "Нова версия (%version%) е налична!",
+      "noDownloadAvailable": "Няма налична връзка за изтегляне, моля проверете нашият Discord сървър.",
+      "notificationBox": {
+        "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
+        "betaAvailable": "Нова beta актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!",
+        "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
+      }
     },
     "slotLocked": "Този слот е зaлючен!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Не е посещено",
     "notUnlocked": "Не е отключено",
     "inCombat": "В битка..."
+  },
+  "enchants": {
+    "superTier": "Максимално Ниво",
+    "highTier": "Високо Ниво",
+    "midTier": "Средно Ниво",
+    "lowTier": "Ниско Ниво",
+    "commas": "Запетаи",
+    "expertiseKills": "Покажи убийствата за Expertise",
+    "compactedBlocks": "Компактни Блокове",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

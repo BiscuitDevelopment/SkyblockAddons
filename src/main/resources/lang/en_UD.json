@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "crwdns1586:0crwdne1586:0",
     "onlyMineOresDwarvenMines": "crwdns1588:0crwdne1588:0",
     "drillFuelBar": "crwdns1590:0crwdne1590:0",
-    "drillFuelText": "crwdns1592:0crwdne1592:0"
+    "drillFuelText": "crwdns1592:0crwdne1592:0",
+    "fishingParticleOverlay": "crwdns1602:0crwdne1602:0",
+    "enchantmentLoreParsing": "crwdns1604:0crwdne1604:0",
+    "cooldownPrediction": "crwdns1606:0crwdne1606:0",
+    "legendaryMonkeyLevel100": "crwdns1608:0[TEMP]crwdne1608:0",
+    "biggerWake": "crwdns1610:0crwdne1610:0",
+    "stackingEnchantProgress": "crwdns1612:0crwdne1612:0",
+    "showReforgeOverlay": "crwdns1614:0crwdne1614:0"
   },
   "messages": {
     "enchants": "crwdns1272:0crwdne1272:0",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "crwdns578:0%version%crwdne578:0",
       "patchAvailable": "crwdns582:0%version%crwdne582:0"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "crwdns1616:0crwdne1616:0",
+      "joinDiscord": "crwdns1618:0crwdne1618:0",
+      "watchShowcase": "crwdns1620:0crwdne1620:0",
+      "downloadButton": "crwdns1622:0crwdne1622:0",
+      "openModFolderButton": "crwdns1624:0crwdne1624:0",
+      "joinDiscordButton": "crwdns1626:0crwdne1626:0",
+      "newUpdateAvailable": "crwdns1628:0%version%crwdne1628:0",
+      "noDownloadAvailable": "crwdns1630:0crwdne1630:0",
+      "notificationBox": {
+        "majorAvailable": "crwdns1632:0%version%crwdne1632:0",
+        "betaAvailable": "crwdns1634:0%version%crwdne1634:0",
+        "patchAvailable": "crwdns1636:0%version%crwdne1636:0"
+      }
     },
     "slotLocked": "crwdns480:0crwdne480:0",
     "summoningEyeFound": "crwdns490:0crwdne490:0",
@@ -461,5 +483,16 @@
     "unknown": "crwdns1576:0crwdne1576:0",
     "notUnlocked": "crwdns1578:0crwdne1578:0",
     "inCombat": "crwdns1580:0crwdne1580:0"
+  },
+  "enchants": {
+    "superTier": "crwdns1638:0crwdne1638:0",
+    "highTier": "crwdns1640:0crwdne1640:0",
+    "midTier": "crwdns1642:0crwdne1642:0",
+    "lowTier": "crwdns1644:0crwdne1644:0",
+    "commas": "crwdns1646:0crwdne1646:0",
+    "expertiseKills": "crwdns1648:0crwdne1648:0",
+    "compactedBlocks": "crwdns1650:0crwdne1650:0",
+    "cultivatedCrops": "crwdns1652:0crwdne1652:0",
+    "maxed": "crwdns1654:0crwdne1654:0"
   }
 }

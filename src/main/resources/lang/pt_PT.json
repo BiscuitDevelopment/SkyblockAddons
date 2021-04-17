@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Mostrar descrições dos itens na Experimentation Table",
     "onlyMineOresDwarvenMines": "Só partir minérios nas Dwarven Mines",
     "drillFuelBar": "Barra de combustível da Drill",
-    "drillFuelText": "Número de combustível da Drill"
+    "drillFuelText": "Número de combustível da Drill",
+    "fishingParticleOverlay": "Customizar partículas de pesca",
+    "enchantmentLoreParsing": "Customizar listas de encantamentos",
+    "cooldownPrediction": "Prever e diminuir o tempo de espera",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey lendário de nível 100",
+    "biggerWake": "Aumentar partículas customizadas",
+    "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
+    "showReforgeOverlay": "Mostrar reforges no menu"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
       "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Precisas de ajuda ou queres ler todas as alterações?",
+      "joinDiscord": "Entra no nosso servidor de Discord!",
+      "watchShowcase": "Ver vídeo",
+      "downloadButton": "Descarregar",
+      "openModFolderButton": "Abrir pasta mods",
+      "joinDiscordButton": "Entrar no Discord",
+      "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
+      "noDownloadAvailable": "O link para o download não está disponível, procura-o no nosso servidor de Discord.",
+      "notificationBox": {
+        "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
+        "betaAvailable": "Está disponível uma nova atualização beta (%version%)! O link para o download pode ser encontrado no chat.",
+        "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
+      }
     },
     "slotLocked": "Este slot está bloqueado!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Não visitado",
     "notUnlocked": "Não desbloqueado",
     "inCombat": "Em combate..."
+  },
+  "enchants": {
+    "superTier": "Nível máximo",
+    "highTier": "Nível alto",
+    "midTier": "Nível médio",
+    "lowTier": "Nível baixo",
+    "commas": "Vírgulas",
+    "expertiseKills": "Kills com Expertise",
+    "compactedBlocks": "Blocos compactados",
+    "cultivatedCrops": "Plantas cultivadas",
+    "maxed": "Maximizado"
   }
 }

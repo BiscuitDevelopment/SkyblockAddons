@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Εμφάνιση συμβουλών εργαλείου πίνακα πειραματισμού",
     "onlyMineOresDwarvenMines": "Σπάστε μόνο τα μεταλλεύματα στο Dwarven Mines",
     "drillFuelBar": "Δράπανο Fuel Bar",
-    "drillFuelText": "Αριθμός καυσίμου τρυπανιών"
+    "drillFuelText": "Αριθμός καυσίμου τρυπανιών",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
       "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Χρειάζεστε υποστήριξη ή θέλετε να διαβάσετε ολόκληρο το changelog;",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Μία νέα ενημέρωση (%version%) είναι διαθέσιμη!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
+      }
     },
     "slotLocked": "Αυτή η θέση είναι κλειδωμένη!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Δεν έχω επισκεφτεί",
     "notUnlocked": "Δεν ξεκλειδώθηκε",
     "inCombat": "Σε Μάχη..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

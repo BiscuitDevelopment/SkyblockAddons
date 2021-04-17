@@ -145,7 +145,7 @@
     "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光",
     "showItemDungeonFloor": "顯示 Dungeon Items 獲取樓層",
     "showDungeonMilestone": "顯示 Dungeon 里程碑",
-    "dungeonsCollectedEssencesDisplay": "顯示 Dungeon 已收集精華",
+    "dungeonsCollectedEssencesDisplay": "顯示 Dungeons 已收集精華",
     "stopBonzoStaffSounds": "靜音 Bonzo's Staff",
     "showRarityUpgraded": "顯示物品稀有度是否被升級",
     "revenantSlayerTracker": "Slayer 追蹤器－Revemamt/Zombie",
@@ -162,7 +162,7 @@
     "showPersonalCompactorPreview": "顯示 Personal Compactor 預覽",
     "rockPetTracker": "Rock 寵物追蹤器",
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
-    "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示",
+    "dungeonsTeammateNameOverlay": "Dungeons 隊友名稱顯示",
     "showExpertiseKills": "顯示 Expertise 擊殺數",
     "dungeonsSecretsDisplay": "Dungeons Secrets 顯示",
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
@@ -183,10 +183,17 @@
     "chromaSaturation": "漸變色飽和度",
     "chromaBrightness": "漸變色亮度",
     "useNewChromaEffect": "使用新版漸變效果",
-    "showExperimentationTableTooltips": "顯示 Experimentation Table 工具提示",
+    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品信息",
     "onlyMineOresDwarvenMines": "只在 Dwarven Mines 中挖掘礦物",
     "drillFuelBar": "Drill 燃料計量條",
-    "drillFuelText": "Drill 燃料值"
+    "drillFuelText": "Drill 燃料值",
+    "fishingParticleOverlay": "釣魚粒子提示",
+    "enchantmentLoreParsing": "解析附魔信息",
+    "cooldownPrediction": "預測並縮短冷卻時間",
+    "legendaryMonkeyLevel100": "[TEMP] 等級 100 傳說 Monkey",
+    "biggerWake": "放大提示粒子",
+    "stackingEnchantProgress": "顯示疊加附魔進度",
+    "showReforgeOverlay": "顯示 Reforge 提示"
   },
   "messages": {
     "enchants": "附魔",
@@ -204,12 +211,27 @@
     "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
     "downloadLink": "影片/更新連結",
     "directDownload": "直接下載連結",
-    "openModFolder": "打開模組資料夾",
+    "openModFolder": "開啟模組資料夾",
     "joinTheDiscord": "Discord連結",
     "newUpdateAvailable": "有一個可用更新！ (%version%)",
     "update": {
       "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
       "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
+      "joinDiscord": "加入我們的 Discord 伺服器！",
+      "watchShowcase": "觀看影片",
+      "downloadButton": "下載",
+      "openModFolderButton": "開啟模組資料夾",
+      "joinDiscordButton": "加入 Discord",
+      "newUpdateAvailable": "有一個可用更新！ (%version%)",
+      "noDownloadAvailable": "無可用的下載連結，請查看我們的 Discord 伺服器。",
+      "notificationBox": {
+        "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
+        "betaAvailable": "有一個可用的測試版更新！ (%version%) 聊天室中有下載連結！",
+        "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+      }
     },
     "slotLocked": "此欄位已被鎖定！",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "尚未探索",
     "notUnlocked": "尚未解鎖",
     "inCombat": "戰鬥中..."
+  },
+  "enchants": {
+    "superTier": "最高級",
+    "highTier": "高級",
+    "midTier": "中級",
+    "lowTier": "低級",
+    "commas": "逗號",
+    "expertiseKills": "Expertise 擊殺數",
+    "compactedBlocks": "Compact 方塊數",
+    "cultivatedCrops": "Cultivate 作物數",
+    "maxed": "已達上限"
   }
 }

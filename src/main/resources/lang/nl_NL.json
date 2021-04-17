@@ -73,7 +73,7 @@
     "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
     "showItemCooldowns": "Voorwerpafkoeltijd weergeven",
     "speedPercentage": "Snelheidspercentage",
-    "collectionDisplay": "Vaardigheid Voortgang Weergave",
+    "collectionDisplay": "Vaardigheidsvoortgang weergeven",
     "onlyMineOresDeepCaverns": "Breek Alleen Erts in de Diepe Grotten",
     "onlyMineValuablesNether": "Breek Alleen Kostbaarheden in de Nether",
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
@@ -163,17 +163,17 @@
     "rockPetTracker": "Rock Pet-tracker",
     "dolphinPetTracker": "Dolphin Pet-tracker",
     "dungeonsTeammateNameOverlay": "Namen Dungeons teamgenoten weergeven",
-    "showExpertiseKills": "Expertisekills weergeven",
+    "showExpertiseKills": "Expertise-eliminaties weergeven",
     "dungeonsSecretsDisplay": "Dungeonsgeheimen weergeven",
     "showSkillPercentageInstead": "Percentage weergeven in plaats van XP",
     "showSkillXPGained": "Behaalde XP weergeven",
-    "skillProgressBar": "Skillvooruitgangsbalk",
+    "skillProgressBar": "Vaardigheidsvoortgangsbalk",
     "showSalvageEssencesCounter": "Gebergde Essences-teller weergeven",
     "disableMortMessages": "Dodingsberichten uitschakelen",
     "disableBossMessages": "Baasberichten uitschakelen",
     "hideOtherPlayersPresents": "Cadeaus van anderen verbergen",
     "easierPresentOpening": "Cadeaus makkelijker uitpakken",
-    "showSwordKills": "Kills met zwaard weergeven",
+    "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightMaxEnchantments": "Speciale betoveringen markeren",
     "disableEmptyGlassPanes": "Lege glazen ruiten verbergen",
@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Experimentation Table-tooltips weergeven",
     "onlyMineOresDwarvenMines": "Alleen erts breken in Dwarven Mines",
     "drillFuelBar": "Drill-brandstofbalk",
-    "drillFuelText": "Drill-brandstofgetal"
+    "drillFuelText": "Drill-brandstofgetal",
+    "fishingParticleOverlay": "Visdeeltjesoverlay",
+    "enchantmentLoreParsing": "Betoveringstooltips parseren",
+    "cooldownPrediction": "Afkoeltijd schatten en inkorten",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 legendarische monkey",
+    "biggerWake": "Overlaydeeltjes vergroten",
+    "stackingEnchantProgress": "Stapelbetoveringsvoorgang weergeven",
+    "showReforgeOverlay": "Omsmeedoverlay weergeven"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -209,7 +216,22 @@
     "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
     "update": {
       "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
-      "patchAvailable": "Een nieuwe patch update (%version%) is beschikbaar! Kijk in de chat voor download opties!"
+      "patchAvailable": "Een nieuwe patchupdate (%version%) is beschikbaar! Kijk in de chat voor downloadopties!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Heb je hulp nodig of wil je de volledige lijst met wijzigingen lezen?",
+      "joinDiscord": "Word lid van onze Discord-server!",
+      "watchShowcase": "Video bekijken",
+      "downloadButton": "Downloaden",
+      "openModFolderButton": "Modificatiemap openen",
+      "joinDiscordButton": "Discord toetreden",
+      "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
+      "noDownloadAvailable": "Geen downloadlink beschikbaar, controleer onze Discord-server.",
+      "notificationBox": {
+        "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
+        "betaAvailable": "Een nieuwe bèta-update (%version%) is beschikbaar! Kijk in de chat voor de downloadlink!",
+        "patchAvailable": "Een nieuwe patchupdate (%version%) is beschikbaar! Kijk in de chat voor downloadopties!"
+      }
     },
     "slotLocked": "Dit vakje is vergrendeld!",
     "summoningEyeFound": "Summoning Eye!",
@@ -361,8 +383,8 @@
           "detailedHelp": {
             "description": "Handmatig aantal voor Zealotteller opgeven.",
             "options": {
-              "eyes": "Totaal Summoning Eyes verkregen",
-              "totalZealots": "Totaal Zealots gedood",
+              "eyes": "Aantal Summoning Eyes verkregen",
+              "totalZealots": "Aantal Zealots gedood",
               "zealots": "Zealots gedood sinds het laatste Summoning Eye"
             }
           },
@@ -385,7 +407,7 @@
         "bossRequired": "Je moet een baas selecteren! Kies alsjeblieft %bosses%",
         "statRequired": "Je moet een statistiek selecteren. Druk tab voor opties.",
         "numberRequired": "Je moet een nummer toevoegen.",
-        "killsSet": "Kills voor slayer %boss% veranderd naar %number%.",
+        "killsSet": "Eliminaties voor slayer %boss% veranderd naar %number%.",
         "statSet": "Statistiek %stat% voor slayer %boss% veranderd naar %number%.",
         "invalidBoss": "\"%input%\" is geen geldige statistiek!",
         "invalidStat": "\"%input%\" is geen geldige baas!"
@@ -461,5 +483,16 @@
     "unknown": "Niet bezocht",
     "notUnlocked": "Niet ontgrendeld",
     "inCombat": "In gevecht..."
+  },
+  "enchants": {
+    "superTier": "Maximale tier",
+    "highTier": "Hoge tier",
+    "midTier": "Matige tier",
+    "lowTier": "Lage tier",
+    "commas": "Komma's",
+    "expertiseKills": "Expertise-eliminaties",
+    "compactedBlocks": "Compacte blokken",
+    "cultivatedCrops": "Gecultiveerde gewassen",
+    "maxed": "Gemaximaliseerd"
   }
 }

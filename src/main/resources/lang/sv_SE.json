@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number"
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -210,6 +217,21 @@
     "update": {
       "majorAvailable": "En ny större uppdatering (%version%) finns tillgänlig! Länken för nedladdningen finns i chatten.",
       "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+    },
+    "updateChecker": {
+      "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Ladda ned",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Anslut till Discord",
+      "newUpdateAvailable": "En ny uppdatering (%version%) finns tillgänglig!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "En ny större uppdatering (%version%) finns tillgänlig! Länken för nedladdningen finns i chatten.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+      }
     },
     "slotLocked": "Denna plats är låst!",
     "summoningEyeFound": "Summoning Eye!",
@@ -461,5 +483,16 @@
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
     "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Kommatecken",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

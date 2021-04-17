@@ -162,7 +162,7 @@
     "showPersonalCompactorPreview": "הצג תצוגה מקדימה של ה- \"Personal Compactor\"",
     "rockPetTracker": "מעקב Rock Pet",
     "dolphinPetTracker": "מעקב Dolphin Pet",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
+    "dungeonsTeammateNameOverlay": "הצג שמות של חברי הקבוצה בDungeon",
     "showExpertiseKills": "הצג הריגות של - Expertise",
     "dungeonsSecretsDisplay": "תצוגת כמות הסודות בDungeons",
     "showSkillPercentageInstead": "הצג אחוז במקום XP",
@@ -176,7 +176,7 @@
     "showSwordKills": "הצג את סך ההריגות עם חרב",
     "compactTabList": "רשימת Tab קומפקטית",
     "highlightMaxEnchantments": "הדגש כשפים מיוחדים",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "disableEmptyGlassPanes": "בטל חלונות זכוכית ריקים",
     "candyPointsCounter": "סופר סוכריות/נקודות בSpooky Event",
     "healingCircleOpacity": "אטימות מעגל ההחייאה",
     "chromaSize": "גודל אפקט Chroma",
@@ -186,7 +186,14 @@
     "showExperimentationTableTooltips": "הצג כלי עזר בExperimentation Table",
     "onlyMineOresDwarvenMines": "חצוב רק משאבים בDwarven Mines",
     "drillFuelBar": "בר דלק המקדח",
-    "drillFuelText": "כמות דלק מקדחה"
+    "drillFuelText": "כמות דלק מקדחה",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay"
   },
   "messages": {
     "enchants": "כישופים",
@@ -211,6 +218,21 @@
       "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
       "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!"
     },
+    "updateChecker": {
+      "wantToViewPatchNotes": "צריך/ה עזרה או רוצה לקרוא את רשימת השינויים המלאה?",
+      "joinDiscord": "הצטרף לשרת הדיסקורד שלנו!",
+      "watchShowcase": "צפה בסרטון",
+      "downloadButton": "הורד",
+      "openModFolderButton": "פתח את תיקיית מודים",
+      "joinDiscordButton": "הצטרף/י לדיסקורד",
+      "newUpdateAvailable": "עדכון חדש (%version%) זמין עכשיו להורדה!",
+      "noDownloadAvailable": "אין לינק הורדה זמין, אנא בדוק את שרת הדיסקורד שלנו.",
+      "notificationBox": {
+        "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
+        "betaAvailable": "גרסת בטא חדשה (%version%) זמינה! בדוק את הצ'אט בשביל קישור הורדה.",
+        "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!"
+      }
+    },
     "slotLocked": "משבצת זו נעולה!",
     "summoningEyeFound": "עין לזימון דרקון!",
     "cancelledStemBreak": "SkyblockAddons עצר אותך מלשבור את הגידול. תשתמש ביד חשופה אם ברצונך לשבור אותו.",
@@ -232,16 +254,16 @@
     "setHexColor": "קבע צבע לפי ערך הקסדצימלי",
     "rescaleFeatures": "שנה גודל של פיטצ'רים",
     "resizeBars": "שנה את גודל הברים",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "showColorIcons": "הצג סמלי צבע",
+    "enableFeatureSnapping": "אפשר הצמדת תכונות",
     "stage": "שלב %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
-    "clickToOpenLink": "Click to open this link!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "switchedSlots": "בדיוק החלפת בין slot נעול או חפץ נדיר. בבקשה המתן רגע לפני זריקה!",
+    "clickToOpenLink": "לחץ כדי לפתוח את קישור זה!",
+    "clickToOpenFolder": "לחץ כדי לפתוח את תיקיית המודים שלך!",
+    "firstStatus": "הסטאטוס הזה יופיע למעלה",
+    "secondStatus": "הסטאטוס הזה יופיע מתחת לסטאטוס הראשון שלך",
+    "fallbackStatus": "הסטאטוס הזה יופיע כאשר לסטאטוס האוטומטי שלך אין מה להציג",
+    "legendarySeaCreatureWarning": "תפיסה אגדית!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
     "enableAll": "Enable All",
@@ -461,5 +483,16 @@
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
     "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
