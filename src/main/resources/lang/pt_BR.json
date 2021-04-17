@@ -190,7 +190,7 @@
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey Lendário Nível 100",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay"
@@ -221,10 +221,10 @@
     "updateChecker": {
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
       "joinDiscord": "Entre no nosso servidor Discord!",
-      "watchShowcase": "Watch Video",
+      "watchShowcase": "Assistir Vídeo",
       "downloadButton": "Baixar",
       "openModFolderButton": "Abrir Pasta de Mods",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscordButton": "Junte-se ao Discord",
       "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
       "noDownloadAvailable": "Nenhum link para baixar disponível, por favor verifique nosso servidor Discord.",
       "notificationBox": {
@@ -485,14 +485,14 @@
     "inCombat": "Em Combate..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
+    "superTier": "Nível Máximo",
+    "highTier": "Nível Alto",
+    "midTier": "Nível Médio",
+    "lowTier": "Nível Baixo",
     "commas": "Vírgulas",
     "expertiseKills": "Abates com Expertise",
     "compactedBlocks": "Blocos Compactados",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Maximizado"
   }
 }
