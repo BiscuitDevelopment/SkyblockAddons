@@ -188,12 +188,12 @@
     "drillFuelBar": "Barra di combustibile Drill",
     "drillFuelText": "Numero di combustibile Drill",
     "fishingParticleOverlay": "Sovrapposizione delle particelle da pesca",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Personalizza la lista di incantesimi",
     "cooldownPrediction": "Prevedi e riduci il tempo d'attesa",
     "legendaryMonkeyLevel100": "[TEMP] Monkey Leggendario Livello 100",
     "biggerWake": "Aumenta le particelle di sovrapposizione",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "stackingEnchantProgress": "Mostra progresso degli incantesimi multipli",
+    "showReforgeOverlay": "Mostra l'overlay dei reforge"
   },
   "messages": {
     "enchants": "Incantesimi",
