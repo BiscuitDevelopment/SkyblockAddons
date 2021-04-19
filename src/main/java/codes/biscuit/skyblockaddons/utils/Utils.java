@@ -1,17 +1,16 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.*;
+import codes.biscuit.skyblockaddons.core.Attribute;
+import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import com.google.common.collect.Sets;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.ibm.icu.text.ArabicShaping;
-import com.ibm.icu.text.ArabicShapingException;
-import com.ibm.icu.text.Bidi;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.block.Block;
@@ -49,7 +48,6 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.FloatBuffer;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -653,114 +651,6 @@ public class Utils {
             }
         }
         return false;
-    }
-
-    public void loadLanguageFile(boolean pullOnline) {
-        loadLanguageFile(main.getConfigValues().getLanguage());
-        if (pullOnline) {
-            main.getUtils().tryPullingLanguageOnline(main.getConfigValues().getLanguage()); // Try getting an updated version online after loading the local one.
-        }
-    }
-
-    public void loadLanguageFile(Language language) {
-        try {
-            InputStream fileStream = getClass().getClassLoader().getResourceAsStream("lang/" + language.getPath() + ".json");
-            if (fileStream != null) {
-                try (InputStreamReader inputStreamReader = new InputStreamReader(fileStream, StandardCharsets.UTF_8)) {
-                    JsonObject languageConfig = SkyblockAddons.getGson().fromJson(inputStreamReader, JsonObject.class);
-                    main.getConfigValues().setLanguageConfig(languageConfig);
-                } finally {
-                    fileStream.close();
-                }
-            }
-        } catch (Exception ex) {
-            logger.error("There was an error loading the language json file!", ex);
-        }
-    }
-
-    public void tryPullingLanguageOnline(Language language) {
-/*        logger.info("Attempting to pull updated language files from online.");
-        SkyblockAddons.runAsync(() -> {
-            try {
-                URL url = new URL(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("User-Agent", Utils.USER_AGENT);
-
-                logger.info("Got response code " + connection.getResponseCode());
-
-                JsonObject onlineMessages = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8), JsonObject.class);
-                connection.disconnect();
-
-                overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(), onlineMessages);
-            } catch (JsonParseException | IllegalStateException | IOException ex) {
-                logger.error("There was an error loading the language file online");
-                logger.catching(ex);
-            }
-        });*/
-    }
-
-    public static String getTranslatedString(String parentPath, String value) {
-        String text;
-        try {
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            List<String> path = new LinkedList<>(Arrays.asList((parentPath).split(Pattern.quote("."))));
-            JsonObject jsonObject = main.getConfigValues().getLanguageConfig();
-            for (String part : path) {
-                if (!part.equals("")) {
-                    jsonObject = jsonObject.getAsJsonObject(part);
-                }
-            }
-            text = jsonObject.get(value).getAsString();
-            if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
-                text = bidiReorder(text);
-            }
-        } catch (NullPointerException ex) {
-            text = value; // In case of fire...
-        }
-        return text;
-    }
-
-    private static String bidiReorder(String text) {
-        try {
-            Bidi bidi = new Bidi((new ArabicShaping(ArabicShaping.LETTERS_SHAPE)).shape(text), Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
-            bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
-            return bidi.writeReordered(Bidi.DO_MIRRORING);
-        } catch (ArabicShapingException var3) {
-            return text;
-        }
-    }
-
-    /**
-     * This is used to merge in the online language entries into the existing ones.
-     * Using this method rather than an overwrite allows new entries in development to still exist.
-     *
-     * @param otherObject The object to be merged (online entries).
-     * @param baseObject   The object to me merged in to (local entries).
-     */
-    private void overwriteCommonJsonMembers(JsonObject baseObject, JsonObject otherObject) {
-        for (Map.Entry<String, JsonElement> entry : otherObject.entrySet()) {
-            String memberName = entry.getKey();
-            JsonElement otherElement = entry.getValue();
-
-            if (otherElement.isJsonObject()) {
-                // If the base object already has this object, then recurse
-                if (baseObject.has(memberName) && baseObject.get(memberName).isJsonObject()) {
-                    JsonObject baseElementObject = baseObject.getAsJsonObject(memberName);
-                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
-
-                // Otherwise we have to add a new object first, then recurse
-                } else {
-                    JsonObject baseElementObject = new JsonObject();
-                    baseObject.add(memberName, baseElementObject);
-                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
-                }
-
-            // If it's a string, then just add or overwrite the base version
-            } else if (otherElement.isJsonPrimitive() && otherElement.getAsJsonPrimitive().isString()) {
-                baseObject.add(memberName, otherElement);
-            }
-        }
     }
 
     public boolean isAxe(Item item) {

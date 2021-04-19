@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DataUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import net.minecraft.client.Minecraft;
@@ -161,9 +162,6 @@ public class SettingsGui extends GuiScreen {
             SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
-        if (feature == Feature.LANGUAGE) {
-            main.getUtils().loadLanguageFile(false);
-        }
     }
 
     /**
@@ -174,7 +172,7 @@ public class SettingsGui extends GuiScreen {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage) abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            main.getUtils().loadLanguageFile(true);
+            DataUtils.loadLocalizedStrings(true);
             main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {

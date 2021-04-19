@@ -146,8 +146,8 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        DataUtils.readLocalAndFetchOnline();
         configValues.loadValues();
+        DataUtils.readLocalAndFetchOnline();
         persistentValuesManager.loadValues();
 
         setKeyBindingDescriptions();
