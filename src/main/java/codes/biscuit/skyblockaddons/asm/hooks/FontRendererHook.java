@@ -2,9 +2,9 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
+import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
@@ -18,7 +18,7 @@ public class FontRendererHook {
 
     @SuppressWarnings("unused")
     public static void changeTextColor() {
-        if (currentDrawState.shouldManuallyRecolorFont()) {
+        if (currentDrawState != null && currentDrawState.shouldManuallyRecolorFont()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
             currentDrawState.bindAnimatedColor(fontRenderer.posX, fontRenderer.posY);
         }
