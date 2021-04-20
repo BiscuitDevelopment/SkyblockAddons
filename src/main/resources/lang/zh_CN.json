@@ -191,9 +191,9 @@
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
+    "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "显示洗炼提示"
   },
   "messages": {
     "enchants": "附魔",
@@ -220,16 +220,16 @@
     },
     "updateChecker": {
       "wantToViewPatchNotes": "需要帮助或查看更新内容？",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "加入 Discord 服务器！ ",
+      "watchShowcase": "观看视频",
+      "downloadButton": "下载",
+      "openModFolderButton": "打开Mods文件夹",
+      "joinDiscordButton": "加入 Discord",
       "newUpdateAvailable": "新版本 (%version%) 现已发布！",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "无下载链接可用，请查看我们的discord群组",
       "notificationBox": {
         "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "%version% beta更新！下载链接可以在聊天栏中找到。",
         "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
       }
     },
@@ -489,7 +489,7 @@
     "highTier": "High Tier",
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
-    "commas": "Commas",
+    "commas": "半角逗号",
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
