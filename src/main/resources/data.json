@@ -10,7 +10,7 @@
   "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
 
   "disabledFeatures": {
-    "all": [2, 10, 12, 16, 30, 31, 32, 35, 41, 44, 47, 51, 56, 59, 86, 89, 151, 154, 159],
+    "all": [2, 12, 16, 30, 31, 32, 35, 41, 44, 47, 51, 56, 59, 86, 89, 151, 154, 159],
     "1.5.0": [],
     "1.5.1": [],
     "1.5.5": []
