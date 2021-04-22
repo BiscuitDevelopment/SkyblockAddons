@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "夜视耗尽时禁用闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
     "jungleAxeCooldown": "阻止在冷却时使用丛林斧/Treecapitator",
-    "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "显示洗炼提示"
+    "showReforgeOverlay": "显示洗炼提示",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "附魔",
@@ -208,16 +208,6 @@
     "separateMultiple": "使用英文逗号间隔多个目标。",
     "enchantsToMatch": "包含%type%:",
     "enchantsToExclude": "不包含%type%:",
-    "wantToViewPatchNotes": "需要帮助或查看更新内容？",
-    "downloadLink": "更新视频介绍",
-    "directDownload": "直接下载链接",
-    "openModFolder": "Mods 文件夹",
-    "joinTheDiscord": "加入 Discord",
-    "newUpdateAvailable": "新版本 (%version%) 现已发布！",
-    "update": {
-      "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
-      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "需要帮助或查看更新内容？",
       "joinDiscord": "加入 Discord 服务器！ ",
