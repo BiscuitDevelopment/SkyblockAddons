@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "야간 투시 탈리스만 깜박임 비활성화",
     "disableMinionLocationWarning": "Minion Location Not Perfect 경고 비활성화",
     "jungleAxeCooldown": "쿨다운시 Jungle Axe/Treecapitator 사용하지 않기",
-    "organizeLongEnchantmentLists": "긴 마법 부여 목록 정리",
     "showItemCooldowns": "아이템 쿨다운 보여주기",
     "speedPercentage": "스피드 배율",
     "collectionDisplay": "Skill 완성도 보여주기",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "인챈트",
@@ -208,16 +208,6 @@
     "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
     "enchantsToMatch": "포함할 %type%:",
     "enchantsToExclude": "제외할 %type%:",
-    "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
-    "downloadLink": "영상/업데이트 링크",
-    "directDownload": "직접 설치 링크",
-    "openModFolder": "모드 폴더 열기",
-    "joinTheDiscord": "DISCORD 서버 링크",
-    "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
-    "update": {
-      "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
-      "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
       "joinDiscord": "Join our Discord server!",
