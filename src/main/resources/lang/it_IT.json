@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Evita l'intermittenza della pozione di visione notturna",
     "disableMinionLocationWarning": "Disattiva gli avvisi di posizione non perfetta",
     "jungleAxeCooldown": "Blocca la Jungle Axe/Ricarica del Treecapitator",
-    "organizeLongEnchantmentLists": "Organizza gli elenchi di incantesimi lunghi",
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso delle skill",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey Leggendario Livello 100",
     "biggerWake": "Aumenta le particelle di sovrapposizione",
     "stackingEnchantProgress": "Mostra progresso degli incantesimi multipli",
-    "showReforgeOverlay": "Mostra l'overlay dei reforge"
+    "showReforgeOverlay": "Mostra l'overlay dei reforge",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separa le liste con delle virgole.",
     "enchantsToMatch": "%type% Da Combaciare:",
     "enchantsToExclude": "%type% Da Escludere:",
-    "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
-    "downloadLink": "VIDEO/LINK DELL’AGGIORNAMENTO",
-    "directDownload": "LINK DIRETTO AL DOWNLOAD",
-    "openModFolder": "APRI LA CARTELLA DEI MODS",
-    "joinTheDiscord": "LINK DI DISCORD",
-    "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
-    "update": {
-      "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
-      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
       "joinDiscord": "Unisciti al nostro server di Discord!",
