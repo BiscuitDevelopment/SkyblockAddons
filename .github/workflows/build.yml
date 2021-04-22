@@ -27,7 +27,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Setup ForgeGradle
-      run: ./gradlew setupCIWorkspace
+      run: ./gradlew setupDecompWorkspace --no-daemon
     - name: Read mod name
       id: read_mod_name
       uses: christian-draeger/read-properties@1.0.1
