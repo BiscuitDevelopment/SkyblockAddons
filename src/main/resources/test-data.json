@@ -2,10 +2,16 @@
   "bannerImageURL": null,
   "bannerLink": null,
 
-  "latestVersion": "1.5.5",
-  "latestBeta": "1.6.0-beta.7",
-  "videoLink": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.5.5",
-  "directDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.5",
+  "updateInfo": {
+    "latestRelease": "1.5.5",
+    "releaseDownload": "https://biscuit.codes/mods/skyblockaddons/downloadversion/?v=1.5.5",
+    "releaseChangelog": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.5.5",
+    "releaseShowcase": "",
+    "latestBeta": "1.6.0-beta.11",
+    "betaDownload": "https://discord.gg/zWyr3f5GXz",
+    "betaChangelog": "https://discord.gg/zWyr3f5GXz",
+    "betaShowcase": ""
+  },
 
   "languageJSONFormat": "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
 
