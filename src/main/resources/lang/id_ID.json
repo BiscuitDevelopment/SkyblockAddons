@@ -61,7 +61,7 @@
     "warningDuration": "Durasi Peringatan",
     "dontOpenProfileWithBow": "Jangan Buka Profil Dengan Busur",
     "stopDroppingSellingRareItems": "Stop Menjatuhkan/Menjual Barang Langka",
-    "makeBackpackInventoriesColored": "Color Inventories",
+    "makeBackpackInventoriesColored": "Warna Inventaris Backpack",
     "avoidBreakingBottomSugarCane": "Hindari Menghancurkan Bawah Tebu",
     "replaceRomanNumeralsWithNumbers": "Ganti Angka Romania pada Item",
     "changeBarColorForPotions": "Ubah Warna Bar Untuk Wither & Racun",
@@ -187,13 +187,13 @@
     "drillFuelBar": "Bar Gas Drill",
     "drillFuelText": "Nomor Gas Drill",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Uraikan Tooltip Enchants",
     "cooldownPrediction": "Prediksi dan Percepat Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendaris Monkey",
     "biggerWake": "Perbesar Lapisan Partikel",
     "stackingEnchantProgress": "Perlihatkan Kemajuan Enchant yang Stacking",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Filter Reforge"
   },
   "messages": {
     "enchants": "Enchants",
