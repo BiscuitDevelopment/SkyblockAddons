@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Izključi Utripanje Night Vision Potion-a",
     "disableMinionLocationWarning": "Izključi Opozorila o Neugodni Lokaciji",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organiziraj Dolge Sezname Enchantanja",
     "showItemCooldowns": "Prikaži Cooldown za Stvari",
     "speedPercentage": "Odstotek Hitrosti",
     "collectionDisplay": "Prikaz Skill Napredka",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +208,6 @@
     "separateMultiple": "Več jih ločite z vejicami.",
     "enchantsToMatch": "%type% Zaželeno:",
     "enchantsToExclude": "%type% Nezaželeno:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "update": {
-      "majorAvailable": "Nova večja posodobitev (%version%) je na voljo! Link za prenos je v chatu.",
-      "patchAvailable": "Nova posodobitev (%version%) je na voljo! Poglej v chat za možnosti prenosa!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Need support or want to read the full changelog?",
       "joinDiscord": "Join our Discord server!",
