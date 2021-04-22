@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Tắt hiệu ứng nháy thuốc nhìn đêm",
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
     "jungleAxeCooldown": "Thời gian Hồi Jungle Axe",
-    "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị tiến trình kĩ năng",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -208,16 +208,6 @@
     "separateMultiple": "Phân Chia Nhiều Bằng Dấu Phẩy.",
     "enchantsToMatch": "%type% Để Khớp:",
     "enchantsToExclude": "%type% Để Loại Trừ:",
-    "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
-    "downloadLink": "LIÊN KẾT CẬP NHẬT",
-    "directDownload": "ĐƯỜNG DẪN TẢI VỀ TRỰC TIẾP",
-    "openModFolder": "MỞ THƯ MỤC MODS",
-    "joinTheDiscord": "THAM GIA DISCORD",
-    "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
-    "update": {
-      "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
       "joinDiscord": "Join our Discord server!",
