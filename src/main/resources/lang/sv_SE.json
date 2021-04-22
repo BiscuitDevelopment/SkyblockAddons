@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separa med kommatecken.",
     "enchantsToMatch": "%type% för att matcha:",
     "enchantsToExclude": "%type% för att exkludera:",
-    "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIREKT NEDLADDNINGSLÄNK",
-    "openModFolder": "ÖPPNA MAPPEN FÖR MODDAR",
-    "joinTheDiscord": "DISCORDLÄNK",
-    "newUpdateAvailable": "En ny uppdatering (%version%) finns tillgänglig!",
-    "update": {
-      "majorAvailable": "En ny större uppdatering (%version%) finns tillgänlig! Länken för nedladdningen finns i chatten.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
       "joinDiscord": "Join our Discord server!",
