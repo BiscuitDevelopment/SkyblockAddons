@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Απενεργοποιήστε το να αναβοσβήνουν τα Night Vision Potion",
     "disableMinionLocationWarning": "Απενεργοποίηση προειδοποιήσεων τοποθεσίας η οποία δεν είναι τέλεια",
     "jungleAxeCooldown": "Αποκλεισμός Jungle Axe / Treecapitator στο Cooldown",
-    "organizeLongEnchantmentLists": "Οργανώστε τις μεγάλες λίστες μαγείας",
     "showItemCooldowns": "Εμφάνιση αντικειμένων Cooldowns",
     "speedPercentage": "Ποσοστό Ταχύτητας",
     "collectionDisplay": "Επιδεξιότητα μπάρα προόδου",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -208,16 +208,6 @@
     "separateMultiple": "Διαχωρίστε τα πολλαπλά με κόμματα.",
     "enchantsToMatch": "%type% Να ταιριάζει:",
     "enchantsToExclude": "%type% Να εξαιρέσεις:",
-    "wantToViewPatchNotes": "Χρειάζεστε υποστήριξη ή θέλετε να διαβάσετε ολόκληρο το changelog;",
-    "downloadLink": "LINK ΓΙΑ ΒΙΝΤΕΟ/ΕΝΗΜΕΡΩΣΗ",
-    "directDownload": "LINK ΑΜΕΣΗΣ ΛΗΨΗΣ",
-    "openModFolder": "ΑΝΟΙΞΕ ΤΟΝ ΦΑΚΕΛΟ MODS",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "Μία νέα ενημέρωση (%version%) είναι διαθέσιμη!",
-    "update": {
-      "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
-      "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Χρειάζεστε υποστήριξη ή θέλετε να διαβάσετε ολόκληρο το changelog;",
       "joinDiscord": "Join our Discord server!",
