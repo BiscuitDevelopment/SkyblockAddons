@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Estä pimeänäkö-tehostetta välkkymästä",
     "disableMinionLocationWarning": "Estä \"Location Not Perfect\"-varoitukset",
     "jungleAxeCooldown": "Estä Jungle Axen ja Treecapitatorin käyttö jäähtymisaikana",
-    "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä esineiden jäähtymisaika",
     "speedPercentage": "Nopeusprosentti",
     "collectionDisplay": "Taitojen edistyksen näyttäminen",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -208,16 +208,6 @@
     "separateMultiple": "Erota useammat pilkuilla.",
     "enchantsToMatch": "Löydettävä %type%:",
     "enchantsToExclude": "Pois jätettävä %type%:",
-    "wantToViewPatchNotes": "Tarvitsetko apua tai haluatko lukea koko muutoslokin?",
-    "downloadLink": "VIDEO/PÄIVITYSLINKKI",
-    "directDownload": "SUORA LATAUSLINKKI",
-    "openModFolder": "AVAA MODS-KANSIO",
-    "joinTheDiscord": "DISCORD-LINKKI",
-    "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
-    "update": {
-      "majorAvailable": "Uusi merkittävä päivitys (%version%) on saatavilla! Latauslinkki löytyy chatistä.",
-      "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Tarvitsetko apua tai haluatko lukea koko muutoslokin?",
       "joinDiscord": "Join our Discord server!",
