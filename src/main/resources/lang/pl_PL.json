@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Zablokuj używanie Jungle Axe/Treecapitatora podczas odnawiania",
-    "organizeLongEnchantmentLists": "Uporządkuj długie listy zaklęć",
     "showItemCooldowns": "Pokazuj czas odnowienia przedmiotów",
     "speedPercentage": "Procent szybkości",
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -208,16 +208,6 @@
     "separateMultiple": "Wielokrotne oddziel przecinkami.",
     "enchantsToMatch": "%type% do dopasowania:",
     "enchantsToExclude": "%type% do wykluczenia:",
-    "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
-    "downloadLink": "FILM/LINK AKTUALIZACJI",
-    "directDownload": "ODNOŚNIK DO BEZPOŚREDNIEGO POBIERANIA",
-    "openModFolder": "OTWÓRZ FOLDER Z MODYFIKACJAMI",
-    "joinTheDiscord": "ODNOŚNIK DO DISCORDA",
-    "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
-    "update": {
-      "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
-      "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
       "joinDiscord": "Join our Discord server!",
