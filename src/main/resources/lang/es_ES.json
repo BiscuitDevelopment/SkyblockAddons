@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Desactiva el Parpadeo del Poción de Visión Nocturna",
     "disableMinionLocationWarning": "Desactivar Avisos de Ubicación de Minion",
     "jungleAxeCooldown": "Bloquea Hacha de la Jungla/Treecapitator hasta que está recargada",
-    "organizeLongEnchantmentLists": "Organiza Listas de Encantamientos Largas",
     "showItemCooldowns": "Mostrar Recarga de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Mostrar Progreso de Habilidad",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey Legendario Nivel 100",
     "biggerWake": "Engrandar Partículas Personalizadas",
     "stackingEnchantProgress": "Mostrar el Progreso de Encantamientos Progresivos",
-    "showReforgeOverlay": "Mostrar Reforge Actual en Menú"
+    "showReforgeOverlay": "Mostrar Reforge Actual en Menú",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separa Múltiples en Comas.",
     "enchantsToMatch": "%type% para que coincida:",
     "enchantsToExclude": "%type% para excluir:",
-    "wantToViewPatchNotes": "¿Necesitas soporte o quieres leer el registro de los cambios completo?",
-    "downloadLink": "ENLACE DEL VÍDEO/ACTUALIZACIÓN",
-    "directDownload": "ENLACE DE DESCARGA DIRECTO",
-    "openModFolder": "ABRIR CARPETA DE MODS",
-    "joinTheDiscord": "ENLACE DEL DISCORD",
-    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
-    "update": {
-      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El enlace para la descarga se puede encontrar en el chat.",
-      "patchAvailable": "¡Una nueva actualización de parche (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "¿Necesitas soporte o quieres leer el registro de los cambios completo?",
       "joinDiscord": "¡Únete a nuestro servidor de Discord!",
