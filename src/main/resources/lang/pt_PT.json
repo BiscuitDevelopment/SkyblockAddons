@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Previnir que a poção de visão noturna pisque",
     "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
     "jungleAxeCooldown": "Bloquear o Jungle Axe/Treecapitator durante a recarga",
-    "organizeLongEnchantmentLists": "Listas de encantamentos grandes organizadas",
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das habilidades",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey lendário de nível 100",
     "biggerWake": "Aumentar partículas customizadas",
     "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
-    "showReforgeOverlay": "Mostrar reforges no menu"
+    "showReforgeOverlay": "Mostrar reforges no menu",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separa vários com vírgulas.",
     "enchantsToMatch": "%type% para encontrar:",
     "enchantsToExclude": "%type% para excluír:",
-    "wantToViewPatchNotes": "Precisas de ajuda ou queres ler todas as alterações?",
-    "downloadLink": "VÍDEO DA ATUALIZAÇÃO",
-    "directDownload": "LINK DO DOWNLOAD DIRETO",
-    "openModFolder": "PASTA MODS",
-    "joinTheDiscord": "LINK PARA O DISCORD",
-    "newUpdateAvailable": "Está disponível uma nova atualização (%version%)!",
-    "update": {
-      "majorAvailable": "Está disponível uma nova atualização importante (%version%)! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "Uma nova atualização (%version%) está disponível! Procura pelas opções de download no chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Precisas de ajuda ou queres ler todas as alterações?",
       "joinDiscord": "Entra no nosso servidor de Discord!",
