@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
     "jungleAxeCooldown": "Jungle Axe/Treecapitor Beklemedeyken Kullanmayı Engelle",
-    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
     "speedPercentage": "Hız Yüzdesi",
     "collectionDisplay": "Skill İlerleme Göstergesi",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Seviye 100 Efsanevi Monkey",
     "biggerWake": "Kaplama Parçacıklarını Büyüt",
     "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
-    "showReforgeOverlay": "Reforge Kaplamasını Göster"
+    "showReforgeOverlay": "Reforge Kaplamasını Göster",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -208,16 +208,6 @@
     "separateMultiple": "Birden Fazla Parametreyi Virgül ile Ayır.",
     "enchantsToMatch": "Eşleşecek %type%:",
     "enchantsToExclude": "İstenmeyen %type% :",
-    "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
-    "downloadLink": "VİDEO/GÜNCELLEME BAĞLANTISI",
-    "directDownload": "Direkt İndirme Linki",
-    "openModFolder": "MOD KLASÖRÜNÜ AÇ",
-    "joinTheDiscord": "DISCORD BAĞLANTISI",
-    "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
-    "update": {
-      "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
       "joinDiscord": "Discord sunucumuza katıl!",
