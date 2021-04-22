@@ -48,7 +48,7 @@ jobs:
         path: ${{ env.PROPERTIES_PATH }}
         property: version
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --no-daemon
     - name: Upload Artifact
       if: ${{ contains(github.event.inputs.upload_artifact, 'yes') }}
       env:
