@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "crwdns596:0crwdne596:0",
     "disableMinionLocationWarning": "crwdns598:0crwdne598:0",
     "jungleAxeCooldown": "crwdns600:0crwdne600:0",
-    "organizeLongEnchantmentLists": "crwdns602:0crwdne602:0",
     "showItemCooldowns": "crwdns604:0crwdne604:0",
     "speedPercentage": "crwdns608:0crwdne608:0",
     "collectionDisplay": "crwdns612:0crwdne612:0",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "crwdns1608:0[TEMP]crwdne1608:0",
     "biggerWake": "crwdns1610:0crwdne1610:0",
     "stackingEnchantProgress": "crwdns1612:0crwdne1612:0",
-    "showReforgeOverlay": "crwdns1614:0crwdne1614:0"
+    "showReforgeOverlay": "crwdns1614:0crwdne1614:0",
+    "reforgeFilter": "crwdns1656:0crwdne1656:0"
   },
   "messages": {
     "enchants": "crwdns1272:0crwdne1272:0",
@@ -208,16 +208,6 @@
     "separateMultiple": "crwdns306:0crwdne306:0",
     "enchantsToMatch": "crwdns308:0%type%crwdne308:0",
     "enchantsToExclude": "crwdns310:0%type%crwdne310:0",
-    "wantToViewPatchNotes": "crwdns554:0crwdne554:0",
-    "downloadLink": "crwdns556:0crwdne556:0",
-    "directDownload": "crwdns1034:0crwdne1034:0",
-    "openModFolder": "crwdns576:0crwdne576:0",
-    "joinTheDiscord": "crwdns562:0crwdne562:0",
-    "newUpdateAvailable": "crwdns1036:0%version%crwdne1036:0",
-    "update": {
-      "majorAvailable": "crwdns578:0%version%crwdne578:0",
-      "patchAvailable": "crwdns582:0%version%crwdne582:0"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "crwdns1616:0crwdne1616:0",
       "joinDiscord": "crwdns1618:0crwdne1618:0",
