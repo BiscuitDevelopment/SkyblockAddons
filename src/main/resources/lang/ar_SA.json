@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "إيقاف تغميظ جرعه الرؤية الليليه",
     "disableMinionLocationWarning": "تعطيل تحذير الموقع ليس مثاليا",
     "jungleAxeCooldown": "تجنب الكسر في فترة الانتظار لـJungle Axe/Treecapitator",
-    "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويلة",
     "showItemCooldowns": "إظهار فترة إلانتظار للادوات",
     "speedPercentage": "نسبة السرعة",
     "collectionDisplay": "عرض تقدم المهارة",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -208,16 +208,6 @@
     "separateMultiple": "أفرز المتعددين بالفواصل.",
     "enchantsToMatch": "%type% للمطابقة:",
     "enchantsToExclude": "%type% للاستبعاد:",
-    "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
-    "downloadLink": "رابط التحديث",
-    "directDownload": "تحميل الرابط مباشرة",
-    "openModFolder": "ملف المودات",
-    "joinTheDiscord": "أدخل الديسكورد",
-    "newUpdateAvailable": "تحديث جديد (%version%) متاح!",
-    "update": {
-      "majorAvailable": "يوجد هناك تحديث جديد، (%version%) متاح! يمكن ايجاد رابط التنزيل في الشات.",
-      "patchAvailable": "تحديث تصحيحات (%version%) الآن متاح!\nانظر في الشات لتنزيل الخيارات!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
       "joinDiscord": "Join our Discord server!",
