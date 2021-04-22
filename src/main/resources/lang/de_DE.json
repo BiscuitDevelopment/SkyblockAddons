@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Deaktiviere Nachtsicht Blinken",
     "disableMinionLocationWarning": "Deaktiviere \"Location not perfect\" Warnung",
     "jungleAxeCooldown": "Jungle Axe/Treecapitator während Abklingzeit blockieren",
-    "organizeLongEnchantmentLists": "Organisieren von langen Verzauberungslisten",
     "showItemCooldowns": "Item Abklingzeit anzeigen",
     "speedPercentage": "Geschwindigkeit in Prozent",
     "collectionDisplay": "Skillfortschrittsanzeige",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -208,16 +208,6 @@
     "separateMultiple": "Trenne mit Kommas",
     "enchantsToMatch": "%type% die du möchtest:",
     "enchantsToExclude": "%type% die du nicht möchtest:",
-    "wantToViewPatchNotes": "Brauchst du Hilfe oder möchtest du alle Änderungen lesen?",
-    "downloadLink": "VLINK ZUM UPDATE(VIDEO)",
-    "directDownload": "DIREKTER DOWNLOAD-LINK",
-    "openModFolder": "ÖFFNE DEN MODS ORDNER",
-    "joinTheDiscord": "DISCORD-LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "update": {
-      "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
-      "patchAvailable": "Ein Neuer Patch (%version%) ist verfügbar!\nSchau im Chat für die Download Möglichkeiten!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Brauchst du Hilfe oder möchtest du alle Änderungen lesen?",
       "joinDiscord": "Join our Discord server!",
