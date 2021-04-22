@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Nonaktifkan Kedip Efek Night Vision",
     "disableMinionLocationWarning": "Nonaktifkan Peringatan Minion Lokasi Tidak Sempurna",
     "jungleAxeCooldown": "Memblokir Jungle Axe/Treecapitator saat Cooldown",
-    "organizeLongEnchantmentLists": "Atur Daftar Enchantment Panjang",
     "showItemCooldowns": "Perlihatkan Cooldown Benda",
     "speedPercentage": "Persentase Kecepatan",
     "collectionDisplay": "Tampilan Kemajuan Skill",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendaris Monkey",
     "biggerWake": "Perbesar Lapisan Partikel",
     "stackingEnchantProgress": "Perlihatkan Kemajuan Enchant yang Stacking",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +208,6 @@
     "separateMultiple": "Pisahkan lebih dari satu Dengan Koma.",
     "enchantsToMatch": "%type% Untuk Mencocokkan:",
     "enchantsToExclude": "%type% Untuk Mengecualikan:",
-    "wantToViewPatchNotes": "Butuh Bantuan Atau Mau Baca Changelog Penuh?",
-    "downloadLink": "VIDEO/TAUTAN UPDATE",
-    "directDownload": "TAUTAN UNDUH LANGSUNG",
-    "openModFolder": "BUKA BERKAS MOD",
-    "joinTheDiscord": "TAUTAN DISCORD",
-    "newUpdateAvailable": "Versi terbaru (%version%) telah tersedia!",
-    "update": {
-      "majorAvailable": "Sebuah update besar (%version%) telah hadir! Tautan untuk mengunggah terdapat di chat.",
-      "patchAvailable": "Sebuah update tambalan (%version%) telah hadir! Lihat di chat untuk opsi-opsi mengunggah!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Butuh Bantuan Atau Mau Baca Changelog Penuh?",
       "joinDiscord": "Gabung Discord server kami!",
