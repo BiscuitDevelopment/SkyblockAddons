@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Desactivar Efecto de Parpadeo de Visión Nocturna",
     "disableMinionLocationWarning": "Desactivar Alerta de Colocación Incorrecta",
     "jungleAxeCooldown": "Bloquear Hacha de la Jungla/Treecapitator mientras está en cooldown",
-    "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
     "showItemCooldowns": "Mostrar Cooldown de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Habilidades",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey Legendario Nivel 100",
     "biggerWake": "Engrandar Partículas Personalizadas",
     "stackingEnchantProgress": "Mostrar el Progreso de Encantamientos Progresivos",
-    "showReforgeOverlay": "Mostrar Reforge Actual en Menú"
+    "showReforgeOverlay": "Mostrar Reforge Actual en Menú",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separa Múltiples con Comas.",
     "enchantsToMatch": "Encontrar %type%:",
     "enchantsToExclude": "Excluir %type%:",
-    "wantToViewPatchNotes": "¿Quieres leer los cambios?",
-    "downloadLink": "LINK DE LA ACTUALIZACIÓN",
-    "directDownload": "ENLACE DE DESCARGA DIRECTO",
-    "openModFolder": "CARPETA DE MODS",
-    "joinTheDiscord": "LINK DEL DISCORD",
-    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
-    "update": {
-      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link de descarga está en el chat.",
-      "patchAvailable": "¡Un nuevo parche de actualización (%version%) está disponible! Las opciones de descarga están en el chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "¿Quieres leer los cambios?",
       "joinDiscord": "¡Únete a nuestro servidor Discord!",
