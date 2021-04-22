@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Ära pilguta öönägemise efektiga",
     "disableMinionLocationWarning": "Ära tee ebaperfektse asukoha hoiatusi",
     "jungleAxeCooldown": "Blokeeri Jungle Axe/Treecapitator cooldowni ajal",
-    "organizeLongEnchantmentLists": "Organiseeri pikki loitsude nimekirju",
     "showItemCooldowns": "Näita asjade cooldowne",
     "speedPercentage": "Kiiruse protsent",
     "collectionDisplay": "Skill 'ide progressi näitaja",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -208,16 +208,6 @@
     "separateMultiple": "Eralda mitmed komadega.",
     "enchantsToMatch": "%type% et sobitada:",
     "enchantsToExclude": "%type% et välja jätta:",
-    "wantToViewPatchNotes": "Vajad abi või tahad täis changelog 'i?",
-    "downloadLink": "VIDEO/UUENDUSE LINK",
-    "directDownload": "OTSESE ALLALAADIMISE LINK",
-    "openModFolder": "AVA MOD 'IDE KAUST",
-    "joinTheDiscord": "DISCORDI LINK",
-    "newUpdateAvailable": "Uuem versioon (%version%) on saadaval!",
-    "update": {
-      "majorAvailable": "Uus suurem uuendus (%version%) on saadaval! Link allalaadimisele on chat 'is.",
-      "patchAvailable": "Uus parandus uuendus (%version%) on saadaval! Vaata chat 'i allalaadimise variantide jaoks!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Vajad abi või tahad täis changelog 'i?",
       "joinDiscord": "Join our Discord server!",
