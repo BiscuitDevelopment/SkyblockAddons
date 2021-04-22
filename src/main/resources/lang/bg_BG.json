@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Изключи премигването на отварата за нощно виждане",
     "disableMinionLocationWarning": "Изключи предупрежденията за Межтоположението не е иделано",
     "jungleAxeCooldown": "Кулдаун на Jungle Axe/Treecapitator",
-    "organizeLongEnchantmentLists": "Организирай дълъг лист с Enchantments",
     "showItemCooldowns": "Покажи кулдаyна на предметите",
     "speedPercentage": "Процент скорост",
     "collectionDisplay": "Дисплей за прогрес на умения",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Ниво 100 Легендарна маймуна",
     "biggerWake": "Увеличаване на Overlay Particles",
     "stackingEnchantProgress": "Покажи Натрупване на Enchant прогреса",
-    "showReforgeOverlay": "Покажи Reforge Overlay"
+    "showReforgeOverlay": "Покажи Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +208,6 @@
     "separateMultiple": "Отделете Различните със Запетаи.",
     "enchantsToMatch": "%type% за да Съвпадне:",
     "enchantsToExclude": "%type% Да Изключите:",
-    "wantToViewPatchNotes": "Трябва ви помощ или искате да видите целите промените?",
-    "downloadLink": "Видео/връзка за актуализация",
-    "directDownload": "ДИРЕКТЕН ЛИНК ЗА ИЗТЕГЛЯНЕ",
-    "openModFolder": "ОТВАРЯНЕ ПАПКАТА ЗА МОДОВЕ",
-    "joinTheDiscord": "DISCORD ЛИНК",
-    "newUpdateAvailable": "Нова версия (%version%) е налична!",
-    "update": {
-      "majorAvailable": "Нова голяма актуализация (%version%) е налична! Връзката за изтегляне може да бъде намерена в чата.",
-      "patchAvailable": "Нова patch актуализация (%version%) е налична! Погледнете в чата за опции за изтегляне!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Трябва ви помощ или искате да видите целите промените?",
       "joinDiscord": "Присъединете се в нашият Discord сървър!",
