@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Sugar Percentage",
     "collectionDisplay": "Skill Progress Display",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Bischants",
@@ -208,16 +208,6 @@
     "separateMultiple": "Separate Multiple With Commas.",
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Exclude:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "BISCUIT UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN BISCUITS FOLDER",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is out of the oven!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Need support or want to read the full changelog?",
       "joinDiscord": "Join our Discord server!",
