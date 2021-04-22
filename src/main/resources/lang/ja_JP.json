@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "暗視のポーション点滅を無効化",
     "disableMinionLocationWarning": "Location Not Perfect のアラートを無効化",
     "jungleAxeCooldown": "Jungle Axe/Treecapitator のクールダウン中にブロック破壊を防止",
-    "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールダウンを表示",
     "speedPercentage": "移動速度",
     "collectionDisplay": "Skill の進捗の表示",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Reforge オーバーレイを表示"
+    "showReforgeOverlay": "Reforge オーバーレイを表示",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -208,16 +208,6 @@
     "separateMultiple": "複数ある場合はコンマ(,)で分けてください。",
     "enchantsToMatch": "%type% でマッチするもの:",
     "enchantsToExclude": "%type% で除外するもの:",
-    "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
-    "downloadLink": "動画/アップデートのリンク",
-    "directDownload": "直接ダウンロードのリンク",
-    "openModFolder": "mods フォルダーを開く",
-    "joinTheDiscord": "Discord リンク",
-    "newUpdateAvailable": "新しいアップデート (%version%) が利用可能です！",
-    "update": {
-      "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！ダウンロードリンクはチャットにあります。",
-      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください！"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
       "joinDiscord": "私たちの Discord サーバーに参加しましょう！",
