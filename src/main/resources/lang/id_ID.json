@@ -226,10 +226,10 @@
       "openModFolderButton": "Buka Berkas Mod-Mod",
       "joinDiscordButton": "Gabung Discord",
       "newUpdateAvailable": "Versi terbaru (%version%) telah tersedia!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Tidak ada tautan download yang tersedia, mohon cek Discord server kami.",
       "notificationBox": {
         "majorAvailable": "Sebuah update besar (%version%) telah hadir! Tautan untuk mengunggah terdapat di chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Sebuah update beta baru (%version%) telah hadir! lihat di chat untuk tautan download.",
         "patchAvailable": "Sebuah update tambalan (%version%) telah hadir! Lihat di chat untuk opsi-opsi mengunggah!"
       }
     },
@@ -369,13 +369,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Memuat ulang semua pengaturan dan bahan-bahan. Game akan beku untuk beberapa detik."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Memuat ulang pengaturan-pengaturan mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Memuat ulang bahan-bahan mod. Game akan beku untuk beberapa detik."
       },
       "set": {
         "zealotCounter": {
@@ -475,13 +475,13 @@
     "bossesKilled": "Boss-Boss Terbunuh"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
+    "click": "Klik sebuah titik warp untuk mengunjunginya!",
+    "mustUnlock": "Harus mempunyai Scroll spesifik terbuka.",
+    "privateIsland": "Pulau Privat",
+    "home": "Pulau Anda",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
+    "unknown": "Belum Dikunjungi",
+    "notUnlocked": "Belum Terbuka",
     "inCombat": "Dalam Pertempuran..."
   },
   "enchants": {
