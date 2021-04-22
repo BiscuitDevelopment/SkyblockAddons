@@ -70,7 +70,6 @@
     "avoidBlinkingNightVision": "Отключить моргание от Зелья ночного зрения",
     "disableMinionLocationWarning": "Отключить уведомление о неидеальной локации",
     "jungleAxeCooldown": "Блокировать Топор джунглей/Treecapitator до сброса таймера",
-    "organizeLongEnchantmentLists": "Организовывать длинные списки зачарований",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
@@ -193,7 +192,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Зачарования",
@@ -208,16 +208,6 @@
     "separateMultiple": "Разделяйте зачар-я несколькими запятыми.",
     "enchantsToMatch": "Искать %type%:",
     "enchantsToExclude": "Не искать %type%:",
-    "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
-    "downloadLink": "ССЫЛКА НА ВИДЕО/ОБНОВЛЕНИЕ",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "ОТКРЫТЬ ПАПКУ MODS",
-    "joinTheDiscord": "ССЫЛКА НА DISCORD",
-    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
-    "update": {
-      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
-      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
       "joinDiscord": "Join our Discord server!",
