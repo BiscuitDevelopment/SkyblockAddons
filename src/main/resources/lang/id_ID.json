@@ -369,9 +369,9 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Mengatur penghitung zealot secara manual",
+          "help": "Mengatur hitungan zealot secara manual",
           "detailedHelp": {
-            "description": "Mengatur penghitung zealot secara manual.",
+            "description": "Mengatur hitungan di zealot counter secara manual.",
             "options": {
               "eyes": "Summoning eyes yang didapatkan seumur hidup",
               "totalZealots": "Zealot terbunuh seumur hidup",
@@ -380,7 +380,7 @@
           },
           "eyesSet": "Jadikan hitungan total summoning eye menjadi %number%!",
           "totalZealotsSet": "Jadikan hitungan total zealot menjadi %number%!",
-          "wrongUsage": "Bagian tidak valid! Mohon pilih %options%.",
+          "wrongUsage": "Pilihan tidak valid! Mohon pilih %options%.",
           "zealotsSet": "Jadikan hitungan zealot menjadi %number%!"
         }
       },
@@ -390,8 +390,8 @@
           "description": "Atur stat Slayer secara manual, tekan tab untuk arguments",
           "options": {
             "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
-            "number": "Angka stat yang ingin diubah",
-            "stat": "Stat slayer untuk diubah, dapat menjadi \"kills\" atau nama benda yang dijatuhkan dengan format: \"REVENANT_FLESH\""
+            "number": "Angka untuk ubah ke stat",
+            "stat": "Stat slayer yang ingin diubah, dapat menjadi \"kills\" atau nama benda yang dijatuhkan dengan format: \"REVENANT_FLESH\""
           }
         },
         "bossRequired": "Anda perlu memilih sebuah boss! Mohon pilih %bosses%",
