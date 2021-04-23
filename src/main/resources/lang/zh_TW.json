@@ -193,7 +193,7 @@
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "顯示疊加附魔進度",
     "showReforgeOverlay": "顯示 Reforge 提示",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge 過濾"
   },
   "messages": {
     "enchants": "附魔",
