@@ -271,21 +271,21 @@
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
-    "descriptionNone": "Tidak Ada Teks Ditampilkan",
+    "descriptionNone": "Tidak ada teks ditampilkan",
     "titleLocation": "Lokasi",
     "descriptionLocation": "Menunjukkan Lokasi Anda Saat Ini",
     "titlePurse": "Purse",
-    "descriptionPurse": "Perlihatkan coins yang terdapat di purse anda",
+    "descriptionPurse": "Menunjukkan coins yang terdapat di purse anda",
     "titleStats": "Stats",
-    "descriptionStats": "Perlihatkan Stat HP, Defense dan Mana",
+    "descriptionStats": "Menunjukkan Stat HP, Defense dan Mana",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Perlihatkan Zealot Counter anda",
+    "descriptionZealots": "Menunjukkan Zealot Counter anda",
     "titleItem": "Benda Dipegang",
-    "descriptionItem": "Perlihatkan nama benda yang sedang anda pegang",
+    "descriptionItem": "Menunjukkan nama benda yang sedang anda pegang",
     "titleProfile": "Profil",
-    "descriptionProfile": "Perlihatkan nama Profil anda",
+    "descriptionProfile": "Menunjukkan nama Profil anda",
     "titleTime": "Waktu Skyblock",
-    "descriptionTime": "Perlihatkan Skyblock time saat ini. Contoh 12:00am 1st Early Winter",
+    "descriptionTime": "Menunjukkan Skyblock time saat ini. Contoh 12:00am 1st Early Winter",
     "titleCustom": "Status Kustom",
     "descriptionCustom": "Masukkan Status Kustom",
     "titleAuto": "Status Otomatis",
@@ -313,9 +313,9 @@
       "copyEntity": {
         "help": "§e(Dev) §7Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
-          "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, stand armor, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
+          "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
-            "entityNames": "Nama-nama tipe entity yang anda ingin menyalin datanya (contoh Player,Creeper). Tekan \"Tab\" setelah mengetik command untuk list yang penuh. Pisahkan nama-nama dengan koma, nama-nama peka huruf kapital.",
+            "entityNames": "Nama-nama tipe entity yang anda ingin menyalin datanya (contoh Player,Creeper). Tekan \"Tab\" setelah mengetik command untuk list yang penuh. Pisahkan nama-nama dengan koma, nama-nama kepekaan kapital.",
             "radius": "Radius (dalam blok) sekitar player untuk menyalin data dari entity NBT"
           }
         }
@@ -323,7 +323,7 @@
       "copySidebar": {
         "help": "§e(Dev) §7Salin teks scoreboard",
         "detailedHelp": {
-          "description": "Salinkan Teks Yang Tampil Di Slot Tampilan Sidebar Papan Angka",
+          "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
           "options": {
             "formatted": "Menentukan jika kode format harus di masukkan saat menyalin. Bisa menjadi \"benar\" atau \"salah\", biasanya menjadi \"salah\" jika tidak ada nilai yang diberikan. Kode format disalin jika \"benar\"."
           }
@@ -338,7 +338,7 @@
       "dev": {
         "help": "Aktif/nonaktifkan mode developer",
         "detailedHelp": {
-          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod/alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
+          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod & alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
         },
         "disabled": "Mode Developer dinonaktifkan!",
         "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!"
