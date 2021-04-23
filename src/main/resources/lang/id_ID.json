@@ -403,9 +403,9 @@
         "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Aktif/nonaktifkan pesan-pesan bar aksi dicatat",
-        "disabled": "Pesan-Pesan bar aksi tidak akan dicatat.",
-        "enabled": "Pesan-Pesan bar aksi akan dicatat."
+        "help": "§e(Dev) §7Aktif/nonaktifkan mencatat pesan-pesan log bar aksi",
+        "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
+        "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
       "errors": {
         "wrongUsage": {
