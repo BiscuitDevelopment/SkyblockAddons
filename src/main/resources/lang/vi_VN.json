@@ -14,8 +14,6 @@
     "editLocations": "Chỉnh Sửa Vị Trí GUI",
     "guiScale": "Tỉ Lệ GUI: %scale%",
     "resetLocations": "Đặt Lại Vị Trí",
-    "hideDurability": "Ẩn Thanh Độ Bền",
-    "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
     "hidePlayersNearNPCs": "Ẩn người chơi gần NPC quan trọng",
     "backpackStyle": "Kiểu Backpack: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Tắt hiệu ứng nháy thuốc nhìn đêm",
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
     "jungleAxeCooldown": "Thời gian Hồi Jungle Axe",
-    "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị tiến trình kĩ năng",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Bộ đếm theo dõi Rock Pet",
     "dolphinPetTracker": "Bộ đếm theo dõi Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Phủ Tên Đồng đội Dungeon",
-    "showExpertiseKills": "Hiện Số lần Giết Expertise",
     "dungeonsSecretsDisplay": "Hiện Bí mật Dungeon",
     "showSkillPercentageInstead": "Hiện Số Phần trăm Kinh nghiệm thay vì Số Kinh nghiệm",
     "showSkillXPGained": "Hiện Số Kinh nghiệm Đã nhận",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -208,16 +205,6 @@
     "separateMultiple": "Phân Chia Nhiều Bằng Dấu Phẩy.",
     "enchantsToMatch": "%type% Để Khớp:",
     "enchantsToExclude": "%type% Để Loại Trừ:",
-    "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
-    "downloadLink": "LIÊN KẾT CẬP NHẬT",
-    "directDownload": "ĐƯỜNG DẪN TẢI VỀ TRỰC TIẾP",
-    "openModFolder": "MỞ THƯ MỤC MODS",
-    "joinTheDiscord": "THAM GIA DISCORD",
-    "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
-    "update": {
-      "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
       "joinDiscord": "Join our Discord server!",

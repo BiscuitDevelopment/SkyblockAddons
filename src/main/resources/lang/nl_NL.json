@@ -14,8 +14,6 @@
     "editLocations": "GUI Locaties Bewerken",
     "guiScale": "GUI Grootte: %scale%",
     "resetLocations": "Locaties Resetten",
-    "hideDurability": "Gereedschapsduurzaamheid verbergen",
-    "showEnchantmentsReforges": "Betoveringen & Omsmedingen",
     "minionStopWarning": "\"Minion kan niet bereiken\"-waarschuwing",
     "hidePlayersNearNPCs": "Spelers vlakbij belangrijke NPC's verbergen",
     "backpackStyle": "Rugzakstijl: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Nachtzichtdrankje knipperen uitschakelen",
     "disableMinionLocationWarning": "Locatie Niet Perfect-waarschuwingen uitschakelen",
     "jungleAxeCooldown": "Junglebijl/Treecapacitor blokkeren bij afkoeltijd",
-    "organizeLongEnchantmentLists": "Orden Lange Betoverings Lijsten",
     "showItemCooldowns": "Voorwerpafkoeltijd weergeven",
     "speedPercentage": "Snelheidspercentage",
     "collectionDisplay": "Vaardigheidsvoortgang weergeven",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet-tracker",
     "dolphinPetTracker": "Dolphin Pet-tracker",
     "dungeonsTeammateNameOverlay": "Namen Dungeons teamgenoten weergeven",
-    "showExpertiseKills": "Expertise-eliminaties weergeven",
     "dungeonsSecretsDisplay": "Dungeonsgeheimen weergeven",
     "showSkillPercentageInstead": "Percentage weergeven in plaats van XP",
     "showSkillXPGained": "Behaalde XP weergeven",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 legendarische monkey",
     "biggerWake": "Overlaydeeltjes vergroten",
     "stackingEnchantProgress": "Stapelbetoveringsvoorgang weergeven",
-    "showReforgeOverlay": "Omsmeedoverlay weergeven"
+    "showReforgeOverlay": "Omsmeedoverlay weergeven",
+    "reforgeFilter": "Omsmedingsfilter"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -208,16 +205,6 @@
     "separateMultiple": "Scheid meerdere met komma's.",
     "enchantsToMatch": "%type% Om Te Matchen:",
     "enchantsToExclude": "%type% Om Te Negeren:",
-    "wantToViewPatchNotes": "Heb je hulp nodig of wil je de volledige lijst met wijzigingen lezen?",
-    "downloadLink": "VIDEO-/UPDATELINK",
-    "directDownload": "DIRECTE DOWNLOADLINK",
-    "openModFolder": "MODIFICATIEMAP OPENEN",
-    "joinTheDiscord": "DISCORDLINK",
-    "newUpdateAvailable": "Een nieuwe update (%version%) is beschikbaar!",
-    "update": {
-      "majorAvailable": "Een nieuwe grote update (%version%) is beschikbaar! De link voor de download kan worden gevonden in de chat.",
-      "patchAvailable": "Een nieuwe patchupdate (%version%) is beschikbaar! Kijk in de chat voor downloadopties!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Heb je hulp nodig of wil je de volledige lijst met wijzigingen lezen?",
       "joinDiscord": "Word lid van onze Discord-server!",

@@ -14,8 +14,6 @@
     "editLocations": "Endre brukergrensesnitt plasseringer",
     "guiScale": "Brukergrensesnitt-skala: %scale%",
     "resetLocations": "Tilbakestill brukergrensesnitt",
-    "hideDurability": "Skjul redskapsvarighet",
-    "showEnchantmentsReforges": "Fortryllinger og Reforger",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
     "hidePlayersNearNPCs": "Skjul Spillere Nærme Viktige NPCer",
     "backpackStyle": "Backpack stil: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Deaktiver nattsyn trylledrikk blinking",
     "disableMinionLocationWarning": "Deaktiver plassering ikke perfekt-varsler",
     "jungleAxeCooldown": "Blokker Jungle Axe/Treecapitator når pauset",
-    "organizeLongEnchantmentLists": "Organiser Lang Fortryllelse Lister",
     "showItemCooldowns": "Vis gjenstand-pausetider",
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling-visning",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Stein kjæledyr oppfølger",
     "dolphinPetTracker": "Delfin kjæledyr oppfølger",
     "dungeonsTeammateNameOverlay": "Dungeon Lagkamerater navn overlegg",
-    "showExpertiseKills": "Vis ekspertise-drap",
     "dungeonsSecretsDisplay": "Dungeons Kart Skjerm",
     "showSkillPercentageInstead": "Vis prosentandel istedenfor XP",
     "showSkillXPGained": "Vis XP Fått",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -208,16 +205,6 @@
     "separateMultiple": "Skill mellom flere ledd med kommaer.",
     "enchantsToMatch": "%type% å matche:",
     "enchantsToExclude": "%type% å ekskludere:",
-    "wantToViewPatchNotes": "Trenger du hjelp eller vill du lese alle endringene?",
-    "downloadLink": "VIDEO/OPPDATERINGS LENKE",
-    "directDownload": "DIREKTE NEDLASTINGS LENKE",
-    "openModFolder": "ÅPNE MODIFIKASJONS MAPPE",
-    "joinTheDiscord": "DISCORD LENKE",
-    "newUpdateAvailable": "En ny oppdatering (%version%) er tilgjengelig!",
-    "update": {
-      "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
-      "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Trenger du hjelp eller vill du lese alle endringene?",
       "joinDiscord": "Join our Discord server!",

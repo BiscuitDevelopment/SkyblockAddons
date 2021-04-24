@@ -14,8 +14,6 @@
     "editLocations": "Modificar Posiciones de GUI",
     "guiScale": "Escala de Gui: %scale%",
     "resetLocations": "Reiniciar Posiciones",
-    "hideDurability": "Ocultar Durabilidad de Herramientas",
-    "showEnchantmentsReforges": "Encantamientos y Reforges",
     "minionStopWarning": "Alerta de Minion Detenido",
     "hidePlayersNearNPCs": "Ocultar Jugadores Cercanos a los NPCs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Desactivar Efecto de Parpadeo de Visión Nocturna",
     "disableMinionLocationWarning": "Desactivar Alerta de Colocación Incorrecta",
     "jungleAxeCooldown": "Bloquear Hacha de la Jungla/Treecapitator mientras está en cooldown",
-    "organizeLongEnchantmentLists": "Organizar Listas Largas de Encantamientos",
     "showItemCooldowns": "Mostrar Cooldown de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Progreso de Habilidades",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rastreador de Rock Pet",
     "dolphinPetTracker": "Rastreador de Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Mostrar Nombres de Compañeros de Dungeons",
-    "showExpertiseKills": "Mostrar Expertise Kills",
     "dungeonsSecretsDisplay": "Mostrar Secretos de Dungeons",
     "showSkillPercentageInstead": "Mostrar Porcentaje en lugar de EXP",
     "showSkillXPGained": "Mostrar EXP Obtenida",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey Legendario Nivel 100",
     "biggerWake": "Engrandar Partículas Personalizadas",
     "stackingEnchantProgress": "Mostrar el Progreso de Encantamientos Progresivos",
-    "showReforgeOverlay": "Mostrar Reforge Actual en Menú"
+    "showReforgeOverlay": "Mostrar Reforge Actual en Menú",
+    "reforgeFilter": "Filtro de Reforge"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -208,19 +205,9 @@
     "separateMultiple": "Separa Múltiples con Comas.",
     "enchantsToMatch": "Encontrar %type%:",
     "enchantsToExclude": "Excluir %type%:",
-    "wantToViewPatchNotes": "¿Quieres leer los cambios?",
-    "downloadLink": "LINK DE LA ACTUALIZACIÓN",
-    "directDownload": "ENLACE DE DESCARGA DIRECTO",
-    "openModFolder": "CARPETA DE MODS",
-    "joinTheDiscord": "LINK DEL DISCORD",
-    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
-    "update": {
-      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El link de descarga está en el chat.",
-      "patchAvailable": "¡Un nuevo parche de actualización (%version%) está disponible! Las opciones de descarga están en el chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "¿Quieres leer los cambios?",
-      "joinDiscord": "¡Únete a nuestro servidor Discord!",
+      "joinDiscord": "¡Únete a nuestro servidor de Discord!",
       "watchShowcase": "Ver Video",
       "downloadButton": "Descargar",
       "openModFolderButton": "Abrir Carpeta de Mods",

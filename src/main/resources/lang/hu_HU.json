@@ -14,8 +14,6 @@
     "editLocations": "GUI Elhelyezés szerkesztése",
     "guiScale": "Gui mérete: %scale%",
     "resetLocations": "Alapértelmezett GUI elhelyezés",
-    "hideDurability": "Eszköz használtságának elrejtése",
-    "showEnchantmentsReforges": "Bűvölések és Reforgeok",
     "minionStopWarning": "\"A minion nem ér el valamit\" figyelmeztetés",
     "hidePlayersNearNPCs": "Játékosok elrejtése a fontos NPC-k közelében",
     "backpackStyle": "Hátizsák stílus: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Éjjellátás villogásának kikapcsolása",
     "disableMinionLocationWarning": "\"Location not perfect\" minion jelzés kikapcsolása",
     "jungleAxeCooldown": "Jungle/Treecapicatot balta töltési idő",
-    "organizeLongEnchantmentLists": "Hosszú Bűvölések listájának elrendezése",
     "showItemCooldowns": "Tárgy töltési újratöltésének mutatása",
     "speedPercentage": "Sebesség százalékos megjelenitése",
     "collectionDisplay": "Képességfejlődés megjelenítése",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet követő",
     "dolphinPetTracker": "Dolphin Pet követő",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate név kiemelése",
-    "showExpertiseKills": "Expertise ölések mutatása",
     "dungeonsSecretsDisplay": "Dungeon rejtvények megjelenítése",
     "showSkillPercentageInstead": "Százalék mutatása XP helyett",
     "showSkillXPGained": "Megszerzett XP mutatása",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -208,16 +205,6 @@
     "separateMultiple": "Több lehetőséget vesszővel válaszd el",
     "enchantsToMatch": "%type% egyezése:",
     "enchantsToExclude": "%type% kihagyása:",
-    "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
-    "downloadLink": "FRISSITÉSI LINK",
-    "directDownload": "LETÖLTÉSI LINK",
-    "openModFolder": "MODS MAPPA MEGNYITÁSA",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "Egy új frissítés (%version%) áll rendelkezésre!",
-    "update": {
-      "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
-      "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
       "joinDiscord": "Join our Discord server!",

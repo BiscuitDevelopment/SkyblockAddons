@@ -14,8 +14,6 @@
     "editLocations": "עריכת מיקומים",
     "guiScale": "גודל הפריטים: %scale%",
     "resetLocations": "איפוס מקומות",
-    "hideDurability": "הסתר רמת שימוש",
-    "showEnchantmentsReforges": "כישופים ושיפורים",
     "minionStopWarning": "\"המיניון לא יכול להגיע\" אזהרה",
     "hidePlayersNearNPCs": "הסתר שחקנים ליד NPC חשובים",
     "backpackStyle": "סטייל תרמיל גב: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "למנוע מצמוץ שיקוי ראיית לילה",
     "disableMinionLocationWarning": "ביטול אזהרות מיקום לא מושלם",
     "jungleAxeCooldown": "חסום גרזן ג'ונגל/ Treecapitator בזמן טעינה",
-    "organizeLongEnchantmentLists": "סדר רשימת כישופים ארוכה",
     "showItemCooldowns": "הראה טעינת חפצים",
     "speedPercentage": "אחוז מהירות",
     "collectionDisplay": "מסך התקדמות יכולות",
@@ -163,7 +160,6 @@
     "rockPetTracker": "מעקב Rock Pet",
     "dolphinPetTracker": "מעקב Dolphin Pet",
     "dungeonsTeammateNameOverlay": "הצג שמות של חברי הקבוצה בDungeon",
-    "showExpertiseKills": "הצג הריגות של - Expertise",
     "dungeonsSecretsDisplay": "תצוגת כמות הסודות בDungeons",
     "showSkillPercentageInstead": "הצג אחוז במקום XP",
     "showSkillXPGained": "הצג את ה- XP שנצבר",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "כישופים",
@@ -208,16 +205,6 @@
     "separateMultiple": "הפרד באמצעות פסיק.",
     "enchantsToMatch": "לכלול %type%:",
     "enchantsToExclude": "%type% לא לכלול:",
-    "wantToViewPatchNotes": "צריך/ה עזרה או רוצה לקרוא את רשימת השינויים המלאה?",
-    "downloadLink": "קישור לסרטון/עדכון",
-    "directDownload": "קישור להורדה ישירה",
-    "openModFolder": "פתח את תיקיית המודים",
-    "joinTheDiscord": "קישור לדיסקורד",
-    "newUpdateAvailable": "עדכון חדש (%version%) זמין עכשיו להורדה!",
-    "update": {
-      "majorAvailable": "עידכון חדש קטן (%version%) ניתן להורדה! הקישור להורדה נמצא בצ'אט.",
-      "patchAvailable": "עידכון חדש לתיקון (%version%)!\nהסתכל בצ'אט לאפשרויות הורדה!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "צריך/ה עזרה או רוצה לקרוא את רשימת השינויים המלאה?",
       "joinDiscord": "הצטרף לשרת הדיסקורד שלנו!",

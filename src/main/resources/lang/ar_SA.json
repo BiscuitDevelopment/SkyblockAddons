@@ -14,8 +14,6 @@
     "editLocations": "تغيير مواقع الـGUI",
     "guiScale": "مقاس الـGUI: %scale%",
     "resetLocations": "إعادة تعيين المواقع",
-    "hideDurability": "إخفاء الـDurability للأداة",
-    "showEnchantmentsReforges": "التطويرات و Reforges",
     "minionStopWarning": "تحذير \"عدم استطاعة الـMinion على الوصول\"",
     "hidePlayersNearNPCs": "إخفاء اللاعبين بالقرب من الNPCs المهمين",
     "backpackStyle": "%style% :نمط حقيبة الظهر",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "إيقاف تغميظ جرعه الرؤية الليليه",
     "disableMinionLocationWarning": "تعطيل تحذير الموقع ليس مثاليا",
     "jungleAxeCooldown": "تجنب الكسر في فترة الانتظار لـJungle Axe/Treecapitator",
-    "organizeLongEnchantmentLists": "ترتيب قائمة التطويرات الطويلة",
     "showItemCooldowns": "إظهار فترة إلانتظار للادوات",
     "speedPercentage": "نسبة السرعة",
     "collectionDisplay": "عرض تقدم المهارة",
@@ -163,7 +160,6 @@
     "rockPetTracker": "عداد الروك بت",
     "dolphinPetTracker": "عداد بت الدلفين",
     "dungeonsTeammateNameOverlay": "تراكب أسماء الزملاء في الدنجن",
-    "showExpertiseKills": "إظهار قتلات Expertise",
     "dungeonsSecretsDisplay": "عرض أسرار الدنجنز",
     "showSkillPercentageInstead": "إظهار النسبة بدل الإكس بي",
     "showSkillXPGained": "إظهار الإكس بي المكتسبة",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -208,16 +205,6 @@
     "separateMultiple": "أفرز المتعددين بالفواصل.",
     "enchantsToMatch": "%type% للمطابقة:",
     "enchantsToExclude": "%type% للاستبعاد:",
-    "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
-    "downloadLink": "رابط التحديث",
-    "directDownload": "تحميل الرابط مباشرة",
-    "openModFolder": "ملف المودات",
-    "joinTheDiscord": "أدخل الديسكورد",
-    "newUpdateAvailable": "تحديث جديد (%version%) متاح!",
-    "update": {
-      "majorAvailable": "يوجد هناك تحديث جديد، (%version%) متاح! يمكن ايجاد رابط التنزيل في الشات.",
-      "patchAvailable": "تحديث تصحيحات (%version%) الآن متاح!\nانظر في الشات لتنزيل الخيارات!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "هل تريد قراءة التغييرات؟",
       "joinDiscord": "Join our Discord server!",

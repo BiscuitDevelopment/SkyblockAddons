@@ -14,8 +14,6 @@
     "editLocations": "การเคลื่อนย้าย GUI",
     "guiScale": "ขยาย GUI %scale%",
     "resetLocations": "กลับค่าเริ่มต้นของหน้าต่าง",
-    "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
-    "showEnchantmentsReforges": "การ Enchants และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
     "hidePlayersNearNPCs": "ซ่อนผู้เล่นที่อยู่ใกล้ NPC",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "ปิด Effect Night Vision ตอนกำลังหมด",
     "disableMinionLocationWarning": "ปิดคำเตือน Location not perfect",
     "jungleAxeCooldown": "คูลดาวน์ Jungle Axe และ Treecapitator",
-    "organizeLongEnchantmentLists": "จัดรายชื่อ Enchantment ที่ยาวๆ",
     "showItemCooldowns": "แสดงคูลดาวน์ไอเทม",
     "speedPercentage": "เปอร์เซ็นต์ความเร็ว",
     "collectionDisplay": "แสดงความคืบหน้าของสกิล",
@@ -163,7 +160,6 @@
     "rockPetTracker": "ความคืบหน้าของ Rock Pet",
     "dolphinPetTracker": "ความคืบหน้าของ Dolphin Pet",
     "dungeonsTeammateNameOverlay": "ชื่อเพื่อนร่วมทีม Dungeons Overlay",
-    "showExpertiseKills": "แสดงจำนวนการฆ่าจาก Expertise",
     "dungeonsSecretsDisplay": "แสดงสถานที่ปริศนาใน Dungeons",
     "showSkillPercentageInstead": "แสดงเปอร์เซ็นแทนค่า xp",
     "showSkillXPGained": "แสดง XP ที่ได้รับ",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +205,6 @@
     "separateMultiple": "แยกหลายรายการด้วยเครื่องหมายจุลภาค",
     "enchantsToMatch": "%type% เพื่อให้ตรงกับ:",
     "enchantsToExclude": "%type% เพื่อไม่รวม:",
-    "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
-    "downloadLink": "วิดิโอ/ลิงค์อัพเดท",
-    "directDownload": "ลิงค์ดาวโหลดโดยตรง",
-    "openModFolder": "โฟลเดอร์มอด",
-    "joinTheDiscord": "เข้าร่วม Discord",
-    "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
-    "update": {
-      "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
       "joinDiscord": "Join our Discord server!",

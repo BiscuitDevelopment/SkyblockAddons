@@ -14,8 +14,6 @@
     "editLocations": "Edit GUI Locations",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
-    "hideDurability": "Hide Tool Durability",
-    "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Išjungti Netinkamos Lokacijos Perspejimus",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Rodyti Daiktų Cooldown'us",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separate Multiple With Commas.",
     "enchantsToMatch": "%type% To Match:",
     "enchantsToExclude": "%type% To Exclude:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODS FOLDER",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Need support or want to read the full changelog?",
       "joinDiscord": "Join our Discord server!",

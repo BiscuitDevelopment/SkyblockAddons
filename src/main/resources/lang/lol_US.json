@@ -14,8 +14,6 @@
     "editLocations": "Edit GUI Locashuns",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locashuns",
-    "hideDurability": "Hide Tool Durability",
-    "showEnchantmentsReforges": "Enchants An Reforgez",
     "minionStopWarning": "\"Minion Cant Reach\" Warnin",
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack style: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Disable Nite Vishun Poschun Blinkin",
     "disableMinionLocationWarning": "Disable Locashun Not Perfik Warnin",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Sped Persentage",
     "collectionDisplay": "Skill Progres Display",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rawk Pet Trackr",
     "dolphinPetTracker": "Dolfin Pet Trackr",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Naym Overlay",
-    "showExpertiseKills": "Show Expertize Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Persentage Instead ov XP",
     "showSkillXPGained": "Show XP Gaind",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particlez",
     "stackingEnchantProgress": "Show Stackin Enchant Progres",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filtr"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separate Multiple Wif Commas.",
     "enchantsToMatch": "%type% 2 Match:",
     "enchantsToExclude": "%type% 2 Exclude:",
-    "wantToViewPatchNotes": "Ned support or wants 2 read teh full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODZ FOLDR",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) iz available!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) iz available! Teh link 4 da download can be findz in chat.",
-      "patchAvailable": "A new patch update (%version%) iz available! Look in chat 4 download opshuns!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Ned support or wants 2 read teh full changelog?",
       "joinDiscord": "Join r Discord servr!",

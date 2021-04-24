@@ -14,8 +14,6 @@
     "editLocations": "Upravit lokace GUI",
     "guiScale": "Velikost ukazetelů: %scale%",
     "resetLocations": "Resetovat lokace",
-    "hideDurability": "Skrýt výdrž nástrojů",
-    "showEnchantmentsReforges": "Očarování a překování",
     "minionStopWarning": "Várování o nedosáhnutí miniona",
     "hidePlayersNearNPCs": "Skrýt hráče blízko důležitých NPCček",
     "backpackStyle": "Styl batůžků: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Vypnout blikání night vision potionu",
     "disableMinionLocationWarning": "Vypnout lokace neperfektních upozornění",
     "jungleAxeCooldown": "Časové omezení vykopání bloku pro Jungle Axe/Treecapitator",
-    "organizeLongEnchantmentLists": "Organizovat dlouhé seznamy enchantů",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Procenta rychlosti",
     "collectionDisplay": "Zobrazení postupu skillů",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +205,6 @@
     "separateMultiple": "Oddělte více čárkami.",
     "enchantsToMatch": "Shodující se %type%:",
     "enchantsToExclude": "Vyloučené %type%:",
-    "wantToViewPatchNotes": "Need support or want to read the full changelog?",
-    "downloadLink": "ODKAZ NA AKTUALIZACI/VIDEO",
-    "directDownload": "PŘÍMÝ ODKAZ NA STAŽENÍ",
-    "openModFolder": "OTEVŘÍT SLOŽKU S MODIFIKACEMI",
-    "joinTheDiscord": "ODKAZ NA DISCORD",
-    "newUpdateAvailable": "Nová aktualizace (%version%) je dostupná!",
-    "update": {
-      "majorAvailable": "Nová hlavní aktualizace (%version%) je připravena! Link na stažení je v chatu.",
-      "patchAvailable": "Nový opravující update (verze %version%) je nyní dostupný! Koukněte do chatu pro možnosti stahování!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Need support or want to read the full changelog?",
       "joinDiscord": "Join our Discord server!",

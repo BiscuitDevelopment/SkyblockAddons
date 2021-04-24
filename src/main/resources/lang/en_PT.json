@@ -14,8 +14,6 @@
     "editLocations": "Move Yer GUI",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
-    "hideDurability": "'ide Item Durability",
-    "showEnchantmentsReforges": "Magic n' Reforgery",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
     "hidePlayersNearNPCs": "'ide scallywags near important NPCs",
     "backpackStyle": "Backpack Style: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Disable Night Seein' Potion Blinkin'",
     "disableMinionLocationWarning": "Disable Location Be Not Perfect Warnin’s",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize yer Longer Magic Lists",
     "showItemCooldowns": "Show Yer Item Cooldowns",
     "speedPercentage": "Yer Speed Percent",
     "collectionDisplay": "Skill Progress Display",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Crewmate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead o' XP",
     "showSkillXPGained": "Show XP Gained",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separate Multiple wit' Commas.",
     "enchantsToMatch": "%type% T' match:",
     "enchantsToExclude": "%type% T' exclude:",
-    "wantToViewPatchNotes": "Want t' read th' changes?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "LINK O' DOWNLOADIN'",
-    "openModFolder": "OPEN YER MODS FOLDER",
-    "joinTheDiscord": "LINK O' DISCORD",
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Want t' read th' changes?",
       "joinDiscord": "Join our Discord server!",

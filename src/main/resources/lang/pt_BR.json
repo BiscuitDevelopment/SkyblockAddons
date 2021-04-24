@@ -14,8 +14,6 @@
     "editLocations": "Editar Posições",
     "guiScale": "Interface: %scale%",
     "resetLocations": "Restaurar Posições",
-    "hideDurability": "Esconder Durabilidade de Ferramentas",
-    "showEnchantmentsReforges": "Encantamentos e Forjas",
     "minionStopWarning": "Aviso de \"Minion Não Alcança\"",
     "hidePlayersNearNPCs": "Esconder Players próximos a NPCs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
     "disableMinionLocationWarning": "Desativar avisos de localização não perfeita",
     "jungleAxeCooldown": "Bloqueio do Jungle Axe/Treecapitator em recarga",
-    "organizeLongEnchantmentLists": "Organizar lista de encantamentos longos",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rastreador de Rock Pet",
     "dolphinPetTracker": "Rastreador de Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Sobreposição do Nome dos Companheiros de Dungeon",
-    "showExpertiseKills": "Mostrar Abates com Expertise",
     "dungeonsSecretsDisplay": "Exibir Segredos das Masmorras",
     "showSkillPercentageInstead": "Mostrar Porcentagem ao invés de XP",
     "showSkillXPGained": "Mostrar XP de Habilidade Ganho",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Monkey Lendário Nível 100",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separe Múltiplos Com Vírgulas.",
     "enchantsToMatch": "%type% Para Procurar:",
     "enchantsToExclude": "%type% Para Excluir:",
-    "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
-    "downloadLink": "Video/Link da Atualização",
-    "directDownload": "LINK DO DOWNLOAD DIRETO",
-    "openModFolder": "Abrir Pasta Mods",
-    "joinTheDiscord": "LINK DO DISCORD",
-    "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-    "update": {
-      "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-      "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
       "joinDiscord": "Entre no nosso servidor Discord!",

@@ -14,8 +14,6 @@
     "editLocations": "GUI の位置を編集",
     "guiScale": "GUI の大きさ：%scale%",
     "resetLocations": "位置をリセット",
-    "hideDurability": "ツールの耐久値を非表示",
-    "showEnchantmentsReforges": "エンチャントと Reforge の内容を表示",
     "minionStopWarning": "\"Minion Cannot Reach\" のアラート",
     "hidePlayersNearNPCs": "重要な NPC 付近のプレイヤーを非表示",
     "backpackStyle": "Backpack のスタイル：%style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "暗視のポーション点滅を無効化",
     "disableMinionLocationWarning": "Location Not Perfect のアラートを無効化",
     "jungleAxeCooldown": "Jungle Axe/Treecapitator のクールダウン中にブロック破壊を防止",
-    "organizeLongEnchantmentLists": "長いエンチャントのリストを整理",
     "showItemCooldowns": "アイテムのクールダウンを表示",
     "speedPercentage": "移動速度",
     "collectionDisplay": "Skill の進捗の表示",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet トラッカー",
     "dolphinPetTracker": "Dolphin Pet トラッカー",
     "dungeonsTeammateNameOverlay": "Dungeons で仲間の名前のオーバーレイを表示",
-    "showExpertiseKills": "Expertise で倒した数を表示",
     "dungeonsSecretsDisplay": "Dungeons の Secrets を表示",
     "showSkillPercentageInstead": "XP の代わりに割合を表示",
     "showSkillXPGained": "獲得した XP を表示",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Reforge オーバーレイを表示"
+    "showReforgeOverlay": "Reforge オーバーレイを表示",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -208,16 +205,6 @@
     "separateMultiple": "複数ある場合はコンマ(,)で分けてください。",
     "enchantsToMatch": "%type% でマッチするもの:",
     "enchantsToExclude": "%type% で除外するもの:",
-    "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
-    "downloadLink": "動画/アップデートのリンク",
-    "directDownload": "直接ダウンロードのリンク",
-    "openModFolder": "mods フォルダーを開く",
-    "joinTheDiscord": "Discord リンク",
-    "newUpdateAvailable": "新しいアップデート (%version%) が利用可能です！",
-    "update": {
-      "majorAvailable": "新しいメジャーアップデート (%version%) が利用可能です！ダウンロードリンクはチャットにあります。",
-      "patchAvailable": "新しいパッチアップデート (%version%) が利用可能です！チャットからダウンロードオプションを確認してください！"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
       "joinDiscord": "私たちの Discord サーバーに参加しましょう！",

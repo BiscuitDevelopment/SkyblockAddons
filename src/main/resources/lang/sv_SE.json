@@ -14,8 +14,6 @@
     "editLocations": "Redigera GUI-positioner",
     "guiScale": "Skala för GUI: %scale%",
     "resetLocations": "Återställ positioner",
-    "hideDurability": "Dölj hållbarhet för verktyg",
-    "showEnchantmentsReforges": "Enchants & Reforges",
     "minionStopWarning": "\"Minion Cannot Reach\" Warning",
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
@@ -51,7 +49,7 @@
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
     "changeColor": "Ändra färg",
-    "showInOtherGames": "Visa i andra Spel",
+    "showInOtherGames": "Visa i andra spel",
     "useVanillaTexture": "Använd standardtexturen",
     "textStyle": "Typsnitt",
     "textStyles": {
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
     "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Speed Percentage",
     "collectionDisplay": "Skill Progress Display",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Percentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separa med kommatecken.",
     "enchantsToMatch": "%type% för att matcha:",
     "enchantsToExclude": "%type% för att exkludera:",
-    "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIREKT NEDLADDNINGSLÄNK",
-    "openModFolder": "ÖPPNA MAPPEN FÖR MODDAR",
-    "joinTheDiscord": "DISCORDLÄNK",
-    "newUpdateAvailable": "En ny uppdatering (%version%) finns tillgänglig!",
-    "update": {
-      "majorAvailable": "En ny större uppdatering (%version%) finns tillgänlig! Länken för nedladdningen finns i chatten.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
       "joinDiscord": "Join our Discord server!",
@@ -253,7 +240,7 @@
     "selectedColor": "Vald färg",
     "setHexColor": "Set Hex Color",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Ändra storlek för mätare",
+    "resizeBars": "Resize Bars",
     "showColorIcons": "Visa färgikoner",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Stage %stage%",

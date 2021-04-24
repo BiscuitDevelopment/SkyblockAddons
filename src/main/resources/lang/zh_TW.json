@@ -14,8 +14,6 @@
     "editLocations": "編輯介面位置",
     "guiScale": "介面大小: %scale%",
     "resetLocations": "重置介面位置",
-    "hideDurability": "隱藏物品耐久度",
-    "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"Minion 無法觸及生物\" 警告",
     "hidePlayersNearNPCs": "隱藏重要NPC旁的玩家",
     "backpackStyle": "背包樣式: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
     "disableMinionLocationWarning": "取消Minion位置不完美警告",
     "jungleAxeCooldown": "禁止在Jungle Axe/Treecapitator冷卻期間使用",
-    "organizeLongEnchantmentLists": "整理長附魔名稱列表",
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Rock 寵物追蹤器",
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
     "dungeonsTeammateNameOverlay": "Dungeons 隊友名稱顯示",
-    "showExpertiseKills": "顯示 Expertise 擊殺數",
     "dungeonsSecretsDisplay": "Dungeons Secrets 顯示",
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
     "showSkillXPGained": "顯示獲取的經驗值",
@@ -193,7 +189,8 @@
     "legendaryMonkeyLevel100": "[TEMP] 等級 100 傳說 Monkey",
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "顯示疊加附魔進度",
-    "showReforgeOverlay": "顯示 Reforge 提示"
+    "showReforgeOverlay": "顯示 Reforge 提示",
+    "reforgeFilter": "Reforge 過濾"
   },
   "messages": {
     "enchants": "附魔",
@@ -208,16 +205,6 @@
     "separateMultiple": "使用逗號分隔。",
     "enchantsToMatch": "區配%type%:",
     "enchantsToExclude": "排斥%type%:",
-    "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
-    "downloadLink": "影片/更新連結",
-    "directDownload": "直接下載連結",
-    "openModFolder": "開啟模組資料夾",
-    "joinTheDiscord": "Discord連結",
-    "newUpdateAvailable": "有一個可用更新！ (%version%)",
-    "update": {
-      "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
-      "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
       "joinDiscord": "加入我們的 Discord 伺服器！",

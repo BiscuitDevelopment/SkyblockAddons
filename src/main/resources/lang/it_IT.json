@@ -14,8 +14,6 @@
     "editLocations": "Modifica Posizioni",
     "guiScale": "Dimensione GUI: %scale%",
     "resetLocations": "Resetta le Posizioni",
-    "hideDurability": "Nascondi la Durabilità degli strumenti",
-    "showEnchantmentsReforges": "Incantesimi & Forge",
     "minionStopWarning": "Avviso che \"i Minion non possono raggiungere le risorse\" ",
     "hidePlayersNearNPCs": "Nascondi i giocatori vicino agli NPC importanti",
     "backpackStyle": "Stile Zaino: %style%",
@@ -70,7 +68,6 @@
     "avoidBlinkingNightVision": "Evita l'intermittenza della pozione di visione notturna",
     "disableMinionLocationWarning": "Disattiva gli avvisi di posizione non perfetta",
     "jungleAxeCooldown": "Blocca la Jungle Axe/Ricarica del Treecapitator",
-    "organizeLongEnchantmentLists": "Organizza gli elenchi di incantesimi lunghi",
     "showItemCooldowns": "Mostra i tempi di ricarica degli oggetti",
     "speedPercentage": "Percentuale di Velocità",
     "collectionDisplay": "Visualizzazione del progresso delle skill",
@@ -163,7 +160,6 @@
     "rockPetTracker": "Tracker del Rock Pet",
     "dolphinPetTracker": "Tracker del Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Nomi dei compagni di Dungeons in rilievo",
-    "showExpertiseKills": "Mostra uccisioni con Expertise",
     "dungeonsSecretsDisplay": "Mostra segreti del Dungeon",
     "showSkillPercentageInstead": "Mostra percentuale invece dell'XP",
     "showSkillXPGained": "Mostra XP ottenuti",
@@ -187,13 +183,14 @@
     "onlyMineOresDwarvenMines": "Estrai minerali solo nelle Dwarven Miles",
     "drillFuelBar": "Barra di combustibile Drill",
     "drillFuelText": "Numero di combustibile Drill",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay"
+    "fishingParticleOverlay": "Sovrapposizione delle particelle da pesca",
+    "enchantmentLoreParsing": "Personalizza la lista di incantesimi",
+    "cooldownPrediction": "Prevedi e riduci il tempo d'attesa",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey Leggendario Livello 100",
+    "biggerWake": "Aumenta le particelle di sovrapposizione",
+    "stackingEnchantProgress": "Mostra progresso degli incantesimi multipli",
+    "showReforgeOverlay": "Mostra l'overlay dei reforge",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -208,16 +205,6 @@
     "separateMultiple": "Separa le liste con delle virgole.",
     "enchantsToMatch": "%type% Da Combaciare:",
     "enchantsToExclude": "%type% Da Escludere:",
-    "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
-    "downloadLink": "VIDEO/LINK DELL’AGGIORNAMENTO",
-    "directDownload": "LINK DIRETTO AL DOWNLOAD",
-    "openModFolder": "APRI LA CARTELLA DEI MODS",
-    "joinTheDiscord": "LINK DI DISCORD",
-    "newUpdateAvailable": "Un nuovo aggiornamento (%version%) è disponibile!",
-    "update": {
-      "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
-      "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
-    },
     "updateChecker": {
       "wantToViewPatchNotes": "Hai bisogno di aiuto o vuoi leggere la lista dei cambiamenti?",
       "joinDiscord": "Unisciti al nostro server di Discord!",
@@ -229,7 +216,7 @@
       "noDownloadAvailable": "Nessun link di download disponibile, per favore controlla il nostro server di Discord.",
       "notificationBox": {
         "majorAvailable": "Un nuovo aggiornamento importante (%version%) è disponibile! Il link per il download si trova in chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "È disponibile una nuova versione beta (%version%)! Cerca nella chat il link di download.",
         "patchAvailable": "Un nuovo aggiornamento con correzioni di errori (%version%) è disponibile! Cerca le opzioni di download in chat!"
       }
     },
