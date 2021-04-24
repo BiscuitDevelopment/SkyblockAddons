@@ -1,8 +1,8 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '2.1-SNAPSHOT'
-    id 'io.franzbecker.gradle-lombok' version '4.0.0'
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'net.minecraftforge.gradle.forge' version '581a86dcbe'
+    id "io.freefair.lombok" version "6.0.0-m2"
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group = 'codes.biscuit'
@@ -52,15 +52,7 @@ dependencies {
 
 jar {
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveName = project.modName + "-" + version + "-for-MC-1.8.9.jar"
-    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
-    enabled = false
-}
-
-shadowJar {
-    archiveName = tasks.jar.archiveName
-    classifier = ''
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
             'Main-Class': 'SkyblockAddonsInstallerFrame',
@@ -70,6 +62,15 @@ shadowJar {
             'ModSide': 'CLIENT',
             'FMLAT': "${project.modId}_at.cfg"
     )
+
+    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
+    enabled = false
+}
+
+shadowJar {
+    archiveFileName = jar.archiveFileName
+
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     exclude('dummyThing')
     exclude('META-INF/maven/')
