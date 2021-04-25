@@ -59,7 +59,17 @@ public enum Location {
 
     THE_BARN("The Barn"),
 
+    // Mushroom Island
     MUSHROOM_DESERT("Mushroom Desert"),
+    DESERT_SETTLEMENT("Desert Settlement"),
+    TREASURE_HUNTER_CAMP("Treasure Hunter Camp"),
+    OASIS("Oasis"),
+    MUSHROOM_GORGE("Mushroom Gorge"),
+    GLOWING_MUSHROOM_CAVE("Glowing Mushroom Cave"),
+    OVERGROWN_MUSHROOM_CAVE("Overgrown Mushroom Cave"),
+    JAKES_HOUSE("Jake's House"),
+    SHEPHERDS_KEEP("Shepherds Keep"),
+    TRAPPERS_DEN("Trappers Den"),
 
     SPIDERS_DEN("Spider's Den"),
 
@@ -113,10 +123,12 @@ public enum Location {
     // This is used when the mod is unable to retrieve the player's location from the sidebar.
     UNKNOWN("Unknown");
 
-    /** The name of this location as shown on the in-game scoreboard. */
-    private String scoreboardName;
+    /**
+     * The name of this location as shown on the in-game scoreboard.
+     */
+    private final String scoreboardName;
 
-    private String discordIconKey;
+    private final String discordIconKey;
 
     Location(String scoreboardName, String discordIconKey) {
         this.scoreboardName = scoreboardName;
@@ -129,7 +141,8 @@ public enum Location {
         Set<String> NO_DISCORD_RPC = Sets.newHashSet("ISLAND", "BAZAAR", "DEEP_CAVERNS", "GUNPOWDER_MINES", "LAPIS_QUARRY", "PIGMAN_DEN", "JERRYS_WORKSHOP", "JERRY_POND",
                 "DWARVEN_MINES", "DWARVEN_VILLAGE", "GATES_TO_THE_MINES", "THE_LIFT", "THE_FORGE", "FORGE_BASIN", "LAVA_SPRINGS", "PALACE_BRIDGE", "ROYAL_PALACE",
                 "ARISTOCRAT_PASSAGE", "HANGING_TERRACE", "CLIFFSIDE_VEINS", "RAMPARTS_QUARRY", "DIVANS_GATEWAY", "FAR_RESERVE", "GOBLIN_BURROWs", "UPPER_MINES",
-                "MINERS_GUILD", "GREAT_ICE_WALL", "THE_MIST", "CC_MINECARTS_CO", "GRAND_LIBRARY", "HANGING_COURT", "ROYAL_MINES");
+                "MINERS_GUILD", "GREAT_ICE_WALL", "THE_MIST", "CC_MINECARTS_CO", "GRAND_LIBRARY", "HANGING_COURT", "ROYAL_MINES",
+                "DESERT_SETTLEMENT", "TREASURE_HUNTER_CAMP", "OASIS", "MUSHROOM_GORGE", "GLOWING_MUSHROOM_CAVE", "OVERGROWN_MUSHROOM_CAVE", "JAKES_HOUSE", "SHEPHERDS_KEEP", "TRAPPERS_DEN");
 
         if (NO_DISCORD_RPC.contains(name())) {
             discordIconKey = "skyblock";
