@@ -1,11 +1,12 @@
 {
+  "languageText": "Язык: ",
   "language": "Русский",
   "settings": {
     "settings": "Настройки",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
     "itemDropConfirmation": "Подтверждение выбрасывания предмета",
-    "hideSkeletonHatBones": "Скрыть кости от Шлема Скелета",
-    "skeletonHatBonesBar": "Шкала костей Шлема Скелета",
+    "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
+    "skeletonHatBonesBar": "Шкала костей Skeleton Helmet",
     "hideFoodAndArmor": "Скрыть полосы еды и брони",
     "fullInventoryWarning": "Предупреждение о полном инвентаре",
     "repeating": "Повторять Предупреждение",
@@ -13,8 +14,6 @@
     "editLocations": "Изменить расположения интерфейса",
     "guiScale": "Масштаб интерфейса: %scale%",
     "resetLocations": "Сбросить расположения",
-    "hideDurability": "Скрыть прочность инструментов",
-    "showEnchantmentsReforges": "Зачарование и Перековка",
     "minionStopWarning": "Предупреждение об остановки миньона",
     "hidePlayersNearNPCs": "Скрывать игроков рядом с важными NPC",
     "backpackStyle": "Стиль рюкзака: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Отключить моргание от Зелья ночного зрения",
     "disableMinionLocationWarning": "Отключить уведомление о неидеальной локации",
     "jungleAxeCooldown": "Блокировать Топор джунглей/Treecapitator до сброса таймера",
-    "organizeLongEnchantmentLists": "Организовывать длинные списки зачарований",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Процент скорости",
     "collectionDisplay": "Показывать прогресс навыков",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rock Pet Tracker",
     "dolphinPetTracker": "Dolphin Pet Tracker",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Показывать проценты вместо опыта",
     "showSkillXPGained": "Показать полученный опыт",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Открывать Подарки Проще",
     "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Зачарования",
@@ -189,15 +205,20 @@
     "separateMultiple": "Разделяйте зачар-я несколькими запятыми.",
     "enchantsToMatch": "Искать %type%:",
     "enchantsToExclude": "Не искать %type%:",
-    "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
-    "downloadLink": "ССЫЛКА НА ВИДЕО/ОБНОВЛЕНИЕ",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "ОТКРЫТЬ ПАПКУ MODS",
-    "joinTheDiscord": "ССЫЛКА НА DISCORD",
-    "newUpdateAvailable": "Доступно новое обновление (%version%)!",
-    "update": {
-      "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
-      "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Доступно новое обновление (%version%)!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
+      }
     },
     "slotLocked": "Этот слот заблокирован!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Эффект активен",
     "effectsActive": "%number% Effects Active",
     "none": "Нет",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -313,7 +335,7 @@
       "dev": {
         "help": "Переключить режим разработчика",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Режим разработчика отключен!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
@@ -332,6 +354,15 @@
             "command": "подкоманда для получения подробного использования"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

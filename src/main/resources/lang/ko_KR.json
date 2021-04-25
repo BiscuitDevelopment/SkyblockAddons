@@ -1,4 +1,5 @@
 {
+  "languageText": "언어: ",
   "language": "한국어",
   "settings": {
     "settings": "설정",
@@ -13,8 +14,6 @@
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
     "resetLocations": "위치 설정 초기화",
-    "hideDurability": "도구 내구도 숨기기",
-    "showEnchantmentsReforges": "인챈트 및 Reforge",
     "minionStopWarning": "\"Minion Cannot Reach\" 경고",
     "hidePlayersNearNPCs": "NPC 근처에 있는 플레이어 숨기기",
     "backpackStyle": "Backpack 스타일: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "야간 투시 탈리스만 깜박임 비활성화",
     "disableMinionLocationWarning": "Minion Location Not Perfect 경고 비활성화",
     "jungleAxeCooldown": "쿨다운시 Jungle Axe/Treecapitator 사용하지 않기",
-    "organizeLongEnchantmentLists": "긴 마법 부여 목록 정리",
     "showItemCooldowns": "아이템 쿨다운 보여주기",
     "speedPercentage": "스피드 배율",
     "collectionDisplay": "Skill 완성도 보여주기",
@@ -95,7 +93,7 @@
     "noArrowsLeftAlert": "화살 없음 경고",
     "hideNightVisionEffectTimer": "야간 투시 이펙트 타이머 숨기기",
     "showCakeBagPreview": "Cake Bags 프리뷰 보이기",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "showBackpackPreviewInAH": "Auction House가 열려 있을 때 내 Backpack 아이템 보이기",
     "enableDevFeatures": "개발자용 기능 활성화",
     "chromaSpeed": "무지개 색상 변경 속도",
     "chromaMode": "무지개 색상 모드",
@@ -111,26 +109,26 @@
     "showSummoningEyeCount": "Zealot 카운터 - 전체 Summoning Eye 카운트",
     "showZealotsPerEye": "Zealot 카운터 - Summoning Eye 당 Zealot 수 보이기",
     "turnBowGreenWhenUsingToxicArrowPoison": "Toxic Arrow Poison을 사용할 때 활을 초록색으로 표시",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display",
+    "birchParkRainmakerTimer": "Birch Park 비 내림 타이머",
+    "combatTimerDisplay": "전투 타이머 보이기",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone Protector 보이기",
     "fancyWarpMenu": "이쁜 워프 메뉴",
     "doubleWarp": "두 번 워프하기",
     "advancedMode": "고급 모드",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "legendarySeaCreatureWarning": "전설 Sea Creature 알림",
     "onlyBreakLogsPark": "나무 공원에서 나무만 캐기",
-    "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List While Holding a Rod",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "bossApproachAlert": "Slayer 보스 경고",
+    "disableTeleportPadMessages": "Teleport Pad 메시지 숨기기",
+    "baitListDisplay": "낚싯대를 들고 있을 때 Bait 목록 보이기",
+    "freezeBackpackPreview": "Backpack 프리뷰 멈추기",
+    "hideGreyEnchants": "바닐라 회색 인챈트 숨기기",
+    "zealotCounterExplosiveBow": "Zealot 카운터에 Explosive Bow 지원하기",
+    "disableEndermanTeleportation": "앤더맨 순간이동 끄기",
+    "changeZealotColor": "Zealot 색상 변경",
     "hideSvenPupNametags": "Sven Pup 이름표 숨기기",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "turnAllFeaturesChroma": "모든 기능을 무지개로 보이기",
+    "dungeonMapDisplay": "Dungeon Map 표시하기",
     "rotateMap": "플레이어의 시야 회전에 맞춰 지도를 회전하기",
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
     "mapZoom": "지도 확대",
@@ -139,31 +137,30 @@
     "baseStatBoostPercentage": "Dungeon 아이템의 기본 스탯 부스트 보이기",
     "colorByRarity": "희귀성에 맞춰 색상 변경하기",
     "showPlayerHeadsOnMap": "플레이어 머리를 Dungeon 지도에 보이기",
-    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
-    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showHealingCircleWall": "Dungeon의 Healing Circle 벽 보이기",
+    "showCriticalTeammates": "Dungeon 에서 체력이 낮은 팀원들 보이기",
     "showGlowingItemsOnIsland": "빛나는 아이템들을 섬에서 보이기",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
-    "showDungeonMilestone": "Show Dungeon Milestone",
+    "showItemDungeonFloor": "어떤 층에서 드랍된 Dungeon 아이템인지 보이기",
+    "showDungeonMilestone": "Dungeon Milestone 보이기",
     "dungeonsCollectedEssencesDisplay": "던전에서 획득한 에센스 목록",
     "stopBonzoStaffSounds": "Bonzo's Staff의 효과음 방지",
     "showRarityUpgraded": "아이템의 희귀도가 업그레이드 됐는지 표시하기",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "revenantSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Revenant/Zombie",
+    "tarantulaSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Tarantula/Spider",
+    "svenSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Sven/Wolf",
     "textMode": "텍스트 모드",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Show Expertise Kills",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "dragonsNestOnly": "Dragon's Nest 에서만 보이기",
+    "dragonStatsTracker": "드래곤 통계 기록하기",
+    "skillActionsLeftUntilNextLevel": "다음 레벨까지 남은 액션 보이게 하기",
+    "hideWhenNotInCrypts": "Crypts 밖에 있거나 Revenant 퀘스트를 안하고 있을 경우 숨기기",
+    "hideWhenNotInSpidersDen": "Spider's Den 밖에 있거나 Tarantula 퀘스트를 안하고 있을 경우 숨기기",
+    "hideWhenNotInCastle": "Castle 밖에 있거나 Sven 퀘스트를 안하고 있을 경우 숨기기",
+    "dungeonDeathCounter": "Dungeon 죽음 카운터",
+    "showPersonalCompactorPreview": "Personal Compactor 속에 있는 아이텀 보이기",
+    "rockPetTracker": "Rock Pet을 얻기 위한 광석 카운터",
+    "dolphinPetTracker": "Dolphin Pet을 얻기 위한 낚시 카운터",
+    "dungeonsTeammateNameOverlay": "Dungeon 팀원 이름 오버레이",
+    "dungeonsSecretsDisplay": "Dungeon 비밀 표시",
     "showSkillPercentageInstead": "XP 숫자 대신 레벨 진행도 보이기",
     "showSkillXPGained": "얻은 XP 보여주기",
     "skillProgressBar": "Skill 경험치 바",
@@ -172,9 +169,28 @@
     "disableBossMessages": "보스 알림 끄기",
     "hideOtherPlayersPresents": "다른 플레이어의 선물 숨기기",
     "easierPresentOpening": "선물 쉽게 열기",
-    "showSwordKills": "Show Sword Kills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "showSwordKills": "소드 킬 보여주기",
+    "compactTabList": "간단 Tab 리스트",
+    "highlightMaxEnchantments": "특별한 인챈트 강조하기",
+    "disableEmptyGlassPanes": "빈 유리판 비활성화",
+    "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
+    "healingCircleOpacity": "Healing Circle 불투명도",
+    "chromaSize": "무지개 사이즈",
+    "chromaSaturation": "무지개 채도",
+    "chromaBrightness": "무지개 밝기",
+    "useNewChromaEffect": "새로운 무지개 이펙트 사용하기",
+    "showExperimentationTableTooltips": "Experimentation Table 팁 보이기",
+    "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
+    "drillFuelBar": "Drill 연료 바",
+    "drillFuelText": "Drill 연료 숫자",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "인챈트",
@@ -189,116 +205,122 @@
     "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
     "enchantsToMatch": "포함할 %type%:",
     "enchantsToExclude": "제외할 %type%:",
-    "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
-    "downloadLink": "영상/업데이트 링크",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "모드 폴더 열기",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) is available!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
+      }
     },
     "slotLocked": "이 슬롯은 잠겨있습니다!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
+    "cancelledStemBreak": "SkyblockAddons이 이 줄기를 부수는 것을 방지했습니다. 정말로 부수려면, 빈 손으로 부수세요.",
+    "cancelledProfileOpening": "당신이 활을 들고 있었기 때문에 SkyblockAddons이 이 플레이어의 프로필을 여는 것을 방지했습니다.",
+    "cancelledDropping": "기능이 이 \"희귀한\" 아이템 또는 도구를 핫바에서 떨어트리지 못하게 했습니다.",
     "clickMoreTimes": "정말 이 아이템을 떨어뜨리려면 %times%번 더 떨어뜨리세요.",
     "clickOneMoreTime": "정말 이 아이템을 떨어뜨리려면 한 번 더 클릭하거나 떨어뜨리세요.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
-    "anvilUses": "Anvil Uses: %uses%",
-    "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
+    "cancelledDeepCaverns": "기능으로 인해 이 블럭을 채굴하지 못했습니다.",
+    "featureDisabled": "기능 비활성화 됨",
+    "anvilUses": "모루 사용 횟수: %uses%",
+    "specialZealotFound": "특별한 Zealot!",
+    "blockIncompletePatterns": "미완성 패턴으로 제작하기 막기 (추천됨)",
+    "searchFeatures": "기능 검색하기",
+    "downloadingUpdateFile": "업데이트 파일 다운로드 중...",
+    "onlyFewArrowsLeft": "화살이 %arrows%개 밖에 남지 않았습니다!",
+    "noArrowsLeft": "화살이 없습니다!",
     "chooseAColor": "색상 선택하기",
     "selectedColor": "선택한 색상",
-    "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "setHexColor": "헥스 색상 정하기",
+    "rescaleFeatures": "기능 크기 조정",
+    "resizeBars": "바 크기 재조정",
+    "showColorIcons": "색상 아이콘 보이기",
+    "enableFeatureSnapping": "기능 배치시 스냅 켜기",
+    "stage": "스테이지 %stage%",
+    "switchedSlots": "당신은 방금 잠긴 슬롯이나 레어 아이템에서 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
     "clickToOpenLink": "클릭해서 링크 열기",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
+    "clickToOpenFolder": "여기를 클릭해 당신의 모드 폴더를 열으세요!",
+    "firstStatus": "이 상태는 위에 나타날 것입니다",
+    "secondStatus": "이 상태는 당신의 첫 상태 밑에 나타날 것입니다",
+    "fallbackStatus": "이 상태는 당신의 자동 상태가 아무것도 표시할 것이 없을 때 나타납니다",
+    "legendarySeaCreatureWarning": "전설 낚음!",
+    "cancelledPark": "기능이 당신이 여기서 이 블럭을 부수지 못하게 하였습니다.",
+    "bossApproaching": "당신은 Boss 생성 조건에 가까워졌습니다!",
     "enableAll": "모두 활성화",
     "disableAll": "모두 비활성화",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active",
-    "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "enchantmentInclusionExample": "예시: \"prot, feather\"",
+    "enchantmentExclusionExample": "예시: \"proj, blast\"",
+    "reforgeInclusionExample": "예시: \"godly, strong\"",
+    "reforgeExclusionExample": "예시: \"odd, clean\"",
+    "actionsLeft": "%number% 번의 액션 남음",
+    "effectActive": "1개의 효과 활성화 되어 있음",
+    "effectsActive": "%number% 개의 효과 활성화 되어 있음",
+    "none": "없음",
+    "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
+    "chroma": "무지개"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "없음",
+    "descriptionNone": "아무런 텍스트가 표시되지 않았습니다",
+    "titleLocation": "위치",
+    "descriptionLocation": "당신의 현재 위치를 보입니다",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
+    "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
+    "titleStats": "스텟",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionZealots": "당신의 Zealot 카운터를 보여줍니다",
+    "titleItem": "들고 있는 아이템",
+    "descriptionItem": "당신이 들고 있는 아이템의 이름을 보여줍니다",
+    "titleProfile": "프로필",
+    "descriptionProfile": "당신의 프로필 이름을 보여줍니다",
+    "titleTime": "스카이블럭 시간",
+    "descriptionTime": "현재 스카이블럭 시간을 보여줍니다. 예: 12:00am 1st Early Winter",
+    "titleCustom": "사용자 지정 상태",
+    "descriptionCustom": "사용자 지정 상태를 입력하세요",
+    "titleAuto": "자동으로 표시되는 상태",
+    "descriptionAuto": "자동으로 상태를 표시합니다. 예: The End에서의 당신의 Zealot 카운트.",
+    "titleRevenants": "Revenant 퀘스트",
+    "descriptionRevenants": "당신이 Revenant 퀘스트를 하는 것을 보여줍니다.",
+    "titleSvens": "Sven 퀘스트",
+    "descriptionSvens": "당신이 Sven 퀘스트를 하는 것을 보여줍니다.",
+    "titleTarantula": "Tarantula 퀘스트",
+    "descriptionTarantula": "당신이 Tarantula 퀘스트를 하는 것을 보여줍니다."
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "메인 메뉴 열기"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(개발자 모드) §7서버 브랜드 보이기",
+        "brandOutput": "서버 브랜드: %brand%",
+        "notFound": "서버 브랜드를 찾을 수 없습니다!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(개발자 모드) §7특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
             "radius": "The radius (in blocks) around the player to copy entity NBT data from"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(개발자 모드) §7스코어보드 텍스트 복사하기",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
             "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
           }
@@ -311,72 +333,81 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "개발자 모드 켜기/끄기",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "이 명령은 개발자 모드를 키고 끕니다. 이 모드는 스카이블럭 모드/툴 개발자를 위한 모드입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "개발자 모드가 꺼졌습니다!",
+        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "GUI 위치 편집"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "모드 폴더 열기",
+        "error": "모드 폴더를 여는 도중 오류가 발생하였습니다: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "이 도움 메시지를 보여줍니다. 만약 명령어를 입력받았다면, 그 명령어에 대한 자세한 도움말도 보여줍니다.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "자세한 사용법을 얻을 부명령어"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "직접 질럿 카운트를 설정하세요.",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "직접 질럿 카운터의 값을 설정합니다.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "총 서머닝 눈 획득 수",
+              "totalZealots": "총 질럿 킬 수",
+              "zealots": "최근 서머닝 눈 드랍 이후 죽인 질럿들"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "전체 서머닝 눈 카운트를 %number% (으)로 설정했습니다!",
+          "totalZealotsSet": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+          "wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
+          "zealotsSet": "현재 질럿 카운트를 %number% (으)로 설정했습니다!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "직접 슬레이어 스탯을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "직접 슬레이어 스탯을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "슬레이어 보스: \"Zombie\", \"Spider, 또는 \"Wolf\"",
+            "number": "스탯으로 만들 숫자",
+            "stat": "바꿀 Slayer 스탯, \"kills\" 또는 그 Slayer가 떨어트리는 아이템을 이렇게 포매팅 한 것일수도 있읍니다: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "보스를 선택해야 합니다! %bosses% 를 골라 주세요!",
+        "statRequired": "스탯을 골라야 합니다. 선택 가능 스탯을 보려면 Tab를 누르세요.",
+        "numberRequired": "당신이 원하는 숫자를 넣어야 합니다.",
+        "killsSet": "%boss% Slayer의 킬 숫자가 %number% 로 바뀌었습니다",
+        "statSet": "%boss% Slayer 스탯 %stat% 이 %number% 로 바뀌었습니다",
+        "invalidBoss": "\"%input%\"은 유효한 스텟이 아닙니다!",
+        "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
+        "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
+        "enabled": "이제 액션 바의 메시지가 기록됩니다."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "잘못된 사용법입니다!",
+          "subCommandNotFound": "부 명령어 \"%sub-command%\" (을)를 찾을 수 없습니다."
         }
       }
     }
@@ -392,11 +423,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "최근 드래곤:",
+    "dragonsSince": "드래곤 통계:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "설치한 눈",
     "never": "안 함"
   },
   "slayerTracker": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "죽인 보스"
+  },
+  "warpMenu": {
+    "click": "워프 포인트를 클릭하여 워프하세요!",
+    "mustUnlock": "이 Scroll를 반드시 잠금 해제 해야 합니다.",
+    "privateIsland": "개인 섬",
+    "home": "당신의 섬",
+    "spawn": "스폰",
+    "unknown": "방문하지 않음.",
+    "notUnlocked": "해금 안 됨",
+    "inCombat": "전투 중..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

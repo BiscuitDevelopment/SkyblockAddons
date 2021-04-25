@@ -1,4 +1,5 @@
 {
+  "languageText": "Γλώσσα: ",
   "language": "Ελληνικά",
   "settings": {
     "settings": "Ρυθμίσεις",
@@ -13,8 +14,6 @@
     "editLocations": "Επεξεργάσου τις Τοποθεσίες GUI",
     "guiScale": "Κλίμακα Gui: %scale%",
     "resetLocations": "Επαναφορά Τοποθεσιών",
-    "hideDurability": "Απόκρυψη Αντοχής Εργαλείου",
-    "showEnchantmentsReforges": "Μαγείες & Reforges",
     "minionStopWarning": "Προειδοποίηση \"Το Minion δεν Μπορεί να Φτάσει\"",
     "hidePlayersNearNPCs": "Κρύψε Παίχτες Κοντά Σε Σημαντικούς Χαρακτήρες",
     "backpackStyle": "Στυλ Σακιδίου: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Απενεργοποιήστε το να αναβοσβήνουν τα Night Vision Potion",
     "disableMinionLocationWarning": "Απενεργοποίηση προειδοποιήσεων τοποθεσίας η οποία δεν είναι τέλεια",
     "jungleAxeCooldown": "Αποκλεισμός Jungle Axe / Treecapitator στο Cooldown",
-    "organizeLongEnchantmentLists": "Οργανώστε τις μεγάλες λίστες μαγείας",
     "showItemCooldowns": "Εμφάνιση αντικειμένων Cooldowns",
     "speedPercentage": "Ποσοστό Ταχύτητας",
     "collectionDisplay": "Επιδεξιότητα μπάρα προόδου",
@@ -131,8 +129,8 @@
     "hideSvenPupNametags": "Κρύψε Sven κουταβάκια oνόματα",
     "turnAllFeaturesChroma": "Ενεργοποίησε όλες τις Λειτουργίες Chroma",
     "dungeonMapDisplay": "Εμφάνιση χάρτη Dungeon",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Περιστροφή χάρτη στην περιστροφή του παίκτη σας",
+    "centerRotationOnYourPlayer": "Κεντράρισμα την Περιστροφής Γύρω από τον Παίκτη Σας",
     "mapZoom": "Ζουμ Χάρτη",
     "glowingDroppedItems": "Λαμπερά αντικείμενα που έπεσαν",
     "glowingDungeonTeammates": "Λαμπερό Dungeon συμπαίκτες",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Πέτρινο κατοικίδιο Tracker",
     "dolphinPetTracker": "Δελφίνι κατοικίδιο Tracker",
     "dungeonsTeammateNameOverlay": "Επικάλυψη ονόματος συμπαίκτη Dungeon",
-    "showExpertiseKills": "Εμφάνιση Expertise Kills",
     "dungeonsSecretsDisplay": "Εμφάνιση μυστικών Dungeon",
     "showSkillPercentageInstead": "Εμφάνιση ποσοστού αντί για XP",
     "showSkillXPGained": "Εμφάνιση XP αποκτήθηκαν",
@@ -173,8 +170,27 @@
     "hideOtherPlayersPresents": "Απόκρυψη δώρων άλλων παικτών",
     "easierPresentOpening": "Άνοιγμα δώρων πιο εύκολα",
     "showSwordKills": "Εμφάνιση Sword Kills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Συμπαγής λίστα καρτελών",
+    "highlightMaxEnchantments": "Επισημάνετε τις ειδικές γοητείες",
+    "disableEmptyGlassPanes": "Απενεργοποίηση κενού υαλοπίνακα",
+    "candyPointsCounter": "Spooky Event Καραμέλες / μετρητές πόντων",
+    "healingCircleOpacity": "Θεραπεία αδιαφάνειας κύκλου",
+    "chromaSize": "Χρωματιστό Μέγεθος",
+    "chromaSaturation": "Κορεσμός χρώματος",
+    "chromaBrightness": "Φωτεινότητα Chroma",
+    "useNewChromaEffect": "Χρησιμοποιήστε το νέο εφέ Χρωματισμού",
+    "showExperimentationTableTooltips": "Εμφάνιση συμβουλών εργαλείου πίνακα πειραματισμού",
+    "onlyMineOresDwarvenMines": "Σπάστε μόνο τα μεταλλεύματα στο Dwarven Mines",
+    "drillFuelBar": "Δράπανο Fuel Bar",
+    "drillFuelText": "Αριθμός καυσίμου τρυπανιών",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -189,15 +205,20 @@
     "separateMultiple": "Διαχωρίστε τα πολλαπλά με κόμματα.",
     "enchantsToMatch": "%type% Να ταιριάζει:",
     "enchantsToExclude": "%type% Να εξαιρέσεις:",
-    "wantToViewPatchNotes": "Χρειάζεστε υποστήριξη ή θέλετε να διαβάσετε ολόκληρο το changelog;",
-    "downloadLink": "LINK ΓΙΑ ΒΙΝΤΕΟ/ΕΝΗΜΕΡΩΣΗ",
-    "directDownload": "LINK ΑΜΕΣΗΣ ΛΗΨΗΣ",
-    "openModFolder": "ΑΝΟΙΞΕ ΤΟΝ ΦΑΚΕΛΟ MODS",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "Μία νέα ενημέρωση (%version%) είναι διαθέσιμη!",
-    "update": {
-      "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
-      "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Χρειάζεστε υποστήριξη ή θέλετε να διαβάσετε ολόκληρο το changelog;",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Μία νέα ενημέρωση (%version%) είναι διαθέσιμη!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Ο σύνδεσμος για την εγκατάσταση μπορεί να βρεθεί στο chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
+      }
     },
     "slotLocked": "Αυτή η θέση είναι κλειδωμένη!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Εφέ ενεργό",
     "effectsActive": "%number% Ενεργά εφέ",
     "none": "Τίποτα",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "Η λειτουργία αντιγραφής προγραμματιστή έχει οριστεί σε: %mode%. Πατήστε \"%keyName%\" για να ενεργοποιήσετε ένα αντίγραφο δεδομένων!",
+    "chroma": "Χρωματιστό"
   },
   "discordStatus": {
     "titleNone": "Τίποτα",
@@ -275,108 +297,117 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Άνοιγμα του κυρίως μενού"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Εμφάνιση της επωνυμίας του διακομιστή",
+        "brandOutput": "Επωνυμία διακομιστή: %brand%",
+        "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Αντιγραφή δεδομένων NBT για οντότητες του συγκεκριμένου ονόματος (ες) εντός της δεδομένης ακτίνας γύρω από τη συσκευή αναπαραγωγής",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Ονόματα των τύπων οντοτήτων για τις οποίες θέλετε να αντιγράψετε δεδομένα (π.χ. Player,Creeper). Πατήστε \"Tab\" αφού πληκτρολογήσετε την εντολή για μια πλήρη λίστα. Διαχωρίστε πολλά ονόματα με κόμματα, τα ονόματα είναι case-sensitive.",
+            "radius": "Η ακτίνα (σε μπλοκ) γύρω από τον παίκτη για την αντιγραφή δεδομένων NBT οντοτήτων από"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Αντιγράψτε το κείμενο του πίνακα αποτελεσμάτων",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Αντιγράφει το κείμενο που εμφανίζεται στην υποδοχή εμφάνισης της πλευρικής γραμμής του πίνακα αποτελεσμάτων",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Καθορίζει εάν οι κωδικοί μορφοποίησης πρέπει να περιλαμβάνονται κατά την αντιγραφή. Μπορεί να είναι \"true\" ή \"false\", από προεπιλογή σε \"false\" εάν δεν παρέχεται τιμή. Οι κωδικοί μορφοποίησης αντιγράφονται εάν είναι \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Αντιγράψτε την κεφαλίδα και το υποσέλιδο της λίστας καρτελών",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Εναλλαγή λειτουργίας προγραμματιστή",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "Αυτή η εντολή εναλλάσσει τη λειτουργία προγραμματιστή. Αυτή η λειτουργία προορίζεται για προγραμματιστές Skyblock mods / εργαλεία. Παρέχει ανεπεξέργαστα δεδομένα από το παιχνίδι, όπως οντότητα και αντικείμενο NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Η λειτουργία προγραμματιστή απενεργοποιήθηκε!",
+        "enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Επεξεργάσου τις τοποθεσίες GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Ανοίξτε το φάκελο mods",
+        "error": "Παρουσιάστηκε σφάλμα κατά το άνοιγμα του φακέλου mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Δείχνει αυτό το μήνυμα βοήθειας. Αν μία εντολή δοθεί, θα εμφανιστεί λεπτομερής βοήθεια σχετικά με αυτή την εντολή.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "η δευτερεύουσα εντολή για να λάβετε λεπτομερή χρήση για"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Επαναφορτώνει όλες τις ρυθμίσεις και τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Επαναφορτώνει τις ρυθμίσεις του mod"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Επαναφορτώνει τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Ορίστε χειροκίνητα τους αριθμούς των zealot σας",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Μη αυτόματη ρύθμιση μετρήσεων στον μετρητή zealot.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Διάρκεια Ζωής summoning eyes αποκτήθηκαν",
+              "totalZealots": "Εφ' όρου ζωής σκοτωμοί zealot",
+              "zealots": "Τα Zealot που σκοτώθηκαι από το τελευταίο Summoning Eye"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Ορίστε τον συνολικό αριθμό summoning eye σε %number%!",
+          "totalZealotsSet": "Ορίστε τον σύνολο αριθμό zealot σε %number%!",
+          "wrongUsage": "Μη έγκυρη επιλογή! Επιλέξτε %options%.",
+          "zealotsSet": "Ορίστε τον τρέχοντα αριθμό zealot σε %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", ή \"Wolf\"",
+            "number": "Αριθμός για να ορίσετε το stat σε",
+            "stat": "Το στατιστικό στοιχείο του Slayer για αλλαγή, μπορεί να είναι \"kill\" ή το όνομα ενός αντικειμένου που έχει πέσει με τη μορφή: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Πρέπει να διαλέξεις ένα εξέχων όγκος! Παρακαλώ διάλεξε %bosses%",
+        "statRequired": "Πρέπει να διαλέξεις ένα στατιστικό. Πάτα tab για επιλογές.",
+        "numberRequired": "Πρέπει να προσθέσεις τον αριθμό που θέλεις.",
+        "killsSet": "Σκοτωμοί για slayer %boss% ήταν ρυθμισμένο στο %number%.",
+        "statSet": "Στατιστικό %stat% για slayer %boss% ήταν ρυθμισμένο στο %number%.",
+        "invalidBoss": "\"%input%\" δεν είναι έγκυρο στατιστικό!",
+        "invalidStat": "\"%input%\" δεν είναι έγκυρο boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Καταγραφή μυνημάτων γραμμής ενεργειών",
+        "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
+        "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Λάθος χρήση!",
+          "subCommandNotFound": "Η υπο-εντολή %sub-command% δεν βρέθηκε."
         }
       }
     }
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Πυκνωτής υπερχείλισης",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Εξέχων όντος σκοτωμένο"
+  },
+  "warpMenu": {
+    "click": "Κάντε κλικ σε ένα σημείο στρέβλωσης για να ταξιδέψετε εκεί!",
+    "mustUnlock": "Πρέπει να έχει ξεκλειδωθεί η συγκεκριμένη κύλιση.",
+    "privateIsland": "Ιδιωτικό νησί",
+    "home": "Το νησί σας",
+    "spawn": "Αφετηρία",
+    "unknown": "Δεν έχω επισκεφτεί",
+    "notUnlocked": "Δεν ξεκλειδώθηκε",
+    "inCombat": "Σε Μάχη..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

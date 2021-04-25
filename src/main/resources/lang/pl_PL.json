@@ -1,35 +1,34 @@
 {
+  "languageText": "Język: ",
   "language": "Polski",
   "settings": {
     "settings": "Ustawienia",
-    "magmaBossWarning": "Magma Boss Warning",
+    "magmaBossWarning": "Ostrzeżenie o Magma Boss",
     "itemDropConfirmation": "Potwierdzenie wyrzucenia przedmiotu",
     "hideSkeletonHatBones": "Ukryj kości Skeleton's Helmet",
-    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
-    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "skeletonHatBonesBar": "Pasek kości z Skeleton's Helmet",
+    "hideFoodAndArmor": "Ukryj paski głodu i zbroi",
     "fullInventoryWarning": "Ostrzeżenie o pełnym ekwipunku",
     "repeating": "Powtarzaj ostrzeżenie",
-    "disableEmberRodAbility": "Disable Island Ember Rod",
+    "disableEmberRodAbility": "Wyłącz umiejętność Ember Roda na wyspie",
     "editLocations": "Zmień położenie GUI",
     "guiScale": "Skala GUI: %scale%",
     "resetLocations": "Zresetuj położenie elementów",
-    "hideDurability": "Wyłącz pasek wytrzymałości narzędzi",
-    "showEnchantmentsReforges": "Zaklęcia oraz Reforge",
-    "minionStopWarning": "\"Minion Cannot Reach\" Warning",
+    "minionStopWarning": "Ostrzeżenie „Minion Cannot Reach”",
     "hidePlayersNearNPCs": "Ukryj graczy blisko ważnych NPC",
-    "backpackStyle": "Backpack Style: %style%",
+    "backpackStyle": "Styl Backpacka: %style%",
     "backpackStyles": {
       "regular": "Zwykły",
       "compact": "Prosty"
     },
-    "showBackpackPreview": "Show Backpack Preview",
+    "showBackpackPreview": "Pokaż podgląd Backpack",
     "hideHealthBar": "Ukryj pasek zdrowia",
-    "fullMinionWarning": "Full Minion Warning",
+    "fullMinionWarning": "Ostrzeżenie o zapełnionym Minionie",
     "ignoreItemFrameClicks": "Ignoruj kliknięcia w ramki na przedmioty",
     "showOnlyWhenHoldingShift": "Pokaż jedynie przy trzymaniu przycisku Shift",
-    "manaBar": "Mana Bar",
-    "manaText": "Mana Number",
-    "healthBar": "Health Bar",
+    "manaBar": "Pasek many",
+    "manaText": "Ilość many",
+    "healthBar": "Pasek zdrowia",
     "healthText": "Ilość zdrowia",
     "defenceIcon": "Ikona obrony",
     "defenceText": "Ilość obrony",
@@ -37,9 +36,9 @@
     "healthUpdates": "Liczba Różnicy Zdrowia",
     "hidePlayersInLobby": "Ukryj odległe byty w poczekalni",
     "darkAuctionTimer": "Zegar Dark Auction",
-    "magmaBossTimer": "Magma Boss Timer",
+    "magmaBossTimer": "Zegar Magma Bossa",
     "itemPickupLog": "Wykaz podniesionych przedmiotów",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "avoidPlacingEnchantedItems": "Zablokuj stawianie zaklętych przedmiotów",
     "avoidBreakingStems": "Zablokuj niszczenie łodyg",
     "stopBowChargeFromResetting": "Wyłącz resetowanie się naładowania łuku",
     "preventMovementOnDeath": "Zablokuj poruszanie się po śmierci",
@@ -69,24 +68,23 @@
     "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
     "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
     "jungleAxeCooldown": "Zablokuj używanie Jungle Axe/Treecapitatora podczas odnawiania",
-    "organizeLongEnchantmentLists": "Uporządkuj długie listy zaklęć",
     "showItemCooldowns": "Pokazuj czas odnowienia przedmiotów",
     "speedPercentage": "Procent szybkości",
-    "collectionDisplay": "Skill Progress Display",
+    "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "onlyMineOresDeepCaverns": "Kop tylko Rudy w Deep Caverns",
     "onlyMineValuablesNether": "Kop tylko wartościowe rudy w Netherze",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "revenantIndicator": "Wskaźnik postępu zbroi Slayera",
     "specialZealotAlert": "Powiadomienie o specjalnych Zealotach",
     "enableMessageWhenActionPrevented": "Pokaż wiadomość, gdy akcja zostaje zablokowana",
     "hidePetHealthBar": "Ukryj paski zdrowia zwierzaków",
     "powerOrbDisplay": "Wyświetlaj Power Orby",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbDisplayStyle": "Styl Power Orbów: %style%",
     "powerOrbStyle": {
       "detailed": "Szczegółowy",
       "compact": "Uproszczony"
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości Magical Mushroom Soup",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "zealotCounter": "Licznik Zealotów — od ostatniego Summoning Eye",
     "tickerChargesDisplay": "Wyświetlaj Tickery/Charge",
     "tab": {
       "generalSettings": "Ustawienia ogólne"
@@ -111,7 +109,7 @@
     "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość Eye",
     "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość Zealotów na jedno oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Zmień kolor łuku na zielony kiedy Toksyczna, trująca strzała jest w użyciu",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "birchParkRainmakerTimer": "Pozostały czas deszczu w Brzozowym Parku",
     "combatTimerDisplay": "Wyświetlaj pozostały czas Combat taga",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Wyświelaj ochronę kamienia Kresu",
@@ -119,50 +117,49 @@
     "doubleWarp": "Przenieś podwójnie",
     "advancedMode": "Tryb zaawansowany",
     "legendarySeaCreatureWarning": "Ostrzeżenie o legendarnym morskim stworzeniu",
-    "onlyBreakLogsPark": "Only Break Logs in the Park",
+    "onlyBreakLogsPark": "Niszcz kłody tylko w Parku",
     "bossApproachAlert": "Powiadomienie o zbliżaniu się do Slayer Bossa",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "disableTeleportPadMessages": "Wyłącz komunikaty teleportów",
     "baitListDisplay": "Pokazuj listę przynęt podczas trzymania wędki",
-    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "freezeBackpackPreview": "Zablokuj podgląd plecaka",
     "hideGreyEnchants": "Ukryj zwyczajne szare zaklęcia",
     "zealotCounterExplosiveBow": "Wsparcie Licznika Zealotów dla Explosive Bow",
     "disableEndermanTeleportation": "Wyłącz teleportację Endermanów",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "changeZealotColor": "Zmień kolor zealotów",
+    "hideSvenPupNametags": "Ukryj nazwy szczeniaków Svena",
     "turnAllFeaturesChroma": "Ustaw wszystkie funkcje na tryb Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "dungeonMapDisplay": "Wyświetlaj mapy Dungeonu",
     "rotateMap": "Obracaj mapę razem z Twoją postacią",
     "centerRotationOnYourPlayer": "Obracaj według wskaźnika Twojego gracza",
     "mapZoom": "Przybliżenie mapy",
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "glowingDungeonTeammates": "Świecenie towarzyszy w Dungeonach",
+    "baseStatBoostPercentage": "Pokaż bazowe ulepszenie statystyk dla przedmiotów z Dungeonów",
     "colorByRarity": "Kolor przypisany do rzadkości",
     "showPlayerHeadsOnMap": "Pokaż głowy graczy na Mapie Dungeonów",
     "showHealingCircleWall": "Pokaż obręb Healing Circle Wall w Dungeonach (Niestabilne)",
     "showCriticalTeammates": "Pokaż członków drużyny w krytycznym stanie",
     "showGlowingItemsOnIsland": "Pokaż świecące przedmioty na wyspie",
     "showItemDungeonFloor": "Pokaż piętro gdzie został zdobyty przedmiot z Dungeonów",
-    "showDungeonMilestone": "Show Dungeon Milestone",
-    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "showDungeonMilestone": "Pokaż kamień milowy Dungeonu",
+    "dungeonsCollectedEssencesDisplay": "Pokaż Zebrane Dungeon Essences",
     "stopBonzoStaffSounds": "Zatrzymaj dźwięki Bonzo Staff",
     "showRarityUpgraded": "Pokaż, jeśli rzadkość przedmiotu została ulepszona",
     "revenantSlayerTracker": "Śledzenie Slayera - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "tarantulaSlayerTracker": "Śledzenie Slayera - Tarantula/Pająk",
+    "svenSlayerTracker": "Śledzenie Slayera - Sven/Wilk",
     "textMode": "Tryb tekstowy",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonsNestOnly": "Pokazuj tylko w Dragon's Nest",
     "dragonStatsTracker": "Lokalizator smoków",
     "skillActionsLeftUntilNextLevel": "Pokaż pozostałe akcje do następnego poziomu",
     "hideWhenNotInCrypts": "Ukryj kiedy nie jesteś w Kryptach/masz rozpoczęte zadanie Revenanta",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "Dungeon Death Counter",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "showExpertiseKills": "Pokaż zabójstwa eksperckie",
+    "hideWhenNotInSpidersDen": "Schowaj kiedy nie jesteś w Spider's Den/robisz zadanie Tarantuli",
+    "hideWhenNotInCastle": "Ukryj kiedy nie jesteś w Castle/robisz Zadanie Svena",
+    "dungeonDeathCounter": "Licznik śmierci w Dungeonach",
+    "showPersonalCompactorPreview": "Pokaż podgląd Personal Compactora",
+    "rockPetTracker": "Lokalizator zwierzaków- kamienie",
+    "dolphinPetTracker": "Lokalizator zwierzaków- Delfiny",
+    "dungeonsTeammateNameOverlay": "Overlay nazw osób z drużyny w Dungeonach",
     "dungeonsSecretsDisplay": "Wyświetlaj sekrety Dungeonu",
     "showSkillPercentageInstead": "Pokaz procent zamiast ilości doświadczenia",
     "showSkillXPGained": "Pokaż zdobyte doświadczenie",
@@ -174,14 +171,33 @@
     "easierPresentOpening": "Łatwiejsze otwieranie prezentów",
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
-    "highlightMaxEnchantments": "Podświetl specjalne zaklęcia"
+    "highlightMaxEnchantments": "Podświetl specjalne zaklęcia",
+    "disableEmptyGlassPanes": "Wyłącz puste okienka",
+    "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
+    "healingCircleOpacity": "Przeźroczystość koła leczącego",
+    "chromaSize": "Rozmiar koloru Chroma",
+    "chromaSaturation": "Nasycenie koloru Chroma",
+    "chromaBrightness": "Jasność koloru Chroma",
+    "useNewChromaEffect": "Użyj nowego efektu Chroma",
+    "showExperimentationTableTooltips": "Pokaż dymki w Experimentation Table",
+    "onlyMineOresDwarvenMines": "Wykopuj rudy tylko w Dwarven Mines",
+    "drillFuelBar": "Pasek paliwa wiertła",
+    "drillFuelText": "Tekst paliwa wiertła",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Zaklęcia",
     "reforges": "Reforges",
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
     "magmaBossWarning": "Magmowy boss!",
-    "fullInventory": "Full Inventory!",
+    "fullInventory": "Ekwipunek zapełniony!",
     "labymod": "Do użytkowników LabyModa: ukrycie pasków zdrowia, jedzenia i zbroi jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał się odradzać!",
     "minionIsFull": "Minion na twojej wyspie jest pełny!",
@@ -189,15 +205,20 @@
     "separateMultiple": "Wielokrotne oddziel przecinkami.",
     "enchantsToMatch": "%type% do dopasowania:",
     "enchantsToExclude": "%type% do wykluczenia:",
-    "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
-    "downloadLink": "FILM/LINK AKTUALIZACJI",
-    "directDownload": "ODNOŚNIK DO BEZPOŚREDNIEGO POBIERANIA",
-    "openModFolder": "OTWÓRZ FOLDER Z MODYFIKACJAMI",
-    "joinTheDiscord": "ODNOŚNIK DO DISCORDA",
-    "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
-    "update": {
-      "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
-      "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
+      }
     },
     "slotLocked": "To okienko jest zablokowane!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "Jeden aktywny efekt",
     "effectsActive": "%number% Aktywnych efektów",
     "none": "Brak",
-    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!"
+    "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -250,11 +272,11 @@
     "titleLocation": "Położenie",
     "descriptionLocation": "Pokazuje Twoje obecne położenie",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
+    "descriptionPurse": "Pokazuje ilość monet w Twoim portfelu",
     "titleStats": "Statystyki",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionStats": "Pokazuje Twoje punkty zdrowia, obrony i many",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
+    "descriptionZealots": "Pokazuje Twój licznik Zealotów",
     "titleItem": "Trzymany przedmiot",
     "descriptionItem": "Pokazuje nazwę przedmiotu, który trzymasz",
     "titleProfile": "Profil",
@@ -264,13 +286,13 @@
     "titleCustom": "Własny status",
     "descriptionCustom": "Wprowadź własny status",
     "titleAuto": "Automatyczny status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionAuto": "Automatycznie wyświetla status. Np. liczba zealotów, gdy jesteś w Kresie.",
+    "titleRevenants": "Zadanie Revenanta",
+    "descriptionRevenants": "Pokazuje, że robisz zadanie Revenanta.",
+    "titleSvens": "Zadanie Svena",
+    "descriptionSvens": "Pokazuje, że robisz zadanie Svena.",
+    "titleTarantula": "Zadanie Tarantuli",
+    "descriptionTarantula": "Pokazuje, że robisz zadanie Tarantuli."
   },
   "commandUsage": {
     "sba": {
@@ -329,9 +351,18 @@
         "help": "Pokazuje tę wiadomość. Jeśli polecenie zostanie dostarczone, to wyświetli się szczegółowa informacja o tym poleceniu.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "pod-komenda, aby uzyskać szczegółowe użycie dla"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Wczytuje ponownie ustawienia moda"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "set": {
         "zealotCounter": {
@@ -365,8 +396,8 @@
         "numberRequired": "Musisz dodać cyfrę, jaką chcesz.",
         "killsSet": "Zabicia dla slayera %boss% zostały ustawione na %number%.",
         "statSet": "Statystyki %stat% dla slayera %boss% zostały ustawione na %number%.",
-        "invalidBoss": "\"%input%\" nie jest prawidłową statystyką!",
-        "invalidStat": "\"%input%\" nie jest prawidłowym bossem!"
+        "invalidBoss": "„%input%” nie jest prawidłową statystyką!",
+        "invalidStat": "„%input%” nie jest prawidłowym bossem!"
       },
       "toggleActionBarLogging": {
         "help": "e(Dev) §7Przełącz rejestrowanie wiadomości na pasku akcji",
@@ -376,7 +407,7 @@
       "errors": {
         "wrongUsage": {
           "generic": "Złe zastosowanie!",
-          "subCommandNotFound": "Podkomenda \"%sub-command%\" nie została odnaleziona."
+          "subCommandNotFound": "Podkomenda „%sub-command%” nie została odnaleziona."
         }
       }
     }
@@ -392,11 +423,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
+    "recentDragons": "Ostatnie Smoki:",
     "dragonsSince": "Smoki Od:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Zwierzak Smok",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "Liczba położonych oczu",
     "never": "Nigdy"
   },
   "slayerTracker": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Liczba zabitych bossów"
+  },
+  "warpMenu": {
+    "click": "Kliknij punkt przeniesienia, aby tam podróżować!",
+    "mustUnlock": "Musisz mieć odblokowany konkretny zwój.",
+    "privateIsland": "Prywatna wyspa",
+    "home": "Twoja wyspa",
+    "spawn": "Miejsce odrodzenia",
+    "unknown": "Nieodwiedzone",
+    "notUnlocked": "Nieodblokowane",
+    "inCombat": "Podczas walki..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

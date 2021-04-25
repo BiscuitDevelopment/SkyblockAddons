@@ -1,4 +1,5 @@
 {
+  "languageText": "Langue: ",
   "language": "Français",
   "settings": {
     "settings": "Paramètres",
@@ -13,8 +14,6 @@
     "editLocations": "Modifier l'interface",
     "guiScale": "Taille de l'interface: %scale%",
     "resetLocations": "Réinitialiser l'interface",
-    "hideDurability": "Masquer la durabilité des outils",
-    "showEnchantmentsReforges": "Enchantements & Reforges",
     "minionStopWarning": "Alerte minion à l'arrêt",
     "hidePlayersNearNPCs": "Masquer les joueurs proche des PNJ utiles",
     "backpackStyle": "Affichage du sac à dos: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Empêcher le clignotement de la vision nocturne",
     "disableMinionLocationWarning": "Désativer l'alerte “Location not perfect”",
     "jungleAxeCooldown": "Bloquer l'usage de la Jungle Axe/Treecapitator si elle recharge",
-    "organizeLongEnchantmentLists": "Organiser la liste des enchantements",
     "showItemCooldowns": "Afficher le temps de recharge des objets",
     "speedPercentage": "Pourcentage de vitesse",
     "collectionDisplay": "Afficher la progression des compétences",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Traceur Rock Pet",
     "dolphinPetTracker": "Traceur Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Surligner le nom des partenaires de Dongeon",
-    "showExpertiseKills": "Montrer les morts de Expertise",
     "dungeonsSecretsDisplay": "Afficher les secrets des Dungeons",
     "showSkillPercentageInstead": "Afficher le pourcentage au lieu de l'XP",
     "showSkillXPGained": "Afficher le nombre d'XP gagné",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Ouvrir les cadeaux plus facilement",
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
-    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux"
+    "highlightMaxEnchantments": "Surlignez les enchantements spéciaux",
+    "disableEmptyGlassPanes": "Désactiver les vitres vides",
+    "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
+    "healingCircleOpacity": "Opacité du cercle de soin",
+    "chromaSize": "Taille Chroma",
+    "chromaSaturation": "Saturation Chroma",
+    "chromaBrightness": "Luminosité Chroma",
+    "useNewChromaEffect": "Utiliser le nouveau effet Chroma",
+    "showExperimentationTableTooltips": "Afficher l'aide pour l'Experimentation Table",
+    "onlyMineOresDwarvenMines": "Miner uniquement les minerais dans la Dwarven Mines",
+    "drillFuelBar": "Barre de carburant du Drill",
+    "drillFuelText": "Quantité de carburant du Drill",
+    "fishingParticleOverlay": "Overlay des particules de pêche",
+    "enchantmentLoreParsing": "Trier les outils d'enchantements",
+    "cooldownPrediction": "Prédire et réduire le temps de recharge",
+    "legendaryMonkeyLevel100": "[TEMP] Niveau 100 Monkey légendaire",
+    "biggerWake": "Agrandir la superposition des particules",
+    "stackingEnchantProgress": "Afficher la progression de la charge des enchantements",
+    "showReforgeOverlay": "Afficher l'overlay des reforges",
+    "reforgeFilter": "Filtres des reforges"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -189,15 +205,20 @@
     "separateMultiple": "Séparer avec des virgules.",
     "enchantsToMatch": "%type% à inclure:",
     "enchantsToExclude": "%type% à exclure:",
-    "wantToViewPatchNotes": "Besoin d'aide ou voulez-vous lire les changements?",
-    "downloadLink": "VIDÉO/LIEN DE MISE À JOUR",
-    "directDownload": "LIEN DE TÉLÉCHARGEMENT DIRECT",
-    "openModFolder": "OUVRIR LE DOSSIER MODS",
-    "joinTheDiscord": "LIEN DISCORD",
-    "newUpdateAvailable": "La mise à jour (%version%) est disponible!",
-    "update": {
-      "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
-      "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Besoin d'aide ou voulez-vous lire les changements?",
+      "joinDiscord": "Rejoignez notre serveur Discord!",
+      "watchShowcase": "Regarder la vidéo",
+      "downloadButton": "Télécharger",
+      "openModFolderButton": "Dossier des mods",
+      "joinDiscordButton": "Rejoindre Discord",
+      "newUpdateAvailable": "La mise à jour (%version%) est disponible!",
+      "noDownloadAvailable": "Aucun lien de téléchargement disponible, veuillez consulter notre serveur Discord.",
+      "notificationBox": {
+        "majorAvailable": "Une nouvelle mise à jour majeure, %version% est disponible ! Le lien pour le télécharger est disponible dans le chat.",
+        "betaAvailable": "Une nouvelle mise à jour bêta (%version%) est disponible ! Regardez dans le chat le lien de téléchargement.",
+        "patchAvailable": "Le nouveau patch %version% est disponible! Regardez dans le chat pour le télécharger!"
+      }
     },
     "slotLocked": "Cet emplacement est bloqué!",
     "summoningEyeFound": "Œil d'invocation!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Effet actif",
     "effectsActive": "%number% Effets actifs",
     "none": "Aucun",
-    "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !"
+    "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -332,6 +354,15 @@
             "command": "la sous-commande pour obtenir une utilisation détaillée pour"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Recharge tous les paramètres et ressources du mod. Le jeu va se figer pendant quelques secondes."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Recharge les paramètres du mod"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Recharge les ressources du mod. Le jeu va se figer pendant quelques secondes."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Boss tués"
+  },
+  "warpMenu": {
+    "click": "Cliquez sur un point de téléportation pour vous y rendre!",
+    "mustUnlock": "Doit avoir le scroll spécifique déverrouillé.",
+    "privateIsland": "Île Privée",
+    "home": "Votre Île",
+    "spawn": "Spawn",
+    "unknown": "Pas visité",
+    "notUnlocked": "Non débloqué",
+    "inCombat": "En combat..."
+  },
+  "enchants": {
+    "superTier": "Niveau max",
+    "highTier": "Haut niveau",
+    "midTier": "Niveau moyen",
+    "lowTier": "Niveau bas",
+    "commas": "Virgules",
+    "expertiseKills": "Montrer les morts de Expertise",
+    "compactedBlocks": "Blocs compacts",
+    "cultivatedCrops": "Graines cultivées",
+    "maxed": "Maxée"
   }
 }

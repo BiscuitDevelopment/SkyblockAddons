@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "ภาษาไทย",
   "settings": {
     "settings": "ตั้งค่า",
@@ -13,8 +14,6 @@
     "editLocations": "การเคลื่อนย้าย GUI",
     "guiScale": "ขยาย GUI %scale%",
     "resetLocations": "กลับค่าเริ่มต้นของหน้าต่าง",
-    "hideDurability": "ซ่อนหลอดความทนทานของอุปกรณ์",
-    "showEnchantmentsReforges": "การ Enchants และตีบวกของ",
     "minionStopWarning": "แจ้งเตือนมินเนียนไม่สามารถเอื้อมถึง Mob ได้",
     "hidePlayersNearNPCs": "ซ่อนผู้เล่นที่อยู่ใกล้ NPC",
     "backpackStyle": "ลักษณะของกระเป๋า: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "ปิด Effect Night Vision ตอนกำลังหมด",
     "disableMinionLocationWarning": "ปิดคำเตือน Location not perfect",
     "jungleAxeCooldown": "คูลดาวน์ Jungle Axe และ Treecapitator",
-    "organizeLongEnchantmentLists": "จัดรายชื่อ Enchantment ที่ยาวๆ",
     "showItemCooldowns": "แสดงคูลดาวน์ไอเทม",
     "speedPercentage": "เปอร์เซ็นต์ความเร็ว",
     "collectionDisplay": "แสดงความคืบหน้าของสกิล",
@@ -162,7 +160,6 @@
     "rockPetTracker": "ความคืบหน้าของ Rock Pet",
     "dolphinPetTracker": "ความคืบหน้าของ Dolphin Pet",
     "dungeonsTeammateNameOverlay": "ชื่อเพื่อนร่วมทีม Dungeons Overlay",
-    "showExpertiseKills": "แสดงจำนวนการฆ่าจาก Expertise",
     "dungeonsSecretsDisplay": "แสดงสถานที่ปริศนาใน Dungeons",
     "showSkillPercentageInstead": "แสดงเปอร์เซ็นแทนค่า xp",
     "showSkillXPGained": "แสดง XP ที่ได้รับ",
@@ -173,8 +170,27 @@
     "hideOtherPlayersPresents": "ซ่อนของขวัญของผู้เล่นอื่น",
     "easierPresentOpening": "เปิดของขวัญได้ง่ายขึ้น",
     "showSwordKills": "แสดงจำนวนการฆ่าของดาบ",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "รายการแบบกระทัดรัด",
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants",
@@ -189,15 +205,20 @@
     "separateMultiple": "แยกหลายรายการด้วยเครื่องหมายจุลภาค",
     "enchantsToMatch": "%type% เพื่อให้ตรงกับ:",
     "enchantsToExclude": "%type% เพื่อไม่รวม:",
-    "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
-    "downloadLink": "วิดิโอ/ลิงค์อัพเดท",
-    "directDownload": "ลิงค์ดาวโหลดโดยตรง",
-    "openModFolder": "โฟลเดอร์มอด",
-    "joinTheDiscord": "เข้าร่วม Discord",
-    "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
-    "update": {
-      "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
-      "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท"
+    "updateChecker": {
+      "wantToViewPatchNotes": "ต้องการอ่านการเปลี่ยนแปลงหรือไม่?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "มีอัพเดทใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "มีอัพเดทใหญ่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "มี Patch ใหม่ (%version%) พร้อมให้ดาวน์โหลดแล้ว! หาลิงค์ดาวน์โหลดได้ในช่องแชท"
+      }
     },
     "slotLocked": "ช่องนี้ถูกล็อคไว้!",
     "summoningEyeFound": "ดวงตาอัญเชิญ!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Effect Active",
     "effectsActive": "บัฟ %number% ทำงานอยู่",
     "none": "ไม่มี",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "ไม่มี",
@@ -313,7 +335,7 @@
       "dev": {
         "help": "Toggle developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
@@ -332,6 +354,15 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "บอสถูกกำจัดแล้ว"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

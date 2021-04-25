@@ -1,0 +1,485 @@
+{
+  "languageText": "crwdns1552:0crwdne1552:0",
+  "language": "crwdns160:0crwdne160:0",
+  "settings": {
+    "settings": "crwdns162:0crwdne162:0",
+    "magmaBossWarning": "crwdns166:0crwdne166:0",
+    "itemDropConfirmation": "crwdns168:0crwdne168:0",
+    "hideSkeletonHatBones": "crwdns172:0crwdne172:0",
+    "skeletonHatBonesBar": "crwdns174:0crwdne174:0",
+    "hideFoodAndArmor": "crwdns176:0crwdne176:0",
+    "fullInventoryWarning": "crwdns178:0crwdne178:0",
+    "repeating": "crwdns694:0crwdne694:0",
+    "disableEmberRodAbility": "crwdns180:0crwdne180:0",
+    "editLocations": "crwdns190:0crwdne190:0",
+    "guiScale": "crwdns192:0%scale%crwdne192:0",
+    "resetLocations": "crwdns194:0crwdne194:0",
+    "minionStopWarning": "crwdns200:0crwdne200:0",
+    "hidePlayersNearNPCs": "crwdns675:0crwdne675:0",
+    "backpackStyle": "crwdns204:0%style%crwdne204:0",
+    "backpackStyles": {
+      "regular": "crwdns492:0crwdne492:0",
+      "compact": "crwdns208:0crwdne208:0"
+    },
+    "showBackpackPreview": "crwdns210:0crwdne210:0",
+    "hideHealthBar": "crwdns212:0crwdne212:0",
+    "fullMinionWarning": "crwdns224:0crwdne224:0",
+    "ignoreItemFrameClicks": "crwdns230:0crwdne230:0",
+    "showOnlyWhenHoldingShift": "crwdns494:0crwdne494:0",
+    "manaBar": "crwdns236:0crwdne236:0",
+    "manaText": "crwdns238:0crwdne238:0",
+    "healthBar": "crwdns240:0crwdne240:0",
+    "healthText": "crwdns242:0crwdne242:0",
+    "defenceIcon": "crwdns244:0crwdne244:0",
+    "defenceText": "crwdns246:0crwdne246:0",
+    "defencePercentage": "crwdns248:0crwdne248:0",
+    "healthUpdates": "crwdns250:0crwdne250:0",
+    "hidePlayersInLobby": "crwdns496:0crwdne496:0",
+    "darkAuctionTimer": "crwdns260:0crwdne260:0",
+    "magmaBossTimer": "crwdns262:0crwdne262:0",
+    "itemPickupLog": "crwdns264:0crwdne264:0",
+    "avoidPlacingEnchantedItems": "crwdns266:0crwdne266:0",
+    "avoidBreakingStems": "crwdns270:0crwdne270:0",
+    "stopBowChargeFromResetting": "crwdns276:0crwdne276:0",
+    "preventMovementOnDeath": "crwdns280:0crwdne280:0",
+    "showItemAnvilUses": "crwdns284:0crwdne284:0",
+    "lockSlots": "crwdns482:0crwdne482:0",
+    "lockSlot": "crwdns584:0crwdne584:0",
+    "dontResetCursorInventory": "crwdns484:0crwdne484:0",
+    "summoningEyeAlert": "crwdns486:0crwdne486:0",
+    "makeEnderchestsInEndGreen": "crwdns628:0crwdne628:0",
+    "changeColor": "crwdns500:0crwdne500:0",
+    "showInOtherGames": "crwdns502:0crwdne502:0",
+    "useVanillaTexture": "crwdns504:0crwdne504:0",
+    "textStyle": "crwdns506:0crwdne506:0",
+    "textStyles": {
+      "one": "crwdns508:0crwdne508:0",
+      "two": "crwdns510:0crwdne510:0"
+    },
+    "warningDuration": "crwdns512:0crwdne512:0",
+    "dontOpenProfileWithBow": "crwdns524:0crwdne524:0",
+    "stopDroppingSellingRareItems": "crwdns526:0crwdne526:0",
+    "makeBackpackInventoriesColored": "crwdns528:0crwdne528:0",
+    "avoidBreakingBottomSugarCane": "crwdns538:0crwdne538:0",
+    "replaceRomanNumeralsWithNumbers": "crwdns540:0crwdne540:0",
+    "changeBarColorForPotions": "crwdns586:0crwdne586:0",
+    "craftingPatterns": "crwdns590:0crwdne590:0",
+    "soundIndicatorForFishing": "crwdns594:0crwdne594:0",
+    "avoidBlinkingNightVision": "crwdns596:0crwdne596:0",
+    "disableMinionLocationWarning": "crwdns598:0crwdne598:0",
+    "jungleAxeCooldown": "crwdns600:0crwdne600:0",
+    "showItemCooldowns": "crwdns604:0crwdne604:0",
+    "speedPercentage": "crwdns608:0crwdne608:0",
+    "collectionDisplay": "crwdns612:0crwdne612:0",
+    "onlyMineOresDeepCaverns": "crwdns614:0crwdne614:0",
+    "onlyMineValuablesNether": "crwdns630:0crwdne630:0",
+    "revenantIndicator": "crwdns624:0crwdne624:0",
+    "specialZealotAlert": "crwdns620:0crwdne620:0",
+    "enableMessageWhenActionPrevented": "crwdns632:0crwdne632:0",
+    "hidePetHealthBar": "crwdns634:0crwdne634:0",
+    "powerOrbDisplay": "crwdns639:0crwdne639:0",
+    "powerOrbDisplayStyle": "crwdns641:0%style%crwdne641:0",
+    "powerOrbStyle": {
+      "detailed": "crwdns643:0crwdne643:0",
+      "compact": "crwdns645:0crwdne645:0"
+    },
+    "disableMagicalSoupMessage": "crwdns647:0crwdne647:0",
+    "zealotCounter": "crwdns649:0crwdne649:0",
+    "tickerChargesDisplay": "crwdns653:0crwdne653:0",
+    "tab": {
+      "generalSettings": "crwdns520:0crwdne520:0"
+    },
+    "tabEffectTimers": "crwdns655:0crwdne655:0",
+    "noArrowsLeftAlert": "crwdns657:0crwdne657:0",
+    "hideNightVisionEffectTimer": "crwdns663:0crwdne663:0",
+    "showCakeBagPreview": "crwdns665:0crwdne665:0",
+    "showBackpackPreviewInAH": "crwdns673:0crwdne673:0",
+    "enableDevFeatures": "crwdns679:0crwdne679:0",
+    "chromaSpeed": "crwdns682:0crwdne682:0",
+    "chromaMode": "crwdns684:0crwdne684:0",
+    "chromaModes": {
+      "allTheSame": "crwdns686:0crwdne686:0",
+      "fade": "crwdns690:0crwdne690:0"
+    },
+    "chromaFadeWidth": "crwdns692:0crwdne692:0",
+    "sortTabEffectTimers": "crwdns696:0crwdne696:0",
+    "showBrokenFragments": "crwdns992:0crwdne992:0",
+    "skyblockAddonsButtonInPauseMenu": "crwdns994:0crwdne994:0",
+    "showTotalZealotCount": "crwdns996:0crwdne996:0",
+    "showSummoningEyeCount": "crwdns998:0crwdne998:0",
+    "showZealotsPerEye": "crwdns1000:0crwdne1000:0",
+    "turnBowGreenWhenUsingToxicArrowPoison": "crwdns1002:0crwdne1002:0",
+    "birchParkRainmakerTimer": "crwdns1004:0crwdne1004:0",
+    "combatTimerDisplay": "crwdns1012:0crwdne1012:0",
+    "discordRP": "crwdns1020:0crwdne1020:0",
+    "endstoneProtectorDisplay": "crwdns1022:0crwdne1022:0",
+    "fancyWarpMenu": "crwdns1028:0crwdne1028:0",
+    "doubleWarp": "crwdns1030:0crwdne1030:0",
+    "advancedMode": "crwdns1032:0crwdne1032:0",
+    "legendarySeaCreatureWarning": "crwdns1094:0crwdne1094:0",
+    "onlyBreakLogsPark": "crwdns1098:0crwdne1098:0",
+    "bossApproachAlert": "crwdns1100:0crwdne1100:0",
+    "disableTeleportPadMessages": "crwdns1106:0crwdne1106:0",
+    "baitListDisplay": "crwdns1108:0crwdne1108:0",
+    "freezeBackpackPreview": "crwdns1110:0crwdne1110:0",
+    "hideGreyEnchants": "crwdns1112:0crwdne1112:0",
+    "zealotCounterExplosiveBow": "crwdns1114:0crwdne1114:0",
+    "disableEndermanTeleportation": "crwdns1116:0crwdne1116:0",
+    "changeZealotColor": "crwdns1118:0crwdne1118:0",
+    "hideSvenPupNametags": "crwdns1120:0crwdne1120:0",
+    "turnAllFeaturesChroma": "crwdns1122:0crwdne1122:0",
+    "dungeonMapDisplay": "crwdns1256:0crwdne1256:0",
+    "rotateMap": "crwdns1166:0crwdne1166:0",
+    "centerRotationOnYourPlayer": "crwdns1168:0crwdne1168:0",
+    "mapZoom": "crwdns1170:0crwdne1170:0",
+    "glowingDroppedItems": "crwdns1172:0crwdne1172:0",
+    "glowingDungeonTeammates": "crwdns1174:0crwdne1174:0",
+    "baseStatBoostPercentage": "crwdns1176:0crwdne1176:0",
+    "colorByRarity": "crwdns1178:0crwdne1178:0",
+    "showPlayerHeadsOnMap": "crwdns1180:0crwdne1180:0",
+    "showHealingCircleWall": "crwdns1182:0crwdne1182:0",
+    "showCriticalTeammates": "crwdns1184:0crwdne1184:0",
+    "showGlowingItemsOnIsland": "crwdns1186:0crwdne1186:0",
+    "showItemDungeonFloor": "crwdns1214:0crwdne1214:0",
+    "showDungeonMilestone": "crwdns1216:0crwdne1216:0",
+    "dungeonsCollectedEssencesDisplay": "crwdns1244:0crwdne1244:0",
+    "stopBonzoStaffSounds": "crwdns1252:0crwdne1252:0",
+    "showRarityUpgraded": "crwdns1254:0crwdne1254:0",
+    "revenantSlayerTracker": "crwdns1276:0crwdne1276:0",
+    "tarantulaSlayerTracker": "crwdns1278:0crwdne1278:0",
+    "svenSlayerTracker": "crwdns1280:0crwdne1280:0",
+    "textMode": "crwdns1282:0crwdne1282:0",
+    "dragonsNestOnly": "crwdns1284:0crwdne1284:0",
+    "dragonStatsTracker": "crwdns1286:0crwdne1286:0",
+    "skillActionsLeftUntilNextLevel": "crwdns1402:0crwdne1402:0",
+    "hideWhenNotInCrypts": "crwdns1290:0crwdne1290:0",
+    "hideWhenNotInSpidersDen": "crwdns1292:0crwdne1292:0",
+    "hideWhenNotInCastle": "crwdns1294:0crwdne1294:0",
+    "dungeonDeathCounter": "crwdns1266:0crwdne1266:0",
+    "showPersonalCompactorPreview": "crwdns1390:0crwdne1390:0",
+    "rockPetTracker": "crwdns1392:0crwdne1392:0",
+    "dolphinPetTracker": "crwdns1394:0crwdne1394:0",
+    "dungeonsTeammateNameOverlay": "crwdns1396:0crwdne1396:0",
+    "dungeonsSecretsDisplay": "crwdns1400:0crwdne1400:0",
+    "showSkillPercentageInstead": "crwdns1404:0crwdne1404:0",
+    "showSkillXPGained": "crwdns1406:0crwdne1406:0",
+    "skillProgressBar": "crwdns1408:0crwdne1408:0",
+    "showSalvageEssencesCounter": "crwdns1410:0crwdne1410:0",
+    "disableMortMessages": "crwdns1412:0crwdne1412:0",
+    "disableBossMessages": "crwdns1414:0crwdne1414:0",
+    "hideOtherPlayersPresents": "crwdns1416:0crwdne1416:0",
+    "easierPresentOpening": "crwdns1418:0crwdne1418:0",
+    "showSwordKills": "crwdns1420:0crwdne1420:0",
+    "compactTabList": "crwdns1442:0crwdne1442:0",
+    "highlightMaxEnchantments": "crwdns1444:0crwdne1444:0",
+    "disableEmptyGlassPanes": "crwdns1554:0crwdne1554:0",
+    "candyPointsCounter": "crwdns1556:0crwdne1556:0",
+    "healingCircleOpacity": "crwdns1558:0crwdne1558:0",
+    "chromaSize": "crwdns1560:0crwdne1560:0",
+    "chromaSaturation": "crwdns1562:0crwdne1562:0",
+    "chromaBrightness": "crwdns1564:0crwdne1564:0",
+    "useNewChromaEffect": "crwdns1582:0crwdne1582:0",
+    "showExperimentationTableTooltips": "crwdns1586:0crwdne1586:0",
+    "onlyMineOresDwarvenMines": "crwdns1588:0crwdne1588:0",
+    "drillFuelBar": "crwdns1590:0crwdne1590:0",
+    "drillFuelText": "crwdns1592:0crwdne1592:0",
+    "fishingParticleOverlay": "crwdns1602:0crwdne1602:0",
+    "enchantmentLoreParsing": "crwdns1604:0crwdne1604:0",
+    "cooldownPrediction": "crwdns1606:0crwdne1606:0",
+    "legendaryMonkeyLevel100": "crwdns1608:0[TEMP]crwdne1608:0",
+    "biggerWake": "crwdns1610:0crwdne1610:0",
+    "stackingEnchantProgress": "crwdns1612:0crwdne1612:0",
+    "showReforgeOverlay": "crwdns1614:0crwdne1614:0",
+    "reforgeFilter": "crwdns1656:0crwdne1656:0"
+  },
+  "messages": {
+    "enchants": "crwdns1272:0crwdne1272:0",
+    "reforges": "crwdns1274:0crwdne1274:0",
+    "dropConfirmation": "crwdns286:0crwdne286:0",
+    "magmaBossWarning": "crwdns288:0crwdne288:0",
+    "fullInventory": "crwdns290:0crwdne290:0",
+    "labymod": "crwdns298:0crwdne298:0",
+    "minionCannotReach": "crwdns300:0%type%crwdne300:0",
+    "minionIsFull": "crwdns302:0crwdne302:0",
+    "typeEnchantmentsHere": "crwdns304:0%type%crwdne304:0",
+    "separateMultiple": "crwdns306:0crwdne306:0",
+    "enchantsToMatch": "crwdns308:0%type%crwdne308:0",
+    "enchantsToExclude": "crwdns310:0%type%crwdne310:0",
+    "updateChecker": {
+      "wantToViewPatchNotes": "crwdns1616:0crwdne1616:0",
+      "joinDiscord": "crwdns1618:0crwdne1618:0",
+      "watchShowcase": "crwdns1620:0crwdne1620:0",
+      "downloadButton": "crwdns1622:0crwdne1622:0",
+      "openModFolderButton": "crwdns1624:0crwdne1624:0",
+      "joinDiscordButton": "crwdns1626:0crwdne1626:0",
+      "newUpdateAvailable": "crwdns1628:0%version%crwdne1628:0",
+      "noDownloadAvailable": "crwdns1630:0crwdne1630:0",
+      "notificationBox": {
+        "majorAvailable": "crwdns1632:0%version%crwdne1632:0",
+        "betaAvailable": "crwdns1634:0%version%crwdne1634:0",
+        "patchAvailable": "crwdns1636:0%version%crwdne1636:0"
+      }
+    },
+    "slotLocked": "crwdns480:0crwdne480:0",
+    "summoningEyeFound": "crwdns490:0crwdne490:0",
+    "cancelledStemBreak": "crwdns542:0crwdne542:0",
+    "cancelledProfileOpening": "crwdns536:0crwdne536:0",
+    "cancelledDropping": "crwdns532:0crwdne532:0",
+    "clickMoreTimes": "crwdns534:0%times%crwdne534:0",
+    "clickOneMoreTime": "crwdns680:0crwdne680:0",
+    "cancelledDeepCaverns": "crwdns616:0crwdne616:0",
+    "featureDisabled": "crwdns588:0crwdne588:0",
+    "anvilUses": "crwdns606:0%uses%crwdne606:0",
+    "specialZealotFound": "crwdns622:0crwdne622:0",
+    "blockIncompletePatterns": "crwdns626:0crwdne626:0",
+    "searchFeatures": "crwdns636:0crwdne636:0",
+    "downloadingUpdateFile": "crwdns638:0crwdne638:0",
+    "onlyFewArrowsLeft": "crwdns659:0%arrows%crwdne659:0",
+    "noArrowsLeft": "crwdns661:0crwdne661:0",
+    "chooseAColor": "crwdns667:0crwdne667:0",
+    "selectedColor": "crwdns669:0crwdne669:0",
+    "setHexColor": "crwdns671:0crwdne671:0",
+    "rescaleFeatures": "crwdns1014:0crwdne1014:0",
+    "resizeBars": "crwdns1016:0crwdne1016:0",
+    "showColorIcons": "crwdns1018:0crwdne1018:0",
+    "enableFeatureSnapping": "crwdns1086:0crwdne1086:0",
+    "stage": "crwdns1024:0%stage%crwdne1024:0",
+    "switchedSlots": "crwdns1026:0crwdne1026:0",
+    "clickToOpenLink": "crwdns1038:0crwdne1038:0",
+    "clickToOpenFolder": "crwdns1040:0crwdne1040:0",
+    "firstStatus": "crwdns1088:0crwdne1088:0",
+    "secondStatus": "crwdns1090:0crwdne1090:0",
+    "fallbackStatus": "crwdns1092:0crwdne1092:0",
+    "legendarySeaCreatureWarning": "crwdns1096:0crwdne1096:0",
+    "cancelledPark": "crwdns1102:0crwdne1102:0",
+    "bossApproaching": "crwdns1104:0crwdne1104:0",
+    "enableAll": "crwdns1124:0crwdne1124:0",
+    "disableAll": "crwdns1126:0crwdne1126:0",
+    "enchantmentInclusionExample": "crwdns1258:0crwdne1258:0",
+    "enchantmentExclusionExample": "crwdns1260:0crwdne1260:0",
+    "reforgeInclusionExample": "crwdns1262:0crwdne1262:0",
+    "reforgeExclusionExample": "crwdns1264:0crwdne1264:0",
+    "actionsLeft": "crwdns1296:0%number%crwdne1296:0",
+    "effectActive": "crwdns1388:0crwdne1388:0",
+    "effectsActive": "crwdns1386:0%number%crwdne1386:0",
+    "none": "crwdns1446:0crwdne1446:0",
+    "copyModeSet": "crwdns1448:0%mode%crwdnd1448:0%keyName%crwdne1448:0",
+    "chroma": "crwdns1594:0crwdne1594:0"
+  },
+  "discordStatus": {
+    "titleNone": "crwdns1044:0crwdne1044:0",
+    "descriptionNone": "crwdns1046:0crwdne1046:0",
+    "titleLocation": "crwdns1048:0crwdne1048:0",
+    "descriptionLocation": "crwdns1050:0crwdne1050:0",
+    "titlePurse": "crwdns1052:0crwdne1052:0",
+    "descriptionPurse": "crwdns1054:0crwdne1054:0",
+    "titleStats": "crwdns1056:0crwdne1056:0",
+    "descriptionStats": "crwdns1058:0crwdne1058:0",
+    "titleZealots": "crwdns1060:0crwdne1060:0",
+    "descriptionZealots": "crwdns1062:0crwdne1062:0",
+    "titleItem": "crwdns1064:0crwdne1064:0",
+    "descriptionItem": "crwdns1066:0crwdne1066:0",
+    "titleProfile": "crwdns1068:0crwdne1068:0",
+    "descriptionProfile": "crwdns1070:0crwdne1070:0",
+    "titleTime": "crwdns1072:0crwdne1072:0",
+    "descriptionTime": "crwdns1074:0crwdne1074:0",
+    "titleCustom": "crwdns1076:0crwdne1076:0",
+    "descriptionCustom": "crwdns1078:0crwdne1078:0",
+    "titleAuto": "crwdns1080:0crwdne1080:0",
+    "descriptionAuto": "crwdns1082:0crwdne1082:0",
+    "titleRevenants": "crwdns1128:0crwdne1128:0",
+    "descriptionRevenants": "crwdns1130:0crwdne1130:0",
+    "titleSvens": "crwdns1132:0crwdne1132:0",
+    "descriptionSvens": "crwdns1134:0crwdne1134:0",
+    "titleTarantula": "crwdns1136:0crwdne1136:0",
+    "descriptionTarantula": "crwdns1138:0crwdne1138:0"
+  },
+  "commandUsage": {
+    "sba": {
+      "base": {
+        "help": "crwdns1454:0crwdne1454:0"
+      },
+      "brand": {
+        "help": "crwdns1456:0crwdne1456:0",
+        "brandOutput": "crwdns1458:0%brand%crwdne1458:0",
+        "notFound": "crwdns1460:0crwdne1460:0"
+      },
+      "copyBlock": {
+        "help": "crwdns1462:0crwdne1462:0"
+      },
+      "copyEntity": {
+        "help": "crwdns1464:0crwdne1464:0",
+        "detailedHelp": {
+          "description": "crwdns1466:0crwdne1466:0",
+          "options": {
+            "entityNames": "crwdns1468:0crwdne1468:0",
+            "radius": "crwdns1470:0crwdne1470:0"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "crwdns1472:0crwdne1472:0",
+        "detailedHelp": {
+          "description": "crwdns1474:0crwdne1474:0",
+          "options": {
+            "formatted": "crwdns1476:0crwdne1476:0"
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "crwdns1478:0crwdne1478:0",
+        "detailedHelp": {
+          "description": "crwdns1480:0crwdne1480:0"
+        }
+      },
+      "dev": {
+        "help": "crwdns1482:0crwdne1482:0",
+        "detailedHelp": {
+          "description": "crwdns1484:0crwdne1484:0"
+        },
+        "disabled": "crwdns1486:0crwdne1486:0",
+        "enabled": "crwdns1488:0%keyName%crwdne1488:0"
+      },
+      "edit": {
+        "help": "crwdns1490:0crwdne1490:0"
+      },
+      "folder": {
+        "help": "crwdns1492:0crwdne1492:0",
+        "error": "crwdns1494:0%scrwdne1494:0"
+      },
+      "help": {
+        "help": "crwdns1496:0crwdne1496:0",
+        "detailedHelp": {
+          "options": {
+            "command": "crwdns1498:0crwdne1498:0"
+          }
+        }
+      },
+      "reload": {
+        "help": "crwdns1596:0crwdne1596:0"
+      },
+      "reloadConfig": {
+        "help": "crwdns1598:0crwdne1598:0"
+      },
+      "reloadRes": {
+        "help": "crwdns1600:0crwdne1600:0"
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "crwdns1500:0crwdne1500:0",
+          "detailedHelp": {
+            "description": "crwdns1502:0crwdne1502:0",
+            "options": {
+              "eyes": "crwdns1504:0crwdne1504:0",
+              "totalZealots": "crwdns1506:0crwdne1506:0",
+              "zealots": "crwdns1508:0crwdne1508:0"
+            }
+          },
+          "eyesSet": "crwdns1510:0%number%crwdne1510:0",
+          "totalZealotsSet": "crwdns1512:0%number%crwdne1512:0",
+          "wrongUsage": "crwdns1514:0%options%crwdne1514:0",
+          "zealotsSet": "crwdns1516:0%number%crwdne1516:0"
+        }
+      },
+      "slayer": {
+        "help": "crwdns1518:0crwdne1518:0",
+        "detailedHelp": {
+          "description": "crwdns1520:0crwdne1520:0",
+          "options": {
+            "boss": "crwdns1522:0crwdne1522:0",
+            "number": "crwdns1524:0crwdne1524:0",
+            "stat": "crwdns1526:0crwdne1526:0"
+          }
+        },
+        "bossRequired": "crwdns1528:0%bosses%crwdne1528:0",
+        "statRequired": "crwdns1530:0crwdne1530:0",
+        "numberRequired": "crwdns1532:0crwdne1532:0",
+        "killsSet": "crwdns1534:0%boss%crwdnd1534:0%number%crwdne1534:0",
+        "statSet": "crwdns1536:0%stat%crwdnd1536:0%boss%crwdnd1536:0%number%crwdne1536:0",
+        "invalidBoss": "crwdns1538:0%input%crwdne1538:0",
+        "invalidStat": "crwdns1540:0%input%crwdne1540:0"
+      },
+      "toggleActionBarLogging": {
+        "help": "crwdns1542:0crwdne1542:0",
+        "disabled": "crwdns1544:0crwdne1544:0",
+        "enabled": "crwdns1546:0crwdne1546:0"
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "crwdns1548:0crwdne1548:0",
+          "subCommandNotFound": "crwdns1550:0%sub-command%crwdne1550:0"
+        }
+      }
+    }
+  },
+  "keyBindings": {
+    "developerCopyNBT": "crwdns1148:0crwdne1148:0"
+  },
+  "dragonTracker": {
+    "protector": "crwdns1302:0crwdne1302:0",
+    "old": "crwdns1304:0crwdne1304:0",
+    "wise": "crwdns1306:0crwdne1306:0",
+    "unstable": "crwdns1308:0crwdne1308:0",
+    "young": "crwdns1310:0crwdne1310:0",
+    "strong": "crwdns1312:0crwdne1312:0",
+    "superior": "crwdns1314:0crwdne1314:0",
+    "recentDragons": "crwdns1316:0crwdne1316:0",
+    "dragonsSince": "crwdns1318:0crwdne1318:0",
+    "aspectOfTheDragons": "crwdns1320:0crwdne1320:0",
+    "enderDragonPet": "crwdns1322:0crwdne1322:0",
+    "eyesPlaced": "crwdns1324:0crwdne1324:0",
+    "never": "crwdns1326:0crwdne1326:0"
+  },
+  "slayerTracker": {
+    "revenant": "crwdns1328:0crwdne1328:0",
+    "revenantFlesh": "crwdns1330:0crwdne1330:0",
+    "foulFlesh": "crwdns1332:0crwdne1332:0",
+    "pestilenceRune": "crwdns1334:0crwdne1334:0",
+    "undeadCatalyst": "crwdns1336:0crwdne1336:0",
+    "smiteSix": "crwdns1338:0crwdne1338:0",
+    "beheadedHorror": "crwdns1340:0crwdne1340:0",
+    "revenantCatalyst": "crwdns1342:0crwdne1342:0",
+    "snakeRune": "crwdns1344:0crwdne1344:0",
+    "scytheBlade": "crwdns1346:0crwdne1346:0",
+    "tarantula": "crwdns1348:0crwdne1348:0",
+    "tarantulaWeb": "crwdns1350:0crwdne1350:0",
+    "toxicArrowPoison": "crwdns1352:0crwdne1352:0",
+    "spiderCatalyst": "crwdns1354:0crwdne1354:0",
+    "baneOfArthropodsSix": "crwdns1356:0crwdne1356:0",
+    "biteRune": "crwdns1358:0crwdne1358:0",
+    "flySwatter": "crwdns1360:0crwdne1360:0",
+    "tarantulaTalisman": "crwdns1362:0crwdne1362:0",
+    "digestedMosquito": "crwdns1364:0crwdne1364:0",
+    "sven": "crwdns1366:0crwdne1366:0",
+    "wolfTooth": "crwdns1368:0crwdne1368:0",
+    "hamsterWheel": "crwdns1370:0crwdne1370:0",
+    "spiritRune": "crwdns1372:0crwdne1372:0",
+    "criticalSix": "crwdns1374:0crwdne1374:0",
+    "grizzlyBait": "crwdns1376:0crwdne1376:0",
+    "redClawEgg": "crwdns1378:0crwdne1378:0",
+    "overfluxCapacitor": "crwdns1380:0crwdne1380:0",
+    "coutureRune": "crwdns1382:0crwdne1382:0",
+    "bossesKilled": "crwdns1384:0crwdne1384:0"
+  },
+  "warpMenu": {
+    "click": "crwdns1568:0crwdne1568:0",
+    "mustUnlock": "crwdns1570:0crwdne1570:0",
+    "privateIsland": "crwdns1584:0crwdne1584:0",
+    "home": "crwdns1572:0crwdne1572:0",
+    "spawn": "crwdns1574:0crwdne1574:0",
+    "unknown": "crwdns1576:0crwdne1576:0",
+    "notUnlocked": "crwdns1578:0crwdne1578:0",
+    "inCombat": "crwdns1580:0crwdne1580:0"
+  },
+  "enchants": {
+    "superTier": "crwdns1638:0crwdne1638:0",
+    "highTier": "crwdns1640:0crwdne1640:0",
+    "midTier": "crwdns1642:0crwdne1642:0",
+    "lowTier": "crwdns1644:0crwdne1644:0",
+    "commas": "crwdns1646:0crwdne1646:0",
+    "expertiseKills": "crwdns1648:0crwdne1648:0",
+    "compactedBlocks": "crwdns1650:0crwdne1650:0",
+    "cultivatedCrops": "crwdns1652:0crwdne1652:0",
+    "maxed": "crwdns1654:0crwdne1654:0"
+  }
+}

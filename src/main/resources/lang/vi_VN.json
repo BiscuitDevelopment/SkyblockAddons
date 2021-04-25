@@ -1,4 +1,5 @@
 {
+  "languageText": "Ngôn ngữ: ",
   "language": "Tiếng Việt",
   "settings": {
     "settings": "Cài Đặt",
@@ -13,8 +14,6 @@
     "editLocations": "Chỉnh Sửa Vị Trí GUI",
     "guiScale": "Tỉ Lệ GUI: %scale%",
     "resetLocations": "Đặt Lại Vị Trí",
-    "hideDurability": "Ẩn Thanh Độ Bền",
-    "showEnchantmentsReforges": "Phù phép & Rèn luyện",
     "minionStopWarning": "Cảnh Báo \"Minion Không Thể Với Tới\"",
     "hidePlayersNearNPCs": "Ẩn người chơi gần NPC quan trọng",
     "backpackStyle": "Kiểu Backpack: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Tắt hiệu ứng nháy thuốc nhìn đêm",
     "disableMinionLocationWarning": "Tắt cảnh báo Vị trí không phù hợp",
     "jungleAxeCooldown": "Thời gian Hồi Jungle Axe",
-    "organizeLongEnchantmentLists": "Sắp xếp danh sách phù phép dài",
     "showItemCooldowns": "Hiển thị thời gian hồi vật phẩm",
     "speedPercentage": "Phần trăm tốc độ",
     "collectionDisplay": "Hiển thị tiến trình kĩ năng",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Bộ đếm theo dõi Rock Pet",
     "dolphinPetTracker": "Bộ đếm theo dõi Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Phủ Tên Đồng đội Dungeon",
-    "showExpertiseKills": "Hiện Số lần Giết Expertise",
     "dungeonsSecretsDisplay": "Hiện Bí mật Dungeon",
     "showSkillPercentageInstead": "Hiện Số Phần trăm Kinh nghiệm thay vì Số Kinh nghiệm",
     "showSkillXPGained": "Hiện Số Kinh nghiệm Đã nhận",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Mở Quà Dễ hơn",
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
-    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt"
+    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt",
+    "disableEmptyGlassPanes": "Xóa các chỗ trống phủ bằng kính",
+    "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
+    "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
+    "chromaSize": "Mức sắc độ",
+    "chromaSaturation": "Độ nét sắc độ",
+    "chromaBrightness": "Độ sáng sắc độ",
+    "useNewChromaEffect": "Dùng hiệu ứng sắc độ mới",
+    "showExperimentationTableTooltips": "Hiện đáp án Experimentation Table",
+    "onlyMineOresDwarvenMines": "Chỉ đào quặng trong Dwarven Mines",
+    "drillFuelBar": "Thanh nguyên liệu của Drill",
+    "drillFuelText": "Số nguyên liệu của Drill",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -189,15 +205,20 @@
     "separateMultiple": "Phân Chia Nhiều Bằng Dấu Phẩy.",
     "enchantsToMatch": "%type% Để Khớp:",
     "enchantsToExclude": "%type% Để Loại Trừ:",
-    "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
-    "downloadLink": "LIÊN KẾT CẬP NHẬT",
-    "directDownload": "ĐƯỜNG DẪN TẢI VỀ TRỰC TIẾP",
-    "openModFolder": "MỞ THƯ MỤC MODS",
-    "joinTheDiscord": "THAM GIA DISCORD",
-    "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
-    "update": {
-      "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-      "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
+      }
     },
     "slotLocked": "Ô này đã bị khoá!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 H.ứng thuốc đang H.động",
     "effectsActive": "%number% H.ứng thuốc đang H.động",
     "none": "Không có",
-    "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!"
+    "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
+    "chroma": "Sắc độ"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -332,6 +354,15 @@
             "command": "lệnh phụ để lấy chi tiết sử dụng"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Áp dụng tất cả cài đặt và tài nguyên của mod. Game sẽ đứng hình trong vài giây."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Áp dụng cài đặt mod"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Tải lại các tài nguyên của mod. Game sẽ đứng hình trong vài giây."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Số trùm Đã giết"
+  },
+  "warpMenu": {
+    "click": "Bấm vào một địa điểm để di chuyển đến đó!",
+    "mustUnlock": "Phải mở khoá giấy dịch chuyển đến đây.",
+    "privateIsland": "Private Island",
+    "home": "Đảo của bạn",
+    "spawn": "Địa điểm xuất phát",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Chưa mở khóa",
+    "inCombat": "Trong chiến đấu..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

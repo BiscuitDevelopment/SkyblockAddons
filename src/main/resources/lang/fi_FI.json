@@ -1,4 +1,5 @@
 {
+  "languageText": "Kieli: ",
   "language": "suomi",
   "settings": {
     "settings": "Asetukset",
@@ -13,8 +14,6 @@
     "editLocations": "Muokkaa Sijainteja",
     "guiScale": "Gui Mittakaava: %scale%",
     "resetLocations": "Nollaa Sijainnit",
-    "hideDurability": "Piilota Työkalujen Kestävyys",
-    "showEnchantmentsReforges": "Lumoukset & Uudelleentakomiset",
     "minionStopWarning": "\"Kätyri ei yletä\" -varoitus",
     "hidePlayersNearNPCs": "Piilota pelaajat tärkeiden NPC:den lähettyviltä",
     "backpackStyle": "Repun Tyyli: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Estä pimeänäkö-tehostetta välkkymästä",
     "disableMinionLocationWarning": "Estä \"Location Not Perfect\"-varoitukset",
     "jungleAxeCooldown": "Estä Jungle Axen ja Treecapitatorin käyttö jäähtymisaikana",
-    "organizeLongEnchantmentLists": "Järjestä pitkät lumouslistat",
     "showItemCooldowns": "Näytä esineiden jäähtymisaika",
     "speedPercentage": "Nopeusprosentti",
     "collectionDisplay": "Taitojen edistyksen näyttäminen",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rock-lemmikin seuraaja",
     "dolphinPetTracker": "Dolphin-lemmikin seuraaja",
     "dungeonsTeammateNameOverlay": "Dungeon-tiimiläisten nimen näkymä",
-    "showExpertiseKills": "Näytä Expertisen tapot",
     "dungeonsSecretsDisplay": "Dungeonien kätköjen näyttö",
     "showSkillPercentageInstead": "Näytä prosentti XP:n sijaan",
     "showSkillXPGained": "Näytä tienattu XP",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Avaa lahjat helpommin",
     "showSwordKills": "Näytä miekan tapot",
     "compactTabList": "Tiivis Tab-lista",
-    "highlightMaxEnchantments": "Korosta erikoislumoukset"
+    "highlightMaxEnchantments": "Korosta erikoislumoukset",
+    "disableEmptyGlassPanes": "Piilota tyhjät lasiruudut",
+    "candyPointsCounter": "Spooky-tapahtuman Candy/Piste -laskuri",
+    "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
+    "chromaSize": "Väriefektin koko",
+    "chromaSaturation": "Väriefektin kylläisyys",
+    "chromaBrightness": "Väriefektin kirkkaus",
+    "useNewChromaEffect": "Käytä uutta väriefektiä",
+    "showExperimentationTableTooltips": "Näytä Experimentation-pöydän esineiden tiedot",
+    "onlyMineOresDwarvenMines": "Kaiva vain malmeja Dwarven-kaivoksissa",
+    "drillFuelBar": "Poran polttoainetankki",
+    "drillFuelText": "Poran polttoainearvo",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -189,15 +205,20 @@
     "separateMultiple": "Erota useammat pilkuilla.",
     "enchantsToMatch": "Löydettävä %type%:",
     "enchantsToExclude": "Pois jätettävä %type%:",
-    "wantToViewPatchNotes": "Tarvitsetko apua tai haluatko lukea koko muutoslokin?",
-    "downloadLink": "VIDEO/PÄIVITYSLINKKI",
-    "directDownload": "SUORA LATAUSLINKKI",
-    "openModFolder": "AVAA MODS-KANSIO",
-    "joinTheDiscord": "DISCORD-LINKKI",
-    "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
-    "update": {
-      "majorAvailable": "Uusi merkittävä päivitys (%version%) on saatavilla! Latauslinkki löytyy chatistä.",
-      "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Tarvitsetko apua tai haluatko lukea koko muutoslokin?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "Uusi merkittävä päivitys (%version%) on saatavilla! Latauslinkki löytyy chatistä.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
+      }
     },
     "slotLocked": "Tämä lokero on lukittu!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 tehoste aktiivisena",
     "effectsActive": "%number% tehostetta aktiivisena",
     "none": "Ei mikään",
-    "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!"
+    "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
+    "chroma": "Väriefekti"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -278,15 +300,15 @@
         "help": "Avaa päävalikko"
       },
       "brand": {
-        "help": "§e(Dev) §7Show palvelimen tunnus",
+        "help": "§e(Kehittäjä) §7Näytä palvelimen tunnus",
         "brandOutput": "Palvelimen tunnus: %brand%",
         "notFound": "Palvelimen tunnusta ei löytynyt!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies tiedot palikasta jota katsot"
+        "help": "§e(Kehittäjä) §7Kopioi tiedot palikasta jota katsot"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
+        "help": "§e(Kehittäjä) §7Kopioi NBT tiedot annetun nim(i)en entiteeteistä valitulla säteellä pelaajasta",
         "detailedHelp": {
           "description": "Kopioi entiteetin NBT tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta tiedot kopioidaan voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
           "options": {
@@ -296,7 +318,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy tulostaulun teksti",
+        "help": "§e(Kehittäjä) §7Kopioi tulostaulun teksti",
         "detailedHelp": {
           "description": "Kopioi tulostaulun sivupalkin kohdassa näytetyn tekstin",
           "options": {
@@ -305,7 +327,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy tab-listan otsikko ja alatunniste",
+        "help": "§e(Kehittäjä) §7Kopioi tab-listan otsikko ja alatunniste",
         "detailedHelp": {
           "description": "Tämä komento kopioi otsikon ja alatunnisteen tab-pelaajalistasta. Muunnoskoodit sisällytetään."
         }
@@ -332,6 +354,15 @@
             "command": "alakomento, josta saa yksityiskohtaisen käyttökohteet"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Kehittäjä) §7Uudelleenlataa kaikki modin asetukset ja resurssit. Peli pysähtyy muutamaksi sekunniksi."
+      },
+      "reloadConfig": {
+        "help": "§e(Kehittäjä) §7Uudelleenlataa modin asetukset"
+      },
+      "reloadRes": {
+        "help": "§e(Kehittäjä) §7Uudelleenlataa modin resurssit. Peli pysähtyy muutamaksi sekunniksi."
       },
       "set": {
         "zealotCounter": {
@@ -369,7 +400,7 @@
         "invalidStat": "\"%input%\" ei ole pätevä johtaja!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle toimintopalkin viestien kirjaaminen lokiin",
+        "help": "§e(Kehittäjä) §7Aseta päälle/pois toimintopalkin viestien kirjaaminen lokiin",
         "disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
         "enabled": "Toimintopalkin viestit kirjataan nyt lokiin."
       },
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Johtajia tapettu"
+  },
+  "warpMenu": {
+    "click": "Paina siirtymispistettä matkustaaksesi sinne!",
+    "mustUnlock": "Kyseinen scroll pitää olla avattuna.",
+    "privateIsland": "Oma saari",
+    "home": "Oma saari",
+    "spawn": "Keskusta",
+    "unknown": "Et ole vielä vieraillut",
+    "notUnlocked": "Ei avattu",
+    "inCombat": "Taistelussa..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

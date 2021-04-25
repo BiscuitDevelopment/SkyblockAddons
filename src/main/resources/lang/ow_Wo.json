@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "OwO",
   "settings": {
     "settings": "Settings",
@@ -13,8 +14,6 @@
     "editLocations": "Edit GUI Wocations",
     "guiScale": "Gui scawe: %scale%",
     "resetLocations": "Weset Wowocations",
-    "hideDurability": "Hide Toow Duwabiwiwy",
-    "showEnchantmentsReforges": "Enchants & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
     "hidePlayersNearNPCs": "Hide Pwayers Neaw Impowtant NPCs",
     "backpackStyle": "Bwackpack Stywe: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Avoid Bwinking Night Vision Potion",
     "disableMinionLocationWarning": "Disabwe Wocation Not Pewfect Wawnings",
     "jungleAxeCooldown": "Jungwe Axe Coowdown",
-    "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
@@ -131,12 +129,12 @@
     "hideSvenPupNametags": "Hide Swen Puwup Nametags",
     "turnAllFeaturesChroma": "Tuwn Aww Featuwes Chwoma",
     "dungeonMapDisplay": "Dungeon map dispway",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Wotate Map to Your Pwayer's Wotation",
+    "centerRotationOnYourPlayer": "Wotate Awound Youw Playew's Markew",
     "mapZoom": "Map Zwoom",
     "glowingDroppedItems": "Gwowing Dwopped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "glowingDungeonTeammates": "Gwowing Dungeon Teamwates",
+    "baseStatBoostPercentage": "Show Bwase Stat Bwoost for Dungeon Items",
     "colorByRarity": "Cowor By Wawity",
     "showPlayerHeadsOnMap": "Showo Pwayew Heads on Dungeon Mwap",
     "showHealingCircleWall": "Show Dungeon Heawing Ciwcwe Waww",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rock Pet Twackew",
     "dolphinPetTracker": "Dolphin Pet Twackew",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Ovewway",
-    "showExpertiseKills": "Showo Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Dispway",
     "showSkillPercentageInstead": "Show Pewcentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -173,8 +170,27 @@
     "hideOtherPlayersPresents": "Hide Othew Pwayew's Pwesents",
     "easierPresentOpening": "Opwen Pwesents Easiew",
     "showSwordKills": "Shwow Swowd Kwills",
-    "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "compactTabList": "Cwompwact Twab Wist",
+    "highlightMaxEnchantments": "Highwight Spwscial Encwantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Enchants ^-^",
@@ -189,15 +205,20 @@
     "separateMultiple": "Sepeawate Multipwe With Cowommas.",
     "enchantsToMatch": "%type% To Match >-<:",
     "enchantsToExclude": "%type% To Excwude:",
-    "wantToViewPatchNotes": "Need suppowt or want to wead the fuww changewog?",
-    "downloadLink": "UPDATE WINK",
-    "directDownload": "DIWECT DOWNWOAD WINK",
-    "openModFolder": "MOOWODS FOWOLDER",
-    "joinTheDiscord": "JOIN DISCOWD",
-    "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
-    "update": {
-      "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Need suppowt or want to wead the fuww changewog?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"
+      }
     },
     "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "Summonuwuing Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Effect Active (>-<)/",
     "effectsActive": "%number% UwU Effects Active",
     "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The devewopew copy mode has been set to: %mode%. Pwess \"%keyName%\" to twiggew a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -275,108 +297,117 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Opwen the mwain menwu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Show the swewer bwand",
+        "brandOutput": "Swewer bwand: %brand%",
+        "notFound": "Swewer bwand not fwound!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copies data about the block that you awe looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Pwess \"Tab\" aftew typing the command for a fuww wist. Sepawate muwtiple names with commas, names are case-sensitive.",
+            "radius": "The wadius(win blocks) awound the playew to cowpy entwety NBT data fwom"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy the scoweboawd text",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
           "options": {
             "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy the tab list headew and footew",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Twoggle dwevewopew mode",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "Dewelower wode dwisabled!",
+        "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edwit GUI wocations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Owpen youw mods fowder",
+        "error": "A werror woccoured twying to opwen da wads wolder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
         "detailedHelp": {
           "options": {
             "command": "the sub-command to get detailed usage for"
           }
         }
       },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+      },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manuawwy set youw zeawot counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "eyes": "Lifewime summoning eyes obwained",
+              "totalZealots": "Lifetime zeawots kiwwed",
+              "zealots": "Zealots kiwwed since the wast summoning eye dwop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Set totaw summoning eye count to %number%!",
+          "totalZealotsSet": "Set totaw zeawot count to %number%!",
+          "wrongUsage": "Invawid sewection! Pwease choose %options%.",
+          "zealotsSet": "Set cuwwent zealot count to %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manuawwy set slayer stats, pwess tab fow awguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manuawwy set slayer stats, pwess tab fow awguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
+            "number": "Nuwmbew to swet the stwat to",
+            "stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
+        "statRequired": "You nweed to sewect a stat. Press twab for optiowns.",
+        "numberRequired": "You nweed to add the nwumber you want.",
+        "killsSet": "Kwills for swayer %boss% was swet to %number%.",
+        "statSet": "Statwistic %stat% for swayer %boss% was swet to %number%.",
+        "invalidBoss": "\"%input%\" is not a vawid statwistic!",
+        "invalidStat": "\"%input%\" is not a vawid bwoss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Toggwe wogging action baw messages",
+        "disabled": "Action baw messages wiww no wongew be wogged.",
+        "enabled": "Action baw messages wiww now be wogged."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Wong uswage!",
+          "subCommandNotFound": "The sub-command “%sub-command%” was not found."
         }
       }
     }
@@ -392,12 +423,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Wecent Dwagons:",
+    "dragonsSince": "Dwagons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyes Pwaced",
+    "never": "Nevew"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -428,6 +459,27 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Bosses Kiwwed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

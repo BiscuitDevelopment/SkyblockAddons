@@ -1,4 +1,5 @@
 {
+  "languageText": "Idioma: ",
   "language": "Español (España)",
   "settings": {
     "settings": "Opciones",
@@ -13,8 +14,6 @@
     "editLocations": "Editar Posiciciones",
     "guiScale": "Escala del GUI: %scale%",
     "resetLocations": "Restablecer Posiciones",
-    "hideDurability": "Ocultar Durabilidad de Herramientas",
-    "showEnchantmentsReforges": "Encantamientos y Reforjes",
     "minionStopWarning": "Aviso de Detención de Minion",
     "hidePlayersNearNPCs": "Ocultar Jugadores cerca de PNJs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Desactiva el Parpadeo del Poción de Visión Nocturna",
     "disableMinionLocationWarning": "Desactivar Avisos de Ubicación de Minion",
     "jungleAxeCooldown": "Bloquea Hacha de la Jungla/Treecapitator hasta que está recargada",
-    "organizeLongEnchantmentLists": "Organiza Listas de Encantamientos Largas",
     "showItemCooldowns": "Mostrar Recarga de Objetos",
     "speedPercentage": "Porcentaje de Velocidad",
     "collectionDisplay": "Mostrar Progreso de Habilidad",
@@ -139,7 +137,7 @@
     "baseStatBoostPercentage": "Mostrar Potenciador Base para Objetos de Dungeon",
     "colorByRarity": "Color por Rareza",
     "showPlayerHeadsOnMap": "Mostrar Cabezas de Jugadores en el Mapa de Dungeons",
-    "showHealingCircleWall": "Mostrar Healing Circle Wall de Dungeon",
+    "showHealingCircleWall": "Mostrar Círculo de Sanación de Dungeon",
     "showCriticalTeammates": "Mostrar Compañeros de Dungeon en Estado Crítico",
     "showGlowingItemsOnIsland": "Hacer Que los Objetos Brillan en la Isla",
     "showItemDungeonFloor": "Mostrar el Piso Donde se Obtuvo el Objeto de Dungeon",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rastreador del Rock Pet",
     "dolphinPetTracker": "Rastreador del Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Mostrar Nombres de Compañeros de Dungeons",
-    "showExpertiseKills": "Mostrar Expertise Kills",
     "dungeonsSecretsDisplay": "Mostrar Secretos de Dungeons",
     "showSkillPercentageInstead": "Mostrar Porcentaje en vez de EXP",
     "showSkillXPGained": "Mostrar EXP Ganado",
@@ -174,11 +171,30 @@
     "easierPresentOpening": "Abrir Regalos Más Fácilmente",
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Tab Compacta",
-    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales"
+    "highlightMaxEnchantments": "Resaltar Encantamientos Especiales",
+    "disableEmptyGlassPanes": "Deshabilitar Paneles de Cristal Vacíos",
+    "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
+    "healingCircleOpacity": "Opacidad del Círculo de Sanación",
+    "chromaSize": "Tamaño del Croma",
+    "chromaSaturation": "Saturación del Croma",
+    "chromaBrightness": "Brillo del Croma",
+    "useNewChromaEffect": "Usar el Nuevo Efecto Croma",
+    "showExperimentationTableTooltips": "Mostrar Información de Objeto en la Experimentation Table",
+    "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
+    "drillFuelBar": "Barra de Drill Fuel",
+    "drillFuelText": "Número de Drill Fuel",
+    "fishingParticleOverlay": "Personalizar Partículas de Pesca",
+    "enchantmentLoreParsing": "Personalizar Listas de Encantamientos",
+    "cooldownPrediction": "Predecir y Reducir Enfriamiento",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey Legendario Nivel 100",
+    "biggerWake": "Engrandar Partículas Personalizadas",
+    "stackingEnchantProgress": "Mostrar el Progreso de Encantamientos Progresivos",
+    "showReforgeOverlay": "Mostrar Reforge Actual en Menú",
+    "reforgeFilter": "Filtro de Reforge"
   },
   "messages": {
     "enchants": "Encantamientos",
-    "reforges": "Reforjes",
+    "reforges": "Reforges",
     "dropConfirmation": "¡Suelta el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Jefe Magma!",
     "fullInventory": "¡Inventario Lleno!",
@@ -189,15 +205,20 @@
     "separateMultiple": "Separa Múltiples en Comas.",
     "enchantsToMatch": "%type% para que coincida:",
     "enchantsToExclude": "%type% para excluir:",
-    "wantToViewPatchNotes": "¿Necesitas soporte o quieres leer el registro de los cambios completo?",
-    "downloadLink": "ENLACE DEL VÍDEO/ACTUALIZACIÓN",
-    "directDownload": "ENLACE DE DESCARGA DIRECTO",
-    "openModFolder": "ABRIR CARPETA DE MODS",
-    "joinTheDiscord": "ENLACE DEL DISCORD",
-    "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
-    "update": {
-      "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El enlace para la descarga se puede encontrar en el chat.",
-      "patchAvailable": "¡Una nueva actualización de parche (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "¿Necesitas soporte o quieres leer el registro de los cambios completo?",
+      "joinDiscord": "¡Únete a nuestro servidor de Discord!",
+      "watchShowcase": "Ver Video",
+      "downloadButton": "Descargar",
+      "openModFolderButton": "Abrir Carpeta de Mods",
+      "joinDiscordButton": "Únete al Discord",
+      "newUpdateAvailable": "¡Una nueva actualización (%version%) está disponible!",
+      "noDownloadAvailable": "No hay enlace de descarga disponible, por favor, mira nuestro servidor de Discord.",
+      "notificationBox": {
+        "majorAvailable": "¡Una nueva actualización importante (%version%) está disponible! El enlace para la descarga se puede encontrar en el chat.",
+        "betaAvailable": "¡Una nueva actualización de beta (%version%) está disponible! Mira al chat para el enlace de descarga.",
+        "patchAvailable": "¡Una nueva actualización de parche (%version%) está disponible! ¡Busca en el chat para opciónes de descargar!"
+      }
     },
     "slotLocked": "¡Esta ranura está bloqueada!",
     "summoningEyeFound": "¡Ojo de Invocación!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Efecto Activo",
     "effectsActive": "%number% Efectos Activos",
     "none": "Ninguno",
-    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!"
+    "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
+    "chroma": "Croma"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -313,7 +335,7 @@
       "dev": {
         "help": "Activar modo desarrollador",
         "detailedHelp": {
-          "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos crudos del juego como NBT de entidad y objetos."
+          "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos del juego como NBT de entidad y objetos."
         },
         "disabled": "¡Modo desarrollador desactivado!",
         "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
@@ -332,6 +354,15 @@
             "command": "el sub-comando para obtener uso detallado por"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Des) §7Recarga todas las configuraciones y recursos del mod. El juego se congelará durante unos segundos."
+      },
+      "reloadConfig": {
+        "help": "§e(Des) §7Recarga la configuración del mod"
+      },
+      "reloadRes": {
+        "help": "§e(Des) §7Recarga los recursos del mod. El juego se congelará durante unos segundos."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosses Killed"
+  },
+  "warpMenu": {
+    "click": "¡Haz clic en un punto de teletransporte para viajar allí!",
+    "mustUnlock": "Debes tener el scroll específico desbloqueado.",
+    "privateIsland": "Isla Privada",
+    "home": "Tú Isla",
+    "spawn": "Spawn",
+    "unknown": "No Visitado",
+    "notUnlocked": "No Desbloqueado",
+    "inCombat": "En Combate..."
+  },
+  "enchants": {
+    "superTier": "Nivel Máximo",
+    "highTier": "Nivel Alto",
+    "midTier": "Nivel Medio",
+    "lowTier": "Nivel Bajo",
+    "commas": "Comas",
+    "expertiseKills": "Kills con Expertise",
+    "compactedBlocks": "Bloques Compactados",
+    "cultivatedCrops": "Cultivos Cultivados",
+    "maxed": "Maximizado"
   }
 }

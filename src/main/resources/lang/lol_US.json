@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "LOLCAT",
   "settings": {
     "settings": "Settings",
@@ -13,8 +14,6 @@
     "editLocations": "Edit GUI Locashuns",
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locashuns",
-    "hideDurability": "Hide Tool Durability",
-    "showEnchantmentsReforges": "Enchants An Reforgez",
     "minionStopWarning": "\"Minion Cant Reach\" Warnin",
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack style: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Disable Nite Vishun Poschun Blinkin",
     "disableMinionLocationWarning": "Disable Locashun Not Perfik Warnin",
     "jungleAxeCooldown": "Block Jungle Axe/Treecapitator on Cooldown",
-    "organizeLongEnchantmentLists": "Organize Long Enchantment Lists",
     "showItemCooldowns": "Show Item Cooldowns",
     "speedPercentage": "Sped Persentage",
     "collectionDisplay": "Skill Progres Display",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rawk Pet Trackr",
     "dolphinPetTracker": "Dolfin Pet Trackr",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Naym Overlay",
-    "showExpertiseKills": "Show Expertize Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Display",
     "showSkillPercentageInstead": "Show Persentage Instead ov XP",
     "showSkillXPGained": "Show XP Gaind",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Open Prezints Easir",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Speshul Enchantments"
+    "highlightMaxEnchantments": "Highlight Speshul Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glas Panez",
+    "candyPointsCounter": "Spooky Event Candy/Points Countr",
+    "healingCircleOpacity": "Healin Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturashun",
+    "chromaBrightness": "Chroma Brightnes",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentashun Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Orez in da Dwarven Minez",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Numbr",
+    "fishingParticleOverlay": "Fishin Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict an Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particlez",
+    "stackingEnchantProgress": "Show Stackin Enchant Progres",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filtr"
   },
   "messages": {
     "enchants": "Enchants",
@@ -189,15 +205,20 @@
     "separateMultiple": "Separate Multiple Wif Commas.",
     "enchantsToMatch": "%type% 2 Match:",
     "enchantsToExclude": "%type% 2 Exclude:",
-    "wantToViewPatchNotes": "Ned support or wants 2 read teh full changelog?",
-    "downloadLink": "VIDEO/UPDATE LINK",
-    "directDownload": "DIRECT DOWNLOAD LINK",
-    "openModFolder": "OPEN MODZ FOLDR",
-    "joinTheDiscord": "DISCORD LINK",
-    "newUpdateAvailable": "A new update (%version%) iz available!",
-    "update": {
-      "majorAvailable": "A new major update (%version%) iz available! Teh link 4 da download can be findz in chat.",
-      "patchAvailable": "A new patch update (%version%) iz available! Look in chat 4 download opshuns!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Ned support or wants 2 read teh full changelog?",
+      "joinDiscord": "Join r Discord servr!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Modz Foldr",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "A new update (%version%) iz available!",
+      "noDownloadAvailable": "No download link available, plz check r Discord servr.",
+      "notificationBox": {
+        "majorAvailable": "A new major update (%version%) iz available! Teh link 4 da download can be findz in chat.",
+        "betaAvailable": "A new beta update (%version%) iz available! Look in chat 4 da download link.",
+        "patchAvailable": "A new patch update (%version%) iz available! Look in chat 4 download opshuns!"
+      }
     },
     "slotLocked": "Dis slot iz lockd!",
     "summoningEyeFound": "Summonin Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Effect Activ",
     "effectsActive": "%number% Effects Activ",
     "none": "None",
-    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!"
+    "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -313,7 +335,7 @@
       "dev": {
         "help": "Toggle developr mod",
         "detailedHelp": {
-          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez raw data frum the game such as entity an item NBT."
+          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez game data such as entity an item NBT."
         },
         "disabled": "Developr mode disabld!",
         "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
@@ -332,6 +354,15 @@
             "command": "teh sub-command 2 git detaild usage 4"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloadz all ov teh modz settings an resourcez. Teh game will freeze 4 few secondz."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloadz teh modz settingz"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloadz teh resourcez. Teh game will freeze 4 few secondz."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosez Killd"
+  },
+  "warpMenu": {
+    "click": "Click warp point 2 travel thar!",
+    "mustUnlock": "Must has teh specific scroll unlockd.",
+    "privateIsland": "Private Island",
+    "home": "Ur Island",
+    "spawn": "Spawn",
+    "unknown": "Havent Visietd",
+    "notUnlocked": "Not Unlockd",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tir",
+    "highTier": "High Tir",
+    "midTier": "Mid Tir",
+    "lowTier": "Low Tir",
+    "commas": "Commas",
+    "expertiseKills": "Expertize Kills",
+    "compactedBlocks": "Compactd Blockz",
+    "cultivatedCrops": "Cultivatd Crops",
+    "maxed": "Maxd"
   }
 }

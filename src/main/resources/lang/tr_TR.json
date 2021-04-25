@@ -1,4 +1,5 @@
 {
+  "languageText": "Dil: ",
   "language": "Türkçe",
   "settings": {
     "settings": "Ayarlar",
@@ -13,8 +14,6 @@
     "editLocations": "Arayüzü Düzenle",
     "guiScale": "Arayüz Ölçeği: %scale%",
     "resetLocations": "Konumları Sıfırla",
-    "hideDurability": "Eşyaların Dayanıklılığını Sakla",
-    "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
     "hidePlayersNearNPCs": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
@@ -31,16 +30,16 @@
     "manaText": "Mana'yı Göster (sayı ile)",
     "healthBar": "Can Çubuğu",
     "healthText": "Can'ı Göster (sayı ile)",
-    "defenceIcon": "Zırh İmgesi",
-    "defenceText": "Zırh'ı Göster (sayı ile)",
+    "defenceIcon": "Savunma Sembolü",
+    "defenceText": "Savunma Sayısı",
     "defencePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Lobide Uzaktaki Kişileri Gizle",
+    "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
-    "itemPickupLog": "Toplanan Eşya'yı Yaz",
-    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Kapat",
-    "avoidBreakingStems": "Ekinleri Kırmayı Önleme",
+    "itemPickupLog": "Toplanan Eşya Günlüğü",
+    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Engelle",
+    "avoidBreakingStems": "Kökleri Kımayı Engelle",
     "stopBowChargeFromResetting": "Yay Doldururken Sıfırlanmayı Engelle",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
     "jungleAxeCooldown": "Jungle Axe/Treecapitor Beklemedeyken Kullanmayı Engelle",
-    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
     "speedPercentage": "Hız Yüzdesi",
     "collectionDisplay": "Skill İlerleme Göstergesi",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Rock Pet Takipçisi",
     "dolphinPetTracker": "Dolphin Pet Takipçisi",
     "dungeonsTeammateNameOverlay": "Dungeons'daki Takım Arkadaşının Ad Yerleşimi",
-    "showExpertiseKills": "Expertise Öldürmelerini Göster",
     "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle",
     "showSkillPercentageInstead": "XP yerine yüzdeyi göster",
     "showSkillXPGained": "Kazanılan XP'yi göster",
@@ -174,30 +171,54 @@
     "easierPresentOpening": "Hediyeleri Kolay Aç",
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
-    "highlightMaxEnchantments": "Özel Büyüleri Vurgula"
+    "highlightMaxEnchantments": "Özel Büyüleri Vurgula",
+    "disableEmptyGlassPanes": "Boş İnce Camları Devre Dışı Bırak",
+    "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
+    "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
+    "chromaSize": "Chroma Ölçüsü",
+    "chromaSaturation": "Chroma Doygunluğu",
+    "chromaBrightness": "Chroma Parlaklığı",
+    "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
+    "showExperimentationTableTooltips": "Experimentation Table İpuçlarını Göster",
+    "onlyMineOresDwarvenMines": "Dwarven Mines'da Sadece Cevherleri Kaz",
+    "drillFuelBar": "Drill Yakıt Barı",
+    "drillFuelText": "Drill Yakıt Sayısı",
+    "fishingParticleOverlay": "Balıkçılık Parçacık Göstergesi",
+    "enchantmentLoreParsing": "Büyü Araç İpuçlarını Vurgula",
+    "cooldownPrediction": "Tahmin Et ve Bekleme Süresini Kısalt",
+    "legendaryMonkeyLevel100": "[TEMP] Seviye 100 Efsanevi Monkey",
+    "biggerWake": "Kaplama Parçacıklarını Büyüt",
+    "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
+    "showReforgeOverlay": "Reforge Kaplamasını Göster",
+    "reforgeFilter": "Reforge Filtresi"
   },
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
     "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
-    "magmaBossWarning": "Magma Kübü Boss!",
+    "magmaBossWarning": "Magma Küp Bossu!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
-    "minionCannotReach": "%type% türü bir minyon çıkardığı %type%'lara erişemediğinden çalışmayı durdurdu!",
-    "minionIsFull": "Adandaki bir minyon'un alanı doldu!",
+    "minionCannotReach": "%type% minyona ulaşılamadığından çalışmayı durdurdu!",
+    "minionIsFull": "Adanda ki bir minyonun alanı doldu!",
     "typeEnchantmentsHere": "Buraya %type%i Yaz!",
-    "separateMultiple": "Birden Fazla Gireceksen Virgül ile Ayır.",
+    "separateMultiple": "Birden Fazla Parametreyi Virgül ile Ayır.",
     "enchantsToMatch": "Eşleşecek %type%:",
     "enchantsToExclude": "İstenmeyen %type% :",
-    "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
-    "downloadLink": "VİDEO/GÜNCELLEME BAĞLANTISI",
-    "directDownload": "Direkt İndirme Linki",
-    "openModFolder": "MOD KLASÖRÜNÜ AÇ",
-    "joinTheDiscord": "DISCORD BAĞLANTISI",
-    "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
-    "update": {
-      "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
+      "joinDiscord": "Discord sunucumuza katıl!",
+      "watchShowcase": "Video İzle",
+      "downloadButton": "İndir",
+      "openModFolderButton": "Mod Klasörünü Aç",
+      "joinDiscordButton": "Discord'a Katıl",
+      "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
+      "noDownloadAvailable": "İndirme bağlantısı mevcut değil, lütfen Discord sunucumuzu kontrol et.",
+      "notificationBox": {
+        "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
+        "betaAvailable": "Yeni bir beta güncellemesi (%version%) mevcut! İndirme bağlantısı için sohbete bak!",
+        "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+      }
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 Efekt Aktif",
     "effectsActive": "%number% Efekt Aktif",
     "none": "Hiçbiri",
-    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!"
+    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
+    "chroma": "Renk parlaklığı"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -332,6 +354,15 @@
             "command": "ayrıntılı kullanım için alt komut"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosslar Öldürüldü"
+  },
+  "warpMenu": {
+    "click": "Buraya gitmek için bir ışınlanma noktasına tıkla!",
+    "mustUnlock": "Belirli bir Scroll kilidi açılmış olmalı.",
+    "privateIsland": "Özel Ada",
+    "home": "Senin Adan",
+    "spawn": "Başlangıç Noktası",
+    "unknown": "Ziyaret Edilmemiş",
+    "notUnlocked": "Açılmamış",
+    "inCombat": "Savaşta..."
+  },
+  "enchants": {
+    "superTier": "Maksimum Seviye",
+    "highTier": "Yüksek Seviye",
+    "midTier": "Orta Seviye",
+    "lowTier": "Düşük Seviye",
+    "commas": "Virgüller",
+    "expertiseKills": "Expertise Leşleri",
+    "compactedBlocks": "Sıkıştırılmış Bloklar",
+    "cultivatedCrops": "Ekili Ürünler",
+    "maxed": "Maksimum"
   }
 }

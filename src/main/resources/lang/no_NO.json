@@ -1,4 +1,5 @@
 {
+  "languageText": "Language: ",
   "language": "Norsk",
   "settings": {
     "settings": "Innstillinger",
@@ -13,8 +14,6 @@
     "editLocations": "Endre brukergrensesnitt plasseringer",
     "guiScale": "Brukergrensesnitt-skala: %scale%",
     "resetLocations": "Tilbakestill brukergrensesnitt",
-    "hideDurability": "Skjul redskapsvarighet",
-    "showEnchantmentsReforges": "Fortryllinger og Reforger",
     "minionStopWarning": "\"Lakei kan ikke nå\" advarsel",
     "hidePlayersNearNPCs": "Skjul Spillere Nærme Viktige NPCer",
     "backpackStyle": "Backpack stil: %style%",
@@ -69,7 +68,6 @@
     "avoidBlinkingNightVision": "Deaktiver nattsyn trylledrikk blinking",
     "disableMinionLocationWarning": "Deaktiver plassering ikke perfekt-varsler",
     "jungleAxeCooldown": "Blokker Jungle Axe/Treecapitator når pauset",
-    "organizeLongEnchantmentLists": "Organiser Lang Fortryllelse Lister",
     "showItemCooldowns": "Vis gjenstand-pausetider",
     "speedPercentage": "Farts Prosent",
     "collectionDisplay": "Ferdighetsutvikling-visning",
@@ -162,7 +160,6 @@
     "rockPetTracker": "Stein kjæledyr oppfølger",
     "dolphinPetTracker": "Delfin kjæledyr oppfølger",
     "dungeonsTeammateNameOverlay": "Dungeon Lagkamerater navn overlegg",
-    "showExpertiseKills": "Vis ekspertise-drap",
     "dungeonsSecretsDisplay": "Dungeons Kart Skjerm",
     "showSkillPercentageInstead": "Vis prosentandel istedenfor XP",
     "showSkillXPGained": "Vis XP Fått",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "Åpne gaver enklere",
     "showSwordKills": "Vis Sverd Drap",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments"
+    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelText": "Drill Fuel Number",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -189,15 +205,20 @@
     "separateMultiple": "Skill mellom flere ledd med kommaer.",
     "enchantsToMatch": "%type% å matche:",
     "enchantsToExclude": "%type% å ekskludere:",
-    "wantToViewPatchNotes": "Trenger du hjelp eller vill du lese alle endringene?",
-    "downloadLink": "VIDEO/OPPDATERINGS LENKE",
-    "directDownload": "DIREKTE NEDLASTINGS LENKE",
-    "openModFolder": "ÅPNE MODIFIKASJONS MAPPE",
-    "joinTheDiscord": "DISCORD LENKE",
-    "newUpdateAvailable": "En ny oppdatering (%version%) er tilgjengelig!",
-    "update": {
-      "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
-      "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Trenger du hjelp eller vill du lese alle endringene?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "En ny oppdatering (%version%) er tilgjengelig!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "En ny stor oppdatering (%version%) er tilgjengelig! Du kan finne nedlastingslenken under i chatten.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "En ny oppdatering (%version%) er tilgjengelig! Se i chatten for alternativer for nedlastning!"
+      }
     },
     "slotLocked": "Denne plassen er låst!",
     "summoningEyeFound": "Summoning Eye!",
@@ -242,7 +263,8 @@
     "effectActive": "1 effekt aktiv",
     "effectsActive": "%number% effekter aktive",
     "none": "Ingen",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!"
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma"
   },
   "discordStatus": {
     "titleNone": "Ingen",
@@ -313,7 +335,7 @@
       "dev": {
         "help": "Toggle developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
@@ -332,6 +354,15 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
     "bossesKilled": "Bosser drept"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

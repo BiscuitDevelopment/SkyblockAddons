@@ -1,4 +1,5 @@
 {
+  "languageText": "语言：",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -8,13 +9,11 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "物品栏空间不足警告",
-    "repeating": "再次警告",
-    "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
+    "repeating": "重复警告",
+    "disableEmberRodAbility": "在私人岛屿上禁用余烬之杖技能",
     "editLocations": "调整 GUI 位置",
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置 GUI 位置",
-    "hideDurability": "隐藏工具耐久度",
-    "showEnchantmentsReforges": "附魔 & 洗炼",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
     "hidePlayersNearNPCs": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
@@ -41,10 +40,10 @@
     "itemPickupLog": "物品拾取记录",
     "avoidPlacingEnchantedItems": "阻止放置附魔物品",
     "avoidBreakingStems": "阻止破坏作西瓜梗与南瓜梗",
-    "stopBowChargeFromResetting": "弓在命中生物时不需要重新拉弓",
+    "stopBowChargeFromResetting": "阻止拉弓进度重置",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
-    "lockSlots": "锁定快捷栏",
+    "lockSlots": "允许锁定物品栏中的物品",
     "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止打开菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
@@ -66,10 +65,9 @@
     "changeBarColorForPotions": "凋零/中毒 时更改生命条颜色",
     "craftingPatterns": "选择合成样式",
     "soundIndicatorForFishing": "钓鱼声音指示",
-    "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
+    "avoidBlinkingNightVision": "夜视耗尽时禁用闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
     "jungleAxeCooldown": "阻止在冷却时使用丛林斧/Treecapitator",
-    "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
@@ -162,7 +160,6 @@
     "rockPetTracker": "宠物岩石进度追踪",
     "dolphinPetTracker": "宠物海豚进度追踪",
     "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
-    "showExpertiseKills": "显示 Expertise 击杀进度",
     "dungeonsSecretsDisplay": "地下城秘密数量显示",
     "showSkillPercentageInstead": "以技能进度百分比代替技能经验值",
     "showSkillXPGained": "显示已获得技能经验值",
@@ -174,7 +171,26 @@
     "easierPresentOpening": "更容易的打开礼物",
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
-    "highlightMaxEnchantments": "高亮特殊附魔"
+    "highlightMaxEnchantments": "高亮特殊附魔",
+    "disableEmptyGlassPanes": "阻止点击界面菜单内的无名玻璃板",
+    "candyPointsCounter": "Spooky Event 糖果/分数统计器",
+    "healingCircleOpacity": "治疗光环不透明度",
+    "chromaSize": "渐变色彩尺寸",
+    "chromaSaturation": "渐变色彩饱和度",
+    "chromaBrightness": "渐变色彩亮度",
+    "useNewChromaEffect": "使用新版渐变效果",
+    "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
+    "onlyMineOresDwarvenMines": "在 Dwarven Mines 中只挖掘矿物",
+    "drillFuelBar": "Drill 燃料计量条",
+    "drillFuelText": "Drill 燃料值",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "放大提示粒子",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "显示洗炼提示",
+    "reforgeFilter": "Reforge Filter"
   },
   "messages": {
     "enchants": "附魔",
@@ -189,15 +205,20 @@
     "separateMultiple": "使用英文逗号间隔多个目标。",
     "enchantsToMatch": "包含%type%:",
     "enchantsToExclude": "不包含%type%:",
-    "wantToViewPatchNotes": "需要帮助或查看更新内容？",
-    "downloadLink": "更新视频介绍",
-    "directDownload": "直接下载链接",
-    "openModFolder": "Mods 文件夹",
-    "joinTheDiscord": "加入 Discord",
-    "newUpdateAvailable": "新版本 (%version%) 现已发布！",
-    "update": {
-      "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
-      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要帮助或查看更新内容？",
+      "joinDiscord": "加入 Discord 服务器！ ",
+      "watchShowcase": "观看视频",
+      "downloadButton": "下载",
+      "openModFolderButton": "打开Mods文件夹",
+      "joinDiscordButton": "加入 Discord",
+      "newUpdateAvailable": "新版本 (%version%) 现已发布！",
+      "noDownloadAvailable": "无下载链接可用，请查看我们的discord群组",
+      "notificationBox": {
+        "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
+        "betaAvailable": "%version% beta更新！下载链接可以在聊天栏中找到。",
+        "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+      }
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
@@ -221,7 +242,7 @@
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
-    "enableFeatureSnapping": "启用功能对齐",
+    "enableFeatureSnapping": "启用自动对齐",
     "stage": "第 %stage% 阶段",
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
@@ -242,7 +263,8 @@
     "effectActive": "已激活 1 种药水效果",
     "effectsActive": "已激活 %number% 种药水效果",
     "none": "无",
-    "copyModeSet": "开发者复制模式以切换至： %mode% ，请按下 %keyName% 以复制特定NBT！"
+    "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
+    "chroma": "渐变"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -333,6 +355,15 @@
           }
         }
       },
+      "reload": {
+        "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
+      },
+      "reloadConfig": {
+        "help": "§e(开发者) §7重载 mod 设定"
+      },
+      "reloadRes": {
+        "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
+      },
       "set": {
         "zealotCounter": {
           "help": "手动设置末影战士计数器",
@@ -351,9 +382,9 @@
         }
       },
       "slayer": {
-        "help": "修改猎杀任务统计，按 tab 查看指令参数",
+        "help": "修改猎手任务统计数据，按 tab 查看指令参数",
         "detailedHelp": {
-          "description": "修改猎杀任务统计，按 tab 查看指令参数",
+          "description": "修改猎手任务统计数据，按 tab 查看指令参数",
           "options": {
             "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "统计设置为的数字",
@@ -429,5 +460,26 @@
     "overfluxCapacitor": "过载电容",
     "coutureRune": "时装符文",
     "bossesKilled": "Boss 击杀数"
+  },
+  "warpMenu": {
+    "click": "点击传送点以传送！",
+    "mustUnlock": "必须先解锁该地的传送卷轴",
+    "privateIsland": "私人岛屿",
+    "home": "你的岛屿",
+    "spawn": "出生点",
+    "unknown": "尚未探索",
+    "notUnlocked": "尚未解锁",
+    "inCombat": "战斗中..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "半角逗号",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }
