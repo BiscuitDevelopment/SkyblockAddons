@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.config;
 
 import codes.biscuit.hypixellocalizationlib.HypixelLanguage;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.backpacks.StorageCache;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTrackerData;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTrackerData;
@@ -31,6 +32,7 @@ public class PersistentValuesManager {
 
         private SlayerTrackerData slayerTracker = new SlayerTrackerData();
         private DragonTrackerData dragonTracker = new DragonTrackerData();
+        private StorageCache storageCache = new StorageCache();
 
         private boolean blockCraftingIncompletePatterns = true;
         private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;

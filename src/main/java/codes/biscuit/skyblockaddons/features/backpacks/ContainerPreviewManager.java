@@ -1,7 +1,9 @@
 package codes.biscuit.skyblockaddons.features.backpacks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -19,6 +21,7 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
+import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
@@ -27,8 +30,11 @@ import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * This class contains utility methods for backpacks and stores the color of the backpack the player has open.
@@ -36,12 +42,10 @@ import java.util.List;
 public class ContainerPreviewManager {
 
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
-    private static final ResourceLocation UNKNOWN_ITEM = new ResourceLocation("skyblockaddons", "unknown.png");
 
     /**
      * The container preview to render
      */
-
     private static ContainerPreview currentContainerPreview;
 
     /**
@@ -77,24 +81,24 @@ public class ContainerPreviewManager {
             int containerSize = containerData.getSize();
 
             // Parse out a list of items in the container
-            ItemStack[] items = null;
+            List<ItemStack> items = null;
             String compressedDataTag = containerData.getCompressedDataTag();
             List<String> itemStackDataTags = containerData.getItemStackDataTags();
 
             if (compressedDataTag != null) {
                 if (extraAttributes.hasKey(compressedDataTag, Constants.NBT.TAG_BYTE_ARRAY)) {
                     byte[] bytes = extraAttributes.getByteArray(compressedDataTag);
-                    items = decompressItems(bytes, containerSize);
+                    items = decompressItems(bytes);
                 }
             } else if (itemStackDataTags != null) {
-                items = new ItemStack[containerSize];
-                Iterator<String> itemStackDataTagsIterator = containerData.getItemStackDataTags().iterator();
+                items = new ArrayList<>(containerSize);
+                Iterator<String> itemStackDataTagsIterator = itemStackDataTags.iterator();
                 for (int itemNumber = 0; itemNumber < containerSize && itemStackDataTagsIterator.hasNext(); itemNumber++) {
                     String key = itemStackDataTagsIterator.next();
                     if (!extraAttributes.hasKey(key)) {
                         continue;
                     }
-                    items[itemNumber] = ItemUtils.getPersonalCompactorItemStack(extraAttributes.getString(key));
+                    items.add(ItemUtils.getPersonalCompactorItemStack(extraAttributes.getString(key)));
                 }
             }
             if (items == null) {
@@ -111,16 +115,16 @@ public class ContainerPreviewManager {
         return null;
     }
 
-    private static ItemStack[] decompressItems(byte[] bytes, int maxItems) {
-        ItemStack[] items = null;
+    private static List<ItemStack> decompressItems(byte[] bytes) {
+        List<ItemStack> items = null;
         try {
             NBTTagCompound decompressedData = CompressedStreamTools.readCompressed(new ByteArrayInputStream(bytes));
             NBTTagList list = decompressedData.getTagList("i", Constants.NBT.TAG_COMPOUND);
             if (list.hasNoTags()) {
                 throw new Exception("Decompressed container list has no item tags");
             }
-            int size = Math.min(list.tagCount(), maxItems);
-            items = new ItemStack[size];
+            int size = Math.min(list.tagCount(), 54);
+            items = new ArrayList<>(size);
 
             for (int i = 0; i < size; i++) {
                 NBTTagCompound item = list.getCompoundTagAt(i);
@@ -131,8 +135,7 @@ public class ContainerPreviewManager {
                 } else if (itemID == 141) { // Carrot Block -> Carrot Item
                     item.setShort("id", (short) 391);
                 }
-                ItemStack itemStack = ItemStack.loadItemStackFromNBT(item);
-                items[i] = itemStack;
+                items.add(ItemStack.loadItemStackFromNBT(item));
             }
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("There was an error decompressing container data.");
@@ -149,8 +152,8 @@ public class ContainerPreviewManager {
             int x = currentContainerPreview.getX();
             int y = currentContainerPreview.getY();
 
-            ItemStack[] items = currentContainerPreview.getItems();
-            int length = items.length;
+            List<ItemStack> items = currentContainerPreview.getItems();
+            int length = items.size();
             int rows = currentContainerPreview.getNumRows();
             int cols = currentContainerPreview.getNumCols();
 
@@ -222,7 +225,7 @@ public class ContainerPreviewManager {
                 int itemStartX = x + textureBorder + 1;
                 int itemStartY = y + topBorder + 1;
                 for (int i = 0; i < length; i++) {
-                    ItemStack item = items[i];
+                    ItemStack item = items.get(i);
                     if (item != null) {
                         int itemX = itemStartX + ((i % cols) * textureItemSquare);
                         int itemY = itemStartY + ((i / cols) * textureItemSquare);
@@ -261,7 +264,7 @@ public class ContainerPreviewManager {
                 GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
                 GlStateManager.enableRescaleNormal();
                 for (int i = 0; i < length; i++) {
-                    ItemStack item = items[i];
+                    ItemStack item = items.get(i);
                     if (item != null) {
                         int itemX = x + ((i % cols) * 16);
                         int itemY = y + ((i / cols) * 16);
@@ -298,6 +301,67 @@ public class ContainerPreviewManager {
         }
     }
 
+    /**
+     * Create a {@link ContainerPreview} from an backpack itemstack in the storage menu and the list of items in that preview
+     *
+     * @param stack the backpack itemstack that's being hovered over
+     * @param items the items in the backpack
+     * @return the container preview
+     */
+    public static ContainerPreview getFromStorageBackpack(ItemStack stack, List<ItemStack> items) {
+        if (items == null) {
+            //SkyblockAddons.getLogger().error("There was an error parsing container data.");
+            return null;
+        }
+
+        // Get the container color
+        BackpackColor color = ItemUtils.getBackpackColor(stack);
+        // Relying on item lore here. Once hypixel settles on a standard for backpacks, we should figure out a better way
+        String skyblockID = TextUtils.stripColor(ItemUtils.getItemLore(stack).get(0)).toUpperCase().replaceAll(" ", "_").trim();
+        ContainerData containerData = ItemUtils.getContainerData(skyblockID);
+        int rows = 6, cols = 9;
+        if (containerData != null) {
+            // Hybrid system for jumbo backpacks means they get only 5 rows in the container (but old ones that haven't been converted get 6 outside of it)
+            rows = Math.min(containerData.getNumRows(), 5);
+            cols = containerData.getNumCols();
+        }
+
+        return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, rows, cols);
+    }
+
+
+    /**
+     * Returns whether the backpack freeze key is down
+     *
+     * @return {@code true} if the backpack freeze key is down, {@code false} otherwise
+     */
+    private static boolean isFreezeKeyDown() {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (main.getFreezeBackpackKey().isKeyDown()) return true;
+        try {
+            if (Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode())) return true;
+        } catch (Exception ignored) {
+        }
+
+        return false;
+    }
+
+    public static void onContainerKeyTyped(int keyCode) {
+        SkyblockAddons main = SkyblockAddons.getInstance();
+
+        if (main.getUtils().isOnSkyblock()) {
+            if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
+                frozen = false;
+                currentContainerPreview = null;
+            }
+            if (keyCode == main.getFreezeBackpackKey().getKeyCode() && frozen && System.currentTimeMillis() - lastToggleFreezeTime > 500) {
+                lastToggleFreezeTime = System.currentTimeMillis();
+                frozen = false;
+            }
+        }
+    }
+
     //TODO Fix for Hypixel localization
     public static boolean onRenderTooltip(ItemStack itemStack, int x, int y) {
         SkyblockAddons main = SkyblockAddons.getInstance();
@@ -316,36 +380,66 @@ public class ContainerPreviewManager {
             if (ItemUtils.isMenuItem(itemStack)) {
                 return false;
             }
-            // Check the subfeature conditions
-            NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(itemStack);
-            ContainerData containerData = ItemUtils.getContainerData(ItemUtils.getSkyblockItemID(extraAttributes));
 
-            // TODO: Does checking menu item handle the baker inventory thing?
-            if (containerData == null || (containerData.isCakeBag() && main.getConfigValues().isDisabled(Feature.CAKE_BAG_PREVIEW)) ||
-                    (containerData.isPersonalCompactor() && main.getConfigValues().isDisabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW))) {
-                return false;
+            ContainerPreview containerPreview = null;
+            // Check for cached storage previews
+            if (main.getInventoryUtils().getInventoryType() == InventoryType.STORAGE) {
+                Matcher m = Pattern.compile("Backpack Slot (?<slot>[0-9]+)").matcher(TextUtils.stripColor(itemStack.getDisplayName()));
+                if (m.matches()) {
+                    int pageNum = Integer.parseInt(m.group("slot"));
+                    String storageKey = InventoryType.STORAGE_BACKPACK.getInventoryName() + pageNum;
+                    StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
+                    if (cache.getBackpacks().get(storageKey) != null) {
+                        List<Byte> bytes = cache.getBackpacks().get(storageKey).getStorage();
+                        byte[] bytes2 = new byte[bytes.size()];
+                        for (int i = 0; i < bytes.size(); i++) {
+                            if (bytes.get(i) != null) {
+                                bytes2[i] = bytes.get(i);
+                            } else {
+                                bytes2[i] = 0;
+                            }
+                        }
+                        List<ItemStack> items = decompressItems(bytes2);
+                        // Clip out the top
+                        items = items.subList(9, items.size());
+                        containerPreview = getFromStorageBackpack(itemStack, items);
+                    }
+                }
             }
+            // Check for normal previews
+            if (containerPreview == null) {
+                // Check the subfeature conditions
+                NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(itemStack);
+                ContainerData containerData = ItemUtils.getContainerData(ItemUtils.getSkyblockItemID(extraAttributes));
 
-            //TODO: Probably some optimizations here we can do. Can we check chest equivalence?
-            // Avoid showing backpack preview in auction stuff.
-            net.minecraft.inventory.Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
-            if (playerContainer instanceof ContainerChest) {
-                IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
-                if (chestInventory.hasCustomName()) {
-                    String chestName = chestInventory.getDisplayName().getUnformattedText();
-                    if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
+                // TODO: Does checking menu item handle the baker inventory thing?
+                if (containerData == null || (containerData.isCakeBag() && main.getConfigValues().isDisabled(Feature.CAKE_BAG_PREVIEW)) ||
+                        (containerData.isPersonalCompactor() && main.getConfigValues().isDisabled(Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW))) {
+                    return false;
+                }
 
-                        // Make sure this backpack is in the auction house and not just in your inventory before cancelling.
-                        for (int slotNumber = 0; slotNumber < chestInventory.getSizeInventory(); slotNumber++) {
-                            if (chestInventory.getStackInSlot(slotNumber) == itemStack) {
-                                return false;
+                //TODO: Probably some optimizations here we can do. Can we check chest equivalence?
+                // Avoid showing backpack preview in auction stuff.
+                net.minecraft.inventory.Container playerContainer = Minecraft.getMinecraft().thePlayer.openContainer;
+                if (playerContainer instanceof ContainerChest) {
+                    IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
+                    if (chestInventory.hasCustomName()) {
+                        String chestName = chestInventory.getDisplayName().getUnformattedText();
+                        if (chestName.contains("Auction") || "Your Bids".equals(chestName)) {
+
+                            // Make sure this backpack is in the auction house and not just in your inventory before cancelling.
+                            for (int slotNumber = 0; slotNumber < chestInventory.getSizeInventory(); slotNumber++) {
+                                if (chestInventory.getStackInSlot(slotNumber) == itemStack) {
+                                    return false;
+                                }
                             }
                         }
                     }
                 }
+
+                containerPreview = ContainerPreviewManager.getFromItem(itemStack);
             }
 
-            ContainerPreview containerPreview = ContainerPreviewManager.getFromItem(itemStack);
             if (containerPreview != null) {
                 containerPreview.setX(x);
                 containerPreview.setY(y);
@@ -368,35 +462,58 @@ public class ContainerPreviewManager {
         return frozen;
     }
 
-
     /**
-     * Returns whether the backpack freeze key is down
+     * Compresses the contents of the inventory
      *
-     * @return {@code true} if the backpack freeze key is down, {@code false} otherwise
+     * @param inventory the inventory to be compressed
+     * @return an nbt byte array of the compressed contents of the backpack
      */
-    private static boolean isFreezeKeyDown() {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
-        if (main.getFreezeBackpackKey().isKeyDown()) return true;
-        try {
-            if (Keyboard.isKeyDown(main.getFreezeBackpackKey().getKeyCode())) return true;
-        } catch (Exception ignored) {}
-
-        return false;
+    public static NBTTagByteArray getCompressedInventoryContents(IInventory inventory) {
+        if (inventory == null) {
+            return null;
+        }
+        ItemStack[] list = new ItemStack[inventory.getSizeInventory()];
+        for (int slotNumber = 0; slotNumber < inventory.getSizeInventory(); slotNumber++) {
+            list[slotNumber] = inventory.getStackInSlot(slotNumber);
+        }
+        return ItemUtils.getCompressedNBT(list);
     }
 
-    public static void onContainerKeyTyped(int keyCode) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
+    /**
+     * Saves the currently opened menu inventory to the cached backpacks.
+     * Triggers {@link PersistentValuesManager#saveValues()} if there are changes to the backpack
+     *
+     * @param storageKey the key in which to store the data
+     */
+    public static void saveStorageContainerInventory(String storageKey) {
+        // Get the cached storage containers
+        StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
+        // Get the cached container stored at this key
+        StorageCache.CompressedStorage cachedContainer = cache.getBackpacks().get(storageKey);
+        List<Byte> previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
 
-        if (main.getUtils().isOnSkyblock()) {
-            if (keyCode == 1 || keyCode == Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode()) {
-                frozen = false;
-                currentContainerPreview = null;
+        // Compute the compressed inventory of the current open inventory
+        ContainerChest chest = (ContainerChest) Minecraft.getMinecraft().thePlayer.openContainer;
+        IInventory chestInventory = chest.getLowerChestInventory();
+        byte[] bytes = getCompressedInventoryContents(chestInventory).getByteArray();
+
+        // Convert bytes into gson serializable list and check whether the cache is dirty
+        boolean dirty = previousCache == null || previousCache.size() != bytes.length;
+        List<Byte> newBytes = new ArrayList<>(bytes.length);
+        for (int i = 0; i < bytes.length; i++) {
+            newBytes.add(bytes[i]);
+            if (!dirty && bytes[i] != previousCache.get(i)) {
+                dirty = true;
             }
-            if (keyCode == main.getFreezeBackpackKey().getKeyCode() && frozen && System.currentTimeMillis() - lastToggleFreezeTime > 500) {
-                lastToggleFreezeTime = System.currentTimeMillis();
-                frozen = false;
+        }
+        if (dirty) {
+            if (cachedContainer == null) {
+                cache.getBackpacks().put(storageKey, new StorageCache.CompressedStorage(newBytes));
+            } else {
+                cachedContainer.setStorage(newBytes);
             }
+            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            System.out.println("Caching Backpack " + storageKey);
         }
     }
 }

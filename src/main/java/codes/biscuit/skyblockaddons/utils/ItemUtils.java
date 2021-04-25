@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
@@ -9,17 +10,21 @@ import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import lombok.Setter;
 import net.minecraft.enchantment.Enchantment;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.nbt.NBTTagString;
+import net.minecraft.nbt.*;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
-import java.util.*;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -247,7 +252,21 @@ public class ItemUtils {
     }
 
     /**
+     * Checks if the given {@code ItemStack} is a builders wand
+     * See {@link codes.biscuit.skyblockaddons.asm.hooks.PlayerControllerMPHook#onWindowClick(int, int, int, EntityPlayer, ReturnValue)} for a commented-out implementation (may come back in the future).
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
+     */
+    public static boolean isBuildersWand(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerData containerData = containers.get(getSkyblockItemID(extraAttributes));
+        return containerData != null && containerData.isBuildersWand();
+    }
+
+    /**
      * Gets the color of the backpack in the given {@code ItemStack}
+     *
      * @param stack the {@code ItemStack} containing the backpack
      * @return The color of the backpack; or {@code WHITE} if there is no color; or {@code null} if it is not a container
      */
@@ -257,7 +276,14 @@ public class ItemUtils {
         if (containerData != null) {
             try {
                 return BackpackColor.valueOf(extraAttributes.getString(containerData.getColorTag()));
-            } catch (IllegalArgumentException ignored) {}
+            } catch (IllegalArgumentException ignored) {
+            }
+            return BackpackColor.WHITE;
+        } else if (extraAttributes != null && extraAttributes.hasKey("backpack_color")) {
+            try {
+                return BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
+            } catch (IllegalArgumentException ignored) {
+            }
             return BackpackColor.WHITE;
         }
         return null;
@@ -496,5 +522,30 @@ public class ItemUtils {
             }
         }
         return null;
+    }
+
+    public static NBTTagByteArray getCompressedNBT(ItemStack[] items) {
+        if (items == null) {
+            return null;
+        }
+        // Add each item's nbt to a tag list
+        NBTTagList list = new NBTTagList();
+        for (ItemStack item : items) {
+            if (item == null) {
+                list.appendTag((new ItemStack((Item) null)).serializeNBT());
+            } else {
+                list.appendTag(item.serializeNBT());
+            }
+        }
+        // Append standard "i" tag for compression
+        NBTTagCompound nbt = new NBTTagCompound();
+        nbt.setTag("i", list);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try {
+            CompressedStreamTools.writeCompressed(nbt, stream);
+        } catch (IOException e) {
+            return null;
+        }
+        return new NBTTagByteArray(stream.toByteArray());
     }
 }

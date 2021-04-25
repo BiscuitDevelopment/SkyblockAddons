@@ -52,21 +52,33 @@ public class InventoryUtils {
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");
 
     private List<ItemStack> previousInventory;
-    private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
+    private final Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
 
     @Setter
     private boolean inventoryWarningShown;
 
-    /** Whether the player is wearing a Skeleton Helmet. */
-    @Getter private boolean wearingSkeletonHelmet;
+    /**
+     * Whether the player is wearing a Skeleton Helmet.
+     */
+    @Getter
+    private boolean wearingSkeletonHelmet;
 
-    @Getter private boolean usingToxicArrowPoison;
+    @Getter
+    private boolean usingToxicArrowPoison;
 
-    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+    @Getter
+    private final SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
-    @Getter private InventoryType inventoryType;
+    @Getter
+    private InventoryType inventoryType;
+    @Getter
+    String inventoryKey;
+    @Getter
+    private int inventoryPageNum;
+    @Getter
+    private String inventorySubtype;
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Copies an inventory into a List of copied ItemStacks
@@ -374,6 +386,7 @@ public class InventoryUtils {
     }
 
     //TODO: Fix for Hypixel localization
+
     /**
      * Detects and stores, and returns the current Skyblock inventory type. The inventory type is the kind of menu the
      * player has open, like a crafting table or an enchanting table for example.
@@ -386,22 +399,52 @@ public class InventoryUtils {
         if (!(currentScreen instanceof GuiChest)) {
             return inventoryType = null;
         }
-
+        // Get the open chest and test if it's the same one that we've seen before
         IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
+        if (inventory.getDisplayName() == null) {
+            return inventoryType = null;
+        }
+        String chestName = TextUtils.stripColor(inventory.getDisplayName().getUnformattedText());
 
+        // Initialize inventory to null and get the open chest name
+        inventoryType = null;
 
-        for (InventoryType inventoryType : InventoryType.values()) {
-            if (inventoryType.getInventoryPattern().matcher(inventory.getDisplayName().getUnformattedText()).matches()) {
-                if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                    return this.inventoryType = getReforgeInventoryType(inventoryType, inventory);
-
+        // Find an inventory match if possible
+        for (InventoryType inventoryTypeItr : InventoryType.values()) {
+            Matcher m = inventoryTypeItr.getInventoryPattern().matcher(chestName);
+            if (m.matches()) {
+                if (m.groupCount() > 0) {
+                    try {
+                        inventoryPageNum = Integer.parseInt(m.group("page"));
+                    } catch (Exception e) {
+                        inventoryPageNum = 0;
+                    }
+                    try {
+                        inventorySubtype = m.group("type");
+                    } catch (Exception e) {
+                        inventorySubtype = null;
+                    }
                 } else {
-                    return this.inventoryType = inventoryType;
+                    inventoryPageNum = 0;
+                    inventorySubtype = null;
                 }
+                if (inventoryTypeItr == InventoryType.BASIC_REFORGING || inventoryTypeItr == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+                    inventoryType = getReforgeInventoryType(inventoryTypeItr, inventory);
+                } else {
+                    inventoryType = inventoryTypeItr;
+                }
+                break;
             }
         }
+        inventoryKey = getInventoryKey(inventoryType, inventoryPageNum);
+        return inventoryType;
+    }
 
-        return this.inventoryType = null;
+    private String getInventoryKey(InventoryType inventoryType, int inventoryPageNum) {
+        if (inventoryType == null) {
+            return null;
+        }
+        return inventoryType.getInventoryName() + inventoryPageNum;
     }
 
     // TODO: Fix for Hypixel localization

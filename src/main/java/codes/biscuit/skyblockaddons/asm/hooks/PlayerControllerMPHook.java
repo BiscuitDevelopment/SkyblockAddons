@@ -156,7 +156,8 @@ public class PlayerControllerMPHook {
                         String itemID = ItemUtils.getSkyblockItemID(slotIn.getStack());
                         if (itemID == null) itemID = "";
 
-                        if (ItemUtils.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {
+                        // Now that right clicking backpacks is removed, remove this check and block right clicking on backpacks if locked
+                        if (/*ItemUtils.isBuildersWand(slotIn.getStack()) || ItemUtils.isBackpack(slotIn.getStack()) || */itemID.contains("SACK")) {
                             return;
                         }
                     }

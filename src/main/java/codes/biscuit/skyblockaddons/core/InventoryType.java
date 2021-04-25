@@ -21,7 +21,9 @@ public enum InventoryType {
     SALVAGING("Salvage Dungeon Item", "Salvage Dungeon Item"),
     ULTRASEQUENCER("Ultrasequencer", "Ultrasequencer \\((?<type>[a-zA-Z]+)\\)"),
     CHRONOMATRON("Chronomatron", "Chronomatron \\((?<type>[a-zA-Z]+)\\)"),
-    SUPERPAIRS("Superpairs", "Superpairs \\((?<type>[a-zA-Z]+)\\)");
+    SUPERPAIRS("Superpairs", "Superpairs \\((?<type>[a-zA-Z]+)\\)"),
+    STORAGE("Storage", "Storage"),
+    STORAGE_BACKPACK("BackpackStorage", "(?<type>[a-zA-Z]+) Backpack \\((?<page>[0-9]+)/[0-9]+\\)");
 
     @Getter
     private final String inventoryName;

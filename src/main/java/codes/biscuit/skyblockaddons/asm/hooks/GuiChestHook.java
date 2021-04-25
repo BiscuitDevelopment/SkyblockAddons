@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -41,14 +42,16 @@ public class GuiChestHook {
 
     private static GuiTextField textFieldMatch = null;
     private static GuiTextField textFieldExclusions = null;
-    @Setter @Getter private static String lastAccessoryBagReforge = null;
+    @Setter
+    @Getter
+    private static String lastAccessoryBagReforge = null;
     private static CraftingPatternSelection craftingPatternSelection = null;
 
-    private static Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
-    private static Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
-    private static Pattern notUnlockedPattern = Pattern.compile("(?:§5§o)?§cWarp not unlocked!");
-    private static Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
-    private static Pattern youAreHerePattern = Pattern.compile("(?:§5§o)?§aYou are here!");
+    private static final Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
+    private static final Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
+    private static final Pattern notUnlockedPattern = Pattern.compile("(?:§5§o)?§cWarp not unlocked!");
+    private static final Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
+    private static final Pattern youAreHerePattern = Pattern.compile("(?:§5§o)?§aYou are here!");
     private static IslandWarpGui islandWarpGui = null;
 
     public static void updateScreen() {
@@ -159,6 +162,8 @@ public class GuiChestHook {
             float y = guiTop + ySize / 2F - 72 / 2F;
 
             SkyblockAddons.getInstance().getRenderListener().drawCollectedEssences(x, y, false, false);
+        } else if (inventoryType == InventoryType.STORAGE_BACKPACK) {
+            ContainerPreviewManager.saveStorageContainerInventory(SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
         }
 
         if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatch != null &&
