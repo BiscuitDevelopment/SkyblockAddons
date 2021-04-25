@@ -13,7 +13,6 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.ResourceLocation;
-import org.apache.logging.log4j.Logger;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -132,7 +131,6 @@ public class OverlayEffectRenderer {
         WorldRenderer worldRenderer = info.getWorldRenderer();
 
         ResourceLocation particleTextures = EffectRenderer.particleTextures;
-        Logger logger = SkyblockAddons.getLogger();
 
         setupRenderEnvironment();
 
@@ -161,8 +159,8 @@ public class OverlayEffectRenderer {
                             DRAW_PARTICLE.draw();
                         }
                         catch (Throwable ex) {
-                            logger.warn("Couldn't render outline for effect " + effect.toString() + ".");
-                            logger.catching(ex); // Just move on to the next entity...
+                            //logger.warn("Couldn't render outline for effect " + effect.toString() + ".");
+                            //logger.catching(ex); // Just move on to the next entity...
                         }
                     }
 
