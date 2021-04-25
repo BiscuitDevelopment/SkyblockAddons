@@ -1,12 +1,10 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import com.google.common.base.CaseFormat;
 import com.google.gson.JsonObject;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.nio.charset.StandardCharsets;
-import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Pattern;
 
@@ -24,7 +22,8 @@ public class TextUtils {
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]+");
     private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
 
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
+    private static final Locale USLocale = Locale.US; // Using default number format from US
+    private static final NumberFormat DECIMAL_FORMAT = NumberFormat.getNumberInstance(USLocale);
 
     private static final NavigableMap<Integer, String> suffixes = new TreeMap<>();
     static {
