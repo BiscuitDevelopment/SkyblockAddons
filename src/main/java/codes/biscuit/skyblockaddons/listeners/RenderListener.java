@@ -249,6 +249,9 @@ public class RenderListener {
                 case BOSS_APPROACH_ALERT:
                     message = Message.MESSAGE_BOSS_APPROACH_ALERT;
                     break;
+                case SHOW_TRACKER_ENTITY_LOCATION:
+                    message = Message.MESSAGE_TRACKER_ALERT;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
@@ -285,6 +288,9 @@ public class RenderListener {
                     break;
                 case NO_ARROWS_LEFT_ALERT:
                     message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    break;
+                case SHOW_TRACKER_ENTITY_LOCATION:
+                    message = Message.MESSAGE_TRACKER_ALERT;
                     break;
             }
             if (message != null) {
