@@ -162,6 +162,7 @@ public enum Message {
     SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayersPresents"),
     SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
+    SETTING_SHOW_TRACKER_ENTITY_LOCATION(MessageObject.SETTING, "showTrackerEntityLocation"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -227,6 +228,8 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
+    MESSAGE_TRACKER_ALERT(MessageObject.MESSAGES, "trackerTitle"),
+    MESSAGE_TRACKER_LOCATION(MessageObject.MESSAGES, "trackerDesc"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -385,6 +388,8 @@ public enum Message {
                     text = text.replace("%radius%", variables[0]);
                 } else if (this == Message.MESSAGE_EFFECTS_ACTIVE) {
                     text = text.replace("%number%", variables[0]);
+                } else if (this == Message.MESSAGE_TRACKER_LOCATION) {
+                    text = text.replace("%type%", variables[0] + "§7").replace("%mob%", "§d" + variables[1] + "§7").replace("%location%", "§a" +variables[2] + "§7");
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
