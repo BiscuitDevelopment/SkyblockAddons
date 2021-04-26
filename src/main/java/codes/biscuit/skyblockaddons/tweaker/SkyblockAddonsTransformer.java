@@ -20,8 +20,10 @@ import java.util.Collection;
 
 public class SkyblockAddonsTransformer implements IClassTransformer {
 
-    @Getter private static boolean deobfuscated = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
-    @Getter private static boolean usingNotchMappings = !deobfuscated;
+    @Getter
+    private static final boolean deobfuscated = (boolean) Launch.blackboard.get("fml.deobfuscatedEnvironment");
+    @Getter
+    private static final boolean usingNotchMappings = !deobfuscated;
 
     private final Multimap<String, ITransformer> transformerMap = ArrayListMultimap.create();
 
@@ -90,7 +92,8 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             log(Level.INFO, String.format("Applying transformer %s on %s...", transformer.getClass().getName(), transformedName));
             transformer.transform(node, transformedName);
 
-            if (transformer instanceof FontRendererTransformer) {
+            // Asm-ing into patcher's source code causes issues if the writer tries to compute stackmap frames for some reason...TODO is why it's a problem?
+            if (transformer instanceof FontRendererTransformer && transformedName.equals("club.sk1er.patcher.hooks.FontRendererHook")) {
                 classWriterFlags.setValue(0);
             }
         });
