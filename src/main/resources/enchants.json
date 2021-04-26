@@ -78,6 +78,12 @@
       "goodLevel": 5,
       "maxLevel": 6
     },
+    "delicate": {
+      "loreName": "Delicate",
+      "nbtName": "delicate",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
     "depth strider": {
       "loreName": "Depth Strider",
       "nbtName": "depth_strider",
