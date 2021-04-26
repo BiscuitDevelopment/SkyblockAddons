@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '581a86dcbe'
+    id 'net.minecraftforge.gradle.forge' version 'f00c70fc32'
     id "io.freefair.lombok" version "6.0.0-m2"
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
@@ -36,7 +36,8 @@ dependencies {
     implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
     }
-    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    // Testing is unused for now
+//    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
 }
 
 sourceSets {
@@ -127,8 +128,12 @@ task copyLicenses (type: Copy) {
     into(sourceSets.main.output.resourcesDir)
 }
 
-test {
+/*test {
     useJUnitPlatform()
+}*/
+
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 tasks.jar.dependsOn(tasks.copyLicenses)
