@@ -23,7 +23,7 @@ public class TabListParser {
 
     public static String HYPIXEL_ADVERTISEMENT_CONTAINS = "HYPIXEL.NET";
 
-    //private static final Pattern GOD_POTION_PATTERN = Pattern.compile("You have a God Potion active! (?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
+    private static final Pattern GOD_POTION_PATTERN = Pattern.compile("You have a God Potion active! (?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
     private static final Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(?:§.)*(?:\\n(?:§.)*§7.+)*");
     private static final Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
     private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
@@ -107,7 +107,7 @@ public class TabListParser {
         //System.out.println(footer);
 
         // Make active effects/booster cookie status compact...
-        Matcher m = Pattern.compile("You have a God Potion active! (?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})").matcher(tabList.footer.getUnformattedText());
+        Matcher m = GOD_POTION_PATTERN.matcher(tabList.footer.getUnformattedText());
         if (m.find()) {
             footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount() + "\n§cGod Potion§r: " + m.group("timer"));
         } else {
