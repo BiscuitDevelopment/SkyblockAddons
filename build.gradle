@@ -60,7 +60,7 @@ minecraft {
 
 jar {
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+    archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}+${project.buildId}.jar"
 
     manifest.attributes(
             'Manifest-Version': '2.0',
