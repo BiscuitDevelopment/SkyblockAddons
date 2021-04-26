@@ -166,6 +166,7 @@ public enum Feature {
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
+    SHOW_TRACKER_ENTITY_LOCATION(173,Message.SETTING_SHOW_TRACKER_ENTITY_LOCATION, new GuiFeatureData(ColorCode.RED), true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
