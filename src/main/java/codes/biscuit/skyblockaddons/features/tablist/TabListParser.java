@@ -19,15 +19,17 @@ import java.util.regex.Pattern;
 
 public class TabListParser {
 
-    private static SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
 
     public static String HYPIXEL_ADVERTISEMENT_CONTAINS = "HYPIXEL.NET";
 
-    private static Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(?:§.)*(?:\\n(?:§.)*§7.+)*");
-    private static Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
-    private static Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
+    //private static final Pattern GOD_POTION_PATTERN = Pattern.compile("You have a God Potion active! (?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})");
+    private static final Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(?:§.)*(?:\\n(?:§.)*§7.+)*");
+    private static final Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
+    private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
 
-    @Getter private static List<RenderColumn> renderColumns;
+    @Getter
+    private static List<RenderColumn> renderColumns;
 
     public static void parse() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -102,9 +104,15 @@ public class TabListParser {
         ParsedTabColumn column = new ParsedTabColumn("§2§lOther");
 
         String footer = tabList.footer.getFormattedText();
+        //System.out.println(footer);
 
         // Make active effects/booster cookie status compact...
-        footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount());
+        Matcher m = Pattern.compile("You have a God Potion active! (?<timer>\\d{0,2}:?\\d{1,2}:\\d{2})").matcher(tabList.footer.getUnformattedText());
+        if (m.find()) {
+            footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount() + "\n§cGod Potion§r: " + m.group("timer"));
+        } else {
+            footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount());
+        }
 
         Matcher matcher = COOKIE_BUFF_PATTERN.matcher(footer);
         if (matcher.matches() && matcher.group().contains("Not active!")) {
@@ -129,7 +137,6 @@ public class TabListParser {
 
                 line = matcher.group("secondPart");
             }
-
             // Adds a space in front of any text that is not a sub-title
             line = TextUtils.trimWhitespaceAndResets(line);
             if (!line.contains("§l")) {
