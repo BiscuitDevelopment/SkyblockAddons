@@ -38,6 +38,7 @@ public enum Location {
     VILLAGE("Village"),
     WILDERNESS("Wilderness"),
     WIZARD_TOWER("Wizard Tower"),
+    CATACOMBS_ENTRANCE("Catacombs Entrance"),
 
     // The Park
     BIRCH_PARK("Birch Park"),

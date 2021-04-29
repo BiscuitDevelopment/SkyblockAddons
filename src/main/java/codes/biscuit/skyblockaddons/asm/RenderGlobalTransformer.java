@@ -1,8 +1,11 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.hooks.RenderGlobalHook;
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
 import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
+import net.minecraft.client.renderer.culling.ICamera;
+import net.minecraft.util.BlockPos;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.*;
 
@@ -11,7 +14,7 @@ import java.util.Iterator;
 public class RenderGlobalTransformer implements ITransformer {
 
     private LabelNode existingLabel = null;
-    private LabelNode newLabel = new LabelNode();
+    private final LabelNode newLabel = new LabelNode();
 
     /**
      * {@link net.minecraft.client.renderer.RenderGlobal}
@@ -21,6 +24,11 @@ public class RenderGlobalTransformer implements ITransformer {
         return new String[]{TransformerClass.RenderGlobal.getTransformerName()};
     }
 
+    /**
+     * See {@link RenderGlobalHook#blockRenderingSkyblockItemOutlines(ICamera, float, double, double, double)},
+     * {@link RenderGlobalHook#afterFramebufferDraw()}, {@link RenderGlobalHook#onAddBlockBreakParticle(int, BlockPos, int)}, and
+     * {@link RenderGlobalHook#shouldRenderSkyblockItemOutlines()})
+     */
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
@@ -63,9 +71,7 @@ public class RenderGlobalTransformer implements ITransformer {
                         break;
                     }
                 }
-            }
-
-            else if (TransformerMethod.sendBlockBreakProgress.matches(methodNode)) {
+            } else if (TransformerMethod.sendBlockBreakProgress.matches(methodNode)) {
 
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnAddBlockBreakParticle());
 
@@ -92,8 +98,7 @@ public class RenderGlobalTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.DLOAD, 5)); // x
         list.add(new VarInsnNode(Opcodes.DLOAD, 7)); // y
         list.add(new VarInsnNode(Opcodes.DLOAD, 9)); // z
-        list.add(new VarInsnNode(Opcodes.ALOAD, 18)); // list
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RenderGlobalHook", "blockRenderingSkyblockItemOutlines", "("+TransformerClass.ICamera.getName()+"FDDDLjava/util/List;)Z", false));
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/RenderGlobalHook", "blockRenderingSkyblockItemOutlines", "(" + TransformerClass.ICamera.getName() + "FDDD)Z", false));
         list.add(new JumpInsnNode(Opcodes.IFEQ, labelNode));
 
         return list;

@@ -2,38 +2,19 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.RenderGlobal;
-import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.culling.ICamera;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.BlockPos;
 import org.apache.logging.log4j.Logger;
-import org.lwjgl.BufferUtils;
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL13;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.FloatBuffer;
-import java.util.List;
-import java.util.Map;
 
 public class RenderGlobalHook {
-
-    private static final FloatBuffer BUF_FLOAT_4 = BufferUtils.createFloatBuffer(4);
 
     private static boolean stopLookingForOptifine = false;
 
@@ -41,7 +22,7 @@ public class RenderGlobalHook {
     private static Method isShaders = null;
     private static Method isAntialiasing = null;
 
-    private static Logger logger = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     public static boolean shouldRenderSkyblockItemOutlines() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -98,165 +79,8 @@ public class RenderGlobalHook {
         GlStateManager.enableDepth();
     }
 
-    public static boolean blockRenderingSkyblockItemOutlines(ICamera camera, float partialTicks, double x, double y, double z, List<Entity> entities) {
-        boolean shouldRenderOutlines = shouldRenderSkyblockItemOutlines();
-
-        if (shouldRenderOutlines) {
-            Minecraft mc = Minecraft.getMinecraft();
-            RenderGlobal renderGlobal = mc.renderGlobal;
-            SkyblockAddons main = SkyblockAddons.getInstance();
-
-            mc.theWorld.theProfiler.endStartSection("entityOutlines");
-            renderGlobal.entityOutlineFramebuffer.framebufferClear();
-
-            GlStateManager.depthFunc(519);
-            GlStateManager.disableFog();
-            renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
-            RenderHelper.disableStandardItemLighting();
-            mc.getRenderManager().setRenderOutlines(true);
-
-            for (Entity entity : entities) {
-                try {
-                    if (!(entity instanceof EntityItem) && !(entity instanceof EntityPlayer)) {
-                        continue;
-                    }
-
-                    if (entity instanceof EntityItem && (!main.getConfigValues().isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW) ||
-                            (!main.getConfigValues().isEnabled(Feature.SHOW_GLOWING_ITEMS_ON_ISLAND) && main.getUtils().getLocation() == Location.ISLAND))) {
-                        continue;
-                    }
-
-                    if (entity instanceof EntityPlayer && !main.getConfigValues().isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW)) {
-                        continue;
-                    }
-
-
-                    if (!main.getUtils().isInDungeon() && entity instanceof EntityPlayer) {
-                        continue;
-                    }
-
-                    if (entity == mc.thePlayer) {
-                        continue;
-                    }
-
-                    Location location = main.getUtils().getLocation();
-
-                    if (entity instanceof EntityItem && (location == Location.VILLAGE || location == Location.AUCTION_HOUSE
-                            || location == Location.BANK || location == Location.BAZAAR || location == Location.COAL_MINE
-                            || location == Location.LIBRARY || location == Location.JERRYS_WORKSHOP) &&
-                            isShopShowcaseItem((EntityItem) entity)) {
-                        continue;
-                    }
-
-                    boolean isInView = (entity instanceof EntityPlayer || entity.isInRangeToRender3d(x, y, z)) &&
-                            (entity.ignoreFrustumCheck || camera.isBoundingBoxInFrustum(entity.getEntityBoundingBox()) || entity.riddenByEntity == mc.thePlayer);
-                    if (!isInView) {
-                        continue;
-                    }
-
-                    int color;
-                    if (entity instanceof EntityItem) {
-                        color = getOutlineColor(((EntityItem) entity).getEntityItem());
-                    } else {
-                        color = getOutlineColor((EntityPlayer) entity);
-                    }
-                    if (color == Integer.MAX_VALUE) {
-                        continue;
-                    }
-
-                    GlStateManager.enableColorMaterial();
-                    enableOutlineMode(color);
-                    mc.getRenderManager().renderEntitySimple(entity, partialTicks);
-                    disableOutlineMode();
-                    GlStateManager.disableColorMaterial();
-
-                } catch (Throwable ex) {
-                    logger.warn("Couldn't render outline for entity " + entity.toString() + ".");
-                    logger.catching(ex); // Just move on to the next entity...
-                }
-            }
-
-            mc.getRenderManager().setRenderOutlines(false);
-            RenderHelper.enableStandardItemLighting();
-            GlStateManager.depthMask(false);
-            renderGlobal.entityOutlineShader.loadShaderGroup(partialTicks);
-            GlStateManager.enableLighting();
-            GlStateManager.depthMask(true);
-            GlStateManager.enableFog();
-            GlStateManager.enableBlend();
-            GlStateManager.enableColorMaterial();
-            GlStateManager.depthFunc(515);
-            GlStateManager.enableDepth();
-            GlStateManager.enableAlpha();
-
-            mc.getFramebuffer().bindFramebuffer(false);
-        }
-
-        return !shouldRenderOutlines;
-    }
-
-    public static int getOutlineColor(ItemStack itemStack) {
-        ItemRarity itemRarity = ItemUtils.getRarity(itemStack);
-        if (itemRarity != null) {
-            return Minecraft.getMinecraft().fontRendererObj.getColorCode(itemRarity.getColorCode().getCode());
-        }
-
-        return Integer.MAX_VALUE;
-    }
-
-    public static int getOutlineColor(EntityPlayer player) {
-        ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam)player.getTeam();
-
-        if (scoreplayerteam != null) {
-            String formattedName = FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix());
-
-            if (formattedName.length() >= 2) {
-                return Minecraft.getMinecraft().fontRendererObj.getColorCode(formattedName.charAt(1));
-            }
-        }
-
-        return Integer.MAX_VALUE;
-    }
-
-    public static void enableOutlineMode(int color) {
-        BUF_FLOAT_4.put(0, (float)(color >> 16 & 255) / 255.0F);
-        BUF_FLOAT_4.put(1, (float)(color >> 8 & 255) / 255.0F);
-        BUF_FLOAT_4.put(2, (float)(color & 255) / 255.0F);
-        BUF_FLOAT_4.put(3, 1);
-
-        GL11.glTexEnv(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_COLOR, BUF_FLOAT_4);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL13.GL_COMBINE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_REPLACE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL13.GL_CONSTANT);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_REPLACE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
-    }
-
-    public static void disableOutlineMode() {
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL11.GL_TEXTURE_ENV_MODE, GL11.GL_MODULATE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_RGB, GL11.GL_MODULATE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_RGB, GL11.GL_TEXTURE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_RGB, GL11.GL_SRC_COLOR);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_COMBINE_ALPHA, GL11.GL_MODULATE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_SOURCE0_ALPHA, GL11.GL_TEXTURE);
-        GL11.glTexEnvi(GL11.GL_TEXTURE_ENV, GL13.GL_OPERAND0_ALPHA, GL11.GL_SRC_ALPHA);
-    }
-
-    /*
-    This method checks if the given EntityItem is an item being showcased in a shop.
-    It works by detecting glass case the item is in.
-     */
-    public static boolean isShopShowcaseItem(EntityItem entityItem) {
-        for (EntityArmorStand entityArmorStand : entityItem.worldObj.getEntitiesWithinAABB(EntityArmorStand.class, entityItem.getEntityBoundingBox())) {
-            if (entityArmorStand.isInvisible() && entityArmorStand.getEquipmentInSlot(4) != null &&
-                    entityArmorStand.getEquipmentInSlot(4).getItem() == Item.getItemFromBlock(Blocks.glass)) {
-                return true;
-            }
-        }
-
-        return false;
+    public static boolean blockRenderingSkyblockItemOutlines(ICamera camera, float partialTicks, double x, double y, double z) {
+        return EntityOutlineRenderer.renderEntityOutlines(camera, partialTicks, x, y, z);
     }
 
     public static void onAddBlockBreakParticle(int breakerId, BlockPos pos, int progress) {

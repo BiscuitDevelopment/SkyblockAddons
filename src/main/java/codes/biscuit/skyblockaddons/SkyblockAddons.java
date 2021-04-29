@@ -7,6 +7,9 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureDungeonTeammateOutlines;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureItemOutlines;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -77,27 +80,30 @@ public class SkyblockAddons {
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
-    private PlayerListener playerListener;
-    private GuiScreenListener guiScreenListener;
-    private RenderListener renderListener;
-    private ResourceManagerReloadListener resourceManagerReloadListener;
-    private InventoryUtils inventoryUtils;
-    private Utils utils;
-    private Updater updater;
-    @Setter private OnlineData onlineData;
-    private DiscordRPCManager discordRPCManager;
-    private Scheduler scheduler;
-    private NewScheduler newScheduler;
-    private DungeonManager dungeonManager;
-    private GuiManager guiManager;
+    private final PlayerListener playerListener;
+    private final GuiScreenListener guiScreenListener;
+    private final RenderListener renderListener;
+    private final ResourceManagerReloadListener resourceManagerReloadListener;
+    private final InventoryUtils inventoryUtils;
+    private final Utils utils;
+    private final Updater updater;
+    @Setter
+    private OnlineData onlineData;
+    private final DiscordRPCManager discordRPCManager;
+    private final Scheduler scheduler;
+    private final NewScheduler newScheduler;
+    private final DungeonManager dungeonManager;
+    private final GuiManager guiManager;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
     private boolean usingPatcher;
-    @Setter private boolean devMode;
-    private List<SkyblockKeyBinding> keyBindings = new LinkedList<>();
+    @Setter
+    private boolean devMode;
+    private final List<SkyblockKeyBinding> keyBindings = new LinkedList<>();
 
-    @Getter private final Set<Integer> registeredFeatureIDs = new HashSet<>();
+    @Getter
+    private final Set<Integer> registeredFeatureIDs = new HashSet<>();
 
     public SkyblockAddons() {
         instance = this;
@@ -130,14 +136,17 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(renderListener);
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(newScheduler);
+        MinecraftForge.EVENT_BUS.register(new FeatureItemOutlines());
+        MinecraftForge.EVENT_BUS.register(new FeatureDungeonTeammateOutlines());
+        MinecraftForge.EVENT_BUS.register(new EntityOutlineRenderer());
         ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
         Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
-                new SkyblockKeyBinding( "edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
-                new SkyblockKeyBinding( "lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
-                new SkyblockKeyBinding( "freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
+                new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
+                new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
+                new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
                 new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
 
         // Don't register the developer mode key on startup.
