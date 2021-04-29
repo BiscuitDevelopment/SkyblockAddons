@@ -390,16 +390,8 @@ public class ContainerPreviewManager {
                     String storageKey = InventoryType.STORAGE_BACKPACK.getInventoryName() + pageNum;
                     StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
                     if (cache.getBackpacks().get(storageKey) != null) {
-                        List<Byte> bytes = cache.getBackpacks().get(storageKey).getStorage();
-                        byte[] bytes2 = new byte[bytes.size()];
-                        for (int i = 0; i < bytes.size(); i++) {
-                            if (bytes.get(i) != null) {
-                                bytes2[i] = bytes.get(i);
-                            } else {
-                                bytes2[i] = 0;
-                            }
-                        }
-                        List<ItemStack> items = decompressItems(bytes2);
+                        byte[] bytes = cache.getBackpacks().get(storageKey).getStorage();
+                        List<ItemStack> items = decompressItems(bytes);
                         // Clip out the top
                         items = items.subList(9, items.size());
                         containerPreview = getFromStorageBackpack(itemStack, items);
@@ -490,7 +482,7 @@ public class ContainerPreviewManager {
         StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
         // Get the cached container stored at this key
         StorageCache.CompressedStorage cachedContainer = cache.getBackpacks().get(storageKey);
-        List<Byte> previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
+        byte[] previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
 
         // Compute the compressed inventory of the current open inventory
         ContainerChest chest = (ContainerChest) Minecraft.getMinecraft().thePlayer.openContainer;
@@ -498,19 +490,18 @@ public class ContainerPreviewManager {
         byte[] bytes = getCompressedInventoryContents(chestInventory).getByteArray();
 
         // Convert bytes into gson serializable list and check whether the cache is dirty
-        boolean dirty = previousCache == null || previousCache.size() != bytes.length;
-        List<Byte> newBytes = new ArrayList<>(bytes.length);
+        boolean dirty = previousCache == null || previousCache.length != bytes.length;
         for (int i = 0; i < bytes.length; i++) {
-            newBytes.add(bytes[i]);
-            if (!dirty && bytes[i] != previousCache.get(i)) {
+            if (!dirty && bytes[i] != previousCache[i]) {
                 dirty = true;
+                break;
             }
         }
         if (dirty) {
             if (cachedContainer == null) {
-                cache.getBackpacks().put(storageKey, new StorageCache.CompressedStorage(newBytes));
+                cache.getBackpacks().put(storageKey, new StorageCache.CompressedStorage(bytes));
             } else {
-                cachedContainer.setStorage(newBytes);
+                cachedContainer.setStorage(bytes);
             }
             SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
             System.out.println("Caching Backpack " + storageKey);

@@ -26,9 +26,16 @@ import java.util.function.Predicate;
  */
 public class FeatureItemOutlines {
 
+    /**
+     * List of skyblock locations where we might see items in showcases
+     */
     private static final HashSet<Location> SHOWCASE_ITEM_LOCATIONS = new HashSet<>(Arrays.asList(
             Location.VILLAGE, Location.AUCTION_HOUSE, Location.BANK, Location.BAZAAR,
             Location.COAL_MINE, Location.LIBRARY, Location.JERRYS_WORKSHOP, Location.THE_END));
+
+    /**
+     * Function to return the outline color for an item based on its skyblock rarity.
+     */
     private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
         ItemRarity itemRarity = ItemUtils.getRarity(((EntityItem) e).getEntityItem());
 
@@ -37,8 +44,18 @@ public class FeatureItemOutlines {
         }
         return ColorCode.GRAY.getColor();
     };
-    // Cached values of the client's skyblock location and config state
+
+
+    /**
+     * Cached value of the client's skyblock location
+     */
     private static Location location;
+    /**
+     * Cached value of the client's config
+     */
+    private static ConfigValues config;
+
+
     /**
      * Entity-level predicate to determine whether a specific entity should be outlined.
      * Evaluates to {@code true} iff the entity should be outlined (i.e., accepts dropped items that aren't showcase items)
@@ -46,7 +63,6 @@ public class FeatureItemOutlines {
      */
     private static final Predicate<Entity> ENTITY_TEST = e -> e instanceof EntityItem &&
             (!SHOWCASE_ITEM_LOCATIONS.contains(location) || !isShopShowcaseItem((EntityItem) e));
-    private static ConfigValues config;
 
     public FeatureItemOutlines() {
     }
