@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.features.EntityOutlines;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
+import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent.EntityAndOutlineColor;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -26,10 +27,8 @@ import org.lwjgl.opengl.GL30;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Class to handle all entity outlining, including xray and no-xray rendering
@@ -73,38 +72,14 @@ public class EntityOutlineRenderer {
             DrawUtils.enableOutlineMode();
             GlStateManager.enableColorMaterial();
 
-            /*
-            if (entityRenderCache.isDirty()) {
-                // Only render outlines around non-null entities within the camera frustum
-                HashSet<Entity> entitiesToRender = new HashSet<>(entities.size());
-                entities.forEach(e -> {
-                    if (e != null && shouldRender(camera, e, x, y, z)) {
-                        entitiesToRender.add(e);
-                    }
-                });
-
-                // These events need to be called in this specific order for the xray to have priority over the no xray
-                // Get all entities to render xray outlines
-                RenderEntityOutlineEvent xrayOutlineEvent = new RenderEntityOutlineEvent(RenderEntityOutlineEvent.Type.XRAY, entitiesToRender);
-                MinecraftForge.EVENT_BUS.post(xrayOutlineEvent);
-                // Get all entities to render no xray outlines, using pre-filtered entities (no need to test xray outlined entities)
-                RenderEntityOutlineEvent noxrayOutlineEvent = new RenderEntityOutlineEvent(RenderEntityOutlineEvent.Type.NO_XRAY, entitiesToRender);
-                MinecraftForge.EVENT_BUS.post(noxrayOutlineEvent);
-                // Cache the entities for future use
-                entityRenderCache.setXrayCache(xrayOutlineEvent.getEntitiesToOutline());
-                entityRenderCache.setNoXrayCache(noxrayOutlineEvent.getEntitiesToOutline());
-                entityRenderCache.setClean();
-            }
-
-             */
             // Xray is enabled by disabling depth testing
             GlStateManager.depthFunc(GL11.GL_ALWAYS);
-            for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getXrayCache().entrySet()) {
+            for (EntityAndOutlineColor entityAndColor : entityRenderCache.getXrayCache()) {
                 // Test if the entity should render, given the player's instantaneous camera position
-                if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
+                if (shouldRender(camera, entityAndColor.getEntity(), x, y, z)) {
                     try {
-                        DrawUtils.outlineColor(entityAndColor.getValue());
-                        renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
+                        DrawUtils.outlineColor(entityAndColor.getColor());
+                        renderManager.renderEntityStatic(entityAndColor.getEntity(), partialTicks, true);
                     } catch (Exception ignored) {
                     }
                 }
@@ -116,12 +91,12 @@ public class EntityOutlineRenderer {
 
             // Xray disabled by re-enabling traditional depth testing
             GlStateManager.depthFunc(GL11.GL_LEQUAL);
-            for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getNoXrayCache().entrySet()) {
+            for (EntityAndOutlineColor entityAndColor : entityRenderCache.getNoXrayCache()) {
                 // Test if the entity should render, given the player's instantaneous camera position
-                if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
+                if (shouldRender(camera, entityAndColor.getEntity(), x, y, z)) {
                     try {
-                        DrawUtils.outlineColor(entityAndColor.getValue());
-                        renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
+                        DrawUtils.outlineColor(entityAndColor.getColor());
+                        renderManager.renderEntityStatic(entityAndColor.getEntity(), partialTicks, true);
                     } catch (Exception ignored) {
                     }
                 }
@@ -295,19 +270,9 @@ public class EntityOutlineRenderer {
     private static class CachedInfo {
         @Getter
         @Setter
-        private HashMap<Entity, Integer> xrayCache = new HashMap<>();
+        private HashSet<EntityAndOutlineColor> xrayCache = new HashSet<>();
         @Getter
         @Setter
-        private HashMap<Entity, Integer> noXrayCache = new HashMap<>();
-        @Getter
-        private boolean dirty = true;
-
-        public void setDirty() {
-            dirty = true;
-        }
-
-        public void setClean() {
-            dirty = false;
-        }
+        private HashSet<EntityAndOutlineColor> noXrayCache = new HashSet<>();
     }
 }

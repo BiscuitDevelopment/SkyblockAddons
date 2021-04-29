@@ -4,7 +4,6 @@ import lombok.Getter;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.function.Function;
@@ -27,7 +26,7 @@ public class RenderEntityOutlineEvent extends Event {
      * The entities to outline. This is progressively cumulated from {@link #entitiesToChooseFrom}
      */
     @Getter
-    private final HashMap<Entity, Integer> entitiesToOutline;
+    private final HashSet<EntityAndOutlineColor> entitiesToOutline;
     /**
      * The entities we can outline. Note that this set and {@link #entitiesToOutline} are disjoint at all times.
      */
@@ -44,17 +43,19 @@ public class RenderEntityOutlineEvent extends Event {
     public RenderEntityOutlineEvent(Type theType, HashSet<Entity> potentialEntities) {
         type = theType;
         entitiesToChooseFrom = potentialEntities;
-        entitiesToOutline = new HashMap<>(potentialEntities.size());
+        entitiesToOutline = new HashSet<>(potentialEntities.size());
     }
 
     /**
      * Conditionally queue entities around which to render entities
      * Selects from the pool of {@link #entitiesToChooseFrom} to speed up the predicate testing on subsequent calls.
+     * Is more efficient (theoretically) than calling {@link #queueEntityToOutline(Entity, int)} for each entity because lists are handled internally.
      * <p>
      * This function loops through all entities and so is not very efficient.
      * It's advisable to encapsulate calls to this function with global checks (those not dependent on an individual entity) for efficiency purposes.
      *
-     * @param predicate on which each entity is tested for inclusion into the queue (Evaluates to {@code true} for entities that will be included in the queue).
+     * @param predicate    on which each entity is tested for inclusion into the queue (Evaluates to {@code true} for entities that will be included in the queue).
+     * @param outlineColor a function to test
      */
     public void queueEntitiesToOutline(Predicate<Entity> predicate, Function<Entity, Integer> outlineColor) {
         if (predicate == null) {
@@ -64,10 +65,25 @@ public class RenderEntityOutlineEvent extends Event {
         while (itr.hasNext()) {
             Entity e = itr.next();
             if (predicate.test(e)) {
-                entitiesToOutline.put(e, outlineColor.apply(e));
+                entitiesToOutline.add(new EntityAndOutlineColor(e, outlineColor.apply(e)));
                 itr.remove();
             }
         }
+    }
+
+    /**
+     * Adds a single entity to the list of the entities to outline
+     *
+     * @param entity       the entity to add
+     * @param outlineColor the color with which to outline
+     */
+    public void queueEntityToOutline(Entity entity, int outlineColor) {
+        if (entity == null || !entitiesToChooseFrom.contains(entity)) {
+            return;
+        }
+        EntityAndOutlineColor entityToOutline = new EntityAndOutlineColor(entity, outlineColor);
+        entitiesToOutline.add(entityToOutline);
+        entitiesToChooseFrom.remove(entity);
     }
 
     /**
@@ -78,5 +94,23 @@ public class RenderEntityOutlineEvent extends Event {
     public enum Type {
         XRAY,
         NO_XRAY
+    }
+
+
+    public static class EntityAndOutlineColor {
+        @Getter
+        private final Entity entity;
+        @Getter
+        private final int color;
+
+        public EntityAndOutlineColor(Entity theEntity, int theColor) {
+            entity = theEntity;
+            color = theColor;
+        }
+
+        @Override
+        public int hashCode() {
+            return entity.hashCode();
+        }
     }
 }
