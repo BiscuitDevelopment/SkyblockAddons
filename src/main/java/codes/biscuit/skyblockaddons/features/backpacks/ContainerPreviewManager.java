@@ -211,7 +211,8 @@ public class ContainerPreviewManager {
                 guiContainer.drawTexturedModalRect(x + squaresEndWidth, y, 169, 0, textureBorder, squaresEndHeight);
                 // Draw the bottom-right of the container
                 guiContainer.drawTexturedModalRect(x + squaresEndWidth, y + squaresEndHeight, 169, 215, textureBorder, textureBorder);
-
+                // For the Fsr hotbar line... but more so for you, Erymanthus <3
+                guiContainer.drawTexturedModalRect(x + 5, (y + squaresEndHeight), 5, 5, totalWidth - 10, 2);
                 if (currentContainerPreview.getName() != null) {
                     mc.fontRendererObj.drawString(currentContainerPreview.getName(), x + 8, y + 6, textColor);
                 }
