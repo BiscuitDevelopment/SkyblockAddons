@@ -89,7 +89,13 @@ public class FontRendererHook {
      */
     @SuppressWarnings("unused")
     public static void beginRenderString(boolean shadow) {
-        currentDrawState = shadow ? DRAW_CHROMA_SHADOW : DRAW_CHROMA;
+        if (shadow) {
+            currentDrawState = DRAW_CHROMA_SHADOW;
+            CHROMA_COLOR_SHADOW.setColor((int) (255 * Minecraft.getMinecraft().fontRendererObj.alpha) << 24 | 0x555555);
+        } else {
+            currentDrawState = DRAW_CHROMA;
+            CHROMA_COLOR.setColor((int) (255 * Minecraft.getMinecraft().fontRendererObj.alpha) << 24 | 0xFFFFFF);
+        }
         if (SkyblockAddons.isFullyInitialized()) {
             currentDrawState.loadFeatureColorEnv();
         }

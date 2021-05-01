@@ -272,7 +272,7 @@
     },
     "prosecute": {
       "loreName": "Prosecute",
-      "nbtName": "prosecute",
+      "nbtName": "PROSECUTE",
       "goodLevel": 5,
       "maxLevel": 6
     },

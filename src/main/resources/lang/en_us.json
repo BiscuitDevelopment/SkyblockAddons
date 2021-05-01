@@ -193,7 +193,8 @@
     "reforgeFilter": "Reforge Filter",
     "trackerEntityLocationIndicator": "Show Tracker Entity Indicator",
     "highlightTrackerEntity": "Highlight Tracker Entity",
-    "showTrevorTrackerCooldown": "Show Trevor the Tracker Quest Cooldown"
+    "showTrevorTrackerCooldown": "Show Trevor the Tracker Quest Cooldown",
+    "hideEnchantmentLore": "Hide Enchantment Lore"
   },
   "messages": {
     "enchants": "Enchants",
@@ -297,6 +298,15 @@
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {

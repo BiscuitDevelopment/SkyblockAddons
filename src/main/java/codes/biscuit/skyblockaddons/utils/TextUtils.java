@@ -1,13 +1,14 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import com.google.common.base.CaseFormat;
 import com.google.gson.JsonObject;
-import org.apache.commons.lang3.text.WordUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
-import java.util.*;
+import java.util.Base64;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,8 +17,8 @@ import java.util.regex.Pattern;
  */
 public class TextUtils {
 
-    private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-OR]");
-    private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-OR])+");
+    private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
+    private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
     private static final Pattern FLOAT_CHARACTERS = Pattern.compile("[^.0-9\\-]");
@@ -144,7 +145,7 @@ public class TextUtils {
             for (char letter : textPart.toCharArray()) {
                 if (letter > 191) { // Found special character
                     foundCharacter = true;
-                    newString.append(new StringBuilder(textPart).reverse().toString());
+                    newString.append(new StringBuilder(textPart).reverse());
                     break;
                 }
             }

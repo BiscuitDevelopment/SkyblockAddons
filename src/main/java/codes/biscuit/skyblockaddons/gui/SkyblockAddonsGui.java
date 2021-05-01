@@ -26,8 +26,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Comparator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.TreeSet;
 
 public class SkyblockAddonsGui extends GuiScreen {
@@ -40,14 +38,14 @@ public class SkyblockAddonsGui extends GuiScreen {
     private static String searchString;
 
     private GuiTextField featureSearchBar;
-    private EnumUtils.GuiTab tab;
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final EnumUtils.GuiTab tab;
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
     private int page;
     private int row = 1;
     private int collumn = 1;
     private int displayCount;
 
-    private long timeOpened = System.currentTimeMillis();
+    private final long timeOpened = System.currentTimeMillis();
 
     private boolean cancelClose;
 
@@ -203,7 +201,11 @@ public class SkyblockAddonsGui extends GuiScreen {
             Feature feature = ((ButtonFeature)abstractButton).getFeature();
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
-                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, 1, page, tab, feature.getSettings()));
+                if (((ButtonSettings) abstractButton).feature == Feature.ENCHANTMENT_LORE_PARSING) {
+                    Minecraft.getMinecraft().displayGuiScreen(new EnchantmentSettingsGui(feature, 1, page, tab, feature.getSettings()));
+                } else {
+                    Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, 1, page, tab, feature.getSettings()));
+                }
                 return;
             }
             if (feature == Feature.LANGUAGE) {

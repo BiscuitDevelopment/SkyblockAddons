@@ -26,10 +26,7 @@ import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
 import codes.biscuit.skyblockaddons.features.tablist.TabListRenderer;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffect;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
-import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.gui.LocationEditGui;
-import codes.biscuit.skyblockaddons.gui.SettingsGui;
-import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
+import codes.biscuit.skyblockaddons.gui.*;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
@@ -2194,7 +2191,11 @@ public class RenderListener {
         } else if (guiToOpen == EnumUtils.GUIType.EDIT_LOCATIONS) {
             Minecraft.getMinecraft().displayGuiScreen(new LocationEditGui(guiPageToOpen, guiTabToOpen));
         } else if (guiToOpen == EnumUtils.GUIType.SETTINGS) {
-            Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
+            if (guiFeatureToOpen == Feature.ENCHANTMENT_LORE_PARSING) {
+                Minecraft.getMinecraft().displayGuiScreen(new EnchantmentSettingsGui(guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
+            } else {
+                Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(guiFeatureToOpen, 1, guiPageToOpen, guiTabToOpen, guiFeatureToOpen.getSettings()));
+            }
         } else if (guiToOpen == EnumUtils.GUIType.WARP) {
             Minecraft.getMinecraft().displayGuiScreen(new IslandWarpGui());
         }

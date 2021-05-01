@@ -12,7 +12,6 @@ import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EnchantManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
@@ -20,6 +19,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
+import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
@@ -41,7 +41,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
@@ -55,7 +54,6 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumDyeColor;
@@ -991,31 +989,9 @@ public class PlayerListener {
         ItemStack hoveredItem = e.itemStack;
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
-            if (main.getConfigValues().isEnabled(Feature.HIDE_GREY_ENCHANTS)) {
-                for (int i = 1; i <= 3; i++) { // only a max of 2 gray enchants are possible
-                    if (i >= e.toolTip.size()) continue; // out of bounds
-
-                    GuiScreen gui = Minecraft.getMinecraft().currentScreen;
-                    if (gui instanceof GuiChest) {
-                        Container chest = ((GuiChest) gui).inventorySlots;
-                        if (chest instanceof ContainerChest) {
-                            IInventory inventory = ((ContainerChest) chest).getLowerChestInventory();
-                            if (inventory.hasCustomName() && "Enchant Item".equals(inventory.getDisplayName().getUnformattedText())) {
-                                continue; // dont replace enchants when you are enchanting items in an enchantment table
-                            }
-                        }
-                    }
-                    String line = e.toolTip.get(i);
-                    if (!line.startsWith(ENCHANT_LINE_STARTS_WITH) && (line.contains("Respiration") || line.contains("Aqua Affinity")
-                            || line.contains("Depth Strider") || line.contains("Efficiency"))) {
-                        e.toolTip.remove(line);
-                        i--;
-                    }
-                }
-            }
 
             if (main.getConfigValues().isEnabled(Feature.ENCHANTMENT_LORE_PARSING)) {
-                EnchantManager.parseEnchants(e.toolTip, ItemUtils.getExtraAttributes(e.itemStack));
+                EnchantManager.parseEnchants(e.toolTip, hoveredItem);
             }
 
             if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
@@ -1066,6 +1042,7 @@ public class PlayerListener {
                     e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
                 }
 
+                // TODO: This should be a subfeature of parse enchantment lore, but with the current settings it's too difficult to place it in the settings menu
                 if (main.getConfigValues().isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
                     insertAt = EnchantManager.insertStackingEnchantProgress(e.toolTip, extraAttributes, insertAt);
                 }

@@ -30,7 +30,7 @@ public class FishParticleOverlay extends OverlayEffectRenderer {
     @Override
     public void setupRenderEnvironment() {
         super.setupRenderEnvironment();
-        GlStateManager.depthFunc(GL11.GL_ALWAYS);
+        GlStateManager.depthFunc(GL11.GL_LEQUAL);
         biggerWakeCache = SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.BIGGER_WAKE);
     }
 

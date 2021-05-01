@@ -3,8 +3,10 @@ package codes.biscuit.skyblockaddons.config;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
-import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
+import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
+import codes.biscuit.skyblockaddons.features.enchants.EnchantListLayout;
+import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
@@ -76,6 +78,7 @@ public class ConfigValues {
     @Getter private MutableFloat chromaSpeed = new MutableFloat(6);
     @Getter private MutableFloat chromaSaturation = new MutableFloat(0.75F);
     @Getter private MutableFloat chromaBrightness = new MutableFloat(0.9F);
+    private final MutableObject<EnchantListLayout> enchantLayout = new MutableObject<>(EnchantListLayout.NORMAL);
 
     public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
@@ -292,6 +295,7 @@ public class ConfigValues {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void saveConfig() {
+        EnchantManager.markCacheDirty();
         SkyblockAddons.runAsync(() -> {
             if (!SAVE_LOCK.tryLock()) {
                 return;
@@ -1000,5 +1004,13 @@ public class ConfigValues {
         }
 
         return discordCustomStatuses.set(statusEntry.getId(), text);
+    }
+
+    public EnchantListLayout getEnchantLayout() {
+        return enchantLayout != null ? enchantLayout.getValue() : EnchantListLayout.NORMAL;
+    }
+
+    public void setEnchantLayout(EnchantListLayout enchantLayout) {
+        this.enchantLayout.setValue(enchantLayout);
     }
 }

@@ -25,19 +25,18 @@ import java.util.List;
 
 public class SettingsGui extends GuiScreen {
 
-    private final SkyblockAddons main = SkyblockAddons.getInstance();
-    private int page;
-    private float row = 1;
-    private int collumn = 1;
-    private int displayCount;
-    private final Feature feature;
-    private final int lastPage;
-    private final EnumUtils.GuiTab lastTab;
-    private boolean closingGui;
-    private final List<EnumUtils.FeatureSetting> settings;
-    private boolean reInit = false;
-
-    private final long timeOpened = System.currentTimeMillis();
+    final SkyblockAddons main = SkyblockAddons.getInstance();
+    final Feature feature;
+    final int lastPage;
+    final EnumUtils.GuiTab lastTab;
+    final List<EnumUtils.FeatureSetting> settings;
+    final long timeOpened = System.currentTimeMillis();
+    int page;
+    float row = 1;
+    int column = 1;
+    int displayCount;
+    boolean closingGui;
+    boolean reInit = false;
 
     /**
      * The main gui, opened with /sba.
@@ -55,7 +54,7 @@ public class SettingsGui extends GuiScreen {
     public void initGui() {
         Keyboard.enableRepeatEvents(true);
         row = 1;
-        collumn = 1;
+        column = 1;
         buttonList.clear();
         if (feature == Feature.LANGUAGE) {
             displayCount = findDisplayCount();
@@ -157,8 +156,9 @@ public class SettingsGui extends GuiScreen {
             int height = (int) (getRowHeightSetting(numSettings) - 50);
             int y = (int) getRowHeight(1);
             GlStateManager.enableBlend();
-            DrawUtils.drawRect(x, y, width, height, ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
-
+            if (!(this instanceof EnchantmentSettingsGui)) {
+                DrawUtils.drawRect(x, y, width, height, ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
+            }
             SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -237,18 +237,18 @@ public class SettingsGui extends GuiScreen {
         int halfWidth = width / 2;
         int boxWidth = 140;
         int x = 0;
-        if (collumn == 1) {
+        if (column == 1) {
             x = halfWidth - 90 - boxWidth;
-        } else if (collumn == 2) {
+        } else if (column == 2) {
             x = halfWidth - (boxWidth / 2);
-        } else if (collumn == 3) {
+        } else if (column == 3) {
             x = halfWidth + 90;
         }
         double y = getRowHeight(row);
         buttonList.add(new ButtonLanguage(x, y, text, main, language));
-        collumn++;
-        if (collumn > 3) {
-            collumn = 1;
+        column++;
+        if (column > 3) {
+            column = 1;
             row++;
         }
         displayCount--;
@@ -261,11 +261,6 @@ public class SettingsGui extends GuiScreen {
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
-            // Temp hardcode until feature rewrite
-        } else if (setting == EnumUtils.FeatureSetting.PERFECT_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.GREAT_ENCHANT_COLOR ||
-                setting == EnumUtils.FeatureSetting.GOOD_ENCHANT_COLOR || setting == EnumUtils.FeatureSetting.POOR_ENCHANT_COLOR ||
-                setting == EnumUtils.FeatureSetting.COMMA_ENCHANT_COLOR) {
-            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, setting.getMessage(), main, setting.getFeatureEquivalent()));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
         } else if (setting == EnumUtils.FeatureSetting.REPEATING) {
