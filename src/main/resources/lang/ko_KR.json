@@ -185,7 +185,7 @@
     "drillFuelText": "Drill 연료 숫자",
     "fishingParticleOverlay": "낚시 파티클 오버레이",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "cooldownPrediction": "쿨다운 예측 및 단축",
     "legendaryMonkeyLevel100": "[TEMP] 레벨 100 전설 Monkey",
     "biggerWake": "오버레이 파티클 크기 키우기",
     "stackingEnchantProgress": "스태킹 인챈트 진행사항 보이기",
@@ -313,7 +313,7 @@
           "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
             "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "radius": "엔티티의 NBT 데이터를 복사할 플레이어의 주변 반경 (단위: 블록)"
           }
         }
       },
@@ -322,12 +322,12 @@
         "detailedHelp": {
           "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "복사할 때 포맷팅 코드들이 포함되어야 하는지 결정합니다. \"참\" 혹은 \"거짓\" 이 될 수 있고, 만약에 아무런 값을 입력받지 않았다면 기본값인 \"거짓\" 이 됩니다. \"참\" 일때 포맷팅 코드들이 복사됩니다."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(개발자 모드) §7Tab 목록의 윗 글과 아랫 글 복사하기",
         "detailedHelp": {
           "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
         }
@@ -356,13 +356,13 @@
         }
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "set": {
         "zealotCounter": {
@@ -472,14 +472,14 @@
     "inCombat": "전투 중..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "최대 티어",
+    "highTier": "높은 티어",
+    "midTier": "중간 티어",
+    "lowTier": "낮은 티어",
+    "commas": "쉼표",
+    "expertiseKills": "Expertise 킬 카운트",
+    "compactedBlocks": "압축된 블록",
+    "cultivatedCrops": "재배된 작물",
+    "maxed": "최대"
   }
 }
