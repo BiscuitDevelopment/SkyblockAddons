@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
  */
 public class ContainerPreviewManager {
 
-    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("textures/gui/container/generic_54.png");
+    private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("skyblockaddons", "containerPreview.png");
 
     /**
      * The container preview to render
@@ -205,16 +205,19 @@ public class ContainerPreviewManager {
                     // Draw the top-left of the container
                     guiContainer.drawTexturedModalRect(x, y, 0, 0, squaresEndWidth, squaresEndHeight);
                 }
-                // Draw the bottom-left of the container
-                guiContainer.drawTexturedModalRect(x, y + squaresEndHeight, 0, 215, squaresEndWidth, textureBorder);
                 // Draw the top-right of the container
                 guiContainer.drawTexturedModalRect(x + squaresEndWidth, y, 169, 0, textureBorder, squaresEndHeight);
+                // Draw the bottom-left of the container
+                guiContainer.drawTexturedModalRect(x, y + squaresEndHeight, 0, 125, squaresEndWidth, textureBorder);
                 // Draw the bottom-right of the container
-                guiContainer.drawTexturedModalRect(x + squaresEndWidth, y + squaresEndHeight, 169, 215, textureBorder, textureBorder);
-                // For the Fsr hotbar line... but more so for you, Erymanthus <3
-                guiContainer.drawTexturedModalRect(x + 5, (y + squaresEndHeight), 5, 5, totalWidth - 10, 2);
+                guiContainer.drawTexturedModalRect(x + squaresEndWidth, y + squaresEndHeight, 169, 125, textureBorder, textureBorder);
+
                 if (currentContainerPreview.getName() != null) {
-                    mc.fontRendererObj.drawString(currentContainerPreview.getName(), x + 8, y + 6, textColor);
+                    String name = currentContainerPreview.getName();
+                    if (main.getUtils().isUsingFSRcontainerPreviewTexture()) {
+                        name = ColorCode.GOLD + TextUtils.stripColor(name);
+                    }
+                    mc.fontRendererObj.drawString(name, x + 8, y + 6, textColor);
                 }
 
                 GlStateManager.popMatrix();

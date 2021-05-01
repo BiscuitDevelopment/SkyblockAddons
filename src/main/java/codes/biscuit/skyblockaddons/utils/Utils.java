@@ -140,6 +140,11 @@ public class Utils {
      */
     private boolean usingDefaultBarTextures = true;
 
+    /**
+     * Whether the player is using the FSR container preview
+     */
+    private boolean usingFSRcontainerPreviewTexture = false;
+
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
     private double purse = 0;
     private int jerryWave = -1;
