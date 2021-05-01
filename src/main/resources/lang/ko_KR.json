@@ -183,14 +183,14 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
     "drillFuelBar": "Drill 연료 바",
     "drillFuelText": "Drill 연료 숫자",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "fishingParticleOverlay": "낚시 파티클 오버레이",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "legendaryMonkeyLevel100": "[TEMP] 레벨 100 전설 Monkey",
+    "biggerWake": "오버레이 파티클 크기 키우기",
+    "stackingEnchantProgress": "스태킹 인챈트 진행사항 보이기",
+    "showReforgeOverlay": "Reforge 오버레이 보이기",
+    "reforgeFilter": "Reforge 필터"
   },
   "messages": {
     "enchants": "인챈트",
@@ -207,16 +207,16 @@
     "enchantsToExclude": "제외할 %type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "우리의 Discord 서버에 참여하세요!",
+      "watchShowcase": "동영상 보기",
+      "downloadButton": "설치",
+      "openModFolderButton": "모드 폴더 열기",
+      "joinDiscordButton": "Discord 서버 참여하기",
       "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "사용할 수 있는 다운로드 링크가 없습니다. Discord 서버를 확인하세요.",
       "notificationBox": {
         "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "새로운 베타 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다!",
         "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
       }
     },
@@ -274,7 +274,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
     "titleStats": "스텟",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionStats": "당신의 HP, Defence과 Mana 스텟을 보여줍니다",
     "titleZealots": "Zealots",
     "descriptionZealots": "당신의 Zealot 카운터를 보여줍니다",
     "titleItem": "들고 있는 아이템",
@@ -329,7 +329,7 @@
       "copyTabList": {
         "help": "§e(Dev) §7Copy the tab list header and footer",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
         }
       },
       "dev": {
