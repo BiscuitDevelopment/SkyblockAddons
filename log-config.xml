@@ -47,6 +47,8 @@
         <Logger level="info" name="net.minecraft" additivity="false">
             <filters>
                 <MarkerFilter marker="NETWORK_PACKETS" onMatch="DENY" onMismatch="NEUTRAL" />
+                <!-- Filter out Hypixel error spam -->
+                <RegexFilter regex="Error executing task.*|Unable to play unknown soundEvent.*" onMatch="DENY" onMismatch="NEUTRAL" />
             </filters>
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />
