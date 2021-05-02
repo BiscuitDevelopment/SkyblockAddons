@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,7 +25,13 @@ public class FeatureDungeonTeammateOutlines {
      * Evaluates to {@code true} iff the entity should be outlined (i.e., accepts dungeon teammates)
      * Should be used in conjunction with the global-level predicate, {@link #GLOBAL_TEST()}.
      */
-    private static final Predicate<Entity> ENTITY_TEST = e -> e instanceof EntityPlayer && e != Minecraft.getMinecraft().thePlayer;
+    private static final Predicate<Entity> ENTITY_TEST = e -> {
+        if (e instanceof EntityOtherPlayerMP) {
+            ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam) ((EntityPlayer) e).getTeam();
+            return scoreplayerteam != null && FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix()).length() >= 2;
+        }
+        return false;
+    };
     private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
         ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam) ((EntityPlayer) e).getTeam();
 
