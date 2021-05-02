@@ -355,6 +355,9 @@
           }
         }
       },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+      },
       "reload": {
         "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },

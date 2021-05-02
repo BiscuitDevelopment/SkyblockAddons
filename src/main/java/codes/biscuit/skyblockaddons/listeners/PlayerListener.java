@@ -1184,10 +1184,10 @@ public class PlayerListener {
      */
     @SubscribeEvent
     public void onPlayerDeath(SkyblockPlayerDeathEvent e) {
-        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        EntityPlayerSP thisPlayer = Minecraft.getMinecraft().thePlayer;
 
         //  Resets all user input on death as to not walk backwards or strafe into the portal
-        if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.entityPlayer == player) {
+        if (main.getConfigValues().isEnabled(Feature.PREVENT_MOVEMENT_ON_DEATH) && e.entityPlayer == thisPlayer) {
             KeyBinding.unPressAllKeys();
         }
 
@@ -1195,7 +1195,7 @@ public class PlayerListener {
         Don't show log for losing all items when the player dies in dungeons.
          The items come back after the player is revived and the large log causes a distraction.
          */
-        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && e.entityPlayer == Minecraft.getMinecraft().thePlayer && main.getUtils().isInDungeon()) {
+        if (main.getConfigValues().isEnabled(Feature.ITEM_PICKUP_LOG) && e.entityPlayer == thisPlayer && main.getUtils().isInDungeon()) {
             lastDeath = Minecraft.getSystemTime();
             main.getInventoryUtils().resetPreviousInventory();
         }
@@ -1210,10 +1210,10 @@ public class PlayerListener {
                 }
                 main.getDungeonManager().addDeath();
 
-            } else if (e.entity == player) { // TODO Keep track of a variable in the manager for the player's dungeon state
+            } else if (e.entity == thisPlayer) { // TODO Keep track of a variable in the manager for the player's dungeon state
                 // Hypixel sends another death message if the player disconnects. Don't count two deaths if the player
                 // disconnects while dead. We can use flying state to check if player is a ghost.
-                if (e.cause.contains("disconnected") && player.capabilities.allowFlying) {
+                if (e.cause.contains("disconnected") && thisPlayer.capabilities.allowFlying) {
                     return;
                 }
                 main.getDungeonManager().addDeath();

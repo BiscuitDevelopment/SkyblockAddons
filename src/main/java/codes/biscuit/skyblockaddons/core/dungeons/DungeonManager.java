@@ -53,9 +53,19 @@ public class DungeonManager {
     private int lastEssenceAmount;
     private int lastEssenceRepeat;
 
-    private int deaths;
-    private int alternateDeaths;
-    private int playerListInfoDeaths;
+    /*
+    Dungeon death counters
+    These record the number of player deaths during the current dungeon run. There are multiple of them each with a
+    different method of measurement. Their counts are compared to get as accurate of a measurement as possible.
+     */
+
+    /** The number of deaths according to the number of {@link codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent}
+     *  events fired */
+    @Getter private int deaths;
+    /** The number of deaths according the number of deaths reported by the team health display in the scoreboard */
+    @Getter private int alternateDeaths;
+    /** The number of deaths displayed on the detailed tab list (if enabled) */
+    @Getter private int playerListInfoDeaths;
 
     /**
      * Clear the dungeon game data. Called by {@link codes.biscuit.skyblockaddons.utils.Utils} each new game
@@ -271,7 +281,7 @@ public class DungeonManager {
         NetworkPlayerInfo deathDisplayPlayerInfo = netHandlerPlayClient.getPlayerInfo("!B-f");
 
         if (deathDisplayPlayerInfo != null) {
-            String deathDisplayString = deathDisplayPlayerInfo.getDisplayName().getFormattedText();
+            String deathDisplayString = deathDisplayPlayerInfo.getDisplayName().getUnformattedText();
             Matcher deathDisplayMatcher = PLAYER_LIST_INFO_DEATHS_PATTERN.matcher(deathDisplayString);
 
             if (deathDisplayMatcher.matches()) {

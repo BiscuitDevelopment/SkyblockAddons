@@ -21,6 +21,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.*;
 
+//TODO: Clean this up a bit, make it less complex to add stuff
+
 /**
  * This is the main command of SkyblockAddons. It is used to open the menu, change settings, and for developer mode functions.
  */
@@ -29,7 +31,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     private static final String HEADER = "§7§m----------------§7[ §b§lSkyblockAddons §7]§7§m----------------";
     private static final String FOOTER = "§7§m-----------------------------------------------------";
     private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "set", "slayer", "dev", "brand", "copyBlock",
-            "copyEntity", "copySidebar", "copyTabList", "toggleActionBarLogging"};
+            "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging"};
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -76,6 +78,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Translations.getMessage("commandUsage.sba.copyEntity.help") + "\n" +
                     "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.copySidebar.help") + "\n" +
                     "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.copyTabList.help") + "\n" +
+                    "§b● " + CommandSyntax.PD + " §7- " + Translations.getMessage("commandUsage.sba.printDeaths.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD + " §7- " + Translations.getMessage("commandUsage.sba.reload.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + Translations.getMessage("commandUsage.sba.reloadConfig.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD_RES + " §7- " + Translations.getMessage("commandUsage.sba.reloadRes.help") + "\n" +
@@ -292,6 +295,14 @@ public class SkyblockAddonsCommand extends CommandBase {
                         DevUtils.setCopyMode(DevUtils.CopyMode.TAB_LIST);
                         DevUtils.copyData();
 
+                    } else if (args[0].equalsIgnoreCase("pd")) {
+                        main.getUtils().sendMessage(EnumChatFormatting.BOLD + "Death Counts: ");
+                        main.getUtils().sendMessage(EnumChatFormatting.WHITE + "Deaths: " + EnumChatFormatting.GOLD +
+                                main.getDungeonManager().getDeaths());
+                        main.getUtils().sendMessage(EnumChatFormatting.WHITE + "Alt Deaths: " + EnumChatFormatting.GOLD +
+                                main.getDungeonManager().getAlternateDeaths());
+                        main.getUtils().sendMessage(EnumChatFormatting.WHITE + "Tab Deaths: " + EnumChatFormatting.GOLD +
+                                main.getDungeonManager().getPlayerListInfoDeaths());
                     } else if (args[0].equalsIgnoreCase("reload")) {
                         DevUtils.reloadAll();
                     } else if (args[0].equalsIgnoreCase("reloadConfig")) {
@@ -396,7 +407,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         COPY_BLOCK("/sba copyBlock"),
         RELOAD("/sba reload"),
         RELOAD_CONFIG("/sba reloadConfig"),
-        RELOAD_RES("/sba reloadRes")
+        RELOAD_RES("/sba reloadRes"),
+        PD("/sba pd")
         ;
 
         @Getter
@@ -428,7 +440,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         COPY_BLOCK(CommandSyntax.COPY_BLOCK, "commandUsage.sba.copyBlock.help", null),
         RELOAD(CommandSyntax.RELOAD, "commandUsage.sba.reload.help", null),
         RELOAD_CONFIG(CommandSyntax.RELOAD_CONFIG, "commandUsage.sba.reloadConfig.help", null),
-        RELOAD_RES(CommandSyntax.RELOAD_RES, "commandUsage.sba.reloadRes.help", null)
+        RELOAD_RES(CommandSyntax.RELOAD_RES, "commandUsage.sba.reloadRes.help", null),
+        PD(CommandSyntax.PD, "commandUsage.sba.printDeaths.help", null)
         ;
 
         private final CommandSyntax syntax;
