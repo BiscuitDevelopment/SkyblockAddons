@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
+import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
@@ -105,6 +106,8 @@ public class PlayerListener {
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
+    private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
+    private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -613,6 +616,41 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
                             main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(player);
+
+                            // Update mining/fishing pet tracker numbers when the player opens the skill menu
+                            if (main.getInventoryUtils().getInventoryType() == InventoryType.SKILL_TYPE_MENU) {
+                                SkillType skill = SkillType.getFromString(main.getInventoryUtils().getInventorySubtype());
+                                if (skill == SkillType.MINING || skill == SkillType.FISHING) {
+                                    try {
+                                        IInventory cc = ((ContainerChest) ((GuiChest) Minecraft.getMinecraft().currentScreen).inventorySlots).getLowerChestInventory();
+                                        List<String> lore = ItemUtils.getItemLore(cc.getStackInSlot(51));
+                                        String milestoneProgress = TextUtils.stripColor(lore.get(lore.size() - 1));
+                                        Matcher m = NEXT_TIER_PET_PROGRESS.matcher(milestoneProgress);
+                                        int total = -1;
+                                        if (m.matches()) {
+                                            total = Integer.parseInt(m.group("total").replaceAll(",", ""));
+                                        } else if ((m = MAXED_TIER_PET_PROGRESS.matcher(milestoneProgress)).matches()) {
+                                            total = Integer.parseInt(m.group("total").replaceAll(",", ""));
+                                        }
+                                        if (total > 0) {
+                                            PersistentValuesManager.PersistentValues persistentValues =
+                                                    main.getPersistentValuesManager().getPersistentValues();
+                                            int original;
+                                            if (skill == SkillType.FISHING) {
+                                                original = persistentValues.getSeaCreaturesKilled();
+                                                main.getPersistentValuesManager().getPersistentValues().setSeaCreaturesKilled(total);
+                                            } else {
+                                                original = persistentValues.getOresMined();
+                                                main.getPersistentValuesManager().getPersistentValues().setOresMined(total);
+                                            }
+                                            if (original != total) {
+                                                main.getPersistentValuesManager().saveValues();
+                                            }
+                                        }
+                                    } catch (Exception ignored) {
+                                    }
+                                }
+                            }
                         }
 
                         if (mc.currentScreen == null && main.getPlayerListener().didntRecentlyJoinWorld() &&
