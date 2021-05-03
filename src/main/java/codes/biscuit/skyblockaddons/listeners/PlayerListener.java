@@ -1093,12 +1093,8 @@ public class PlayerListener {
                 String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
 
                 if (itemId != null) {
-                    if (!Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                        insertAt = e.toolTip.size();
-                    } else {
-                        // Before the NBT line
-                        insertAt = e.toolTip.size() - 1;
-                    }
+                    // Before the NBT line
+                    insertAt = e.toolTip.size() - 1;
 
                     e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
                 }
