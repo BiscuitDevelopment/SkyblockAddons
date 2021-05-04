@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minecraft.entity.Entity;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.function.Function;
@@ -26,7 +27,7 @@ public class RenderEntityOutlineEvent extends Event {
      * The entities to outline. This is progressively cumulated from {@link #entitiesToChooseFrom}
      */
     @Getter
-    private final HashSet<EntityAndOutlineColor> entitiesToOutline;
+    private final HashMap<Entity, Integer> entitiesToOutline;
     /**
      * The entities we can outline. Note that this set and {@link #entitiesToOutline} are disjoint at all times.
      */
@@ -43,7 +44,7 @@ public class RenderEntityOutlineEvent extends Event {
     public RenderEntityOutlineEvent(Type theType, HashSet<Entity> potentialEntities) {
         type = theType;
         entitiesToChooseFrom = potentialEntities;
-        entitiesToOutline = new HashSet<>(potentialEntities.size());
+        entitiesToOutline = new HashMap<>(potentialEntities.size());
     }
 
     /**
@@ -65,7 +66,7 @@ public class RenderEntityOutlineEvent extends Event {
         while (itr.hasNext()) {
             Entity e = itr.next();
             if (predicate.test(e)) {
-                entitiesToOutline.add(new EntityAndOutlineColor(e, outlineColor.apply(e)));
+                entitiesToOutline.put(e, outlineColor.apply(e));
                 itr.remove();
             }
         }
@@ -81,8 +82,7 @@ public class RenderEntityOutlineEvent extends Event {
         if (entity == null || !entitiesToChooseFrom.contains(entity)) {
             return;
         }
-        EntityAndOutlineColor entityToOutline = new EntityAndOutlineColor(entity, outlineColor);
-        entitiesToOutline.add(entityToOutline);
+        entitiesToOutline.put(entity, outlineColor);
         entitiesToChooseFrom.remove(entity);
     }
 

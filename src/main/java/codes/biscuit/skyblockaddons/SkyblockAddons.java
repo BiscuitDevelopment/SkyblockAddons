@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureDungeonTeammateOutlines;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureItemOutlines;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureTrackerQuest;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -139,6 +140,7 @@ public class SkyblockAddons {
         MinecraftForge.EVENT_BUS.register(new FeatureItemOutlines());
         MinecraftForge.EVENT_BUS.register(new FeatureDungeonTeammateOutlines());
         MinecraftForge.EVENT_BUS.register(new EntityOutlineRenderer());
+        MinecraftForge.EVENT_BUS.register(new FeatureTrackerQuest());
         ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());

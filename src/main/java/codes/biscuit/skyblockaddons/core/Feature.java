@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureTrackerQuest;
 import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -184,6 +185,9 @@ public enum Feature {
     BIGGER_WAKE(170, "settings.biggerWake", null, false),
     ENCHANTMENT_COMMA_COLOR(171, "enchants.commas", new GuiFeatureData(ColorCode.BLUE, true), false),
     REFORGE_FILTER(172, "settings.reforgeFilter", null, false),
+    TRACKER_ENTITY_LOCATION_INDICATOR(173, "settings.trackerEntityLocationIndicator", new GuiFeatureData(EnumUtils.DrawType.PROXIMITY_INDICATOR, null), false),
+    HIGHLIGHT_TRACKER_ENTITY(174, "settings.highlightTrackerEntity", null, false),
+    SHOW_TREVOR_TRACKER_COOLDOWN(175, "settings.showTrevorTrackerCooldown", null, false),
 
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
@@ -229,12 +233,14 @@ public enum Feature {
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
-    @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
+    @Getter
+    private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE,
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
-            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR, CANDY_POINTS_COUNTER, DRILL_FUEL_BAR, DRILL_FUEL_TEXT));
+            ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR, CANDY_POINTS_COUNTER, DRILL_FUEL_BAR, DRILL_FUEL_TEXT,
+            TRACKER_ENTITY_LOCATION_INDICATOR));
 
     /**
      * These are features that are displayed separate, on the general tab.
@@ -335,17 +341,19 @@ public enum Feature {
                 main.getRenderListener().drawRevenantIndicator(scale, mc, buttonLocation);
             } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
                 main.getRenderListener().drawPowerOrbStatus(mc, scale, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);
-            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TAB_EFFECT_TIMERS){
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.PROXIMITY_INDICATOR) {
+                FeatureTrackerQuest.drawTrackerLocationIndicator(mc, scale, buttonLocation);
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TAB_EFFECT_TIMERS) {
                 main.getRenderListener().drawPotionEffectTimers(scale, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.BAIT_LIST_DISPLAY) {
                 main.getRenderListener().drawBaitList(mc, scale, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DUNGEONS_MAP) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.DUNGEONS_MAP) {
                 DungeonMapManager.drawDungeonsMap(mc, scale, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.SLAYER_TRACKERS) {
                 main.getRenderListener().drawSlayerTrackers(this, mc, scale, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.DRAGON_STATS_TRACKER) {
                 main.getRenderListener().drawDragonTrackers(mc, scale, buttonLocation);
             }
         }

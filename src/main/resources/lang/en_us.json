@@ -190,7 +190,10 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "trackerEntityLocationIndicator": "Show Tracker Entity Indicator",
+    "highlightTrackerEntity": "Highlight Tracker Entity",
+    "showTrevorTrackerCooldown": "Show Trevor the Tracker Quest Cooldown"
   },
   "messages": {
     "enchants": "Enchants",
@@ -264,7 +267,8 @@
     "effectsActive": "%number% Effects Active",
     "none": "None",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "None",

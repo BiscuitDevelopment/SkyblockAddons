@@ -93,7 +93,7 @@ public class CooldownManager {
      * @param cooldown Cooldown in milliseconds
      */
     public static void put(String itemId, long cooldown) {
-        if(cooldown < 0) {
+        if (cooldown < 0) {
             throw new IllegalArgumentException("Cooldown must be positive and not 0");
         }
 
@@ -102,6 +102,16 @@ public class CooldownManager {
             cooldowns.put(itemId, cooldownEntry);
         }
     }
+
+    /**
+     * Remove the cooldown from the specified itemId
+     *
+     * @param itemId the item id from which to remove the cooldown
+     */
+    public static void remove(String itemId) {
+        cooldowns.put(itemId, CooldownEntry.NULL_ENTRY);
+    }
+
 
     /**
      * Check if an item is on cooldown.
