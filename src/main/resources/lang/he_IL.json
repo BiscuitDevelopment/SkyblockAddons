@@ -288,24 +288,24 @@
     "titleAuto": "סטטוס אוטומטי",
     "descriptionAuto": "הצג סטאטוס באופן אוטומטי. לדוגמא: כמות ה- Zealot בזמן שאתה בסוף.",
     "titleRevenants": "משימת Revenant",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionRevenants": "מראה שאתה עושה משימת Revenant.",
+    "titleSvens": "משימת Sven",
+    "descriptionSvens": "מראה שאתה עושה משימת Sven.",
+    "titleTarantula": "משימת טרנטולה",
+    "descriptionTarantula": "מראה שאתה עושה משימת טרנטולה."
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "פותח את התפריט הראשי"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(מתכנת) §7מראה את מותג השרת",
+        "brandOutput": "מותג השרת: %brand%",
+        "notFound": "מותג השרת לא נמצא!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(מתכנת) §7מעתיק את הנתונים של הבלוק שאתה מסתכל עליו"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
