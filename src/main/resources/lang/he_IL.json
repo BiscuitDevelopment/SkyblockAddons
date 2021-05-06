@@ -262,12 +262,12 @@
     "actionsLeft": "נותר %number%",
     "effectActive": "אפקט אחד פעיל",
     "effectsActive": "%number% אפקטים פעילים",
-    "none": "None",
+    "none": "ריק",
     "copyModeSet": "מצב העתקת מפתח שונה ל:%mode%. לחץ/י %keyName% כדי להפעיל את העתקת הנתונים!",
     "chroma": "כרומה"
   },
   "discordStatus": {
-    "titleNone": "None",
+    "titleNone": "ריק",
     "descriptionNone": "אין טקסט מוצג",
     "titleLocation": "מיקום",
     "descriptionLocation": "מראה את המיקום הנוכחי שלך",
@@ -333,19 +333,19 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "הפעל/כבה מצב מפתח",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "מצב מפתח הופסק!",
+        "enabled": "מצב מפתח הופעל! טיפ: תלחץ \"%keyName%\" כדי להעתיק נתוני NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "עריכת מיקומים ב- GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "פתח את תיקיית המודים",
+        "error": "נמצאה בעיה בעת נסיון פתיחת תיקיית המודים: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
