@@ -190,11 +190,11 @@
     "biggerWake": "Aumenta le particelle di sovrapposizione",
     "stackingEnchantProgress": "Mostra progresso degli incantesimi multipli",
     "showReforgeOverlay": "Mostra l'overlay dei reforge",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Filtro del reforge"
   },
   "messages": {
     "enchants": "Incantesimi",
-    "reforges": "Forge",
+    "reforges": "Reforges",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
     "fullInventory": "Inventario pieno!",
