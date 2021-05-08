@@ -13,7 +13,9 @@ import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.crash.CrashReport;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ReportedException;
 import org.apache.commons.lang3.mutable.*;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
@@ -22,6 +24,7 @@ import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -35,14 +38,13 @@ public class ConfigValues {
 
     private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final Logger logger = SkyblockAddons.getLogger();
 
-    private JsonObject defaultValues = new JsonObject();
-    private Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
-    private Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
-    private Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
-    private Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
+    private final Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
+    private final Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
+    private final Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
+    private final Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
 
     private File settingsConfigFile;
     private JsonObject loadedConfig = new JsonObject();
@@ -80,18 +82,18 @@ public class ConfigValues {
     }
 
     public void loadValues() {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("default.json"))));
-            defaultValues = SkyblockAddons.getGson().fromJson(bufferedReader, JsonObject.class);
-            bufferedReader.close();
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("default.json");
+             InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
+                     StandardCharsets.UTF_8)) {
+            JsonObject defaultValues = SkyblockAddons.getGson().fromJson(inputStreamReader, JsonObject.class);
 
             deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
             deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);
             deserializeEnumNumberMapFromID(defaultValues, defaultGuiScales, "guiScales", Feature.class, float.class);
             deserializeFeatureIntCoordsMapFromID(defaultValues, defaultBarSizes, "barSizes");
         } catch (Exception ex) {
-            logger.error("Failed to load default config!");
-            logger.catching(ex);
+            CrashReport crashReport = CrashReport.makeCrashReport(ex, "Reading default settings file");
+            throw new ReportedException(crashReport);
         }
 
         if (settingsConfigFile.exists()) {
@@ -603,10 +605,6 @@ public class ConfigValues {
     }
 
     public void setAllCoordinatesToDefault() {
-        if (defaultValues == null) {
-            return;
-        }
-
         coordinates.clear();
         for (Map.Entry<Feature, FloatPair> entry : defaultCoordinates.entrySet()) {
             coordinates.put(entry.getKey(), entry.getValue().cloneCoords());
@@ -618,10 +616,6 @@ public class ConfigValues {
     }
 
     private void putDefaultCoordinates(Feature feature) {
-        if (defaultValues == null) {
-            return;
-        }
-
         FloatPair coords = defaultCoordinates.get(feature);
         if (coords != null) {
             coordinates.put(feature, coords);
@@ -629,10 +623,6 @@ public class ConfigValues {
     }
 
     public void putDefaultBarSizes() {
-        if (defaultValues == null) {
-            return;
-        }
-
         barSizes.clear();
         for (Map.Entry<Feature, IntPair> entry : defaultBarSizes.entrySet()) {
             barSizes.put(entry.getKey(), entry.getValue().cloneCoords());
