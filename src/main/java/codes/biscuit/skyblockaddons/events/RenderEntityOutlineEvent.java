@@ -8,12 +8,11 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * Event that is fired by {@link codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer} to determine which entities will be outlined.
  * The event is fired twice each tick, first for the {@link Type#XRAY} phase, and second for the {@link Type#NO_XRAY} phase.
- * Event handlers can add entities/colors to be outlined for either phase using the {@link #queueEntitiesToOutline(Predicate, Function)} event function
+ * Event handlers can add entities/colors to be outlined for either phase using the {@link #queueEntitiesToOutline(Function)} event function
  * The resulting list of entities/associated colors is outlined after both events have been handled
  */
 public class RenderEntityOutlineEvent extends Event {
@@ -55,18 +54,18 @@ public class RenderEntityOutlineEvent extends Event {
      * This function loops through all entities and so is not very efficient.
      * It's advisable to encapsulate calls to this function with global checks (those not dependent on an individual entity) for efficiency purposes.
      *
-     * @param predicate    on which each entity is tested for inclusion into the queue (Evaluates to {@code true} for entities that will be included in the queue).
      * @param outlineColor a function to test
      */
-    public void queueEntitiesToOutline(Predicate<Entity> predicate, Function<Entity, Integer> outlineColor) {
-        if (predicate == null) {
+    public void queueEntitiesToOutline(Function<Entity, Integer> outlineColor) {
+        if (outlineColor == null) {
             return;
         }
         Iterator<Entity> itr = entitiesToChooseFrom.iterator();
         while (itr.hasNext()) {
             Entity e = itr.next();
-            if (predicate.test(e)) {
-                entitiesToOutline.put(e, outlineColor.apply(e));
+            Integer i = outlineColor.apply(e);
+            if (i != null) {
+                entitiesToOutline.put(e, i);
                 itr.remove();
             }
         }

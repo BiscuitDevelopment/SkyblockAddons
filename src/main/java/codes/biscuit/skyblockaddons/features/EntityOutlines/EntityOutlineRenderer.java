@@ -58,7 +58,7 @@ public class EntityOutlineRenderer {
     public static boolean renderEntityOutlines(ICamera camera, float partialTicks, double x, double y, double z) {
         boolean shouldRenderOutlines = shouldRenderEntityOutlines();
 
-        if (/*shouldRenderOutlines && */MinecraftForgeClient.getRenderPass() == 0) {
+        if (shouldRenderOutlines && MinecraftForgeClient.getRenderPass() == 0) {
             Minecraft mc = Minecraft.getMinecraft();
             RenderGlobal renderGlobal = mc.renderGlobal;
             RenderManager renderManager = mc.getRenderManager();
@@ -72,7 +72,6 @@ public class EntityOutlineRenderer {
             mc.getRenderManager().setRenderOutlines(true);
             DrawUtils.enableOutlineMode();
             GlStateManager.enableColorMaterial();
-            GlStateManager.disableTexture2D();
 
             // Xray is enabled by disabling depth testing
             GlStateManager.depthFunc(GL11.GL_ALWAYS);

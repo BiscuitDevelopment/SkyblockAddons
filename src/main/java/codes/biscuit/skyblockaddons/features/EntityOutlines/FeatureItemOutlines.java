@@ -19,7 +19,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * Controls the behavior of the {@link codes.biscuit.skyblockaddons.core.Feature#MAKE_DROPPED_ITEMS_GLOW} and {@link codes.biscuit.skyblockaddons.core.Feature#SHOW_GLOWING_ITEMS_ON_ISLAND} features
@@ -33,17 +32,6 @@ public class FeatureItemOutlines {
             Location.VILLAGE, Location.AUCTION_HOUSE, Location.BANK, Location.BAZAAR,
             Location.COAL_MINE, Location.LIBRARY, Location.JERRYS_WORKSHOP, Location.THE_END));
 
-    /**
-     * Function to return the outline color for an item based on its skyblock rarity.
-     */
-    private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
-        ItemRarity itemRarity = ItemUtils.getRarity(((EntityItem) e).getEntityItem());
-
-        if (itemRarity != null) {
-            return itemRarity.getColorCode().getColor();
-        }
-        return ColorCode.GRAY.getColor();
-    };
 
 
     /**
@@ -57,19 +45,31 @@ public class FeatureItemOutlines {
 
 
     /**
-     * Entity-level predicate to determine whether a specific entity should be outlined.
-     * Evaluates to {@code true} iff the entity should be outlined (i.e., accepts dropped items that aren't showcase items)
+     * Entity-level predicate to determine whether a specific entity should be outlined, and if so, what color.
      * Should be used in conjunction with the global-level predicate, {@link #GLOBAL_TEST()}.
+     * <p>
+     * Return {@code null} if the entity should not be outlined, or the integer color of the entity to be outlined iff the entity should be outlined
      */
-    private static final Predicate<Entity> ENTITY_TEST = e -> e instanceof EntityItem &&
-            (!SHOWCASE_ITEM_LOCATIONS.contains(location) || !isShopShowcaseItem((EntityItem) e));
+    private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
+        // Only accept items that aren't showcase items
+        if (e instanceof EntityItem && (!SHOWCASE_ITEM_LOCATIONS.contains(location) || !isShopShowcaseItem((EntityItem) e))) {
+            ItemRarity itemRarity = ItemUtils.getRarity(((EntityItem) e).getEntityItem());
+            if (itemRarity != null) {
+                // Return the rarity color of the item
+                return itemRarity.getColorCode().getColor();
+            }
+            // Return gray if the item doesn't have a rarity for some reason...
+            return ColorCode.GRAY.getColor();
+        }
+        return null;
+    };
 
     public FeatureItemOutlines() {
     }
 
     /**
      * Global-level predicate to determine whether any entities should outlined.
-     * Should be used in conjunction with the entity-level predicate, {@link #ENTITY_TEST}.
+     * Should be used in conjunction with the entity-level predicate, {@link #OUTLINE_COLOR}.
      * <p>
      * Don't accept if the player is on a personal island and the
      *
@@ -111,7 +111,7 @@ public class FeatureItemOutlines {
             // Test whether we should add any entities at all
             if (GLOBAL_TEST()) {
                 // Queue specific items for outlining
-                e.queueEntitiesToOutline(ENTITY_TEST, OUTLINE_COLOR);
+                e.queueEntitiesToOutline(OUTLINE_COLOR);
             }
         }
     }

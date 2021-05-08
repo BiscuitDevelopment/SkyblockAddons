@@ -13,7 +13,6 @@ import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * Controls the behavior of {@link codes.biscuit.skyblockaddons.core.Feature#MAKE_DUNGEON_TEAMMATES_GLOW}
@@ -21,28 +20,26 @@ import java.util.function.Predicate;
 public class FeatureDungeonTeammateOutlines {
 
     /**
-     * Entity-level predicate to determine whether a specific entity should be outlined.
-     * Evaluates to {@code true} iff the entity should be outlined (i.e., accepts dungeon teammates)
+     * Entity-level predicate to determine whether a specific entity should be outlined, and if so, what color.
      * Should be used in conjunction with the global-level predicate, {@link #GLOBAL_TEST()}.
+     * <p>
+     * Return {@code null} if the entity should not be outlined, or the integer color of the entity to be outlined iff the entity should be outlined
      */
-    private static final Predicate<Entity> ENTITY_TEST = e -> {
+    private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
+        // Only accept other player entities
         if (e instanceof EntityOtherPlayerMP) {
             ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam) ((EntityPlayer) e).getTeam();
-            return scoreplayerteam != null && FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix()).length() >= 2;
-        }
-        return false;
-    };
-    private static final Function<Entity, Integer> OUTLINE_COLOR = e -> {
-        ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam) ((EntityPlayer) e).getTeam();
-
-        if (scoreplayerteam != null) {
-            String formattedName = FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix());
-
-            if (formattedName.length() >= 2) {
-                return Minecraft.getMinecraft().fontRendererObj.getColorCode(formattedName.charAt(1));
+            // Must be on the scoreboard
+            if (scoreplayerteam != null) {
+                String formattedName = FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix());
+                // Return the color of the corresponding team the player is on
+                if (formattedName.length() >= 2) {
+                    return Minecraft.getMinecraft().fontRendererObj.getColorCode(formattedName.charAt(1));
+                }
             }
+            return ColorCode.GRAY.getColor();
         }
-        return ColorCode.GRAY.getColor();
+        return null;
     };
 
     public FeatureDungeonTeammateOutlines() {
@@ -50,9 +47,7 @@ public class FeatureDungeonTeammateOutlines {
 
     /**
      * Global-level predicate to determine whether any entities should outlined.
-     * Should be used in conjunction with the entity-level predicate, {@link #ENTITY_TEST}.
-     * <p>
-     * Don't accept if the player is on a personal island and the
+     * Should be used in conjunction with the entity-level predicate, {@link #OUTLINE_COLOR}.
      *
      * @return {@code false} iff no entities should be outlined (i.e., accept if the player is in a dungeon)
      */
@@ -73,7 +68,7 @@ public class FeatureDungeonTeammateOutlines {
             // Test whether we should add any entities at all
             if (GLOBAL_TEST()) {
                 // Queue specific items for outlining
-                e.queueEntitiesToOutline(ENTITY_TEST, OUTLINE_COLOR);
+                e.queueEntitiesToOutline(OUTLINE_COLOR);
             }
         }
     }
