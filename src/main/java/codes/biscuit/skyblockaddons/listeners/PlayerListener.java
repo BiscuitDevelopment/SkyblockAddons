@@ -281,7 +281,7 @@ public class PlayerListener {
                 if (main.getRenderListener().isPredictMana() && unformattedText.startsWith("Used ") && unformattedText.endsWith("Mana)")) {
                     int manaLost = Integer.parseInt(unformattedText.split(Pattern.quote("! ("))[1].split(Pattern.quote(" Mana)"))[0]);
                     changeMana(-manaLost);
-                } else if ((matcher = DEATH_MESSAGE_PATTERN.matcher(strippedText)).matches()) {
+                } else if ((matcher = DEATH_MESSAGE_PATTERN.matcher(unformattedText)).matches()) {
                     // Hypixel's dungeon reconnect messages look exactly like death messages.
                     String causeOfDeath = matcher.group("causeOfDeath");
                     if (!causeOfDeath.equals("reconnected")) {
@@ -294,9 +294,7 @@ public class PlayerListener {
                             deadPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
                         }
 
-                        if (deadPlayer != null) {
-                            MinecraftForge.EVENT_BUS.post(new SkyblockPlayerDeathEvent(deadPlayer, causeOfDeath));
-                        }
+                        MinecraftForge.EVENT_BUS.post(new SkyblockPlayerDeathEvent(deadPlayer, username, causeOfDeath));
                     }
 
                 } else if (main.getConfigValues().isEnabled(Feature.SUMMONING_EYE_ALERT) && formattedText.equals("§r§6§lRARE DROP! §r§5Summoning Eye§r")) {
@@ -1197,7 +1195,7 @@ public class PlayerListener {
         }
 
         if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()) {
-            DungeonPlayer dungeonPlayer = main.getDungeonManager().getDungeonPlayerByName(e.entity.getName());
+            DungeonPlayer dungeonPlayer = main.getDungeonManager().getDungeonPlayerByName(e.username);
             if (dungeonPlayer != null) {
                 // Hypixel sends another death message if the player disconnects. Don't count two deaths if the player
                 // disconnects while dead.
@@ -1215,7 +1213,7 @@ public class PlayerListener {
                 main.getDungeonManager().addDeath();
 
             } else {
-                SkyblockAddons.getLogger().warn("Could not record death for " + e.entity.getName() + ". This dungeon player isn't in the registry.");
+                SkyblockAddons.getLogger().warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
             }
         }
     }
