@@ -202,7 +202,7 @@ public class SkyblockAddonsGui extends GuiScreen {
             if (abstractButton instanceof ButtonSettings) {
                 main.getUtils().setFadingIn(false);
                 if (((ButtonSettings) abstractButton).feature == Feature.ENCHANTMENT_LORE_PARSING) {
-                    Minecraft.getMinecraft().displayGuiScreen(new EnchantmentSettingsGui(feature, 1, page, tab, feature.getSettings()));
+                    Minecraft.getMinecraft().displayGuiScreen(new EnchantmentSettingsGui(feature, 0, page, tab, feature.getSettings()));
                 } else {
                     Minecraft.getMinecraft().displayGuiScreen(new SettingsGui(feature, 1, page, tab, feature.getSettings()));
                 }
