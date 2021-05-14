@@ -228,7 +228,7 @@ public class EnumUtils {
         LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
         BIGGER_WAKE("settings.biggerWake", 170),
         HIGHLIGHT_ENCHANTMENTS("settings.highlightMaxEnchantments", 153),
-        HIDE_ENCHANTMENT_LORE("settings.hideEnchantmentLore", 173),
+        HIDE_ENCHANTMENT_LORE("settings.hideEnchantmentLore", 176),
         HIDE_GREY_ENCHANTS(Message.SETTING_HIDE_GREY_ENCHANTS, 87),
         ENCHANT_LAYOUT("enchantLayout.title", 0),
 
