@@ -33,7 +33,6 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -77,7 +76,7 @@ import static net.minecraft.client.gui.Gui.icons;
 public class RenderListener {
 
     private static final ItemStack BONE_ITEM = new ItemStack(Items.bone);
-    private static final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "bars.png");
+    private static final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "barsV2.png");
     private static final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
     private static final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
     private static final ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
@@ -354,22 +353,14 @@ public class RenderListener {
     }
 
     /**
-     * This renders both the bars.
+     * This draws all Skyblock Addons Bars, including the Health, Mana, Drill, and Skill XP bars
+     *
+     * @param feature        for which to render the bars
+     * @param scale          the scale of the feature
+     * @param mc             link to the minecraft session
+     * @param buttonLocation the resizing gui, if present
      */
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
-        mc.getTextureManager().bindTexture(BARS);
-
-        if (main.getUtils().isUsingOldSkyBlockTexture()) {
-            mc.getTextureManager().bindTexture(IMPERIAL_BARS_FIX);
-        }
-
-        // The height and width of this element (box not included)
-        int barHeightExpansion = 2 * main.getConfigValues().getSizes(feature).getY();
-        int height = 3 + barHeightExpansion;
-
-        int barWidthExpansion = 10 * main.getConfigValues().getSizes(feature).getX();
-        int width = 23 + barWidthExpansion;
-
         // The fill of the bar from 0 to 1
         float fill;
         if (feature == Feature.MANA_BAR) {
@@ -390,15 +381,16 @@ public class RenderListener {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
         if (fill > 1) fill = 1;
-        int filled = Math.round(fill * width);
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
 
-        x = transformXY(x, width, scale);
-        y = transformXY(y, height, scale);
+        x = transformXY(x, 71, scale);
+        y = transformXY(y, 5, scale);
+
+        // Render the button resize box if necessary
         if (buttonLocation != null) {
-            buttonLocation.checkHoveredAndDrawBox(x, x + width, y, y + height, scale);
+            buttonLocation.checkHoveredAndDrawBox(x, x + 71, y, y + 5, scale);
         }
 
         SkyblockColor color = ColorUtils.getDummySkyblockColor(main.getConfigValues().getColor(feature), main.getConfigValues().getChromaFeatures().contains(feature));
@@ -429,108 +421,64 @@ public class RenderListener {
         }
 
         main.getUtils().enableStandardGLOptions();
-
-        if (buttonLocation == null) {
-            drawModularBar(mc, color, false, x, y + barHeightExpansion / 2F, null, feature, filled, width);
-            if (filled > 0) {
-                drawModularBar(mc, color, true, x, y + barHeightExpansion / 2F, null, feature, filled, width);
-            }
-        } else {
-            drawModularBar(mc, color, false, x, y + barHeightExpansion / 2F, buttonLocation, feature, filled, width);
-            if (filled > 0) {
-                drawModularBar(mc, color, true, x, y + barHeightExpansion / 2F, buttonLocation, feature, filled, width);
-            }
-        }
+        // Draw the actual bar
+        drawMultiLayeredBar(mc, color, x, y, fill);
 
         main.getUtils().restoreGLOptions();
     }
 
-    private void drawModularBar(Minecraft mc, SkyblockColor color, boolean filled, float x, float y, ButtonLocation buttonLocation, Feature feature, int fillWidth, int maxWidth) {
-        Gui gui = mc.ingameGUI;
-        if (buttonLocation != null) {
-            gui = buttonLocation;
-        }
+    /**
+     * Draws a multitextured bar:
+     * Begins by coloring and rendering the empty bar.
+     * Then, colors and renders the full bar up to the fraction {@param fill}.
+     * Then, overlays (and does not color) an additional texture centered on the current progress of the bar.
+     * Then, overlays (and does not color) a final style texture over the bar
+     *
+     * @param mc    link to the current minecraft session
+     * @param color the color with which to render the bar
+     * @param x     the x position of the bar
+     * @param y     the y position of the bar
+     * @param fill  the fraction (from 0 to 1) of the bar that's full
+     */
+    private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
+        int barHeight = 5, barWidth = 71;
+        float barFill = barWidth * fill;
+        mc.getTextureManager().bindTexture(BARS);
         if (color.getColor() == ColorCode.BLACK.getColor()) {
             GlStateManager.color(0.25F, 0.25F, 0.25F, ColorUtils.getAlpha(color.getColor()) / 255F); // too dark normally
         } else { // A little darker for contrast...
             ColorUtils.bindColor(color.getColor(), 0.9F);
         }
-        IntPair sizes = main.getConfigValues().getSizes(feature);
-        if (!filled) {
-            fillWidth = maxWidth;
-        }
-
         if (color.drawMulticolorUsingShader()) {
             ColorUtils.bindWhite();
             ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
         }
-
-        drawBarStart(gui, x, y, filled, sizes.getX(), sizes.getY(), fillWidth, color, maxWidth);
-
+        // Empty bar first
+        DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 1, barWidth, barHeight, 80, 50);
+        // Filled bar next
+        if (fill != 0) {
+            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 7, barFill, barHeight, 80, 50);
+        }
+        // Disable coloring
         if (color.drawMulticolorUsingShader()) {
             ShaderManager.getInstance().disableShader();
         }
-    }
-
-    private void drawBarStart(Gui gui, float x, float y, boolean filled, int barWidth, int barHeight, int fillWidth, SkyblockColor color, int maxWidth) {
-        int baseTextureY = filled ? 0 : 6;
-
-        drawAllFiveRows(gui, x, y, barHeight, 0, baseTextureY, 11, fillWidth); // This draws the first segment- including the first separator.
-
-        drawBarSeparators(gui, x + 11, y, baseTextureY, barWidth, barHeight, fillWidth); // This draws the rest of the bar, not sure why it's named this...
-
-        // This just draws a dark line to easily distinguish where the bar's progress is.
-        // It doesn't always work out nicely when using like custom textures though.
-        if (fillWidth < maxWidth - 1 && fillWidth > 0 && main.getUtils().isUsingDefaultBarTextures()) {
-            ColorUtils.bindColor(color.getColor(), 0.8F);
-            drawMiddleThreeRows(gui, x + fillWidth, y, barHeight, 11, 6, 1, fillWidth, 2);
+        ColorUtils.bindWhite();
+        
+        // Overlay uncolored progress indicator next (texture packs can use this to overlay their own static bar colors)
+        if (fill > 0 && fill < 1) {
+            // Make sure that the overlay doesn't go outside the bounds of the bar.
+            // It's 4 pixels wide, so ensure we only render the texture between 0 <= x <= barWidth
+            // Start rendering at x => 0 (for small fill values, also don't render before the bar starts)
+            float startX = Math.max(0, barFill - 2);
+            // Start texture at x >= 0 (for small fill values, also start the texture so indicator is always centered)
+            float startTexX = Math.max(0, 2 - barFill);
+            // End texture at x <= barWidth and 4 <= startTexX + endTexX (total width of overlay texture). Cut off for large fill values.
+            float endTexX = Math.min(4 - startTexX, barWidth - barFill + 2);
+            DrawUtils.drawModalRectWithCustomSizedTexture(x + startX, y, 1 + startTexX, 24, endTexX, barHeight, 80, 50);
         }
-    }
-
-    private void drawMiddleBarParts(Gui gui, float x, float y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        float endBarX = 0;
-        for (int i = 0; i < barWidth; i++) {
-            endBarX = x + (i * 10);
-            drawAllFiveRows(gui, endBarX, y, barHeight, 12, baseTextureY, 9, fillWidth - 11 - (i * 10));
-        }
-        drawBarEnd(gui, endBarX + 10, y, baseTextureY, barWidth, barHeight, fillWidth);
-    }
-
-    private void drawBarSeparators(Gui gui, float x, float y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        for (int i = 0; i <= barWidth; i++) {
-            drawMiddleThreeRows(gui, x + (i * 10), y, barHeight, 11, baseTextureY, 1, fillWidth - 11 - (i * 10), 2);
-        }
-        drawMiddleBarParts(gui, x + 1, y, baseTextureY, barWidth, barHeight, fillWidth);
-    }
-
-    private void drawBarEnd(Gui gui, float x, float y, int baseTextureY, int barWidth, int barHeight, int fillWidth) {
-        drawAllFiveRows(gui, x, y, barHeight, 22, baseTextureY, 11, fillWidth - 11 - (barWidth * 10));
-    }
-
-    private void drawAllFiveRows(Gui gui, float x, float y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth) {
-        if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
-        gui.drawTexturedModalRect(x, y - barHeight, textureX, baseTextureY, fillWidth, 1);
-
-        drawMiddleThreeRows(gui, x, y, barHeight, textureX, baseTextureY, width, fillWidth, 1);
-
-        gui.drawTexturedModalRect(x, y + 2 + barHeight, textureX, baseTextureY + 4, fillWidth, 1);
-    }
-
-    private void drawMiddleThreeRows(Gui gui, float x, float y, int barHeight, int textureX, int baseTextureY, int width, int fillWidth, int rowHeight) {
-        if (fillWidth > width || baseTextureY >= 8) fillWidth = width;
-        for (int i = 0; i < barHeight; i++) {
-            if (rowHeight == 2) { //this means its drawing bar separators, and its a little different
-                gui.drawTexturedModalRect(x, y - 1 - i, textureX, baseTextureY, fillWidth, rowHeight);
-            } else {
-                gui.drawTexturedModalRect(x, y - i, textureX, baseTextureY + 1, fillWidth, rowHeight);
-            }
-        }
-
-        gui.drawTexturedModalRect(x, y + 1, textureX, baseTextureY + 2, fillWidth, 1);
-
-        for (int i = 0; i < barHeight; i++) {
-            gui.drawTexturedModalRect(x, y + 2 + i, textureX, baseTextureY + 3, fillWidth, rowHeight);
-        }
+        // Overlay uncolored bar display next (texture packs can use this to overlay their own static bar colors)
+        DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 13, barWidth, barHeight, 80, 50);
     }
 
     /**
