@@ -91,11 +91,11 @@
     },
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "hideNightVisionEffectTimer": "Dölj tid för mörkerseendebrygd",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
-    "chromaSpeed": "Chroma Speed",
+    "chromaSpeed": "Hastighet för färgövergång",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
