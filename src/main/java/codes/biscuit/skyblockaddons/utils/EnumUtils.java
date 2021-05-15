@@ -227,10 +227,13 @@ public class EnumUtils {
         COMMA_ENCHANT_COLOR("enchants.commas", 171),
         LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
         BIGGER_WAKE("settings.biggerWake", 170),
-        HIGHLIGHT_ENCHANTMENTS("settings.highlightMaxEnchantments", 153),
-        HIDE_ENCHANTMENT_LORE("settings.hideEnchantmentLore", 176),
+        HIGHLIGHT_ENCHANTMENTS("settings.highlightSpecialEnchantments", 153),
+        HIDE_ENCHANTMENT_LORE("settings.hideEnchantDescription", 176),
         HIDE_GREY_ENCHANTS(Message.SETTING_HIDE_GREY_ENCHANTS, 87),
         ENCHANT_LAYOUT("enchantLayout.title", 0),
+        TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR("settings.trevorTheTrapper.trackedEntityProximityIndicator", 173),
+        TREVOR_HIGHLIGHT_TRACKED_ENTITY("settings.trevorTheTrapper.highlightTrackedEntity", 174),
+        TREVOR_SHOW_QUEST_COOLDOWN("settings.trevorTheTrapper.showQuestCooldown", 175),
 
 
         DISCORD_RP_STATE((Message) null, 0),
@@ -302,9 +305,9 @@ public class EnumUtils {
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
         PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING,
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS, Feature.ONLY_MINE_ORES_DWARVEN_MINES, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
-                Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE, Feature.HIGHLIGHT_TRACKER_ENTITY,
-                Feature.SHOW_TREVOR_TRACKER_COOLDOWN),
-        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TRACKER_ENTITY_LOCATION_INDICATOR);
+                Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE, Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY,
+                Feature.TREVOR_SHOW_QUEST_COOLDOWN),
+        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR);
 
         private final Set<Feature> features;
         private final String author;

@@ -163,11 +163,11 @@ public enum Feature {
     DISABLE_MORT_MESSAGES(147, "settings.disableMortMessages", null, false),
     DISABLE_BOSS_MESSAGES(148, "settings.disableBossMessages", null, false),
     SHOW_SWORD_KILLS(149, "settings.showSwordKills", new GuiFeatureData(ColorCode.RED, true), false),
-    HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null,false),
-    EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
+    HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null, false),
+    EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null, false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
-    ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", null, false),
-    DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null,false),
+    ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightSpecialEnchantments", null, false),
+    DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null, false),
     CANDY_POINTS_COUNTER(155, "settings.candyPointsCounter", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
     HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
     USE_NEW_CHROMA_EFFECT(157, "settings.useNewChromaEffect", null, false),
@@ -185,10 +185,11 @@ public enum Feature {
     BIGGER_WAKE(170, "settings.biggerWake", null, false),
     ENCHANTMENT_COMMA_COLOR(171, "enchants.commas", new GuiFeatureData(ColorCode.BLUE, true), false),
     REFORGE_FILTER(172, "settings.reforgeFilter", null, false),
-    TRACKER_ENTITY_LOCATION_INDICATOR(173, "settings.trackerEntityLocationIndicator", new GuiFeatureData(EnumUtils.DrawType.PROXIMITY_INDICATOR, null), false),
-    HIGHLIGHT_TRACKER_ENTITY(174, "settings.highlightTrackerEntity", null, false),
-    SHOW_TREVOR_TRACKER_COOLDOWN(175, "settings.showTrevorTrackerCooldown", null, false),
-    HIDE_ENCHANTMENT_LORE(176, "settings.hideEnchantmentLore", null, true),
+    TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR(173, "settings.trevorTheTrapper.trackedEntityProximityIndicator", new GuiFeatureData(EnumUtils.DrawType.PROXIMITY_INDICATOR, null), false),
+    TREVOR_HIGHLIGHT_TRACKED_ENTITY(174, "settings.trevorTheTrapper.highlightTrackedEntity", null, false),
+    TREVOR_SHOW_QUEST_COOLDOWN(175, "settings.trevorTheTrapper.showQuestCooldown", null, false),
+    HIDE_ENCHANT_DESCRIPTION(176, "settings.hideEnchantDescription", null, true),
+    TREVOR_THE_TRAPPER_FEATURES(177, "settings.trevorTheTrapper.title", null, false, EnumUtils.FeatureSetting.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, EnumUtils.FeatureSetting.TREVOR_HIGHLIGHT_TRACKED_ENTITY, EnumUtils.FeatureSetting.TREVOR_SHOW_QUEST_COOLDOWN),
 
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
@@ -228,19 +229,21 @@ public enum Feature {
             HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED,
             SHOW_SALVAGE_ESSENCES_COUNTER, HEALING_CIRCLE_OPACITY, COOLDOWN_PREDICTION, ENCHANTMENTS_HIGHLIGHT,
             ENCHANTMENT_COMMA_COLOR, ENCHANTMENT_PERFECT_COLOR, ENCHANTMENT_GREAT_COLOR, ENCHANTMENT_GOOD_COLOR,
-            ENCHANTMENT_POOR_COLOR, BIGGER_WAKE, LEG_MONKEY_LEVEL_100, HIDE_ENCHANTMENT_LORE, HIDE_GREY_ENCHANTS);
+            ENCHANTMENT_POOR_COLOR, BIGGER_WAKE, LEG_MONKEY_LEVEL_100, HIDE_ENCHANT_DESCRIPTION, HIDE_GREY_ENCHANTS,
+            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, TREVOR_HIGHLIGHT_TRACKED_ENTITY, TREVOR_SHOW_QUEST_COOLDOWN);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
      * coordinates and colors are handled properly.
      */
-    @Getter private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
+    @Getter
+    private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(MAGMA_BOSS_TIMER, MANA_BAR, MANA_TEXT, DEFENCE_ICON, DEFENCE_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_BAR, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE,
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
             ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, SKILL_PROGRESS_BAR, CANDY_POINTS_COUNTER, DRILL_FUEL_BAR, DRILL_FUEL_TEXT,
-            TRACKER_ENTITY_LOCATION_INDICATOR));
+            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR));
 
     /**
      * These are features that are displayed separate, on the general tab.

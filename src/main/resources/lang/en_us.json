@@ -171,7 +171,7 @@
     "easierPresentOpening": "Open Presents Easier",
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
-    "highlightMaxEnchantments": "Highlight Special Enchantments",
+    "highlightSpecialEnchantments": "Highlight Special Enchantments",
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
@@ -191,10 +191,14 @@
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "trackerEntityLocationIndicator": "Show Tracker Entity Indicator",
-    "highlightTrackerEntity": "Highlight Tracker Entity",
-    "showTrevorTrackerCooldown": "Show Trevor the Tracker Quest Cooldown",
-    "hideEnchantmentLore": "Hide Enchantment Lore"
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Enchants",

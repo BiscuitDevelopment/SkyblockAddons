@@ -433,12 +433,11 @@ public class RenderListener {
      * Then, colors and renders the full bar up to the fraction {@param fill}.
      * Then, overlays (and does not color) an additional texture centered on the current progress of the bar.
      * Then, overlays (and does not color) a final style texture over the bar
-     *
-     * @param mc    link to the current minecraft session
+     * @param mc link to the current minecraft session
      * @param color the color with which to render the bar
-     * @param x     the x position of the bar
-     * @param y     the y position of the bar
-     * @param fill  the fraction (from 0 to 1) of the bar that's full
+     * @param x the x position of the bar
+     * @param y the y position of the bar
+     * @param fill the fraction (from 0 to 1) of the bar that's full
      */
     private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
         int barHeight = 5, barWidth = 71;
@@ -464,7 +463,7 @@ public class RenderListener {
             ShaderManager.getInstance().disableShader();
         }
         ColorUtils.bindWhite();
-        
+
         // Overlay uncolored progress indicator next (texture packs can use this to overlay their own static bar colors)
         if (fill > 0 && fill < 1) {
             // Make sure that the overlay doesn't go outside the bounds of the bar.

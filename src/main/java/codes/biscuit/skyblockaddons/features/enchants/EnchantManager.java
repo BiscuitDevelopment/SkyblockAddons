@@ -228,7 +228,7 @@ public class EnchantManager {
         // Prints each enchantment out on a separate line. Also adds the lore if need be
         else {
             // Add each enchantment (one per line) + add enchant lore (if available)
-            if (config.isDisabled(Feature.HIDE_ENCHANTMENT_LORE)) {
+            if (config.isDisabled(Feature.HIDE_ENCHANT_DESCRIPTION)) {
                 insertEnchants = new ArrayList<>((hasLore ? 3 : 1) * numEnchants);
                 for (FormattedEnchant enchant : orderedEnchants) {
                     // Add the enchant
