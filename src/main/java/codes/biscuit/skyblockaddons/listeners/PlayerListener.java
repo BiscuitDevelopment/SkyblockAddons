@@ -13,6 +13,7 @@ import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
+import codes.biscuit.skyblockaddons.features.FetchurManager;
 import codes.biscuit.skyblockaddons.features.JerryPresent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
@@ -367,7 +368,14 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
+                } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
+                    // Triggered if player has just given the correct item to Fetchur, so register that moment
+                    if (unformattedText.contains(FetchurManager.getInstance().getFetchurTaskCompletedPhrase())) {
+                        main.getPersistentValuesManager().getPersistentValues().setLastTimeFetchur(new Date());
+                        main.getPersistentValuesManager().saveValues();
+                    }
                 }
+
 
                 if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
                     if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {

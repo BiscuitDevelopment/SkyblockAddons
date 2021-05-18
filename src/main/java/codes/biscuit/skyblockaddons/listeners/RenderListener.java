@@ -38,6 +38,7 @@ import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -255,6 +256,9 @@ public class RenderListener {
                     break;
                 case BOSS_APPROACH_ALERT:
                     message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    break;
+                case WARN_WHEN_FETCHUR_CHANGES:
+                    message = Message.MESSAGE_FETCHUR_WARNING;
                     break;
             }
             if (message != null) {
@@ -895,6 +899,12 @@ public class RenderListener {
             }
 
             text = "Test";
+        } else if (feature == Feature.FETCHUR_TODAY) {
+            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
+            if (!FetchurManager.getInstance().hasMadeFetchur() || buttonLocation != null)
+                text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x :(" + fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText() + ")");
+            else
+                text = ""; // If it has made fetchur, then no need for text
         } else {
             return;
         }
@@ -932,6 +942,13 @@ public class RenderListener {
         if (feature == Feature.SHOW_DUNGEON_MILESTONE || feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
             width += 16 + 2;
             height += 10;
+        }
+
+        if (feature == Feature.FETCHUR_TODAY) {
+            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
+            height += 30;
+            float offsetX = Minecraft.getMinecraft().fontRendererObj.getStringWidth(fetchurItem.getItemText()) - 25;
+            width += offsetX;
         }
 
         if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
@@ -1235,6 +1252,49 @@ public class RenderListener {
             DrawUtils.drawText(text, x + width / 2F - mc.fontRendererObj.getStringWidth(text) / 2F, y + 16, color);
             FontRendererHook.endFeatureFont();
 
+        } else if (feature == Feature.FETCHUR_TODAY) {
+            System.out.println("Has made fetchur today? " + FetchurManager.getInstance().hasMadeFetchur());
+            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
+            if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ONLY_IN_DWARVENS) && buttonLocation == null) {
+                if (!LocationUtils.isInDwarvenMines(main.getUtils().getLocation().getScoreboardName())) {
+                    return;
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_INVENTORY_OPEN_ONLY) && buttonLocation == null) {
+                if (!(Minecraft.getMinecraft().currentScreen instanceof GuiInventory)) {
+                    return;
+                }
+            }
+            if (!FetchurManager.getInstance().hasMadeFetchur() || buttonLocation != null) {
+                // Checks if Fetchur item has changed to warn the player
+                if (FetchurManager.getInstance().getCurrentItemSaved() == null || !fetchurItem.equals(FetchurManager.getInstance().getCurrentItemSaved())) {
+                    if (!FetchurManager.getInstance().hasMadeFetchur())
+                        FetchurManager.getInstance().setAlreadyWarned(false);
+                    FetchurManager.getInstance().setCurrentItemSaved(fetchurItem);
+                }
+                if (buttonLocation == null && main.getConfigValues().isEnabled(Feature.WARN_WHEN_FETCHUR_CHANGES)) {
+                    // Warns the player when fetchur changes!
+                    if (!FetchurManager.getInstance().isAlreadyWarned()) {
+                        main.getUtils().playLoudSound("random.orb", 0.5);
+                        main.getRenderListener().setTitleFeature(Feature.WARN_WHEN_FETCHUR_CHANGES);
+                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                        FetchurManager.getInstance().setAlreadyWarned(true);
+                    }
+                } else {
+                    // If the player has done Fetchur already don't need to warn it
+                    if (!FetchurManager.getInstance().hasMadeFetchur())
+                        FetchurManager.getInstance().setAlreadyWarned(false);
+                }
+                ChromaManager.renderingText(feature);
+                String[] split = text.split(":");
+                float offsetX = Minecraft.getMinecraft().fontRendererObj.getStringWidth(fetchurItem.getItemText()) - 25;
+                DrawUtils.drawText(split[0] + ":", x + offsetX, y, color); // Line related to the "Fetchur wants" text
+                // amount in green text (unused) DrawUtils.drawText(split[1], x + offsetX, y + 10, color);
+                renderItemAndOverlay(fetchurItem.getItemStack(), fetchurItem.getItemStack().stackSize + "", x + 30 + offsetX, y + 6);
+                if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME) || buttonLocation != null)
+                    DrawUtils.drawText(split[2], x + offsetX, y + 25, color); // Line related to the item name
+                ChromaManager.doneRenderingText();
+            }
         } else {
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x, y, color);
@@ -1894,6 +1954,21 @@ public class RenderListener {
         GlStateManager.pushMatrix();
         GlStateManager.translate(x, y, 0);
         Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
+        GlStateManager.popMatrix();
+
+        RenderHelper.disableStandardItemLighting();
+        GlStateManager.disableRescaleNormal();
+    }
+
+    private void renderItemAndOverlay(ItemStack item, String name, float x, float y) {
+        GlStateManager.enableRescaleNormal();
+        RenderHelper.enableGUIStandardItemLighting();
+        GlStateManager.enableDepth();
+
+        GlStateManager.pushMatrix();
+        GlStateManager.translate(x, y, 0);
+        Minecraft.getMinecraft().getRenderItem().renderItemIntoGUI(item, 0, 0);
+        Minecraft.getMinecraft().getRenderItem().renderItemOverlayIntoGUI(Minecraft.getMinecraft().fontRendererObj, item, 0, 0, name);
         GlStateManager.popMatrix();
 
         RenderHelper.disableStandardItemLighting();

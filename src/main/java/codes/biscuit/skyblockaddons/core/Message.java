@@ -163,6 +163,11 @@ public enum Message {
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayersPresents"),
     SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
     SETTING_SHOW_EXPERIMENTATION_TABLE_TOOLTIPS(MessageObject.SETTING, "showExperimentationTableTooltips"),
+    SETTING_SHOW_FETCHUR_TODAY(MessageObject.SETTING, "fetchurToday"),
+    SETTING_SHOW_FETCHUR_IN_DWARVEN_ONLY(MessageObject.SETTING, "showFetchurOnlyInDwarven"),
+    SETTING_SHOW_FETCHUR_ITEM_NAME(MessageObject.SETTING, "showFetchurItemName"),
+    SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY(MessageObject.SETTING, "showFetchurInventoryOpenOnly"),
+    SETTING_WARN_WHEN_FETCHUR_CHANGES(MessageObject.SETTING, "warnWhenFetchurChanges"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -221,6 +226,8 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
+    MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurWants"),
+    MESSAGE_FETCHUR_WARNING(MessageObject.MESSAGES, "fetchurWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -308,11 +315,10 @@ public enum Message {
     SUBCOMMAND_HELP_SLAYER(MessageObject.COMMAND_USAGE, "sba.help.slayer"),
     SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
 
-    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
-    ;
+    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT");
 
-    private MessageObject messageObject;
-    private String memberName;
+    private final MessageObject messageObject;
+    private final String memberName;
 
     Message(MessageObject messageObject, String memberName) {
         this.messageObject = messageObject;
@@ -346,7 +352,7 @@ public enum Message {
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ ColorCode.GRAY.toString());
+                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES) + variables[0] + ColorCode.GRAY);
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
@@ -367,6 +373,8 @@ public enum Message {
                     text = text.replace("%radius%", variables[0]);
                 } else if (this == Message.MESSAGE_EFFECTS_ACTIVE) {
                     text = text.replace("%number%", variables[0]);
+                } else if (this == Message.MESSAGE_FETCHUR_TODAY) {
+                    text = text.replace("%item%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
@@ -403,7 +411,7 @@ public enum Message {
         KEYBINDINGS("keyBindings"),
         COMMAND_USAGE("commandUsage");
 
-        private List<String> path;
+        private final List<String> path;
 
         MessageObject(String path) {
             this.path = new LinkedList<>(Arrays.asList(path.split(Pattern.quote("."))));
