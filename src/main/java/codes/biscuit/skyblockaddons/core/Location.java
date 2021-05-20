@@ -46,6 +46,7 @@ public enum Location {
     SAVANNA_WOODLAND("Savanna Woodland"),
     DARK_THICKET("Dark Thicket"),
     JUNGLE_ISLAND("Jungle Island"),
+    HOWLING_CAVE("Howling Cave"),
 
     GOLD_MINE("Gold Mine"),
 

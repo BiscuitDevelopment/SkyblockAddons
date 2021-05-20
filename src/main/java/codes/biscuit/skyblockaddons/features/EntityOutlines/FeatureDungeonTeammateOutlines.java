@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.features.EntityOutlines;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.gui.FontRenderer;
@@ -37,7 +36,8 @@ public class FeatureDungeonTeammateOutlines {
                     return Minecraft.getMinecraft().fontRendererObj.getColorCode(formattedName.charAt(1));
                 }
             }
-            return ColorCode.GRAY.getColor();
+            // NPCs don't have a color on their team. Don't show them on outlines.
+            return null;
         }
         return null;
     };

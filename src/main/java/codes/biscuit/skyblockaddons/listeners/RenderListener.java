@@ -1363,7 +1363,7 @@ public class RenderListener {
             slayerBoss = SlayerBoss.TARANTULA;
         } else if (feature == Feature.SVEN_SLAYER_TRACKER) {
             if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_CASTLE) &&
-                    (quest != EnumUtils.SlayerQuest.SVEN_PACKMASTER || location != Location.RUINS)) {
+                    (quest != EnumUtils.SlayerQuest.SVEN_PACKMASTER || (location != Location.RUINS && location != Location.HOWLING_CAVE))) {
                 return;
             }
 

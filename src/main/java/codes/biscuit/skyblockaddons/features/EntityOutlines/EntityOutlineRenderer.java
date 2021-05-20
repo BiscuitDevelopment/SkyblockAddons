@@ -282,6 +282,10 @@ public class EntityOutlineRenderer {
         }
     }
 
+    public static boolean isCacheEmpty() {
+        return entityRenderCache.noXrayCache.isEmpty() && entityRenderCache.xrayCache.isEmpty();
+    }
+
     private static class CachedInfo {
         @Getter
         @Setter

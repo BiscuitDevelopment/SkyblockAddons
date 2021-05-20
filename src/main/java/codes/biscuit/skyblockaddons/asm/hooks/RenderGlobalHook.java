@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
 import net.minecraft.client.Minecraft;
@@ -30,13 +29,15 @@ public class RenderGlobalHook {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         // Vanilla Conditions
-        if (renderGlobal.entityOutlineFramebuffer == null || renderGlobal.entityOutlineShader == null || mc.thePlayer == null) return false;
+        if (renderGlobal.entityOutlineFramebuffer == null || renderGlobal.entityOutlineShader == null || mc.thePlayer == null)
+            return false;
 
         // Skyblock Conditions
         if (!main.getUtils().isOnSkyblock()) {
             return false;
         }
-        if (!main.getConfigValues().isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW) && !main.getConfigValues().isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW)) {
+        // If there are no outlines to render
+        if (EntityOutlineRenderer.isCacheEmpty()) {
             return false;
         }
 
