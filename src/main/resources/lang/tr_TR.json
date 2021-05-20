@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
     "showReforgeOverlay": "Reforge Kaplamasını Göster",
     "reforgeFilter": "Reforge Filtresi",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Büyü Açıklamasını Gizle",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Trevor the Trapper Özellikleri",
+      "trackedEntityProximityIndicator": "İzlenen Varlığın Yakınlık Göstergesini Göster",
+      "highlightTrackedEntity": "İzlenen Varlığı Vurgula",
+      "showQuestCooldown": "Trevor'ın Görev Bekleme Süresini Göster",
+      "showQuestCooldownDescription": "Bu Trevor'ın Kafasının Üstünde Gözükecek"
     }
   },
   "messages": {
@@ -273,7 +273,7 @@
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
+    "titleCompress": "Sıkıştır",
+    "descriptionCompress": "Büyüleri mümkün olduğunca az satıra sıkıştırır",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionNormal": "Hypixel'in yaptığı gibi büyüleri gösterir",
+    "titleExpand": "Genişlet",
+    "descriptionExpand": "Her büyüyü kendi satırında listeler"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
       },
       "reload": {
         "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
