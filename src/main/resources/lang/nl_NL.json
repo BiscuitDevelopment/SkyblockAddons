@@ -172,6 +172,7 @@
     "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightMaxEnchantments": "Speciale betoveringen markeren",
+    "highlightSpecialEnchantments": "Speciale betoveringen markeren",
     "disableEmptyGlassPanes": "Lege glazen ruiten verbergen",
     "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
     "healingCircleOpacity": "Healing Circle-doorzichtigheid",
@@ -190,7 +191,15 @@
     "biggerWake": "Overlaydeeltjes vergroten",
     "stackingEnchantProgress": "Stapelbetoveringsvoorgang weergeven",
     "showReforgeOverlay": "Omsmeedoverlay weergeven",
-    "reforgeFilter": "Omsmedingsfilter"
+    "reforgeFilter": "Omsmedingsfilter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% actieve effecten",
     "none": "Geen",
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -293,6 +303,15 @@
     "descriptionSvens": "Laat zien dat je een Svenopdracht aan het doen bent.",
     "titleTarantula": "Tarantulaopdracht",
     "descriptionTarantula": "Laat zien dat je een Tarantulaopdracht aan het doen bent."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "het subcommando om gedetailleerde syntaxis te krijgen voor"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
