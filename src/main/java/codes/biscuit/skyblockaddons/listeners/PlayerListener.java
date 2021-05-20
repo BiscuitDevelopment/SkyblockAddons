@@ -40,6 +40,8 @@ import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockStone;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.audio.PositionedSoundRecord;
+import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.inventory.GuiChest;
@@ -117,6 +119,13 @@ public class PlayerListener {
 
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
+
+    // All Rat pet sounds as instance with their respective sound categories, except the sound when it lays a cheese
+    private static final Map<PositionedSoundRecord, SoundCategory> RAT_SOUNDS = new HashMap<PositionedSoundRecord, SoundCategory>();
+    static {
+        RAT_SOUNDS.put(new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.bat.idle"), 1.0f, 1.1904762f, 0.0f, 0.0f, 0.0f), SoundCategory.ANIMALS); // Rat squeak
+        RAT_SOUNDS.put(new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.chicken.step"), 0.15f, 1.0f, 0.0f, 0.0f, 0.0f), SoundCategory.ANIMALS); // Rat step
+    }
 
     private static final NavigableSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
 
@@ -1153,7 +1162,34 @@ public class PlayerListener {
         if (!main.getUtils().isOnSkyblock()) {
             return;
         }
-
+        // Stop rat sounds feature
+        if (main.getConfigValues().isEnabled(Feature.STOP_RAT_SOUNDS)) {
+            // A bunch of player.hurt sounds is triggered even when there's no players taking damage?
+            // Ignore them
+            if (event.name.contains("player.hurt"))
+                return;
+            // Ignore sounds that don't have a specific location like GUIs
+            if (!(event.sound instanceof PositionedSoundRecord))
+                return;
+            for (Map.Entry<PositionedSoundRecord, SoundCategory> entry : RAT_SOUNDS.entrySet()) {
+                // Check if same category
+                if (entry.getValue().equals(event.category)) {
+                    PositionedSoundRecord eventSound = (PositionedSoundRecord) event.sound;
+                    // Check if the sound name, pitch and volume is the same as the Rat sounds stored in the map
+                    if (eventSound.getSoundLocation().equals(entry.getKey().getSoundLocation()) &&
+                    eventSound.getPitch() == entry.getKey().getPitch() && eventSound.getVolume() == entry.getKey().getVolume()) {
+                        event.result = null;
+                        // If only the squeaking must stop, then allow the rat steps sound event to pass
+                        if (main.getConfigValues().isEnabled(Feature.STOP_ONLY_RAT_SQUEAK)) {
+                            if (eventSound.getSoundLocation().toString().contains("mob.chicken.step")) {
+                                event.result = event.sound;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
         if (main.getConfigValues().isEnabled(Feature.STOP_BONZO_STAFF_SOUNDS) && BONZO_STAFF_SOUNDS.contains(event.name)) {
             event.result = null;
         }

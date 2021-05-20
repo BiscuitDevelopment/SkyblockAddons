@@ -168,7 +168,8 @@ public enum Message {
     SETTING_SHOW_FETCHUR_ITEM_NAME(MessageObject.SETTING, "showFetchurItemName"),
     SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY(MessageObject.SETTING, "showFetchurInventoryOpenOnly"),
     SETTING_WARN_WHEN_FETCHUR_CHANGES(MessageObject.SETTING, "warnWhenFetchurChanges"),
-
+    SETTING_STOP_RAT_SOUNDS(MessageObject.SETTING, "stopRatSounds"),
+    SETTING_STOP_ONLY_RAT_SQUEAK(MessageObject.SETTING, "onlyStopRatSqueak"),
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
