@@ -172,6 +172,7 @@
     "showSwordKills": "הצג את סך ההריגות עם חרב",
     "compactTabList": "רשימת Tab קומפקטית",
     "highlightMaxEnchantments": "הדגש כשפים מיוחדים",
+    "highlightSpecialEnchantments": "הדגש כשפים מיוחדים",
     "disableEmptyGlassPanes": "בטל חלונות זכוכית ריקים",
     "candyPointsCounter": "סופר סוכריות/נקודות בSpooky Event",
     "healingCircleOpacity": "אטימות מעגל ההחייאה",
@@ -190,7 +191,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "כישופים",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% אפקטים פעילים",
     "none": "ריק",
     "copyModeSet": "מצב העתקת מפתח שונה ל:%mode%. לחץ/י %keyName% כדי להפעיל את העתקת הנתונים!",
-    "chroma": "כרומה"
+    "chroma": "כרומה",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "ריק",
@@ -293,6 +303,15 @@
     "descriptionSvens": "מראה שאתה עושה משימת Sven.",
     "titleTarantula": "משימת טרנטולה",
     "descriptionTarantula": "מראה שאתה עושה משימת טרנטולה."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
