@@ -182,7 +182,7 @@
     "showExperimentationTableTooltips": "Experimentation Table Tooltip Mutató",
     "onlyMineOresDwarvenMines": "Csak ércek bányászása a \"Dwarven Mines\"-ban",
     "drillFuelBar": "Drill üzemanyag jelző",
-    "drillFuelText": "Drill Fuel Number",
+    "drillFuelText": "Drill üzemanyag szám",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Varázslat Leírás Elrejtése",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Trevor the Trapper funkció",
+      "trackedEntityProximityIndicator": "Követett entitás távolság mutató",
+      "highlightTrackedEntity": "Követett entitás kiemelése",
+      "showQuestCooldown": "Trevor's Quest időzítő mutatása",
+      "showQuestCooldownDescription": "Ez Trevor fölött fog megjelenni"
     }
   },
   "messages": {
@@ -217,9 +217,9 @@
       "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
       "joinDiscord": "Join our Discord server!",
       "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "downloadButton": "Letöltés",
+      "openModFolderButton": "Modok mappájának megnyitása",
+      "joinDiscordButton": "Csatlakozás a Discordhoz",
       "newUpdateAvailable": "Egy új frissítés (%version%) áll rendelkezésre!",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
@@ -273,7 +273,7 @@
     "none": "Semmi",
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s"
   },
   "discordStatus": {
     "titleNone": "Semmi",
@@ -304,11 +304,11 @@
     "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
+    "title": "Varázslatok mutatásának kezelése",
+    "titleCompress": "Tömörítés",
     "descriptionCompress": "Compress enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleNormal": "Normál",
+    "descriptionNormal": "Hypixel bűbájok listája",
     "titleExpand": "Expand",
     "descriptionExpand": "List each enchant on its own line"
   },
