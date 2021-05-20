@@ -171,7 +171,7 @@
     "easierPresentOpening": "Könnyebb ajándéknyitás",
     "showSwordKills": "Kard ölések mutatása",
     "compactTabList": "Tab lista kicsinyítése",
-    "highlightMaxEnchantments": "Speciális varázslatok kiemelése",
+    "highlightSpecialEnchantments": "Speciális varázslatok kiemelése",
     "disableEmptyGlassPanes": "Névtelen üveglapok elrejtése",
     "candyPointsCounter": "Spooky Event Candy/Pont számláló",
     "healingCircleOpacity": "Gyógyító kör átlátszóság",
@@ -190,7 +190,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% Aktív Hatás",
     "none": "Semmi",
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Semmi",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Ezt mutatja amikor Sven küldetést csinálsz.",
     "titleTarantula": "Tarantula küldetés",
     "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "az al-parancs, amiről információt szeretnél kapni"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
