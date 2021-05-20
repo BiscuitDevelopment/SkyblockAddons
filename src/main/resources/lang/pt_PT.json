@@ -172,6 +172,7 @@
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
     "highlightMaxEnchantments": "Destacar encantamentos especiais",
+    "highlightSpecialEnchantments": "Destacar encantamentos especiais",
     "disableEmptyGlassPanes": "Desativar painéis de vidro vazios",
     "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
     "healingCircleOpacity": "Opacidade do healing circle",
@@ -190,7 +191,15 @@
     "biggerWake": "Aumentar partículas customizadas",
     "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
     "showReforgeOverlay": "Mostrar reforges no menu",
-    "reforgeFilter": "Filtro de reforges"
+    "reforgeFilter": "Filtro de reforges",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "encantamentos",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
-    "chroma": "Croma"
+    "chroma": "Croma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -293,6 +303,15 @@
     "descriptionSvens": "Mostra que estás a fazer uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "o comando para o qual desejas obter informação detalhada"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Program) §7Recarrega todas as definições e recursos do mod. O jogo irá congelar durante uns segundos."
