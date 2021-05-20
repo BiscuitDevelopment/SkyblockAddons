@@ -215,8 +215,8 @@
     "enchantsToExclude": "%type% kihagyása:",
     "updateChecker": {
       "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
+      "joinDiscord": "Csatlakozzon a Discord szerverünkhöz!",
+      "watchShowcase": "Videó megnézése",
       "downloadButton": "Letöltés",
       "openModFolderButton": "Modok mappájának megnyitása",
       "joinDiscordButton": "Csatlakozás a Discordhoz",
@@ -306,11 +306,11 @@
   "enchantLayout": {
     "title": "Varázslatok mutatásának kezelése",
     "titleCompress": "Tömörítés",
-    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
     "titleNormal": "Normál",
     "descriptionNormal": "Hypixel bűbájok listája",
-    "titleExpand": "Expand",
-    "descriptionExpand": "List each enchant on its own line"
+    "titleExpand": "Kiterjesztett",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -493,11 +493,11 @@
     "inCombat": "Harcban vagy..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
+    "superTier": "Maximum szint",
+    "highTier": "Jó szint",
+    "midTier": "Közép szint",
+    "lowTier": "Alacsony szint",
+    "commas": "Vesszők",
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
