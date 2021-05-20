@@ -172,6 +172,7 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightMaxEnchantments": "Özel Büyüleri Vurgula",
+    "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
     "disableEmptyGlassPanes": "Boş İnce Camları Devre Dışı Bırak",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
@@ -190,7 +191,15 @@
     "biggerWake": "Kaplama Parçacıklarını Büyüt",
     "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
     "showReforgeOverlay": "Reforge Kaplamasını Göster",
-    "reforgeFilter": "Reforge Filtresi"
+    "reforgeFilter": "Reforge Filtresi",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Büyüler",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% Efekt Aktif",
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
-    "chroma": "Renk parlaklığı"
+    "chroma": "Renk parlaklığı",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -293,6 +303,15 @@
     "descriptionSvens": "Sven görevleri yaptığını gösterir.",
     "titleTarantula": "Tarantula Görevleri",
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "ayrıntılı kullanım için alt komut"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
