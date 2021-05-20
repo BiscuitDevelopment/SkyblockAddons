@@ -172,6 +172,7 @@
     "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
     "compactTabList": "Daftar Tab Kompak",
     "highlightMaxEnchantments": "Terangi Enchantments Spesial",
+    "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
     "disableEmptyGlassPanes": "Nonaktifkan Panel Kaca yang Tidak Ternama",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
     "healingCircleOpacity": "Opasitas Healing Circle",
@@ -190,7 +191,15 @@
     "biggerWake": "Perbesar Partikel Overlay",
     "stackingEnchantProgress": "Perlihatkan Kemajuan Enchant yang Stacking",
     "showReforgeOverlay": "Perlihatkan Overlay Reforge",
-    "reforgeFilter": "Filter Reforge"
+    "reforgeFilter": "Filter Reforge",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Enchants",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% Efek Aktif",
     "none": "Tidak Ada",
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
@@ -293,6 +303,15 @@
     "descriptionSvens": "Memperlihatkan anda sedang melakukan sebuah Quest Sven.",
     "titleTarantula": "Quest Tarantula",
     "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "sub-command untuk mendapat penggunaan lebih detil"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Memuat ulang semua pengaturan dan bahan-bahan. Game akan beku untuk beberapa detik."
