@@ -171,7 +171,7 @@
     "easierPresentOpening": "プレゼントをより簡単に開封",
     "showSwordKills": "剣で倒した数を表示",
     "compactTabList": "コンパクトな Tab リスト",
-    "highlightMaxEnchantments": "特別なエンチャントを強調",
+    "highlightSpecialEnchantments": "特別なエンチャントを強調",
     "disableEmptyGlassPanes": "空の板ガラスを無効化",
     "candyPointsCounter": "Spooky イベントの Candy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circle の不透明度",
@@ -190,7 +190,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Reforge オーバーレイを表示",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "エンチャント",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% 個の効果が有効",
     "none": "なし",
     "copyModeSet": "開発者コピーモードは %mode% に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
-    "chroma": "色変化"
+    "chroma": "色変化",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "なし",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Sven クエストを行っていることを表示します。",
     "titleTarantula": "Tarantula クエスト",
     "descriptionTarantula": "Tarantula クエストを行っていることを表示します。"
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "詳細な使用法を取得するためのサブコマンドです"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Mod のすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"

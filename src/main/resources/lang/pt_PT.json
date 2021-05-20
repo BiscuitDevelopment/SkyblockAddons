@@ -171,7 +171,7 @@
     "easierPresentOpening": "Abrir presentes mais facilmente",
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
-    "highlightMaxEnchantments": "Destacar encantamentos especiais",
+    "highlightSpecialEnchantments": "Destacar encantamentos especiais",
     "disableEmptyGlassPanes": "Desativar painéis de vidro vazios",
     "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
     "healingCircleOpacity": "Opacidade do healing circle",
@@ -190,7 +190,15 @@
     "biggerWake": "Aumentar partículas customizadas",
     "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
     "showReforgeOverlay": "Mostrar reforges no menu",
-    "reforgeFilter": "Filtro de reforges"
+    "reforgeFilter": "Filtro de reforges",
+    "hideEnchantDescription": "Esconder a descrição do encantamento",
+    "trevorTheTrapper": {
+      "title": "Funções do Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Mostrar o indicador de proximidade da entidade-alvo",
+      "highlightTrackedEntity": "Destacar entidade-alvo",
+      "showQuestCooldown": "Mostrar o tempo de espera da missão do Trevor",
+      "showQuestCooldownDescription": "Isto irá aparecer acima da cabeça do Trevor"
+    }
   },
   "messages": {
     "enchants": "encantamentos",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
-    "chroma": "Croma"
+    "chroma": "Croma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Mostra que estás a fazer uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
+  },
+  "enchantLayout": {
+    "title": "Controla como os encantamentos são mostrados na descrição dos items",
+    "titleCompress": "Comprimir",
+    "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Exibe os encantamentos como o Hypixel",
+    "titleExpand": "Expandir",
+    "descriptionExpand": "Mostra cada encantamento na sua própria linha"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "o comando para o qual desejas obter informação detalhada"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes da Dungeon para fins de depuração."
       },
       "reload": {
         "help": "§e(Program) §7Recarrega todas as definições e recursos do mod. O jogo irá congelar durante uns segundos."

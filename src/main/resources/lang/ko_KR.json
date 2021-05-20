@@ -171,7 +171,7 @@
     "easierPresentOpening": "선물 쉽게 열기",
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
-    "highlightMaxEnchantments": "특별한 인챈트 강조하기",
+    "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
     "disableEmptyGlassPanes": "빈 유리판 비활성화",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
@@ -183,14 +183,22 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
     "drillFuelBar": "Drill 연료 바",
     "drillFuelText": "Drill 연료 숫자",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "fishingParticleOverlay": "낚시 파티클 오버레이",
+    "enchantmentLoreParsing": "인챈트 강조 바꾸기",
+    "cooldownPrediction": "쿨다운 예측 및 단축",
+    "legendaryMonkeyLevel100": "[TEMP] 레벨 100 전설 Monkey",
+    "biggerWake": "오버레이 파티클 크기 키우기",
+    "stackingEnchantProgress": "스태킹 인챈트 진행사항 보이기",
+    "showReforgeOverlay": "Reforge 오버레이 보이기",
+    "reforgeFilter": "Reforge 필터",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "인챈트",
@@ -207,16 +215,16 @@
     "enchantsToExclude": "제외할 %type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "도움이 필요하거나 업데이트 사항을 확인하고 싶습니까?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "우리의 Discord 서버에 참여하세요!",
+      "watchShowcase": "동영상 보기",
+      "downloadButton": "설치",
+      "openModFolderButton": "모드 폴더 열기",
+      "joinDiscordButton": "Discord 서버 참여하기",
       "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "사용할 수 있는 다운로드 링크가 없습니다. Discord 서버를 확인하세요.",
       "notificationBox": {
         "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "새로운 베타 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다!",
         "patchAvailable": "새로운 패치 업데이트 (%version%) 버전이 있습니다! 채팅에서 다운로드 옵션을 찾으세요!"
       }
     },
@@ -264,7 +272,8 @@
     "effectsActive": "%number% 개의 효과 활성화 되어 있음",
     "none": "없음",
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
-    "chroma": "무지개"
+    "chroma": "무지개",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "없음",
@@ -274,7 +283,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
     "titleStats": "스텟",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionStats": "당신의 HP, Defence과 Mana 스텟을 보여줍니다",
     "titleZealots": "Zealots",
     "descriptionZealots": "당신의 Zealot 카운터를 보여줍니다",
     "titleItem": "들고 있는 아이템",
@@ -293,6 +302,15 @@
     "descriptionSvens": "당신이 Sven 퀘스트를 하는 것을 보여줍니다.",
     "titleTarantula": "Tarantula 퀘스트",
     "descriptionTarantula": "당신이 Tarantula 퀘스트를 하는 것을 보여줍니다."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -313,7 +331,7 @@
           "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
             "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "radius": "엔티티의 NBT 데이터를 복사할 플레이어의 주변 반경 (단위: 블록)"
           }
         }
       },
@@ -322,14 +340,14 @@
         "detailedHelp": {
           "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "복사할 때 포맷팅 코드들이 포함되어야 하는지 결정합니다. \"참\" 혹은 \"거짓\" 이 될 수 있고, 만약에 아무런 값을 입력받지 않았다면 기본값인 \"거짓\" 이 됩니다. \"참\" 일때 포맷팅 코드들이 복사됩니다."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(개발자 모드) §7Tab 목록의 윗 글과 아랫 글 복사하기",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
         }
       },
       "dev": {
@@ -355,14 +373,17 @@
           }
         }
       },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+      },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "set": {
         "zealotCounter": {
@@ -472,14 +493,14 @@
     "inCombat": "전투 중..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "최대 티어",
+    "highTier": "높은 티어",
+    "midTier": "중간 티어",
+    "lowTier": "낮은 티어",
+    "commas": "쉼표",
+    "expertiseKills": "Expertise 킬 카운트",
+    "compactedBlocks": "압축된 블록",
+    "cultivatedCrops": "재배된 작물",
+    "maxed": "최대"
   }
 }

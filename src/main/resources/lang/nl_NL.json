@@ -46,7 +46,7 @@
     "lockSlots": "Vakjes vergrendelen toestaan",
     "lockSlot": "Vakje vergrendelen",
     "dontResetCursorInventory": "Cursor niet resetten tussen inventarissen",
-    "summoningEyeAlert": "Summoning Eye-alarm",
+    "summoningEyeAlert": "Summoning eye-alarm",
     "makeEnderchestsInEndGreen": "Enderkistkleur veranderen in De End",
     "changeColor": "Kleur wijzigen",
     "showInOtherGames": "In andere spellen weergeven",
@@ -74,7 +74,7 @@
     "onlyMineOresDeepCaverns": "Breek Alleen Erts in de Diepe Grotten",
     "onlyMineValuablesNether": "Breek Alleen Kostbaarheden in de Nether",
     "revenantIndicator": "Slayer Pantser Voortgangsindicator",
-    "specialZealotAlert": "Speciale Zealot Melding",
+    "specialZealotAlert": "Speciale zealot Melding",
     "enableMessageWhenActionPrevented": "Bericht weergeven bij geblokkeerde actie",
     "hidePetHealthBar": "Huisdiergezondheidsbalk verbergen",
     "powerOrbDisplay": "Power Orb-weergave",
@@ -84,7 +84,7 @@
       "compact": "Compact"
     },
     "disableMagicalSoupMessage": "Magische Paddenstoelensoep-berichten uitschakelen",
-    "zealotCounter": "Zealotteller - Aantal sinds laatste Eye",
+    "zealotCounter": "Zealotteller - Aantal sinds laatste eye",
     "tickerChargesDisplay": "Ticker-/Ladingsweergave",
     "tab": {
       "generalSettings": "Algemene instellingen"
@@ -106,8 +106,8 @@
     "showBrokenFragments": "Defecte Dragon Fragments weergeven",
     "skyblockAddonsButtonInPauseMenu": "SBA-knop weergeven in pauzemenu",
     "showTotalZealotCount": "Zealotteller - Aantal Zealots",
-    "showSummoningEyeCount": "Zealotteller - Aantal Eyes",
-    "showZealotsPerEye": "Zealotteller - Zealots per Eye",
+    "showSummoningEyeCount": "Zealotteller - Aantal eyes",
+    "showZealotsPerEye": "Zealotteller - Zealots per eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Boog groenkleuren bij gebruik van gifpijl",
     "birchParkRainmakerTimer": "Berkenpark Rainmakertimer",
     "combatTimerDisplay": "Gevechtstimerweergave",
@@ -155,7 +155,7 @@
     "hideWhenNotInCrypts": "Verbergen als je niet in de Crypten bent/geen Revenantquest doet",
     "hideWhenNotInSpidersDen": "Verbergen als je niet in het Hol van de Spin bent/geen Tarantulaquest doet",
     "hideWhenNotInCastle": "Verbergen als je niet in het Kasteel bent/geen Svenquest doet",
-    "dungeonDeathCounter": "Dugeon-deathteller",
+    "dungeonDeathCounter": "Dugeon-sterfgevalteller",
     "showPersonalCompactorPreview": "Personal Compactor-voorbeelden weergeven",
     "rockPetTracker": "Rock Pet-tracker",
     "dolphinPetTracker": "Dolphin Pet-tracker",
@@ -171,7 +171,7 @@
     "easierPresentOpening": "Cadeaus makkelijker uitpakken",
     "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
-    "highlightMaxEnchantments": "Speciale betoveringen markeren",
+    "highlightSpecialEnchantments": "Speciale betoveringen markeren",
     "disableEmptyGlassPanes": "Lege glazen ruiten verbergen",
     "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
     "healingCircleOpacity": "Healing Circle-doorzichtigheid",
@@ -190,7 +190,15 @@
     "biggerWake": "Overlaydeeltjes vergroten",
     "stackingEnchantProgress": "Stapelbetoveringsvoorgang weergeven",
     "showReforgeOverlay": "Omsmeedoverlay weergeven",
-    "reforgeFilter": "Omsmedingsfilter"
+    "reforgeFilter": "Omsmedingsfilter",
+    "hideEnchantDescription": "Betoveringsbeschrijving verbergen",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper-functies",
+      "trackedEntityProximityIndicator": "Nabijheidsindicator gevolgde vijanden weergeven",
+      "highlightTrackedEntity": "Gevolgde vijand markeren",
+      "showQuestCooldown": "Afkoeltijd Trevor's Quest weergeven",
+      "showQuestCooldownDescription": "Dit word boven Trevors hoofd weergegeven"
+    }
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -221,7 +229,7 @@
       }
     },
     "slotLocked": "Dit vakje is vergrendeld!",
-    "summoningEyeFound": "Summoning Eye!",
+    "summoningEyeFound": "Summoning eye!",
     "cancelledStemBreak": "Een functie heeft je ervan weerhouden deze stam te breken. Gebruik je lege hand als je hem toch wilt breken.",
     "cancelledProfileOpening": "Een functie heeft je ervan weerhouden het profiel van deze speler te openen omdat je een boog vast had.",
     "cancelledDropping": "Een functie heeft je ervan weerhouden dit \"zeldzame\" item of gereedschap uit je hotbar te laten vallen.",
@@ -230,7 +238,7 @@
     "cancelledDeepCaverns": "Een functie heeft je ervan weerhouden dit blok te breken.",
     "featureDisabled": "Functie uitgeschakeld",
     "anvilUses": "Aambeeld Gebruikt: %uses%",
-    "specialZealotFound": "Speciale Zealot!",
+    "specialZealotFound": "Speciale zealot!",
     "blockIncompletePatterns": "Blokkeer het maken van onvolledige patronen (aanbevolen)",
     "searchFeatures": "Doorzoek functies",
     "downloadingUpdateFile": "Update bestand downloaden...",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% actieve effecten",
     "none": "Geen",
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -276,7 +285,7 @@
     "titleStats": "Statistieken",
     "descriptionStats": "Laat je HP-, Defense- en Manastatistieken zien",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Toont je Zealotteller",
+    "descriptionZealots": "Toont je zealotteller",
     "titleItem": "Vastgehouden voorwerp",
     "descriptionItem": "Toont de naam van het voorwerp dat je vasthoudt",
     "titleProfile": "Profiel",
@@ -286,13 +295,22 @@
     "titleCustom": "Aangepaste status",
     "descriptionCustom": "Een aangepaste status invoeren",
     "titleAuto": "Automatische status",
-    "descriptionAuto": "Geeft automatisch een status weer, zoals je Zealotteller als je in de End bent.",
+    "descriptionAuto": "Geeft automatisch een status weer, zoals je zealotteller als je in de End bent.",
     "titleRevenants": "Wrekeropdracht",
     "descriptionRevenants": "Laat zien dat je een Wrekeropdracht aan het doen bent.",
     "titleSvens": "Svenopdracht",
     "descriptionSvens": "Laat zien dat je een Svenopdracht aan het doen bent.",
     "titleTarantula": "Tarantulaopdracht",
     "descriptionTarantula": "Laat zien dat je een Tarantulaopdracht aan het doen bent."
+  },
+  "enchantLayout": {
+    "title": "Bepaal hoe betoveringen worden weergegeven op itemtooltips",
+    "titleCompress": "Comprimeren",
+    "descriptionCompress": "Comprimeert betoveringen tot zo min mogelijk regels",
+    "titleNormal": "Normaal",
+    "descriptionNormal": "Geeft betoveringen weer zoals Hypixel dat doet",
+    "titleExpand": "Uitvouwen",
+    "descriptionExpand": "Somt alle betoveringen op, één per regel"
   },
   "commandUsage": {
     "sba": {
@@ -355,6 +373,9 @@
           }
         }
       },
+      "printDeaths": {
+        "help": "§e(Dev) §7Print de aantallen opgeslagen in de dungeon-sterfgevaltellers voor debugdoeleinden."
+      },
       "reload": {
         "help": "§e(Dev) §7Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
       },
@@ -366,19 +387,19 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Handmatig aantal voor Zealotteller opgeven",
+          "help": "Handmatig aantal voor zealotteller opgeven",
           "detailedHelp": {
-            "description": "Handmatig aantal voor Zealotteller opgeven.",
+            "description": "Handmatig aantal voor zealotteller opgeven.",
             "options": {
-              "eyes": "Aantal Summoning Eyes verkregen",
-              "totalZealots": "Aantal Zealots gedood",
-              "zealots": "Zealots gedood sinds het laatste Summoning Eye"
+              "eyes": "Aantal summoning eyes verkregen",
+              "totalZealots": "Aantal zealots gedood",
+              "zealots": "Zealots gedood sinds het laatste summoning eye"
             }
           },
-          "eyesSet": "Aantal Summoning Eyes ingesteld op %number%!",
-          "totalZealotsSet": "Aantal Zealots ingesteld op %number%!",
+          "eyesSet": "Aantal summoning eyes ingesteld op %number%!",
+          "totalZealotsSet": "Aantal zealots ingesteld op %number%!",
           "wrongUsage": "Ongeldige selectie! Kies asjeblieft %options%.",
-          "zealotsSet": "Huidige Zealotteller verzet naar %number%!"
+          "zealotsSet": "Huidige zealotteller verzet naar %number%!"
         }
       },
       "slayer": {

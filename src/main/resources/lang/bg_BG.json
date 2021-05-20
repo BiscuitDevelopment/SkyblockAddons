@@ -171,7 +171,7 @@
     "easierPresentOpening": "По-лесно отваряне на подаръците",
     "showSwordKills": "Покажи убийствата на меча",
     "compactTabList": "Компактен стил за таб",
-    "highlightMaxEnchantments": "Очертаване на специални Enchantments",
+    "highlightSpecialEnchantments": "Очертаване на специални Enchantments",
     "disableEmptyGlassPanes": "Изключи празните стъклени панели",
     "candyPointsCounter": "Spooky Event Бонбони/Точки брояч",
     "healingCircleOpacity": "Healing Circle непрозрачност",
@@ -190,7 +190,15 @@
     "biggerWake": "Увеличаване на Overlay Particles",
     "stackingEnchantProgress": "Покажи Натрупване на Enchant прогреса",
     "showReforgeOverlay": "Покажи Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Филтър",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Enchants",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% Ефекти са активни",
     "none": "Нищо",
     "copyModeSet": "Режимът за копиране на разработчика е настроен на: %mode%. Натисни %keyName%, за да задействаш копие на данни!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Нищо",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Показва, че правиш Sven мисия.",
     "titleTarantula": "Tarantula мисия",
     "descriptionTarantula": "Показва, че правиш Tarantula мисия."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "подкомандата, за да получите подробна употреба"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Презарежда всички настройки и ресурси на мода. Играта ще замръзне за няколко секунди."

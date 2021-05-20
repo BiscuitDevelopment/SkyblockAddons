@@ -171,7 +171,7 @@
     "easierPresentOpening": "Mở Quà Dễ hơn",
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
-    "highlightMaxEnchantments": "Nổi bật các Phù phép Đặc biệt",
+    "highlightSpecialEnchantments": "Nổi bật các Phù phép Đặc biệt",
     "disableEmptyGlassPanes": "Xóa các chỗ trống phủ bằng kính",
     "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
     "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
@@ -190,7 +190,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "Phù phép",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% H.ứng thuốc đang H.động",
     "none": "Không có",
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
-    "chroma": "Sắc độ"
+    "chroma": "Sắc độ",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Hiện rằng bạn đang làm một nhiệm vụ đánh Sven.",
     "titleTarantula": "Nhiệm Vụ Tarantula",
     "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "lệnh phụ để lấy chi tiết sử dụng"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Áp dụng tất cả cài đặt và tài nguyên của mod. Game sẽ đứng hình trong vài giây."
