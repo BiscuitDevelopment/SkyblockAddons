@@ -171,7 +171,7 @@
     "easierPresentOpening": "פתיחת מתנות בקלות יותר",
     "showSwordKills": "הצג את סך ההריגות עם חרב",
     "compactTabList": "רשימת Tab קומפקטית",
-    "highlightMaxEnchantments": "הדגש כשפים מיוחדים",
+    "highlightSpecialEnchantments": "הדגש כשפים מיוחדים",
     "disableEmptyGlassPanes": "בטל חלונות זכוכית ריקים",
     "candyPointsCounter": "סופר סוכריות/נקודות בSpooky Event",
     "healingCircleOpacity": "אטימות מעגל ההחייאה",
@@ -190,7 +190,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "כישופים",
@@ -251,61 +259,71 @@
     "secondStatus": "הסטאטוס הזה יופיע מתחת לסטאטוס הראשון שלך",
     "fallbackStatus": "הסטאטוס הזה יופיע כאשר לסטאטוס האוטומטי שלך אין מה להציג",
     "legendarySeaCreatureWarning": "תפיסה אגדית!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
-    "enableAll": "Enable All",
-    "disableAll": "Disable All",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
-    "actionsLeft": "%number% Left",
-    "effectActive": "1 Effect Active",
-    "effectsActive": "%number% Effects Active",
-    "none": "None",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "chroma": "Chroma"
+    "cancelledPark": "פיטצ'ר מנע ממך לשבור את הבלוק הזה כאן.",
+    "bossApproaching": "אתה קרוב לזימון הבוס!",
+    "enableAll": "הפעל הכול",
+    "disableAll": "השבת הכול",
+    "enchantmentInclusionExample": "לדוגמא: \"prot, feather\"",
+    "enchantmentExclusionExample": "לדוגמא: \"proj, blast\"",
+    "reforgeInclusionExample": "לדוגמא: \"godly, strong\"",
+    "reforgeExclusionExample": "לדוגמא: \"odd, clean\"",
+    "actionsLeft": "נותר %number%",
+    "effectActive": "אפקט אחד פעיל",
+    "effectsActive": "%number% אפקטים פעילים",
+    "none": "ריק",
+    "copyModeSet": "מצב העתקת מפתח שונה ל:%mode%. לחץ/י %keyName% כדי להפעיל את העתקת הנתונים!",
+    "chroma": "כרומה",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "titleNone": "ריק",
+    "descriptionNone": "אין טקסט מוצג",
+    "titleLocation": "מיקום",
+    "descriptionLocation": "מראה את המיקום הנוכחי שלך",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "מראה את כמות הכסף בארנק שלך",
+    "titleStats": "סטטיסטיקות",
+    "descriptionStats": "מראה את כמות החיים, הגנה, ומאנה",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "descriptionZealots": "הצג את סופר ה- Zealot שלך",
+    "titleItem": "פריט מוחזק",
+    "descriptionItem": "מראה את השם של החפץ שאתה מחזיק",
+    "titleProfile": "פרופיל",
+    "descriptionProfile": "מראה את שם הפרופיל שלך",
+    "titleTime": "השעה בSkyblock",
+    "descriptionTime": "מראה את הזמן הנוכחי של Skyblock. לדוגמא: 1 לחורף המוקדם, 12:00 בלילה",
     "titleCustom": "סטטוס מותאם אישית",
     "descriptionCustom": "הכנס סטטוס מותאם אישית",
     "titleAuto": "סטטוס אוטומטי",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionAuto": "הצג סטאטוס באופן אוטומטי. לדוגמא: כמות ה- Zealot בזמן שאתה בסוף.",
+    "titleRevenants": "משימת Revenant",
+    "descriptionRevenants": "מראה שאתה עושה משימת Revenant.",
+    "titleSvens": "משימת Sven",
+    "descriptionSvens": "מראה שאתה עושה משימת Sven.",
+    "titleTarantula": "משימת טרנטולה",
+    "descriptionTarantula": "מראה שאתה עושה משימת טרנטולה."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "פותח את התפריט הראשי"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(מתכנת) §7מראה את מותג השרת",
+        "brandOutput": "מותג השרת: %brand%",
+        "notFound": "מותג השרת לא נמצא!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(מתכנת) §7מעתיק את הנתונים של הבלוק שאתה מסתכל עליו"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -333,19 +351,19 @@
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "הפעל/כבה מצב מפתח",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "disabled": "מצב מפתח הופסק!",
+        "enabled": "מצב מפתח הופעל! טיפ: תלחץ \"%keyName%\" כדי להעתיק נתוני NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "עריכת מיקומים ב- GUI"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "פתח את תיקיית המודים",
+        "error": "נמצאה בעיה בעת נסיון פתיחת תיקיית המודים: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
@@ -354,6 +372,9 @@
             "command": "the sub-command to get detailed usage for"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."

@@ -171,7 +171,7 @@
     "easierPresentOpening": "更容易地打開禮物",
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
-    "highlightMaxEnchantments": "標註特殊附魔",
+    "highlightSpecialEnchantments": "標註特殊附魔",
     "disableEmptyGlassPanes": "防止點擊無名的玻璃片",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
@@ -190,7 +190,15 @@
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "顯示疊加附魔進度",
     "showReforgeOverlay": "顯示 Reforge 提示",
-    "reforgeFilter": "Reforge 過濾"
+    "reforgeFilter": "Reforge 過濾",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "附魔",
@@ -264,7 +272,8 @@
     "effectsActive": "已激活 %number% 個效果",
     "none": "無",
     "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
-    "chroma": "漸變色"
+    "chroma": "漸變色",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -293,6 +302,15 @@
     "descriptionSvens": "顯示你是否在進行一個 Sven 任務。",
     "titleTarantula": "Tarantula 任務",
     "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "要獲得詳細用法的子命令"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"

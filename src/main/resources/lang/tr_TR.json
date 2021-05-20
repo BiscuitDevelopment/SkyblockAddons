@@ -171,7 +171,7 @@
     "easierPresentOpening": "Hediyeleri Kolay Aç",
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
-    "highlightMaxEnchantments": "Özel Büyüleri Vurgula",
+    "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
     "disableEmptyGlassPanes": "Boş İnce Camları Devre Dışı Bırak",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
@@ -190,7 +190,15 @@
     "biggerWake": "Kaplama Parçacıklarını Büyüt",
     "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
     "showReforgeOverlay": "Reforge Kaplamasını Göster",
-    "reforgeFilter": "Reforge Filtresi"
+    "reforgeFilter": "Reforge Filtresi",
+    "hideEnchantDescription": "Büyü Açıklamasını Gizle",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Özellikleri",
+      "trackedEntityProximityIndicator": "İzlenen Varlığın Yakınlık Göstergesini Göster",
+      "highlightTrackedEntity": "İzlenen Varlığı Vurgula",
+      "showQuestCooldown": "Trevor'ın Görev Bekleme Süresini Göster",
+      "showQuestCooldownDescription": "Bu Trevor'ın Kafasının Üstünde Gözükecek"
+    }
   },
   "messages": {
     "enchants": "Büyüler",
@@ -264,7 +272,8 @@
     "effectsActive": "%number% Efekt Aktif",
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
-    "chroma": "Renk parlaklığı"
+    "chroma": "Renk parlaklığı",
+    "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Sven görevleri yaptığını gösterir.",
     "titleTarantula": "Tarantula Görevleri",
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
+  },
+  "enchantLayout": {
+    "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
+    "titleCompress": "Sıkıştır",
+    "descriptionCompress": "Büyüleri mümkün olduğunca az satıra sıkıştırır",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Hypixel'in yaptığı gibi büyüleri gösterir",
+    "titleExpand": "Genişlet",
+    "descriptionExpand": "Her büyüyü kendi satırında listeler"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "ayrıntılı kullanım için alt komut"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
       },
       "reload": {
         "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."

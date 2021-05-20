@@ -171,7 +171,7 @@
     "easierPresentOpening": "Könnyebb ajándéknyitás",
     "showSwordKills": "Kard ölések mutatása",
     "compactTabList": "Tab lista kicsinyítése",
-    "highlightMaxEnchantments": "Speciális varázslatok kiemelése",
+    "highlightSpecialEnchantments": "Speciális varázslatok kiemelése",
     "disableEmptyGlassPanes": "Névtelen üveglapok elrejtése",
     "candyPointsCounter": "Spooky Event Candy/Pont számláló",
     "healingCircleOpacity": "Gyógyító kör átlátszóság",
@@ -182,7 +182,7 @@
     "showExperimentationTableTooltips": "Experimentation Table Tooltip Mutató",
     "onlyMineOresDwarvenMines": "Csak ércek bányászása a \"Dwarven Mines\"-ban",
     "drillFuelBar": "Drill üzemanyag jelző",
-    "drillFuelText": "Drill Fuel Number",
+    "drillFuelText": "Drill üzemanyag szám",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -190,7 +190,15 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Varázslat Leírás Elrejtése",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper funkció",
+      "trackedEntityProximityIndicator": "Követett entitás távolság mutató",
+      "highlightTrackedEntity": "Követett entitás kiemelése",
+      "showQuestCooldown": "Trevor's Quest időzítő mutatása",
+      "showQuestCooldownDescription": "Ez Trevor fölött fog megjelenni"
+    }
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -207,11 +215,11 @@
     "enchantsToExclude": "%type% kihagyása:",
     "updateChecker": {
       "wantToViewPatchNotes": "Kíváncsi vagy, hogy mik változtak vagy segítségre van szükséged?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Csatlakozzon a Discord szerverünkhöz!",
+      "watchShowcase": "Videó megnézése",
+      "downloadButton": "Letöltés",
+      "openModFolderButton": "Modok mappájának megnyitása",
+      "joinDiscordButton": "Csatlakozás a Discordhoz",
       "newUpdateAvailable": "Egy új frissítés (%version%) áll rendelkezésre!",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
@@ -264,7 +272,8 @@
     "effectsActive": "%number% Aktív Hatás",
     "none": "Semmi",
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
-    "chroma": "Chroma"
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s"
   },
   "discordStatus": {
     "titleNone": "Semmi",
@@ -293,6 +302,15 @@
     "descriptionSvens": "Ezt mutatja amikor Sven küldetést csinálsz.",
     "titleTarantula": "Tarantula küldetés",
     "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz."
+  },
+  "enchantLayout": {
+    "title": "Varázslatok mutatásának kezelése",
+    "titleCompress": "Tömörítés",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normál",
+    "descriptionNormal": "Hypixel bűbájok listája",
+    "titleExpand": "Kiterjesztett",
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "az al-parancs, amiről információt szeretnél kapni"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
@@ -472,11 +493,11 @@
     "inCombat": "Harcban vagy..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
+    "superTier": "Maximum szint",
+    "highTier": "Jó szint",
+    "midTier": "Közép szint",
+    "lowTier": "Alacsony szint",
+    "commas": "Vesszők",
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
