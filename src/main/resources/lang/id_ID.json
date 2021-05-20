@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Perlihatkan Kemajuan Enchant yang Stacking",
     "showReforgeOverlay": "Perlihatkan Overlay Reforge",
     "reforgeFilter": "Filter Reforge",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Sembunyikan Deskripsi Enchant",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Fitur-Fitur Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Perlihatkan Indikator Proksimitas Entity yang Dilacak",
+      "highlightTrackedEntity": "Soroti Entity yang Dilacak",
+      "showQuestCooldown": "Perlihatkan Cooldown Quest Trevor",
+      "showQuestCooldownDescription": "Ini akan ditampilkan diatas kepala Trevor"
     }
   },
   "messages": {
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "title": "Kontrol bagaimana enchants ditampilkan di tooltip benda",
+    "titleCompress": "Kompres",
+    "descriptionCompress": "Mengompres enchant-enchant menjadi sesedikit baris yang mungkin",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionNormal": "Menampilkan enchant-enchant seperti yang dilakukan Hypixel",
+    "titleExpand": "Perluas",
+    "descriptionExpand": "Mendaftarkan tiap enchant di barisnya sendiri"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Mencetak hitungan yang disimpan di counter-counter kematian dungeon untuk tujuan debugging."
       },
       "reload": {
         "help": "§e(Dev) §7Memuat ulang semua pengaturan dan bahan-bahan. Game akan beku untuk beberapa detik."
