@@ -171,7 +171,7 @@
     "easierPresentOpening": "crwdns1418:0crwdne1418:0",
     "showSwordKills": "crwdns1420:0crwdne1420:0",
     "compactTabList": "crwdns1442:0crwdne1442:0",
-    "highlightMaxEnchantments": "crwdns1444:0crwdne1444:0",
+    "highlightSpecialEnchantments": "crwdns1658:0crwdne1658:0",
     "disableEmptyGlassPanes": "crwdns1554:0crwdne1554:0",
     "candyPointsCounter": "crwdns1556:0crwdne1556:0",
     "healingCircleOpacity": "crwdns1558:0crwdne1558:0",
@@ -190,7 +190,15 @@
     "biggerWake": "crwdns1610:0crwdne1610:0",
     "stackingEnchantProgress": "crwdns1612:0crwdne1612:0",
     "showReforgeOverlay": "crwdns1614:0crwdne1614:0",
-    "reforgeFilter": "crwdns1656:0crwdne1656:0"
+    "reforgeFilter": "crwdns1656:0crwdne1656:0",
+    "hideEnchantDescription": "crwdns1660:0crwdne1660:0",
+    "trevorTheTrapper": {
+      "title": "crwdns1662:0crwdne1662:0",
+      "trackedEntityProximityIndicator": "crwdns1664:0crwdne1664:0",
+      "highlightTrackedEntity": "crwdns1666:0crwdne1666:0",
+      "showQuestCooldown": "crwdns1668:0crwdne1668:0",
+      "showQuestCooldownDescription": "crwdns1670:0crwdne1670:0"
+    }
   },
   "messages": {
     "enchants": "crwdns1272:0crwdne1272:0",
@@ -264,7 +272,8 @@
     "effectsActive": "crwdns1386:0%number%crwdne1386:0",
     "none": "crwdns1446:0crwdne1446:0",
     "copyModeSet": "crwdns1448:0%mode%crwdnd1448:0%keyName%crwdne1448:0",
-    "chroma": "crwdns1594:0crwdne1594:0"
+    "chroma": "crwdns1594:0crwdne1594:0",
+    "worldRenderedCooldownTime": "crwdns1672:0[SBA]crwdnd1672:0%ticrwdnd1672:0%scrwdne1672:0"
   },
   "discordStatus": {
     "titleNone": "crwdns1044:0crwdne1044:0",
@@ -293,6 +302,15 @@
     "descriptionSvens": "crwdns1134:0crwdne1134:0",
     "titleTarantula": "crwdns1136:0crwdne1136:0",
     "descriptionTarantula": "crwdns1138:0crwdne1138:0"
+  },
+  "enchantLayout": {
+    "title": "crwdns1674:0crwdne1674:0",
+    "titleCompress": "crwdns1676:0crwdne1676:0",
+    "descriptionCompress": "crwdns1678:0crwdne1678:0",
+    "titleNormal": "crwdns1680:0crwdne1680:0",
+    "descriptionNormal": "crwdns1682:0crwdne1682:0",
+    "titleExpand": "crwdns1684:0crwdne1684:0",
+    "descriptionExpand": "crwdns1686:0crwdne1686:0"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +372,9 @@
             "command": "crwdns1498:0crwdne1498:0"
           }
         }
+      },
+      "printDeaths": {
+        "help": "crwdns1688:0crwdne1688:0"
       },
       "reload": {
         "help": "crwdns1596:0crwdne1596:0"
