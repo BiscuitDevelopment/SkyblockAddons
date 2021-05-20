@@ -184,7 +184,7 @@
       "loreName": "Harvesting",
       "nbtName": "harvesting",
       "goodLevel": 5,
-      "maxLevel": 5
+      "maxLevel": 6
     },
     "impaling": {
       "loreName": "Impaling",
@@ -406,7 +406,7 @@
       "loreName": "Triple-Strike",
       "nbtName": "triple_strike",
       "goodLevel": 4,
-      "maxLevel": 4
+      "maxLevel": 5
     },
     "true protection": {
       "loreName": "True Protection",

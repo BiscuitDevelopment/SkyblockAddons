@@ -166,9 +166,9 @@ public class DataUtils {
 
             // Enchanted Item Blacklist
             logger.info("Trying to fetch enchanted item lists from the server...");
-            requestUri = "https://api.skyblockaddons.com/api/v1/skyblockaddons/enchantedItemLists";
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblockaddons/enchantedItemLists.json";
             EnchantedItemLists receivedBlacklist = httpClient.execute(new HttpGet(requestUri),
-                    createResponseHandler(EnchantedItemLists.class));
+                    createLegacyResponseHandler(EnchantedItemLists.class));
             if (receivedBlacklist != null) {
                 logger.info("Successfully fetched enchanted item lists!");
                 EnchantedItemPlacementBlocker.setItemLists(receivedBlacklist);
@@ -178,9 +178,10 @@ public class DataUtils {
 
             // Containers
             logger.info("Trying to fetch containers from the server...");
-            requestUri = "https://api.skyblockaddons.com/api/v1/skyblock/containers";
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/containers.json";
             Map<String, ContainerData> receivedContainers = httpClient.execute(new HttpGet(requestUri),
-                    createResponseHandler(new TypeToken<HashMap<String, ContainerData>>() {}.getType()));
+                    createLegacyResponseHandler(new TypeToken<HashMap<String, ContainerData>>() {
+                    }.getType()));
             if (receivedContainers != null) {
                 logger.info("Successfully fetched containers!");
                 ItemUtils.setContainers(receivedContainers);
@@ -190,9 +191,10 @@ public class DataUtils {
 
             // Compactor Items
             logger.info("Trying to fetch compactor items from the server...");
-            requestUri = "https://api.skyblockaddons.com/api/v1/skyblock/compactorItems";
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/compactorItems.json";
             Map<String, CompactorItem> receivedCompactorItems = httpClient.execute(new HttpGet(requestUri),
-                    createResponseHandler(new TypeToken<HashMap<String, CompactorItem>>() {}.getType()));
+                    createLegacyResponseHandler(new TypeToken<HashMap<String, CompactorItem>>() {
+                    }.getType()));
             if (receivedCompactorItems != null) {
                 logger.info("Successfully fetched compactor items!");
                 ItemUtils.setCompactorItems(receivedCompactorItems);
@@ -205,9 +207,10 @@ public class DataUtils {
 
             // Enchantments
             logger.info("Trying to fetch item enchantments from the server...");
-            requestUri = "https://api.skyblockaddons.com/api/v1/skyblock/enchants";
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/enchants.json";
             EnchantManager.Enchants receivedEnchants = httpClient.execute(new HttpGet(requestUri),
-                    createResponseHandler(new TypeToken<EnchantManager.Enchants>() {}.getType()));
+                    createLegacyResponseHandler(new TypeToken<EnchantManager.Enchants>() {
+                    }.getType()));
             if (receivedEnchants != null) {
                 logger.info("Successfully fetched item enchantments!");
                 EnchantManager.setEnchants(receivedEnchants);
@@ -217,9 +220,10 @@ public class DataUtils {
 
             // Cooldowns
             logger.info("Trying to fetch cooldowns from the server...");
-            requestUri = "https://api.skyblockaddons.com/api/v1/skyblock/cooldowns";
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/cooldowns.json";
             Map<String, Integer> receivedCooldowns = httpClient.execute(new HttpGet(requestUri),
-                    createResponseHandler(new TypeToken<HashMap<String, Integer>>() {}.getType()));
+                    createLegacyResponseHandler(new TypeToken<HashMap<String, Integer>>() {
+                    }.getType()));
             if (receivedCooldowns != null) {
                 logger.info("Successfully fetched cooldowns!");
                 CooldownManager.setItemCooldowns(receivedCooldowns);
