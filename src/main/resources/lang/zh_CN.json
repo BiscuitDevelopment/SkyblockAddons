@@ -172,6 +172,7 @@
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
     "highlightMaxEnchantments": "高亮特殊附魔",
+    "highlightSpecialEnchantments": "高亮特殊附魔",
     "disableEmptyGlassPanes": "阻止点击界面菜单内的无名玻璃板",
     "candyPointsCounter": "Spooky Event 糖果/分数统计器",
     "healingCircleOpacity": "治疗光环不透明度",
@@ -190,7 +191,15 @@
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "显示洗炼提示",
-    "reforgeFilter": "Reforge Filter"
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "附魔",
@@ -264,7 +273,8 @@
     "effectsActive": "已激活 %number% 种药水效果",
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
-    "chroma": "渐变"
+    "chroma": "渐变",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -293,6 +303,15 @@
     "descriptionSvens": "显示你当前正在进行狼王猎手任务",
     "titleTarantula": "狼蛛猎手任务",
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "此子命令来获取详细的用法"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
