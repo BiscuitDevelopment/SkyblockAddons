@@ -306,11 +306,11 @@
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
     "titleCompress": "Compress",
-    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
     "titleNormal": "Normal",
-    "descriptionNormal": "Display enchants like Hypixel does",
+    "descriptionNormal": "Displays enchants like Hypixel does",
     "titleExpand": "Expand",
-    "descriptionExpand": "List each enchant on its own line"
+    "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
