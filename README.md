@@ -9,7 +9,7 @@
     <img alt="downloads" src="https://img.shields.io/github/downloads/BiscuitDevelopment/SkyblockAddons/total?color=56bcd3" />
   </a>
   <a href="https://github.com/BiscuitDevelopment/SkyblockAddons/blob/master/LICENSE" target="_blank">
-    <img alt="license" src="https://img.shields.io/github/license/BiscuitDevelopment/SkyblockAddons?color=56bcd3" />
+    <img alt="license" src="https://img.shields.io/badge/License-MIT-56bcd3" />
   </a>
   <a href="https://discord.gg/PqTAEek" target="_blank">
     <img alt="discord" src="https://img.shields.io/discord/450878205294018560?color=56bcd3&label=discord" />
