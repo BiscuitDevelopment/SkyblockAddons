@@ -196,7 +196,7 @@
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldown": "Mostrar o tempo de espera da missão do Trevor",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     }
   },
@@ -273,7 +273,7 @@
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
     "chroma": "Croma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -309,7 +309,7 @@
     "descriptionCompress": "Compress enchants into as few lines as possible",
     "titleNormal": "Normal",
     "descriptionNormal": "Display enchants like Hypixel does",
-    "titleExpand": "Expand",
+    "titleExpand": "Expandir",
     "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
