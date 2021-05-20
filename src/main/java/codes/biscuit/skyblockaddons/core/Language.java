@@ -25,7 +25,6 @@ public enum Language {
     VIETNAMESE("vi_VN"),
     ITALIAN("it_IT"),
     THAI("th_TH"),
-    FILIPINO("fil_PH"),
 
     //rest listed alphabetically
     BULGARIAN("bg_BG"),
@@ -39,7 +38,6 @@ public enum Language {
     HEBREW("he_IL"),
     HUNGARIAN("hu_HU"),
     INDONESIAN("id_ID"),
-    IRISH("ga_IE"),
     LITHUANIAN("lt_LT"),
     MALAY("ms_MY"),
     NORWEGIAN("no_NO"),
