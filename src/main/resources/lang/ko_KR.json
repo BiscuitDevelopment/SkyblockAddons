@@ -172,6 +172,7 @@
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
     "highlightMaxEnchantments": "특별한 인챈트 강조하기",
+    "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
     "disableEmptyGlassPanes": "빈 유리판 비활성화",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
@@ -190,7 +191,15 @@
     "biggerWake": "오버레이 파티클 크기 키우기",
     "stackingEnchantProgress": "스태킹 인챈트 진행사항 보이기",
     "showReforgeOverlay": "Reforge 오버레이 보이기",
-    "reforgeFilter": "Reforge 필터"
+    "reforgeFilter": "Reforge 필터",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    }
   },
   "messages": {
     "enchants": "인챈트",
@@ -264,7 +273,8 @@
     "effectsActive": "%number% 개의 효과 활성화 되어 있음",
     "none": "없음",
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
-    "chroma": "무지개"
+    "chroma": "무지개",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
     "titleNone": "없음",
@@ -293,6 +303,15 @@
     "descriptionSvens": "당신이 Sven 퀘스트를 하는 것을 보여줍니다.",
     "titleTarantula": "Tarantula 퀘스트",
     "descriptionTarantula": "당신이 Tarantula 퀘스트를 하는 것을 보여줍니다."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compress enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Display enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "List each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
@@ -354,6 +373,9 @@
             "command": "자세한 사용법을 얻을 부명령어"
           }
         }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
         "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
