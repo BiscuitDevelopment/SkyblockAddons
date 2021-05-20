@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
     "showReforgeOverlay": "Mostrar reforges no menu",
     "reforgeFilter": "Filtro de reforges",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Esconder a descrição do encantamento",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "title": "Funções do Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Mostrar o indicador de proximidade da entidade-alvo",
+      "highlightTrackedEntity": "Destacar entidade-alvo",
       "showQuestCooldown": "Mostrar o tempo de espera da missão do Trevor",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "showQuestCooldownDescription": "Isto irá aparecer acima da cabeça do Trevor"
     }
   },
   "messages": {
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
+    "title": "Controla como os encantamentos são mostrados na descrição dos items",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
+    "descriptionNormal": "Exibe os encantamentos como o Hypixel",
     "titleExpand": "Expandir",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionExpand": "Mostra cada encantamento na sua própria linha"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes da Dungeon para fins de depuração."
       },
       "reload": {
         "help": "§e(Program) §7Recarrega todas as definições e recursos do mod. O jogo irá congelar durante uns segundos."
