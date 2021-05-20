@@ -166,6 +166,8 @@ public enum Feature {
     EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null,false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightMaxEnchantments", new GuiFeatureData(ColorCode.GOLD, true), false),
+    STOP_RAT_SOUNDS(179, Message.SETTING_STOP_RAT_SOUNDS, true, EnumUtils.FeatureSetting.STOP_ONLY_RAT_SQUEAK),
+    STOP_ONLY_RAT_SQUEAK(180, Message.SETTING_STOP_ONLY_RAT_SQUEAK, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -199,7 +201,7 @@ public enum Feature {
             TARANTULA_COLOR_BY_RARITY, SVEN_COLOR_BY_RARITY, REVENANT_TEXT_MODE, TARANTULA_TEXT_MODE, SVEN_TEXT_MODE,
             DRAGON_STATS_TRACKER_COLOR_BY_RARITY, HIDE_WHEN_NOT_IN_CASTLE, HIDE_WHEN_NOT_IN_SPIDERS_DEN,
             HIDE_WHEN_NOT_IN_CRYPTS, SHOW_PERSONAL_COMPACTOR_PREVIEW, SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, SHOW_SKILL_XP_GAINED,
-            SHOW_SALVAGE_ESSENCES_COUNTER);
+            SHOW_SALVAGE_ESSENCES_COUNTER, STOP_ONLY_RAT_SQUEAK);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
