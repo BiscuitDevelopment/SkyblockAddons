@@ -191,7 +191,7 @@
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Reforge オーバーレイを表示",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "エンチャントの説明を非表示",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
