@@ -183,13 +183,13 @@
     "onlyMineOresDwarvenMines": "Apenas quebrar minérios nas Minas dos Anões",
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelText": "Número do combustível da Drill",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "fishingParticleOverlay": "Sobreposição de partículas de pesca",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Prever e diminuir o tempo de recarga",
     "legendaryMonkeyLevel100": "[TEMP] Monkey Lendário Nível 100",
     "biggerWake": "Ampliar partículas de sobreposição",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Exibir Sobreposição de Reforge",
+    "showReforgeOverlay": "Mostrar Sobreposição de Reforge",
     "reforgeFilter": "Filtro de Reforge",
     "hideEnchantDescription": "Esconder Descrição do Encantamento",
     "trevorTheTrapper": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes da dungeon para fins de depuração."
       },
       "reload": {
         "help": "§e(Dev) §7Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
