@@ -7,7 +7,6 @@ import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent.Type;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -58,8 +57,8 @@ public class FeatureItemOutlines {
                 // Return the rarity color of the item
                 return itemRarity.getColorCode().getColor();
             }
-            // Return gray if the item doesn't have a rarity for some reason...
-            return ColorCode.GRAY.getColor();
+            // Return null if the item doesn't have a rarity for some reason...
+            return null;
         }
         return null;
     };

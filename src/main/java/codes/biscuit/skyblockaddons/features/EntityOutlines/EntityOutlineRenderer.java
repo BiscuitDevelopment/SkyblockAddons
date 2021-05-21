@@ -1,6 +1,8 @@
 package codes.biscuit.skyblockaddons.features.EntityOutlines;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
@@ -150,6 +152,7 @@ public class EntityOutlineRenderer {
         Minecraft mc = Minecraft.getMinecraft();
         RenderGlobal renderGlobal = mc.renderGlobal;
         SkyblockAddons main = SkyblockAddons.getInstance();
+        ConfigValues sbConfig = main.getConfigValues();
 
         // Vanilla Conditions
         if (renderGlobal.entityOutlineFramebuffer == null || renderGlobal.entityOutlineShader == null || mc.thePlayer == null)
@@ -157,6 +160,11 @@ public class EntityOutlineRenderer {
 
         // Skyblock Conditions
         if (!main.getUtils().isOnSkyblock()) {
+            return false;
+        }
+        // Feature conditions TODO change at some point after feature refactor to be decentralized (startup registration to an event?)
+        if (sbConfig.isDisabled(Feature.MAKE_DROPPED_ITEMS_GLOW) && sbConfig.isDisabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW) &&
+                sbConfig.isDisabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY)) {
             return false;
         }
 
@@ -258,8 +266,8 @@ public class EntityOutlineRenderer {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (mc.theWorld != null) {
-                List<Entity> entities = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+            if (mc.theWorld != null && shouldRenderEntityOutlines()) {
+                List<Entity> entities = mc.theWorld.getLoadedEntityList();
                 // Only render outlines around non-null entities within the camera frustum
                 HashSet<Entity> entitiesToRender = new HashSet<>(entities.size());
                 entities.forEach(e -> {

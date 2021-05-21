@@ -437,17 +437,17 @@ public class EnchantManager {
         boolean removeGreyEnchants = SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.HIDE_GREY_ENCHANTS);
 
         // Start at index 1 since index 0 is the title
-        int removeIndex = 1;
-        for (int i = removeIndex; i < Math.min(removeIndex + item.getEnchantmentTagList().tagCount(), tooltip.size()); i++) { // only a max of 2 gray enchants are possible
+        int total = 0;
+        for (int i = 1; total < 1 + item.getEnchantmentTagList().tagCount() && i < tooltip.size(); total++) { // only a max of 2 gray enchants are possible
             String line = tooltip.get(i);
             if (GREY_ENCHANT_PATTERN.matcher(line).matches()) {
                 lastGreyEnchant = i;
 
                 if (removeGreyEnchants) {
-                    tooltip.remove(removeIndex);
+                    tooltip.remove(i);
                 }
             } else {
-                removeIndex++;
+                i++;
             }
         }
         return removeGreyEnchants ? -1 : lastGreyEnchant;
