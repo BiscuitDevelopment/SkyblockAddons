@@ -441,7 +441,8 @@ public class RenderListener {
      */
     private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
         int barHeight = 5, barWidth = 71;
-        float barFill = barWidth * fill;
+        // Rounding to the nearest 100th ensures no green texture is rendered in the progress indicator
+        float barFill = (int) (100 * barWidth * fill) / 100F;
         mc.getTextureManager().bindTexture(BARS);
         if (color.getColor() == ColorCode.BLACK.getColor()) {
             GlStateManager.color(0.25F, 0.25F, 0.25F, ColorUtils.getAlpha(color.getColor()) / 255F); // too dark normally
