@@ -369,10 +369,11 @@ public class PlayerListener {
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
                 } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
-                    // Triggered if player has just given the correct item to Fetchur, so register that moment
-                    if (unformattedText.contains(FetchurManager.getInstance().getFetchurTaskCompletedPhrase())) {
-                        main.getPersistentValuesManager().getPersistentValues().setLastTimeFetchur(new Date());
-                        main.getPersistentValuesManager().saveValues();
+                    FetchurManager fetchur = FetchurManager.getInstance();
+                    // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)
+                    if (unformattedText.contains(fetchur.getFetchurTaskCompletedPhrase()) ||
+                            fetchur.hasNotFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
+                        FetchurManager.getInstance().saveLastTimeFetched();
                     }
                 }
 
@@ -620,6 +621,9 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
                             main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(player);
+                            if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY)) {
+                                FetchurManager.getInstance().recalculateFetchurItem();
+                            }
 
                             // Update mining/fishing pet tracker numbers when the player opens the skill menu
                             if (main.getInventoryUtils().getInventoryType() == InventoryType.SKILL_TYPE_MENU) {
@@ -667,7 +671,6 @@ public class PlayerListener {
                             BaitManager.getInstance().refreshBaits();
                         }
                     }
-
                     main.getInventoryUtils().cleanUpPickupLog();
 
                 } else if (timerTick > 20) { // To keep the timer going from 1 to 21 only.

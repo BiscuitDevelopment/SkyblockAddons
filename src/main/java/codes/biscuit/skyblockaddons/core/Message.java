@@ -226,7 +226,7 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
-    MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurWants"),
+    MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurItem"),
     MESSAGE_FETCHUR_WARNING(MessageObject.MESSAGES, "fetchurWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),

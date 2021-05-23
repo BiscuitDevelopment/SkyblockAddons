@@ -7,10 +7,7 @@ import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonClass;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
-import codes.biscuit.skyblockaddons.features.BaitManager;
-import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
-import codes.biscuit.skyblockaddons.features.ItemDiff;
-import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
+import codes.biscuit.skyblockaddons.features.*;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonType;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonsSince;
@@ -38,7 +35,6 @@ import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.ScaledResolution;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
@@ -900,11 +896,16 @@ public class RenderListener {
 
             text = "Test";
         } else if (feature == Feature.FETCHUR_TODAY) {
-            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
-            if (!FetchurManager.getInstance().hasMadeFetchur() || buttonLocation != null)
-                text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x :(" + fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText() + ")");
-            else
+            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
+            if (FetchurManager.getInstance().hasNotFetchedToday() || buttonLocation != null) {
+                if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
+                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
+                } else {
+                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage("");
+                }
+            } else {
                 text = ""; // If it has made fetchur, then no need for text
+            }
         } else {
             return;
         }
@@ -945,10 +946,10 @@ public class RenderListener {
         }
 
         if (feature == Feature.FETCHUR_TODAY) {
-            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
-            height += 30;
-            float offsetX = Minecraft.getMinecraft().fontRendererObj.getStringWidth(fetchurItem.getItemText()) - 25;
-            width += offsetX;
+            if (main.getConfigValues().isDisabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
+                width += 18;
+                height += 9;
+            }
         }
 
         if (feature == Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY) {
@@ -1253,47 +1254,25 @@ public class RenderListener {
             FontRendererHook.endFeatureFont();
 
         } else if (feature == Feature.FETCHUR_TODAY) {
-            System.out.println("Has made fetchur today? " + FetchurManager.getInstance().hasMadeFetchur());
-            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getFetchurToday();
-            if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ONLY_IN_DWARVENS) && buttonLocation == null) {
-                if (!LocationUtils.isInDwarvenMines(main.getUtils().getLocation().getScoreboardName())) {
-                    return;
-                }
-            }
-            if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_INVENTORY_OPEN_ONLY) && buttonLocation == null) {
-                if (!(Minecraft.getMinecraft().currentScreen instanceof GuiInventory)) {
-                    return;
-                }
-            }
-            if (!FetchurManager.getInstance().hasMadeFetchur() || buttonLocation != null) {
-                // Checks if Fetchur item has changed to warn the player
-                if (FetchurManager.getInstance().getCurrentItemSaved() == null || !fetchurItem.equals(FetchurManager.getInstance().getCurrentItemSaved())) {
-                    if (!FetchurManager.getInstance().hasMadeFetchur())
-                        FetchurManager.getInstance().setAlreadyWarned(false);
-                    FetchurManager.getInstance().setCurrentItemSaved(fetchurItem);
-                }
-                if (buttonLocation == null && main.getConfigValues().isEnabled(Feature.WARN_WHEN_FETCHUR_CHANGES)) {
-                    // Warns the player when fetchur changes!
-                    if (!FetchurManager.getInstance().isAlreadyWarned()) {
-                        main.getUtils().playLoudSound("random.orb", 0.5);
-                        main.getRenderListener().setTitleFeature(Feature.WARN_WHEN_FETCHUR_CHANGES);
-                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                        FetchurManager.getInstance().setAlreadyWarned(true);
-                    }
+            boolean showDwarven = main.getConfigValues().isDisabled(Feature.SHOW_FETCHUR_ONLY_IN_DWARVENS) ||
+                    LocationUtils.isInDwarvenMines(main.getUtils().getLocation().getScoreboardName());
+            boolean showInventory = main.getConfigValues().isDisabled(Feature.SHOW_FETCHUR_INVENTORY_OPEN_ONLY) ||
+                    Minecraft.getMinecraft().currentScreen != null;
+            FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
+            // Show if it's the gui button position, or the player hasn't given Fetchur, and it shouldn't be hidden b/c of dwarven mines or inventory
+            if (fetchurItem != null && (buttonLocation != null ||
+                    (FetchurManager.getInstance().hasNotFetchedToday() && showDwarven && showInventory))) {
+
+                FontRendererHook.setupFeatureFont(feature);
+
+                if (main.getConfigValues().isDisabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
+                    DrawUtils.drawText(text, x + 1, y + 4, color); // Line related to the "Fetchur wants" text
+                    float offsetX = Minecraft.getMinecraft().fontRendererObj.getStringWidth(text);
+                    renderItemAndOverlay(fetchurItem.getItemStack(), String.valueOf(fetchurItem.getItemStack().stackSize), x + offsetX, y);
                 } else {
-                    // If the player has done Fetchur already don't need to warn it
-                    if (!FetchurManager.getInstance().hasMadeFetchur())
-                        FetchurManager.getInstance().setAlreadyWarned(false);
+                    DrawUtils.drawText(text, x, y, color); // Line related to the "Fetchur wants" text
                 }
-                ChromaManager.renderingText(feature);
-                String[] split = text.split(":");
-                float offsetX = Minecraft.getMinecraft().fontRendererObj.getStringWidth(fetchurItem.getItemText()) - 25;
-                DrawUtils.drawText(split[0] + ":", x + offsetX, y, color); // Line related to the "Fetchur wants" text
-                // amount in green text (unused) DrawUtils.drawText(split[1], x + offsetX, y + 10, color);
-                renderItemAndOverlay(fetchurItem.getItemStack(), fetchurItem.getItemStack().stackSize + "", x + 30 + offsetX, y + 6);
-                if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME) || buttonLocation != null)
-                    DrawUtils.drawText(split[2], x + offsetX, y + 25, color); // Line related to the item name
-                ChromaManager.doneRenderingText();
+                FontRendererHook.endFeatureFont();
             }
         } else {
             FontRendererHook.setupFeatureFont(feature);
