@@ -191,9 +191,9 @@
     "stackingEnchantProgress": "Afficher la progression de la charge des enchantements",
     "showReforgeOverlay": "Afficher l'overlay des reforges",
     "reforgeFilter": "Filtres des reforges",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Masquer la description de l'enchantement",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
+      "title": "Fonctionnalités de Trevor the Trapper",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
@@ -305,11 +305,11 @@
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
+    "titleCompress": "Compresser",
     "descriptionCompress": "Compresses enchants into as few lines as possible",
     "titleNormal": "Normal",
     "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
+    "titleExpand": "Expandre",
     "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
