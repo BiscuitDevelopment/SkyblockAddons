@@ -121,13 +121,8 @@ public class PlayerListener {
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
 
     // All Rat pet sounds as instance with their respective sound categories, except the sound when it lays a cheese
-    private static final Map<PositionedSoundRecord, SoundCategory> RAT_SOUNDS = new HashMap<PositionedSoundRecord, SoundCategory>();
-    static {
-        RAT_SOUNDS.put(new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.bat.idle"), 1.0f, 1.1904762f, 0.0f, 0.0f, 0.0f), SoundCategory.ANIMALS); // Rat squeak
-        RAT_SOUNDS.put(new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.chicken.step"), 0.15f, 1.0f, 0.0f, 0.0f, 0.0f), SoundCategory.ANIMALS); // Rat step
-    }
-
-    private static final NavigableSet<Integer> EXPERTISE_KILL_TIERS = new TreeSet<>(Arrays.asList(0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000));
+    private static final Set<PositionedSoundRecord> RAT_SOUNDS = new HashSet<>(Arrays.asList(new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.bat.idle"), 1.0f, 1.1904762f, 0.0f, 0.0f, 0.0f),
+            new PositionedSoundRecord(new ResourceLocation("minecraft", "mob.chicken.step"), 0.15f, 1.0f, 0.0f, 0.0f, 0.0f)));
 
     private static final Set<Integer> ORES = Sets.newHashSet(Block.getIdFromBlock(Blocks.coal_ore), Block.getIdFromBlock(Blocks.iron_ore),
             Block.getIdFromBlock(Blocks.gold_ore), Block.getIdFromBlock(Blocks.redstone_ore), Block.getIdFromBlock(Blocks.emerald_ore),
@@ -1164,28 +1159,19 @@ public class PlayerListener {
         }
         // Stop rat sounds feature
         if (main.getConfigValues().isEnabled(Feature.STOP_RAT_SOUNDS)) {
-            // A bunch of player.hurt sounds is triggered even when there's no players taking damage?
-            // Ignore them
-            if (event.name.contains("player.hurt"))
-                return;
             // Ignore sounds that don't have a specific location like GUIs
-            if (!(event.sound instanceof PositionedSoundRecord))
-                return;
-            for (Map.Entry<PositionedSoundRecord, SoundCategory> entry : RAT_SOUNDS.entrySet()) {
-                // Check if same category
-                if (entry.getValue().equals(event.category)) {
-                    PositionedSoundRecord eventSound = (PositionedSoundRecord) event.sound;
-                    // Check if the sound name, pitch and volume is the same as the Rat sounds stored in the map
-                    if (eventSound.getSoundLocation().equals(entry.getKey().getSoundLocation()) &&
-                    eventSound.getPitch() == entry.getKey().getPitch() && eventSound.getVolume() == entry.getKey().getVolume()) {
-                        event.result = null;
-                        // If only the squeaking must stop, then allow the rat steps sound event to pass
-                        if (main.getConfigValues().isEnabled(Feature.STOP_ONLY_RAT_SQUEAK)) {
-                            if (eventSound.getSoundLocation().toString().contains("mob.chicken.step")) {
-                                event.result = event.sound;
-                            }
+            if (event.sound instanceof PositionedSoundRecord && event.category == SoundCategory.ANIMALS) {
+                PositionedSoundRecord eventSound = (PositionedSoundRecord) event.sound;
+                for (PositionedSoundRecord sound : RAT_SOUNDS) {
+                    // Check that the sound matches the rat sound
+                    if (eventSound.getSoundLocation().equals(sound.getSoundLocation()) &&
+                            eventSound.getPitch() == sound.getPitch() && eventSound.getVolume() == sound.getVolume()) {
+                        System.out.println(eventSound.getSoundLocation());
+                        if (main.getConfigValues().isDisabled(Feature.STOP_ONLY_RAT_SQUEAK) ||
+                                eventSound.getSoundLocation().toString().endsWith("mob.bat.idle")) {
+                            // Cancel the result
+                            event.result = null;
                         }
-                        break;
                     }
                 }
             }
