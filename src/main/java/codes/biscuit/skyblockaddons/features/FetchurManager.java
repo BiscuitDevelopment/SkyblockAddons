@@ -21,6 +21,7 @@ import java.util.TimeZone;
  */
 public class FetchurManager {
 
+    private static final long MILISECONDS_IN_A_DAY = 24 * 60 * 60 * 1000;
     // Hypixel timezone
     // Currently using new york timezone, gotta check november 7th to see if this still works
     @Getter
@@ -52,14 +53,10 @@ public class FetchurManager {
     @Getter
     private static final FetchurManager instance = new FetchurManager();
 
-    // Used to track if the player was warned that fetchur changed
-    @Getter
-    @Setter
-    private boolean alreadyWarned;
     // Used for storage, essential for Fetchur Warner
     @Getter
     @Setter
-    private FetchurItem currentItemSaved = items[0];
+    private FetchurItem currentItemSaved = null;
 
     /**
      * Get the item fetchur needs today
@@ -76,12 +73,14 @@ public class FetchurManager {
      * Figure out whether the player submitted today's fetchur item.
      * Can return incorrect answer if the player handed in Fetchur today, but sba wasn't loaded at the time.
      * Clicking Fetchur again (and reading the NPC response) will update the value to be correct.
+     *
      * @return {@code true} iff the player hasn't yet submitted the item in today (EST).
      */
-    public boolean hasNotFetchedToday() {
-        int lastFetchedDay = getFetchurDayOfMonth(SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getLastTimeFetchur());
+    public boolean hasFetchedToday() {
+        long lastTimeFetched = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getLastTimeFetchur();
+        long currTime = System.currentTimeMillis();
         // Return true iff the days of the month from last submission and current time match
-        return lastFetchedDay != getFetchurDayOfMonth(System.currentTimeMillis());
+        return currTime - lastTimeFetched < MILISECONDS_IN_A_DAY && getFetchurDayOfMonth(lastTimeFetched) == getFetchurDayOfMonth(currTime);
     }
 
     /**
@@ -120,6 +119,15 @@ public class FetchurManager {
         SkyblockAddons main = SkyblockAddons.getInstance();
         main.getPersistentValuesManager().getPersistentValues().setLastTimeFetchur(System.currentTimeMillis());
         main.getPersistentValuesManager().saveValues();
+    }
+
+    /**
+     * Called after persistent loading to seed the saved item (so the warning doesn't trigger when joining skyblock)
+     */
+    public void postPersistentConfigLoad() {
+        if (hasFetchedToday()) {
+            currentItemSaved = getCurrentFetchurItem();
+        }
     }
 
     /**

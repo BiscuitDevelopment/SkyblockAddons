@@ -376,7 +376,7 @@ public class PlayerListener {
                     FetchurManager fetchur = FetchurManager.getInstance();
                     // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)
                     if (unformattedText.contains(fetchur.getFetchurTaskCompletedPhrase()) ||
-                            fetchur.hasNotFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
+                            !fetchur.hasFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
                         FetchurManager.getInstance().saveLastTimeFetched();
                     }
                 }

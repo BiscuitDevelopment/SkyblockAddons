@@ -897,7 +897,7 @@ public class RenderListener {
             text = "Test";
         } else if (feature == Feature.FETCHUR_TODAY) {
             FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
-            if (FetchurManager.getInstance().hasNotFetchedToday() || buttonLocation != null) {
+            if (!FetchurManager.getInstance().hasFetchedToday() || buttonLocation != null) {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
                     text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
                 } else {
@@ -1261,7 +1261,7 @@ public class RenderListener {
             FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
             // Show if it's the gui button position, or the player hasn't given Fetchur, and it shouldn't be hidden b/c of dwarven mines or inventory
             if (fetchurItem != null && (buttonLocation != null ||
-                    (FetchurManager.getInstance().hasNotFetchedToday() && showDwarven && showInventory))) {
+                    (!FetchurManager.getInstance().hasFetchedToday() && showDwarven && showInventory))) {
 
                 FontRendererHook.setupFeatureFont(feature);
 

@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.config;
 
 import codes.biscuit.hypixellocalizationlib.HypixelLanguage;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.features.FetchurManager;
 import codes.biscuit.skyblockaddons.features.backpacks.CompressedStorage;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTrackerData;
@@ -66,6 +67,7 @@ public class PersistentValuesManager {
         } else {
             this.saveValues();
         }
+        FetchurManager.getInstance().postPersistentConfigLoad();
     }
 
     public void saveValues() {
