@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.config;
 
 import codes.biscuit.hypixellocalizationlib.HypixelLanguage;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.features.backpacks.StorageCache;
+import codes.biscuit.skyblockaddons.features.backpacks.CompressedStorage;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTrackerData;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTrackerData;
@@ -12,6 +12,8 @@ import lombok.Setter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Setter @Getter
@@ -32,7 +34,7 @@ public class PersistentValuesManager {
 
         private SlayerTrackerData slayerTracker = new SlayerTrackerData();
         private DragonTrackerData dragonTracker = new DragonTrackerData();
-        private StorageCache storageCache = new StorageCache();
+        private Map<String, CompressedStorage> storageCache = new HashMap<>();
 
         private boolean blockCraftingIncompletePatterns = true;
         private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;

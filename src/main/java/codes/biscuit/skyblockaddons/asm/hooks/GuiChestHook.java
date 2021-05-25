@@ -164,6 +164,8 @@ public class GuiChestHook {
             SkyblockAddons.getInstance().getRenderListener().drawCollectedEssences(x, y, false, false);
         } else if (inventoryType == InventoryType.STORAGE_BACKPACK) {
             ContainerPreviewManager.saveStorageContainerInventory(SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
+        } else if (inventoryType == InventoryType.ENDER_CHEST) {
+            ContainerPreviewManager.saveStorageContainerInventory(SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
         }
 
         if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatch != null &&

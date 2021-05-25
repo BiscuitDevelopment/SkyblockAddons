@@ -33,6 +33,7 @@ import java.io.ByteArrayInputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -42,6 +43,8 @@ import java.util.regex.Pattern;
 public class ContainerPreviewManager {
 
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("skyblockaddons", "containerPreview.png");
+    private static final Pattern BACKPACK_STORAGE_PATTERN = Pattern.compile("Backpack Slot (?<slot>[0-9]+)");
+    private static final Pattern ENDERCHEST_STORAGE_PATTERN = Pattern.compile("Ender Chest Page (?<page>[0-9]+)");
 
     /**
      * The container preview to render
@@ -51,7 +54,8 @@ public class ContainerPreviewManager {
     /**
      * Whether we are currently frozen in the container preview
      */
-    @Getter private static boolean frozen;
+    @Getter
+    private static boolean frozen;
 
     /**
      * The last (epoch) time we toggled the freeze button
@@ -328,6 +332,8 @@ public class ContainerPreviewManager {
             // Hybrid system for jumbo backpacks means they get only 5 rows in the container (but old ones that haven't been converted get 6 outside of it)
             rows = Math.min(containerData.getNumRows(), 5);
             cols = containerData.getNumCols();
+        } else if (TextUtils.stripColor(stack.getDisplayName()).toUpperCase().startsWith("ENDER CHEST")) {
+            rows = 5;
         }
 
         return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, rows, cols);
@@ -388,13 +394,21 @@ public class ContainerPreviewManager {
             ContainerPreview containerPreview = null;
             // Check for cached storage previews
             if (main.getInventoryUtils().getInventoryType() == InventoryType.STORAGE) {
-                Matcher m = Pattern.compile("Backpack Slot (?<slot>[0-9]+)").matcher(TextUtils.stripColor(itemStack.getDisplayName()));
-                if (m.matches()) {
+                String strippedName = TextUtils.stripColor(itemStack.getDisplayName());
+                Matcher m;
+                String storageKey = null;
+                if ((m = BACKPACK_STORAGE_PATTERN.matcher(strippedName)).matches()) {
                     int pageNum = Integer.parseInt(m.group("slot"));
-                    String storageKey = InventoryType.STORAGE_BACKPACK.getInventoryName() + pageNum;
-                    StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
-                    if (cache.getBackpacks().get(storageKey) != null) {
-                        byte[] bytes = cache.getBackpacks().get(storageKey).getStorage();
+                    storageKey = InventoryType.STORAGE_BACKPACK.getInventoryName() + pageNum;
+                } else if (main.getConfigValues().isEnabled(Feature.SHOW_ENDER_CHEST_PREVIEW) &&
+                        (m = ENDERCHEST_STORAGE_PATTERN.matcher(strippedName)).matches()) {
+                    int pageNum = Integer.parseInt(m.group("page"));
+                    storageKey = InventoryType.ENDER_CHEST.getInventoryName() + pageNum;
+                }
+                if (storageKey != null) {
+                    Map<String, CompressedStorage> cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
+                    if (cache.get(storageKey) != null) {
+                        byte[] bytes = cache.get(storageKey).getStorage();
                         List<ItemStack> items = decompressItems(bytes);
                         // Clip out the top
                         items = items.subList(9, items.size());
@@ -483,9 +497,9 @@ public class ContainerPreviewManager {
      */
     public static void saveStorageContainerInventory(String storageKey) {
         // Get the cached storage containers
-        StorageCache cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
+        Map<String, CompressedStorage> cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
         // Get the cached container stored at this key
-        StorageCache.CompressedStorage cachedContainer = cache.getBackpacks().get(storageKey);
+        CompressedStorage cachedContainer = cache.get(storageKey);
         byte[] previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
 
         // Compute the compressed inventory of the current open inventory
@@ -503,12 +517,12 @@ public class ContainerPreviewManager {
         }
         if (dirty) {
             if (cachedContainer == null) {
-                cache.getBackpacks().put(storageKey, new StorageCache.CompressedStorage(bytes));
+                cache.put(storageKey, new CompressedStorage(bytes));
             } else {
                 cachedContainer.setStorage(bytes);
             }
             SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
-            System.out.println("Caching Backpack " + storageKey);
+            System.out.println("Caching container " + storageKey);
         }
     }
 }

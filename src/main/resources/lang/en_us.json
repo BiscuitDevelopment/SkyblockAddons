@@ -205,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Enchants",
