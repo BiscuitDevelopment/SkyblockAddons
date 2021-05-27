@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.features.tablist;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
@@ -27,14 +28,18 @@ public class TabListParser {
     private static final Pattern ACTIVE_EFFECTS_PATTERN = Pattern.compile("Active Effects(?:§.)*(?:\\n(?:§.)*§7.+)*");
     private static final Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
     private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
+    private static final Pattern RAIN_TIME_PATTERN_S = Pattern.compile("Rain: (?<time>[0-9dhms ]+)");
 
     @Getter
     private static List<RenderColumn> renderColumns;
+    @Getter
+    private static String parsedRainTime = null;
 
     public static void parse() {
         Minecraft mc = Minecraft.getMinecraft();
 
-        if (!main.getUtils().isOnSkyblock() || !main.getConfigValues().isEnabled(Feature.COMPACT_TAB_LIST)) {
+        if (!main.getUtils().isOnSkyblock() || (!main.getConfigValues().isEnabled(Feature.COMPACT_TAB_LIST) &&
+                (!main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) || main.getUtils().getLocation() != Location.BIRCH_PARK))) {
             renderColumns = null;
             return;
         }
@@ -150,6 +155,8 @@ public class TabListParser {
     }
 
     public static void parseSections(List<ParsedTabColumn> columns) {
+        parsedRainTime = null;
+        Matcher m;
         for (ParsedTabColumn column : columns) {
             ParsedTabSection currentSection = null;
             for (String line : column.getLines()) {
@@ -159,6 +166,11 @@ public class TabListParser {
                     currentSection = null;
                     continue;
                 }
+                String stripped = TextUtils.stripColor(line).trim();
+                if ((m = RAIN_TIME_PATTERN_S.matcher(stripped)).matches()) {
+                    parsedRainTime = m.group("time");
+                }
+
 
                 if (currentSection == null) {
                     column.addSection(currentSection = new ParsedTabSection(column));

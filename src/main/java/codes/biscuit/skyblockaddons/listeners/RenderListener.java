@@ -793,7 +793,10 @@ public class RenderListener {
             }
 
             int totalSeconds = (int) (rainmakerTime - System.currentTimeMillis()) / 1000;
-            if (rainmakerTime != -1 && totalSeconds > 0) {
+
+            if (TabListParser.getParsedRainTime() != null) {
+                text = TabListParser.getParsedRainTime();
+            } else if (rainmakerTime != -1 && totalSeconds > 0) {
                 StringBuilder timerBuilder = new StringBuilder();
 
                 int hours = totalSeconds / 3600;
