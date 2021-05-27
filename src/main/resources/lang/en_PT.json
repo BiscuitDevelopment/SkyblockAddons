@@ -249,18 +249,18 @@
     "setHexColor": "Set Hex Color",
     "rescaleFeatures": "Reshufflin' o' th' Abilities",
     "resizeBars": "Resize Bars",
-    "showColorIcons": "Show Color Icons",
-    "enableFeatureSnapping": "Enable Feature Snapping",
+    "showColorIcons": "Show em colored",
+    "enableFeatureSnapping": "Snap the fixtures",
     "stage": "Stage %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "switchedSlots": "Dont drop this item matey! You were just holdin the treasure!",
     "clickToOpenLink": "Click here t' see th' website matey!",
     "clickToOpenFolder": "Click t' open yer mods folder!",
     "firstStatus": "This status will appear at th' top",
-    "secondStatus": "This status will appear under your first status",
+    "secondStatus": "This status will appear under yer first status",
     "fallbackStatus": "This status will appear when your automatic status has nothing to show",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
-    "cancelledPark": "A feature has stopped you from breaking this block here.",
-    "bossApproaching": "You are close to spawning a boss!",
+    "legendarySeaCreatureWarning": "Ye' caught a big one!",
+    "cancelledPark": "Aye boomer, a feat're 'as stopped ye from breakin' this block 'ere.",
+    "bossApproaching": "Yar’ close to spawnin’ a boss!",
     "enableAll": "Enable All",
     "disableAll": "Disable All",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",
@@ -277,31 +277,31 @@
   },
   "discordStatus": {
     "titleNone": "None",
-    "descriptionNone": "No text is displayed",
+    "descriptionNone": "No text be displayed",
     "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
+    "descriptionLocation": "Yer current place be shown",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionPurse": "Shows yer count o' coins in ye purse",
+    "titleStats": "Position'",
+    "descriptionStats": "Shows yer HP, Defense n' Mana stats",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
+    "descriptionZealots": "Shows how many Zealots ye slain",
+    "titleItem": "Treasure yer holdin",
+    "descriptionItem": "Shows th' name o' yer held item",
+    "titleProfile": "Ye captains log",
+    "descriptionProfile": "Shows th' name o' yer Profile",
     "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "descriptionTime": "Shows yer current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Custom Status",
     "descriptionCustom": "Enter a custom status",
     "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "descriptionAuto": "Automatically displays a status. E.g. yer zealot count whilst in The End.",
     "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionRevenants": "Shows that ye be doin' a Revenant quest.",
     "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "descriptionSvens": "Shows that ye be doin' a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Shows that ye be doin' a Tarantula quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -315,39 +315,39 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Open th' main menu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
+        "help": "§e(Dev) §7Show th' server brand",
         "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "notFound": "Server brand be not found!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copies data about th' block that yer lookin' at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT data fer entities o' th' given name(s) within th' given radius around th' buccaneer",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Names o' th' types o' entities ye want t' copy data fer (e.g. Buccaneer, Creeper). Press \"Tab\" after typin' th' command fer a full list. Separate multiple names wit' commas, names be case-sensitive.",
+            "radius": "Th' radius (in blocks) around th' buccaneer t' copy entity NBT data from"
           }
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy th' scoreboard text",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Determines if th' formattin' codes should be included whilst copyin'. Can be either \"true\" or \"false\", defaults t' \"false\" if no value be provided. Formattin' codes be copied if \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy th' tab list header an' footer",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
       },
       "dev": {
@@ -356,7 +356,7 @@
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!"
       },
       "edit": {
         "help": "Edit GUI locations"
