@@ -187,17 +187,17 @@
     "enchantmentLoreParsing": "Enchanment Tooltips Parsin'",
     "cooldownPrediction": "Predict an' Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Lev'l 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "biggerWake": "Enlarge Ov'rlay Part'icles",
+    "stackingEnchantProgress": "Show Stacking Ench'nt Progress",
+    "showReforgeOverlay": "Reforge Overlay be Visible",
+    "reforgeFilter": "Reforge F'lter",
+    "hideEnchantDescription": "Hide yer Enchant Description",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "trackedEntityProximityIndicator": "Show th' Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight th' Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "showQuestCooldownDescription": "This'll be displayed above Trevor's head"
     }
   },
   "messages": {
@@ -215,40 +215,40 @@
     "enchantsToExclude": "%type% T' exclude:",
     "updateChecker": {
       "wantToViewPatchNotes": "Want t' read th' changes?",
-      "joinDiscord": "Join our Discord server!",
+      "joinDiscord": "Join our here Discord serv'r!",
       "watchShowcase": "Watch Video",
       "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
+      "openModFolderButton": "Go to yer Mod's Fold'r",
       "joinDiscordButton": "Join Discord",
-      "newUpdateAvailable": "A new update (%version%) is available!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "newUpdateAvailable": "'Ay there mate! An update (%version%) be available!",
+      "noDownloadAvailable": "No download link be available, please check our here Discord serv'r.",
       "notificationBox": {
-        "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
-        "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+        "majorAvailable": "A new major update (%version%) be available! The download link can be found in yer chat.",
+        "betaAvailable": "A new Beta update (%version%) is available fer ye! Put yer eyes 'n chat for th' download link.",
+        "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!"
       }
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Ahoy, matey! This here slot be locked!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "A feature has stopped you from breaking this stem. Use your bare hand if you'd like to actually break it.",
-    "cancelledProfileOpening": "A feature has stopped you from opening this player's profile since you were holding a bow.",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
-    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
-    "featureDisabled": "Feature Disabled",
+    "cancelledStemBreak": "'ay there, SkyblockAddons 'as stopped ye from breakin' this here stem. Use yer bare hand if ye'd like to break it.",
+    "cancelledProfileOpening": "'ay there lad! A feat're 'as stopped ye from openin' this here player's profile while oldin' a bow.",
+    "cancelledDropping": "'ay mate! A feat're 'as stopped ye from droppin' this here \"rare\" item or tool from yer hotbar.",
+    "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
+    "clickOneMoreTime": "'ay lad, Click/Drop this here item 1 more time if ye really wants t' do this.",
+    "cancelledDeepCaverns": "A feat're 'as stopped ye from minin' this block 'ere.",
+    "featureDisabled": "Yer feature be Disabled",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",
-    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
-    "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
-    "noArrowsLeft": "No Arrows Left!",
-    "chooseAColor": "Choose a Color",
-    "selectedColor": "Selected Color",
-    "setHexColor": "Set Hex Color",
+    "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
+    "searchFeatures": "Search feat'rs",
+    "downloadingUpdateFile": "Downloading yer updates...",
+    "onlyFewArrowsLeft": "Mate, ye only got %arrows% arrows left!",
+    "noArrowsLeft": "Mate, yer arrows be gone!",
+    "chooseAColor": "Choose a Col'r",
+    "selectedColor": "Selected Col'r",
+    "setHexColor": "Set yer Hex Col'r",
     "rescaleFeatures": "Reshufflin' o' th' Abilities",
-    "resizeBars": "Resize Bars",
+    "resizeBars": "Change the size of th' bars",
     "showColorIcons": "Show em colored",
     "enableFeatureSnapping": "Snap the fixtures",
     "stage": "Stage %stage%",
@@ -257,7 +257,7 @@
     "clickToOpenFolder": "Click t' open yer mods folder!",
     "firstStatus": "This status will appear at th' top",
     "secondStatus": "This status will appear under yer first status",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "fallbackStatus": "This status will appear when yer automatic status 'as nothing t' show",
     "legendarySeaCreatureWarning": "Ye' caught a big one!",
     "cancelledPark": "Aye boomer, a feat're 'as stopped ye from breakin' this block 'ere.",
     "bossApproaching": "Yar’ close to spawnin’ a boss!",
@@ -304,11 +304,11 @@
     "descriptionTarantula": "Shows that ye be doin' a Tarantula quest."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
+    "title": "Control how yer enchants are displayed on th' item tooltips",
     "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "descriptionCompress": "Compresses th' enchants into as few lines as possible",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
+    "descriptionNormal": "Displays th' enchants like Hypixel does",
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
@@ -353,7 +353,7 @@
       "dev": {
         "help": "Toggle developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "This here command toggles developer mode. This mode be meant fer developers Skyblock mods/tools. It provides raw data from th' game such as entity an' item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!"
@@ -362,73 +362,73 @@
         "help": "Edit GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Open yer mods folder",
+        "error": "An error occurred tryin' t' open th' mods folder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Show this help message. If a command be provided, detailed help about that command be shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "th' sub-command t' get detailed usage fer"
           }
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Prints th' counts stored in th' dungeon death counters fer debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Reloads all of the mod's sett'ngs 'n resources. Th' game w'll freeze fer a few sec'nds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Reloads the' mod's sett'ngs"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Reloads th' mod's resources. Th' game w'll freeze fer a few sec'nds."
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manually set yer zealot counts",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Manually sets counts in th' zealot counter.",
             "options": {
               "eyes": "Lifetime summoning eyes obtained",
               "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "zealots": "Zealots killed since th' last summoning eye drop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
+          "eyesSet": "Set total summoning eye count t' %number%!",
+          "totalZealotsSet": "Set total zealot count t' %number%!",
           "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "zealotsSet": "Set current zealot count t' %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manually set slayer stats, press tab fer arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manually set slayer stats, press tab fer arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "number": "Number t' set th' stat t'",
+            "stat": "Slayer stat t' change, can be \"kills\" or th' name o' a dropped item formatted like this: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "bossRequired": "Ye need t' select a boss! Please choose %bosses%",
+        "statRequired": "Ye need t' select a stat. Press tab fer options.",
+        "numberRequired": "Ye need t' add th' number ye want.",
+        "killsSet": "Kills fer slayer %boss% was set t' %number%.",
+        "statSet": "Statistic %stat% fer slayer %boss% was set t' %number%.",
+        "invalidBoss": "\"%input%\" be not a valid statistic!",
+        "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "§e(Dev) §7Toggle loggin' action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
           "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "Th' sub-command \"%sub-command%\" be not found."
         }
       }
     }
@@ -483,14 +483,14 @@
     "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Click 'n a warp'n point t' travel there!",
+    "mustUnlock": "Ye are required t' have th's specific scroll unlocked.",
+    "privateIsland": "P'rsonal Island",
+    "home": "Yer Island",
+    "spawn": "Startin' landing",
+    "unknown": "Ye have ne'er vis'ted here",
+    "notUnlocked": "Th's here 'sn't unlocked",
+    "inCombat": "In Battle..."
   },
   "enchants": {
     "superTier": "Max Tier",
