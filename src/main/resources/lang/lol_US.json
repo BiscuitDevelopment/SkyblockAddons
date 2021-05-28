@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Show Stackin Enchant Progres",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filtr",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Hide Enchant Descripshun",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Trevor da Trappr Featurez",
+      "trackedEntityProximityIndicator": "Show Trackd Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Trackd Entity",
+      "showQuestCooldown": "Show Trevors Quest Cooldown",
+      "showQuestCooldownDescription": "Dis will be displayd aboov Trevors head"
     }
   },
   "messages": {
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Shows dat u r doin Tarantula quest."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "title": "Control how enchants r displayd on item tooltips",
+    "titleCompress": "Compres",
+    "descriptionCompress": "Compresez enchants into as few linez as posible",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
+    "descriptionNormal": "Displays enchants liek Hypixel doez",
     "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionExpand": "Lists each enchant on itz own line"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Prints teh counts stord in da dungeon death counters 4 debuggin purposez."
       },
       "reload": {
         "help": "§e(Dev) §7Reloadz all ov teh modz settings an resourcez. Teh game will freeze 4 few secondz."
