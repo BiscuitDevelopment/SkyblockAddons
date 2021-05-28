@@ -271,9 +271,9 @@
     "effectActive": "1 Эффект активен",
     "effectsActive": "%number% Effects Active",
     "none": "Нет",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -285,7 +285,7 @@
     "titleStats": "Статистика",
     "descriptionStats": "Показывает ваше здоровье, уровень защиты и ману",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
+    "descriptionZealots": "Показывает ваш счетчик Зеалотов",
     "titleItem": "Предмет в руках",
     "descriptionItem": "Показывает имя предмета, который вы держите",
     "titleProfile": "Профиль",
@@ -295,22 +295,22 @@
     "titleCustom": "Пользовательский Статус",
     "descriptionCustom": "Введите Пользовательский Статус",
     "titleAuto": "Автостатус",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionAuto": "Автоматически отображает статус, например, количество Зеалотов, если Вы находитесь в Энде.",
+    "titleRevenants": "Квест «Revenant»",
+    "descriptionRevenants": "Показывает, что Вы выполняете квест Revenant.",
+    "titleSvens": "Квест Sven",
+    "descriptionSvens": "Показывает, что Вы выполняете Квест «Sven».",
+    "titleTarantula": "Квест «Tarantula»",
+    "descriptionTarantula": "Показывает, что Вы выполняете Квест «Tarantula»."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Управлять, как зачарования показываются в описаниях предметов",
+    "titleCompress": "Сжимать",
+    "descriptionCompress": "Сжимает зачарования в наименьшее возможное количество линий",
+    "titleNormal": "Нормальное",
+    "descriptionNormal": "Отображает зачарования так, как делает Hypixel",
+    "titleExpand": "Расширять",
+    "descriptionExpand": "Показывает каждое зачарование на отдельной строке"
   },
   "commandUsage": {
     "sba": {
@@ -318,20 +318,20 @@
         "help": "Открыть главное меню"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Показывать бренд сервера",
+        "brandOutput": "Бренд сервера: %brand%",
+        "notFound": "Бренд сервера не найден!"
       },
       "copyBlock": {
         "help": "§e(Разр.) §7Копирует данные о блоке, на который вы смотрите"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Разр.) §7Копирует NBT данные для существ заданного(-ых) имени(-ён) в пределах данного радиуса игрока",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Копирует NBT данные существ. Типы включённых существ и радиус вокруг игрока для копирования данных могут быть изменены. Если параметры не поставлены, используются настройки по умолчанию. Настройки по умолчанию: включать игроков, стойки для брони и мобов, радиус - 3 блока. Если радиус не дан, используется радиус по умолчанию.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Имена типов существ, данные которых вы хотите копировать (например Player,Creeper). Нажмите \"Tab\" после написания команды для полного списка. Разделяйте названия запятыми, регистр учитывается.",
+            "radius": "Радиус (в блоках) вокруг игрока для копирования NBT данных существ"
           }
         }
       },
