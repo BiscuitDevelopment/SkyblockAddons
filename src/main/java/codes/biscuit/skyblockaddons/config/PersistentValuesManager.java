@@ -11,6 +11,7 @@ import lombok.Setter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.Date;
 import java.util.concurrent.locks.ReentrantLock;
 
 @Setter @Getter
@@ -37,6 +38,8 @@ public class PersistentValuesManager {
 
         private int oresMined = 0;
         private int seaCreaturesKilled = 0;
+
+        private Date lastTimeFetchur;
 
         private HypixelLanguage hypixelLanguage = HypixelLanguage.ENGLISH;
     }

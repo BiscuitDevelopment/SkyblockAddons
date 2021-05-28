@@ -162,6 +162,11 @@ public enum Message {
     SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayersPresents"),
     SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
+    SETTING_SHOW_FETCHUR_TODAY(MessageObject.SETTING, "fetchurToday"),
+    SETTING_SHOW_FETCHUR_IN_DWARVEN_ONLY(MessageObject.SETTING, "showFetchurOnlyInDwarven"),
+    SETTING_SHOW_FETCHUR_ITEM_NAME(MessageObject.SETTING, "showFetchurItemName"),
+    SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY(MessageObject.SETTING, "showFetchurInventoryOpenOnly"),
+    SETTING_WARN_WHEN_FETCHUR_CHANGES(MessageObject.SETTING, "warnWhenFetchurChanges"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -227,6 +232,8 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
+    MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurWants"),
+    MESSAGE_FETCHUR_WARNING(MessageObject.MESSAGES, "fetchurWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
@@ -385,6 +392,8 @@ public enum Message {
                     text = text.replace("%radius%", variables[0]);
                 } else if (this == Message.MESSAGE_EFFECTS_ACTIVE) {
                     text = text.replace("%number%", variables[0]);
+                } else if (this == Message.MESSAGE_FETCHUR_TODAY) {
+                    text = text.replace("%item%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
