@@ -18,8 +18,10 @@ public class SpookyEventManager {
         dummyCandyCounts.put(CandyType.PURPLE, 34);
     }
 
-    @Getter private static Map<CandyType, Integer> candyCounts = new HashMap<>();
-    @Getter private static int points;
+    @Getter
+    private static final Map<CandyType, Integer> candyCounts = new HashMap<>();
+    @Getter
+    private static int points;
     static {
         reset();
     }
@@ -51,5 +53,18 @@ public class SpookyEventManager {
         } catch (Exception ex) {
             SkyblockAddons.getLogger().error("An error occurred while parsing the spooky event event text in the tab list!", ex);
         }
+    }
+
+    /**
+     * Temp function until feature re-write
+     *
+     * @param green
+     * @param purple
+     * @param pts
+     */
+    public static void update(int green, int purple, int pts) {
+        candyCounts.put(CandyType.GREEN, green);
+        candyCounts.put(CandyType.PURPLE, purple);
+        points = pts;
     }
 }

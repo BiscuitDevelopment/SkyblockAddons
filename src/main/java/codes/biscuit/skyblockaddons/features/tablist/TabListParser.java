@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.tablist;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.features.spookyevent.SpookyEventManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
@@ -29,6 +30,7 @@ public class TabListParser {
     private static final Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
     private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
     private static final Pattern RAIN_TIME_PATTERN_S = Pattern.compile("Rain: (?<time>[0-9dhms ]+)");
+    private static final Pattern CANDY_PATTERN_S = Pattern.compile("Your Candy: (?<green>[0-9]+) Green, (?<purple>[0-9]+) Purple \\((?<points>[0-9]+) pts\\.\\)");
 
     @Getter
     private static List<RenderColumn> renderColumns;
@@ -39,7 +41,8 @@ public class TabListParser {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (!main.getUtils().isOnSkyblock() || (!main.getConfigValues().isEnabled(Feature.COMPACT_TAB_LIST) &&
-                (!main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) || main.getUtils().getLocation() != Location.BIRCH_PARK))) {
+                (!main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) || main.getUtils().getLocation() != Location.BIRCH_PARK) &&
+                main.getConfigValues().isDisabled(Feature.CANDY_POINTS_COUNTER))) {
             renderColumns = null;
             return;
         }
@@ -156,6 +159,7 @@ public class TabListParser {
 
     public static void parseSections(List<ParsedTabColumn> columns) {
         parsedRainTime = null;
+        boolean foundSpooky = false;
         Matcher m;
         for (ParsedTabColumn column : columns) {
             ParsedTabSection currentSection = null;
@@ -167,8 +171,12 @@ public class TabListParser {
                     continue;
                 }
                 String stripped = TextUtils.stripColor(line).trim();
-                if ((m = RAIN_TIME_PATTERN_S.matcher(stripped)).matches()) {
+                if (parsedRainTime == null && (m = RAIN_TIME_PATTERN_S.matcher(stripped)).matches()) {
                     parsedRainTime = m.group("time");
+                }
+                if (!foundSpooky && (m = CANDY_PATTERN_S.matcher(stripped)).matches()) {
+                    SpookyEventManager.update(Integer.parseInt(m.group("green")), Integer.parseInt(m.group("purple")), Integer.parseInt(m.group("points")));
+                    foundSpooky = true;
                 }
 
 
@@ -178,6 +186,9 @@ public class TabListParser {
 
                 currentSection.addLine(line);
             }
+        }
+        if (!foundSpooky) {
+            SpookyEventManager.reset();
         }
     }
 

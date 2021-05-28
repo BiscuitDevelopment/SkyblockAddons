@@ -699,10 +699,6 @@ public class PlayerListener {
             if (main.getConfigValues().isEnabled(Feature.TAB_EFFECT_TIMERS)) {
                 TabEffectManager.getInstance().update(tabFooterString, strippedTabFooterString);
             }
-
-            if (main.getConfigValues().isEnabled(Feature.CANDY_POINTS_COUNTER)) {
-                SpookyEventManager.update(strippedTabFooterString);
-            }
         }
     }
 

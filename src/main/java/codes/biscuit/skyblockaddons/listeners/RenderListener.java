@@ -893,7 +893,7 @@ public class RenderListener {
 
             text = "Secrets";
         } else if (feature == Feature.CANDY_POINTS_COUNTER) {
-            if (buttonLocation == null && SpookyEventManager.isActive()) {
+            if (buttonLocation == null && !SpookyEventManager.isActive()) {
                 return;
             }
 
