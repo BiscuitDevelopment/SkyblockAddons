@@ -76,128 +76,128 @@
     "revenantIndicator": "Индикатор Прогресса Брони Убийцы",
     "specialZealotAlert": "Уведомление об Особом Зеалоте",
     "enableMessageWhenActionPrevented": "Показывать уведомление, когда действие предотвращено",
-    "hidePetHealthBar": "Hide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "hidePetHealthBar": "Скрыть полосу здоровья питомца",
+    "powerOrbDisplay": "Отображать Сферы Сил",
+    "powerOrbDisplayStyle": "Стиль отображения Сфер Сил: %style%",
     "powerOrbStyle": {
       "detailed": "Подробно",
       "compact": "Компакт"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Отключить уведомления о Магическом Супе",
+    "zealotCounter": "Показывать счетчик Зеалотов",
+    "tickerChargesDisplay": "Счетчик зарядов",
     "tab": {
       "generalSettings": "Основные настройки"
     },
     "tabEffectTimers": "Таймеры зелий и улучшений",
     "noArrowsLeftAlert": "Предупреждение о закончившихся стрелах",
     "hideNightVisionEffectTimer": "Скрыть таймер эффекта Ночного Зрения",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "showCakeBagPreview": "Показывать содержимое Cake Bag",
+    "showBackpackPreviewInAH": "Показывать превью рюкзаков для своих предметов во время использования Аукционного Дома",
     "enableDevFeatures": "Включить параметры разработчиков",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "chromaSpeed": "Скорость Chroma",
+    "chromaMode": "Режим цвета Chroma",
     "chromaModes": {
       "allTheSame": "Всё одного цвета",
       "fade": "Затухание цвета"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "Ширина затухания Chroma",
     "sortTabEffectTimers": "Сортировать таймеры по продолжительности",
     "showBrokenFragments": "Показывать \"сломанные\" фрагменты драконов",
     "skyblockAddonsButtonInPauseMenu": "Показывать кнопку SBA в меню паузы",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "showTotalZealotCount": "Счётчик Зеалотов - Общий счёт Зеалотов",
+    "showSummoningEyeCount": "Счётчик Зеалотов - Общий Счёт Глаз",
+    "showZealotsPerEye": "Счётчик Зеалотов - Показывать Зеалотов за Глаз (з/г)",
     "turnBowGreenWhenUsingToxicArrowPoison": "Красить лук в зелёный при использовании Токсичного Яда для стрел",
     "birchParkRainmakerTimer": "Таймер дождя в Берёзовом парке",
     "combatTimerDisplay": "Таймер боевого состояния",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "endstoneProtectorDisplay": "Отображение Стадии Защитника Края",
     "fancyWarpMenu": "Красивое меню телепортации",
     "doubleWarp": "Телепортировать дважды",
     "advancedMode": "Расширенный режим",
     "legendarySeaCreatureWarning": "Предупреждение о легендарных морских существах",
     "onlyBreakLogsPark": "Ломать брёвна только в Парке",
     "bossApproachAlert": "Slayer Boss Approach Alert",
-    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "disableTeleportPadMessages": "Отключить сообщения Teleport Pad",
     "baitListDisplay": "Показывать список наживок при держании удочки",
     "freezeBackpackPreview": "Замораживать предпросмотр рюкзака",
     "hideGreyEnchants": "Убирать обычные серые зачарования",
     "zealotCounterExplosiveBow": "Подсчёт убийств Зеалотов с помощью Взрывного Лука",
-    "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
-    "hideSvenPupNametags": "Hide Sven Pup Nametags",
-    "turnAllFeaturesChroma": "Turn All Features Chroma",
-    "dungeonMapDisplay": "Dungeon Map Display",
+    "disableEndermanTeleportation": "Выключить телепортацию эндерменов",
+    "changeZealotColor": "Изменить цвет Зеалотов",
+    "hideSvenPupNametags": "Спрятать теги щенков Свена",
+    "turnAllFeaturesChroma": "Включить режим Chroma для всех функций",
+    "dungeonMapDisplay": "Отображение Карты Подземелий",
     "rotateMap": "Поворачивать Карту по направлению Вашего зрения",
     "centerRotationOnYourPlayer": "Центрирует вращение вокруг игрока",
     "mapZoom": "Увеличение Карты",
     "glowingDroppedItems": "Подсветка Выброшенных Предметов",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
+    "glowingDungeonTeammates": "Подсветка Союзников в Подземельях",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
     "colorByRarity": "Цвет по редкости",
     "showPlayerHeadsOnMap": "Показывать Головы Игроков на Карте Подземелий",
     "showHealingCircleWall": "Показывать Границу Круга Лечения В Подземельях",
     "showCriticalTeammates": "Показывать Союзников С Низким Здоровьем",
-    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showGlowingItemsOnIsland": "Подсвечивать Выкинутые Предметы На Острове",
     "showItemDungeonFloor": "Показывать На Каком Этаже Подземелий Получен Предмет",
-    "showDungeonMilestone": "Show Dungeon Milestone",
+    "showDungeonMilestone": "Показывать рубежи Подземелий",
     "dungeonsCollectedEssencesDisplay": "Показ Собранных в Подземельях Эссенций",
-    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "stopBonzoStaffSounds": "Заглушать Звуки Bonzo's Staff",
     "showRarityUpgraded": "Показывать если Редкость Предмета была улучшена",
-    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
-    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "revenantSlayerTracker": "Счётчик Боссов - Ревенант/Зомби",
+    "tarantulaSlayerTracker": "Счётчик Боссов - Тарантул/Паук",
+    "svenSlayerTracker": "Счётчик Боссов - Свен/Волк",
     "textMode": "Режим текста",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonsNestOnly": "Показывать только в Драконьем Гнезде",
     "dragonStatsTracker": "Счётчик Драконов",
     "skillActionsLeftUntilNextLevel": "Показать действия, оставшиеся до следующего уровня",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
+    "hideWhenNotInCrypts": "Скрывать когда не в Криптах/не выполняется квест Ревенанта",
+    "hideWhenNotInSpidersDen": "Скрывать когда не в Логове Пауков/не выполняется квест Тарантула",
+    "hideWhenNotInCastle": "Скрывать когда не в Замке/не выполняется квест Свена",
     "dungeonDeathCounter": "Счётчик смертей в Подземельях",
-    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
-    "rockPetTracker": "Rock Pet Tracker",
-    "dolphinPetTracker": "Dolphin Pet Tracker",
-    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showPersonalCompactorPreview": "Показывать превью персонального компактора",
+    "rockPetTracker": "Трекер питомца Rock",
+    "dolphinPetTracker": "Трекер Питомца Dolphin",
+    "dungeonsTeammateNameOverlay": "Оверлей ников союзников подземелья",
+    "dungeonsSecretsDisplay": "Счётчик секретов в Dungeons",
     "showSkillPercentageInstead": "Показывать проценты вместо опыта",
     "showSkillXPGained": "Показать полученный опыт",
     "skillProgressBar": "Показывать полосу прогресса",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "showSalvageEssencesCounter": "Показать счетчик утилизированных эссенций",
     "disableMortMessages": "Отключить Сообщения Морта",
     "disableBossMessages": "Отключить Сообщения Боссов",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "hideOtherPlayersPresents": "Спрятать подарки других игроков",
     "easierPresentOpening": "Открывать Подарки Проще",
     "showSwordKills": "Показывать Убийства На Мече",
-    "compactTabList": "Compact Tab List",
-    "highlightSpecialEnchantments": "Highlight Special Enchantments",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
-    "candyPointsCounter": "Spooky Event Candy/Points Counter",
-    "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
-    "useNewChromaEffect": "Use New Chroma Effect",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
-    "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelText": "Drill Fuel Number",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "compactTabList": "Компактная информация в Tab",
+    "highlightSpecialEnchantments": "Подсвечивать Особые Зачарования",
+    "disableEmptyGlassPanes": "Отключить пустые стеклянные панели в меню",
+    "candyPointsCounter": "Счётчик конфет/очков во время Spooky Event",
+    "healingCircleOpacity": "Прозрачность Круга Исцеления",
+    "chromaSize": "Размер Chroma",
+    "chromaSaturation": "Насыщенность Chroma",
+    "chromaBrightness": "Яркость Chroma",
+    "useNewChromaEffect": "Использовать новый эффект Chroma",
+    "showExperimentationTableTooltips": "Показывать описания предметов в Experimentation Table",
+    "onlyMineOresDwarvenMines": "Копать только руды в Dwarven Mines",
+    "drillFuelBar": "Полоса топлива дрели",
+    "drillFuelText": "Количество топлива в дрели",
+    "fishingParticleOverlay": "Цвет частиц рыбалки",
+    "enchantmentLoreParsing": "Разделять зачарования цветом",
+    "cooldownPrediction": "Прогнозировать и сокращать перезарядку",
+    "legendaryMonkeyLevel100": "[ВРЕМЕННО] LVL 100 Легендарная Обезьяна",
+    "biggerWake": "Увеличить размер частиц",
+    "stackingEnchantProgress": "Показывать прогресс накапливаемых зачарований",
+    "showReforgeOverlay": "Показывать оверлей «Reforges»",
+    "reforgeFilter": "Фильтр перековки",
+    "hideEnchantDescription": "Скрывать описание зачарований",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Функции Тревора Ловца",
+      "trackedEntityProximityIndicator": "Показывать Индикатор Близости Отслеживаемой Сущности",
+      "highlightTrackedEntity": "Подсвечивать Отслеживаемую Сущность",
+      "showQuestCooldown": "Показывать Время Отката Квеста Тревора",
+      "showQuestCooldownDescription": "Это будет показываться над головой Тревора"
     }
   },
   "messages": {
@@ -215,16 +215,16 @@
     "enchantsToExclude": "Не искать %type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "Нужна помощь или хотите прочесть изменения?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Присоединяйтесь к нам в Discord!",
+      "watchShowcase": "Посмотреть видео",
+      "downloadButton": "Скачать",
+      "openModFolderButton": "Открыть папку с модами",
+      "joinDiscordButton": "Присоединиться к Discord",
       "newUpdateAvailable": "Доступно новое обновление (%version%)!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Нет доступной ссылки для скачивания; пожалуйста, проверьте наш сервер в Discord.",
       "notificationBox": {
         "majorAvailable": "Доступно новое большое обновление (%version%)! Ссылку на загрузку можно найти в чате.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Доступна новая бета-версия (%version%)! Проверьте чат для ссылки на скачивание.",
         "patchAvailable": "Новое обновление (%version%) теперь доступно! Посмотри в чат для опций загрузки!"
       }
     },
@@ -235,19 +235,19 @@
     "cancelledDropping": "SkyBlockAddons оставил вас от выбрасывания этого редкого предмета или инструмента из панели быстрого доступа.",
     "clickMoreTimes": "Щелкните/выбросьте этот предмет еще %times% раз(а), если вы действительно хотите сделать это.",
     "clickOneMoreTime": "Нажмите/выбросьте этот предмет еще 1 раз, чтобы подтвердить свое действие.",
-    "cancelledDeepCaverns": "A feature has stopped you from mining this block here.",
+    "cancelledDeepCaverns": "Функция SBA заблокировала добычу этого блока здесь.",
     "featureDisabled": "Функция отключена",
     "anvilUses": "Использований наковальни: %uses%",
     "specialZealotFound": "Особый Зеалот!",
     "blockIncompletePatterns": "Блокировать создание незавершённых шаблонов (рекомендуется)",
     "searchFeatures": "Поиск функций",
     "downloadingUpdateFile": "Загрузка файла обновления...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "onlyFewArrowsLeft": "Осталось только %arrows% стрел!",
     "noArrowsLeft": "Стрел не осталось!",
     "chooseAColor": "Выберите цвет",
     "selectedColor": "Выбранный цвет",
-    "setHexColor": "Set Hex Color",
-    "rescaleFeatures": "Rescale Features",
+    "setHexColor": "Выберите цвет по Hex",
+    "rescaleFeatures": "Изменение размеров",
     "resizeBars": "Изменить размер полос",
     "showColorIcons": "Показывать цветные значки",
     "enableFeatureSnapping": "Включить Привязку Элементов Интерфейса",
@@ -258,9 +258,9 @@
     "firstStatus": "Этот статус будет отображаться вверху",
     "secondStatus": "Этот статус будет появляться под вашим первым статусом",
     "fallbackStatus": "Этот статус будет отображаться, когда вашему автоматическому статусу нечего отобразить",
-    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "legendarySeaCreatureWarning": "Легендарный Улов!",
     "cancelledPark": "Функция SBA остановила вас от разрушения этого блока.",
-    "bossApproaching": "You are close to spawning a boss!",
+    "bossApproaching": "Вы близки к призыву босса!",
     "enableAll": "Включить всё",
     "disableAll": "Выключить всё",
     "enchantmentInclusionExample": "напр. \"prot, feather\"",
@@ -269,11 +269,11 @@
     "reforgeExclusionExample": "напр. \"odd, clean\"",
     "actionsLeft": "%number% осталось",
     "effectActive": "1 Эффект активен",
-    "effectsActive": "%number% Effects Active",
+    "effectsActive": "%number% эффектов активно",
     "none": "Нет",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -285,7 +285,7 @@
     "titleStats": "Статистика",
     "descriptionStats": "Показывает ваше здоровье, уровень защиты и ману",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
+    "descriptionZealots": "Показывает ваш счетчик Зеалотов",
     "titleItem": "Предмет в руках",
     "descriptionItem": "Показывает имя предмета, который вы держите",
     "titleProfile": "Профиль",
@@ -295,22 +295,22 @@
     "titleCustom": "Пользовательский Статус",
     "descriptionCustom": "Введите Пользовательский Статус",
     "titleAuto": "Автостатус",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionAuto": "Автоматически отображает статус, например, количество Зеалотов, если Вы находитесь в Энде.",
+    "titleRevenants": "Квест «Revenant»",
+    "descriptionRevenants": "Показывает, что Вы выполняете квест Revenant.",
+    "titleSvens": "Квест Sven",
+    "descriptionSvens": "Показывает, что Вы выполняете Квест «Sven».",
+    "titleTarantula": "Квест «Tarantula»",
+    "descriptionTarantula": "Показывает, что Вы выполняете Квест «Tarantula»."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Управлять, как зачарования показываются в описаниях предметов",
+    "titleCompress": "Сжимать",
+    "descriptionCompress": "Сжимает зачарования в наименьшее возможное количество линий",
+    "titleNormal": "Нормальное",
+    "descriptionNormal": "Отображает зачарования так, как делает Hypixel",
+    "titleExpand": "Расширять",
+    "descriptionExpand": "Показывает каждое зачарование на отдельной строке"
   },
   "commandUsage": {
     "sba": {
@@ -318,20 +318,20 @@
         "help": "Открыть главное меню"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Показывать бренд сервера",
+        "brandOutput": "Бренд сервера: %brand%",
+        "notFound": "Бренд сервера не найден!"
       },
       "copyBlock": {
         "help": "§e(Разр.) §7Копирует данные о блоке, на который вы смотрите"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Разр.) §7Копирует NBT данные для существ заданного(-ых) имени(-ён) в пределах данного радиуса игрока",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Копирует NBT данные существ. Типы включённых существ и радиус вокруг игрока для копирования данных могут быть изменены. Если параметры не поставлены, используются настройки по умолчанию. Настройки по умолчанию: включать игроков, стойки для брони и мобов, радиус - 3 блока. Если радиус не дан, используется радиус по умолчанию.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "entityNames": "Имена типов существ, данные которых вы хотите копировать (например Player,Creeper). Нажмите \"Tab\" после написания команды для полного списка. Разделяйте названия запятыми, регистр учитывается.",
+            "radius": "Радиус (в блоках) вокруг игрока для копирования NBT данных существ"
           }
         }
       },
@@ -340,7 +340,7 @@
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Определяет, следует ли включать коды форматирования при копировании. Может иметь значение «true» или «false»; по умолчанию — «false», — если значение не указано. Коды форматирования будут копироваться, если значение равно «true»."
           }
         }
       },
@@ -353,20 +353,20 @@
       "dev": {
         "help": "Переключить режим разработчика",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Эта команда переключает режим разработчика. Этот режим предназначен только для разработчиков модов и инструментов для Skyblock. Он предоставляет такие данные, как NBT предметов и существ."
         },
         "disabled": "Режим разработчика отключен!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Включён режим разработчика! СОВЕТ: Нажмите %keyName%, чтобы скопировать данные NBT!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Настроить интерфейс"
       },
       "folder": {
         "help": "Открыть папку mods",
         "error": "Произошла ошибка при открытии папки mods: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Показывает данное сообщение помощи. Если дана команда, будет показано её подробное описание.",
         "detailedHelp": {
           "options": {
             "command": "подкоманда для получения подробного использования"
@@ -374,49 +374,49 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Разр.) §7Выводит значения, содержащиеся в счётчиках смертей в подземельях в целях отладки."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Перезагружает все параметры и ресурсы мода. Игра заморозится на несколько секунд."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Перезагружает параметры мода"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Перезагружает ресурсы мода. Игра заморозится на несколько секунд."
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Установка количество убитых Зеалотов вручную",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Установите счётчик Зеалотов вручную.",
             "options": {
               "eyes": "Количество полученных Глаз Призыва за все время",
-              "totalZealots": "Lifetime zealots killed",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "totalZealots": "Количество убитых Зеалотов за всё время",
+              "zealots": "Количество убитых Зеалотов с момента последнего выпадения Глаза Призыва"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
+          "eyesSet": "Общее количество Глаз Призыва поставлено на %number%!",
+          "totalZealotsSet": "Общее количество Зеалотов установлено на %number%!",
           "wrongUsage": "Неправильный выбор! Пожалуйста, выберите %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "zealotsSet": "Текущее количество Зеалотов установлено на %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Ручная установка статистики боссов; нажмите Tab для параметров",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Ручная установка статистики боссов; нажмите Tab для параметров",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Босс: \"Зомби\", \"Паук\", или \"Волк\"",
+            "number": "Число, на которое нужно установить текущую статистику",
+            "stat": "Статистика боссов для изменения может быть \"kills\" или имя выпавшего элемента, измененное следующим образом: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "bossRequired": "Вам нужно выбрать босса! Пожалуйста, выберите %bosses%",
         "statRequired": "Вам надо выбрать статистику. Нажмите Tab для опций.",
         "numberRequired": "Вы должны ввести число, которое вы хотите.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "killsSet": "Счётчик убийств для вызова босса %boss% был изменен на %number%.",
+        "statSet": "Статистика %stat% для вызова %boss% была изменена на %number%.",
         "invalidBoss": "\"%input%\" не является правильной статистикой!",
         "invalidStat": "\"%input%\" не является нужным боссом!"
       },
@@ -428,7 +428,7 @@
       "errors": {
         "wrongUsage": {
           "generic": "Неправильное использование!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "Подкоманда \"%sub-command%\" не была найдена."
         }
       }
     }
@@ -445,7 +445,7 @@
     "strong": "Strong",
     "superior": "Superior",
     "recentDragons": "Недавние драконы:",
-    "dragonsSince": "Dragons Since:",
+    "dragonsSince": "Драконов с последнего:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Глаз размещено",
@@ -480,27 +480,27 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Убитых Боссов"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Нажмите на место телепортации чтобы попасть туда!",
+    "mustUnlock": "Необходимо открыть определённый свиток.",
+    "privateIsland": "Личный остров",
+    "home": "Ваш Остров",
+    "spawn": "Спавн",
+    "unknown": "Не посещено",
+    "notUnlocked": "Заблокировано",
+    "inCombat": "В бою..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Макс. уровень",
+    "highTier": "Высокий уровень",
+    "midTier": "Средний уровень",
+    "lowTier": "Нижний уровень",
+    "commas": "Запятые",
+    "expertiseKills": "Кол-во убийств для зачарования Expertise",
+    "compactedBlocks": "Сжатые блоки",
+    "cultivatedCrops": "Кол-во собранных растений для Cultivate",
+    "maxed": "Максимальные"
   }
 }

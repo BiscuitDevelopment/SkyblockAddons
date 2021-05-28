@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Mostra progresso degli incantesimi multipli",
     "showReforgeOverlay": "Mostra l'overlay dei reforge",
     "reforgeFilter": "Filtro del reforge",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Nascondi Descrizione Incantesimo",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Funzioni di Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Mostra indicatore di prossimità dell’entità tracciata",
+      "highlightTrackedEntity": "Evidenzia l’entità tracciata",
+      "showQuestCooldown": "Mostra il tempo di ricarica delle missioni di Trevor",
+      "showQuestCooldownDescription": "Sarà visibile sopra la testa di Trevor"
     }
   },
   "messages": {
@@ -273,7 +273,7 @@
     "none": "Nessuno",
     "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §Tempo di ricarica: %time%s"
   },
   "discordStatus": {
     "titleNone": "Nessuno",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Mostra che stai facendo una missione di Tarantola."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Controlla come gli incantesimi vengono visualizzati nella descrizione degli oggetti",
+    "titleCompress": "Comprimi",
+    "descriptionCompress": "Comprime gli incantesimi nel minor numero di righe possibili",
+    "titleNormal": "Normale",
+    "descriptionNormal": "Mostra gli incantesimi come fa Hypixel",
+    "titleExpand": "Espandi",
+    "descriptionExpand": "Elenca ogni incantesimo su una riga"
   },
   "commandUsage": {
     "sba": {

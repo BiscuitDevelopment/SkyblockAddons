@@ -8,10 +8,10 @@
     "hideSkeletonHatBones": "Piilota Skeleton's Helmet -Luut",
     "skeletonHatBonesBar": "Skeleton's Helmet -luut palkissa",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
-    "fullInventoryWarning": "Täysi Inventaario Varoitus",
+    "fullInventoryWarning": "Täysi inventaario -varoitus",
     "repeating": "Toista varoitus",
-    "disableEmberRodAbility": "Poista käytöstä Ember Rod Saarella",
-    "editLocations": "Muokkaa Sijainteja",
+    "disableEmberRodAbility": "Estä Ember Rod omalla saarella",
+    "editLocations": "Muokkaa GUI sijainteja",
     "guiScale": "Gui Mittakaava: %scale%",
     "resetLocations": "Nollaa Sijainnit",
     "minionStopWarning": "\"Kätyri ei yletä\" -varoitus",
@@ -19,11 +19,11 @@
     "backpackStyle": "Repun Tyyli: %style%",
     "backpackStyles": {
       "regular": "Tavallinen",
-      "compact": "Kompakti"
+      "compact": "Tiivis"
     },
     "showBackpackPreview": "Näytä Repun Esikatselu",
     "hideHealthBar": "Piilota Elämäpalkki",
-    "fullMinionWarning": "Kätyrin tila täysi -varoitus",
+    "fullMinionWarning": "Kätyri täynnä -varoitus",
     "ignoreItemFrameClicks": "Älä huomioi klikkauksia kehyksiin",
     "showOnlyWhenHoldingShift": "Näytä vain pidettäessä Shiftiä pohjassa",
     "manaBar": "Manapalkki",
@@ -108,7 +108,7 @@
     "showTotalZealotCount": "Zealotlaskin - Yhteensä Zealotteja",
     "showSummoningEyeCount": "Zealotlaskin - Saatujen Eye:den määrä",
     "showZealotsPerEye": "Zealotlaskin - Näytä Zealotit per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Värjää jousi vihreäksi Toxic Arrow Poisoneita käytettäessä",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Värjää jousi vihreäksi Toxic Arroweita käytettäessä",
     "birchParkRainmakerTimer": "Birch Parkin sadeajastin",
     "combatTimerDisplay": "Taisteluajan näyttö",
     "discordRP": "Discordin rikastettu läsnäolo",
@@ -164,7 +164,7 @@
     "showSkillPercentageInstead": "Näytä prosentti XP:n sijaan",
     "showSkillXPGained": "Näytä tienattu XP",
     "skillProgressBar": "Taitojen etenemis -palkki",
-    "showSalvageEssencesCounter": "Näytä talteen otettujen esanssien laskuri",
+    "showSalvageEssencesCounter": "Näytä kerättyjen esanssien laskuri",
     "disableMortMessages": "Estä Mortin viestit",
     "disableBossMessages": "Poista Johtajien viestit käytöstä",
     "hideOtherPlayersPresents": "Piilota muiden pelaajien lahjat",
@@ -183,21 +183,21 @@
     "onlyMineOresDwarvenMines": "Kaiva vain malmeja Dwarven-kaivoksissa",
     "drillFuelBar": "Poran polttoainetankki",
     "drillFuelText": "Poran polttoainearvo",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "fishingParticleOverlay": "Kalastuspartikkelien väri",
+    "enchantmentLoreParsing": "Jäsennä esineen lumoukset",
+    "cooldownPrediction": "Ennakoi ja lyhennä jäähtymisaikaa",
+    "legendaryMonkeyLevel100": "[TEMP] Tason 100 Legendaarinen Apina",
+    "biggerWake": "Suurenna partikkeleita",
+    "stackingEnchantProgress": "Näytä kasvavien lumousten eteneminen",
+    "showReforgeOverlay": "Näytä Reforgen päällinen",
+    "reforgeFilter": "Reforge Suodatin",
+    "hideEnchantDescription": "Piilota Lumousten Kuvaus",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Trevor the Trapper -ominaisuudet",
+      "trackedEntityProximityIndicator": "Näytä jäljitetyn entiteetin läheisyysindikaattori",
+      "highlightTrackedEntity": "Korosta Jäljitetty Entiteetti",
+      "showQuestCooldown": "Näytä Trevorin tehtävän jäähtymisaika",
+      "showQuestCooldownDescription": "Tämä näytetään Trevorin pään päällä"
     }
   },
   "messages": {
@@ -206,7 +206,7 @@
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
     "magmaBossWarning": "Magmakuutio johtaja!",
     "fullInventory": "Täysi Inventaario!",
-    "labymod": "Labymod Users: Piilota Ruoka-, Suojaus-, ja Elämäpalkki on yhteensopimaton.",
+    "labymod": "Labymodin käyttäjät: Piilota Ruoka-, Suojaus-, ja Elämäpalkki, ne ovat yhteensopimattomia.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
     "minionIsFull": "Kätyri saarellasi on täynnä!",
     "typeEnchantmentsHere": "Kirjoita %type% tähän!",
@@ -215,16 +215,16 @@
     "enchantsToExclude": "Pois jätettävä %type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "Tarvitsetko apua tai haluatko lukea koko muutoslokin?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Liity Discord-palvelimellemme!",
+      "watchShowcase": "Katso Video",
+      "downloadButton": "Lataa",
+      "openModFolderButton": "Avaa Mods-kansio",
+      "joinDiscordButton": "Liity Discordiin",
       "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Latauslinkkiä ei ole saatavilla, tarkista Discord-palvelimme.",
       "notificationBox": {
         "majorAvailable": "Uusi merkittävä päivitys (%version%) on saatavilla! Latauslinkki löytyy chatistä.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Uusi beta päivitys (%version%) on saatavilla! Katso chattiin latauslinkkiä varten.",
         "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
       }
     },
@@ -273,7 +273,7 @@
     "none": "Ei mikään",
     "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
     "chroma": "Väriefekti",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rJäähtymisaika: %time%s"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Näyttää, että olet tekemässä Tarantula-tehtävää."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Mukauta esinevihjeiden lumousten ulkonäköä",
+    "titleCompress": "Tiivistä",
+    "descriptionCompress": "Tiivistä lumoukset mahdollisimman alhaiseen määrään rivejä",
+    "titleNormal": "Normaali",
+    "descriptionNormal": "Näyttää lumoukset, kuten Hypixel",
+    "titleExpand": "Laajenna",
+    "descriptionExpand": "Listaa jokainen lumous omalla rivillään"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Tulostaa Dungeonin kuolinlaskurin määrät vianmääritystä varten."
       },
       "reload": {
         "help": "§e(Kehittäjä) §7Uudelleenlataa kaikki modin asetukset ja resurssit. Peli pysähtyy muutamaksi sekunniksi."
@@ -493,14 +493,14 @@
     "inCombat": "Taistelussa..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Korkein taso",
+    "highTier": "Korkea Taso",
+    "midTier": "Keskitaso",
+    "lowTier": "Alhainen taso",
+    "commas": "Pilkut",
+    "expertiseKills": "Expertise-tapot",
+    "compactedBlocks": "Tiivistetyt palikat",
+    "cultivatedCrops": "Viljellyt kasvit",
+    "maxed": "Korkein"
   }
 }

@@ -273,7 +273,7 @@
     "none": "crwdns1446:0crwdne1446:0",
     "copyModeSet": "crwdns1448:0%mode%crwdnd1448:0%keyName%crwdne1448:0",
     "chroma": "crwdns1594:0crwdne1594:0",
-    "worldRenderedCooldownTime": "crwdns1672:0[SBA]crwdnd1672:0%ticrwdnd1672:0%scrwdne1672:0"
+    "worldRenderedCooldownTime": "crwdns1672:0[SBA]crwdnd1672:0%time%crwdne1672:0"
   },
   "discordStatus": {
     "titleNone": "crwdns1044:0crwdne1044:0",
