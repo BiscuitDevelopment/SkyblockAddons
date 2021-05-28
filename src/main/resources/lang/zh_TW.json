@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "顯示疊加附魔進度",
     "showReforgeOverlay": "顯示 Reforge 提示",
     "reforgeFilter": "Reforge 過濾",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "隱藏附魔描述",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Trevor the Trapper 功能",
+      "trackedEntityProximityIndicator": "顯示已追蹤實體接近指標",
+      "highlightTrackedEntity": "標註已追蹤實體",
+      "showQuestCooldown": "顯示 Trevor 任務冷卻",
+      "showQuestCooldownDescription": "這將會顯示在 Trevor 的頭上方"
     }
   },
   "messages": {
@@ -273,7 +273,7 @@
     "none": "無",
     "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "控制附魔如何顯示在物品信息",
+    "titleCompress": "壓縮",
+    "descriptionCompress": "盡可能壓縮附魔至最少行",
+    "titleNormal": "正常",
+    "descriptionNormal": "以 Hypixel 方式顯示附魔",
+    "titleExpand": "展開",
+    "descriptionExpand": "顯示各個附魔自為一行"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
       },
       "reload": {
         "help": "§e(Dev) §7重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"

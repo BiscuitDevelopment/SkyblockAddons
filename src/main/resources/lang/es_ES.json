@@ -74,7 +74,7 @@
     "onlyMineOresDeepCaverns": "Solo Minar Minerales en las Cavernas Profundas",
     "onlyMineValuablesNether": "Solo Minar Minerales Valiosos en el Nether",
     "revenantIndicator": "Indicador de Progreso de la Armadura de Slayer",
-    "specialZealotAlert": "Alerta de Zealote Especial",
+    "specialZealotAlert": "Alerta de Zealot Especial",
     "enableMessageWhenActionPrevented": "Mostrar un Mensaje Cuando se Impida una Acción",
     "hidePetHealthBar": "Ocultar Barra de Salud de Mascotas",
     "powerOrbDisplay": "Mostrar Power Orb",
@@ -84,7 +84,7 @@
       "compact": "Compacto"
     },
     "disableMagicalSoupMessage": "Desactivar Mensajes de la Sopa de Champiñon Mágica",
-    "zealotCounter": "Contador de Zealotes - Recuento Desde el Último Ojo",
+    "zealotCounter": "Contador de Zealots - Recuento Desde el Último Ojo",
     "tickerChargesDisplay": "Mostrar Cargas/Ticker",
     "tab": {
       "generalSettings": "Opciones Generales"
@@ -105,9 +105,9 @@
     "sortTabEffectTimers": "Ordenar Temporizadores por Duración",
     "showBrokenFragments": "Muestra Fragmentos de Dragón Rotos",
     "skyblockAddonsButtonInPauseMenu": "Muestra Botón SBA en el Menú de Pausa",
-    "showTotalZealotCount": "Contador de Zealotes - Número Total de Zealotes",
-    "showSummoningEyeCount": "Contador de Zealotes - Número Total de Ojos",
-    "showZealotsPerEye": "Contador de Zealotes - Mostrar Zealotes Por Ojo",
+    "showTotalZealotCount": "Contador de Zealots - Número Total de Zealots",
+    "showSummoningEyeCount": "Contador de Zealots - Número Total de Ojos",
+    "showZealotsPerEye": "Contador de Zealots - Mostrar Zealots Por Ojo",
     "turnBowGreenWhenUsingToxicArrowPoison": "Colora el Arco Verde Mientras Usando Veneno de Flecha Tóxica",
     "birchParkRainmakerTimer": "Temporizador de Lluvia del Parque de Abedul",
     "combatTimerDisplay": "Temporizador de Combate",
@@ -117,15 +117,15 @@
     "doubleWarp": "Viajar dos Veces",
     "advancedMode": "Modo Avanzado",
     "legendarySeaCreatureWarning": "Advertencia de Criatura Marina Legendaria",
-    "onlyBreakLogsPark": "Solo Romper Troncos en el Parque",
+    "onlyBreakLogsPark": "Solo Romper Troncos en The Park",
     "bossApproachAlert": "Alerta de Acercamiento del Slayer Boss",
     "disableTeleportPadMessages": "Desactivar Mensajes del Teletransportador",
     "baitListDisplay": "Muestra Lista de Cebos Mientras se Mantiene una Caña de Pesca",
     "freezeBackpackPreview": "Mostrar Previsualización Congelada de la Mochila",
     "hideGreyEnchants": "Ocultar Encantamientos Grises Regulares",
-    "zealotCounterExplosiveBow": "Soporte del Arco Explosivo con Zealotes",
+    "zealotCounterExplosiveBow": "Soporte del Arco Explosivo con Zealots",
     "disableEndermanTeleportation": "Desactivar Teletransportación del Enderman",
-    "changeZealotColor": "Cambiar el Color de los Zealotes",
+    "changeZealotColor": "Cambiar el Color de los Zealots",
     "hideSvenPupNametags": "Ocultar Tags de Sven Pup",
     "turnAllFeaturesChroma": "Convertir Todas las Características a Croma",
     "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
@@ -191,13 +191,13 @@
     "stackingEnchantProgress": "Mostrar el Progreso de Encantamientos Progresivos",
     "showReforgeOverlay": "Mostrar Reforge Actual en Menú",
     "reforgeFilter": "Filtro de Reforge",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Ocultar Descripción de Encantamiento",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Características de Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Mostrar Indicador de Proximidad de Entidad Rastreada",
+      "highlightTrackedEntity": "Destacar Entidad Rastreada",
+      "showQuestCooldown": "Mostrar el Tiempo de Recarga de las Misiones de Trevor",
+      "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
     }
   },
   "messages": {
@@ -238,7 +238,7 @@
     "cancelledDeepCaverns": "SkyblockAddons te ha impedido que mines este bloque aquí.",
     "featureDisabled": "Función Desactivada",
     "anvilUses": "Usos del Yunque: %uses%",
-    "specialZealotFound": "¡Zealote Especial!",
+    "specialZealotFound": "¡Zealot Especial!",
     "blockIncompletePatterns": "Bloquear la fabricación con patrones incompletos (recomendado)",
     "searchFeatures": "Buscar características",
     "downloadingUpdateFile": "Descargando archivo de actualización...",
@@ -273,7 +273,7 @@
     "none": "Ninguno",
     "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
     "chroma": "Croma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §Tiempo de recarga: %time%s"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -284,8 +284,8 @@
     "descriptionPurse": "Muestra la cantidad de monedas en tu monedero",
     "titleStats": "Estadísticas",
     "descriptionStats": "Muestra tu HP, Defensa, y Maná",
-    "titleZealots": "Zealotes",
-    "descriptionZealots": "Muestra tu Contador de Zealotes",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Muestra tu Contador de Zealots",
     "titleItem": "Objeto Seleccionado",
     "descriptionItem": "Muestra el nombre del objeto que tienes",
     "titleProfile": "Perfil",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Muestra que estás haciendo una misión de Tarántula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "title": "Controla cómo se muestran los encantamientos en la descripción del objeto",
+    "titleCompress": "Comprimir",
+    "descriptionCompress": "Comprime los encantamientos en la menor cantidad de líneas posible",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionNormal": "Muestra los encantamientos como lo hace Hypixel",
+    "titleExpand": "Expandir",
+    "descriptionExpand": "Muestra cada encantamiento en su propia línea"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Des) §7Graba los recuentos almacenados en los contadores de muertes de la dungeon con fines de depuración."
       },
       "reload": {
         "help": "§e(Des) §7Recarga todas las configuraciones y recursos del mod. El juego se congelará durante unos segundos."

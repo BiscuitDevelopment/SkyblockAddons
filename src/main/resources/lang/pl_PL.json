@@ -183,21 +183,21 @@
     "onlyMineOresDwarvenMines": "Wykopuj rudy tylko w Dwarven Mines",
     "drillFuelBar": "Pasek paliwa wiertła",
     "drillFuelText": "Tekst paliwa wiertła",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "fishingParticleOverlay": "Nakładka cząsteczek łowienia",
+    "enchantmentLoreParsing": "Personalizuj listę zaklęć",
+    "cooldownPrediction": "Przewiduj i skracaj czas odnowienia",
+    "legendaryMonkeyLevel100": "[TEMP] Legendarny Monkey Poziom 100",
+    "biggerWake": "Powiększ cząsteczki nakładki",
+    "stackingEnchantProgress": "Pokaż postęp zaklęć wielopoziomowych",
+    "showReforgeOverlay": "Pokaż nakładkę Reforge",
+    "reforgeFilter": "Filtr Reforge",
+    "hideEnchantDescription": "Ukryj opis zaklęcia",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Funkcje Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Pokaż wskaźnik bliskości tropionych obiektów",
+      "highlightTrackedEntity": "Podświetl tropiony obiekt",
+      "showQuestCooldown": "Pokaż czas odnowienia zadania Trevora",
+      "showQuestCooldownDescription": "To zostanie wyświetlone nad głową Trevora"
     }
   },
   "messages": {
@@ -215,16 +215,16 @@
     "enchantsToExclude": "%type% do wykluczenia:",
     "updateChecker": {
       "wantToViewPatchNotes": "Potrzebujesz wsparcia lub chcesz przeczytać pełny dziennik zmian?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Dołącz do naszego serwera Discord!",
+      "watchShowcase": "Obejrzyj film",
+      "downloadButton": "Pobierz",
+      "openModFolderButton": "Otwórz Folder z Modyfikacjami",
+      "joinDiscordButton": "Dołącz do Discorda",
       "newUpdateAvailable": "Dostępna jest nowa aktualizacja (%version%)!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Brak dostępnego linku do pobrania, proszę sprawdzić nasz serwer Discord.",
       "notificationBox": {
         "majorAvailable": "Nowa ważna aktualizacja (%version%) jest dostępna. Odnośnik do pobierania znajduje się na czacie.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Nowa wersja beta (%version%) jest dostępna! Sprawdź chat, aby znaleźć link do pobrania.",
         "patchAvailable": "Nowa łatka (%version%) jest dostępna. Sprawdź czat, aby uzyskać informacje na temat pobierania!"
       }
     },
@@ -273,7 +273,7 @@
     "none": "Brak",
     "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -304,13 +304,13 @@
     "descriptionTarantula": "Pokazuje, że robisz zadanie Tarantuli."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Zmień sposób wyświetlania listy zaklęć na przedmiocie",
+    "titleCompress": "Kompaktuj",
+    "descriptionCompress": "Kompaktuj zaklęcia do jak najmniejszej liczby linii",
+    "titleNormal": "Normalny",
+    "descriptionNormal": "Wyświetlaj zaklęcia tak samo jak Hypixel",
+    "titleExpand": "Rozwiń",
+    "descriptionExpand": "Wyświetlaj jedno zaklęcie na jeden wiersz"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Pokazuje liczby przechowane w licznikach śmierci w lochach w celu debugowania."
       },
       "reload": {
         "help": "§e(Dev) §7Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
@@ -493,14 +493,14 @@
     "inCombat": "Podczas walki..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Maksymalny poziom",
+    "highTier": "Wysoki poziom",
+    "midTier": "Średni poziom",
+    "lowTier": "Niski poziom",
+    "commas": "Przecinki",
+    "expertiseKills": "Zabójstwa z Expertise",
+    "compactedBlocks": "Skompaktowane Bloki",
+    "cultivatedCrops": "Zebrane plony",
+    "maxed": "Wymaksowane"
   }
 }

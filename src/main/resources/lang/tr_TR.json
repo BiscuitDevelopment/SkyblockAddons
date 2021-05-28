@@ -353,7 +353,7 @@
       "dev": {
         "help": "Geliştirici modunu aç",
         "detailedHelp": {
-          "description": "Bu komut geliştirici modunu değiştirir. Bu mod Skyblock mods/araç geliştiricileri içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar."
+          "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
         },
         "disabled": "Geliştirici modu kapatıldı!",
         "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
