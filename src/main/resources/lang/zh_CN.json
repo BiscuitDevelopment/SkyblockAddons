@@ -183,7 +183,7 @@
     "onlyMineOresDwarvenMines": "在 Dwarven Mines 中只挖掘矿物",
     "drillFuelBar": "Drill 燃料计量条",
     "drillFuelText": "Drill 燃料值",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "fishingParticleOverlay": "更改钓鱼提示粒子的颜色",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
@@ -306,11 +306,11 @@
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
     "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
+    "descriptionCompress": "以尽可能少的行数显示附魔名称",
+    "titleNormal": "普通",
     "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "titleExpand": "展开",
+    "descriptionExpand": "逐行显示附魔"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +374,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(开发者) §7将地下城死亡计数输出至聊天栏以供调试"
       },
       "reload": {
         "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
