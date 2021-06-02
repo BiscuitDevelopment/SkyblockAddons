@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -47,6 +48,18 @@ public class EntityOutlineRenderer {
     private static Method isFastRender = null;
     private static Method isShaders = null;
     private static Method isAntialiasing = null;
+    private static final Framebuffer swapBuffer = initSwapBuffer();
+
+    /**
+     * @return a new framebuffer with the size of the main framebuffer
+     */
+    private static Framebuffer initSwapBuffer() {
+        Framebuffer main = Minecraft.getMinecraft().getFramebuffer();
+        Framebuffer framebuffer = new Framebuffer(main.framebufferTextureWidth, main.framebufferTextureHeight, true);
+        framebuffer.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);
+        return framebuffer;
+    }
+
 
     /**
      * Renders xray and no-xray entity outlines.
@@ -60,73 +73,101 @@ public class EntityOutlineRenderer {
     public static boolean renderEntityOutlines(ICamera camera, float partialTicks, double x, double y, double z) {
         boolean shouldRenderOutlines = shouldRenderEntityOutlines();
 
-        if (shouldRenderOutlines && MinecraftForgeClient.getRenderPass() == 0) {
+        if (shouldRenderOutlines && !cacheEmpty() && MinecraftForgeClient.getRenderPass() == 0) {
             Minecraft mc = Minecraft.getMinecraft();
             RenderGlobal renderGlobal = mc.renderGlobal;
             RenderManager renderManager = mc.getRenderManager();
 
             mc.theWorld.theProfiler.endStartSection("entityOutlines");
+
+            // Clear and bind the outline framebuffer
             renderGlobal.entityOutlineFramebuffer.framebufferClear();
-
-            GlStateManager.disableFog();
             renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+
+            // Vanilla options
             RenderHelper.disableStandardItemLighting();
+            GlStateManager.disableFog();
             mc.getRenderManager().setRenderOutlines(true);
+
+            // SBA options
             DrawUtils.enableOutlineMode();
-            GlStateManager.enableColorMaterial();
 
-            // Xray is enabled by disabling depth testing
-            GlStateManager.depthFunc(GL11.GL_ALWAYS);
-            for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getXrayCache().entrySet()) {
-                // Test if the entity should render, given the player's instantaneous camera position
-                if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
-                    try {
-                        if (!(entityAndColor.getKey() instanceof EntityLivingBase)) {
-                            DrawUtils.outlineColor(entityAndColor.getValue());
+            // Render x-ray outlines first, ignoring the depth buffer bit
+            if (!entityRenderCache.getXrayCache().isEmpty()) {
+
+                // Xray is enabled by disabling depth testing
+                GlStateManager.depthFunc(GL11.GL_ALWAYS);
+                for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getXrayCache().entrySet()) {
+                    // Test if the entity should render, given the player's camera position
+                    if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
+                        try {
+                            if (!(entityAndColor.getKey() instanceof EntityLivingBase)) {
+                                DrawUtils.outlineColor(entityAndColor.getValue());
+                            }
+                            renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
+                        } catch (Exception ignored) {
                         }
-                        renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
-                    } catch (Exception ignored) {
+                    }
+                }
+                // Reset depth function
+                GlStateManager.depthFunc(GL11.GL_LESS);
+            }
+            // Render no-xray outlines second, taking into consideration the depth bit
+            if (!entityRenderCache.getNoXrayCache().isEmpty()) {
+                // Render other entities + terrain that may occlude an entity outline into a depth buffer
+                copyBuffers(mc.getFramebuffer(), swapBuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                swapBuffer.bindFramebuffer(false);
+                // Copy terrain + other entities depth into outline frame buffer to now switch to no-xray outlines
+                for (Entity entity : entityRenderCache.getNoOutlineCache()) {
+                    // Test if the entity should render, given the player's instantaneous camera position
+                    if (shouldRender(camera, entity, x, y, z)) {
+                        try {
+                            renderManager.renderEntityStatic(entity, partialTicks, true);
+                        } catch (Exception ignored) {
+                        }
+                    }
+                }
+
+                // Copy the entire depth buffer of everything that might occlude outline to outline framebuffer
+                copyBuffers(swapBuffer, renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+
+                // Xray disabled by re-enabling traditional depth testing
+                for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getNoXrayCache().entrySet()) {
+                    // Test if the entity should render, given the player's instantaneous camera position
+                    if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
+                        try {
+                            if (!(entityAndColor.getKey() instanceof EntityLivingBase)) {
+                                DrawUtils.outlineColor(entityAndColor.getValue());
+                            }
+                            renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
+
+                        } catch (Exception ignored) {
+                        }
                     }
                 }
             }
 
-            // Copy terrain + other entities depth into outline frame buffer to now switch to no-xray outlines
-            copyBuffers(mc.getFramebuffer(), renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
-            renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
-            // Xray disabled by re-enabling traditional depth testing
-            GlStateManager.depthFunc(GL11.GL_LEQUAL);
-            for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getNoXrayCache().entrySet()) {
-                // Test if the entity should render, given the player's instantaneous camera position
-                if (shouldRender(camera, entityAndColor.getKey(), x, y, z)) {
-                    try {
-                        if (!(entityAndColor.getKey() instanceof EntityLivingBase)) {
-                            DrawUtils.outlineColor(entityAndColor.getValue());
-                        }
-                        renderManager.renderEntityStatic(entityAndColor.getKey(), partialTicks, true);
-                    } catch (Exception ignored) {
-                    }
-                }
-            }
-
-
-            // Prepare for outline shader
+            // SBA options
             DrawUtils.disableOutlineMode();
-            GlStateManager.disableColorMaterial();
+
+            // Vanilla options
+            RenderHelper.enableStandardItemLighting();
             mc.getRenderManager().setRenderOutlines(false);
 
-            RenderHelper.enableStandardItemLighting();
+            // Load the outline shader
             GlStateManager.depthMask(false);
             renderGlobal.entityOutlineShader.loadShaderGroup(partialTicks);
-            // Reset GL for next render layers
-            GlStateManager.enableLighting();
             GlStateManager.depthMask(true);
+
+            // Reset GL/framebuffers for next render layers
+            GlStateManager.enableLighting();
+            mc.getFramebuffer().bindFramebuffer(false);
             GlStateManager.enableFog();
             GlStateManager.enableBlend();
             GlStateManager.enableColorMaterial();
-            GlStateManager.depthFunc(GL11.GL_LEQUAL);
             GlStateManager.enableDepth();
             GlStateManager.enableAlpha();
-            mc.getFramebuffer().bindFramebuffer(false);
         }
 
         return !shouldRenderOutlines;
@@ -152,7 +193,6 @@ public class EntityOutlineRenderer {
         Minecraft mc = Minecraft.getMinecraft();
         RenderGlobal renderGlobal = mc.renderGlobal;
         SkyblockAddons main = SkyblockAddons.getInstance();
-        ConfigValues sbConfig = main.getConfigValues();
 
         // Vanilla Conditions
         if (renderGlobal.entityOutlineFramebuffer == null || renderGlobal.entityOutlineShader == null || mc.thePlayer == null)
@@ -160,11 +200,6 @@ public class EntityOutlineRenderer {
 
         // Skyblock Conditions
         if (!main.getUtils().isOnSkyblock()) {
-            return false;
-        }
-        // Feature conditions TODO change at some point after feature refactor to be decentralized (startup registration to an event?)
-        if (sbConfig.isDisabled(Feature.MAKE_DROPPED_ITEMS_GLOW) && sbConfig.isDisabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW) &&
-                sbConfig.isDisabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY)) {
             return false;
         }
 
@@ -215,9 +250,9 @@ public class EntityOutlineRenderer {
      */
     private static boolean shouldRender(ICamera camera, Entity entity, double x, double y, double z) {
         Minecraft mc = Minecraft.getMinecraft();
-        if (!entity.shouldRenderInPass(MinecraftForgeClient.getRenderPass())) {
-            return false;
-        }
+        //if (considerPass && !entity.shouldRenderInPass(MinecraftForgeClient.getRenderPass())) {
+        //    return false;
+        //}
         // Only render the view entity when sleeping or in 3rd person mode mode
         if (entity == mc.getRenderViewEntity() &&
                 !((mc.getRenderViewEntity() instanceof EntityLivingBase && ((EntityLivingBase) mc.getRenderViewEntity()).isPlayerSleeping()) ||
@@ -250,6 +285,10 @@ public class EntityOutlineRenderer {
         }
     }
 
+    public static boolean cacheEmpty() {
+        return entityRenderCache.noXrayCache.isEmpty() && entityRenderCache.xrayCache.isEmpty();
+    }
+
     /**
      * Updates the cache at the start of every minecraft tick to improve efficiency.
      * Identifies and caches all entities in the world that should be outlined.
@@ -266,16 +305,20 @@ public class EntityOutlineRenderer {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (mc.theWorld != null && shouldRenderEntityOutlines()) {
+            ConfigValues sbConfig = SkyblockAddons.getInstance().getConfigValues();
+            boolean outlineEnabled = sbConfig.isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW) ||
+                    sbConfig.isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW) ||
+                    sbConfig.isEnabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY);
+            if (mc.theWorld != null && shouldRenderEntityOutlines() && outlineEnabled) {
                 List<Entity> entities = mc.theWorld.getLoadedEntityList();
                 // Only render outlines around non-null entities within the camera frustum
                 HashSet<Entity> entitiesToRender = new HashSet<>(entities.size());
+                // Only consider entities that aren't invisible armorstands to increase FPS
                 entities.forEach(e -> {
-                    if (e != null) {
+                    if (e != null && !(e instanceof EntityArmorStand && e.isInvisible())) {
                         entitiesToRender.add(e);
                     }
                 });
-
                 // These events need to be called in this specific order for the xray to have priority over the no xray
                 // Get all entities to render xray outlines
                 RenderEntityOutlineEvent xrayOutlineEvent = new RenderEntityOutlineEvent(RenderEntityOutlineEvent.Type.XRAY, entitiesToRender);
@@ -286,12 +329,17 @@ public class EntityOutlineRenderer {
                 // Cache the entities for future use
                 entityRenderCache.setXrayCache(xrayOutlineEvent.getEntitiesToOutline());
                 entityRenderCache.setNoXrayCache(noxrayOutlineEvent.getEntitiesToOutline());
+                entityRenderCache.setNoOutlineCache(noxrayOutlineEvent.getEntitiesToChooseFrom());
+                if (cacheEmpty()) {
+                    mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                }
+            } else {
+                entityRenderCache.setXrayCache(new HashMap<>());
+                entityRenderCache.setNoXrayCache(new HashMap<>());
+                entityRenderCache.setNoOutlineCache(new HashSet<>());
+                mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
             }
         }
-    }
-
-    public static boolean isCacheEmpty() {
-        return entityRenderCache.noXrayCache.isEmpty() && entityRenderCache.xrayCache.isEmpty();
     }
 
     private static class CachedInfo {
@@ -301,5 +349,8 @@ public class EntityOutlineRenderer {
         @Getter
         @Setter
         private HashMap<Entity, Integer> noXrayCache = new HashMap<>();
+        @Getter
+        @Setter
+        private HashSet<Entity> noOutlineCache = new HashSet<>();
     }
 }

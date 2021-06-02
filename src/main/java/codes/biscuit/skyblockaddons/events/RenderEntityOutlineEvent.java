@@ -30,6 +30,7 @@ public class RenderEntityOutlineEvent extends Event {
     /**
      * The entities we can outline. Note that this set and {@link #entitiesToOutline} are disjoint at all times.
      */
+    @Getter
     private final HashSet<Entity> entitiesToChooseFrom;
 
     /**

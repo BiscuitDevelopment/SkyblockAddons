@@ -9,6 +9,7 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.scoreboard.ScorePlayerTeam;
+import net.minecraft.scoreboard.Team.EnumVisible;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import java.util.function.Function;
@@ -28,8 +29,8 @@ public class FeatureDungeonTeammateOutlines {
         // Only accept other player entities
         if (e instanceof EntityOtherPlayerMP) {
             ScorePlayerTeam scoreplayerteam = (ScorePlayerTeam) ((EntityPlayer) e).getTeam();
-            // Must be on the scoreboard
-            if (scoreplayerteam != null) {
+            // Must be visible on the scoreboard
+            if (scoreplayerteam != null && scoreplayerteam.getNameTagVisibility() != EnumVisible.NEVER) {
                 String formattedName = FontRenderer.getFormatFromString(scoreplayerteam.getColorPrefix());
                 // Return the color of the corresponding team the player is on
                 if (formattedName.length() >= 2) {
