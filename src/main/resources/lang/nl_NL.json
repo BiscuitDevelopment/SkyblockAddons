@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endsteenbeschermerweergave",
     "fancyWarpMenu": "Luxe teleportatiemenu",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Dubbel teleporteren",
     "advancedMode": "Geavanceerde modus",
     "legendarySeaCreatureWarning": "Legendarisch Zeewezen-waarschuwing",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeonkaartweergave",
     "rotateMap": "Kaart draaien op basis van spelersoriëntatie",
     "centerRotationOnYourPlayer": "Rotatie centreren rond je speler",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Kaartzoom",
     "glowingDroppedItems": "Voorwerpen laten gloeien",
     "glowingDungeonTeammates": "Dungeonteamgenoten laten gloeien",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Alleen erts breken in Dwarven Mines",
     "drillFuelBar": "Drill-brandstofbalk",
     "drillFuelText": "Drill-brandstofgetal",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Visdeeltjesoverlay",
     "enchantmentLoreParsing": "Betoveringstooltips parseren",
     "cooldownPrediction": "Afkoeltijd schatten en inkorten",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Gevolgde vijand markeren",
       "showQuestCooldown": "Afkoeltijd Trevor's Quest weergeven",
       "showQuestCooldownDescription": "Dit word boven Trevors hoofd weergegeven"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendarische vangst!",
     "cancelledPark": "Een functie heeft je ervan weerhouden dit blok te breken.",
     "bossApproaching": "Je spawnt bijna een baas!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Alles inschakelen",
     "disableAll": "Alles uitschakelen",
     "enchantmentInclusionExample": "bijv. \"prot, feather\"",
