@@ -18,7 +18,10 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ReportedException;
-import org.apache.commons.lang3.mutable.*;
+import org.apache.commons.lang3.mutable.Mutable;
+import org.apache.commons.lang3.mutable.MutableFloat;
+import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
@@ -48,36 +51,49 @@ public class ConfigValues {
     private final Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
     private final Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
 
-    private File settingsConfigFile;
+    private final File settingsConfigFile;
     private JsonObject loadedConfig = new JsonObject();
-    @Getter @Setter private JsonObject languageConfig = new JsonObject();
+    @Getter
+    @Setter
+    private JsonObject languageConfig = new JsonObject();
 
-    @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private Map<Feature, Integer> colors = new HashMap<>();
+    @Getter
+    private final Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
+    private final Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, Float> guiScales = new EnumMap<>(Feature.class);
-    private Map<Feature, IntPair> barSizes = new EnumMap<>(Feature.class);
-    private MutableInt warningSeconds = new MutableInt(4);
-    private Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
+    private final Map<Feature, IntPair> barSizes = new EnumMap<>(Feature.class);
+    private final MutableInt warningSeconds = new MutableInt(4);
+    private final Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
-    private MutableObject<Language> language = new MutableObject<>(Language.ENGLISH);
-    private MutableObject<EnumUtils.BackpackStyle> backpackStyle = new MutableObject<>(EnumUtils.BackpackStyle.GUI);
-    private MutableObject<EnumUtils.PowerOrbDisplayStyle> powerOrbDisplayStyle = new MutableObject<>(EnumUtils.PowerOrbDisplayStyle.COMPACT);
-    private MutableObject<EnumUtils.TextStyle> textStyle = new MutableObject<>(EnumUtils.TextStyle.STYLE_ONE);
-    private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
-    @Getter private Set<Feature> chromaFeatures = EnumSet.noneOf(Feature.class);
-    @Deprecated private MutableFloat oldChromaSpeed = new MutableFloat(0.19354838F); // 2.0
-    private MutableObject<EnumUtils.ChromaMode> chromaMode = new MutableObject<>(EnumUtils.ChromaMode.FADE);
-    private MutableFloat chromaFadeWidth = new MutableFloat(0.22580644F); // 10° Hue
-    private MutableObject<DiscordStatus> discordDetails =  new MutableObject<>(DiscordStatus.LOCATION);
-    private MutableObject<DiscordStatus> discordStatus = new MutableObject<>(DiscordStatus.AUTO_STATUS);
-    private MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
-    @Getter private List<String> discordCustomStatuses = new ArrayList<>();
-    @Getter private MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
-    @Getter private MutableFloat healingCircleOpacity = new MutableFloat(0.4);
-    @Setter @Getter private MutableFloat chromaSize = new MutableFloat(30);
-    @Getter private MutableFloat chromaSpeed = new MutableFloat(6);
-    @Getter private MutableFloat chromaSaturation = new MutableFloat(0.75F);
-    @Getter private MutableFloat chromaBrightness = new MutableFloat(0.9F);
+    private final MutableObject<Language> language = new MutableObject<>(Language.ENGLISH);
+    private final MutableObject<EnumUtils.BackpackStyle> backpackStyle = new MutableObject<>(EnumUtils.BackpackStyle.GUI);
+    private final MutableObject<EnumUtils.PowerOrbDisplayStyle> powerOrbDisplayStyle = new MutableObject<>(EnumUtils.PowerOrbDisplayStyle.COMPACT);
+    private final MutableObject<EnumUtils.TextStyle> textStyle = new MutableObject<>(EnumUtils.TextStyle.STYLE_ONE);
+    private final Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
+    @Getter
+    private final Set<Feature> chromaFeatures = EnumSet.noneOf(Feature.class);
+    @Deprecated
+    private final MutableFloat oldChromaSpeed = new MutableFloat(0.19354838F); // 2.0
+    private final MutableObject<EnumUtils.ChromaMode> chromaMode = new MutableObject<>(EnumUtils.ChromaMode.FADE);
+    private final MutableFloat chromaFadeWidth = new MutableFloat(0.22580644F); // 10° Hue
+    private final MutableObject<DiscordStatus> discordDetails = new MutableObject<>(DiscordStatus.LOCATION);
+    private final MutableObject<DiscordStatus> discordStatus = new MutableObject<>(DiscordStatus.AUTO_STATUS);
+    private final MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
+    @Getter
+    private final List<String> discordCustomStatuses = new ArrayList<>();
+    @Getter
+    private final MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
+    @Getter
+    private final MutableFloat healingCircleOpacity = new MutableFloat(0.4);
+    @Setter
+    @Getter
+    private MutableFloat chromaSize = new MutableFloat(30);
+    @Getter
+    private final MutableFloat chromaSpeed = new MutableFloat(6);
+    @Getter
+    private final MutableFloat chromaSaturation = new MutableFloat(0.75F);
+    @Getter
+    private final MutableFloat chromaBrightness = new MutableFloat(0.9F);
     private final MutableObject<EnchantListLayout> enchantLayout = new MutableObject<>(EnchantListLayout.NORMAL);
 
     public ConfigValues(File settingsConfigFile) {
@@ -199,6 +215,7 @@ public class ConfigValues {
             deserializeEnumValueFromOrdinal(discordDetails, "discordDetails");
             deserializeEnumValueFromOrdinal(discordAutoDefault, "discordAutoDefault");
             deserializeStringCollection(discordCustomStatuses, "discordCustomStatuses");
+            deserializeEnumValueFromOrdinal(enchantLayout, "enchantLayout");
 
             deserializeNumber(mapZoom, "mapZoom", float.class);
             deserializeNumber(chromaSaturation, "chromaSaturation", float.class);
@@ -390,6 +407,7 @@ public class ConfigValues {
                 saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
                 saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
                 saveConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
+                saveConfig.addProperty("enchantLayout", enchantLayout.getValue().ordinal());
 
                 JsonArray discordCustomStatusesArray = new JsonArray();
                 for (String string : discordCustomStatuses) {
