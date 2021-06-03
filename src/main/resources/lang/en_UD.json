@@ -114,6 +114,8 @@
     "discordRP": "crwdns1020:0crwdne1020:0",
     "endstoneProtectorDisplay": "crwdns1022:0crwdne1022:0",
     "fancyWarpMenu": "crwdns1028:0crwdne1028:0",
+    "stopRatSounds": "crwdns1690:0crwdne1690:0",
+    "onlyStopRatSqueak": "crwdns1692:0crwdne1692:0",
     "doubleWarp": "crwdns1030:0crwdne1030:0",
     "advancedMode": "crwdns1032:0crwdne1032:0",
     "legendarySeaCreatureWarning": "crwdns1094:0crwdne1094:0",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "crwdns1256:0crwdne1256:0",
     "rotateMap": "crwdns1166:0crwdne1166:0",
     "centerRotationOnYourPlayer": "crwdns1168:0crwdne1168:0",
+    "showFetchurOnlyInDwarven": "crwdns1694:0crwdne1694:0",
+    "showFetchurItemName": "crwdns1696:0crwdne1696:0",
+    "showFetchurInventoryOpenOnly": "crwdns1698:0crwdne1698:0",
+    "warnWhenFetchurChanges": "crwdns1700:0crwdne1700:0",
     "mapZoom": "crwdns1170:0crwdne1170:0",
     "glowingDroppedItems": "crwdns1172:0crwdne1172:0",
     "glowingDungeonTeammates": "crwdns1174:0crwdne1174:0",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "crwdns1588:0crwdne1588:0",
     "drillFuelBar": "crwdns1590:0crwdne1590:0",
     "drillFuelText": "crwdns1592:0crwdne1592:0",
+    "fetchurToday": "crwdns1702:0crwdne1702:0",
     "fishingParticleOverlay": "crwdns1602:0crwdne1602:0",
     "enchantmentLoreParsing": "crwdns1604:0crwdne1604:0",
     "cooldownPrediction": "crwdns1606:0crwdne1606:0",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "crwdns1666:0crwdne1666:0",
       "showQuestCooldown": "crwdns1668:0crwdne1668:0",
       "showQuestCooldownDescription": "crwdns1670:0crwdne1670:0"
-    }
+    },
+    "showEnderChestPreview": "crwdns1704:0crwdne1704:0"
   },
   "messages": {
     "enchants": "crwdns1272:0crwdne1272:0",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "crwdns1096:0crwdne1096:0",
     "cancelledPark": "crwdns1102:0crwdne1102:0",
     "bossApproaching": "crwdns1104:0crwdne1104:0",
+    "fetchurItem": "crwdns1706:0%item%crwdne1706:0",
+    "fetchurWarning": "crwdns1708:0crwdne1708:0",
     "enableAll": "crwdns1124:0crwdne1124:0",
     "disableAll": "crwdns1126:0crwdne1126:0",
     "enchantmentInclusionExample": "crwdns1258:0crwdne1258:0",
