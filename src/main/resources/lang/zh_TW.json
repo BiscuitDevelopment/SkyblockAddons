@@ -77,8 +77,8 @@
     "specialZealotAlert": "特殊 Zealot 警報",
     "enableMessageWhenActionPrevented": "當一個動作被阻止時顯示訊息",
     "hidePetHealthBar": "隱藏寵物血條",
-    "powerOrbDisplay": "顯示Power Orb",
-    "powerOrbDisplayStyle": "Power Orb樣式: %style%",
+    "powerOrbDisplay": "顯示 Power Orb",
+    "powerOrbDisplayStyle": "Power Orb 樣式: %style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "精簡"
@@ -128,7 +128,7 @@
     "zealotCounterExplosiveBow": "Zealot 計數器 Explosive Bow 支援",
     "disableEndermanTeleportation": "取消終界使者傳送",
     "changeZealotColor": "更改 Zealot 顏色",
-    "hideSvenPupNametags": "隱藏Sven Pup 名稱",
+    "hideSvenPupNametags": "隱藏 Sven Pup 名稱",
     "turnAllFeaturesChroma": "套用漸變色於所有功能",
     "dungeonMapDisplay": "Dungeon 地圖顯示",
     "rotateMap": "旋轉地圖至玩家方向",
