@@ -72,7 +72,7 @@ public class EntityOutlineRenderer {
     public static boolean renderEntityOutlines(ICamera camera, float partialTicks, double x, double y, double z) {
         boolean shouldRenderOutlines = shouldRenderEntityOutlines();
 
-        if (shouldRenderOutlines && !cacheEmpty() && MinecraftForgeClient.getRenderPass() == 0) {
+        if (shouldRenderOutlines && !isCacheEmpty() && MinecraftForgeClient.getRenderPass() == 0) {
             Minecraft mc = Minecraft.getMinecraft();
             RenderGlobal renderGlobal = mc.renderGlobal;
             RenderManager renderManager = mc.getRenderManager();
@@ -92,7 +92,7 @@ public class EntityOutlineRenderer {
             DrawUtils.enableOutlineMode();
 
             // Render x-ray outlines first, ignoring the depth buffer bit
-            if (!entityRenderCache.getXrayCache().isEmpty()) {
+            if (!isXrayCacheEmpty()) {
 
                 // Xray is enabled by disabling depth testing
                 GlStateManager.depthFunc(GL11.GL_ALWAYS);
@@ -112,24 +112,32 @@ public class EntityOutlineRenderer {
                 GlStateManager.depthFunc(GL11.GL_LESS);
             }
             // Render no-xray outlines second, taking into consideration the depth bit
-            if (!entityRenderCache.getNoXrayCache().isEmpty()) {
-                // Render other entities + terrain that may occlude an entity outline into a depth buffer
-                copyBuffers(mc.getFramebuffer(), swapBuffer, GL11.GL_DEPTH_BUFFER_BIT);
-                swapBuffer.bindFramebuffer(false);
-                // Copy terrain + other entities depth into outline frame buffer to now switch to no-xray outlines
-                for (Entity entity : entityRenderCache.getNoOutlineCache()) {
-                    // Test if the entity should render, given the player's instantaneous camera position
-                    if (shouldRender(camera, entity, x, y, z)) {
-                        try {
-                            renderManager.renderEntityStatic(entity, partialTicks, true);
-                        } catch (Exception ignored) {
+            if (!isNoXrayCacheEmpty()) {
+                if (!isNoOutlineCacheEmpty()) {
+                    // Render other entities + terrain that may occlude an entity outline into a depth buffer
+                    copyBuffers(mc.getFramebuffer(), swapBuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                    swapBuffer.bindFramebuffer(false);
+                    // Copy terrain + other entities depth into outline frame buffer to now switch to no-xray outlines
+                    if (entityRenderCache.getNoOutlineCache() != null) {
+                        for (Entity entity : entityRenderCache.getNoOutlineCache()) {
+                            // Test if the entity should render, given the player's instantaneous camera position
+                            if (shouldRender(camera, entity, x, y, z)) {
+                                try {
+                                    renderManager.renderEntityStatic(entity, partialTicks, true);
+                                } catch (Exception ignored) {
+                                }
+                            }
                         }
                     }
-                }
 
-                // Copy the entire depth buffer of everything that might occlude outline to outline framebuffer
-                copyBuffers(swapBuffer, renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
-                renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+                    // Copy the entire depth buffer of everything that might occlude outline to outline framebuffer
+                    copyBuffers(swapBuffer, renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                    renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+                }
+                // If there are no entities that can occlude the outlines, just copy the terrain depth buffer over
+                else {
+                    copyBuffers(mc.getFramebuffer(), renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                }
 
                 // Xray disabled by re-enabling traditional depth testing
                 for (Map.Entry<Entity, Integer> entityAndColor : entityRenderCache.getNoXrayCache().entrySet()) {
@@ -174,10 +182,10 @@ public class EntityOutlineRenderer {
 
 
     public static Integer getCustomOutlineColor(EntityLivingBase entity) {
-        if (entityRenderCache.getXrayCache().containsKey(entity)) {
+        if (entityRenderCache.getXrayCache() != null && entityRenderCache.getXrayCache().containsKey(entity)) {
             return entityRenderCache.getXrayCache().get(entity);
         }
-        if (entityRenderCache.getNoXrayCache().containsKey(entity)) {
+        if (entityRenderCache.getNoXrayCache() != null && entityRenderCache.getNoXrayCache().containsKey(entity)) {
             return entityRenderCache.getNoXrayCache().get(entity);
         }
         return null;
@@ -284,11 +292,24 @@ public class EntityOutlineRenderer {
         }
     }
 
-    public static boolean cacheEmpty() {
-        return entityRenderCache.noXrayCache.isEmpty() && entityRenderCache.xrayCache.isEmpty();
+    public static boolean isCacheEmpty() {
+        return isXrayCacheEmpty() && isNoXrayCacheEmpty();
+    }
+
+    private static boolean isXrayCacheEmpty() {
+        return entityRenderCache.xrayCache == null || entityRenderCache.xrayCache.isEmpty();
+    }
+
+    private static boolean isNoXrayCacheEmpty() {
+        return entityRenderCache.noXrayCache == null || entityRenderCache.noXrayCache.isEmpty();
+    }
+
+    private static boolean isNoOutlineCacheEmpty() {
+        return entityRenderCache.noOutlineCache == null || entityRenderCache.noOutlineCache.isEmpty();
     }
 
     private static boolean emptyLastTick = false;
+
     /**
      * Updates the cache at the start of every minecraft tick to improve efficiency.
      * Identifies and caches all entities in the world that should be outlined.
@@ -318,7 +339,7 @@ public class EntityOutlineRenderer {
                 entityRenderCache.setNoXrayCache(noxrayOutlineEvent.getEntitiesToOutline());
                 entityRenderCache.setNoOutlineCache(noxrayOutlineEvent.getEntitiesToChooseFrom());
 
-                if (cacheEmpty()) {
+                if (isCacheEmpty()) {
                     if (!emptyLastTick) {
                         mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
                     }
@@ -327,9 +348,9 @@ public class EntityOutlineRenderer {
                     emptyLastTick = false;
                 }
             } else if (!emptyLastTick) {
-                entityRenderCache.setXrayCache(new HashMap<>());
-                entityRenderCache.setNoXrayCache(new HashMap<>());
-                entityRenderCache.setNoOutlineCache(new HashSet<>());
+                entityRenderCache.setXrayCache(null);
+                entityRenderCache.setNoXrayCache(null);
+                entityRenderCache.setNoOutlineCache(null);
                 mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
                 emptyLastTick = true;
             }
@@ -339,12 +360,12 @@ public class EntityOutlineRenderer {
     private static class CachedInfo {
         @Getter
         @Setter
-        private HashMap<Entity, Integer> xrayCache = new HashMap<>();
+        private HashMap<Entity, Integer> xrayCache = null;
         @Getter
         @Setter
-        private HashMap<Entity, Integer> noXrayCache = new HashMap<>();
+        private HashMap<Entity, Integer> noXrayCache = null;
         @Getter
         @Setter
-        private HashSet<Entity> noOutlineCache = new HashSet<>();
+        private HashSet<Entity> noOutlineCache = null;
     }
 }
