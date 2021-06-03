@@ -135,7 +135,7 @@
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
     "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
     "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "지도 확대",
     "glowingDroppedItems": "떨군 아이템을 빛나도록 표시",
