@@ -197,7 +197,7 @@
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Reforge オーバーレイを表示",
-    "reforgeFilter": "Reforge Filter",
+    "reforgeFilter": "Reforge のフィルター",
     "hideEnchantDescription": "エンチャントの説明を非表示",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
@@ -269,7 +269,7 @@
     "legendarySeaCreatureWarning": "レジェンダリーを捕まえました！",
     "cancelledPark": "機能がここでこのブロックの破壊を阻止しました。",
     "bossApproaching": "Boss のスポーンが近いです！",
-    "fetchurItem": "Fetchur: %item%",
+    "fetchurItem": "Fetchur：%item%",
     "fetchurWarning": "Fetchur changed!",
     "enableAll": "すべて有効化",
     "disableAll": "すべて無効化",
