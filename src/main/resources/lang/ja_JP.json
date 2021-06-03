@@ -135,7 +135,7 @@
     "centerRotationOnYourPlayer": "プレイヤーを軸に回転",
     "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
     "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "地図の拡大",
     "glowingDroppedItems": "捨てられたアイテムを発光",
