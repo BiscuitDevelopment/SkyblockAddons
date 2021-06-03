@@ -135,7 +135,7 @@
     "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
     "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
     "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Zoom do mapa",
     "glowingDroppedItems": "Brilho nos itens no chão",
