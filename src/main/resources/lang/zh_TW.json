@@ -114,6 +114,8 @@
     "discordRP": "豐富Discord狀態",
     "endstoneProtectorDisplay": "顯示終界石守護者",
     "fancyWarpMenu": "精緻傳送介面",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "雙重傳送",
     "advancedMode": "進階模式",
     "legendarySeaCreatureWarning": "傳說釣魚怪物警報",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon 地圖顯示",
     "rotateMap": "旋轉地圖至玩家方向",
     "centerRotationOnYourPlayer": "以玩家位置為中心旋轉",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "放大地圖",
     "glowingDroppedItems": "螢光掉落物",
     "glowingDungeonTeammates": "Dungeon 隊友發光",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "只在 Dwarven Mines 中挖掘礦物",
     "drillFuelBar": "Drill 燃料計量條",
     "drillFuelText": "Drill 燃料值",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "釣魚粒子提示",
     "enchantmentLoreParsing": "解析附魔信息",
     "cooldownPrediction": "預測並縮短冷卻時間",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "標註已追蹤實體",
       "showQuestCooldown": "顯示 Trevor 任務冷卻",
       "showQuestCooldownDescription": "這將會顯示在 Trevor 的頭上方"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "附魔",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "傳說一釣！",
     "cancelledPark": "一個功能阻止了你破壞此方塊。",
     "bossApproaching": "Boss 即將生成！",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "啟用全部",
     "disableAll": "停用全部",
     "enchantmentInclusionExample": "\"prot, feather\"",
