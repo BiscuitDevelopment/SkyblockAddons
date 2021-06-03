@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostrador do Endstone Protector",
     "fancyWarpMenu": "Menu de transporte chique",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Viajar duas vezes",
     "advancedMode": "Modo avançado",
     "legendarySeaCreatureWarning": "Alerta para sea creatures lendárias",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Mostrar o mapa da Dungeon",
     "rotateMap": "Rodar o mapa de acordo com a orientação do jogador",
     "centerRotationOnYourPlayer": "Rodar à volta da posição do teu jogador",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Zoom do mapa",
     "glowingDroppedItems": "Brilho nos itens no chão",
     "glowingDungeonTeammates": "Brilho dos colegas de equipa",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Só partir minérios nas Dwarven Mines",
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelText": "Número de combustível da Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Customizar partículas de pesca",
     "enchantmentLoreParsing": "Customizar listas de encantamentos",
     "cooldownPrediction": "Prever e diminuir o tempo de espera",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Destacar entidade-alvo",
       "showQuestCooldown": "Mostrar o tempo de espera da missão do Trevor",
       "showQuestCooldownDescription": "Isto irá aparecer acima da cabeça do Trevor"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Apanhaste uma lendária!",
     "cancelledPark": "Uma funcionalidade preveniu-te de partir este bloco neste sítio.",
     "bossApproaching": "Estás perto de invocar o boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Ativar todas",
     "disableAll": "Desativar todas",
     "enchantmentInclusionExample": "ex.: \"prot, feather\"",
