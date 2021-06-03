@@ -1,12 +1,15 @@
 package codes.biscuit.skyblockaddons.events;
 
 import lombok.Getter;
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Function;
 
 /**
@@ -26,12 +29,12 @@ public class RenderEntityOutlineEvent extends Event {
      * The entities to outline. This is progressively cumulated from {@link #entitiesToChooseFrom}
      */
     @Getter
-    private final HashMap<Entity, Integer> entitiesToOutline;
+    private HashMap<Entity, Integer> entitiesToOutline = null;
     /**
      * The entities we can outline. Note that this set and {@link #entitiesToOutline} are disjoint at all times.
      */
     @Getter
-    private final HashSet<Entity> entitiesToChooseFrom;
+    private HashSet<Entity> entitiesToChooseFrom;
 
     /**
      * Constructs the event, given the type and optional entities to outline.
@@ -39,12 +42,13 @@ public class RenderEntityOutlineEvent extends Event {
      * This will modify {@param potentialEntities} internally, so make a copy before passing it if necessary.
      *
      * @param theType           of the event (see {@link Type}
-     * @param potentialEntities the optional entities to outline
      */
     public RenderEntityOutlineEvent(Type theType, HashSet<Entity> potentialEntities) {
         type = theType;
         entitiesToChooseFrom = potentialEntities;
-        entitiesToOutline = new HashMap<>(potentialEntities.size());
+        if (potentialEntities != null) {
+            entitiesToOutline = new HashMap<>(potentialEntities.size());
+        }
     }
 
     /**
@@ -60,6 +64,9 @@ public class RenderEntityOutlineEvent extends Event {
     public void queueEntitiesToOutline(Function<Entity, Integer> outlineColor) {
         if (outlineColor == null) {
             return;
+        }
+        if (entitiesToChooseFrom == null) {
+            computeAndCacheEntitiesToChooseFrom();
         }
         Iterator<Entity> itr = entitiesToChooseFrom.iterator();
         while (itr.hasNext()) {
@@ -79,11 +86,33 @@ public class RenderEntityOutlineEvent extends Event {
      * @param outlineColor the color with which to outline
      */
     public void queueEntityToOutline(Entity entity, int outlineColor) {
-        if (entity == null || !entitiesToChooseFrom.contains(entity)) {
+        if (entity == null) {
+            return;
+        }
+        if (entitiesToChooseFrom == null) {
+            computeAndCacheEntitiesToChooseFrom();
+        }
+        if (!entitiesToChooseFrom.contains(entity)) {
             return;
         }
         entitiesToOutline.put(entity, outlineColor);
         entitiesToChooseFrom.remove(entity);
+    }
+
+    /**
+     * Used for on-the-fly generation of entities. Driven by event handlers in a decentralized fashion
+     */
+    private void computeAndCacheEntitiesToChooseFrom() {
+        List<Entity> entities = Minecraft.getMinecraft().theWorld.getLoadedEntityList();
+        // Only render outlines around non-null entities within the camera frustum
+        entitiesToChooseFrom = new HashSet<>(entities.size());
+        // Only consider entities that aren't invisible armorstands to increase FPS significantly
+        entities.forEach(e -> {
+            if (e != null && !(e instanceof EntityArmorStand && e.isInvisible())) {
+                entitiesToChooseFrom.add(e);
+            }
+        });
+        entitiesToOutline = new HashMap<>(entitiesToChooseFrom.size());
     }
 
     /**

@@ -1,8 +1,6 @@
 package codes.biscuit.skyblockaddons.features.EntityOutlines;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.config.ConfigValues;
-import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
@@ -17,7 +15,6 @@ import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.shader.Framebuffer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,8 +28,10 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Map;
+
+import static codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent.Type.NO_XRAY;
+import static codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent.Type.XRAY;
 
 /**
  * Class to handle all entity outlining, including xray and no-xray rendering
@@ -289,6 +288,7 @@ public class EntityOutlineRenderer {
         return entityRenderCache.noXrayCache.isEmpty() && entityRenderCache.xrayCache.isEmpty();
     }
 
+    private static boolean emptyLastTick = false;
     /**
      * Updates the cache at the start of every minecraft tick to improve efficiency.
      * Identifies and caches all entities in the world that should be outlined.
@@ -305,39 +305,33 @@ public class EntityOutlineRenderer {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
-            ConfigValues sbConfig = SkyblockAddons.getInstance().getConfigValues();
-            boolean outlineEnabled = sbConfig.isEnabled(Feature.MAKE_DUNGEON_TEAMMATES_GLOW) ||
-                    sbConfig.isEnabled(Feature.MAKE_DROPPED_ITEMS_GLOW) ||
-                    sbConfig.isEnabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY);
-            if (mc.theWorld != null && shouldRenderEntityOutlines() && outlineEnabled) {
-                List<Entity> entities = mc.theWorld.getLoadedEntityList();
-                // Only render outlines around non-null entities within the camera frustum
-                HashSet<Entity> entitiesToRender = new HashSet<>(entities.size());
-                // Only consider entities that aren't invisible armorstands to increase FPS
-                entities.forEach(e -> {
-                    if (e != null && !(e instanceof EntityArmorStand && e.isInvisible())) {
-                        entitiesToRender.add(e);
-                    }
-                });
+            if (mc.theWorld != null && shouldRenderEntityOutlines()) {
                 // These events need to be called in this specific order for the xray to have priority over the no xray
                 // Get all entities to render xray outlines
-                RenderEntityOutlineEvent xrayOutlineEvent = new RenderEntityOutlineEvent(RenderEntityOutlineEvent.Type.XRAY, entitiesToRender);
+                RenderEntityOutlineEvent xrayOutlineEvent = new RenderEntityOutlineEvent(XRAY, null);
                 MinecraftForge.EVENT_BUS.post(xrayOutlineEvent);
                 // Get all entities to render no xray outlines, using pre-filtered entities (no need to test xray outlined entities)
-                RenderEntityOutlineEvent noxrayOutlineEvent = new RenderEntityOutlineEvent(RenderEntityOutlineEvent.Type.NO_XRAY, entitiesToRender);
+                RenderEntityOutlineEvent noxrayOutlineEvent = new RenderEntityOutlineEvent(NO_XRAY, xrayOutlineEvent.getEntitiesToChooseFrom());
                 MinecraftForge.EVENT_BUS.post(noxrayOutlineEvent);
                 // Cache the entities for future use
                 entityRenderCache.setXrayCache(xrayOutlineEvent.getEntitiesToOutline());
                 entityRenderCache.setNoXrayCache(noxrayOutlineEvent.getEntitiesToOutline());
                 entityRenderCache.setNoOutlineCache(noxrayOutlineEvent.getEntitiesToChooseFrom());
+
                 if (cacheEmpty()) {
-                    mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                    if (!emptyLastTick) {
+                        mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                    }
+                    emptyLastTick = true;
+                } else {
+                    emptyLastTick = false;
                 }
-            } else {
+            } else if (!emptyLastTick) {
                 entityRenderCache.setXrayCache(new HashMap<>());
                 entityRenderCache.setNoXrayCache(new HashMap<>());
                 entityRenderCache.setNoOutlineCache(new HashSet<>());
                 mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                emptyLastTick = true;
             }
         }
     }
