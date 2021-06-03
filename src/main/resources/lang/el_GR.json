@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Οθόνη Endstone Protector",
     "fancyWarpMenu": "Φανταστικό Warp μενού",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Διπλή Τηλεμεταφορά",
     "advancedMode": "Λειτουργία για Προχωρημένους",
     "legendarySeaCreatureWarning": "Προηδοποίηση για Θρυληκά Sea Creatures",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Εμφάνιση χάρτη Dungeon",
     "rotateMap": "Περιστροφή χάρτη στην περιστροφή του παίκτη σας",
     "centerRotationOnYourPlayer": "Κεντράρισμα την Περιστροφής Γύρω από τον Παίκτη Σας",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Ζουμ Χάρτη",
     "glowingDroppedItems": "Λαμπερά αντικείμενα που έπεσαν",
     "glowingDungeonTeammates": "Λαμπερό Dungeon συμπαίκτες",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Σπάστε μόνο τα μεταλλεύματα στο Dwarven Mines",
     "drillFuelBar": "Δράπανο Fuel Bar",
     "drillFuelText": "Αριθμός καυσίμου τρυπανιών",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Θρυλική Ψαριά!",
     "cancelledPark": "Ένα χαρακτηριστικό σας εμπόδισε να σπάσετε αυτό το μπλοκ εδώ.",
     "bossApproaching": "Είστε κοντά στην αναπαραγωγή ενός εξέχων όγκος!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Ενεργοποίηση όλων",
     "disableAll": "Απενεργοποίηση όλων",
     "enchantmentInclusionExample": "π.χ. \"prot, feather\"",
