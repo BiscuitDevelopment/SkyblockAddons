@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Tampilan Endstone Protector",
     "fancyWarpMenu": "Menu Warp Mewah",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Dua Kali",
     "advancedMode": "Mode Spesifik",
     "legendarySeaCreatureWarning": "Peringatan Sea Creature Legendaris",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Tampilan Map Dungeon",
     "rotateMap": "Putar Map Dengan Rotasi Player Anda",
     "centerRotationOnYourPlayer": "Putar Sekeliling Marker Player Anda",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Perbesar Map",
     "glowingDroppedItems": "Benda-Benda Jatuh Bersinar",
     "glowingDungeonTeammates": "Rekan-Rekan Dungeons Bersinar",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Hanya Menambang Ores di Dwarven Mines",
     "drillFuelBar": "Bar Gas Drill",
     "drillFuelText": "Nomor Gas Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Overlay Partikel Pancingan",
     "enchantmentLoreParsing": "Uraikan Tooltip Enchants",
     "cooldownPrediction": "Prediksi dan Percepat Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Soroti Entity yang Dilacak",
       "showQuestCooldown": "Perlihatkan Cooldown Quest Trevor",
       "showQuestCooldownDescription": "Ini akan ditampilkan diatas kepala Trevor"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Enchants",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Tangkapan Legendaris!",
     "cancelledPark": "Sebuah fitur telah mencegah anda untuk menghancurkan benda ini disini.",
     "bossApproaching": "Anda sangat dekat untuk memunculkan sebuah boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Aktifkan Semua",
     "disableAll": "Nonaktifkan Semua",
     "enchantmentInclusionExample": "contoh \"prot, feather\"",
