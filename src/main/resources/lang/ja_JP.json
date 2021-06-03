@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone Protector の表示",
     "fancyWarpMenu": "ファンシーなワープメニュー",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "2 回ワープ",
     "advancedMode": "上級者向けモード",
     "legendarySeaCreatureWarning": "レジェンダリー Sea Creature のアラート",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon の地図を表示",
     "rotateMap": "プレイヤーの回転によって地図を回転",
     "centerRotationOnYourPlayer": "プレイヤーを軸に回転",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "地図の拡大",
     "glowingDroppedItems": "捨てられたアイテムを発光",
     "glowingDungeonTeammates": "Dungeon の仲間を発光",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines 内で鉱石のみを採掘",
     "drillFuelBar": "Drill Fuel ゲージ",
     "drillFuelText": "Drill Fuel 数",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "レジェンダリーを捕まえました！",
     "cancelledPark": "機能がここでこのブロックの破壊を阻止しました。",
     "bossApproaching": "Boss のスポーンが近いです！",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "すべて有効化",
     "disableAll": "すべて無効化",
     "enchantmentInclusionExample": "例 \"prot, feather\"",
