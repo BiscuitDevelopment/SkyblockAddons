@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Crunchy Warp Menu",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Big Brain Mode",
     "legendarySeaCreatureWarning": "Biscuitary Sea Biscuit Warning",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "Rotate The Map With Your Player's Rotation",
     "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowing Dropped Biscuits",
     "glowingDungeonTeammates": "Glowing Dungeon Teammates",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Number",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Bischants",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Biscuitary Catch!",
     "cancelledPark": "A biscuit has stopped you from eating this biscuit here.",
     "bossApproaching": "You are close to spawning a boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Enable All",
     "disableAll": "Disable All",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",
