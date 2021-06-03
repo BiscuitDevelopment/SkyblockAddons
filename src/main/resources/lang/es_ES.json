@@ -114,6 +114,8 @@
     "discordRP": "Rich Presence de Discord",
     "endstoneProtectorDisplay": "Mostrar Etapa del Endstone Protector",
     "fancyWarpMenu": "Menú de Warp Elegante",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Viajar dos Veces",
     "advancedMode": "Modo Avanzado",
     "legendarySeaCreatureWarning": "Advertencia de Criatura Marina Legendaria",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
     "rotateMap": "Rotar el Mapa a la Rotación de tu Jugador",
     "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor de tu Jugador",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur when the Player Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Zoom del Mapa",
     "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillan",
     "glowingDungeonTeammates": "Hacer Que Tus Compañeros de Dungeon Brillan",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
     "drillFuelBar": "Barra de Drill Fuel",
     "drillFuelText": "Número de Drill Fuel",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Personalizar Partículas de Pesca",
     "enchantmentLoreParsing": "Personalizar Listas de Encantamientos",
     "cooldownPrediction": "Predecir y Reducir Enfriamiento",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Destacar Entidad Rastreada",
       "showQuestCooldown": "Mostrar el Tiempo de Recarga de las Misiones de Trevor",
       "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "¡Pesca Legendaria!",
     "cancelledPark": "SkyblockAddons te ha impedido que rompas este bloque de aquí.",
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Activar Todos",
     "disableAll": "Desactivar Todos",
     "enchantmentInclusionExample": "ej. \"prot, feather\"",
