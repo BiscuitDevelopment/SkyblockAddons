@@ -114,6 +114,8 @@
     "discordRP": "Discord Játék Tevékenység mutatása",
     "endstoneProtectorDisplay": "Endstone Protector jelző",
     "fancyWarpMenu": "Díszes Teleport Menü",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Dupla teleportálás",
     "advancedMode": "Haladó mód",
     "legendarySeaCreatureWarning": "Legendás Sea Creature figyelmeztetés",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon térkép megjelenítése",
     "rotateMap": "A térkép forgatása a te irányodba",
     "centerRotationOnYourPlayer": "Forgatás a játékos körül",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Térkép nagyítása",
     "glowingDroppedItems": "Eldobott tágyak ragyogása",
     "glowingDungeonTeammates": "Dungeon társak ragyogása",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Csak ércek bányászása a \"Dwarven Mines\"-ban",
     "drillFuelBar": "Drill üzemanyag jelző",
     "drillFuelText": "Drill üzemanyag szám",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Követett entitás kiemelése",
       "showQuestCooldown": "Trevor's Quest időzítő mutatása",
       "showQuestCooldownDescription": "Ez Trevor fölött fog megjelenni"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendás kapás!",
     "cancelledPark": "Egy funkció megállított ennek a blokknak a kiütésében.",
     "bossApproaching": "Közel vagy a Boss megidézéséhez!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Összes bekapcsolása",
     "disableAll": "Összes kikapcsolása",
     "enchantmentInclusionExample": "pl.: \"prot, feather\"",

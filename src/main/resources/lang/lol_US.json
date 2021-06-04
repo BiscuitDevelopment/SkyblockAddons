@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Advanced Mode",
     "legendarySeaCreatureWarning": "Legendary Sea Creachur Warnin",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "Rotate Map Wif Ur Players Rotashun",
     "centerRotationOnYourPlayer": "Rotate Around Ur Players Markr",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Map Zoom",
     "glowingDroppedItems": "Glowin Droppd Items",
     "glowingDungeonTeammates": "Glowin Dungeon Teammatez",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Only Mine Orez in da Dwarven Minez",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Numbr",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishin Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict an Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Trackd Entity",
       "showQuestCooldown": "Show Trevors Quest Cooldown",
       "showQuestCooldownDescription": "Dis will be displayd aboov Trevors head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Enchants",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendary Katch!",
     "cancelledPark": "A feachur has stoppd u frum breakin dis block her.",
     "bossApproaching": "U r close 2 spawnin bos!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Enable All",
     "disableAll": "Disable All",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",

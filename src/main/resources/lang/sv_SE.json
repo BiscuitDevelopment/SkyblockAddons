@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Visning av Endstone Protector",
     "fancyWarpMenu": "Snygg teleporteringsmeny",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Teleportera två gånger",
     "advancedMode": "Avancerat läge",
     "legendarySeaCreatureWarning": "Varna för legendariska sjövarelser",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon Map Display",
     "rotateMap": "Rotera kartan till din spelares rotation",
     "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Kartzoom",
     "glowingDroppedItems": "Glödande släppta föremål",
     "glowingDungeonTeammates": "Glödande Dungeon-lagmedlemmar",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Number",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendarisk fångst!",
     "cancelledPark": "A feature has stopped you from breaking this block here.",
     "bossApproaching": "You are close to spawning a boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Aktivera alla",
     "disableAll": "Inaktivera alla",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",

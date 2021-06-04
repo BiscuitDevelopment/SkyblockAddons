@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone Protector 보이기",
     "fancyWarpMenu": "이쁜 워프 메뉴",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "두 번 워프하기",
     "advancedMode": "고급 모드",
     "legendarySeaCreatureWarning": "전설 Sea Creature 알림",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon Map 표시하기",
     "rotateMap": "플레이어의 시야 회전에 맞춰 지도를 회전하기",
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "지도 확대",
     "glowingDroppedItems": "떨군 아이템을 빛나도록 표시",
     "glowingDungeonTeammates": "Dungeon 팀원을 빛나도록 표시",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines에서 광물만 채굴하기",
     "drillFuelBar": "Drill 연료 바",
     "drillFuelText": "Drill 연료 숫자",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "낚시 파티클 오버레이",
     "enchantmentLoreParsing": "인챈트 강조 바꾸기",
     "cooldownPrediction": "쿨다운 예측 및 단축",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "인챈트",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "전설 낚음!",
     "cancelledPark": "기능이 당신이 여기서 이 블럭을 부수지 못하게 하였습니다.",
     "bossApproaching": "당신은 Boss 생성 조건에 가까워졌습니다!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "모두 활성화",
     "disableAll": "모두 비활성화",
     "enchantmentInclusionExample": "예시: \"prot, feather\"",

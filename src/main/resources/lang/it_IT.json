@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostra Endstone Protector",
     "fancyWarpMenu": "Menu elegante del teletrasporto",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Teletrasporta due volte",
     "advancedMode": "Modalità avanzata",
     "legendarySeaCreatureWarning": "Avviso per creature marine leggendarie",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Visualizzazione Mappa Dungeon",
     "rotateMap": "Ruota mappa con la rotazione del giocatore",
     "centerRotationOnYourPlayer": "Centra la rotazione intorno al tuo giocatore",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Zoom della Mappa",
     "glowingDroppedItems": "Illumina gli oggetti a terra",
     "glowingDungeonTeammates": "Illumina i compagni di Dungeons",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Estrai minerali solo nelle Dwarven Miles",
     "drillFuelBar": "Barra di combustibile Drill",
     "drillFuelText": "Numero di combustibile Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Sovrapposizione delle particelle da pesca",
     "enchantmentLoreParsing": "Personalizza la lista di incantesimi",
     "cooldownPrediction": "Prevedi e riduci il tempo d'attesa",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Evidenzia l’entità tracciata",
       "showQuestCooldown": "Mostra il tempo di ricarica delle missioni di Trevor",
       "showQuestCooldownDescription": "Sarà visibile sopra la testa di Trevor"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Pesca Leggendaria!",
     "cancelledPark": "Una funzione ti ha impedito di rompere questo blocco.",
     "bossApproaching": "Stai per dare vita ad un boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Attiva tutto",
     "disableAll": "Disabilita tutto",
     "enchantmentInclusionExample": "es. \"prot, feather\"",
