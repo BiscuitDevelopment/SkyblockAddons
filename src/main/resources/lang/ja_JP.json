@@ -509,8 +509,8 @@
     "lowTier": "低段階",
     "commas": "コンマ",
     "expertiseKills": "Expertise で倒した数",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
+    "compactedBlocks": "コンパクト化したブロック",
+    "cultivatedCrops": "栽培された作物",
     "maxed": "最大"
   }
 }
