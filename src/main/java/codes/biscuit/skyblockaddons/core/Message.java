@@ -162,6 +162,8 @@ public enum Message {
     SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayersPresents"),
     SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
+    SETTING_STOP_RAT_SOUNDS(MessageObject.SETTING, "stopRatSounds"),
+    SETTING_STOP_ONLY_RAT_SQUEAK(MessageObject.SETTING, "onlyStopRatSqueak"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
