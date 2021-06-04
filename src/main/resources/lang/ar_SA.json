@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "عرض الـEndstone Protector",
     "fancyWarpMenu": "قائمة التنقل الفاخرة",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "النقل مرتين",
     "advancedMode": "الوضع المتقدم",
     "legendarySeaCreatureWarning": "تحذير الـLegendary Sea Creature",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "عرض خريطة الدنجن",
     "rotateMap": "تدوير الخريطة حسب دوران اللاعب الخاص بك",
     "centerRotationOnYourPlayer": "تمركز الدوران حول اللاعب",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "تكبير الخريطة",
     "glowingDroppedItems": "توهج الادوات المسقطه",
     "glowingDungeonTeammates": "توهج فريق الدنجنز",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Only Mine Ores in the Dwarven Mines",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelText": "Drill Fuel Number",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "التقاط اسطوري!",
     "cancelledPark": "لقد منعتك ميزة من كسر هذا المعدن هنا.",
     "bossApproaching": "أنت قريب من توليد رئيس!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "تشغيل الكل",
     "disableAll": "تعطيل الكل",
     "enchantmentInclusionExample": "مثل \"prot, feather\"",

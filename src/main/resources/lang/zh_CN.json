@@ -114,6 +114,8 @@
     "discordRP": "丰富 Discord 状态",
     "endstoneProtectorDisplay": "末地石护卫生成阶段显示",
     "fancyWarpMenu": "精致传送菜单",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "双重传送",
     "advancedMode": "高级模式",
     "legendarySeaCreatureWarning": "传奇海怪警告",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "地下城地图显示",
     "rotateMap": "旋转地图至玩家方向",
     "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
     "glowingDungeonTeammates": "在地下城中标记队友",
@@ -183,7 +189,8 @@
     "onlyMineOresDwarvenMines": "在 Dwarven Mines 中只挖掘矿物",
     "drillFuelBar": "Drill 燃料计量条",
     "drillFuelText": "Drill 燃料值",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "fetchurToday": "Show What Fetchur Wants Today",
+    "fishingParticleOverlay": "更改钓鱼提示粒子的颜色",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "附魔",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "传奇钓落!",
     "cancelledPark": "已阻止在此破坏方块",
     "bossApproaching": "Boss 即将生成!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "全部启用",
     "disableAll": "全部禁用",
     "enchantmentInclusionExample": "例如: \"prot, feather\"",
@@ -306,11 +316,11 @@
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
     "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
+    "descriptionCompress": "以尽可能少的行数显示附魔名称",
+    "titleNormal": "普通",
     "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "titleExpand": "展开",
+    "descriptionExpand": "逐行显示附魔"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +384,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(开发者) §7将地下城死亡计数输出至聊天栏以供调试"
       },
       "reload": {
         "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"

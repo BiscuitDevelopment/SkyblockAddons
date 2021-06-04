@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Hiển thị bao lâu Endstone Protector mới xuất hiện",
     "fancyWarpMenu": "Bản Đồ Dịch Chuyển ĐẸP",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Dịch Chuyển 2 Lần",
     "advancedMode": "Chế Độ Nâng Cao",
     "legendarySeaCreatureWarning": "Cảnh Báo Câu Được Sea Creature Huyền Thoại",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Hiện bản đồ Dungeon",
     "rotateMap": "Xoay bản đồ theo hướng nhân vật của bạn",
     "centerRotationOnYourPlayer": "Đặt nhân vật của bạn ở chính giữa bản đồ",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Phóng to/Thu nhỏ Bản đồ",
     "glowingDroppedItems": "Nổi viền vật phẩm bị đánh rơi",
     "glowingDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Chỉ đào quặng trong Dwarven Mines",
     "drillFuelBar": "Thanh nguyên liệu của Drill",
     "drillFuelText": "Số nguyên liệu của Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Đã Câu Được Sea Creature Huyền Thoại!",
     "cancelledPark": "Một tính năng đã chặn bạn khỏi việc phá khối này ở đây.",
     "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Bật Hết",
     "disableAll": "Tắt Hết",
     "enchantmentInclusionExample": "ví dụ \"prot, feather\"",

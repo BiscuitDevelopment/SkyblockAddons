@@ -114,6 +114,8 @@
     "discordRP": "Discord Zengin İçerik",
     "endstoneProtectorDisplay": "Endstone Protector Ekranı",
     "fancyWarpMenu": "Şık Işınlanma Menüsü",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "İki Kez Işınlan",
     "advancedMode": "Gelişmiş Mod",
     "legendarySeaCreatureWarning": "Efsanevi Sea Creature Uyarısı",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon Haritasi",
     "rotateMap": "Haritayı bakış açısına göre döndür",
     "centerRotationOnYourPlayer": "Oyuncunun imlecinin etrafında döndür",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Harita Yakınlaştır",
     "glowingDroppedItems": "Düşürülen eşyaları aydınlat",
     "glowingDungeonTeammates": "Glowing Dungeon Takım Arkadaşları",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines'da Sadece Cevherleri Kaz",
     "drillFuelBar": "Drill Yakıt Barı",
     "drillFuelText": "Drill Yakıt Sayısı",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Balıkçılık Parçacık Göstergesi",
     "enchantmentLoreParsing": "Büyü Araç İpuçlarını Vurgula",
     "cooldownPrediction": "Tahmin Et ve Bekleme Süresini Kısalt",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "İzlenen Varlığı Vurgula",
       "showQuestCooldown": "Trevor'ın Görev Bekleme Süresini Göster",
       "showQuestCooldownDescription": "Bu Trevor'ın Kafasının Üstünde Gözükecek"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Efsanevi Yakaladın!",
     "cancelledPark": "Bir özellik bu bloğu kırmanızı engelledi.",
     "bossApproaching": "Boss spawnlamak üzeresiniz!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Hepsini Aç",
     "disableAll": "Hepsini Kapat",
     "enchantmentInclusionExample": "örn: \"prot, feather\"",

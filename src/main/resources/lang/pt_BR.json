@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostrar Estágio do Protetor de Endstone",
     "fancyWarpMenu": "Menu de Warp Bonito",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Duplo",
     "advancedMode": "Modo Avançado",
     "legendarySeaCreatureWarning": "Aviso de Criatura do Mar Lendária",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Exibição do mapa de Dungeon",
     "rotateMap": "Girar o Mapa Conforme a Rotação de Seu Jogador",
     "centerRotationOnYourPlayer": "Girar ao redor do marcador do jogador",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Zoom do Mapa",
     "glowingDroppedItems": "Itens Derrubados Brilhantes",
     "glowingDungeonTeammates": "Companheiros de Time Brilhantes em Dungeons",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Apenas quebrar minérios nas Minas dos Anões",
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelText": "Número do combustível da Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Sobreposição de partículas de pesca",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Prever e diminuir o tempo de recarga",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Destacar Entidade Rastreada",
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Pescada Lendária!",
     "cancelledPark": "Uma função impediu você quebrar este bloco aqui.",
     "bossApproaching": "Você está perto de spawnar um Boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Habilitar tudo",
     "disableAll": "Desabilitar tudo",
     "enchantmentInclusionExample": "ex.: \"prot, feather\"",

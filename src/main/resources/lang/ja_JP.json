@@ -96,10 +96,10 @@
     "showBackpackPreviewInAH": "Auction House 内で Backpack のプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
     "chromaSpeed": "色変化の速度",
-    "chromaMode": "色変化モード",
+    "chromaMode": "色変化の1モード",
     "chromaModes": {
       "allTheSame": "すべて同じ色",
-      "fade": "色のフェード"
+      "fade": "色をフェード"
     },
     "chromaFadeWidth": "色変化の幅",
     "sortTabEffectTimers": "タイマーを時間で並び替え",
@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endstone Protector の表示",
     "fancyWarpMenu": "ファンシーなワープメニュー",
+    "stopRatSounds": "Rat Pet の音を停止",
+    "onlyStopRatSqueak": "Rat の鳴き声のみを停止",
     "doubleWarp": "2 回ワープ",
     "advancedMode": "上級者向けモード",
     "legendarySeaCreatureWarning": "レジェンダリー Sea Creature のアラート",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon の地図を表示",
     "rotateMap": "プレイヤーの回転によって地図を回転",
     "centerRotationOnYourPlayer": "プレイヤーを軸に回転",
+    "showFetchurOnlyInDwarven": "Dwarven Mines でのみ Fetchur のアイテムを表示",
+    "showFetchurItemName": "Fetchur のアイテム名を表示",
+    "showFetchurInventoryOpenOnly": "プレイヤーのインベントリが開かれている時のみ Fetchur のアイテムを表示",
+    "warnWhenFetchurChanges": "Fetchur が変更された際に通告",
     "mapZoom": "地図の拡大",
     "glowingDroppedItems": "捨てられたアイテムを発光",
     "glowingDungeonTeammates": "Dungeon の仲間を発光",
@@ -175,7 +181,7 @@
     "disableEmptyGlassPanes": "空の板ガラスを無効化",
     "candyPointsCounter": "Spooky イベントの Candy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circle の不透明度",
-    "chromaSize": "色変化サイズ",
+    "chromaSize": "色変化の大きさ",
     "chromaSaturation": "色変化の彩度",
     "chromaBrightness": "色変化の明度",
     "useNewChromaEffect": "新しい色変化の効果を使用",
@@ -183,22 +189,24 @@
     "onlyMineOresDwarvenMines": "Dwarven Mines 内で鉱石のみを採掘",
     "drillFuelBar": "Drill Fuel ゲージ",
     "drillFuelText": "Drill Fuel 数",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "fetchurToday": "Fetchur が今日要求している物を表示",
+    "fishingParticleOverlay": "釣りパーティクルのオーバーレイ",
+    "enchantmentLoreParsing": "エンチャント説明文の説明",
+    "cooldownPrediction": "予測してクールダウンを短縮",
+    "legendaryMonkeyLevel100": "[TEMP] レベル 100 レジェンダリー Monkey",
+    "biggerWake": "オーバーレイのパーティクルを拡大",
+    "stackingEnchantProgress": "Stacking エンチャントの進行度を表示",
     "showReforgeOverlay": "Reforge オーバーレイを表示",
-    "reforgeFilter": "Reforge Filter",
+    "reforgeFilter": "Reforge のフィルター",
     "hideEnchantDescription": "エンチャントの説明を非表示",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+      "title": "Trevor the Trapper の機能",
+      "trackedEntityProximityIndicator": "追跡したエンティティの近接インジケーターを表示",
+      "highlightTrackedEntity": "追跡したエンティティを強調",
+      "showQuestCooldown": "Trevor のクエストのクールダウンを表示",
+      "showQuestCooldownDescription": "これは Trevor の頭上に表示されます"
+    },
+    "showEnderChestPreview": "エンダーチェストのプレビューを表示"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "レジェンダリーを捕まえました！",
     "cancelledPark": "機能がここでこのブロックの破壊を阻止しました。",
     "bossApproaching": "Boss のスポーンが近いです！",
+    "fetchurItem": "Fetchur：%item%",
+    "fetchurWarning": "Fetchur が変更されました！",
     "enableAll": "すべて有効化",
     "disableAll": "すべて無効化",
     "enchantmentInclusionExample": "例 \"prot, feather\"",
@@ -273,7 +283,7 @@
     "none": "なし",
     "copyModeSet": "開発者コピーモードは %mode% に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒"
   },
   "discordStatus": {
     "titleNone": "なし",
@@ -295,7 +305,7 @@
     "titleCustom": "カスタムステータス",
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
-    "descriptionAuto": "ステータスを自動表示します。例「The End にいる間の Zealot カウント」",
+    "descriptionAuto": "ステータスを自動表示します。例えば、The End にいる間の Zealot のカウントなどです。",
     "titleRevenants": "Revenant クエスト",
     "descriptionRevenants": "Revenant クエストを行っていることを表示します。",
     "titleSvens": "Sven クエスト",
@@ -304,13 +314,13 @@
     "descriptionTarantula": "Tarantula クエストを行っていることを表示します。"
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "アイテム説明文でのエンチャントの表示方法を設定します",
+    "titleCompress": "圧縮",
+    "descriptionCompress": "エンチャントをできるだけ少ない行に圧縮します",
+    "titleNormal": "通常",
+    "descriptionNormal": "Hypixel のようにエンチャントを表示します",
+    "titleExpand": "拡張",
+    "descriptionExpand": "各エンチャントをそれぞれ独立した行に表示します"
   },
   "commandUsage": {
     "sba": {
@@ -374,7 +384,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Dungeon 死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
       },
       "reload": {
         "help": "§e(Dev) §7Mod のすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
@@ -493,11 +503,11 @@
     "inCombat": "戦闘中…"
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
+    "superTier": "最大段階",
+    "highTier": "高段階",
+    "midTier": "中段階",
+    "lowTier": "低段階",
+    "commas": "コンマ",
     "expertiseKills": "Expertise で倒した数",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",

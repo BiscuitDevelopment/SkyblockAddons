@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Wyświelaj ochronę kamienia Kresu",
     "fancyWarpMenu": "Wymyślne menu przenoszenia",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Przenieś podwójnie",
     "advancedMode": "Tryb zaawansowany",
     "legendarySeaCreatureWarning": "Ostrzeżenie o legendarnym morskim stworzeniu",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Wyświetlaj mapy Dungeonu",
     "rotateMap": "Obracaj mapę razem z Twoją postacią",
     "centerRotationOnYourPlayer": "Obracaj według wskaźnika Twojego gracza",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Przybliżenie mapy",
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
     "glowingDungeonTeammates": "Świecenie towarzyszy w Dungeonach",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Wykopuj rudy tylko w Dwarven Mines",
     "drillFuelBar": "Pasek paliwa wiertła",
     "drillFuelText": "Tekst paliwa wiertła",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Nakładka cząsteczek łowienia",
     "enchantmentLoreParsing": "Personalizuj listę zaklęć",
     "cooldownPrediction": "Przewiduj i skracaj czas odnowienia",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Podświetl tropiony obiekt",
       "showQuestCooldown": "Pokaż czas odnowienia zadania Trevora",
       "showQuestCooldownDescription": "To zostanie wyświetlone nad głową Trevora"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendarna Zdobycz!",
     "cancelledPark": "Funkcja Skyblock Addons powstrzymała cię od wykopania tego bloku.",
     "bossApproaching": "Jesteś blisko przywołania bossa!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Włącz wszystko",
     "disableAll": "Wyłącz wszystko",
     "enchantmentInclusionExample": "np. „prot, feather”",

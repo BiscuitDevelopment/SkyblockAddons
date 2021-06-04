@@ -114,6 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Отображение Стадии Защитника Края",
     "fancyWarpMenu": "Красивое меню телепортации",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Телепортировать дважды",
     "advancedMode": "Расширенный режим",
     "legendarySeaCreatureWarning": "Предупреждение о легендарных морских существах",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Отображение Карты Подземелий",
     "rotateMap": "Поворачивать Карту по направлению Вашего зрения",
     "centerRotationOnYourPlayer": "Центрирует вращение вокруг игрока",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Увеличение Карты",
     "glowingDroppedItems": "Подсветка Выброшенных Предметов",
     "glowingDungeonTeammates": "Подсветка Союзников в Подземельях",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Копать только руды в Dwarven Mines",
     "drillFuelBar": "Полоса топлива дрели",
     "drillFuelText": "Количество топлива в дрели",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Цвет частиц рыбалки",
     "enchantmentLoreParsing": "Разделять зачарования цветом",
     "cooldownPrediction": "Прогнозировать и сокращать перезарядку",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Подсвечивать Отслеживаемую Сущность",
       "showQuestCooldown": "Показывать Время Отката Квеста Тревора",
       "showQuestCooldownDescription": "Это будет показываться над головой Тревора"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Зачарования",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Легендарный Улов!",
     "cancelledPark": "Функция SBA остановила вас от разрушения этого блока.",
     "bossApproaching": "Вы близки к призыву босса!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Включить всё",
     "disableAll": "Выключить всё",
     "enchantmentInclusionExample": "напр. \"prot, feather\"",

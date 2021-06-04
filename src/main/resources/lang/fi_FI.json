@@ -114,6 +114,8 @@
     "discordRP": "Discordin rikastettu läsnäolo",
     "endstoneProtectorDisplay": "Endstone Protector -näyttö",
     "fancyWarpMenu": "Hieno liikkumisvalikko",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Siirrä kahdesti",
     "advancedMode": "Edistynyt tila",
     "legendarySeaCreatureWarning": "Varoitus legendaarisesta merioliosta",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Näytä Dungeon-kartta",
     "rotateMap": "Käännä karttaa pelaajan mukaan",
     "centerRotationOnYourPlayer": "Keskitä kierto pelaajasi ympärille",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Kartan suurennus",
     "glowingDroppedItems": "Hehkuvat pudotetut esineet",
     "glowingDungeonTeammates": "Hehkuvat Dungeon-tiimikaverit",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Kaiva vain malmeja Dwarven-kaivoksissa",
     "drillFuelBar": "Poran polttoainetankki",
     "drillFuelText": "Poran polttoainearvo",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Kalastuspartikkelien väri",
     "enchantmentLoreParsing": "Jäsennä esineen lumoukset",
     "cooldownPrediction": "Ennakoi ja lyhennä jäähtymisaikaa",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Korosta Jäljitetty Entiteetti",
       "showQuestCooldown": "Näytä Trevorin tehtävän jäähtymisaika",
       "showQuestCooldownDescription": "Tämä näytetään Trevorin pään päällä"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Legendaarinen nappaus!",
     "cancelledPark": "Ominaisuus on estänyt sinut rikkomasta tätä palikkaa.",
     "bossApproaching": "Olet lähellä luomassa johtajan!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Ota kaikki käyttöön",
     "disableAll": "Poista kaikki käytöstä",
     "enchantmentInclusionExample": "esim. \"prot, feather\"",

@@ -114,6 +114,8 @@
     "discordRP": "Нека играта ти изпъкне с Rich Presence\nПривлечи нашите над 250 милиона потребители като интегрираш играта си с Discord. Rich Presence улеснява играчите да преминат директно към твоя клиент и да споделят твоята игра",
     "endstoneProtectorDisplay": "Endstone Protector Дисплей",
     "fancyWarpMenu": "Красиво меню за телепортации",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Телепортирай се два пъти",
     "advancedMode": "Разширен режим",
     "legendarySeaCreatureWarning": "Legendary Sea Creature предопреждение",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Dungeon карта Дисплей",
     "rotateMap": "Завъртване на картата със завъртване на играча",
     "centerRotationOnYourPlayer": "Центрирай въртенето около играча",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Увеличение на картата",
     "glowingDroppedItems": "Светещи дропнати предмети",
     "glowingDungeonTeammates": "Светещи Съотборници в Dungeon",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Копай само руди в Dwarven Mines",
     "drillFuelBar": "Drill лента за гориво",
     "drillFuelText": "Количество гориво в Drill",
+    "fetchurToday": "Show What Fetchur Wants Today",
     "fishingParticleOverlay": "Overlay за модифициране цвета на Fishing Particle",
     "enchantmentLoreParsing": "Анализиране на подсказки прогрес Enchant",
     "cooldownPrediction": "Предскажи и съкрати времето за изчакване",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Highlight Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
-    }
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview"
   },
   "messages": {
     "enchants": "Enchants",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "Легендарен улов!",
     "cancelledPark": "Свойство те спря от това да разрушите този блок тук.",
     "bossApproaching": "Ти си близо да призовеш боса!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Включи всички",
     "disableAll": "Изключи всички",
     "enchantmentInclusionExample": "напр. \"prot, feather\"",

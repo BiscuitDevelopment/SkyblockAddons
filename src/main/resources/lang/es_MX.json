@@ -114,6 +114,8 @@
     "discordRP": "Rich Presence de Discord",
     "endstoneProtectorDisplay": "Mostrar Etapa del Endstone Protector",
     "fancyWarpMenu": "Menú de Warp Elegante",
+    "stopRatSounds": "Detener los Sonidos de la Rat Pet",
+    "onlyStopRatSqueak": "Solo Detener los Sonidos de la Rat Pet",
     "doubleWarp": "Viajar dos Veces",
     "advancedMode": "Modo Avanzado",
     "legendarySeaCreatureWarning": "Advertencia de Criatura Marina Legendaria",
@@ -131,6 +133,10 @@
     "dungeonMapDisplay": "Mostrar Mapa de Dungeon",
     "rotateMap": "Rotar el Mapa a la Rotación de tu Jugador",
     "centerRotationOnYourPlayer": "Centrar la Rotación Alrededor de tu Jugador",
+    "showFetchurOnlyInDwarven": "Solo Mostrar el Objeto de Fetchur en las Dwarven Mines",
+    "showFetchurItemName": "Mostrar el nombre del objeto de Fetchur",
+    "showFetchurInventoryOpenOnly": "Solo Mostrar el Objeto de Fetchur Cuando el Inventario Está Abierto",
+    "warnWhenFetchurChanges": "Alerta cuando el objeto de Fetchur cambia",
     "mapZoom": "Zoom del Mapa",
     "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillan",
     "glowingDungeonTeammates": "Compañeros de Dungeon Brillantes",
@@ -183,6 +189,7 @@
     "onlyMineOresDwarvenMines": "Minar Minerales Sólo en Dwarven Mines",
     "drillFuelBar": "Barra de Drill Fuel",
     "drillFuelText": "Número de Drill Fuel",
+    "fetchurToday": "Mostrar Lo Que Fetchur Quiere Hoy",
     "fishingParticleOverlay": "Personalizar Partículas de Pesca",
     "enchantmentLoreParsing": "Personalizar Listas de Encantamientos",
     "cooldownPrediction": "Predecir y Reducir Cooldown",
@@ -198,7 +205,8 @@
       "highlightTrackedEntity": "Destacar Entidad Rastreada",
       "showQuestCooldown": "Mostrar el Tiempo de Cooldown de las Misiones de Trevor",
       "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
-    }
+    },
+    "showEnderChestPreview": "Mostrar Vista Previa del Cofre de Ender"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -261,6 +269,8 @@
     "legendarySeaCreatureWarning": "¡Pesca Legendaria!",
     "cancelledPark": "Una característica te ha impedido que mines este bloque aquí.",
     "bossApproaching": "¡Estás cerca de invocar a un jefe!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "¡El objeto de Fetchur ha cambiado!",
     "enableAll": "Activar Todos",
     "disableAll": "Desactivar Todos",
     "enchantmentInclusionExample": "ej. \"prot, feather\"",
