@@ -96,10 +96,10 @@
     "showBackpackPreviewInAH": "Auction House 内で Backpack のプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
     "chromaSpeed": "色変化の速度",
-    "chromaMode": "色変化モード",
+    "chromaMode": "色変化の1モード",
     "chromaModes": {
       "allTheSame": "すべて同じ色",
-      "fade": "色のフェード"
+      "fade": "色をフェード"
     },
     "chromaFadeWidth": "色変化の幅",
     "sortTabEffectTimers": "タイマーを時間で並び替え",
@@ -181,7 +181,7 @@
     "disableEmptyGlassPanes": "空の板ガラスを無効化",
     "candyPointsCounter": "Spooky イベントの Candy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circle の不透明度",
-    "chromaSize": "色変化サイズ",
+    "chromaSize": "色変化の大きさ",
     "chromaSaturation": "色変化の彩度",
     "chromaBrightness": "色変化の明度",
     "useNewChromaEffect": "新しい色変化の効果を使用",
@@ -503,10 +503,10 @@
     "inCombat": "戦闘中…"
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
+    "superTier": "最大段階",
+    "highTier": "高段階",
+    "midTier": "中段階",
+    "lowTier": "低段階",
     "commas": "コンマ",
     "expertiseKills": "Expertise で倒した数",
     "compactedBlocks": "Compacted Blocks",
