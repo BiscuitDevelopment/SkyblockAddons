@@ -206,7 +206,9 @@
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview"
+    "showEnderChestPreview": "Show Ender Chest Preview",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "hideWhenNotInEnd": "Hide When Not in the End/Doing Voidgloom Quest"
   },
   "messages": {
     "enchants": "Enchants",
@@ -490,7 +492,26 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Bosses Killed",
+    "voidgloom": "Voidgloom Seraph",
+    "nullSphere": "Null Sphere",
+    "twilightArrowPoison": "Twilight Arrow Poison",
+    "endersnakeRune": "Endersnake Rune",
+    "summoningEye": "Summoning Eye",
+    "manaStealOne": "Mana Steal 1",
+    "transmissionTuner": "Transmission Tuner",
+    "nullAtom": "Null Atom",
+    "pocketEspressoMachine": "Pocket Espresso Machine",
+    "smartyPantsOne": "Smarty Pants 1",
+    "endRune": "End Rune",
+    "handyBloodChalice": "Handy Blood Chalice",
+    "sinfulDice": "Sinful Dice",
+    "exceedinglyRareEnderArtifactUpgrader": "Exceedingly Rare Ender Artifact Upgrader",
+    "voidConquerorEndermanSkin": "Void Conqueror Enderman Skin",
+    "etherwarpMerger": "Etherwarp Merger",
+    "judgementCore": "Judgement Core",
+    "enchantRune": "Enchant Rune",
+    "enderSlayerSeven": "Ender Slayer 7"
   },
   "warpMenu": {
     "click": "Click a warp point to travel there!",

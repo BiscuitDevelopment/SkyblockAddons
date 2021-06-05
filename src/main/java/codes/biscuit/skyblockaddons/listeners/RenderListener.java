@@ -43,6 +43,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCaveSpider;
+import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntitySpider;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraft.entity.passive.EntityWolf;
@@ -108,6 +109,7 @@ public class RenderListener {
     private static EntitySpider tarantula;
     private static EntityCaveSpider caveSpider;
     private static EntityWolf sven;
+    private static EntityEnderman enderman;
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -1415,6 +1417,15 @@ public class RenderListener {
             colorByRarity = config.isEnabled(Feature.SVEN_COLOR_BY_RARITY);
             textMode = config.isEnabled(Feature.SVEN_TEXT_MODE);
             slayerBoss = SlayerBoss.SVEN;
+        } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
+            if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_END) &&
+                    (quest != EnumUtils.SlayerQuest.VOIDGLOOM_SERAPH || (location != Location.THE_END && location != Location.DRAGONS_NEST && location != Location.VOID_SEPULTURE))) {
+                return;
+            }
+
+            colorByRarity = config.isEnabled(Feature.ENDERMAN_COLOR_BY_RARITY);
+            textMode = config.isEnabled(Feature.ENDERMAN_TEXT_MODE);
+            slayerBoss = SlayerBoss.VOIDGLOOM;
         } else {
             return;
         }
@@ -1498,6 +1509,9 @@ public class RenderListener {
             } else if (feature == Feature.TARANTULA_SLAYER_TRACKER) {
                 entityRenderY = 36;
                 textCenterX = 28;
+            } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
+                entityRenderY = 25;
+                textCenterX = 20;
             } else {
                 entityRenderY = 36;
                 textCenterX = 15;
@@ -1508,32 +1522,29 @@ public class RenderListener {
             int entityWidth = textCenterX * 2;
             int entityIconSpacingHorizontal = 2;
             int iconTextOffset = -2;
-            int columnOneMaxTextWidth = 0;
-            int columnTwoMaxTextWidth = 0;
-            int columnThreeMaxTextWidth = 0;
             int row = 0;
             int column = 0;
+            int maxItemsPerRow = (int) Math.ceil(slayerBoss.getDrops().size() / 3.0);
+            int[] maxTextWidths = new int[maxItemsPerRow];
             for (SlayerDrop slayerDrop : slayerBoss.getDrops()) {
                 int width = mc.fontRendererObj.getStringWidth(TextUtils.abbreviate(SlayerTracker.getInstance().getDropCount(slayerDrop)));
 
-                if (column == 0) {
-                    columnOneMaxTextWidth = Math.max(columnOneMaxTextWidth, width);
-                } else if (column == 1) {
-                    columnTwoMaxTextWidth = Math.max(columnTwoMaxTextWidth, width);
-                } else if (column == 2) {
-                    columnThreeMaxTextWidth = Math.max(columnThreeMaxTextWidth, width);
-                }
+                maxTextWidths[column] = Math.max(maxTextWidths[column], width);
 
                 column++;
-                if (column == 3) {
+                if (column == maxItemsPerRow) {
                     column = 0;
                     row++;
                 }
             }
 
+            int totalColumnWidth = 0;
+            for (int i : maxTextWidths) {
+                totalColumnWidth += i;
+            }
             int iconSpacingVertical = 4;
 
-            int width = entityWidth + entityIconSpacingHorizontal + 3 * iconWidth + columnOneMaxTextWidth + columnTwoMaxTextWidth + columnThreeMaxTextWidth + iconTextOffset;
+            int width = entityWidth + entityIconSpacingHorizontal + maxItemsPerRow * iconWidth + totalColumnWidth + iconTextOffset;
             int height = (iconWidth + iconSpacingVertical) * 3 - iconSpacingVertical;
 
             x = transformXY(x, width, scale);
@@ -1570,6 +1581,18 @@ public class RenderListener {
                 drawEntity(tarantula, x + 28, y + 38, -30);
                 drawEntity(caveSpider, x + 25, y + 23, -30);
 
+            } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
+                if (enderman == null) {
+                    enderman = new EntityEnderman(Utils.getDummyWorld());
+
+                    enderman.setHeldBlockState(Blocks.beacon.getBlockState().getBaseState());
+                }
+                GlStateManager.color(1, 1, 1, 1);
+                enderman.ticksExisted = (int) main.getNewScheduler().getTotalTicks();
+                GlStateManager.scale(.7, .7, 1);
+                drawEntity(enderman, (x + 15) / .7F, (y + 51) / .7F, -30);
+                GlStateManager.scale(1 / .7, 1 / .7, 1);
+
             } else {
                 if (sven == null) {
                     sven = new EntityWolf(Utils.getDummyWorld());
@@ -1587,14 +1610,12 @@ public class RenderListener {
 
             row = 0;
             column = 0;
+            float currentX = x + entityIconSpacingHorizontal + entityWidth;
             for (SlayerDrop slayerDrop : slayerBoss.getDrops()) {
-                float currentX = x + entityIconSpacingHorizontal + entityWidth + column * iconWidth;
                 if (column > 0) {
-                    currentX += columnOneMaxTextWidth;
+                    currentX += iconWidth + maxTextWidths[column - 1];
                 }
-                if (column > 1) {
-                    currentX += columnTwoMaxTextWidth;
-                }
+
                 float currentY = y + row * (iconWidth + iconSpacingVertical);
 
                 GlStateManager.color(1, 1, 1, 1);
@@ -1615,7 +1636,8 @@ public class RenderListener {
                 }
 
                 column++;
-                if (column == 3) {
+                if (column == maxItemsPerRow) {
+                    currentX = x + entityIconSpacingHorizontal + entityWidth;
                     column = 0;
                     row++;
                 }

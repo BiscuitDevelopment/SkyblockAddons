@@ -106,6 +106,7 @@ public enum Location {
     // The End
     THE_END("The End"),
     DRAGONS_NEST("Dragon's Nest"),
+    VOID_SEPULTURE("Void Sepulture"),
 
     // Jerry's workshop
     JERRY_POND("Jerry Pond"), // TODO RPC

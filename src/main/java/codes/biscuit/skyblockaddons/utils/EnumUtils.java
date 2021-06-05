@@ -239,6 +239,7 @@ public class EnumUtils {
         WARN_WHEN_FETCHUR_CHANGES(SETTING_WARN_WHEN_FETCHUR_CHANGES, 182),
         STOP_ONLY_RAT_SQUEAK(SETTING_STOP_ONLY_RAT_SQUEAK, 184),
         SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
+        HIDE_WHEN_NOT_IN_END("settings.hideWhenNotInEnd", 187),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -422,7 +423,8 @@ public class EnumUtils {
     public enum SlayerQuest {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
-        SVEN_PACKMASTER("Sven Packmaster");
+        SVEN_PACKMASTER("Sven Packmaster"),
+        VOIDGLOOM_SERAPH("Voidgloom Seraph");
 
         private final String scoreboardName;
 

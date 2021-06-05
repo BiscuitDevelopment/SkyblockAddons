@@ -3,7 +3,6 @@ package codes.biscuit.skyblockaddons.features.slayertracker;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import net.minecraft.init.Blocks;
@@ -43,14 +42,37 @@ public enum SlayerDrop {
     CRITICAL_SIX("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "critical", 6),
     GRIZZLY_BAIT(Items.fish, 1, "Grizzly Bait", "GRIZZLY_BAIT", ItemRarity.RARE),
     RED_CLAW_EGG(Items.spawn_egg, 96, "Red Claw Egg", "RED_CLAW_EGG", ItemRarity.EPIC),
-    OVERFLUX_CAPACITOR(Items.quartz,"Overflux Capacitor", "OVERFLUX_CAPACITOR", ItemRarity.EPIC),
+    OVERFLUX_CAPACITOR(Items.quartz, "Overflux Capacitor", "OVERFLUX_CAPACITOR", ItemRarity.EPIC),
     COUTURE_RUNE("Couture Rune", "RUNE", "COUTURE", ItemRarity.LEGENDARY, "0120ccd2-5ee3-314a-b771-35128cc17d22", "734fb3203233efbae82628bd4fca7348cd071e5b7b52407f1d1d2794e31799ff"),
-    ;
 
-    @Getter private String skyblockID;
-    @Getter private ItemRarity rarity;
-    @Getter private ItemStack itemStack;
-    @Getter private String runeID;
+    // Enderman Drops
+    NULL_SPHERE(Items.firework_charge, "Null Sphere", "NULL_SPHERE", ItemRarity.UNCOMMON, true),
+    TWILIGHT_ARROW_POISON(Items.dye, 5, "Twilight Arrow Poison", "TWILIGHT_ARROW_POISON", ItemRarity.UNCOMMON),
+    ENDERSNAKE_RUNE("Endersnake Rune", "RUNE", "ENDERSNAKE", ItemRarity.LEGENDARY, "9de9bfa4-30c2-383c-8a67-44c7ba4206ab", "c3a9acbb7d3d49b1d54d26111104d0da57d8b4ab37885b4bbd240ac71074cad2"),
+    SUMMONING_EYE("Summoning Eye", "SUMMONING_EYE", ItemRarity.EPIC, "00a702b9-7bad-3205-a04b-52478d8c0e7f", "daa8fc8de6417b48d48c80b443cf5326e3d9da4dbe9b25fcd49549d96168fc0"),
+    MANA_STEAL_ONE("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.COMMON, "mana_steal", 1),
+    TRANSMISSION_TUNER("Transmission Tuner", "TRANSMISSION_TUNER", ItemRarity.EPIC, "df5671b6-329a-3fd7-9f56-71b6329a9fd7", "8ae54d03ce05106f6f745b8f851344ec38e68dd3307a31c843b08212df546dd9"),
+    NULL_ATOM(Item.getItemFromBlock(Blocks.wooden_button), "Null Atom", "NULL_ATOM", ItemRarity.RARE, true),
+    POCKET_ESPRESSO_MACHINE("Pocket Espresso Machine", "POCKET_ESPRESSO_MACHINE", ItemRarity.COMMON, "9bf867c8-d5b6-33e3-8fa3-f4a573979ebe", "666070ce03a545ee4d263bcf27f36338d249d7cb7a2376f92c1673ae134e04b6"),
+    SMARTY_PANTS_ONE("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.COMMON, "smarty_pants", 1),
+    END_RUNE("End Rune", "RUNE", "ENDERSNAKE", ItemRarity.LEGENDARY, "9d07e315-87f9-31e7-98a2-0372ebd8e660", "3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd"),
+    HANDY_BLOOD_CHALICE("Handy Blood Chalice", "HANDY_BLOOD_CHALICE", ItemRarity.COMMON, "d17ab030-ec6c-3a88-9805-50b5812690fb", "431cd7ed4e4bf07c3dfd9ba498708e730e69d807335affabc12d87ff542f6a88"),
+    SINFUL_DICE("Sinful Dice", "SINFUL_DICE", ItemRarity.EPIC, "05ab8a23-a718-3dbb-8307-d999ebed1e24", "6e22c298e7c6336af17909ac1f1ee6834b58b1a3cc99aba255ca7eaeb476173"),
+    EXCEEDINGLY_RARE_ENDER_ARTIFACT_UPGRADER("Exceedingly Rare Ender Artifact Upgrader", "EXCEEDINGLY_RARE_ENDER_ARTIFACT_UPGRADER", ItemRarity.LEGENDARY, "eac161df-59c5-3647-92eb-950d53331e0e", "1259231a946987ea53141789a09496f098d6ecac412a01e0a24c906a99fdbd9a"),
+    VOID_CONQUEROR_ENDERMAN_SKIN("Void Conqueror Enderman Skin", "VOID_CONQUEROR_ENDERMAN_SKIN", ItemRarity.LEGENDARY, "301afb75-07dd-37ce-94a1-7c5c40ab2512", "8fff41e1afc597b14f77b8e44e2a134dabe161a1526ade80e6290f2df331dc11"),
+    ETHERWARP_MERGER("Etherwarp Merger", "ETHERWARP_MERGER", ItemRarity.EPIC, "209e7834-3376-36e1-84eb-da13ef083836", "3e5314f4919691ccbf807743dae47ae45ac2e3ff08f79eecdd452fe602eff7f6"),
+    JUDGEMENT_CORE("Judgement Core", "JUDGEMENT_CORE", ItemRarity.LEGENDARY, "ed896594-8655-3212-933e-c67bca300084", "2f3ddd7f81089c85b26ed597675519f03a1dcd6d1713e0cfc66afb8743cbe0"),
+    ENCHANT_RUNE("Enchant Rune", "RUNE", "ENCHANT", ItemRarity.LEGENDARY, "1a34ecd4-6a5f-35aa-b5d3-617be4684d9a", "59ffacec6ee5a23d9cb24a2fe9dc15b24488f5f71006924560bf12148421ae6d"),
+    ENDER_SLAYER_SEVEN("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "ender_slayer", 7);
+
+    @Getter
+    private final String skyblockID;
+    @Getter
+    private final ItemRarity rarity;
+    @Getter
+    private final ItemStack itemStack;
+    @Getter
+    private String runeID;
 
     /**
      * Creates a slayer drop with an item, display name, skyblock id, and item rarity
@@ -111,7 +133,7 @@ public enum SlayerDrop {
     }
 
     public String getDisplayName() {
-        return Translations.getMessage("slayerTracker." +  CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL,
+        return Translations.getMessage("slayerTracker." + CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
                 this.name()));
     }
 }

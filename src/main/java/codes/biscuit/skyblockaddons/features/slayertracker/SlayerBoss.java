@@ -7,19 +7,29 @@ import lombok.Getter;
 import java.util.List;
 import java.util.Locale;
 
+import static codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop.*;
+
 public enum SlayerBoss {
 
-    REVENANT("Zombie", SlayerDrop.REVENANT_FLESH, SlayerDrop.FOUL_FLESH, SlayerDrop.PESTILENCE_RUNE, SlayerDrop.UNDEAD_CATALYST, SlayerDrop.SMITE_SIX,
-            SlayerDrop.BEHEADED_HORROR, SlayerDrop.REVENANT_CATALYST, SlayerDrop.SNAKE_RUNE, SlayerDrop.SCYTHE_BLADE, SlayerDrop.SHARD_OF_SHREDDED, SlayerDrop.WARDEN_HEART),
+    REVENANT("Zombie", REVENANT_FLESH, FOUL_FLESH, PESTILENCE_RUNE, UNDEAD_CATALYST, SMITE_SIX, BEHEADED_HORROR,
+            REVENANT_CATALYST, SNAKE_RUNE, SCYTHE_BLADE, SHARD_OF_SHREDDED, WARDEN_HEART),
 
-    TARANTULA("Spider", SlayerDrop.TARANTULA_WEB, SlayerDrop.TOXIC_ARROW_POISON, SlayerDrop.SPIDER_CATALYST, SlayerDrop.BANE_OF_ARTHROPODS_SIX,
-            SlayerDrop.BITE_RUNE, SlayerDrop.FLY_SWATTER, SlayerDrop.TARANTULA_TALISMAN, SlayerDrop.DIGESTED_MOSQUITO),
+    TARANTULA("Spider", TARANTULA_WEB, TOXIC_ARROW_POISON, SPIDER_CATALYST, BANE_OF_ARTHROPODS_SIX, BITE_RUNE,
+            FLY_SWATTER, TARANTULA_TALISMAN, DIGESTED_MOSQUITO),
 
-    SVEN("Wolf", SlayerDrop.WOLF_TOOTH, SlayerDrop.HAMSTER_WHEEL, SlayerDrop.SPIRIT_RUNE, SlayerDrop.CRITICAL_SIX, SlayerDrop.GRIZZLY_BAIT,
-            SlayerDrop.RED_CLAW_EGG, SlayerDrop.OVERFLUX_CAPACITOR, SlayerDrop.COUTURE_RUNE);
+    SVEN("Wolf", WOLF_TOOTH, HAMSTER_WHEEL, SPIRIT_RUNE, CRITICAL_SIX, GRIZZLY_BAIT, RED_CLAW_EGG, OVERFLUX_CAPACITOR,
+            COUTURE_RUNE),
 
-    @Getter private List<SlayerDrop> drops;
-    @Getter private String mobType;
+    VOIDGLOOM("Enderman", NULL_SPHERE, TWILIGHT_ARROW_POISON, ENDERSNAKE_RUNE, SUMMONING_EYE, MANA_STEAL_ONE,
+            TRANSMISSION_TUNER, NULL_ATOM, POCKET_ESPRESSO_MACHINE, SMARTY_PANTS_ONE, END_RUNE, HANDY_BLOOD_CHALICE,
+            SINFUL_DICE, EXCEEDINGLY_RARE_ENDER_ARTIFACT_UPGRADER, VOID_CONQUEROR_ENDERMAN_SKIN, ETHERWARP_MERGER,
+            JUDGEMENT_CORE, ENCHANT_RUNE, ENDER_SLAYER_SEVEN);
+
+
+    @Getter
+    private final List<SlayerDrop> drops;
+    @Getter
+    private final String mobType;
 
     SlayerBoss(String mobType, SlayerDrop... drops) {
         this.mobType = mobType;

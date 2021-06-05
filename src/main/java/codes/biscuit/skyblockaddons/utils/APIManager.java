@@ -25,8 +25,8 @@ public class APIManager {
     private static final String SKYBLOCK_PROFILES = BASE_URL + "skyblock/profiles/%s"; // UUID
     private static final String SKYBLOCK_PROFILE = BASE_URL + "skyblock/profile/%s/%s"; // UUID, Profile
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final Logger logger = SkyblockAddons.getLogger();
     private boolean firstSwitch = true;
 
     public void onProfileSwitch(String profileName) {
@@ -120,6 +120,7 @@ public class APIManager {
                     ProfileMembers.SlayerData zombie = memberData.getSlayer().getZombie();
                     ProfileMembers.SlayerData spider = memberData.getSlayer().getSpider();
                     ProfileMembers.SlayerData wolf = memberData.getSlayer().getWolf();
+                    ProfileMembers.SlayerData enderman = memberData.getSlayer().getEnderman();
 
                     if (zombie != null && zombie.getKills_tier() != null) {
                         int total = 0;
@@ -143,6 +144,13 @@ public class APIManager {
                             total += kills;
                         }
                         SlayerTracker.getInstance().setKillCount(SlayerBoss.SVEN, total);
+                    }
+                    if (enderman != null && enderman.getKills_tier() != null) {
+                        int total = 0;
+                        for (Integer kills : enderman.getKills_tier().values()) {
+                            total += kills;
+                        }
+                        SlayerTracker.getInstance().setKillCount(SlayerBoss.VOIDGLOOM, total);
                     }
                 }
 
