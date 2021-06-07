@@ -195,15 +195,15 @@
     "cooldownPrediction": "Pwedict and Showten Coowdown",
     "legendaryMonkeyLevel100": "[TEMP] Wevew 100 Wegendawy Monkey",
     "biggerWake": "Enwawge Ovewway Pawticwes",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "stackingEnchantProgress": "Showo Stacking Enchawnt Pwogwess",
+    "showReforgeOverlay": "Showo Wefowge Ovewway",
+    "reforgeFilter": "Wefowge Fiwtew",
+    "hideEnchantDescription": "Hide Enchawnt Descwiption",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "title": "Trevor the Trapper Featuwes",
+      "trackedEntityProximityIndicator": "Showo Twacked Entity Pwoximity Indicatow",
+      "highlightTrackedEntity": "Highwight Twacked Entity",
+      "showQuestCooldown": "Showo Trevor's Quest Coowdown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview"
