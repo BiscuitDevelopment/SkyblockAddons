@@ -307,7 +307,7 @@ public class InventoryUtils {
                 ItemStack itemStack = p.inventory.armorInventory[i];
                 String itemID = itemStack != null ? ItemUtils.getSkyBlockItemID(itemStack) : null;
 
-                if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
+                if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA") || itemID.startsWith("FINAL_DESTINATION"))){
                     String percent = null;
                     String defence = null;
                     List<String> lore = ItemUtils.getItemLore(itemStack);
