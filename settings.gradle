@@ -1,5 +1,6 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         maven {
             name 'JitPack'
             url 'https://jitpack.io'
@@ -8,7 +9,6 @@ pluginManagement {
             name 'Minecraft Forge'
             url 'https://maven.minecraftforge.net/'
         }
-        gradlePluginPortal()
     }
     resolutionStrategy {
         eachPlugin {
