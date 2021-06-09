@@ -1,7 +1,7 @@
 {
   "NORMAL": {
-    "aiming": {
-      "loreName": "Aiming",
+    "dragon tracer": {
+      "loreName": "Dragon Tracer",
       "nbtName": "aiming",
       "goodLevel": 5,
       "maxLevel": 5
@@ -246,6 +246,12 @@
       "goodLevel": 5,
       "maxLevel": 6
     },
+    "mana steal": {
+      "loreName": "Mana Steal",
+      "nbtName": "mana_steal",
+      "goodLevel": 0,
+      "maxLevel": 3
+    },
     "overload": {
       "loreName": "Overload",
       "nbtName": "overload",
@@ -335,6 +341,12 @@
       "nbtName": "silk_touch",
       "goodLevel": 1,
       "maxLevel": 1
+    },
+    "smarty pants": {
+      "loreName": "Smarty Pants",
+      "nbtName": "smarty_pants",
+      "goodLevel": 0,
+      "maxLevel": 5
     },
     "smelting touch": {
       "loreName": "Smelting Touch",
