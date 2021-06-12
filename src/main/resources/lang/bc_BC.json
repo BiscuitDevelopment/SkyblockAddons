@@ -265,7 +265,7 @@
     "clickToOpenFolder": "Click to open your biscuits folder!",
     "firstStatus": "This biscuit will appear at the top",
     "secondStatus": "This biscuit will appear under your first biscuit",
-    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "fallbackStatus": "This flavor will appear when your automatic flavor has no biscuits to serve",
     "legendarySeaCreatureWarning": "Biscuitary Catch!",
     "cancelledPark": "A biscuit has stopped you from eating this biscuit here.",
     "bossApproaching": "You are close to spawning a boss!",
@@ -397,7 +397,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manually set your biscuit counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
@@ -406,7 +406,7 @@
               "zealots": "Zealots killed since last summoning biscuit drop"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
+          "eyesSet": "Set total summoning biscuit count to %number%!",
           "totalZealotsSet": "Set total zealot count to %number%!",
           "wrongUsage": "Invalid selection! Please choose %options%.",
           "zealotsSet": "Set current zealot count to %number%!"
@@ -437,14 +437,14 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Wrong Biscuit type!",
+          "subCommandNotFound": "The sub-biscuit \"%sub-command%\" was not baked."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copy Ingredients"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -454,8 +454,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Recent Flying Biscuits:",
+    "dragonsSince": "Flying Biscuits Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Eyes Placed",
@@ -493,7 +493,7 @@
     "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "Click a warp biscuit to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
     "privateIsland": "Private Island",
     "home": "Your Island",
@@ -511,6 +511,6 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Fully Baked"
   }
 }
