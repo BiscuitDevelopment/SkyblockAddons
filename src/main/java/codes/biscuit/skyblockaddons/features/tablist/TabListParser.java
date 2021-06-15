@@ -63,8 +63,11 @@ public class TabListParser {
 
         // Parse into columns, combining any duplicate columns
         List<ParsedTabColumn> columns = parseColumns(fullList);
+        ParsedTabColumn footerAsColumn = parseFooterAsColumn();
 
-        columns.add(parseFooterAsColumn());
+        if (footerAsColumn != null) {
+            columns.add(footerAsColumn);
+        }
 
         // Parse every column into sections
         parseSections(columns);
@@ -108,6 +111,10 @@ public class TabListParser {
 
     public static ParsedTabColumn parseFooterAsColumn() {
         GuiPlayerTabOverlay tabList = Minecraft.getMinecraft().ingameGUI.getTabList();
+
+        if (tabList.footer == null) {
+            return null;
+        }
 
         ParsedTabColumn column = new ParsedTabColumn("§2§lOther");
 
