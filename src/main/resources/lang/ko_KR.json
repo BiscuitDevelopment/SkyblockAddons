@@ -315,12 +315,12 @@
   },
   "enchantLayout": {
     "title": "아이템이 어떻게 툴팁에 표시되는지 제어합니다.",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "titleCompress": "압축",
+    "descriptionCompress": "가능한 인챈트를 적은 줄로 표시합니다.",
+    "titleNormal": "보통",
+    "descriptionNormal": "Hypixel처럼 인챈트 표시",
+    "titleExpand": "확장",
+    "descriptionExpand": "각 인챈트를 새로운 라인에 나열합니다."
   },
   "commandUsage": {
     "sba": {
@@ -384,7 +384,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
       },
       "reload": {
         "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
