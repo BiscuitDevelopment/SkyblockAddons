@@ -1,5 +1,11 @@
 {
   "NORMAL": {
+    "aiming": {
+      "loreName": "Aiming",
+      "nbtName": "aiming",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
     "dragon tracer": {
       "loreName": "Dragon Tracer",
       "nbtName": "aiming",
