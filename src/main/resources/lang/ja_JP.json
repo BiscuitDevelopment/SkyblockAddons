@@ -25,7 +25,7 @@
     "hideHealthBar": "バニラの体力ゲージを非表示",
     "fullMinionWarning": "Minion の上限アラート",
     "ignoreItemFrameClicks": "額縁へのクリックを無効化",
-    "showOnlyWhenHoldingShift": "シフトを押している時のみ表示",
+    "showOnlyWhenHoldingShift": "Shift を押している時のみ表示",
     "manaBar": "Mana ゲージ",
     "manaText": "Mana 数",
     "healthBar": "体力ゲージ",
