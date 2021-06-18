@@ -24,7 +24,6 @@ import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
-import codes.biscuit.skyblockaddons.features.spookyevent.SpookyEventManager;
 import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
@@ -711,7 +710,7 @@ public class PlayerListener {
         Entity entity = e.entity;
 
         if (entity.ticksExisted < 5) {
-            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS) || main.getConfigValues().isEnabled(Feature.EASIER_PRESENT_OPENING)) {
+            if (main.getConfigValues().isEnabled(Feature.HIDE_OTHER_PLAYERS_PRESENTS)) {
                 if (!JerryPresent.getJerryPresents().containsKey(entity.getUniqueID())) {
                     JerryPresent present = JerryPresent.getJerryPresent(entity);
                     if (present != null) {
