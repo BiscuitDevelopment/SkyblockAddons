@@ -4,17 +4,17 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Boss のアラート",
-    "itemDropConfirmation": "アイテムを捨てる確認",
+    "itemDropConfirmation": "アイテムを捨てる時の確認",
     "hideSkeletonHatBones": "Skeleton's Helmet の骨を非表示",
     "skeletonHatBonesBar": "Skeleton's Helmet の骨のゲージ",
     "hideFoodAndArmor": "食料と防具のゲージを非表示",
-    "fullInventoryWarning": "インベントリが満タンの時のアラート",
+    "fullInventoryWarning": "インベントリが満杯の時のアラート",
     "repeating": "アラートを繰り返す",
     "disableEmberRodAbility": "島で Ember Rod を無効化",
     "editLocations": "GUI の位置を編集",
     "guiScale": "GUI の大きさ：%scale%",
     "resetLocations": "位置をリセット",
-    "minionStopWarning": "\"Minion Cannot Reach\" のアラート",
+    "minionStopWarning": "「Minion Cannot Reach」のアラート",
     "hidePlayersNearNPCs": "重要な NPC 付近のプレイヤーを非表示",
     "backpackStyle": "Backpack のスタイル：%style%",
     "backpackStyles": {
@@ -401,7 +401,7 @@
           "detailedHelp": {
             "description": "Zealot カウンターのカウントを手動設定。",
             "options": {
-              "eyes": "入手した summoning eyes の合計数",
+              "eyes": "入手した summoning eye の合計数",
               "totalZealots": "Zealot を倒した数の合計",
               "zealots": "summoning eye ドロップまでに倒した Zealot の合計"
             }
