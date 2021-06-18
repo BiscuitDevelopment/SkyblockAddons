@@ -30,7 +30,7 @@ public class TabListParser {
     private static final Pattern COOKIE_BUFF_PATTERN = Pattern.compile("Cookie Buff(?:§.)*(?:\\n(§.)*§7.+)*");
     private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
     private static final Pattern RAIN_TIME_PATTERN_S = Pattern.compile("Rain: (?<time>[0-9dhms ]+)");
-    private static final Pattern CANDY_PATTERN_S = Pattern.compile("Your Candy: (?<green>[0-9]+) Green, (?<purple>[0-9]+) Purple \\((?<points>[0-9]+) pts\\.\\)");
+    private static final Pattern CANDY_PATTERN_S = Pattern.compile("Your Candy: (?<green>[0-9,]+) Green, (?<purple>[0-9,]+) Purple \\((?<points>[0-9,]+) pts\\.\\)");
 
     @Getter
     private static List<RenderColumn> renderColumns;
@@ -182,7 +182,9 @@ public class TabListParser {
                     parsedRainTime = m.group("time");
                 }
                 if (!foundSpooky && (m = CANDY_PATTERN_S.matcher(stripped)).matches()) {
-                    SpookyEventManager.update(Integer.parseInt(m.group("green")), Integer.parseInt(m.group("purple")), Integer.parseInt(m.group("points")));
+                    SpookyEventManager.update(Integer.parseInt(m.group("green").replaceAll(",", "")),
+                            Integer.parseInt(m.group("purple").replaceAll(",", "")),
+                            Integer.parseInt(m.group("points").replaceAll(",", "")));
                     foundSpooky = true;
                 }
 
