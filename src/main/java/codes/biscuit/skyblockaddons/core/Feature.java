@@ -26,11 +26,9 @@ public enum Feature {
     MAGMA_BOSS_TIMER(8, Message.SETTING_MAGMA_BOSS_TIMER, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD, false), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_REFORGE_OVERLAY(10, Message.SETTING_ENCHANTS_AND_REFORGES, false),
     MINION_STOP_WARNING(11, Message.SETTING_MINION_STOP_WARNING, new GuiFeatureData(ColorCode.RED), true),
-    HIDE_PLAYERS_NEAR_NPCS(12, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
     HIDE_HEALTH_BAR(13, Message.SETTING_HIDE_HEALTH_BAR, true),
     DOUBLE_DROP_IN_OTHER_GAMES(14, null, false),
     MINION_FULL_WARNING(15, Message.SETTING_FULL_MINION, new GuiFeatureData(ColorCode.RED), false),
-    IGNORE_ITEM_FRAME_CLICKS(16, Message.SETTING_IGNORE_ITEM_FRAME_CLICKS, true),
     USE_VANILLA_TEXTURE_DEFENCE(17, Message.SETTING_USE_VANILLA_TEXTURE, true),
     SHOW_BACKPACK_HOLDING_SHIFT(18, Message.SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, true),
     MANA_BAR(19, Message.SETTING_MANA_BAR, new GuiFeatureData(EnumUtils.DrawType.BAR, ColorCode.BLUE), false),
@@ -164,7 +162,6 @@ public enum Feature {
     DISABLE_BOSS_MESSAGES(148, "settings.disableBossMessages", null, false),
     SHOW_SWORD_KILLS(149, "settings.showSwordKills", new GuiFeatureData(ColorCode.RED, true), false),
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null, false),
-    EASIER_PRESENT_OPENING(151, "settings.easierPresentOpening", null, false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightSpecialEnchantments", null, false),
     DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null, false),
@@ -202,6 +199,8 @@ public enum Feature {
     HIDE_WHEN_NOT_IN_END(187, null, false),
     ENDERMAN_COLOR_BY_RARITY(188, null, false),
     ENDERMAN_TEXT_MODE(189, null, true),
+    HIDE_PLAYERS_NEAR_NPCS(190, Message.SETTING_HIDE_PLAYERS_NEAR_NPCS, false),
+
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),

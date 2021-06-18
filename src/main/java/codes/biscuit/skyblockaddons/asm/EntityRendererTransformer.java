@@ -1,9 +1,12 @@
 package codes.biscuit.skyblockaddons.asm;
 
-import codes.biscuit.skyblockaddons.asm.utils.*;
+import codes.biscuit.skyblockaddons.asm.utils.InjectionHelper;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerField;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.MethodNode;
 
 public class EntityRendererTransformer implements ITransformer {
 
@@ -18,29 +21,17 @@ public class EntityRendererTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            if (InjectionHelper.matches(methodNode, TransformerMethod.getMouseOver)) {
-
-                InjectionHelper.start()
-                        .matchingOpcode(Opcodes.DLOAD).matchingLocalVarNumber(5).endCondition()
-
-                        .injectCodeBefore()
-                            .load(InstructionBuilder.VariableType.OBJECT, 14) // list
-                            // EntityRendererHook.removeEntities(list);
-                            .callStaticMethod("codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "removeEntities", "(Ljava/util/List;)V")
-                            .endCode()
-                        .finish();
-
-            } else if (InjectionHelper.matches(methodNode, TransformerMethod.getNightVisionBrightness)) {
+            if (InjectionHelper.matches(methodNode, TransformerMethod.getNightVisionBrightness)) {
 
                 InjectionHelper.start()
                         .matchMethodHead()
 
                         .startCode()
-                            // ReturnValue returnValue = new ReturnValue();
-                            .newInstance("codes/biscuit/skyblockaddons/asm/utils/ReturnValue")
-                            .storeAuto(0) // TODO Reference local variable by name maybe? "returnValue"?
+                        // ReturnValue returnValue = new ReturnValue();
+                        .newInstance("codes/biscuit/skyblockaddons/asm/utils/ReturnValue")
+                        .storeAuto(0) // TODO Reference local variable by name maybe? "returnValue"?
 
-                            // EntityRendererHook.onGetNightVisionBrightness(returnValue);
+                        // EntityRendererHook.onGetNightVisionBrightness(returnValue);
                             .loadAuto(0)
                             .callStaticMethod("codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "onGetNightVisionBrightness",
                                     "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V")
