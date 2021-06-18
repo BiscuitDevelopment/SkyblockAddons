@@ -260,28 +260,28 @@
     "showColorIcons": "色アイコンを表示",
     "enableFeatureSnapping": "ガイドを有効化",
     "stage": "ステージ%stage%",
-    "switchedSlots": "ロックされたスロットまたはレアアイテムから切り替えました。捨てる前に少しお待ちください！",
+    "switchedSlots": "ロックされたスロットまたはレアなアイテムから切り替えました。捨てる前に少しお待ちください！",
     "clickToOpenLink": "クリックしてリンクを開く！",
-    "clickToOpenFolder": "クリックして mods フォルダーを開く！",
+    "clickToOpenFolder": "クリックしてmodsフォルダーを開く！",
     "firstStatus": "このステータスは一番上に表示されます",
     "secondStatus": "このステータスは最初のステータスの下に表示されます",
     "fallbackStatus": "このステータスは自動ステータスに表示するものがない時に表示されます",
-    "legendarySeaCreatureWarning": "レジェンダリーを捕まえました！",
+    "legendarySeaCreatureWarning": "レジェンダリー捕獲！",
     "cancelledPark": "機能がここでこのブロックの破壊を阻止しました。",
-    "bossApproaching": "Boss のスポーンが近いです！",
+    "bossApproaching": "Bossのスポーンが近いです！",
     "fetchurItem": "Fetchur：%item%",
-    "fetchurWarning": "Fetchur が変更されました！",
+    "fetchurWarning": "Fetchurが変更されました！",
     "enableAll": "すべて有効化",
     "disableAll": "すべて無効化",
     "enchantmentInclusionExample": "例 \"prot, feather\"",
     "enchantmentExclusionExample": "例 \"proj, blast\"",
     "reforgeInclusionExample": "例 \"godly, strong\"",
     "reforgeExclusionExample": "例 \"odd, clean\"",
-    "actionsLeft": "残り %number%",
-    "effectActive": "1 個の効果が有効",
-    "effectsActive": "%number% 個の効果が有効",
+    "actionsLeft": "残り%number%",
+    "effectActive": "1個の効果が有効",
+    "effectsActive": "%number%個の効果が有効",
     "none": "なし",
-    "copyModeSet": "開発者コピーモードは %mode% に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
+    "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
     "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒"
   },
@@ -291,34 +291,34 @@
     "titleLocation": "場所",
     "descriptionLocation": "現在いる場所を表示",
     "titlePurse": "Purse",
-    "descriptionPurse": "purse 内の総額を表示",
+    "descriptionPurse": "purse内の総額を表示",
     "titleStats": "ステータス",
-    "descriptionStats": "HP、防御力、Mana のステータスを表示",
+    "descriptionStats": "HP、防御力、Manaのステータスを表示",
     "titleZealots": "Zealot",
-    "descriptionZealots": "Zealot カウンターを表示",
+    "descriptionZealots": "Zealotカウンターを表示",
     "titleItem": "所持アイテム",
     "descriptionItem": "所持中のアイテム名を表示",
     "titleProfile": "プロファイル",
     "descriptionProfile": "プロファイル名を表示",
-    "titleTime": "Skyblock 時刻",
-    "descriptionTime": "現在の Skyblock 時刻を表示。例 12:00am 1st Early Winter",
+    "titleTime": "Skyblock時刻",
+    "descriptionTime": "現在のSkyblock時刻を表示します。例 12:00am 1st Early Winter",
     "titleCustom": "カスタムステータス",
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
-    "descriptionAuto": "ステータスを自動表示します。例えば、The End にいる間の Zealot のカウントなどです。",
-    "titleRevenants": "Revenant クエスト",
-    "descriptionRevenants": "Revenant クエストを行っていることを表示します。",
-    "titleSvens": "Sven クエスト",
-    "descriptionSvens": "Sven クエストを行っていることを表示します。",
-    "titleTarantula": "Tarantula クエスト",
-    "descriptionTarantula": "Tarantula クエストを行っていることを表示します。"
+    "descriptionAuto": "ステータスを自動表示します。例えば、The Endにいる間のZealotのカウントなどです。",
+    "titleRevenants": "Revenantクエスト",
+    "descriptionRevenants": "Revenantクエストを行っていることを表示します。",
+    "titleSvens": "Svenクエスト",
+    "descriptionSvens": "Svenクエストを行っていることを表示します。",
+    "titleTarantula": "Tarantulaクエスト",
+    "descriptionTarantula": "Tarantulaクエストを行っていることを表示します。"
   },
   "enchantLayout": {
     "title": "アイテム説明文でのエンチャントの表示方法を設定します",
     "titleCompress": "圧縮",
     "descriptionCompress": "エンチャントをできるだけ少ない行に圧縮します",
     "titleNormal": "通常",
-    "descriptionNormal": "Hypixel のようにエンチャントを表示します",
+    "descriptionNormal": "Hypixelのようにエンチャントを表示します",
     "titleExpand": "拡張",
     "descriptionExpand": "各エンチャントをそれぞれ独立した行に表示します"
   },
@@ -338,10 +338,10 @@
       "copyEntity": {
         "help": "§e(Dev) §7プレイヤーの周囲の指定された半径内にいる指定された名前のエンティティの NBT データをコピーします",
         "detailedHelp": {
-          "description": "エンティティの NBT データをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mob を含み、半径は 3 ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
+          "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
-            "entityNames": "データをコピーするエンティティの種類の名前 (例 Player、Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
-            "radius": "エンティティの NBT データをコピーするプレイヤーの周囲の半径 (ブロック)"
+            "entityNames": "データをコピーするエンティティの種類の名前 (例 Player, Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
+            "radius": "エンティティのNBTデータをコピーするプレイヤーの周囲の半径 (ブロック)"
           }
         }
       },
@@ -355,25 +355,25 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Tab リストのヘッダーとフッターをコピーします",
+        "help": "§e(Dev) §7Tabリストのヘッダーとフッターをコピーします",
         "detailedHelp": {
-          "description": "このコマンドは、Tab のプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
+          "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
         }
       },
       "dev": {
         "help": "開発者モードに切り替える",
         "detailedHelp": {
-          "description": "このコマンドは開発者モードに切り替えます。このモードは、Skyblock の Mod とツールの開発者を対象としています。エンティティやアイテムの NBT などのゲームデータを提供します。"
+          "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
         },
         "disabled": "開発者モードを無効にしました！",
-        "enabled": "開発者モードが有効になりました！ヒント: \"%keyName%\" を押してNBTデータをコピーできます！"
+        "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！"
       },
       "edit": {
-        "help": "GUI の場所を編集"
+        "help": "GUIの場所を編集"
       },
       "folder": {
-        "help": "Mods フォルダーを開く",
-        "error": "Mods フォルダーを開いているときにエラーが発生しました：%s"
+        "help": "Modsフォルダーを開く",
+        "error": "Modsフォルダーを開いているときにエラーが発生しました：%s"
       },
       "help": {
         "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
@@ -384,49 +384,49 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Dungeon 死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
+        "help": "§e(Dev) §7Dungeon死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
       },
       "reload": {
-        "help": "§e(Dev) §7Mod のすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "§e(Dev) §7Modのすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Mod の設定を再読み込みします"
+        "help": "§e(Dev) §7Modの設定を再読み込みします"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Mod のリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "§e(Dev) §7Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
       },
       "set": {
         "zealotCounter": {
-          "help": "Zealot カウンターの手動設定",
+          "help": "Zealotカウンターの手動設定",
           "detailedHelp": {
-            "description": "Zealot カウンターのカウントを手動設定。",
+            "description": "Zealotカウンターのカウントを手動で設定します。",
             "options": {
-              "eyes": "入手した summoning eye の合計数",
-              "totalZealots": "Zealot を倒した数の合計",
-              "zealots": "summoning eye ドロップまでに倒した Zealot の合計"
+              "eyes": "入手したsummoning eyeの合計数",
+              "totalZealots": "Zealotを倒した数の合計",
+              "zealots": "summoning eyeドロップまでに倒したZealotの合計"
             }
           },
-          "eyesSet": "summoning eye カウントの合計を %number% に設定しました！",
-          "totalZealotsSet": "Zealot カウントの合計を %number% に設定しました！",
-          "wrongUsage": "無効な選択です！%options% を選択してください。",
-          "zealotsSet": "現在の Zealot カウントを %number% に設定しました！"
+          "eyesSet": "summoning eyeカウントの合計を%number%に設定しました！",
+          "totalZealotsSet": "Zealotカウントの合計を%number%に設定しました！",
+          "wrongUsage": "無効な選択です！%options%を選択してください。",
+          "zealotsSet": "現在のZealotカウントを%number%に設定しました！"
         }
       },
       "slayer": {
-        "help": "手動でスレイヤーの統計を設定し、Tab を押して引数を入力します",
+        "help": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
         "detailedHelp": {
-          "description": "手動でスレイヤーの統計を設定し、Tab を押して引数を入力します",
+          "description": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
           "options": {
             "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
             "number": "統計を設定する数字",
             "stat": "変更するスレイヤーの統計は、「kills」またはドロップアイテムの名前で、次のような形式になります：「REVENANT_FLESH」"
           }
         },
-        "bossRequired": "boss を選択する必要があります！%bosses% を選択",
-        "statRequired": "統計を選択する必要があります。Tab でオプション。",
+        "bossRequired": "bossを選択する必要があります！%bosses%を選択してください",
+        "statRequired": "統計を選択する必要があります。Tabでオプション。",
         "numberRequired": "設定したい数字を追加する必要があります。",
-        "killsSet": "Slayer %boss% のキル数は %number% に設定されました。",
-        "statSet": "スレイヤー %boss% の統計 %stat% が %number% に設定されました。",
+        "killsSet": "Slayer %boss%のキル数は%number%に設定されました。",
+        "statSet": "スレイヤー %boss%の統計%stat%が%number%に設定されました。",
         "invalidBoss": "「%input%」は有効な統計ではありません！",
         "invalidStat": "「%input%」は有効なボスではありません！"
       },
@@ -444,7 +444,7 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "NBT をコピー"
+    "developerCopyNBT": "NBTをコピー"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -458,7 +458,7 @@
     "dragonsSince": "今までのドラゴン：",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eye を設置した数",
+    "eyesPlaced": "Eyeを設置した数",
     "never": "なし"
   },
   "slayerTracker": {
@@ -481,7 +481,7 @@
     "flySwatter": "Fly Swatter",
     "tarantulaTalisman": "Tarantula Talisman",
     "digestedMosquito": "Digested Mosquito",
-    "sven": "Sven Packmaster:",
+    "sven": "Sven Packmaster：",
     "wolfTooth": "Wolf Tooth",
     "hamsterWheel": "Hamster Wheel",
     "spiritRune": "Spirit Rune",
@@ -490,13 +490,13 @@
     "redClawEgg": "Red Claw Egg",
     "overfluxCapacitor": "Overflux Capacitor",
     "coutureRune": "Couture Rune",
-    "bossesKilled": "ボスを倒した数"
+    "bossesKilled": "Bossを倒した数"
   },
   "warpMenu": {
     "click": "ワープ地点をクリックしてそこへ移動します！",
-    "mustUnlock": "特定の scroll を解放する必要があります。",
+    "mustUnlock": "特定のscrollを解放する必要があります。",
     "privateIsland": "Private Island",
-    "home": "自分の島",
+    "home": "自島",
     "spawn": "スポーン",
     "unknown": "未訪問",
     "notUnlocked": "未解放",
@@ -508,7 +508,7 @@
     "midTier": "中段階",
     "lowTier": "低段階",
     "commas": "コンマ",
-    "expertiseKills": "Expertise で倒した数",
+    "expertiseKills": "Expertiseで倒した数",
     "compactedBlocks": "コンパクト化されたブロック",
     "cultivatedCrops": "栽培された作物",
     "maxed": "最大"
