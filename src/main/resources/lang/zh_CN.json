@@ -133,7 +133,7 @@
     "dungeonMapDisplay": "地牢地图显示",
     "rotateMap": "旋转地图至玩家方向",
     "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
     "showFetchurItemName": "Show Fetchur's item name",
     "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
