@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.features.slayertracker;
 
 import codes.biscuit.skyblockaddons.core.ItemRarity;
-import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
@@ -9,6 +8,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import java.util.HashMap;
 
 public enum SlayerDrop {
 
@@ -132,8 +133,56 @@ public enum SlayerDrop {
         this.runeID = runeID;
     }
 
+    private static final HashMap<String, String> internalItemTranslations = new HashMap<>();
+
+    static {
+        internalItemTranslations.put("revenantFlesh", "Revenant Flesh");
+        internalItemTranslations.put("foulFlesh", "Foul Flesh");
+        internalItemTranslations.put("pestilenceRune", "Pestilence Rune");
+        internalItemTranslations.put("undeadCatalyst", "Undead Catalyst");
+        internalItemTranslations.put("smiteSix", "Smite 6");
+        internalItemTranslations.put("beheadedHorror", "Beheaded Horror");
+        internalItemTranslations.put("revenantCatalyst", "Revenant Catalyst");
+        internalItemTranslations.put("snakeRune", "Snake Rune");
+        internalItemTranslations.put("scytheBlade", "Scythe Blade");
+        internalItemTranslations.put("tarantulaWeb", "Tarantula Web");
+        internalItemTranslations.put("toxicArrowPoison", "Toxic Arrow Poison");
+        internalItemTranslations.put("spiderCatalyst", "Spider Catalyst");
+        internalItemTranslations.put("baneOfArthropodsSix", "Bane Of Arthropods 6");
+        internalItemTranslations.put("biteRune", "Bite Rune");
+        internalItemTranslations.put("flySwatter", "Fly Swatter");
+        internalItemTranslations.put("tarantulaTalisman", "Tarantula Talisman");
+        internalItemTranslations.put("digestedMosquito", "Digested Mosquito");
+        internalItemTranslations.put("wolfTooth", "Wolf Tooth");
+        internalItemTranslations.put("hamsterWheel", "Hamster Wheel");
+        internalItemTranslations.put("spiritRune", "Spirit Rune");
+        internalItemTranslations.put("criticalSix", "Critical 6");
+        internalItemTranslations.put("grizzlyBait", "Grizzly Bait");
+        internalItemTranslations.put("redClawEgg", "Red Claw Egg");
+        internalItemTranslations.put("overfluxCapacitor", "Overflux Capacitor");
+        internalItemTranslations.put("coutureRune", "Couture Rune");
+        internalItemTranslations.put("bossesKilled", "Bosses Killed");
+        internalItemTranslations.put("nullSphere", "Null Sphere");
+        internalItemTranslations.put("twilightArrowPoison", "Twilight Arrow Poison");
+        internalItemTranslations.put("endersnakeRune", "Endersnake Rune");
+        internalItemTranslations.put("summoningEye", "Summoning Eye");
+        internalItemTranslations.put("manaStealOne", "Mana Steal 1");
+        internalItemTranslations.put("transmissionTuner", "Transmission Tuner");
+        internalItemTranslations.put("nullAtom", "Null Atom");
+        internalItemTranslations.put("pocketEspressoMachine", "Pocket Espresso Machine");
+        internalItemTranslations.put("smartyPantsOne", "Smarty Pants 1");
+        internalItemTranslations.put("endRune", "End Rune");
+        internalItemTranslations.put("handyBloodChalice", "Handy Blood Chalice");
+        internalItemTranslations.put("sinfulDice", "Sinful Dice");
+        internalItemTranslations.put("exceedinglyRareEnderArtifactUpgrader", "Exceedingly Rare Ender Artifact Upgrader");
+        internalItemTranslations.put("voidConquerorEndermanSkin", "Void Conqueror Enderman Skin");
+        internalItemTranslations.put("etherwarpMerger", "Etherwarp Merger");
+        internalItemTranslations.put("judgementCore", "Judgement Core");
+        internalItemTranslations.put("enchantRune", "Enchant Rune");
+        internalItemTranslations.put("enderSlayerSeven", "Ender Slayer 7");
+    }
+
     public String getDisplayName() {
-        return Translations.getMessage("slayerTracker." + CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL,
-                this.name()));
+        return internalItemTranslations.get(CaseFormat.UPPER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, this.name()));
     }
 }
