@@ -34,6 +34,7 @@ import java.util.regex.Pattern;
  * End Race:                   §d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r
  * Woods Race:                 §A§LWOODS RACING §e00:31.520            §b147/147✎ Mana§r
  * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
+ * Soulflow:                   §b421/421✎ §3100ʬ
  * <p>
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
@@ -124,6 +125,11 @@ public class ActionBarParser {
     private String parseSection(String section) {
         String stripColoring = TextUtils.stripColor(section);
         String convertMag = TextUtils.convertMagnitudes(stripColoring);
+
+        // Format for overflow mana is a bit different. Splitstats must parse out overflow first before getting numbers
+        if (section.contains("ʬ")) {
+            convertMag = convertMag.split(" ")[0];
+        }
         String numbersOnly = TextUtils.getNumbersOnly(convertMag).trim(); // keeps numbers and slashes
         String[] splitStats = numbersOnly.split("/");
 
@@ -200,11 +206,14 @@ public class ActionBarParser {
      * @return null or {@code manaSection} if neither mana bar nor mana text are enabled
      */
     private String parseMana(String manaSection, String[] splitStats) {
-        // §b183/171✎ Mana§r
+        // 183/171✎ Mana
+        // 421/421✎ 10ʬ
         int mana = Integer.parseInt(splitStats[0]);
         int maxMana = Integer.parseInt(splitStats[1]);
+        int overflowMana = manaSection.contains("ʬ") ? Integer.parseInt(TextUtils.getNumbersOnly(manaSection.split(" ")[1])) : 0;
         setAttribute(Attribute.MANA, mana);
         setAttribute(Attribute.MAX_MANA, maxMana);
+        setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
         main.getRenderListener().setPredictMana(false);
         if (main.getConfigValues().isEnabled(Feature.MANA_BAR) || main.getConfigValues().isEnabled(Feature.MANA_TEXT)) {
             return null;

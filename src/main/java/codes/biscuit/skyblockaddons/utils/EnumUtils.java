@@ -240,6 +240,7 @@ public class EnumUtils {
         STOP_ONLY_RAT_SQUEAK(SETTING_STOP_ONLY_RAT_SQUEAK, 184),
         SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
         HIDE_WHEN_NOT_IN_END("settings.hideWhenNotInEnd", 187),
+        OVERFLOW_MANA("settings.showOverflowManaText", 191),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),

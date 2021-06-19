@@ -206,7 +206,8 @@
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
     "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
-    "hideWhenNotInEnd": "Hide When Not in the End/Doing Voidgloom Quest"
+    "hideWhenNotInEnd": "Hide When Not in the End/Doing Voidgloom Quest",
+    "showOverflowManaText": "Show Overflow Mana Text"
   },
   "messages": {
     "enchants": "Enchants",

@@ -11,9 +11,10 @@ public enum Attribute {
     MANA(100),
     MAX_MANA(100),
     FUEL(3000),
-    MAX_FUEL(3000);
+    MAX_FUEL(3000),
+    OVERFLOW_MANA(20);
 
-    private int defaultValue;
+    private final int defaultValue;
 
     Attribute(int defaultValue) {
         this.defaultValue = defaultValue;

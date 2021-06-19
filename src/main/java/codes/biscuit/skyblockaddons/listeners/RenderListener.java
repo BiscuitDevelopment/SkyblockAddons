@@ -632,6 +632,10 @@ public class RenderListener {
         int color = main.getConfigValues().getColor(feature);
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
+            // Append overflow mana to mana text if necessary
+            if (main.getConfigValues().isEnabled(Feature.OVERFLOW_MANA)/* && getAttribute(Attribute.OVERFLOW_MANA) > 0*/) {
+                text += " +" + getAttribute(Attribute.OVERFLOW_MANA) + "ʬ";
+            }
 
         } else if (feature == Feature.HEALTH_TEXT) {
             text = getAttribute(Attribute.HEALTH) + "/" + getAttribute(Attribute.MAX_HEALTH);
