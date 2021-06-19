@@ -298,15 +298,6 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
 
             Feature settingFeature = null;
-            if (feature == Feature.ONLY_MINE_ORES_DEEP_CAVERNS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS;
-            } else if (feature == Feature.AVOID_BREAKING_STEMS) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_STEMS;
-            } else if (feature == Feature.ONLY_MINE_VALUABLES_NETHER) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_MINING_NETHER;
-            } else if (feature == Feature.ONLY_BREAK_LOGS_PARK) {
-                settingFeature = Feature.ENABLE_MESSAGE_WHEN_BREAKING_PARK;
-            }
 
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
