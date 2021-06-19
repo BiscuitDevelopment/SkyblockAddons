@@ -26,7 +26,7 @@ public class DungeonManager {
     private static final Pattern PATTERN_MILESTONE = Pattern.compile("^.+?(Healer|Tank|Mage|Archer|Berserk) Milestone .+?([❶-❿]).+?§r§.(\\d+)§.§7 .+?");
     private static final Pattern PATTERN_COLLECTED_ESSENCES = Pattern.compile("§.+?(\\d+) (Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence");
     private static final Pattern PATTERN_BONUS_ESSENCE = Pattern.compile("^§.+?[^You] .+?found a .+?(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence.+?");
-    private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("§.§.\\+([0-9])+? §.§.(Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!+");
+    private static final Pattern PATTERN_SALVAGE_ESSENCES = Pattern.compile("\\+(?<essenceNum>[0-9]+) (?<essenceType>Wither|Spider|Undead|Dragon|Gold|Diamond|Ice) Essence!");
     private static final Pattern PATTERN_SECRETS = Pattern.compile("§7([0-9]+)/([0-9]+) Secrets");
     private static final Pattern PATTERN_PLAYER_LINE = Pattern.compile("^§.\\[(?<classLetter>.)] (?<name>[\\w§]+) (?:§.)*?§(?<healthColor>.)(?<health>[\\w]+)(?:§c❤)?");
     private static final Pattern PLAYER_LIST_INFO_DEATHS_PATTERN = Pattern.compile("Deaths: \\((?<deaths>\\d+)\\)");
@@ -184,8 +184,8 @@ public class DungeonManager {
         Matcher matcher = PATTERN_SALVAGE_ESSENCES.matcher(message);
 
         while (matcher.find()) {
-            EssenceType essenceType = EssenceType.fromName(matcher.group(2));
-            int amount = Integer.parseInt(matcher.group(1));
+            EssenceType essenceType = EssenceType.fromName(matcher.group("essenceType"));
+            int amount = Integer.parseInt(matcher.group("essenceNum"));
 
             collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
         }
