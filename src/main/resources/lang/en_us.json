@@ -201,7 +201,8 @@
     "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotInEnd": "Hide When Not in the End/Doing Voidgloom Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
-    "axeCooldownIndicator": "Axe Cooldown Indicator"
+    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "vanillaHealthPrediction": "Use Vanilla Health Prediction"
   },
   "messages": {
     "enchants": "Enchants",

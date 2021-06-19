@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.core.Translations;
-import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -187,12 +186,13 @@ public class ActionBarParser {
                 returnString = null;
             }
         }
-        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
         if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
             healthUpdate = newHealth - lastSecondHealth;
             lastHealthUpdate = System.currentTimeMillis();
         }
-        setAttribute(Attribute.HEALTH, newHealth);
+        if (main.getConfigValues().isDisabled(Feature.HEALTH_PREDICTION)) {
+            setAttribute(Attribute.HEALTH, newHealth);
+        }
         setAttribute(Attribute.MAX_HEALTH, maxHealth);
         main.getRenderListener().setPredictHealth(false);
         return returnString;

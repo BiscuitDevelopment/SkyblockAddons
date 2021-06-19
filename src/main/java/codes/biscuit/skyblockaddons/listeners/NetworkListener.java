@@ -4,6 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
+import codes.biscuit.skyblockaddons.misc.scheduler.ScheduledTask;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 
@@ -11,6 +13,7 @@ import static net.minecraftforge.common.MinecraftForge.EVENT_BUS;
 
 public class NetworkListener {
     private final SkyblockAddons main;
+    private ScheduledTask updateHealth;
 
     public NetworkListener() {
         main = SkyblockAddons.getInstance();
@@ -29,6 +32,12 @@ public class NetworkListener {
         if (main.getConfigValues().isEnabled(Feature.DISCORD_RPC)) {
             main.getDiscordRPCManager().start();
         }
+        updateHealth = main.getNewScheduler().scheduleRepeatingTask(new SkyblockRunnable() {
+            @Override
+            public void run() {
+                main.getPlayerListener().updateLastSecondHealth();
+            }
+        }, 0, 20);
     }
 
     @SubscribeEvent
@@ -38,6 +47,10 @@ public class NetworkListener {
         main.getUtils().setProfileName("Unknown");
         if (main.getDiscordRPCManager().isActive()) {
             main.getDiscordRPCManager().stop();
+        }
+        if (updateHealth != null) {
+            main.getNewScheduler().cancel(updateHealth);
+            updateHealth = null;
         }
     }
 }

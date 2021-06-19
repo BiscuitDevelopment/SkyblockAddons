@@ -581,9 +581,8 @@ public class PlayerListener {
                 }
                 if (main.getRenderListener().isPredictHealth()) {
                     EntityPlayerSP p = mc.thePlayer;
-                    if (p != null) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
+                    if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
                         int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
                         if (actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
                             actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
                             actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
@@ -1291,6 +1290,10 @@ public class PlayerListener {
 
     public void setLastSecondHealth(int lastSecondHealth) {
         actionBarParser.setLastSecondHealth(lastSecondHealth);
+    }
+
+    public void updateLastSecondHealth() {
+        actionBarParser.setLastSecondHealth(getAttribute(Attribute.HEALTH));
     }
 
     public boolean shouldResetMouse() {

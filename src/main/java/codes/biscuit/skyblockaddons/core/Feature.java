@@ -196,7 +196,7 @@ public enum Feature {
     OVERFLOW_MANA(191, "settings.showOverflowManaText", null, false),
     DOUBLE_WARP(192, Message.SETTING_DOUBLE_WARP, true),
     JUNGLE_AXE_COOLDOWN(193, Message.SETTING_JUNGLE_AXE_COOLDOWN, true, EnumUtils.FeatureSetting.COOLDOWN_PREDICTION, EnumUtils.FeatureSetting.LEVEL_100_LEG_MONKEY),
-
+    HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -238,7 +238,7 @@ public enum Feature {
             ENCHANTMENT_POOR_COLOR, BIGGER_WAKE, LEG_MONKEY_LEVEL_100, HIDE_ENCHANT_DESCRIPTION, HIDE_GREY_ENCHANTS,
             TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, TREVOR_HIGHLIGHT_TRACKED_ENTITY, TREVOR_SHOW_QUEST_COOLDOWN,
             SHOW_FETCHUR_ONLY_IN_DWARVENS, SHOW_FETCHUR_ITEM_NAME, SHOW_FETCHUR_INVENTORY_OPEN_ONLY, WARN_WHEN_FETCHUR_CHANGES,
-            STOP_ONLY_RAT_SQUEAK, SHOW_ENDER_CHEST_PREVIEW, OVERFLOW_MANA);
+            STOP_ONLY_RAT_SQUEAK, SHOW_ENDER_CHEST_PREVIEW, OVERFLOW_MANA, HEALTH_PREDICTION);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
