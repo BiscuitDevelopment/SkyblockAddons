@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss Uyarısı",
-    "itemDropConfirmation": "Eşya Atarken Onay",
+    "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
     "hideFoodAndArmor": "Açlık ve Zırh Göstergelerini Gizle",
