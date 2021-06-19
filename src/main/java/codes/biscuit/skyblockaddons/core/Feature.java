@@ -158,7 +158,6 @@ public enum Feature {
     HIDE_OTHER_PLAYERS_PRESENTS(150, "settings.hideOtherPlayersPresents", null, false),
     COMPACT_TAB_LIST(152, "settings.compactTabList", null, false),
     ENCHANTMENTS_HIGHLIGHT(153, "settings.highlightSpecialEnchantments", null, false),
-    DISABLE_EMPTY_GLASS_PANES(154, "settings.disableEmptyGlassPanes", null, false),
     CANDY_POINTS_COUNTER(155, "settings.candyPointsCounter", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
     HEALING_CIRCLE_OPACITY(156, "settings.healingCircleOpacity", null, false),
     USE_NEW_CHROMA_EFFECT(157, "settings.useNewChromaEffect", null, false),
@@ -197,6 +196,8 @@ public enum Feature {
     DOUBLE_WARP(192, Message.SETTING_DOUBLE_WARP, true),
     JUNGLE_AXE_COOLDOWN(193, Message.SETTING_JUNGLE_AXE_COOLDOWN, true, EnumUtils.FeatureSetting.COOLDOWN_PREDICTION, EnumUtils.FeatureSetting.LEVEL_100_LEG_MONKEY),
     HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, false),
+    DISABLE_EMPTY_GLASS_PANES(195, "settings.disableEmptyGlassPanes", null, false),
+
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
