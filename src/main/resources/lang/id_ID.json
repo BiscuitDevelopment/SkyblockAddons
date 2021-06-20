@@ -270,7 +270,7 @@
     "cancelledPark": "Sebuah fitur telah mencegah anda untuk menghancurkan benda ini disini.",
     "bossApproaching": "Anda sangat dekat untuk memunculkan sebuah boss!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur berubah!",
+    "fetchurWarning": "Item Fetchur Berganti!",
     "enableAll": "Aktifkan Semua",
     "disableAll": "Nonaktifkan Semua",
     "enchantmentInclusionExample": "contoh \"prot, feather\"",
@@ -282,7 +282,7 @@
     "effectsActive": "%number% Efek Aktif",
     "none": "Tidak Ada",
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
-    "chroma": "Chroma",
+    "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
   },
   "discordStatus": {
