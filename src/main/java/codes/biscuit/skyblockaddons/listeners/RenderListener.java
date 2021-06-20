@@ -30,6 +30,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -388,13 +389,15 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
+        FloatPair scales = main.getConfigValues().getSizes(feature);
+        GlStateManager.scale(scales.getX(), scales.getY(), 1);
 
-        x = transformXY(x, 71, scale);
-        y = transformXY(y, 5, scale);
+        x = transformXY(x, 71, scale * scales.getX());
+        y = transformXY(y, 5, scale * scales.getY());
 
         // Render the button resize box if necessary
         if (buttonLocation != null) {
-            buttonLocation.checkHoveredAndDrawBox(x, x + 71, y, y + 5, scale);
+            buttonLocation.checkHoveredAndDrawBox(x, x + 71, y, y + 5, scale, scales.getX(), scales.getY());
         }
 
         SkyblockColor color = ColorUtils.getDummySkyblockColor(main.getConfigValues().getColor(feature), main.getConfigValues().getChromaFeatures().contains(feature));

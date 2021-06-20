@@ -11,7 +11,7 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
+import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -35,7 +35,7 @@ public class LocationEditGui extends GuiScreen {
     private boolean showColorIcons = true;
     private boolean enableSnapping = true;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
     // The feature that is currently being dragged, or null for nothing.
     private Feature dragging;
 
@@ -48,10 +48,10 @@ public class LocationEditGui extends GuiScreen {
     private float xOffset;
     private float yOffset;
 
-    private int lastPage;
-    private EnumUtils.GuiTab lastTab;
+    private final int lastPage;
+    private final EnumUtils.GuiTab lastTab;
 
-    private Map<Feature, ButtonLocation> buttonLocations = new EnumMap<>(Feature.class);
+    private final Map<Feature, ButtonLocation> buttonLocations = new EnumMap<>(Feature.class);
 
     private boolean closing = false;
 
@@ -175,14 +175,19 @@ public class LocationEditGui extends GuiScreen {
             }
 
             EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(feature);
-
-            float y = buttonLocation.getBoxYOne() + (buttonLocation.getBoxYTwo()-buttonLocation.getBoxYOne())/2F - ButtonColorWheel.getSize()/2F;
+            float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
+            float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+            float boxXOne = buttonLocation.getBoxXOne() * scaleX;
+            float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
+            float boxYOne = buttonLocation.getBoxYOne() * scaleY;
+            float boxYTwo = buttonLocation.getBoxYTwo() * scaleY;
+            float y = boxYOne + (boxYTwo - boxYOne) / 2F - ButtonColorWheel.getSize() / 2F;
             float x;
 
             if (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_LEFT) {
-                x = buttonLocation.getBoxXOne() + (buttonLocation.getBoxXTwo()-buttonLocation.getBoxXOne());
+                x = boxXTwo + 2;
             } else {
-                x = buttonLocation.getBoxXOne() - ButtonColorWheel.getSize();
+                x = boxXOne - ButtonColorWheel.getSize() - 2;
             }
 
             buttonList.add(new ButtonColorWheel(Math.round(x), Math.round(y), feature));
@@ -201,16 +206,18 @@ public class LocationEditGui extends GuiScreen {
         float boxXTwo = buttonLocation.getBoxXTwo();
         float boxYOne = buttonLocation.getBoxYOne();
         float boxYTwo = buttonLocation.getBoxYTwo();
-        buttonList.add(new ButtonResize(boxXOne, boxYOne, feature, ButtonResize.Corner.TOP_LEFT));
-        buttonList.add(new ButtonResize(boxXTwo, boxYOne, feature, ButtonResize.Corner.TOP_RIGHT));
-        buttonList.add(new ButtonResize(boxXOne, boxYTwo, feature, ButtonResize.Corner.BOTTOM_LEFT));
-        buttonList.add(new ButtonResize(boxXTwo, boxYTwo, feature, ButtonResize.Corner.BOTTOM_RIGHT));
+        float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
+        float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+        buttonList.add(new ButtonResize(boxXOne * scaleX, boxYOne * scaleY, feature, ButtonResize.Corner.TOP_LEFT));
+        buttonList.add(new ButtonResize(boxXTwo * scaleX, boxYOne * scaleY, feature, ButtonResize.Corner.TOP_RIGHT));
+        buttonList.add(new ButtonResize(boxXOne * scaleX, boxYTwo * scaleY, feature, ButtonResize.Corner.BOTTOM_LEFT));
+        buttonList.add(new ButtonResize(boxXTwo * scaleX, boxYTwo * scaleY, feature, ButtonResize.Corner.BOTTOM_RIGHT));
     }
 
     private void recalculateResizeButtons() {
         for (GuiButton button : this.buttonList) {
             if (button instanceof ButtonResize) {
-                ButtonResize buttonResize = (ButtonResize)button;
+                ButtonResize buttonResize = (ButtonResize) button;
                 ButtonResize.Corner corner = buttonResize.getCorner();
                 Feature feature = buttonResize.getFeature();
                 ButtonLocation buttonLocation = buttonLocations.get(feature);
@@ -218,10 +225,12 @@ public class LocationEditGui extends GuiScreen {
                     continue;
                 }
 
-                float boxXOne = buttonLocation.getBoxXOne();
-                float boxXTwo = buttonLocation.getBoxXTwo();
-                float boxYOne = buttonLocation.getBoxYOne();
-                float boxYTwo = buttonLocation.getBoxYTwo();
+                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
+                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+                float boxXOne = buttonLocation.getBoxXOne() * scaleX;
+                float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
+                float boxYOne = buttonLocation.getBoxYOne() * scaleY;
+                float boxYTwo = buttonLocation.getBoxYTwo() * scaleY;
 
                 if (corner == ButtonResize.Corner.TOP_LEFT) {
                     buttonResize.x = boxXOne;
@@ -243,7 +252,7 @@ public class LocationEditGui extends GuiScreen {
     private void recalculateColorWheels() {
         for (GuiButton button : this.buttonList) {
             if (button instanceof ButtonColorWheel) {
-                ButtonColorWheel buttonColorWheel = (ButtonColorWheel)button;
+                ButtonColorWheel buttonColorWheel = (ButtonColorWheel) button;
                 Feature feature = buttonColorWheel.getFeature();
                 ButtonLocation buttonLocation = buttonLocations.get(feature);
                 if (buttonLocation == null) {
@@ -251,13 +260,19 @@ public class LocationEditGui extends GuiScreen {
                 }
 
                 EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(feature);
-                float y = buttonLocation.getBoxYOne() + (buttonLocation.getBoxYTwo()-buttonLocation.getBoxYOne())/2F - ButtonColorWheel.getSize()/2F;
+                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
+                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+                float boxXOne = buttonLocation.getBoxXOne() * scaleX;
+                float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
+                float boxYOne = buttonLocation.getBoxYOne() * scaleY;
+                float boxYTwo = buttonLocation.getBoxYTwo() * scaleY;
+                float y = boxYOne + (boxYTwo - boxYOne) / 2F - ButtonColorWheel.getSize() / 2F;
                 float x;
 
                 if (anchorPoint == EnumUtils.AnchorPoint.TOP_LEFT || anchorPoint == EnumUtils.AnchorPoint.BOTTOM_LEFT) {
-                    x = buttonLocation.getBoxXTwo() + 2;
+                    x = boxXTwo + 2;
                 } else {
-                    x = buttonLocation.getBoxXOne() - ButtonColorWheel.getSize() - 2;
+                    x = boxXOne - ButtonColorWheel.getSize() - 2;
                 }
 
                 buttonColorWheel.x = x;
@@ -444,129 +459,6 @@ public class LocationEditGui extends GuiScreen {
         }
     }
 
-    @Getter
-    static class Snap {
-
-        private Edge thisSnapEdge;
-        private Edge otherSnapEdge;
-        private float snapValue;
-        private Map<Edge, Float> rectangle = new EnumMap<>(Edge.class);
-
-        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {
-            rectangle.put(Edge.LEFT, left);
-            rectangle.put(Edge.TOP, top);
-            rectangle.put(Edge.RIGHT, right);
-            rectangle.put(Edge.BOTTOM, bottom);
-
-            rectangle.put(Edge.HORIZONTAL_MIDDLE, top+getHeight()/2);
-            rectangle.put(Edge.VERTICAL_MIDDLE, left+getWidth()/2);
-
-            this.otherSnapEdge = otherSnapEdge;
-            this.thisSnapEdge = thisSnapEdge;
-            this.snapValue = snapValue;
-        }
-
-        public float getHeight() {
-            return rectangle.get(Edge.BOTTOM) - rectangle.get(Edge.TOP);
-        }
-
-        public float getWidth() {
-            return rectangle.get(Edge.RIGHT) - rectangle.get(Edge.LEFT);
-        }
-    }
-
-    /**
-     * If button is pressed, update the currently dragged button.
-     * Otherwise, they clicked the reset button, so reset the coordinates.
-     */
-    @Override
-    protected void actionPerformed(GuiButton abstractButton) {
-        if (abstractButton instanceof ButtonLocation) {
-            ButtonLocation buttonLocation = (ButtonLocation)abstractButton;
-            dragging = buttonLocation.getFeature();
-
-            ScaledResolution sr = new ScaledResolution(mc);
-            float minecraftScale = sr.getScaleFactor();
-            float floatMouseX = Mouse.getX() / minecraftScale;
-            float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
-
-            xOffset = floatMouseX-main.getConfigValues().getActualX(buttonLocation.getFeature());
-            yOffset = floatMouseY-main.getConfigValues().getActualY(buttonLocation.getFeature());
-        } else if (abstractButton instanceof ButtonSolid) {
-            ButtonSolid buttonSolid = (ButtonSolid)abstractButton;
-            Feature feature = buttonSolid.getFeature();
-            if (feature == Feature.RESET_LOCATION) {
-                main.getConfigValues().setAllCoordinatesToDefault();
-                main.getConfigValues().putDefaultBarSizes();
-                for (Feature guiFeature : Feature.getGuiFeatures()) {
-                    if (!main.getConfigValues().isDisabled(guiFeature)) { // Don't display features that have been disabled
-                        if (guiFeature == Feature.HEALTH_BAR || guiFeature == Feature.MANA_BAR || guiFeature == Feature.DRILL_FUEL_BAR) {
-                            addResizeCorners(guiFeature);
-                        }
-                    }
-                }
-            } else if (feature == Feature.RESIZE_BARS) {
-                if (editMode != EditMode.RESIZE_BARS) {
-                    editMode = EditMode.RESIZE_BARS;
-                    addResizeButtonsToBars();
-                } else {
-                    editMode = null;
-                    clearAllResizeButtons();
-                }
-
-            } else if (feature == Feature.RESCALE_FEATURES) {
-                if (editMode != EditMode.RESCALE) {
-                    editMode = EditMode.RESCALE;
-                    addResizeButtonsToAllFeatures();
-                } else {
-                    editMode = null;
-                    clearAllResizeButtons();
-                }
-            } else if (feature == Feature.SHOW_COLOR_ICONS) {
-                if (showColorIcons) {
-                    showColorIcons = false;
-                    clearAllColorWheelButtons();
-                } else {
-                    showColorIcons = true;
-                    addColorWheelsToAllFeatures();
-                }
-            } else if (feature == Feature.ENABLE_FEATURE_SNAPPING) {
-                enableSnapping = !enableSnapping;
-            }
-        } else if (abstractButton instanceof ButtonResize) {
-            ButtonResize buttonResize = (ButtonResize)abstractButton;
-            dragging = buttonResize.getFeature();
-            resizing = true;
-
-            ScaledResolution sr = new ScaledResolution(mc);
-            float minecraftScale = sr.getScaleFactor();
-            float floatMouseX = Mouse.getX() / minecraftScale;
-            float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
-
-            float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(buttonResize.getFeature());
-            if (editMode == EditMode.RESCALE) {
-                xOffset = (floatMouseX-buttonResize.getX()*scale)/scale;
-                yOffset = (floatMouseY-buttonResize.getY()*scale)/scale;
-            } else {
-                xOffset = floatMouseX;
-                yOffset = floatMouseY;
-            }
-
-            resizingCorner = buttonResize.getCorner();
-
-            if (this.editMode == EditMode.RESIZE_BARS) {
-                IntPair sizes = main.getConfigValues().getSizes(dragging);
-                originalWidth = sizes.getX();
-                originalHeight = sizes.getY();
-            }
-        } else if (abstractButton instanceof ButtonColorWheel) {
-            ButtonColorWheel buttonColorWheel = (ButtonColorWheel)abstractButton;
-
-            closing = true;
-            mc.displayGuiScreen(new ColorSelectionGui(buttonColorWheel.getFeature(), EnumUtils.GUIType.EDIT_LOCATIONS, lastTab, lastPage));
-        }
-    }
-
     /**
      * Set the coordinates when the mouse moves.
      */
@@ -580,17 +472,28 @@ public class LocationEditGui extends GuiScreen {
             float x = mouseX - xOffset;
             float y = mouseY - yOffset;
             if (this.editMode == EditMode.RESIZE_BARS) {
-                x /= 15;
-                y /= -7;
-                x += originalWidth;
-                y += originalHeight;
-                if (x > 0) {
-                    main.getConfigValues().setSizeX(dragging, Math.round(x)); // TODO Make sure this works fine
+                ButtonLocation buttonLocation = buttonLocations.get(dragging);
+                if (buttonLocation == null) {
+                    return;
                 }
-                if (y > 0) {
-                    main.getConfigValues().setSizeY(dragging, Math.round(y));
-                }
-                addResizeCorners(dragging);
+                FloatPair prevBarScale = main.getConfigValues().getSizes(dragging);
+                float prevScale = buttonLocation.getScale();
+                float prevScaleX = prevScale * prevBarScale.getX();
+                float prevScaleY = prevScale * prevBarScale.getY();
+
+                float middleX = (buttonLocation.getBoxXTwo() + buttonLocation.getBoxXOne()) / 2;
+                float middleY = (buttonLocation.getBoxYTwo() + buttonLocation.getBoxYOne()) / 2;
+
+                float scaleX = (floatMouseX - middleX) / (xOffset - middleX);
+                float scaleY = (floatMouseY - middleY) / (yOffset - middleY);
+                scaleX = (float) Math.max(Math.min(scaleX, 5), .25);
+                scaleY = (float) Math.max(Math.min(scaleY, 5), .25);
+
+                main.getConfigValues().setScaleX(dragging, scaleX);
+                main.getConfigValues().setScaleY(dragging, scaleY);
+
+                buttonLocation.drawButton(mc, mouseX, mouseY);
+                recalculateResizeButtons();
             } else if (this.editMode == EditMode.RESCALE) {
                 ButtonLocation buttonLocation = buttonLocations.get(dragging);
                 if (buttonLocation == null) {
@@ -734,6 +637,123 @@ public class LocationEditGui extends GuiScreen {
             if (dragging == Feature.HEALTH_BAR || dragging == Feature.MANA_BAR || dragging == Feature.DRILL_FUEL_BAR) {
                 addResizeCorners(dragging);
             }
+        }
+    }
+
+    /**
+     * If button is pressed, update the currently dragged button.
+     * Otherwise, they clicked the reset button, so reset the coordinates.
+     */
+    @Override
+    protected void actionPerformed(GuiButton abstractButton) {
+        if (abstractButton instanceof ButtonLocation) {
+            ButtonLocation buttonLocation = (ButtonLocation) abstractButton;
+            dragging = buttonLocation.getFeature();
+
+            ScaledResolution sr = new ScaledResolution(mc);
+            float minecraftScale = sr.getScaleFactor();
+            float floatMouseX = Mouse.getX() / minecraftScale;
+            float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
+
+            xOffset = floatMouseX - main.getConfigValues().getActualX(buttonLocation.getFeature());
+            yOffset = floatMouseY - main.getConfigValues().getActualY(buttonLocation.getFeature());
+        } else if (abstractButton instanceof ButtonSolid) {
+            ButtonSolid buttonSolid = (ButtonSolid) abstractButton;
+            Feature feature = buttonSolid.getFeature();
+            if (feature == Feature.RESET_LOCATION) {
+                main.getConfigValues().setAllCoordinatesToDefault();
+                main.getConfigValues().putDefaultBarSizes();
+                for (Feature guiFeature : Feature.getGuiFeatures()) {
+                    if (!main.getConfigValues().isDisabled(guiFeature)) { // Don't display features that have been disabled
+                        if (guiFeature == Feature.HEALTH_BAR || guiFeature == Feature.MANA_BAR || guiFeature == Feature.DRILL_FUEL_BAR) {
+                            addResizeCorners(guiFeature);
+                        }
+                    }
+                }
+            } else if (feature == Feature.RESIZE_BARS) {
+                if (editMode != EditMode.RESIZE_BARS) {
+                    editMode = EditMode.RESIZE_BARS;
+                    addResizeButtonsToBars();
+                } else {
+                    editMode = null;
+                    clearAllResizeButtons();
+                }
+
+            } else if (feature == Feature.RESCALE_FEATURES) {
+                if (editMode != EditMode.RESCALE) {
+                    editMode = EditMode.RESCALE;
+                    addResizeButtonsToAllFeatures();
+                } else {
+                    editMode = null;
+                    clearAllResizeButtons();
+                }
+            } else if (feature == Feature.SHOW_COLOR_ICONS) {
+                if (showColorIcons) {
+                    showColorIcons = false;
+                    clearAllColorWheelButtons();
+                } else {
+                    showColorIcons = true;
+                    addColorWheelsToAllFeatures();
+                }
+            } else if (feature == Feature.ENABLE_FEATURE_SNAPPING) {
+                enableSnapping = !enableSnapping;
+            }
+        } else if (abstractButton instanceof ButtonResize) {
+            ButtonResize buttonResize = (ButtonResize) abstractButton;
+            dragging = buttonResize.getFeature();
+            resizing = true;
+
+            ScaledResolution sr = new ScaledResolution(mc);
+            float minecraftScale = sr.getScaleFactor();
+            float floatMouseX = Mouse.getX() / minecraftScale;
+            float floatMouseY = (mc.displayHeight - Mouse.getY()) / minecraftScale;
+
+            float scale = SkyblockAddons.getInstance().getConfigValues().getGuiScale(buttonResize.getFeature());
+            if (editMode == EditMode.RESCALE) {
+                xOffset = (floatMouseX - buttonResize.getX() * scale) / scale;
+                yOffset = (floatMouseY - buttonResize.getY() * scale) / scale;
+            } else {
+                xOffset = floatMouseX;
+                yOffset = floatMouseY;
+            }
+
+            resizingCorner = buttonResize.getCorner();
+        } else if (abstractButton instanceof ButtonColorWheel) {
+            ButtonColorWheel buttonColorWheel = (ButtonColorWheel) abstractButton;
+
+            closing = true;
+            mc.displayGuiScreen(new ColorSelectionGui(buttonColorWheel.getFeature(), EnumUtils.GUIType.EDIT_LOCATIONS, lastTab, lastPage));
+        }
+    }
+
+    @Getter
+    static class Snap {
+
+        private final Edge thisSnapEdge;
+        private final Edge otherSnapEdge;
+        private final float snapValue;
+        private final Map<Edge, Float> rectangle = new EnumMap<>(Edge.class);
+
+        public Snap(float left, float top, float right, float bottom, Edge thisSnapEdge, Edge otherSnapEdge, float snapValue) {
+            rectangle.put(Edge.LEFT, left);
+            rectangle.put(Edge.TOP, top);
+            rectangle.put(Edge.RIGHT, right);
+            rectangle.put(Edge.BOTTOM, bottom);
+
+            rectangle.put(Edge.HORIZONTAL_MIDDLE, top + getHeight() / 2);
+            rectangle.put(Edge.VERTICAL_MIDDLE, left + getWidth() / 2);
+
+            this.otherSnapEdge = otherSnapEdge;
+            this.thisSnapEdge = thisSnapEdge;
+            this.snapValue = snapValue;
+        }
+
+        public float getHeight() {
+            return rectangle.get(Edge.BOTTOM) - rectangle.get(Edge.TOP);
+        }
+
+        public float getWidth() {
+            return rectangle.get(Edge.RIGHT) - rectangle.get(Edge.LEFT);
         }
     }
 

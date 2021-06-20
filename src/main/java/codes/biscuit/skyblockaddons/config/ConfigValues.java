@@ -9,7 +9,6 @@ import codes.biscuit.skyblockaddons.features.enchants.EnchantListLayout;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -49,7 +48,7 @@ public class ConfigValues {
     private final Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
     private final Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
     private final Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
-    private final Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
+    private final Map<Feature, FloatPair> defaultBarSizes = new EnumMap<>(Feature.class);
 
     private final File settingsConfigFile;
     private JsonObject loadedConfig = new JsonObject();
@@ -61,7 +60,7 @@ public class ConfigValues {
     private final Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
     private final Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, Float> guiScales = new EnumMap<>(Feature.class);
-    private final Map<Feature, IntPair> barSizes = new EnumMap<>(Feature.class);
+    private final Map<Feature, FloatPair> barSizes = new EnumMap<>(Feature.class);
     private final MutableInt warningSeconds = new MutableInt(4);
     private final Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
@@ -605,18 +604,18 @@ public class ConfigValues {
         }
     }
 
-    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, IntPair> map, String path) {
+    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
         deserializeFeatureIntCoordsMapFromID(loadedConfig, map, path);
     }
 
-    private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, IntPair> map, String path) {
+    private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, FloatPair> map, String path) {
         try {
             if (jsonObject.has(path)) {
                 for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         JsonArray coords = element.getValue().getAsJsonArray();
-                        map.put(feature, new IntPair(coords.get(0).getAsInt(), coords.get(1).getAsInt()));
+                        map.put(feature, new FloatPair(coords.get(0).getAsFloat(), coords.get(1).getAsFloat()));
                     }
                 }
             }
@@ -646,7 +645,7 @@ public class ConfigValues {
 
     public void putDefaultBarSizes() {
         barSizes.clear();
-        for (Map.Entry<Feature, IntPair> entry : defaultBarSizes.entrySet()) {
+        for (Map.Entry<Feature, FloatPair> entry : defaultBarSizes.entrySet()) {
             barSizes.put(entry.getKey(), entry.getValue().cloneCoords());
         }
     }
@@ -805,23 +804,21 @@ public class ConfigValues {
 
     public float getActualY(Feature feature) {
         int maxY = new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight();
-        return getAnchorPoint(feature).getY(maxY)+ getRelativeCoords(feature).getY();
+        return getAnchorPoint(feature).getY(maxY) + getRelativeCoords(feature).getY();
     }
 
-    public IntPair getSizes(Feature feature) {
-        return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new IntPair(7,1));
+    public FloatPair getSizes(Feature feature) {
+        return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new FloatPair(1, 1));
     }
 
-    public void setSizeX(Feature feature, int x) {
-        IntPair coords = getSizes(feature);
+    public void setScaleX(Feature feature, float x) {
+        FloatPair coords = getSizes(feature);
         coords.setX(x);
-        barSizes.put(feature, coords);
     }
 
-    public void setSizeY(Feature feature, int y) {
-        IntPair coords = getSizes(feature);
+    public void setScaleY(Feature feature, float y) {
+        FloatPair coords = getSizes(feature);
         coords.setY(y);
-        barSizes.put(feature, coords);
     }
 
     public FloatPair getRelativeCoords(Feature feature) {
