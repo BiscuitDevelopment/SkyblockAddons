@@ -445,8 +445,7 @@ public class RenderListener {
      */
     private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
         int barHeight = 5, barWidth = 71;
-        // Rounding to the nearest 100th ensures no green texture is rendered in the progress indicator
-        float barFill = (int) (100 * barWidth * fill) / 100F;
+        float barFill = barWidth * fill;
         mc.getTextureManager().bindTexture(BARS);
         if (color.getColor() == ColorCode.BLACK.getColor()) {
             GlStateManager.color(0.25F, 0.25F, 0.25F, ColorUtils.getAlpha(color.getColor()) / 255F); // too dark normally
@@ -474,11 +473,14 @@ public class RenderListener {
             // Make sure that the overlay doesn't go outside the bounds of the bar.
             // It's 4 pixels wide, so ensure we only render the texture between 0 <= x <= barWidth
             // Start rendering at x => 0 (for small fill values, also don't render before the bar starts)
-            float startX = Math.max(0, barFill - 2);
+            // Adding padding ensures that no green bar gets rendered from the texture...?
+            float padding = .01F;
+            float oneSide = 2 - padding;
+            float startX = Math.max(0, barFill - oneSide);
             // Start texture at x >= 0 (for small fill values, also start the texture so indicator is always centered)
-            float startTexX = Math.max(0, 2 - barFill);
+            float startTexX = Math.max(padding, oneSide - barFill);
             // End texture at x <= barWidth and 4 <= startTexX + endTexX (total width of overlay texture). Cut off for large fill values.
-            float endTexX = Math.min(4 - startTexX, barWidth - barFill + 2);
+            float endTexX = Math.min(2 * oneSide - startTexX, barWidth - barFill + oneSide);
             DrawUtils.drawModalRectWithCustomSizedTexture(x + startX, y, 1 + startTexX, 24, endTexX, barHeight, 80, 50);
         }
         // Overlay uncolored bar display next (texture packs can use this to overlay their own static bar colors)
