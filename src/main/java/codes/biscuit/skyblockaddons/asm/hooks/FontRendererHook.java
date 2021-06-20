@@ -8,6 +8,9 @@ import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 public class FontRendererHook {
 
     private static final SkyblockColor CHROMA_COLOR = new SkyblockColor(0xFFFFFFFF).setColorAnimation(SkyblockColor.ColorAnimation.CHROMA);
@@ -15,8 +18,8 @@ public class FontRendererHook {
     private static final SkyblockColor CHROMA_COLOR_SHADOW = new SkyblockColor(0xFF555555).setColorAnimation(SkyblockColor.ColorAnimation.CHROMA);
     private static final DrawStateFontRenderer DRAW_CHROMA_SHADOW = new DrawStateFontRenderer(CHROMA_COLOR_SHADOW);
     private static DrawStateFontRenderer currentDrawState = null;
+    private static final MaxSizeHashMap<String, Boolean> stringsWithChroma = new MaxSizeHashMap<>(1000);
 
-    @SuppressWarnings("unused")
     public static void changeTextColor() {
         if (currentDrawState != null && currentDrawState.shouldManuallyRecolorFont()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
@@ -38,56 +41,35 @@ public class FontRendererHook {
         DRAW_CHROMA_SHADOW.endMulticolorFeature();
     }
 
-    public static float patcherColorChange(int style, float color) {
-        return style == 22 ? 1F : color;
-    }
-
-    // WILL NOT WORK WITH SHADOW
-    public static void patcherToggleChroma(int style) {
-        if (style == 22) {
-            toggleChromaOn();
-        }
-        else {
-            restoreChromaState();
-        }
-    }
-
     /**
      * Called in patcher code to stop patcher optimization and do vanilla render
      * @param s string to render
      * @return true to override
      */
-    @SuppressWarnings("unused")
-    // TODO: Really not sure why hashing strings to control when to override patcher causes HUGE amounts of lag...Used cacheBuilder and HashMap and idk what's going on
     public static boolean shouldOverridePatcher(String s) {
         //return chromaStrings.get(s) == null || chromaStrings.get(s);
-        return true;
+        if (stringsWithChroma.get(s) != null) {
+            return stringsWithChroma.get(s);
+        }
+        // Check if there is a "§z" colorcode in the string and cache it
+        boolean hasChroma = false;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == '§') {
+                i++;
+                if (i < s.length() && s.charAt(i) == 'z') {
+                    hasChroma = true;
+                    break;
+                }
+            }
+        }
+        stringsWithChroma.put(s, hasChroma);
+        return hasChroma;
     }
 
-    /**
-     * Called on chroma string to update cache
-     * @param s string with chroma format tag
-     */
-    @SuppressWarnings("unused")
-    public static void stringWithChroma(String s) {
-        //chromaStrings.put(s, true);
-    }
-
-    /**
-     * Called on string termination to update cache
-     * @param s string with chroma format tag
-     */
-    @SuppressWarnings("unused")
-    public static void endOfString(String s) {
-        //if (!chromaStrings.containsKey(s)) {
-        //    chromaStrings.put(s, false);
-        //}
-    }
 
     /**
      * Called to save the current shader state
      */
-    @SuppressWarnings("unused")
     public static void beginRenderString(boolean shadow) {
         float alpha = Minecraft.getMinecraft() == null || Minecraft.getMinecraft().fontRendererObj == null ? 1 : Minecraft.getMinecraft().fontRendererObj.alpha;
         if (shadow) {
@@ -105,7 +87,6 @@ public class FontRendererHook {
     /**
      * Called to restore the saved chroma state
      */
-    @SuppressWarnings("unused")
     public static void restoreChromaState() {
         if (SkyblockAddons.isFullyInitialized()) {
             currentDrawState.restoreColorEnv();
@@ -115,17 +96,35 @@ public class FontRendererHook {
     /**
      * Called to turn chroma on
      */
-    @SuppressWarnings("unused")
     public static void toggleChromaOn() {
         if (SkyblockAddons.isFullyInitialized()) {
             currentDrawState.newColorEnv().bindActualColor();
         }
     }
 
-    @SuppressWarnings("unused")
+    /**
+     * Called to turn chroma off after the full string has been rendered (before returning)
+     */
     public static void endRenderString() {
         if (SkyblockAddons.isFullyInitialized()) {
             currentDrawState.endColorEnv();
+        }
+    }
+
+    /**
+     * HashMap with upper limit on storage size. Used to enforce the font renderer cache not getting too large over time
+     */
+    public static class MaxSizeHashMap<K, V> extends LinkedHashMap<K, V> {
+        private final int maxSize;
+
+        public MaxSizeHashMap(int maxSize) {
+            super();
+            this.maxSize = maxSize;
+        }
+
+        @Override
+        protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+            return size() > maxSize;
         }
     }
 }
