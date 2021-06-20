@@ -114,8 +114,8 @@
     "discordRP": "Нека играта ти изпъкне с Rich Presence\nПривлечи нашите над 250 милиона потребители като интегрираш играта си с Discord. Rich Presence улеснява играчите да преминат директно към твоя клиент и да споделят твоята игра",
     "endstoneProtectorDisplay": "Endstone Protector Дисплей",
     "fancyWarpMenu": "Красиво меню за телепортации",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "Спри звуците на Rat Pet",
+    "onlyStopRatSqueak": "Само спри Squeak звука на Rat",
     "doubleWarp": "Телепортирай се два пъти",
     "advancedMode": "Разширен режим",
     "legendarySeaCreatureWarning": "Legendary Sea Creature предопреждение",
@@ -133,10 +133,10 @@
     "dungeonMapDisplay": "Dungeon карта Дисплей",
     "rotateMap": "Завъртване на картата със завъртване на играча",
     "centerRotationOnYourPlayer": "Центрирай въртенето около играча",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "Само покажи предмета за Fetchur в Dwarven Mines",
+    "showFetchurItemName": "Покажи името на предмета за Fetchur",
+    "showFetchurInventoryOpenOnly": "Показвай предмета за Fetchur само когато инвентара е отворен",
+    "warnWhenFetchurChanges": "Предупреди ме когато Fetchur се промени",
     "mapZoom": "Увеличение на картата",
     "glowingDroppedItems": "Светещи дропнати предмети",
     "glowingDungeonTeammates": "Светещи Съотборници в Dungeon",
@@ -189,7 +189,7 @@
     "onlyMineOresDwarvenMines": "Копай само руди в Dwarven Mines",
     "drillFuelBar": "Drill лента за гориво",
     "drillFuelText": "Количество гориво в Drill",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "Покажи какво Fetchur за деня",
     "fishingParticleOverlay": "Overlay за модифициране цвета на Fishing Particle",
     "enchantmentLoreParsing": "Анализиране на подсказки прогрес Enchant",
     "cooldownPrediction": "Предскажи и съкрати времето за изчакване",
@@ -198,15 +198,15 @@
     "stackingEnchantProgress": "Покажи Натрупване на Enchant прогреса",
     "showReforgeOverlay": "Покажи Reforge Overlay",
     "reforgeFilter": "Reforge Филтър",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "Скрий Описание на Enchant",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Функциите на Тревор Трапера",
+      "trackedEntityProximityIndicator": "Покажи маркираният обект с Индикатор за близост",
+      "highlightTrackedEntity": "Маркирай обекта който се следи",
+      "showQuestCooldown": "Покажи Trevor's Quest тимер",
+      "showQuestCooldownDescription": "Това ще бъде показано надглавата на Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview"
+    "showEnderChestPreview": "Покажи преглед на Ender Chest"
   },
   "messages": {
     "enchants": "Enchants",
@@ -270,7 +270,7 @@
     "cancelledPark": "Свойство те спря от това да разрушите този блок тук.",
     "bossApproaching": "Ти си близо да призовеш боса!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Fetchur се промени!",
     "enableAll": "Включи всички",
     "disableAll": "Изключи всички",
     "enchantmentInclusionExample": "напр. \"prot, feather\"",
@@ -283,7 +283,7 @@
     "none": "Нищо",
     "copyModeSet": "Режимът за копиране на разработчика е настроен на: %mode%. Натисни %keyName%, за да задействаш копие на данни!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rВреметраене: %time%s"
   },
   "discordStatus": {
     "titleNone": "Нищо",
@@ -314,13 +314,13 @@
     "descriptionTarantula": "Показва, че правиш Tarantula мисия."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Контролирай как enchants са показани на item tooltips",
+    "titleCompress": "Компресирай",
+    "descriptionCompress": "Компресирай enchants на колкото се може по-малко линии",
+    "titleNormal": "Нормално",
+    "descriptionNormal": "Покажи enchants както Hypixel",
+    "titleExpand": "Разшири",
+    "descriptionExpand": "Покажете всеки enchant на отделен ред"
   },
   "commandUsage": {
     "sba": {
@@ -384,7 +384,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Отпечатва броя, съхрани броя на dungeon death за целите на отстраняване на грешки."
       },
       "reload": {
         "help": "§e(Dev) §7Презарежда всички настройки и ресурси на мода. Играта ще замръзне за няколко секунди."
