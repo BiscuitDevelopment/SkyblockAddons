@@ -145,7 +145,7 @@
     "showPlayerHeadsOnMap": "Perlihatkan Kepala-Kepala Player di Map Dungeon",
     "showHealingCircleWall": "Perlihatkan Dinding Lingkaran Healing Circle Dungeon",
     "showCriticalTeammates": "Perlihatkan Rekan Dungeon yang Sekarat",
-    "showGlowingItemsOnIsland": "Perlihatkan Benda-Benda Bersinar Di Pulau Privat",
+    "showGlowingItemsOnIsland": "Perlihatkan Benda-Benda Bersinar Di Pulau Pribadi",
     "showItemDungeonFloor": "Perlihatkan Benda yang Didapatkan Di Dungeon Dari Lantai Apa",
     "showDungeonMilestone": "Perlihatkan Milestone Dungeon",
     "dungeonsCollectedEssencesDisplay": "Tamplian Esensi Dungeons Yang Terkumpul",
@@ -495,7 +495,7 @@
   "warpMenu": {
     "click": "Klik sebuah titik warp untuk mengunjunginya!",
     "mustUnlock": "Harus mempunyai Scroll spesifik terbuka.",
-    "privateIsland": "Pulau Privat",
+    "privateIsland": "Pulau Pribadi",
     "home": "Pulau Anda",
     "spawn": "Spawn",
     "unknown": "Belum Dikunjungi",
