@@ -19,7 +19,7 @@
     "backpackStyle": "Model Backpack: %style%",
     "backpackStyles": {
       "regular": "Biasa",
-      "compact": "Kompak"
+      "compact": "Ringkas"
     },
     "showBackpackPreview": "Perlihatkan Isi Backpack",
     "hideHealthBar": "Sembunyikan Bar Nyawa Original",
@@ -53,8 +53,8 @@
     "useVanillaTexture": "Pakai Penampilan Tekstur Vanilla",
     "textStyle": "Gaya Teks",
     "textStyles": {
-      "one": "Gaya Satu",
-      "two": "Gaya Dua"
+      "one": "Model Satu",
+      "two": "Model Dua"
     },
     "warningDuration": "Durasi Peringatan",
     "dontOpenProfileWithBow": "Jangan Buka Profil Dengan Busur",
@@ -78,10 +78,10 @@
     "enableMessageWhenActionPrevented": "Perlihatkan sebuah Pesan Ketika Aksi dicegah",
     "hidePetHealthBar": "Sembunyikan Bar Nyawa Pet",
     "powerOrbDisplay": "Tampilan Power Orb",
-    "powerOrbDisplayStyle": "Gaya Power Orb: %style%",
+    "powerOrbDisplayStyle": "Model Power Orb: %style%",
     "powerOrbStyle": {
       "detailed": "Rinci",
-      "compact": "Kompak"
+      "compact": "Ringkas"
     },
     "disableMagicalSoupMessage": "Nonaktifkan Pesan-Pesan Magical Mushroom Soup",
     "zealotCounter": "Penghitung Zealot - Hitungan Sejak Eye Terakhir",
