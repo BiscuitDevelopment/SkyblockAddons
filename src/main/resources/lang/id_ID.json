@@ -43,7 +43,7 @@
     "stopBowChargeFromResetting": "Cegah Tarikan Busur Untuk Direset",
     "preventMovementOnDeath": "Cegah Pergerakan Setelah Mati",
     "showItemAnvilUses": "Memperlihatkan Penggunaan Anvil Di Barang",
-    "lockSlots": "Perbolehkan Perkuncian Slot",
+    "lockSlots": "Perbolehkan mengunci Slot",
     "lockSlot": "Mengunci Slot",
     "dontResetCursorInventory": "Tidak Mereset Kursor Antara Inventaris",
     "summoningEyeAlert": "Peringatan Summoning Eye",
@@ -80,7 +80,7 @@
     "powerOrbDisplay": "Tampilan Power Orb",
     "powerOrbDisplayStyle": "Model Power Orb: %style%",
     "powerOrbStyle": {
-      "detailed": "Rinci",
+      "detailed": "Terperinci",
       "compact": "Ringkas"
     },
     "disableMagicalSoupMessage": "Nonaktifkan Pesan-Pesan Magical Mushroom Soup",
@@ -107,7 +107,7 @@
     "skyblockAddonsButtonInPauseMenu": "Perlihatkan Tombol SBA di Menu Pause",
     "showTotalZealotCount": "Penghitung Zealot - Jumlah Seluruh Zealot Terbunuh",
     "showSummoningEyeCount": "Penghitung Zealot - Jumlah Seluruh Eye Didapatkan",
-    "showZealotsPerEye": "Zealot Counter - Rata-Rata Zealot per Eye",
+    "showZealotsPerEye": "Penghitung Zealot - Rata-Rata Zealot per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Ubah Busur Menjadi Hijau Saat Menggunakan Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Timer Hujan Birch Park",
     "combatTimerDisplay": "Tampilan Timer Dalam Combat",
@@ -176,7 +176,7 @@
     "hideOtherPlayersPresents": "Sembunyikan Kado Pemain Lain",
     "easierPresentOpening": "Buka Kado Lebih Mudah",
     "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
-    "compactTabList": "Daftar Tab Kompak",
+    "compactTabList": "Daftar Tab Padat",
     "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
     "disableEmptyGlassPanes": "Nonaktifkan Panel Kaca yang Tidak Ternama",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
@@ -262,7 +262,7 @@
     "stage": "Tahap %stage%",
     "switchedSlots": "Anda baru saja mengubah dari slot terkunci atau benda langka. Harap tunggu sebentar sebelum menjatuhkan!",
     "clickToOpenLink": "Klik Untuk Membuka Link Ini!",
-    "clickToOpenFolder": "Klik untuk membuka berkas mod-mod Anda!",
+    "clickToOpenFolder": "Klik untuk membuka folder mod Anda!",
     "firstStatus": "Status ini akan muncul di atas",
     "secondStatus": "Status ini akan muncul dibawah status pertama Anda",
     "fallbackStatus": "Status ini akan muncul saat status otomatis anda tidak memiliki apapun untuk ditunjukkan",
@@ -372,8 +372,8 @@
         "help": "Edit Lokasi GUI"
       },
       "folder": {
-        "help": "Buka berkas mod anda",
-        "error": "Sebuah error terjadi ketika ingin membuka berkas mod: %s"
+        "help": "Buka folder mod anda",
+        "error": "Sebuah error terjadi ketika ingin membuka folder mod: %s"
       },
       "help": {
         "help": "Perlihatkan pesan pembantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
