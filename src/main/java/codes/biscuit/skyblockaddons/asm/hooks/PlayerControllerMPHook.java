@@ -4,7 +4,6 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
@@ -86,14 +85,11 @@ public class PlayerControllerMPHook {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (main.getUtils().isOnSkyblock()) {
-            Location location = main.getUtils().getLocation();
-            if (location == Location.ISLAND || location == Location.GUEST_ISLAND) {
-                IBlockState block = mc.theWorld.getBlockState(blockPos);
-                // Use vanilla break mechanic to get breaking time
-                double perTickIncrease = block.getBlock().getPlayerRelativeBlockHardness(mc.thePlayer, mc.thePlayer.worldObj, blockPos);
-                int MILLISECONDS_PER_TICK = 1000 / 20;
-                MinecraftForge.EVENT_BUS.post(new SkyblockBlockBreakEvent(blockPos, (long) (MILLISECONDS_PER_TICK / perTickIncrease)));
-            }
+            IBlockState block = mc.theWorld.getBlockState(blockPos);
+            // Use vanilla break mechanic to get breaking time
+            double perTickIncrease = block.getBlock().getPlayerRelativeBlockHardness(mc.thePlayer, mc.thePlayer.worldObj, blockPos);
+            int MILLISECONDS_PER_TICK = 1000 / 20;
+            MinecraftForge.EVENT_BUS.post(new SkyblockBlockBreakEvent(blockPos, (long) (MILLISECONDS_PER_TICK / perTickIncrease)));
         }
     }
 

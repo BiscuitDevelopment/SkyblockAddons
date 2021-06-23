@@ -59,6 +59,7 @@ public class WorldClientHook {
                     }
                 }
                 if (noOneElseMining) {
+
                     long mineTime = Math.max(System.currentTimeMillis() - MinecraftHook.startMineTime, 0);
                     MinecraftForge.EVENT_BUS.post(new SkyblockBlockBreakEvent(pos, mineTime));
                 }
