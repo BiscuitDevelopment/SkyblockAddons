@@ -194,7 +194,6 @@ public class ActionBarParser {
             setAttribute(Attribute.HEALTH, newHealth);
         }
         setAttribute(Attribute.MAX_HEALTH, maxHealth);
-        main.getRenderListener().setPredictHealth(false);
         return returnString;
     }
 

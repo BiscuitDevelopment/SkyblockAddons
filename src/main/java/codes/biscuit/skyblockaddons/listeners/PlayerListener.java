@@ -579,14 +579,14 @@ public class PlayerListener {
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
                     actionBarParser.setHealthUpdate(null);
                 }
-                if (main.getRenderListener().isPredictHealth()) {
-                    EntityPlayerSP p = mc.thePlayer;
-                    if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                        int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                        if (actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
-                            actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
-                            actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
-                        }
+                EntityPlayerSP p = mc.thePlayer;
+                if (p != null && (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) || main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION))) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
+                    int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
+                    if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
+                        actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
+                        actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
+                    }
+                    if (main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) {
                         setAttribute(Attribute.HEALTH, newHealth);
                     }
                 }
