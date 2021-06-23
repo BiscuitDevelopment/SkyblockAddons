@@ -197,6 +197,7 @@ public enum Feature {
     JUNGLE_AXE_COOLDOWN(193, Message.SETTING_JUNGLE_AXE_COOLDOWN, true, EnumUtils.FeatureSetting.COOLDOWN_PREDICTION, EnumUtils.FeatureSetting.LEVEL_100_LEG_MONKEY),
     HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, false),
     DISABLE_EMPTY_GLASS_PANES(195, "settings.disableEmptyGlassPanes", null, false),
+    ENTITY_OUTLINES(196, "settings.entityOutlinesOverride", null, false, EnumUtils.FeatureSetting.DUNGEON_PLAYER_GLOW, EnumUtils.FeatureSetting.ITEM_GLOW, EnumUtils.FeatureSetting.TREVOR_HIGHLIGHT_TRACKED_ENTITY),
 
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
