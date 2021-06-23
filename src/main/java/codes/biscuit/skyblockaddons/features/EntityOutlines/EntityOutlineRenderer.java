@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.features.EntityOutlines;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
@@ -207,6 +208,11 @@ public class EntityOutlineRenderer {
 
         // Skyblock Conditions
         if (!main.getUtils().isOnSkyblock()) {
+            return false;
+        }
+
+        // Main toggle for outlines features
+        if (main.getConfigValues().isDisabled(Feature.ENTITY_OUTLINES)) {
             return false;
         }
 
