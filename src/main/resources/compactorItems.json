@@ -1,4 +1,10 @@
 {
+  "ABSOLUTE_ENDER_PEARL": {
+    "itemId": "skull",
+    "displayName": "§9Absolute Ender Pearl",
+    "skullId": "8fa8272c-7171-3ff6-a997-b46ed76a3bf7",
+    "texture": "5cb7c21cc43dc17678ee6f16591ffaab1f637c37f4f6bbd8cea497451d76db6d"
+  },
   "CLAY": {
     "itemId": "clay",
     "displayName": "§fClay",
