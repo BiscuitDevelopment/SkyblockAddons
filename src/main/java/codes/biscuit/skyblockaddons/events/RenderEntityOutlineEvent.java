@@ -4,6 +4,7 @@ import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
+import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraftforge.fml.common.eventhandler.Event;
 
 import java.util.HashMap;
@@ -108,7 +109,7 @@ public class RenderEntityOutlineEvent extends Event {
         entitiesToChooseFrom = new HashSet<>(entities.size());
         // Only consider entities that aren't invisible armorstands to increase FPS significantly
         entities.forEach(e -> {
-            if (e != null && !(e instanceof EntityArmorStand && e.isInvisible())) {
+            if (e != null && !(e instanceof EntityArmorStand && e.isInvisible()) && !(e instanceof EntityItemFrame)) {
                 entitiesToChooseFrom.add(e);
             }
         });
