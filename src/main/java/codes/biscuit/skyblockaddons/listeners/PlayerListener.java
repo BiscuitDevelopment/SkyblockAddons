@@ -991,24 +991,13 @@ public class PlayerListener {
     }
 
     /**
-     * Modifies item tooltips and activates the copy item nbt feature
+     * Modifies bottom of item tooltips and activates the copy item nbt feature
      */
-    @SubscribeEvent(priority = EventPriority.LOW)
-    public void onItemTooltip(ItemTooltipEvent e) {
+    @SubscribeEvent(priority = EventPriority.NORMAL)
+    public void onItemTooltipFirst(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
         if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
-
-            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENT_LORE_PARSING)) {
-                EnchantManager.parseEnchants(e.toolTip, hoveredItem);
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
-                for (int i = 0; i < e.toolTip.size(); i++) {
-                    e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
-                }
-            }
-
             int insertAt = e.toolTip.size();
             insertAt--; // 1 line for the rarity
             if (e.showAdvancedItemTooltips) {
@@ -1051,7 +1040,6 @@ public class PlayerListener {
                     e.toolTip.add(insertAt++, "§7Base Stat Boost: " + colorCode + "+" + baseStatBoost + "%");
                 }
 
-                // TODO: This should be a subfeature of parse enchantment lore, but with the current settings it's too difficult to place it in the settings menu
                 if (main.getConfigValues().isEnabled(Feature.SHOW_STACKING_ENCHANT_PROGRESS)) {
                     insertAt = EnchantManager.insertStackingEnchantProgress(e.toolTip, extraAttributes, insertAt);
                 }
@@ -1081,6 +1069,27 @@ public class PlayerListener {
                     insertAt = e.toolTip.size() - 1;
 
                     e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
+                }
+            }
+        }
+    }
+
+    /**
+     * Modifies item enchantments on tooltips as well as roman numerals
+     */
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public void onItemTooltipLast(ItemTooltipEvent e) {
+        ItemStack hoveredItem = e.itemStack;
+
+        if (e.toolTip != null && main.getUtils().isOnSkyblock()) {
+
+            if (main.getConfigValues().isEnabled(Feature.ENCHANTMENT_LORE_PARSING)) {
+                EnchantManager.parseEnchants(e.toolTip, hoveredItem);
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
+                for (int i = 0; i < e.toolTip.size(); i++) {
+                    e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
                 }
             }
         }

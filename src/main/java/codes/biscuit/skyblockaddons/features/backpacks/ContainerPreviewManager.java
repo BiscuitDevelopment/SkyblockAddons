@@ -26,7 +26,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.Constants;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.io.ByteArrayInputStream;
@@ -464,7 +463,6 @@ public class ContainerPreviewManager {
                 if (!frozen) {
                     currentContainerPreview = containerPreview;
                 }
-                main.getPlayerListener().onItemTooltip(new ItemTooltipEvent(itemStack, null, null, false));
                 return true;
             }
         }
