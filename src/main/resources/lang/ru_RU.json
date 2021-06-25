@@ -301,7 +301,7 @@
     "titleProfile": "Профиль",
     "descriptionProfile": "Показывает имя вашего Профиля",
     "titleTime": "Время в Skyblock",
-    "descriptionTime": "Показывает текущее время в SkyBlock. Например, 12:00am 1-го числа Ранней Зимы",
+    "descriptionTime": "Показывает текущее время в SkyBlock, например, \"12:00am 1st Early Winter\"",
     "titleCustom": "Пользовательский Статус",
     "descriptionCustom": "Введите Пользовательский Статус",
     "titleAuto": "Автостатус",
@@ -428,7 +428,7 @@
         "killsSet": "Счётчик убийств для вызова босса %boss% был изменен на %number%.",
         "statSet": "Статистика %stat% для вызова %boss% была изменена на %number%.",
         "invalidBoss": "\"%input%\" не является правильной статистикой!",
-        "invalidStat": "\"%input%\" не является нужным боссом!"
+        "invalidStat": "Босса \"%input%\" не существует!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Разр.) §7Переключить запись сообщений из строки действий",
