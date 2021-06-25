@@ -638,7 +638,7 @@ public class RenderListener {
         if (feature == Feature.MANA_TEXT) {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
             // Append overflow mana to mana text if necessary
-            if (main.getConfigValues().isEnabled(Feature.OVERFLOW_MANA)/* && getAttribute(Attribute.OVERFLOW_MANA) > 0*/) {
+            if (main.getConfigValues().isEnabled(Feature.OVERFLOW_MANA) && (getAttribute(Attribute.OVERFLOW_MANA) > 0 || buttonLocation != null)) {
                 text += " +" + getAttribute(Attribute.OVERFLOW_MANA) + "ʬ";
             }
 
