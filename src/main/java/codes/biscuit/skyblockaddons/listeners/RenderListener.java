@@ -30,7 +30,6 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.shader.ShaderManager;
 import codes.biscuit.skyblockaddons.shader.chroma.ChromaScreenTexturedShader;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -650,7 +649,7 @@ public class RenderListener {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
 
         } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
-            text = Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)) + " " + Minecraft.getMinecraft().thePlayer.getAbsorptionAmount();
+            text = String.valueOf(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
 
         } else if (feature == Feature.DRILL_FUEL_TEXT) {
             if (!ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
