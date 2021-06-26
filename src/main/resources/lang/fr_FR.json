@@ -114,8 +114,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Affichage du Protecteur de l'Endstone",
     "fancyWarpMenu": "Menu de téléportation",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "Désactiver le son du Rat Pet",
+    "onlyStopRatSqueak": "Désactiver uniquement le son du Rat Squeak",
     "doubleWarp": "Double téléportation",
     "advancedMode": "Mode avancé",
     "legendarySeaCreatureWarning": "Créature légendaire pêché",
@@ -133,10 +133,10 @@
     "dungeonMapDisplay": "Affichage de la carte du donjon",
     "rotateMap": "Orienter la carte avec la position du joueur",
     "centerRotationOnYourPlayer": "Centrer la rotation autour de votre joueur",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "Afficher uniquement le Fetchur dans les Dwarven Mines",
+    "showFetchurItemName": "Afficher le nom de l'objet du Fetchur",
+    "showFetchurInventoryOpenOnly": "Afficher uniquement les objets du Fetchur lorsque l'inventaire est ouvert",
+    "warnWhenFetchurChanges": "M'avertir lorsque le Fetchur change",
     "mapZoom": "Zoom de carte",
     "glowingDroppedItems": "Rendre en surbrillance les items au sol",
     "glowingDungeonTeammates": "Rendre en surbrillance les coéquipiers",
@@ -189,7 +189,7 @@
     "onlyMineOresDwarvenMines": "Miner uniquement les minerais dans la Dwarven Mines",
     "drillFuelBar": "Barre de carburant du Drill",
     "drillFuelText": "Quantité de carburant du Drill",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "Afficher ce que le Fetchur veut aujourd'hui",
     "fishingParticleOverlay": "Overlay des particules de pêche",
     "enchantmentLoreParsing": "Trier les outils d'enchantements",
     "cooldownPrediction": "Prédire et réduire le temps de recharge",
@@ -201,12 +201,12 @@
     "hideEnchantDescription": "Masquer la description de l'enchantement",
     "trevorTheTrapper": {
       "title": "Fonctionnalités de Trevor the Trapper",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "trackedEntityProximityIndicator": "Afficher l'indicateur de proximité des entités suivies",
+      "highlightTrackedEntity": "Surligner l'entité suivie",
+      "showQuestCooldown": "Afficher le temps de recharge de la quête de Trevor",
+      "showQuestCooldownDescription": "Ceci sera affiché au-dessus de la tête de Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview"
+    "showEnderChestPreview": "Afficher l'aperçu du coffre de l'Ender"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -270,7 +270,7 @@
     "cancelledPark": "Une fonctionnalité vous a empêché de casser ce bloc ici.",
     "bossApproaching": "Vous êtes sur le point de faire apparaître un boss!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Le Fetchur à changé!",
     "enableAll": "Tout activer",
     "disableAll": "Tout désactiver",
     "enchantmentInclusionExample": "p. ex. \"prot, feather\"",
@@ -283,7 +283,7 @@
     "none": "Aucun",
     "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rTemps de recharge: %time%s"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -314,13 +314,13 @@
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
+    "title": "Contrôler comment les enchantements sont affichés dans les info-bulles d'objet",
     "titleCompress": "Compresser",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "descriptionCompress": "Compresse l'enchantement sur le moins de lignes possible",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
+    "descriptionNormal": "Affiche les enchantements comme Hypixel",
     "titleExpand": "Expandre",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionExpand": "Liste chaque enchantement sur sa propre ligne"
   },
   "commandUsage": {
     "sba": {
@@ -384,7 +384,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Affiche les comptes stockés dans les compteurs de mort du donjon à des fins de débogage."
       },
       "reload": {
         "help": "§e(Dev) §7Recharge tous les paramètres et ressources du mod. Le jeu va se figer pendant quelques secondes."

@@ -114,7 +114,7 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostrar Estágio do Protetor de Endstone",
     "fancyWarpMenu": "Menu de Warp Bonito",
-    "stopRatSounds": "Stop Rat Pet Sounds",
+    "stopRatSounds": "Parar Sons do Rat Pet",
     "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Duplo",
     "advancedMode": "Modo Avançado",
@@ -133,10 +133,10 @@
     "dungeonMapDisplay": "Exibição do mapa de Dungeon",
     "rotateMap": "Girar o Mapa Conforme a Rotação de Seu Jogador",
     "centerRotationOnYourPlayer": "Girar ao redor do marcador do jogador",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "Somente exibir o item do Fetchur nas Minas dos Anões",
+    "showFetchurItemName": "Exibir o nome do item do Fetchur",
+    "showFetchurInventoryOpenOnly": "Somente Exibir o Item do Fetchur quando o inventário estiver aberto",
+    "warnWhenFetchurChanges": "Alertar-me quando Fetchur mudar",
     "mapZoom": "Zoom do Mapa",
     "glowingDroppedItems": "Itens Derrubados Brilhantes",
     "glowingDungeonTeammates": "Companheiros de Time Brilhantes em Dungeons",
@@ -189,7 +189,7 @@
     "onlyMineOresDwarvenMines": "Apenas quebrar minérios nas Minas dos Anões",
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelText": "Número do combustível da Drill",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "Exibir o que Fetchur quer hoje",
     "fishingParticleOverlay": "Sobreposição de partículas de pesca",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Prever e diminuir o tempo de recarga",
@@ -206,7 +206,7 @@
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview"
+    "showEnderChestPreview": "Mostrar Pré-visualização de Baús do Fim"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -270,7 +270,7 @@
     "cancelledPark": "Uma função impediu você quebrar este bloco aqui.",
     "bossApproaching": "Você está perto de spawnar um Boss!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Fetchur mudou!",
     "enableAll": "Habilitar tudo",
     "disableAll": "Desabilitar tudo",
     "enchantmentInclusionExample": "ex.: \"prot, feather\"",
@@ -314,7 +314,7 @@
     "descriptionTarantula": "Mostra que você está fazendo uma Missão da Tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
+    "title": "Controle como os encantamentos são exibidos nas dicas de itens",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
