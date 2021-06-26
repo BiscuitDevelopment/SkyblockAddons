@@ -261,6 +261,10 @@ public class SettingsGui extends GuiScreen {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+        } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE_X) {
+            buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature, true));
+        } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE_Y) {
+            buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature, false));
         } else if (setting == EnumUtils.FeatureSetting.REPEATING) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);

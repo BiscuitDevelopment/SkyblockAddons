@@ -811,6 +811,14 @@ public class ConfigValues {
         return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new FloatPair(1, 1));
     }
 
+    public float getSizesX(Feature feature) {
+        return Math.max(getSizes(feature).getX(), .25F);
+    }
+
+    public float getSizesY(Feature feature) {
+        return Math.max(getSizes(feature).getY(), .25F);
+    }
+
     public void setScaleX(Feature feature, float x) {
         FloatPair coords = getSizes(feature);
         coords.setX(x);

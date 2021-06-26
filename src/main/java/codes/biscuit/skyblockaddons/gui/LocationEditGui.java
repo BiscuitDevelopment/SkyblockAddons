@@ -11,7 +11,6 @@ import codes.biscuit.skyblockaddons.gui.buttons.ButtonSolid;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -175,8 +174,8 @@ public class LocationEditGui extends GuiScreen {
             }
 
             EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(feature);
-            float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
-            float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+            float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesX(feature) : 1;
+            float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesY(feature) : 1;
             float boxXOne = buttonLocation.getBoxXOne() * scaleX;
             float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
             float boxYOne = buttonLocation.getBoxYOne() * scaleY;
@@ -206,8 +205,8 @@ public class LocationEditGui extends GuiScreen {
         float boxXTwo = buttonLocation.getBoxXTwo();
         float boxYOne = buttonLocation.getBoxYOne();
         float boxYTwo = buttonLocation.getBoxYTwo();
-        float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
-        float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+        float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesX(feature) : 1;
+        float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesY(feature) : 1;
         buttonList.add(new ButtonResize(boxXOne * scaleX, boxYOne * scaleY, feature, ButtonResize.Corner.TOP_LEFT));
         buttonList.add(new ButtonResize(boxXTwo * scaleX, boxYOne * scaleY, feature, ButtonResize.Corner.TOP_RIGHT));
         buttonList.add(new ButtonResize(boxXOne * scaleX, boxYTwo * scaleY, feature, ButtonResize.Corner.BOTTOM_LEFT));
@@ -225,8 +224,8 @@ public class LocationEditGui extends GuiScreen {
                     continue;
                 }
 
-                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
-                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesX(feature) : 1;
+                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesY(feature) : 1;
                 float boxXOne = buttonLocation.getBoxXOne() * scaleX;
                 float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
                 float boxYOne = buttonLocation.getBoxYOne() * scaleY;
@@ -260,8 +259,8 @@ public class LocationEditGui extends GuiScreen {
                 }
 
                 EnumUtils.AnchorPoint anchorPoint = main.getConfigValues().getAnchorPoint(feature);
-                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getX() : 1;
-                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizes(feature).getY() : 1;
+                float scaleX = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesX(feature) : 1;
+                float scaleY = feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR ? main.getConfigValues().getSizesY(feature) : 1;
                 float boxXOne = buttonLocation.getBoxXOne() * scaleX;
                 float boxXTwo = buttonLocation.getBoxXTwo() * scaleX;
                 float boxYOne = buttonLocation.getBoxYOne() * scaleY;
@@ -476,10 +475,6 @@ public class LocationEditGui extends GuiScreen {
                 if (buttonLocation == null) {
                     return;
                 }
-                FloatPair prevBarScale = main.getConfigValues().getSizes(dragging);
-                float prevScale = buttonLocation.getScale();
-                float prevScaleX = prevScale * prevBarScale.getX();
-                float prevScaleY = prevScale * prevBarScale.getY();
 
                 float middleX = (buttonLocation.getBoxXTwo() + buttonLocation.getBoxXOne()) / 2;
                 float middleY = (buttonLocation.getBoxYTwo() + buttonLocation.getBoxYOne()) / 2;

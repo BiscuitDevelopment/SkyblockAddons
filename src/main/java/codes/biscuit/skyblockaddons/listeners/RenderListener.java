@@ -389,15 +389,16 @@ public class RenderListener {
 
         float x = main.getConfigValues().getActualX(feature);
         float y = main.getConfigValues().getActualY(feature);
-        FloatPair scales = main.getConfigValues().getSizes(feature);
-        GlStateManager.scale(scales.getX(), scales.getY(), 1);
+        float scaleX = main.getConfigValues().getSizesX(feature);
+        float scaleY = main.getConfigValues().getSizesY(feature);
+        GlStateManager.scale(scaleX, scaleY, 1);
 
-        x = transformXY(x, 71, scale * scales.getX());
-        y = transformXY(y, 5, scale * scales.getY());
+        x = transformXY(x, 71, scale * scaleX);
+        y = transformXY(y, 5, scale * scaleY);
 
         // Render the button resize box if necessary
         if (buttonLocation != null) {
-            buttonLocation.checkHoveredAndDrawBox(x, x + 71, y, y + 5, scale, scales.getX(), scales.getY());
+            buttonLocation.checkHoveredAndDrawBox(x, x + 71, y, y + 5, scale, scaleX, scaleY);
         }
 
         SkyblockColor color = ColorUtils.getDummySkyblockColor(main.getConfigValues().getColor(feature), main.getConfigValues().getChromaFeatures().contains(feature));

@@ -201,7 +201,9 @@
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Entity Outlines",
-    "effectiveHealthText": "Show Effective Health"
+    "effectiveHealthText": "Show Effective Health",
+    "guiScaleX": "Gui X Scale: %scale%",
+    "guiScaleY": "Gui Y Scale: %scale%"
   },
   "messages": {
     "enchants": "Enchants",

@@ -189,6 +189,8 @@ public class EnumUtils {
     public enum FeatureSetting {
         COLOR(SETTING_CHANGE_COLOR, -1),
         GUI_SCALE(SETTING_GUI_SCALE, -1),
+        GUI_SCALE_X("settings.guiScaleX", -1),
+        GUI_SCALE_Y("settings.guiScaleY", -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
         TEXT_MODE(SETTING_TEXT_MODE, -1),

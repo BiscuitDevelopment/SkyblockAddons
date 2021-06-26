@@ -172,6 +172,10 @@ public class SkyblockAddons {
         for (Feature feature : Feature.values()) {
             if (feature.isGuiFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
             if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
+            if (feature.getGuiFeatureData() != null && feature.getGuiFeatureData().getDrawType() == EnumUtils.DrawType.BAR) {
+                feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE_X);
+                feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE_Y);
+            }
         }
 
         if (configValues.isEnabled(Feature.FANCY_WARP_MENU)) {
