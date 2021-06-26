@@ -136,7 +136,7 @@
     "showFetchurOnlyInDwarven": "Somente exibir o item do Fetchur nas Minas dos Anões",
     "showFetchurItemName": "Exibir o nome do item do Fetchur",
     "showFetchurInventoryOpenOnly": "Somente Exibir o Item do Fetchur quando o inventário estiver aberto",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "warnWhenFetchurChanges": "Alertar-me quando Fetchur mudar",
     "mapZoom": "Zoom do Mapa",
     "glowingDroppedItems": "Itens Derrubados Brilhantes",
     "glowingDungeonTeammates": "Companheiros de Time Brilhantes em Dungeons",
@@ -270,7 +270,7 @@
     "cancelledPark": "Uma função impediu você quebrar este bloco aqui.",
     "bossApproaching": "Você está perto de spawnar um Boss!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Fetchur mudou!",
     "enableAll": "Habilitar tudo",
     "disableAll": "Desabilitar tudo",
     "enchantmentInclusionExample": "ex.: \"prot, feather\"",
@@ -314,7 +314,7 @@
     "descriptionTarantula": "Mostra que você está fazendo uma Missão da Tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
+    "title": "Controle como os encantamentos são exibidos nas dicas de itens",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
