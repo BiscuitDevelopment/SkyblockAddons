@@ -242,7 +242,6 @@ public class EnumUtils {
         STOP_ONLY_RAT_SQUEAK(SETTING_STOP_ONLY_RAT_SQUEAK, 184),
         SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
         HIDE_WHEN_NOT_IN_END("settings.hideWhenNotDoingQuest", 187),
-        OVERFLOW_MANA("settings.showOverflowManaText", 191),
         HEALTH_PREDICTION("settings.vanillaHealthPrediction", 194),
         DUNGEON_PLAYER_GLOW("settings.glowingDungeonTeammates", 103),
         ITEM_GLOW("settings.glowingDroppedItems", 109),
