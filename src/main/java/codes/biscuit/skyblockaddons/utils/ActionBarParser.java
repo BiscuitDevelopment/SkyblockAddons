@@ -207,7 +207,7 @@ public class ActionBarParser {
         // 421/421✎ 10ʬ
         int mana = Integer.parseInt(splitStats[0]);
         int maxMana = Integer.parseInt(splitStats[1]);
-        int overflowMana = manaSection.contains("ʬ") ? Integer.parseInt(TextUtils.getNumbersOnly(manaSection.split(" ")[1])) : 0;
+        int overflowMana = manaSection.contains("ʬ") ? Integer.parseInt(TextUtils.getNumbersOnly(TextUtils.stripColor(manaSection).split(" ")[1])) : 0;
         setAttribute(Attribute.MANA, mana);
         setAttribute(Attribute.MAX_MANA, maxMana);
         setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
