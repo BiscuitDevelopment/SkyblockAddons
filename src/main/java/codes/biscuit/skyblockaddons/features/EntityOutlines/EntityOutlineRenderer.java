@@ -110,7 +110,7 @@ public class EntityOutlineRenderer {
                     }
                 }
                 // Reset depth function
-                GlStateManager.depthFunc(GL11.GL_LESS);
+                GlStateManager.depthFunc(GL11.GL_LEQUAL);
             }
             // Render no-xray outlines second, taking into consideration the depth bit
             if (!isNoXrayCacheEmpty()) {
