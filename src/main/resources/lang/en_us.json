@@ -200,7 +200,8 @@
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Entity Outlines"
+    "entityOutlines": "Entity Outlines",
+    "effectiveHealthText": "Show Effective Health"
   },
   "messages": {
     "enchants": "Enchants",

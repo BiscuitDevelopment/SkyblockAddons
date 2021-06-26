@@ -648,14 +648,15 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
 
+        } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
+            text = Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)) + " " + Minecraft.getMinecraft().thePlayer.getAbsorptionAmount();
+
         } else if (feature == Feature.DRILL_FUEL_TEXT) {
             if (!ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
                 return;
             }
             text = (getAttribute(Attribute.FUEL) + "/" + getAttribute(Attribute.MAX_FUEL)).replaceAll("000$", "k");
-        }
-
-        else if (feature == Feature.DEFENCE_PERCENTAGE) {
+        } else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = getAttribute(Attribute.DEFENCE);
             double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
             BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);

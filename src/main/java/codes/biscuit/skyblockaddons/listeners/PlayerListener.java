@@ -544,15 +544,10 @@ public class PlayerListener {
                     actionBarParser.setHealthUpdate(null);
                 }
                 EntityPlayerSP p = mc.thePlayer;
-                if (p != null && (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) || main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION))) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                    int newHealth = Math.round(getAttribute(Attribute.MAX_HEALTH) * (p.getHealth() / p.getMaxHealth()));
-                    if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != -1 && actionBarParser.getLastSecondHealth() != newHealth) {
-                        actionBarParser.setHealthUpdate(newHealth - actionBarParser.getLastSecondHealth());
-                        actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
-                    }
-                    if (main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) {
-                        setAttribute(Attribute.HEALTH, newHealth);
-                    }
+                if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
+                    int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                            getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
+                    setAttribute(Attribute.HEALTH, newHealth);
                 }
                 if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
                     main.getUtils().playLoudSound("random.successful_hit", 0.8);
@@ -1266,7 +1261,13 @@ public class PlayerListener {
     }
 
     public void updateLastSecondHealth() {
-        actionBarParser.setLastSecondHealth(getAttribute(Attribute.HEALTH));
+        int health = getAttribute(Attribute.HEALTH);
+        // Update the health gained/lost over the last second
+        if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != health) {
+            actionBarParser.setHealthUpdate(health - actionBarParser.getLastSecondHealth());
+            actionBarParser.setLastHealthUpdate(System.currentTimeMillis());
+        }
+        actionBarParser.setLastSecondHealth(health);
     }
 
     public boolean shouldResetMouse() {

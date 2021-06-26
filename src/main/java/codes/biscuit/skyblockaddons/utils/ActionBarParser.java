@@ -190,9 +190,7 @@ public class ActionBarParser {
             healthUpdate = newHealth - lastSecondHealth;
             lastHealthUpdate = System.currentTimeMillis();
         }
-        if (main.getConfigValues().isDisabled(Feature.HEALTH_PREDICTION)) {
-            setAttribute(Attribute.HEALTH, newHealth);
-        }
+        setAttribute(Attribute.HEALTH, newHealth);
         setAttribute(Attribute.MAX_HEALTH, maxHealth);
         return returnString;
     }
