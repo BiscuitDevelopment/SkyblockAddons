@@ -19,7 +19,6 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
-import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
@@ -73,7 +72,6 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.world.ChunkEvent;
@@ -524,40 +522,6 @@ public class PlayerListener {
                         CooldownManager.put(itemId, cooldownTime);
                     }
                 }
-            } else if (heldItem.getItem().equals(Items.blaze_rod)) {
-                String itemId = ItemUtils.getSkyblockItemID(heldItem);
-
-                if (main.getConfigValues().isEnabled(Feature.DISABLE_EMBER_ROD) && main.getUtils().getLocation() == Location.ISLAND
-                        && itemId != null && itemId.equals("EMBER_ROD")) {
-                    e.setCanceled(true);
-                }
-            }
-
-            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS)) {
-                if (EnchantedItemPlacementBlocker.shouldBlockPlacement(heldItem, e)) {
-                    // Block the player from placing this item if it's on the enchanted item blacklist.
-                    e.setCanceled(true);
-                }
-            }
-        }
-    }
-
-    /**
-     * Block emptying of buckets separately because they aren't handled like blocks.
-     * The event name {@code FillBucketEvent} is misleading. The event is fired when buckets are emptied also so
-     * it should really be called {@code BucketEvent}.
-     *
-     * @param bucketEvent the event
-     */
-    @SubscribeEvent
-    public void onBucketEvent(FillBucketEvent bucketEvent) {
-        ItemStack bucket = bucketEvent.current;
-        EntityPlayer player = bucketEvent.entityPlayer;
-
-        if (main.getUtils().isOnSkyblock() && player instanceof EntityPlayerSP) {
-            if (main.getConfigValues().isEnabled(Feature.AVOID_PLACING_ENCHANTED_ITEMS) &&
-                    EnchantedItemPlacementBlocker.shouldBlockPlacement(bucket, bucketEvent)) {
-                bucketEvent.setCanceled(true);
             }
         }
     }
