@@ -56,7 +56,7 @@ public class FontRendererHook {
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '§') {
                 i++;
-                if (i < s.length() && s.charAt(i) == 'z') {
+                if (i < s.length() && (s.charAt(i) == 'z' || s.charAt(i) == 'Z')) {
                     hasChroma = true;
                     break;
                 }

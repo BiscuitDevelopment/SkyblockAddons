@@ -196,7 +196,7 @@ public enum Feature {
     HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, false),
     DISABLE_EMPTY_GLASS_PANES(195, "settings.disableEmptyGlassPanes", null, false),
     ENTITY_OUTLINES(196, "settings.entityOutlines", null, false, EnumUtils.FeatureSetting.DUNGEON_PLAYER_GLOW, EnumUtils.FeatureSetting.ITEM_GLOW, EnumUtils.FeatureSetting.TREVOR_HIGHLIGHT_TRACKED_ENTITY),
-    EFFECTIVE_HEALTH_TEXT(197, "settings.effectiveHealthText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_GREEN), true),
+    EFFECTIVE_HEALTH_TEXT(197, "settings.effectiveHealthText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_GREEN), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
