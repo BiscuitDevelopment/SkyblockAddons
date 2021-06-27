@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayr Trackr - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayr Trackr - Tarantula/Spidr",
     "svenSlayerTracker": "Slayr Trackr - Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Text mode",
     "dragonsNestOnly": "Only Show in da Dragons Nest",
     "dragonStatsTracker": "Dragon Trackr",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Dis will be displayd aboov Trevors head"
     },
     "showEnderChestPreview": "Show Endr Chest Preview",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfathr:",
     "sven": "Sven Packmastr:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Click warp point 2 travel thar!",
