@@ -45,6 +45,8 @@ public class ActionBarParser {
 
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
+    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎ (Mana)|((?<overflow>-?[0-9,]+)ʬ)");
+
 
     private final SkyblockAddons main;
 
@@ -141,7 +143,7 @@ public class ActionBarParser {
             // ❈ indicates a defense section
             return parseDefense(section, numbersOnly);
         } else if (section.contains("✎")) {
-            return parseMana(section, splitStats);
+            return parseMana(section);
         } else if (section.contains("(")) {
             return parseSkill(section);
         } else if (section.contains("Ⓞ") || section.contains("ⓩ")) {
@@ -201,24 +203,27 @@ public class ActionBarParser {
      * Parses the mana section and sets the read values as attributes in {@link Utils}.
      *
      * @param manaSection Mana section of the action bar
-     * @param splitStats Pre-split stat strings
      * @return null or {@code manaSection} if neither mana bar nor mana text are enabled
      */
-    private String parseMana(String manaSection, String[] splitStats) {
+    private String parseMana(String manaSection) {
         // 183/171✎ Mana
         // 421/421✎ 10ʬ
-        int mana = Integer.parseInt(splitStats[0]);
-        int maxMana = Integer.parseInt(splitStats[1]);
-        int overflowMana = manaSection.contains("ʬ") ? Integer.parseInt(TextUtils.getNumbersOnly(TextUtils.stripColor(manaSection).split(" ")[1])) : 0;
-        setAttribute(Attribute.MANA, mana);
-        setAttribute(Attribute.MAX_MANA, maxMana);
-        setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
-        main.getRenderListener().setPredictMana(false);
-        if (main.getConfigValues().isEnabled(Feature.MANA_BAR) || main.getConfigValues().isEnabled(Feature.MANA_TEXT)) {
-            return null;
-        } else {
-            return manaSection;
+        // 421/421✎ -10ʬ
+        Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection));
+        if (m.matches()) {
+            setAttribute(Attribute.MANA, Integer.parseInt(m.group("num").replaceAll(",", "")));
+            setAttribute(Attribute.MAX_MANA, Integer.parseInt(m.group("den").replaceAll(",", "")));
+            int overflowMana = 0;
+            if (m.group("overflow") != null) {
+                overflowMana = Integer.parseInt(m.group("overflow").replaceAll(",", ""));
+            }
+            setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
+            main.getRenderListener().setPredictMana(false);
+            if (main.getConfigValues().isEnabled(Feature.MANA_BAR) || main.getConfigValues().isEnabled(Feature.MANA_TEXT)) {
+                return null;
+            }
         }
+        return manaSection;
     }
 
     /**
