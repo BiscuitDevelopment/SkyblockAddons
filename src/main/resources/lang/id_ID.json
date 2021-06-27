@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Pelacak Slayer - Revenant/Zombie",
     "tarantulaSlayerTracker": "Pelacak Slayer - Tarantula/Spider",
     "svenSlayerTracker": "Pelacak Slayer - Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Mode Teks",
     "dragonsNestOnly": "Hanya Memperlihatkan Di Dragon's Nest",
     "dragonStatsTracker": "Tracker Naga",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Ini akan ditampilkan diatas kepala Trevor"
     },
     "showEnderChestPreview": "Perlihatkan isi Ender Chest",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Klik sebuah titik warp untuk mengunjunginya!",
