@@ -459,7 +459,7 @@
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster：",
     "voidgloom": "Voidgloom Seraph：",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Bossを倒した数"
   },
   "warpMenu": {
     "click": "ワープ地点をクリックしてそこへ移動します！",
