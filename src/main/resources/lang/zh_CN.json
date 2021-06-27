@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "猎杀追踪器 - 亡灵/僵尸",
     "tarantulaSlayerTracker": "猎杀追踪器 - 狼蛛/蜘蛛",
     "svenSlayerTracker": "猎杀追踪器 - 狼王/狼",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "文本模式",
     "dragonsNestOnly": "仅在龙之巢穴显示",
     "dragonStatsTracker": "末影龙击杀计数",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "亡灵恐魔：",
     "tarantula": "狼蛛之父",
     "sven": "流浪狼王：",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "点击传送点以传送！",
