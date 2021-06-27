@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer 追蹤器－Revemamt/Zombie",
     "tarantulaSlayerTracker": "Slayer 追蹤器－Tarantula/Spider",
     "svenSlayerTracker": "Slayer 追蹤器－Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "文字模式",
     "dragonsNestOnly": "只在 Dragon's Nest 顯示",
     "dragonStatsTracker": "終界龍追蹤器",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "這將會顯示在 Trevor 的頭上方"
     },
     "showEnderChestPreview": "顯示終界箱預覽",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "點擊一個傳送點以傳送！",
