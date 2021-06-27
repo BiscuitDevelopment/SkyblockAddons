@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.tablist;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
+import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.features.spookyevent.SpookyEventManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
@@ -31,18 +32,23 @@ public class TabListParser {
     private static final Pattern UPGRADES_PATTERN = Pattern.compile("(?<firstPart>§e[A-Za-z ]+)(?<secondPart> §f[0-9dhms ]+)");
     private static final Pattern RAIN_TIME_PATTERN_S = Pattern.compile("Rain: (?<time>[0-9dhms ]+)");
     private static final Pattern CANDY_PATTERN_S = Pattern.compile("Your Candy: (?<green>[0-9,]+) Green, (?<purple>[0-9,]+) Purple \\((?<points>[0-9,]+) pts\\.\\)");
+    private static final Pattern SKILL_LEVEL_S = Pattern.compile("Skills: (?<skill>[A-Za-z]+) (?<level>[0-9]+).*");
 
     @Getter
     private static List<RenderColumn> renderColumns;
     @Getter
     private static String parsedRainTime = null;
+    @Getter
+    private static SkillType parsedSkill = null;
+    @Getter
+    private static int parsedSkillLevel = -1;
 
     public static void parse() {
         Minecraft mc = Minecraft.getMinecraft();
 
         if (!main.getUtils().isOnSkyblock() || (!main.getConfigValues().isEnabled(Feature.COMPACT_TAB_LIST) &&
                 (!main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) || main.getUtils().getLocation() != Location.BIRCH_PARK) &&
-                main.getConfigValues().isDisabled(Feature.CANDY_POINTS_COUNTER))) {
+                main.getConfigValues().isDisabled(Feature.CANDY_POINTS_COUNTER) && main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP))) {
             renderColumns = null;
             return;
         }
@@ -167,6 +173,7 @@ public class TabListParser {
     public static void parseSections(List<ParsedTabColumn> columns) {
         parsedRainTime = null;
         boolean foundSpooky = false;
+        parsedSkill = null;
         Matcher m;
         for (ParsedTabColumn column : columns) {
             ParsedTabSection currentSection = null;
@@ -187,7 +194,10 @@ public class TabListParser {
                             Integer.parseInt(m.group("points").replaceAll(",", "")));
                     foundSpooky = true;
                 }
-
+                if (parsedSkill == null && (m = SKILL_LEVEL_S.matcher(stripped)).matches()) {
+                    parsedSkill = SkillType.getFromString(m.group("skill"));
+                    parsedSkillLevel = Integer.parseInt(m.group("level"));
+                }
 
                 if (currentSection == null) {
                     column.addSection(currentSection = new ParsedTabSection(column));

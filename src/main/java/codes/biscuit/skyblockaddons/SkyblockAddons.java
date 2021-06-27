@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRendere
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureDungeonTeammateOutlines;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureItemOutlines;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureTrackerQuest;
+import codes.biscuit.skyblockaddons.features.SkillXpManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordRPCManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
@@ -95,6 +96,7 @@ public class SkyblockAddons {
     private final NewScheduler newScheduler;
     private final DungeonManager dungeonManager;
     private final GuiManager guiManager;
+    private final SkillXpManager skillXpManager;
 
     private boolean usingLabymod;
     private boolean usingOofModv1;
@@ -121,6 +123,7 @@ public class SkyblockAddons {
         dungeonManager = new DungeonManager();
         discordRPCManager = new DiscordRPCManager();
         guiManager = new GuiManager();
+        skillXpManager = new SkillXpManager();
     }
 
     @Mod.EventHandler

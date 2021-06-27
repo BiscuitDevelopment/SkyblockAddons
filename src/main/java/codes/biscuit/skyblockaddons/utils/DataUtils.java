@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.OnlineData;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
+import codes.biscuit.skyblockaddons.features.SkillXpManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
@@ -129,12 +130,23 @@ public class DataUtils {
 
         // Cooldown Data
         path = "/cooldowns.json";
-        try (   InputStream inputStream = DataUtils.class.getResourceAsStream(path);
-                InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
-                        StandardCharsets.UTF_8)){
-            CooldownManager.setItemCooldowns(gson.fromJson(inputStreamReader, new TypeToken<HashMap<String, Integer>>() {}.getType()));
+        try (InputStream inputStream = DataUtils.class.getResourceAsStream(path);
+             InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
+                     StandardCharsets.UTF_8)) {
+            CooldownManager.setItemCooldowns(gson.fromJson(inputStreamReader, new TypeToken<HashMap<String, Integer>>() {
+            }.getType()));
         } catch (Exception ex) {
-            handleFileReadException(ex, "Failed to read the cool down data file");
+            handleFileReadException(ex, "Failed to read the cooldown data file");
+        }
+
+        // Skill xp Data
+        path = "/skillXp.json";
+        try (InputStream inputStream = DataUtils.class.getResourceAsStream(path);
+             InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
+                     StandardCharsets.UTF_8)) {
+            main.getSkillXpManager().initialize(gson.fromJson(inputStreamReader, SkillXpManager.JsonInput.class));
+        } catch (Exception ex) {
+            handleFileReadException(ex, "Failed to read the skill xp data file");
         }
     }
 
@@ -227,6 +239,18 @@ public class DataUtils {
             if (receivedCooldowns != null) {
                 logger.info("Successfully fetched cooldowns!");
                 CooldownManager.setItemCooldowns(receivedCooldowns);
+            } else {
+                throw new NullPointerException(String.format(NO_DATA_RECEIVED_ERROR, requestUri));
+            }
+
+            // Skill xp
+            logger.info("Trying to fetch skill xp from the server...");
+            requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/skillXp.json";
+            SkillXpManager.JsonInput receivedSkillXp = httpClient.execute(new HttpGet(requestUri),
+                    createLegacyResponseHandler(SkillXpManager.JsonInput.class));
+            if (receivedSkillXp != null) {
+                logger.info("Successfully fetched skill xp!");
+                main.getSkillXpManager().initialize(receivedSkillXp);
             } else {
                 throw new NullPointerException(String.format(NO_DATA_RECEIVED_ERROR, requestUri));
             }
