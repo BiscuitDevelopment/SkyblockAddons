@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Rastreador de Slayer - Revenant/Zombie",
     "tarantulaSlayerTracker": "Rastreador de Slayer - Tarantula/Aranha",
     "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Modo do Texto",
     "dragonsNestOnly": "Apenas Mostrar no Ninho do Dragão",
     "dragonStatsTracker": "Rastreador de Dragão",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
     },
     "showEnderChestPreview": "Mostrar Pré-visualização de Baús do Fim",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Clique em algum lugar para viajar até lá!",
