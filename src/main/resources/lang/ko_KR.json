@@ -197,7 +197,7 @@
     },
     "showEnderChestPreview": "엔더 상자 아이템 보이기",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaText": "Show Overflow Mana Text",
+    "showOverflowManaText": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Show Entity Outlines",
