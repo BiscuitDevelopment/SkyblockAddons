@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Зомби",
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Паяк",
     "svenSlayerTracker": "Slayer Tracker - Sven/куче",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Текстов режим",
     "dragonsNestOnly": "Само показвай в Dragon's Nest",
     "dragonStatsTracker": "Драгон Tracker",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Това ще бъде показано надглавата на Trevor"
     },
     "showEnderChestPreview": "Покажи преглед на Ender Chest",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Натисни точка за Телепортация, за да пътуваш там!",
