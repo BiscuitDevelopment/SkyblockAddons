@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer-seuraaja - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer-seuraaja - Tarantula/Hämähäkki",
     "svenSlayerTracker": "Slayer-seuraaja - Sven/Susi",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Tekstitila",
     "dragonsNestOnly": "Näytä vain Dragon's Nestissä",
     "dragonStatsTracker": "Lohikäärmeseuraaja",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Tämä näytetään Trevorin pään päällä"
     },
     "showEnderChestPreview": "Näytä Ender Chestin esikatselu",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Paina siirtymispistettä matkustaaksesi sinne!",
