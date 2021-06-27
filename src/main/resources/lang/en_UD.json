@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "crwdns1276:0crwdne1276:0",
     "tarantulaSlayerTracker": "crwdns1278:0crwdne1278:0",
     "svenSlayerTracker": "crwdns1280:0crwdne1280:0",
+    "voidgloomSlayerTracker": "crwdns1712:0crwdne1712:0",
     "textMode": "crwdns1282:0crwdne1282:0",
     "dragonsNestOnly": "crwdns1284:0crwdne1284:0",
     "dragonStatsTracker": "crwdns1286:0crwdne1286:0",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "crwdns1670:0crwdne1670:0"
     },
     "showEnderChestPreview": "crwdns1704:0crwdne1704:0",
-    "voidgloomSlayerTracker": "crwdns1712:0crwdne1712:0",
     "hideWhenNotDoingQuest": "crwdns1714:0crwdne1714:0",
     "showOverflowManaText": "crwdns1716:0crwdne1716:0",
     "axeCooldownIndicator": "crwdns1718:0crwdne1718:0",
@@ -458,7 +458,8 @@
     "revenant": "crwdns1328:0crwdne1328:0",
     "tarantula": "crwdns1348:0crwdne1348:0",
     "sven": "crwdns1366:0crwdne1366:0",
-    "voidgloom": "crwdns1730:0crwdne1730:0"
+    "voidgloom": "crwdns1730:0crwdne1730:0",
+    "bossesKilled": "crwdns1732:0crwdne1732:0"
   },
   "warpMenu": {
     "click": "crwdns1568:0crwdne1568:0",
