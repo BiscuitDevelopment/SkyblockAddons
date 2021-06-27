@@ -45,7 +45,7 @@ public class ActionBarParser {
 
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
-    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎ (Mana)|((?<overflow>-?[0-9,]+)ʬ)");
+    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎( Mana)?|(?<overflow>-?[0-9,]+)ʬ");
 
 
     private final SkyblockAddons main;
@@ -208,7 +208,7 @@ public class ActionBarParser {
         // 183/171✎ Mana
         // 421/421✎ 10ʬ
         // 421/421✎ -10ʬ
-        Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection));
+        Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection).trim());
         if (m.matches()) {
             setAttribute(Attribute.MANA, Integer.parseInt(m.group("num").replaceAll(",", "")));
             setAttribute(Attribute.MAX_MANA, Integer.parseInt(m.group("den").replaceAll(",", "")));
