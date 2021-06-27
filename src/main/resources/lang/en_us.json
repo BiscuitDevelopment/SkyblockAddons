@@ -197,13 +197,13 @@
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaText": "Show Overflow Mana Text",
+    "showOverflowManaText": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Entity Outlines",
+    "entityOutlines": "Show Entity Outlines",
     "effectiveHealthText": "Show Effective Health",
-    "guiScaleX": "Gui X Scale: %scale%",
-    "guiScaleY": "Gui Y Scale: %scale%"
+    "guiScaleX": "GUI X Scale: %scale%",
+    "guiScaleY": "GUI Y Scale: %scale%"
   },
   "messages": {
     "enchants": "Enchants",
