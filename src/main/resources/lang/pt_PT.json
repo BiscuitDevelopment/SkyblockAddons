@@ -197,7 +197,7 @@
     },
     "showEnderChestPreview": "Mostrar pré-visualização do baú do fim",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaText": "Show Overflow Mana Text",
+    "showOverflowManaText": "Número de Overflow Mana",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Show Entity Outlines",
