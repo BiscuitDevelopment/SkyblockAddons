@@ -11,8 +11,8 @@
     "fullInventoryWarning": "Volle Inventaris Waarschuwing",
     "repeating": "Waarschuwing herhalen",
     "disableEmberRodAbility": "Ember Rod Uitschakelen op Eiland",
-    "editLocations": "GUI Locaties Bewerken",
-    "guiScale": "GUI Grootte: %scale%",
+    "editLocations": "Interfacelocaties aanpassen",
+    "guiScale": "Schaal interface: %scale%",
     "resetLocations": "Locaties Resetten",
     "minionStopWarning": "\"Minion kan niet bereiken\"-waarschuwing",
     "hidePlayersNearNPCs": "Spelers vlakbij belangrijke NPC's verbergen",
@@ -132,7 +132,7 @@
     "warnWhenFetchurChanges": "Waarschuwen wanneer Fetchurs voorwerp wijzigt",
     "mapZoom": "Kaartzoom",
     "glowingDroppedItems": "Voorwerpen laten gloeien",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "Dungeonteamgenoten omlijnen",
     "baseStatBoostPercentage": "Basisstatistiekboost voor Dungeonvoorwerpen weergeven",
     "colorByRarity": "Kleuren op zeldzaamheid",
     "showPlayerHeadsOnMap": "Spelerhoofden weergeven op Dungeonkaart",
@@ -195,15 +195,15 @@
       "showQuestCooldownDescription": "Dit word boven Trevors hoofd weergegeven"
     },
     "showEnderChestPreview": "Enderkistvoorbeeld weergeven",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaText": "Show Overflow Mana Text",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthText": "Show Effective Health",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "voidgloomSlayerTracker": "Slayertracker - Voidgloom/enderman",
+    "hideWhenNotDoingQuest": "Verbergen wanneer je geen opdracht doet",
+    "showOverflowManaText": "Mana-overlooptekst weergeven",
+    "axeCooldownIndicator": "Bijlafkoeltijd weergeven",
+    "vanillaHealthPrediction": "Gezondheidsvoorspelling vanilla gebruiken",
+    "entityOutlines": "Entiteiten omlijnen",
+    "effectiveHealthText": "Effectieve gezondheid weergeven",
+    "guiScaleX": "X-schaal interface: %scale%",
+    "guiScaleY": "Y-schaal interface: %scale%"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -362,7 +362,7 @@
         "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!"
       },
       "edit": {
-        "help": "GUI-locaties bewerken"
+        "help": "Interfacelocaties aanpassen"
       },
       "folder": {
         "help": "Modificatiemap openen",
