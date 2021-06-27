@@ -67,7 +67,7 @@
     "showItemCooldowns": "アイテムのクールダウンを表示",
     "speedPercentage": "移動速度",
     "collectionDisplay": "Skillの進捗の表示",
-    "revenantIndicator": "Slayer装備の進捗を表示",
+    "revenantIndicator": "Slayer装備の進行度インジケーターを表示",
     "specialZealotAlert": "Special Zealotのアラート",
     "enableMessageWhenActionPrevented": "動作を防止した時にメッセージを表示",
     "hidePetHealthBar": "Petの体力ゲージを非表示",
@@ -137,7 +137,7 @@
     "colorByRarity": "レアリティによって色付け",
     "showPlayerHeadsOnMap": "Dungeonの地図にプレイヤーの頭を表示",
     "showHealingCircleWall": "DungeonのHealing Circleの壁を表示",
-    "showCriticalTeammates": "Dungeonで負傷した仲間を表示",
+    "showCriticalTeammates": "Dungeonで危険な仲間を表示",
     "showGlowingItemsOnIsland": "Private Islandで発光するアイテムを表示",
     "showItemDungeonFloor": "Dungeon Itemsを入手したFloorを表示",
     "showDungeonMilestone": "Dungeon Milestoneを表示",
@@ -458,7 +458,7 @@
     "revenant": "Revenant Horror：",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster：",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph："
   },
   "warpMenu": {
     "click": "ワープ地点をクリックしてそこへ移動します！",
