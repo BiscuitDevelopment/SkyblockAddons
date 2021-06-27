@@ -126,7 +126,8 @@ public class GuiChestHook {
                             markers.put(marker, IslandWarpGui.UnlockedStatus.UNKNOWN);
                         }
                     }
-                    markers.put(IslandWarpGui.Marker.DWARVEN_FORGE, markers.getOrDefault(IslandWarpGui.Marker.DEEP_CAVERNS, IslandWarpGui.UnlockedStatus.NOT_UNLOCKED));
+                    markers.put(IslandWarpGui.Marker.DWARVEN_FORGE, markers.getOrDefault(IslandWarpGui.Marker.DEEP_CAVERNS, IslandWarpGui.UnlockedStatus.UNKNOWN));
+                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND, markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
                     if (islandWarpGui == null || !islandWarpGui.getMarkers().equals(markers)) {
                         islandWarpGui = new IslandWarpGui(markers);
                         ScaledResolution scaledresolution = new ScaledResolution(mc);

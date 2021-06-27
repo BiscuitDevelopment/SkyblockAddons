@@ -308,16 +308,17 @@ public class IslandWarpGui extends GuiScreen {
 
     @Getter
     public enum Island {
-        THE_END("The End", 260, 0),
+        THE_END("The End", 290, -10),
         BLAZING_FORTRESS("Blazing Fortress", 900, -50),
-        THE_PARK("The Park", 113, 380),
+        THE_PARK("The Park", 103, 370),
         SPIDERS_DEN("Spider's Den", 500, 420),
         DEEP_CAVERNS("Deep Caverns", 1400, 200),
-        GOLD_MINE("Gold Mine", 1110, 475),
-        MUSHROOM_DESERT("Mushroom Desert", 1480, 440),
+        GOLD_MINE("Gold Mine", 1130, 475),
+        MUSHROOM_DESERT("Mushroom Desert", 1470, 475),
         THE_BARN("The Barn", 1125, 800),
         HUB("Hub", 300, 724),
-        PRIVATE_ISLAND("Private Island", 275, 1122);
+        PRIVATE_ISLAND("Private Island", 275, 1122),
+        DUNGEON_HUB("Dungeon Hub", 1500, 1050);
 
         private final String label;
         private final int x;
@@ -382,13 +383,15 @@ public class IslandWarpGui extends GuiScreen {
         BLAZING_FORTRESS("nether", Translations.getMessage("warpMenu.spawn"), Island.BLAZING_FORTRESS, true, 80, 350),
         BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 350, 200),
 
-        THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 130, 150),
-        MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 255, 350),
+        THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 140, 150),
+        MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 210, 295),
 
-        GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 106, 259),
+        GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 86, 259),
         DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
         DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 150, 320),
         DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, false, 220, 350),
+
+        DUNGEON_HUB_ISLAND("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;
 
         private final String warpName;
