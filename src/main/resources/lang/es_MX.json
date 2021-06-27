@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Rastreador de Slayer - Revenant/Zombi",
     "tarantulaSlayerTracker": "Restreador de Slayer Tarantula/Araña",
     "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Modo Texto",
     "dragonsNestOnly": "Solo Mostrar en el Dragon's Nest",
     "dragonStatsTracker": "Rastreador de Dragones",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
     },
     "showEnderChestPreview": "Mostrar Vista Previa del Cofre de Ender",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "¡Haz clic en un punto de teletransporte para viajar allí!",
