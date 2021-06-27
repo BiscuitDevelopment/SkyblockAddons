@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantola/Ragno",
     "svenSlayerTracker": "Slayer Tracker - Sven/Lupo",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Modalità Testo",
     "dragonsNestOnly": "Mostra solo nel Dragon’s Nest",
     "dragonStatsTracker": "Tracker dei draghi",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Sarà visibile sopra la testa di Trevor"
     },
     "showEnderChestPreview": "Mostra anteprima Baule dell'Ender",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Clicca su un punto di teletrasporto per viaggiarci!",
