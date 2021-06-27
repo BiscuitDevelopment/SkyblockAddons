@@ -812,11 +812,11 @@ public class ConfigValues {
     }
 
     public float getSizesX(Feature feature) {
-        return Math.max(getSizes(feature).getX(), .25F);
+        return Math.min(Math.max(getSizes(feature).getX(), .25F), 1);
     }
 
     public float getSizesY(Feature feature) {
-        return Math.max(getSizes(feature).getY(), .25F);
+        return Math.min(Math.max(getSizes(feature).getY(), .25F), 1);
     }
 
     public void setScaleX(Feature feature, float x) {
