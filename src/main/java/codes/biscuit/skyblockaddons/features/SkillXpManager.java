@@ -10,7 +10,25 @@ import java.util.Map;
 
 public class SkillXpManager {
 
+    /**
+     * The hypixel skill xp requirements for each skill level
+     */
     private static final HashMap<SkillType, SkillXp> skillLevelXp = new HashMap<>();
+    /**
+     * The player's skill level for each skill
+     */
+    private static final HashMap<SkillType, Integer> playerSkillLevel = new HashMap<>();
+
+    /**
+     * Returns the amount of xp needed to progress from {@code level} to {@code level + 1}
+     *
+     * @param type  the skill to query
+     * @param level the level to query
+     * @return the amount of xp needed to progress to {@code level + 1}
+     */
+    public int getSkillXpForNextLevel(SkillType type, int level) {
+        return skillLevelXp.containsKey(type) ? skillLevelXp.get(type).getXpForNextLevel(level) : 0;
+    }
 
     public SkillXpManager() {
     }
@@ -22,14 +40,23 @@ public class SkillXpManager {
     }
 
     /**
-     * Returns the amount of xp needed to progress from {@code level} to {@code level + 1}
+     * Sets the player's skill level
      *
-     * @param type
-     * @param level
-     * @return
+     * @param type  the skill
+     * @param level the level
      */
-    public int getSkillXpForNextLevel(SkillType type, int level) {
-        return skillLevelXp.containsKey(type) ? skillLevelXp.get(type).getXpForNextLevel(level) : 0;
+    public void setSkillLevel(SkillType type, int level) {
+        playerSkillLevel.put(type, level);
+    }
+
+    /**
+     * Get the last stored skill level for the given skill
+     *
+     * @param type the skill to query
+     * @return the last stored skill level, or -1 if not found
+     */
+    public int getSkillLevel(SkillType type) {
+        return playerSkillLevel.getOrDefault(type, -1);
     }
 
     public static class JsonInput extends HashMap<SkillType, List<Integer>> {

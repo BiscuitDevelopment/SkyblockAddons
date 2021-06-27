@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.core.Translations;
-import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -267,9 +266,10 @@ public class ActionBarParser {
             boolean success = true;
             if (skillPercent) {
                 percent = Float.parseFloat(matcher.group("percent"));
+                int skillLevel = main.getSkillXpManager().getSkillLevel(skillType);
                 // Try to re-create xxx/xxx display
-                if (TabListParser.getParsedSkill() == skillType) {
-                    totalSkillXP = main.getSkillXpManager().getSkillXpForNextLevel(skillType, TabListParser.getParsedSkillLevel());
+                if (skillLevel != -1) {
+                    totalSkillXP = main.getSkillXpManager().getSkillXpForNextLevel(skillType, skillLevel);
                     currentSkillXP = totalSkillXP * percent / 100;
                 } else {
                     success = false;

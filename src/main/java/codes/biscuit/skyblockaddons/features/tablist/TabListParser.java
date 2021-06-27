@@ -38,10 +38,6 @@ public class TabListParser {
     private static List<RenderColumn> renderColumns;
     @Getter
     private static String parsedRainTime = null;
-    @Getter
-    private static SkillType parsedSkill = null;
-    @Getter
-    private static int parsedSkillLevel = -1;
 
     public static void parse() {
         Minecraft mc = Minecraft.getMinecraft();
@@ -173,7 +169,7 @@ public class TabListParser {
     public static void parseSections(List<ParsedTabColumn> columns) {
         parsedRainTime = null;
         boolean foundSpooky = false;
-        parsedSkill = null;
+        boolean parsedSkill = false;
         Matcher m;
         for (ParsedTabColumn column : columns) {
             ParsedTabSection currentSection = null;
@@ -194,9 +190,11 @@ public class TabListParser {
                             Integer.parseInt(m.group("points").replaceAll(",", "")));
                     foundSpooky = true;
                 }
-                if (parsedSkill == null && (m = SKILL_LEVEL_S.matcher(stripped)).matches()) {
-                    parsedSkill = SkillType.getFromString(m.group("skill"));
-                    parsedSkillLevel = Integer.parseInt(m.group("level"));
+                if (!parsedSkill && (m = SKILL_LEVEL_S.matcher(stripped)).matches()) {
+                    SkillType skillType = SkillType.getFromString(m.group("skill"));
+                    int level = Integer.parseInt(m.group("level"));
+                    main.getSkillXpManager().setSkillLevel(skillType, level);
+                    parsedSkill = true;
                 }
 
                 if (currentSection == null) {
