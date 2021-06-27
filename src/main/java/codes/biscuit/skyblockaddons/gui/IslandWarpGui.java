@@ -370,8 +370,8 @@ public class IslandWarpGui extends GuiScreen {
         CRYPT("crypt", "Crypts", Island.HUB, 550, 100),
         DUNGEON_HUB("dungeon_hub", "Dungeon Hub", Island.HUB, false, 400, 175),
 
-        SPIDERS_DEN("spider", Translations.getMessage("warpMenu.spawn"), Island.SPIDERS_DEN, true, 325, 240),
-        SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 470, 30),
+        SPIDERS_DEN("spider", Translations.getMessage("warpMenu.spawn"), Island.SPIDERS_DEN, true, 345, 240),
+        SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 450, 30),
 
         THE_PARK("park", Translations.getMessage("warpMenu.spawn"), Island.THE_PARK, true, 263, 308),
         HOWLING_CAVE("howl", "Howling Cave", Island.THE_PARK, 254, 202),
