@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer követő - Revenant/Zombi",
     "tarantulaSlayerTracker": "Slayer követő - Tarantula/Pók",
     "svenSlayerTracker": "Slayer követő - Sven/Farkas",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Text Mode",
     "dragonsNestOnly": "Csak Dragon's Nest-ben jelenjen meg",
     "dragonStatsTracker": "Sárkány követő",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Ez Trevor fölött fog megjelenni"
     },
     "showEnderChestPreview": "Ender láda betekintés",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Kattints egy warp pontra hogy odamenj!",
