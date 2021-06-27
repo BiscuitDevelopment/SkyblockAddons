@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer Twackew - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Twackew - Tarantula/Spidew",
     "svenSlayerTracker": "Slayer Twackew - Sven/Wowf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Text Mowde",
     "dragonsNestOnly": "Onwy Show in the Dragon's Nest",
     "dragonStatsTracker": "Dwagon Twackew",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Click a warp point to travel there!",
