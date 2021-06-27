@@ -68,7 +68,6 @@ public class ActionBarParser {
 
     private float currentSkillXP;
     private int totalSkillXP;
-    private boolean skillPercent;
     private float percent;
 
     public ActionBarParser() {
@@ -264,7 +263,7 @@ public class ActionBarParser {
             float gained = Float.parseFloat(matcher.group("gained").replaceAll(",", ""));
             SkillType skillType = SkillType.getFromString(matcher.group("skillName"));
 
-            skillPercent = matcher.group("percent") != null;
+            boolean skillPercent = matcher.group("percent") != null;
             boolean success = true;
             if (skillPercent) {
                 percent = Float.parseFloat(matcher.group("percent"));
@@ -278,24 +277,26 @@ public class ActionBarParser {
                 if (!success || main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
                     skillTextBuilder.append(" ").append(matcher.group("progress"));
                 } else {
-                    skillTextBuilder.append(" (").append(String.format("%.1f", currentSkillXP)).append("/").append(totalSkillXP).append(")");
+                    skillTextBuilder.append(" (").append(TextUtils.formatDouble(currentSkillXP)).append("/").append(TextUtils.abbreviate(totalSkillXP)).append(")");
                 }
             } else {
                 currentSkillXP = Float.parseFloat(TextUtils.convertMagnitudes(matcher.group("current")).replaceAll(",", ""));
                 totalSkillXP = Integer.parseInt(TextUtils.convertMagnitudes(matcher.group("total")).replaceAll(",", ""));
+                percent = totalSkillXP == 0 ? 100F : (int) (currentSkillXP * 100F / totalSkillXP * 100) / 100F;
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
                     if (totalSkillXP == 0) {
                         skillTextBuilder.append(" ").append("100.00%");
                     } else {
-                        skillTextBuilder.append(" ").append(String.format("%.2f", currentSkillXP / (float) totalSkillXP * 100F)).append("%");
+                        skillTextBuilder.append(" ").append(String.format("%.2f", percent)).append("%");
                     }
                 } else {
                     skillTextBuilder.append(" ").append(matcher.group("progress"));
                 }
             }
+            percent = Math.min(100, percent);
             // This feature is only accessible when we have the numerator and denominator
             if (success && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                if (totalSkillXP != 0) { // 0 means it's maxed...
+                if (percent != 100) { // 0 means it's maxed...
                     skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
                 }
             }

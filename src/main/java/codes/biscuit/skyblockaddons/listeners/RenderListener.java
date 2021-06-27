@@ -371,15 +371,14 @@ public class RenderListener {
             fill = (float) getAttribute(Attribute.FUEL) / getAttribute(Attribute.MAX_FUEL);
         } else if (feature == Feature.SKILL_PROGRESS_BAR) {
             ActionBarParser parser = main.getPlayerListener().getActionBarParser();
-            if (parser.isSkillPercent() && parser.getPercent() == 0 ||
-                    !parser.isSkillPercent() && main.getPlayerListener().getActionBarParser().getTotalSkillXP() == 0) {
-                if (buttonLocation == null) {
+            if (buttonLocation == null) {
+                if (parser.getPercent() == 0 || parser.getPercent() == 100) {
                     return;
                 } else {
-                    fill = 0.40F;
+                    fill = parser.getPercent() / 100;
                 }
             } else {
-                fill = parser.isSkillPercent() ? parser.getPercent() : parser.getCurrentSkillXP() / (float) parser.getTotalSkillXP();
+                fill = 0.40F;
             }
         } else {
             fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);

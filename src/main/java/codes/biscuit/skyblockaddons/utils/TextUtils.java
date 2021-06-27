@@ -35,7 +35,7 @@ public class TextUtils {
     static {
         suffixes.put(1_000, "k");
         suffixes.put(1_000_000, "M");
-        suffixes.put(1_000_000_000, "G");
+        suffixes.put(1_000_000_000, "B");
     }
 
     /**
