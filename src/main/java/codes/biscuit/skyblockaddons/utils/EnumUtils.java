@@ -243,7 +243,7 @@ public class EnumUtils {
         SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
         HIDE_WHEN_NOT_IN_END("settings.hideWhenNotDoingQuest", 187),
         HEALTH_PREDICTION("settings.vanillaHealthPrediction", 194),
-        DUNGEON_PLAYER_GLOW("settings.glowingDungeonTeammates", 103),
+        DUNGEON_PLAYER_GLOW("settings.outlineDungeonTeammates", 103),
         ITEM_GLOW("settings.glowingDroppedItems", 109),
 
         DISCORD_RP_STATE((Message) null, 0),

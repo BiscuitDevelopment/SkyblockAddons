@@ -132,7 +132,7 @@ public enum Message {
     SETTING_CENTER_ROTATION_ON_PLAYER(MessageObject.SETTING, "centerRotationOnYourPlayer"),
     SETTING_MAP_ZOOM(MessageObject.SETTING, "mapZoom"),
     SETTING_GLOWING_DROPPED_ITEMS(MessageObject.SETTING, "glowingDroppedItems"),
-    SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "glowingDungeonTeammates"),
+    SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "outlineDungeonTeammates"),
     SETTING_SHOW_BASE_STAT_BOOST_PERCENTAGE(MessageObject.SETTING, "baseStatBoostPercentage"),
     SETTING_COLOR_BY_RARITY(MessageObject.SETTING, "colorByRarity"),
     SETTING_SHOW_PLAYER_HEAD_ON_MAP(MessageObject.SETTING, "showPlayerHeadsOnMap"),
