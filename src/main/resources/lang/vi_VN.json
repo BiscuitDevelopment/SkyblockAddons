@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Bộ đếm theo dõi Slayer - Revenant",
     "tarantulaSlayerTracker": "Bộ đếm theo dõi Slayer - Tarantula",
     "svenSlayerTracker": "Bộ đếm theo dõi Slayer - Sven",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Chế độ Văn bản",
     "dragonsNestOnly": "Chỉ Hiện khi ở trong Dragon's Nest",
     "dragonStatsTracker": "Bộ đếm theo dõi Rồng",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Bấm vào một địa điểm để di chuyển đến đó!",
