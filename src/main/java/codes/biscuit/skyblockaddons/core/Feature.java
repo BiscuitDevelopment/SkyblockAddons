@@ -193,7 +193,7 @@ public enum Feature {
     OVERFLOW_MANA(191, "settings.showOverflowManaText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA), false),
     DOUBLE_WARP(192, Message.SETTING_DOUBLE_WARP, true),
     JUNGLE_AXE_COOLDOWN(193, Message.SETTING_JUNGLE_AXE_COOLDOWN, true, EnumUtils.FeatureSetting.COOLDOWN_PREDICTION, EnumUtils.FeatureSetting.LEVEL_100_LEG_MONKEY),
-    HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, false),
+    HEALTH_PREDICTION(194, "settings.vanillaHealthPrediction", null, true),
     DISABLE_EMPTY_GLASS_PANES(195, "settings.disableEmptyGlassPanes", null, false),
     ENTITY_OUTLINES(196, "settings.entityOutlines", null, false, EnumUtils.FeatureSetting.DUNGEON_PLAYER_GLOW, EnumUtils.FeatureSetting.ITEM_GLOW, EnumUtils.FeatureSetting.TREVOR_HIGHLIGHT_TRACKED_ENTITY),
     EFFECTIVE_HEALTH_TEXT(197, "settings.effectiveHealthText", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_GREEN), false),
