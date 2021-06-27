@@ -197,7 +197,7 @@
     },
     "showEnderChestPreview": "Afficher l'aperçu du coffre de l'Ender",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaText": "Show Overflow Mana Text",
+    "showOverflowManaText": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Show Entity Outlines",
