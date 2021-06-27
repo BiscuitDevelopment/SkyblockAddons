@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayertracker - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayertracker - Tarantula/Spin",
     "svenSlayerTracker": "Slayertracker - Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayertracker - Voidgloom/enderman",
     "textMode": "Tekstmodus",
     "dragonsNestOnly": "Alleen in het Drakennest weergeven",
     "dragonStatsTracker": "Draaktracker",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Dit word boven Trevors hoofd weergegeven"
     },
     "showEnderChestPreview": "Enderkistvoorbeeld weergeven",
-    "voidgloomSlayerTracker": "Slayertracker - Voidgloom/enderman",
     "hideWhenNotDoingQuest": "Verbergen wanneer je geen opdracht doet",
     "showOverflowManaText": "Mana-overlooptekst weergeven",
     "axeCooldownIndicator": "Bijlafkoeltijd weergeven",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Klik op een warppunt om erheen te gaan!",
