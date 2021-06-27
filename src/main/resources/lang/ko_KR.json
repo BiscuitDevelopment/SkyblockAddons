@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Revenant/Zombie",
     "tarantulaSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Tarantula/Spider",
     "svenSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "텍스트 모드",
     "dragonsNestOnly": "Dragon's Nest 에서만 보이기",
     "dragonStatsTracker": "드래곤 통계 기록하기",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "이것은 Trevor의 머리 위에 표시될 것 입니다."
     },
     "showEnderChestPreview": "엔더 상자 아이템 보이기",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "워프 포인트를 클릭하여 워프하세요!",
