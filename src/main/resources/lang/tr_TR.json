@@ -147,6 +147,7 @@
     "revenantSlayerTracker": "Slayer Takipçisi- Revenant/Zombi",
     "tarantulaSlayerTracker": "Slayer Takipçisi- Tarantula/Örümcek",
     "svenSlayerTracker": "Slayer Takipçisi- Sven/Kurt",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Metin modu",
     "dragonsNestOnly": "Sadece Dragon's Nest'teyken göster",
     "dragonStatsTracker": "Ejderha Takipçisi",
@@ -195,7 +196,6 @@
       "showQuestCooldownDescription": "Bu Trevor'ın Kafasının Üstünde Gözükecek"
     },
     "showEnderChestPreview": "Ender Sandığı Önizlemesini Göster",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaText": "Show Overflow Mana Text",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -458,7 +458,8 @@
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
-    "voidgloom": "Voidgloom Seraph:"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
     "click": "Buraya gitmek için bir ışınlanma noktasına tıkla!",
