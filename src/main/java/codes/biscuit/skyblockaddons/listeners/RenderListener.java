@@ -638,7 +638,7 @@ public class RenderListener {
             text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
 
         } else if (feature == Feature.OVERFLOW_MANA) {
-            if (getAttribute(Attribute.OVERFLOW_MANA) > 0 || buttonLocation != null) {
+            if (getAttribute(Attribute.OVERFLOW_MANA) != 0 || buttonLocation != null) {
                 text = getAttribute(Attribute.OVERFLOW_MANA) + "ʬ";
             } else {
                 return;
