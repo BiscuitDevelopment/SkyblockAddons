@@ -431,7 +431,7 @@ public class ItemUtils {
         ItemStack stack = createItemStack(Items.enchanted_book, name, skyblockID, false);
 
         NBTTagCompound enchantments = new NBTTagCompound();
-        enchantments.setString(enchantName, String.valueOf(enchantLevel));
+        enchantments.setInteger(enchantName, enchantLevel);
 
         NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
         extraAttributes.setTag("enchantments", enchantments);

@@ -7,6 +7,8 @@ import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
 import lombok.Getter;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraftforge.common.util.Constants;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,7 +19,7 @@ public class SlayerTracker {
     @Getter private static final SlayerTracker instance = new SlayerTracker();
 
     // Saves the last second of inventory differences
-    private transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
+    private final transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
     private transient long lastSlayerCompleted = -1;
 
     public int getSlayerKills(SlayerBoss slayerBoss) {
@@ -69,7 +71,25 @@ public class SlayerTracker {
                         if (drop.getRuneID() != null && (rune == null || rune.getType() == null || !rune.getType().equals(drop.getRuneID()))) {
                             continue;
                         }
-
+                        // If this is a book and it doesn't match, continue
+                        if (drop.getSkyblockID().equals("ENCHANTED_BOOK")) {
+                            boolean match = true;
+                            NBTTagCompound diffTag = itemDifference.getExtraAttributes().getCompoundTag("enchantments");
+                            NBTTagCompound dropTag = ItemUtils.getEnchantments(drop.getItemStack());
+                            if (diffTag != null && dropTag != null && diffTag.getKeySet().size() == dropTag.getKeySet().size()) {
+                                for (String key : diffTag.getKeySet()) {
+                                    if (!dropTag.hasKey(key, Constants.NBT.TAG_INT) || dropTag.getInteger(key) != diffTag.getInteger(key)) {
+                                        match = false;
+                                        break;
+                                    }
+                                }
+                            } else {
+                                match = false;
+                            }
+                            if (!match) {
+                                continue;
+                            }
+                        }
                         slayerTrackerData.getSlayerDropCounts().put(drop, slayerTrackerData.getSlayerDropCounts().getOrDefault(drop, 0) + itemDifference.getAmount());
                     }
                 }
