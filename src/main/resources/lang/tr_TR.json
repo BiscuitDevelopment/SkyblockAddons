@@ -202,8 +202,8 @@
     "vanillaHealthPrediction": "Vanilla Can Tahminini Kullan",
     "entityOutlines": "Varlık Ana Hatlarını Göster",
     "effectiveHealthText": "Efektif Canı Göster",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleX": "Arayüz X Ölçeği: %scale%",
+    "guiScaleY": "Arayüz Y Ölçeği: %scale%"
   },
   "messages": {
     "enchants": "Büyüler",
