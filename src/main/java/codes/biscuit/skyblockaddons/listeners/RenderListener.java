@@ -447,7 +447,6 @@ public class RenderListener {
      */
     private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
         int barHeight = 5, barWidth = 71;
-        fill = (System.currentTimeMillis() % 5000) / 5000F;
         float barFill = barWidth * fill;
         mc.getTextureManager().bindTexture(BARS);
         if (color.getColor() == ColorCode.BLACK.getColor()) {
@@ -455,6 +454,7 @@ public class RenderListener {
         } else { // A little darker for contrast...
             ColorUtils.bindColor(color.getColor(), 0.9F);
         }
+        // If chroma, draw the empty bar much darker than the filled bar
         if (color.drawMulticolorUsingShader()) {
             GlStateManager.color(.5F, .5F, .5F);
             ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
