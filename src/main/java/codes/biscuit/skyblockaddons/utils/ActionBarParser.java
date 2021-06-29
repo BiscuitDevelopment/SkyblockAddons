@@ -68,6 +68,7 @@ public class ActionBarParser {
     private float currentSkillXP;
     private int totalSkillXP;
     private float percent;
+    private boolean healthLock;
 
     public ActionBarParser() {
         this.main = SkyblockAddons.getInstance();
@@ -192,8 +193,13 @@ public class ActionBarParser {
             healthUpdate = newHealth - lastSecondHealth;
             lastHealthUpdate = System.currentTimeMillis();
         }
+        healthLock = false;
+        boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
+                ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
+        System.out.println(postSetLock + " " + Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) + "  " + ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth));
         setAttribute(Attribute.HEALTH, newHealth);
         setAttribute(Attribute.MAX_HEALTH, maxHealth);
+        healthLock = postSetLock;
         return returnString;
     }
 
@@ -379,11 +385,13 @@ public class ActionBarParser {
 
     /**
      * Sets an attribute in {@link Utils}
+     * Ignores health if it's locked
      *
      * @param attribute Attribute
-     * @param value Attribute value
+     * @param value     Attribute value
      */
     private void setAttribute(Attribute attribute, int value) {
+        if (attribute == Attribute.HEALTH && healthLock) return;
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 }
