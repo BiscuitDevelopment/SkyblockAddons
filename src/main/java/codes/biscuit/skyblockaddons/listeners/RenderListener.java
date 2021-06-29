@@ -447,6 +447,7 @@ public class RenderListener {
      */
     private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
         int barHeight = 5, barWidth = 71;
+        fill = (System.currentTimeMillis() % 5000) / 5000F;
         float barFill = barWidth * fill;
         mc.getTextureManager().bindTexture(BARS);
         if (color.getColor() == ColorCode.BLACK.getColor()) {
@@ -455,11 +456,17 @@ public class RenderListener {
             ColorUtils.bindColor(color.getColor(), 0.9F);
         }
         if (color.drawMulticolorUsingShader()) {
-            ColorUtils.bindWhite();
+            GlStateManager.color(.5F, .5F, .5F);
             ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
         }
         // Empty bar first
         DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 1, barWidth, barHeight, 80, 50);
+
+        if (color.drawMulticolorUsingShader()) {
+            ColorUtils.bindWhite();
+            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
+        }
+
         // Filled bar next
         if (fill != 0) {
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 7, barFill, barHeight, 80, 50);
