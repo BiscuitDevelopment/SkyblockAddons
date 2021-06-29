@@ -286,10 +286,16 @@ public class ActionBarParser {
                 // We may only have the percent at this point
                 skillTextBuilder.append(" ").append(String.format("%.2f", percent)).append("%");
             } else {
+                // Append "(currentXp/totalXp)"
                 skillTextBuilder.append(" (").append(TextUtils.formatDouble(currentSkillXP));
                 // Only print the total when it doesn't = 0
                 if (totalSkillXP != 0) {
-                    skillTextBuilder.append("/").append(TextUtils.abbreviate(totalSkillXP));
+                    skillTextBuilder.append("/");
+                    if (main.getConfigValues().isEnabled(Feature.ABBREVIATE_SKILL_XP_DENOMINATOR)) {
+                        skillTextBuilder.append(TextUtils.abbreviate(totalSkillXP));
+                    } else {
+                        skillTextBuilder.append(TextUtils.formatDouble(totalSkillXP));
+                    }
                 }
                 skillTextBuilder.append(")");
             }

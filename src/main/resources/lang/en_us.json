@@ -203,7 +203,8 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthText": "Show Effective Health",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator"
   },
   "messages": {
     "enchants": "Enchants",
