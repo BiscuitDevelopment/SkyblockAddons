@@ -132,7 +132,7 @@ public class TabListParser {
         }
 
         Matcher matcher = COOKIE_BUFF_PATTERN.matcher(footer);
-        if (matcher.matches() && matcher.group().contains("Not active!")) {
+        if (matcher.find() && matcher.group().contains("Not active!")) {
             footer = matcher.replaceAll("Cookie Buff \n§r§7Not Active");
         }
 

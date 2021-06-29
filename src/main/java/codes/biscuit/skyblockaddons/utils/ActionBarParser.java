@@ -196,7 +196,6 @@ public class ActionBarParser {
         healthLock = false;
         boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
                 ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
-        System.out.println(postSetLock + " " + Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) + "  " + ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth));
         setAttribute(Attribute.HEALTH, newHealth);
         setAttribute(Attribute.MAX_HEALTH, maxHealth);
         healthLock = postSetLock;
