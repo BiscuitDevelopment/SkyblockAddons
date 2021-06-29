@@ -8,7 +8,6 @@ import codes.biscuit.skyblockaddons.utils.DevUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -23,7 +22,7 @@ import org.lwjgl.input.Mouse;
  */
 public class GuiScreenListener {
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Listens for key presses while a GUI is open
@@ -34,7 +33,7 @@ public class GuiScreenListener {
     public void onKeyInput(GuiScreenEvent.KeyboardInputEvent.Pre event) {
         int eventKey = Keyboard.getEventKey();
 
-        if (eventKey == main.getDeveloperCopyNBTKey().getKeyCode() && Keyboard.getEventKeyState() && main.isDevMode()) {
+        if (main.isDevMode() && eventKey == main.getDeveloperCopyNBTKey().getKeyCode() && Keyboard.getEventKeyState()) {
             // Copy Item NBT
             GuiScreen currentScreen = event.gui;
 

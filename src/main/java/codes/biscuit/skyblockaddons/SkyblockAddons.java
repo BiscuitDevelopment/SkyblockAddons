@@ -153,9 +153,13 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
                 new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
                 new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
-
-        // Don't register the developer mode key on startup.
-        registerKeyBindings(keyBindings.subList(0, 4));
+        registerKeyBindings(keyBindings);
+        /*
+         De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
+         in the first place since creating a KeyBinding object already adds it to the main key bind list. I need to manually
+         de-register it so its default key doesn't conflict with other key bindings with the same key.
+         */
+        getDeveloperCopyNBTKey().deRegister();
     }
 
     @Mod.EventHandler

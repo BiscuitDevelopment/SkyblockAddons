@@ -95,7 +95,7 @@ public class PlayerListener {
     private static final Pattern ABILITY_CHAT_PATTERN = Pattern.compile("§r§aUsed §r§6[A-Za-z ]+§r§a! §r§b\\([0-9]+ Mana\\)§r");
     private static final Pattern PROFILE_CHAT_PATTERN = Pattern.compile("You are playing on profile: ([A-Za-z]+).*");
     private static final Pattern SWITCH_PROFILE_CHAT_PATTERN = Pattern.compile("Your profile was changed to: ([A-Za-z]+).*");
-    private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)(?:s)");
+    private static final Pattern MINION_CANT_REACH_PATTERN = Pattern.compile("§cI can't reach any (?<mobName>[A-Za-z]*)s");
     private static final Pattern DRAGON_KILLED_PATTERN = Pattern.compile(" *[A-Z]* DRAGON DOWN!");
     private static final Pattern DRAGON_SPAWNED_PATTERN = Pattern.compile("☬ The (?<dragonType>[A-Za-z ]+) Dragon has spawned!");
     private static final Pattern SLAYER_COMPLETED_PATTERN = Pattern.compile(" {3}» Talk to Maddox to claim your (?<slayerType>[A-Za-z]+) Slayer XP!");
@@ -103,7 +103,7 @@ public class PlayerListener {
     private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO2 = Pattern.compile(" *SLAYER QUEST STARTED!");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
-    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to (?:\\d+) accessories in your Accessory Bag!");
+    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories in your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
 
@@ -1096,11 +1096,8 @@ public class PlayerListener {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
-        } else if (main.getDeveloperCopyNBTKey().isPressed()) {
-            // Copy Data
-            if (main.isDevMode()) {
-                DevUtils.copyData();
-            }
+        } else if (main.isDevMode() && main.getDeveloperCopyNBTKey().isPressed()) {
+            DevUtils.copyData();
         }
 
         if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) && main.getUtils().isInDungeon()) {

@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.utils.*;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.command.*;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
@@ -175,15 +176,15 @@ public class SkyblockAddonsCommand extends CommandBase {
                     main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
                 } else if (args[0].equalsIgnoreCase("dev") || args[0].equalsIgnoreCase("nbt")) {
-                    SkyblockKeyBinding devKeyBinding = main.getDeveloperCopyNBTKey();
+                    SkyblockKeyBinding devModeKeyBinding = main.getDeveloperCopyNBTKey();
                     main.setDevMode(!main.isDevMode());
 
                     if (main.isDevMode()) {
-                        devKeyBinding.register();
+                        devModeKeyBinding.register();
                         main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage("commandUsage.sba.dev.enabled",
-                                Keyboard.getKeyName(devKeyBinding.getKeyCode())));
+                                GameSettings.getKeyDisplayString(devModeKeyBinding.getKeyCode())));
                     } else {
-                        devKeyBinding.deRegister();
+                        devModeKeyBinding.deRegister();
                         main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage("commandUsage.sba.dev.disabled"));
                     }
                 } else if (args[0].equalsIgnoreCase("set")) {
