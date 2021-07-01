@@ -332,7 +332,8 @@ public class ContainerPreviewManager {
             rows = Math.min(containerData.getNumRows(), 5);
             cols = containerData.getNumCols();
         } else if (TextUtils.stripColor(stack.getDisplayName()).toUpperCase().startsWith("ENDER CHEST")) {
-            rows = 5;
+            System.out.println(items.size());
+            rows = Math.min(5, (int) Math.ceil(items.size() / 9F));
         }
 
         return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, rows, cols);
