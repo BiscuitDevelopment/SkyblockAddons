@@ -289,7 +289,7 @@ public class ActionBarParser {
 
             if (!parseCurrAndTotal || main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
                 // We may only have the percent at this point
-                skillTextBuilder.append(" ").append(String.format("%.2f", percent)).append("%");
+                skillTextBuilder.append(" (").append(String.format("%.2f", percent)).append("%)");
             } else {
                 // Append "(currentXp/totalXp)"
                 skillTextBuilder.append(" (").append(TextUtils.formatDouble(currentSkillXP));
