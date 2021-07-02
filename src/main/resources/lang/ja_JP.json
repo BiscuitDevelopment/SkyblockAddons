@@ -137,7 +137,7 @@
     "colorByRarity": "レアリティによって色付け",
     "showPlayerHeadsOnMap": "Dungeonの地図にプレイヤーの頭を表示",
     "showHealingCircleWall": "DungeonのHealing Circleの壁を表示",
-    "showCriticalTeammates": "Dungeonで危険な仲間を表示",
+    "showCriticalTeammates": "Dungeonで負傷した仲間を表示",
     "showGlowingItemsOnIsland": "Private Islandで発光するアイテムを表示",
     "showItemDungeonFloor": "Dungeon Itemsを入手したFloorを表示",
     "showDungeonMilestone": "Dungeon Milestoneを表示",
