@@ -68,7 +68,7 @@ public class Updater {
         main.getRenderListener().setUpdateMessageDisplayed(false);
 
         if (updateInfo == null) {
-            LOGGER.error("Update info is null, skipping update check!");
+            LOGGER.error("Update check failed: Update info is null!");
             return;
         }
 
@@ -86,22 +86,25 @@ public class Updater {
             releaseDiff = latestRelease.compareTo(current);
         } else {
             if (!isCurrentBeta) {
-                LOGGER.error("Current version is a release version and key latestRelease is null or empty, skipping update check!");
+                LOGGER.error("Update check failed: Current version is a release version and key `latestRelease` is null " +
+                        "or empty.");
                 return;
             } else {
-                LOGGER.warn("Key latestRelease is null or empty, skipping!");
+                LOGGER.warn("Key `latestRelease` is null or empty, skipping!");
             }
         }
 
-        if (latestBetaExists) {
-            latestBeta = new ComparableVersion(updateInfo.getLatestBeta());
-            betaDiff = latestBeta.compareTo(current);
-        } else {
-            if (latestRelease == null) {
-                LOGGER.error("Keys latestRelease and latestBeta are null or empty, skipping update check!");
-                return;
+        if (isCurrentBeta) {
+            if (latestBetaExists) {
+                latestBeta = new ComparableVersion(updateInfo.getLatestBeta());
+                betaDiff = latestBeta.compareTo(current);
             } else {
-                LOGGER.warn("Key latestBeta is null or empty, skipping!");
+                if (latestRelease == null) {
+                    LOGGER.error("Update check failed: Keys `latestRelease` and `latestBeta` are null or empty.");
+                    return;
+                } else {
+                    LOGGER.warn("Key `latestBeta` is null or empty, skipping!");
+                }
             }
         }
 
@@ -119,33 +122,30 @@ public class Updater {
             String currentVersionString = current.toString();
 
             // If release is newer than this beta, target release
-            if (latestReleaseExists && currentVersionString.contains("-")) {
+            if (latestReleaseExists) {
                 ComparableVersion currentWithoutPrerelease = new ComparableVersion(currentVersionString.substring(0,
-                        currentVersionString.indexOf('-') - 1));
+                        currentVersionString.indexOf('-')));
 
-                if (releaseDiff > 0  || latestRelease.compareTo(currentWithoutPrerelease) == 0) {
+                if (releaseDiff > 0 || latestRelease.compareTo(currentWithoutPrerelease) == 0) {
                     status = OUTDATED;
                     target = latestRelease;
                 } else if (!latestBetaExists && releaseDiff < 0) {
                     status = AHEAD;
-                } else {
+                } else if (releaseDiff == 0) {
                     LOGGER.warn("The current beta version (" + currentVersionString + ") matches the latest release " +
                             "version. There is probably something wrong with the online data.");
+                    status = UP_TO_DATE;
                 }
             }
 
             if (status == null) {
-                if (latestBetaExists) {
-                    if (betaDiff == 0) {
-                        status = UP_TO_DATE;
-                    } else if (betaDiff < 0) {
-                        status = AHEAD;
-                    } else {
-                        status = BETA_OUTDATED;
-                        target = latestBeta;
-                    }
-                } else {
+                if (betaDiff == 0) {
                     status = UP_TO_DATE;
+                } else if (betaDiff < 0) {
+                    status = AHEAD;
+                } else {
+                    status = BETA_OUTDATED;
+                    target = latestBeta;
                 }
             }
         }
@@ -192,7 +192,8 @@ public class Updater {
                 messageToRender = Translations.getMessage("messages.updateChecker.notificationBox.majorAvailable", targetVersion);
             }
         } else if (status == AHEAD) {
-            LOGGER.info("The current version is newer than the latest version.");
+            LOGGER.info("The current version is newer than the latest version. Please tell an SBA developer to update" +
+                    " the online data.");
         } else {
             LOGGER.info("Up to date!");
         }
