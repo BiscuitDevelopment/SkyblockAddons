@@ -57,7 +57,17 @@ public enum Location {
 
     THE_BARN("The Barn"),
 
+    // Mushroom Desert
     MUSHROOM_DESERT("Mushroom Desert"),
+    DESERT_SETTLEMENT("Desert Settlement"),
+    JAKE_HOUSE("Jake's House"),
+    OVERGROWN_MUSHROOM_CAVE("Overgrown Mushroom Cave"),
+    GLOWING_MUSHROOM_CAVE("Glowing Mushroom Cave"),
+    SHEPHERDS_KEEP("Shepherds Keep"),
+    MUSHROOM_GORGE("Mushroom Gorge"),
+    OASIS("Oasis"),
+    TRAPPERS_DEN("Trappers Den"),
+    TREASURE_HUNTER_CAMP("Treasure Hunter Camp"),
 
     SPIDERS_DEN("Spider's Den"),
 

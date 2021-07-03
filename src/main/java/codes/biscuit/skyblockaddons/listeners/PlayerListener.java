@@ -120,6 +120,7 @@ public class PlayerListener {
     private long lastMinionSound = -1;
     private long lastBossSpawnPost = -1;
     private long lastBossDeathPost = -1;
+    private long lastTrackerSound = -1;
     private long lastMagmaWavePost = -1;
     private long lastBlazeWavePost = -1;
     private Class<?> lastOpenedInventory;
@@ -621,6 +622,47 @@ public class PlayerListener {
                 }
             }
         }
+        // Reserved for the tracker
+        if (isInMushroomDesert()) {
+            int cooldown = main.getConfigValues().getWarningSeconds() * 1000 + 5000;
+            if (main.getConfigValues().isEnabled(Feature.SHOW_TRACKER_ENTITY_LOCATION)) {
+                if (entity instanceof EntityArmorStand && entity.hasCustomName()) {
+                    String[] split = entity.getCustomNameTag().split(" ");
+                    if (split.length >= 3) {
+                        long now = System.currentTimeMillis();
+                        String trackerType = split[1];
+                        String mobType = split[2];
+                        // Detects if it's a entity for the Tracker quest, to not mistake detecting a Fishing creature
+                        if (trackerType.contains("Trackable") || trackerType.contains("Untrackable") ||
+                                trackerType.contains("Undetected") || trackerType.contains("Endangered") ||
+                                trackerType.contains("Elusive")) {
+                            if (now - lastTrackerSound > cooldown) {
+                                if (entity.ticksExisted > 30) { // A fix to avoid detecting other player's creatures, ty Phoube
+                                    lastTrackerSound = now;
+                                    main.getRenderListener().setSubtitleFeature(Feature.SHOW_TRACKER_ENTITY_LOCATION);
+                                    main.getUtils().playLoudSound("random.orb", 0.5);
+                                    String fullLoc = "X = " + entity.getPosition().getX() + ", Y = " + entity.getPosition().getY() + ", Z = " + entity.getPosition().getZ();
+                                    main.getUtils().sendMessage(Message.MESSAGE_TRACKER_LOCATION.getMessage(trackerType, mobType, fullLoc));
+                                    main.getScheduler().schedule(Scheduler.CommandType.RESET_SUBTITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks if the player is in Mushroom Desert - Updated to fit the Mushroom Desert update
+     * @return true if the player is in Mushroom Desert or in any of it's subregions
+     */
+    public boolean isInMushroomDesert() {
+        return main.getUtils().getLocation() == Location.MUSHROOM_DESERT || main.getUtils().getLocation() == Location.TRAPPERS_DEN ||
+                main.getUtils().getLocation() == Location.DESERT_SETTLEMENT || main.getUtils().getLocation() == Location.OASIS ||
+                main.getUtils().getLocation() == Location.GLOWING_MUSHROOM_CAVE || main.getUtils().getLocation() == Location.MUSHROOM_GORGE ||
+                main.getUtils().getLocation() == Location.SHEPHERDS_KEEP || main.getUtils().getLocation() == Location.OVERGROWN_MUSHROOM_CAVE ||
+                main.getUtils().getLocation() == Location.JAKE_HOUSE || main.getUtils().getLocation() == Location.TREASURE_HUNTER_CAMP;
     }
 
     @SubscribeEvent
