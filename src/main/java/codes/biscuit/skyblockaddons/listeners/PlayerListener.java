@@ -185,9 +185,6 @@ public class PlayerListener {
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
-    private String theChangedMessage;
-    private boolean changedMessage;
-
     /**
      * Reset all the timers and stuff when joining a new world.
      */
@@ -237,7 +234,6 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
-        changedMessage = false;
         String formattedText = e.message.getFormattedText();
         String unformattedText = e.message.getUnformattedText();
         String strippedText = TextUtils.stripColor(formattedText);
@@ -269,12 +265,10 @@ public class PlayerListener {
                     }
 
                     if (main.getConfigValues().isEnabled(Feature.DUNGEONS_SECRETS_DISPLAY)) {
-                        restMessage = main.getDungeonManager().addSecrets(restMessage);
+                        main.getDungeonManager().addSecrets(restMessage);
                     }
                 }
                 // Mark the message for change
-                changedMessage = true;
-                theChangedMessage = restMessage;
             } else {
                 Matcher matcher;
 
@@ -311,8 +305,7 @@ public class PlayerListener {
                     }
                     if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER)) {
                         // Edit the message to include counter.
-                        changedMessage = true;
-                        theChangedMessage = formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")";
+                        e.message = new ChatComponentText(formattedText + ColorCode.GRAY + " (" + main.getPersistentValuesManager().getPersistentValues().getKills() + ")");
                     }
                     main.getPersistentValuesManager().addEyeResetKills();
                     // TODO: Seems like leg warning and num sc killed should be separate features
@@ -471,14 +464,17 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatReceiveLast(ClientChatReceivedEvent e) {
-        // Some mods have an option to turn off actionbar messages. Until we do too, here's a temp fix.
-        if (e.message == null || e.message.getUnformattedText().trim().length() == 0) {
-            return;
-        }
-        if (changedMessage) {
-            e.message = new ChatComponentText(theChangedMessage);
+        if (e.type == 2 && !e.isCanceled()) {
+            Iterator<String> itr = actionBarParser.getStringsToRemove().iterator();
+            String message = e.message.getUnformattedText();
+            while (itr.hasNext()) {
+                message = message.replaceAll(" *" + Pattern.quote(itr.next()), "");
+            }
+            message = message.trim();
+            e.message = new ChatComponentText(message);
         }
     }
+
 
     /**
      * This method is triggered by the player right-clicking on something.

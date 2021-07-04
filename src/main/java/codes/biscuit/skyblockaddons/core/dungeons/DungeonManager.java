@@ -171,6 +171,7 @@ public class DungeonManager {
 
         secrets = Integer.parseInt(matcher.group(1));
         maxSecrets = Integer.parseInt(matcher.group(2));
+        SkyblockAddons.getInstance().getPlayerListener().getActionBarParser().getStringsToRemove().add(matcher.group());
         return matcher.replaceAll("");
     }
 

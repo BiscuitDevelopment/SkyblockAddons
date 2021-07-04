@@ -70,6 +70,8 @@ public class ActionBarParser {
     private float percent;
     private boolean healthLock;
 
+    private final LinkedList<String> stringsToRemove = new LinkedList<>();
+
     public ActionBarParser() {
         this.main = SkyblockAddons.getInstance();
     }
@@ -89,6 +91,7 @@ public class ActionBarParser {
         // This list holds the text of unused sections that aren't displayed anywhere else in SBA
         // so they can keep being displayed in the action bar
         List<String> unusedSections = new LinkedList<>();
+        stringsToRemove.clear();
 
         // health and mana section methods determine if prediction can be disabled, so enable both at first
         main.getRenderListener().setPredictMana(true);
@@ -108,6 +111,9 @@ public class ActionBarParser {
                     // can either return a string to keep displaying in the action bar
                     // or null to not display them anymore
                     unusedSections.add(sectionReturn);
+                } else {
+                    // Remove via callback
+                    stringsToRemove.add(section);
                 }
             } catch(Exception ex) {
                 unusedSections.add(section);
@@ -282,7 +288,7 @@ public class ActionBarParser {
             } else {
                 currentSkillXP = Float.parseFloat(TextUtils.convertMagnitudes(matcher.group("current")).replaceAll(",", ""));
                 totalSkillXP = Integer.parseInt(TextUtils.convertMagnitudes(matcher.group("total")).replaceAll(",", ""));
-                percent = totalSkillXP == 0 ? 100F : (int) (currentSkillXP * 100F / totalSkillXP * 100) / 100F;
+                percent = totalSkillXP == 0 ? 100F : 100F * currentSkillXP / totalSkillXP;
             }
             percent = Math.min(100, percent);
 
