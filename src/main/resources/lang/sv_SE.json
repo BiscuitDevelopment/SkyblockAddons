@@ -228,7 +228,7 @@
       "newUpdateAvailable": "En ny uppdatering (%version%) finns tillgänglig!",
       "noDownloadAvailable": "No download link available, please check our Discord server.",
       "notificationBox": {
-        "majorAvailable": "En ny större uppdatering (%version%) finns tillgänlig! Länken för nedladdningen finns i chatten.",
+        "majorAvailable": "En ny större uppdatering (%version%) finns tillgänglig! Länken för nedladdningen finns i chatten.",
         "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
         "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
       }
@@ -236,7 +236,7 @@
     "slotLocked": "Denna plats är låst!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
-    "clickMoreTimes": "Släng denna sak %times% fler gånger om du verkligen vill göra detta.",
+    "clickMoreTimes": "Klicka/släpp detta föremål %times% gånger till om du verkligen vill göra detta.",
     "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
     "featureDisabled": "Inaktiverad funktion",
     "anvilUses": "Anvil Uses: %uses%",
