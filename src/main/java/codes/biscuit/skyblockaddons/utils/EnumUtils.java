@@ -246,6 +246,7 @@ public class EnumUtils {
         DUNGEON_PLAYER_GLOW("settings.outlineDungeonTeammates", 103),
         ITEM_GLOW("settings.glowingDroppedItems", 109),
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
+        OTHER_DEFENCE_STATS("settings.otherDefenceStats", 199),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),

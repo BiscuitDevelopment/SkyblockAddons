@@ -656,6 +656,12 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = String.valueOf(getAttribute(Attribute.DEFENCE));
 
+        } else if (feature == Feature.OTHER_DEFENCE_STATS) {
+            text = main.getPlayerListener().getActionBarParser().getOtherDefense();
+            if (buttonLocation != null && (text == null || text.length() == 0)) {
+                text = "|||  T3!";
+            }
+
         } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
             text = String.valueOf(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
 

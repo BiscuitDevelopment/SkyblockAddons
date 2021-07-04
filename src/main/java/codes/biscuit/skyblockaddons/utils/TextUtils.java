@@ -260,4 +260,121 @@ public class TextUtils {
         ret = match.appendTail(sb).toString();
         return ret;
     }
+
+
+    /**
+     * Calculates and returns the first formatted substring that matches the unformatted string
+     * <p>
+     * Used for color/style compatibility mode.
+     *
+     * @param unformattedSubstring the uncolored/unstyled substring of which we request a match
+     * @param formatted            the colored string, from which we request a substring
+     * @return {@code null} if {@param unformattedSubstring} is not found in {@param formatted}, or the colored/styled substring.
+     */
+    public static String getFormattedString(String formatted, String unformattedSubstring) {
+        if (unformattedSubstring.length() == 0) {
+            return "";
+        }
+        String styles = "kKlLmMnNoO";
+        StringBuilder preEnchantFormat = new StringBuilder();
+        StringBuilder formattedEnchant = new StringBuilder();
+
+        int i = -2;
+        int len = formatted.length();
+        int unformattedEnchantIdx = 0;
+        int k = 0;
+        while (true) {
+            i = formatted.indexOf('§', i + 2);
+            // No more formatting codes were found in the string
+            if (i == -1) {
+                // Test if there is an instance of the formatted enchant in the rest of the string
+                for (; k < len; k++) {
+                    // Enchant string matches at position k
+                    if (formatted.charAt(k) == unformattedSubstring.charAt(unformattedEnchantIdx)) {
+                        formattedEnchant.append(formatted.charAt(k));
+                        unformattedEnchantIdx++;
+                        // We have matched the entire enchant. Return the current format + the formatted enchant
+                        if (unformattedEnchantIdx == unformattedSubstring.length()) {
+                            return preEnchantFormat.append(formattedEnchant).toString();
+                        }
+                    }
+                    // Enchant string doesn't match at position k
+                    else {
+                        unformattedEnchantIdx = 0;
+                        // Transfer formats from formatted enchant to format
+                        preEnchantFormat = new StringBuilder(mergeFormats(preEnchantFormat.toString(), formattedEnchant.toString()));
+                        formattedEnchant = new StringBuilder();
+                    }
+                }
+                // No matching enchant found
+                return null;
+            } else {
+                for (; k < i; k++) {
+                    if (formatted.charAt(k) == unformattedSubstring.charAt(unformattedEnchantIdx)) {
+                        formattedEnchant.append(formatted.charAt(k));
+                        unformattedEnchantIdx++;
+                        // We have matched the entire enchant. Return the current format + the formatted enchant
+                        if (unformattedEnchantIdx == unformattedSubstring.length()) {
+                            return preEnchantFormat.append(formattedEnchant).toString();
+                        }
+                    } else {
+                        unformattedEnchantIdx = 0;
+                        // Transfer formats from formatted enchant to format
+                        preEnchantFormat = new StringBuilder(mergeFormats(preEnchantFormat.toString(), formattedEnchant.toString()));
+                        formattedEnchant = new StringBuilder();
+                    }
+                }
+                // Add the format code if present
+                if (i + 1 < len) {
+                    char formatChar = formatted.charAt(i + 1);
+                    // If not parsing an enchant, alter the pre enchant format
+                    if (unformattedEnchantIdx == 0) {
+                        // Restart format at a new color
+                        if (styles.indexOf(formatChar) == -1) {
+                            preEnchantFormat = new StringBuilder();
+                        }
+                        // Append the new format code to the formatter
+                        preEnchantFormat.append("§").append(formatChar);
+                    }
+                    // If parsing an enchant, alter the current enchant format and the formatted enchant
+                    else {
+                        // Restart format at a new color
+                        formattedEnchant.append("§").append(formatChar);
+                    }
+                    // Skip the formatting code "§[0-9a-zA-Z]" on the next round
+                    k = i + 2;
+                }
+            }
+        }
+    }
+
+    /**
+     * Calculate the color/style formatting after first and second format strings
+     * <p>
+     * Used for: Given the color/style formatting before an enchantment. as well as the enchantment itself,
+     * Calculate the color/style formatting after the enchantment
+     *
+     * @param firstFormat  the color/style formatting before the string
+     * @param secondFormat the string that may have formatting codes within it
+     * @return the relevant formatting codes in effect after {@param secondFormat}
+     */
+    private static String mergeFormats(String firstFormat, String secondFormat) {
+        if (secondFormat == null || secondFormat.length() == 0) {
+            return firstFormat;
+        }
+        String styles = "kKlLmMnNoO";
+        StringBuilder builder = new StringBuilder(firstFormat);
+        int i = -2;
+        while ((i = secondFormat.indexOf('§', i + 2)) != -1) {
+            if (i + 1 < secondFormat.length()) {
+                char c = secondFormat.charAt(i + 1);
+                // If it's not a style then it's a color code
+                if (styles.indexOf(c) == -1) {
+                    builder = new StringBuilder();
+                }
+                builder.append("§").append(c);
+            }
+        }
+        return builder.toString();
+    }
 }

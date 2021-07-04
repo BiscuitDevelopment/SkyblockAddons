@@ -204,7 +204,8 @@
     "effectiveHealthText": "Show Effective Health",
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator"
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defense Stats (Tether/Align)"
   },
   "messages": {
     "enchants": "Enchants",

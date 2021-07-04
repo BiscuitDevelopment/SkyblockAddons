@@ -34,6 +34,7 @@ import java.util.regex.Pattern;
  * Woods Race:                 §A§LWOODS RACING §e00:31.520            §b147/147✎ Mana§r
  * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
  * Soulflow:                   §b421/421✎ §3100ʬ
+ * Tethered + Alignment:      §a1039§a❈ Defense§a |||§a§l  T3!
  * <p>
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
@@ -45,6 +46,7 @@ public class ActionBarParser {
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
+    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
 
 
     private final SkyblockAddons main;
@@ -69,6 +71,7 @@ public class ActionBarParser {
     private int totalSkillXP;
     private float percent;
     private boolean healthLock;
+    private String otherDefense;
 
     private final LinkedList<String> stringsToRemove = new LinkedList<>();
 
@@ -146,7 +149,7 @@ public class ActionBarParser {
             return parseHealth(section, splitStats);
         } else if (section.contains("❈")) {
             // ❈ indicates a defense section
-            return parseDefense(section, numbersOnly);
+            return parseDefense(section);
         } else if (section.contains("✎")) {
             return parseMana(section);
         } else if (section.contains("(")) {
@@ -239,18 +242,24 @@ public class ActionBarParser {
      * Parses the defense section and sets the read values as attributes in {@link Utils}.
      *
      * @param defenseSection Defense section of the action bar
-     * @param numbersOnly Pre-split stat string
      * @return null or {@code defenseSection} if neither defense text nor defense percentage are enabled
      */
-    private String parseDefense(String defenseSection, String numbersOnly) {
+    private String parseDefense(String defenseSection) {
         // §a720§a❈ Defense
-        int defense = Integer.parseInt(numbersOnly);
-        setAttribute(Attribute.DEFENCE, defense);
-        if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
-            return null;
-        } else {
-            return defenseSection;
+        // Tethered T1 (Dungeon Healer)--means tethered to 1 person I think: §a1024§a? Defense§6  T1
+        // Tethered T3! (Dungeon Healer)--not sure why exclamation mark: §a1039§a? Defense§a§l  T3!
+        // Tethered T3! (Dungeon Healer) + Aligned ||| (Gyrokinetic Wand): §a1039§a? Defense§a |||§a§l  T3!
+        String stripped = TextUtils.stripColor(defenseSection);
+        Matcher m = DEFENSE_PATTERN_S.matcher(stripped);
+        if (m.matches()) {
+            int defense = Integer.parseInt(m.group("defense"));
+            setAttribute(Attribute.DEFENCE, defense);
+            otherDefense = TextUtils.getFormattedString(defenseSection, m.group("other").trim());
+            if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
+                return null;
+            }
         }
+        return defenseSection;
     }
 
     /**
