@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Wskaźnik odnowienia Siekiery",
     "vanillaHealthPrediction": "Użyj vanillowego przewidywania zdrowia",
     "entityOutlines": "Pokaż kontury stworzeń",
-    "effectiveHealthText": "Pokaż efektywne zdrowie",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%"
   },
