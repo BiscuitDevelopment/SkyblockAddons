@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Indicateur de temps de recharge de la hache",
     "vanillaHealthPrediction": "Utiliser la prédiction de vie normal",
     "entityOutlines": "Afficher les contours des entités",
-    "effectiveHealthText": "Afficher la santé efficace",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "Échelle de l'interface X : %scale%",
     "guiScaleY": "Échelle de l'interface Y : %scale%"
   },
