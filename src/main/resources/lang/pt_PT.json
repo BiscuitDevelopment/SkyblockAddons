@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Indicador de tempo de espera do machado",
     "vanillaHealthPrediction": "Usar a previsão de vida do vanilla",
     "entityOutlines": "Mostrar contornos das entidades",
-    "effectiveHealthText": "Mostrar vida efetiva",
+    "effectiveHealthText": "Número de Vida Efetiva",
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%"
   },
