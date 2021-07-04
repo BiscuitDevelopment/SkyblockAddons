@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthText": "Show Effective Health",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%"
   },
