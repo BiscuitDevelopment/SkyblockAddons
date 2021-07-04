@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Indicador de Enfriamiento de Hacha",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
     "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthText": "Mostrar Vida Efectiva",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "Escala de GUI X: %scale%",
     "guiScaleY": "Escala de GUI Y: %scale%"
   },
