@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Indikator Cooldown Kapak",
     "vanillaHealthPrediction": "Pakai Prediksi Health Vanilla",
     "entityOutlines": "Perlihatkan Garis Luar Entity",
-    "effectiveHealthText": "Tunjukan Effective Health",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%"
   },
