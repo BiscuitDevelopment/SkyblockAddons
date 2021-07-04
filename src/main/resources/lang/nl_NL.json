@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Bijlafkoeltijd weergeven",
     "vanillaHealthPrediction": "Gezondheidsvoorspelling vanilla gebruiken",
     "entityOutlines": "Entiteiten omlijnen",
-    "effectiveHealthText": "Effectieve gezondheid weergeven",
+    "effectiveHealthText": "Effectieve gezondheid-getal",
     "guiScaleX": "X-schaal interface: %scale%",
     "guiScaleY": "Y-schaal interface: %scale%"
   },
