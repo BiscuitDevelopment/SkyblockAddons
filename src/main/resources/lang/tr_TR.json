@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "Balta Bekleme Süresi Göstergesi",
     "vanillaHealthPrediction": "Vanilla Can Tahminini Kullan",
     "entityOutlines": "Varlık Ana Hatlarını Göster",
-    "effectiveHealthText": "Efektif Canı Göster",
+    "effectiveHealthText": "Effective Health Number",
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%"
   },
