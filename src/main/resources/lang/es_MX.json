@@ -196,12 +196,12 @@
       "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
     },
     "showEnderChestPreview": "Mostrar Vista Previa del Cofre de Ender",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "hideWhenNotDoingQuest": "Solo Mostrar Durante Las Misiones",
     "showOverflowManaNumber": "Número de Overflow Mana",
     "axeCooldownIndicator": "Indicador de Enfriamiento de Hacha",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
+    "vanillaHealthPrediction": "Usar La Predicción De Salud De Vanilla",
+    "entityOutlines": "Mostrar Contornos De Las Entidades",
+    "effectiveHealthNumber": "Número de Vida Efectiva",
     "guiScaleX": "Escala de GUI X: %scale%",
     "guiScaleY": "Escala de GUI Y: %scale%"
   },
