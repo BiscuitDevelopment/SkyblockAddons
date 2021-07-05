@@ -126,7 +126,8 @@ public class FeatureTrackerQuest {
     @SubscribeEvent
     public void onEntityOutline(RenderEntityOutlineEvent e) {
         if (e.getType() == RenderEntityOutlineEvent.Type.NO_XRAY) {
-            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR) &&
+            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
+                    SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR) &&
                     isTrackingAnimal && entityToOutline != null && entityToOutline.getAnimal() != null &&
                     !Minecraft.getMinecraft().thePlayer.isPotionActive(Potion.blindness)) {
                 e.queueEntityToOutline(entityToOutline.getAnimal(), entityToOutline.getRarity().getColorInt());
@@ -138,7 +139,8 @@ public class FeatureTrackerQuest {
     public void onEntityEvent(LivingUpdateEvent e) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Entity entity = e.entity;
-        if ((main.getConfigValues().isEnabled(Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR) || main.getConfigValues().isEnabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY)) &&
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
+                (main.getConfigValues().isEnabled(Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR) || main.getConfigValues().isEnabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY)) &&
                 mushroomIslandLocations.contains(main.getUtils().getLocation())) {
             if (entity instanceof EntityArmorStand && entity.hasCustomName() && entity.ticksExisted > 30) {
                 Matcher m = TRACKED_ANIMAL_NAME_PATTERN.matcher(TextUtils.stripColor(entity.getCustomNameTag()));
@@ -161,7 +163,8 @@ public class FeatureTrackerQuest {
 
     @SubscribeEvent
     public void onChatReceived(ClientChatReceivedEvent e) {
-        if (e.type != 2 && SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
+                e.type != 2 && SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
             String stripped = TextUtils.stripColor(e.message.getFormattedText());
             // Once the player has started the hunt, start some timers
             if (TREVOR_FIND_ANIMAL_PATTERN.matcher(stripped).matches()) {
@@ -183,7 +186,8 @@ public class FeatureTrackerQuest {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onNameTagRender(Pre<EntityLivingBase> e) {
         Entity entity = e.entity;
-        if (!e.isCanceled() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_SHOW_QUEST_COOLDOWN) &&
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
+                !e.isCanceled() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_SHOW_QUEST_COOLDOWN) &&
                 CooldownManager.isOnCooldown("TREVOR_THE_TRAPPER_RETURN")) {
             Pattern p = Pattern.compile("Trevor The Trapper");
             String s = TextUtils.stripColor(entity.getCustomNameTag());
@@ -196,7 +200,8 @@ public class FeatureTrackerQuest {
 
     @SubscribeEvent
     public void onClientTick(ClientTickEvent e) {
-        if (e.phase == Phase.START && Minecraft.getMinecraft().thePlayer != null) {
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
+                e.phase == Phase.START && Minecraft.getMinecraft().thePlayer != null) {
             if (isTrackingAnimal && CooldownManager.getRemainingCooldown("TREVOR_THE_TRAPPER_HUNT") == 0) {
                 onQuestEnded();
             } else if (entityToOutline != null) {
