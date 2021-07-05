@@ -29,9 +29,9 @@
     "manaNumber": "Broj Mane",
     "healthBar": "Bar Zdravlja",
     "healthNumber": "Broj Zdravlja",
-    "defenceIcon": "Simbol Obrane",
-    "defenceNumber": "Broj Obrane",
-    "defencePercentage": "Postotak Obrane",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Broj Promjene Zdravlja",
     "hidePlayersInLobby": "Sakrij daleke Entite",
     "darkAuctionTimer": "Tajmer Crne Dražbe",
@@ -203,7 +203,9 @@
     "entityOutlines": "Prikaži obrise entiteta",
     "effectiveHealthNumber": "Učinkovito Zdravlja broj",
     "guiScaleX": "Veličina X Veličine: %scale%",
-    "guiScaleY": "Veličina Y Veličine: %scale%"
+    "guiScaleY": "Veličina Y Veličine: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Čarolije",
