@@ -205,7 +205,7 @@
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "encantamentos",
