@@ -29,9 +29,9 @@
     "manaNumber": "Mana szám",
     "healthBar": "Életerő sáv",
     "healthNumber": "Életerő szám",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Védelem szimbólum",
+    "defenceNumber": "Védelem szám",
+    "defencePercentage": "Védelem százalék",
     "healthUpdates": "Életerő változások",
     "hidePlayersInLobby": "Távoli entitiások elrejtése Lobbykban",
     "darkAuctionTimer": "Dark Auction időzítő",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Varázslatok",
