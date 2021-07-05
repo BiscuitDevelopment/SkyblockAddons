@@ -29,9 +29,9 @@
     "manaNumber": "Количество маны",
     "healthBar": "Полоса здоровья",
     "healthNumber": "Число здоровья",
-    "defenceIcon": "Иконка защиты",
-    "defenceNumber": "Число защиты",
-    "defencePercentage": "Проценты защиты",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Изменение числа здоровья",
     "hidePlayersInLobby": "Скрывать далёких существ в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Зачарования",
