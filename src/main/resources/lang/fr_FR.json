@@ -29,9 +29,9 @@
     "manaNumber": "Points de mana",
     "healthBar": "Barre de vie",
     "healthNumber": "Points de vie",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Icône de défense",
+    "defenceNumber": "Points de défense",
+    "defencePercentage": "Pourcentage de défense",
     "healthUpdates": "Historique des points de vie",
     "hidePlayersInLobby": "Masquer les joueurs éloignés du hall",
     "darkAuctionTimer": "Minuteur marché noir",
@@ -205,7 +205,7 @@
     "guiScaleX": "Échelle de l'interface X : %scale%",
     "guiScaleY": "Échelle de l'interface Y : %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchantements",
