@@ -29,9 +29,9 @@
     "manaNumber": "Jumlah Mana",
     "healthBar": "Bar Nyawa",
     "healthNumber": "Jumlah Nyawa",
-    "defenceIcon": "Simbol Pertahanan",
-    "defenceNumber": "Jumlah Pertahanan",
-    "defencePercentage": "Persentase Pertahanan",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Besar Perubahan Nyawa",
     "hidePlayersInLobby": "Sembunyikan Entitas Yang Jauh Di Lobby",
     "darkAuctionTimer": "Timer Dark Auction",
@@ -203,7 +203,9 @@
     "entityOutlines": "Perlihatkan Garis Luar Entity",
     "effectiveHealthNumber": "Jumlah Health Effective",
     "guiScaleX": "Skala GUI X: %scale%",
-    "guiScaleY": "Skala GUI Y: %scale%"
+    "guiScaleY": "Skala GUI Y: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
