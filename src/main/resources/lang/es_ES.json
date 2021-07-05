@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Número de Vida Efectiva",
     "guiScaleX": "Escala de GUI X: %scale%",
     "guiScaleY": "Escala de GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
+    "otherDefenceStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Encantamientos",
