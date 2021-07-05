@@ -204,7 +204,7 @@
     "effectiveHealthNumber": "Effectieve gezondheid-getal",
     "guiScaleX": "X-schaal interface: %scale%",
     "guiScaleY": "Y-schaal interface: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
     "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
