@@ -161,7 +161,7 @@
     "showSkillPercentageInstead": "Visa procent istället för erfarenhetspoäng",
     "showSkillXPGained": "Visa erhållna erfarenhetspoäng",
     "skillProgressBar": "Skill Progress Bar",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "showSalvageEssencesCounter": "Visa räknare för salvage essence",
     "disableMortMessages": "Inaktivera Mort-meddelanden",
     "disableBossMessages": "Inaktivera bossmeddelanden",
     "hideOtherPlayersPresents": "Dölj andra spelares presenter",
@@ -300,11 +300,11 @@
     "titleAuto": "Automatisk status",
     "descriptionAuto": "Visar automatiskt en status. T.ex. antalet zealot:er när du är i End.",
     "titleRevenants": "Revenant-uppdrag",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "descriptionRevenants": "Visar att du genomför ett revenant-uppdrag.",
     "titleSvens": "Sven-uppdrag",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "descriptionSvens": "Visar att du genomför ett sven-uppdrag.",
     "titleTarantula": "Tarantula-uppdrag",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Visar att du genomför ett tarantula-uppdrag."
   },
   "enchantLayout": {
     "title": "Kontrollera hur förtrollningar visas i inforutor för föremål",
