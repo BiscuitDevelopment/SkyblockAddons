@@ -29,9 +29,9 @@
     "manaNumber": "Mana Sayısı",
     "healthBar": "Can Çubuğu",
     "healthNumber": "Can Sayısı",
-    "defenceIcon": "Savunma Sembolü",
-    "defenceNumber": "Savunma Sayısı",
-    "defencePercentage": "Koruma Yüzdesi",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Candaki Değişiklikleri Göster",
     "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
@@ -203,7 +203,9 @@
     "entityOutlines": "Varlık Ana Hatlarını Göster",
     "effectiveHealthNumber": "Efektif Can Sayısı",
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
-    "guiScaleY": "Arayüz Y Ölçeği: %scale%"
+    "guiScaleY": "Arayüz Y Ölçeği: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Büyüler",
