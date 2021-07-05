@@ -48,7 +48,7 @@ public class EntityOutlineRenderer {
     private static Method isFastRender = null;
     private static Method isShaders = null;
     private static Method isAntialiasing = null;
-    private static final Framebuffer swapBuffer = initSwapBuffer();
+    private static Framebuffer swapBuffer = null;
 
     /**
      * @return a new framebuffer with the size of the main framebuffer
@@ -56,8 +56,27 @@ public class EntityOutlineRenderer {
     private static Framebuffer initSwapBuffer() {
         Framebuffer main = Minecraft.getMinecraft().getFramebuffer();
         Framebuffer framebuffer = new Framebuffer(main.framebufferTextureWidth, main.framebufferTextureHeight, true);
+        framebuffer.setFramebufferFilter(GL11.GL_NEAREST);
         framebuffer.setFramebufferColor(0.0F, 0.0F, 0.0F, 0.0F);
         return framebuffer;
+    }
+
+    private static void updateFramebufferSize()
+    {
+        if (swapBuffer == null) {
+            swapBuffer = initSwapBuffer();
+        }
+        int width = Minecraft.getMinecraft().displayWidth;
+        int height = Minecraft.getMinecraft().displayHeight;
+        if (swapBuffer.framebufferWidth != width || swapBuffer.framebufferHeight != height) {
+            swapBuffer.createBindFramebuffer(width, height);
+        }
+        RenderGlobal rg = Minecraft.getMinecraft().renderGlobal;
+        Framebuffer outlineBuffer = rg.entityOutlineFramebuffer;
+        if (outlineBuffer.framebufferWidth != width || outlineBuffer.framebufferHeight != height) {
+            outlineBuffer.createBindFramebuffer(width, height);
+            rg.entityOutlineShader.createBindFramebuffers(width, height);
+        }
     }
 
 
@@ -79,7 +98,7 @@ public class EntityOutlineRenderer {
             RenderManager renderManager = mc.getRenderManager();
 
             mc.theWorld.theProfiler.endStartSection("entityOutlines");
-
+            updateFramebufferSize();
             // Clear and bind the outline framebuffer
             renderGlobal.entityOutlineFramebuffer.framebufferClear();
             renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
@@ -116,6 +135,7 @@ public class EntityOutlineRenderer {
             if (!isNoXrayCacheEmpty()) {
                 if (!isNoOutlineCacheEmpty()) {
                     // Render other entities + terrain that may occlude an entity outline into a depth buffer
+                    swapBuffer.framebufferClear();
                     copyBuffers(mc.getFramebuffer(), swapBuffer, GL11.GL_DEPTH_BUFFER_BIT);
                     swapBuffer.bindFramebuffer(false);
                     // Copy terrain + other entities depth into outline frame buffer to now switch to no-xray outlines
