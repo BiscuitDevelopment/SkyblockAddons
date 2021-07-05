@@ -29,9 +29,9 @@
     "manaNumber": "Číselný ukazatel many",
     "healthBar": "Vizuální ukazatel zdraví",
     "healthNumber": "Číselný ukazatel zdraví",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Symbol obrany",
+    "defenceNumber": "Číselný ukazatel obrany",
+    "defencePercentage": "Procentuální ukazatel many",
     "healthUpdates": "Číselný ukazatel změny počtu zdraví",
     "hidePlayersInLobby": "Skrýt daleké hráče v Lobby",
     "darkAuctionTimer": "Časovač do Temné aukce",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
