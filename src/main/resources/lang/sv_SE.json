@@ -229,15 +229,15 @@
       "noDownloadAvailable": "Ingen nedladdningslänk finns tillgänglig, kolla om den finns i vår Discordserver.",
       "notificationBox": {
         "majorAvailable": "En ny större uppdatering (%version%) finns tillgänglig! Länken för nedladdningen finns i chatten.",
-        "betaAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten efter nedladdningslänken.",
-        "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+        "betaAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten för nedladdningslänken.",
+        "patchAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten för nedladdningsalternativ!"
       }
     },
     "slotLocked": "Denna plats är låst!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
+    "cancelledDropping": "En funktion har förhindrat dig från att släppa detta \"sällsynta\" föremål eller verktyg från din föremålsmeny.",
     "clickMoreTimes": "Klicka/släpp detta föremål %times% gånger till om du verkligen vill göra detta.",
-    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "clickOneMoreTime": "Klicka/släpp detta föremål 1 gång till om du verkligen vill göra detta.",
     "featureDisabled": "Inaktiverad funktion",
     "anvilUses": "Städanvändningar: %uses%",
     "specialZealotFound": "Speciell zealot!",
@@ -267,63 +267,63 @@
     "enableAll": "Aktivera alla",
     "disableAll": "Inaktivera alla",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",
-    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
-    "reforgeInclusionExample": "e.g. \"godly, strong\"",
-    "reforgeExclusionExample": "e.g. \"odd, clean\"",
+    "enchantmentExclusionExample": "t.ex. \"proj, blast\"",
+    "reforgeInclusionExample": "t.ex. \"godly, strong\"",
+    "reforgeExclusionExample": "t.ex. \"odd, clean\"",
     "actionsLeft": "%number% kvar",
     "effectActive": "1 aktiv effekt",
     "effectsActive": "%number% aktiva effekter",
-    "none": "None",
+    "none": "Ingen",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "chroma": "Chroma",
+    "chroma": "Färgövergång",
     "worldRenderedCooldownTime": "§c[SBA]: §rVäntetid: %time% s"
   },
   "discordStatus": {
-    "titleNone": "None",
+    "titleNone": "Ingen",
     "descriptionNone": "Ingen text visas",
     "titleLocation": "Plats",
     "descriptionLocation": "Visar din nuvarande plats",
     "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
+    "descriptionPurse": "Visar antalet mynt i din purse",
     "titleStats": "Statistik",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",
     "descriptionZealots": "Visar din zealot-räknare",
-    "titleItem": "Held Item",
+    "titleItem": "Föremål som hålls",
     "descriptionItem": "Shows the name of the item you're holding",
     "titleProfile": "Profil",
     "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
+    "titleTime": "Skyblock-tid",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
+    "titleCustom": "Anpassat status",
     "descriptionCustom": "Enter a custom status",
     "titleAuto": "Automatisk status",
     "descriptionAuto": "Visar automatiskt en status. T.ex. antalet zealot:er när du är i End.",
-    "titleRevenants": "Revenant Quest",
+    "titleRevenants": "Revenant-uppdrag",
     "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
+    "titleSvens": "Sven-uppdrag",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
+    "titleTarantula": "Tarantula-uppdrag",
     "descriptionTarantula": "Shows that you are doing a Tarantula quest."
   },
   "enchantLayout": {
     "title": "Kontrollera hur förtrollningar visas i verktygstipsen för föremål",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleCompress": "Komprimera",
+    "descriptionCompress": "Komprimerar förtrollningar till så få rader som möjligt",
     "titleNormal": "Normal",
     "descriptionNormal": "Visar förtrollningar som Hypixel gör",
-    "titleExpand": "Expand",
+    "titleExpand": "Expandera",
     "descriptionExpand": "Lists each enchant on its own line"
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Öppna huvudmenyn"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
-        "brandOutput": "Server Brand: %brand%",
-        "notFound": "Server brand not found!"
+        "help": "§e(Dev) §7Visa servertyp",
+        "brandOutput": "Servertyp: %brand%",
+        "notFound": "Servertyp hittades inte!"
       },
       "copyBlock": {
         "help": "§e(Dev) §7Copies data about the block that you are looking at"
@@ -339,7 +339,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "§e(Dev) §7Kopiera texten från poängtavlan",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -348,24 +348,24 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "§e(Dev) §7Kopiera spelarlistans rubrik och fotnot",
         "detailedHelp": {
           "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Byt till utvecklarläget",
         "detailedHelp": {
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
+        "disabled": "Utvecklarläge inaktiverat!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Redigera GUI-positioner"
       },
       "folder": {
-        "help": "Open your mods folder",
+        "help": "Öppna din mapp för moddar",
         "error": "An error occurred trying to open the mods folder: %s"
       },
       "help": {
