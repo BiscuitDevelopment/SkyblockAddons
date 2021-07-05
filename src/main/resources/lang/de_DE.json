@@ -29,9 +29,9 @@
     "manaNumber": "Mana-Anzahl",
     "healthBar": "Lebensleiste",
     "healthNumber": "Lebens-Anzahl",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Verteidigungs-Symbol",
+    "defenceNumber": "Verteidigungs-Zahl",
+    "defencePercentage": "Verteidigungs-Prozentsatz",
     "healthUpdates": "Lebens-Veränderungs-Zahl",
     "hidePlayersInLobby": "Verstecke weit entfernte Spieler in der Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Verzauberungen",
