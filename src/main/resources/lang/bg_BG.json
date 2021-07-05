@@ -29,9 +29,9 @@
     "manaNumber": "Мана",
     "healthBar": "Лента за Кръвта",
     "healthNumber": "Кръв",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Символ за Защита",
+    "defenceNumber": "Защита",
+    "defencePercentage": "Процент Защита",
     "healthUpdates": "Номер при Промяна на Кръвта",
     "hidePlayersInLobby": "Скрий Далечните Обекти В Лобита",
     "darkAuctionTimer": "Таймер за Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
