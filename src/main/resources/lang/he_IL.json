@@ -29,9 +29,9 @@
     "manaNumber": "מספר מאנה",
     "healthBar": "מד חיים",
     "healthNumber": "מספר חיים",
-    "defenceIcon": "סמל הגנה",
-    "defenceNumber": "מספר הגנה",
-    "defencePercentage": "אחוזי הגנה",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "שינוי כמות החיים",
     "hidePlayersInLobby": "הסתר יצורים רחוקים בלובי",
     "darkAuctionTimer": "טיימר לשוק השחור",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "כישופים",
