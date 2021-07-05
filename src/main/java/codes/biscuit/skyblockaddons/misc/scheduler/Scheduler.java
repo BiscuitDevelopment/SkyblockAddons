@@ -15,9 +15,9 @@ import java.util.*;
 
 public class Scheduler {
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
     private long totalTicks = 0;
-    private Map<Long, Set<Command>> queue = new HashMap<>();
+    private final Map<Long, Set<Command>> queue = new HashMap<>();
 
     /**
      * This class is a little something I came up with in order to schedule things
@@ -109,9 +109,9 @@ public class Scheduler {
 
     @Getter
     private class Command {
-        private CommandType commandType;
-        private MutableInt count = new MutableInt(1);
-        private Map<Integer, Object[]> countData = new HashMap<>();
+        private final CommandType commandType;
+        private final MutableInt count = new MutableInt(1);
+        private final Map<Integer, Object[]> countData = new HashMap<>();
 
         private Command(CommandType commandType, Object... data) {
             this.commandType = commandType;
@@ -139,7 +139,6 @@ public class Scheduler {
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
         ERASE_UPDATE_MESSAGE,
-        SET_LAST_SECOND_HEALTH,
         DELETE_RECENT_CHUNK,
         SHOW_FULL_INVENTORY_WARNING,
         CHECK_FOR_UPDATE;
@@ -181,8 +180,6 @@ public class Scheduler {
                 main.getRenderListener().setSubtitleFeature(null);
             } else if (this == ERASE_UPDATE_MESSAGE) {
                 main.getRenderListener().setUpdateMessageDisplayed(true);
-            } else if (this == SET_LAST_SECOND_HEALTH) {
-                main.getPlayerListener().setLastSecondHealth((int) commandData[0]);
             } else if (this == CHECK_FOR_UPDATE) {
                 main.getUpdater().checkForUpdate();
             }

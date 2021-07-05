@@ -1249,10 +1249,6 @@ public class PlayerListener {
         return actionBarParser.getTickers();
     }
 
-    public void setLastSecondHealth(int lastSecondHealth) {
-        actionBarParser.setLastSecondHealth(lastSecondHealth);
-    }
-
     public void updateLastSecondHealth() {
         int health = getAttribute(Attribute.HEALTH);
         // Update the health gained/lost over the last second
