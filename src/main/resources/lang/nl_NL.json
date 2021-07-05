@@ -29,9 +29,9 @@
     "manaNumber": "Managetal",
     "healthBar": "Gezondheidsbalk",
     "healthNumber": "Gezondheidsgetal",
-    "defenceIcon": "Verdedigings Symbool",
-    "defenceNumber": "Verdedigingsgetal",
-    "defencePercentage": "Verdediging Percentage",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Gezondheidsveranderingsgetal",
     "hidePlayersInLobby": "Verre entiteiten in lobby verbergen",
     "darkAuctionTimer": "Timer Donkere Veiling",
@@ -203,7 +203,9 @@
     "entityOutlines": "Entiteiten omlijnen",
     "effectiveHealthNumber": "Effectieve gezondheid-getal",
     "guiScaleX": "X-schaal interface: %scale%",
-    "guiScaleY": "Y-schaal interface: %scale%"
+    "guiScaleY": "Y-schaal interface: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Betoveringen",
