@@ -29,9 +29,9 @@
     "manaNumber": "Mana Number",
     "healthBar": "Health Bar",
     "healthNumber": "Health Number",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Yer' Defense Num'r",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Scallywags in th' Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effec've Health Num'arr",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
