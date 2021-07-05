@@ -89,13 +89,13 @@
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Tillåt förhandsvisning av backpack när AH-menyn är öppnen",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
-    "chromaSpeed": "Hastighet för färgövergång",
+    "chromaSpeed": "Hastighet",
     "chromaMode": "Chroma Color Mode",
     "chromaModes": {
       "allTheSame": "All the Same Color",
       "fade": "Färgtoning"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
+    "chromaFadeWidth": "Bredd för färgtoning",
     "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
@@ -171,9 +171,9 @@
     "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
-    "chromaSize": "Chroma Size",
-    "chromaSaturation": "Chroma Saturation",
-    "chromaBrightness": "Chroma Brightness",
+    "chromaSize": "Storlek",
+    "chromaSaturation": "Mättnad",
+    "chromaBrightness": "Ljusstyrka",
     "useNewChromaEffect": "Use New Chroma Effect",
     "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
     "drillFuelBar": "Drill Fuel Bar",
@@ -195,7 +195,7 @@
       "showQuestCooldown": "Visa väntetid för Trevors uppdrag",
       "showQuestCooldownDescription": "Detta kommer att visas ovanför Trevors huvud"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
+    "showEnderChestPreview": "Tillåt förhandsvisning av enderkistor",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
@@ -242,13 +242,13 @@
     "anvilUses": "Städanvändningar: %uses%",
     "specialZealotFound": "Speciell zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
+    "searchFeatures": "Sök efter funktioner",
     "downloadingUpdateFile": "Downloading update file...",
-    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "onlyFewArrowsLeft": "Endast %arrows% pilar kvar!",
     "noArrowsLeft": "Inga pilar kvar!",
     "chooseAColor": "Välj en färg",
     "selectedColor": "Vald färg",
-    "setHexColor": "Set Hex Color",
+    "setHexColor": "Ange Hex-färg",
     "rescaleFeatures": "Rescale Features",
     "resizeBars": "Ändra mätarstorlek",
     "showColorIcons": "Visa färgikoner",
@@ -266,7 +266,7 @@
     "fetchurWarning": "Fetchur changed!",
     "enableAll": "Aktivera alla",
     "disableAll": "Inaktivera alla",
-    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentInclusionExample": "t.ex. \"prot, feather\"",
     "enchantmentExclusionExample": "t.ex. \"proj, blast\"",
     "reforgeInclusionExample": "t.ex. \"godly, strong\"",
     "reforgeExclusionExample": "t.ex. \"odd, clean\"",
@@ -296,7 +296,7 @@
     "titleTime": "Skyblock-tid",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Anpassat status",
-    "descriptionCustom": "Enter a custom status",
+    "descriptionCustom": "Ange en anpassad status",
     "titleAuto": "Automatisk status",
     "descriptionAuto": "Visar automatiskt en status. T.ex. antalet zealot:er när du är i End.",
     "titleRevenants": "Revenant-uppdrag",
@@ -410,18 +410,18 @@
         "detailedHelp": {
           "description": "Manually set slayer stats, press tab for arguments",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "boss": "Slayer-boss: \"Zombie\", \"Spidel\", eller \"Varg\"",
             "number": "Number to set the stat to",
             "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
+        "bossRequired": "Du måste välja en boss! Välj %bosses%",
+        "statRequired": "Du måste välja en statistik. Tryck på Tabb för alternativ.",
+        "numberRequired": "Du måste lägga till det nummer du vill ha.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
         "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "invalidStat": "\"%input%\" är inte en giltig boss!"
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7Toggle logging action bar messages",
@@ -430,7 +430,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Fel användning!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
@@ -451,7 +451,7 @@
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "Placerade ögon",
     "never": "Aldrig"
   },
   "slayerTracker": {
@@ -459,27 +459,27 @@
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
     "voidgloom": "Voidgloom Seraph:",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Dödade bossar"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
+    "click": "Klicka på en punkt för att teleporteras dit!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "privateIsland": "Privat ö",
+    "home": "Din ö",
+    "spawn": "Startområdet",
+    "unknown": "Har inte besökts",
+    "notUnlocked": "Inte upplåst",
+    "inCombat": "I strid..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
+    "superTier": "Maximal nivå",
+    "highTier": "Hög nivå",
+    "midTier": "Medelhög nivå",
+    "lowTier": "Låg nivå",
     "commas": "Kommatecken",
     "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "compactedBlocks": "Kompakterade block",
+    "cultivatedCrops": "Planterade grödor",
+    "maxed": "Maximerad"
   }
 }
