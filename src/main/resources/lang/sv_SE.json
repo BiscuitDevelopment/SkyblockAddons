@@ -6,7 +6,7 @@
     "magmaBossWarning": "Magma Boss Warning",
     "itemDropConfirmation": "Släppbekräftelse för föremål",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
-    "skeletonHatBonesBar": "Benmätare för 'Skeleton's Helmet'",
+    "skeletonHatBonesBar": "Benmätare för skeleton's helmet",
     "hideFoodAndArmor": "Dölj mat- & rustningsmätare",
     "fullInventoryWarning": "Varna för fullt förråd",
     "repeating": "Upprepa varning",
@@ -55,7 +55,7 @@
       "two": "Stil två"
     },
     "warningDuration": "Varningstid",
-    "dontOpenProfileWithBow": "Öppna inte profiler med pilbåge",
+    "dontOpenProfileWithBow": "Öppna inte profiler när du håller i en pilbåge",
     "stopDroppingSellingRareItems": "Undvik att släppa/sälja sällsynta föremål",
     "makeBackpackInventoriesColored": "Färga förråd",
     "replaceRomanNumeralsWithNumbers": "Ersätt romerska siffror på föremål",
@@ -109,13 +109,13 @@
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Snygg teleporteringsmeny",
     "stopRatSounds": "Stoppa ljud från råtthusdjur",
-    "onlyStopRatSqueak": "Stoppa endast gnisselljud råtthusdjur",
+    "onlyStopRatSqueak": "Stoppa endast gnisselljud från råtthusdjur",
     "doubleWarp": "Teleportera två gånger",
     "advancedMode": "Avancerat läge",
     "legendarySeaCreatureWarning": "Varna för legendariska havsvarelser",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Inaktivera meddelanden från teleport pads",
-    "baitListDisplay": "Visa beteslista när du håller ett fiskespö",
+    "baitListDisplay": "Visa beteslista när du håller i ett fiskespö",
     "freezeBackpackPreview": "Lås position för förhandsvisningar",
     "hideGreyEnchants": "Dölj vanliga grå förtrollningar",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
@@ -147,7 +147,7 @@
     "revenantSlayerTracker": "Slayer-spårare - Revenant/zombie",
     "tarantulaSlayerTracker": "Slayer-spårare - Tarantella/spindel",
     "svenSlayerTracker": "Slayer-spårare - Sven/varg",
-    "voidgloomSlayerTracker": "Slayer-spårare - Voidgloom/Enderman",
+    "voidgloomSlayerTracker": "Slayer-spårare - Voidgloom/enderman",
     "textMode": "Textläge",
     "dragonsNestOnly": "Only Show in the Dragon's Nest",
     "dragonStatsTracker": "Drakspårare",
@@ -229,7 +229,7 @@
       "noDownloadAvailable": "Ingen nedladdningslänk finns tillgänglig, kolla om den finns i vår Discordserver.",
       "notificationBox": {
         "majorAvailable": "En ny större uppdatering (%version%) finns tillgänglig! Länken för nedladdningen finns i chatten.",
-        "betaAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten för nedladdningslänken.",
+        "betaAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten efter nedladdningslänken.",
         "patchAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten för nedladdningsalternativ!"
       }
     },
@@ -259,7 +259,7 @@
     "clickToOpenFolder": "Klicka för att öppna mappen för moddar!",
     "firstStatus": "Denna status kommer att visas överst",
     "secondStatus": "Denna status kommer att visas under din första status",
-    "fallbackStatus": "Denna status visas när din automatiska status inte har något att visa",
+    "fallbackStatus": "Denna status kommer att visas när din automatiska status inte har något att visa",
     "legendarySeaCreatureWarning": "Legendarisk fångst!",
     "bossApproaching": "You are close to spawning a boss!",
     "fetchurItem": "Fetchur: %item%",
@@ -295,7 +295,7 @@
     "descriptionProfile": "Visar ditt profilnamn",
     "titleTime": "Skyblock-tid",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Anpassat status",
+    "titleCustom": "Anpassad status",
     "descriptionCustom": "Ange en anpassad status",
     "titleAuto": "Automatisk status",
     "descriptionAuto": "Visar automatiskt en status. T.ex. antalet zealot:er när du är i End.",
@@ -329,7 +329,7 @@
         "help": "§e(Dev) §7Kopierar data om det block som du tittar på"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopiera NBT-data för enheter med de angivna namnet/namnen inom den angivna radien runt spelaren.",
+        "help": "§e(Dev) §7Kopiera NBT-data för entiteter med de angivna namnet/namnen inom den angivna radien runt spelaren",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -431,7 +431,7 @@
       "errors": {
         "wrongUsage": {
           "generic": "Fel användning!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "Underkommandot \"%sub-command%\" hittades inte."
         }
       }
     }
@@ -447,7 +447,7 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
+    "recentDragons": "Senaste drakarna:",
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
