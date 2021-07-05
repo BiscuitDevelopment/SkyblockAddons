@@ -29,9 +29,9 @@
     "manaNumber": "Mana nummer",
     "healthBar": "Helse bar",
     "healthNumber": "Helse nummer",
-    "defenceIcon": "Forsvars symbol",
-    "defenceNumber": "Forsvars nummer",
-    "defencePercentage": "Forsvars-prosent",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Helse endrings nummer",
     "hidePlayersInLobby": "Skjul entiteter langt unna i lobbyen",
     "darkAuctionTimer": "Mørk-auksjon timer",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Fortryllinger",
