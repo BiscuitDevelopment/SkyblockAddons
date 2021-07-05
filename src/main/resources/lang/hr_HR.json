@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Postavke",
     "magmaBossWarning": "Magma Boss Upozorenje",
-    "itemDropConfirmation": "Konfirmacija Bacanja Stvari",
+    "itemDropConfirmation": "Potvrda Bacanja Stvari",
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
     "hideFoodAndArmor": "Sakrij Hranu i Armor Bar",
@@ -448,11 +448,11 @@
     "strong": "Strong",
     "superior": "Superior",
     "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "dragonsSince": "Ubijeno Zmajevo od:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Oči postavljeno",
+    "never": "Nikad"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
@@ -462,24 +462,24 @@
     "bossesKilled": "Bosses Killed"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Stisni Putujte da putuješ ondje!",
+    "mustUnlock": "Moraš imati poseban svitak otključan.",
+    "privateIsland": "Privatan otok",
+    "home": "Vaš otok",
+    "spawn": "Stvaranje",
+    "unknown": "Niste posjetili",
+    "notUnlocked": "Niste otključali",
+    "inCombat": "U borbi..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Najviši Rang",
+    "highTier": "Visoki Rang",
+    "midTier": "Srednji Rang",
+    "lowTier": "Niski Rang",
+    "commas": "Zarezi",
+    "expertiseKills": "Expertise broj",
+    "compactedBlocks": "Compact broj",
+    "cultivatedCrops": "Cultivating broj",
+    "maxed": "Najjače"
   }
 }
