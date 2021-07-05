@@ -29,9 +29,9 @@
     "manaNumber": "Número de Mana",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Símbolo da Defesa",
+    "defenceNumber": "Número de Defesa",
+    "defencePercentage": "Percentagem de Defesa",
     "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "darkAuctionTimer": "Tempo até à Dark Auction",
@@ -66,7 +66,7 @@
     "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
-    "collectionDisplay": "Progresso das habilidades",
+    "collectionDisplay": "Progresso das skills",
     "revenantIndicator": "Indicador de progresso da armadura de Slayer",
     "specialZealotAlert": "Alerta para Zealots especiais",
     "enableMessageWhenActionPrevented": "Enviar uma mensagem sempre que uma ação é prevenida",
@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Número de Vida Efetiva",
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "encantamentos",
