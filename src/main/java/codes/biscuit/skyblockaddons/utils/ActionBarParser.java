@@ -198,10 +198,6 @@ public class ActionBarParser {
                 returnString = null;
             }
         }
-        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-            healthUpdate = newHealth - lastSecondHealth;
-            lastHealthUpdate = System.currentTimeMillis();
-        }
         healthLock = false;
         boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
                 ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
