@@ -29,9 +29,9 @@
     "manaNumber": "法力值",
     "healthBar": "生命计量条",
     "healthNumber": "生命值",
-    "defenceIcon": "防御图标",
-    "defenceNumber": "防御值",
-    "defencePercentage": "防御比例",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "生命值波动",
     "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI 横向长度: %scale%",
-    "guiScaleY": "GUI 纵向高度: %scale%"
+    "guiScaleY": "GUI 纵向高度: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
