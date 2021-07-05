@@ -29,9 +29,9 @@
     "manaNumber": "Mana number",
     "healthBar": "Elude riba",
     "healthNumber": "Elude number",
-    "defenceIcon": "Kaitse sümbol",
-    "defenceNumber": "Kaitse number",
-    "defencePercentage": "Kaitse protsent",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Elude muutumise protsent",
     "hidePlayersInLobby": "Peida lobby 's kauged olendid",
     "darkAuctionTimer": "Dark Auction 'i taimer",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Loitsud",
