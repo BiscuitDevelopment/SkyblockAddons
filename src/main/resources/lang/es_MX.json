@@ -29,9 +29,9 @@
     "manaNumber": "Número de Maná",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Símbolo de Defensa",
+    "defenceNumber": "Número de Defensa",
+    "defencePercentage": "Porcentaje de Defensa",
     "healthUpdates": "Número de Actualización de Vida",
     "hidePlayersInLobby": "Ocultar Entidades Lejanas en Lobby",
     "darkAuctionTimer": "Tiempo para el Mercado Negro",
@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Número de Vida Efectiva",
     "guiScaleX": "Escala de GUI X: %scale%",
     "guiScaleY": "Escala de GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
+    "otherDefenceStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Encantamientos",
