@@ -29,9 +29,9 @@
     "manaNumber": "Mana数",
     "healthBar": "体力ゲージ",
     "healthNumber": "体力数",
-    "defenceIcon": "防御力マーク",
-    "defenceNumber": "防御力数",
-    "defencePercentage": "ダメージの軽減率",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "体力の変動数",
     "hidePlayersInLobby": "ロビーで遠くにいるエンティティを非表示",
     "darkAuctionTimer": "Dark Auctionのタイマー",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "エンチャント",
