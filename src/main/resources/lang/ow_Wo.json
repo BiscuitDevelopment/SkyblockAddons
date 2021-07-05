@@ -29,9 +29,9 @@
     "manaNumber": "Mana Numbew",
     "healthBar": "Heawth Baw",
     "healthNumber": "Heawth Numbew",
-    "defenceIcon": "Defence Symbow",
-    "defenceNumber": "Defence Numbew",
-    "defencePercentage": "Defence Pewcentage",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Heawth Change Numbew",
     "hidePlayersInLobby": "Hide Faw Entities In Wobby",
     "darkAuctionTimer": "Dawk Auction Timew",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants ^-^",
