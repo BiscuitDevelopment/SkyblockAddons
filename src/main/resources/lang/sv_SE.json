@@ -250,10 +250,10 @@
     "selectedColor": "Vald färg",
     "setHexColor": "Set Hex Color",
     "rescaleFeatures": "Rescale Features",
-    "resizeBars": "Resize Bars",
+    "resizeBars": "Ändra mätarstorlek",
     "showColorIcons": "Visa färgikoner",
     "enableFeatureSnapping": "Enable Feature Snapping",
-    "stage": "Stage %stage%",
+    "stage": "Etapp %stage%",
     "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
     "clickToOpenLink": "Click to open this link!",
     "clickToOpenFolder": "Klicka för att öppna mappen för moddar!",
@@ -329,7 +329,7 @@
         "help": "§e(Dev) §7Kopierar data om det block som du tittar på"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Kopiera NBT-data för enheter med de angivna namnet/namnen inom den angivna radien runt spelaren.",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -350,7 +350,7 @@
       "copyTabList": {
         "help": "§e(Dev) §7Kopiera spelarlistans rubrik och fotnot",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Detta kommando kopierar spelarlistans rubrik och fotnot. Formateringskoder är inkluderade."
         }
       },
       "dev": {
@@ -369,7 +369,7 @@
         "error": "Ett fel uppstod när mappen för moddar försökte öppnas: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Visa detta hjälpmeddelande. Om ett kommando anges visas detaljerad hjälp om det kommandot.",
         "detailedHelp": {
           "options": {
             "command": "underkommandot för att få detaljerad användning för"
