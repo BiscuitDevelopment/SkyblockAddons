@@ -29,9 +29,9 @@
     "manaNumber": "จำนวนมานา",
     "healthBar": "หลอดเลือด",
     "healthNumber": "จำนวนเลือด",
-    "defenceIcon": "สัญลักษณ์พลังป้องกัน",
-    "defenceNumber": "จำนวนพลังป้องกัน",
-    "defencePercentage": "เปอร์เซ็นต์พลังป้องกัน",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "จำนวนการเพิ่มลดของเลือด",
     "hidePlayersInLobby": "ซ่อน Entity ที่อยู่ไกลในล็อบบี้",
     "darkAuctionTimer": "ระยะเวลา Dark Auction",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
