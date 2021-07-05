@@ -29,9 +29,9 @@
     "manaNumber": "Αριθμός Mana",
     "healthBar": "Μπάρα Ζωής",
     "healthNumber": "Αριθμός Ζωής",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Σύμβολο Άμυνας",
+    "defenceNumber": "Αριθμός Άμυνας",
+    "defencePercentage": "Ποσοστό Άμυνας",
     "healthUpdates": "Αριθμός Αλλαγής Ζωής",
     "hidePlayersInLobby": "Κρύψε μακριανές ουσίες στην αίθουσα",
     "darkAuctionTimer": "Χρονόμετρο Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Μαγεύει",
