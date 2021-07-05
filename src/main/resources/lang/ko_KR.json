@@ -29,9 +29,9 @@
     "manaNumber": "Mana 숫자",
     "healthBar": "체력 바",
     "healthNumber": "체력 숫자",
-    "defenceIcon": "방어력 아이콘",
-    "defenceNumber": "방어력 숫자",
-    "defencePercentage": "방어력 퍼센트",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "체력 변화량",
     "hidePlayersInLobby": "로비에서 멀리 있는 엔티티 숨기기",
     "darkAuctionTimer": "Dark Auction 타이머",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "인챈트",
