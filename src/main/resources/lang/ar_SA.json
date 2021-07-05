@@ -29,9 +29,9 @@
     "manaNumber": "رقم الـMana",
     "healthBar": "شريط الصحة",
     "healthNumber": "رقم الصحة",
-    "defenceIcon": "رمز الحماية",
-    "defenceNumber": "رقم الدفاع",
-    "defencePercentage": "نسبة الدفاع",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "رقم تعديل الصحة",
     "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الردهة",
     "darkAuctionTimer": "مؤقت الDark Auction",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "التطويرات",
