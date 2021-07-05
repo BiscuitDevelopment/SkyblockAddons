@@ -127,7 +127,7 @@ public class FeatureTrackerQuest {
     public void onEntityOutline(RenderEntityOutlineEvent e) {
         if (e.getType() == RenderEntityOutlineEvent.Type.NO_XRAY) {
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
-                    SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR) &&
+                    SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY) &&
                     isTrackingAnimal && entityToOutline != null && entityToOutline.getAnimal() != null &&
                     !Minecraft.getMinecraft().thePlayer.isPotionActive(Potion.blindness)) {
                 e.queueEntityToOutline(entityToOutline.getAnimal(), entityToOutline.getRarity().getColorInt());
