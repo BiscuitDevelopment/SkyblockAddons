@@ -313,7 +313,7 @@
     "titleNormal": "Normal",
     "descriptionNormal": "Visar förtrollningar som Hypixel gör",
     "titleExpand": "Expandera",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionExpand": "Varje förtrollning visas på en egen rad"
   },
   "commandUsage": {
     "sba": {
@@ -326,7 +326,7 @@
         "notFound": "Servertyp hittades inte!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Kopierar data om det block som du tittar på"
       },
       "copyEntity": {
         "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -359,20 +359,20 @@
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Utvecklarläge inaktiverat!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Utvecklarläge aktiverat! TIPS: Tryck på %keyName% för att kopiera NBT-data!"
       },
       "edit": {
         "help": "Redigera GUI-positioner"
       },
       "folder": {
         "help": "Öppna din mapp för moddar",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "error": "Ett fel uppstod när mappen för moddar försökte öppnas: %s"
       },
       "help": {
         "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "underkommandot för att få detaljerad användning för"
           }
         }
       },
