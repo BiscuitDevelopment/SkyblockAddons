@@ -30,8 +30,8 @@
     "healthBar": "Health Bar",
     "healthNumber": "Health Numbr",
     "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Numbr",
-    "defencePercentage": "Defence Persentage",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Health Change Numbr",
     "hidePlayersInLobby": "Hide Far Entitiez in Lobby",
     "darkAuctionTimer": "Dark Aucshun Tiemr",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlinez",
     "effectiveHealthNumber": "Effectiv Health Numbr",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
