@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Inställningar",
     "magmaBossWarning": "Magma Boss Warning",
-    "itemDropConfirmation": "Item Drop Confirmation",
+    "itemDropConfirmation": "Släppbekräftelse för föremål",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Benmätare för 'Skeleton's Helmet'",
     "hideFoodAndArmor": "Dölj mat- & rustningsmätare",
@@ -41,8 +41,8 @@
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "preventMovementOnDeath": "Förhindra Att Fortsätta Gå Efter Dödsfall",
     "showItemAnvilUses": "Visa städanvändningar för föremål",
-    "lockSlots": "Tillåt låsning av platser",
-    "lockSlot": "Lås plats",
+    "lockSlots": "Tillåt låsning av föremålsplatser",
+    "lockSlot": "Lås föremålsplats",
     "dontResetCursorInventory": "Återställ inte muspekarpositionen mellan menyer",
     "summoningEyeAlert": "Varna för summoning eye",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
@@ -68,7 +68,7 @@
     "speedPercentage": "Hastighetsprocent",
     "collectionDisplay": "Skill Progress Display",
     "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert",
+    "specialZealotAlert": "Varna för speciella zealoter",
     "enableMessageWhenActionPrevented": "Visa ett meddelande när en åtgärd förhindras",
     "hidePetHealthBar": "Dölj hälsomätare för husdjur",
     "powerOrbDisplay": "Power Orb Display",
@@ -90,10 +90,10 @@
     "showBackpackPreviewInAH": "Tillåt förhandsvisning av backpack när AH-menyn är öppnen",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
     "chromaSpeed": "Hastighet",
-    "chromaMode": "Chroma Color Mode",
+    "chromaMode": "Kromatiskt färgläge",
     "chromaModes": {
       "allTheSame": "All the Same Color",
-      "fade": "Färgtoning"
+      "fade": "Color Fade"
     },
     "chromaFadeWidth": "Bredd för färgtoning",
     "sortTabEffectTimers": "Sort Timers by Duration",
@@ -220,7 +220,7 @@
     "enchantsToExclude": "%type% för att exkludera:",
     "updateChecker": {
       "wantToViewPatchNotes": "Behöver du hjälp eller vill du läsa hela ändringsloggen?",
-      "joinDiscord": "Join our Discord server!",
+      "joinDiscord": "Anslut till vår Discordserver!",
       "watchShowcase": "Spela video",
       "downloadButton": "Ladda ned",
       "openModFolderButton": "Öppna mappen för moddar",
@@ -233,7 +233,7 @@
         "patchAvailable": "En ny betauppdatering (%version%) finns tillgänglig! Titta i chatten för nedladdningsalternativ!"
       }
     },
-    "slotLocked": "Denna plats är låst!",
+    "slotLocked": "Denna föremålsplats är låst!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "En funktion har förhindrat dig från att släppa detta \"sällsynta\" föremål eller verktyg från din föremålsmeny.",
     "clickMoreTimes": "Klicka/släpp detta föremål %times% gånger till om du verkligen vill göra detta.",
@@ -254,11 +254,11 @@
     "showColorIcons": "Visa färgikoner",
     "enableFeatureSnapping": "Enable Feature Snapping",
     "stage": "Etapp %stage%",
-    "switchedSlots": "Du har precis bytt från en låst plats eller sällsynt föremål. Vänta lite innan du släpper!",
-    "clickToOpenLink": "Click to open this link!",
+    "switchedSlots": "Du har precis bytt från en låst föremålsplats eller ett sällsynt föremål. Vänta lite innan du släpper!",
+    "clickToOpenLink": "Klicka för att öppna denna länk!",
     "clickToOpenFolder": "Klicka för att öppna mappen för moddar!",
-    "firstStatus": "This status will appear at the top",
-    "secondStatus": "This status will appear under your first status",
+    "firstStatus": "Denna status kommer att visas överst",
+    "secondStatus": "Denna status kommer att visas under din första status",
     "fallbackStatus": "Denna status visas när din automatiska status inte har något att visa",
     "legendarySeaCreatureWarning": "Legendarisk fångst!",
     "bossApproaching": "You are close to spawning a boss!",
@@ -275,7 +275,7 @@
     "effectsActive": "%number% aktiva effekter",
     "none": "Ingen",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
-    "chroma": "Färgövergång",
+    "chroma": "Kromatisk färg",
     "worldRenderedCooldownTime": "§c[SBA]: §rVäntetid: %time% s"
   },
   "discordStatus": {
@@ -292,7 +292,7 @@
     "titleItem": "Föremål som hålls",
     "descriptionItem": "Shows the name of the item you're holding",
     "titleProfile": "Profil",
-    "descriptionProfile": "Shows your Profile name",
+    "descriptionProfile": "Visar ditt profilnamn",
     "titleTime": "Skyblock-tid",
     "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "Anpassat status",
@@ -341,7 +341,7 @@
       "copySidebar": {
         "help": "§e(Dev) §7Kopiera texten från poängtavlan",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Kopierar den text som visas i resultattavlans sidofält",
           "options": {
             "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
           }
