@@ -98,7 +98,7 @@
     "chromaFadeWidth": "Bredd för färgtoning",
     "sortTabEffectTimers": "Sortera tidur efter tid",
     "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "skyblockAddonsButtonInPauseMenu": "Visa SBA-knappen i pausmenyn",
     "showTotalZealotCount": "Zealot-räknare - Totalt antal dödade zeloter",
     "showSummoningEyeCount": "Zealot-räknare - Totalt antal samlade ögon",
     "showZealotsPerEye": "Zealot-räknare - Dödade zeloter per öga",
@@ -139,11 +139,11 @@
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Visa glödande föremål på ön",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
+    "showItemDungeonFloor": "Visa på vilket Dungeon floor ett föremål kan inskaffas",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Display för samlade Dungeons essence",
     "stopBonzoStaffSounds": "Stoppa ljud från Bonzo's Staff",
-    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
+    "showRarityUpgraded": "Visa om föremåls sällsynthet har uppgraderats",
     "revenantSlayerTracker": "Slayer-spårare - Revenant/zombie",
     "tarantulaSlayerTracker": "Slayer-spårare - Tarantella/spindel",
     "svenSlayerTracker": "Slayer-spårare - Sven/varg",
@@ -159,7 +159,7 @@
     "dungeonsTeammateNameOverlay": "Namnöverlägg för lagkamrater i Dungeons",
     "dungeonsSecretsDisplay": "Display för Dungeon secrets",
     "showSkillPercentageInstead": "Visa procent istället för erfarenhetspoäng",
-    "showSkillXPGained": "Show XP Gained",
+    "showSkillXPGained": "Visa erhållna erfarenhetspoäng",
     "skillProgressBar": "Skill Progress Bar",
     "showSalvageEssencesCounter": "Show Salvage Essences Counter",
     "disableMortMessages": "Inaktivera Mort-meddelanden",
@@ -286,15 +286,15 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Visar antalet mynt i din purse",
     "titleStats": "Statistik",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "descriptionStats": "Visar din HP-, skydd- och manastatistik",
     "titleZealots": "Zealots",
     "descriptionZealots": "Visar din zealot-räknare",
     "titleItem": "Föremål som hålls",
-    "descriptionItem": "Shows the name of the item you're holding",
+    "descriptionItem": "Visar namnet på det föremål du håller i",
     "titleProfile": "Profil",
     "descriptionProfile": "Visar ditt profilnamn",
     "titleTime": "Skyblock-tid",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "descriptionTime": "Visar den nuvarande skyblocktiden. T.ex. 12:00am 1st Early Winter",
     "titleCustom": "Anpassad status",
     "descriptionCustom": "Ange en anpassad status",
     "titleAuto": "Automatisk status",
@@ -380,13 +380,13 @@
         "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Uppdaterar alla inställningar och resurser i modifikationen. Spelet kommer att frysa i några sekunder."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "§e(Dev) §7Uppdaterar modifikationens inställningar"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Uppdaterar modifikationens resurser. Spelet kommer att frysa i några sekunder."
       },
       "set": {
         "zealotCounter": {
