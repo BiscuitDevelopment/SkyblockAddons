@@ -29,9 +29,9 @@
     "manaNumber": "Mana-arvo",
     "healthBar": "Terveyspalkki",
     "healthNumber": "Terveys-numero",
-    "defenceIcon": "Puolustus-merkki",
-    "defenceNumber": "Puolustus arvo",
-    "defencePercentage": "Puolutus-prosentti",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Terveyden muutos -numero",
     "hidePlayersInLobby": "Piilota kaukana olevat entiteetit aulassa",
     "darkAuctionTimer": "Pimeän huutokaupan ajastin",
@@ -203,7 +203,9 @@
     "entityOutlines": "Näytä entiteettien ääriviivat",
     "effectiveHealthNumber": "Vaikuttavan terveyden arvo",
     "guiScaleX": "GUI X-Mittakaava: %scale%",
-    "guiScaleY": "GUI Y-Mittakaava: %scale%"
+    "guiScaleY": "GUI Y-Mittakaava: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Lumoukset",
