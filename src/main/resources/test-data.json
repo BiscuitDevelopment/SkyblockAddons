@@ -89,14 +89,6 @@
     "Spiked Hook": 6
   },
 
-  "legendarySeaCreatures": [
-    "WATER_HYDRA",
-    "SEA_EMPEROR",
-    "PHANTOM_FISHER",
-    "GREAT_WHITE_SHARK",
-    "YETI",
-    "GRIM_REAPER"
-  ],
   "hypixelBrands": [
     ".*Hypixel BungeeCord.*"
   ]

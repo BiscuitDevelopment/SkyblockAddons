@@ -76,7 +76,7 @@ public class DataUtils {
      */
     public static void readLocalFileData() {
         // Online Data
-        path = "/test-data.json";
+        path = "/data.json";
         try (   InputStream inputStream = DataUtils.class.getResourceAsStream(path);
                 InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
                         StandardCharsets.UTF_8)){
@@ -161,6 +161,7 @@ public class DataUtils {
 
             // Online Data
             logger.info("Trying to fetch online data from the server...");
+            // TODO: Change URL to data.json when release
             requestUri = "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/test-data.json";
             OnlineData receivedOnlineData = httpClient.execute(new HttpGet(requestUri),
                     createLegacyResponseHandler(OnlineData.class));
