@@ -180,14 +180,14 @@
     "drillFuelNumber": "Drill üzemanyag szám",
     "fetchurToday": "Mai Fetchur tárgy mutatása",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Varázslat színek beállítása",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[Átmeneti] 100-as szintű Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Varázslat Leírás Elrejtése",
+    "hideEnchantDescription": "Varázslat leírás elrejtése",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper funkció",
       "trackedEntityProximityIndicator": "Követett entitás távolság mutató",
@@ -231,7 +231,7 @@
       "noDownloadAvailable": "Letöltési link nem elérhető, kérlek nézd meg a Discord szerverünket.",
       "notificationBox": {
         "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Egy új béta frissítés (%version%) érhető el! Nyisd meg a chatet a letöltési linkért.",
         "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
       }
     },
@@ -482,6 +482,6 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Maximum"
   }
 }
