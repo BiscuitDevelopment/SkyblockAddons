@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Jumlah Health Effective",
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
+    "otherDefenceStats": "Stat Pertahanan Lain (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
