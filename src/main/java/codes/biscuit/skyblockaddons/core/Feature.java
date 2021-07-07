@@ -263,7 +263,7 @@ public enum Feature {
     private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
             CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT));
 
-    private static final int ID_AT_PREVIOUS_UPDATE = 63;
+    private static final int ID_AT_PREVIOUS_UPDATE = 98;
 
     private final int id;
     private Message message;
@@ -381,6 +381,6 @@ public enum Feature {
     }
 
     public boolean isNew() {
-        return id > ID_AT_PREVIOUS_UPDATE && this != HIDE_GREY_ENCHANTS || this == ENCHANTMENT_LORE_PARSING;
+        return id > ID_AT_PREVIOUS_UPDATE;
     }
 }
