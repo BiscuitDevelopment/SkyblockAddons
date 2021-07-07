@@ -156,7 +156,7 @@ public class Updater {
             String currentVersion = current.toString();
             String targetVersion = target.toString();
 
-            LOGGER.info("Found an update: " + targetVersion + ".");
+            LOGGER.info("Found an update: " + targetVersion);
 
             if (status == OUTDATED) {
                 targetVersion = updateInfo.getLatestRelease();
@@ -192,7 +192,7 @@ public class Updater {
                 messageToRender = Translations.getMessage("messages.updateChecker.notificationBox.majorAvailable", targetVersion);
             }
         } else if (status == AHEAD) {
-            LOGGER.info("The current version is newer than the latest version. Please tell an SBA developer to update" +
+            LOGGER.warn("The current version is newer than the latest version. Please tell an SBA developer to update" +
                     " the online data.");
         } else {
             LOGGER.info("Up to date!");
@@ -225,7 +225,7 @@ public class Updater {
         if (showcaseLink != null && !showcaseLink.equals("")) {
             showcaseButton = new ChatComponentText("§b§l[" + Translations.getMessage("messages.updateChecker.watchShowcase", targetVersion) + "]");
             showcaseButton.setChatStyle(showcaseButton.getChatStyle().setChatClickEvent(
-                    new ClickEvent(ClickEvent.Action.OPEN_URL, downloadLink)).setChatHoverEvent(
+                    new ClickEvent(ClickEvent.Action.OPEN_URL, showcaseLink)).setChatHoverEvent(
                             new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ChatComponentText("§7" +
                                     Translations.getMessage("messages.clickToOpenLink")))));
             showcaseButton.appendSibling(new ChatComponentText(" "));
