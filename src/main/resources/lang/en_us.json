@@ -278,7 +278,8 @@
     "none": "None",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders (OFF), Fast Render (OFF), and Antialiasing (OFF)"
   },
   "discordStatus": {
     "titleNone": "None",

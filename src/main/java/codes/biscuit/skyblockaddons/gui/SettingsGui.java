@@ -459,8 +459,19 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, setting.getFeatureEquivalent()));
+            row += .1;
+            y = getRowHeightSetting(row);
             buttonList.add(new ButtonTextNew(halfWidth, (int) y + 15, Translations.getMessage("settings.trevorTheTrapper.showQuestCooldownDescription"), true, ColorCode.GRAY.getColor()));
             row += 0.4;
+        } else if (setting == EnumUtils.FeatureSetting.TREVOR_HIGHLIGHT_TRACKED_ENTITY && feature == Feature.ENTITY_OUTLINES) {
+            boxWidth = 31; // Default size and stuff.
+            x = halfWidth - (boxWidth / 2);
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, setting.getFeatureEquivalent()));
+            row += .4;
+            y = getRowHeightSetting(row);
+            buttonList.add(new ButtonTextNew(halfWidth, (int) y + 15, Translations.getMessage("messages.entityOutlinesRequirement"), true, ColorCode.GRAY.getColor()));
+            row += .4;
         } else {
             boxWidth = 31; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
