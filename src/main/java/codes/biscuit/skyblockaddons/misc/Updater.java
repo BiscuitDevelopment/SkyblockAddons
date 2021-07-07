@@ -275,7 +275,7 @@ public class Updater {
             main.getUtils().sendMessage(downloadButton, false);
         }
 
-        main.getUtils().sendMessage("§7§m-----------------------------------------------------", false);
+        main.getUtils().sendMessage("§7§m--------------------------------------------------", false);
 
         sentUpdateMessage = true;
     }
