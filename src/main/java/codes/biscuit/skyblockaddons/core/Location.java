@@ -85,6 +85,14 @@ public enum Location {
     GRAND_LIBRARY("Grand Library"),
     HANGING_COURT("Hanging Court"),
 
+    // Crystal Hollows
+    MAGMA_FIELDS("Magma Fields"),
+    JUNGLE("Jungle"),
+    MITHRIL_DEPOSITS("Mithril Deposits"),
+    GOBLIN_HOLDOUT("Goblin Holdout"),
+    PRECURSOR_REMNANT("Precursor Remnant"),
+    FAIRY_GROTTO("Fairy Grotto"),
+
     THE_BARN("The Barn"),
 
     // Mushroom Island
