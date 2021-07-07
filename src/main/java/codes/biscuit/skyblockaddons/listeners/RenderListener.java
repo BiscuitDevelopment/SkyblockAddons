@@ -673,6 +673,9 @@ public class RenderListener {
             if (buttonLocation != null && (text == null || text.length() == 0)) {
                 text = "|||  T3!";
             }
+            if (text == null || text.length() == 0) {
+                return;
+            }
 
         } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
             text = String.valueOf(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));

@@ -451,6 +451,9 @@ public class DrawUtils {
     }
 
     public static void drawText(String text, float x, float y, int color) {
+        if (text == null) {
+            return;
+        }
         FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
         if (SkyblockAddons.getInstance().getConfigValues().getTextStyle() == EnumUtils.TextStyle.STYLE_TWO) {
             int colorAlpha = Math.max(ColorUtils.getAlpha(color), 4);
