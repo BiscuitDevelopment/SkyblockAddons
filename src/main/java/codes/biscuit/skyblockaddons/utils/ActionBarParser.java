@@ -35,6 +35,12 @@ import java.util.regex.Pattern;
  * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
  * Soulflow:                   §b421/421✎ §3100ʬ
  * Tethered + Alignment:      §a1039§a❈ Defense§a |||§a§l  T3!
+ * Five stages of healing wand:     §62151/1851❤+§c120▆
+ *                                  §62151/1851❤+§c120▅
+ *                                  §62151/1851❤+§c120▄
+ *                                  §62151/1851❤+§c120▃
+ *                                  §62151/1851❤+§c120▂
+ *                                  §62151/1851❤+§c120▁
  * <p>
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
@@ -47,6 +53,7 @@ public class ActionBarParser {
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
     private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
+    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
 
 
     private final SkyblockAddons main;
@@ -146,7 +153,7 @@ public class ActionBarParser {
 
         if (section.contains("❤")) {
             // ❤ indicates a health section
-            return parseHealth(section, splitStats);
+            return parseHealth(section);
         } else if (section.contains("❈")) {
             // ❈ indicates a defense section
             return parseDefense(section);
@@ -168,42 +175,34 @@ public class ActionBarParser {
      * Returns the healing indicator if a healing Wand is active.
      *
      * @param healthSection Health section of the action bar
-     * @param splitStats Pre-split stat strings
      * @return null or Wand healing indicator or {@code healthSection} if neither health bar nor health text are enabled
      */
-    private String parseHealth(String healthSection, String[] splitStats) {
+    private String parseHealth(String healthSection) {
         // Normal:      §c1390/1390❤
         // With Wand:   §c1390/1390❤+§c30▅
         final boolean separateDisplay = main.getConfigValues().isEnabled(Feature.HEALTH_BAR) || main.getConfigValues().isEnabled(Feature.HEALTH_TEXT);
-        String returnString = healthSection;
+        String returnString = null;
         int newHealth;
         int maxHealth;
-        if (healthSection.startsWith("§6")) { // Absorption chances §c to §6. Remove §6 to make sure it isn't detected as a number of health.
-            healthSection = healthSection.substring(2);
-        }
-        if (healthSection.contains("+")) {
-            // Contains the Wand indicator so it has to be split differently
-            String[] splitHealthAndWand = healthSection.split("\\+");
-            String[] healthSplit = TextUtils.getNumbersOnly(splitHealthAndWand[0]).split("/");
-            newHealth = Integer.parseInt(healthSplit[0]);
-            maxHealth = Integer.parseInt(healthSplit[1]);
-            if (separateDisplay) {
-                // Return +30▅ for example
-                returnString = "§c+" + splitHealthAndWand[1];
-            }
-        } else {
-            newHealth = Integer.parseInt(splitStats[0]);
-            maxHealth = Integer.parseInt(splitStats[1]);
-            if (separateDisplay) {
+        String stripped = TextUtils.stripColor(healthSection);
+        Matcher m = HEALTH_PATTERN_S.matcher(stripped);
+        if (separateDisplay && m.matches()) {
+            newHealth = Integer.parseInt(m.group("health"));
+            maxHealth = Integer.parseInt(m.group("maxHealth"));
+            if (m.group("wand") != null) {
+                // Jank way of doing this for now
+                returnString = "";// "§c"+ m.group("wand");
+                stringsToRemove.add(stripped.substring(0, m.start("wand")));
+            } else {
                 returnString = null;
             }
+            healthLock = false;
+            boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
+                    ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
+            setAttribute(Attribute.HEALTH, newHealth);
+            setAttribute(Attribute.MAX_HEALTH, maxHealth);
+            healthLock = postSetLock;
         }
-        healthLock = false;
-        boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
-                ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
-        setAttribute(Attribute.HEALTH, newHealth);
-        setAttribute(Attribute.MAX_HEALTH, maxHealth);
-        healthLock = postSetLock;
         return returnString;
     }
 

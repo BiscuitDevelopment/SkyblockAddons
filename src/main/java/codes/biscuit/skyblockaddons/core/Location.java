@@ -86,6 +86,7 @@ public enum Location {
     HANGING_COURT("Hanging Court"),
 
     // Crystal Hollows
+    CRYSTAL_HOLLOWS("Crystal Hollows"),
     MAGMA_FIELDS("Magma Fields"),
     JUNGLE("Jungle"),
     MITHRIL_DEPOSITS("Mithril Deposits"),
