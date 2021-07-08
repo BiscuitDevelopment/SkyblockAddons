@@ -29,9 +29,9 @@
     "manaNumber": "Ilość many",
     "healthBar": "Pasek zdrowia",
     "healthNumber": "Ilość zdrowia",
-    "defenceIcon": "Ikona obrony",
-    "defenceNumber": "Ilość obrony",
-    "defencePercentage": "Procent obrony",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Liczba Różnicy Zdrowia",
     "hidePlayersInLobby": "Ukryj odległe byty w poczekalni",
     "darkAuctionTimer": "Zegar Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -278,7 +278,8 @@
     "none": "Brak",
     "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Brak",
