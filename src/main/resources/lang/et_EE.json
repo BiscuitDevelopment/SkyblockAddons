@@ -29,9 +29,9 @@
     "manaNumber": "Mana number",
     "healthBar": "Elude riba",
     "healthNumber": "Elude number",
-    "defenceIcon": "Kaitse sümbol",
-    "defenceNumber": "Kaitse number",
-    "defencePercentage": "Kaitse protsent",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Elude muutumise protsent",
     "hidePlayersInLobby": "Peida lobby 's kauged olendid",
     "darkAuctionTimer": "Dark Auction 'i taimer",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -278,7 +278,8 @@
     "none": "Mitte ühtegi",
     "copyModeSet": "Arendaja kopeerimise režiimiks on pandud: %mode%. Vajuta \"%keyName%\", et kopeerida andmeid!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
