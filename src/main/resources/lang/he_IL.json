@@ -29,9 +29,9 @@
     "manaNumber": "מספר מאנה",
     "healthBar": "מד חיים",
     "healthNumber": "מספר חיים",
-    "defenceIcon": "סמל הגנה",
-    "defenceNumber": "מספר הגנה",
-    "defencePercentage": "אחוזי הגנה",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "שינוי כמות החיים",
     "hidePlayersInLobby": "הסתר יצורים רחוקים בלובי",
     "darkAuctionTimer": "טיימר לשוק השחור",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "כישופים",
@@ -278,7 +278,8 @@
     "none": "ריק",
     "copyModeSet": "מצב העתקת מפתח שונה ל:%mode%. לחץ/י %keyName% כדי להפעיל את העתקת הנתונים!",
     "chroma": "כרומה",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "ריק",
