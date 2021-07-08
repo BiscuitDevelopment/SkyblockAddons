@@ -29,9 +29,9 @@
     "manaNumber": "Мана",
     "healthBar": "Лента за Кръвта",
     "healthNumber": "Кръв",
-    "defenceIcon": "Символ за Защита",
-    "defenceNumber": "Защита",
-    "defencePercentage": "Процент Защита",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Номер при Промяна на Кръвта",
     "hidePlayersInLobby": "Скрий Далечните Обекти В Лобита",
     "darkAuctionTimer": "Таймер за Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Мащаб: %scale%",
     "guiScaleY": "GUI Y Мащаб: %scale%",
     "abbreviateSkillXpDenominator": "Съкратяване Знаменателя на Skill XP",
-    "otherDefenceStats": "Други статистики за Defense (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -278,7 +278,8 @@
     "none": "Нищо",
     "copyModeSet": "Режимът за копиране на разработчика е настроен на: %mode%. Натисни %keyName%, за да задействаш копие на данни!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rВреметраене: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rВреметраене: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Нищо",
