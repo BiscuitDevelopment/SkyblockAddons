@@ -204,7 +204,7 @@
     "effectiveHealthNumber": "Efektif Can Sayısı",
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
     "otherDefenceStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
   },
   "messages": {
