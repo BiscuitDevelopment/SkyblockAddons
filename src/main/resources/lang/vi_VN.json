@@ -29,9 +29,9 @@
     "manaNumber": "Số Mana",
     "healthBar": "Thanh Máu",
     "healthNumber": "Số Máu",
-    "defenceIcon": "Biểu tượng giáp",
-    "defenceNumber": "Số Phòng Thủ",
-    "defencePercentage": "Tỉ lệ Phòng Thủ",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Số Máu thay đổi",
     "hidePlayersInLobby": "Ẩn Vật Xa ở Sảnh",
     "darkAuctionTimer": "Hẹn giờ Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "Tỉ Lệ GUI (X): %scale%",
     "guiScaleY": "Tỉ Lệ GUI (Y): %scale%",
     "abbreviateSkillXpDenominator": "Rút ngắn Số Kinh nghiệm Kỹ năng",
-    "otherDefenceStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -278,7 +278,8 @@
     "none": "Không có",
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
-    "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi"
+    "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Không có",
