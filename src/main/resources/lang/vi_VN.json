@@ -108,8 +108,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Hiển thị bao lâu Endstone Protector mới xuất hiện",
     "fancyWarpMenu": "Bản Đồ Dịch Chuyển ĐẸP",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "Tắt Tiếng Chuột",
+    "onlyStopRatSqueak": "Chỉ Tắt Tiếng Chuột Kêu",
     "doubleWarp": "Dịch Chuyển 2 Lần",
     "advancedMode": "Chế Độ Nâng Cao",
     "legendarySeaCreatureWarning": "Cảnh Báo Câu Được Sea Creature Huyền Thoại",
@@ -126,13 +126,13 @@
     "dungeonMapDisplay": "Hiện bản đồ Dungeon",
     "rotateMap": "Xoay bản đồ theo hướng nhân vật của bạn",
     "centerRotationOnYourPlayer": "Đặt nhân vật của bạn ở chính giữa bản đồ",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "Chỉ Hiện đồ Fetchur trong Dwarven Mines",
+    "showFetchurItemName": "Hiện Tên đồ Fetchur",
+    "showFetchurInventoryOpenOnly": "Chỉ Hiện đồ Fetchur khi mở Túi Đồ",
+    "warnWhenFetchurChanges": "Cảnh báo tôi khi đồ Fetchur thay đổi",
     "mapZoom": "Phóng to/Thu nhỏ Bản đồ",
     "glowingDroppedItems": "Nổi viền vật phẩm bị đánh rơi",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "Nổi viền Đồng đội trong Dungeon",
     "baseStatBoostPercentage": "Hiện Tỷ lệ Tăng cường Chỉ số cho vật phẩm Dungeon",
     "colorByRarity": "Tô màu vật phẩm theo Độ hiếm",
     "showPlayerHeadsOnMap": "Hiện Đầu Người chơi trên Bản đồ Dungeon",
@@ -147,7 +147,7 @@
     "revenantSlayerTracker": "Bộ đếm theo dõi Slayer - Revenant",
     "tarantulaSlayerTracker": "Bộ đếm theo dõi Slayer - Tarantula",
     "svenSlayerTracker": "Bộ đếm theo dõi Slayer - Sven",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "voidgloomSlayerTracker": "Bộ Đếm Slayer - Voidgloom/Enderman",
     "textMode": "Chế độ Văn bản",
     "dragonsNestOnly": "Chỉ Hiện khi ở trong Dragon's Nest",
     "dragonStatsTracker": "Bộ đếm theo dõi Rồng",
@@ -178,34 +178,34 @@
     "showExperimentationTableTooltips": "Hiện đáp án Experimentation Table",
     "drillFuelBar": "Thanh nguyên liệu của Drill",
     "drillFuelNumber": "Số nguyên liệu của Drill",
-    "fetchurToday": "Show What Fetchur Wants Today",
-    "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
-    "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
-    "showReforgeOverlay": "Show Reforge Overlay",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "fetchurToday": "Cho Biết Thằng Fetchur Muốn Gì Hôm Nay",
+    "fishingParticleOverlay": "Thêm hiệu ứng khi câu cá",
+    "enchantmentLoreParsing": "Phân tích Chú giải Phù phép",
+    "cooldownPrediction": "Dự đoán và Rút ngắn Thời gian chờ",
+    "legendaryMonkeyLevel100": "[TẠM THỜI] Khỉ Huyền Thoại cấp 100",
+    "biggerWake": "Phóng to Độ phủ Hiệu ứng",
+    "stackingEnchantProgress": "Hiện Tiến triển Phù phép Chồng",
+    "showReforgeOverlay": "Phủ Tên Reforge",
+    "reforgeFilter": "Lọc Reforge",
+    "hideEnchantDescription": "Ẩn Mô tả Phù phép",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "title": "Tính năng liên quan tới Kẻ Săn Mồi Trevor",
+      "trackedEntityProximityIndicator": "Hiển thị Thực thể gần nhất Đã được dò tìm",
+      "highlightTrackedEntity": "Nổi bật Thực thể đang được dò tìm",
+      "showQuestCooldown": "Hiển thị Thời gian Chờ Nhiệm vụ của Trevor",
+      "showQuestCooldownDescription": "Thứ này sẽ được hiển thị trên đầu thằng Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaNumber": "Overflow Mana Number",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "showEnderChestPreview": "Hiện Xem trước Rương Ender",
+    "hideWhenNotDoingQuest": "Ẩn Khi Ko Có N.Vụ Để Làm",
+    "showOverflowManaNumber": "Số Mana Bị \"Tràn\"",
+    "axeCooldownIndicator": "Hiển thị Thời gian chờ cho Rìu",
+    "vanillaHealthPrediction": "Dùng Hệ thống Tiên Đoán Máu Vanilla",
+    "entityOutlines": "Hiển thị viền cho các thực thể",
+    "effectiveHealthNumber": "Số Máu Hiệu quả",
+    "guiScaleX": "Tỉ Lệ GUI (X): %scale%",
+    "guiScaleY": "Tỉ Lệ GUI (Y): %scale%",
+    "abbreviateSkillXpDenominator": "Rút ngắn Số Kinh nghiệm Kỹ năng",
+    "otherDefenceStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -222,16 +222,16 @@
     "enchantsToExclude": "%type% Để Loại Trừ:",
     "updateChecker": {
       "wantToViewPatchNotes": "Muốn đọc những thay đổi không?",
-      "joinDiscord": "Join our Discord server!",
-      "watchShowcase": "Watch Video",
-      "downloadButton": "Download",
-      "openModFolderButton": "Open Mods Folder",
-      "joinDiscordButton": "Join Discord",
+      "joinDiscord": "Tham gia máy chủ Discord của chúng tôi!",
+      "watchShowcase": "Xem Video",
+      "downloadButton": "Tải",
+      "openModFolderButton": "Mở Thư mục Mods",
+      "joinDiscordButton": "Vào Discord",
       "newUpdateAvailable": "Cập nhật mới (%version%) đã ra mắt!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Hiện chưa có đường dẫn tải về khả dụng, vui lòng kiểm tra ở máy chủ Discord của chúng tôi.",
       "notificationBox": {
         "majorAvailable": "Bản cập nhật quan trọng (%version%) có sẵn! Liên kết tải về có thể tìm thấy trong chat.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Bản vá thử nghiệm mới (%version%) có sẵn! Đường dẫn tải về ở trong chat!",
         "patchAvailable": "Bản vá mới (%version%) có sẵn! Các lựa chọn tải về ở trong chat!"
       }
     },
@@ -265,7 +265,7 @@
     "legendarySeaCreatureWarning": "Đã Câu Được Sea Creature Huyền Thoại!",
     "bossApproaching": "Bạn sắp sửa triệu hồi Trùm rồi!!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Đồ Fetchur đã thay đổi!",
     "enableAll": "Bật Hết",
     "disableAll": "Tắt Hết",
     "enchantmentInclusionExample": "ví dụ \"prot, feather\"",
@@ -278,7 +278,7 @@
     "none": "Không có",
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -309,13 +309,13 @@
     "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "title": "Điều khiển cách DS phù phép được hiển thị như nào trong bảng chú giải",
+    "titleCompress": "Rút gọn",
+    "descriptionCompress": "Rút gọn DS Phù phép càng ngắn càng tốt",
+    "titleNormal": "Thông thường",
+    "descriptionNormal": "Hiện các phù phép theo kiểu Hypixel đặt ra",
+    "titleExpand": "Mở rộng",
+    "descriptionExpand": "Liệt kê từng phù phép một theo dòng"
   },
   "commandUsage": {
     "sba": {
@@ -379,7 +379,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Chế độ NPT) §7Ghi giá trị số đã được lưu lại trong bộ đếm số lần chết trong Dungeon với mục đích sửa lỗi."
       },
       "reload": {
         "help": "§e(Dev) §7Áp dụng tất cả cài đặt và tài nguyên của mod. Game sẽ đứng hình trong vài giây."
@@ -466,22 +466,22 @@
   "warpMenu": {
     "click": "Bấm vào một địa điểm để di chuyển đến đó!",
     "mustUnlock": "Phải mở khoá giấy dịch chuyển đến đây.",
-    "privateIsland": "Private Island",
+    "privateIsland": "Đảo riêng",
     "home": "Đảo của bạn",
     "spawn": "Địa điểm xuất phát",
-    "unknown": "Haven't Visited",
+    "unknown": "Chưa tới bao giờ",
     "notUnlocked": "Chưa mở khóa",
     "inCombat": "Trong chiến đấu..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Cấp độ Cao nhất",
+    "highTier": "Cấp độ Cao",
+    "midTier": "Cấp độ Trung bình",
+    "lowTier": "Cấp độ Thấp",
+    "commas": "Dấu phẩy",
+    "expertiseKills": "Hiện Số Giết cho Phù phép Expertise",
+    "compactedBlocks": "Các Khối đã Kết hợp",
+    "cultivatedCrops": "Cây Trồng Đã Cấy",
+    "maxed": "Đã Đạt giới hạn"
   }
 }
