@@ -29,9 +29,9 @@
     "manaNumber": "法力值",
     "healthBar": "生命计量条",
     "healthNumber": "生命值",
-    "defenceIcon": "防御图标",
-    "defenceNumber": "防御值",
-    "defencePercentage": "防御比例",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "生命值波动",
     "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI 横向长度: %scale%",
     "guiScaleY": "GUI 纵向高度: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
@@ -278,7 +278,8 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "无",
