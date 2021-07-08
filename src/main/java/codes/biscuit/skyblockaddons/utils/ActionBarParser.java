@@ -181,7 +181,7 @@ public class ActionBarParser {
         // Normal:      §c1390/1390❤
         // With Wand:   §c1390/1390❤+§c30▅
         final boolean separateDisplay = main.getConfigValues().isEnabled(Feature.HEALTH_BAR) || main.getConfigValues().isEnabled(Feature.HEALTH_TEXT);
-        String returnString = null;
+        String returnString = healthSection;
         int newHealth;
         int maxHealth;
         String stripped = TextUtils.stripColor(healthSection);
