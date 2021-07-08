@@ -29,9 +29,9 @@
     "manaNumber": "Mana szám",
     "healthBar": "Életerő sáv",
     "healthNumber": "Életerő szám",
-    "defenceIcon": "Védelem szimbólum",
-    "defenceNumber": "Védelem szám",
-    "defencePercentage": "Védelem százalék",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Életerő változások",
     "hidePlayersInLobby": "Távoli entitiások elrejtése Lobbykban",
     "darkAuctionTimer": "Dark Auction időzítő",
@@ -205,7 +205,7 @@
     "guiScaleX": "Gui szélessége: %scale%",
     "guiScaleY": "Gui magassága: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -278,7 +278,8 @@
     "none": "Semmi",
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Semmi",
