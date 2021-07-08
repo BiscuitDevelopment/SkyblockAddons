@@ -29,9 +29,9 @@
     "manaNumber": "Číselný ukazatel many",
     "healthBar": "Vizuální ukazatel zdraví",
     "healthNumber": "Číselný ukazatel zdraví",
-    "defenceIcon": "Symbol obrany",
-    "defenceNumber": "Číselný ukazatel obrany",
-    "defencePercentage": "Procentuální ukazatel many",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Číselný ukazatel změny počtu zdraví",
     "hidePlayersInLobby": "Skrýt daleké hráče v Lobby",
     "darkAuctionTimer": "Časovač do Temné aukce",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -278,7 +278,8 @@
     "none": "Žádné",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Žádné",
