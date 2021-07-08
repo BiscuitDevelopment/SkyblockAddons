@@ -29,9 +29,9 @@
     "manaNumber": "Mananummer",
     "healthBar": "Häslomätare",
     "healthNumber": "Hälsonummer",
-    "defenceIcon": "Skyddsymbol",
-    "defenceNumber": "Skyddsnummer",
-    "defencePercentage": "Skyddsprocent",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Hälsouppdateringar",
     "hidePlayersInLobby": "Dölj entiteter långt bort i lobbyn",
     "darkAuctionTimer": "Tidur för svarta aktioner",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X-storlek: %scale%",
     "guiScaleY": "GUI X-storlek: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -278,7 +278,8 @@
     "none": "Ingen",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Kromatisk färg",
-    "worldRenderedCooldownTime": "§c[SBA]: §rVäntetid: %time% s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rVäntetid: %time% s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ingen",
