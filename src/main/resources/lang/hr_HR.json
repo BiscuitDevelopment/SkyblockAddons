@@ -29,9 +29,9 @@
     "manaNumber": "Broj Mane",
     "healthBar": "Bar Zdravlja",
     "healthNumber": "Broj Zdravlja",
-    "defenceIcon": "Simbol Obrane",
-    "defenceNumber": "Broj Obrane",
-    "defencePercentage": "Postotak Obrane",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Broj Promjene Zdravlja",
     "hidePlayersInLobby": "Sakrij daleke Entite",
     "darkAuctionTimer": "Tajmer Crne Dražbe",
@@ -205,7 +205,7 @@
     "guiScaleX": "Veličina X Veličine: %scale%",
     "guiScaleY": "Veličina Y Veličine: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Čarolije",
@@ -278,7 +278,8 @@
     "none": "Ništa",
     "copyModeSet": "Način kopiranja programera postavljen je na:%mode%. Pritisnite \"%keyName%\" da biste pokrenuli kopiranje podataka!",
     "chroma": "Kroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ništa",
