@@ -29,9 +29,9 @@
     "manaNumber": "Número de Mana",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Ícone de Defesa",
-    "defenceNumber": "Número de Defesa",
-    "defencePercentage": "Porcentagem de Defesa",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Número de Mudanças de Vida",
     "hidePlayersInLobby": "Esconder entidades longe no Lobby",
     "darkAuctionTimer": "Timer do Leilão Sombrio",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -278,7 +278,8 @@
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia do desenvolvedor foi definido para: %mode%. Pressione \"%keyName%\" para iniciar uma cópia de dados!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rTempo de recarga: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rTempo de recarga: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
