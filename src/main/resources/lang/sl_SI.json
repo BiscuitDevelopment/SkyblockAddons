@@ -29,9 +29,9 @@
     "manaNumber": "Število Mane",
     "healthBar": "Vrstica Zdravja",
     "healthNumber": "Število Zdravja",
-    "defenceIcon": "Simbol Obrambe",
-    "defenceNumber": "Število Obrambe",
-    "defencePercentage": "Odstotek Obrambe",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Number",
+    "defencePercentage": "Defence Percentage",
     "healthUpdates": "Sprememba Števila Zdravja",
     "hidePlayersInLobby": "Skrij Daljne Entitete v Lobby-ju",
     "darkAuctionTimer": "Časovnik do Temne Dražbe",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -278,7 +278,8 @@
     "none": "None",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
