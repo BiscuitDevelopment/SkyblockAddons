@@ -29,9 +29,9 @@
     "manaNumber": "Mana Number",
     "healthBar": "Health Bar",
     "healthNumber": "Health Number",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenseIcon": "Defense Symbol",
+    "defenseNumber": "Defense Number",
+    "defensePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -279,7 +279,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders (OFF), Fast Render (OFF), and Antialiasing (OFF)"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
