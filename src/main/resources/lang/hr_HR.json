@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Učinkovito Zdravlja broj",
     "guiScaleX": "Veličina X Veličine: %scale%",
     "guiScaleY": "Veličina Y Veličine: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Skratiti nazivnik Skill XP",
+    "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)"
   },
   "messages": {
     "enchants": "Čarolije",
@@ -279,7 +279,7 @@
     "copyModeSet": "Način kopiranja programera postavljen je na:%mode%. Pritisnite \"%keyName%\" da biste pokrenuli kopiranje podataka!",
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Zahtijeva da su ISKLJUČENI Shaderi, Fast Render i Antialiasing"
   },
   "discordStatus": {
     "titleNone": "Ništa",
