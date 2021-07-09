@@ -13,7 +13,8 @@ public enum PowerOrb {
 
     RADIANT("§aRadiant", 0.01, 0, 0, 0, "radiant"),
     MANA_FLUX("§9Mana Flux", 0.02, 0.5, 10, 0, "manaflux"),
-    OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, "overflux");
+    OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, "overflux"),
+    PLASMAFLUX("§d§lPlasmaflux", 0.03, 1.25, 35, 0.075, "plasmaflux");
 
     /**
      * The orb's effective radius - squared to compare with a squared distance
