@@ -279,7 +279,7 @@
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
