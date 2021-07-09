@@ -205,7 +205,8 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
-    "otherDefenceStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
