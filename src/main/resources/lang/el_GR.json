@@ -29,9 +29,12 @@
     "manaNumber": "Αριθμός Mana",
     "healthBar": "Μπάρα Ζωής",
     "healthNumber": "Αριθμός Ζωής",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Σύμβολο Άμυνας",
+    "defenceNumber": "Αριθμός Άμυνας",
+    "defencePercentage": "Ποσοστό Άμυνας",
+    "defenseIcon": "Σύμβολο Άμυνας",
+    "defenseNumber": "Αριθμός Άμυνας",
+    "defensePercentage": "Ποσοστό Άμυνας",
     "healthUpdates": "Αριθμός Αλλαγής Ζωής",
     "hidePlayersInLobby": "Κρύψε μακριανές ουσίες στην αίθουσα",
     "darkAuctionTimer": "Χρονόμετρο Dark Auction",
@@ -279,7 +282,7 @@
     "copyModeSet": "Η λειτουργία αντιγραφής προγραμματιστή έχει οριστεί σε: %mode%. Πατήστε \"%keyName%\" για να ενεργοποιήσετε ένα αντίγραφο δεδομένων!",
     "chroma": "Χρωματιστό",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Τίποτα",
