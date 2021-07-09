@@ -106,7 +106,8 @@ public class PlayerListener {
 
     private static final Set<String> LEGENDARY_SEA_CREATURE_MESSAGES = new HashSet<>(Arrays.asList("The Water Hydra has come to test your strength.",
             "The Sea Emperor arises from the depths...", "What is this creature!?",
-            "Hide no longer, a Great White Shark has tracked your scent and thirsts for your blood!"));
+            "Hide no longer, a Great White Shark has tracked your scent and thirsts for your blood!",
+            "The spirit of a long lost Phantom Fisher has come to haunt you.", "This can't be! The manifestation of death himself!"));
 
     private static final Set<String> BONZO_STAFF_SOUNDS = new HashSet<>(Arrays.asList("fireworks.blast", "fireworks.blast_far",
             "fireworks.twinkle", "fireworks.twinkle_far", "mob.ghast.moan"));
