@@ -6,10 +6,8 @@ import net.minecraft.client.resources.IResource;
 import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.client.resources.IResourceManagerReloadListener;
 import net.minecraft.util.ResourceLocation;
-import org.apache.commons.codec.digest.DigestUtils;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.regex.Pattern;
 
 public class ResourceManagerReloadListener implements IResourceManagerReloadListener {
@@ -26,8 +24,10 @@ public class ResourceManagerReloadListener implements IResourceManagerReloadList
     public void onResourceManagerReload(IResourceManager resourceManager) {
         boolean usingFSR = false;
         try {
-            IResource inputStream = resourceManager.getResource(containerPreviewLocation);
-            if (furfSkyRebornName.matcher(TextUtils.stripColor(inputStream.getResourcePackName())).matches()) {
+            //TODO: Is it possible to do this without getting the resource
+            IResource containerPreviewTexture = resourceManager.getResource(containerPreviewLocation);
+            containerPreviewTexture.getInputStream().close();
+            if (furfSkyRebornName.matcher(TextUtils.stripColor(containerPreviewTexture.getResourcePackName())).matches()) {
                 usingFSR = true;
             }
         } catch (IOException e) {
