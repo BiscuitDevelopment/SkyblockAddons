@@ -29,9 +29,12 @@
     "manaNumber": "מספר מאנה",
     "healthBar": "מד חיים",
     "healthNumber": "מספר חיים",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "סמל הגנה",
+    "defenceNumber": "מספר הגנה",
+    "defencePercentage": "אחוזי הגנה",
+    "defenseIcon": "סמל הגנה",
+    "defenseNumber": "מספר הגנה",
+    "defensePercentage": "אחוזי הגנה",
     "healthUpdates": "שינוי כמות החיים",
     "hidePlayersInLobby": "הסתר יצורים רחוקים בלובי",
     "darkAuctionTimer": "טיימר לשוק השחור",
@@ -279,7 +282,7 @@
     "copyModeSet": "מצב העתקת מפתח שונה ל:%mode%. לחץ/י %keyName% כדי להפעיל את העתקת הנתונים!",
     "chroma": "כרומה",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "ריק",
