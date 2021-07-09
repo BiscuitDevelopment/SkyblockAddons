@@ -279,7 +279,7 @@
     "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
     "chroma": "Croma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requiere: Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO"
+    "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
