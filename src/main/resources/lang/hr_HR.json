@@ -205,7 +205,8 @@
     "guiScaleX": "Veličina X Veličine: %scale%",
     "guiScaleY": "Veličina Y Veličine: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Čarolije",
