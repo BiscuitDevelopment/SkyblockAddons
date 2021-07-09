@@ -15,12 +15,6 @@ public class OnlineData {
 
     private UpdateInfo updateInfo;
 
-    private String videoLink;
-
-    private String latestVersion;
-    private String latestBeta;
-    private String directDownload;
-
     private String languageJSONFormat;
 
     /**
@@ -39,10 +33,6 @@ public class OnlineData {
     private HashMap<String, List<Integer>> disabledFeatures;
 
     private DropSettings dropSettings;
-
-    private HashMap<String, Integer> specialEnchantments;
-
-    private HashSet<String> legendarySeaCreatures;
 
     private HashSet<Pattern> hypixelBrands;
 

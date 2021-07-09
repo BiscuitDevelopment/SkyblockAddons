@@ -80,8 +80,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
             return bytes;
         }
 
-        log(Level.INFO, String.format("Found %s transformers for %s", transformers.size(), transformedName));
-
         ClassReader reader = new ClassReader(bytes);
         ClassNode node = new ClassNode();
         reader.accept(node, ClassReader.EXPAND_FRAMES);

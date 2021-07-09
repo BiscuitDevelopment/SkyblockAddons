@@ -131,16 +131,6 @@ public class Utils {
     private int lastHoveredSlot = -1;
 
     /**
-     * Whether the player is using the old style of bars packaged into Imperial's Skyblock Pack.
-     */
-    private boolean usingOldSkyBlockTexture;
-
-    /**
-     * Whether the player is using the default bars packaged into the mod.
-     */
-    private boolean usingDefaultBarTextures = true;
-
-    /**
      * Whether the player is using the FSR container preview
      */
     private boolean usingFSRcontainerPreviewTexture = false;
