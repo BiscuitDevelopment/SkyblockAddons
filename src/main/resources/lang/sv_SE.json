@@ -29,9 +29,12 @@
     "manaNumber": "Mananummer",
     "healthBar": "Häslomätare",
     "healthNumber": "Hälsonummer",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Skyddsymbol",
+    "defenceNumber": "Skyddsnummer",
+    "defencePercentage": "Skyddsprocent",
+    "defenseIcon": "Skyddsymbol",
+    "defenseNumber": "Skyddsnummer",
+    "defensePercentage": "Skyddsprocent",
     "healthUpdates": "Hälsouppdateringar",
     "hidePlayersInLobby": "Dölj entiteter långt bort i lobbyn",
     "darkAuctionTimer": "Tidur för svarta aktioner",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Kromatisk färg",
     "worldRenderedCooldownTime": "§c[SBA]: §rVäntetid: %time% s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ingen",
