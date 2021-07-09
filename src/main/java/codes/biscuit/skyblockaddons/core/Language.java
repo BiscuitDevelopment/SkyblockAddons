@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 public enum Language {
 
     // listed by popularity
-    ENGLISH("en_us"),
+    ENGLISH("en_US"),
     CHINESE_TRADITIONAL("zh_TW"),
     CHINESE_SIMPLIFIED("zh_CN"),
     HINDI("hi_IN"),
@@ -46,18 +46,18 @@ public enum Language {
     SERBIAN_LATIN("sr_CS"),
     SLOVENIAN("sl_SI"),
     SWEDISH("sv_SE"),
-    UKRAINIAN("uk_UA"),        
+    UKRAINIAN("uk_UA"),
     PIRATE_ENGLISH("en_PT"),
     LOLCAT("lol_US"),
     BISCUITISH("bc_BC"),
     OWO("ow_Wo");
 
-    private ResourceLocation resourceLocation;
-    private String path;
+    private final ResourceLocation resourceLocation;
+    private final String path;
 
     Language(String path) {
         this.path = path;
-        this.resourceLocation = new ResourceLocation("skyblockaddons", "flags/"+path.toLowerCase()+".png");
+        this.resourceLocation = new ResourceLocation("skyblockaddons", "flags/" + path.toLowerCase() + ".png");
     }
 
     /**
