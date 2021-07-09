@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '581a86dcbe'
+    id 'net.minecraftforge.gradle.forge' version '6f5327'
     id "io.freefair.lombok" version "6.0.0-m2"
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
