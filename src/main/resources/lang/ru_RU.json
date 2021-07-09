@@ -29,9 +29,12 @@
     "manaNumber": "Количество маны",
     "healthBar": "Полоса здоровья",
     "healthNumber": "Число здоровья",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Иконка защиты",
+    "defenceNumber": "Число защиты",
+    "defencePercentage": "Проценты защиты",
+    "defenseIcon": "Иконка защиты",
+    "defenseNumber": "Число защиты",
+    "defensePercentage": "Проценты защиты",
     "healthUpdates": "Изменение числа здоровья",
     "hidePlayersInLobby": "Скрывать далёких существ в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
@@ -279,7 +282,7 @@
     "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Нет",
