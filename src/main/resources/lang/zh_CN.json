@@ -29,9 +29,12 @@
     "manaNumber": "法力值",
     "healthBar": "生命计量条",
     "healthNumber": "生命值",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "防御图标",
+    "defenceNumber": "防御值",
+    "defencePercentage": "防御比例",
+    "defenseIcon": "防御图标",
+    "defenseNumber": "防御值",
+    "defensePercentage": "防御比例",
     "healthUpdates": "生命值波动",
     "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
@@ -279,7 +282,7 @@
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "无",
