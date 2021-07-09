@@ -205,7 +205,6 @@
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
-    "otherDefenceStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)"
   },
   "messages": {
@@ -280,7 +279,7 @@
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
     "chroma": "Croma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
