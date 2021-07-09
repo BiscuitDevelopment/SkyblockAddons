@@ -29,9 +29,9 @@
     "manaNumber": "Số Mana",
     "healthBar": "Thanh Máu",
     "healthNumber": "Số Máu",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Defense Symbol",
+    "defenceNumber": "Defense Number",
+    "defencePercentage": "Defense Percentage",
     "healthUpdates": "Số Máu thay đổi",
     "hidePlayersInLobby": "Ẩn Vật Xa ở Sảnh",
     "darkAuctionTimer": "Hẹn giờ Dark Auction",
@@ -205,7 +205,7 @@
     "guiScaleX": "Tỉ Lệ GUI (X): %scale%",
     "guiScaleY": "Tỉ Lệ GUI (Y): %scale%",
     "abbreviateSkillXpDenominator": "Rút ngắn Số Kinh nghiệm Kỹ năng",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Phù phép",
