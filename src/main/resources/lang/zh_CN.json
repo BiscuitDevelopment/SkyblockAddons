@@ -205,7 +205,6 @@
     "guiScaleX": "GUI 横向长度: %scale%",
     "guiScaleY": "GUI 纵向高度: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
