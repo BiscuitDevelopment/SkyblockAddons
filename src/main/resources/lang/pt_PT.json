@@ -29,9 +29,9 @@
     "manaNumber": "Número de Mana",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Símbolo da Defesa",
-    "defenceNumber": "Número de Defesa",
-    "defencePercentage": "Percentagem de Defesa",
+    "defenseIcon": "Símbolo da Defesa",
+    "defenseNumber": "Número de Defesa",
+    "defensePercentage": "Percentagem de Defesa",
     "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "darkAuctionTimer": "Tempo até à Dark Auction",
@@ -66,7 +66,7 @@
     "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
-    "collectionDisplay": "Progresso das habilidades",
+    "collectionDisplay": "Progresso das skills",
     "revenantIndicator": "Indicador de progresso da armadura de Slayer",
     "specialZealotAlert": "Alerta para Zealots especiais",
     "enableMessageWhenActionPrevented": "Enviar uma mensagem sempre que uma ação é prevenida",
@@ -203,7 +203,9 @@
     "entityOutlines": "Mostrar contornos das entidades",
     "effectiveHealthNumber": "Número de Vida Efetiva",
     "guiScaleX": "Escala da GUI no X: %scale%",
-    "guiScaleY": "Escala da GUI no Y: %scale%"
+    "guiScaleY": "Escala da GUI no Y: %scale%",
+    "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
+    "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -276,7 +278,8 @@
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
     "chroma": "Croma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s",
+    "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS"
   },
   "discordStatus": {
     "titleNone": "Nenhum",

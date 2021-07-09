@@ -29,9 +29,9 @@
     "manaNumber": "魔力文字",
     "healthBar": "血量計量條",
     "healthNumber": "血量文字",
-    "defenceIcon": "防禦力圖標",
-    "defenceNumber": "防禦力文字",
-    "defencePercentage": "防禦力百分比",
+    "defenseIcon": "防禦力圖標",
+    "defenseNumber": "防禦力文字",
+    "defensePercentage": "防禦力百分比",
     "healthUpdates": "血量起伏",
     "hidePlayersInLobby": "在大廳隱藏較遠的實體",
     "darkAuctionTimer": "黑市計時器",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
@@ -276,7 +278,8 @@
     "none": "無",
     "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒"
+    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "無",

@@ -29,9 +29,9 @@
     "manaNumber": "Количество маны",
     "healthBar": "Полоса здоровья",
     "healthNumber": "Число здоровья",
-    "defenceIcon": "Иконка защиты",
-    "defenceNumber": "Число защиты",
-    "defencePercentage": "Проценты защиты",
+    "defenseIcon": "Иконка защиты",
+    "defenseNumber": "Число защиты",
+    "defensePercentage": "Проценты защиты",
     "healthUpdates": "Изменение числа здоровья",
     "hidePlayersInLobby": "Скрывать далёких существ в лобби",
     "darkAuctionTimer": "Таймер тёмного аукциона",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Зачарования",
@@ -276,7 +278,8 @@
     "none": "Нет",
     "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с"
+    "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Нет",

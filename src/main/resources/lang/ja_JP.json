@@ -29,9 +29,9 @@
     "manaNumber": "Mana数",
     "healthBar": "体力ゲージ",
     "healthNumber": "体力数",
-    "defenceIcon": "防御力マーク",
-    "defenceNumber": "防御力数",
-    "defencePercentage": "ダメージの軽減率",
+    "defenseIcon": "防御力マーク",
+    "defenseNumber": "防御力数",
+    "defensePercentage": "ダメージの軽減率",
     "healthUpdates": "体力の変動数",
     "hidePlayersInLobby": "ロビーで遠くにいるエンティティを非表示",
     "darkAuctionTimer": "Dark Auctionのタイマー",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -276,7 +278,8 @@
     "none": "なし",
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
-    "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒"
+    "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒",
+    "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります"
   },
   "discordStatus": {
     "titleNone": "なし",

@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Språk: ",
   "language": "Norsk",
   "settings": {
     "settings": "Innstillinger",
@@ -29,9 +29,9 @@
     "manaNumber": "Mana nummer",
     "healthBar": "Helse bar",
     "healthNumber": "Helse nummer",
-    "defenceIcon": "Forsvars symbol",
-    "defenceNumber": "Forsvars nummer",
-    "defencePercentage": "Forsvars-prosent",
+    "defenseIcon": "Forsvarssymbol",
+    "defenseNumber": "Forsvarsnummer",
+    "defensePercentage": "Forsvars-prosent",
     "healthUpdates": "Helse endrings nummer",
     "hidePlayersInLobby": "Skjul entiteter langt unna i lobbyen",
     "darkAuctionTimer": "Mørk-auksjon timer",
@@ -124,8 +124,8 @@
     "hideSvenPupNametags": "Skjul Sven valp navn-skilt",
     "turnAllFeaturesChroma": "Gjør Alle Funksjoner Chroma",
     "dungeonMapDisplay": "Dungeon kartvisning",
-    "rotateMap": "Rotate The Map With Your Player's Rotation",
-    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "rotateMap": "Roter kart etter din karakters rotasjon",
+    "centerRotationOnYourPlayer": "Sentrer rotasjonen rundt karakteren din",
     "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
     "showFetchurItemName": "Show Fetchur's item name",
     "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
@@ -200,10 +200,12 @@
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
+    "entityOutlines": "Vis Enhets Konturer",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -276,7 +278,8 @@
     "none": "Ingen",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ingen",

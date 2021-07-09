@@ -29,9 +29,9 @@
     "manaNumber": "Points de mana",
     "healthBar": "Barre de vie",
     "healthNumber": "Points de vie",
-    "defenceIcon": "Icône de défense",
-    "defenceNumber": "Points de défense",
-    "defencePercentage": "Pourcentage de défense",
+    "defenseIcon": "Icône de défense",
+    "defenseNumber": "Points de défense",
+    "defensePercentage": "Pourcentage de défense",
     "healthUpdates": "Historique des points de vie",
     "hidePlayersInLobby": "Masquer les joueurs éloignés du hall",
     "darkAuctionTimer": "Minuteur marché noir",
@@ -203,7 +203,9 @@
     "entityOutlines": "Afficher les contours des entités",
     "effectiveHealthNumber": "Nombre de santé effectif",
     "guiScaleX": "Échelle de l'interface X : %scale%",
-    "guiScaleY": "Échelle de l'interface Y : %scale%"
+    "guiScaleY": "Échelle de l'interface Y : %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -276,7 +278,8 @@
     "none": "Aucun",
     "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rTemps de recharge: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rTemps de recharge: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Aucun",
