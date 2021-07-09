@@ -29,9 +29,12 @@
     "manaNumber": "Mana数",
     "healthBar": "体力ゲージ",
     "healthNumber": "体力数",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "防御力マーク",
+    "defenceNumber": "防御力数",
+    "defencePercentage": "ダメージの軽減率",
+    "defenseIcon": "防御力マーク",
+    "defenseNumber": "防御力数",
+    "defensePercentage": "ダメージの軽減率",
     "healthUpdates": "体力の変動数",
     "hidePlayersInLobby": "ロビーで遠くにいるエンティティを非表示",
     "darkAuctionTimer": "Dark Auctionのタイマー",
@@ -279,7 +282,7 @@
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
     "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "なし",
