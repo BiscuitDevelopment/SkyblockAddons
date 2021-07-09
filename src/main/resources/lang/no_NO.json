@@ -29,9 +29,12 @@
     "manaNumber": "Mana nummer",
     "healthBar": "Helse bar",
     "healthNumber": "Helse nummer",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Forsvarssymbol",
+    "defenceNumber": "Forsvarsnummer",
+    "defencePercentage": "Forsvars-prosent",
+    "defenseIcon": "Forsvarssymbol",
+    "defenseNumber": "Forsvarsnummer",
+    "defensePercentage": "Forsvars-prosent",
     "healthUpdates": "Helse endrings nummer",
     "hidePlayersInLobby": "Skjul entiteter langt unna i lobbyen",
     "darkAuctionTimer": "Mørk-auksjon timer",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ingen",
