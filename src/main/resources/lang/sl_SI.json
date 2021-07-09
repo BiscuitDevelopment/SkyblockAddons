@@ -29,9 +29,12 @@
     "manaNumber": "Število Mane",
     "healthBar": "Vrstica Zdravja",
     "healthNumber": "Število Zdravja",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Simbol Obrambe",
+    "defenceNumber": "Število Obrambe",
+    "defencePercentage": "Odstotek Obrambe",
+    "defenseIcon": "Simbol Obrambe",
+    "defenseNumber": "Število Obrambe",
+    "defensePercentage": "Odstotek Obrambe",
     "healthUpdates": "Sprememba Števila Zdravja",
     "hidePlayersInLobby": "Skrij Daljne Entitete v Lobby-ju",
     "darkAuctionTimer": "Časovnik do Temne Dražbe",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
