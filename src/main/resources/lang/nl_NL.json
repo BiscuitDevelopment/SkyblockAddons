@@ -279,7 +279,7 @@
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn"
   },
   "discordStatus": {
     "titleNone": "Geen",
