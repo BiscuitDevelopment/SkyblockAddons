@@ -29,9 +29,9 @@
     "manaNumber": "Mananummer",
     "healthBar": "Häslomätare",
     "healthNumber": "Hälsonummer",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Defense Symbol",
+    "defenceNumber": "Defense Number",
+    "defencePercentage": "Defense Percentage",
     "healthUpdates": "Hälsouppdateringar",
     "hidePlayersInLobby": "Dölj entiteter långt bort i lobbyn",
     "darkAuctionTimer": "Tidur för svarta aktioner",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X-storlek: %scale%",
     "guiScaleY": "GUI X-storlek: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Förtrollningar",
