@@ -29,9 +29,12 @@
     "manaNumber": "Mana Numbr",
     "healthBar": "Health Bar",
     "healthNumber": "Health Numbr",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Defence Symbol",
+    "defenceNumber": "Defence Numbr",
+    "defencePercentage": "Defence Persentage",
+    "defenseIcon": "Defence Symbol",
+    "defenseNumber": "Defence Numbr",
+    "defensePercentage": "Defence Persentage",
     "healthUpdates": "Health Change Numbr",
     "hidePlayersInLobby": "Hide Far Entitiez in Lobby",
     "darkAuctionTimer": "Dark Aucshun Tiemr",
@@ -205,7 +208,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -279,7 +282,7 @@
     "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
