@@ -29,9 +29,9 @@
     "manaNumber": "Mana Number",
     "healthBar": "Health Bar",
     "healthNumber": "The Health of Your Biscuits (important)",
-    "defenceIcon": "Defence Symbol",
-    "defenceNumber": "Defence Number",
-    "defencePercentage": "Defence Percentage",
+    "defenceIcon": "Defense Symbol",
+    "defenceNumber": "Defense Number",
+    "defencePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
@@ -205,7 +205,7 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenceStats": "Other Defence Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Bischants",
