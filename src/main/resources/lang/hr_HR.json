@@ -29,9 +29,12 @@
     "manaNumber": "Broj Mane",
     "healthBar": "Bar Zdravlja",
     "healthNumber": "Broj Zdravlja",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Simbol Obrane",
+    "defenceNumber": "Broj Obrane",
+    "defencePercentage": "Postotak Obrane",
+    "defenseIcon": "Simbol Obrane",
+    "defenseNumber": "Broj Obrane",
+    "defensePercentage": "Postotak Obrane",
     "healthUpdates": "Broj Promjene Zdravlja",
     "hidePlayersInLobby": "Sakrij daleke Entite",
     "darkAuctionTimer": "Tajmer Crne Dražbe",
@@ -279,7 +282,7 @@
     "copyModeSet": "Način kopiranja programera postavljen je na:%mode%. Pritisnite \"%keyName%\" da biste pokrenuli kopiranje podataka!",
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Ništa",
