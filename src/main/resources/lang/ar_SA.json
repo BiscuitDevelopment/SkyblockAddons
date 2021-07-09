@@ -29,9 +29,12 @@
     "manaNumber": "رقم الـMana",
     "healthBar": "شريط الصحة",
     "healthNumber": "رقم الصحة",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "رمز الحماية",
+    "defenceNumber": "رقم الدفاع",
+    "defencePercentage": "نسبة الدفاع",
+    "defenseIcon": "رمز الحماية",
+    "defenseNumber": "رقم الدفاع",
+    "defensePercentage": "نسبة الدفاع",
     "healthUpdates": "رقم تعديل الصحة",
     "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الردهة",
     "darkAuctionTimer": "مؤقت الDark Auction",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "لا شيء",
