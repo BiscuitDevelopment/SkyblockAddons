@@ -32,6 +32,9 @@
     "defenceIcon": "Defense Symbol",
     "defenceNumber": "Defense Number",
     "defencePercentage": "Defense Percentage",
+    "defenseIcon": "Defense Symbol",
+    "defenseNumber": "Defense Number",
+    "defensePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Entities in Lobby",
     "darkAuctionTimer": "Black Market'o Laikmatis",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
