@@ -65,7 +65,7 @@ public class GuiContainerHook {
 
         if (slot != null) {
             // Draw crafting pattern overlays inside the crafting grid.
-            if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && main.getUtils().isOnSkyblock()
+            if (false /*main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/ && main.getUtils().isOnSkyblock()
                     && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
                     && main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
 

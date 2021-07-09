@@ -163,8 +163,8 @@ public class PlayerControllerMPHook {
                 }
 
                 // Crafting patterns
-                if (slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
-                        && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                if (false && slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
+                    /*&& main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
 
                     final CraftingPattern selectedPattern = main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern();
                     final ItemStack clickedItem = slotIn.getStack();

@@ -222,7 +222,7 @@ public class GuiChestHook {
 
         if (inventoryType != null) {
             if (inventoryType == InventoryType.CRAFTING_TABLE) {
-                if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                if (false /*SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
                     craftingPatternSelection = new CraftingPatternSelection(Minecraft.getMinecraft(), Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
                 }
                 return;
@@ -378,7 +378,7 @@ public class GuiChestHook {
         }
 
         // Draw here to make sure it's in the background of the GUI and items overlay it.
-        if (main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) &&
+        if (false && /*main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && */
                 main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE &&
                 craftingPatternSelection != null) {
             craftingPatternSelection.draw();
