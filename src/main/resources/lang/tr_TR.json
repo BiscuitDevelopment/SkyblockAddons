@@ -29,9 +29,12 @@
     "manaNumber": "Mana Sayısı",
     "healthBar": "Can Çubuğu",
     "healthNumber": "Can Sayısı",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Savunma Sembolü",
+    "defenceNumber": "Savunma Sayısı",
+    "defencePercentage": "Koruma Yüzdesi",
+    "defenseIcon": "Savunma Sembolü",
+    "defenseNumber": "Savunma Sayısı",
+    "defensePercentage": "Koruma Yüzdesi",
     "healthUpdates": "Candaki Değişiklikleri Göster",
     "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
@@ -205,7 +208,7 @@
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -279,7 +282,7 @@
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
