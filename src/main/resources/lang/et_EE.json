@@ -29,9 +29,12 @@
     "manaNumber": "Mana number",
     "healthBar": "Elude riba",
     "healthNumber": "Elude number",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Kaitse sümbol",
+    "defenceNumber": "Kaitse number",
+    "defencePercentage": "Kaitse protsent",
+    "defenseIcon": "Kaitse sümbol",
+    "defenseNumber": "Kaitse number",
+    "defensePercentage": "Kaitse protsent",
     "healthUpdates": "Elude muutumise protsent",
     "hidePlayersInLobby": "Peida lobby 's kauged olendid",
     "darkAuctionTimer": "Dark Auction 'i taimer",
@@ -279,7 +282,7 @@
     "copyModeSet": "Arendaja kopeerimise režiimiks on pandud: %mode%. Vajuta \"%keyName%\", et kopeerida andmeid!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
