@@ -29,9 +29,9 @@
     "manaNumber": "Mana Number",
     "healthBar": "Health Bar",
     "healthNumber": "Health Number",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Yer' Defense Num'r",
-    "defencePercentage": "Defense Percentage",
+    "defenseIcon": "Defense Symbol",
+    "defenseNumber": "Yer' Defense Num'r",
+    "defensePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
     "hidePlayersInLobby": "Hide Far Scallywags in th' Lobby",
     "darkAuctionTimer": "Dark Auction Timer",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effec've Health Num'arr",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -276,7 +278,8 @@
     "none": "None",
     "copyModeSet": "Th' developer copy mode be set t': %mode%. Press \"%keyName%\" t' trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",

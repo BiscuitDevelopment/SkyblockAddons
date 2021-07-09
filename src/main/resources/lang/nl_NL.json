@@ -29,9 +29,9 @@
     "manaNumber": "Managetal",
     "healthBar": "Gezondheidsbalk",
     "healthNumber": "Gezondheidsgetal",
-    "defenceIcon": "Verdedigings Symbool",
-    "defenceNumber": "Verdedigingsgetal",
-    "defencePercentage": "Verdediging Percentage",
+    "defenseIcon": "Verdedigings Symbool",
+    "defenseNumber": "Verdedigingsgetal",
+    "defensePercentage": "Verdediging Percentage",
     "healthUpdates": "Gezondheidsveranderingsgetal",
     "hidePlayersInLobby": "Verre entiteiten in lobby verbergen",
     "darkAuctionTimer": "Timer Donkere Veiling",
@@ -203,7 +203,9 @@
     "entityOutlines": "Entiteiten omlijnen",
     "effectiveHealthNumber": "Effectieve gezondheid-getal",
     "guiScaleX": "X-schaal interface: %scale%",
-    "guiScaleY": "Y-schaal interface: %scale%"
+    "guiScaleY": "Y-schaal interface: %scale%",
+    "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
+    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -276,7 +278,8 @@
     "none": "Geen",
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s",
+    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn"
   },
   "discordStatus": {
     "titleNone": "Geen",

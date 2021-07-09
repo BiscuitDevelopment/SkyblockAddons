@@ -29,9 +29,9 @@
     "manaNumber": "Mana szám",
     "healthBar": "Életerő sáv",
     "healthNumber": "Életerő szám",
-    "defenceIcon": "Védelem szimbólum",
-    "defenceNumber": "Védelem szám",
-    "defencePercentage": "Védelem százalék",
+    "defenseIcon": "Védelem szimbólum",
+    "defenseNumber": "Védelem szám",
+    "defensePercentage": "Védelem százalék",
     "healthUpdates": "Életerő változások",
     "hidePlayersInLobby": "Távoli entitiások elrejtése Lobbykban",
     "darkAuctionTimer": "Dark Auction időzítő",
@@ -132,7 +132,7 @@
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "Térkép nagyítása",
     "glowingDroppedItems": "Eldobott tágyak ragyogása",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "Dungeon társak mutatása",
     "baseStatBoostPercentage": "Dungeon tárgyak alap értékeinek a mutatása",
     "colorByRarity": "Színezés ritkaság alapján",
     "showPlayerHeadsOnMap": "Játékos fejek mutatása a dungeon térképen",
@@ -147,7 +147,7 @@
     "revenantSlayerTracker": "Slayer követő - Revenant/Zombi",
     "tarantulaSlayerTracker": "Slayer követő - Tarantula/Pók",
     "svenSlayerTracker": "Slayer követő - Sven/Farkas",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "voidgloomSlayerTracker": "Slayer követő - Voidgloom/Enderman",
     "textMode": "Text Mode",
     "dragonsNestOnly": "Csak Dragon's Nest-ben jelenjen meg",
     "dragonStatsTracker": "Sárkány követő",
@@ -180,14 +180,14 @@
     "drillFuelNumber": "Drill üzemanyag szám",
     "fetchurToday": "Mai Fetchur tárgy mutatása",
     "fishingParticleOverlay": "Fishing Particle Overlay",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Varázslat színek beállítása",
     "cooldownPrediction": "Predict and Shorten Cooldown",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "legendaryMonkeyLevel100": "[Átmeneti] 100-as szintű Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Varázslat Leírás Elrejtése",
+    "hideEnchantDescription": "Varázslat leírás elrejtése",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper funkció",
       "trackedEntityProximityIndicator": "Követett entitás távolság mutató",
@@ -199,11 +199,13 @@
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "vanillaHealthPrediction": "Vanilla élet használata",
+    "entityOutlines": "Entity körvonalak mutatása",
+    "effectiveHealthNumber": "Effektív élet szám",
+    "guiScaleX": "Gui szélessége: %scale%",
+    "guiScaleY": "Gui magassága: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -226,10 +228,10 @@
       "openModFolderButton": "Modok mappájának megnyitása",
       "joinDiscordButton": "Csatlakozás a Discordhoz",
       "newUpdateAvailable": "Egy új frissítés (%version%) áll rendelkezésre!",
-      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "noDownloadAvailable": "Letöltési link nem elérhető, kérlek nézd meg a Discord szerverünket.",
       "notificationBox": {
         "majorAvailable": "Egy új nagy frissítés (%version%) elérhető! A linket a letöltéshez a chatben találod.",
-        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "betaAvailable": "Egy új béta frissítés (%version%) érhető el! Nyisd meg a chatet a letöltési linkért.",
         "patchAvailable": "Egy új hibajavító frissítés (%version%) elérhető! Nyisd meg a chatet a letöltésekért!"
       }
     },
@@ -276,7 +278,8 @@
     "none": "Semmi",
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Semmi",
@@ -480,6 +483,6 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Maximum"
   }
 }

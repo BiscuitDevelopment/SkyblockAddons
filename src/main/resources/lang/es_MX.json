@@ -29,9 +29,9 @@
     "manaNumber": "Número de Maná",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Icono de Defensa",
-    "defenceNumber": "Número de Defensa",
-    "defencePercentage": "Porcentaje de Defensa",
+    "defenseIcon": "Símbolo de Defensa",
+    "defenseNumber": "Número de Defensa",
+    "defensePercentage": "Porcentaje de Defensa",
     "healthUpdates": "Número de Actualización de Vida",
     "hidePlayersInLobby": "Ocultar Entidades Lejanas en Lobby",
     "darkAuctionTimer": "Tiempo para el Mercado Negro",
@@ -196,14 +196,16 @@
       "showQuestCooldownDescription": "Esto se mostrará sobre la cabeza de Trevor"
     },
     "showEnderChestPreview": "Mostrar Vista Previa del Cofre de Ender",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "hideWhenNotDoingQuest": "Solo Mostrar Durante Las Misiones",
     "showOverflowManaNumber": "Número de Overflow Mana",
     "axeCooldownIndicator": "Indicador de Enfriamiento de Hacha",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
+    "vanillaHealthPrediction": "Usar La Predicción De Salud De Vanilla",
+    "entityOutlines": "Mostrar Contornos De Las Entidades",
+    "effectiveHealthNumber": "Número de Vida Efectiva",
     "guiScaleX": "Escala de GUI X: %scale%",
-    "guiScaleY": "Escala de GUI Y: %scale%"
+    "guiScaleY": "Escala de GUI Y: %scale%",
+    "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
+    "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Encantamientos",
@@ -276,7 +278,8 @@
     "none": "Ninguno",
     "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
     "chroma": "Croma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO"
   },
   "discordStatus": {
     "titleNone": "Ninguno",

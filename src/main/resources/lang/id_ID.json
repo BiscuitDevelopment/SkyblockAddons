@@ -29,9 +29,9 @@
     "manaNumber": "Jumlah Mana",
     "healthBar": "Bar Nyawa",
     "healthNumber": "Jumlah Nyawa",
-    "defenceIcon": "Simbol Pertahanan",
-    "defenceNumber": "Jumlah Pertahanan",
-    "defencePercentage": "Persentase Pertahanan",
+    "defenseIcon": "Simbol Defense",
+    "defenseNumber": "Jumlah Defense",
+    "defensePercentage": "Persentase Defense",
     "healthUpdates": "Besar Perubahan Nyawa",
     "hidePlayersInLobby": "Sembunyikan Entitas Yang Jauh Di Lobby",
     "darkAuctionTimer": "Timer Dark Auction",
@@ -201,9 +201,11 @@
     "axeCooldownIndicator": "Indikator Cooldown Kapak",
     "vanillaHealthPrediction": "Pakai Prediksi Health Vanilla",
     "entityOutlines": "Perlihatkan Garis Luar Entity",
-    "effectiveHealthNumber": "Effective Health Number",
+    "effectiveHealthNumber": "Jumlah Health Effective",
     "guiScaleX": "Skala GUI X: %scale%",
-    "guiScaleY": "Skala GUI Y: %scale%"
+    "guiScaleY": "Skala GUI Y: %scale%",
+    "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -276,7 +278,8 @@
     "none": "Tidak Ada",
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
     "chroma": "Kroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",

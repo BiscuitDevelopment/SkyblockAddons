@@ -29,9 +29,9 @@
     "manaNumber": "رقم الـMana",
     "healthBar": "شريط الصحة",
     "healthNumber": "رقم الصحة",
-    "defenceIcon": "رمز الحماية",
-    "defenceNumber": "رقم الدفاع",
-    "defencePercentage": "نسبة الدفاع",
+    "defenseIcon": "رمز الحماية",
+    "defenseNumber": "رقم الدفاع",
+    "defensePercentage": "نسبة الدفاع",
     "healthUpdates": "رقم تعديل الصحة",
     "hidePlayersInLobby": "إخفاء الكائنات البعيدة في الردهة",
     "darkAuctionTimer": "مؤقت الDark Auction",
@@ -203,7 +203,9 @@
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%"
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -276,7 +278,8 @@
     "none": "لا شيء",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "لا شيء",

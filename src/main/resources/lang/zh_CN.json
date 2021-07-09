@@ -29,9 +29,9 @@
     "manaNumber": "法力值",
     "healthBar": "生命计量条",
     "healthNumber": "生命值",
-    "defenceIcon": "防御图标",
-    "defenceNumber": "防御值",
-    "defencePercentage": "防御比例",
+    "defenseIcon": "防御图标",
+    "defenseNumber": "防御值",
+    "defensePercentage": "防御比例",
     "healthUpdates": "生命值波动",
     "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
@@ -191,19 +191,21 @@
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
-      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "highlightTrackedEntity": "高亮追踪实体",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "showEnderChestPreview": "显示末影箱预览",
+    "hideWhenNotDoingQuest": "在未进行任务时隐藏",
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
+    "entityOutlines": "显示实体轮廓",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI 横向长度: %scale%",
-    "guiScaleY": "GUI 纵向高度: %scale%"
+    "guiScaleY": "GUI 纵向高度: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
@@ -276,7 +278,8 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s"
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -311,7 +314,7 @@
     "titleCompress": "Compress",
     "descriptionCompress": "以尽可能少的行数显示附魔名称",
     "titleNormal": "普通",
-    "descriptionNormal": "Displays enchants like Hypixel does",
+    "descriptionNormal": "以 Hypixel 标准样式显示附魔列表",
     "titleExpand": "展开",
     "descriptionExpand": "逐行显示附魔"
   },
@@ -479,7 +482,7 @@
     "commas": "半角逗号",
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
+    "cultivatedCrops": "已收获作物",
     "maxed": "Maxed"
   }
 }
