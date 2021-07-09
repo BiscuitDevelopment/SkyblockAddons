@@ -279,7 +279,7 @@
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
     "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります"
   },
   "discordStatus": {
     "titleNone": "なし",
