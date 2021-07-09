@@ -29,9 +29,12 @@
     "manaNumber": "Número de Mana",
     "healthBar": "Barra de Vida",
     "healthNumber": "Número de Vida",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Símbolo da Defesa",
+    "defenceNumber": "Número de Defesa",
+    "defencePercentage": "Percentagem de Defesa",
+    "defenseIcon": "Símbolo da Defesa",
+    "defenseNumber": "Número de Defesa",
+    "defensePercentage": "Percentagem de Defesa",
     "healthUpdates": "Número da Diferença de Vida",
     "hidePlayersInLobby": "Esconder jogadores longe no Lobby",
     "darkAuctionTimer": "Tempo até à Dark Auction",
@@ -205,7 +208,7 @@
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -279,7 +282,7 @@
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
     "chroma": "Croma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
