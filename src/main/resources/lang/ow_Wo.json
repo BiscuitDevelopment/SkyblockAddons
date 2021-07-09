@@ -29,9 +29,12 @@
     "manaNumber": "Mana Numbew",
     "healthBar": "Heawth Baw",
     "healthNumber": "Heawth Numbew",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Defence Symbow",
+    "defenceNumber": "Defence Numbew",
+    "defencePercentage": "Defence Pewcentage",
+    "defenseIcon": "Defence Symbow",
+    "defenseNumber": "Defence Numbew",
+    "defensePercentage": "Defence Pewcentage",
     "healthUpdates": "Heawth Change Numbew",
     "hidePlayersInLobby": "Hide Faw Entities In Wobby",
     "darkAuctionTimer": "Dawk Auction Timew",
@@ -279,7 +282,7 @@
     "copyModeSet": "The devewopew copy mode has been set to: %mode%. Pwess \"%keyName%\" to twiggew a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
