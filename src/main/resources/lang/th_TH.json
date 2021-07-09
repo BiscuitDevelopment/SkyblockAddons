@@ -29,9 +29,12 @@
     "manaNumber": "จำนวนมานา",
     "healthBar": "หลอดเลือด",
     "healthNumber": "จำนวนเลือด",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "สัญลักษณ์พลังป้องกัน",
+    "defenceNumber": "จำนวนพลังป้องกัน",
+    "defencePercentage": "เปอร์เซ็นต์พลังป้องกัน",
+    "defenseIcon": "สัญลักษณ์พลังป้องกัน",
+    "defenseNumber": "จำนวนพลังป้องกัน",
+    "defensePercentage": "เปอร์เซ็นต์พลังป้องกัน",
     "healthUpdates": "จำนวนการเพิ่มลดของเลือด",
     "hidePlayersInLobby": "ซ่อน Entity ที่อยู่ไกลในล็อบบี้",
     "darkAuctionTimer": "ระยะเวลา Dark Auction",
@@ -279,7 +282,7 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "ไม่มี",
