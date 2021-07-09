@@ -29,9 +29,12 @@
     "manaNumber": "Jumlah Mana",
     "healthBar": "Bar Nyawa",
     "healthNumber": "Jumlah Nyawa",
-    "defenceIcon": "Defense Symbol",
-    "defenceNumber": "Defense Number",
-    "defencePercentage": "Defense Percentage",
+    "defenceIcon": "Simbol Defense",
+    "defenceNumber": "Jumlah Defense",
+    "defencePercentage": "Persentase Defense",
+    "defenseIcon": "Simbol Defense",
+    "defenseNumber": "Jumlah Defense",
+    "defensePercentage": "Persentase Defense",
     "healthUpdates": "Besar Perubahan Nyawa",
     "hidePlayersInLobby": "Sembunyikan Entitas Yang Jauh Di Lobby",
     "darkAuctionTimer": "Timer Dark Auction",
@@ -205,7 +208,7 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
-    "otherDefenceStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenceStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants",
@@ -279,7 +282,7 @@
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires: Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
