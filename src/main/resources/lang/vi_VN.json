@@ -279,7 +279,7 @@
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
     "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing"
   },
   "discordStatus": {
     "titleNone": "Không có",
