@@ -203,7 +203,7 @@
     "entityOutlines": "엔티티 윤곽 보이기",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X축 크기:%scale%",
-    "guiScaleY": "GUI Y Scale: %scale%",
+    "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
@@ -279,7 +279,7 @@
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
     "chroma": "무지개",
     "worldRenderedCooldownTime": "§c[SBA]: §r쿨다운: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다."
   },
   "discordStatus": {
     "titleNone": "없음",
