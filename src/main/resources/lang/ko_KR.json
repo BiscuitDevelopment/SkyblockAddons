@@ -201,11 +201,11 @@
     "axeCooldownIndicator": "도끼 쿨다운 표시",
     "vanillaHealthPrediction": "기본 체력 예측 쓰기",
     "entityOutlines": "엔티티 윤곽 보이기",
-    "effectiveHealthNumber": "Effective Health Number",
+    "effectiveHealthNumber": "사실적 체력",
     "guiScaleX": "GUI X축 크기:%scale%",
     "guiScaleY": "GUI Y축 크기: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
+    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "인챈트",
