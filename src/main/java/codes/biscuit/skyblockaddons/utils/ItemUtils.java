@@ -216,7 +216,7 @@ public class ItemUtils {
     // TODO: This is a hotfix until we come up with a way to jsonify
     public static boolean isDrill(ItemStack itemStack) {
         String id = getSkyblockItemID(itemStack);
-        return id != null && (id.startsWith("MITHRIL_DRILL_") || id.startsWith("TITANIUM_DRILL_"));
+        return id != null && (id.contains("DRILL"));
     }
 
 
