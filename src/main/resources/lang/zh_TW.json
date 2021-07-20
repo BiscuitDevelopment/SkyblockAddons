@@ -365,7 +365,7 @@
         "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
       },
       "edit": {
-        "help": "編輯 GUI 位置"
+        "help": "編輯介面位置"
       },
       "folder": {
         "help": "開啟模組資料夾",
