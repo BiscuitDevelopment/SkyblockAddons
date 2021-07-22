@@ -147,7 +147,7 @@
     "revenantSlayerTracker": "Slayerトラッカー - Revenant/ゾンビ",
     "tarantulaSlayerTracker": "Slayerトラッカー - Tarantula/クモ",
     "svenSlayerTracker": "Slayerトラッカー - Sven/オオカミ",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "voidgloomSlayerTracker": "Slayerトラッカー - Voidgloom/エンダーマン",
     "textMode": "テキストのモード",
     "dragonsNestOnly": "Dragon's Nest内でのみ表示",
     "dragonStatsTracker": "ドラゴントラッカー",
@@ -196,16 +196,16 @@
       "showQuestCooldownDescription": "これはTrevorの頭上に表示されます"
     },
     "showEnderChestPreview": "エンダーチェストのプレビューを表示",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaNumber": "Overflow Mana Number",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "hideWhenNotDoingQuest": "クエストを行っていない時は非表示",
+    "showOverflowManaNumber": "Overflow Mana数",
+    "axeCooldownIndicator": "斧のクールダウンインジケーター",
+    "vanillaHealthPrediction": "バニラの体力予測を使用",
     "entityOutlines": "Show Entity Outlines",
     "effectiveHealthNumber": "Effective Health Number",
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
+    "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -422,7 +422,7 @@
         "statRequired": "統計を選択する必要があります。Tabでオプション。",
         "numberRequired": "設定したい数字を追加する必要があります。",
         "killsSet": "Slayer %boss%のキル数は%number%に設定されました。",
-        "statSet": "スレイヤー %boss%の統計%stat%が%number%に設定されました。",
+        "statSet": "Slayer %boss%の統計%stat%が%number%に設定されました。",
         "invalidBoss": "「%input%」は有効な統計ではありません！",
         "invalidStat": "「%input%」は有効なボスではありません！"
       },
