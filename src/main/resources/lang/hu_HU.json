@@ -279,7 +279,7 @@
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "A Shaderek, Fast Render és az Antialiasing legyenek kikapcsolva"
   },
   "discordStatus": {
     "titleNone": "Semmi",
