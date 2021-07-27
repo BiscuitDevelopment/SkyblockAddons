@@ -168,7 +168,7 @@
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
     "highlightSpecialEnchantments": "Surlignez les enchantements spéciaux",
-    "disableEmptyGlassPanes": "Désactiver les vitres vides",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
     "healingCircleOpacity": "Opacité du cercle de soin",
     "chromaSize": "Taille Chroma",
