@@ -168,7 +168,7 @@
     "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Компактная информация в Tab",
     "highlightSpecialEnchantments": "Подсвечивать Особые Зачарования",
-    "disableEmptyGlassPanes": "Отключить пустые стеклянные панели в меню",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Счётчик конфет/очков во время Spooky Event",
     "healingCircleOpacity": "Прозрачность Круга Исцеления",
     "chromaSize": "Размер Chroma",
