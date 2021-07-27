@@ -168,7 +168,7 @@
     "showSwordKills": "Brojač ubistva na maču",
     "compactTabList": "Jednostavnija tablista",
     "highlightSpecialEnchantments": "Istaknite Posebne čarolije",
-    "disableEmptyGlassPanes": "Isključi prazno staklo u gui",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky event Candy brojač",
     "healingCircleOpacity": "Neprozirnost ljekovitog kruga",
     "chromaSize": "Kroma veličina",
