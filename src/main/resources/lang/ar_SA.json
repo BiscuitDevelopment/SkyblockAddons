@@ -168,7 +168,7 @@
     "showSwordKills": "إظهار قتلات السيف",
     "compactTabList": "قائمة الـTab المتراصة",
     "highlightSpecialEnchantments": "تمييز التطويرات الخاصة",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
