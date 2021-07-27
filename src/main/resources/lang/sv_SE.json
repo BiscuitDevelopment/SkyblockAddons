@@ -168,7 +168,7 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Kompakt spelarlista",
     "highlightSpecialEnchantments": "Tydliggör speciella förtrollningar",
-    "disableEmptyGlassPanes": "Ignorera tomma glasrutor",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event-godis/poängräknare",
     "healingCircleOpacity": "Opacitet för helande cirkel",
     "chromaSize": "Storlek",
