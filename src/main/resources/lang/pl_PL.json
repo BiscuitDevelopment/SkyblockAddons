@@ -168,7 +168,7 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightSpecialEnchantments": "Podświetl specjalne zaklęcia",
-    "disableEmptyGlassPanes": "Wyłącz puste okienka",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
     "healingCircleOpacity": "Przeźroczystość koła leczącego",
     "chromaSize": "Rozmiar koloru Chroma",
