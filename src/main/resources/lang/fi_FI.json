@@ -168,7 +168,7 @@
     "showSwordKills": "Näytä miekan tapot",
     "compactTabList": "Tiivis Tab-lista",
     "highlightSpecialEnchantments": "Korosta erikoislumoukset",
-    "disableEmptyGlassPanes": "Piilota tyhjät lasiruudut",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky-tapahtuman Candy/Piste -laskuri",
     "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
     "chromaSize": "Väriefektin koko",
