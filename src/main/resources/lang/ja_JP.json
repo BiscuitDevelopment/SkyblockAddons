@@ -168,7 +168,7 @@
     "showSwordKills": "剣で倒した数を表示",
     "compactTabList": "コンパクトなTabリスト",
     "highlightSpecialEnchantments": "特別なエンチャントを強調表示",
-    "disableEmptyGlassPanes": "空のガラス板を無効化",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "SpookyイベントのCandy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circleの不透明度",
     "chromaSize": "色変化の大きさ",
