@@ -1,5 +1,5 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Speak: ",
   "language": "Pirate English",
   "settings": {
     "settings": "Yer Settin's",
@@ -177,7 +177,7 @@
     "useNewChromaEffect": "Use Th' Effect o' New Chroma",
     "showExperimentationTableTooltips": "Show Tooltips o' th' Experimentation Table",
     "drillFuelBar": "Drill Fuel Bar",
-    "drillFuelNumber": "Number ' Drill Fuel",
+    "drillFuelNumber": "Drill Fuel Number",
     "fetchurToday": "Show What Fetchur Be Wantin' Today",
     "fishingParticleOverlay": "Overlay o' th' Fishin' Particles",
     "enchantmentLoreParsing": "Enchanment Tooltips Parsin'",
@@ -214,7 +214,7 @@
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch be full!",
     "labymod": "Ahoy LabyMod Lads: 'ide grub, booty, an' health bar, be incompatible.",
-    "minionCannotReach": "Arr, mate, one o' yer %type% crew couldn't reach an' stopped spawnin'!",
+    "minionCannotReach": "Ahoy mate, one o' yer %type% crew could nah reach an' stopped spawnin'!",
     "minionIsFull": "Lad, A minion on yer island be full!",
     "typeEnchantmentsHere": "Type yer %type% 'ere!",
     "separateMultiple": "Separate Multiple wit' Commas.",
@@ -247,7 +247,7 @@
     "searchFeatures": "Search feat'rs",
     "downloadingUpdateFile": "Downloading yer updates...",
     "onlyFewArrowsLeft": "Mate, ye only got %arrows% arrows left!",
-    "noArrowsLeft": "Mate, yer arrows be gone!",
+    "noArrowsLeft": "No Bolts Be Left!",
     "chooseAColor": "Choose a Col'r",
     "selectedColor": "Selected Col'r",
     "setHexColor": "Set yer Hex Col'r",
@@ -279,7 +279,7 @@
     "copyModeSet": "Th' developer copy mode be set t': %mode%. Press \"%keyName%\" t' trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
