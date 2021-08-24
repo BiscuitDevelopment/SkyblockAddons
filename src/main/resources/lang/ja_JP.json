@@ -201,7 +201,7 @@
     "axeCooldownIndicator": "斧のクールダウンインジケーター",
     "vanillaHealthPrediction": "バニラの体力予測を使用",
     "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
+    "effectiveHealthNumber": "Effective Health数",
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
