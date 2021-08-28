@@ -421,7 +421,7 @@
         "bossRequired": "Ye need t' select a boss! Please choose %bosses%",
         "statRequired": "Ye need t' select a stat. Press tab fer options.",
         "numberRequired": "Ye need t' add th' number ye want.",
-        "killsSet": "Kills fer slayer %boss% was set t' %number%.",
+        "killsSet": "Scuttles fer slayer %boss% be set t' %number%.",
         "statSet": "Statistic %stat% fer slayer %boss% was set t' %number%.",
         "invalidBoss": "\"%input%\" be not a valid statistic!",
         "invalidStat": "\"%input%\" be not a valid boss!"
@@ -471,7 +471,7 @@
     "home": "Yer Island",
     "spawn": "Startin' landing",
     "unknown": "Have Nah Visited",
-    "notUnlocked": "Th's here 'sn't unlocked",
+    "notUnlocked": "'Tis 'ere be nah unlocked",
     "inCombat": "In Battle..."
   },
   "enchants": {
@@ -480,7 +480,7 @@
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
     "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
+    "expertiseKills": "Expertise Scuttles",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
     "maxed": "Maxed"
