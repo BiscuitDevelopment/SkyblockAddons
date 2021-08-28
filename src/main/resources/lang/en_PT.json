@@ -193,7 +193,7 @@
       "trackedEntityProximityIndicator": "Show th' Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight th' Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This'll be displayed above Trevor's head"
+      "showQuestCooldownDescription": "'Tis be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Preview th' Ender Chest",
     "hideWhenNotDoingQuest": "Hide When Be Not Doin' Quest",
@@ -210,14 +210,14 @@
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
-    "dropConfirmation": "'ay lad, drop this here item again t' confirm!",
+    "dropConfirmation": "Ahoy, drop 'tis 'ere item again t' confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
     "fullInventory": "Ahoy mate, yer pouch be full!",
     "labymod": "Ahoy LabyMod Lads: 'ide grub, booty, an' health bar, be incompatible.",
     "minionCannotReach": "Ahoy mate, one o' yer %type% crew could nah reach an' stopped spawnin'!",
     "minionIsFull": "Lad, A minion on yer island be full!",
     "typeEnchantmentsHere": "Type yer %type% 'ere!",
-    "separateMultiple": "Separate Multiple wit' Commas.",
+    "separateMultiple": "Separate Multiple Wit' Commas.",
     "enchantsToMatch": "%type% T' match:",
     "enchantsToExclude": "%type% T' exclude:",
     "updateChecker": {
@@ -231,12 +231,12 @@
       "noDownloadAvailable": "No download link be available, please check our here Discord serv'r.",
       "notificationBox": {
         "majorAvailable": "A new major update (%version%) be available! The download link can be found in yer chat.",
-        "betaAvailable": "A new Beta update (%version%) is available fer ye! Put yer eyes 'n chat for th' download link.",
+        "betaAvailable": "A new beta update (%version%) be available fer ye! Put yer eyes 'n chat fer th' download link.",
         "patchAvailable": "A new patch update (%version%) be available! Look in chat fer download options!"
       }
     },
     "slotLocked": "Ahoy, matey! This here slot be locked!",
-    "summoningEyeFound": "Summonin' Eye!",
+    "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "'ay mate! A feat're 'as stopped ye from droppin' this here \"rare\" item or tool from yer hotbar.",
     "clickMoreTimes": "'ay lad, Click/Drop this here item %times% more times if ye really wants t' do this.",
     "clickOneMoreTime": "'ay lad, Click/Drop this here item 1 more time if ye really wants t' do this.",
@@ -257,13 +257,13 @@
     "enableFeatureSnapping": "Snap the fixtures",
     "stage": "Stage %stage%",
     "switchedSlots": "Dont drop this item matey! You were just holdin the treasure!",
-    "clickToOpenLink": "Click here t' see th' website matey!",
+    "clickToOpenLink": "Click 'ere t' see th' website!",
     "clickToOpenFolder": "Click t' open yer mods folder!",
     "firstStatus": "This status will appear at th' top",
     "secondStatus": "This status will appear under yer first status",
-    "fallbackStatus": "This status will appear when yer automatic status 'as nothing t' show",
+    "fallbackStatus": "'Tis status be appearin' when yer automatic status 'as nothin' t' show",
     "legendarySeaCreatureWarning": "Ye' caught a big one!",
-    "bossApproaching": "Yar’ close to spawnin’ a boss!",
+    "bossApproaching": "Ye be close t' spawnin' a boss!",
     "fetchurItem": "Fetchur: %item%",
     "fetchurWarning": "Fetchur changed!",
     "enableAll": "Enable All",
