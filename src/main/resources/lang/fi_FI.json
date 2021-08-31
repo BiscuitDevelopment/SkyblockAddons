@@ -168,7 +168,7 @@
     "showSwordKills": "Näytä miekan tapot",
     "compactTabList": "Tiivis Tab-lista",
     "highlightSpecialEnchantments": "Korosta erikoislumoukset",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "hideMenuGlassPanes": "Piilota valikkojen lasipaneelien tekstit",
     "candyPointsCounter": "Spooky-tapahtuman Candy/Piste -laskuri",
     "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
     "chromaSize": "Väriefektin koko",
@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Vaikuttavan terveyden arvo",
     "guiScaleX": "GUI X-Mittakaava: %scale%",
     "guiScaleY": "GUI Y-Mittakaava: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Lyhennä Skill XP nimet",
+    "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -279,7 +279,7 @@
     "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
     "chroma": "Väriefekti",
     "worldRenderedCooldownTime": "§c[SBA]: §rJäähtymisaika: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä"
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
