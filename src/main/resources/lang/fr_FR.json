@@ -168,7 +168,7 @@
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
     "highlightSpecialEnchantments": "Surlignez les enchantements spéciaux",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "hideMenuGlassPanes": "Masquer les info-bulles des vitres dans les menus",
     "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
     "healingCircleOpacity": "Opacité du cercle de soin",
     "chromaSize": "Taille Chroma",
@@ -204,8 +204,8 @@
     "effectiveHealthNumber": "Nombre de santé effectif",
     "guiScaleX": "Échelle de l'interface X : %scale%",
     "guiScaleY": "Échelle de l'interface Y : %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Abréger le dénominateur de l'XP de skill",
+    "otherDefenseStats": "Autres Stats de Défense (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -279,7 +279,7 @@
     "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTemps de recharge: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Nécessite que les Shaders, le Rendu rapide et l'Anticrénelage soient désactivés"
   },
   "discordStatus": {
     "titleNone": "Aucun",
