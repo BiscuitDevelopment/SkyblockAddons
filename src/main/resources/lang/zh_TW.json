@@ -361,7 +361,7 @@
         "detailedHelp": {
           "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
-        "disabled": "開發者模式已禁用！",
+        "disabled": "開發者模式已停用！",
         "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
       },
       "edit": {
