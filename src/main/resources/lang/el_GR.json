@@ -168,7 +168,7 @@
     "showSwordKills": "Εμφάνιση Sword Kills",
     "compactTabList": "Συμπαγής λίστα καρτελών",
     "highlightSpecialEnchantments": "Επισημάνετε τις ειδικές γοητείες",
-    "disableEmptyGlassPanes": "Απενεργοποίηση κενού υαλοπίνακα",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Καραμέλες / μετρητές πόντων",
     "healingCircleOpacity": "Θεραπεία αδιαφάνειας κύκλου",
     "chromaSize": "Χρωματιστό Μέγεθος",

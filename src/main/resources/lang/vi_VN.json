@@ -168,7 +168,7 @@
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
     "highlightSpecialEnchantments": "Nổi bật các Phù phép Đặc biệt",
-    "disableEmptyGlassPanes": "Xóa các chỗ trống phủ bằng kính",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
     "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
     "chromaSize": "Mức sắc độ",
@@ -279,7 +279,7 @@
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
     "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing"
   },
   "discordStatus": {
     "titleNone": "Không có",
