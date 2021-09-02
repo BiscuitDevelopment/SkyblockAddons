@@ -219,9 +219,9 @@
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
     "enchantsToMatch": "區配%type%:",
-    "enchantsToExclude": "排斥%type%:",
+    "enchantsToExclude": "排除%type%:",
     "updateChecker": {
-      "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
+      "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
       "joinDiscord": "加入我們的 Discord 伺服器！",
       "watchShowcase": "觀看影片",
       "downloadButton": "下載",
