@@ -168,14 +168,14 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
-    "hideMenuGlassPanes": "隱藏選單玻璃物品信息",
+    "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
     "chromaSize": "漸變色尺寸",
     "chromaSaturation": "漸變色飽和度",
     "chromaBrightness": "漸變色亮度",
     "useNewChromaEffect": "使用新版漸變效果",
-    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品信息",
+    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品資訊",
     "drillFuelBar": "Drill 燃料計量條",
     "drillFuelNumber": "Drill 燃料值",
     "fetchurToday": "顯示 Fetchur 今日物品",
@@ -346,7 +346,7 @@
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
-            "formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。"
+            "formatted": "決定在複製時是否包含格式化代碼。值可以是 \"true\" 或 \"false\"，如果沒有提供，將預設為 \"false\"。如果值為 \"true\"，格式化代碼將被複製。"
           }
         }
       },
@@ -369,7 +369,7 @@
       },
       "folder": {
         "help": "開啟模組資料夾",
-        "error": "嘗試打開模組資料夾時出錯: %s"
+        "error": "嘗試開啟模組資料夾時出錯: %s"
       },
       "help": {
         "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
