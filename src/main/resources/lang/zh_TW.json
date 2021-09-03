@@ -310,7 +310,7 @@
     "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
   },
   "enchantLayout": {
-    "title": "控制附魔如何顯示在物品信息",
+    "title": "控制附魔如何顯示在物品資訊",
     "titleCompress": "壓縮",
     "descriptionCompress": "盡可能壓縮附魔至最少行",
     "titleNormal": "正常",
@@ -393,7 +393,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "手動設置 Zealot 計數器",
+          "help": "手動設定 Zealot 計數器",
           "detailedHelp": {
             "description": "手動設置 Zealot 計數器的數字。",
             "options": {
@@ -409,9 +409,9 @@
         }
       },
       "slayer": {
-        "help": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+        "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
         "detailedHelp": {
-          "description": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+          "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "options": {
             "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
