@@ -1,0 +1,488 @@
+{
+  "languageText": "Language: ",
+  "language": "English",
+  "settings": {
+    "settings": "Settings",
+    "magmaBossWarning": "Magma Boss Warning",
+    "itemDropConfirmation": "Item Drop Confirmation",
+    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
+    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
+    "hideFoodAndArmor": "Hide Food & Armor Bar",
+    "fullInventoryWarning": "Full Inventory Warning",
+    "repeating": "Repeat Warning",
+    "disableEmberRodAbility": "Disable Island Ember Rod",
+    "editLocations": "Edit GUI Locations",
+    "guiScale": "Gui Scale: %scale%",
+    "resetLocations": "Reset Locations",
+    "minionStopWarning": "\"Minion Cannot Reach\" Warning",
+    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
+    "backpackStyle": "Backpack Style: %style%",
+    "backpackStyles": {
+      "regular": "Regular",
+      "compact": "Compact"
+    },
+    "showBackpackPreview": "Show Backpack Preview",
+    "hideHealthBar": "Hide Vanilla Health Bar",
+    "fullMinionWarning": "Full Minion Warning",
+    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
+    "manaBar": "Mana Bar",
+    "manaNumber": "Mana Number",
+    "healthBar": "Health Bar",
+    "healthNumber": "Health Number",
+    "defenseIcon": "Defense Symbol",
+    "defenseNumber": "Defense Number",
+    "defensePercentage": "Defense Percentage",
+    "healthUpdates": "Health Change Number",
+    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "darkAuctionTimer": "Dark Auction Timer",
+    "magmaBossTimer": "Magma Boss Timer",
+    "itemPickupLog": "Item Pickup Log",
+    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
+    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
+    "preventMovementOnDeath": "Prevent Walking After Death",
+    "showItemAnvilUses": "Show Item Anvil Uses",
+    "lockSlots": "Allow Locking Slots",
+    "lockSlot": "Lock Slot",
+    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
+    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "changeColor": "Change Color",
+    "showInOtherGames": "Show in Other Games",
+    "useVanillaTexture": "Use the Vanilla Texture",
+    "textStyle": "Text Style",
+    "textStyles": {
+      "one": "Style One",
+      "two": "Style Two"
+    },
+    "warningDuration": "Warning Duration",
+    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
+    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
+    "makeBackpackInventoriesColored": "Color Inventories",
+    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
+    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "craftingPatterns": "Choose Crafting Patterns",
+    "soundIndicatorForFishing": "Sound Indicator for Fishing",
+    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
+    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "showItemCooldowns": "Show Item Cooldowns",
+    "speedPercentage": "Speed Percentage",
+    "collectionDisplay": "Skill Progress Display",
+    "revenantIndicator": "Slayer Armor Progress Indicator",
+    "specialZealotAlert": "Special Zealot Alert",
+    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
+    "hidePetHealthBar": "Hide Pet Health Bar",
+    "powerOrbDisplay": "Power Orb Display",
+    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "powerOrbStyle": {
+      "detailed": "Detailed",
+      "compact": "Compact"
+    },
+    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
+    "zealotCounter": "Zealot Counter - Count Since Last Eye",
+    "tickerChargesDisplay": "Ticker/Charges Display",
+    "tab": {
+      "generalSettings": "General Settings"
+    },
+    "tabEffectTimers": "Potion and Powerup Timers",
+    "noArrowsLeftAlert": "No Arrows Left Alert",
+    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "showCakeBagPreview": "Show Preview for Cake Bags",
+    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
+    "enableDevFeatures": "Enable Developer Features",
+    "chromaSpeed": "Chroma Speed",
+    "chromaMode": "Chroma Color Mode",
+    "chromaModes": {
+      "allTheSame": "All the Same Color",
+      "fade": "Color Fade"
+    },
+    "chromaFadeWidth": "Chroma Fade Width",
+    "sortTabEffectTimers": "Sort Timers by Duration",
+    "showBrokenFragments": "Show Broken Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
+    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
+    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
+    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
+    "combatTimerDisplay": "Combat Timer Display",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Endstone Protector Display",
+    "fancyWarpMenu": "Fancy Warp Menu",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "doubleWarp": "Warp Twice",
+    "advancedMode": "Advanced Mode",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "bossApproachAlert": "Slayer Boss Approach Alert",
+    "disableTeleportPadMessages": "Disable Teleport Pad Messages",
+    "baitListDisplay": "Show Bait List While Holding a Rod",
+    "freezeBackpackPreview": "Freeze Backpack Preview",
+    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "disableEndermanTeleportation": "Disable Enderman Teleportation",
+    "changeZealotColor": "Change Zealot Color",
+    "hideSvenPupNametags": "Hide Sven Pup Nametags",
+    "turnAllFeaturesChroma": "Turn All Features Chroma",
+    "dungeonMapDisplay": "Dungeon Map Display",
+    "rotateMap": "Rotate The Map With Your Player's Rotation",
+    "centerRotationOnYourPlayer": "Rotate Around Your Player's Marker",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "mapZoom": "Map Zoom",
+    "glowingDroppedItems": "Glowing Dropped Items",
+    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "colorByRarity": "Color By Rarity",
+    "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
+    "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
+    "showCriticalTeammates": "Show Critical Dungeon Teammates",
+    "showGlowingItemsOnIsland": "Show Glowing Items On Island",
+    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
+    "showDungeonMilestone": "Show Dungeon Milestone",
+    "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
+    "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
+    "showRarityUpgraded": "Show if Item's Rarity has been Upgraded",
+    "revenantSlayerTracker": "Slayer Tracker - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
+    "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "textMode": "Text Mode",
+    "dragonsNestOnly": "Only Show in the Dragon's Nest",
+    "dragonStatsTracker": "Dragon Tracker",
+    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
+    "dungeonDeathCounter": "Dungeon Death Counter",
+    "showPersonalCompactorPreview": "Show Personal Compactor Preview",
+    "rockPetTracker": "Rock Pet Tracker",
+    "dolphinPetTracker": "Dolphin Pet Tracker",
+    "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Overlay",
+    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "showSkillPercentageInstead": "Show Percentage Instead of XP",
+    "showSkillXPGained": "Show XP Gained",
+    "skillProgressBar": "Skill Progress Bar",
+    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "disableMortMessages": "Disable Mort Messages",
+    "disableBossMessages": "Disable Boss Messages",
+    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "showSwordKills": "Show Sword Kills",
+    "compactTabList": "Compact Tab List",
+    "highlightSpecialEnchantments": "Highlight Special Enchantments",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelNumber": "Drill Fuel Number",
+    "fetchurToday": "Show What Fetchur Wants Today",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "Enlarge Overlay Particles",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "Show Reforge Overlay",
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "Highlight Tracked Entity",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview",
+    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "showOverflowManaNumber": "Overflow Mana Number",
+    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "entityOutlines": "Show Entity Outlines",
+    "effectiveHealthNumber": "Effective Health Number",
+    "guiScaleX": "GUI X Scale: %scale%",
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+  },
+  "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
+    "dropConfirmation": "Drop this item again to confirm!",
+    "magmaBossWarning": "Magma Cube Boss!",
+    "fullInventory": "Full Inventory!",
+    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "minionCannotReach": "A %type% minion cannot reach and has stopped spawning!",
+    "minionIsFull": "A minion on your island is full!",
+    "typeEnchantmentsHere": "Type %type% Here!",
+    "separateMultiple": "Separate Multiple With Commas.",
+    "enchantsToMatch": "%type% To Match:",
+    "enchantsToExclude": "%type% To Exclude:",
+    "updateChecker": {
+      "wantToViewPatchNotes": "Need support or want to read the full changelog?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "A new update (%version%) is available!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "A new major update (%version%) is available! The link for the download can be found in chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "A new patch update (%version%) is available! Look in chat for download options!"
+      }
+    },
+    "slotLocked": "This slot is locked!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
+    "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
+    "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
+    "featureDisabled": "Feature Disabled",
+    "anvilUses": "Anvil Uses: %uses%",
+    "specialZealotFound": "Special Zealot!",
+    "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
+    "searchFeatures": "Search features",
+    "downloadingUpdateFile": "Downloading update file...",
+    "onlyFewArrowsLeft": "Only %arrows% arrows left!",
+    "noArrowsLeft": "No Arrows Left!",
+    "chooseAColor": "Choose a Color",
+    "selectedColor": "Selected Color",
+    "setHexColor": "Set Hex Color",
+    "rescaleFeatures": "Rescale Features",
+    "resizeBars": "Resize Bars",
+    "showColorIcons": "Show Color Icons",
+    "enableFeatureSnapping": "Enable Feature Snapping",
+    "stage": "Stage %stage%",
+    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "clickToOpenLink": "Click to open this link!",
+    "clickToOpenFolder": "Click to open your mods folder!",
+    "firstStatus": "This status will appear at the top",
+    "secondStatus": "This status will appear under your first status",
+    "fallbackStatus": "This status will appear when your automatic status has nothing to show",
+    "legendarySeaCreatureWarning": "Legendary Catch!",
+    "bossApproaching": "You are close to spawning a boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
+    "enableAll": "Enable All",
+    "disableAll": "Disable All",
+    "enchantmentInclusionExample": "e.g. \"prot, feather\"",
+    "enchantmentExclusionExample": "e.g. \"proj, blast\"",
+    "reforgeInclusionExample": "e.g. \"godly, strong\"",
+    "reforgeExclusionExample": "e.g. \"odd, clean\"",
+    "actionsLeft": "%number% Left",
+    "effectActive": "1 Effect Active",
+    "effectsActive": "%number% Effects Active",
+    "none": "None",
+    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+  },
+  "discordStatus": {
+    "titleNone": "None",
+    "descriptionNone": "No text is displayed",
+    "titleLocation": "Location",
+    "descriptionLocation": "Shows your current location",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleStats": "Stats",
+    "descriptionStats": "Shows your HP, Defense and Mana stats",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Shows your Zealot counter",
+    "titleItem": "Held Item",
+    "descriptionItem": "Shows the name of the item you're holding",
+    "titleProfile": "Profile",
+    "descriptionProfile": "Shows your Profile name",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "titleCustom": "Custom Status",
+    "descriptionCustom": "Enter a custom status",
+    "titleAuto": "Auto Status",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "titleRevenants": "Revenant Quest",
+    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
+    "titleSvens": "Sven Quest",
+    "descriptionSvens": "Shows that you are doing a Sven quest.",
+    "titleTarantula": "Tarantula Quest",
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+  },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
+  },
+  "commandUsage": {
+    "sba": {
+      "base": {
+        "help": "Open the main menu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the server brand",
+        "brandOutput": "Server Brand: %brand%",
+        "notFound": "Server brand not found!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoreboard text",
+        "detailedHelp": {
+          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "detailedHelp": {
+          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+        }
+      },
+      "dev": {
+        "help": "Toggle developer mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+        },
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edit GUI locations"
+      },
+      "folder": {
+        "help": "Open your mods folder",
+        "error": "An error occurred trying to open the mods folder: %s"
+      },
+      "help": {
+        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manually set your zealot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifetime summoning eyes obtained",
+              "totalZealots": "Lifetime zealots killed",
+              "zealots": "Zealots killed since the last summoning eye drop"
+            }
+          },
+          "eyesSet": "Set total summoning eye count to %number%!",
+          "totalZealotsSet": "Set total zealot count to %number%!",
+          "wrongUsage": "Invalid selection! Please choose %options%.",
+          "zealotsSet": "Set current zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manually set slayer stats, press tab for arguments",
+        "detailedHelp": {
+          "description": "Manually set slayer stats, press tab for arguments",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+            "number": "Number to set the stat to",
+            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "statRequired": "You need to select a stat. Press tab for options.",
+        "numberRequired": "You need to add the number you want.",
+        "killsSet": "Kills for slayer %boss% was set to %number%.",
+        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "disabled": "Action bar messages will no longer be logged.",
+        "enabled": "Action bar messages will now be logged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wrong usage!",
+          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        }
+      }
+    }
+  },
+  "keyBindings": {
+    "developerCopyNBT": "Copy NBT"
+  },
+  "dragonTracker": {
+    "protector": "Protector",
+    "old": "Old",
+    "wise": "Wise",
+    "unstable": "Unstable",
+    "young": "Young",
+    "strong": "Strong",
+    "superior": "Superior",
+    "recentDragons": "Recent Dragons:",
+    "dragonsSince": "Dragons Since:",
+    "aspectOfTheDragons": "AOTD",
+    "enderDragonPet": "Dragon Pet",
+    "eyesPlaced": "Eyes Placed",
+    "never": "Never"
+  },
+  "slayerTracker": {
+    "revenant": "Revenant Horror:",
+    "tarantula": "Tarantula Broodfather:",
+    "sven": "Sven Packmaster:",
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Killed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
+  }
+}
