@@ -360,6 +360,7 @@ public class IslandWarpGui extends GuiScreen {
         }
     }
 
+    //TODO: Maybe change these to load from a file at some point
     @Getter
     public enum Marker {
         PRIVATE_ISLAND("home", Translations.getMessage("warpMenu.home"), Island.PRIVATE_ISLAND, true, 72, 90),
@@ -379,6 +380,7 @@ public class IslandWarpGui extends GuiScreen {
 
         THE_END("end", Translations.getMessage("warpMenu.spawn"), Island.THE_END, true, 440, 291),
         DRAGONS_NEST("drag", "Dragon's Nest", Island.THE_END, 260, 248),
+        VOID_SEPULTURE("void", "Void Sepulture", Island.THE_END, true, 370, 227),
 
         BLAZING_FORTRESS("nether", Translations.getMessage("warpMenu.spawn"), Island.BLAZING_FORTRESS, true, 80, 350),
         BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 350, 200),
