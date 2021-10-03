@@ -131,7 +131,7 @@
     "showFetchurInventoryOpenOnly": "Solo Mostrar el Objeto de Fetchur Cuando el Inventario Está Abierto",
     "warnWhenFetchurChanges": "Alerta cuando el objeto de Fetchur cambia",
     "mapZoom": "Zoom del Mapa",
-    "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillan",
+    "glowingDroppedItems": "Hacer Que los Objetos Soltados Brillen",
     "outlineDungeonTeammates": "Destacar Compañeros de Dungeon",
     "baseStatBoostPercentage": "Mostrar Aumento de Atributos Base Para los Objetos de Dungeon",
     "colorByRarity": "Color por Rareza",
