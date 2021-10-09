@@ -1,5 +1,6 @@
 {
-  "language": "OwO wanguage uwu",
+  "languageText": "Language: ",
+  "language": "OwO",
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
@@ -13,8 +14,6 @@
     "editLocations": "Edit GUI Wocations",
     "guiScale": "Gui scawe: %scale%",
     "resetLocations": "Weset Wowocations",
-    "hideDurability": "Hide Toow Duwabiwiwy",
-    "showEnchantmentsReforges": "Enchants & Wefowoges",
     "minionStopWarning": "\"Minwion Cannwot Weach\" Wawning",
     "hidePlayersNearNPCs": "Hide Pwayers Neaw Impowtant NPCs",
     "backpackStyle": "Bwackpack Stywe: %style%",
@@ -25,22 +24,20 @@
     "showBackpackPreview": "Showo Bwackpack Pwefiew",
     "hideHealthBar": "Hide Waniwwa Heawth Baw",
     "fullMinionWarning": "Fuww Minwion Wawning",
-    "ignoreItemFrameClicks": "Ignowo Cwicks On Item Fwames",
     "showOnlyWhenHoldingShift": "Show onwy when howding shift",
     "manaBar": "Mana Baw",
-    "manaText": "Mana Numbew",
+    "manaNumber": "Mana Numbew",
     "healthBar": "Heawth Baw",
-    "healthText": "Heawth Numbew",
-    "defenceIcon": "Defence Symbow",
-    "defenceText": "Defence Numbew",
-    "defencePercentage": "Defence Pewcentage",
+    "healthNumber": "Heawth Numbew",
+    "defenseIcon": "Defence Symbow",
+    "defenseNumber": "Defence Numbew",
+    "defensePercentage": "Defence Pewcentage",
     "healthUpdates": "Heawth Change Numbew",
     "hidePlayersInLobby": "Hide Faw Entities In Wobby",
     "darkAuctionTimer": "Dawk Auction Timew",
     "magmaBossTimer": "Magmwa Bowoss Timwe",
     "itemPickupLog": "Item Pickup Wog",
     "avoidPlacingEnchantedItems": "Awoid Pwacing Enchawnted Items",
-    "avoidBreakingStems": "Awoid Bweaking Stems",
     "stopBowChargeFromResetting": "Stwop Bowo Chawge Fwom Wesetting",
     "preventMovementOnDeath": "Pwewent Wawking Aftew Death",
     "showItemAnvilUses": "Showo Item Anwiw Uses",
@@ -61,20 +58,15 @@
     "dontOpenProfileWithBow": "Donw't Opewn Bow Prowofile",
     "stopDroppingSellingRareItems": "Stowp Dwopping/Sewwing Wawr Itewms",
     "makeBackpackInventoriesColored": "Cowow Inventowies",
-    "avoidBreakingBottomSugarCane": "Awoid Bweaking Bwottom Sugar Cwane",
     "replaceRomanNumeralsWithNumbers": "Wepwace Roman Numuwuals on Itwems",
     "changeBarColorForPotions": "Change Baw Cowow Fow Withew & Poison",
     "craftingPatterns": "Choose Cwafting Pattewns",
     "soundIndicatorForFishing": "Swound Indicator fwor Fwishing UwU",
     "avoidBlinkingNightVision": "Avoid Bwinking Night Vision Potion",
     "disableMinionLocationWarning": "Disabwe Wocation Not Pewfect Wawnings",
-    "jungleAxeCooldown": "Jungwe Axe Coowdown",
-    "organizeLongEnchantmentLists": "Owganize Wong Enchantment Wists",
     "showItemCooldowns": "Show Item Coowdowns",
     "speedPercentage": "Spweed Pwocentage",
     "collectionDisplay": "Skwill Prowogess Dispway",
-    "onlyMineOresDeepCaverns": "Onwy Mine Owes in the deep Cavewns",
-    "onlyMineValuablesNether": "Onwy Mine Vawuabwes in the Nethew",
     "revenantIndicator": "Swawwer Awmowo Pwogwess Indicator ",
     "specialZealotAlert": "Spwecial Wealots Awert",
     "enableMessageWhenActionPrevented": "Show a Message When an Action is Pwevented",
@@ -116,10 +108,11 @@
     "discordRP": "Discawd Rich Pwesence",
     "endstoneProtectorDisplay": "Endstone Pwotectow Dispway",
     "fancyWarpMenu": "Fancy Wawp Menu ^-^",
+    "stopRatSounds": "Stwop Wat Pet Sounds >-<",
+    "onlyStopRatSqueak": "Onwy Stowp the Wat Squeak Sound",
     "doubleWarp": "Wawp Twice",
     "advancedMode": "Advanced Mode",
     "legendarySeaCreatureWarning": "Wegendawy Sea Cweatuwe Wawning",
-    "onlyBreakLogsPark": "Onwy Bweak Wogs in the Pawk",
     "bossApproachAlert": "Boss Appwoached Awert",
     "disableTeleportPadMessages": "Disabwe Tewepowt Pad Messages",
     "baitListDisplay": "Show Bait Wist Whiwe Howding a Wod",
@@ -132,11 +125,15 @@
     "turnAllFeaturesChroma": "Tuwn Aww Featuwes Chwoma",
     "dungeonMapDisplay": "Dungeon map dispway",
     "rotateMap": "Wotate Map to Your Pwayer's Wotation",
-    "centerRotationOnYourPlayer": "Center da Wotation Awound Your Pwayer",
+    "centerRotationOnYourPlayer": "Wotate Awound Youw Playew's Markew",
+    "showFetchurOnlyInDwarven": "Onwy Showo Fetchur in the Dwawven Mines",
+    "showFetchurItemName": "Showo Fetchur's item name ^-^",
+    "showFetchurInventoryOpenOnly": "Onwy Showo Fetchur's item when the Inventowy is Open",
+    "warnWhenFetchurChanges": "Wawn me when Fetchur changes",
     "mapZoom": "Map Zwoom",
     "glowingDroppedItems": "Gwowing Dwopped Items",
-    "glowingDungeonTeammates": "Glowing Dungeon Teammates",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "baseStatBoostPercentage": "Show Bwase Stat Bwoost for Dungeon Items",
     "colorByRarity": "Cowor By Wawity",
     "showPlayerHeadsOnMap": "Showo Pwayew Heads on Dungeon Mwap",
     "showHealingCircleWall": "Show Dungeon Heawing Ciwcwe Waww",
@@ -150,19 +147,16 @@
     "revenantSlayerTracker": "Slayer Twackew - Revenant/Zombie",
     "tarantulaSlayerTracker": "Slayer Twackew - Tarantula/Spidew",
     "svenSlayerTracker": "Slayer Twackew - Sven/Wowf",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "Text Mowde",
     "dragonsNestOnly": "Onwy Show in the Dragon's Nest",
     "dragonStatsTracker": "Dwagon Twackew",
     "skillActionsLeftUntilNextLevel": "Show Actions Weft Untiw Next Wevew",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest >-<",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest >-<",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest >-<",
     "dungeonDeathCounter": "Dungeon Death Countew",
     "showPersonalCompactorPreview": "Show Personal Compactor Pweview",
     "rockPetTracker": "Rock Pet Twackew",
     "dolphinPetTracker": "Dolphin Pet Twackew",
     "dungeonsTeammateNameOverlay": "Dungeons Teammate Name Ovewway",
-    "showExpertiseKills": "Showo Expertise Kills",
     "dungeonsSecretsDisplay": "Dungeons Secrets Dispway",
     "showSkillPercentageInstead": "Show Pewcentage Instead of XP",
     "showSkillXPGained": "Show XP Gained",
@@ -171,8 +165,47 @@
     "disableMortMessages": "Disabwe Mort Messagwes",
     "disableBossMessages": "Disabwe Boss Messagwes",
     "hideOtherPlayersPresents": "Hide Othew Pwayew's Pwesents",
-    "easierPresentOpening": "Opwen Pwesents Easiew",
-    "showSwordKills": "Shwow Swowd Kwills"
+    "showSwordKills": "Shwow Swowd Kwills",
+    "compactTabList": "Cwompwact Twab Wist",
+    "highlightSpecialEnchantments": "Highwight Spwscial Encwantments",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "candyPointsCounter": "Spooky Event Candy/Points Counter",
+    "healingCircleOpacity": "Healing Circle Opacity",
+    "chromaSize": "Chroma Size",
+    "chromaSaturation": "Chroma Saturation",
+    "chromaBrightness": "Chroma Brightness",
+    "useNewChromaEffect": "Use New Chroma Effect",
+    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
+    "drillFuelBar": "Drill Fuel Bar",
+    "drillFuelNumber": "Drill Fuel Number",
+    "fetchurToday": "Showo What Fetchur Wants Today ^0^",
+    "fishingParticleOverlay": "Fishing Particle Overlay",
+    "enchantmentLoreParsing": "Pawse Enchawnt Toowtips",
+    "cooldownPrediction": "Pwedict and Showten Coowdown",
+    "legendaryMonkeyLevel100": "[TEMP] Wevew 100 Wegendawy Monkey",
+    "biggerWake": "Enwawge Ovewway Pawticwes",
+    "stackingEnchantProgress": "Showo Stacking Enchawnt Pwogwess",
+    "showReforgeOverlay": "Showo Wefowge Ovewway",
+    "reforgeFilter": "Wefowge Fiwtew",
+    "hideEnchantDescription": "Hide Enchawnt Descwiption",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Featuwes",
+      "trackedEntityProximityIndicator": "Showo Twacked Entity Pwoximity Indicatow",
+      "highlightTrackedEntity": "Highwight Twacked Entity",
+      "showQuestCooldown": "Showo Trevor's Quest Coowdown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    },
+    "showEnderChestPreview": "Show Ender Chest Preview",
+    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "showOverflowManaNumber": "Overflow Mana Number",
+    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "entityOutlines": "Show Entity Outlines",
+    "effectiveHealthNumber": "Effective Health Number",
+    "guiScaleX": "GUI X Scale: %scale%",
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Enchants ^-^",
@@ -187,24 +220,26 @@
     "separateMultiple": "Sepeawate Multipwe With Cowommas.",
     "enchantsToMatch": "%type% To Match >-<:",
     "enchantsToExclude": "%type% To Excwude:",
-    "wantToViewPatchNotes": "Need suppowt or want to wead the fuww changewog?",
-    "downloadLink": "UPDATE WINK",
-    "directDownload": "DIWECT DOWNWOAD WINK",
-    "openModFolder": "MOOWODS FOWOLDER",
-    "joinTheDiscord": "JOIN DISCOWD",
-    "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
-    "update": {
-      "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
-      "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Need suppowt or want to wead the fuww changewog?",
+      "joinDiscord": "Join our Discord server!",
+      "watchShowcase": "Watch Video",
+      "downloadButton": "Download",
+      "openModFolderButton": "Open Mods Folder",
+      "joinDiscordButton": "Join Discord",
+      "newUpdateAvailable": "A nuwu OwO Updowoe (%version%) is avaiwable!",
+      "noDownloadAvailable": "No download link available, please check our Discord server.",
+      "notificationBox": {
+        "majorAvailable": "A new majow update (%version%) is avaiwabwe! the wink fow the downwoad can be found in chat.",
+        "betaAvailable": "A new beta update (%version%) is available! Look in chat for the download link.",
+        "patchAvailable": "A new patch update (%version%) is avaiwabwe! look in chat fow downwoad options!"
+      }
     },
     "slotLocked": "This swot is wocked!",
     "summoningEyeFound": "Summonuwuing Eye!",
-    "cancelledStemBreak": "SkybwockAddons has stwopped uwu fwom bweaking this stwem. Use uwur bear hands if uwu'd wike to bweak it owo.",
-    "cancelledProfileOpening": "SkybwockAwwons has stwopped you from opwening this plawer's pwofile whowo holdowoing a bowo.",
     "cancelledDropping": "SkybwockAwwons has owoed you from dwopping dis rawr itwem or twool from your hawtbar.",
     "clickMoreTimes": "Cwick/dwop this item %times% mwore twimes if you weally want to do whis.",
     "clickOneMoreTime": "Cwick/dwop this item 1 mowe time if you weawwy want to do this.",
-    "cancelledDeepCaverns": "A SkwyBwlockAddowons fweature hwas stowopped ywou from mining thwis blowock hwere.",
     "featureDisabled": "Fweature Diswabled",
     "anvilUses": "Anviw Uses: %uses%",
     "specialZealotFound": "Spwecial Wealots OwO!",
@@ -228,8 +263,9 @@
     "secondStatus": "This status wiww appeaw undew youw fiwst status",
     "fallbackStatus": "This status wiww appeaw when youw automatic status has nothing to show",
     "legendarySeaCreatureWarning": "Wegendawy Catch!",
-    "cancelledPark": "A featuwe has stopped you fwom bweaking this bwock hewe.",
     "bossApproaching": "You awe cwose to spawning a boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "Enabwe Aww",
     "disableAll": "Disabwe Aww",
     "enchantmentInclusionExample": "e.g. \"prot, feather\"",
@@ -238,7 +274,12 @@
     "reforgeExclusionExample": "e.g. \"odd, clean\"",
     "actionsLeft": "%number% Weft",
     "effectActive": "1 Effect Active (>-<)/",
-    "effectsActive": "%number% UwU Effects Active"
+    "effectsActive": "%number% UwU Effects Active",
+    "none": "None",
+    "copyModeSet": "The devewopew copy mode has been set to: %mode%. Pwess \"%keyName%\" to twiggew a data copy!",
+    "chroma": "Chroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -268,54 +309,135 @@
     "titleTarantula": "Tawantuwah Quest",
     "descriptionTarantula": "Showos thwat uwu awe dowing a Tawantuwah qwest."
   },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Displays enchants like Hypixel does",
+    "titleExpand": "Expand",
+    "descriptionExpand": "Lists each enchant on its own line"
+  },
   "commandUsage": {
-    "sba": "Owpen the main menu",
-    "sba.brand": "§e(Dev) §7Showo the sewvew bwand",
-    "sba.brand.brandOutput": "Sewvew Bwand: %brand%",
-    "sba.brand.notFound": "Serwer bwand not fownd!",
-    "sba.copyEntity": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
-    "sba.copySidebar": "§e(Dev) §7Copy the scoweboawd text",
-    "sba.copyTabList": "§e(Dev) §7Copy the tab list headew and footew",
-    "sba.dev": "Toggwe devewopew mode",
-    "sba.dev.disabled": "Dewelower wode wisabled!",
-    "sba.dev.enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!",
-    "sba.edit": "Edit GUI wocations",
-    "sba.folder": "Owpen youw mods fowder",
-    "sba.folder.error": "A werror woccoured whying to wopen da wads wolder: %s",
-    "sba.help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
-    "sba.help.copyEntity.entityNames": "Names of the types of entities you want to copy data fow (e.g. Player, Creeper). Pwess \"Tab\" aftew typing the command fow a fuww wist. Sepawate muwtipwe names with commas, names are case-sensitive.",
-    "sba.help.copyEntity.radius": "The wadius(in blocks) awound the playew to copy entity NBT data fwom",
-    "sba.help.copySidebar.formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\".",
-    "sba.help.copyTabList": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded.",
-    "sba.help.dev": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT.",
-    "sba.help.help.command": "the sub-command to get detailed usage for",
-    "sba.help.set.zealotCounter": "Manually sets counts in the zealot counter.",
-    "sba.help.set.zealotCounter.eyes": "Lifewime summoning eyes obwained",
-    "sba.help.set.zealotCounter.totalZealots": "Lifewime Zealots Kiwwed",
-    "sba.help.set.zealotCounter.zealots": "Zealots kiwwed since the wast summoning eye dwop",
-    "sba.help.slayer": "Manuawwy set slayer stats, pwess tab fow awguments",
-    "sba.help.slayer.boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
-    "sba.help.slayer.number": "Nuwmbew to swet the stwat to",
-    "sba.help.slayer.stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Manuawwy set youw zeawot counts",
-    "sba.set.zealotCounter.eyes": "Set totaw summoning eye count to %number%!",
-    "sba.set.zealotCounter.totalZealots": "Set totaw zeawot count to %number%!",
-    "sba.set.zealotCounter.wrongUsage": "Invawid sewection! Pwease choose %options%.",
-    "sba.set.zealotCounter.zealots": "Set cuwwent zealot count to %number%!",
-    "sba.slayer": "Manuawwy set slayer stats, pwess tab fow awguments",
-    "sba.slayer.bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
-    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Toggle logging action bar messages",
-    "sba.toggleActionBarLogging.disabled": "Action bar messages will no longer be logged.",
-    "sba.toggleActionBarLogging.enabled": "Action bar messages will now be logged.",
-    "sba.wrongUsage.generic": "Wrong usage!",
-    "sba.wrongUsage.subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+    "sba": {
+      "base": {
+        "help": "Opwen the mwain menwu"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Show the swewer bwand",
+        "brandOutput": "Swewer bwand: %brand%",
+        "notFound": "Swewer bwand not fwound!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Copies data about the block that you awe looking at"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
+        "detailedHelp": {
+          "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
+          "options": {
+            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Pwess \"Tab\" aftew typing the command for a fuww wist. Sepawate muwtiple names with commas, names are case-sensitive.",
+            "radius": "The wadius(win blocks) awound the playew to cowpy entwety NBT data fwom"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Copy the scoweboawd text",
+        "detailedHelp": {
+          "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
+          "options": {
+            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Copy the tab list headew and footew",
+        "detailedHelp": {
+          "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
+        }
+      },
+      "dev": {
+        "help": "Twoggle dwevewopew mode",
+        "detailedHelp": {
+          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+        },
+        "disabled": "Dewelower wode dwisabled!",
+        "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
+      },
+      "edit": {
+        "help": "Edwit GUI wocations"
+      },
+      "folder": {
+        "help": "Owpen youw mods fowder",
+        "error": "A werror woccoured twying to opwen da wads wolder: %s"
+      },
+      "help": {
+        "help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
+        "detailedHelp": {
+          "options": {
+            "command": "the sub-command to get detailed usage for"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+      },
+      "reload": {
+        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Reloads the mod's settings"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Manuawwy set youw zeawot counts",
+          "detailedHelp": {
+            "description": "Manually sets counts in the zealot counter.",
+            "options": {
+              "eyes": "Lifewime summoning eyes obwained",
+              "totalZealots": "Lifetime zeawots kiwwed",
+              "zealots": "Zealots kiwwed since the wast summoning eye dwop"
+            }
+          },
+          "eyesSet": "Set totaw summoning eye count to %number%!",
+          "totalZealotsSet": "Set totaw zeawot count to %number%!",
+          "wrongUsage": "Invawid sewection! Pwease choose %options%.",
+          "zealotsSet": "Set cuwwent zealot count to %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Manuawwy set slayer stats, pwess tab fow awguments",
+        "detailedHelp": {
+          "description": "Manuawwy set slayer stats, pwess tab fow awguments",
+          "options": {
+            "boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
+            "number": "Nuwmbew to swet the stwat to",
+            "stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
+        "statRequired": "You nweed to sewect a stat. Press twab for optiowns.",
+        "numberRequired": "You nweed to add the nwumber you want.",
+        "killsSet": "Kwills for swayer %boss% was swet to %number%.",
+        "statSet": "Statwistic %stat% for swayer %boss% was swet to %number%.",
+        "invalidBoss": "\"%input%\" is not a vawid statwistic!",
+        "invalidStat": "\"%input%\" is not a vawid bwoss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Toggwe wogging action baw messages",
+        "disabled": "Action baw messages wiww no wongew be wogged.",
+        "enabled": "Action baw messages wiww now be wogged."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Wong uswage!",
+          "subCommandNotFound": "The sub-command “%sub-command%” was not found."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "Cowopy NBT"
@@ -328,42 +450,39 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Wecent Dwagons:",
+    "dragonsSince": "Dwagons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyes Pwaced",
+    "never": "Nevew"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
-    "revenantFlesh": "Revenant Flesh",
-    "foulFlesh": "Foul Flesh",
-    "pestilenceRune": "Pestilence Rune",
-    "undeadCatalyst": "Undead Catalyst",
-    "smiteSix": "Smite 6",
-    "beheadedHorror": "Beheaded Horror",
-    "revenantCatalyst": "Revenant Catalyst",
-    "snakeRune": "Snake Rune",
-    "scytheBlade": "Scythe Blade",
     "tarantula": "Tarantula Broodfather:",
-    "tarantulaWeb": "Tarantula Web",
-    "toxicArrowPoison": "Toxic Arrow Poison",
-    "spiderCatalyst": "Spider Catalyst",
-    "baneOfArthropodsSix": "Bane Of Arthropods 6",
-    "biteRune": "Bite Rune",
-    "flySwatter": "Fly Swatter",
-    "tarantulaTalisman": "Tarantula Talisman",
-    "digestedMosquito": "Digested Mosquito",
     "sven": "Sven Packmaster:",
-    "wolfTooth": "Wolf Tooth",
-    "hamsterWheel": "Hamster Wheel",
-    "spiritRune": "Spirit Rune",
-    "criticalSix": "Critical 6",
-    "grizzlyBait": "Grizzly Bait",
-    "redClawEgg": "Red Claw Egg",
-    "overfluxCapacitor": "Overflux Capacitor",
-    "coutureRune": "Couture Rune",
-    "bossesKilled": "Bosses Killed"
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Bosses Kiwwed"
+  },
+  "warpMenu": {
+    "click": "Click a warp point to travel there!",
+    "mustUnlock": "Must have the specific scroll unlocked.",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
+    "spawn": "Spawn",
+    "unknown": "Haven't Visited",
+    "notUnlocked": "Not Unlocked",
+    "inCombat": "In Combat..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "Commas",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "Cultivated Crops",
+    "maxed": "Maxed"
   }
 }

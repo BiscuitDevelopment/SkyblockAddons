@@ -4,13 +4,18 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreview;
-import codes.biscuit.skyblockaddons.features.backpacks.BackpackManager;
-import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
+import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
-import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.ItemUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
+import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockPrismarine;
+import net.minecraft.block.BlockStone;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -18,8 +23,12 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.Slot;
+import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
+import net.minecraftforge.common.MinecraftForge;
+
+import java.util.Set;
 
 public class PlayerControllerMPHook {
 
@@ -34,6 +43,17 @@ public class PlayerControllerMPHook {
     private static final int CRAFTING_PATTERN_SOUND_COOLDOWN = 400;
 
     private static long lastCraftingSoundPlayed = 0;
+
+    private static final Set<Integer> ORES = Sets.newHashSet(Block.getIdFromBlock(Blocks.coal_ore), Block.getIdFromBlock(Blocks.iron_ore),
+            Block.getIdFromBlock(Blocks.gold_ore), Block.getIdFromBlock(Blocks.redstone_ore), Block.getIdFromBlock(Blocks.emerald_ore),
+            Block.getIdFromBlock(Blocks.lapis_ore), Block.getIdFromBlock(Blocks.diamond_ore), Block.getIdFromBlock(Blocks.lit_redstone_ore),
+            Utils.getBlockMetaId(Blocks.stone, BlockStone.EnumType.DIORITE_SMOOTH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.stained_hardened_clay, EnumDyeColor.CYAN.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.ROUGH.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.DARK.getMetadata()),
+            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.BRICKS.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.LIGHT_BLUE.getMetadata()),
+            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.GRAY.getMetadata()));
 
     /**
      * Checks if an item is being dropped and if an item is being dropped, whether it is allowed to be dropped.
@@ -60,24 +80,31 @@ public class PlayerControllerMPHook {
         return false;
     }
 
-    public static void onPlayerDestroyBlock(BlockPos loc, ReturnValue<Boolean> returnValue) {
+    public static void onPlayerDestroyBlock(BlockPos blockPos) {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Minecraft mc = Minecraft.getMinecraft();
-        ItemStack heldItem = Minecraft.getMinecraft().thePlayer.getHeldItem();
-        if (heldItem != null) {
-            Block block = mc.theWorld.getBlockState(loc).getBlock();
-            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) && (block.equals(Blocks.log) || block.equals(Blocks.log2))) {
-                if (InventoryUtils.JUNGLE_AXE_DISPLAYNAME.equals(heldItem.getDisplayName()) || InventoryUtils.TREECAPITATOR_DISPLAYNAME.equals(heldItem.getDisplayName())) {
-                    CooldownManager.put(heldItem);
-                }
-            }
+
+        if (main.getUtils().isOnSkyblock()) {
+            IBlockState block = mc.theWorld.getBlockState(blockPos);
+            // Use vanilla break mechanic to get breaking time
+            double perTickIncrease = block.getBlock().getPlayerRelativeBlockHardness(mc.thePlayer, mc.thePlayer.worldObj, blockPos);
+            int MILLISECONDS_PER_TICK = 1000 / 20;
+            MinecraftForge.EVENT_BUS.post(new SkyblockBlockBreakEvent(blockPos, (long) (MILLISECONDS_PER_TICK / perTickIncrease)));
         }
+    }
+
+    public static void onResetBlockRemoving() {
+        MinecraftHook.prevClickBlock = new BlockPos(-1, -1, -1);
     }
 
     /**
      * Cancels clicking a locked inventory slot, even from other mods
      */
     public static void onWindowClick(int slotNum, int mouseButtonClicked, int mode, EntityPlayer player, ReturnValue<ItemStack> returnValue) { // return null
+        //if (Minecraft.getMinecraft().thePlayer.openContainer != null) {
+        //    SkyblockAddons.getLogger().info("Handling windowclick--slotnum: " + slotNum + " should be locked: " + SkyblockAddons.getInstance().getConfigValues().getLockedSlots().contains(slotNum) + " mousebutton: " + mouseButtonClicked + " mode: " + mode + " container class: " + player.openContainer.getClass().toString());
+        //}
+
         // Handle blocking the next click, sorry I did it this way
         if (Utils.blockNextClick) {
             Utils.blockNextClick = false;
@@ -110,9 +137,9 @@ public class PlayerControllerMPHook {
                 }
 
                 if (mouseButtonClicked == 1 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
-                    ContainerPreview containerPreview = BackpackManager.getFromItem(slotIn.getStack());
-                    if (containerPreview != null && containerPreview.getBackpackColor() != null) {
-                        BackpackManager.setOpenedBackpackColor(containerPreview.getBackpackColor());
+                    BackpackColor color = ItemUtils.getBackpackColor(slotIn.getStack());
+                    if (color != null) {
+                        BackpackInventoryManager.setBackpackColor(color);
                     }
                 }
 
@@ -122,10 +149,11 @@ public class PlayerControllerMPHook {
                         && (slotNum >= 9 || player.openContainer instanceof ContainerPlayer && slotNum >= 5)) {
                     if (mouseButtonClicked == 1 && mode == 0 && slotIn != null && slotIn.getHasStack() && slotIn.getStack().getItem() == Items.skull) {
 
-                        String itemID = ItemUtils.getSkyBlockItemID(slotIn.getStack());
+                        String itemID = ItemUtils.getSkyblockItemID(slotIn.getStack());
                         if (itemID == null) itemID = "";
 
-                        if (BackpackManager.isBackpack(slotIn.getStack()) || itemID.contains("SACK")) {
+                        // Now that right clicking backpacks is removed, remove this check and block right clicking on backpacks if locked
+                        if (/*ItemUtils.isBuildersWand(slotIn.getStack()) || ItemUtils.isBackpack(slotIn.getStack()) || */itemID.contains("SACK")) {
                             return;
                         }
                     }
@@ -135,8 +163,8 @@ public class PlayerControllerMPHook {
                 }
 
                 // Crafting patterns
-                if (slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
-                        && main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)) {
+                if (false && slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
+                    /*&& main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
 
                     final CraftingPattern selectedPattern = main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern();
                     final ItemStack clickedItem = slotIn.getStack();

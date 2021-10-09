@@ -32,23 +32,22 @@ public enum Message {
     SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
     SETTING_RESET_LOCATIONS(MessageObject.SETTING, "resetLocations"),
     SETTING_SETTINGS(MessageObject.SETTING, "settings"),
-    SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showEnchantmentsReforges"),
+    SETTING_ENCHANTS_AND_REFORGES(MessageObject.SETTING, "showReforgeOverlay"),
     SETTING_MINION_STOP_WARNING(MessageObject.SETTING, "minionStopWarning"),
     SETTING_HIDE_PLAYERS_NEAR_NPCS(MessageObject.SETTING, "hidePlayersNearNPCs"),
     SETTING_BACKPACK_STYLE(MessageObject.SETTING, "backpackStyle"),
     SETTING_SHOW_BACKPACK_PREVIEW(MessageObject.SETTING, "showBackpackPreview"),
     SETTING_HIDE_HEALTH_BAR(MessageObject.SETTING, "hideHealthBar"),
     SETTING_FULL_MINION(MessageObject.SETTING, "fullMinionWarning"),
-    SETTING_IGNORE_ITEM_FRAME_CLICKS(MessageObject.SETTING, "ignoreItemFrameClicks"),
     SETTING_USE_VANILLA_TEXTURE(MessageObject.SETTING, "useVanillaTexture"),
     SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT(MessageObject.SETTING, "showOnlyWhenHoldingShift"),
     SETTING_MANA_BAR(MessageObject.SETTING, "manaBar"),
     SETTING_HEALTH_BAR(MessageObject.SETTING, "healthBar"),
-    SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenceIcon"),
-    SETTING_MANA_TEXT(MessageObject.SETTING, "manaText"),
-    SETTING_HEALTH_TEXT(MessageObject.SETTING, "healthText"),
-    SETTING_DEFENCE_TEXT(MessageObject.SETTING, "defenceText"),
-    SETTING_DEFENCE_PERCENTAGE(MessageObject.SETTING, "defencePercentage"),
+    SETTING_DEFENCE_ICON(MessageObject.SETTING, "defenseIcon"),
+    SETTING_MANA_TEXT(MessageObject.SETTING, "manaNumber"),
+    SETTING_HEALTH_TEXT(MessageObject.SETTING, "healthNumber"),
+    SETTING_DEFENCE_TEXT(MessageObject.SETTING, "defenseNumber"),
+    SETTING_DEFENCE_PERCENTAGE(MessageObject.SETTING, "defensePercentage"),
     SETTING_HEALTH_UPDATES(MessageObject.SETTING, "healthUpdates"),
     @Deprecated SETTING_ANCHOR_POINT(MessageObject.SETTING, "anchorPoint"),
     SETTING_HIDE_PLAYERS_IN_LOBBY(MessageObject.SETTING, "hidePlayersInLobby"),
@@ -78,7 +77,7 @@ public enum Message {
     SETTING_FISHING_SOUND_INDICATOR(MessageObject.SETTING, "soundIndicatorForFishing"),
     SETTING_AVOID_BLINKING_NIGHT_VISION(MessageObject.SETTING, "avoidBlinkingNightVision"),
     SETTING_DISABLE_MINION_LOCATION_WARNING(MessageObject.SETTING, "disableMinionLocationWarning"),
-    SETTING_JUNGLE_AXE_COOLDOWN(MessageObject.SETTING, "jungleAxeCooldown"),
+    SETTING_JUNGLE_AXE_COOLDOWN(MessageObject.SETTING, "axeCooldownIndicator"),
     SETTING_ORGANIZE_ENCHANTMENTS(MessageObject.SETTING, "organizeLongEnchantmentLists"),
     SETTING_SHOW_ITEM_COOLDOWNS(MessageObject.SETTING, "showItemCooldowns"),
     SETTING_COLLECTION_DISPLAY(MessageObject.SETTING, "collectionDisplay"),
@@ -134,7 +133,7 @@ public enum Message {
     SETTING_CENTER_ROTATION_ON_PLAYER(MessageObject.SETTING, "centerRotationOnYourPlayer"),
     SETTING_MAP_ZOOM(MessageObject.SETTING, "mapZoom"),
     SETTING_GLOWING_DROPPED_ITEMS(MessageObject.SETTING, "glowingDroppedItems"),
-    SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "glowingDungeonTeammates"),
+    SETTING_GLOWING_DUNGEON_TEAMMATES(MessageObject.SETTING, "outlineDungeonTeammates"),
     SETTING_SHOW_BASE_STAT_BOOST_PERCENTAGE(MessageObject.SETTING, "baseStatBoostPercentage"),
     SETTING_COLOR_BY_RARITY(MessageObject.SETTING, "colorByRarity"),
     SETTING_SHOW_PLAYER_HEAD_ON_MAP(MessageObject.SETTING, "showPlayerHeadsOnMap"),
@@ -162,8 +161,14 @@ public enum Message {
     SETTING_DISABLE_MORT_MESSAGES(MessageObject.SETTING, "disableMortMessages"),
     SETTING_DISABLE_BOSS_MESSAGES(MessageObject.SETTING, "disableBossMessages"),
     SETTING_HIDE_OTHER_PLAYERS_PRESENTS(MessageObject.SETTING, "hideOtherPlayersPresents"),
-    SETTING_EASIER_PRESENT_OPENING(MessageObject.SETTING, "easierPresentOpening"),
-
+    SETTING_SHOW_EXPERIMENTATION_TABLE_TOOLTIPS(MessageObject.SETTING, "showExperimentationTableTooltips"),
+    SETTING_SHOW_FETCHUR_TODAY(MessageObject.SETTING, "fetchurToday"),
+    SETTING_SHOW_FETCHUR_IN_DWARVEN_ONLY(MessageObject.SETTING, "showFetchurOnlyInDwarven"),
+    SETTING_SHOW_FETCHUR_ITEM_NAME(MessageObject.SETTING, "showFetchurItemName"),
+    SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY(MessageObject.SETTING, "showFetchurInventoryOpenOnly"),
+    SETTING_WARN_WHEN_FETCHUR_CHANGES(MessageObject.SETTING, "warnWhenFetchurChanges"),
+    SETTING_STOP_RAT_SOUNDS(MessageObject.SETTING, "stopRatSounds"),
+    SETTING_STOP_ONLY_RAT_SQUEAK(MessageObject.SETTING, "onlyStopRatSqueak"),
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
@@ -182,17 +187,10 @@ public enum Message {
     MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
     MESSAGE_SLOT_LOCKED(MessageObject.MESSAGES, "slotLocked"),
     MESSAGE_SUMMONING_EYE_FOUND(MessageObject.MESSAGES, "summoningEyeFound"),
-    MESSAGE_STOPPED_OPENING_PROFILE(MessageObject.MESSAGES, "cancelledProfileOpening"),
     MESSAGE_CANCELLED_DROPPING(MessageObject.MESSAGES, "cancelledDropping"),
     MESSAGE_CLICK_MORE_TIMES(MessageObject.MESSAGES, "clickMoreTimes"),
     MESSAGE_CLICK_ONE_MORE_TIME(MessageObject.MESSAGES, "clickOneMoreTime"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
-    MESSAGE_VIEW_PATCH_NOTES(MessageObject.MESSAGES, "wantToViewPatchNotes"),
-    MESSAGE_DOWNLOAD_LINK(MessageObject.MESSAGES, "downloadLink"),
-    MESSAGE_DIRECT_DOWNLOAD(MessageObject.MESSAGES, "directDownload"),
-    MESSAGE_DOWNLOAD_AUTOMATICALLY(MessageObject.MESSAGES, "downloadAutomatically"),
-    MESSAGE_OPEN_MODS_FOLDER(MessageObject.MESSAGES, "openModFolder"),
-    MESSAGE_JOIN_DISCORD(MessageObject.MESSAGES, "joinTheDiscord"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
     MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
@@ -211,7 +209,6 @@ public enum Message {
     MESSAGE_ENABLE_FEATURE_SNAPPING(MessageObject.MESSAGES, "enableFeatureSnapping"),
     MESSAGE_STAGE(MessageObject.MESSAGES, "stage"),
     MESSAGE_SWITCHED_SLOTS(MessageObject.MESSAGES, "switchedSlots"),
-    MESSAGE_NEW_UPDATE(MessageObject.MESSAGES, "newUpdateAvailable"),
     MESSAGE_CLICK_TO_OPEN_LINK(MessageObject.MESSAGES, "clickToOpenLink"),
     MESSAGE_CLICK_TO_OPEN_FOLDER(MessageObject.MESSAGES, "clickToOpenFolder"),
     MESSAGE_FIRST_STATUS(MessageObject.MESSAGES, "firstStatus"),
@@ -228,18 +225,14 @@ public enum Message {
     MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
+    MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurItem"),
+    MESSAGE_FETCHUR_WARNING(MessageObject.MESSAGES, "fetchurWarning"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
     @Deprecated ANCHOR_POINT_BOTTOM_LEFT(MessageObject.ANCHOR_POINT, "bottomLeft"),
     @Deprecated ANCHOR_POINT_BOTTOM_RIGHT(MessageObject.ANCHOR_POINT, "bottomRight"),
     @Deprecated ANCHOR_POINT_HEALTH_BAR(MessageObject.ANCHOR_POINT, "healthBar"),
-
-    UPDATE_MESSAGE_MAJOR(MessageObject.UPDATE_MESSAGES, "majorAvailable"),
-    UPDATE_MESSAGE_PATCH(MessageObject.UPDATE_MESSAGES, "patchAvailable"),
-    UPDATE_MESSAGE_DOWNLOAD(MessageObject.UPDATE_MESSAGES, "downloading"),
-    UPDATE_MESSAGE_FAILED(MessageObject.UPDATE_MESSAGES, "failed"),
-    UPDATE_MESSAGE_DOWNLOAD_FINISHED(MessageObject.UPDATE_MESSAGES, "downloadFinished"),
 
     TEXT_STYLE_ONE(MessageObject.TEXT_STYLE, "one"),
     TEXT_STYLE_TWO(MessageObject.TEXT_STYLE, "two"),
@@ -321,11 +314,10 @@ public enum Message {
     SUBCOMMAND_HELP_SLAYER(MessageObject.COMMAND_USAGE, "sba.help.slayer"),
     SUBCOMMAND_HELP_SUBCOMMAND_NOT_FOUND(MessageObject.COMMAND_USAGE, "sba.help.subCommandNotFound"),
 
-    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT")
-    ;
+    KEY_DEVELOPER_COPY_NBT(MessageObject.KEYBINDINGS, "developerCopyNBT");
 
-    private MessageObject messageObject;
-    private String memberName;
+    private final MessageObject messageObject;
+    private final String memberName;
 
     Message(MessageObject messageObject, String memberName) {
         this.messageObject = messageObject;
@@ -351,8 +343,6 @@ public enum Message {
                     text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
-                } else if (this == MESSAGE_NEW_UPDATE || this == UPDATE_MESSAGE_MAJOR || this == UPDATE_MESSAGE_PATCH) {
-                    text = text.replace("%version%", variables[0]);
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
                 } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
@@ -360,12 +350,8 @@ public enum Message {
                     text = text.replace("%type%", variables[0]);
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);
-                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD) {
-                    text = text.replace("%downloaded%", variables[0]).replace("%total%", variables[1]);
-                } else if (this == Message.UPDATE_MESSAGE_DOWNLOAD_FINISHED) {
-                    text = text.replace("%file%", variables[0]);
                 } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES)+variables[0]+ ColorCode.GRAY.toString());
+                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES) + variables[0] + ColorCode.GRAY);
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
@@ -386,6 +372,8 @@ public enum Message {
                     text = text.replace("%radius%", variables[0]);
                 } else if (this == Message.MESSAGE_EFFECTS_ACTIVE) {
                     text = text.replace("%number%", variables[0]);
+                } else if (this == Message.MESSAGE_FETCHUR_TODAY) {
+                    text = text.replace("%item%", variables[0]);
                 }
             }
             if (text != null && (main.getConfigValues().getLanguage() == Language.HEBREW || main.getConfigValues().getLanguage() == Language.ARABIC) && !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
@@ -416,14 +404,13 @@ public enum Message {
         POWER_ORB_STYLE("settings.powerOrbStyle"),
         TEXT_STYLE("settings.textStyles"),
         TAB("settings.tab"),
-        UPDATE_MESSAGES("messages.update"),
         ANCHOR_POINT("settings.anchorPoints"),
         CHROMA_MODE("settings.chromaModes"),
         DISCORD_STATUS("discordStatus"),
         KEYBINDINGS("keyBindings"),
         COMMAND_USAGE("commandUsage");
 
-        private List<String> path;
+        private final List<String> path;
 
         MessageObject(String path) {
             this.path = new LinkedList<>(Arrays.asList(path.split(Pattern.quote("."))));

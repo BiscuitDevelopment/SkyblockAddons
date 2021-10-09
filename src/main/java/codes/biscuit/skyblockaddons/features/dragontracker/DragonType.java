@@ -2,10 +2,12 @@ package codes.biscuit.skyblockaddons.features.dragontracker;
 
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.Locale;
 
+@AllArgsConstructor
 public enum DragonType {
 
     PROTECTOR(ColorCode.DARK_BLUE),
@@ -16,11 +18,7 @@ public enum DragonType {
     STRONG(ColorCode.RED),
     SUPERIOR(ColorCode.GOLD);
 
-    @Getter ColorCode color;
-
-    DragonType(ColorCode color) {
-        this.color = color;
-    }
+    @Getter private ColorCode color;
 
     public String getDisplayName() {
         return Translations.getMessage("dragonTracker." + this.name().toLowerCase(Locale.US));

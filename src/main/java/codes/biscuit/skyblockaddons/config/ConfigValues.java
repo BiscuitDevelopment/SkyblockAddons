@@ -3,18 +3,20 @@ package codes.biscuit.skyblockaddons.config;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
+import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
-import codes.biscuit.skyblockaddons.misc.ChromaManager;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.features.enchants.EnchantListLayout;
+import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.gson.*;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.crash.CrashReport;
 import net.minecraft.util.MathHelper;
+import net.minecraft.util.ReportedException;
 import org.apache.commons.lang3.mutable.Mutable;
 import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -22,73 +24,94 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 import java.beans.Introspector;
 import java.io.*;
 import java.lang.reflect.Method;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ConfigValues {
 
-    private static final int CONFIG_VERSION = 8;
+    private static final int CONFIG_VERSION = 9;
 
     private final static float DEFAULT_GUI_SCALE = normalizeValueNoStep(1);
     private final static float GUI_SCALE_MINIMUM = 0.5F;
     private final static float GUI_SCALE_MAXIMUM = 5;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
+    private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
-    private JsonObject defaultValues = new JsonObject();
-    private Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
-    private Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
-    private Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
-    private Map<Feature, IntPair> defaultBarSizes = new EnumMap<>(Feature.class);
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
+    private final Logger logger = SkyblockAddons.getLogger();
 
-    private File settingsConfigFile;
-    private JsonObject settingsConfig = new JsonObject();
-    @Getter @Setter private JsonObject languageConfig = new JsonObject();
+    private final Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
+    private final Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
+    private final Map<Feature, Float> defaultGuiScales = new EnumMap<>(Feature.class);
+    private final Map<Feature, FloatPair> defaultBarSizes = new EnumMap<>(Feature.class);
 
-    @Getter private Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
-    private Map<Feature, Integer> colors = new HashMap<>();
+    private final File settingsConfigFile;
+    private JsonObject loadedConfig = new JsonObject();
+    @Getter
+    @Setter
+    private JsonObject languageConfig = new JsonObject();
+
+    @Getter
+    private final Set<Feature> disabledFeatures = EnumSet.noneOf(Feature.class);
+    private final Map<Feature, Integer> colors = new HashMap<>();
     private Map<Feature, Float> guiScales = new EnumMap<>(Feature.class);
-    private Map<Feature, IntPair> barSizes = new EnumMap<>(Feature.class);
-    private MutableInt warningSeconds = new MutableInt(4);
-    private Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
+    private final Map<Feature, FloatPair> barSizes = new EnumMap<>(Feature.class);
+    private final MutableInt warningSeconds = new MutableInt(4);
+    private final Map<Feature, FloatPair> coordinates = new EnumMap<>(Feature.class);
     private Map<Feature, EnumUtils.AnchorPoint> anchorPoints = new EnumMap<>(Feature.class);
-    private MutableObject<Language> language = new MutableObject<>(Language.ENGLISH);
-    private MutableObject<EnumUtils.BackpackStyle> backpackStyle = new MutableObject<>(EnumUtils.BackpackStyle.GUI);
-    private MutableObject<EnumUtils.PowerOrbDisplayStyle> powerOrbDisplayStyle = new MutableObject<>(EnumUtils.PowerOrbDisplayStyle.COMPACT);
-    private MutableObject<EnumUtils.TextStyle> textStyle = new MutableObject<>(EnumUtils.TextStyle.STYLE_ONE);
-    private Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
-    @Getter private Set<Feature> chromaFeatures = EnumSet.noneOf(Feature.class);
-    private MutableFloat chromaSpeed = new MutableFloat(0.19354838F); // 2.0
-    private MutableObject<EnumUtils.ChromaMode> chromaMode = new MutableObject<>(EnumUtils.ChromaMode.FADE);
-    private MutableFloat chromaFadeWidth = new MutableFloat(0.22580644F); // 10° Hue
-    private MutableObject<DiscordStatus> discordDetails =  new MutableObject<>(DiscordStatus.LOCATION);
-    private MutableObject<DiscordStatus> discordStatus = new MutableObject<>(DiscordStatus.AUTO_STATUS);
-    private MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
-    @Getter private List<String> discordCustomStatuses = new ArrayList<>();
-    @Getter private MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
+    private final MutableObject<Language> language = new MutableObject<>(Language.ENGLISH);
+    private final MutableObject<EnumUtils.BackpackStyle> backpackStyle = new MutableObject<>(EnumUtils.BackpackStyle.GUI);
+    private final MutableObject<EnumUtils.PowerOrbDisplayStyle> powerOrbDisplayStyle = new MutableObject<>(EnumUtils.PowerOrbDisplayStyle.COMPACT);
+    private final MutableObject<EnumUtils.TextStyle> textStyle = new MutableObject<>(EnumUtils.TextStyle.STYLE_ONE);
+    private final Map<String, Set<Integer>> profileLockedSlots = new HashMap<>();
+    @Getter
+    private final Set<Feature> chromaFeatures = EnumSet.noneOf(Feature.class);
+    @Deprecated
+    private final MutableFloat oldChromaSpeed = new MutableFloat(0.19354838F); // 2.0
+    private final MutableObject<EnumUtils.ChromaMode> chromaMode = new MutableObject<>(EnumUtils.ChromaMode.FADE);
+    private final MutableFloat chromaFadeWidth = new MutableFloat(0.22580644F); // 10° Hue
+    private final MutableObject<DiscordStatus> discordDetails = new MutableObject<>(DiscordStatus.LOCATION);
+    private final MutableObject<DiscordStatus> discordStatus = new MutableObject<>(DiscordStatus.AUTO_STATUS);
+    private final MutableObject<DiscordStatus> discordAutoDefault = new MutableObject<>(DiscordStatus.NONE);
+    @Getter
+    private final List<String> discordCustomStatuses = new ArrayList<>();
+    @Getter
+    private final MutableFloat mapZoom = new MutableFloat(0.18478261F); // 1.3
+    @Getter
+    private final MutableFloat healingCircleOpacity = new MutableFloat(0.4);
+    @Setter
+    @Getter
+    private MutableFloat chromaSize = new MutableFloat(30);
+    @Getter
+    private final MutableFloat chromaSpeed = new MutableFloat(6);
+    @Getter
+    private final MutableFloat chromaSaturation = new MutableFloat(0.75F);
+    @Getter
+    private final MutableFloat chromaBrightness = new MutableFloat(0.9F);
+    private final MutableObject<EnchantListLayout> enchantLayout = new MutableObject<>(EnchantListLayout.NORMAL);
 
     public ConfigValues(File settingsConfigFile) {
         this.settingsConfigFile = settingsConfigFile;
     }
 
     public void loadValues() {
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(getClass().getClassLoader().getResourceAsStream("default.json")));
-            defaultValues = SkyblockAddons.getGson().fromJson(bufferedReader, JsonObject.class);
+        try (InputStream inputStream = getClass().getClassLoader().getResourceAsStream("default.json");
+             InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
+                     StandardCharsets.UTF_8)) {
+            JsonObject defaultValues = SkyblockAddons.getGson().fromJson(inputStreamReader, JsonObject.class);
 
             deserializeFeatureFloatCoordsMapFromID(defaultValues, defaultCoordinates, "coordinates");
             deserializeEnumEnumMapFromIDS(defaultValues, defaultAnchorPoints, "anchorPoints", Feature.class, EnumUtils.AnchorPoint.class);
             deserializeEnumNumberMapFromID(defaultValues, defaultGuiScales, "guiScales", Feature.class, float.class);
             deserializeFeatureIntCoordsMapFromID(defaultValues, defaultBarSizes, "barSizes");
         } catch (Exception ex) {
-            logger.error("Failed to load default config!");
-            logger.catching(ex);
+            CrashReport crashReport = CrashReport.makeCrashReport(ex, "Reading default settings file");
+            throw new ReportedException(crashReport);
         }
 
         if (settingsConfigFile.exists()) {
@@ -98,7 +121,7 @@ public class ConfigValues {
                 if (fileElement == null || fileElement.isJsonNull()) {
                     throw new JsonParseException("File is null!");
                 }
-                settingsConfig = fileElement.getAsJsonObject();
+                loadedConfig = fileElement.getAsJsonObject();
             } catch (JsonParseException | IllegalStateException | IOException ex) {
                 logger.error("There was an error loading the config. Resetting all settings to default.");
                 logger.catching(ex);
@@ -106,13 +129,20 @@ public class ConfigValues {
                 return;
             }
 
+            int configVersion;
+            if (loadedConfig.has("configVersion")) {
+                configVersion = loadedConfig.get("configVersion").getAsInt();
+            } else {
+                configVersion = ConfigValues.CONFIG_VERSION;
+            }
+
             deserializeFeatureSetFromID(disabledFeatures, "disabledFeatures");
             deserializeStringIntSetMap(profileLockedSlots, "profileLockedSlots");
             deserializeNumber(warningSeconds, "warningSeconds", int.class);
 
             try {
-                if (settingsConfig.has("language")) {
-                    String languageKey = settingsConfig.get("language").getAsString();
+                if (loadedConfig.has("language")) {
+                    String languageKey = loadedConfig.get("language").getAsString();
                     Language configLanguage = Language.getFromPath(languageKey);
                     if (configLanguage != null) {
                         setLanguage(configLanguage); // TODO Will this crash?
@@ -134,8 +164,8 @@ public class ConfigValues {
                     String property = Introspector.decapitalize(WordUtils.capitalizeFully(feature.toString().replace("_", " "))).replace(" ", "");
                     String x = property+"X";
                     String y = property+"Y";
-                    if (settingsConfig.has(x)) {
-                        coordinates.put(feature, new FloatPair(settingsConfig.get(x).getAsFloat(), settingsConfig.get(y).getAsFloat()));
+                    if (loadedConfig.has(x)) {
+                        coordinates.put(feature, new FloatPair(loadedConfig.get(x).getAsFloat(), loadedConfig.get(y).getAsFloat()));
                     }
                 }
             } catch (Exception ex) {
@@ -143,16 +173,16 @@ public class ConfigValues {
                 logger.catching(ex);
             }
 
-            if (settingsConfig.has("coordinates")) {
+            if (loadedConfig.has("coordinates")) {
                 deserializeFeatureFloatCoordsMapFromID(coordinates, "coordinates");
             } else {
                 deserializeFeatureFloatCoordsMapFromID(coordinates, "guiPositions"); // TODO Legacy format from 1.4.2/1.5-betas, remove in the future.
             }
             deserializeFeatureIntCoordsMapFromID(barSizes, "barSizes");
 
-            if (settingsConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
+            if (loadedConfig.has("featureColors")) { // TODO Legacy format from 1.3.4, remove in the future.
                 try {
-                    for (Map.Entry<String, JsonElement> element : settingsConfig.getAsJsonObject("featureColors").entrySet()) {
+                    for (Map.Entry<String, JsonElement> element : loadedConfig.getAsJsonObject("featureColors").entrySet()) {
                         Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                         if (feature != null) {
                             ColorCode colorCode = ColorCode.values()[element.getValue().getAsInt()];
@@ -171,22 +201,25 @@ public class ConfigValues {
 
             deserializeEnumValueFromOrdinal(textStyle, "textStyle");
             deserializeFeatureSetFromID(chromaFeatures, "chromaFeatures");
-            deserializeNumber(chromaSpeed, "chromaSpeed", float.class);
+            if (configVersion <= 8) {
+                deserializeNumber(oldChromaSpeed, "chromaSpeed", float.class);
+                chromaSpeed.setValue(MathUtils.denormalizeSliderValue(oldChromaSpeed.floatValue(), 0.1F, 10, 0.5F));
+            } else {
+                deserializeNumber(chromaSpeed, "chromaSpeed", float.class);
+            }
+            deserializeNumber(chromaSize, "chromaSize", float.class);
             deserializeEnumValueFromOrdinal(chromaMode, "chromaMode");
             deserializeNumber(chromaFadeWidth, "chromaFadeWidth", float.class);
             deserializeEnumValueFromOrdinal(discordStatus, "discordStatus");
             deserializeEnumValueFromOrdinal(discordDetails, "discordDetails");
             deserializeEnumValueFromOrdinal(discordAutoDefault, "discordAutoDefault");
             deserializeStringCollection(discordCustomStatuses, "discordCustomStatuses");
+            deserializeEnumValueFromOrdinal(enchantLayout, "enchantLayout");
 
             deserializeNumber(mapZoom, "mapZoom", float.class);
+            deserializeNumber(chromaSaturation, "chromaSaturation", float.class);
+            deserializeNumber(chromaBrightness, "chromaBrightness", float.class);
 
-            int configVersion;
-            if (settingsConfig.has("configVersion")) {
-                configVersion = settingsConfig.get("configVersion").getAsInt();
-            } else {
-                configVersion = ConfigValues.CONFIG_VERSION;
-            }
             if (configVersion <= 5) {
                 disabledFeatures.add(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS);
             } else if (configVersion <= 6) {
@@ -222,8 +255,8 @@ public class ConfigValues {
             }
 
             int lastFeatureID;
-            if (settingsConfig.has("lastFeatureID")) {
-                lastFeatureID = settingsConfig.get("lastFeatureID").getAsInt();
+            if (loadedConfig.has("lastFeatureID")) {
+                lastFeatureID = loadedConfig.get("lastFeatureID").getAsInt();
             } else {
                 // This system was added after this feature.
                 lastFeatureID = Feature.SKYBLOCK_ADDONS_BUTTON_IN_PAUSE_MENU.getId();
@@ -238,7 +271,6 @@ public class ConfigValues {
         } else {
             addDefaultsAndSave();
         }
-        main.getUtils().loadLanguageFile(true);
     }
 
     private void addDefaultsAndSave() {
@@ -279,126 +311,137 @@ public class ConfigValues {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public void saveConfig() {
-        settingsConfig = new JsonObject();
-        try {
-            settingsConfigFile.createNewFile();
-            FileWriter writer = new FileWriter(settingsConfigFile);
-            BufferedWriter bufferedWriter = new BufferedWriter(writer);
-
-            JsonArray jsonArray = new JsonArray();
-            for (Feature element : disabledFeatures) {
-                jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
+        EnchantManager.markCacheDirty();
+        SkyblockAddons.runAsync(() -> {
+            if (!SAVE_LOCK.tryLock()) {
+                return;
             }
-            settingsConfig.add("disabledFeatures", jsonArray);
 
-            JsonObject profileSlotsObject = new JsonObject();
-            for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
-                JsonArray lockedSlots = new JsonArray();
-                for (int slot : entry.getValue()) {
-                    lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
+            try {
+                settingsConfigFile.createNewFile();
+
+                JsonObject saveConfig = new JsonObject();
+
+                JsonArray jsonArray = new JsonArray();
+                for (Feature element : disabledFeatures) {
+                    jsonArray.add(new GsonBuilder().create().toJsonTree(element.getId()));
                 }
-                profileSlotsObject.add(entry.getKey(), lockedSlots);
-            }
-            settingsConfig.add("profileLockedSlots", profileSlotsObject);
+                saveConfig.add("disabledFeatures", jsonArray);
 
-            JsonObject anchorObject = new JsonObject();
-            for (Feature feature : Feature.getGuiFeatures()) {
-                anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
-            }
-            settingsConfig.add("anchorPoints", anchorObject);
-
-            JsonObject scalesObject = new JsonObject();
-            for (Feature feature : guiScales.keySet()) {
-                scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
-            }
-            settingsConfig.add("guiScales", scalesObject);
-
-            JsonObject colorsObject = new JsonObject();
-            for (Feature feature : colors.keySet()) {
-                int featureColor = colors.get(feature);
-                if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
-                    colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                JsonObject profileSlotsObject = new JsonObject();
+                for (Map.Entry<String, Set<Integer>> entry : profileLockedSlots.entrySet()) {
+                    JsonArray lockedSlots = new JsonArray();
+                    for (int slot : entry.getValue()) {
+                        lockedSlots.add(new GsonBuilder().create().toJsonTree(slot));
+                    }
+                    profileSlotsObject.add(entry.getKey(), lockedSlots);
                 }
+                saveConfig.add("profileLockedSlots", profileSlotsObject);
+
+                JsonObject anchorObject = new JsonObject();
+                for (Feature feature : Feature.getGuiFeatures()) {
+                    anchorObject.addProperty(String.valueOf(feature.getId()), getAnchorPoint(feature).getId());
+                }
+                saveConfig.add("anchorPoints", anchorObject);
+
+                JsonObject scalesObject = new JsonObject();
+                for (Feature feature : guiScales.keySet()) {
+                    scalesObject.addProperty(String.valueOf(feature.getId()), guiScales.get(feature));
+                }
+                saveConfig.add("guiScales", scalesObject);
+
+                JsonObject colorsObject = new JsonObject();
+                for (Feature feature : colors.keySet()) {
+                    int featureColor = colors.get(feature);
+                    if (featureColor != ColorCode.RED.getColor()) { // Red is default, no need to save it!
+                        colorsObject.addProperty(String.valueOf(feature.getId()), colors.get(feature));
+                    }
+                }
+                saveConfig.add("colors", colorsObject);
+
+                // Old gui coordinates, for backwards compatibility...
+                JsonObject coordinatesObject = new JsonObject();
+                for (Feature feature : coordinates.keySet()) {
+                    JsonArray coordinatesArray = new JsonArray();
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
+                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+                }
+                saveConfig.add("guiPositions", coordinatesObject);
+                // New gui coordinates
+                coordinatesObject = new JsonObject();
+                for (Feature feature : coordinates.keySet()) {
+                    JsonArray coordinatesArray = new JsonArray();
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
+                    coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
+                    coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
+                }
+                saveConfig.add("coordinates", coordinatesObject);
+
+                JsonObject barSizesObject = new JsonObject();
+                for (Feature feature : barSizes.keySet()) {
+                    JsonArray sizesArray = new JsonArray();
+                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
+                    sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
+                    barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
+                }
+                saveConfig.add("barSizes", barSizesObject);
+
+                saveConfig.addProperty("warningSeconds", warningSeconds);
+
+                saveConfig.addProperty("textStyle", textStyle.getValue().ordinal());
+                saveConfig.addProperty("language", language.getValue().getPath());
+                saveConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
+                saveConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
+
+                JsonArray chromaFeaturesArray = new JsonArray();
+                for (Feature feature : chromaFeatures) {
+                    chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
+                }
+                saveConfig.add("chromaFeatures", chromaFeaturesArray);
+                saveConfig.addProperty("chromaSpeed", chromaSpeed);
+                saveConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
+                saveConfig.addProperty("chromaSize", chromaSize);
+
+                saveConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
+                saveConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
+                saveConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
+                saveConfig.addProperty("enchantLayout", enchantLayout.getValue().ordinal());
+
+                JsonArray discordCustomStatusesArray = new JsonArray();
+                for (String string : discordCustomStatuses) {
+                    discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
+                }
+                saveConfig.add("discordCustomStatuses", discordCustomStatusesArray);
+
+                saveConfig.addProperty("mapZoom", mapZoom);
+                saveConfig.addProperty("chromaSaturation", chromaSaturation);
+                saveConfig.addProperty("chromaBrightness", chromaBrightness);
+
+                saveConfig.addProperty("configVersion", CONFIG_VERSION);
+                int largestFeatureID = 0;
+                for (Feature feature : Feature.values()) {
+                    if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
+                }
+                saveConfig.addProperty("lastFeatureID", largestFeatureID);
+
+                try (FileWriter writer = new FileWriter(settingsConfigFile)) {
+                    SkyblockAddons.getGson().toJson(saveConfig, writer);
+                }
+            } catch (Exception ex) {
+                logger.error("An error occurred while attempting to save the config!");
+                logger.catching(ex);
             }
-            settingsConfig.add("colors", colorsObject);
 
-            // Old gui coordinates, for backwards compatibility...
-            JsonObject coordinatesObject = new JsonObject();
-            for (Feature feature : coordinates.keySet()) {
-                JsonArray coordinatesArray = new JsonArray();
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getX())));
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(Math.round(coordinates.get(feature).getY())));
-                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-            }
-            settingsConfig.add("guiPositions", coordinatesObject);
-            // New gui coordinates
-            coordinatesObject = new JsonObject();
-            for (Feature feature : coordinates.keySet()) {
-                JsonArray coordinatesArray = new JsonArray();
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getX()));
-                coordinatesArray.add(new GsonBuilder().create().toJsonTree(coordinates.get(feature).getY()));
-                coordinatesObject.add(String.valueOf(feature.getId()), coordinatesArray);
-            }
-            settingsConfig.add("coordinates", coordinatesObject);
-
-            JsonObject barSizesObject = new JsonObject();
-            for (Feature feature : barSizes.keySet()) {
-                JsonArray sizesArray = new JsonArray();
-                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getX()));
-                sizesArray.add(new GsonBuilder().create().toJsonTree(barSizes.get(feature).getY()));
-                barSizesObject.add(String.valueOf(feature.getId()), sizesArray);
-            }
-            settingsConfig.add("barSizes", barSizesObject);
-
-            settingsConfig.addProperty("warningSeconds", warningSeconds);
-
-            settingsConfig.addProperty("textStyle", textStyle.getValue().ordinal());
-            settingsConfig.addProperty("language", language.getValue().getPath());
-            settingsConfig.addProperty("backpackStyle", backpackStyle.getValue().ordinal());
-            settingsConfig.addProperty("powerOrbStyle", powerOrbDisplayStyle.getValue().ordinal());
-
-            JsonArray chromaFeaturesArray = new JsonArray();
-            for (Feature feature : chromaFeatures) {
-                chromaFeaturesArray.add(new GsonBuilder().create().toJsonTree(feature.getId()));
-            }
-            settingsConfig.add("chromaFeatures", chromaFeaturesArray);
-            settingsConfig.addProperty("chromaSpeed", chromaSpeed);
-            settingsConfig.addProperty("chromaMode", chromaMode.getValue().ordinal());
-            settingsConfig.addProperty("chromaFadeWidth", chromaFadeWidth);
-
-            settingsConfig.addProperty("discordStatus", discordStatus.getValue().ordinal());
-            settingsConfig.addProperty("discordDetails", discordDetails.getValue().ordinal());
-            settingsConfig.addProperty("discordAutoDefault", discordAutoDefault.getValue().ordinal());
-
-            JsonArray discordCustomStatusesArray = new JsonArray();
-            for (String string : discordCustomStatuses) {
-                discordCustomStatusesArray.add(new GsonBuilder().create().toJsonTree(string));
-            }
-            settingsConfig.add("discordCustomStatuses", discordCustomStatusesArray);
-
-            settingsConfig.addProperty("mapZoom", mapZoom);
-
-            settingsConfig.addProperty("configVersion", CONFIG_VERSION);
-            int largestFeatureID = 0;
-            for (Feature feature : Feature.values()) {
-                if (feature.getId() > largestFeatureID) largestFeatureID = feature.getId();
-            }
-            settingsConfig.addProperty("lastFeatureID", largestFeatureID);
-
-            bufferedWriter.write(settingsConfig.toString());
-            bufferedWriter.close();
-            writer.close();
-        } catch (Exception ex) {
-            logger.error("An error occurred while attempting to save the config!");
-            logger.catching(ex);
-        }
+            SAVE_LOCK.unlock();
+        });
     }
 
 
     private void deserializeFeatureSetFromID(Collection<Feature> collection, String path) {
         try {
-            if (settingsConfig.has(path)) {
-                for (JsonElement element : settingsConfig.getAsJsonArray(path)) {
+            if (loadedConfig.has(path)) {
+                for (JsonElement element : loadedConfig.getAsJsonArray(path)) {
                     Feature feature = Feature.fromId(element.getAsInt());
                     if (feature != null) {
                         collection.add(feature);
@@ -413,8 +456,8 @@ public class ConfigValues {
 
     private void deserializeStringCollection(Collection<String> collection, String path) {
         try {
-            if (settingsConfig.has(path)) {
-                for (JsonElement element : settingsConfig.getAsJsonArray(path)) {
+            if (loadedConfig.has(path)) {
+                for (JsonElement element : loadedConfig.getAsJsonArray(path)) {
                     String string = element.getAsString();
                     if (string != null) {
                         collection.add(string);
@@ -429,8 +472,8 @@ public class ConfigValues {
 
     private void deserializeStringIntSetMap(Map<String, Set<Integer>> map, String path) {
         try {
-            if (settingsConfig.has(path)) {
-                JsonObject profileSlotsObject = settingsConfig.getAsJsonObject(path);
+            if (loadedConfig.has(path)) {
+                JsonObject profileSlotsObject = loadedConfig.getAsJsonObject(path);
                 for (Map.Entry<String, JsonElement> entry : profileSlotsObject.entrySet()) {
                     Set<Integer> slots = new HashSet<>();
                     for (JsonElement element : entry.getValue().getAsJsonArray()) {
@@ -445,10 +488,8 @@ public class ConfigValues {
         }
     }
 
-
-    @SuppressWarnings("unchecked")
     private <E extends Enum<?>, F extends Enum<?>> void deserializeEnumEnumMapFromIDS(Map<E, F> map, String path, Class<E> keyClass, Class<F> valueClass) {
-        deserializeEnumEnumMapFromIDS(settingsConfig, map, path, keyClass, valueClass);
+        deserializeEnumEnumMapFromIDS(loadedConfig, map, path, keyClass, valueClass);
     }
 
     @SuppressWarnings("unchecked")
@@ -476,7 +517,7 @@ public class ConfigValues {
 
     @SuppressWarnings("unchecked")
     private <E extends Enum<?>, N extends Number> void deserializeEnumNumberMapFromID(Map<E, N> map, String path, Class<E> keyClass, Class<N> numberClass) {
-        deserializeEnumNumberMapFromID(settingsConfig, map, path, keyClass, numberClass);
+        deserializeEnumNumberMapFromID(loadedConfig, map, path, keyClass, numberClass);
     }
 
     @SuppressWarnings("unchecked")
@@ -499,8 +540,8 @@ public class ConfigValues {
 
     private <N extends Number> void deserializeNumber(Mutable<Number> number, String path, Class<N> numberClass) {
         try {
-            if (settingsConfig.has(path)) {
-                number.setValue(getNumber(settingsConfig.get(path), numberClass));
+            if (loadedConfig.has(path)) {
+                number.setValue(getNumber(loadedConfig.get(path), numberClass));
             }
         } catch (Exception ex) {
             logger.error("Failed to deserialize path: "+ path);
@@ -527,8 +568,8 @@ public class ConfigValues {
             Object valuesObject = method.invoke(null);
             E[] values = (E[])valuesObject;
 
-            if (settingsConfig.has(path)) {
-                int ordinal = settingsConfig.get(path).getAsInt();
+            if (loadedConfig.has(path)) {
+                int ordinal = loadedConfig.get(path).getAsInt();
                 if (values.length > ordinal) {
                     E enumValue = values[ordinal];
                     if (enumValue != null) {
@@ -543,7 +584,7 @@ public class ConfigValues {
     }
 
     private void deserializeFeatureFloatCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
-        deserializeFeatureFloatCoordsMapFromID(settingsConfig, map, path);
+        deserializeFeatureFloatCoordsMapFromID(loadedConfig, map, path);
     }
 
     private void deserializeFeatureFloatCoordsMapFromID(JsonObject jsonObject, Map<Feature, FloatPair> map, String path) {
@@ -563,18 +604,18 @@ public class ConfigValues {
         }
     }
 
-    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, IntPair> map, String path) {
-        deserializeFeatureIntCoordsMapFromID(settingsConfig, map, path);
+    private void deserializeFeatureIntCoordsMapFromID(Map<Feature, FloatPair> map, String path) {
+        deserializeFeatureIntCoordsMapFromID(loadedConfig, map, path);
     }
 
-    private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, IntPair> map, String path) {
+    private void deserializeFeatureIntCoordsMapFromID(JsonObject jsonObject, Map<Feature, FloatPair> map, String path) {
         try {
             if (jsonObject.has(path)) {
                 for (Map.Entry<String, JsonElement> element : jsonObject.getAsJsonObject(path).entrySet()) {
                     Feature feature = Feature.fromId(Integer.parseInt(element.getKey()));
                     if (feature != null) {
                         JsonArray coords = element.getValue().getAsJsonArray();
-                        map.put(feature, new IntPair(coords.get(0).getAsInt(), coords.get(1).getAsInt()));
+                        map.put(feature, new FloatPair(coords.get(0).getAsFloat(), coords.get(1).getAsFloat()));
                     }
                 }
             }
@@ -585,10 +626,6 @@ public class ConfigValues {
     }
 
     public void setAllCoordinatesToDefault() {
-        if (defaultValues == null) {
-            return;
-        }
-
         coordinates.clear();
         for (Map.Entry<Feature, FloatPair> entry : defaultCoordinates.entrySet()) {
             coordinates.put(entry.getKey(), entry.getValue().cloneCoords());
@@ -600,10 +637,6 @@ public class ConfigValues {
     }
 
     private void putDefaultCoordinates(Feature feature) {
-        if (defaultValues == null) {
-            return;
-        }
-
         FloatPair coords = defaultCoordinates.get(feature);
         if (coords != null) {
             coordinates.put(feature, coords);
@@ -611,12 +644,8 @@ public class ConfigValues {
     }
 
     public void putDefaultBarSizes() {
-        if (defaultValues == null) {
-            return;
-        }
-
         barSizes.clear();
-        for (Map.Entry<Feature, IntPair> entry : defaultBarSizes.entrySet()) {
+        for (Map.Entry<Feature, FloatPair> entry : defaultBarSizes.entrySet()) {
             barSizes.put(entry.getKey(), entry.getValue().cloneCoords());
         }
     }
@@ -640,23 +669,43 @@ public class ConfigValues {
     }
 
     /**
-     * @param feature The feature to check.
-     * @return Whether the feature is remotely disabled.d
+     * Checks the received {@code OnlineData} to determine if the given feature should be disabled.
+     * This method checks the list of features to be disabled for all versions first and then checks the list of features that
+     * should be disabled for this specific version.
+     *
+     * @param feature The feature to check
+     * @return {@code true} if the feature should be disabled, {@code false} otherwise
      */
     public boolean isRemoteDisabled(Feature feature) {
         if (feature == null) return false;
 
-        if (main.getOnlineData().getDisabledFeatures().containsKey("all")) {
-            return main.getOnlineData().getDisabledFeatures().get("all").contains(feature.getId());
+        HashMap<String, List<Integer>> disabledFeatures = main.getOnlineData().getDisabledFeatures();
+
+        if (disabledFeatures.containsKey("all")) {
+            if (disabledFeatures.get("all") != null) {
+                if (disabledFeatures.get("all").contains(feature.getId())) {
+                    return true;
+                }
+            } else {
+                logger.error("\"all\" key in disabled features map has value of null. Please fix online data.");
+            }
         }
 
-        // Check this version.
+        /*
+        Check for disabled features for this mod version. Pre-release versions will follow the disabled features
+        list for their release version. For example, the version {@code 1.6.0-beta.10} will adhere to the list
+        for version {@code 1.6.0}
+         */
         String version = SkyblockAddons.VERSION;
         if (version.contains("-")) {
             version = version.split("-")[0];
         }
-        if (main.getOnlineData().getDisabledFeatures().containsKey(version)) {
-            return main.getOnlineData().getDisabledFeatures().get(version).contains(feature.getId());
+        if (disabledFeatures.containsKey(version)) {
+            if (disabledFeatures.get(version) != null) {
+                return disabledFeatures.get(version).contains(feature.getId());
+            } else {
+                logger.error("\"" + version + "\" key in disabled features map has value of null. Please fix online data.");
+            }
         }
 
         return false;
@@ -678,29 +727,41 @@ public class ConfigValues {
         return !isDisabled(feature);
     }
 
-    public Color getColorObject(Feature feature, int alpha) {
-        return new Color(getColor(feature, alpha), true);
-    }
-
-    public Color getColorObject(Feature feature) {
-        return getColorObject(feature, 255);
+    // TODO Don't force alpha in the future...
+    public int getColor(Feature feature) {
+        return this.getColor(feature, 255);
     }
 
     public int getColor(Feature feature, int alpha) {
-        if (alpha < 4) {
-            alpha = 4; // Minimum apparently
-        }
+        // If the minimum alpha value is being limited let's make sure we are a little higher than that
+//        if (GlStateManager.alphaState.alphaTest && GlStateManager.alphaState.func == GL11.GL_GREATER && alpha / 255F <= GlStateManager.alphaState.ref) {
+//            alpha = ColorUtils.getAlphaIntFromFloat( GlStateManager.alphaState.ref + 0.001F);
+//        }
 
         if (chromaFeatures.contains(feature)) {
-            return ChromaManager.getChromaColor(0, 0, alpha);
+            return ManualChromaManager.getChromaColor(0, 0, alpha);
+        }
+
+        if (colors.containsKey(feature)) {
+            return ColorUtils.setColorAlpha(colors.get(feature), alpha);
         }
 
         ColorCode defaultColor = feature.getDefaultColor();
-        return colors.getOrDefault(feature, defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor());
+        return ColorUtils.setColorAlpha(defaultColor != null ? defaultColor.getColor() : ColorCode.RED.getColor(), alpha);
     }
 
-    public int getColor(Feature feature) {
-        return this.getColor(feature, 255);
+    /**
+     * Return skyblock color compatible with new shaders. Can bind the color (white) unconditionally
+     * @param feature the feature
+     * @return the color
+     */
+    public SkyblockColor getSkyblockColor(Feature feature) {
+        SkyblockColor color = ColorUtils.getDummySkyblockColor(getColor(feature), chromaFeatures.contains(feature));
+        // If chroma is enabled, and we are using shaders, set color to white
+        if (color.drawMulticolorUsingShader()) {
+            color.setColor(0xFFFFFFFF);
+        }
+        return color;
     }
 
     public ColorCode getRestrictedColor(Feature feature) {
@@ -743,23 +804,29 @@ public class ConfigValues {
 
     public float getActualY(Feature feature) {
         int maxY = new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight();
-        return getAnchorPoint(feature).getY(maxY)+ getRelativeCoords(feature).getY();
+        return getAnchorPoint(feature).getY(maxY) + getRelativeCoords(feature).getY();
     }
 
-    public IntPair getSizes(Feature feature) {
-        return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new IntPair(7,1));
+    public FloatPair getSizes(Feature feature) {
+        return barSizes.getOrDefault(feature, defaultBarSizes.containsKey(feature) ? defaultBarSizes.get(feature).cloneCoords() : new FloatPair(1, 1));
     }
 
-    public void setSizeX(Feature feature, int x) {
-        IntPair coords = getSizes(feature);
+    public float getSizesX(Feature feature) {
+        return Math.min(Math.max(getSizes(feature).getX(), .25F), 1);
+    }
+
+    public float getSizesY(Feature feature) {
+        return Math.min(Math.max(getSizes(feature).getY(), .25F), 1);
+    }
+
+    public void setScaleX(Feature feature, float x) {
+        FloatPair coords = getSizes(feature);
         coords.setX(x);
-        barSizes.put(feature, coords);
     }
 
-    public void setSizeY(Feature feature, int y) {
-        IntPair coords = getSizes(feature);
+    public void setScaleY(Feature feature, float y) {
+        FloatPair coords = getSizes(feature);
         coords.setY(y);
-        barSizes.put(feature, coords);
     }
 
     public FloatPair getRelativeCoords(Feature feature) {
@@ -906,14 +973,6 @@ public class ConfigValues {
         this.textStyle.setValue(textStyle);
     }
 
-    public float getChromaSpeed() {
-        return chromaSpeed.getValue();
-    }
-
-    public void setChromaSpeed(float chromaSpeed) {
-        this.chromaSpeed.setValue(chromaSpeed);
-    }
-
     public EnumUtils.ChromaMode getChromaMode() {
         return chromaMode.getValue();
     }
@@ -968,5 +1027,13 @@ public class ConfigValues {
         }
 
         return discordCustomStatuses.set(statusEntry.getId(), text);
+    }
+
+    public EnchantListLayout getEnchantLayout() {
+        return enchantLayout != null ? enchantLayout.getValue() : EnchantListLayout.NORMAL;
+    }
+
+    public void setEnchantLayout(EnchantListLayout enchantLayout) {
+        this.enchantLayout.setValue(enchantLayout);
     }
 }

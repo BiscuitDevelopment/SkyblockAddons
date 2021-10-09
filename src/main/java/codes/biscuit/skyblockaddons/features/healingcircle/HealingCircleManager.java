@@ -2,12 +2,14 @@ package codes.biscuit.skyblockaddons.features.healingcircle;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.MathUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.Iterator;
 import java.util.Set;
@@ -54,34 +56,34 @@ public class HealingCircleManager {
                     continue;
                 }
 
-                GlStateManager.pushMatrix();
-                GL11.glNormal3f(0.0F, 1.0F, 0.0F);
-
-                GlStateManager.disableLighting();
-                GlStateManager.depthMask(false);
-                GlStateManager.enableDepth();
-                GlStateManager.enableBlend();
-                GlStateManager.depthFunc(GL11.GL_LEQUAL);
-                GlStateManager.disableCull();
-                GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-                GlStateManager.enableAlpha();
-                GlStateManager.disableTexture2D();
-
-                Color color = main.getConfigValues().getColorObject(Feature.SHOW_HEALING_CIRCLE_WALL);
-                GlStateManager.color(color.getRed()/255F, color.getGreen()/255F, color.getBlue()/255F, 0.2F);
                 Point2D.Double circleCenter = healingCircle.getCircleCenter();
                 if (circleCenter != null && !Double.isNaN(circleCenter.getX()) && !Double.isNaN(circleCenter.getY())) {
-                    main.getUtils().drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.DIAMETER / 2F, 255, partialTicks);
-                }
+                    GlStateManager.pushMatrix();
+                    GL11.glNormal3f(0.0F, 1.0F, 0.0F);
 
-                GlStateManager.enableCull();
-                GlStateManager.enableTexture2D();
-                GlStateManager.enableDepth();
-                GlStateManager.depthMask(true);
-                GlStateManager.enableLighting();
-                GlStateManager.disableBlend();
-                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-                GlStateManager.popMatrix();
+                    GlStateManager.disableLighting();
+                    GlStateManager.depthMask(false);
+                    GlStateManager.enableDepth();
+                    GlStateManager.enableBlend();
+                    GlStateManager.depthFunc(GL11.GL_LEQUAL);
+                    GlStateManager.disableCull();
+                    GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
+                    GlStateManager.enableAlpha();
+                    GlStateManager.disableTexture2D();
+
+                    boolean chroma = main.getConfigValues().getChromaFeatures().contains(Feature.SHOW_HEALING_CIRCLE_WALL);
+                    int color = main.getConfigValues().getColor(Feature.SHOW_HEALING_CIRCLE_WALL, ColorUtils.getAlphaIntFromFloat(MathUtils.clamp(main.getConfigValues().getHealingCircleOpacity().floatValue(), 0, 1)));
+                    DrawUtils.drawCylinder(circleCenter.getX(), 0, circleCenter.getY(), HealingCircle.RADIUS, 255, ColorUtils.getDummySkyblockColor(color, chroma));
+
+                    GlStateManager.enableCull();
+                    GlStateManager.enableTexture2D();
+                    GlStateManager.enableDepth();
+                    GlStateManager.depthMask(true);
+                    GlStateManager.enableLighting();
+                    GlStateManager.disableBlend();
+                    GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                    GlStateManager.popMatrix();
+                }
             }
         }
     }

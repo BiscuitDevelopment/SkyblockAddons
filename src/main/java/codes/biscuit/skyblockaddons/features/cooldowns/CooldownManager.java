@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.features.cooldowns;
 
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import lombok.Setter;
 import net.minecraft.item.ItemStack;
 
 import java.util.HashMap;
@@ -17,33 +18,56 @@ import java.util.regex.Pattern;
  */
 public class CooldownManager {
 
+    @Setter private static Map<String, Integer> itemCooldowns = new HashMap<>();
     private static final Pattern ITEM_COOLDOWN_PATTERN = Pattern.compile("Cooldown: ([0-9]+)s");
     private static final Pattern ALTERNATE_COOLDOWN_PATTERN = Pattern.compile("([0-9]+) Second Cooldown");
 
     private static final Map<String, CooldownEntry> cooldowns = new HashMap<>();
 
     private static CooldownEntry get(ItemStack item) {
-        return (item == null || !item.hasDisplayName()) ? CooldownEntry.NULL_ENTRY : get(item.getDisplayName());
+        return get(ItemUtils.getSkyblockItemID(item));
     }
 
-    private static CooldownEntry get(String itemName) {
-        return cooldowns.getOrDefault(itemName, CooldownEntry.NULL_ENTRY);
+    private static CooldownEntry get(String itemId) {
+        return cooldowns.getOrDefault(itemId, CooldownEntry.NULL_ENTRY);
+    }
+
+    public static int getItemCooldown(ItemStack item) {
+        return itemCooldowns.getOrDefault(ItemUtils.getSkyblockItemID(item), 0);
+    }
+
+    public static int getItemCooldown(String itemId) {
+        return itemCooldowns.getOrDefault(itemId, 0);
     }
 
     /**
-     * Put an item on cooldown by reading the cooldown value from its lore.
+     * Put an item on cooldown by reading the cooldown value from the json.
      *
      * @param item ItemStack to put on cooldown
      */
     public static void put(ItemStack item) {
-        if(item == null || !item.hasDisplayName()) {
+        String itemId = ItemUtils.getSkyblockItemID(item);
+        if (itemId == null) {
             return;
         }
+        int cooldown = itemCooldowns.getOrDefault(itemId, 0);
+        if (cooldown > 0) {
+            put(itemId, cooldown);
+        }
+    }
 
-        int cooldown = getLoreCooldown(item);
-        if(cooldown > 0) {
-            // cooldown is returned in seconds and required in milliseconds
-            put(item.getDisplayName(), cooldown * 1000);
+    /**
+     * Put an item on cooldown by reading the cooldown value from the json.
+     *
+     * @param itemId ItemStack to put on cooldown
+     */
+    public static void put(String itemId) {
+        if (itemId == null) {
+            return;
+        }
+        int cooldown = itemCooldowns.getOrDefault(itemId, 0);
+        if (cooldown > 0) {
+            put(itemId, cooldown);
         }
     }
 
@@ -56,49 +80,58 @@ public class CooldownManager {
      * @param cooldown Cooldown in milliseconds
      */
     public static void put(ItemStack item, long cooldown) {
-        if(item == null || !item.hasDisplayName() || cooldown < 0) {
-            return;
+        String itemId = ItemUtils.getSkyblockItemID(item);
+        if (itemId != null && cooldown > 0) {
+            put(itemId, cooldown);
         }
-
-        put(item.getDisplayName(), cooldown);
     }
 
     /**
-     * Put an item on cooldown by item name and provided cooldown.
+     * Put an item on cooldown by item ID and provided cooldown.
      *
-     * @param itemName Displayname of the item to put on cooldown
+     * @param itemId Skyblock ID of the item to put on cooldown
      * @param cooldown Cooldown in milliseconds
      */
-    public static void put(String itemName, long cooldown) {
-        if(cooldown < 0) {
+    public static void put(String itemId, long cooldown) {
+        if (cooldown < 0) {
             throw new IllegalArgumentException("Cooldown must be positive and not 0");
         }
 
-        if (!cooldowns.containsKey(itemName) || !cooldowns.get(itemName).isOnCooldown()) { // Don't allow overriding a current cooldown.
+        if (!cooldowns.containsKey(itemId) || !cooldowns.get(itemId).isOnCooldown()) { // Don't allow overriding a current cooldown.
             CooldownEntry cooldownEntry = new CooldownEntry(cooldown);
-            cooldowns.put(itemName, cooldownEntry);
+            cooldowns.put(itemId, cooldownEntry);
         }
     }
+
+    /**
+     * Remove the cooldown from the specified itemId
+     *
+     * @param itemId the item id from which to remove the cooldown
+     */
+    public static void remove(String itemId) {
+        cooldowns.put(itemId, CooldownEntry.NULL_ENTRY);
+    }
+
 
     /**
      * Check if an item is on cooldown.
      *
      * @param item Item to check
      * @return Whether that item is on cooldown. {@code true} if it is, {@code false} if it's not, it's not registered,
-     * is null or doesn't have a displayname
+     * is null or doesn't have a skyblock ID
      */
     public static boolean isOnCooldown(ItemStack item) {
         return get(item).isOnCooldown();
     }
 
     /**
-     * Check if an item is on cooldown by item name.
+     * Check if an item is on cooldown by item ID.
      *
-     * @param itemName Displayname of the item to check
+     * @param itemId skyblock ID of the item to check
      * @return Whether that item is on cooldown. {@code true} if it is, {@code false} if it's not or it's not registered
      */
-    public static boolean isOnCooldown(String itemName) {
-        return get(itemName).isOnCooldown();
+    public static boolean isOnCooldown(String itemId) {
+        return get(itemId).isOnCooldown();
     }
 
     /**
@@ -112,13 +145,13 @@ public class CooldownManager {
     }
 
     /**
-     * Get the remaining cooldown of an item in milliseconds by its name
+     * Get the remaining cooldown of an item in milliseconds by its item ID
      *
-     * @param itemName Displayname of the item to get the cooldown of
+     * @param itemId Skyblock ID of the item to get the cooldown of
      * @return Remaining time until its cooldown runs out or {@code 0} if it's not on cooldown
      */
-    public static long getRemainingCooldown(String itemName) {
-        return get(itemName).getRemainingCooldown();
+    public static long getRemainingCooldown(String itemId) {
+        return get(itemId).getRemainingCooldown();
     }
 
     /**
@@ -132,13 +165,13 @@ public class CooldownManager {
     }
 
     /**
-     * Get the remaining cooldown of an item in percent between {@code 0 to 1} by its name
+     * Get the remaining cooldown of an item in percent between {@code 0 to 1} by its ID
      *
-     * @param itemName Displayname of the item to get the cooldown of
+     * @param itemId Skyblock ID of the item to get the cooldown of
      * @return Remaining cooldown in percent or {@code 0} if the item is not on cooldown
      */
-    public static double getRemainingCooldownPercent(String itemName) {
-        return get(itemName).getRemainingCooldownPercent();
+    public static double getRemainingCooldownPercent(String itemId) {
+        return get(itemId).getRemainingCooldownPercent();
     }
 
     /**

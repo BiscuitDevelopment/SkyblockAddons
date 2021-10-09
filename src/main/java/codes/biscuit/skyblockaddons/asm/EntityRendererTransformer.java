@@ -1,12 +1,12 @@
 package codes.biscuit.skyblockaddons.asm;
 
+import codes.biscuit.skyblockaddons.asm.utils.InjectionHelper;
 import codes.biscuit.skyblockaddons.asm.utils.TransformerClass;
+import codes.biscuit.skyblockaddons.asm.utils.TransformerField;
 import codes.biscuit.skyblockaddons.asm.utils.TransformerMethod;
 import codes.biscuit.skyblockaddons.tweaker.transformer.ITransformer;
-import org.objectweb.asm.Opcodes;
-import org.objectweb.asm.tree.*;
-
-import java.util.Iterator;
+import org.objectweb.asm.tree.ClassNode;
+import org.objectweb.asm.tree.MethodNode;
 
 public class EntityRendererTransformer implements ITransformer {
 
@@ -21,70 +21,49 @@ public class EntityRendererTransformer implements ITransformer {
     @Override
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
-            if (TransformerMethod.getMouseOver.matches(methodNode)) {
+            if (InjectionHelper.matches(methodNode, TransformerMethod.getNightVisionBrightness)) {
 
-                // Objective:
-                // Find: The entity list variable.
-                // Insert EntityRendererHook.removeEntities(list);
+                InjectionHelper.start()
+                        .matchMethodHead()
 
-                Iterator<AbstractInsnNode> iterator = methodNode.instructions.iterator();
-                while (iterator.hasNext()) {
-                    AbstractInsnNode abstractNode = iterator.next();
-                    if (abstractNode instanceof VarInsnNode && abstractNode.getOpcode() == Opcodes.DLOAD) {
-                        VarInsnNode varInsnNode = (VarInsnNode)abstractNode;
-                        if (varInsnNode.var == 5) { // List variable is created right before variable 5 is accessed (double d3 = d2;)
-                            methodNode.instructions.insertBefore(varInsnNode, insertRemoveEntities());
-                            break;
-                        }
-                    }
-                }
-            } else if (TransformerMethod.getNightVisionBrightness.matches(methodNode)) {
+                        .startCode()
+                        // ReturnValue returnValue = new ReturnValue();
+                        .newInstance("codes/biscuit/skyblockaddons/asm/utils/ReturnValue")
+                        .storeAuto(0) // TODO Reference local variable by name maybe? "returnValue"?
 
-                // Objective:
-                // Find: Method head.
-                // Insert:   ReturnValue returnValue = new ReturnValue();
-                //           EntityPlayerSPHook.preventBlink(returnValue);
-                //           if (returnValue.isCancelled()) {
-                //               return 1.0F;
-                //           }
+                        // EntityRendererHook.onGetNightVisionBrightness(returnValue);
+                            .loadAuto(0)
+                            .callStaticMethod("codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "onGetNightVisionBrightness",
+                                    "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V")
 
-                methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertNightVision());
+                            // if (returnValue.isCancelled())
+                            .loadAuto(0)
+                            .invokeInstanceMethod("codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled", "()Z")
+                            .startIfEqual()
+                                // return 1.0F;
+                                .constantValue(1.0F)
+                                .reeturn()
+                            // }
+                            .endIf()
+                            .endCode()
+                        .finish();
+
+            } else if (InjectionHelper.matches(methodNode, TransformerMethod.updateCameraAndRender)) {
+
+                InjectionHelper.start()
+                        // Match at: if (this.mc.currentScreen != null)
+                        .matchingOwner(TransformerClass.Minecraft).matchingField(TransformerField.currentScreen).endCondition()
+                        // Inject before the if statement (2 instructions above)
+                        .setInjectionOffset(-2)
+                        // 6 lines backwards should be: this.renderEndNanoTime = System.nanoTime();
+                        .addAnchorCondition(-6).matchingOwner(TransformerClass.EntityRenderer).matchingField(TransformerField.renderEndNanoTime).endCondition()
+
+                        .injectCodeBefore()
+                            // EntityRendererHook.onRenderScreenPre();
+                            .callStaticMethod("codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "onRenderScreenPre", "()V")
+                            .endCode()
+                        .finish();
             }
         }
-    }
-
-    private InsnList insertRemoveEntities() {
-        InsnList list = new InsnList();
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 14)); // EntityRendererHook.removeEntities(list);
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "removeEntities",
-                "(Ljava/util/List;)V", false));
-
-        return list;
-    }
-
-    private InsnList insertNightVision() {
-        InsnList list = new InsnList();
-
-        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
-        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
-        list.add(new VarInsnNode(Opcodes.ASTORE, 4));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 4)); // EntityRendererHook.preventBlink(returnValue);
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/EntityRendererHook", "preventBlink",
-                "(Lcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 4));
-        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
-                "()Z", false));
-        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
-        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
-
-        list.add(new InsnNode(Opcodes.FCONST_1)); // return 1.0F;
-        list.add(new InsnNode(Opcodes.FRETURN));
-        list.add(notCancelled);
-
-        return list;
     }
 }

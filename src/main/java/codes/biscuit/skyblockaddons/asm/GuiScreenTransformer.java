@@ -24,13 +24,11 @@ public class GuiScreenTransformer implements ITransformer {
 
                     // Objective:
                     // Find: Method head.
-                    // Insert:   ReturnValue returnValue = new ReturnValue();
-                    //           GuiScreenHook.renderBackpack(stack, x, y, returnValue);
-                    //           if (returnValue.isCancelled()) {
+                    // Insert:   if (GuiScreenHook.onRenderTooltip(stack, x, y)) {
                     //               return;
                     //           }
 
-                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertRenderBackpack());
+                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), onRenderTooltip());
                 }
                 if (TransformerMethod.handleComponentClick.matches(methodNode)) {
 
@@ -46,29 +44,18 @@ public class GuiScreenTransformer implements ITransformer {
         }
     }
 
-    private InsnList insertRenderBackpack() {
+    private InsnList onRenderTooltip() {
         InsnList list = new InsnList();
-
-        list.add(new TypeInsnNode(Opcodes.NEW, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue"));
-        list.add(new InsnNode(Opcodes.DUP)); // ReturnValue returnValue = new ReturnValue();
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "<init>", "()V", false));
-        list.add(new VarInsnNode(Opcodes.ASTORE, 6));
 
         list.add(new VarInsnNode(Opcodes.ALOAD, 1)); // stack
         list.add(new VarInsnNode(Opcodes.ILOAD, 2)); // x
         list.add(new VarInsnNode(Opcodes.ILOAD, 3)); // y
-        list.add(new VarInsnNode(Opcodes.ALOAD, 6)); // GuiScreenHook.renderBackpack(stack, x, y, returnValue);
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiScreenHook", "renderBackpack",
-                "("+TransformerClass.ItemStack.getName()+"IILcodes/biscuit/skyblockaddons/asm/utils/ReturnValue;)V", false));
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 6));
-        list.add(new MethodInsnNode(Opcodes.INVOKEVIRTUAL, "codes/biscuit/skyblockaddons/asm/utils/ReturnValue", "isCancelled",
-                "()Z", false));
-        LabelNode notCancelled = new LabelNode(); // if (returnValue.isCancelled())
-        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled));
-
+        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiScreenHook", "onRenderTooltip",
+                "("+TransformerClass.ItemStack.getName()+"II)Z", false));
+        LabelNode notCancelled = new LabelNode();
+        list.add(new JumpInsnNode(Opcodes.IFEQ, notCancelled)); // if (GuiScreenHook.onRenderTooltip(stack, x, y)) {
         list.add(new InsnNode(Opcodes.RETURN)); // return;
-        list.add(notCancelled);
+        list.add(notCancelled); // }
 
         return list;
     }

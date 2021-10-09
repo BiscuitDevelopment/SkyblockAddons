@@ -3,8 +3,8 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.core.Translations;
-import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -33,6 +33,14 @@ import java.util.regex.Pattern;
  * End Race:                   §d§lTHE END RACE §e00:52.370            §b147/147✎ Mana§r
  * Woods Race:                 §A§LWOODS RACING §e00:31.520            §b147/147✎ Mana§r
  * Trials of Fire:             §c1078/1078❤   §610 DPS   §c1 second     §b421/421✎ Mana§r
+ * Soulflow:                   §b421/421✎ §3100ʬ
+ * Tethered + Alignment:      §a1039§a❈ Defense§a |||§a§l  T3!
+ * Five stages of healing wand:     §62151/1851❤+§c120▆
+ *                                  §62151/1851❤+§c120▅
+ *                                  §62151/1851❤+§c120▄
+ *                                  §62151/1851❤+§c120▃
+ *                                  §62151/1851❤+§c120▂
+ *                                  §62151/1851❤+§c120▁
  * <p>
  * To add something new to parse, add an else-if case in {@link #parseActionBar(String)} to call a method that
  * parses information from that section.
@@ -41,21 +49,38 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
+    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
+    private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
+    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
+    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
+    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
+
 
     private final SkyblockAddons main;
 
-    /** The amount of usable tickers or -1 if none are in the action bar. */
+    /**
+     * The amount of usable tickers or -1 if none are in the action bar.
+     */
     private int tickers = -1;
 
-    /** The total amount of possible tickers or 0 if none are in the action bar. */
+    /**
+     * The total amount of possible tickers or 0 if none are in the action bar.
+     */
     private int maxTickers = 0;
-    @Setter private int lastSecondHealth = -1;
-    @Setter private Integer healthUpdate;
-    @Setter private long lastHealthUpdate;
+    @Setter
+    private int lastSecondHealth = -1;
+    @Setter
+    private Integer healthUpdate;
+    @Setter
+    private long lastHealthUpdate;
 
     private float currentSkillXP;
     private int totalSkillXP;
+    private float percent;
+    private boolean healthLock;
+    private String otherDefense;
+
+    private final LinkedList<String> stringsToRemove = new LinkedList<>();
 
     public ActionBarParser() {
         this.main = SkyblockAddons.getInstance();
@@ -76,6 +101,7 @@ public class ActionBarParser {
         // This list holds the text of unused sections that aren't displayed anywhere else in SBA
         // so they can keep being displayed in the action bar
         List<String> unusedSections = new LinkedList<>();
+        stringsToRemove.clear();
 
         // health and mana section methods determine if prediction can be disabled, so enable both at first
         main.getRenderListener().setPredictMana(true);
@@ -95,6 +121,9 @@ public class ActionBarParser {
                     // can either return a string to keep displaying in the action bar
                     // or null to not display them anymore
                     unusedSections.add(sectionReturn);
+                } else {
+                    // Remove via callback
+                    stringsToRemove.add(section);
                 }
             } catch(Exception ex) {
                 unusedSections.add(section);
@@ -112,21 +141,30 @@ public class ActionBarParser {
      * @return Text to keep displaying or null
      */
     private String parseSection(String section) {
-        String numbersOnly = TextUtils.getNumbersOnly(section).trim(); // keeps numbers and slashes
+        String stripColoring = TextUtils.stripColor(section);
+        String convertMag = TextUtils.convertMagnitudes(stripColoring);
+
+        // Format for overflow mana is a bit different. Splitstats must parse out overflow first before getting numbers
+        if (section.contains("ʬ")) {
+            convertMag = convertMag.split(" ")[0];
+        }
+        String numbersOnly = TextUtils.getNumbersOnly(convertMag).trim(); // keeps numbers and slashes
         String[] splitStats = numbersOnly.split("/");
 
         if (section.contains("❤")) {
             // ❤ indicates a health section
-            return parseHealth(section, splitStats);
+            return parseHealth(section);
         } else if (section.contains("❈")) {
             // ❈ indicates a defense section
-            return parseDefense(section, numbersOnly);
+            return parseDefense(section);
         } else if (section.contains("✎")) {
-            return parseMana(section, splitStats);
+            return parseMana(section);
         } else if (section.contains("(")) {
             return parseSkill(section);
         } else if (section.contains("Ⓞ") || section.contains("ⓩ")) {
             return parseTickers(section);
+        } else if (section.contains("Drill")) {
+            return parseDrill(section, splitStats);
         }
 
         return section;
@@ -137,45 +175,34 @@ public class ActionBarParser {
      * Returns the healing indicator if a healing Wand is active.
      *
      * @param healthSection Health section of the action bar
-     * @param splitStats Pre-split stat strings
      * @return null or Wand healing indicator or {@code healthSection} if neither health bar nor health text are enabled
      */
-    private String parseHealth(String healthSection, String[] splitStats) {
+    private String parseHealth(String healthSection) {
         // Normal:      §c1390/1390❤
         // With Wand:   §c1390/1390❤+§c30▅
         final boolean separateDisplay = main.getConfigValues().isEnabled(Feature.HEALTH_BAR) || main.getConfigValues().isEnabled(Feature.HEALTH_TEXT);
         String returnString = healthSection;
         int newHealth;
         int maxHealth;
-        if (healthSection.startsWith("§6")) { // Absorption chances §c to §6. Remove §6 to make sure it isn't detected as a number of health.
-            healthSection = healthSection.substring(2);
-            splitStats[0] = splitStats[0].substring(1); // One less because the '§' was already removed.
-        }
-        if (healthSection.contains("+")) {
-            // Contains the Wand indicator so it has to be split differently
-            String[] splitHealthAndWand = healthSection.split("\\+");
-            String[] healthSplit = TextUtils.getNumbersOnly(splitHealthAndWand[0]).split("/");
-            newHealth = Integer.parseInt(healthSplit[0]);
-            maxHealth = Integer.parseInt(healthSplit[1]);
-            if (separateDisplay) {
-                // Return +30▅ for example
-                returnString = "§c+" + splitHealthAndWand[1];
-            }
-        } else {
-            newHealth = Integer.parseInt(splitStats[0]);
-            maxHealth = Integer.parseInt(splitStats[1]);
-            if (separateDisplay) {
+        String stripped = TextUtils.stripColor(healthSection);
+        Matcher m = HEALTH_PATTERN_S.matcher(stripped);
+        if (separateDisplay && m.matches()) {
+            newHealth = Integer.parseInt(m.group("health"));
+            maxHealth = Integer.parseInt(m.group("maxHealth"));
+            if (m.group("wand") != null) {
+                // Jank way of doing this for now
+                returnString = "";// "§c"+ m.group("wand");
+                stringsToRemove.add(stripped.substring(0, m.start("wand")));
+            } else {
                 returnString = null;
             }
+            healthLock = false;
+            boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
+                    ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
+            setAttribute(Attribute.HEALTH, newHealth);
+            setAttribute(Attribute.MAX_HEALTH, maxHealth);
+            healthLock = postSetLock;
         }
-        main.getScheduler().schedule(Scheduler.CommandType.SET_LAST_SECOND_HEALTH, 1, newHealth);
-        if (lastSecondHealth != -1 && lastSecondHealth != newHealth) {
-            healthUpdate = newHealth - lastSecondHealth;
-            lastHealthUpdate = System.currentTimeMillis();
-        }
-        setAttribute(Attribute.HEALTH, newHealth);
-        setAttribute(Attribute.MAX_HEALTH, maxHealth);
-        main.getRenderListener().setPredictHealth(false);
         return returnString;
     }
 
@@ -183,39 +210,51 @@ public class ActionBarParser {
      * Parses the mana section and sets the read values as attributes in {@link Utils}.
      *
      * @param manaSection Mana section of the action bar
-     * @param splitStats Pre-split stat strings
      * @return null or {@code manaSection} if neither mana bar nor mana text are enabled
      */
-    private String parseMana(String manaSection, String[] splitStats) {
-        // §b183/171✎ Mana§r
-        int mana = Integer.parseInt(splitStats[0]);
-        int maxMana = Integer.parseInt(splitStats[1]);
-        setAttribute(Attribute.MANA, mana);
-        setAttribute(Attribute.MAX_MANA, maxMana);
-        main.getRenderListener().setPredictMana(false);
-        if (main.getConfigValues().isEnabled(Feature.MANA_BAR) || main.getConfigValues().isEnabled(Feature.MANA_TEXT)) {
-            return null;
-        } else {
-            return manaSection;
+    private String parseMana(String manaSection) {
+        // 183/171✎ Mana
+        // 421/421✎ 10ʬ
+        // 421/421✎ -10ʬ
+        Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection).trim());
+        if (m.matches()) {
+            setAttribute(Attribute.MANA, Integer.parseInt(m.group("num").replaceAll(",", "")));
+            setAttribute(Attribute.MAX_MANA, Integer.parseInt(m.group("den").replaceAll(",", "")));
+            int overflowMana = 0;
+            if (m.group("overflow") != null) {
+                overflowMana = Integer.parseInt(m.group("overflow").replaceAll(",", ""));
+            }
+            setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
+            main.getRenderListener().setPredictMana(false);
+            if (main.getConfigValues().isEnabled(Feature.MANA_BAR) || main.getConfigValues().isEnabled(Feature.MANA_TEXT)) {
+                return null;
+            }
         }
+        return manaSection;
     }
 
     /**
      * Parses the defense section and sets the read values as attributes in {@link Utils}.
      *
      * @param defenseSection Defense section of the action bar
-     * @param numbersOnly Pre-split stat string
      * @return null or {@code defenseSection} if neither defense text nor defense percentage are enabled
      */
-    private String parseDefense(String defenseSection, String numbersOnly) {
+    private String parseDefense(String defenseSection) {
         // §a720§a❈ Defense
-        int defense = Integer.parseInt(numbersOnly);
-        setAttribute(Attribute.DEFENCE, defense);
-        if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
-            return null;
-        } else {
-            return defenseSection;
+        // Tethered T1 (Dungeon Healer)--means tethered to 1 person I think: §a1024§a? Defense§6  T1
+        // Tethered T3! (Dungeon Healer)--not sure why exclamation mark: §a1039§a? Defense§a§l  T3!
+        // Tethered T3! (Dungeon Healer) + Aligned ||| (Gyrokinetic Wand): §a1039§a? Defense§a |||§a§l  T3!
+        String stripped = TextUtils.stripColor(defenseSection);
+        Matcher m = DEFENSE_PATTERN_S.matcher(stripped);
+        if (m.matches()) {
+            int defense = Integer.parseInt(m.group("defense"));
+            setAttribute(Attribute.DEFENCE, defense);
+            otherDefense = TextUtils.getFormattedString(defenseSection, m.group("other").trim());
+            if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
+                return null;
+            }
         }
+        return defenseSection;
     }
 
     /**
@@ -225,12 +264,10 @@ public class ActionBarParser {
      * @return null or {@code skillSection} if wrong format or skill display is disabled
      */
     private String parseSkill(String skillSection) {
-        COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((?<current>[0-9.,]+)/(?<total>[0-9.,]+)\\))");
-
         // §3+10.9 Combat (313,937.1/600,000)
         // Another Example: §5+§d30 §5Runecrafting (969/1000)
-        Matcher matcher = COLLECTIONS_CHAT_PATTERN.matcher(TextUtils.stripColor(skillSection));
-        if (matcher.matches() && main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
+        Matcher matcher = SKILL_GAIN_PATTERN_S.matcher(TextUtils.stripColor(skillSection));
+        if (matcher.matches() && (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY) || main.getConfigValues().isEnabled(Feature.SKILL_PROGRESS_BAR))) {
             StringBuilder skillTextBuilder = new StringBuilder();
 
             if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
@@ -238,25 +275,59 @@ public class ActionBarParser {
             }
 
             float gained = Float.parseFloat(matcher.group("gained").replaceAll(",", ""));
-            currentSkillXP = Float.parseFloat(matcher.group("current").replaceAll(",", ""));
-            totalSkillXP = Integer.parseInt(matcher.group("total").replaceAll(",", ""));
+            SkillType skillType = SkillType.getFromString(matcher.group("skillName"));
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
-                skillTextBuilder.append(" ").append(String.format("%.2f", currentSkillXP / (float) totalSkillXP * 100F)).append("%");
+            boolean skillPercent = matcher.group("percent") != null;
+            boolean parseCurrAndTotal = true;
+            if (skillPercent) {
+                percent = Float.parseFloat(matcher.group("percent"));
+                int skillLevel = main.getSkillXpManager().getSkillLevel(skillType);
+                // Try to re-create xxx/xxx display
+                if (skillLevel != -1) {
+                    totalSkillXP = main.getSkillXpManager().getSkillXpForNextLevel(skillType, skillLevel);
+                    currentSkillXP = totalSkillXP * percent / 100;
+                } else {
+                    parseCurrAndTotal = false;
+                }
             } else {
-                skillTextBuilder.append(" ").append(matcher.group("progress"));
+                currentSkillXP = Float.parseFloat(TextUtils.convertMagnitudes(matcher.group("current")).replaceAll(",", ""));
+                totalSkillXP = Integer.parseInt(TextUtils.convertMagnitudes(matcher.group("total")).replaceAll(",", ""));
+                percent = totalSkillXP == 0 ? 100F : 100F * currentSkillXP / totalSkillXP;
+            }
+            percent = Math.min(100, percent);
+
+
+            if (!parseCurrAndTotal || main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
+                // We may only have the percent at this point
+                skillTextBuilder.append(" (").append(String.format("%.2f", percent)).append("%)");
+            } else {
+                // Append "(currentXp/totalXp)"
+                skillTextBuilder.append(" (").append(TextUtils.formatDouble(currentSkillXP));
+                // Only print the total when it doesn't = 0
+                if (totalSkillXP != 0) {
+                    skillTextBuilder.append("/");
+                    if (main.getConfigValues().isEnabled(Feature.ABBREVIATE_SKILL_XP_DENOMINATOR)) {
+                        skillTextBuilder.append(TextUtils.abbreviate(totalSkillXP));
+                    } else {
+                        skillTextBuilder.append(TextUtils.formatDouble(totalSkillXP));
+                    }
+                }
+                skillTextBuilder.append(")");
             }
 
-            if (main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                if (totalSkillXP != 0) { // 0 means it's maxed...
+            // This feature is only accessible when we have parsed the current and total skill xp
+            if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                if (percent != 100) { // 0 means it's maxed...
                     skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
                 }
             }
 
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
-            main.getRenderListener().setSkill(EnumUtils.SkillType.getFromString(matcher.group("skillName")));
+            main.getRenderListener().setSkill(skillType);
             main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
-            return null;
+            if (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
+                return null;
+            }
         }
         return skillSection;
     }
@@ -299,13 +370,37 @@ public class ActionBarParser {
         }
     }
 
+
+
+    /**
+     * Parses the drill section
+     *
+     * @param drillSection Drill fuel section of the action bar
+     * @return null or {@code drillSection} if wrong format or drill display is disabled
+     */
+    private String parseDrill(String drillSection, String[] splitStats) {
+        // §21,798/3k Drill Fuel§r
+        // splitStats should convert into [1798, 3000]
+        int fuel = Math.max(0, Integer.parseInt(splitStats[0]));
+        int maxFuel = Math.max(1, Integer.parseInt(splitStats[1]));
+        setAttribute(Attribute.FUEL, fuel);
+        setAttribute(Attribute.MAX_FUEL, maxFuel);
+        if (main.getConfigValues().isEnabled(Feature.DRILL_FUEL_BAR) || main.getConfigValues().isEnabled(Feature.DRILL_FUEL_TEXT)) {
+            return null;
+        } else {
+            return drillSection;
+        }
+    }
+
     /**
      * Sets an attribute in {@link Utils}
+     * Ignores health if it's locked
      *
      * @param attribute Attribute
-     * @param value Attribute value
+     * @param value     Attribute value
      */
     private void setAttribute(Attribute attribute, int value) {
+        if (attribute == Attribute.HEALTH && healthLock) return;
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 }

@@ -1,20 +1,19 @@
 {
+  "languageText": "Dil: ",
   "language": "Türkçe",
   "settings": {
     "settings": "Ayarlar",
-    "magmaBossWarning": "Magma Boss için Uyarı",
-    "itemDropConfirmation": "Eşya Atarken Onay",
+    "magmaBossWarning": "Magma Boss Uyarısı",
+    "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
-    "hideFoodAndArmor": "Açlık ve Defans Göstergelerini Sakla",
-    "fullInventoryWarning": "Envanter Dolunca Uyarı",
+    "hideFoodAndArmor": "Açlık ve Zırh Göstergelerini Gizle",
+    "fullInventoryWarning": "Envanter Dolu Uyarısı",
     "repeating": "Uyarıyı Tekrarla",
     "disableEmberRodAbility": "Adada Ember Rod Özelliğini Kapat",
     "editLocations": "Arayüzü Düzenle",
     "guiScale": "Arayüz Ölçeği: %scale%",
     "resetLocations": "Konumları Sıfırla",
-    "hideDurability": "Eşyaların Dayanıklılığını Sakla",
-    "showEnchantmentsReforges": "Büyü ve Reforge'lar",
     "minionStopWarning": "\"Minyon Erişemiyor\" Uyarısı",
     "hidePlayersNearNPCs": "Önemli NPC'lerin yakınındaki oyuncuları gizle",
     "backpackStyle": "Sırt Çantası Tipi: %style%",
@@ -23,24 +22,22 @@
       "compact": "Sade"
     },
     "showBackpackPreview": "Sırt Çantası Önizlemesi",
-    "hideHealthBar": "Vanilla Can Göstergesi Gizle",
+    "hideHealthBar": "Vanilla Can Göstergesini Gizle",
     "fullMinionWarning": "Minyon Alan Dolu Uyarısı",
-    "ignoreItemFrameClicks": "Eşya Çerçevelerine Tıklamayı Görmezden Gel",
     "showOnlyWhenHoldingShift": "Sadece Eğildiğinde Göster",
     "manaBar": "Mana Çubuğu",
-    "manaText": "Mana'yı Göster (sayı ile)",
+    "manaNumber": "Mana Sayısı",
     "healthBar": "Can Çubuğu",
-    "healthText": "Can'ı Göster (sayı ile)",
-    "defenceIcon": "Zırh İmgesi",
-    "defenceText": "Zırh'ı Göster (sayı ile)",
-    "defencePercentage": "Koruma Yüzdesi",
-    "healthUpdates": "Candaki Değişiklikleri Göster",
-    "hidePlayersInLobby": "Lobide Uzaktaki Kişileri Gizle",
+    "healthNumber": "Can Sayısı",
+    "defenseIcon": "Savunma Sembolü",
+    "defenseNumber": "Savunma Sayısı",
+    "defensePercentage": "Koruma Yüzdesi",
+    "healthUpdates": "Can Değişikliği Sayısı",
+    "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
-    "itemPickupLog": "Toplanan Eşya'yı Yaz",
-    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Kapat",
-    "avoidBreakingStems": "Ekinleri Kırmayı Önleme",
+    "itemPickupLog": "Toplanan Eşya Günlüğü",
+    "avoidPlacingEnchantedItems": "Büyülü Eşyaları Koymayı Engelle",
     "stopBowChargeFromResetting": "Yay Doldururken Sıfırlanmayı Engelle",
     "preventMovementOnDeath": "Öldükten Sonra Yürümeyi Engelle",
     "showItemAnvilUses": "Örste İşlenme Sayısını Göster",
@@ -52,7 +49,7 @@
     "changeColor": "Rengi değiştir",
     "showInOtherGames": "Diğer Oyunlarda da Göster",
     "useVanillaTexture": "Vanilla Texture kullan",
-    "textStyle": "Metin Tarzı",
+    "textStyle": "Yazı Stili",
     "textStyles": {
       "one": "Yazı Tipi 1",
       "two": "Yazı Tipi 2"
@@ -61,20 +58,15 @@
     "dontOpenProfileWithBow": "Yay tutarken profil görüntülemeyi engelle",
     "stopDroppingSellingRareItems": "Nadir Eşyaları Düşürmeyi/Satmayı Önle",
     "makeBackpackInventoriesColored": "Envanter'leri Renklendir",
-    "avoidBreakingBottomSugarCane": "Şeker Kamışının Altını Kırmayı Engelle",
     "replaceRomanNumeralsWithNumbers": "Eşyalardaki Romen Rakamlarını Değiştir",
     "changeBarColorForPotions": "Wither ve Zehir etkileri için üstteki barın rengini değiştir",
     "craftingPatterns": "Crafting Şablonlarını Seç",
     "soundIndicatorForFishing": "Balık Tutarken Sesle Uyar",
     "avoidBlinkingNightVision": "Gece Görüşü Efekti Biterken Olan Yanıp Sönme Efektini Kapat",
     "disableMinionLocationWarning": "Minionların \"Location Not Perfect\" Uyarılarını Kapat",
-    "jungleAxeCooldown": "Jungle Axe/Treecapitor Beklemedeyken Kullanmayı Engelle",
-    "organizeLongEnchantmentLists": "Uzun Büyü Listelerini Düzelt",
     "showItemCooldowns": "Eşya Bekleme Sürelerini Göster",
     "speedPercentage": "Hız Yüzdesi",
     "collectionDisplay": "Skill İlerleme Göstergesi",
-    "onlyMineOresDeepCaverns": "Deep Caverns'ta Sadece Madenleri Kaz",
-    "onlyMineValuablesNether": "Nether'dayken Sadece Değerli Madenleri Kaz",
     "revenantIndicator": "Slayer Armor İlerleme Göstergesi",
     "specialZealotAlert": "Özel Zealot Alarmı",
     "enableMessageWhenActionPrevented": "Bir Şey Yapmamız Engellendiğinde Mesaj Gönder",
@@ -116,10 +108,11 @@
     "discordRP": "Discord Zengin İçerik",
     "endstoneProtectorDisplay": "Endstone Protector Ekranı",
     "fancyWarpMenu": "Şık Işınlanma Menüsü",
+    "stopRatSounds": "Rat Pet'in Sesini Durdur",
+    "onlyStopRatSqueak": "Sadece Rat(Fare) Ciyaklama Sesini Kapat",
     "doubleWarp": "İki Kez Işınlan",
     "advancedMode": "Gelişmiş Mod",
     "legendarySeaCreatureWarning": "Efsanevi Sea Creature Uyarısı",
-    "onlyBreakLogsPark": "Park'ta Sadece Odunları Kır",
     "bossApproachAlert": "Slayer Boss Spawn Uyarısı",
     "disableTeleportPadMessages": "Teleport Pad Mesajlarını Devre Dışı Bırak",
     "baitListDisplay": "Olta Tutarken Yem Listesi Göster",
@@ -132,10 +125,14 @@
     "turnAllFeaturesChroma": "Tüm Chroma özelliklerini aç",
     "dungeonMapDisplay": "Dungeon Haritasi",
     "rotateMap": "Haritayı bakış açısına göre döndür",
-    "centerRotationOnYourPlayer": "Döndürmeyi oyuncu etrafında ortalayın",
+    "centerRotationOnYourPlayer": "Oyuncunun imlecinin etrafında döndür",
+    "showFetchurOnlyInDwarven": "Dwarven Mines'da Sadece Fetchur'u Göster",
+    "showFetchurItemName": "Fetchur'un eşyasının adını göster",
+    "showFetchurInventoryOpenOnly": "Sadece Envanter Açık Olduğu Zaman Fetchur Eşyalarını Göster",
+    "warnWhenFetchurChanges": "Fetchur Değiştiği Zaman Beni Uyar",
     "mapZoom": "Harita Yakınlaştır",
     "glowingDroppedItems": "Düşürülen eşyaları aydınlat",
-    "glowingDungeonTeammates": "Glowing Dungeon Takım Arkadaşları",
+    "outlineDungeonTeammates": "Dungeon'daki Takım Arkadaşlarının Ana Hatlarını Göster",
     "baseStatBoostPercentage": "Dungeon eşyaları için normal istatistik arttırmaları göster",
     "colorByRarity": "Enderliğe göre renk",
     "showPlayerHeadsOnMap": "Dungeon Haritasında Oyuncu Kafaları Göster",
@@ -150,19 +147,16 @@
     "revenantSlayerTracker": "Slayer Takipçisi- Revenant/Zombi",
     "tarantulaSlayerTracker": "Slayer Takipçisi- Tarantula/Örümcek",
     "svenSlayerTracker": "Slayer Takipçisi- Sven/Kurt",
+    "voidgloomSlayerTracker": "Slayer Takipçisi - Voidgloom/Enderman",
     "textMode": "Metin modu",
     "dragonsNestOnly": "Sadece Dragon's Nest'teyken göster",
     "dragonStatsTracker": "Ejderha Takipçisi",
     "skillActionsLeftUntilNextLevel": "Bir Sonraki Seviyeye Kadar Kalan Eylemleri Göster",
-    "hideWhenNotInCrypts": "Crypts'te değilken/Revenant görevi yapmazken gizle",
-    "hideWhenNotInSpidersDen": "Spider's Den'de değilken/Tarantula Görevi Yaparken gizle",
-    "hideWhenNotInCastle": "Castle'da değilken/Sven Görevi Yaparken Gizle",
     "dungeonDeathCounter": "Dungeon Ölüm Sayacı",
     "showPersonalCompactorPreview": "Personal Compactor önizlemesini göster",
     "rockPetTracker": "Rock Pet Takipçisi",
     "dolphinPetTracker": "Dolphin Pet Takipçisi",
     "dungeonsTeammateNameOverlay": "Dungeons'daki Takım Arkadaşının Ad Yerleşimi",
-    "showExpertiseKills": "Expertise Öldürmelerini Göster",
     "dungeonsSecretsDisplay": "Dungeon'ların Sırlarını Görüntüle",
     "showSkillPercentageInstead": "XP yerine yüzdeyi göster",
     "showSkillXPGained": "Kazanılan XP'yi göster",
@@ -171,40 +165,81 @@
     "disableMortMessages": "Mort Mesajlarını Devre Dışı Bırak",
     "disableBossMessages": "Boss Mesajlarını Devre Dışı Bırak",
     "hideOtherPlayersPresents": "Diğer Oyuncuların Hediyelerini Gizle",
-    "easierPresentOpening": "Hediyeleri Kolay Aç",
-    "showSwordKills": "Show Sword Kills"
+    "showSwordKills": "Kılıç Leşlerini Göster",
+    "compactTabList": "Kompakt Tab Listesi",
+    "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
+    "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
+    "chromaSize": "Chroma Ölçüsü",
+    "chromaSaturation": "Chroma Doygunluğu",
+    "chromaBrightness": "Chroma Parlaklığı",
+    "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
+    "showExperimentationTableTooltips": "Experimentation Table İpuçlarını Göster",
+    "drillFuelBar": "Drill Yakıt Barı",
+    "drillFuelNumber": "Drill Yakıt Sayısı",
+    "fetchurToday": "Fetchur'un Bugün Ne İstediğini Göster",
+    "fishingParticleOverlay": "Balıkçılık Parçacık Göstergesi",
+    "enchantmentLoreParsing": "Büyü Araç İpuçlarını Vurgula",
+    "cooldownPrediction": "Tahmin Et ve Bekleme Süresini Kısalt",
+    "legendaryMonkeyLevel100": "[TEMP] Seviye 100 Efsanevi Monkey",
+    "biggerWake": "Kaplama Parçacıklarını Büyüt",
+    "stackingEnchantProgress": "İstif Büyü İlerlemesini Göster",
+    "showReforgeOverlay": "Reforge Kaplamasını Göster",
+    "reforgeFilter": "Reforge Filtresi",
+    "hideEnchantDescription": "Büyü Açıklamasını Gizle",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Özellikleri",
+      "trackedEntityProximityIndicator": "İzlenen Varlığın Yakınlık Göstergesini Göster",
+      "highlightTrackedEntity": "İzlenen Varlığı Vurgula",
+      "showQuestCooldown": "Trevor'ın Görev Bekleme Süresini Göster",
+      "showQuestCooldownDescription": "Bu Trevor'ın Kafasının Üstünde Gözükecek"
+    },
+    "showEnderChestPreview": "Ender Sandığı Önizlemesini Göster",
+    "hideWhenNotDoingQuest": "Görev Yapmıyorken Gizle",
+    "showOverflowManaNumber": "Overflow Mana Sayısı",
+    "axeCooldownIndicator": "Balta Bekleme Süresi Göstergesi",
+    "vanillaHealthPrediction": "Vanilla Can Tahminini Kullan",
+    "entityOutlines": "Varlık Ana Hatlarını Göster",
+    "effectiveHealthNumber": "Efektif Can Sayısı",
+    "guiScaleX": "Arayüz X Ölçeği: %scale%",
+    "guiScaleY": "Arayüz Y Ölçeği: %scale%",
+    "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
+    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
-    "dropConfirmation": "Eşyayı düşürmeyi onaylamak için düşürme tuşuna bir daha bas!",
-    "magmaBossWarning": "Magma Kübü Boss!",
+    "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
+    "magmaBossWarning": "Magma Küp Bossu!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
-    "minionCannotReach": "%type% türü bir minyon çıkardığı %type%'lara erişemediğinden çalışmayı durdurdu!",
-    "minionIsFull": "Adandaki bir minyon'un alanı doldu!",
+    "minionCannotReach": "%type% minyona ulaşılamadığından çalışmayı durdurdu!",
+    "minionIsFull": "Adanda ki bir minyonun alanı doldu!",
     "typeEnchantmentsHere": "Buraya %type%i Yaz!",
-    "separateMultiple": "Birden Fazla Gireceksen Virgül ile Ayır.",
+    "separateMultiple": "Birden Fazla Parametreyi Virgül ile Ayır.",
     "enchantsToMatch": "Eşleşecek %type%:",
     "enchantsToExclude": "İstenmeyen %type% :",
-    "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
-    "downloadLink": "VİDEO/GÜNCELLEME BAĞLANTISI",
-    "directDownload": "Direkt İndirme Linki",
-    "openModFolder": "MOD KLASÖRÜNÜ AÇ",
-    "joinTheDiscord": "DISCORD BAĞLANTISI",
-    "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
-    "update": {
-      "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
-      "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+    "updateChecker": {
+      "wantToViewPatchNotes": "Yardım veya değişiklikleri okumak ister misin?",
+      "joinDiscord": "Discord sunucumuza katıl!",
+      "watchShowcase": "Video İzle",
+      "downloadButton": "İndir",
+      "openModFolderButton": "Mod Klasörünü Aç",
+      "joinDiscordButton": "Discord'a Katıl",
+      "newUpdateAvailable": "Yeni bir sürüm (%version%) kullanılabilir!",
+      "noDownloadAvailable": "İndirme bağlantısı mevcut değil, lütfen Discord sunucumuzu kontrol et.",
+      "notificationBox": {
+        "majorAvailable": "Yeni büyük güncelleme (%version%) kullanılabilir! İndirme linkini sohbette bulabilirsin.",
+        "betaAvailable": "Yeni bir beta güncellemesi (%version%) mevcut! İndirme bağlantısı için sohbete bak!",
+        "patchAvailable": "Yeni bir versiyon (%version%) mevcut! İndirme seçenekleri için sohbet'e bak!"
+      }
     },
     "slotLocked": "Bu slot kilitli!",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "SkyblockAddons bu ekini kırmanı engelledi. Ekinleri kırmak istiyorsan çıplak elini kullanman gerek.",
-    "cancelledProfileOpening": "SkyblockAddons elinizde yay olduğundan bu oyuncunun profilini açmanı engelledi.",
     "cancelledDropping": "SkyblockAddons bu değerli eşyanızı yere atmanızı engelledi.",
     "clickMoreTimes": "Eğer gerçekten eşyayı yere atmak istiyorsanız %times% kez eşyaya tıkla/at.",
     "clickOneMoreTime": "Bunu yapmayı gerçek istiyorsan eşyaya 1 kere daha tıkla/atmaya bas.",
-    "cancelledDeepCaverns": "Bir özellik bu bloğu kırmanızı engelledi.",
     "featureDisabled": "Özellik Devre Dışı",
     "anvilUses": "Örs Kullanım(lar)ı: %uses%",
     "specialZealotFound": "Özel zealot!",
@@ -228,8 +263,9 @@
     "secondStatus": "Bu durum ilk durumun altında gözükecek",
     "fallbackStatus": "Bu durum otomatik durumunuzun gösterecek bir şeyi olmadığında gözükecek",
     "legendarySeaCreatureWarning": "Efsanevi Yakaladın!",
-    "cancelledPark": "Bir özellik bu bloğu kırmanızı engelledi.",
     "bossApproaching": "Boss spawnlamak üzeresiniz!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur değişti!",
     "enableAll": "Hepsini Aç",
     "disableAll": "Hepsini Kapat",
     "enchantmentInclusionExample": "örn: \"prot, feather\"",
@@ -238,7 +274,12 @@
     "reforgeExclusionExample": "örn: \"odd, clean\"",
     "actionsLeft": "%number% Kaldı",
     "effectActive": "1 Efekt Aktif",
-    "effectsActive": "%number% Efekt Aktif"
+    "effectsActive": "%number% Efekt Aktif",
+    "none": "Hiçbiri",
+    "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
+    "chroma": "Renk parlaklığı",
+    "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
+    "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -268,54 +309,135 @@
     "titleTarantula": "Tarantula Görevleri",
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
   },
+  "enchantLayout": {
+    "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
+    "titleCompress": "Sıkıştır",
+    "descriptionCompress": "Büyüleri mümkün olduğunca az satıra sıkıştırır",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Hypixel'in yaptığı gibi büyüleri gösterir",
+    "titleExpand": "Genişlet",
+    "descriptionExpand": "Her büyüyü kendi satırında listeler"
+  },
   "commandUsage": {
-    "sba": "Ana menüyü aç",
-    "sba.brand": "§e(Dev) §7Sunucu damgasını göster",
-    "sba.brand.brandOutput": "Server Markası:%brand%",
-    "sba.brand.notFound": "Server markası bulunamadı!",
-    "sba.copyEntity": "§e(Dev) §Oyuncunun etrafında belirli bir yarıçap içinde belirli bir isim(ler) in varlıkları için NBT verilerini kopyala",
-    "sba.copySidebar": "§e(Dev)§7Scoreboard yazısını kopyala",
-    "sba.copyTabList": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
-    "sba.dev": "Geliştirici modunu aç",
-    "sba.dev.disabled": "Geliştirici modu kapatıldı!",
-    "sba.dev.enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% bas!",
-    "sba.edit": "Arayüz tasarımını düzenle",
-    "sba.folder": "Mod klasörünü aç",
-    "sba.folder.error": "Mod dosyasını açarken bi sorun oluştu %s",
-    "sba.help": "Bu yardım iletisini göster. Bir komut sağlanırsa, bu komutla ilgili ayrıntılı yardım gösterilir.",
-    "sba.help.copyEntity": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
-    "sba.help.copyEntity.entityNames": "Verileri kopyalamak istediğiniz varlık türlerinin adları (örneğin, Player, Creeper). Tam liste için komutu yazdıktan sonra \"Tab\" a basın. Birden fazla ismi virgülle ayırın, isimler büyük/küçük harf duyarlıdır.",
-    "sba.help.copyEntity.radius": "Varlık NBT verilerini kopyalamak için oyuncunun etrafındaki yarıçap(bloklar halinde)",
-    "sba.help.copySidebar.formatted": "Kopyalama sırasında biçimlendirme kodlarının eklenip eklenmeyeceğini belirler. Herhangi bir değer sağlanmazsa \"true\" veya \"false\", varsayılan olarak \"false\" olabilir. Biçimlendirme kodları \"true\" ise kopyalanır.",
-    "sba.help.copyTabList": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir.",
-    "sba.help.dev": "Bu komut geliştirici modunu değiştirir. Bu mod geliştiriciler Skyblock mods/araçlar içindir. Varlık ve öğe NBT gibi oyundan ham veri sağlar.",
-    "sba.help.help.command": "ayrıntılı kullanım için alt komut",
-    "sba.help.set.zealotCounter": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
-    "sba.help.set.zealotCounter.eyes": "Toplanan Summoning Eye'lar(Tüm Zamanlar)",
-    "sba.help.set.zealotCounter.totalZealots": "Öldürülen Zealot'lar(Tüm Zamanlar)",
-    "sba.help.set.zealotCounter.zealots": "En son Eye'dan sonra öldürülen Zealot sayısı",
-    "sba.help.slayer": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "Number to set the stat to",
-    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "Zealot sayılarını el ile gir",
-    "sba.set.zealotCounter.eyes": "Toplam Summonıng Eye sayısını %number% yap!",
-    "sba.set.zealotCounter.totalZealots": "Toplam Zealot sayısını %number% yap!",
-    "sba.set.zealotCounter.wrongUsage": "Geçersiz seçim! Lütfen %options% seç.",
-    "sba.set.zealotCounter.zealots": "Şu anki Zealot sayısını %number% yap!",
-    "sba.slayer": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
-    "sba.slayer.bossRequired": "You need to select a boss! Please choose %bosses%",
-    "sba.slayer.statRequired": "You need to select a stat. Press tab for options.",
-    "sba.slayer.numberRequired": "You need to add the number you want.",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" is not a valid statistic!",
-    "sba.slayer.invalidStat": "\"%input%\" is not a valid boss!",
-    "sba.toggleActionBarLogging": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
-    "sba.toggleActionBarLogging.disabled": "Aksiyon barı mesajları gösterilmeyecek.",
-    "sba.toggleActionBarLogging.enabled": "Aksiyon barı mesajları gösteriliyor.",
-    "sba.wrongUsage.generic": "Yanlış Kullanım!",
-    "sba.wrongUsage.subCommandNotFound": "\"%sub-command%\" alt komutu bulunamadı."
+    "sba": {
+      "base": {
+        "help": "Ana menüyü aç"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Sunucu damgasını göster",
+        "brandOutput": "Server Markası:%brand%",
+        "notFound": "Server markası bulunamadı!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Baktığınız blokla ilgili verileri kopyalar"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §Oyuncunun etrafında belirli bir yarıçap içinde belirli bir isim(ler) in varlıkları için NBT verilerini kopyala",
+        "detailedHelp": {
+          "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
+          "options": {
+            "entityNames": "Verileri kopyalamak istediğiniz varlık türlerinin adları (örneğin,Oyuncu, Creeper). Tam liste için komutu yazdıktan sonra \"Tab\" tuşuna bas. Birden fazla ismi virgülle ayırın, isimler büyük/küçük harf duyarlıdır.",
+            "radius": "Varlık NBT verilerini kopyalamak için oyuncunun etrafındaki yarıçap (bloklar halinde)"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev)§7Skorbord yazısını kopyala",
+        "detailedHelp": {
+          "description": "Skorbord'da görüntülenen metni kopyalar",
+          "options": {
+            "formatted": "Kopyalama sırasında biçimlendirme kodlarının eklenip eklenmeyeceğini belirler. Herhangi bir değer sağlanmazsa \"true\" veya \"false\", varsayılan olarak \"false\" olabilir. Biçimlendirme kodları \"true\" ise kopyalanır."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
+        "detailedHelp": {
+          "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
+        }
+      },
+      "dev": {
+        "help": "Geliştirici modunu aç",
+        "detailedHelp": {
+          "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
+        },
+        "disabled": "Geliştirici modu kapatıldı!",
+        "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
+      },
+      "edit": {
+        "help": "Arayüz konumlarını düzenle"
+      },
+      "folder": {
+        "help": "Mod klasörünü aç",
+        "error": "Mod dosyasını açarken bi sorun oluştu %s"
+      },
+      "help": {
+        "help": "Bu yardım iletisini göster. Bir komut sağlanırsa, bu komutla ilgili ayrıntılı yardım gösterilir.",
+        "detailedHelp": {
+          "options": {
+            "command": "ayrıntılı kullanım için alt komut"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
+      },
+      "reload": {
+        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Zealot sayılarını el ile gir",
+          "detailedHelp": {
+            "description": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
+            "options": {
+              "eyes": "Toplanan Summoning Eye'lar(Tüm Zamanlar)",
+              "totalZealots": "Öldürülen Zealot'lar(Tüm Zamanlar)",
+              "zealots": "En son Eye'dan sonra öldürülen Zealot sayısı"
+            }
+          },
+          "eyesSet": "Toplam Summonıng Eye sayısını %number% yap!",
+          "totalZealotsSet": "Toplam Zealot sayısını %number% yap!",
+          "wrongUsage": "Geçersiz seçim! Lütfen %options% seç.",
+          "zealotsSet": "Şu anki Zealot sayısını %number% yap!"
+        }
+      },
+      "slayer": {
+        "help": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+        "detailedHelp": {
+          "description": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+          "options": {
+            "boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
+            "number": "Stat değerini ayarlamak için sayı",
+            "stat": "Slayer stat değiştirmek için, \"kills\" veya bu gibi: \"REVENANT_FLESH\" biçimlendirilmiş atılan bir öğenin adı olabilir"
+          }
+        },
+        "bossRequired": "Bir boss seçmeniz gerekiyor! Lütfen %bosses% seç",
+        "statRequired": "Bir stat seçmeniz gerekiyor. Seçenekler için TAB tuşuna basın.",
+        "numberRequired": "İstediğin numarayı eklemen gerekiyor.",
+        "killsSet": "Slayer %boss%, için öldürmeler %number% olarak ayarlandı.",
+        "statSet": "Slayer %boss% için istatistik %stat%, %number% olarak ayarlandı.",
+        "invalidBoss": "\"%input%\" geçerli bir istatistik değil!",
+        "invalidStat": "\"%input% \" geçerli bir boss değil!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
+        "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
+        "enabled": "Aksiyon barı mesajları gösteriliyor."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Yanlış Kullanım!",
+          "subCommandNotFound": "\"%sub-command%\" alt komutu bulunamadı."
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "NBT Kopyala"
@@ -337,33 +459,30 @@
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
-    "revenantFlesh": "Revenant Flesh",
-    "foulFlesh": "Foul Flesh",
-    "pestilenceRune": "Pestilence Rune",
-    "undeadCatalyst": "Undead Catalyst",
-    "smiteSix": "Smite 6",
-    "beheadedHorror": "Beheaded Horror",
-    "revenantCatalyst": "Revenant Catalyst",
-    "snakeRune": "Snake Rune",
-    "scytheBlade": "Scythe Blade",
     "tarantula": "Tarantula Broodfather:",
-    "tarantulaWeb": "Tarantula Web",
-    "toxicArrowPoison": "Toxic Arrow Poison",
-    "spiderCatalyst": "Spider Catalyst",
-    "baneOfArthropodsSix": "Bane Of Arthropods 6",
-    "biteRune": "Bite Rune",
-    "flySwatter": "Fly Swatter",
-    "tarantulaTalisman": "Tarantula Talisman",
-    "digestedMosquito": "Digested Mosquito",
     "sven": "Sven Packmaster:",
-    "wolfTooth": "Wolf Tooth",
-    "hamsterWheel": "Hamster Wheel",
-    "spiritRune": "Spirit Rune",
-    "criticalSix": "Critical 6",
-    "grizzlyBait": "Grizzly Bait",
-    "redClawEgg": "Red Claw Egg",
-    "overfluxCapacitor": "Overflux Capacitor",
-    "coutureRune": "Couture Rune",
+    "voidgloom": "Voidgloom Seraph:",
     "bossesKilled": "Bosslar Öldürüldü"
+  },
+  "warpMenu": {
+    "click": "Buraya gitmek için bir ışınlanma noktasına tıkla!",
+    "mustUnlock": "Belirli bir Scroll kilidi açılmış olmalı.",
+    "privateIsland": "Özel Ada",
+    "home": "Senin Adan",
+    "spawn": "Başlangıç Noktası",
+    "unknown": "Ziyaret Edilmemiş",
+    "notUnlocked": "Açılmamış",
+    "inCombat": "Savaşta..."
+  },
+  "enchants": {
+    "superTier": "Maksimum Seviye",
+    "highTier": "Yüksek Seviye",
+    "midTier": "Orta Seviye",
+    "lowTier": "Düşük Seviye",
+    "commas": "Virgüller",
+    "expertiseKills": "Expertise Leşleri",
+    "compactedBlocks": "Sıkıştırılmış Bloklar",
+    "cultivatedCrops": "Ekili Ürünler",
+    "maxed": "Maksimum"
   }
 }

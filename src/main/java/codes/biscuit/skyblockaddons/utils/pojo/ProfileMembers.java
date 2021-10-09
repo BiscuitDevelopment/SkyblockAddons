@@ -22,6 +22,7 @@ public class ProfileMembers {
         private SlayerData zombie;
         private SlayerData spider;
         private SlayerData wolf;
+        private SlayerData enderman;
     }
 
     @Getter

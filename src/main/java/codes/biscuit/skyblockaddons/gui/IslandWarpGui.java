@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonToggleNew;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandButton;
 import codes.biscuit.skyblockaddons.gui.buttons.IslandMarkerButton;
@@ -37,7 +38,8 @@ public class IslandWarpGui extends GuiScreen {
     public static float SHIFT_LEFT;
     public static float SHIFT_TOP;
 
-    @Getter private Map<IslandWarpGui.Marker, IslandWarpGui.UnlockedStatus> markers;
+    @Getter
+    private final Map<IslandWarpGui.Marker, IslandWarpGui.UnlockedStatus> markers;
 
     private Marker selectedMarker;
     private boolean guiIsActualWarpMenu = false;
@@ -164,8 +166,8 @@ public class IslandWarpGui extends GuiScreen {
         int endColor = new Color(0,0, 0, Math.round(255/2F)).getRGB();
         drawGradientRect(0, 0, sr.getScaledWidth(), sr.getScaledHeight(), startColor, endColor);
 
-        drawCenteredString(mc.fontRendererObj, "Click a warp point to travel there!", sr.getScaledWidth()/2, 10, 0xFFFFFFFF);
-        drawCenteredString(mc.fontRendererObj, "Must have the specific scroll unlocked.", sr.getScaledWidth()/2, 20, 0xFFFFFFFF);
+        drawCenteredString(mc.fontRendererObj, Translations.getMessage("warpMenu.click"), sr.getScaledWidth()/2, 10, 0xFFFFFFFF);
+        drawCenteredString(mc.fontRendererObj, Translations.getMessage("warpMenu.mustUnlock"), sr.getScaledWidth()/2, 20, 0xFFFFFFFF);
 
         GlStateManager.pushMatrix();
         ISLAND_SCALE = 0.7F/1080*mc.displayHeight;
@@ -225,28 +227,106 @@ public class IslandWarpGui extends GuiScreen {
 
     public static float IMAGE_SCALED_DOWN_FACTOR = 0.75F;
 
+    @Override
+    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+        if (mouseButton == 0 && selectedMarker != null) {
+            Minecraft.getMinecraft().displayGuiScreen(null);
+
+            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.DOUBLE_WARP)) {
+                doubleWarpMarker = selectedMarker;
+
+                // Remove the marker if it didn't trigger for some reason...
+                SkyblockAddons.getInstance().getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
+                    @Override
+                    public void run() {
+                        if (doubleWarpMarker != null) {
+                            doubleWarpMarker = null;
+                        }
+                    }
+                }, 20);
+            }
+            if (selectedMarker != Marker.DWARVEN_FORGE) {
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp " + selectedMarker.getWarpName());
+            } else {
+                // Weirdly, this command is /warpforge instead of /warp forge
+                Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp" + selectedMarker.getWarpName());
+            }
+
+        }
+
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        float islandGuiScale = ISLAND_SCALE;
+
+        mouseX *= minecraftScale;
+        mouseY *= minecraftScale;
+
+        mouseX /= islandGuiScale;
+        mouseY /= islandGuiScale;
+
+        mouseX -= IslandWarpGui.SHIFT_LEFT;
+        mouseY -= IslandWarpGui.SHIFT_TOP;
+
+        super.mouseClicked(mouseX, mouseY, mouseButton);
+    }
+
+
+    public void detectClosestMarker(int mouseX, int mouseY) {
+        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
+        float islandGuiScale = ISLAND_SCALE;
+
+        mouseX *= minecraftScale;
+        mouseY *= minecraftScale;
+
+        mouseX /= islandGuiScale;
+        mouseY /= islandGuiScale;
+
+        mouseX -= IslandWarpGui.SHIFT_LEFT;
+        mouseY -= IslandWarpGui.SHIFT_TOP;
+
+        IslandWarpGui.Marker hoveredMarker = null;
+        double markerDistance = IslandMarkerButton.MAX_SELECT_RADIUS + 1;
+
+        for (GuiButton button : this.buttonList) {
+            if (button instanceof IslandButton) {
+                IslandButton islandButton = (IslandButton) button;
+
+                for (IslandMarkerButton marker : islandButton.getMarkerButtons()) {
+                    double distance = marker.getDistance(mouseX, mouseY);
+
+                    if (distance != -1 && distance < markerDistance) {
+                        hoveredMarker = marker.getMarker();
+                        markerDistance = distance;
+                    }
+                }
+            }
+        }
+
+        selectedMarker = hoveredMarker;
+
+//        if (hoveredMarker != null) System.out.println(hoveredMarker.getLabel()+" "+markerDistance);
+    }
+
     @Getter
     public enum Island {
-        THE_END("The End", 100, 30),
-        BLAZING_FORTRESS("Blazing Fortress", 809, 0),
-        THE_PARK("The Park", 113, 380),
-        SPIDERS_DEN("Spider's Den", 500, 361),
-        DEEP_CAVERNS("Deep Caverns", 1406, 334),
-        GOLD_MINE("Gold Mine", 1080, 606),
-        THE_BARN("The Barn", 1223, 782),
-        HUB("Hub", 215, 724),
-        MUSHROOM_DESERT("Mushroom Desert", 1503, 778),
-        PRIVATE_ISLAND("Private Island", 216, 1122),
-        DUNGEON_HUB("Dungeon Hub", 1200, 1100),
-        ;
+        THE_END("The End", 290, -10),
+        BLAZING_FORTRESS("Blazing Fortress", 900, -50),
+        THE_PARK("The Park", 103, 370),
+        SPIDERS_DEN("Spider's Den", 500, 420),
+        DEEP_CAVERNS("Deep Caverns", 1400, 200),
+        GOLD_MINE("Gold Mine", 1130, 475),
+        MUSHROOM_DESERT("Mushroom Desert", 1470, 475),
+        THE_BARN("The Barn", 1125, 800),
+        HUB("Hub", 300, 724),
+        PRIVATE_ISLAND("Private Island", 275, 1122),
+        DUNGEON_HUB("Dungeon Hub", 1500, 1050);
 
-        private String label;
-        private int x;
-        private int y;
+        private final String label;
+        private final int x;
+        private final int y;
         private int w;
         private int h;
 
-        private ResourceLocation resourceLocation;
+        private final ResourceLocation resourceLocation;
         private BufferedImage bufferedImage;
 
         Island(String label, int x, int y) {
@@ -254,7 +334,7 @@ public class IslandWarpGui extends GuiScreen {
             this.x = x;
             this.y = y;
 
-            this.resourceLocation = new ResourceLocation("skyblockaddons", "islands/"+this.name().toLowerCase(Locale.US).replace("_", "")+".png");
+            this.resourceLocation = new ResourceLocation("skyblockaddons", "islands/" + this.name().toLowerCase(Locale.US).replace("_", "") + ".png");
             try {
                 bufferedImage = TextureUtil.readBufferedImage(Minecraft.getMinecraft().getResourceManager().getResource(this.resourceLocation).getInputStream());
                 this.w = bufferedImage.getWidth();
@@ -275,121 +355,53 @@ public class IslandWarpGui extends GuiScreen {
                 TOTAL_HEIGHT = this.y + this.h;
             }
             if (this.x + this.w > TOTAL_WIDTH) {
-                TOTAL_WIDTH = this. x+ this.w;
+                TOTAL_WIDTH = this.x + this.w;
             }
         }
     }
 
-
-    public void detectClosestMarker(int mouseX, int mouseY) {
-        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
-        float islandGuiScale = ISLAND_SCALE;
-
-        mouseX *= minecraftScale;
-        mouseY *= minecraftScale;
-
-        mouseX /= islandGuiScale;
-        mouseY /= islandGuiScale;
-
-        mouseX -= IslandWarpGui.SHIFT_LEFT;
-        mouseY -= IslandWarpGui.SHIFT_TOP;
-
-        IslandWarpGui.Marker hoveredMarker = null;
-        double markerDistance = IslandMarkerButton.MAX_SELECT_RADIUS+1;
-
-        for (GuiButton button : this.buttonList) {
-            if (button instanceof IslandButton) {
-                IslandButton islandButton = (IslandButton)button;
-
-                for (IslandMarkerButton marker : islandButton.getMarkerButtons()) {
-                    double distance = marker.getDistance(mouseX, mouseY);
-
-                    if (distance != -1 && distance < markerDistance) {
-                        hoveredMarker = marker.getMarker();
-                        markerDistance = distance;
-                    }
-                }
-            }
-        }
-
-        selectedMarker = hoveredMarker;
-
-//        if (hoveredMarker != null) System.out.println(hoveredMarker.getLabel()+" "+markerDistance);
-    }
-
-    @Override
-    public void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        if (mouseButton == 0 && selectedMarker != null) {
-            Minecraft.getMinecraft().displayGuiScreen(null);
-
-            if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.DOUBLE_WARP)) {
-                doubleWarpMarker = selectedMarker;
-
-                // Remove the marker if it didn't trigger for some reason...
-                SkyblockAddons.getInstance().getNewScheduler().scheduleDelayedTask(new SkyblockRunnable() {
-                    @Override
-                    public void run() {
-                        if (doubleWarpMarker != null) {
-                            doubleWarpMarker = null;
-                        }
-                    }
-                }, 20);
-            }
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp "+selectedMarker.getWarpName());
-        }
-
-        int minecraftScale = new ScaledResolution(mc).getScaleFactor();
-        float islandGuiScale = ISLAND_SCALE;
-
-        mouseX *= minecraftScale;
-        mouseY *= minecraftScale;
-
-        mouseX /= islandGuiScale;
-        mouseY /= islandGuiScale;
-
-        mouseX -= IslandWarpGui.SHIFT_LEFT;
-        mouseY -= IslandWarpGui.SHIFT_TOP;
-
-        super.mouseClicked(mouseX, mouseY, mouseButton);
-    }
-
+    //TODO: Maybe change these to load from a file at some point
     @Getter
     public enum Marker {
-        PRIVATE_ISLAND("home", "Home", Island.PRIVATE_ISLAND, true, 72, 90),
+        PRIVATE_ISLAND("home", Translations.getMessage("warpMenu.home"), Island.PRIVATE_ISLAND, true, 72, 90),
 
-        HUB("hub", "Spawn", Island.HUB, true, 653, 217),
-        CASTLE("castle", "Castle", Island.HUB, 195, 153),
-        DARK_AUCTION("da", "Sirius Shack", Island.HUB, 452, 457),
-        CRYPT("crypt", "Crypts", Island.HUB, 585, 84),
+        HUB("hub", Translations.getMessage("warpMenu.spawn"), Island.HUB, true, 600, 200),
+        CASTLE("castle", "Castle", Island.HUB, 130, 80),
+        DARK_AUCTION("da", "Sirius Shack", Island.HUB, 385, 415),
+        CRYPT("crypt", "Crypts", Island.HUB, 550, 100),
+        DUNGEON_HUB("dungeon_hub", "Dungeon Hub", Island.HUB, false, 400, 175),
 
-        SPIDERS_DEN("spider", "Spawn", Island.SPIDERS_DEN, true, 308, 284),
-        SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 291, 40),
+        SPIDERS_DEN("spider", Translations.getMessage("warpMenu.spawn"), Island.SPIDERS_DEN, true, 345, 240),
+        SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 450, 30),
 
-        THE_PARK("park", "Spawn", Island.THE_PARK, true, 263, 308),
+        THE_PARK("park", Translations.getMessage("warpMenu.spawn"), Island.THE_PARK, true, 263, 308),
         HOWLING_CAVE("howl", "Howling Cave", Island.THE_PARK, 254, 202),
         THE_PARK_JUNGLE("jungle", "Jungle", Island.THE_PARK, 194, 82),
 
-        THE_END("end", "Spawn", Island.THE_END, true, 440, 291),
+        THE_END("end", Translations.getMessage("warpMenu.spawn"), Island.THE_END, true, 440, 291),
         DRAGONS_NEST("drag", "Dragon's Nest", Island.THE_END, 260, 248),
+        VOID_SEPULTURE("void", "Void Sepulture", Island.THE_END, true, 370, 227),
 
-        BLAZING_FORTRESS("nether", "Spawn", Island.BLAZING_FORTRESS, true, 115, 413),
-        BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 359, 284),
+        BLAZING_FORTRESS("nether", Translations.getMessage("warpMenu.spawn"), Island.BLAZING_FORTRESS, true, 80, 350),
+        BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 350, 200),
 
-        THE_BARN("barn", "Spawn", Island.THE_BARN, true, 40, 163),
-        MUSHROOM_DESERT("desert", "Spawn", Island.MUSHROOM_DESERT, true, 51, 73),
+        THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 140, 150),
+        MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 210, 295),
 
-        GOLD_MINE("gold", "Spawn", Island.GOLD_MINE, true, 106, 159),
-        DEEP_CAVERNS("deep", "Spawn", Island.DEEP_CAVERNS, true, 97, 213),
+        GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 86, 259),
+        DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
+        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 150, 320),
+        DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, false, 220, 350),
 
-        DUNGEON_HUB("dungeon_hub", "Spawn", Island.DUNGEON_HUB, false, 35, 80),
+        DUNGEON_HUB_ISLAND("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;
 
-        private String warpName;
-        private String label;
-        private Island island;
-        private boolean advanced;
-        private int x;
-        private int y;
+        private final String warpName;
+        private final String label;
+        private final Island island;
+        private final boolean advanced;
+        private final int x;
+        private final int y;
 
         Marker(String warpName, String label, Island island, int x, int y) {
             this(warpName, label, island, false, x, y);
@@ -417,13 +429,13 @@ public class IslandWarpGui extends GuiScreen {
 
     @Getter
     public enum UnlockedStatus {
-        UNKNOWN("Haven't Visited"),
-        NOT_UNLOCKED("Not Unlocked"),
-        IN_COMBAT("In Combat..."),
+        UNKNOWN(Translations.getMessage("warpMenu.unknown")),
+        NOT_UNLOCKED(Translations.getMessage("warpMenu.notUnlocked")),
+        IN_COMBAT(Translations.getMessage("warpMenu.inCombat")),
         UNLOCKED(null),
         ;
 
-        private String message;
+        private final String message;
 
         UnlockedStatus(String message) {
             this.message = message;

@@ -1,4 +1,5 @@
 {
+  "languageText": "语言：",
   "language": "简体中文",
   "settings": {
     "settings": "设定",
@@ -8,13 +9,11 @@
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
     "hideFoodAndArmor": "隐藏饱食度 & 盔甲值",
     "fullInventoryWarning": "物品栏空间不足警告",
-    "repeating": "再次警告",
-    "disableEmberRodAbility": "在私人岛屿上关闭余烬之杖技能",
+    "repeating": "重复警告",
+    "disableEmberRodAbility": "在私人岛屿上禁用余烬之杖技能",
     "editLocations": "调整 GUI 位置",
     "guiScale": "Gui 大小: %scale%",
     "resetLocations": "重置 GUI 位置",
-    "hideDurability": "隐藏工具耐久度",
-    "showEnchantmentsReforges": "附魔 & 洗炼",
     "minionStopWarning": "\"仆从无法触及生物\"警告",
     "hidePlayersNearNPCs": "隐藏重要 NPC 附近的玩家",
     "backpackStyle": "背包样式: %style%",
@@ -25,26 +24,24 @@
     "showBackpackPreview": "显示背包预览",
     "hideHealthBar": "隐藏原版血条",
     "fullMinionWarning": "\"仆从背包空间已满\"警告",
-    "ignoreItemFrameClicks": "忽略对展示框的点击",
     "showOnlyWhenHoldingShift": "只在按住 Shift 时显示",
     "manaBar": "法力条",
-    "manaText": "法力值",
+    "manaNumber": "法力值",
     "healthBar": "生命计量条",
-    "healthText": "生命值",
-    "defenceIcon": "防御图标",
-    "defenceText": "防御值",
-    "defencePercentage": "防御比例",
+    "healthNumber": "生命值",
+    "defenseIcon": "防御图标",
+    "defenseNumber": "防御值",
+    "defensePercentage": "防御比例",
     "healthUpdates": "生命值波动",
     "hidePlayersInLobby": "隐藏大厅远处的实体",
     "darkAuctionTimer": "暗黑拍卖会倒计时",
     "magmaBossTimer": "岩浆怪 Boss 倒计时",
     "itemPickupLog": "物品拾取记录",
     "avoidPlacingEnchantedItems": "阻止放置附魔物品",
-    "avoidBreakingStems": "阻止破坏作西瓜梗与南瓜梗",
-    "stopBowChargeFromResetting": "弓在命中生物时不需要重新拉弓",
+    "stopBowChargeFromResetting": "阻止拉弓进度重置",
     "preventMovementOnDeath": "暂时阻止死亡后移动",
     "showItemAnvilUses": "显示物品铁砧合成次数",
-    "lockSlots": "锁定快捷栏",
+    "lockSlots": "允许锁定物品栏中的物品",
     "lockSlot": "锁定槽位",
     "dontResetCursorInventory": "阻止打开菜单时光标重置",
     "summoningEyeAlert": "召唤之眼获取提醒",
@@ -61,20 +58,15 @@
     "dontOpenProfileWithBow": "阻止持弓时打开玩家信息",
     "stopDroppingSellingRareItems": "防止丢弃或出售稀有及以上物品",
     "makeBackpackInventoriesColored": "背包内部颜色与外部相同",
-    "avoidBreakingBottomSugarCane": "防止破坏底部甘蔗",
     "replaceRomanNumeralsWithNumbers": "替换罗马数字为阿拉伯数字",
     "changeBarColorForPotions": "凋零/中毒 时更改生命条颜色",
     "craftingPatterns": "选择合成样式",
     "soundIndicatorForFishing": "钓鱼声音指示",
-    "avoidBlinkingNightVision": "禁用夜视耗尽闪烁",
+    "avoidBlinkingNightVision": "夜视耗尽时禁用闪烁",
     "disableMinionLocationWarning": "禁用仆从“位置不是很好”警告",
-    "jungleAxeCooldown": "阻止在冷却时使用丛林斧/Treecapitator",
-    "organizeLongEnchantmentLists": "整理长版附魔列表",
     "showItemCooldowns": "显示物品冷却时间",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "显示技能进度",
-    "onlyMineOresDeepCaverns": "在深层矿洞中只挖掘矿物",
-    "onlyMineValuablesNether": "仅在地狱开采有价值的矿物",
     "revenantIndicator": "猎杀相关装备进度提示",
     "specialZealotAlert": "特殊末影战士警告",
     "enableMessageWhenActionPrevented": "当操作被阻止时显示提示",
@@ -116,10 +108,11 @@
     "discordRP": "丰富 Discord 状态",
     "endstoneProtectorDisplay": "末地石护卫生成阶段显示",
     "fancyWarpMenu": "精致传送菜单",
+    "stopRatSounds": "Stop Rat Pet Sounds",
+    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "双重传送",
     "advancedMode": "高级模式",
     "legendarySeaCreatureWarning": "传奇海怪警告",
-    "onlyBreakLogsPark": "在公园中只破坏树木",
     "bossApproachAlert": "猎手 Boss 生成警告",
     "disableTeleportPadMessages": "禁用传送平台消息",
     "baitListDisplay": "手持钓竿时显示鱼饵列表",
@@ -130,49 +123,89 @@
     "changeZealotColor": "更改末影战士的颜色",
     "hideSvenPupNametags": "隐藏 Sven Pup 的名称标签",
     "turnAllFeaturesChroma": "为所有功能启用渐变色",
-    "dungeonMapDisplay": "地下城地图显示",
+    "dungeonMapDisplay": "地牢地图显示",
     "rotateMap": "旋转地图至玩家方向",
     "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
+    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
+    "showFetchurItemName": "Show Fetchur's item name",
+    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
-    "glowingDungeonTeammates": "在地下城中标记队友",
-    "baseStatBoostPercentage": "显示地下城物品的基本属性加成",
+    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "baseStatBoostPercentage": "显示地牢物品的基本属性加成",
     "colorByRarity": "按稀有度上色",
-    "showPlayerHeadsOnMap": "在地下城地图上显示玩家头像",
-    "showHealingCircleWall": "显示地下城治疗光环边界",
-    "showCriticalTeammates": "显示地下城濒死队友",
+    "showPlayerHeadsOnMap": "在地牢地图上显示玩家头像",
+    "showHealingCircleWall": "显示地牢治疗光环边界",
+    "showCriticalTeammates": "显示地牢濒死队友",
     "showGlowingItemsOnIsland": "使私人岛屿上的掉落物品发光",
-    "showItemDungeonFloor": "显示地下城物品获取层数",
-    "showDungeonMilestone": "显示地下城里程碑",
-    "dungeonsCollectedEssencesDisplay": "显示在地下城收集到的 Essence",
+    "showItemDungeonFloor": "显示地牢物品获取层数",
+    "showDungeonMilestone": "显示地牢里程碑",
+    "dungeonsCollectedEssencesDisplay": "显示在地牢收集到的 Essence",
     "stopBonzoStaffSounds": "静音 Bonzo's Staff",
     "showRarityUpgraded": "显示物品稀有度是否被升级",
-    "revenantSlayerTracker": "猎杀跟踪器 - 亡灵/僵尸",
-    "tarantulaSlayerTracker": "猎杀跟踪器 - 狼蛛/蜘蛛",
+    "revenantSlayerTracker": "猎杀追踪器 - 亡灵/僵尸",
+    "tarantulaSlayerTracker": "猎杀追踪器 - 狼蛛/蜘蛛",
     "svenSlayerTracker": "猎杀追踪器 - 狼王/狼",
+    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
     "textMode": "文本模式",
     "dragonsNestOnly": "仅在龙之巢穴显示",
     "dragonStatsTracker": "末影龙击杀计数",
-    "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
-    "hideWhenNotInCrypts": "Hide When Not in the Crypts/Doing Revenant Quest",
-    "hideWhenNotInSpidersDen": "Hide When Not in the Spider's Den/Doing Tarantula Quest",
-    "hideWhenNotInCastle": "Hide When Not in the Castle/Doing Sven Quest",
-    "dungeonDeathCounter": "地下城死亡计数",
+    "skillActionsLeftUntilNextLevel": "显示到下个等级仍需的动作",
+    "dungeonDeathCounter": "地牢死亡计数",
     "showPersonalCompactorPreview": "随身压缩机预览",
     "rockPetTracker": "宠物岩石进度追踪",
     "dolphinPetTracker": "宠物海豚进度追踪",
-    "dungeonsTeammateNameOverlay": "在地下城中高亮队友名字",
-    "showExpertiseKills": "显示 Expertise 击杀进度",
-    "dungeonsSecretsDisplay": "Dungeons Secrets Display",
+    "dungeonsTeammateNameOverlay": "在地牢中高亮队友名字",
+    "dungeonsSecretsDisplay": "地牢秘密数量显示",
     "showSkillPercentageInstead": "以技能进度百分比代替技能经验值",
     "showSkillXPGained": "显示已获得技能经验值",
     "skillProgressBar": "技能升级进度条",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "showSalvageEssencesCounter": "显示 Salvage Essence 计数器",
     "disableMortMessages": "隐藏 Mort 的对话",
     "disableBossMessages": "隐藏 Boss 们的台词",
     "hideOtherPlayersPresents": "隐藏其他玩家的礼物",
-    "easierPresentOpening": "更容易的打开礼物",
-    "showSwordKills": "显示剑击杀数"
+    "showSwordKills": "显示剑击杀数",
+    "compactTabList": "简洁 Tab 列表",
+    "highlightSpecialEnchantments": "高亮特殊附魔",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "candyPointsCounter": "Spooky Event 糖果/分数统计器",
+    "healingCircleOpacity": "治疗光环不透明度",
+    "chromaSize": "渐变色彩尺寸",
+    "chromaSaturation": "渐变色彩饱和度",
+    "chromaBrightness": "渐变色彩亮度",
+    "useNewChromaEffect": "使用新版渐变效果",
+    "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
+    "drillFuelBar": "Drill 燃料计量条",
+    "drillFuelNumber": "Drill 燃料值",
+    "fetchurToday": "Show What Fetchur Wants Today",
+    "fishingParticleOverlay": "更改钓鱼提示粒子的颜色",
+    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "biggerWake": "放大提示粒子",
+    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "showReforgeOverlay": "显示洗炼提示",
+    "reforgeFilter": "Reforge Filter",
+    "hideEnchantDescription": "Hide Enchant Description",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper Features",
+      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "highlightTrackedEntity": "高亮追踪实体",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+    },
+    "showEnderChestPreview": "显示末影箱预览",
+    "hideWhenNotDoingQuest": "在未进行任务时隐藏",
+    "showOverflowManaNumber": "Overflow Mana Number",
+    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "entityOutlines": "显示实体轮廓",
+    "effectiveHealthNumber": "Effective Health Number",
+    "guiScaleX": "GUI 横向长度: %scale%",
+    "guiScaleY": "GUI 纵向高度: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
@@ -187,24 +220,26 @@
     "separateMultiple": "使用英文逗号间隔多个目标。",
     "enchantsToMatch": "包含%type%:",
     "enchantsToExclude": "不包含%type%:",
-    "wantToViewPatchNotes": "需要帮助或查看更新内容？",
-    "downloadLink": "更新视频介绍",
-    "directDownload": "直接下载链接",
-    "openModFolder": "Mods 文件夹",
-    "joinTheDiscord": "加入 Discord",
-    "newUpdateAvailable": "新版本 (%version%) 现已发布！",
-    "update": {
-      "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
-      "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要帮助或查看更新内容？",
+      "joinDiscord": "加入 Discord 服务器！ ",
+      "watchShowcase": "观看视频",
+      "downloadButton": "下载",
+      "openModFolderButton": "打开Mods文件夹",
+      "joinDiscordButton": "加入 Discord",
+      "newUpdateAvailable": "新版本 (%version%) 现已发布！",
+      "noDownloadAvailable": "无下载链接可用，请查看我们的discord群组",
+      "notificationBox": {
+        "majorAvailable": "%version% 重要更新！下载链接可以在聊天栏中找到。",
+        "betaAvailable": "%version% beta更新！下载链接可以在聊天栏中找到。",
+        "patchAvailable": "%version% 补丁更新！下载链接可以在聊天栏中找到。"
+      }
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledStemBreak": "已阻止你破坏此作物，请空手破坏。",
-    "cancelledProfileOpening": "已阻止你持弓打开玩家信息。",
     "cancelledDropping": "已阻止你将物品栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "clickOneMoreTime": "如果你真的想这么做，请再 点击/丢弃 此物品一次",
-    "cancelledDeepCaverns": "已阻止在此挖掘方块",
     "featureDisabled": "功能已禁用",
     "anvilUses": "铁砧使用次数: %uses%",
     "specialZealotFound": "特殊末影战士！",
@@ -219,7 +254,7 @@
     "rescaleFeatures": "重置缩放大小",
     "resizeBars": "重置计量条大小",
     "showColorIcons": "显示颜色图标",
-    "enableFeatureSnapping": "启用功能对齐",
+    "enableFeatureSnapping": "启用自动对齐",
     "stage": "第 %stage% 阶段",
     "switchedSlots": "你刚刚从锁定槽位切换或者手持稀有物品。请稍后再丢弃！",
     "clickToOpenLink": "点击打开链接！",
@@ -228,8 +263,9 @@
     "secondStatus": "此状态将显示在第一个状态下",
     "fallbackStatus": "当自动状态没有显示时，此状态将会显示",
     "legendarySeaCreatureWarning": "传奇钓落!",
-    "cancelledPark": "已阻止在此破坏方块",
     "bossApproaching": "Boss 即将生成!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur changed!",
     "enableAll": "全部启用",
     "disableAll": "全部禁用",
     "enchantmentInclusionExample": "例如: \"prot, feather\"",
@@ -238,7 +274,12 @@
     "reforgeExclusionExample": "例如: \"odd, clean\"",
     "actionsLeft": "剩余 %number%",
     "effectActive": "已激活 1 种药水效果",
-    "effectsActive": "已激活 %number% 种药水效果"
+    "effectsActive": "已激活 %number% 种药水效果",
+    "none": "无",
+    "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
+    "chroma": "渐变",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -268,54 +309,135 @@
     "titleTarantula": "狼蛛猎手任务",
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
   },
+  "enchantLayout": {
+    "title": "Control how enchants are displayed on item tooltips",
+    "titleCompress": "Compress",
+    "descriptionCompress": "以尽可能少的行数显示附魔名称",
+    "titleNormal": "普通",
+    "descriptionNormal": "以 Hypixel 标准样式显示附魔列表",
+    "titleExpand": "展开",
+    "descriptionExpand": "逐行显示附魔"
+  },
   "commandUsage": {
-    "sba": "打开主菜单",
-    "sba.brand": "§e(开发者) §7显示服务端名称",
-    "sba.brand.brandOutput": "服务端：%brand%",
-    "sba.brand.notFound": "无法检测到服务端！",
-    "sba.copyEntity": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
-    "sba.copySidebar": "§e(开发者) §7复制计分板文本",
-    "sba.copyTabList": "§e(开发者) §7复制页头页脚标签",
-    "sba.dev": "启用/禁用 开发者模式",
-    "sba.dev.disabled": "开发者模式已禁用！",
-    "sba.dev.enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
-    "sba.edit": "编辑 GUI 位置",
-    "sba.folder": "打开 mods 文件夹",
-    "sba.folder.error": "试图打开 mods 文件夹时出错：%s",
-    "sba.help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
-    "sba.help.copyEntity": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
-    "sba.help.copyEntity.entityNames": "你想要复制数据的实体种类（例如 Player, Creeper）。输入指令后按“'Tab”来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
-    "sba.help.copyEntity.radius": "进行复制NBT数据的玩家范围（按格计算）。",
-    "sba.help.copySidebar.formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。",
-    "sba.help.copyTabList": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。",
-    "sba.help.dev": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。",
-    "sba.help.help.command": "此子命令来获取详细的用法",
-    "sba.help.set.zealotCounter": "手动设置末影战士计数器。",
-    "sba.help.set.zealotCounter.eyes": "总计获取召唤之眼数",
-    "sba.help.set.zealotCounter.totalZealots": "总计末影战士击杀数",
-    "sba.help.set.zealotCounter.zealots": "自上次掉落召唤之眼后的末影战士击杀数",
-    "sba.help.slayer": "手动设置 Slayer 数据, 按 tab 以获得参数",
-    "sba.help.slayer.boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-    "sba.help.slayer.number": "统计设置为的数字",
-    "sba.help.slayer.stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "手动设置末影战士计数器",
-    "sba.set.zealotCounter.eyes": "已设置召唤之眼掉落数为 %number%！",
-    "sba.set.zealotCounter.totalZealots": "已设置总计末影战士击杀数为 %number%！",
-    "sba.set.zealotCounter.wrongUsage": "无效选项！请选择 %options%。",
-    "sba.set.zealotCounter.zealots": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！",
-    "sba.slayer": "修改猎杀任务统计，按 tab 查看指令参数",
-    "sba.slayer.bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
-    "sba.slayer.statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
-    "sba.slayer.numberRequired": "你需要添加你想要的数值",
-    "sba.slayer.killsSet": "Kills for slayer %boss% was set to %number%.",
-    "sba.slayer.statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-    "sba.slayer.invalidBoss": "\"%input%\" 不是有效的统计信息!",
-    "sba.slayer.invalidStat": "\"%input%\" 不是有效的 boss!",
-    "sba.toggleActionBarLogging": "§e(开发者) §7切换日志操作栏消息",
-    "sba.toggleActionBarLogging.disabled": "操作栏消息将不再被记录。",
-    "sba.toggleActionBarLogging.enabled": "操作栏消息现在将被记录。",
-    "sba.wrongUsage.generic": "错误用法！",
-    "sba.wrongUsage.subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
+    "sba": {
+      "base": {
+        "help": "打开主菜单"
+      },
+      "brand": {
+        "help": "§e(开发者) §7显示服务端名称",
+        "brandOutput": "服务端：%brand%",
+        "notFound": "无法检测到服务端！"
+      },
+      "copyBlock": {
+        "help": "§e(开发者) §7复制准星所指方块的 NBT"
+      },
+      "copyEntity": {
+        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+        "detailedHelp": {
+          "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
+          "options": {
+            "entityNames": "你想要复制数据的实体种类 (例如 Player, Creeper)。输入指令后按下 \"Tab\" 键来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
+            "radius": "进行复制NBT数据的玩家范围 (按格计算)"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(开发者) §7复制计分板文本",
+        "detailedHelp": {
+          "description": "复制侧边栏显示的文字",
+          "options": {
+            "formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。"
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(开发者) §7复制页头页脚标签",
+        "detailedHelp": {
+          "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
+        }
+      },
+      "dev": {
+        "help": "启用/禁用 开发者模式",
+        "detailedHelp": {
+          "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
+        },
+        "disabled": "开发者模式已禁用！",
+        "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
+      },
+      "edit": {
+        "help": "编辑 GUI 位置"
+      },
+      "folder": {
+        "help": "打开 mods 文件夹",
+        "error": "试图打开 mods 文件夹时出错：%s"
+      },
+      "help": {
+        "help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
+        "detailedHelp": {
+          "options": {
+            "command": "此子命令来获取详细的用法"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(开发者) §7将地牢死亡计数输出至聊天栏以供调试"
+      },
+      "reload": {
+        "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
+      },
+      "reloadConfig": {
+        "help": "§e(开发者) §7重载 mod 设定"
+      },
+      "reloadRes": {
+        "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "手动设置末影战士计数器",
+          "detailedHelp": {
+            "description": "手动设置末影战士计数器。",
+            "options": {
+              "eyes": "总计获取召唤之眼数",
+              "totalZealots": "总计末影战士击杀数",
+              "zealots": "自上次掉落召唤之眼后的末影战士击杀数"
+            }
+          },
+          "eyesSet": "已设置召唤之眼掉落数为 %number%！",
+          "totalZealotsSet": "已设置总计末影战士击杀数为 %number%！",
+          "wrongUsage": "无效选项！请选择 %options%。",
+          "zealotsSet": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！"
+        }
+      },
+      "slayer": {
+        "help": "修改猎手任务统计数据，按 tab 查看指令参数",
+        "detailedHelp": {
+          "description": "修改猎手任务统计数据，按 tab 查看指令参数",
+          "options": {
+            "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+            "number": "统计设置为的数字",
+            "stat": "可更改统计数据，值可以为 \"kills\"，也可以是掉落物名称，格式如下：\"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
+        "statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
+        "numberRequired": "你需要添加你想要的数值",
+        "killsSet": "猎杀 %boss% 的击杀统计已设定为 %number%",
+        "statSet": "%boss% 的猎杀统计 %stat% 已设定为 %number%",
+        "invalidBoss": "\"%input%\" 不是有效的统计信息!",
+        "invalidStat": "\"%input%\" 不是有效的 boss!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(开发者) §7切换日志操作栏消息",
+        "disabled": "操作栏消息将不再被记录。",
+        "enabled": "操作栏消息现在将被记录。"
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "错误用法！",
+          "subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "复制 NBT"
@@ -337,33 +459,30 @@
   },
   "slayerTracker": {
     "revenant": "亡灵恐魔：",
-    "revenantFlesh": "亡灵腐肉",
-    "foulFlesh": "恶臭腐肉",
-    "pestilenceRune": "Pestilence Rune",
-    "undeadCatalyst": "不死结晶",
-    "smiteSix": "亡灵杀手 6",
-    "beheadedHorror": "恐魔头颅",
-    "revenantCatalyst": "亡灵结晶",
-    "snakeRune": "Snake Rune",
-    "scytheBlade": "巨镰锋刃",
     "tarantula": "狼蛛之父",
-    "tarantulaWeb": "狼蛛蛛网",
-    "toxicArrowPoison": "Toxic Arrow Poison",
-    "spiderCatalyst": "蜘蛛结晶",
-    "baneOfArthropodsSix": "节肢杀手 6",
-    "biteRune": "Bite Rune",
-    "flySwatter": "Fly Swatter",
-    "tarantulaTalisman": "狼蛛护符",
-    "digestedMosquito": "被消化的蚊子",
     "sven": "流浪狼王：",
-    "wolfTooth": "狼牙",
-    "hamsterWheel": "Hamster Wheel",
-    "spiritRune": "Spirit Rune",
-    "criticalSix": "暴击 6",
-    "grizzlyBait": "灰熊诱饵",
-    "redClawEgg": "红爪之卵",
-    "overfluxCapacitor": "过载电容",
-    "coutureRune": "时装符文",
+    "voidgloom": "Voidgloom Seraph:",
     "bossesKilled": "Boss 击杀数"
+  },
+  "warpMenu": {
+    "click": "点击传送点以传送！",
+    "mustUnlock": "必须先解锁该地的传送卷轴",
+    "privateIsland": "私人岛屿",
+    "home": "你的岛屿",
+    "spawn": "出生点",
+    "unknown": "尚未探索",
+    "notUnlocked": "尚未解锁",
+    "inCombat": "战斗中..."
+  },
+  "enchants": {
+    "superTier": "Max Tier",
+    "highTier": "High Tier",
+    "midTier": "Mid Tier",
+    "lowTier": "Low Tier",
+    "commas": "半角逗号",
+    "expertiseKills": "Expertise Kills",
+    "compactedBlocks": "Compacted Blocks",
+    "cultivatedCrops": "已收获作物",
+    "maxed": "Maxed"
   }
 }

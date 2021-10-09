@@ -3,42 +3,79 @@ name: Build
 on:
   push:
     branches:
-      - '**'
+      - master
+      - development
+    paths-ignore:
+      - '.github'
+      - 'dependencyLicenses/**'
+      - 'LICENSE'
+      - 'NOTICE'
+      - '**.md'
   pull_request:
+    branches:
+      - master
+      - development
+    paths-ignore:
+      - '.github'
+      - 'dependencyLicenses/**'
+      - 'LICENSE'
+      - 'NOTICE'
+      - '**.md'
+  workflow_dispatch:
+    inputs:
+      upload_artifact:
+        description: 'Upload artifact to this run? [yes | no]'
+        required: false
+        default: 'no'
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     env:
       PROPERTIES_PATH: gradle.properties
+      UPLOAD_ARTIFACT_ENABLED: ${{ true }}
+    timeout-minutes: 15
 
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 1.8
-      uses: actions/setup-java@v1
+      uses: actions/setup-java@v2
       with:
-        java-version: 1.8
+        distribution: 'zulu'
+        java-version: '8.0.282+8'
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Setup ForgeGradle
-      run: ./gradlew setupCIWorkspace
+      run: ./gradlew setupCIWorkspace --no-daemon
     - name: Read mod name
       id: read_mod_name
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
       uses: christian-draeger/read-properties@1.0.1
       with:
         path: ${{ env.PROPERTIES_PATH }}
-        property: modName
+        property: 'modName'
     - name: Read Minecraft version
       id: read_mc_version
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
       uses: christian-draeger/read-properties@1.0.1
       with:
         path: ${{ env.PROPERTIES_PATH }}
-        property: minecraftVersion
+        property: 'minecraftVersion'
     - name: Read mod version
       id: read_mod_version
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
       uses: christian-draeger/read-properties@1.0.1
       with:
         path: ${{ env.PROPERTIES_PATH }}
-        property: version
+        property: 'version'
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --no-daemon
+    - name: Upload Artifact
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
+      env:
+        mod_jar_name: ${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mod_version.outputs.value }}-for-MC-${{ steps.read_mc_version.outputs.value }}+${{ github.run_id }}.jar
+        mod_jar_path: build/libs/${{ steps.read_mod_name.outputs.value }}-${{ steps.read_mod_version.outputs.value }}-for-MC-${{ steps.read_mc_version.outputs.value }}.jar
+      uses: actions/upload-artifact@v2
+      with:
+        name: ${{ env.mod_jar_name }}
+        path: ${{ env.mod_jar_path }}

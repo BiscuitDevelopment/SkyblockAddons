@@ -1,24 +1,30 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
+import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.PetInfo;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.Rune;
-import net.minecraft.block.Block;
+import lombok.Setter;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.init.Blocks;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
+import net.minecraft.nbt.*;
 import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,6 +37,11 @@ public class ItemUtils {
     public static final int NBT_STRING = 8;
     public static final int NBT_LIST = 9;
     public static final int NBT_COMPOUND = 10;
+
+    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
+    @Setter private static Map<String, CompactorItem> compactorItems;
+    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
+    @Setter private static Map<String, ContainerData> containers;
 
     // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
     private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
@@ -75,29 +86,49 @@ public class ItemUtils {
     }
 
     /**
+     * Returns the itemstack that this personal compactor skyblock ID represents. Note that
+     * a personal compactor skyblock ID is not the same as an item's regular skyblock id!
+     *
+     * @param personalCompactorSkyblockID The personal compactor skyblock ID (ex. ENCHANTED_ACACIA_LOG)
+     * @return The itemstack that this personal compactor skyblock ID represents
+     */
+    public static ItemStack getPersonalCompactorItemStack(String personalCompactorSkyblockID) {
+        CompactorItem compactorItem = compactorItems.get(personalCompactorSkyblockID);
+        return compactorItem != null ? compactorItem.getItemStack() : ItemUtils.createSkullItemStack("§7Unknown (" + personalCompactorSkyblockID + ")", Collections.singletonList("§6also biscut was here hi!!"), personalCompactorSkyblockID,
+                "724c64a2-fc8b-4842-852b-6b4c2c6ef241", "e0180f4aeb6929f133c9ff10476ab496f74c46cf8b3be6809798a974929ccca3");
+    }
+
+    /**
+     * Returns data about the container that is passed in.
+     *
+     * @param skyblockID The skyblock ID of the container
+     * @return A {@link ContainerData} object containing info about the container in general
+     */
+    public static ContainerData getContainerData(String skyblockID) {
+        return containers.get(skyblockID);
+    }
+
+    /**
      * Returns the Skyblock Item ID of a given Skyblock item
      *
      * @param item the Skyblock item to check
      * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock item
      */
-    public static String getSkyBlockItemID(ItemStack item) {
+    public static String getSkyblockItemID(ItemStack item) {
         if (item == null) {
-            throw new NullPointerException("Item cannot be null.");
-        } else if (!item.hasTagCompound()) {
             return null;
         }
 
-        NBTTagCompound skyBlockData = item.getSubCompound("ExtraAttributes", false);
-
-        if (skyBlockData != null) {
-            String itemId = skyBlockData.getString("id");
-
-            if (!itemId.equals("")) {
-                return itemId;
-            }
+        NBTTagCompound extraAttributes = getExtraAttributes(item);
+        if (extraAttributes == null) {
+            return null;
         }
 
-        return null;
+        if (!extraAttributes.hasKey("id", ItemUtils.NBT_STRING)) {
+            return null;
+        }
+
+        return extraAttributes.getString("id");
     }
 
     /**
@@ -112,6 +143,18 @@ public class ItemUtils {
         }
 
         return item.getSubCompound("ExtraAttributes", false);
+    }
+
+
+    /**
+     * Returns the {@code enchantments} compound tag from the item's NBT data.
+     *
+     * @param item the item to get the tag from
+     * @return the item's {@code enchantments} compound tag or {@code null} if the item doesn't have one
+     */
+    public static NBTTagCompound getEnchantments(ItemStack item) {
+        NBTTagCompound extraAttributes = getExtraAttributes(item);
+        return extraAttributes == null ? null : extraAttributes.getCompoundTag("enchantments");
     }
 
     /**
@@ -142,6 +185,7 @@ public class ItemUtils {
      * @param itemStack the item to check
      * @return {@code true} if this item is a material, {@code false} otherwise
      */
+    //TODO: Fix for Hypixel localization
     public static boolean isMaterialForRecipe(ItemStack itemStack) {
         List<String> lore = ItemUtils.getItemLore(itemStack);
         for (String loreLine : lore) {
@@ -153,14 +197,28 @@ public class ItemUtils {
     }
 
     /**
-     * Checks if the given item is a pickaxe.
+     * Checks if the given item is a mining tool (pickaxe or drill).
      *
-     * @param item the item to check
-     * @return {@code true} if this item is a pickaxe, {@code false} otherwise
+     * @param itemStack the item to check
+     * @return {@code true} if this item is a pickaxe/drill, {@code false} otherwise
      */
-    public static boolean isPickaxe(Item item) {
-        return item instanceof ItemPickaxe;
+    public static boolean isMiningTool(ItemStack itemStack) {
+        return itemStack.getItem() instanceof ItemPickaxe || isDrill(itemStack);
     }
+
+
+    /**
+     * Checks if the given item is a drill.
+     *
+     * @param itemStack the item to check
+     * @return {@code true} if this item is a drill, {@code false} otherwise
+     */
+    // TODO: This is a hotfix until we come up with a way to jsonify
+    public static boolean isDrill(ItemStack itemStack) {
+        String id = getSkyblockItemID(itemStack);
+        return id != null && (id.startsWith("MITHRIL_DRILL_") || id.startsWith("TITANIUM_DRILL_"));
+    }
+
 
     /**
      * Returns the Skyblock Item ID of a given Skyblock Extra Attributes NBT Compound
@@ -168,15 +226,66 @@ public class ItemUtils {
      * @param extraAttributes the NBT to check
      * @return the Skyblock Item ID of this item or {@code null} if this isn't a valid Skyblock NBT
      */
-    public static String getSkyBlockItemID(NBTTagCompound extraAttributes) {
-        if (extraAttributes != null) {
-            String itemId = extraAttributes.getString("id");
-
-            if (!itemId.equals("")) {
-                return itemId;
-            }
+    public static String getSkyblockItemID(NBTTagCompound extraAttributes) {
+        if (extraAttributes == null) {
+            return null;
         }
 
+        String itemId = extraAttributes.getString("id");
+        if (itemId.equals("")) {
+            return null;
+        }
+
+        return itemId;
+    }
+
+    /**
+     * Checks if the given {@code ItemStack} is a backpack
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
+     */
+    public static boolean isBackpack(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerData containerData = containers.get(getSkyblockItemID(extraAttributes));
+        return containerData != null && containerData.isBackpack();
+    }
+
+    /**
+     * Checks if the given {@code ItemStack} is a builders wand
+     * See {@link codes.biscuit.skyblockaddons.asm.hooks.PlayerControllerMPHook#onWindowClick(int, int, int, EntityPlayer, ReturnValue)} for a commented-out implementation (may come back in the future).
+     *
+     * @param stack the {@code ItemStack} to check
+     * @return {@code true} if {@code stack} is a backpack, {@code false} otherwise
+     */
+    public static boolean isBuildersWand(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerData containerData = containers.get(getSkyblockItemID(extraAttributes));
+        return containerData != null && containerData.isBuildersWand();
+    }
+
+    /**
+     * Gets the color of the backpack in the given {@code ItemStack}
+     *
+     * @param stack the {@code ItemStack} containing the backpack
+     * @return The color of the backpack; or {@code WHITE} if there is no color; or {@code null} if it is not a container
+     */
+    public static BackpackColor getBackpackColor(ItemStack stack) {
+        NBTTagCompound extraAttributes = getExtraAttributes(stack);
+        ContainerData containerData = containers.get(getSkyblockItemID(extraAttributes));
+        if (containerData != null) {
+            try {
+                return BackpackColor.valueOf(extraAttributes.getString(containerData.getColorTag()));
+            } catch (IllegalArgumentException ignored) {
+            }
+            return BackpackColor.WHITE;
+        } else if (extraAttributes != null && extraAttributes.hasKey("backpack_color")) {
+            try {
+                return BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
+            } catch (IllegalArgumentException ignored) {
+            }
+            return BackpackColor.WHITE;
+        }
         return null;
     }
 
@@ -234,85 +343,6 @@ public class ItemUtils {
     }
 
     /**
-     * Returns the contents of a personal compactor using the data from an ItemStack
-     *
-     * @param compactor the ItemStack to check
-     * @return an {@link ItemStack[]} or {@code null} if it isn't a personal compactor
-     */
-    public static ItemStack[] getPersonalCompactorContents(ItemStack compactor) {
-        String skyblockID = ItemUtils.getSkyBlockItemID(compactor);
-
-        if (skyblockID == null || !skyblockID.startsWith("PERSONAL_COMPACTOR")) {
-            return null;
-        }
-
-        NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(compactor);
-
-        if (extraAttributes != null) {
-            ItemStack[] items = new ItemStack[9];
-
-            for (int i = 0; i < items.length; i++) {
-                if (!extraAttributes.hasKey("personal_compact_" + i)) {
-                    continue;
-                }
-                String itemName = extraAttributes.getString("personal_compact_" + i);
-
-                boolean enchanted = itemName.contains("ENCHANTED");
-
-                itemName = itemName.replaceFirst("ENCHANTED_", "")
-                        .replaceFirst("RAW_", "").toLowerCase();
-
-                ItemStack itemStack = null;
-                if (itemName.contains("log")) {
-                    switch (itemName) {
-                        case "oak_log":
-                            itemStack = new ItemStack(Blocks.log);
-                            break;
-                        case "birch_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 2);
-                            break;
-                        case "spruce_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 1);
-                            break;
-                        case "jungle_log":
-                            itemStack = new ItemStack(Blocks.log, 1, 3);
-                            break;
-                        case "acacia_log":
-                            itemStack = new ItemStack(Blocks.log2);
-                            break;
-                        case "dark_oak_log":
-                            itemStack = new ItemStack(Blocks.log2, 1, 1);
-                            break;
-                    }
-                }
-
-                if (itemStack == null) {
-                    Item item = Item.getByNameOrId(itemName);
-                    if (item == null) {
-                        Block block = Block.getBlockFromName(itemName);
-                        if (block != null) {
-                            item = Item.getItemFromBlock(block);
-                        }
-                    }
-                    if (item != null) {
-                        itemStack = new ItemStack(item);
-                    }
-                }
-
-                if (itemStack != null && enchanted) {
-                    itemStack.addEnchantment(Enchantment.protection, 1);
-                }
-
-                items[i] = itemStack;
-            }
-
-            return items;
-        }
-
-        return null;
-    }
-
-    /**
      * Returns a string list containing the nbt lore of an ItemStack, or
      * an empty list if this item doesn't have a lore. The returned lore
      * list is unmodifiable since it has been converted from an NBTTagList.
@@ -337,6 +367,17 @@ public class ItemUtils {
         }
 
         return Collections.emptyList();
+    }
+
+    public static void setItemLore(ItemStack itemStack, List<String> lore) {
+        NBTTagCompound display = itemStack.getSubCompound("display", true);
+
+        NBTTagList loreTagList = new NBTTagList();
+        for (String loreLine : lore) {
+            loreTagList.appendTag(new NBTTagString(loreLine));
+        }
+
+        display.setTag("Lore", loreTagList);
     }
 
     /**
@@ -390,7 +431,7 @@ public class ItemUtils {
         ItemStack stack = createItemStack(Items.enchanted_book, name, skyblockID, false);
 
         NBTTagCompound enchantments = new NBTTagCompound();
-        enchantments.setString(enchantName, String.valueOf(enchantLevel));
+        enchantments.setInteger(enchantName, enchantLevel);
 
         NBTTagCompound extraAttributes = stack.getTagCompound().getCompoundTag("ExtraAttributes");
         extraAttributes.setTag("enchantments", enchantments);
@@ -428,6 +469,37 @@ public class ItemUtils {
         return stack;
     }
 
+    public static ItemStack createSkullItemStack(String name, List<String> lore, String skyblockID, String skullID, String textureURL) {
+        ItemStack stack = new ItemStack(Items.skull, 1, 3);
+
+        NBTTagCompound texture = new NBTTagCompound();
+        texture.setString("Value", TextUtils.encodeSkinTextureURL(textureURL));
+
+        NBTTagList textures = new NBTTagList();
+        textures.appendTag(texture);
+
+        NBTTagCompound properties = new NBTTagCompound();
+        properties.setTag("textures", textures);
+
+        NBTTagCompound skullOwner = new NBTTagCompound();
+        skullOwner.setTag("Properties", properties);
+
+        skullOwner.setString("Id", skullID);
+
+        stack.setTagInfo("SkullOwner", skullOwner);
+
+        if (name != null) {
+            stack.setStackDisplayName(name);
+            ItemUtils.setItemLore(stack, lore);
+        }
+
+        if (skyblockID != null) {
+            setItemStackSkyblockID(stack, skyblockID);
+        }
+
+        return stack;
+    }
+
     public static void setItemStackSkyblockID(ItemStack itemStack, String skyblockID) {
         NBTTagCompound extraAttributes = new NBTTagCompound();
         extraAttributes.setString("id", skyblockID);
@@ -450,5 +522,30 @@ public class ItemUtils {
             }
         }
         return null;
+    }
+
+    public static NBTTagByteArray getCompressedNBT(ItemStack[] items) {
+        if (items == null) {
+            return null;
+        }
+        // Add each item's nbt to a tag list
+        NBTTagList list = new NBTTagList();
+        for (ItemStack item : items) {
+            if (item == null) {
+                list.appendTag((new ItemStack((Item) null)).serializeNBT());
+            } else {
+                list.appendTag(item.serializeNBT());
+            }
+        }
+        // Append standard "i" tag for compression
+        NBTTagCompound nbt = new NBTTagCompound();
+        nbt.setTag("i", list);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        try {
+            CompressedStreamTools.writeCompressed(nbt, stream);
+        } catch (IOException e) {
+            return null;
+        }
+        return new NBTTagByteArray(stream.toByteArray());
     }
 }

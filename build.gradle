@@ -1,14 +1,14 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '2.1-SNAPSHOT'
-    id 'io.franzbecker.gradle-lombok' version '4.0.0'
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
+    id "io.freefair.lombok" version "6.0.0-m2"
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
 
 group = 'codes.biscuit'
 
 // The below line is for version checkers <= 1.4.2
-//version = "1.5.4"
+//version = "1.6.0"
 
 // Java plugin settings
 java {
@@ -33,8 +33,11 @@ dependencies {
     implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
         exclude module: 'log4j'
     }
-    implementation 'com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085'
-    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+        exclude module: 'gson'
+    }
+    // Testing is unused for now
+//    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
 }
 
 sourceSets {
@@ -57,8 +60,7 @@ minecraft {
 
 jar {
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    baseName = project.modName
-    classifier = "for-MC-${project.minecraftVersion}"
+    archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
             'Manifest-Version': '2.0',
@@ -81,7 +83,7 @@ jar {
 }
 
 shadowJar {
-    archiveName = jar.archiveName
+    archiveFileName = jar.archiveFileName
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
@@ -90,6 +92,9 @@ shadowJar {
     exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
+
+    // Relocate Discord RPC into the main codebase
+    relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
 }
 
 sourceJar {
@@ -114,8 +119,22 @@ processResources {
     }
 }
 
-test {
-    useJUnitPlatform()
+task copyLicenses (type: Copy) {
+    from(project.projectDir) {
+        include('LICENSE')
+        include('NOTICE')
+        include('dependencyLicenses/**')
+    }
+    into(sourceSets.main.output.resourcesDir)
 }
 
+/*test {
+    useJUnitPlatform()
+}*/
+
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.jar.dependsOn(tasks.copyLicenses)
 tasks.reobfJar.dependsOn(tasks.shadowJar)

@@ -10,6 +10,9 @@ git checkout -b development --track origin/development
 ```
 
 ### Requirements
+- **JDK 8** (One of them)
+  - [Oracle JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
+  - [OpenJDK 8](https://adoptopenjdk.net/index.html?variant=openjdk8&ga=ga)
 - **IDE** (One of them)
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/) **(Recommended)**
   - [Eclipse](https://www.eclipse.org/)
@@ -44,9 +47,10 @@ git checkout -b development --track origin/development
       - Go to `Window` -> `Preferences` -> `General` -> `Workspace`
       - Change `Text File Encoding` from `Default` to `UTF-8`
 
-4. Make sure to add the **VM** argument to your debug configuration
+4. Make sure to add the **VM** arguments to your debug configuration:
     ```text
     -Dfml.coreMods.load=codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin
+    -Dlog4j.configurationFile=file:$ProjectFileDir$/log-config.xml
     ```
 5. Include your **Minecraft** username and password as arguments in the **debug configuration**.
    In order, to login into [Hypixel](https://hypixel.net) by your account.

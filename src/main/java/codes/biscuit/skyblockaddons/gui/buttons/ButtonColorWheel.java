@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
@@ -33,7 +34,7 @@ public class ButtonColorWheel extends ButtonFeature {
         GlStateManager.scale(scale,scale,1);
         GlStateManager.enableBlend();
         mc.getTextureManager().bindTexture(COLOR_WHEEL);
-        SkyblockAddons.getInstance().getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 10, 10, 10, 10, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 10, 10, 10, 10, true);
         GlStateManager.popMatrix();
     }
 

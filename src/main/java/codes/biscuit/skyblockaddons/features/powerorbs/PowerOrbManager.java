@@ -3,22 +3,20 @@ package codes.biscuit.skyblockaddons.features.powerorbs;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
  * Class for managing active PowerOrbs around the player.
- * {@link #put(PowerOrb, int) Insert} orbs that get detected and {@link #getActivePowerOrb() get} the
+ * {@link #put(PowerOrb, int, UUID) Insert} orbs that get detected and {@link #getActivePowerOrb() get} the
  * active orb with the highest priority (enum ordinal).
  *
  * @author DidiSkywalker
@@ -33,11 +31,9 @@ public class PowerOrbManager {
     /**
      * Entry displaying {@link PowerOrb#RADIANT} at 20 seconds for the edit screen
      */
-    public static final PowerOrbEntry DUMMY_POWER_ORB_ENTRY = new PowerOrbEntry(PowerOrb.RADIANT, 20);
+    public static final PowerOrbEntry DUMMY_POWER_ORB_ENTRY = new PowerOrbEntry(PowerOrb.RADIANT, 20, null);
 
     private Map<PowerOrb, PowerOrbEntry> powerOrbEntryMap = new HashMap<>();
-
-    @Getter private EntityArmorStand powerOrbArmorStand = null;
 
     /**
      * Put any detected orb into the list of active orbs.
@@ -45,8 +41,8 @@ public class PowerOrbManager {
      * @param powerOrb Detected PowerOrb type
      * @param seconds Seconds the orb has left before running out
      */
-    private void put(PowerOrb powerOrb, int seconds) {
-        powerOrbEntryMap.put(powerOrb, new PowerOrbEntry(powerOrb, seconds));
+    private void put(PowerOrb powerOrb, int seconds, UUID uuid) {
+        powerOrbEntryMap.put(powerOrb, new PowerOrbEntry(powerOrb, seconds, uuid));
     }
 
     /**
@@ -76,10 +72,10 @@ public class PowerOrbManager {
             Matcher matcher = POWER_ORB_PATTERN.matcher(TextUtils.stripColor(customNameTag));
 
             if (matcher.matches()) {
-                String secondsString = matcher.group("seconds");
+                int seconds;
                 try {
                     // Apparently they don't have a second count for moment after spawning, that's what this try-catch is for
-                    put(powerOrb, Integer.parseInt(secondsString));
+                    seconds = Integer.parseInt(matcher.group("seconds"));
                 } catch (NumberFormatException ex) {
                     // It's okay, just don't add the power orb I guess...
                     return;
@@ -98,20 +94,10 @@ public class PowerOrbManager {
                         }
                     }
 
-                    if (orbArmorStand != null && hasPowerOrbEntityChanged(orbArmorStand)) {
-                        powerOrbArmorStand = createVirtualArmorStand(orbArmorStand);
-                    }
+                    put(powerOrb, seconds, orbArmorStand == null ? null : orbArmorStand.getUniqueID());
                 }
             }
         }
-    }
-
-    public boolean hasPowerOrbEntityChanged(EntityArmorStand newPowerOrbArmorStand) {
-        if (powerOrbArmorStand == null) {
-            return true;
-        }
-
-        return powerOrbArmorStand.getEquipmentInSlot(4) != newPowerOrbArmorStand.getEquipmentInSlot(4);
     }
 
     public EntityArmorStand createVirtualArmorStand(EntityArmorStand armorStandToClone) {
@@ -122,7 +108,7 @@ public class PowerOrbManager {
         return virtualArmorStand;
     }
 
-    @Getter
+    @Getter @RequiredArgsConstructor
     public static class PowerOrbEntry {
         /** The PowerOrb type. */
         private final PowerOrb powerOrb;
@@ -130,12 +116,8 @@ public class PowerOrbManager {
         /** Seconds the orb has left before running out */
         private final int seconds;
 
-        private final long timestamp;
+        private final long timestamp = System.currentTimeMillis();
 
-        private PowerOrbEntry(PowerOrb powerOrb, int seconds) {
-            this.powerOrb = powerOrb;
-            this.seconds = seconds;
-            this.timestamp = System.currentTimeMillis();
-        }
+        private final UUID uuid;
     }
 }

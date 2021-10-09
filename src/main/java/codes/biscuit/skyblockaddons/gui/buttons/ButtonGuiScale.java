@@ -4,6 +4,8 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
@@ -14,13 +16,34 @@ public class ButtonGuiScale extends ButtonFeature {
 
     private float sliderValue;
     private boolean dragging;
+    private final Boolean isXScale;
 
-    private SkyblockAddons main;
+    private final SkyblockAddons main;
 
     public ButtonGuiScale(double x, double y, int width, int height, SkyblockAddons main, Feature feature) {
-        super(0, (int)x, (int)y, "", feature);
+        super(0, (int) x, (int) y, "", feature);
         this.sliderValue = main.getConfigValues().getGuiScale(feature, false);
         this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+        this.main = main;
+        this.width = width;
+        this.height = height;
+        this.isXScale = null;
+    }
+
+    /**
+     * Overloaded for x and y scale (only used on bars currently)
+     */
+    public ButtonGuiScale(double x, double y, int width, int height, SkyblockAddons main, Feature feature, boolean isXScale) {
+        super(0, (int) x, (int) y, "", feature);
+        FloatPair sizes = main.getConfigValues().getSizes(feature);
+        if (isXScale) {
+            this.sliderValue = sizes.getX();
+            this.displayString = EnumUtils.FeatureSetting.GUI_SCALE_X.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getSizesX(feature))));
+        } else {
+            this.sliderValue = sizes.getY();
+            this.displayString = EnumUtils.FeatureSetting.GUI_SCALE_Y.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getSizesX(feature))));
+        }
+        this.isXScale = isXScale;
         this.main = main;
         this.width = width;
         this.height = height;
@@ -60,8 +83,7 @@ public class ButtonGuiScale extends ButtonFeature {
             if (this.dragging) {
                 this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
                 this.sliderValue = MathHelper.clamp_float(sliderValue, 0.0F, 1.0F);
-                main.getConfigValues().setGuiScale(feature, sliderValue);
-                this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+                setNewScale();
             }
 
             mc.getTextureManager().bindTexture(buttonTextures);
@@ -74,8 +96,7 @@ public class ButtonGuiScale extends ButtonFeature {
         if (super.mousePressed(mc, mouseX, mouseY)) {
             this.sliderValue = (float) (mouseX - (this.xPosition + 4)) / (float) (this.width - 8);
             this.sliderValue = MathHelper.clamp_float(this.sliderValue, 0.0F, 1.0F);
-            main.getConfigValues().setGuiScale(feature, sliderValue);
-            this.displayString =Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+            setNewScale();
             this.dragging = true;
             return true;
         } else {
@@ -89,6 +110,24 @@ public class ButtonGuiScale extends ButtonFeature {
 
     private float getRoundedValue(float value) {
         return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+    }
+
+    private void setNewScale() {
+        if (isXScale == null) {
+            main.getConfigValues().setGuiScale(feature, sliderValue);
+            this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+        }
+        // For x and y scaling
+        else {
+            FloatPair sizes = main.getConfigValues().getSizes(feature);
+            if (isXScale) {
+                sizes.setX(sliderValue);
+                this.displayString = EnumUtils.FeatureSetting.GUI_SCALE_X.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getSizesX(feature))));
+            } else {
+                sizes.setY(sliderValue);
+                this.displayString = EnumUtils.FeatureSetting.GUI_SCALE_Y.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getSizesY(feature))));
+            }
+        }
     }
 }
 

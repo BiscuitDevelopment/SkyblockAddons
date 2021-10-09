@@ -1,0 +1,133 @@
+{
+  "SMALL_BACKPACK": {
+    "type": "BACKPACK",
+    "size": 9,
+    "compressedItemStacksTag": "small_backpack_data",
+    "colorTag": "backpack_color",
+    "dimensions": [
+      1,
+      9
+    ]
+  },
+  "MEDIUM_BACKPACK": {
+    "type": "BACKPACK",
+    "size": 18,
+    "compressedItemStacksTag": "medium_backpack_data",
+    "colorTag": "backpack_color",
+    "dimensions": [
+      2,
+      9
+    ]
+  },
+  "LARGE_BACKPACK": {
+    "type": "BACKPACK",
+    "size": 27,
+    "compressedItemStacksTag": "large_backpack_data",
+    "colorTag": "backpack_color",
+    "dimensions": [
+      3,
+      9
+    ]
+  },
+  "GREATER_BACKPACK": {
+    "type": "BACKPACK",
+    "size": 36,
+    "compressedItemStacksTag": "greater_backpack_data",
+    "colorTag": "backpack_color",
+    "dimensions": [
+      4,
+      9
+    ]
+  },
+  "JUMBO_BACKPACK": {
+    "type": "BACKPACK",
+    "size": 54,
+    "compressedItemStacksTag": "jumbo_backpack_data",
+    "colorTag": "backpack_color",
+    "dimensions": [
+      6,
+      9
+    ]
+  },
+  "NEW_YEAR_CAKE_BAG": {
+    "type": "NEW_YEARS_CAKE",
+    "size": 54,
+    "compressedItemStacksTag": "new_year_cake_bag_data",
+    "dimensions": [
+      6,
+      9
+    ]
+  },
+  "BUILDERS_WAND": {
+    "type": "BUILDERS_WAND",
+    "size": 54,
+    "compressedItemStacksTag": "builder's_wand_data",
+    "dimensions": [
+      6,
+      9
+    ]
+  },
+  "PERSONAL_COMPACTOR_4000": {
+    "type": "PERSONAL_COMPACTOR",
+    "size": 1,
+    "itemStackDataTags": [
+      "personal_compact_0"
+    ],
+    "dimensions": [
+      1,
+      1
+    ]
+  },
+  "PERSONAL_COMPACTOR_5000": {
+    "type": "PERSONAL_COMPACTOR",
+    "size": 3,
+    "itemStackDataTags": [
+      "personal_compact_0",
+      "personal_compact_1",
+      "personal_compact_2"
+    ],
+    "dimensions": [
+      1,
+      3
+    ]
+  },
+  "PERSONAL_COMPACTOR_6000": {
+    "type": "PERSONAL_COMPACTOR",
+    "size": 7,
+    "itemStackDataTags": [
+      "personal_compact_0",
+      "personal_compact_1",
+      "personal_compact_2",
+      "personal_compact_3",
+      "personal_compact_4",
+      "personal_compact_5",
+      "personal_compact_6"
+    ],
+    "dimensions": [
+      1,
+      7
+    ]
+  },
+  "PERSONAL_COMPACTOR_7000": {
+    "type": "PERSONAL_COMPACTOR",
+    "size": 12,
+    "itemStackDataTags": [
+      "personal_compact_0",
+      "personal_compact_1",
+      "personal_compact_2",
+      "personal_compact_3",
+      "personal_compact_4",
+      "personal_compact_5",
+      "personal_compact_6",
+      "personal_compact_7",
+      "personal_compact_8",
+      "personal_compact_9",
+      "personal_compact_10",
+      "personal_compact_11"
+    ],
+    "dimensions": [
+      2,
+      6
+    ]
+  }
+}

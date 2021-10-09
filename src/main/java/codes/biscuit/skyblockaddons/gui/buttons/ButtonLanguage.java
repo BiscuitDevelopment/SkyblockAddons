@@ -4,6 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DataUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -32,13 +35,12 @@ public class ButtonLanguage extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (visible) {
-            GlStateManager.color(1,1,1,0.7F);
-            mc.getTextureManager().bindTexture(FEATURE_BACKGROUND);
-            main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+            DrawUtils.drawRect(xPosition, yPosition, width, height,  ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
+
             GlStateManager.color(1,1,1,1F);
             try {
                 mc.getTextureManager().bindTexture(language.getResourceLocation());
-                main.getUtils().drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26, true);
+                DrawUtils.drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26, true);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -49,7 +51,8 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-            main.getUtils().loadLanguageFile(language);
+            // FIXME: we shouldn't be loading a whole language file for every language button every frame.
+            DataUtils.loadLocalizedStrings(language, false);
             drawCenteredString(mc.fontRendererObj, Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
         }
     }

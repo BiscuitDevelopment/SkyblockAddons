@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -16,7 +17,7 @@ public class ButtonLocation extends ButtonFeature {
     // So we know the latest hovered feature (used for arrow key movement).
     @Getter private static Feature lastHoveredFeature = null;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
     private float boxXOne;
     private float boxXTwo;
@@ -39,11 +40,7 @@ public class ButtonLocation extends ButtonFeature {
         GlStateManager.scale(scale, scale, 1);
 
         if (feature == Feature.DEFENCE_ICON) { // this one is just a little different
-            scale *= 1.5;
-            GlStateManager.scale(scale,scale,1);
             main.getRenderListener().drawIcon(scale, mc, this);
-            scale /= 1.5;
-            GlStateManager.scale(scale,scale,1);
         } else {
             feature.draw(scale, mc, this);
         }
@@ -69,22 +66,36 @@ public class ButtonLocation extends ButtonFeature {
             boxAlpha = 120;
         }
         int boxColor = ColorCode.GRAY.getColor(boxAlpha);
-        main.getUtils().drawRect(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
+        DrawUtils.drawRectAbsolute(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
 
         this.boxXOne = boxXOne;
         this.boxXTwo = boxXTwo;
         this.boxYOne = boxYOne;
         this.boxYTwo = boxYTwo;
-
-        if (this.feature == Feature.DEFENCE_ICON) {
-            this.boxXOne *= scale;
-            this.boxXTwo *= scale;
-            this.boxYOne *= scale;
-            this.boxYTwo *= scale;
-        }
-
         this.scale = scale;
     }
+
+    public void checkHoveredAndDrawBox(float boxXOne, float boxXTwo, float boxYOne, float boxYTwo, float scale, float scaleX, float scaleY) {
+        ScaledResolution sr = new ScaledResolution(Minecraft.getMinecraft());
+        float minecraftScale = sr.getScaleFactor();
+        float floatMouseX = Mouse.getX() / minecraftScale;
+        float floatMouseY = (Minecraft.getMinecraft().displayHeight - Mouse.getY()) / minecraftScale;
+
+        hovered = floatMouseX >= boxXOne * scale * scaleX && floatMouseY >= boxYOne * scale * scaleY && floatMouseX < boxXTwo * scale * scaleX && floatMouseY < boxYTwo * scale * scaleY;
+        int boxAlpha = 70;
+        if (hovered) {
+            boxAlpha = 120;
+        }
+        int boxColor = ColorCode.GRAY.getColor(boxAlpha);
+        DrawUtils.drawRectAbsolute(boxXOne, boxYOne, boxXTwo, boxYTwo, boxColor);
+
+        this.boxXOne = boxXOne;
+        this.boxXTwo = boxXTwo;
+        this.boxYOne = boxYOne;
+        this.boxYTwo = boxYTwo;
+        this.scale = scale;
+    }
+
 
     /**
      * Because the box changes with the scale, have to override this.

@@ -1,0 +1,488 @@
+{
+  "languageText": "Bahasa: ",
+  "language": "Bahasa Indonesia",
+  "settings": {
+    "settings": "Pengaturan",
+    "magmaBossWarning": "Peringatan Magma Boss",
+    "itemDropConfirmation": "Konfirmasi Jatuhkan Barang",
+    "hideSkeletonHatBones": "Sembunyikan Tulang-Tulang Skeleton's Helmet",
+    "skeletonHatBonesBar": "Bar Tulang-Tulang Skeleton's Helmet",
+    "hideFoodAndArmor": "Sembunyikan Bar Makanan & Pertahanan",
+    "fullInventoryWarning": "Peringatan Inventaris Penuh",
+    "repeating": "Peringatan Diulang-ulang",
+    "disableEmberRodAbility": "Nonaktifkan Ember Rod di Pulau Pribadi",
+    "editLocations": "Edit Lokasi GUI",
+    "guiScale": "Skala Gui: %scale%",
+    "resetLocations": "Reset Lokasi",
+    "minionStopWarning": "Peringatan \"Minion Cannot Reach\"",
+    "hidePlayersNearNPCs": "Sembunyikan Pemain Dekat NPC Penting",
+    "backpackStyle": "Model Backpack: %style%",
+    "backpackStyles": {
+      "regular": "Reguler",
+      "compact": "Ringkas"
+    },
+    "showBackpackPreview": "Perlihatkan Isi Backpack",
+    "hideHealthBar": "Sembunyikan Bar Nyawa Original",
+    "fullMinionWarning": "Peringatan Minion Penuh",
+    "showOnlyWhenHoldingShift": "Perlihatkan Hanya Saat Menekan Shift",
+    "manaBar": "Bar Mana",
+    "manaNumber": "Jumlah Mana",
+    "healthBar": "Bar Nyawa",
+    "healthNumber": "Jumlah Nyawa",
+    "defenseIcon": "Simbol Defense",
+    "defenseNumber": "Jumlah Defense",
+    "defensePercentage": "Persentase Defense",
+    "healthUpdates": "Besar Perubahan Nyawa",
+    "hidePlayersInLobby": "Sembunyikan Entitas Yang Jauh Di Lobby",
+    "darkAuctionTimer": "Timer Dark Auction",
+    "magmaBossTimer": "Timer Magma Boss",
+    "itemPickupLog": "Log Pengambilan Barang",
+    "avoidPlacingEnchantedItems": "Hindari Menempatkan Benda Enchanted",
+    "stopBowChargeFromResetting": "Cegah Tarikan Busur Untuk Direset",
+    "preventMovementOnDeath": "Cegah Pergerakan Setelah Mati",
+    "showItemAnvilUses": "Memperlihatkan Penggunaan Anvil Di Barang",
+    "lockSlots": "Perbolehkan Mengunci Slot",
+    "lockSlot": "Mengunci Slot",
+    "dontResetCursorInventory": "Tidak Mereset Kursor Antara Inventaris",
+    "summoningEyeAlert": "Peringatan Summoning Eye",
+    "makeEnderchestsInEndGreen": "Ubah Warna Enderchest Di The End",
+    "changeColor": "Ubah Warna",
+    "showInOtherGames": "Perlihatkan Di Permainan Lain",
+    "useVanillaTexture": "Pakai Penampilan Tekstur Vanilla",
+    "textStyle": "Gaya Teks",
+    "textStyles": {
+      "one": "Model Satu",
+      "two": "Model Dua"
+    },
+    "warningDuration": "Durasi Peringatan",
+    "dontOpenProfileWithBow": "Jangan Buka Profil Dengan Busur",
+    "stopDroppingSellingRareItems": "Cegah Menjatuhkan/Menjual Barang Langka",
+    "makeBackpackInventoriesColored": "Inventaris Backpack Berwarna",
+    "replaceRomanNumeralsWithNumbers": "Ganti Angka Romania pada Item",
+    "changeBarColorForPotions": "Ubah Warna Bar Untuk Wither & Poison",
+    "craftingPatterns": "Pilih Pola Untuk Crafting",
+    "soundIndicatorForFishing": "Indikasi Suara Saat Memancing",
+    "avoidBlinkingNightVision": "Nonaktifkan Efek Kedip Night Vision",
+    "disableMinionLocationWarning": "Nonaktifkan Peringatan Minion Lokasi Tidak Sempurna",
+    "showItemCooldowns": "Perlihatkan Cooldown Benda",
+    "speedPercentage": "Persentase Kecepatan",
+    "collectionDisplay": "Tampilan Kemajuan Skill",
+    "revenantIndicator": "Indikator Progress Armor Slayer",
+    "specialZealotAlert": "Peringatan Zealot Special",
+    "enableMessageWhenActionPrevented": "Perlihatkan sebuah Pesan Ketika Aksi dicegah",
+    "hidePetHealthBar": "Sembunyikan Bar Nyawa Pet",
+    "powerOrbDisplay": "Tampilan Power Orb",
+    "powerOrbDisplayStyle": "Model Power Orb: %style%",
+    "powerOrbStyle": {
+      "detailed": "Terperinci",
+      "compact": "Ringkas"
+    },
+    "disableMagicalSoupMessage": "Nonaktifkan Pesan-Pesan Magical Mushroom Soup",
+    "zealotCounter": "Penghitung Zealot - Hitungan Sejak Eye Terakhir",
+    "tickerChargesDisplay": "Tampilan Ticker/Muatan",
+    "tab": {
+      "generalSettings": "Pengaturan Umum"
+    },
+    "tabEffectTimers": "Timer Potion dan Powerup",
+    "noArrowsLeftAlert": "Peringatan Arrow Habis",
+    "hideNightVisionEffectTimer": "Sembunyikan Efek Night Vision Timer",
+    "showCakeBagPreview": "Perlihatkan Isi Cake Bags",
+    "showBackpackPreviewInAH": "Perlihatkan Isi Backpack untuk Benda Anda Saat AH dibuka",
+    "enableDevFeatures": "Aktifkan Fitur-Fitur Developer",
+    "chromaSpeed": "Kecepatan Kroma",
+    "chromaMode": "Mode Warna Kroma",
+    "chromaModes": {
+      "allTheSame": "Semua Sama Warna",
+      "fade": "Warna Memudar"
+    },
+    "chromaFadeWidth": "Lebar Luntur Chroma",
+    "sortTabEffectTimers": "Sortir Timer Oleh Durasi",
+    "showBrokenFragments": "Perlihatkan Fragment Rusak",
+    "skyblockAddonsButtonInPauseMenu": "Perlihatkan Tombol SBA di Menu Pause",
+    "showTotalZealotCount": "Penghitung Zealot - Jumlah Seluruh Zealot Terbunuh",
+    "showSummoningEyeCount": "Penghitung Zealot - Jumlah Seluruh Eye Didapatkan",
+    "showZealotsPerEye": "Penghitung Zealot - Rata-Rata Zealot per Eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Ubah Busur Menjadi Hijau Saat Menggunakan Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Timer Hujan Birch Park",
+    "combatTimerDisplay": "Tampilan Timer Dalam Combat",
+    "discordRP": "Discord Rich Presence",
+    "endstoneProtectorDisplay": "Tampilan Endstone Protector",
+    "fancyWarpMenu": "Menu Warp Mewah",
+    "stopRatSounds": "Hentikan Suara-Suara Pet Rat",
+    "onlyStopRatSqueak": "Hanya Hentikan Suara Cicitan Rat",
+    "doubleWarp": "Warp Dua Kali",
+    "advancedMode": "Mode Canggih",
+    "legendarySeaCreatureWarning": "Peringatan Sea Creature Legendaris",
+    "bossApproachAlert": "Peringatan Slayer Boss Sudah Dekat",
+    "disableTeleportPadMessages": "Matikan Pesan-Pesan Teleport Pad",
+    "baitListDisplay": "Perlihatkan Daftar Bait Saat Memegang Rod",
+    "freezeBackpackPreview": "Freeze Isi Backpack",
+    "hideGreyEnchants": "Sembunyikan Enchants Biasa Berwarna Abu-abu",
+    "zealotCounterExplosiveBow": "Dukungan Explosive Bow agar bekerja dengan Zealot Counter",
+    "disableEndermanTeleportation": "Nonaktifkan Teleportasi Enderman",
+    "changeZealotColor": "Ubah Warna Zealot",
+    "hideSvenPupNametags": "Sembunyikan Tanda Nama Sven Pup",
+    "turnAllFeaturesChroma": "Ubah Semua Fitur Menjadi Kroma",
+    "dungeonMapDisplay": "Tampilan Map Dungeon",
+    "rotateMap": "Putar Map Dengan Rotasi Player Anda",
+    "centerRotationOnYourPlayer": "Putar Sekeliling Marker Player Anda",
+    "showFetchurOnlyInDwarven": "Tampilkan Item Fetchur di Dwarven Mines Saja",
+    "showFetchurItemName": "Perlihatkan Nama Item Fetchur",
+    "showFetchurInventoryOpenOnly": "Hanya perlihatkan benda Fetchur saat Inventaris sedang Terbuka",
+    "warnWhenFetchurChanges": "Peringatkan Saya Ketika Item Fetchur Berganti",
+    "mapZoom": "Perbesar Map",
+    "glowingDroppedItems": "Sorotkan Benda Jatuh",
+    "outlineDungeonTeammates": "Garis Luar Rekan-Rekan Dungeon",
+    "baseStatBoostPercentage": "Perlihatkan Tambahan Stat Dasar untuk Benda-Benda Dungeons",
+    "colorByRarity": "Warnai Sesuai Kelangkaan",
+    "showPlayerHeadsOnMap": "Perlihatkan Kepala-Kepala Player di Map Dungeon",
+    "showHealingCircleWall": "Perlihatkan Proyeksi Dinding Healing Circle Dungeon",
+    "showCriticalTeammates": "Perlihatkan Rekan Dungeon yang Sekarat",
+    "showGlowingItemsOnIsland": "Perlihatkan Benda-Benda Bersinar Di Pulau Pribadi",
+    "showItemDungeonFloor": "Perlihatkan Benda yang Didapatkan Di Dungeon Dari Lantai Apa",
+    "showDungeonMilestone": "Perlihatkan Milestone Dungeon",
+    "dungeonsCollectedEssencesDisplay": "Tamplian Esensi Dungeons Yang Terkumpul",
+    "stopBonzoStaffSounds": "Hentikan Suara Bonzo Staff",
+    "showRarityUpgraded": "Perlihatkan Jika Suatu Kelangkaan Benda Telah Ditingkatkan",
+    "revenantSlayerTracker": "Pelacak Slayer - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Pelacak Slayer - Tarantula/Spider",
+    "svenSlayerTracker": "Pelacak Slayer - Sven/Wolf",
+    "voidgloomSlayerTracker": "Pelacak Slayer - Voidgloom/Enderman",
+    "textMode": "Mode Teks",
+    "dragonsNestOnly": "Hanya Memperlihatkan Di Dragon's Nest",
+    "dragonStatsTracker": "Tracker Naga",
+    "skillActionsLeftUntilNextLevel": "Perlihatkan Sisa Aksi Sebelum Naik Level",
+    "dungeonDeathCounter": "Penghitung Kematian Di Dungeon",
+    "showPersonalCompactorPreview": "Perlihatkan Isi Super Compactor",
+    "rockPetTracker": "Pelacak Rock Pet",
+    "dolphinPetTracker": "Pelacak Dolphin Pet",
+    "dungeonsTeammateNameOverlay": "Overlay Nama Rekan Dungeons",
+    "dungeonsSecretsDisplay": "Tamplian Rahasia-Rahasia Dungeon",
+    "showSkillPercentageInstead": "Perlihatkan Persentase XP Daripada XP",
+    "showSkillXPGained": "Perlihatkan Pendapatan Skill XP",
+    "skillProgressBar": "Bar Kemajuan Skill",
+    "showSalvageEssencesCounter": "Perlihatkan Hitungan Essences yang Di-Salvage",
+    "disableMortMessages": "Nonaktifkan Pesan-Pesan Mort",
+    "disableBossMessages": "Nonaktifkan Pesan-Pesan Boss",
+    "hideOtherPlayersPresents": "Sembunyikan Kado Pemain Lain",
+    "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
+    "compactTabList": "Daftar Tab Padat",
+    "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
+    "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
+    "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
+    "healingCircleOpacity": "Opasitas Healing Circle",
+    "chromaSize": "Ukuran Kroma",
+    "chromaSaturation": "Saturasi Kroma",
+    "chromaBrightness": "Kecerahan Kroma",
+    "useNewChromaEffect": "Pakai Efek Kroma Baru",
+    "showExperimentationTableTooltips": "Perlihatkan Tooltips Experimentation Table",
+    "drillFuelBar": "Bar Bahan Bakar Drill",
+    "drillFuelNumber": "Jumlah Bahan Bakar Drill",
+    "fetchurToday": "Perlihatkan Apa yang Fetchur Inginkan Hari Ini",
+    "fishingParticleOverlay": "Overlay Partikel Pancingan",
+    "enchantmentLoreParsing": "Uraikan Tooltip Enchants",
+    "cooldownPrediction": "Prediksi dan Percepat Cooldown",
+    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendaris Monkey",
+    "biggerWake": "Perbesar Partikel Overlay",
+    "stackingEnchantProgress": "Perlihatkan Kemajuan Enchant yang Bertingkat",
+    "showReforgeOverlay": "Perlihatkan Overlay Reforge",
+    "reforgeFilter": "Filter Reforge",
+    "hideEnchantDescription": "Sembunyikan Deskripsi Enchant",
+    "trevorTheTrapper": {
+      "title": "Fitur-Fitur Trevor the Trapper",
+      "trackedEntityProximityIndicator": "Perlihatkan Indikator Proksimitas Entity yang Dilacak",
+      "highlightTrackedEntity": "Soroti Entity yang Dilacak",
+      "showQuestCooldown": "Perlihatkan Cooldown Quest Trevor",
+      "showQuestCooldownDescription": "Ini akan ditampilkan diatas kepala Trevor"
+    },
+    "showEnderChestPreview": "Perlihatkan isi Ender Chest",
+    "hideWhenNotDoingQuest": "Sembunyikan Saat Tidak Melakukan Quest",
+    "showOverflowManaNumber": "Jumlah Overflow Mana",
+    "axeCooldownIndicator": "Indikator Cooldown Kapak",
+    "vanillaHealthPrediction": "Pakai Prediksi Health Vanilla",
+    "entityOutlines": "Perlihatkan Garis Luar Entity",
+    "effectiveHealthNumber": "Jumlah Health Effective",
+    "guiScaleX": "Skala GUI X: %scale%",
+    "guiScaleY": "Skala GUI Y: %scale%",
+    "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
+  },
+  "messages": {
+    "enchants": "Enchants",
+    "reforges": "Reforges",
+    "dropConfirmation": "Jatuhkan benda ini lagi untuk konfirmasi!",
+    "magmaBossWarning": "Boss Magma Cube!",
+    "fullInventory": "Inventory Penuh!",
+    "labymod": "Pengguna Labymod: Sembunyikan Bar Makanan, Armor, dan Nyawa tidak dapat dipakai.",
+    "minionCannotReach": "Sebuah %type% minion tidak dapat meraih dan telah berhenti bekerja!",
+    "minionIsFull": "Sebuah Minion Di Pulau Anda Penuh!",
+    "typeEnchantmentsHere": "Ketik %type% Disini!",
+    "separateMultiple": "Pisahkan Jenis Dengan Koma.",
+    "enchantsToMatch": "%type% Untuk Mencocokkan:",
+    "enchantsToExclude": "%type% Untuk Mengecualikan:",
+    "updateChecker": {
+      "wantToViewPatchNotes": "Butuh Bantuan Atau Mau Baca Changelog Penuh?",
+      "joinDiscord": "Gabung Discord server kami!",
+      "watchShowcase": "Tonton Video",
+      "downloadButton": "Unduh",
+      "openModFolderButton": "Buka Folder Mods",
+      "joinDiscordButton": "Gabung Discord",
+      "newUpdateAvailable": "Versi terbaru (%version%) telah tersedia!",
+      "noDownloadAvailable": "Tidak ada tautan download yang tersedia, mohon cek Discord server kami.",
+      "notificationBox": {
+        "majorAvailable": "Sebuah update besar (%version%) telah hadir! Tautan untuk mengunduh dapat ditemukan di chat.",
+        "betaAvailable": "Sebuah update beta baru (%version%) telah hadir! lihat di chat untuk tautan download.",
+        "patchAvailable": "Sebuah update patch (%version%) telah hadir! Lihat di chat untuk opsi-opsi mengunduh!"
+      }
+    },
+    "slotLocked": "Slot Ini Terkunci!",
+    "summoningEyeFound": "Summoning Eye!",
+    "cancelledDropping": "Sebuah fitur telah mencegah anda dari menjatuhkan benda \"langka\" dari hotbar anda.",
+    "clickMoreTimes": "Klik/turunkan benda %times% kali jika anda yakin ingin melakukan ini.",
+    "clickOneMoreTime": "Klik/turunkan benda 1 kali lagi jika anda yakin ingin melakukan ini.",
+    "featureDisabled": "Fitur dinonaktifkan",
+    "anvilUses": "Penggunaan Anvil: %uses%",
+    "specialZealotFound": "Zealot Spesial!",
+    "blockIncompletePatterns": "Cegah pola pembuatan tidak selesai (direkomendasikan)",
+    "searchFeatures": "Cari Fitur",
+    "downloadingUpdateFile": "Mengunduh berkas pembaruan...",
+    "onlyFewArrowsLeft": "Hanya %arrows% panah tersisa!",
+    "noArrowsLeft": "Anak Panah Habis!",
+    "chooseAColor": "Pilih Sebuah Warna",
+    "selectedColor": "Warna Terpilih",
+    "setHexColor": "Atur Warna Hex",
+    "rescaleFeatures": "Atur Ulang Skala Fitur",
+    "resizeBars": "Ubah Ukuran Bar",
+    "showColorIcons": "Perlihatkan Ikon Warna",
+    "enableFeatureSnapping": "Perbolehkan Jepret Fitur",
+    "stage": "Tahap %stage%",
+    "switchedSlots": "Anda baru saja mengubah dari slot terkunci atau benda langka. Harap tunggu sebentar sebelum menjatuhkan!",
+    "clickToOpenLink": "Klik Untuk Membuka Link Ini!",
+    "clickToOpenFolder": "Klik untuk membuka folder mod Anda!",
+    "firstStatus": "Status ini akan muncul di atas",
+    "secondStatus": "Status ini akan muncul dibawah status pertama Anda",
+    "fallbackStatus": "Status ini akan muncul saat status otomatis anda tidak memiliki apapun untuk ditunjukkan",
+    "legendarySeaCreatureWarning": "Tangkapan Legendaris!",
+    "bossApproaching": "Anda sangat dekat untuk memunculkan sebuah boss!",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Item Fetchur Berganti!",
+    "enableAll": "Aktifkan Semua",
+    "disableAll": "Nonaktifkan Semua",
+    "enchantmentInclusionExample": "contoh \"prot, feather\"",
+    "enchantmentExclusionExample": "contoh \"proj, blast\"",
+    "reforgeInclusionExample": "contoh \"godly, strong\"",
+    "reforgeExclusionExample": "contoh \"odd, clean\"",
+    "actionsLeft": "%number% Tersisa",
+    "effectActive": "1 Efek Aktif",
+    "effectsActive": "%number% Efek Aktif",
+    "none": "Tidak Ada",
+    "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
+    "chroma": "Kroma",
+    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF"
+  },
+  "discordStatus": {
+    "titleNone": "Tidak Ada",
+    "descriptionNone": "Tidak ada teks ditampilkan",
+    "titleLocation": "Lokasi",
+    "descriptionLocation": "Menunjukkan Lokasi Anda Saat Ini",
+    "titlePurse": "Purse",
+    "descriptionPurse": "Menunjukkan coins yang terdapat di purse anda",
+    "titleStats": "Stats",
+    "descriptionStats": "Menunjukkan Stat HP, Defense dan Mana",
+    "titleZealots": "Zealots",
+    "descriptionZealots": "Menunjukkan Zealot Counter anda",
+    "titleItem": "Benda Dipegang",
+    "descriptionItem": "Menunjukkan nama benda yang sedang anda pegang",
+    "titleProfile": "Profil",
+    "descriptionProfile": "Menunjukkan nama Profil anda",
+    "titleTime": "Waktu Skyblock",
+    "descriptionTime": "Menunjukkan Skyblock time saat ini. Contoh 12:00am 1st Early Winter",
+    "titleCustom": "Status Kustom",
+    "descriptionCustom": "Masukkan Status Kustom",
+    "titleAuto": "Status Otomatis",
+    "descriptionAuto": "Tamplikan Status Secara Otomatis. Misalnya Jumlah Counter Zealot Anda \nSelama Di The End.",
+    "titleRevenants": "Quest Revenant",
+    "descriptionRevenants": "Memperlihatkan anda sedang melakukan sebuah Quest Revenant.",
+    "titleSvens": "Quest Sven",
+    "descriptionSvens": "Memperlihatkan anda sedang melakukan sebuah Quest Sven.",
+    "titleTarantula": "Quest Tarantula",
+    "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula."
+  },
+  "enchantLayout": {
+    "title": "Kontrol bagaimana enchants ditampilkan di tooltip benda",
+    "titleCompress": "Kompres",
+    "descriptionCompress": "Mengompres enchant-enchant menjadi sesedikit baris yang mungkin",
+    "titleNormal": "Normal",
+    "descriptionNormal": "Menampilkan enchant-enchant seperti yang dilakukan Hypixel",
+    "titleExpand": "Perluas",
+    "descriptionExpand": "Mendaftarkan tiap enchant di barisnya sendiri"
+  },
+  "commandUsage": {
+    "sba": {
+      "base": {
+        "help": "Buka menu utama"
+      },
+      "brand": {
+        "help": "§e(Dev) §7Perlihatkan merek server",
+        "brandOutput": "Merek Server: %brand%",
+        "notFound": "Merek server tidak ditemukan!"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7Salin data tentang blok yang anda sedang lihat"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
+        "detailedHelp": {
+          "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
+          "options": {
+            "entityNames": "Nama-nama tipe entity yang anda ingin menyalin datanya (contoh Player,Creeper). Tekan \"Tab\" setelah mengetik command untuk list yang penuh. Pisahkan nama-nama dengan koma, nama-nama kepekaan kapital.",
+            "radius": "Radius (dalam blok) sekitar player untuk menyalin data dari entity NBT"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7Salin teks scoreboard",
+        "detailedHelp": {
+          "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
+          "options": {
+            "formatted": "Menentukan jika kode format harus di masukkan saat menyalin. Bisa menjadi \"benar\" atau \"salah\", biasanya menjadi \"salah\" jika tidak ada nilai yang diberikan. Kode format disalin jika \"benar\"."
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7Salin list tab header dan footer",
+        "detailedHelp": {
+          "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
+        }
+      },
+      "dev": {
+        "help": "Aktif/nonaktifkan mode developer",
+        "detailedHelp": {
+          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod & alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
+        },
+        "disabled": "Mode Developer dinonaktifkan!",
+        "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!"
+      },
+      "edit": {
+        "help": "Edit Lokasi GUI"
+      },
+      "folder": {
+        "help": "Buka folder mod anda",
+        "error": "Sebuah error terjadi ketika ingin membuka folder mod: %s"
+      },
+      "help": {
+        "help": "Perlihatkan pesan pembantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
+        "detailedHelp": {
+          "options": {
+            "command": "sub-command untuk mendapat penggunaan lebih detil"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7Mencetak hitungan yang disimpan di counter-counter kematian dungeon untuk tujuan debugging."
+      },
+      "reload": {
+        "help": "§e(Dev) §7Memuat ulang semua pengaturan dan bahan-bahan. Game akan beku untuk beberapa detik."
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7Memuat ulang pengaturan-pengaturan mod"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7Memuat ulang bahan-bahan mod. Game akan beku untuk beberapa detik."
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "Mengatur hitungan zealot secara manual",
+          "detailedHelp": {
+            "description": "Mengatur hitungan di zealot counter secara manual.",
+            "options": {
+              "eyes": "Summoning eyes yang didapatkan seumur hidup",
+              "totalZealots": "Zealot terbunuh seumur hidup",
+              "zealots": "Zealot yang dibunuh sejak jatuhnya summoning eye terakhir"
+            }
+          },
+          "eyesSet": "Jadikan hitungan total summoning eye menjadi %number%!",
+          "totalZealotsSet": "Jadikan hitungan total zealot menjadi %number%!",
+          "wrongUsage": "Pilihan tidak valid! Mohon pilih %options%.",
+          "zealotsSet": "Jadikan hitungan zealot menjadi %number%!"
+        }
+      },
+      "slayer": {
+        "help": "Atur stat Slayer secara manual, tekan tab untuk arguments",
+        "detailedHelp": {
+          "description": "Atur stat Slayer secara manual, tekan tab untuk arguments",
+          "options": {
+            "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
+            "number": "Angka untuk mengubah stat",
+            "stat": "Stat slayer yang ingin diubah, dapat menjadi \"kills\" atau nama benda yang dijatuhkan dengan format: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "Anda perlu memilih sebuah boss! Mohon pilih %bosses%",
+        "statRequired": "Anda perlu memilih stat. Tekan tab untuk opsi-opsi.",
+        "numberRequired": "Anda perlu menambahkan angka yang anda inginkan.",
+        "killsSet": "Kills untuk slayer %boss% diubah menjadi %number%.",
+        "statSet": "Statistik %stat% untuk slayer %boss% telah diubah menjadi %number%.",
+        "invalidBoss": "\"%input%\" bukan sebuah statistik valid!",
+        "invalidStat": "\"%input%\" bukan sebuah boss valid!"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7Aktif/nonaktifkan mencatat pesan-pesan log bar aksi",
+        "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
+        "enabled": "Pesan-pesan bar aksi akan dicatat."
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "Penggunaan Salah!",
+          "subCommandNotFound": "Sub-command \"%sub-command%\" tidak dapat ditemukan."
+        }
+      }
+    }
+  },
+  "keyBindings": {
+    "developerCopyNBT": "Salin NBT"
+  },
+  "dragonTracker": {
+    "protector": "Protector",
+    "old": "Old",
+    "wise": "Wise",
+    "unstable": "Unstable",
+    "young": "Young",
+    "strong": "Strong",
+    "superior": "Superior",
+    "recentDragons": "Naga-Naga terakhir:",
+    "dragonsSince": "Naga-Naga Sejak:",
+    "aspectOfTheDragons": "AOTD",
+    "enderDragonPet": "Dragon Pet",
+    "eyesPlaced": "Eyes Ditaruh",
+    "never": "Tidak Pernah"
+  },
+  "slayerTracker": {
+    "revenant": "Revenant Horror:",
+    "tarantula": "Tarantula Broodfather:",
+    "sven": "Sven Packmaster:",
+    "voidgloom": "Voidgloom Seraph:",
+    "bossesKilled": "Boss-Boss Terbunuh"
+  },
+  "warpMenu": {
+    "click": "Klik sebuah titik warp untuk mengunjunginya!",
+    "mustUnlock": "Harus mempunyai Scroll spesifik terbuka.",
+    "privateIsland": "Pulau Pribadi",
+    "home": "Pulau Anda",
+    "spawn": "Spawn",
+    "unknown": "Belum Dikunjungi",
+    "notUnlocked": "Belum Terbuka",
+    "inCombat": "Dalam Pertempuran..."
+  },
+  "enchants": {
+    "superTier": "Tingkat Maks",
+    "highTier": "Tingkat Tinggi",
+    "midTier": "Tingkat Tengah",
+    "lowTier": "Tingkat Rendah",
+    "commas": "Koma-Koma",
+    "expertiseKills": "Pembunuhan Expertise",
+    "compactedBlocks": "Blok Compacted",
+    "cultivatedCrops": "Tanaman Cultivated",
+    "maxed": "Maxed"
+  }
+}

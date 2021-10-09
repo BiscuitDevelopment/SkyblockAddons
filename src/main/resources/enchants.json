@@ -1,0 +1,623 @@
+{
+  "NORMAL": {
+    "aiming": {
+      "loreName": "Aiming",
+      "nbtName": "aiming",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
+    "dragon tracer": {
+      "loreName": "Dragon Tracer",
+      "nbtName": "aiming",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
+    "angler": {
+      "loreName": "Angler",
+      "nbtName": "angler",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "aqua affinity": {
+      "loreName": "Aqua Affinity",
+      "nbtName": "aqua_affinity",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "bane of arthropods": {
+      "loreName": "Bane of Arthropods",
+      "nbtName": "bane_of_arthropods",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "big brain": {
+      "loreName": "Big Brain",
+      "nbtName": "big_brain",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "blast protection": {
+      "loreName": "Blast Protection",
+      "nbtName": "blast_protection",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "blessing": {
+      "loreName": "Blessing",
+      "nbtName": "blessing",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
+    "caster": {
+      "loreName": "Caster",
+      "nbtName": "caster",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "chance": {
+      "loreName": "Chance",
+      "nbtName": "chance",
+      "goodLevel": 3,
+      "maxLevel": 5
+    },
+    "cleave": {
+      "loreName": "Cleave",
+      "nbtName": "cleave",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "counter-strike": {
+      "loreName": "Counter-Strike",
+      "nbtName": "counter_strike",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "critical": {
+      "loreName": "Critical",
+      "nbtName": "critical",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "cubism": {
+      "loreName": "Cubism",
+      "nbtName": "cubism",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "delicate": {
+      "loreName": "Delicate",
+      "nbtName": "delicate",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "depth strider": {
+      "loreName": "Depth Strider",
+      "nbtName": "depth_strider",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
+    "dragon hunter": {
+      "loreName": "Dragon Hunter",
+      "nbtName": "dragon_hunter",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "efficiency": {
+      "loreName": "Efficiency",
+      "nbtName": "efficiency",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
+    "ender slayer": {
+      "loreName": "Ender Slayer",
+      "nbtName": "ender_slayer",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "execute": {
+      "loreName": "Execute",
+      "nbtName": "execute",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "experience": {
+      "loreName": "Experience",
+      "nbtName": "experience",
+      "goodLevel": 3,
+      "maxLevel": 4
+    },
+    "feather falling": {
+      "loreName": "Feather Falling",
+      "nbtName": "feather_falling",
+      "goodLevel": 5,
+      "maxLevel": 10
+    },
+    "fire aspect": {
+      "loreName": "Fire Aspect",
+      "nbtName": "fire_aspect",
+      "goodLevel": 2,
+      "maxLevel": 2
+    },
+    "fire protection": {
+      "loreName": "Fire Protection",
+      "nbtName": "fire_protection",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "first strike": {
+      "loreName": "First Strike",
+      "nbtName": "first_strike",
+      "goodLevel": 4,
+      "maxLevel": 5
+    },
+    "flame": {
+      "loreName": "Flame",
+      "nbtName": "flame",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "fortune": {
+      "loreName": "Fortune",
+      "nbtName": "fortune",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
+    "frail": {
+      "loreName": "Frail",
+      "nbtName": "frail",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "frost walker": {
+      "loreName": "Frost Walker",
+      "nbtName": "frost_walker",
+      "goodLevel": 2,
+      "maxLevel": 2
+    },
+    "giant killer": {
+      "loreName": "Giant Killer",
+      "nbtName": "giant_killer",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "growth": {
+      "loreName": "Growth",
+      "nbtName": "growth",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "harvesting": {
+      "loreName": "Harvesting",
+      "nbtName": "harvesting",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "impaling": {
+      "loreName": "Impaling",
+      "nbtName": "impaling",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
+    "infinite quiver": {
+      "loreName": "Infinite Quiver",
+      "nbtName": "infinite_quiver",
+      "goodLevel": 5,
+      "maxLevel": 10
+    },
+    "knockback": {
+      "loreName": "Knockback",
+      "nbtName": "knockback",
+      "goodLevel": 2,
+      "maxLevel": 2
+    },
+    "lethality": {
+      "loreName": "Lethality",
+      "nbtName": "lethality",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "life steal": {
+      "loreName": "Life Steal",
+      "nbtName": "life_steal",
+      "goodLevel": 3,
+      "maxLevel": 5
+    },
+    "looting": {
+      "loreName": "Looting",
+      "nbtName": "looting",
+      "goodLevel": 3,
+      "maxLevel": 5
+    },
+    "luck": {
+      "loreName": "Luck",
+      "nbtName": "luck",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "luck of the sea": {
+      "loreName": "Luck Of The Sea",
+      "nbtName": "luck_of_the_sea",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "lure": {
+      "loreName": "Lure",
+      "nbtName": "lure",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "magnet": {
+      "loreName": "Magnet",
+      "nbtName": "magnet",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "mana steal": {
+      "loreName": "Mana Steal",
+      "nbtName": "mana_steal",
+      "goodLevel": 0,
+      "maxLevel": 3
+    },
+    "overload": {
+      "loreName": "Overload",
+      "nbtName": "overload",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "piercing": {
+      "loreName": "Piercing",
+      "nbtName": "piercing",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "power": {
+      "loreName": "Power",
+      "nbtName": "power",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "projectile protection": {
+      "loreName": "Projectile Protection",
+      "nbtName": "projectile_protection",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "prosecute": {
+      "loreName": "Prosecute",
+      "nbtName": "PROSECUTE",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "protection": {
+      "loreName": "Protection",
+      "nbtName": "protection",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "punch": {
+      "loreName": "Punch",
+      "nbtName": "punch",
+      "goodLevel": 2,
+      "maxLevel": 2
+    },
+    "rainbow": {
+      "loreName": "Rainbow",
+      "nbtName": "rainbow",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "rejuvenate": {
+      "loreName": "Rejuvenate",
+      "nbtName": "rejuvenate",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "replenish": {
+      "loreName": "Replenish",
+      "nbtName": "replenish",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "respiration": {
+      "loreName": "Respiration",
+      "nbtName": "respiration",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
+    "respite": {
+      "loreName": "Respite",
+      "nbtName": "respite",
+      "goodLevel": 5,
+      "maxLevel": 5
+    },
+    "scavenger": {
+      "loreName": "Scavenger",
+      "nbtName": "scavenger",
+      "goodLevel": 3,
+      "maxLevel": 5
+    },
+    "sharpness": {
+      "loreName": "Sharpness",
+      "nbtName": "sharpness",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "silk touch": {
+      "loreName": "Silk Touch",
+      "nbtName": "silk_touch",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "smarty pants": {
+      "loreName": "Smarty Pants",
+      "nbtName": "smarty_pants",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "smelting touch": {
+      "loreName": "Smelting Touch",
+      "nbtName": "smelting_touch",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "smite": {
+      "loreName": "Smite",
+      "nbtName": "smite",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "snipe": {
+      "loreName": "Snipe",
+      "nbtName": "snipe",
+      "goodLevel": 3,
+      "maxLevel": 4
+    },
+    "spiked hook": {
+      "loreName": "Spiked Hook",
+      "nbtName": "spiked_hook",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "sugar rush": {
+      "loreName": "Sugar Rush",
+      "nbtName": "sugar_rush",
+      "goodLevel": 0,
+      "maxLevel": 3
+    },
+    "syphon": {
+      "loreName": "Syphon",
+      "nbtName": "syphon",
+      "goodLevel": 3,
+      "maxLevel": 5
+    },
+    "telekinesis": {
+      "loreName": "Telekinesis",
+      "nbtName": "telekinesis",
+      "goodLevel": 1,
+      "maxLevel": 1
+    },
+    "thorns": {
+      "loreName": "Thorns",
+      "nbtName": "thorns",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
+    "thunderbolt": {
+      "loreName": "Thunderbolt",
+      "nbtName": "thunderbolt",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "thunderlord": {
+      "loreName": "Thunderlord",
+      "nbtName": "thunderlord",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "titan killer": {
+      "loreName": "Titan Killer",
+      "nbtName": "titan_killer",
+      "goodLevel": 5,
+      "maxLevel": 7
+    },
+    "triple-strike": {
+      "loreName": "Triple-Strike",
+      "nbtName": "triple_strike",
+      "goodLevel": 4,
+      "maxLevel": 5
+    },
+    "true protection": {
+      "loreName": "True Protection",
+      "nbtName": "true_protection",
+      "goodLevel": 0,
+      "maxLevel": 1
+    },
+    "turbo-cacti": {
+      "loreName": "Turbo-Cacti",
+      "nbtName": "turbo_cactus",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-cane": {
+      "loreName": "Turbo-Cane",
+      "nbtName": "turbo_cane",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-carrot": {
+      "loreName": "Turbo-Carrot",
+      "nbtName": "turbo_carrot",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-coco": {
+      "loreName": "Turbo-Coco",
+      "nbtName": "turbo_coco",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-melon": {
+      "loreName": "Turbo-Melon",
+      "nbtName": "turbo_melon",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-mushrooms": {
+      "loreName": "Turbo-Mushrooms",
+      "nbtName": "turbo_mushrooms",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-potato": {
+      "loreName": "Turbo-Potato",
+      "nbtName": "turbo_potato",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-pumpkin": {
+      "loreName": "Turbo-Pumpkin",
+      "nbtName": "turbo_pumpkin",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-warts": {
+      "loreName": "Turbo-Warts",
+      "nbtName": "turbo_warts",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "turbo-wheat": {
+      "loreName": "Turbo-Wheat",
+      "nbtName": "turbo_wheat",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "vampirism": {
+      "loreName": "Vampirism",
+      "nbtName": "vampirism",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "venomous": {
+      "loreName": "Venomous",
+      "nbtName": "venomous",
+      "goodLevel": 5,
+      "maxLevel": 6
+    },
+    "vicious": {
+      "loreName": "Vicious",
+      "nbtName": "vicious",
+      "goodLevel": 0,
+      "maxLevel": 5
+    }
+  },
+  "ULTIMATE": {
+    "bank": {
+      "loreName": "Bank",
+      "nbtName": "ultimate_bank",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "chimera": {
+      "loreName": "Chimera",
+      "nbtName": "ultimate_chimera",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "combo": {
+      "loreName": "Combo",
+      "nbtName": "ultimate_combo",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "last stand": {
+      "loreName": "Last Stand",
+      "nbtName": "ultimate_last_stand",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "ultimate jerry": {
+      "loreName": "Ultimate Jerry",
+      "nbtName": "ultimate_jerry",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "legion": {
+      "loreName": "Legion",
+      "nbtName": "ultimate_legion",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "no pain no gain": {
+      "loreName": "No Pain No Gain",
+      "nbtName": "ultimate_no_pain_no_gain",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "one for all": {
+      "loreName": "One For All",
+      "nbtName": "ultimate_one_for_all",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "rend": {
+      "loreName": "Rend",
+      "nbtName": "ultimate_rend",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "soul eater": {
+      "loreName": "Soul Eater",
+      "nbtName": "ultimate_soul_eater",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "swarm": {
+      "loreName": "Swarm",
+      "nbtName": "ultimate_swarm",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "ultimate wise": {
+      "loreName": "Ultimate Wise",
+      "nbtName": "ultimate_wise",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "wisdom": {
+      "loreName": "Wisdom",
+      "nbtName": "ultimate_wisdom",
+      "goodLevel": 0,
+      "maxLevel": 5
+    }
+  },
+  "STACKING": {
+    "compact": {
+      "loreName": "Compact",
+      "nbtName": "compact",
+      "nbtNum": "compact_blocks",
+      "goodLevel": 0,
+      "maxLevel": 10,
+      "statLabel": "compactedBlocks",
+      "stackLevel": [0, 100, 500, 1500, 5000, 15000, 50000, 150000, 500000, 1000000]
+    },
+    "cultivating": {
+      "loreName": "Cultivating",
+      "nbtName": "cultivating",
+      "nbtNum": "farmed_cultivating",
+      "goodLevel": 0,
+      "maxLevel": 10,
+      "statLabel": "cultivatedCrops",
+      "stackLevel": [0, 1000, 5000, 25000, 100000, 300000, 1500000, 5000000, 20000000, 100000000]
+    },
+    "expertise": {
+      "loreName": "Expertise",
+      "nbtName": "expertise",
+      "nbtNum": "expertise_kills",
+      "goodLevel": 0,
+      "maxLevel": 10,
+      "statLabel": "expertiseKills",
+      "stackLevel": [0, 50, 100, 250, 500, 1000, 2500, 5500, 10000, 15000]
+    }
+  }
+}

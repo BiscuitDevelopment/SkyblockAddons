@@ -2,6 +2,8 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.client.renderer.GlStateManager;
@@ -52,21 +54,21 @@ public class ButtonToggle extends ButtonFeature {
             GlStateManager.color(1,1,1,1);
         }
 
-        main.getUtils().bindRGBColor(0xFF1e252e);
+       ColorUtils.bindColor(0xFF1e252e);
         mc.getTextureManager().bindTexture(TOGGLE_BORDER);
-        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         boolean enabled = main.getConfigValues().isEnabled(feature);
         boolean remoteDisabled = main.getConfigValues().isRemoteDisabled(feature);
 
         if (enabled) {
-            main.getUtils().bindColorInts(36, 255, 98, remoteDisabled ? 25 : 255); // Green
+            ColorUtils.bindColor(36, 255, 98, remoteDisabled ? 25 : 255); // Green
         } else {
-            main.getUtils().bindColorInts(222, 68, 76, remoteDisabled ? 25 : 255); // Red
+            ColorUtils.bindColor(222, 68, 76, remoteDisabled ? 25 : 255); // Red
         }
 
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_BACKGROUND);
-        main.getUtils().drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(xPosition, yPosition,0,0,width,height,width,height, true);
 
         int startingX = getStartingPosition(enabled);
         int slideAnimationOffset = 0;
@@ -87,7 +89,7 @@ public class ButtonToggle extends ButtonFeature {
 
         GlStateManager.color(1,1,1,1);
         mc.getTextureManager().bindTexture(TOGGLE_INSIDE_CIRCLE);
-        main.getUtils().drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9, true);
+        DrawUtils.drawModalRectWithCustomSizedTexture(startingX, yPosition+3,0,0,9,9,9,9, true);
     }
 
     private int getStartingPosition(boolean enabled) {
