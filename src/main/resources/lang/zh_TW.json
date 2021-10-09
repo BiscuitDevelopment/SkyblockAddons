@@ -1,4 +1,5 @@
 {
+  "languageText": "語言: ",
   "language": "繁體中文",
   "settings": {
     "settings": "設定",
@@ -13,8 +14,6 @@
     "editLocations": "編輯介面位置",
     "guiScale": "介面大小: %scale%",
     "resetLocations": "重置介面位置",
-    "hideDurability": "隱藏物品耐久度",
-    "showEnchantmentsReforges": "於畫面上顯示附魔 & 重鑄",
     "minionStopWarning": "\"Minion 無法觸及生物\" 警告",
     "hidePlayersNearNPCs": "隱藏重要NPC旁的玩家",
     "backpackStyle": "背包樣式: %style%",
@@ -24,23 +23,21 @@
     },
     "showBackpackPreview": "顯示背包預覽",
     "hideHealthBar": "隱藏血條",
-    "fullMinionWarning": "\"Minion 背包空間已滿\"警告",
-    "ignoreItemFrameClicks": "無視對展示框的點擊",
+    "fullMinionWarning": "\"Minion 背包空間已滿\" 警告",
     "showOnlyWhenHoldingShift": "只在按住Shift時顯示",
     "manaBar": "魔力計量條",
-    "manaText": "魔力文字",
+    "manaNumber": "魔力文字",
     "healthBar": "血量計量條",
-    "healthText": "血量文字",
-    "defenceIcon": "防禦力圖標",
-    "defenceText": "防禦力文字",
-    "defencePercentage": "防禦力百分比",
+    "healthNumber": "血量文字",
+    "defenseIcon": "防禦力圖標",
+    "defenseNumber": "防禦力文字",
+    "defensePercentage": "防禦力百分比",
     "healthUpdates": "血量起伏",
     "hidePlayersInLobby": "在大廳隱藏較遠的實體",
     "darkAuctionTimer": "黑市計時器",
     "magmaBossTimer": "Magma Boss 計時器",
     "itemPickupLog": "物品進出背包通知",
     "avoidPlacingEnchantedItems": "防止放置附魔物品",
-    "avoidBreakingStems": "防止破壞西瓜, 南瓜梗",
     "stopBowChargeFromResetting": "弓箭在命中生物後不需要重新裝填",
     "preventMovementOnDeath": "防止死亡後進行移動",
     "showItemAnvilUses": "顯示物品鐵砧使用次數",
@@ -61,26 +58,21 @@
     "dontOpenProfileWithBow": "拿弓時不開啟玩家資料",
     "stopDroppingSellingRareItems": "避免賣出或丟出稀有等級以上的物品",
     "makeBackpackInventoriesColored": "染色背包影響物品欄顏色",
-    "avoidBreakingBottomSugarCane": "避免破壞位於底部的甘蔗",
     "replaceRomanNumeralsWithNumbers": "將羅馬數字替換為阿拉伯數字",
     "changeBarColorForPotions": "在凋零或中毒時改變計量條顏色",
     "craftingPatterns": "選擇合成格式",
     "soundIndicatorForFishing": "釣魚聲音提示",
     "avoidBlinkingNightVision": "取消夜視藥水閃爍",
-    "disableMinionLocationWarning": "取消Minion位置不完美警告",
-    "jungleAxeCooldown": "禁止在Jungle Axe/Treecapitator冷卻期間使用",
-    "organizeLongEnchantmentLists": "整理長附魔名稱列表",
+    "disableMinionLocationWarning": "取消 Minion 位置不完美警告",
     "showItemCooldowns": "顯示物品冷卻",
     "speedPercentage": "速度百分比",
     "collectionDisplay": "技能進度顯示",
-    "onlyMineOresDeepCaverns": "在Deep Caverns中只能挖掘礦物",
-    "onlyMineValuablesNether": "只在地獄中挖掘有價值的方塊",
     "revenantIndicator": "Slayer 裝備進度條",
     "specialZealotAlert": "特殊 Zealot 警報",
     "enableMessageWhenActionPrevented": "當一個動作被阻止時顯示訊息",
     "hidePetHealthBar": "隱藏寵物血條",
-    "powerOrbDisplay": "顯示Power Orb",
-    "powerOrbDisplayStyle": "Power Orb樣式: %style%",
+    "powerOrbDisplay": "顯示 Power Orb",
+    "powerOrbDisplayStyle": "Power Orb 樣式: %style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "精簡"
@@ -97,8 +89,8 @@
     "showCakeBagPreview": "顯示蛋糕袋預覽",
     "showBackpackPreviewInAH": "在競標開啟時顯示你背包物品的預覽",
     "enableDevFeatures": "啟用開發者模式",
-    "chromaSpeed": "變色速度",
-    "chromaMode": "變色模式",
+    "chromaSpeed": "漸變色速度",
+    "chromaMode": "漸變色模式",
     "chromaModes": {
       "allTheSame": "全顏色相同",
       "fade": "顏色淡入淡出"
@@ -116,10 +108,11 @@
     "discordRP": "豐富Discord狀態",
     "endstoneProtectorDisplay": "顯示終界石守護者",
     "fancyWarpMenu": "精緻傳送介面",
+    "stopRatSounds": "消除 Rat Pet 聲音",
+    "onlyStopRatSqueak": "只消除 Rat 吱吱聲",
     "doubleWarp": "雙重傳送",
     "advancedMode": "進階模式",
     "legendarySeaCreatureWarning": "傳說釣魚怪物警報",
-    "onlyBreakLogsPark": "只在Park破壞樹木",
     "bossApproachAlert": "Slayer Boss 逼近警報",
     "disableTeleportPadMessages": "消除傳送平台訊息",
     "baitListDisplay": "手持釣竿時顯示魚餌列表",
@@ -128,14 +121,18 @@
     "zealotCounterExplosiveBow": "Zealot 計數器 Explosive Bow 支援",
     "disableEndermanTeleportation": "取消終界使者傳送",
     "changeZealotColor": "更改 Zealot 顏色",
-    "hideSvenPupNametags": "隱藏Sven Pup 名稱",
-    "turnAllFeaturesChroma": "套用淡出淡入於所有功能",
+    "hideSvenPupNametags": "隱藏 Sven Pup 名稱",
+    "turnAllFeaturesChroma": "套用漸變色於所有功能",
     "dungeonMapDisplay": "Dungeon 地圖顯示",
     "rotateMap": "旋轉地圖至玩家方向",
-    "centerRotationOnYourPlayer": "使旋轉中心圍繞玩家",
+    "centerRotationOnYourPlayer": "以玩家位置為中心旋轉",
+    "showFetchurOnlyInDwarven": "只在 Dwarven Mines 顯示 Fetchur 提示",
+    "showFetchurItemName": "顯示 Fetchur 物品名稱",
+    "showFetchurInventoryOpenOnly": "只在物品欄打開時顯示 Fetchur 物品",
+    "warnWhenFetchurChanges": "在 Fetchur 物品更換時警告我",
     "mapZoom": "放大地圖",
     "glowingDroppedItems": "螢光掉落物",
-    "glowingDungeonTeammates": "Dungeon 隊友發光",
+    "outlineDungeonTeammates": "Dungeon 隊友外框",
     "baseStatBoostPercentage": "顯示 Dungeon 物品的基礎屬性加成",
     "colorByRarity": "按稀有度上色",
     "showPlayerHeadsOnMap": "於 Dungeon 地圖顯示玩家頭部",
@@ -144,25 +141,22 @@
     "showGlowingItemsOnIsland": "在玩家島嶼上使物品發光",
     "showItemDungeonFloor": "顯示 Dungeon Items 獲取樓層",
     "showDungeonMilestone": "顯示 Dungeon 里程碑",
-    "dungeonsCollectedEssencesDisplay": "顯示 Dungeon 已收集精華",
+    "dungeonsCollectedEssencesDisplay": "顯示 Dungeons 已收集精華",
     "stopBonzoStaffSounds": "靜音 Bonzo's Staff",
     "showRarityUpgraded": "顯示物品稀有度是否被升級",
     "revenantSlayerTracker": "Slayer 追蹤器－Revemamt/Zombie",
     "tarantulaSlayerTracker": "Slayer 追蹤器－Tarantula/Spider",
     "svenSlayerTracker": "Slayer 追蹤器－Sven/Wolf",
+    "voidgloomSlayerTracker": "Slayer 追蹤器－Voidgloom/Enderman",
     "textMode": "文字模式",
     "dragonsNestOnly": "只在 Dragon's Nest 顯示",
     "dragonStatsTracker": "終界龍追蹤器",
     "skillActionsLeftUntilNextLevel": "顯示到下個等級剩餘的動作",
-    "hideWhenNotInCrypts": "於不位於 Crypts / 非進行 Revenant 任務時隱藏",
-    "hideWhenNotInSpidersDen": "於不位於 Spider's Den / 非進行 Tarantula 任務時隱藏",
-    "hideWhenNotInCastle": "於不位於 Castle / 非進行 Sven 任務時隱藏",
     "dungeonDeathCounter": "Dungeon 死亡計數器",
     "showPersonalCompactorPreview": "顯示 Personal Compactor 預覽",
     "rockPetTracker": "Rock 寵物追蹤器",
     "dolphinPetTracker": "Dolphin 寵物追蹤器",
-    "dungeonsTeammateNameOverlay": "Dungeon 隊友名稱顯示",
-    "showExpertiseKills": "顯示 Expertise 擊殺數",
+    "dungeonsTeammateNameOverlay": "Dungeons 隊友名稱顯示",
     "dungeonsSecretsDisplay": "Dungeons Secrets 顯示",
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
     "showSkillXPGained": "顯示獲取的經驗值",
@@ -171,8 +165,47 @@
     "disableMortMessages": "隱藏 Mort 對話",
     "disableBossMessages": "隱藏 Boss 對話",
     "hideOtherPlayersPresents": "隱藏其他玩家的禮物",
-    "easierPresentOpening": "更容易地打開禮物",
-    "showSwordKills": "顯示使用此劍的擊殺數"
+    "showSwordKills": "顯示使用此劍的擊殺數",
+    "compactTabList": "簡化 Tab 列表",
+    "highlightSpecialEnchantments": "標註特殊附魔",
+    "hideMenuGlassPanes": "隱藏選單玻璃物品信息",
+    "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
+    "healingCircleOpacity": "Healing Circle 不透明度",
+    "chromaSize": "漸變色尺寸",
+    "chromaSaturation": "漸變色飽和度",
+    "chromaBrightness": "漸變色亮度",
+    "useNewChromaEffect": "使用新版漸變效果",
+    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品信息",
+    "drillFuelBar": "Drill 燃料計量條",
+    "drillFuelNumber": "Drill 燃料值",
+    "fetchurToday": "顯示 Fetchur 今日物品",
+    "fishingParticleOverlay": "釣魚粒子提示",
+    "enchantmentLoreParsing": "解析附魔信息",
+    "cooldownPrediction": "預測並縮短冷卻時間",
+    "legendaryMonkeyLevel100": "[TEMP] 等級 100 傳說 Monkey",
+    "biggerWake": "放大提示粒子",
+    "stackingEnchantProgress": "顯示疊加附魔進度",
+    "showReforgeOverlay": "顯示 Reforge 提示",
+    "reforgeFilter": "Reforge 過濾",
+    "hideEnchantDescription": "隱藏附魔描述",
+    "trevorTheTrapper": {
+      "title": "Trevor the Trapper 功能",
+      "trackedEntityProximityIndicator": "顯示已追蹤實體接近指標",
+      "highlightTrackedEntity": "標註已追蹤實體",
+      "showQuestCooldown": "顯示 Trevor 任務冷卻",
+      "showQuestCooldownDescription": "這將會顯示在 Trevor 的頭上方"
+    },
+    "showEnderChestPreview": "顯示終界箱預覽",
+    "hideWhenNotDoingQuest": "非進行任務時隱藏",
+    "showOverflowManaNumber": "溢出 Mana 數",
+    "axeCooldownIndicator": "斧頭冷卻時間提示",
+    "vanillaHealthPrediction": "使用原版血量預測",
+    "entityOutlines": "顯示生物外框",
+    "effectiveHealthNumber": "有效血量數",
+    "guiScaleX": "介面X方位大小: %scale%",
+    "guiScaleY": "介面Y方位大小: %scale%",
+    "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
+    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "附魔",
@@ -187,24 +220,26 @@
     "separateMultiple": "使用逗號分隔。",
     "enchantsToMatch": "區配%type%:",
     "enchantsToExclude": "排斥%type%:",
-    "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
-    "downloadLink": "影片/更新連結",
-    "directDownload": "直接下載連結",
-    "openModFolder": "打開模組資料夾",
-    "joinTheDiscord": "Discord連結",
-    "newUpdateAvailable": "有一個可用更新！ (%version%)",
-    "update": {
-      "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
-      "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+    "updateChecker": {
+      "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
+      "joinDiscord": "加入我們的 Discord 伺服器！",
+      "watchShowcase": "觀看影片",
+      "downloadButton": "下載",
+      "openModFolderButton": "開啟模組資料夾",
+      "joinDiscordButton": "加入 Discord",
+      "newUpdateAvailable": "有一個可用更新！ (%version%)",
+      "noDownloadAvailable": "無可用的下載連結，請查看我們的 Discord 伺服器。",
+      "notificationBox": {
+        "majorAvailable": "有一個可用的大型更新！ (%version%) 聊天室中可見下載連結。",
+        "betaAvailable": "有一個可用的測試版更新！ (%version%) 聊天室中有下載連結！",
+        "patchAvailable": "有一個可用的補丁更新！ (%version%) 聊天室中有下載選項！"
+      }
     },
     "slotLocked": "此欄位已被鎖定！",
     "summoningEyeFound": "Summoning Eye!",
-    "cancelledStemBreak": "一個功能阻止了你破壞這個梗, 如確實想破壞, 請使用空手",
-    "cancelledProfileOpening": "一個功能阻止了你拿著弓打開其他玩家的資料。",
-    "cancelledDropping": "一個功能阻止了你丟出快捷欄中稀有等級以上的物品。",
+    "cancelledDropping": "一個功能阻止了你丟出工具欄中的 「稀有」物品。",
     "clickMoreTimes": "如果你真的想這麼做，請再點擊或按丟出 %times% 次。",
     "clickOneMoreTime": "如果你真的想這麼做，請再點擊或按丟出 1 次。",
-    "cancelledDeepCaverns": "一個功能阻止了你挖掘此方塊。",
     "featureDisabled": "功能已被停用",
     "anvilUses": "鐵砧使用次數: %uses%",
     "specialZealotFound": "特殊 Zealot！",
@@ -228,8 +263,9 @@
     "secondStatus": "這個狀態將會顯示在第一個狀態下",
     "fallbackStatus": "這個狀態將會在自動狀態沒有東西顯示時出現",
     "legendarySeaCreatureWarning": "傳說一釣！",
-    "cancelledPark": "一個功能阻止了你破壞此方塊。",
     "bossApproaching": "Boss 即將生成！",
+    "fetchurItem": "Fetchur: %item%",
+    "fetchurWarning": "Fetchur 物品已改變！",
     "enableAll": "啟用全部",
     "disableAll": "停用全部",
     "enchantmentInclusionExample": "\"prot, feather\"",
@@ -238,7 +274,12 @@
     "reforgeExclusionExample": "例：\"odd, clean\"",
     "actionsLeft": "剩餘 %number%",
     "effectActive": "已激活 1 個效果",
-    "effectsActive": "已激活 %number% 個效果"
+    "effectsActive": "已激活 %number% 個效果",
+    "none": "無",
+    "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
+    "chroma": "漸變色",
+    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
+    "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -268,54 +309,135 @@
     "titleTarantula": "Tarantula 任務",
     "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
   },
+  "enchantLayout": {
+    "title": "控制附魔如何顯示在物品信息",
+    "titleCompress": "壓縮",
+    "descriptionCompress": "盡可能壓縮附魔至最少行",
+    "titleNormal": "正常",
+    "descriptionNormal": "以 Hypixel 方式顯示附魔",
+    "titleExpand": "展開",
+    "descriptionExpand": "顯示各個附魔自為一行"
+  },
   "commandUsage": {
-    "sba": "開啟主選單",
-    "sba.brand": "§e(Dev) §7顯示伺服器核心名稱",
-    "sba.brand.brandOutput": "伺服端: %brand%",
-    "sba.brand.notFound": "未發現伺服端！",
-    "sba.copyEntity": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱的 NBT 資料",
-    "sba.copySidebar": "§e(Dev) §7複製記分板的文字",
-    "sba.copyTabList": "§e(Dev) §7複製玩家列表頭尾",
-    "sba.dev": "開關開發者模式",
-    "sba.dev.disabled": "開發者模式已禁用！",
-    "sba.dev.enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
-    "sba.edit": "編輯 GUI 位置",
-    "sba.folder": "開啟模組資料夾",
-    "sba.folder.error": "嘗試打開模組資料夾時出錯: %s",
-    "sba.help": "顯示幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
-    "sba.help.copyEntity": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
-    "sba.help.copyEntity.entityNames": "你想要複製資料的實體種類名稱(例：Player、Creeper)。 輸入指令後按 \"Tab\" 以獲得完整清單。使用逗號分隔多個名稱，名稱有區分大小寫。",
-    "sba.help.copyEntity.radius": "玩家附近進行複製實體 NBT 資料的距離(以方塊計算)",
-    "sba.help.copySidebar.formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。",
-    "sba.help.copyTabList": "這個指令複製玩家列表的頭尾。包含顏色代碼",
-    "sba.help.dev": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。",
-    "sba.help.help.command": "要獲得詳細用法的子命令",
-    "sba.help.set.zealotCounter": "手動設置 Zealot 計數器的數字。",
-    "sba.help.set.zealotCounter.eyes": "總共獲得多少 Summoning eye",
-    "sba.help.set.zealotCounter.totalZealots": "總共擊殺多少 Zealots",
-    "sba.help.set.zealotCounter.zealots": "自上一次 Summoning eye 掉落後擊殺了多少 Zealots",
-    "sba.help.slayer": "手動設置 Slayer 數值，按 Tab 以獲得參數",
-    "sba.help.slayer.boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
-    "sba.help.slayer.number": "數值要設定成的數字",
-    "sba.help.slayer.stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列: \"REVENANT_FLESH\"",
-    "sba.set.zealotCounter": "手動設置 Zealot 計數器",
-    "sba.set.zealotCounter.eyes": "設定總 Summoning Eye 數至 %number%！",
-    "sba.set.zealotCounter.totalZealots": "設定總 Zealot 數至 %number%！",
-    "sba.set.zealotCounter.wrongUsage": "無效的選項！請選擇 %options%。",
-    "sba.set.zealotCounter.zealots": "設定當前 Zealot 數至 %number%！",
-    "sba.slayer": "手動設置 Slayer 數值，按 Tab 以獲得參數",
-    "sba.slayer.bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
-    "sba.slayer.statRequired": "你需要選擇一個數值。按 Tab 以查看選項",
-    "sba.slayer.numberRequired": "你需要添加你想要的數字",
-    "sba.slayer.killsSet": "Slayer %boss% 擊殺數已設定為 %number%",
-    "sba.slayer.statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%",
-    "sba.slayer.invalidBoss": "\"%input%\" 不是有效的統計數據！",
-    "sba.slayer.invalidStat": "\"%input%\" 不是有效的 Boss！",
-    "sba.toggleActionBarLogging": "§e(Dev) §7切換是否紀錄動作列訊息",
-    "sba.toggleActionBarLogging.disabled": "動作列訊息將不再被記錄。",
-    "sba.toggleActionBarLogging.enabled": "動作列訊息現在會開始記錄。",
-    "sba.wrongUsage.generic": "錯誤的用法！",
-    "sba.wrongUsage.subCommandNotFound": "查無子命令 \"%sub-command%\"。"
+    "sba": {
+      "base": {
+        "help": "開啟主選單"
+      },
+      "brand": {
+        "help": "§e(Dev) §7顯示伺服器核心名稱",
+        "brandOutput": "伺服端: %brand%",
+        "notFound": "未發現伺服端！"
+      },
+      "copyBlock": {
+        "help": "§e(Dev) §7複製面朝方塊的資料"
+      },
+      "copyEntity": {
+        "help": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
+        "detailedHelp": {
+          "description": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
+          "options": {
+            "entityNames": "你想要複製資料的實體種類名稱(例：Player、Creeper)。 輸入指令後按 \"Tab\" 以獲得完整清單。使用逗號分隔多個名稱，名稱有區分大小寫。",
+            "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
+          }
+        }
+      },
+      "copySidebar": {
+        "help": "§e(Dev) §7複製記分板的文字",
+        "detailedHelp": {
+          "description": "複製側邊記分板內的文字",
+          "options": {
+            "formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。"
+          }
+        }
+      },
+      "copyTabList": {
+        "help": "§e(Dev) §7複製玩家列表頭尾",
+        "detailedHelp": {
+          "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
+        }
+      },
+      "dev": {
+        "help": "開關開發者模式",
+        "detailedHelp": {
+          "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
+        },
+        "disabled": "開發者模式已禁用！",
+        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
+      },
+      "edit": {
+        "help": "編輯介面位置"
+      },
+      "folder": {
+        "help": "開啟模組資料夾",
+        "error": "嘗試打開模組資料夾時出錯: %s"
+      },
+      "help": {
+        "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
+        "detailedHelp": {
+          "options": {
+            "command": "要獲得詳細用法的子命令"
+          }
+        }
+      },
+      "printDeaths": {
+        "help": "§e(Dev) §7印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
+      },
+      "reload": {
+        "help": "§e(Dev) §7重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
+      },
+      "reloadConfig": {
+        "help": "§e(Dev) §7重新載入模組設定"
+      },
+      "reloadRes": {
+        "help": "§e(Dev) §7重新載入模組資源。遊戲可能會凍結一段時間。"
+      },
+      "set": {
+        "zealotCounter": {
+          "help": "手動設置 Zealot 計數器",
+          "detailedHelp": {
+            "description": "手動設置 Zealot 計數器的數字。",
+            "options": {
+              "eyes": "總共獲得多少 Summoning eye",
+              "totalZealots": "總共擊殺多少 Zealots",
+              "zealots": "自上一次 Summoning Eye 掉落後擊殺了多少 Zealots"
+            }
+          },
+          "eyesSet": "設定總 Summoning Eye 數至 %number%！",
+          "totalZealotsSet": "設定總 Zealot 數至 %number%！",
+          "wrongUsage": "無效的選項！請選擇 %options%。",
+          "zealotsSet": "設定當前 Zealot 數至 %number%！"
+        }
+      },
+      "slayer": {
+        "help": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+        "detailedHelp": {
+          "description": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+          "options": {
+            "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+            "number": "數值要設定成的數字",
+            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列: \"REVENANT_FLESH\""
+          }
+        },
+        "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
+        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項",
+        "numberRequired": "你需要添加你想要的數字",
+        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%",
+        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%",
+        "invalidBoss": "\"%input%\" 不是有效的統計數據！",
+        "invalidStat": "\"%input%\" 不是有效的 Boss！"
+      },
+      "toggleActionBarLogging": {
+        "help": "§e(Dev) §7切換是否紀錄動作列訊息",
+        "disabled": "動作列訊息將不再被記錄。",
+        "enabled": "動作列訊息現在會開始記錄。"
+      },
+      "errors": {
+        "wrongUsage": {
+          "generic": "錯誤的用法！",
+          "subCommandNotFound": "查無子命令 \"%sub-command%\"。"
+        }
+      }
+    }
   },
   "keyBindings": {
     "developerCopyNBT": "複製 NBT"
@@ -337,33 +459,30 @@
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
-    "revenantFlesh": "Revenant Flesh",
-    "foulFlesh": "Foul Flesh",
-    "pestilenceRune": "Pestilence Rune",
-    "undeadCatalyst": "Undead Catalyst",
-    "smiteSix": "Smite 6",
-    "beheadedHorror": "Beheaded Horror",
-    "revenantCatalyst": "Revenant Catalyst",
-    "snakeRune": "Snake Rune",
-    "scytheBlade": "Scythe Blade",
     "tarantula": "Tarantula Broodfather:",
-    "tarantulaWeb": "Tarantula Web",
-    "toxicArrowPoison": "Toxic Arrow Poison",
-    "spiderCatalyst": "Spider Catalyst",
-    "baneOfArthropodsSix": "Bane Of Arthropods 6",
-    "biteRune": "Bite Rune",
-    "flySwatter": "Fly Swatter",
-    "tarantulaTalisman": "Tarantula Talisman",
-    "digestedMosquito": "Digested Mosquito",
     "sven": "Sven Packmaster:",
-    "wolfTooth": "Wolf Tooth",
-    "hamsterWheel": "Hamster Wheel",
-    "spiritRune": "Spirit Rune",
-    "criticalSix": "Critical 6",
-    "grizzlyBait": "Grizzly Bait",
-    "redClawEgg": "Red Claw Egg",
-    "overfluxCapacitor": "Overflux Capacitor",
-    "coutureRune": "Couture Rune",
+    "voidgloom": "Voidgloom Seraph:",
     "bossesKilled": "已殺死 Boss"
+  },
+  "warpMenu": {
+    "click": "點擊一個傳送點以傳送！",
+    "mustUnlock": "必須已解鎖該地的 Scroll",
+    "privateIsland": "私人島嶼",
+    "home": "你的島嶼",
+    "spawn": "重生點",
+    "unknown": "尚未探索",
+    "notUnlocked": "尚未解鎖",
+    "inCombat": "戰鬥中..."
+  },
+  "enchants": {
+    "superTier": "最高級",
+    "highTier": "高級",
+    "midTier": "中級",
+    "lowTier": "低級",
+    "commas": "逗號",
+    "expertiseKills": "Expertise 擊殺數",
+    "compactedBlocks": "Compact 方塊數",
+    "cultivatedCrops": "Cultivate 作物數",
+    "maxed": "已達上限"
   }
 }

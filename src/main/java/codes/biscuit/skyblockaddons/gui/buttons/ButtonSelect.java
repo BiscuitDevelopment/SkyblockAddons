@@ -14,8 +14,8 @@ import java.util.List;
  */
 public class ButtonSelect extends GuiButton {
 
-    private static ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "gui/flatarrowleft.png");
-    private static ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "gui/flatarrowright.png");
+    private static final ResourceLocation ARROW_LEFT = new ResourceLocation("skyblockaddons", "gui/flatarrowleft.png");
+    private static final ResourceLocation ARROW_RIGHT = new ResourceLocation("skyblockaddons", "gui/flatarrowright.png");
 
     /**
      * Item that can be used in this Select button
@@ -47,7 +47,7 @@ public class ButtonSelect extends GuiButton {
     private int index = 0;
 
     private final int textWidth;
-    private OnItemSelectedCallback callback;
+    private final OnItemSelectedCallback callback;
 
     /*
      * Rough sketch of the button
@@ -137,12 +137,14 @@ public class ButtonSelect extends GuiButton {
         if (isOverLeftButton(mouseX, mouseY)) {
             index = index == itemList.size() - 1 ? 0 : index + 1;
             notifyCallback(index);
+            return true;
         }
         if (isOverRightButton(mouseX, mouseY)) {
             index = index == 0 ? itemList.size() - 1 : index - 1;
             notifyCallback(index);
+            return true;
         }
-        return true;
+        return false;
     }
 
     /**

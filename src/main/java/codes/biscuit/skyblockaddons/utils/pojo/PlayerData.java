@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 public class PlayerData {
 
-    HypixelLanguage language;
+    private HypixelLanguage language;
 }

@@ -1,9 +1,11 @@
 package codes.biscuit.skyblockaddons.asm.utils;
 
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import lombok.Getter;
 import org.objectweb.asm.Opcodes;
 import org.objectweb.asm.tree.FieldInsnNode;
 
+@Getter
 public enum TransformerField {
 
     // GuiScreen
@@ -30,6 +32,7 @@ public enum TransformerField {
 
     // Minecraft
     mcResourceManager("mcResourceManager", "field_110451_am", "ay", TransformerClass.IReloadableResourceManager.getName()),
+    currentScreen("currentScreen", "field_71462_r", "m", TransformerClass.GuiScreen.getName()),
 
     // FontRenderer
 //    textColor("textColor", "field_78304_r", "q", "I"),
@@ -37,12 +40,19 @@ public enum TransformerField {
     green("green", "field_179186_b", "b", "F"),
     blue("blue", "field_78292_o", "n", "F"),
     alpha("alpha", "field_78305_q", "p", "F"),
+    italicStyle("italicStyle", "field_78301_u", "t", "Z"),
 
     // EntityLivingBase
     hurtTime("hurtTime", "field_70737_aN ", "au", "I"),
 
+    // EntityPlayer
+    inventory("inventory", "field_71071_by", "bi", TransformerClass.InventoryPlayer.getName()),
+
     // InventoryPlayer
     currentItem("currentItem", "field_70461_c", "c", "I"),
+    armorInventory("armorInventory", "field_70460_b", "b", "[" + TransformerClass.ItemStack.getName()),
+
+    renderEndNanoTime("renderEndNanoTime", "field_78510_Z", "F", "J")
 
     ;
 

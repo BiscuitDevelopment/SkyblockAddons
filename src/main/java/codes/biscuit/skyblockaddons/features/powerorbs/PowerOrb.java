@@ -11,14 +11,10 @@ import net.minecraft.util.ResourceLocation;
 @Getter
 public enum PowerOrb {
 
-    RADIANT("§aRadiant", 0.01, 0, 0, 0, "radiant"),
-    MANA_FLUX("§9Mana Flux", 0.02, 0.5, 10, 0, "manaflux"),
-    OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, "overflux");
-
-    /**
-     * The orb's effective radius - squared to compare with a squared distance
-     */
-    private static final int RADIUS_SQUARED = 18*18;
+    RADIANT("§aRadiant", 0.01, 0, 0, 0, 18*18, "radiant"),
+    MANA_FLUX("§9Mana Flux", 0.02, 0.5, 10, 0, 18*18, "manaflux"),
+    OVERFLUX("§5Overflux", 0.025, 1, 25, 0.05, 18*18, "overflux"),
+    PLASMAFLUX("§d§lPlasmaflux", 0.03, 1.25, 35, 0.075, 20*20, "plasmaflux");
 
     /**
      * Start of the display name of the actual floating orb entity.
@@ -41,16 +37,21 @@ public enum PowerOrb {
      */
     private double healIncrease;
     /**
+     * The squared range of the orb effects
+     */
+    private int rangeSquared;
+    /**
      * Resource location to the icon used when displaying the orb
      */
     private ResourceLocation resourceLocation;
 
-    PowerOrb(String display, double healthRegen, double manaRegen, int strength, double healIncrease, String resourcePath) {
+    PowerOrb(String display, double healthRegen, double manaRegen, int strength, double healIncrease, int rangeSquared, String resourcePath) {
         this.display = display;
         this.healthRegen = healthRegen;
         this.manaRegen = manaRegen;
         this.strength = strength;
         this.healIncrease = healIncrease;
+        this.rangeSquared = rangeSquared;
         this.resourceLocation = new ResourceLocation("skyblockaddons", "powerorbs/"+resourcePath+".png");
     }
 
@@ -61,7 +62,7 @@ public enum PowerOrb {
      * @return Whether that distance is within radius
      */
     public boolean isInRadius(double distanceSquared) {
-        return distanceSquared <= RADIUS_SQUARED;
+        return distanceSquared <= rangeSquared;
     }
 
     /**

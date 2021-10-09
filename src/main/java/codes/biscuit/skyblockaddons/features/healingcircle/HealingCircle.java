@@ -12,6 +12,7 @@ import java.util.List;
 public class HealingCircle {
 
     public static final float DIAMETER = 12;
+    public static final float RADIUS = 12 / 2F;
 
     private List<HealingCircleParticle> healingCircleParticles = new ArrayList<>();
     private long creation = System.currentTimeMillis();
@@ -52,6 +53,7 @@ public class HealingCircle {
     }
 
     public Point2D.Double getCircleCenter() {
+
         if (cachedCenterPoint != null) {
             return cachedCenterPoint;
         }

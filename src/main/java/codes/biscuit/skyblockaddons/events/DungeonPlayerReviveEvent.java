@@ -6,34 +6,28 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 
 /**
  * This event is fired when a player is revived in Skyblock Dungeons.
+ * It includes the usernames of the revived player and their reviver.
+ * {@code EntityPlayer} instances for both of them are included as well if the players are within the client's render
+ * distance. Otherwise, they will be {@code null}.
  *
  * @see codes.biscuit.skyblockaddons.listeners.PlayerListener#onChatReceive(ClientChatReceivedEvent)
  */
 public class DungeonPlayerReviveEvent extends Event {
+
     /** The player that was revived */
     public final EntityPlayer revivedPlayer;
     /** The player who did the reviving */
-    public final EntityPlayer revivingPlayer;
+    public final EntityPlayer reviverPlayer;
 
     /**
-     * Creates a new instance of {@code DungeonPlayerReviveEvent} with the given revived player and {@code revivingPlayer}
-     * set to {@code null}. This should be used when the reviving player isn't known.
+     * Creates a new instance of {@code DungeonPlayerReviveEvent} with the given usernames of the revived player and
+     * their reviver as well as the {@code EntityPlayer} instances of both.
      *
-     * @param revivedPlayer the player that was revived
+     * @param revivedPlayer The {@code EntityPlayer} instance of the revived player
+     * @param reviverPlayer The {@code EntityPlayer} instance of the reviver
      */
-    public DungeonPlayerReviveEvent(EntityPlayer revivedPlayer) {
+    public DungeonPlayerReviveEvent(EntityPlayer revivedPlayer, EntityPlayer reviverPlayer) {
         this.revivedPlayer = revivedPlayer;
-        revivingPlayer = null;
-    }
-
-    /**
-     * Creates a new instance of {@code DungeonPlayerReviveEvent} with the given revived player and reviving player.
-     *
-     * @param revivedPlayer the player that was revived
-     * @param revivingPlayer the player that revived {@code revivedPlayer}
-     */
-    public DungeonPlayerReviveEvent(EntityPlayer revivedPlayer, EntityPlayer revivingPlayer) {
-        this.revivedPlayer = revivedPlayer;
-        this.revivingPlayer = revivingPlayer;
+        this.reviverPlayer = reviverPlayer;
     }
 }

@@ -1,4 +1,6 @@
+commit_message: New translations for %language%
+append_commit_message: false
 files:
-  - source: src/main/resources/lang/en_us.json
-    translation: /src/main/resources/lang/%locale_with_underscore%.json
-    update_option: update_as_unapproved
+    - source: src/main/resources/lang/en_US.json
+      translation: /src/main/resources/lang/%locale_with_underscore%.json
+      update_option: update_as_unapproved

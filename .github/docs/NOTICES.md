@@ -29,10 +29,12 @@ limitations under the License.
 ## junixsocket
 ```text
 junixsocket
-Unix Domain Sockets for Java + RMI-over-AF_UNIX. 
 
-Copyright (c) 2009-2019 Dr. Christian Kohlschütter
-See https://github.com/kohlschutter/junixsocket for more information.
+Unix Domain Sockets for Java + RMI-over-AF_UNIX.
+
+Copyright (c) 2009,2014 Dr. Christian Kohlschütter
+
+See http://code.google.com/p/junixsocket/ for further information.
 ```
 
 ## Project Lombok

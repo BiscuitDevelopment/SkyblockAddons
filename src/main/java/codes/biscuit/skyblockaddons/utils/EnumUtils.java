@@ -4,10 +4,6 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
 import java.net.URI;
@@ -27,7 +23,8 @@ public class EnumUtils {
         BOTTOM_RIGHT(3),
         BOTTOM_MIDDLE(4);
 
-        @Getter private int id;
+        @Getter
+        private final int id;
 
         AnchorPoint(int id) {
             this.id = id;
@@ -79,7 +76,7 @@ public class EnumUtils {
         GUI(BACKPACK_STYLE_REGULAR),
         BOX(BACKPACK_STYLE_COMPACT);
 
-        private Message message;
+        private final Message message;
 
         BackpackStyle(Message message) {
             this.message = message;
@@ -125,7 +122,7 @@ public class EnumUtils {
         STYLE_ONE(TEXT_STYLE_ONE),
         STYLE_TWO(TEXT_STYLE_TWO);
 
-        private Message message;
+        private final Message message;
 
         TextStyle(Message message) {
             this.message = message;
@@ -153,7 +150,7 @@ public class EnumUtils {
         EXACTLY(""),
         ABOUT("");
 
-        private String symbol;
+        private final String symbol;
 
         MagmaTimerAccuracy(String symbol) {
             this.symbol = symbol;
@@ -171,7 +168,7 @@ public class EnumUtils {
         PING("ping");
 
         // The event name used by InventiveTalent's API
-        private String inventiveTalentEvent;
+        private final String inventiveTalentEvent;
 
         MagmaEvent(String inventiveTalentEvent) {
             this.inventiveTalentEvent = inventiveTalentEvent;
@@ -192,6 +189,8 @@ public class EnumUtils {
     public enum FeatureSetting {
         COLOR(SETTING_CHANGE_COLOR, -1),
         GUI_SCALE(SETTING_GUI_SCALE, -1),
+        GUI_SCALE_X("settings.guiScaleX", -1),
+        GUI_SCALE_Y("settings.guiScaleY", -1),
         ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
         REPEATING(SETTING_REPEATING, -1),
         TEXT_MODE(SETTING_TEXT_MODE, -1),
@@ -213,21 +212,48 @@ public class EnumUtils {
         SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
         SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
         SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL(SETTING_SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL, 115),
-        HIDE_WHEN_NOT_IN_CRYPTS(SETTING_HIDE_WHEN_NOT_IN_CRYPTS, 133),
-        HIDE_WHEN_NOT_IN_SPIDERS_DEN(SETTING_HIDE_WHEN_NOT_IN_SPIDERS_DEN, 134),
-        HIDE_WHEN_NOT_IN_CASTLE(SETTING_HIDE_WHEN_NOT_IN_CASTLE, 135),
-        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 110),
-
+        HIDE_WHEN_NOT_IN_CRYPTS("settings.hideWhenNotDoingQuest", 133),
+        HIDE_WHEN_NOT_IN_SPIDERS_DEN("settings.hideWhenNotDoingQuest", 134),
+        HIDE_WHEN_NOT_IN_CASTLE("settings.hideWhenNotDoingQuest", 135),
+        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 137),
         SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP("settings.showSkillPercentageInstead", 144),
         SHOW_SKILL_XP_GAINED("settings.showSkillXPGained", 145),
         SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
+        HEALING_CIRCLE_OPACITY("settings.healingCircleOpacity", 156),
+        COOLDOWN_PREDICTION("settings.cooldownPrediction", 164),
+        PERFECT_ENCHANT_COLOR("enchants.superTier", 165),
+        GREAT_ENCHANT_COLOR("enchants.highTier", 166),
+        GOOD_ENCHANT_COLOR("enchants.midTier", 167),
+        POOR_ENCHANT_COLOR("enchants.lowTier", 168),
+        COMMA_ENCHANT_COLOR("enchants.commas", 171),
+        LEVEL_100_LEG_MONKEY("settings.legendaryMonkeyLevel100", 169),
+        BIGGER_WAKE("settings.biggerWake", 170),
+        HIGHLIGHT_ENCHANTMENTS("settings.highlightSpecialEnchantments", 153),
+        HIDE_ENCHANTMENT_LORE("settings.hideEnchantDescription", 176),
+        HIDE_GREY_ENCHANTS(Message.SETTING_HIDE_GREY_ENCHANTS, 87),
+        ENCHANT_LAYOUT("enchantLayout.title", 0),
+        TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR("settings.trevorTheTrapper.trackedEntityProximityIndicator", 173),
+        TREVOR_HIGHLIGHT_TRACKED_ENTITY("settings.trevorTheTrapper.highlightTrackedEntity", 174),
+        TREVOR_SHOW_QUEST_COOLDOWN("settings.trevorTheTrapper.showQuestCooldown", 175),
+        SHOW_FETCHUR_ONLY_IN_DWARVENS(SETTING_SHOW_FETCHUR_IN_DWARVEN_ONLY, 179),
+        SHOW_FETCHUR_ITEM_NAME(SETTING_SHOW_FETCHUR_ITEM_NAME, 180),
+        SHOW_FETCHUR_INVENTORY_OPEN_ONLY(SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY, 181),
+        WARN_WHEN_FETCHUR_CHANGES(SETTING_WARN_WHEN_FETCHUR_CHANGES, 182),
+        STOP_ONLY_RAT_SQUEAK(SETTING_STOP_ONLY_RAT_SQUEAK, 184),
+        SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
+        HIDE_WHEN_NOT_IN_END("settings.hideWhenNotDoingQuest", 187),
+        HEALTH_PREDICTION("settings.vanillaHealthPrediction", 194),
+        DUNGEON_PLAYER_GLOW("settings.outlineDungeonTeammates", 103),
+        ITEM_GLOW("settings.glowingDroppedItems", 109),
+        ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
+        OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
         ;
 
         private Message message;
-        private int featureEquivalent;
+        private final int featureEquivalent;
         private String messagePath;
 
         FeatureSetting(Message message, int featureEquivalent) {
@@ -265,36 +291,40 @@ public class EnumUtils {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
         INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
-        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ORGANIZE_ENCHANTMENTS),
+        ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ENCHANTMENT_LORE_PARSING),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
         TOMOCRAFTER("tomocrafter", "github.com/tomocrafter", Feature.AVOID_BLINKING_NIGHT_VISION, Feature.SLAYER_INDICATOR, Feature.NO_ARROWS_LEFT_ALERT, Feature.BOSS_APPROACH_ALERT),
         DAPIGGUY("DaPigGuy", "github.com/DaPigGuy", Feature.MINION_DISABLE_LOCATION_WARNING),
         COMNIEMEER("comniemeer", "github.com/comniemeer", Feature.JUNGLE_AXE_COOLDOWN),
-        KEAGEL("Keagel", "github.com/Keagel", Feature.ONLY_MINE_ORES_DEEP_CAVERNS, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
+        KEAGEL("Keagel", "github.com/Keagel"/*, Feature.ONLY_MINE_ORES_DEEP_CAVERNS*/, Feature.DISABLE_MAGICAL_SOUP_MESSAGES),
         SUPERHIZE("SuperHiZe", "github.com/superhize", Feature.SPECIAL_ZEALOT_ALERT),
         DIDI_SKYWALKER("DidiSkywalker", "twitter.com/didiskywalker", Feature.ITEM_PICKUP_LOG, Feature.HEALTH_UPDATES, Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS,
-                Feature.CRAFTING_PATTERNS, Feature.POWER_ORB_STATUS_DISPLAY),
-        GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER),
+                /*Feature.CRAFTING_PATTERNS, */Feature.POWER_ORB_STATUS_DISPLAY),
+        //GARY("GARY_", "github.com/occanowey", Feature.ONLY_MINE_VALUABLES_NETHER)),
         P0KE("P0ke", "p0ke.dev", Feature.ZEALOT_COUNTER),
         BERISAN("Berisan", "github.com/Berisan", Feature.TAB_EFFECT_TIMERS),
         MYNAMEISJEFF("MyNameIsJeff", "github.com/My-Name-Is-Jeff", Feature.SHOW_BROKEN_FRAGMENTS),
         DJTHEREDSTONER("DJtheRedstoner", "github.com/DJtheRedstoner", Feature.LEGENDARY_SEA_CREATURE_WARNING, Feature.HIDE_SVEN_PUP_NAMETAGS),
-        ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
+        //ANTONIO32A("Antonio32A", "github.com/Antonio32A", Feature.ONLY_BREAK_LOGS_PARK),
         CHARZARD("Charzard4261", "github.com/Charzard4261", Feature.DISABLE_TELEPORT_PAD_MESSAGES, Feature.BAIT_LIST, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,
-                 Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE,  Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
-                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_EXPERTISE_KILLS,
+                Feature.SHOW_ITEM_DUNGEON_FLOOR, Feature.SHOW_BASE_STAT_BOOST_PERCENTAGE, Feature.SHOW_RARITY_UPGRADED, Feature.REVENANT_SLAYER_TRACKER,
+                Feature.TARANTULA_SLAYER_TRACKER, Feature.SVEN_SLAYER_TRACKER, Feature.DRAGON_STATS_TRACKER, Feature.SHOW_PERSONAL_COMPACTOR_PREVIEW, Feature.SHOW_STACKING_ENCHANT_PROGRESS,
                 Feature.STOP_BONZO_STAFF_SOUNDS, Feature.DISABLE_MORT_MESSAGES, Feature.DISABLE_BOSS_MESSAGES),
         IHDEVELOPER("iHDeveloper", "github.com/iHDeveloper", Feature.SHOW_DUNGEON_MILESTONE, Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY, Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY,
-                Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS),
+                Feature.DUNGEONS_SECRETS_DISPLAY, Feature.SHOW_SALVAGE_ESSENCES_COUNTER, Feature.SHOW_SWORD_KILLS, Feature.ENCHANTMENTS_HIGHLIGHT),
         TIRELESS_TRAVELER("TirelessTraveler", "github.com/ILikePlayingGames", Feature.DUNGEON_DEATH_COUNTER),
         KAASBROODJU("kaasbroodju", "github.com/kaasbroodju", Feature.SKILL_PROGRESS_BAR, Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP, Feature.SHOW_SKILL_XP_GAINED),
-        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS, Feature.EASIER_PRESENT_OPENING),
+        PHOUBE("Phoube", "github.com/Phoube", Feature.HIDE_OTHER_PLAYERS_PRESENTS,
+                Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS/*, Feature.ONLY_MINE_ORES_DWARVEN_MINES*/, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
+                Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE, Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY,
+                Feature.TREVOR_SHOW_QUEST_COOLDOWN),
+        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS),
         IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER);
 
-        private Set<Feature> features;
-        private String author;
-        private String url;
+        private final Set<Feature> features;
+        private final String author;
+        private final String url;
 
         FeatureCredit(String author, String url, Feature... features) {
             this.features = EnumSet.of(features[0], features);
@@ -318,37 +348,6 @@ public class EnumUtils {
         }
     }
 
-    public enum SkillType {
-        FARMING("Farming", Items.golden_hoe),
-        MINING("Mining", Items.diamond_pickaxe),
-        COMBAT("Combat", Items.iron_sword),
-        FORAGING("Foraging", Item.getItemFromBlock(Blocks.sapling)),
-        FISHING("Fishing", Items.fishing_rod),
-        ENCHANTING("Enchanting", Item.getItemFromBlock(Blocks.enchanting_table)),
-        ALCHEMY("Alchemy", Items.brewing_stand),
-        CARPENTRY("Carpentry", Item.getItemFromBlock(Blocks.crafting_table)),
-        RUNECRAFTING("Runecrafting", Items.magma_cream),
-        TAMING("Taming", Items.spawn_egg),
-        DUNGEONEERING("Dungeoneering", Item.getItemFromBlock(Blocks.deadbush));
-
-        private String skillName;
-        @Getter private ItemStack item;
-
-        SkillType(String skillName, Item item) {
-            this.skillName = skillName;
-            this.item = new ItemStack(item);
-        }
-
-        public static SkillType getFromString(String text) {
-            for (SkillType skillType : values()) {
-                if (skillType.skillName != null && skillType.skillName.equals(text)) {
-                    return skillType;
-                }
-            }
-            return null;
-        }
-    }
-
     public enum DrawType {
         SKELETON_BAR,
         BAR,
@@ -362,7 +361,8 @@ public class EnumUtils {
         TAB_EFFECT_TIMERS,
         DUNGEONS_MAP,
         SLAYER_TRACKERS,
-        DRAGON_STATS_TRACKER
+        DRAGON_STATS_TRACKER,
+        PROXIMITY_INDICATOR
     }
 
     @Getter
@@ -372,7 +372,7 @@ public class EnumUtils {
         GITHUB("github", "https://github.com/BiscuitDevelopment/SkyblockAddons"),
         PATREON("patreon", "https://www.patreon.com/biscuitdev");
 
-        private ResourceLocation resourceLocation;
+        private final ResourceLocation resourceLocation;
         private URI url;
 
         Social(String resourcePath, String url) {
@@ -396,7 +396,7 @@ public class EnumUtils {
         ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
         FADE(CHROME_MODE_FADE);
 
-        private Message message;
+        private final Message message;
 
         ChromaMode(Message message) {
             this.message = message;
@@ -420,7 +420,7 @@ public class EnumUtils {
         DETAILS(0),
         STATE(1);
 
-        private int id;
+        private final int id;
 
         DiscordStatusEntry(int id) {
             this.id = id;
@@ -431,9 +431,10 @@ public class EnumUtils {
     public enum SlayerQuest {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
-        SVEN_PACKMASTER("Sven Packmaster");
+        SVEN_PACKMASTER("Sven Packmaster"),
+        VOIDGLOOM_SERAPH("Voidgloom Seraph");
 
-        private String scoreboardName;
+        private final String scoreboardName;
 
         SlayerQuest(String scoreboardName) {
             this.scoreboardName = scoreboardName;

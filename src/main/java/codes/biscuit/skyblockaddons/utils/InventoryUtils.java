@@ -16,6 +16,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
@@ -41,29 +42,43 @@ public class InventoryUtils {
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
     private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
-    public static final String MADDOX_BATPHONE_DISPLAYNAME = "§aMaddox Batphone";
-    public static final String JUNGLE_AXE_DISPLAYNAME = "§aJungle Axe";
-    public static final String TREECAPITATOR_DISPLAYNAME = "§5Treecapitator";
-    public static final String CHICKEN_HEAD_DISPLAYNAME = "§fChicken Head";
+    public static final String MADDOX_BATPHONE_ID = "AATROX_BATPHONE";
+    public static final String JUNGLE_AXE_ID = "JUNGLE_AXE";
+    public static final String TREECAPITATOR_ID = "TREECAPITATOR_AXE";
+    public static final String CHICKEN_HEAD_ID = "CHICKEN_HEAD";
+    public static final HashSet<String> BAT_PERSON_SET_IDS = new HashSet<>(Arrays.asList("BAT_PERSON_BOOTS", "BAT_PERSON_LEGGINGS", "BAT_PERSON_CHESTPLATE", "BAT_PERSON_HELMET"));
+    public static final String GRAPPLING_HOOK_ID = "GRAPPLING_HOOK";
 
     private static final Pattern REVENANT_UPGRADE_PATTERN = Pattern.compile("Next Upgrade: \\+([0-9]+❈) \\(([0-9,]+)/([0-9,]+)\\)");
 
     private List<ItemStack> previousInventory;
-    private Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
+    private final Multimap<String, ItemDiff> itemPickupLog = ArrayListMultimap.create();
 
     @Setter
     private boolean inventoryWarningShown;
 
-    /** Whether the player is wearing a Skeleton Helmet. */
-    @Getter private boolean wearingSkeletonHelmet;
+    /**
+     * Whether the player is wearing a Skeleton Helmet.
+     */
+    @Getter
+    private boolean wearingSkeletonHelmet;
 
-    @Getter private boolean usingToxicArrowPoison;
+    @Getter
+    private boolean usingToxicArrowPoison;
 
-    @Getter private SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
+    @Getter
+    private final SlayerArmorProgress[] slayerArmorProgresses = new SlayerArmorProgress[4];
 
-    @Getter private InventoryType inventoryType;
+    @Getter
+    private InventoryType inventoryType;
+    @Getter
+    String inventoryKey;
+    @Getter
+    private int inventoryPageNum;
+    @Getter
+    private String inventorySubtype;
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
 
     /**
      * Copies an inventory into a List of copied ItemStacks
@@ -259,7 +274,7 @@ public class InventoryUtils {
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) {
             ItemStack item = p.getEquipmentInSlot(4);
-            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+            if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyblockItemID(item))) {
                 wearingSkeletonHelmet = true;
                 return;
             }
@@ -275,7 +290,7 @@ public class InventoryUtils {
     public void checkIfUsingToxicArrowPoison(EntityPlayerSP p) {
         if (main.getConfigValues().isEnabled(Feature.TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON)) {
             for (ItemStack item : p.inventory.mainInventory) {
-                if (item != null && TOXIC_ARROW_POISON_ID.equals(ItemUtils.getSkyBlockItemID(item))) {
+                if (item != null && TOXIC_ARROW_POISON_ID.equals(ItemUtils.getSkyblockItemID(item))) {
                     this.usingToxicArrowPoison = true;
                     return;
                 }
@@ -305,9 +320,10 @@ public class InventoryUtils {
         if (main.getConfigValues().isEnabled(Feature.SLAYER_INDICATOR)) {
             for (int i = 3; i >= 0; i--) {
                 ItemStack itemStack = p.inventory.armorInventory[i];
-                String itemID = itemStack != null ? ItemUtils.getSkyBlockItemID(itemStack) : null;
+                String itemID = itemStack != null ? ItemUtils.getSkyblockItemID(itemStack) : null;
 
-                if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA"))) {
+                if (itemID != null && (itemID.startsWith("REVENANT") || itemID.startsWith("TARANTULA") ||
+                        itemID.startsWith("FINAL_DESTINATION") || itemID.startsWith("REAPER"))) {
                     String percent = null;
                     String defence = null;
                     List<String> lore = ItemUtils.getItemLore(itemStack);
@@ -345,11 +361,32 @@ public class InventoryUtils {
     }
 
     /**
+     * Returns true iff the player is wearing a full armor set with IDs contained in the given set
+     * @param player the player
+     * @param armorSetIds the given set of armor IDs
+     * @return {@code true} iff all player armor contained in given set, {@code false} otherwise.
+     */
+    public static boolean isWearingFullSet(EntityPlayer player, Set<String> armorSetIds) {
+        boolean flag = true;
+        ItemStack[] armorInventory = player.inventory.armorInventory;
+        for (int i = 0; i < 4; i++) {
+            String itemID = ItemUtils.getSkyblockItemID(armorInventory[i]);
+            if (itemID == null || !armorSetIds.contains(itemID)) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+
+    /**
      * @return Log of recent Inventory changes
      */
     public Collection<ItemDiff> getItemPickupLog() {
         return itemPickupLog.values();
     }
+
+    //TODO: Fix for Hypixel localization
 
     /**
      * Detects and stores, and returns the current Skyblock inventory type. The inventory type is the kind of menu the
@@ -363,24 +400,55 @@ public class InventoryUtils {
         if (!(currentScreen instanceof GuiChest)) {
             return inventoryType = null;
         }
-
+        // Get the open chest and test if it's the same one that we've seen before
         IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
+        if (inventory.getDisplayName() == null) {
+            return inventoryType = null;
+        }
+        String chestName = TextUtils.stripColor(inventory.getDisplayName().getUnformattedText());
 
+        // Initialize inventory to null and get the open chest name
+        inventoryType = null;
 
-        for (InventoryType inventoryType : InventoryType.values()) {
-            if (inventoryType.getInventoryName().equals(inventory.getDisplayName().getUnformattedText())) {
-                if (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                    return this.inventoryType = getReforgeInventoryType(inventoryType, inventory);
-
+        // Find an inventory match if possible
+        for (InventoryType inventoryTypeItr : InventoryType.values()) {
+            Matcher m = inventoryTypeItr.getInventoryPattern().matcher(chestName);
+            if (m.matches()) {
+                if (m.groupCount() > 0) {
+                    try {
+                        inventoryPageNum = Integer.parseInt(m.group("page"));
+                    } catch (Exception e) {
+                        inventoryPageNum = 0;
+                    }
+                    try {
+                        inventorySubtype = m.group("type");
+                    } catch (Exception e) {
+                        inventorySubtype = null;
+                    }
                 } else {
-                    return this.inventoryType = inventoryType;
+                    inventoryPageNum = 0;
+                    inventorySubtype = null;
                 }
+                if (inventoryTypeItr == InventoryType.BASIC_REFORGING || inventoryTypeItr == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+                    inventoryType = getReforgeInventoryType(inventoryTypeItr, inventory);
+                } else {
+                    inventoryType = inventoryTypeItr;
+                }
+                break;
             }
         }
-
-        return this.inventoryType = null;
+        inventoryKey = getInventoryKey(inventoryType, inventoryPageNum);
+        return inventoryType;
     }
 
+    private String getInventoryKey(InventoryType inventoryType, int inventoryPageNum) {
+        if (inventoryType == null) {
+            return null;
+        }
+        return inventoryType.getInventoryName() + inventoryPageNum;
+    }
+
+    // TODO: Fix for Hypixel localization
     // Gets the reforge inventory type from a given reforge inventory
     private InventoryType getReforgeInventoryType(InventoryType baseType, IInventory inventory) {
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.

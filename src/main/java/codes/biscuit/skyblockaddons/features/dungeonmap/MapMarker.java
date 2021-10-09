@@ -30,6 +30,7 @@ public class MapMarker {
         } else {
             iconType = 3;
         }
+        updateXZRot(player);
     }
 
     public MapMarker(byte iconType, float x, float z, float rotation) {
@@ -52,32 +53,9 @@ public class MapMarker {
         return null;
     }
 
-    public float getX() {
-        EntityPlayer player = getPlayer();
-        if (player != null) {
-            float playerMarkerX = ((float) player.posX - main.getRenderListener().getMapStartX()) / 1.5F;
-            return x = (playerMarkerX - 64.0F) * 2.0F;
-        } else {
-            return x;
-        }
-    }
-
-    public float getZ() {
-        EntityPlayer player = getPlayer();
-        if (player != null) {
-            float playerMarkerZ = ((float) player.posZ - main.getRenderListener().getMapStartZ()) / 1.5F;
-            return z = (playerMarkerZ - 64.0F) * 2.0F;
-        } else {
-            return z;
-        }
-    }
-
-    public float getRotation() {
-        EntityPlayer player = getPlayer();
-        if (player != null) {
-            return rotation = MathHelper.wrapAngleTo180_float(player.rotationYaw) / 360F * 16F;
-        } else {
-            return rotation;
-        }
+    public void updateXZRot(EntityPlayer player) {
+        x = (((float) player.posX - DungeonMapManager.getMapStartX()) / 1.5F - 64.0F) * 2.0F;
+        z = (((float) player.posZ - DungeonMapManager.getMapStartZ()) / 1.5F - 64.0F) * 2.0F;
+        rotation = MathHelper.wrapAngleTo180_float(player.rotationYaw) / 360F * 16F;
     }
 }

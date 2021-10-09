@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.utils;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import org.apache.commons.lang3.StringUtils;
 
 import java.awt.*;
@@ -31,7 +30,8 @@ public enum ColorCode {
 	STRIKETHROUGH('m', true),
 	UNDERLINE('n', true, "underlined"),
 	ITALIC('o', true),
-	RESET('r');
+	RESET('r'),
+	CHROMA('z', 0xFFFFFE);
 
 	public static final char COLOR_CHAR = '\u00a7';
 	private char code;
@@ -65,15 +65,15 @@ public enum ColorCode {
 		this.isFormat = isFormat;
 		this.jsonName = jsonName;
 		this.toString = new String(new char[] { COLOR_CHAR, code });
-		this.color = rgb;
+		this.color = (255 << 24) | (rgb & 0x00FFFFFF);
 	}
 
-    /**
-     * Get the color represented by the specified code.
-     *
-     * @param code The code to search for.
-     * @return The mapped color, or null if non exists.
-     */
+	/**
+	 * Get the color represented by the specified code.
+	 *
+	 * @param code The code to search for.
+	 * @return The mapped color, or null if non exists.
+	 */
 	public static ColorCode getByChar(char code) {
 		for (ColorCode color : values()) {
 			if (color.code == code)
@@ -88,11 +88,11 @@ public enum ColorCode {
 	}
 
 	public Color getColorObject() {
-		return new Color(this.color);
+		return new Color(color);
 	}
 
 	public int getColor(int alpha) {
-		return SkyblockAddons.getInstance().getUtils().getColorWithAlpha(this.color, alpha);
+		return ColorUtils.setColorAlpha(color, alpha);
 	}
 
 	public String getJsonName() {
@@ -116,15 +116,17 @@ public enum ColorCode {
 	}
 
 	private ColorCode getNextFormat(int ordinal) {
+		ColorCode[] values = values();
 		int nextColor = ordinal + 1;
 
-		if (nextColor > values().length - 1) {
-			return values()[0];
-		} else if (!values()[nextColor].isColor()) {
+		if (nextColor > values.length - 1) {
+			return values[0];
+
+		} else if (!values[nextColor].isColor()) {
 			return getNextFormat(nextColor);
 		}
 
-		return values()[nextColor];
+		return values[nextColor];
 	}
 
 	@Override

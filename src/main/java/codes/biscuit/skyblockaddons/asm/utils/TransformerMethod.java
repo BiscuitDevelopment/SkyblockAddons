@@ -49,6 +49,8 @@ public enum TransformerMethod {
     // GlStateManager
     color("color", "func_179131_c", "c", "(FFFF)V"),
     drawString("drawString", "func_78276_b", "a", "(Ljava/lang/String;III)I"),
+    depthMask("depthMask", "func_179132_a", "a", "(Z)V"),
+    alphaFunc("alphaFunc", "func_179092_a", "a", "(IF)V"),
 
     // IChatComponent
     getUnformattedText("getUnformattedText", "func_150260_c", "c", "()Ljava/lang/String;"),
@@ -67,6 +69,7 @@ public enum TransformerMethod {
 
     // EntityPlayer
     isPotionActive("isPotionActive", "func_70644_a", "a", "(Lnet/minecraft/potion/Potion;)Z","("+TransformerClass.Potion.getName()+")Z"),
+    setCurrentItemOrArmor("setCurrentItemOrArmor", "func_70062_b", "c", "(ILnet/minecraft/item/ItemStack;)V", "(I" + TransformerClass.ItemStack.getName() + ")V"),
 
     // EntityPlayerSP
     dropOneItem("dropOneItem", "func_71040_bB", "a", "(Z)Lnet/minecraft/entity/item/EntityItem;", "(Z)"+TransformerClass.EntityItem.getName()),
@@ -75,6 +78,7 @@ public enum TransformerMethod {
     // EntityRenderer
     getMouseOver("getMouseOver", "func_78473_a", "a", "(F)V"),
     getNightVisionBrightness("getNightVisionBrightness", "func_180438_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;F)F", "("+TransformerClass.EntityLivingBase.getName()+"F)F"),
+    updateCameraAndRender("updateCameraAndRender", "func_181560_a", "a", "(FJ)V", "(FJ)V"),
 
     // GuiNewChat
     printChatMessageWithOptionalDeletion("printChatMessageWithOptionalDeletion", "func_146234_a", "a", "(Lnet/minecraft/util/IChatComponent;I)V", "("+TransformerClass.IChatComponent.getName()+"I)V"),
@@ -98,6 +102,7 @@ public enum TransformerMethod {
     clickBlock("clickBlock", "func_180511_b", "b", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/util/EnumFacing;)Z", "("+TransformerClass.BlockPos.getName()+TransformerClass.EnumFacing.getName()+")Z"),
     onPlayerDestroyBlock("onPlayerDestroyBlock", "func_178888_a", "a", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/util/EnumFacing;)Z", "("+TransformerClass.BlockPos.getName()+TransformerClass.EnumFacing.getName()+")Z"),
     windowClick("windowClick", "func_78753_a", "a", "(IIIILnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "(IIII"+TransformerClass.EntityPlayer.getName()+")"+TransformerClass.ItemStack.getName()),
+    resetBlockRemoving("resetBlockRemoving", "func_78767_c", "c", "()V", "()V"),
 
     // RendererLivingEntity
     rotateCorpse("rotateCorpse", "func_77043_a", "a", "(Lnet/minecraft/entity/EntityLivingBase;FFF)V", "("+TransformerClass.EntityLivingBase.getName()+"FFF)V"),
@@ -116,6 +121,8 @@ public enum TransformerMethod {
 
     // FontRenderer
     renderChar("renderChar", "func_181559_a", "a", "(CZ)F"),
+    renderStringAtPos("renderStringAtPos", "func_78255_a", "a", "(Ljava/lang/String;Z)V"),
+    resetStyles("resetStyles", "func_78265_b", "e", "()V"),
 
     // EntityLivingBase
     handleStatusUpdate("handleStatusUpdate", "func_70103_a", "a", "(B)V"),
@@ -136,21 +143,39 @@ public enum TransformerMethod {
 
     // RenderGlobal
     isRenderEntityOutlines("isRenderEntityOutlines", "func_174985_d", "d", "()Z"),
-    renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "("+TransformerClass.Entity.getName()+TransformerClass.ICamera.getName()+"F)V"),
+    renderEntities("renderEntities", "func_180446_a", "a", "(Lnet/minecraft/entity/Entity;Lnet/minecraft/client/renderer/culling/ICamera;F)V", "(" + TransformerClass.Entity.getName() + TransformerClass.ICamera.getName() + "F)V"),
     renderEntityOutlineFramebuffer("renderEntityOutlineFramebuffer", "func_174975_c", "c", "()V"),
+    sendBlockBreakProgress("sendBlockBreakProgress", "func_180441_b", "b", "(I" + TransformerClass.BlockPos.getName() + "I)V"),
 
     // TileEntityItemStackRenderer
-    renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "("+TransformerClass.ItemStack.getName()+")V"),
+    renderByItem("renderByItem", "func_179022_a", "a", "(Lnet/minecraft/item/ItemStack;)V", "(" + TransformerClass.ItemStack.getName() + ")V"),
 
     // EffectRenderer
-    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "("+TransformerClass.EntityFX.getName()+")V"),
+    addEffect("addEffect", "func_78873_a", "a", "(Lnet/minecraft/client/particle/EntityFX;)V", "(" + TransformerClass.EntityFX.getName() + ")V"),
+    renderParticles("renderParticles", "func_78874_a", "a", "(" + TransformerClass.Entity.getName() + "F)V"),
 
     // WorldClient
-    onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "("+TransformerClass.Entity.getName()+")V"),
-    ;
+    onEntityRemoved("onEntityRemoved", "func_72847_b", "b", "(Lnet/minecraft/entity/Entity;)V", "(" + TransformerClass.Entity.getName() + ")V"),
+    invalidateRegionAndSetBlock("invalidateRegionAndSetBlock", "func_180503_b", "b", "(Lnet/minecraft/util/BlockPos;Lnet/minecraft/block/state/IBlockState;)Z", "(" + TransformerClass.BlockPos.getName() + TransformerClass.IBlockState.getName() + ")Z"),
 
-    private String name;
-    private String description;
+    // ItemArmor
+    onItemRightClick("onItemRightClick", "func_77659_a", "a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/world/World;Lnet/minecraft/entity/player/EntityPlayer;)Lnet/minecraft/item/ItemStack;", "(" + TransformerClass.ItemStack.getName() + TransformerClass.World.getName() + TransformerClass.EntityPlayer.getName() + ")" + TransformerClass.ItemStack.getName()),
+
+    // BehaviorDefaultDispenseItem
+    dispenseStack("dispenseStack", "func_82487_b", "b", "(Lnet/minecraft/dispenser/IBlockSource;Lnet/minecraft/item/ItemStack;)Lnet/minecraft/item/ItemStack;", "(" + TransformerClass.IBlockSource.getName() + TransformerClass.ItemStack.getName() + ")" + TransformerClass.ItemStack.getName()),
+
+    // Word
+    playAuxSFX("playAuxSFX", "func_175718_b", "b", "(ILnet/minecraft/util/BlockPos;I)V", "(I" + TransformerClass.BlockPos.getName() + "I)V"),
+
+    updateFramebufferSize("updateFramebufferSize", "func_147119_ah", "ay", "()V"),
+
+    draw("draw", "func_181679_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;)V", "(" + TransformerClass.WorldRenderer.getName() + ")V"),
+
+    // EntityFX
+    renderParticle("renderParticle", "func_180434_a", "a", "(Lnet/minecraft/client/renderer/WorldRenderer;Lnet/minecraft/entity/Entity;FFFFFF)V");
+
+    private final String name;
+    private final String description;
     private String[] exceptions = null;
 
     TransformerMethod(String deobfMethod, String seargeMethod, String notchMethod18, String seargeDescription) {

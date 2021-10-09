@@ -42,12 +42,8 @@ public class Translations {
             // Iterate through the string and replace any variables.
             Matcher matcher = VARIABLE_PATTERN.matcher(text);
             Deque<Object> variablesDeque = new ArrayDeque<>(Arrays.asList(variables));
-            while (matcher.find()) {
-                // No variables left... abort!
-                if (variablesDeque.isEmpty()) {
-                    break;
-                }
 
+            while (matcher.find() && !variablesDeque.isEmpty()) {
                 // Replace a variable and re-make the matcher.
                 text = matcher.replaceFirst(Matcher.quoteReplacement(variablesDeque.pollFirst().toString()));
                 matcher = VARIABLE_PATTERN.matcher(text);
@@ -58,7 +54,8 @@ public class Translations {
                     !Minecraft.getMinecraft().fontRendererObj.getBidiFlag()) {
                 text = bidiReorder(text);
             }
-        } catch (NullPointerException ex) {
+        } catch (Exception ex) {
+            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path, ex);
             text = path; // In case of fire...
         }
         return text;
