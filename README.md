@@ -24,9 +24,20 @@
 
 A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better. Always looking for more features to add!
 
+Nopo Gaming
+
+Added
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/453
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/437
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/554 
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/433 (but works with ONLY hype (not the other versions of the sword just /neurename and add Hyperion) not spirit scepter)
+Removed magma boss timer + magma boss(bal) spawn alert cos log spam = bad
+Made me upsidedown cos Pnda__ is cool
+
+
 Special Credits
 -----
-InventiveTalent for allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .
+InventiveTalent for allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ . (L i removed it)
 
 TirelessTraveler (aka ILikePlayingGames) for helping maintain the project.
 
