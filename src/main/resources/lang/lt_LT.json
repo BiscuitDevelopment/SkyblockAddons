@@ -168,7 +168,7 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",

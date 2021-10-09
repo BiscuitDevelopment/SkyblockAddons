@@ -168,7 +168,9 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableSpiritSceptreMessages": "Disable Hyperion Messages",
+    "showSpiritSceptreDisplay":  "Shows cool display saying last damage + mobs hit with hype",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
@@ -205,7 +207,9 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",

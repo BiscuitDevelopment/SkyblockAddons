@@ -174,7 +174,6 @@ public class SkyblockAddons {
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
         usingPatcher = utils.isModLoaded("patcher");
 
-        scheduleMagmaBossCheck();
 
         for (Feature feature : Feature.values()) {
             if (feature.isGuiFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
@@ -199,19 +198,6 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void stop(FMLModDisabledEvent e) {
         discordRPCManager.stop();
-    }
-
-    private void scheduleMagmaBossCheck() {
-        // Loop every 5s until the player is in game, where it will pull once.
-        newScheduler.scheduleRepeatingTask(new SkyblockRunnable() {
-            @Override
-            public void run() {
-                if (Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null) {
-                    utils.fetchMagmaBossEstimate();
-                    cancel();
-                }
-            }
-        }, 20*5, 20*5);
     }
 
     public KeyBinding getOpenSettingsKey() {

@@ -81,7 +81,9 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -106,6 +108,7 @@ public class PlayerListener {
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories in your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
+    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your Implosion hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -166,9 +169,9 @@ public class PlayerListener {
     @Getter
     private final Set<IntPair> recentlyLoadedChunks = new HashSet<>();
 
-    @Getter
-    @Setter
-    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
+    @Getter private int spiritSceptreHitEnemies = 0;
+    @Getter private float spiritSceptreDealtDamage = 0;
+
     @Getter
     @Setter
     private int magmaTime = 0;
@@ -327,6 +330,20 @@ public class PlayerListener {
                     e.setCanceled(true);
 
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
+                    e.setCanceled(true);
+
+                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit")) {
+                    System.out.println(unformattedText);
+                    try {
+                        matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
+                        matcher.find(); // Ensure matcher.group gets what it wants, we don't need the result
+                        this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
+                        this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+
+                    }
+                    catch (java.lang.IllegalStateException matchNotFound){
+                        System.out.printf("Things went south, match not found, original text: %s", unformattedText);
+                    }
                     e.setCanceled(true);
 
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
@@ -789,64 +806,6 @@ public class PlayerListener {
     /**
      * The main timer for the magma boss checker.
      */
-    @SubscribeEvent()
-    public void onClientTickMagma(TickEvent.ClientTickEvent e) {
-        if (e.phase == TickEvent.Phase.START) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
-                if (mc != null && mc.theWorld != null) {
-                    if (magmaTick % 5 == 0) {
-                        boolean foundBoss = false;
-                        long currentTime = System.currentTimeMillis();
-                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
-                            if (entity instanceof EntityMagmaCube) {
-                                EntitySlime magma = (EntitySlime) entity;
-                                if (magma.getSlimeSize() > 10) { // Find a big magma boss
-                                    foundBoss = true;
-                                    if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
-                                        lastBoss = System.currentTimeMillis();
-                                        main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
-                                        magmaTick = 16; // so the sound plays instantly
-                                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-//                                logServer(mc);
-                                    }
-                                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
-                                    if (currentTime - lastBossSpawnPost > 300000) {
-                                        lastBossSpawnPost = currentTime;
-                                        main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
-                                    }
-                                }
-                            }
-                        }
-                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
-                            main.getRenderListener().setTitleFeature(null);
-                        }
-                        if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                            magmaTime = 7200;
-                            if (currentTime - lastBossDeathPost > 300000) {
-                                lastBossDeathPost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
-                            }
-                        }
-                    }
-                    if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                        main.getUtils().playLoudSound("random.orb", 0.5);
-                    }
-                }
-            }
-            magmaTick++;
-            if (magmaTick > 20) {
-                if ((magmaAccuracy == EnumUtils.MagmaTimerAccuracy.EXACTLY || magmaAccuracy == EnumUtils.MagmaTimerAccuracy.ABOUT)
-                        && magmaTime == 0) {
-                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 20);
-                }
-                magmaTime--;
-                magmaTick = 1;
-            }
-        }
-    }
 
     @SubscribeEvent()
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
@@ -908,30 +867,10 @@ public class PlayerListener {
             if (MAGMA_BOSS_SPAWN_AREA.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
-                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
-                        recentMagmaCubes++;
-                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
-                        if (recentMagmaCubes >= 17) {
-                            magmaTime = 600;
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime - lastMagmaWavePost > 300000) {
-                                lastMagmaWavePost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
-                            }
-                        }
-                    }
                 } else if (e.entity instanceof EntityBlaze) {
                     if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
-                        if (recentBlazes >= 10) {
-                            magmaTime = 1200;
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime - lastBlazeWavePost > 300000) {
-                                lastBlazeWavePost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
-                            }
-                        }
                     }
                 }
             }

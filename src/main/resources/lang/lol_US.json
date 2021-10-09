@@ -168,7 +168,7 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Speshul Enchantments",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableEmptyGlassPanes": "Disable Empty Glas Panez",
     "candyPointsCounter": "Spooky Event Candy/Points Countr",
     "healingCircleOpacity": "Healin Circle Opacity",
     "chromaSize": "Chroma Size",
@@ -279,7 +279,7 @@
     "copyModeSet": "Teh developr copy mode haz been set 2: %mode%. Pres \"%keyName%\" 2 triggr data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requirez Shaders, Fast Rendr, an Antialiasin 2 be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "None",

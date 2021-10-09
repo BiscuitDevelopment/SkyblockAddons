@@ -168,7 +168,7 @@
     "showSwordKills": "Näita mõõga tapmisi",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Pane spetsiaalsed loitsud välja paistma",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",

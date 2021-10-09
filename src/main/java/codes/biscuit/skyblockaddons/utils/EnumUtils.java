@@ -143,37 +143,6 @@ public class EnumUtils {
 
     /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
     @Getter
-    public enum MagmaTimerAccuracy {
-        NO_DATA("N/A"),
-        SPAWNED("NOW"),
-        SPAWNED_PREDICTION("NOW"),
-        EXACTLY(""),
-        ABOUT("");
-
-        private final String symbol;
-
-        MagmaTimerAccuracy(String symbol) {
-            this.symbol = symbol;
-        }
-    }
-
-    @Getter
-    public enum MagmaEvent {
-        MAGMA_WAVE("magma"),
-        BLAZE_WAVE("blaze"),
-        BOSS_SPAWN("spawn"),
-        BOSS_DEATH("death"),
-
-        // Not actually an event
-        PING("ping");
-
-        // The event name used by InventiveTalent's API
-        private final String inventiveTalentEvent;
-
-        MagmaEvent(String inventiveTalentEvent) {
-            this.inventiveTalentEvent = inventiveTalentEvent;
-        }
-    }
 
     public enum GuiTab {
         MAIN, GENERAL_SETTINGS
@@ -247,6 +216,7 @@ public class EnumUtils {
         ITEM_GLOW("settings.glowingDroppedItems", 109),
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
+        SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay",202),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -319,7 +289,9 @@ public class EnumUtils {
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS/*, Feature.ONLY_MINE_ORES_DWARVEN_MINES*/, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
                 Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE, Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY,
                 Feature.TREVOR_SHOW_QUEST_COOLDOWN),
-        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS);
+        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS),
+        ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.HIDE_SPAWN_POINT_PLAYERS, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
+        IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER);
 
         private final Set<Feature> features;
         private final String author;

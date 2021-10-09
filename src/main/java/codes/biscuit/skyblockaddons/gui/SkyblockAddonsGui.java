@@ -356,7 +356,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         DrawUtils.drawModalRectWithCustomSizedTexture(scaledResolution.getScaledWidth()/2F-width/2F, 5, 0, 0, width, height, width, height, true);
 
         GlStateManager.color(1,1,1, 1);
-        String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
+        String version = "v1.6.0-nopo by Biscut";
         drawScaledString(gui, version, 55, defaultBlue, 1.3, 170 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(version), false);
 
         if (gui instanceof SkyblockAddonsGui) {

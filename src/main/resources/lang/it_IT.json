@@ -132,7 +132,7 @@
     "warnWhenFetchurChanges": "Avvisami quando l'oggetto di Fetchur cambia",
     "mapZoom": "Zoom della Mappa",
     "glowingDroppedItems": "Illumina gli oggetti a terra",
-    "outlineDungeonTeammates": "Delinea i compagni di Dungeon",
+    "outlineDungeonTeammates": "Outline Dungeon Teammates",
     "baseStatBoostPercentage": "Mostra Stat Boost base per gli oggetti del Dungeon",
     "colorByRarity": "Colora per rarità",
     "showPlayerHeadsOnMap": "Mostra le teste dei giocatori sulla mappa del dungeon",
@@ -168,7 +168,7 @@
     "showSwordKills": "Mostra uccisioni con spada",
     "compactTabList": "Lista giocatori compatta",
     "highlightSpecialEnchantments": "Evidenzia gli incantesimi speciali",
-    "hideMenuGlassPanes": "Nascondi descrizioni nei pannelli di vetro del menu",
+    "disableEmptyGlassPanes": "Disabilita pannelli di vetro vuoti",
     "candyPointsCounter": "Caramelle Spooky Event/Contatore di punti",
     "healingCircleOpacity": "Opacità del circolo di cura",
     "chromaSize": "Dimensione Chroma",
@@ -196,16 +196,16 @@
       "showQuestCooldownDescription": "Sarà visibile sopra la testa di Trevor"
     },
     "showEnderChestPreview": "Mostra anteprima Baule dell'Ender",
-    "hideWhenNotDoingQuest": "Mostra solo durante le missioni",
-    "showOverflowManaNumber": "Numero di Overflow Mana",
-    "axeCooldownIndicator": "Indicatore di attesa per l'ascia",
-    "vanillaHealthPrediction": "Usa la previsione di salute Vanilla",
-    "entityOutlines": "Mostra contorni entità",
-    "effectiveHealthNumber": "Numero di salute effettivo",
-    "guiScaleX": "Scala GUI X: %scale%",
-    "guiScaleY": "Scala GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbrevia denominatore XP di abilità",
-    "otherDefenseStats": "Altri stati di difesa (Soul Tether/Cell Alignment)"
+    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "showOverflowManaNumber": "Overflow Mana Number",
+    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "entityOutlines": "Show Entity Outlines",
+    "effectiveHealthNumber": "Effective Health Number",
+    "guiScaleX": "GUI X Scale: %scale%",
+    "guiScaleY": "GUI Y Scale: %scale%",
+    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -279,7 +279,7 @@
     "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §Tempo di ricarica: %time%s",
-    "entityOutlinesRequirement": "Richiede che Shaders, Rendering Veloce, e Antialiasing siano OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Nessuno",

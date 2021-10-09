@@ -94,16 +94,6 @@ public class Scheduler {
                 }
                 queue.remove(totalTicks);
             }
-            if (totalTicks % 12000 == 0 || delayingMagmaCall) { // check magma boss every 15 minutes
-                if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                    if (main.getUtils().isOnSkyblock()) {
-                        delayingMagmaCall = false;
-                        main.getUtils().fetchMagmaBossEstimate();
-                    } else if (!delayingMagmaCall) {
-                        delayingMagmaCall = true;
-                    }
-                }
-            }
         }
     }
 
@@ -151,11 +141,6 @@ public class Scheduler {
                 playerListener.setRecentMagmaCubes(playerListener.getRecentMagmaCubes()-1);
             } else if (this == SUBTRACT_BLAZE_COUNT) {
                 playerListener.setRecentBlazes(playerListener.getRecentBlazes()-1);
-            } else if (this == RESET_MAGMA_PREDICTION) {
-                if (playerListener.getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION) {
-                    playerListener.setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-                    playerListener.setMagmaTime(7200);
-                }
             } else if (this == DELETE_RECENT_CHUNK) {
                 int x = (int)commandData[0];
                 int z = (int)commandData[1];

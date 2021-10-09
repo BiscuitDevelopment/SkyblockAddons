@@ -360,7 +360,6 @@ public class IslandWarpGui extends GuiScreen {
         }
     }
 
-    //TODO: Maybe change these to load from a file at some point
     @Getter
     public enum Marker {
         PRIVATE_ISLAND("home", Translations.getMessage("warpMenu.home"), Island.PRIVATE_ISLAND, true, 72, 90),

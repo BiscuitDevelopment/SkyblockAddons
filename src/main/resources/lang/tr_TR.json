@@ -32,7 +32,7 @@
     "defenseIcon": "Savunma Sembolü",
     "defenseNumber": "Savunma Sayısı",
     "defensePercentage": "Koruma Yüzdesi",
-    "healthUpdates": "Can Değişikliği Sayısı",
+    "healthUpdates": "Candaki Değişiklikleri Göster",
     "hidePlayersInLobby": "Lobideyken Uzaktaki Varlıkları Gizle",
     "darkAuctionTimer": "Dark Auction Sayacı",
     "magmaBossTimer": "Magma Boss Sayacı",
@@ -168,7 +168,7 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableEmptyGlassPanes": "Boş İnce Camları Devre Dışı Bırak",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
     "chromaSize": "Chroma Ölçüsü",
@@ -279,7 +279,7 @@
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
-    "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
