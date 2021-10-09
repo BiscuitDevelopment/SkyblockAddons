@@ -105,7 +105,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Farge bue grønn når giftig piller brukes",
     "birchParkRainmakerTimer": "Bjørke Park regnlager nedtelling",
     "combatTimerDisplay": "Vis kamp-nedtelling",
-    "discordRP": "Discord rik-tilstedeværelse",
+    "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Endestein beskytter-panel",
     "fancyWarpMenu": "Fancy warp meny",
     "stopRatSounds": "Stop Rat Pet Sounds",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Fortryllinger",

@@ -205,7 +205,8 @@
     "guiScaleX": "Gui szélessége: %scale%",
     "guiScaleY": "Gui magassága: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Varázslatok",

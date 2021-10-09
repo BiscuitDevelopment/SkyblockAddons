@@ -41,8 +41,8 @@
     "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
     "preventMovementOnDeath": "Prevent Walking After Death",
     "showItemAnvilUses": "Show Item Anvil Uses",
-    "lockSlots": "Allow Locking Slots",
-    "lockSlot": "Lock Slot",
+    "lockSlots": "Allow locking biscuit boxes",
+    "lockSlot": "Lock biscuits boxes",
     "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
     "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
@@ -59,7 +59,7 @@
     "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
     "makeBackpackInventoriesColored": "Color Inventories",
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
+    "changeBarColorForPotions": "Change Biscuit Color for Wither & Poison",
     "craftingPatterns": "Choose Crafting Patterns",
     "soundIndicatorForFishing": "Sound Indicator for Fishing",
     "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
@@ -105,7 +105,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Combat Timer Display",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Discord Rich Biscresence",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Crunchy Warp Menu",
     "stopRatSounds": "Stop Rat Pet Sounds",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Bischants",

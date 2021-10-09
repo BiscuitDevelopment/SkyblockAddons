@@ -205,7 +205,8 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
-    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",

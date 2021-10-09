@@ -205,7 +205,8 @@
     "guiScaleX": "Escala de GUI X: %scale%",
     "guiScaleY": "Escala de GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
-    "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Encantamientos",

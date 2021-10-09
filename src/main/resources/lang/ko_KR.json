@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X축 크기:%scale%",
     "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
-    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "인챈트",

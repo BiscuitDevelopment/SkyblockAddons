@@ -205,7 +205,8 @@
     "guiScaleX": "X-schaal interface: %scale%",
     "guiScaleY": "Y-schaal interface: %scale%",
     "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
-    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Betoveringen",

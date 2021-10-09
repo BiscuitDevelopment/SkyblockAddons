@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Мащаб: %scale%",
     "guiScaleY": "GUI Y Мащаб: %scale%",
     "abbreviateSkillXpDenominator": "Съкратяване Знаменателя на Skill XP",
-    "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",

@@ -45,7 +45,7 @@
     "lockSlot": "การล็อคช่อง",
     "dontResetCursorInventory": "เคอร์เซอร์ไม่จัดตำแหน่งใหม่เมื่อเปลี่ยนช่องเก็บของ",
     "summoningEyeAlert": "แจ้งเตือนดวงตาอัญเชิญ",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "เปลี่ยนสี Enderchest เมื่ออยู่ใน The End",
     "changeColor": "เปลี่ยนสี",
     "showInOtherGames": "แสดงเมื่ออยู่ในเกมอื่นๆ",
     "useVanillaTexture": "ใช้ Texture ปกติ",
@@ -139,8 +139,8 @@
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
     "showGlowingItemsOnIsland": "Show Glowing Items On Island",
-    "showItemDungeonFloor": "Show Floor Obtained on Dungeon Items",
-    "showDungeonMilestone": "Show Dungeon Milestone",
+    "showItemDungeonFloor": "แสดงชั้นของ Dungeon ที่ได้รับของ",
+    "showDungeonMilestone": "แสดง Milestones ของ Dungeon",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
     "stopBonzoStaffSounds": "ปิดเสียง Bonzo’s Staff",
     "showRarityUpgraded": "แสดงเมื่อไอเทมถูกอัพเกรด Rarity แล้ว",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",
@@ -301,7 +302,7 @@
     "titleCustom": "สถานะกำหนดเอง",
     "descriptionCustom": "ใส่สถานะกำหนดเอง",
     "titleAuto": "สถานะอัตโนมัติ",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "descriptionAuto": "แสดงสถานะบางอย่างอัตโนมัติ เช่น แสดงจำนวนการฆ่า Zealot ใน The End",
     "titleRevenants": "ภารกิจซอมบี้",
     "descriptionRevenants": "แสดงว่ากำลังทำภารกิจซอมบี้",
     "titleSvens": "ภารกิจหมา",
@@ -450,12 +451,12 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "มังกรล่าสุด:",
+    "dragonsSince": "มังกร ตั้งแต่:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "ดวงตาที่วางแล้ว",
+    "never": "ไม่เคย"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

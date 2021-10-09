@@ -2,9 +2,9 @@
   "languageText": "Speak: ",
   "language": "Pirate English",
   "settings": {
-    "settings": "Settings",
-    "magmaBossWarning": "Magma Boss Warning",
-    "itemDropConfirmation": "Item Drop Confirmation",
+    "settings": "Yer Settin's",
+    "magmaBossWarning": "Magma Boss Warnin'",
+    "itemDropConfirmation": "Drop Yer Items Twice",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
     "hideFoodAndArmor": "Swab Grub n' Armor Bar",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Shorten Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Enchants",

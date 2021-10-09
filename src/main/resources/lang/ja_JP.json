@@ -205,7 +205,8 @@
     "guiScaleX": "GUI Xの大きさ：%scale%",
     "guiScaleY": "GUI Yの大きさ：%scale%",
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
-    "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "エンチャント",

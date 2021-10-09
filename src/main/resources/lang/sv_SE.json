@@ -18,7 +18,7 @@
     "hidePlayersNearNPCs": "Dölj spelare nära viktiga NPC:er",
     "backpackStyle": "Backpack-stil: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "Vanlig",
       "compact": "Kompakt"
     },
     "showBackpackPreview": "Tillåt förhandsvisning av backpack",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X-storlek: %scale%",
     "guiScaleY": "GUI X-storlek: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Förtrollningar",

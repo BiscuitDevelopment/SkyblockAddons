@@ -5,8 +5,8 @@
     "settings": "Asetukset",
     "magmaBossWarning": "Magma Boss -varoitus",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
-    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
+    "hideSkeletonHatBones": "Piilota Skeleton's Helmet -Luut",
+    "skeletonHatBonesBar": "Skeleton's Helmet -luut palkissa",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
     "fullInventoryWarning": "Täysi inventaario -varoitus",
     "repeating": "Toista varoitus",
@@ -51,8 +51,8 @@
     "useVanillaTexture": "Käytä Vanilla-tekstuuria",
     "textStyle": "Tekstin tyyli",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Tyyli yksi",
+      "two": "Tyyli kaksi"
     },
     "warningDuration": "Varoituksen kesto",
     "dontOpenProfileWithBow": "Älä avaa profiileja jousella",
@@ -74,26 +74,26 @@
     "powerOrbDisplay": "Power Orbin näyttäminen",
     "powerOrbDisplayStyle": "Power Orbin Tyyli: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Kompakti"
+      "detailed": "Yksityiskohtainen",
+      "compact": "Tiivis"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Poista Magical Mushroom -keiton viestit",
+    "zealotCounter": "Zealotlaskin - Määrä viime Eye:n jälkeen",
+    "tickerChargesDisplay": "Tikkien/Latausten näyttäminen",
     "tab": {
-      "generalSettings": "General Settings"
+      "generalSettings": "Yleiset asetukset"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Juomien ja lisävoimien ajastimet",
+    "noArrowsLeftAlert": "Nuolia ei jäljellä -varoitus",
+    "hideNightVisionEffectTimer": "Piilota pimeänäkö-tehosteen ajastin",
+    "showCakeBagPreview": "Näytä esikatselu Cake Bagille",
+    "showBackpackPreviewInAH": "Näytä repun esikatselu esineillesi, kun huutokauppa on auki",
+    "enableDevFeatures": "Ota käyttöön kehittäjäominaisuudet",
+    "chromaSpeed": "Väriefektin nopeus",
+    "chromaMode": "Väriefektitila",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Kaikelle sama väri",
+      "fade": "Värin himmennys"
     },
     "chromaFadeWidth": "Värin himmennyksen leveys",
     "sortTabEffectTimers": "Lajittele ajastimet keston mukaan",
@@ -205,13 +205,14 @@
     "guiScaleX": "GUI X-Mittakaava: %scale%",
     "guiScaleY": "GUI Y-Mittakaava: %scale%",
     "abbreviateSkillXpDenominator": "Lyhennä Skill XP nimet",
-    "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)"
+    "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
-    "enchants": "Enchants",
+    "enchants": "Lumoukset",
     "reforges": "Reforges",
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
-    "magmaBossWarning": "Magma Cube Boss!",
+    "magmaBossWarning": "Magmakuutio johtaja!",
     "fullInventory": "Täysi Inventaario!",
     "labymod": "Labymodin käyttäjät: Piilota Ruoka-, Suojaus-, ja Elämäpalkki, ne ovat yhteensopimattomia.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
@@ -235,7 +236,7 @@
         "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
       }
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Tämä lokero on lukittu!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "Ominaisuus on estänyt sinua pudottamasta tämän \"harvinaisen\" esineen tai työkalun hotbaaristasi.",
     "clickMoreTimes": "Klikkaa/pudota tämä esine vielä %times% kertaa jos todella haluat tehdä tämän.",
@@ -282,32 +283,32 @@
     "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
-    "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
-    "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleNone": "Ei mikään",
+    "descriptionNone": "Mitään tekstiä ei näytetä",
+    "titleLocation": "Sijainti",
+    "descriptionLocation": "Näyttää sinun nykyisen sijainnin",
+    "titlePurse": "Kukkaro",
+    "descriptionPurse": "Näytä kukkarossa olevien kolikkojen määrä",
+    "titleStats": "Tilastot",
+    "descriptionStats": "Näytä HP, Defense ja Mana tilastot",
+    "titleZealots": "Zealotit",
+    "descriptionZealots": "Näyttää sinun Zealot laskurin",
+    "titleItem": "Käden esine",
+    "descriptionItem": "Näytä kädessäsi olevan esineen nimen",
+    "titleProfile": "Profiili",
+    "descriptionProfile": "Näyttää profiilinimesi",
+    "titleTime": "Skyblock-aika",
+    "descriptionTime": "Näyttää nykyisen Skyblock ajan. Esim. 12:00am 1st Early Winter",
+    "titleCustom": "Mukautettu tila",
+    "descriptionCustom": "Syötä mukautettu tila",
+    "titleAuto": "Automaattinen tila",
+    "descriptionAuto": "Automaattisesti valitsee tilan. Esim. sinun Zealot määräsi kun olet Endissä.",
+    "titleRevenants": "Revenant-tehtävä",
+    "descriptionRevenants": "Näyttää, että olet tekemässä Revenant-tehtävää.",
+    "titleSvens": "Sven-tehtävä",
+    "descriptionSvens": "Näyttää, että olet tekemässä Sven-tehtävää.",
+    "titleTarantula": "Tarantula-tehtävä",
+    "descriptionTarantula": "Näyttää, että olet tekemässä Tarantula-tehtävää."
   },
   "enchantLayout": {
     "title": "Mukauta esinevihjeiden lumousten ulkonäköä",
@@ -440,7 +441,7 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Kopioi NBT"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -450,12 +451,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Viimeisimmät Lohikäärmeet:",
+    "dragonsSince": "Lohikäärmeitä alkaen:",
     "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Eyeitä asetettu",
+    "never": "Ei koskaan"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

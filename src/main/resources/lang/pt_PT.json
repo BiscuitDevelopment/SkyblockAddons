@@ -56,7 +56,7 @@
     },
     "warningDuration": "Duração do aviso",
     "dontOpenProfileWithBow": "Não abrir perfis com o arco",
-    "stopDroppingSellingRareItems": "Não atirar/vender itens raros",
+    "stopDroppingSellingRareItems": "Não largar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
     "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
@@ -205,12 +205,13 @@
     "guiScaleX": "Escala da GUI no X: %scale%",
     "guiScaleY": "Escala da GUI no Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
-    "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "encantamentos",
     "reforges": "reforges",
-    "dropConfirmation": "Atira este item outra vez para confirmar!",
+    "dropConfirmation": "Larga este item outra vez para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Utilizadores do Laby mod: Esconder a Comida, Armadura e Barra de Vida são incompatíveis.",

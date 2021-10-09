@@ -18,8 +18,8 @@
     "hidePlayersNearNPCs": "Κρύψε Παίχτες Κοντά Σε Σημαντικούς Χαρακτήρες",
     "backpackStyle": "Στυλ Σακιδίου: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "Κανονικό",
+      "compact": "Συμπυκνωμένο"
     },
     "showBackpackPreview": "Εμφάνισε την Προβολή Σακιδίου",
     "hideHealthBar": "Απόκρυψη Κλασικής Μπάρας Ζωής",
@@ -51,8 +51,8 @@
     "useVanillaTexture": "Χρησιμοποίησε την Vanilla εμφάνιση",
     "textStyle": "Στυλ Κειμένου",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Στυλ Ένα",
+      "two": "Στυλ Δύο"
     },
     "warningDuration": "Διάρκεια Προειδοποίησης",
     "dontOpenProfileWithBow": "Μην Ανοίγεις το Προφίλ με Τόξο",
@@ -74,37 +74,37 @@
     "powerOrbDisplay": "Εμφάνιση Power Orb",
     "powerOrbDisplayStyle": "Στυλ σφαίρας δύναμης: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Με Λεπτομέρειες",
+      "compact": "Συμπαγής"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Απενεργοποίηση μηνυμάτων Magical Mushroom Soup",
+    "zealotCounter": "Μετρητής Zealot - Καταμέτρηση από το τελευταίο μάτι",
+    "tickerChargesDisplay": "Οθόνη Ticker / Charges",
     "tab": {
-      "generalSettings": "General Settings"
+      "generalSettings": "Γενικές Ρυθμίσεις"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Χρονόμετρα Potion και Powerup",
+    "noArrowsLeftAlert": "Ειδοποίηση Για Όταν Δεν Έχουν Απομείνει Βέλη",
+    "hideNightVisionEffectTimer": "Κρύψε τον Χρόνο της Νυχτερινής Όρασης",
+    "showCakeBagPreview": "Δείξε την Προεπισκόπηση για το Σακίδιο με τα Κέικ",
+    "showBackpackPreviewInAH": "Εμφάνιση προεπισκόπησης σακιδίου για τα στοιχεία σας ενώ το AH είναι ανοιχτό",
+    "enableDevFeatures": "Ενεργοποίηση λειτουργιών προγραμματιστή",
+    "chromaSpeed": "Ταχύτητα Chroma",
+    "chromaMode": "Λειτουργία πολύχρωμος χρώματος",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Όλα το Ίδιο Χρώμα",
+      "fade": "Ξεθώριασμα χρώματος"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
-    "showBrokenFragments": "Show Broken Dragon Fragments",
-    "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
-    "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
-    "showSummoningEyeCount": "Zealot Counter - Total Eye Count",
-    "showZealotsPerEye": "Zealot Counter - Show Zealots Per Eye",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green When Using Toxic Arrow Poison",
-    "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
-    "combatTimerDisplay": "Combat Timer Display",
+    "chromaFadeWidth": "Πλάτος εξασθένισης Chroma",
+    "sortTabEffectTimers": "Ταξινόμηση χρονομετρητών κατά διάρκεια",
+    "showBrokenFragments": "Εμφάνιση σπασμένων Dragon Fragments",
+    "skyblockAddonsButtonInPauseMenu": "Εμφάνιση Κουμπιού SBA στο Μενού Παύσης",
+    "showTotalZealotCount": "Μετρητής Zealot - Συνολικός αριθμός Zealot",
+    "showSummoningEyeCount": "Μετρητής Zealot - Συνολικός αριθμός ματιών",
+    "showZealotsPerEye": "Μετρητής Zealot - Εμφάνιση Zealots ανά μάτι",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Χρώμα τόξο πράσινο όταν χρησιμοποιείται τοξικό βέλος",
+    "birchParkRainmakerTimer": "Χρονόμετρο Birch Park βροχοποιός",
+    "combatTimerDisplay": "Χρονόμετρο μάχης",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Οθόνη Endstone Protector",
     "fancyWarpMenu": "Φανταστικό Warp μενού",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -235,7 +236,7 @@
         "patchAvailable": "Μία νέα σημαντική ενημέρωση (%version%) είναι διαθέσιμη! Κοιτάξτε το chat για επιλογές εγκατάστασης!"
       }
     },
-    "slotLocked": "This slot is locked!",
+    "slotLocked": "Αυτή η θέση είναι κλειδωμένη!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "Μια λειτουργία σάς εμπόδισε να αποθέσετε αυτό το \"σπάνιο\" αντικείμενο ή εργαλείο από το hotbar σας.",
     "clickMoreTimes": "Κάντε κλικ αυτό το στοιχείο %times% περισσότερες φορές εάν θέλετε πραγματικά να το κάνετε.",
@@ -282,32 +283,32 @@
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
   },
   "discordStatus": {
-    "titleNone": "None",
-    "descriptionNone": "No text is displayed",
-    "titleLocation": "Location",
-    "descriptionLocation": "Shows your current location",
-    "titlePurse": "Purse",
-    "descriptionPurse": "Shows the amount of coins in your purse",
-    "titleStats": "Stats",
-    "descriptionStats": "Shows your HP, Defense and Mana stats",
-    "titleZealots": "Zealots",
-    "descriptionZealots": "Shows your Zealot counter",
-    "titleItem": "Held Item",
-    "descriptionItem": "Shows the name of the item you're holding",
-    "titleProfile": "Profile",
-    "descriptionProfile": "Shows your Profile name",
-    "titleTime": "Skyblock Time",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
-    "titleCustom": "Custom Status",
-    "descriptionCustom": "Enter a custom status",
-    "titleAuto": "Auto Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
-    "titleRevenants": "Revenant Quest",
-    "descriptionRevenants": "Shows that you are doing a Revenant quest.",
-    "titleSvens": "Sven Quest",
-    "descriptionSvens": "Shows that you are doing a Sven quest.",
-    "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "titleNone": "Τίποτα",
+    "descriptionNone": "Δεν εμφανίζεται κείμενο",
+    "titleLocation": "Τοποθεσία",
+    "descriptionLocation": "Δείχνει την τωρινή σου τοποθεσία",
+    "titlePurse": "Πορτοφόλι",
+    "descriptionPurse": "Δείχνει το ποσό των κερμάτων στο πορτοφόλι σας",
+    "titleStats": "Στατιστικά",
+    "descriptionStats": "Εμφανίζει τα στατιστικά σας HP, Defense και Mana",
+    "titleZealots": "Ζηλωτές",
+    "descriptionZealots": "Εμφανίζει την μετρητή Zealot",
+    "titleItem": "Κρατημένο πράγμα",
+    "descriptionItem": "Δείχνει το όνομα του αντικειμένου που κρατάς",
+    "titleProfile": "Προφίλ",
+    "descriptionProfile": "Δείχνει το όνομα του Προφιλ σου",
+    "titleTime": "Ώρα Skyblock",
+    "descriptionTime": "Εμφανίζει την τρέχουσα ώρα Skyblock. Π.χ. 12:00 π.μ. 1η νωρίς το χειμώνα",
+    "titleCustom": "Προσαρμοσμένη κατάσταση",
+    "descriptionCustom": "Εισαγάγετε μια προσαρμοσμένη κατάσταση",
+    "titleAuto": "Αυτόματη κατάσταση",
+    "descriptionAuto": "Εμφανίζει αυτόματα μια κατάσταση. Π.χ. Zealot σας μετράει ενώ βρίσκεστε στο End.",
+    "titleRevenants": "Αποστολή Revenant",
+    "descriptionRevenants": "Δείχνει ότι κάνετε μια αποστολή Revenant.",
+    "titleSvens": "Αποστολή Sven",
+    "descriptionSvens": "Δείχνει ότι κάνετε μια αποστολή Sven.",
+    "titleTarantula": "Αποστολή Ταραντούλα",
+    "descriptionTarantula": "Δείχνει ότι κάνετε μια αποστολή Tarantula."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -440,22 +441,22 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Αντιγραφή NBT"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
-    "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "protector": "Προστάτης",
+    "old": "Γέρος",
+    "wise": "Σοφός",
+    "unstable": "Ασταθής",
+    "young": "Νεαρός",
+    "strong": "Δυνατός",
+    "superior": "Υπέρτερος",
+    "recentDragons": "Πρόσφατοι Δράκοι:",
+    "dragonsSince": "Δράκοι από:",
     "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "enderDragonPet": "Kατοικίδιο Δράκως",
+    "eyesPlaced": "Μάτια τοποθετημένα",
+    "never": "Ποτέ"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",

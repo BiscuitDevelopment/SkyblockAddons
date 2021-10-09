@@ -205,7 +205,8 @@
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
-    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Büyüler",

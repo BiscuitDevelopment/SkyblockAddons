@@ -45,7 +45,7 @@
     "lockSlot": "Заблокировать слот",
     "dontResetCursorInventory": "Не сбрасывать положение курсора между инвентарями",
     "summoningEyeAlert": "Оповещение о Глазе Призыва",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
+    "makeEnderchestsInEndGreen": "Изменять цвет Эндер-сундуков в Краю",
     "changeColor": "Изменить цвет",
     "showInOtherGames": "Показывать в других играх",
     "useVanillaTexture": "Использовать стандартные текстуры",
@@ -205,7 +205,8 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Зачарования",

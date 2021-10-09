@@ -205,7 +205,8 @@
     "guiScaleX": "Veličina X Veličine: %scale%",
     "guiScaleY": "Veličina Y Veličine: %scale%",
     "abbreviateSkillXpDenominator": "Skratiti nazivnik Skill XP",
-    "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)"
+    "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "Čarolije",

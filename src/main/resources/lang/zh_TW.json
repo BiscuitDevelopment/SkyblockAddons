@@ -205,7 +205,8 @@
     "guiScaleX": "介面X方位大小: %scale%",
     "guiScaleY": "介面Y方位大小: %scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
-    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
+    "farmEventTimer": "Farm Event Timer"
   },
   "messages": {
     "enchants": "附魔",
