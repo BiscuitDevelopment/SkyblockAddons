@@ -41,6 +41,7 @@ public enum Language {
     LITHUANIAN("lt_LT"),
     MALAY("ms_MY"),
     NORWEGIAN("no_NO"),
+    PERSIAN("fa_IR"),
     POLISH("pl_PL"),
     ROMANIAN("ro_RO"),
     SERBIAN_LATIN("sr_CS"),

@@ -168,7 +168,7 @@
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
     "highlightSpecialEnchantments": "高亮特殊附魔",
-    "disableEmptyGlassPanes": "阻止点击界面菜单内的无名玻璃板",
+    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event 糖果/分数统计器",
     "healingCircleOpacity": "治疗光环不透明度",
     "chromaSize": "渐变色彩尺寸",
