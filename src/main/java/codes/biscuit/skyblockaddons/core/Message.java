@@ -172,6 +172,7 @@ public enum Message {
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
     SETTING_DISABLE_SPIRIT_SCEPTRE_MESSAGES(MessageObject.SETTING, "disableSpiritSceptreMessages"),
+    SETTING_OUTBID_ALERT(MessageObject.SETTING, "outbidAlert"),
 
     MESSAGE_ENCHANTS(MessageObject.MESSAGES, "enchants"),
     MESSAGE_REFORGES(MessageObject.MESSAGES, "reforges"),

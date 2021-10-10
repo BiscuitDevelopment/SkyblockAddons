@@ -79,6 +79,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -108,7 +109,7 @@ public class PlayerListener {
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories in your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
-    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your Implosion hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
+    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -332,14 +333,13 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
                     e.setCanceled(true);
 
-                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit")) {
+                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit") || strippedText.startsWith("Your Spirit Sceptre hit")) {
                     System.out.println(unformattedText);
                     try {
                         matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
                         matcher.find(); // Ensure matcher.group gets what it wants, we don't need the result
                         this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
                         this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
-
                     }
                     catch (java.lang.IllegalStateException matchNotFound){
                         System.out.printf("Things went south, match not found, original text: %s", unformattedText);
@@ -379,6 +379,10 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
+                } else if (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT) && formattedText.matches("§6\\[Auction\\] §..*§eoutbid you by §6[0-9]*,[0-9]* coins §efor .*§e§lCLICK§r")) {
+                    if (main.getUtils().isOnSkyblock()||(main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_IN_OTHER_GAMES))) {
+                        main.getUtils().playLoudSound("random.orb", 0.5);
+                    }
                 } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
                     FetchurManager fetchur = FetchurManager.getInstance();
                     // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)

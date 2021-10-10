@@ -52,7 +52,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -70,6 +72,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
+import static codes.biscuit.skyblockaddons.utils.ItemUtils.getExtraAttributes;
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
@@ -101,6 +104,10 @@ public class RenderListener {
     private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
     private static final ItemStack SKULL = ItemUtils.createSkullItemStack("Skull", null, "c659cdd4-e436-4977-a6a7-d5518ebecfbb", "1ae3855f952cd4a03c148a946e3f812a5955ad35cbcb52627ea4acd47d3081");
     private static final ItemStack HYPERION = ItemUtils.createItemStack(Items.iron_sword,"§6Hyperion","HYPERION", false);
+    private static final ItemStack VALKYRIE = ItemUtils.createItemStack(Items.iron_sword,"§6Valkyrie","VALKYRIE", false);
+    private static final ItemStack ASTRAEA = ItemUtils.createItemStack(Items.iron_sword,"§6Astraea","ASTRAEA", false);
+    private static final ItemStack SCYLLA = ItemUtils.createItemStack(Items.iron_sword,"§6Scylla","SCYLLA", false);
+    private static final ItemStack SCPETRE = new ItemStack(Blocks.red_flower,1,2); //doesnt show sb texture pack cos blocks cant have and idk how
 
     private static final ItemStack GREEN_CANDY = ItemUtils.createSkullItemStack("Green Candy", "GREEN_CANDY", "0961dbb3-2167-3f75-92e4-ec8eb4f57e55", "ce0622d01cfdae386cc7dd83427674b422f46d0a57e67a20607e6ca4b9af3b01");
     private static final ItemStack PURPLE_CANDY = ItemUtils.createSkullItemStack("Purple Candy", "PURPLE_CANDY", "5b0e6bf0-6312-3476-b5f8-dbc9a8849a1f", "95d7aee4e97ad84095f55405ee1305d1fc8554c309edb12a1db863cde9c1ec80");
@@ -165,7 +172,42 @@ public class RenderListener {
             }
         }
     }
+    public String getInternalnameFromNBT(NBTTagCompound tag) {
+        String internalname = null;
+        if(tag != null && tag.hasKey("ExtraAttributes", 10)) {
+            NBTTagCompound ea = tag.getCompoundTag("ExtraAttributes");
 
+            if(ea.hasKey("id", 8)) {
+                internalname = ea.getString("id").replaceAll(":", "-");
+            } else {
+                return null;
+            }
+        }
+
+        return internalname;
+    }
+    public String getInternalNameForItem(ItemStack stack) {
+        if(stack == null) return null;
+        NBTTagCompound tag = stack.getTagCompound();
+        return getInternalnameFromNBT(tag);
+    }
+
+    public static String getSkyblockItemID(ItemStack item) {
+        if (item == null) {
+            return null;
+        }
+
+        NBTTagCompound extraAttributes = getExtraAttributes(item);
+        if (extraAttributes == null) {
+            return null;
+        }
+
+        if (!extraAttributes.hasKey("id", ItemUtils.NBT_STRING)) {
+            return null;
+        }
+
+        return extraAttributes.getString("id");
+    }
     /**
      * Render overlays and warnings for clients with labymod.
      * Labymod creates its own ingame gui and replaces the forge one, and changes the events that are called.
@@ -341,7 +383,6 @@ public class RenderListener {
             }
         }
     }
-
     /**
      * This renders all the gui elements (bars, icons, texts, skeleton bar, etc.).
      */
@@ -541,7 +582,6 @@ public class RenderListener {
             }
         }
     }
-
     /**
      * This renders a bar for the skeleton hat bones bar.
      */
@@ -949,17 +989,19 @@ public class RenderListener {
                 return;
             }
             ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
+            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem(); //sb item id code stolen from neu customitemeffects class
+            String internal = getInternalNameForItem(held);
             if (buttonLocation != null) {
                 text = "Hyperion";
             }else if (holdingItem == null) {
                 return;
-            } else if (holdingItem.getDisplayName().contains("Hyperion")) {
-                text = "Hyperion";
-            } else if (holdingItem.getDisplayName().contains("Sus")) {
-                text = "sussy";
+            } else if (internal.equals("HYPERION") || internal.equals("VALKYRIE") || internal.equals("ASTRAEA") || internal.equals("SCYLLA") || internal.equals("BAT_WAND")) {
+                text = holdingItem.getDisplayName();
+                text = text.replaceAll("✪", "");
             } else {
                 return;
             }
+
         } else if (feature == Feature.CANDY_POINTS_COUNTER) {
             if (buttonLocation == null && !SpookyEventManager.isActive()) {
                 return;
@@ -1310,7 +1352,19 @@ public class RenderListener {
             }
             DrawUtils.drawText(String.format("%d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y+18, color);
             FontRendererHook.endFeatureFont();
-            renderItem(HYPERION, x, y);
+            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
+            String internal = getInternalNameForItem(held);
+            if (internal.equals("HYPERION")) {
+                renderItem(HYPERION, x, y);
+            } else if (internal.equals("VALKYRIE")) {
+                renderItem(VALKYRIE, x, y);
+            } else if (internal.equals("ASTRAEA")) {
+                renderItem(ASTRAEA, x, y);
+            } else if (internal.equals("SCYLLA")) {
+                renderItem(SCYLLA, x, y);
+            } else if (internal.equals("BAT_WAND")) {
+                renderItem(SCPETRE, x, y);
+            }
 
         } else if (feature == Feature.CANDY_POINTS_COUNTER) {
             Map<CandyType, Integer> candyCounts = SpookyEventManager.getCandyCounts();

@@ -224,7 +224,10 @@ public enum Feature {
     CHROMA_SIZE(-1, "settings.chromaSize", null, false),
     CHROMA_SATURATION(-1, "settings.chromaSaturation", null, false),
     CHROMA_BRIGHTNESS(-1, "settings.chromaBrightness", null, false),
-    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false);
+    TURN_ALL_FEATURES_CHROMA(-1, Message.SETTING_TURN_ALL_FEATURES_CHROMA, false),
+    OUTBID_ALERT(206, Message.SETTING_OUTBID_ALERT,true,EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    OUTBID_ALERT_IN_OTHER_GAMES(-1, null, false);
+
 
     /**
      * These are "features" that are not actually features, but just hold the place of a setting. If you are adding any new settings and create
@@ -245,7 +248,8 @@ public enum Feature {
             ENCHANTMENT_POOR_COLOR, BIGGER_WAKE, LEG_MONKEY_LEVEL_100, HIDE_ENCHANT_DESCRIPTION, HIDE_GREY_ENCHANTS,
             TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, TREVOR_HIGHLIGHT_TRACKED_ENTITY, TREVOR_SHOW_QUEST_COOLDOWN,
             SHOW_FETCHUR_ONLY_IN_DWARVENS, SHOW_FETCHUR_ITEM_NAME, SHOW_FETCHUR_INVENTORY_OPEN_ONLY, WARN_WHEN_FETCHUR_CHANGES,
-            STOP_ONLY_RAT_SQUEAK, SHOW_ENDER_CHEST_PREVIEW, HEALTH_PREDICTION, ABBREVIATE_SKILL_XP_DENOMINATOR, OTHER_DEFENCE_STATS, SHOW_SPIRIT_SCEPTRE_DISPLAY);
+            STOP_ONLY_RAT_SQUEAK, SHOW_ENDER_CHEST_PREVIEW, HEALTH_PREDICTION, ABBREVIATE_SKILL_XP_DENOMINATOR, OTHER_DEFENCE_STATS,
+            SHOW_SPIRIT_SCEPTRE_DISPLAY, OUTBID_ALERT_IN_OTHER_GAMES);
 
     /**
      * Features that are considered gui ones. This is used for examnple when saving the config to ensure that these features'
