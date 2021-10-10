@@ -993,11 +993,10 @@ public class RenderListener {
             String internal = getInternalNameForItem(held);
             if (buttonLocation != null) {
                 text = "Hyperion";
-            }else if (holdingItem == null) {
+            } else if (holdingItem == null || internal == null) {
                 return;
             } else if (internal.equals("HYPERION") || internal.equals("VALKYRIE") || internal.equals("ASTRAEA") || internal.equals("SCYLLA") || internal.equals("BAT_WAND")) {
-                text = holdingItem.getDisplayName();
-                text = text.replaceAll("✪", "");
+                text = holdingItem.getDisplayName().replaceAll("✪", "");
             } else {
                 return;
             }
@@ -1345,12 +1344,12 @@ public class RenderListener {
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 16 + 2, y, color);
             if (hitEnemies <= 1) {
-                DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y+9, color);
+                DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y + 9, color);
             }
             else {
                 DrawUtils.drawText(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
             }
-            DrawUtils.drawText(String.format("%d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y+18, color);
+            DrawUtils.drawText(String.format("%,d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y + 18, color);
             FontRendererHook.endFeatureFont();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
             String internal = getInternalNameForItem(held);
