@@ -34,7 +34,9 @@ https://github.com/BiscuitDevelopment/SkyblockAddons/pull/437
 
 https://github.com/BiscuitDevelopment/SkyblockAddons/pull/554 
 
-https://github.com/BiscuitDevelopment/SkyblockAddons/pull/433 (but works with ONLY hype (not the other versions of the sword just /neurename and add Hyperion) not spirit scepter)
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/433 (works with hype and spirit sceptre)
+
+https://github.com/BiscuitDevelopment/SkyblockAddons/pull/428
 
 Removed magma boss timer + magma boss(bal) spawn alert cos log spam = bad
 
