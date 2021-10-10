@@ -240,7 +240,6 @@ public class RenderListener {
                 GlStateManager.popMatrix();
             }
         }
-
     }
 
     /**
@@ -764,7 +763,7 @@ public class RenderListener {
                 }
                 timestamp.append(seconds);
                 text = timestamp.toString();
-            } else{
+            } else {
                 StringBuilder timestampActive = new StringBuilder();
                 timestampActive.append("Active: ");
                 if (minutes-40 < 10) {
@@ -1014,10 +1013,10 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
-                || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
+        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY ||
+                feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
                 feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
-                feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
+                feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER || feature == Feature.FARM_EVENT_TIMER) {
             width += 18;
             height += 9;
         }
@@ -1093,15 +1092,14 @@ public class RenderListener {
             DrawUtils.drawText(text, x + 18, y + 4, color);
             FontRendererHook.endFeatureFont();
 
-        }
-        else if (feature == Feature.FARM_EVENT_TIMER) {
+        } else if (feature == Feature.FARM_EVENT_TIMER) {
             mc.getTextureManager().bindTexture(FARM_ICON);
-            main.getUtils().drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
 
-            ChromaManager.renderingText(feature);
-            main.getUtils().drawTextWithStyle(text, x + 18, y + 4, color);
-            ChromaManager.doneRenderingText();
-        }else if (feature == Feature.MAGMA_BOSS_TIMER) {
+            FontRendererHook.setupFeatureFont(feature);
+            DrawUtils.drawText(text, x + 18, y + 4, color);
+            FontRendererHook.endFeatureFont();
+        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
 

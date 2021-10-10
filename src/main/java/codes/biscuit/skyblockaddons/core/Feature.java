@@ -199,10 +199,8 @@ public enum Feature {
     ABBREVIATE_SKILL_XP_DENOMINATOR(198, "settings.abbreviateSkillXpDenominator", null, true),
     OTHER_DEFENCE_STATS(199, "settings.otherDefenseStats", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GREEN), false),
     PREVENT_MOVEMENT_ON_DEATH(200, Message.SETTING_PREVENT_MOVEMENT_ON_DEATH, true),
-
-
-    FARM_EVENT_TIMER(152, "settings.farmEventTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
-    SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(153, null, false),
+    FARM_EVENT_TIMER(201, "settings.farmEventTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(202, null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
