@@ -32,8 +32,6 @@ https://github.com/BiscuitDevelopment/SkyblockAddons/pull/453
 
 https://github.com/BiscuitDevelopment/SkyblockAddons/pull/437
 
-https://github.com/BiscuitDevelopment/SkyblockAddons/pull/554 
-
 https://github.com/BiscuitDevelopment/SkyblockAddons/pull/433 (works with hype and spirit sceptre)
 
 https://github.com/BiscuitDevelopment/SkyblockAddons/pull/428
@@ -43,6 +41,20 @@ https://github.com/BiscuitDevelopment/SkyblockAddons/pull/373 (untested)
 Removed magma boss timer + magma boss(bal) spawn alert cos log spam = bad
 
 Made me upsidedown cos Pnda__ is cool
+
+Fixed
+
+-Salvage essence gui doesn’t hide when toggling off
+
+-Turning off “color enchantments” does not turn off coloring commas
+
+-I mean it’s not wrong…maybe we can change to ∞? https://media.discordapp.net/attachments/803133366076571668/863445176206098482/unknown.png
+
+-Fetchur Today's feature gives the wrong item due to Hypixel shifting Fetchur's item cycle :/ (will break if hypixel change again)
+
+-Backpack previews do not work with skinned backpacks https://gyazo.com/50f9890897d1580b420f683ad1aefc5c
+
+-Drill Fuel bar/number does not detect when holding the new drills that came with the Crystal Hallows update
 
 
 Special Credits
