@@ -25,6 +25,7 @@ import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.features.tablist.TabListParser;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
+import codes.biscuit.skyblockaddons.features.CityProjectsPin;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
@@ -42,6 +43,7 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
@@ -582,6 +584,21 @@ public class PlayerListener {
 
                     this.parseTabList();
 
+                    if (mc.thePlayer != null && main.getUtils().isOnSkyblock())
+                        if (CityProjectsPin.getInstance().pin != null) {
+                            for (CityProjectsPin.Contribute cont : CityProjectsPin.getInstance().pin.contribs)
+                                if (!cont.completed) {
+                                    for (CityProjectsPin.Component comp : cont.components) {
+                                        int count = 0;
+                                        for (ItemStack is : mc.thePlayer.inventory.mainInventory)
+                                            if (is != null && is.hasDisplayName() && is.getDisplayName().equalsIgnoreCase(comp.name))
+                                                count += is.stackSize;
+                                        comp.current = count;
+                                    }
+
+                                }
+                        }
+
                     if (main.getConfigValues().isEnabled(Feature.DUNGEON_DEATH_COUNTER) && main.getUtils().isInDungeon()
                             && main.getDungeonManager().isPlayerListInfoEnabled()) {
                         main.getDungeonManager().updateDeathsFromPlayerListInfo();
@@ -965,6 +982,22 @@ public class PlayerListener {
 
                 if (main.getConfigValues().isEnabled(Feature.SHOW_RARITY_UPGRADED) && extraAttributes.hasKey("rarity_upgrades", ItemUtils.NBT_INTEGER)) {
                     e.toolTip.add(insertAt, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.CITY_PROJECTS_PIN))
+            {
+                GuiScreen screen = Minecraft.getMinecraft().currentScreen;
+                if (screen instanceof GuiChest && ((GuiChest) screen).lowerChestInventory.hasCustomName()
+                        && ((GuiChest) screen).lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
+                    if (e.toolTip.size() >= 2 && e.toolTip.get(1).equalsIgnoreCase("§5§o§8City Project"))
+                    {
+                        CityProjectsPin.Project pin = CityProjectsPin.getInstance().pin;
+                        if (pin == null || !e.toolTip.get(0).contains(pin.name))
+                            e.toolTip.add(++insertAt, "§a§lClick to Pin!");
+                        else
+                            e.toolTip.add(++insertAt, "§c§lClick to Unpin!");
+                    }
                 }
             }
 
