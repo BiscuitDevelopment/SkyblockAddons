@@ -174,7 +174,6 @@ public enum Message {
     SETTING_DISABLE_SPIRIT_SCEPTRE_MESSAGES(MessageObject.SETTING, "disableSpiritSceptreMessages"),
     SETTING_OUTBID_ALERT(MessageObject.SETTING, "outbidAlert"),
     SETTING_ALERT_BROOD_MOTHER(MessageObject.SETTING,"alertBroodMother"),
-    SETTING_CITY_PROJECTS_PIN(MessageObject.SETTING, "cityProjectsPin"),
     MESSAGE_ENCHANTS(MessageObject.MESSAGES, "enchants"),
     MESSAGE_REFORGES(MessageObject.MESSAGES, "reforges"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),

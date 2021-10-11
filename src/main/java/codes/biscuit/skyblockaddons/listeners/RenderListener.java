@@ -63,7 +63,6 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.client.GuiNotification;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.Sys;
 import org.lwjgl.opengl.GL11;
 
 import javax.vecmath.Vector3d;
@@ -1790,47 +1789,6 @@ public class RenderListener {
             }
             GlStateManager.enableDepth();
         }
-    }
-
-    public void drawCityProjectPin(Minecraft mc, float scale, ButtonLocation buttonLocation) {
-        if (CityProjectsPin.getInstance() == null) return;
-        CityProjectsPin.Project project = CityProjectsPin.getInstance().pin;
-        if (buttonLocation != null) {
-            project = CityProjectsPin.getInstance().getDummyProject();
-        }
-        if (project == null)
-            return;
-        Feature feature = Feature.CITY_PROJECTS_PIN;
-        float x = main.getConfigValues().getActualX(feature);
-        float y = main.getConfigValues().getActualY(feature);
-        int color = main.getConfigValues().getColor(feature);
-
-        int lineHeight = 8;
-        int spacer = 3;
-
-        int lines = 0;
-        int spacers = 0;
-
-        FontRendererHook.setupFeatureFont(feature);
-
-        DrawUtils.drawText(project.name, x, y, color);
-        y += lineHeight + spacer;
-        for (CityProjectsPin.Contribute cont : project.contribs) {
-            DrawUtils.drawText("  " + cont.name + (cont.completed ? " §2§l✓" : ""), x, y, color);
-            y += lineHeight + spacer;
-            if (!cont.completed)
-                for (CityProjectsPin.Component comp : cont.components) {
-                    DrawUtils.drawText("    " + comp.name + " " + (comp.current >= comp.req ? "§2" : "§c")
-                            + comp.current + "§f/§2" + comp.req, x, y, color);
-                    y += lineHeight + spacer;
-                }
-            if (cont.bitsReq != -1) {
-                DrawUtils.drawText("  " + cont.bitsReq + " Bits", x, y, ColorCode.AQUA.getColor());
-                y += lineHeight + spacer;
-            }
-        }
-
-        FontRendererHook.endFeatureFont();
     }
 
     public void drawDragonTrackers(Minecraft mc, float scale, ButtonLocation buttonLocation) {

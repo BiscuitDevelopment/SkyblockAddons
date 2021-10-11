@@ -437,14 +437,9 @@ public class InventoryUtils {
                 break;
             }
         }
-
-        if (inventory.getDisplayName().getUnformattedText().startsWith("Project - "))
-            return this.inventoryType = InventoryType.CITY_PROJECT;
-
         inventoryKey = getInventoryKey(inventoryType, inventoryPageNum);
         return inventoryType;
     }
-
 
     private String getInventoryKey(InventoryType inventoryType, int inventoryPageNum) {
         if (inventoryType == null) {

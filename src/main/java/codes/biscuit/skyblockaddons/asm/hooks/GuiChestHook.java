@@ -14,8 +14,6 @@ import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
-import codes.biscuit.skyblockaddons.features.CityProjectsPin;
-import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.client.Minecraft;
@@ -23,7 +21,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiChest;
-import net.minecraft.client.player.inventory.ContainerLocalMenu;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
@@ -32,7 +29,6 @@ import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagList;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
 
@@ -346,35 +342,6 @@ public class GuiChestHook {
                 }
             }
 
-            if (main.getConfigValues().isEnabled(Feature.CITY_PROJECTS_PIN)
-                    && slotIn != null && slotIn.inventory instanceof ContainerLocalMenu && slotIn.getHasStack()
-                    && lowerChestInventory.hasCustomName())
-            {
-                if (lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Project - ")) {
-                    ItemStack itemStack = slotIn.getStack();
-                    if (itemStack.getTagCompound().getCompoundTag("display") == null || itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8) == null)
-                        return;
-                    NBTTagList loreNbt = itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8);
-                    if (loreNbt.get(0).toString().equalsIgnoreCase("\"§8City Project\"")) {
-                        CityProjectsPin.getInstance().pinProject(lowerChestInventory);
-                        returnValue.cancel();
-                    }
-                } else if (CityProjectsPin.getInstance().pin != null && lowerChestInventory.getDisplayName().getUnformattedText().startsWith("Confirm Contribution"))
-                {
-                    ItemStack itemStack = slotIn.getStack();
-                    if (itemStack.getTagCompound().getCompoundTag("display") == null || itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8) == null)
-                        return;
-                    NBTTagList loreNbt = itemStack.getTagCompound().getCompoundTag("display").getTagList("Lore", 8);
-                    if (loreNbt.get(0).toString().equalsIgnoreCase("\"§7Project: " + CityProjectsPin.getInstance().pin.name + "\"")) {
-                        for (CityProjectsPin.Contribute cont : CityProjectsPin.getInstance().pin.contribs)
-                            if (TextUtils.stripColor(loreNbt.get(1).toString()).contains(TextUtils.stripColor(cont.name))){
-                                cont.completed = true;
-                                break;
-                            }
-                    }
-                }
-            }
-
             if (main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon() &&
                     NPCUtils.isSellMerchant(lowerChestInventory) && slotIn != null && slotIn.inventory instanceof InventoryPlayer) {
                 if (!main.getUtils().getItemDropChecker().canDropItem(slotIn)) {
@@ -396,7 +363,6 @@ public class GuiChestHook {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
         }
-
 
         if (craftingPatternSelection != null && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() ==
                 InventoryType.CRAFTING_TABLE) {

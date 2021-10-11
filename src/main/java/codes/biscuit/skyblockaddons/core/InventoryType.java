@@ -25,8 +25,7 @@ public enum InventoryType {
     STORAGE("Storage", "Storage"),
     STORAGE_BACKPACK("BackpackStorage", "(?<type>[a-zA-Z]+) Backpack \\((?<page>[0-9]+)/[0-9]+\\)"),
     SKILL_TYPE_MENU("Skill Type Menu", "(?<type>[a-zA-Z]+) Skill"),
-    ENDER_CHEST("EnderChest", "Ender Chest \\((?<page>[0-9]+)/[0-9]+\\)"),
-    CITY_PROJECT("Project - ", "Project - ");
+    ENDER_CHEST("EnderChest", "Ender Chest \\((?<page>[0-9]+)/[0-9]+\\)");
 
     @Getter
     private final String inventoryName;
