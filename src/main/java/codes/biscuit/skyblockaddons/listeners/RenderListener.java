@@ -1448,33 +1448,35 @@ public class RenderListener {
         int color = main.getConfigValues().getColor(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
 
         int count = 0;
-        for (EssenceType essenceType : EssenceType.values()) {
-            int value = collectedEssences.getOrDefault(essenceType, 0);
-            if (usePlaceholders) {
-                value = 99;
-            } else if (value <= 0 && hideZeroes) {
-                continue;
+        if (main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+            for (EssenceType essenceType : EssenceType.values()) {
+                int value = collectedEssences.getOrDefault(essenceType, 0);
+                if (usePlaceholders) {
+                    value = 99;
+                } else if (value <= 0 && hideZeroes) {
+                    continue;
+                }
+
+                int column = count % 2;
+                int row = count / 2;
+
+                if (column == 0) {
+                    currentX = x;
+                } else if (column == 1) {
+                    currentX = x + 18 + 2 + maxNumberWidth + 5;
+                }
+                currentY = y + row * 18;
+
+                GlStateManager.color(1, 1, 1, 1);
+                mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
+                DrawUtils.drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
+
+                FontRendererHook.setupFeatureFont(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
+                DrawUtils.drawText(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
+                FontRendererHook.endFeatureFont();
+
+                count++;
             }
-
-            int column = count % 2;
-            int row = count / 2;
-
-            if (column == 0) {
-                currentX = x;
-            } else if (column == 1) {
-                currentX = x + 18 + 2 + maxNumberWidth + 5;
-            }
-            currentY = y + row * 18;
-
-            GlStateManager.color(1, 1, 1, 1);
-            mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
-            DrawUtils.drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
-
-            FontRendererHook.setupFeatureFont(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
-            DrawUtils.drawText(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
-            FontRendererHook.endFeatureFont();
-
-            count++;
         }
     }
 

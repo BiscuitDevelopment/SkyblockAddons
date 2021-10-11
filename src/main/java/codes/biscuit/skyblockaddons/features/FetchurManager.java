@@ -36,7 +36,9 @@ public class FetchurManager {
     // A list containing the items fetchur wants
     // If you want to put it in a repository, YOU MUST PUT IT IN THE EXACT SAME ORDER AS I PLACED ON THIS LIST
     // Changing the order will affect the algorithm
-    private static final FetchurItem[] items = new FetchurItem[]{new FetchurItem(new ItemStack(Blocks.wool, 50, 14), "Red Wool"),
+    //if hypixel changes the order again it will break
+    //i just shifted them along i didnt make anyway to fix it
+    private static final FetchurItem[] items = new FetchurItem[]{
             new FetchurItem(new ItemStack(Blocks.stained_glass, 20, 4), "Yellow Stained Glass"),
             new FetchurItem(new ItemStack(Items.compass, 1), "Compass"),
             new FetchurItem(new ItemStack(Items.prismarine_crystals, 20), "Mithril"),
@@ -48,7 +50,8 @@ public class FetchurManager {
             new FetchurItem(new ItemStack(Blocks.pumpkin, 1), "Pumpkin"),
             new FetchurItem(new ItemStack(Items.flint_and_steel, 1), "Flint and Steel"),
             new FetchurItem(new ItemStack(Blocks.quartz_ore, 50), "Nether Quartz Ore"),
-            new FetchurItem(new ItemStack(Items.ender_pearl, 16), "Ender Pearl")};
+            new FetchurItem(new ItemStack(Items.ender_pearl, 16), "Ender Pearl"),
+            new FetchurItem(new ItemStack(Blocks.wool, 50, 14), "Red Wool")};
 
     @Getter
     private static final FetchurManager instance = new FetchurManager();

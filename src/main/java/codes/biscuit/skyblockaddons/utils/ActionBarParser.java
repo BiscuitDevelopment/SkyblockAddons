@@ -314,13 +314,20 @@ public class ActionBarParser {
                 }
                 skillTextBuilder.append(")");
             }
-
             // This feature is only accessible when we have parsed the current and total skill xp
             if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                if (percent != 100) { // 0 means it's maxed...
+                double amountLeft = Math.ceil((totalSkillXP - currentSkillXP) / gained);
+                if (percent != 100 && amountLeft < 214748360) {
                     skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
-                }
-            }
+                } else if (percent != 100) {
+                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", "∞"));
+                             }
+           }
+            //if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                //if (percent != 100) { // 0 means it's maxed...
+                    //skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
+               // }
+            //}
 
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
             main.getRenderListener().setSkill(skillType);
