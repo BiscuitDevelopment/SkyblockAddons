@@ -176,6 +176,7 @@
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
     "alertBroodMother": "Sends a message when Brood Mother spawns",
+    "titleBroodMother": "Broodmother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",

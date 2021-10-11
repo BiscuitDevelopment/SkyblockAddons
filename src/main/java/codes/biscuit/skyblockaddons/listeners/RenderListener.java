@@ -313,6 +313,8 @@ public class RenderListener {
                 case WARN_WHEN_FETCHUR_CHANGES:
                     message = Message.MESSAGE_FETCHUR_WARNING;
                     break;
+                case ALERT_BROOD_MOTHER:
+                    message = Message.MESSAGE_ALERT_BROOD_MOTHER;
             }
             if (message != null) {
                 String text = message.getMessage();

@@ -817,9 +817,11 @@ public class PlayerListener {
 
         // Detect Brood Mother spawn
         if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ALERT_BROOD_MOTHER) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
-            if(entity.hasCustomName() && entity.posY > 210) {
-                if(entity.getName().contains("Brood Mother")) {
+            if(entity.hasCustomName() && entity.posY > 165) {
+                if(entity.getName().contains("Brood Mother")) { //Brood Mother
                     main.getUtils().sendMessage("Broodmother spawned.");
+                    main.getRenderListener().setTitleFeature(Feature.ALERT_BROOD_MOTHER);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     main.getUtils().playLoudSound("random.orb", 0.5);
                 }
             }

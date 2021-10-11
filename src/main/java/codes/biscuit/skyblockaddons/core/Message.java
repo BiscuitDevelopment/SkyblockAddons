@@ -229,6 +229,7 @@ public enum Message {
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
     MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurItem"),
     MESSAGE_FETCHUR_WARNING(MessageObject.MESSAGES, "fetchurWarning"),
+    MESSAGE_ALERT_BROOD_MOTHER(MessageObject.SETTING,"titleBroodMother"),
 
     @Deprecated ANCHOR_POINT_TOP_LEFT(MessageObject.ANCHOR_POINT, "topLeft"),
     @Deprecated ANCHOR_POINT_TOP_RIGHT(MessageObject.ANCHOR_POINT, "topRight"),
