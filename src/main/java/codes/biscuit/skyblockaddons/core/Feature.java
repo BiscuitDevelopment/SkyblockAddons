@@ -204,6 +204,7 @@ public enum Feature {
     SHOW_SPIRIT_SCEPTRE_DISPLAY(203, null, false),
     FARM_EVENT_TIMER(204, "settings.farmEventTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(205, null, false),
+    ALERT_BROOD_MOTHER(207, Message.SETTING_ALERT_BROOD_MOTHER, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),

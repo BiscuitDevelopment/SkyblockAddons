@@ -815,6 +815,16 @@ public class PlayerListener {
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
 
+        // Detect Brood Mother spawn
+        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ALERT_BROOD_MOTHER) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
+            if(entity.hasCustomName() && entity.posY > 210) {
+                if(entity.getName().contains("Brood Mother")) {
+                    main.getUtils().sendMessage("Broodmother spawned.");
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                }
+            }
+        }
+
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
             EntityArrow arrow = (EntityArrow) entity;
 

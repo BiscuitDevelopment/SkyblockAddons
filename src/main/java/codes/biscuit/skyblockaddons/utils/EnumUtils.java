@@ -293,7 +293,8 @@ public class EnumUtils {
         PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS),
         ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.HIDE_SPAWN_POINT_PLAYERS, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
         IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER),
-        SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT);
+        SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT),
+        TIMOLOB("TimoLob", "github.com/TimoLob", Feature.ALERT_BROOD_MOTHER);
 
         private final Set<Feature> features;
         private final String author;
