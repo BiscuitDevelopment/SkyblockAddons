@@ -172,7 +172,7 @@
     "disableSpiritSceptreMessages": "Disable Ability Messages",
     "showSpiritSceptreDisplay":  "Ability damage display",
     "outbidAlert": "Outbid Alert",
-    "disableEmptyGlassPanes": "Disable Empty Glass Panes",
+    "disableEmptyGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",

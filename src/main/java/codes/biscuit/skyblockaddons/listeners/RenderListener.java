@@ -396,6 +396,7 @@ public class RenderListener {
             }
         }
     }
+
     /**
      * This renders all the gui elements (bars, icons, texts, skeleton bar, etc.).
      */
@@ -595,6 +596,7 @@ public class RenderListener {
             }
         }
     }
+
     /**
      * This renders a bar for the skeleton hat bones bar.
      */
@@ -787,7 +789,6 @@ public class RenderListener {
             }
             timestamp.append(seconds);
             text = timestamp.toString();
-
 
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
         StringBuilder magmaBuilder = new StringBuilder();
@@ -1142,6 +1143,7 @@ public class RenderListener {
             }
             height = 16 + 8;
         }
+
         x = transformXY(x, width, scale);
         y = transformXY(y, height, scale);
 
