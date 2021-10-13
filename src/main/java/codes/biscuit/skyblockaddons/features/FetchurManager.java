@@ -36,9 +36,7 @@ public class FetchurManager {
     // A list containing the items fetchur wants
     // If you want to put it in a repository, YOU MUST PUT IT IN THE EXACT SAME ORDER AS I PLACED ON THIS LIST
     // Changing the order will affect the algorithm
-    //if hypixel changes the order again it will break
-    //i just shifted them along i didnt make anyway to fix it
-    //someone should prob make this into a repo
+    // I tried to fix but no work (thats why they are in a different order)
     private static final FetchurItem[] items = new FetchurItem[]{
             new FetchurItem(new ItemStack(Blocks.stained_glass, 20, 4), "Yellow Stained Glass"),
             new FetchurItem(new ItemStack(Items.compass, 1), "Compass"),
