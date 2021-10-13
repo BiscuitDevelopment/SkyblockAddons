@@ -93,6 +93,7 @@ public enum Location {
     GOBLIN_HOLDOUT("Goblin Holdout"),
     PRECURSOR_REMNANT("Precursor Remnant"),
     FAIRY_GROTTO("Fairy Grotto"),
+    KHAZAD_DUM("Khazad-dûm"),
 
     THE_BARN("The Barn"),
 

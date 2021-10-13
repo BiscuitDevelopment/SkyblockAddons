@@ -320,14 +320,9 @@ public class ActionBarParser {
                 if (percent != 100 && amountLeft < 214748360) {
                     skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
                 } else if (percent != 100) {
-                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", "∞"));
+                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", "∞")); //This is a lil scuffed i think but it should work
                              }
            }
-            //if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                //if (percent != 100) { // 0 means it's maxed...
-                    //skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
-               // }
-            //}
 
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
             main.getRenderListener().setSkill(skillType);

@@ -143,7 +143,37 @@ public class EnumUtils {
 
     /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
     @Getter
+    public enum MagmaTimerAccuracy {
+        NO_DATA("N/A"),
+        SPAWNED("NOW"),
+        SPAWNED_PREDICTION("NOW"),
+        EXACTLY(""),
+        ABOUT("");
 
+        private final String symbol;
+
+        MagmaTimerAccuracy(String symbol) {
+            this.symbol = symbol;
+        }
+    }
+
+    @Getter
+    public enum MagmaEvent {
+        MAGMA_WAVE("magma"),
+        BLAZE_WAVE("blaze"),
+        BOSS_SPAWN("spawn"),
+        BOSS_DEATH("death"),
+
+        // Not actually an event
+        PING("ping");
+
+        // The event name used by InventiveTalent's API
+        private final String inventiveTalentEvent;
+
+        MagmaEvent(String inventiveTalentEvent) {
+            this.inventiveTalentEvent = inventiveTalentEvent;
+        }
+    }
     public enum GuiTab {
         MAIN, GENERAL_SETTINGS
     }
@@ -294,7 +324,8 @@ public class EnumUtils {
         ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.HIDE_SPAWN_POINT_PLAYERS, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
         IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER),
         SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT),
-        TIMOLOB("TimoLob", "github.com/TimoLob", Feature.ALERT_BROOD_MOTHER);
+        TIMOLOB("TimoLob", "github.com/TimoLob", Feature.ALERT_BROOD_MOTHER),
+        NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT);
 
         private final Set<Feature> features;
         private final String author;

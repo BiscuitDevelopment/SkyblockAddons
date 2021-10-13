@@ -52,7 +52,6 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
@@ -260,6 +259,14 @@ public class RenderListener {
         Minecraft mc = Minecraft.getMinecraft();
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
             GlStateManager.disableBlend();
+            if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
+                    main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
+                float scale = main.getConfigValues().getGuiScale(Feature.MAGMA_BOSS_TIMER);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
+                GlStateManager.popMatrix();
+            }
             if (main.getConfigValues().isEnabled(Feature.DARK_AUCTION_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES)) {
                 float scale = main.getConfigValues().getGuiScale(Feature.DARK_AUCTION_TIMER);
                 GlStateManager.pushMatrix();
@@ -315,6 +322,10 @@ public class RenderListener {
                     break;
                 case ALERT_BROOD_MOTHER:
                     message = Message.MESSAGE_ALERT_BROOD_MOTHER;
+                    break;
+                case BAL_BOSS_ALERT:
+                    message = Message.MESSAGE_BAL_BOSS_WARNING;
+                    break;
             }
             if (message != null) {
                 String text = message.getMessage();
@@ -777,6 +788,33 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
 
+
+        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
+        StringBuilder magmaBuilder = new StringBuilder();
+        magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
+        EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
+        if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
+            if (buttonLocation == null) {
+                int totalSeconds = main.getPlayerListener().getMagmaTime();
+                if (totalSeconds < 0) totalSeconds = 0;
+                int hours = totalSeconds / 3600;
+                int minutes = totalSeconds / 60 % 60;
+                int seconds = totalSeconds % 60;
+                if (Math.abs(hours) >= 10) hours = 10;
+                magmaBuilder.append(hours).append(":");
+                if (minutes < 10) {
+                    magmaBuilder.append("0");
+                }
+                magmaBuilder.append(minutes).append(":");
+                if (seconds < 10) {
+                    magmaBuilder.append("0");
+                }
+                magmaBuilder.append(seconds);
+            } else {
+                magmaBuilder.append("1:23:45");
+            }
+        }
+            text = magmaBuilder.toString();
         } else if (feature == Feature.FARM_EVENT_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
             Calendar nextFarmEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
             if (nextFarmEvent.get(Calendar.MINUTE) >= 15) {
@@ -998,7 +1036,7 @@ public class RenderListener {
             } else if (holdingItem == null || internal == null) {
                 return;
             } else if (internal.equals("HYPERION") || internal.equals("VALKYRIE") || internal.equals("ASTRAEA") || internal.equals("SCYLLA") || internal.equals("BAT_WAND")) {
-                text = holdingItem.getDisplayName().replaceAll("✪", "");
+                text = holdingItem.getDisplayName().replaceAll("[0-9]?✪", "");
             } else {
                 return;
             }
@@ -1355,7 +1393,7 @@ public class RenderListener {
             FontRendererHook.endFeatureFont();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
             String internal = getInternalNameForItem(held);
-            if (internal.equals("HYPERION")) {
+            if (internal == null || internal.equals("HYPERION")) {
                 renderItem(HYPERION, x, y);
             } else if (internal.equals("VALKYRIE")) {
                 renderItem(VALKYRIE, x, y);

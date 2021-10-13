@@ -79,10 +79,8 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
-import org.lwjgl.Sys;
 import org.lwjgl.input.Keyboard;
 
-import java.awt.*;
 import java.util.*;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
@@ -139,7 +137,9 @@ public class PlayerListener {
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
+    private long lastBal = -1;
     private int magmaTick = 1;
+    private int balTick = -1;
     private int timerTick = 1;
     private long lastMinionSound = -1;
     private long lastBossSpawnPost = -1;
@@ -176,6 +176,9 @@ public class PlayerListener {
     @Getter
     @Setter
     private int magmaTime = 0;
+    @Getter
+    @Setter
+    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
     @Getter
     @Setter
     private int recentMagmaCubes = 0;
@@ -812,6 +815,96 @@ public class PlayerListener {
      */
 
     @SubscribeEvent()
+    public void onClientTickMagma(TickEvent.ClientTickEvent e) {
+        if (e.phase == TickEvent.Phase.START) {
+            Minecraft mc = Minecraft.getMinecraft();
+            if (main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
+                if (mc != null && mc.theWorld != null) {
+                    if (magmaTick % 5 == 0) {
+                        boolean foundBoss = false;
+                        long currentTime = System.currentTimeMillis();
+                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
+                            if (entity instanceof EntityMagmaCube) {
+                                EntitySlime magma = (EntitySlime) entity;
+                                if (magma.getSlimeSize() > 10 && !LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) { // Find a big magma boss
+                                    foundBoss = true;
+                                    if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
+                                        lastBoss = System.currentTimeMillis();
+                                        main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
+                                        magmaTick = 16; // so the sound plays instantly
+                                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                                    }
+                                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
+                                    if (currentTime - lastBossSpawnPost > 300000) {
+                                        lastBossSpawnPost = currentTime;
+                                        main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
+                                    }
+                                }
+                            }
+                        }
+
+                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
+                            main.getRenderListener().setTitleFeature(null);
+                        }
+                        if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
+                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
+                            magmaTime = 7200;
+                            if (currentTime - lastBossDeathPost > 300000) {
+                                lastBossDeathPost = currentTime;
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
+                            }
+                        }
+                    }
+                    if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                        main.getUtils().playLoudSound("random.orb", 0.5);
+                    }
+                }
+            }
+
+            magmaTick++;
+            if (magmaTick > 20) {
+                if ((magmaAccuracy == EnumUtils.MagmaTimerAccuracy.EXACTLY || magmaAccuracy == EnumUtils.MagmaTimerAccuracy.ABOUT)
+                        && magmaTime == 0) {
+                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 20);
+                }
+                magmaTime--;
+                magmaTick = 1;
+            }
+        }
+    }
+
+/*    @SubscribeEvent()
+    public void onClientTickBal(TickEvent.ClientTickEvent e) {
+        if (e.phase == TickEvent.Phase.START) {
+            Minecraft mc = Minecraft.getMinecraft();
+            if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock()) {
+                if (mc != null && mc.theWorld != null) {
+                    if (balTick % 5 == 0) {
+                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
+                            if (entity instanceof EntityMagmaCube) {
+                                EntitySlime magma = (EntitySlime) entity;
+                                if (magma.getSlimeSize() > 10 && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) { // Find a big bal boss
+                                    if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 20000)) {
+                                        lastBal = System.currentTimeMillis();
+                                        main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
+                                        balTick = 16; // so the sound plays instantly
+                                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                                    }
+                                    if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                                        main.getUtils().playLoudSound("random.orb", 0.5);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    } */
+
+
+    @SubscribeEvent()
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
 
@@ -823,6 +916,26 @@ public class PlayerListener {
                     main.getRenderListener().setTitleFeature(Feature.ALERT_BROOD_MOTHER);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     main.getUtils().playLoudSound("random.orb", 0.5);
+                }
+            }
+        }
+
+        Minecraft mc = Minecraft.getMinecraft();
+        for (Entity cubes : mc.theWorld.loadedEntityList) {
+            if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
+                if (cubes instanceof EntityMagmaCube) {
+                    EntitySlime magma = (EntitySlime) cubes;
+                    if (magma.getSlimeSize() > 10) { // Find a big bal boss
+                        if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
+                            lastBal = System.currentTimeMillis();
+                            main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
+                            balTick = 16; // so the sound plays instantly
+                            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                        }
+                        if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                            main.getUtils().playLoudSound("random.orb", 0.5);
+                        }
+                    }
                 }
             }
         }
@@ -883,10 +996,30 @@ public class PlayerListener {
             if (MAGMA_BOSS_SPAWN_AREA.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
                 long currentTime = System.currentTimeMillis();
                 if (e.entity instanceof EntityMagmaCube) {
+                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
+                        recentMagmaCubes++;
+                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
+                        if (recentMagmaCubes >= 17) {
+                            magmaTime = 600;
+                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
+                            if (currentTime - lastMagmaWavePost > 300000) {
+                                lastMagmaWavePost = currentTime;
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
+                            }
+                        }
+                    }
                 } else if (e.entity instanceof EntityBlaze) {
                     if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
                         recentBlazes++;
                         main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
+                        if (recentBlazes >= 10) {
+                            magmaTime = 1200;
+                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
+                            if (currentTime - lastBlazeWavePost > 300000) {
+                                lastBlazeWavePost = currentTime;
+                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
+                            }
+                        }
                     }
                 }
             }

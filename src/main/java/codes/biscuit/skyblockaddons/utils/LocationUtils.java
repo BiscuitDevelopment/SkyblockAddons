@@ -17,6 +17,10 @@ public class LocationUtils {
             Location.DIVANS_GATEWAY, Location.FAR_RESERVE, Location.GOBLIN_BURROWS, Location.UPPER_MINES, Location.ROYAL_MINES,
             Location.MINERS_GUILD, Location.GREAT_ICE_WALL, Location.THE_MIST, Location.CC_MINECARTS_CO, Location.GRAND_LIBRARY,
             Location.HANGING_COURT));
+   // List of sublocations of the Crystal Hollows
+    private static final List<Location> hollowsLocations = new ArrayList<Location>(Arrays.asList(Location.MAGMA_FIELDS,
+            Location.CRYSTAL_HOLLOWS, Location.JUNGLE, Location.MITHRIL_DEPOSITS, Location.GOBLIN_HOLDOUT,
+            Location.PRECURSOR_REMNANT, Location.FAIRY_GROTTO, Location.KHAZAD_DUM));
 
     /**
      *
@@ -25,6 +29,15 @@ public class LocationUtils {
      */
     public static boolean isInDwarvenMines(String locationName) {
         for (Location location : dwarvenLocations) {
+            if (location.getScoreboardName().equals(locationName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+ //same thing but for hollows
+    public static boolean isInCrystalHollows(String locationName) {
+        for (Location location : hollowsLocations) {
             if (location.getScoreboardName().equals(locationName)) {
                 return true;
             }
