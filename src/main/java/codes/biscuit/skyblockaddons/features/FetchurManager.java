@@ -38,6 +38,7 @@ public class FetchurManager {
     // Changing the order will affect the algorithm
     //if hypixel changes the order again it will break
     //i just shifted them along i didnt make anyway to fix it
+    //someone should prob make this into a repo
     private static final FetchurItem[] items = new FetchurItem[]{
             new FetchurItem(new ItemStack(Blocks.stained_glass, 20, 4), "Yellow Stained Glass"),
             new FetchurItem(new ItemStack(Items.compass, 1), "Compass"),
