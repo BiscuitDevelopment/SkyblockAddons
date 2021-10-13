@@ -38,7 +38,7 @@ https://github.com/BiscuitDevelopment/SkyblockAddons/pull/428
 
 https://github.com/BiscuitDevelopment/SkyblockAddons/pull/373 (untested)
 
-Removed magma boss timer + magma boss(bal) spawn alert cos log spam = bad
+Make a bal alert
 
 Made me upsidedown cos Pnda__ is cool
 
