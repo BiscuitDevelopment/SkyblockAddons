@@ -19,8 +19,9 @@ public class LocationUtils {
             Location.HANGING_COURT));
    // List of sublocations of the Crystal Hollows
     private static final List<Location> hollowsLocations = new ArrayList<Location>(Arrays.asList(Location.MAGMA_FIELDS,
-            Location.CRYSTAL_HOLLOWS, Location.JUNGLE, Location.MITHRIL_DEPOSITS, Location.GOBLIN_HOLDOUT,
-            Location.PRECURSOR_REMNANT, Location.FAIRY_GROTTO, Location.KHAZAD_DUM));
+            Location.CRYSTAL_HOLLOWS, Location.CRYSTAL_NUCLEUS, Location.JUNGLE, Location.MITHRIL_DEPOSITS, Location.GOBLIN_HOLDOUT,
+            Location.PRECURSOR_REMNANT, Location.FAIRY_GROTTO, Location.KHAZAD_DUM, Location.JUNGLE_TEMPLE, Location.MINES_OF_DIVAN,
+            Location.GOBLIN_QUEEN_DEN, Location.LOST_PRECURSOR_CITY));
 
     /**
      *
