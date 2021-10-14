@@ -87,7 +87,7 @@ public enum Location {
 
     // Crystal Hollows
     CRYSTAL_HOLLOWS("Crystal Hollows"),
-    CRYSTAL_NUCLEUS("Crystal Nucleus")
+    CRYSTAL_NUCLEUS("Crystal Nucleus"),
     MAGMA_FIELDS("Magma Fields"),
     JUNGLE("Jungle"),
     MITHRIL_DEPOSITS("Mithril Deposits"),
