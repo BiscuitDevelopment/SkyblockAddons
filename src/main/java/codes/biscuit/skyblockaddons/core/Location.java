@@ -91,7 +91,7 @@ public enum Location {
     JUNGLE("Jungle"),
     MITHRIL_DEPOSITS("Mithril Deposits"),
     GOBLIN_HOLDOUT("Goblin Holdout"),
-    PRECURSOR_REMNANT("Precursor Remnant"),
+    PRECURSOR_REMNANT("Precursor Remnants"),
     FAIRY_GROTTO("Fairy Grotto"),
     KHAZAD_DUM("Khazad-dûm"),
 
