@@ -138,6 +138,7 @@ public class PlayerListener {
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
     private long lastBal = -1;
+    private long lastBroodmother = -1;
     private int magmaTick = 1;
     private int balTick = -1;
     private int timerTick = 1;
@@ -878,8 +879,9 @@ public class PlayerListener {
         // Detect Brood Mother spawn
         if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ALERT_BROOD_MOTHER) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
             if(entity.hasCustomName() && entity.posY > 165) {
-                if(entity.getName().contains("Brood Mother")) { //Brood Mother
-                    main.getUtils().sendMessage("Broodmother spawned.");
+                if(entity.getName().contains("Brood Mother") && (lastBroodmother == -1 || System.currentTimeMillis() - lastBroodmother > 15000)) { //Brood Mother
+                    lastBroodmother = System.currentTimeMillis();
+//                  main.getUtils().sendMessage("Broodmother spawned."); //testers said to remove message
                     main.getRenderListener().setTitleFeature(Feature.ALERT_BROOD_MOTHER);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     main.getUtils().playLoudSound("random.orb", 0.5);
