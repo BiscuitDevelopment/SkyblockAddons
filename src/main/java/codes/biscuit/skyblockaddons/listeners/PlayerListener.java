@@ -888,7 +888,7 @@ public class PlayerListener {
                 }
             }
         }
-
+        if (main.getUtils().isOnSkyblock()) {
         Minecraft mc = Minecraft.getMinecraft();
         for (Entity cubes : mc.theWorld.loadedEntityList) {
             if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
@@ -908,6 +908,7 @@ public class PlayerListener {
                 }
             }
         }
+     }
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
             EntityArrow arrow = (EntityArrow) entity;
