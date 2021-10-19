@@ -826,7 +826,7 @@ public class PlayerListener {
                         for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
                             if (entity instanceof EntityMagmaCube) {
                                 EntitySlime magma = (EntitySlime) entity;
-                                if (magma.getSlimeSize() > 10 && !LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) { // Find a big magma boss
+                                if (magma.getSlimeSize() > 10 && main.getUtils().getLocation()==Location.BLAZING_FORTRESS) { // Find a big magma boss
                                     foundBoss = true;
                                     if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
                                         lastBoss = System.currentTimeMillis();
