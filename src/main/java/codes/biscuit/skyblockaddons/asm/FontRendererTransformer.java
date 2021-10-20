@@ -24,11 +24,21 @@ public class FontRendererTransformer implements ITransformer {
     public void transform(ClassNode classNode, String name) {
         for (MethodNode methodNode : classNode.methods) {
 
+            if (classNode.name.equals("club/sk1er/patcher/hooks/FontRendererHook")) {
+                if (methodNode.name.equals("renderStringAtPos") && methodNode.desc.equals("(Ljava/lang/String;Z)Z")) {
+                    // Objective:
+                    // Find Method Head: Add:
+                    //   if (FontRendererHook.shouldOverridePatcher(text)) return false;
+                    methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), patcherOverride());
+                }
+                continue;
+            }
+
             // Objective:
             // Find Method Head: Add:
             //   FontRendererHook.changeTextColor(); <- insert the call right before the return
 
-            if (TransformerMethod.renderChar.matches(methodNode) || methodNode.name.equals("renderChar")) {
+            if (TransformerMethod.renderChar.matches(methodNode)) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertChangeTextColor());
             }
 
@@ -96,24 +106,6 @@ public class FontRendererTransformer implements ITransformer {
                 if (insertedChroma) {
                     // Insert a call to FontRendererHook.beginRenderString(shadow) as the first instruction
                     methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertBeginRenderString());
-
-                    // Avoid calling patcher's code if the string has chroma.
-                    // Only inserts anything when patcher installed (finds patcherFontRenderer) within first 20 instructions
-                    VarInsnNode thisAnchor = null;
-                    iterator = methodNode.instructions.iterator();
-                    for (int i = 0; iterator.hasNext() && i < 20; i++) {
-                        AbstractInsnNode abstractNode = iterator.next();
-                        if (abstractNode instanceof FieldInsnNode && abstractNode.getOpcode() == Opcodes.GETFIELD &&
-                                ((FieldInsnNode) abstractNode).name.equals("patcherFontRenderer") && abstractNode.getPrevious() instanceof VarInsnNode) {
-                            thisAnchor = (VarInsnNode) abstractNode.getPrevious();
-                        } else if (thisAnchor != null && abstractNode.getOpcode() == Opcodes.RETURN) {
-                            LabelNode endif = new LabelNode();
-                            methodNode.instructions.insert(abstractNode, endif);
-                            methodNode.instructions.insertBefore(abstractNode, insertEndOfString());
-                            methodNode.instructions.insertBefore(thisAnchor, patcherOverride(endif));
-                            break;
-                        }
-                    }
                 }
             }
         }
@@ -146,13 +138,17 @@ public class FontRendererTransformer implements ITransformer {
     /**
      * Skips patcher's optimized font renderer if the call to {@link FontRendererHook#shouldOverridePatcher(String)} returns true
      */
-    private InsnList patcherOverride(LabelNode endIf) {
+    private InsnList patcherOverride() {
         InsnList list = new InsnList();
 
-        // FontRendererHook.shouldOverridePatcher(text)
+        // if (FontRendererHook.shouldOverridePatcher(text)) return false;
         list.add(new VarInsnNode(Opcodes.ALOAD, 1));
         list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/FontRendererHook", "shouldOverridePatcher", "(Ljava/lang/String;)Z", false));
-        list.add(new JumpInsnNode(Opcodes.IFNE, endIf));
+        LabelNode endIf = new LabelNode();
+        list.add(new JumpInsnNode(Opcodes.IFEQ, endIf));
+        list.add(new InsnNode(Opcodes.ICONST_0));
+        list.add(new InsnNode(Opcodes.IRETURN));
+        list.add(endIf);
 
         return list;
     }

@@ -89,11 +89,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         transformers.forEach(transformer -> {
             log(Level.INFO, String.format("Applying transformer %s on %s...", transformer.getClass().getName(), transformedName));
             transformer.transform(node, transformedName);
-
-            // Asm-ing into patcher's source code causes issues if the writer tries to compute stackmap frames for some reason...TODO is why it's a problem?
-            if (transformer instanceof FontRendererTransformer && transformedName.equals("club.sk1er.patcher.hooks.FontRendererHook")) {
-                classWriterFlags.setValue(0);
-            }
         });
 
         ClassWriter writer = new ClassWriter(classWriterFlags.getValue());
