@@ -247,7 +247,7 @@ public class EnumUtils {
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
         SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay",202),
-        OUTBID_ALERT(SETTING_OUTBID_ALERT, 206),
+        OUTBID_ALERT(SETTING_OUTBID_ALERT_SOUND, 206),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -323,7 +323,7 @@ public class EnumUtils {
         PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS),
         ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.HIDE_SPAWN_POINT_PLAYERS, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
         IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER),
-        SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT),
+        SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT_SOUND),
         TIMOLOB("TimoLob", "github.com/TimoLob", Feature.ALERT_BROOD_MOTHER),
         NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT);
 

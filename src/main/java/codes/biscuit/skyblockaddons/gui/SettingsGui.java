@@ -292,8 +292,8 @@ public class SettingsGui extends GuiScreen {
                     settingFeature = Feature.SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES;
             } else if (feature == Feature.DROP_CONFIRMATION) {
                 settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES;
-            } else if (feature == Feature.OUTBID_ALERT) {
-                settingFeature = Feature.OUTBID_ALERT_IN_OTHER_GAMES;
+            } else if (feature == Feature.OUTBID_ALERT_SOUND) {
+                settingFeature = Feature.OUTBID_ALERT_SOUND_IN_OTHER_GAMES;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_IN_OTHER_GAMES.getMessage(), main, settingFeature));

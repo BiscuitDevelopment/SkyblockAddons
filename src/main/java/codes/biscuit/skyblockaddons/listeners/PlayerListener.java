@@ -242,6 +242,10 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
+        if (!main.getUtils().isOnHypixel()) {
+            return;
+        }
+
         String formattedText = e.message.getFormattedText();
         String unformattedText = e.message.getUnformattedText();
         String strippedText = TextUtils.stripColor(formattedText);
@@ -250,6 +254,11 @@ public class PlayerListener {
             lastSkyblockServerJoinAttempt = Minecraft.getSystemTime();
             DragonTracker.getInstance().reset();
             return;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_SOUND) && formattedText.matches("§6\\[Auction] §..*§eoutbid you .*")
+                && (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_SOUND_IN_OTHER_GAMES) || main.getUtils().isOnSkyblock())) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
         }
 
         if (main.getUtils().isOnSkyblock()) {
@@ -341,7 +350,9 @@ public class PlayerListener {
                     System.out.println(unformattedText);
                     try {
                         matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
-                        matcher.find(); // Ensure matcher.group gets what it wants, we don't need the result
+                        // Ensure matcher.group gets what it wants, we don't need the result
+                        //noinspection ResultOfMethodCallIgnored
+                        matcher.find();
                         this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
                         this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
                     }
@@ -383,10 +394,6 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
-                } else if (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT) && formattedText.matches("§6\\[Auction\\] §..*§eoutbid you by §6[0-9]*,[0-9]* coins §efor .*§e§lCLICK§r")) {
-                    if (main.getUtils().isOnSkyblock()||(main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_IN_OTHER_GAMES))) {
-                        main.getUtils().playLoudSound("random.orb", 0.5);
-                    }
                 } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
                     FetchurManager fetchur = FetchurManager.getInstance();
                     // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)

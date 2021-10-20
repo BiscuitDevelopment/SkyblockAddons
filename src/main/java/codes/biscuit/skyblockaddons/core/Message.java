@@ -172,7 +172,7 @@ public enum Message {
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
     SETTING_DISABLE_SPIRIT_SCEPTRE_MESSAGES(MessageObject.SETTING, "disableSpiritSceptreMessages"),
-    SETTING_OUTBID_ALERT(MessageObject.SETTING, "outbidAlert"),
+    SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_ALERT_BROOD_MOTHER(MessageObject.SETTING,"alertBroodMother"),
     SETTING_BAL_BOSS_ALERT(MessageObject.SETTING, "balBossWarning"),
     MESSAGE_ENCHANTS(MessageObject.MESSAGES, "enchants"),
