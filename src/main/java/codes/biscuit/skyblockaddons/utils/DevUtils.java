@@ -50,6 +50,8 @@ import java.util.stream.Collectors;
  * @version 2.3
  */
 public class DevUtils {
+    //TODO: Add options to enter custom action bar messages to test ActionBarParser
+    //      Add an option to log changed action bar messages only to reduce log spam
 
     private static final Minecraft mc = Minecraft.getMinecraft();
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
@@ -375,7 +377,7 @@ public class DevUtils {
      * @return the server brand if the client is connected to a server, {@code null} otherwise
      */
     public static String getServerBrand() {
-        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- (?:.+)");
+        final Pattern SERVER_BRAND_PATTERN = Pattern.compile("(.+) <- .+");
 
         if (!mc.isSingleplayer()) {
             Matcher matcher = SERVER_BRAND_PATTERN.matcher(mc.thePlayer.getClientBrand());
@@ -533,7 +535,7 @@ public class DevUtils {
         }
         // This includes the tags: byte, short, int, long, float, double, and string
         else {
-            stringBuilder.append(nbt.toString());
+            stringBuilder.append(nbt);
         }
 
         return stringBuilder.toString();

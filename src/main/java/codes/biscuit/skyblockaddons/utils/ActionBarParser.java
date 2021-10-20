@@ -49,8 +49,8 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
-    private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
+    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
+    private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
     private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
     private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
@@ -259,13 +259,23 @@ public class ActionBarParser {
 
     /**
      * Parses the skill section and display the skill progress gui element
+     * <p>
+     * <b>Example Skill Section Messages</b>
+     * <p>
+     * §3+10.9 Combat (313,937.1/600,000)
+     * <p>
+     * Another Example: §5+§d30 §5Runecrafting (969/1000)
+     * <p>
+     * Percent: §3+2 Farming (1.01%)
+     * <p>
+     * Percent without decimal: §3+2 Farming (1%)
+     * <p>
+     * Maxed out skill: §5+§d60 §5Runecrafting (118,084/0)
      *
      * @param skillSection Skill XP section of the action bar
-     * @return null or {@code skillSection} if wrong format or skill display is disabled
+     * @return {@code null} or {@code skillSection} if wrong format or skill display is disabled
      */
     private String parseSkill(String skillSection) {
-        // §3+10.9 Combat (313,937.1/600,000)
-        // Another Example: §5+§d30 §5Runecrafting (969/1000)
         Matcher matcher = SKILL_GAIN_PATTERN_S.matcher(TextUtils.stripColor(skillSection));
         if (matcher.matches() && (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY) || main.getConfigValues().isEnabled(Feature.SKILL_PROGRESS_BAR))) {
             StringBuilder skillTextBuilder = new StringBuilder();
@@ -314,14 +324,18 @@ public class ActionBarParser {
                 }
                 skillTextBuilder.append(")");
             }
+
             // This feature is only accessible when we have parsed the current and total skill xp
             if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                double amountLeft = Math.ceil((totalSkillXP - currentSkillXP) / gained);
-                if (percent != 100 && amountLeft < 214748360) {
-                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
-                } else if (percent != 100) {
-                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", "∞")); //This is a lil scuffed i think but it should work
-                             }
+                skillTextBuilder.append(" - ");
+
+                if (percent != 100) {
+                    if (gained != 0) {
+                        skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", Math.ceil((totalSkillXP - currentSkillXP) / gained)));
+                    } else {
+                        skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", "∞"));
+                    }
+                }
            }
 
             main.getRenderListener().setSkillText(skillTextBuilder.toString());
