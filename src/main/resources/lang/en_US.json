@@ -213,7 +213,8 @@
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Spawn Point Players",
-    "farmEventTimer": "Farm Event Timer"
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",

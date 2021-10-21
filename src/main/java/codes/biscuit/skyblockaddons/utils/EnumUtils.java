@@ -248,6 +248,7 @@ public class EnumUtils {
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
         SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay",202),
         OUTBID_ALERT(SETTING_OUTBID_ALERT_SOUND, 206),
+        DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
