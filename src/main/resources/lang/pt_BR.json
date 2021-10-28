@@ -132,7 +132,7 @@
     "warnWhenFetchurChanges": "Alertar-me quando Fetchur mudar",
     "mapZoom": "Zoom do Mapa",
     "glowingDroppedItems": "Itens Derrubados Brilhantes",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "Contornar Aliados de Dungeon",
     "baseStatBoostPercentage": "Mostrar Bônus de Status Base para Itens de Dungeon",
     "colorByRarity": "Cor por Raridade",
     "showPlayerHeadsOnMap": "Mostrar Cabeças de Jogadores nas Dungeons",
@@ -197,14 +197,14 @@
     },
     "showEnderChestPreview": "Mostrar Pré-visualização de Baús do Fim",
     "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaNumber": "Overflow Mana Number",
+    "showOverflowManaNumber": "Número de Mana Overflow",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
+    "entityOutlines": "Mostrar Contornos de Entidade",
+    "effectiveHealthNumber": "Número de Vida Efetiva",
+    "guiScaleX": "GUI X Escala: %scale%",
+    "guiScaleY": "GUI Y Escala: %scale%",
+    "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
   },
   "messages": {
@@ -279,7 +279,7 @@
     "copyModeSet": "O modo de cópia do desenvolvedor foi definido para: %mode%. Pressione \"%keyName%\" para iniciar uma cópia de dados!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTempo de recarga: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requer Shaders, Fast Render e Antialiasing desligados"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
