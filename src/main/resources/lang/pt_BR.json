@@ -22,7 +22,7 @@
       "compact": "Compacto"
     },
     "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
-    "hideHealthBar": "Esconder Barra de Vida",
+    "hideHealthBar": "Esconder Barra de Vida Padrão",
     "fullMinionWarning": "Aviso de Minion Cheio",
     "showOnlyWhenHoldingShift": "Mostrar Apenas com Shift Pressionado",
     "manaBar": "Barra de Mana",
@@ -45,7 +45,7 @@
     "lockSlot": "Bloquear um espaço",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
-    "makeEnderchestsInEndGreen": "Mudar a cor do Baú do Fim no The End",
+    "makeEnderchestsInEndGreen": "Mudar a cor do Baú de Ender no End",
     "changeColor": "Mudar Cor",
     "showInOtherGames": "Mostar em Outros Jogos",
     "useVanillaTexture": "Usar Textura Padrão",
@@ -195,7 +195,7 @@
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
     },
-    "showEnderChestPreview": "Mostrar Pré-visualização de Baús do Fim",
+    "showEnderChestPreview": "Mostrar Pré-visualização de Baús de Ender",
     "hideWhenNotDoingQuest": "Ocultar quando não está fazendo missão",
     "showOverflowManaNumber": "Número de Mana Overflow",
     "axeCooldownIndicator": "Indicador de Recarga do Machado",
