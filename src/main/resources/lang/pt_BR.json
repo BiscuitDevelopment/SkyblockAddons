@@ -11,7 +11,7 @@
     "fullInventoryWarning": "Aviso de Inventário Cheio",
     "repeating": "Alerta de Repetição",
     "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
-    "editLocations": "Editar Posições",
+    "editLocations": "Editar Posições da Interface",
     "guiScale": "Escala da Interface: %scale%",
     "resetLocations": "Restaurar Posições",
     "minionStopWarning": "Aviso de \"Minion Não Alcança\"",
@@ -168,7 +168,7 @@
     "showSwordKills": "Mostrar abates da espada",
     "compactTabList": "Tab Compacto",
     "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
     "candyPointsCounter": "Spooky Event Contador de Doces/Pontos",
     "healingCircleOpacity": "Opacidade do círculo de cura",
     "chromaSize": "Tamanho do Chroma",
@@ -180,11 +180,11 @@
     "drillFuelNumber": "Número do combustível da Drill",
     "fetchurToday": "Exibir o que Fetchur quer hoje",
     "fishingParticleOverlay": "Sobreposição de partículas de pesca",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
+    "enchantmentLoreParsing": "Analisar Dicas de Encantamentos",
     "cooldownPrediction": "Prever e diminuir o tempo de recarga",
     "legendaryMonkeyLevel100": "[TEMP] Monkey Lendário Nível 100",
     "biggerWake": "Ampliar partículas de sobreposição",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "Mostrar o Progresso dos Encantamentos Agrupados",
     "showReforgeOverlay": "Mostrar Sobreposição de Reforge",
     "reforgeFilter": "Filtro de Reforge",
     "hideEnchantDescription": "Esconder Descrição do Encantamento",
@@ -196,16 +196,16 @@
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
     },
     "showEnderChestPreview": "Mostrar Pré-visualização de Baús do Fim",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "hideWhenNotDoingQuest": "Ocultar quando não está fazendo missão",
     "showOverflowManaNumber": "Número de Mana Overflow",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "axeCooldownIndicator": "Indicador de Recarga do Machado",
+    "vanillaHealthPrediction": "Usar Previsão de Vida Padrão",
     "entityOutlines": "Mostrar Contornos de Entidade",
     "effectiveHealthNumber": "Número de Vida Efetiva",
-    "guiScaleX": "GUI X Escala: %scale%",
-    "guiScaleY": "GUI Y Escala: %scale%",
+    "guiScaleX": "Escala da Interface X: %scale%",
+    "guiScaleY": "Escala da Interface Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -237,7 +237,7 @@
     },
     "slotLocked": "Este espaço está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
-    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
+    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua barra de itens.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
     "clickOneMoreTime": "Clique/Largue este item mais 1 vez caso realmente queira fazer isso.",
     "featureDisabled": "Função desabilitada",
@@ -365,7 +365,7 @@
         "enabled": "Modo Desenvolvedor habilitado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!"
       },
       "edit": {
-        "help": "Editar Posições na GUI"
+        "help": "Editar Posições da Interface"
       },
       "folder": {
         "help": "Abrir a sua pasta de mods",
