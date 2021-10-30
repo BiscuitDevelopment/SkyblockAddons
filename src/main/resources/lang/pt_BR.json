@@ -42,7 +42,7 @@
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
     "lockSlots": "Permitir o bloqueio de espaços",
-    "lockSlot": "Bloquear um espaço",
+    "lockSlot": "Lock Slot",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Mudar a cor do baú de ender no End",
