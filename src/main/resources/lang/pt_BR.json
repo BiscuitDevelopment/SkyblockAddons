@@ -41,8 +41,8 @@
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
-    "lockSlots": "Permitir Trava de Slots",
-    "lockSlot": "Bloquear um slot",
+    "lockSlots": "Permitir Trava de Espaços",
+    "lockSlot": "Bloquear um espaço",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Mudar a cor do Baú do Fim no The End",
@@ -235,7 +235,7 @@
         "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
       }
     },
-    "slotLocked": "Este slot está trancado!",
+    "slotLocked": "Este espaço está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua hotbar.",
     "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
@@ -256,7 +256,7 @@
     "showColorIcons": "Mostrar Ícones Coloridos",
     "enableFeatureSnapping": "Ativar Mapeamento de Recursos",
     "stage": "Estágio %stage%",
-    "switchedSlots": "Você acabou de trocar de um slot bloqueado ou item raro. Por favor, espere um pouco antes de soltar!",
+    "switchedSlots": "Você acabou de trocar de um espaço bloqueado ou item raro. Por favor, espere um pouco antes de soltar!",
     "clickToOpenLink": "Clique para abrir este link!",
     "clickToOpenFolder": "Clique para abrir sua pasta de mods!",
     "firstStatus": "Este status aparecerá no topo",
