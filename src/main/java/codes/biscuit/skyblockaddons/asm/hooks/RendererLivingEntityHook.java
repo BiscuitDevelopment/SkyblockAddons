@@ -15,6 +15,7 @@ import java.util.Set;
 // cough nothing to see here
 public class RendererLivingEntityHook {
 
+    // TODO: Convert this to UUIDs instead of names
     // no don't ask to be added lol, for now these are just like my admins
     private static final Set<String> coolPeople = Sets.newHashSet("Dinnerbone", "Biscut", "Pinpointed", "Berded", "Potat_owo", "Pnda__", "Throwpo", "StopUsingSBE");
     private static boolean isCoolPerson;
