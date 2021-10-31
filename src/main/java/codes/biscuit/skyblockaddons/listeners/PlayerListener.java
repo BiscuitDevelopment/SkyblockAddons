@@ -793,11 +793,13 @@ public class PlayerListener {
     public void onClientTickMagma(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START) {
             Minecraft mc = Minecraft.getMinecraft();
-            if (main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) && main.getUtils().isOnSkyblock()) {
+            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) &&
+                    main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
                 if (mc != null && mc.theWorld != null) {
                     if (magmaTick % 5 == 0) {
                         boolean foundBoss = false;
                         long currentTime = System.currentTimeMillis();
+
                         for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
                             if (entity instanceof EntityMagmaCube) {
                                 EntitySlime magma = (EntitySlime) entity;
@@ -818,9 +820,11 @@ public class PlayerListener {
                                 }
                             }
                         }
+
                         if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
                             main.getRenderListener().setTitleFeature(null);
                         }
+
                         if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
                             magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
                             magmaTime = 7200;
@@ -830,6 +834,7 @@ public class PlayerListener {
                             }
                         }
                     }
+
                     if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
                         main.getUtils().playLoudSound("random.orb", 0.5);
                     }
