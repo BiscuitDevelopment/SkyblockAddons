@@ -3,12 +3,9 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPatternResult;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.common.collect.Sets;
@@ -31,29 +28,6 @@ import net.minecraftforge.common.MinecraftForge;
 import java.util.Set;
 
 public class PlayerControllerMPHook {
-
-    /**
-     * clickModifier value in {@link #onWindowClick(int, int, int, EntityPlayer, ReturnValue)}  for shift-clicks
-     */
-    private static final int SHIFTCLICK_CLICK_TYPE = 1;
-
-    /**
-     * Cooldown between playing error sounds to avoid stacking up
-     */
-    private static final int CRAFTING_PATTERN_SOUND_COOLDOWN = 400;
-
-    private static long lastCraftingSoundPlayed = 0;
-
-    private static final Set<Integer> ORES = Sets.newHashSet(Block.getIdFromBlock(Blocks.coal_ore), Block.getIdFromBlock(Blocks.iron_ore),
-            Block.getIdFromBlock(Blocks.gold_ore), Block.getIdFromBlock(Blocks.redstone_ore), Block.getIdFromBlock(Blocks.emerald_ore),
-            Block.getIdFromBlock(Blocks.lapis_ore), Block.getIdFromBlock(Blocks.diamond_ore), Block.getIdFromBlock(Blocks.lit_redstone_ore),
-            Utils.getBlockMetaId(Blocks.stone, BlockStone.EnumType.DIORITE_SMOOTH.getMetadata()),
-            Utils.getBlockMetaId(Blocks.stained_hardened_clay, EnumDyeColor.CYAN.getMetadata()),
-            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.ROUGH.getMetadata()),
-            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.DARK.getMetadata()),
-            Utils.getBlockMetaId(Blocks.prismarine, BlockPrismarine.EnumType.BRICKS.getMetadata()),
-            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.LIGHT_BLUE.getMetadata()),
-            Utils.getBlockMetaId(Blocks.wool, EnumDyeColor.GRAY.getMetadata()));
 
     /**
      * Checks if an item is being dropped and if an item is being dropped, whether it is allowed to be dropped.
@@ -160,45 +134,6 @@ public class PlayerControllerMPHook {
 
                     main.getUtils().playLoudSound("note.bass", 0.5);
                     returnValue.cancel();
-                }
-
-                // Crafting patterns
-                if (false && slotIn != null && main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE
-                    /*&& main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
-
-                    final CraftingPattern selectedPattern = main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern();
-                    final ItemStack clickedItem = slotIn.getStack();
-                    if (selectedPattern != CraftingPattern.FREE && clickedItem != null) {
-                        final ItemStack[] craftingGrid = new ItemStack[9];
-                        for (int i = 0; i < CraftingPattern.CRAFTING_GRID_SLOTS.size(); i++) {
-                            int slotIndex = CraftingPattern.CRAFTING_GRID_SLOTS.get(i);
-                            craftingGrid[i] = slots.getSlot(slotIndex).getStack();
-                        }
-
-                        final CraftingPatternResult result = selectedPattern.checkAgainstGrid(craftingGrid);
-
-                        if (slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory)) {
-                            if (result.isFilled() && !result.fitsItem(clickedItem) && mode == SHIFTCLICK_CLICK_TYPE) {
-                                // cancel shift-clicking items from the inventory if the pattern is already filled
-                                if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                    main.getUtils().playSound("note.bass", 0.5);
-                                    lastCraftingSoundPlayed = System.currentTimeMillis();
-                                }
-                                returnValue.cancel();
-                            }
-                        } else {
-                            if (slotIn.getSlotIndex() == CraftingPattern.CRAFTING_RESULT_INDEX
-                                    && !result.isSatisfied()
-                                    && main.getPersistentValuesManager().getPersistentValues().isBlockCraftingIncompletePatterns()) {
-                                // cancel clicking the result if the pattern isn't satisfied
-                                if (System.currentTimeMillis() > lastCraftingSoundPlayed + CRAFTING_PATTERN_SOUND_COOLDOWN) {
-                                    main.getUtils().playSound("note.bass", 0.5);
-                                    lastCraftingSoundPlayed = System.currentTimeMillis();
-                                }
-                                returnValue.cancel();
-                            }
-                        }
-                    }
                 }
             }
         }

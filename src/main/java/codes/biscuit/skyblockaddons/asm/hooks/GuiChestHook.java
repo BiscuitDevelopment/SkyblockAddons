@@ -10,7 +10,6 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -45,7 +44,6 @@ public class GuiChestHook {
     @Setter
     @Getter
     private static String lastAccessoryBagReforge = null;
-    private static CraftingPatternSelection craftingPatternSelection = null;
 
     private static final Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
     private static final Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
@@ -221,13 +219,6 @@ public class GuiChestHook {
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
 
         if (inventoryType != null) {
-            if (inventoryType == InventoryType.CRAFTING_TABLE) {
-                if (false /*SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
-                    craftingPatternSelection = new CraftingPatternSelection(Minecraft.getMinecraft(), Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
-                }
-                return;
-            }
-
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && inventoryType ==
                     InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                 int xPos = guiLeft - 160;
@@ -363,11 +354,6 @@ public class GuiChestHook {
             textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
         }
-
-        if (craftingPatternSelection != null && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() ==
-                InventoryType.CRAFTING_TABLE) {
-            craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
-        }
     }
 
     public static void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha, IInventory lowerChestInventory) { //Item item, ItemStack stack
@@ -375,13 +361,6 @@ public class GuiChestHook {
 
         if (!main.getUtils().isOnSkyblock()) {
             return;
-        }
-
-        // Draw here to make sure it's in the background of the GUI and items overlay it.
-        if (false && /*main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && */
-                main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE &&
-                craftingPatternSelection != null) {
-            craftingPatternSelection.draw();
         }
 
         Minecraft mc = Minecraft.getMinecraft();

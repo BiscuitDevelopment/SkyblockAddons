@@ -1,12 +1,12 @@
 package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.ResourceLocation;
 
 /**
  * CheckBox GUI element to use in other GUI elements.
@@ -19,6 +19,8 @@ public class CheckBox {
     public interface OnToggleListener {
         void onToggle(boolean value);
     }
+
+    private static final ResourceLocation ICON = new ResourceLocation("skyblockaddons", "craftingpatterns.png");
 
     /**
      * Size of the CheckBox icon
@@ -75,11 +77,11 @@ public class CheckBox {
         GlStateManager.scale(scale, scale, 1);
 
         int color = value ? ColorCode.WHITE.getColor() : ColorCode.GRAY.getColor();
-        DrawUtils.drawText(text, scaledX + Math.round(size * 1.5f / scale), scaledY + (size / 2), color);
+        DrawUtils.drawText(text, scaledX + Math.round(size * 1.5F / scale), scaledY + (size / 2F), color);
 
         GlStateManager.disableDepth();
         GlStateManager.enableBlend();
-        Minecraft.getMinecraft().getTextureManager().bindTexture(CraftingPattern.ICONS);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(ICON);
         GlStateManager.color(1, 1, 1, 1F);
 
         if (value) {
