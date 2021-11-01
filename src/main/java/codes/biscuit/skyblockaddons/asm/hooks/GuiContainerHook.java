@@ -5,7 +5,6 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -64,29 +63,6 @@ public class GuiContainerHook {
         Container container = mc.thePlayer.openContainer;
 
         if (slot != null) {
-            // Draw crafting pattern overlays inside the crafting grid.
-            if (false /*main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/ && main.getUtils().isOnSkyblock()
-                    && slot.inventory.getDisplayName().getUnformattedText().equals(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME)
-                    && main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern() != CraftingPattern.FREE) {
-
-                int craftingGridIndex = CraftingPattern.slotToCraftingGridIndex(slot.getSlotIndex());
-                if (craftingGridIndex >= 0) {
-                    int slotLeft = slot.xDisplayPosition;
-                    int slotTop = slot.yDisplayPosition;
-                    int slotRight = slotLeft + 16;
-                    int slotBottom = slotTop + 16;
-                    if (main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
-                        if (!slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
-                        }
-                    } else {
-                        if (slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
-                        }
-                    }
-                }
-            }
-
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock()) {
                 int slotNum = slot.slotNumber + main.getInventoryUtils().getSlotDifference(container);

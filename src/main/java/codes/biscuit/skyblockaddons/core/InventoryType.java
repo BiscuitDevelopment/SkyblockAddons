@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.core;
 
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import lombok.Getter;
 
 import java.util.regex.Pattern;
@@ -17,7 +16,7 @@ public enum InventoryType {
     BASIC_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag", "Reforge Accessory Bag"),
     ADVANCED_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag", "Reforge Accessory Bag"),
     BAKER("Baker", "Baker"),
-    CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
+    CRAFTING_TABLE("Craft Item", "Craft Item"),
     SALVAGING("Salvage Dungeon Item", "Salvage Dungeon Item"),
     ULTRASEQUENCER("Ultrasequencer", "Ultrasequencer \\((?<type>[a-zA-Z]+)\\)"),
     CHRONOMATRON("Chronomatron", "Chronomatron \\((?<type>[a-zA-Z]+)\\)"),
