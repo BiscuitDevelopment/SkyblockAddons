@@ -18,7 +18,7 @@
     "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
-      "regular": "Regular",
+      "regular": "नियमित",
       "compact": "Compact"
     },
     "showBackpackPreview": "Show Backpack Preview",
