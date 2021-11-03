@@ -29,7 +29,7 @@
     "manaNumber": "魔力文字",
     "healthBar": "血量計量條",
     "healthNumber": "血量文字",
-    "defenseIcon": "防禦力圖標",
+    "defenseIcon": "防禦力圖示",
     "defenseNumber": "防禦力文字",
     "defensePercentage": "防禦力百分比",
     "healthUpdates": "血量起伏",
@@ -43,7 +43,7 @@
     "showItemAnvilUses": "顯示物品鐵砧使用次數",
     "lockSlots": "允許鎖定欄位",
     "lockSlot": "鎖定欄位",
-    "dontResetCursorInventory": "打開物品欄不會重置鼠標位置",
+    "dontResetCursorInventory": "開啟物品欄時不重置滑鼠游標位置",
     "summoningEyeAlert": "Summoning Eye 警報",
     "makeEnderchestsInEndGreen": "於 The End 變更終界箱顏色",
     "changeColor": "變更顏色",
@@ -103,7 +103,7 @@
     "showSummoningEyeCount": "Zealot 計數器 - 總眼睛數",
     "showZealotsPerEye": "Zealot計數器 - 每眼睛所需Zealot數",
     "turnBowGreenWhenUsingToxicArrowPoison": "使用Toxic Arrow Poison時將弓染成綠色",
-    "birchParkRainmakerTimer": "Birtch Park下雨計時",
+    "birchParkRainmakerTimer": "Birch Park 下雨計時",
     "combatTimerDisplay": "顯示脫離戰鬥計時器",
     "discordRP": "豐富Discord狀態",
     "endstoneProtectorDisplay": "顯示終界石守護者",
@@ -159,7 +159,7 @@
     "dungeonsTeammateNameOverlay": "Dungeons 隊友名稱顯示",
     "dungeonsSecretsDisplay": "Dungeons Secrets 顯示",
     "showSkillPercentageInstead": "顯示百分比取代經驗值",
-    "showSkillXPGained": "顯示獲取的經驗值",
+    "showSkillXPGained": "顯示取得的經驗值",
     "skillProgressBar": "技能進度條",
     "showSalvageEssencesCounter": "顯示 Salvage Essences 計數器",
     "disableMortMessages": "隱藏 Mort 對話",
@@ -168,19 +168,19 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
-    "hideMenuGlassPanes": "隱藏選單玻璃物品信息",
+    "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
     "chromaSize": "漸變色尺寸",
     "chromaSaturation": "漸變色飽和度",
     "chromaBrightness": "漸變色亮度",
     "useNewChromaEffect": "使用新版漸變效果",
-    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品信息",
+    "showExperimentationTableTooltips": "顯示 Experimentation Table 物品資訊",
     "drillFuelBar": "Drill 燃料計量條",
     "drillFuelNumber": "Drill 燃料值",
     "fetchurToday": "顯示 Fetchur 今日物品",
     "fishingParticleOverlay": "釣魚粒子提示",
-    "enchantmentLoreParsing": "解析附魔信息",
+    "enchantmentLoreParsing": "解析附魔資訊",
     "cooldownPrediction": "預測並縮短冷卻時間",
     "legendaryMonkeyLevel100": "[TEMP] 等級 100 傳說 Monkey",
     "biggerWake": "放大提示粒子",
@@ -219,9 +219,9 @@
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
     "enchantsToMatch": "區配%type%:",
-    "enchantsToExclude": "排斥%type%:",
+    "enchantsToExclude": "排除%type%:",
     "updateChecker": {
-      "wantToViewPatchNotes": "需要幫助或想查看更新內容?",
+      "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
       "joinDiscord": "加入我們的 Discord 伺服器！",
       "watchShowcase": "觀看影片",
       "downloadButton": "下載",
@@ -253,7 +253,7 @@
     "setHexColor": "設定十六進制顏色",
     "rescaleFeatures": "開關縮放功能",
     "resizeBars": "調整計量條大小",
-    "showColorIcons": "顯示顏色圖標",
+    "showColorIcons": "顯示顏色圖示",
     "enableFeatureSnapping": "啟用自動對齊",
     "stage": "階段 %stage%",
     "switchedSlots": "你剛從一個鎖住的欄位或稀有物品切換過來，丟出前請稍等片刻！",
@@ -273,8 +273,8 @@
     "reforgeInclusionExample": "例：\"godly, strong\"",
     "reforgeExclusionExample": "例：\"odd, clean\"",
     "actionsLeft": "剩餘 %number%",
-    "effectActive": "已激活 1 個效果",
-    "effectsActive": "已激活 %number% 個效果",
+    "effectActive": "1 種狀態效果生效中",
+    "effectsActive": "%number% 種狀態效果生效中",
     "none": "無",
     "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
@@ -310,7 +310,7 @@
     "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
   },
   "enchantLayout": {
-    "title": "控制附魔如何顯示在物品信息",
+    "title": "控制附魔如何顯示在物品資訊",
     "titleCompress": "壓縮",
     "descriptionCompress": "盡可能壓縮附魔至最少行",
     "titleNormal": "正常",
@@ -336,7 +336,7 @@
         "detailedHelp": {
           "description": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
           "options": {
-            "entityNames": "你想要複製資料的實體種類名稱(例：Player、Creeper)。 輸入指令後按 \"Tab\" 以獲得完整清單。使用逗號分隔多個名稱，名稱有區分大小寫。",
+            "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
             "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
           }
         }
@@ -346,7 +346,7 @@
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
-            "formatted": "決定顏色代碼是否複製時須被包含。可以為 \"true\" 或 \"false\"，如果沒有提供，將默認設定為 \"fasle\"。顏色代碼將被複製如果值為 \"true\"。"
+            "formatted": "決定在複製時是否包含格式化代碼。值可以是 \"true\" 或 \"false\"，如果沒有提供，將預設為 \"false\"。如果值為 \"true\"，格式化代碼將被複製。"
           }
         }
       },
@@ -361,7 +361,7 @@
         "detailedHelp": {
           "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
-        "disabled": "開發者模式已禁用！",
+        "disabled": "開發者模式已停用！",
         "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
       },
       "edit": {
@@ -369,7 +369,7 @@
       },
       "folder": {
         "help": "開啟模組資料夾",
-        "error": "嘗試打開模組資料夾時出錯: %s"
+        "error": "嘗試開啟模組資料夾時出錯: %s"
       },
       "help": {
         "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
@@ -393,7 +393,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "手動設置 Zealot 計數器",
+          "help": "手動設定 Zealot 計數器",
           "detailedHelp": {
             "description": "手動設置 Zealot 計數器的數字。",
             "options": {
@@ -409,9 +409,9 @@
         }
       },
       "slayer": {
-        "help": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+        "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
         "detailedHelp": {
-          "description": "手動設置 Slayer 數值，按 Tab 以獲得參數",
+          "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "options": {
             "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
