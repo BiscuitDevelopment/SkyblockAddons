@@ -1,9 +1,9 @@
 {
-  "languageText": "Language: ",
+  "languageText": "भाषा: ",
   "language": "हिन्दी",
   "settings": {
-    "settings": "Settings",
-    "magmaBossWarning": "Magma Boss Warning",
+    "settings": "सेटिंग्स",
+    "magmaBossWarning": "Magma Boss चेतावनी",
     "itemDropConfirmation": "Item Drop Confirmation",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
