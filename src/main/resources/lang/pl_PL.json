@@ -201,11 +201,11 @@
     "axeCooldownIndicator": "Wskaźnik odnowienia Siekiery",
     "vanillaHealthPrediction": "Użyj vanillowego przewidywania zdrowia",
     "entityOutlines": "Pokaż kontury stworzeń",
-    "effectiveHealthNumber": "Effective Health Number",
+    "effectiveHealthNumber": "Efektywna ilość zdrowia",
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Skrócony Dzielnik XP'a umiejętności",
+    "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -279,7 +279,7 @@
     "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu"
   },
   "discordStatus": {
     "titleNone": "Brak",
