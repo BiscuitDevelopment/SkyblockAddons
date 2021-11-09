@@ -245,12 +245,12 @@ public class IslandWarpGui extends GuiScreen {
                     }
                 }, 20);
             }
-            if (selectedMarker != Marker.DWARVEN_FORGE) {
+            if (selectedMarker != null) {
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp " + selectedMarker.getWarpName());
-            } else {
+            } /*else {
                 // Weirdly, this command is /warpforge instead of /warp forge
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp" + selectedMarker.getWarpName());
-            }
+            }*/
 
         }
 
@@ -391,8 +391,9 @@ public class IslandWarpGui extends GuiScreen {
 
         GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 86, 259),
         DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
-        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 150, 320),
-        DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, false, 220, 350),
+        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 110, 280),
+        DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, true, 170, 310),
+        CRYSTAL_HOLLOWS("crystals", "Crystal Hollows", Island.DEEP_CAVERNS, true, 220, 350),
 
         DUNGEON_HUB_ISLAND("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;

@@ -44,6 +44,7 @@ public enum Location {
     BIRCH_PARK("Birch Park"),
     SPRUCE_WOODS("Spruce Woods"),
     SAVANNA_WOODLAND("Savanna Woodland"),
+    MELODYS_PLATEAU("Melody's Plateau"),
     DARK_THICKET("Dark Thicket"),
     JUNGLE_ISLAND("Jungle Island"),
     HOWLING_CAVE("Howling Cave"),
