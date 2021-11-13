@@ -49,7 +49,7 @@ public class FetchurManager {
             new FetchurItem(new ItemStack(Blocks.pumpkin, 1), "Pumpkin"),
             new FetchurItem(new ItemStack(Items.flint_and_steel, 1), "Flint and Steel"),
             new FetchurItem(new ItemStack(Blocks.quartz_ore, 50), "Nether Quartz Ore"),
-            new FetchurItem(new ItemStack(Items.ender_pearl, 16), "Ender Pearl"),
+            //new FetchurItem(new ItemStack(Items.ender_pearl, 16), "Ender Pearl"),
             new FetchurItem(new ItemStack(Blocks.wool, 50, 14), "Red Wool")};
 
     @Getter
