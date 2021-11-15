@@ -380,7 +380,7 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes da dungeon para fins de depuração."
+        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes na dungeon para fins de depuração."
       },
       "reload": {
         "help": "§e(Dev) §7Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
