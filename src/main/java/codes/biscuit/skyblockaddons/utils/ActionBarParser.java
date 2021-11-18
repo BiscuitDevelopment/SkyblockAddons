@@ -331,7 +331,7 @@ public class ActionBarParser {
 
                 if (percent != 100) {
                     if (gained != 0) {
-                        skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", Math.ceil((totalSkillXP - currentSkillXP) / gained)));
+                        skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
                     } else {
                         skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", "∞"));
                     }
