@@ -510,7 +510,7 @@ public class PlayerListener {
 
     /**
      * This method is triggered by the player right-clicking on something.
-     * Yes, it says it works for left-clicking blocks too but it actually doesn't, so please don't use it to detect that.
+     * Yes, it says it works for left-clicking blocks too, but it actually doesn't, so please don't use it to detect that.
      * <br>
      * Also, when the player right-clicks on a block, {@code PlayerInteractEvent} gets fired twice. The first time,
      * the correct action type {@code Action.RIGHT_CLICK_BLOCK}, is used. The second time, the action type is
@@ -533,18 +533,18 @@ public class PlayerListener {
                 if (color != null) {
                     BackpackInventoryManager.setBackpackColor(color);
                 }
-            } else if (heldItem.getItem().equals(Items.fishing_rod)
+            } else if (heldItem.getItem() == Items.fishing_rod
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
-                // Update fishing status
-                if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+                // Update fishing status if the player is fishing and reels in their rod.
+                if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && BaitManager.getInstance().isHoldingRod()) {
                     oldBobberIsInWater = false;
                     lastBobberEnteredWater = Long.MAX_VALUE;
                     oldBobberPosY = 0;
                 }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
                     String itemId = ItemUtils.getSkyblockItemID(heldItem);
-                    // Grappling hook cooldown
-                    if (itemId.equals(InventoryUtils.GRAPPLING_HOOK_ID) && mc.thePlayer.fishEntity != null) {
+                    // Grappling hook cool-down
+                    if (itemId != null && itemId.equals(InventoryUtils.GRAPPLING_HOOK_ID) && mc.thePlayer.fishEntity != null) {
                         boolean wearingFullBatPerson = InventoryUtils.isWearingFullSet(mc.thePlayer, InventoryUtils.BAT_PERSON_SET_IDS);
                         int cooldownTime = wearingFullBatPerson ? 0 : CooldownManager.getItemCooldown(itemId);
                         CooldownManager.put(itemId, cooldownTime);
@@ -564,8 +564,6 @@ public class PlayerListener {
             timerTick++;
 
             if (mc != null) { // Predict health every tick if needed.
-
-
                 ScoreboardManager.tick();
 
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
@@ -576,9 +574,6 @@ public class PlayerListener {
                     int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                             getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                     setAttribute(Attribute.HEALTH, newHealth);
-                }
-                if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
-                    main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
 
                 if (timerTick == 20) {
@@ -610,6 +605,9 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
                             main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(player);
+                            if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
+                                main.getUtils().playLoudSound("random.successful_hit", 0.8);
+                            }
                             if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY)) {
                                 FetchurManager.getInstance().recalculateFetchurItem();
                             }
@@ -1351,11 +1349,22 @@ public class PlayerListener {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
+    /**
+     * Checks if the fishing indicator sound should be played. To play the sound, these conditions have to be met:
+     * <p>1. Fishing sound indicator feature is enabled</p>
+     * <p>2. The player is on skyblock (checked in {@link #onTick(TickEvent.ClientTickEvent)})</p>
+     * <p>3. The player is holding a fishing rod</p>
+     * <p>4. The fishing rod is in the water</p>
+     * <p>5. The bobber suddenly moves downwards, indicating a fish has been caught</p>
+     *
+     * @return {@code true} if the fishing alert sound should be played, {@code false} otherwise
+     * @see Feature#FISHING_SOUND_INDICATOR
+     */
     private boolean shouldTriggerFishingIndicator() {
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc.thePlayer != null && mc.thePlayer.fishEntity != null && mc.thePlayer.getHeldItem() != null
-                && mc.thePlayer.getHeldItem().getItem().equals(Items.fishing_rod)
-                && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+
+        if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && mc.thePlayer.fishEntity != null
+                && BaitManager.getInstance().isHoldingRod()) {
             // Highly consistent detection by checking when the hook has been in the water for a while and
             // suddenly moves downward. The client may rarely bug out with the idle bobbing and trigger a false positive.
             EntityFishHook bobber = mc.thePlayer.fishEntity;

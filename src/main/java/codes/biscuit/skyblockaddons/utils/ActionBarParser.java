@@ -85,6 +85,13 @@ public class ActionBarParser {
     private boolean healthLock;
     private String otherDefense;
 
+    /** The skill section that was parsed from the last action bar message */
+    private String lastParsedSkillSection = "";
+    /** The string that was displayed on the skill progress display for the last action bar message */
+    private String lastSkillProgressString;
+    /** The skill type parsed from the last action bar message */
+    private SkillType lastSkillType;
+
     private final LinkedList<String> stringsToRemove = new LinkedList<>();
 
     public ActionBarParser() {
@@ -272,7 +279,10 @@ public class ActionBarParser {
     }
 
     /**
-     * Parses the skill section and display the skill progress gui element
+     * Parses the skill section and displays the skill progress gui element.
+     * If the skill section provided is the same as the one from the last action bar message, then the last output is
+     * displayed.
+     *
      * <p>
      * <b>Example Skill Section Messages</b>
      * <p>
@@ -293,18 +303,21 @@ public class ActionBarParser {
         if (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY) || main.getConfigValues().isEnabled(Feature.SKILL_PROGRESS_BAR)) {
             Matcher matcher = SKILL_GAIN_PATTERN_S.matcher(TextUtils.stripColor(skillSection));
             NumberFormat nf = NumberFormat.getInstance(Locale.US);
+            StringBuilder skillTextBuilder = new StringBuilder();
+            SkillType skillType = null;
 
             nf.setMaximumFractionDigits(2);
 
-            if (matcher.matches()) {
-                StringBuilder skillTextBuilder = new StringBuilder();
+            if (lastParsedSkillSection.equals(skillSection)) {
+                skillTextBuilder.append(lastSkillProgressString);
+                skillType = lastSkillType;
+            } else if (matcher.matches()) {
 
                 if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
                     skillTextBuilder.append("+").append(matcher.group("gained"));
                 }
 
-                float gained = nf.parse(matcher.group("gained")).floatValue();
-                SkillType skillType = SkillType.getFromString(matcher.group("skillName"));
+                skillType = SkillType.getFromString(matcher.group("skillName"));
 
                 boolean skillPercent = matcher.group("percent") != null;
                 boolean parseCurrAndTotal = true;
@@ -346,6 +359,8 @@ public class ActionBarParser {
 
                 // This feature is only accessible when we have parsed the current and total skill xp
                 if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                    float gained = nf.parse(matcher.group("gained")).floatValue();
+
                     skillTextBuilder.append(" - ");
 
                     if (percent != 100) {
@@ -357,6 +372,12 @@ public class ActionBarParser {
                     }
                 }
 
+                lastParsedSkillSection = skillSection;
+                lastSkillProgressString = skillTextBuilder.toString();
+                lastSkillType = skillType;
+            }
+
+            if (skillTextBuilder.length() != 0) {
                 main.getRenderListener().setSkillText(skillTextBuilder.toString());
                 main.getRenderListener().setSkill(skillType);
                 main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);

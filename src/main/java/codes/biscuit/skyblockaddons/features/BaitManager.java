@@ -22,6 +22,13 @@ public class BaitManager {
      */
     @Getter private static final BaitManager instance = new BaitManager();
 
+    /**
+     * A list of Skyblock item IDs for items that are {@code Items.fishing_rod}s but aren't used for fishing.
+     * These are used for checking if a player is holding a fishing rod that can be used for fishing.
+     * If any new non-fishing fishing rod items are added, add them here.
+     */
+    private static final String[] NOT_FOR_FISHING_ROD_IDS = {"GRAPPLING_HOOK", "SOUL_WHIP"};
+
     public static final Map<BaitType, Integer> DUMMY_BAITS = new HashMap<>();
 
     static {
@@ -33,22 +40,30 @@ public class BaitManager {
     /**
      * A map of all baits in the inventory and their count
      */
-    @Getter private Map<BaitType, Integer> baitsInInventory = new HashMap<>();
+    @Getter private final Map<BaitType, Integer> baitsInInventory = new HashMap<>();
 
     /**
-     * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook (If any more items are made that
-     * are Items.fishing_rods but aren't used for fishing, add them here)
+     * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook and Soul Whip and other items
+     * listed in {@code NOT_FOR_FISHING_ROD_IDS} that are {@code Items.fishing_rod}s but aren't used for fishing.
      *
-     * @return True if it can be used for fishing
+     * @return {@code true} if the held fishing rod can be used for fishing, {@code false} otherwise
      */
     public boolean isHoldingRod() {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 
         if (player != null) {
             ItemStack item = player.getHeldItem();
-            if (item == null || item.getItem() != Items.fishing_rod) return false;
+            String itemId = ItemUtils.getSkyblockItemID(item);
 
-            return !"GRAPPLING_HOOK".equals(ItemUtils.getSkyblockItemID(item));
+            if (item == null || itemId == null || item.getItem() != Items.fishing_rod) return false;
+
+            for (String rodItemId : NOT_FOR_FISHING_ROD_IDS) {
+                if (itemId.equals(rodItemId)) {
+                    return false;
+                }
+            }
+
+            return true;
         }
         return false;
     }

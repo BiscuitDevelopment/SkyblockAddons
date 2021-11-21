@@ -67,6 +67,7 @@ import org.lwjgl.opengl.GL11;
 import javax.vecmath.Vector3d;
 import java.awt.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
@@ -744,8 +745,8 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = getAttribute(Attribute.DEFENCE);
             double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
-            BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
-            text = bigDecimal.toString() + "%";
+            BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, RoundingMode.HALF_UP);
+            text = bigDecimal + "%";
 
         } else if (feature == Feature.SPEED_PERCENTAGE) {
             String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
@@ -875,7 +876,7 @@ public class RenderListener {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
 
                 if (remainingTime < 0) {
-                    if (remainingTime < -2000) {
+                    if (remainingTime < -1968) {
                         return; // Will be invisible, no need to render.
                     }
 

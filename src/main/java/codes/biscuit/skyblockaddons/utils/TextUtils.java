@@ -25,8 +25,6 @@ public class TextUtils {
     private static final Pattern TRIM_WHITESPACE_RESETS = Pattern.compile("^(?:\\s|§r)*|(?:\\s|§r)*$");
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]+");
     private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
-    private static final Pattern THOUSANDS = Pattern.compile("(\\d)[kK]");
-    private static final Pattern MILLIONS = Pattern.compile("(\\d)[mM]");
     private static final Pattern MAGNITUDE_PATTERN = Pattern.compile("(\\d[\\d,.]*\\d*)+([kKmMbBtT])");
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
@@ -111,8 +109,8 @@ public class TextUtils {
     }
 
     /**
-     * Converts doubles with magnitudes in a given string, e.g. "10k" -> "10000" and "10M" -> "10000000." Magnitudes are
-     * not case-sensitive.
+     * Converts all numbers with magnitudes in a given string, e.g. "10k" -> "10000" and "10M" -> "10000000." Magnitudes
+     * are not case-sensitive.
      *
      * <b>Supported magnitudes:</b>
      * <p>k - thousand</p>
@@ -122,9 +120,9 @@ public class TextUtils {
      * <p>
      * <p>
      * <b>Examples:</b>
-     * <p>1k -> 1000</p>
-     * <p>2.5K -> 2500</p>
-     * <p>100M -> 100000000</p>
+     * <p>1k -> 1,000</p>
+     * <p>2.5K -> 2,500</p>
+     * <p>100M -> 100,000,000</p>
      *
      * @param text - Input text
      * @return Input text with converted magnitudes
