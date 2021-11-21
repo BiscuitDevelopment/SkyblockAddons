@@ -43,14 +43,13 @@ public class ItemUtils {
     @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     @Setter private static Map<String, ContainerData> containers;
 
-    // Group 0 -> Recombobulator 3000 & Group 1 -> Color Codes
-    private static final Pattern RARITY_PATTERN = Pattern.compile("(§[0-9a-f]§l§ka§r )?([§0-9a-fk-or]+)(?<rarity>[A-Z]+)");
+    private static final Pattern RARITY_PATTERN = Pattern.compile("§(?<colourCode>[0-9a-f])[§0-9a-fk-or]+(?<rarity>[A-Z]+)");
 
     /**
      * Returns the rarity of a given Skyblock item
      *
      * @param item the Skyblock item to check
-     * @return the rarity of the item if a valid rarity is found, {@code INVALID} if no rarity is found, {@code null} if item is {@code null}
+     * @return the rarity of the item if a valid rarity is found, or {@code null} if item is {@code null} or no valid rarity is found
      */
     public static ItemRarity getRarity(ItemStack item) {
         if (item == null || !item.hasTagCompound())  {
@@ -65,8 +64,8 @@ public class ItemUtils {
 
         NBTTagList lore = display.getTagList("Lore", Constants.NBT.TAG_STRING);
 
-        // Determine the item's rarity
-        for (int i = 0; i < lore.tagCount(); i++) {
+        // Determine the item's rarity.
+        for (int i = lore.tagCount() - 1; i >= 0 ; i--) {
             String currentLine = lore.getStringTagAt(i);
 
             Matcher rarityMatcher = RARITY_PATTERN.matcher(currentLine);

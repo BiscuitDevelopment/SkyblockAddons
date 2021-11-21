@@ -15,13 +15,15 @@ public enum ItemRarity {
     EPIC("EPIC", ColorCode.DARK_PURPLE),
     LEGENDARY("LEGENDARY", ColorCode.GOLD),
     MYTHIC("MYTHIC", ColorCode.LIGHT_PURPLE),
-    SUPREME("SUPREME", ColorCode.DARK_RED),
+    DIVINE("DIVINE", ColorCode.AQUA),
 
     SPECIAL("SPECIAL", ColorCode.RED),
     VERY_SPECIAL("VERY SPECIAL", ColorCode.RED);
 
-    private String loreName;
-    private ColorCode colorCode;
+    /** The name of the rarity as displayed in an item's lore */
+    private final String loreName;
+    /** The color code for the color of the rarity as it's displayed in an item's lore */
+    private final ColorCode colorCode;
 
     ItemRarity(String loreName, ColorCode colorCode) {
         this.loreName = loreName;
