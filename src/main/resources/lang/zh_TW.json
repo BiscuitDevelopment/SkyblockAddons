@@ -218,7 +218,7 @@
     "minionIsFull": "有一個 Minion 因背包已滿而停止運作了！",
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
-    "enchantsToMatch": "區配%type%:",
+    "enchantsToMatch": "匹配%type%:",
     "enchantsToExclude": "排除%type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
@@ -276,7 +276,7 @@
     "effectActive": "1 種狀態效果生效中",
     "effectsActive": "%number% 種狀態效果生效中",
     "none": "無",
-    "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
+    "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
     "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」"
