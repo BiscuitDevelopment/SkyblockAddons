@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Configurações",
     "magmaBossWarning": "Alerta do Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Confirmação para largar item",
     "hideSkeletonHatBones": "Ocultar os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
@@ -168,10 +169,15 @@
     "showSwordKills": "Mostrar abates da espada",
     "compactTabList": "Tab Compacto",
     "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
     "candyPointsCounter": "Spooky Event Contador de Doces/Pontos",
     "healingCircleOpacity": "Opacidade do círculo de cura",
     "chromaSize": "Tamanho do Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Saturação do Chroma",
     "chromaBrightness": "Brilho do Chroma",
     "useNewChromaEffect": "Usar Novo Efeito Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "Escala da Interface X: %scale%",
     "guiScaleY": "Escala da Interface Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
-    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)"
+    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Encantamentos",
     "reforges": "Reforjadas",
     "dropConfirmation": "Largue este item de novo para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Inventário Cheio!",
     "labymod": "Usuários de Labymod: Ocultar as barras de fome, armadura e vida não é compatível.",
     "minionCannotReach": "Um minion de %type% não alcança e parou de trabalhar!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Alterar o registro de mensagens da barra de ação",
         "disabled": "As mensagens da barra de ações não serão mais registradas.",
         "enabled": "As mensagens da barra de ações agora serão registradas."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
