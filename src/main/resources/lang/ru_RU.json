@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Настройки",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Подтверждение выбрасывания предмета",
     "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
     "skeletonHatBonesBar": "Шкала костей Skeleton Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Компактная информация в Tab",
     "highlightSpecialEnchantments": "Подсвечивать Особые Зачарования",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Счётчик конфет/очков во время Spooky Event",
     "healingCircleOpacity": "Прозрачность Круга Исцеления",
     "chromaSize": "Размер Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Насыщенность Chroma",
     "chromaBrightness": "Яркость Chroma",
     "useNewChromaEffect": "Использовать новый эффект Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Зачарования",
     "reforges": "Перековки",
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
     "magmaBossWarning": "Магма-Босс!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Инвентарь полон!",
     "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не достает и перестает спавнить!",
@@ -430,6 +440,11 @@
         "help": "§e(Разр.) §7Переключить запись сообщений из строки действий",
         "disabled": "Сообщения из строки действий больше не будут добавляться в логи.",
         "enabled": "Сообщения из строки действий теперь будут добавляться в логи."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
