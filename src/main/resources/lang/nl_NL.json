@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Instellingen",
     "magmaBossWarning": "Magmabaaswaarschuwing",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "Bal-baaswaarschuwing",
     "itemDropConfirmation": "Voorwerp laten vallen-bevestiging",
     "hideSkeletonHatBones": "Botten skelettenhelm verbergen",
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
@@ -169,15 +169,15 @@
     "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightSpecialEnchantments": "Speciale betoveringen markeren",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableSpiritSceptreMessages": "Vaardigheidsberichten uitschakelen",
+    "showSpiritSceptreDisplay": "Vaardigheidsschadeweergave",
+    "outbidAlertSound": "Overbiedingsgeluid",
     "hideMenuGlassPanes": "Tekstballonnen van glas in menu's verbergen",
     "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
     "healingCircleOpacity": "Healing Circle-doorzichtigheid",
     "chromaSize": "Chromagrootte",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
+    "alertBroodMother": "Brood Mother-waarschuwing",
+    "titleBroodMother": "Brood Mother gespawnd!",
     "chromaSaturation": "Chromaverzadiging",
     "chromaBrightness": "Chromahelderheid",
     "useNewChromaEffect": "Nieuw Chroma-effect gebruiken",
@@ -212,16 +212,16 @@
     "guiScaleY": "Y-schaal interface: %scale%",
     "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
     "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
-    "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Spelers op spawnpunt verbergen",
+    "farmEventTimer": "Boerderijevenementstimer",
+    "dontReplaceRomanNumeralsInItemNames": "Niet vervangen in itemnamen"
   },
   "messages": {
     "enchants": "Betoveringen",
     "reforges": "Omsmedingen",
     "dropConfirmation": "Laat dit voorwerp opnieuw vallen om te bevestigen!",
     "magmaBossWarning": "MagmaKubus Baas!",
-    "balBossAlert": "Bal Boss!",
+    "balBossAlert": "Bal-baas!",
     "fullInventory": "Volle Inventaris!",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
     "minionCannotReach": "Een %type%minion kan iets niet bereiken en is gestopt!",
@@ -442,9 +442,9 @@
         "enabled": "Berichten in de actiebalk worden nu gelogd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Dev) §7Plaatsen van debugberichten magmabaastimer schakelen",
+        "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
+        "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
       },
       "errors": {
         "wrongUsage": {
