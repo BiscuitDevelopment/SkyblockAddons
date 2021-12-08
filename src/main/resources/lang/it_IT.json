@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Impostazioni",
     "magmaBossWarning": "Avviso per il Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Conferma per gettare un oggetto",
     "hideSkeletonHatBones": "Nascondi le ossa dello Skeleton Hat",
     "skeletonHatBonesBar": "Barra delle ossa dello Skeleton Hat",
@@ -168,10 +169,15 @@
     "showSwordKills": "Mostra uccisioni con spada",
     "compactTabList": "Lista giocatori compatta",
     "highlightSpecialEnchantments": "Evidenzia gli incantesimi speciali",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Nascondi descrizioni nei pannelli di vetro del menu",
     "candyPointsCounter": "Caramelle Spooky Event/Contatore di punti",
     "healingCircleOpacity": "Opacità del circolo di cura",
     "chromaSize": "Dimensione Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Saturazione Chroma",
     "chromaBrightness": "Luminosità Chroma",
     "useNewChromaEffect": "Usa un nuovo effetto Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "Scala GUI X: %scale%",
     "guiScaleY": "Scala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Abbrevia denominatore XP di abilità",
-    "otherDefenseStats": "Altri stati di difesa (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Altri stati di difesa (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Incantesimi",
     "reforges": "Reforges",
     "dropConfirmation": "Getta questo oggetto nuovamente per confermare!",
     "magmaBossWarning": "Magma Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Inventario pieno!",
     "labymod": "Utenti LabyMod: Le Barre Nascondi Cibo, Armatura e Vita sono incompatibili.",
     "minionCannotReach": "Un %type% minion non riesce a raggiungere le risorse ed ha smesso di generarne altre!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
         "disabled": "I messaggi della barra delle azioni non saranno più registrati.",
         "enabled": "I messaggi della barra delle azioni saranno ora registrati."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
