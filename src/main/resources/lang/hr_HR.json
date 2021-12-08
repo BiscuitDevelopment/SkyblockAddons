@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Postavke",
     "magmaBossWarning": "Magma Boss Upozorenje",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Potvrda Bacanja Stvari",
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
@@ -168,10 +169,15 @@
     "showSwordKills": "Brojač ubistva na maču",
     "compactTabList": "Jednostavnija tablista",
     "highlightSpecialEnchantments": "Istaknite Posebne čarolije",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky event Candy brojač",
     "healingCircleOpacity": "Neprozirnost ljekovitog kruga",
     "chromaSize": "Kroma veličina",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Zasićenost kroma",
     "chromaBrightness": "Svjetloća krome",
     "useNewChromaEffect": "Koristite novi Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "Veličina X Veličine: %scale%",
     "guiScaleY": "Veličina Y Veličine: %scale%",
     "abbreviateSkillXpDenominator": "Skratiti nazivnik Skill XP",
-    "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)"
+    "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Čarolije",
     "reforges": "Svi reforge",
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
     "magmaBossWarning": "MagmaCube Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Pun Inventar!",
     "labymod": "Labymod Korisnici: Sakrij Hranu, Armor, i Bar Zdravlja su neuskladivi.",
     "minionCannotReach": "%type% minion ne može posegnuti i prestao je stvarati!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Uključi/Isključi registriranje action bar poruka",
         "disabled": "Poruke Action bara neće biti registrirane.",
         "enabled": "Poruke Action bara biti će registrirane."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
