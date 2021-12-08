@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Instellingen",
     "magmaBossWarning": "Magmabaaswaarschuwing",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Voorwerp laten vallen-bevestiging",
     "hideSkeletonHatBones": "Botten skelettenhelm verbergen",
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
@@ -168,10 +169,15 @@
     "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightSpecialEnchantments": "Speciale betoveringen markeren",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Tekstballonnen van glas in menu's verbergen",
     "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
     "healingCircleOpacity": "Healing Circle-doorzichtigheid",
     "chromaSize": "Chromagrootte",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chromaverzadiging",
     "chromaBrightness": "Chromahelderheid",
     "useNewChromaEffect": "Nieuw Chroma-effect gebruiken",
@@ -205,13 +211,17 @@
     "guiScaleX": "X-schaal interface: %scale%",
     "guiScaleY": "Y-schaal interface: %scale%",
     "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
-    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Betoveringen",
     "reforges": "Omsmedingen",
     "dropConfirmation": "Laat dit voorwerp opnieuw vallen om te bevestigen!",
     "magmaBossWarning": "MagmaKubus Baas!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Volle Inventaris!",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
     "minionCannotReach": "Een %type%minion kan iets niet bereiken en is gestopt!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Berichten in de actiebalk loggen in-/uitschakelen",
         "disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
         "enabled": "Berichten in de actiebalk worden nu gelogd."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
