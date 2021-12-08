@@ -4,6 +4,7 @@
   "settings": {
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
     "hideSkeletonHatBones": "إخفاء عظام Skeleton's Helmet",
     "skeletonHatBonesBar": "شريط عظام الـSkeleton's Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "إظهار قتلات السيف",
     "compactTabList": "قائمة الـTab المتراصة",
     "highlightSpecialEnchantments": "تمييز التطويرات الخاصة",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "التطويرات",
     "reforges": "ريفورجس",
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "Magma Cube Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "امتلأت الانفنتوري!",
     "labymod": "مستعملي اللابي مود: إن إخفاء شريط الطعام، الدروع، الصحه، غير متوافق.",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7إشغال تسجيل شريط إجراءات الرسائل",
         "disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
         "enabled": "سيتم الآن تسجيل رسائل شريط العمل."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
