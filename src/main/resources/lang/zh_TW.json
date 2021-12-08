@@ -4,6 +4,7 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Boss 生成警報",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "確認丟棄物品",
     "hideSkeletonHatBones": "隱藏 Skeleton's Helmet 的防禦骨頭",
     "skeletonHatBonesBar": "Skeleton's Helmet 可抵擋的攻擊次數",
@@ -168,10 +169,15 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
     "chromaSize": "漸變色尺寸",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "漸變色飽和度",
     "chromaBrightness": "漸變色亮度",
     "useNewChromaEffect": "使用新版漸變效果",
@@ -205,13 +211,17 @@
     "guiScaleX": "介面X方位大小: %scale%",
     "guiScaleY": "介面Y方位大小: %scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
-    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "附魔",
     "reforges": "重鑄",
     "dropConfirmation": "再次丟棄此物品以確認！",
     "magmaBossWarning": "Magma Cube Boss 已出生！",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "背包已滿！",
     "labymod": "Labymod 使用者請注意：隱藏食物、裝甲值及血條還未完成。",
     "minionCannotReach": "有一個 %type% Minion 因無法觸及生物而停止運作了！",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7切換是否紀錄動作列訊息",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
