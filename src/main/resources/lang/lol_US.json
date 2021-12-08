@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warnin",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Itm drop comfirmashun",
     "hideSkeletonHatBones": "Hide Skeletons Helmet Bonez",
     "skeletonHatBonesBar": "Skeletons Helmet Bonez Bar",
@@ -168,10 +169,15 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Speshul Enchantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glas Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Countr",
     "healingCircleOpacity": "Healin Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturashun",
     "chromaBrightness": "Chroma Brightnes",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)"
+    "otherDefenseStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforgez",
     "dropConfirmation": "Drop dis item again 2 confirm!",
     "magmaBossWarning": "Magma Cube Bos!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Full Inventory!",
     "labymod": "Labymod Users: Hide Fud, Armor, an Health Bar, iz incompatible.",
     "minionCannotReach": "A %type% minion cant reach an has stoppd spawnin!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle loggin acshun bar mesagez",
         "disabled": "Acshun bar mesagez will no longr be loggd.",
         "enabled": "Acshun bar mesagez will nao be loggd."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
