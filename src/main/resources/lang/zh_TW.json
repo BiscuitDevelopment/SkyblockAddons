@@ -223,7 +223,7 @@
     "magmaBossWarning": "Magma Cube Boss 已出生！",
     "balBossAlert": "Bal Boss!",
     "fullInventory": "背包已滿！",
-    "labymod": "Labymod 使用者請注意：隱藏食物、裝甲值及血條還未完成。",
+    "labymod": "Labymod 使用者請注意：尚不支援隱藏食物、裝甲值及血條等功能。",
     "minionCannotReach": "有一個 %type% Minion 因無法觸及生物而停止運作了！",
     "minionIsFull": "有一個 Minion 因背包已滿而停止運作了！",
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
@@ -344,7 +344,7 @@
       "copyEntity": {
         "help": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
-          "description": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
+          "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製附近玩家的資料的距離。如果沒有設定，則使用預設的設定。預設值為： 包含玩家、盔甲座、生物、3 格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
             "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
             "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
