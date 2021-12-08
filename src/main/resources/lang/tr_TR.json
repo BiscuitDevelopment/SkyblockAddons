@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss Uyarısı",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "Bal Boss Uyarısı",
     "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
@@ -169,15 +169,15 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableSpiritSceptreMessages": "Yetenek Mesajlarını Devre Dışı Bırak",
+    "showSpiritSceptreDisplay": "Yetenek hasar göstergesi",
+    "outbidAlertSound": "Teklif Artış Uyarı Sesi",
     "hideMenuGlassPanes": "Menüdeki Camların Bilgilerini Gizle",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
     "chromaSize": "Chroma Ölçüsü",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
+    "alertBroodMother": "Brood Mother Uyarısı",
+    "titleBroodMother": "Brood Mother Ortaya Çıktı!",
     "chromaSaturation": "Chroma Doygunluğu",
     "chromaBrightness": "Chroma Parlaklığı",
     "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
@@ -212,9 +212,9 @@
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
-    "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
+    "farmEventTimer": "Farm Event Zamanlayıcısı",
+    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -442,9 +442,9 @@
         "enabled": "Aksiyon barı mesajları gösteriliyor."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Dev) §7Magma boss zamanlayıcı hata ayıklama iletilerini loglara kaydetmeyi aç/kapat",
+        "disabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulmayacak.",
+        "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
       },
       "errors": {
         "wrongUsage": {
