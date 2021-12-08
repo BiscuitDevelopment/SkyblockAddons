@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Tárgy kidobásának megerősítése",
     "hideSkeletonHatBones": "Skeleton's Helmet csontjainak elrejtése",
     "skeletonHatBonesBar": "Skeleton's Helmet csont sáv",
@@ -168,10 +169,15 @@
     "showSwordKills": "Kard ölések mutatása",
     "compactTabList": "Tab lista kicsinyítése",
     "highlightSpecialEnchantments": "Speciális varázslatok kiemelése",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Pont számláló",
     "healingCircleOpacity": "Gyógyító kör átlátszóság",
     "chromaSize": "Színátmenet nagyság",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Színátmenet telítettség",
     "chromaBrightness": "Színátmente világosság",
     "useNewChromaEffect": "Új színátmenet hatás használata",
@@ -205,13 +211,17 @@
     "guiScaleX": "Gui szélessége: %scale%",
     "guiScaleY": "Gui magassága: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Varázslatok",
     "reforges": "Reforgeok",
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Megtelt a felszerelésed!",
     "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
     "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §Action bar üzenetek naplózása",
         "disabled": "Action bar üzenetek nem lesznek naplózva.",
         "enabled": "Action bar üzenetek naplózva lesznek."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
