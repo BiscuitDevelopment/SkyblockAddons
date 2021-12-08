@@ -4,7 +4,7 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Bossのアラート",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "Bal Bossの警告",
     "itemDropConfirmation": "アイテムを捨てる時の確認",
     "hideSkeletonHatBones": "Skeleton's Helmetの骨を非表示",
     "skeletonHatBonesBar": "Skeleton's Helmetの骨のゲージ",
@@ -114,7 +114,7 @@
     "doubleWarp": "2回ワープ",
     "advancedMode": "高度なモード",
     "legendarySeaCreatureWarning": "レジェンダリーSea Creatureのアラート",
-    "bossApproachAlert": "Slayer Boss接近アラート",
+    "bossApproachAlert": "Slayer Boss直前のアラート",
     "disableTeleportPadMessages": "Teleport Padのメッセージを無効化",
     "baitListDisplay": "釣竿を所持中にBaitリストを表示",
     "freezeBackpackPreview": "Backpackのプレビューを一時停止",
@@ -169,15 +169,15 @@
     "showSwordKills": "剣で倒した数を表示",
     "compactTabList": "コンパクトなTabリスト",
     "highlightSpecialEnchantments": "特別なエンチャントを強調表示",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableSpiritSceptreMessages": "アビリティのメッセージを無効化",
+    "showSpiritSceptreDisplay": "アビリティのダメージ表示",
+    "outbidAlertSound": "アウトビットのアラート音",
     "hideMenuGlassPanes": "メニューのガラス板の説明欄を非表示",
     "candyPointsCounter": "SpookyイベントのCandy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circleの不透明度",
     "chromaSize": "色変化の大きさ",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
+    "alertBroodMother": "Brood Motherのアラート",
+    "titleBroodMother": "Brood motherがスポーンしました！",
     "chromaSaturation": "色変化の彩度",
     "chromaBrightness": "色変化の明度",
     "useNewChromaEffect": "新しい色変化の効果を使用",
@@ -212,16 +212,16 @@
     "guiScaleY": "GUI Yの大きさ：%scale%",
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
-    "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "スポーン地点のプレイヤーを非表示",
+    "farmEventTimer": "農業イベントのタイマー",
+    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
   },
   "messages": {
     "enchants": "エンチャント",
     "reforges": "Reforge",
     "dropConfirmation": "もう一度このアイテムを捨てて確認！",
     "magmaBossWarning": "Magma Cube Bossが出現しました！",
-    "balBossAlert": "Bal Boss!",
+    "balBossAlert": "Bal Boss！",
     "fullInventory": "インベントリが満杯です！",
     "labymod": "Labymod使用者：「食料と防具のゲージを非表示」とは互換性がありません。",
     "minionCannotReach": "%type%Minionは範囲外のためMobのスポーンを停止しました！",
@@ -438,13 +438,13 @@
       },
       "toggleActionBarLogging": {
         "help": "§e(Dev) §7アクションバーのメッセージの記録を切り替えます",
-        "disabled": "アクションバーのメッセージは現在記録されません。",
-        "enabled": "アクションバーのメッセージは現在記録されます。"
+        "disabled": "アクションバーのメッセージは記録されないようになりました。",
+        "enabled": "アクションバーのメッセージが記録されるようになりました。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Dev) §7Magma Bossのタイマーのデバッグメッセージを記録するかどうかを切り替えます",
+        "disabled": "Magma Bossのタイマーのメッセージは記録されないようになりました。",
+        "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
       },
       "errors": {
         "wrongUsage": {
