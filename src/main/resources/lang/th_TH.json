@@ -4,6 +4,7 @@
   "settings": {
     "settings": "ตั้งค่า",
     "magmaBossWarning": "แจ้งเตือนว่าบอส Magma ได้เกิดแล้ว",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "ยืนยันการทิ้งไอเทม",
     "hideSkeletonHatBones": "ซ่อนกระดูกของหมวกโครงกระดูก",
     "skeletonHatBonesBar": "หลอดเกราะของหมวกกระดูก",
@@ -168,10 +169,15 @@
     "showSwordKills": "แสดงจำนวนการฆ่าของดาบ",
     "compactTabList": "รายการแบบกระทัดรัด",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
     "dropConfirmation": "กดทิ้งของอีกที่เพื่อยืนยันทิ้งของสิ่งนี้!",
     "magmaBossWarning": "บอส Magma เกิดแล้ว!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "ช่องเก็บของเต็มแล้ว!",
     "labymod": "ถึงผู้ใช้ Labymod: ระบบซ่อนหลอดเลือด, หลอดอาหาร และ เกราะยังไม่เสร็จดี",
     "minionCannotReach": "มี %type% มินเนียนไม่สามารถเข้าถึงที่หมายได้และได้ทำการหยุดทำงานไปแล้ว!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
