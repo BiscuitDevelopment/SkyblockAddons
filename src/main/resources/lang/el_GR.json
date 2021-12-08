@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Ρυθμίσεις",
     "magmaBossWarning": "Προειδοποιήσει εμφάνισης κύβου μάγματος",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Επιβεβαίωση Ρίψης Αντικειμένου",
     "hideSkeletonHatBones": "Κρύψε τα κόκαλα του Skeleton's helmet",
     "skeletonHatBonesBar": "Κράνος του Σκελετού κοκάλινη μπάρα",
@@ -168,10 +169,15 @@
     "showSwordKills": "Εμφάνιση Sword Kills",
     "compactTabList": "Συμπαγής λίστα καρτελών",
     "highlightSpecialEnchantments": "Επισημάνετε τις ειδικές γοητείες",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Καραμέλες / μετρητές πόντων",
     "healingCircleOpacity": "Θεραπεία αδιαφάνειας κύκλου",
     "chromaSize": "Χρωματιστό Μέγεθος",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Κορεσμός χρώματος",
     "chromaBrightness": "Φωτεινότητα Chroma",
     "useNewChromaEffect": "Χρησιμοποιήστε το νέο εφέ Χρωματισμού",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Μαγεύει",
     "reforges": "Ενισχύει",
     "dropConfirmation": "Ξαναρίξε αυτό το αντικείμενο για επιβεβαίωση!",
     "magmaBossWarning": "Εξέχων όγκος Κύβου Μάγμα!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Γεμάτα Αποθέματα!",
     "labymod": "Χρήστες Labymod: Η Απόκρυψη Φαγητού, Ασπίδας, και Μπάρας Ζωής, είναι ασύμβατη.",
     "minionCannotReach": "Το %type% minion δεν μπορεί να φτάσει και έχει σταματήσει την αναπαραγωγή!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Καταγραφή μυνημάτων γραμμής ενεργειών",
         "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
         "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
