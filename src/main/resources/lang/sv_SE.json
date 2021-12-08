@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Inställningar",
     "magmaBossWarning": "Varna för magmakub-bossar",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Släppbekräftelse för föremål",
     "hideSkeletonHatBones": "Dölj ben från skeleton's helmet",
     "skeletonHatBonesBar": "Benmätare för skeleton's helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Kompakt spelarlista",
     "highlightSpecialEnchantments": "Tydliggör speciella förtrollningar",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event-godis/poängräknare",
     "healingCircleOpacity": "Opacitet för helande cirkel",
     "chromaSize": "Storlek",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Mättnad",
     "chromaBrightness": "Ljusstyrka",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X-storlek: %scale%",
     "guiScaleY": "GUI X-storlek: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Förtrollningar",
     "reforges": "Reforges",
     "dropConfirmation": "Släpp föremålet igen för att bekräfta!",
     "magmaBossWarning": "Magmakub-boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Fullt förråd!",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "En minion av typen %type% kan inte nå och har slutat att fungera!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle logging action bar messages",
         "disabled": "Meddelanden i åtgärdsfältet kommer inte längre att loggas.",
         "enabled": "Meddelanden i åtgärdsfältet kommer nu att loggas."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
