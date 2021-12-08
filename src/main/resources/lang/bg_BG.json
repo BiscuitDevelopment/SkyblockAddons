@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Настройки",
     "magmaBossWarning": "Сигнал за Магма Бос",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
     "hideSkeletonHatBones": "Скрий Костите на Скелетната Каска",
     "skeletonHatBonesBar": "Лента за Костите на Скелетната Каска",
@@ -168,10 +169,15 @@
     "showSwordKills": "Покажи убийствата на меча",
     "compactTabList": "Компактен стил за таб",
     "highlightSpecialEnchantments": "Очертаване на специални Enchantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Бонбони/Точки брояч",
     "healingCircleOpacity": "Healing Circle непрозрачност",
     "chromaSize": "Размер на Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Наситеността на Chroma",
     "chromaBrightness": "Яркостта на Chroma",
     "useNewChromaEffect": "Използване на новата Chroma ефект",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Мащаб: %scale%",
     "guiScaleY": "GUI Y Мащаб: %scale%",
     "abbreviateSkillXpDenominator": "Съкратяване Знаменателя на Skill XP",
-    "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Модификации",
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
     "magmaBossWarning": "Магма Бос!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Пълен Инвентар!",
     "labymod": "Labymod Users: Скриване на Лентите за Храна, Броня и Кръв е Несъвместимо.",
     "minionCannotReach": "%type% Миньон не Може да Стигне и е Спрял да Работи!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Превключване на записа на съобщения от лентата за действие",
         "disabled": "Съобщенията в лентата за действие вече няма да се регистрират.",
         "enabled": "Съобщенията в лентата за действие вече ще се регистрират."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
