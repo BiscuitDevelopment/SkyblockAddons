@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.features;
 
+import codes.biscuit.skyblockaddons.core.ItemType;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -22,13 +23,6 @@ public class BaitManager {
      */
     @Getter private static final BaitManager instance = new BaitManager();
 
-    /**
-     * A list of Skyblock item IDs for items that are {@code Items.fishing_rod}s but aren't used for fishing.
-     * These are used for checking if a player is holding a fishing rod that can be used for fishing.
-     * If any new non-fishing fishing rod items are added, add them here.
-     */
-    private static final String[] NOT_FOR_FISHING_ROD_IDS = {"GRAPPLING_HOOK", "SOUL_WHIP"};
-
     public static final Map<BaitType, Integer> DUMMY_BAITS = new HashMap<>();
 
     static {
@@ -44,7 +38,8 @@ public class BaitManager {
 
     /**
      * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook and Soul Whip and other items
-     * listed in {@code NOT_FOR_FISHING_ROD_IDS} that are {@code Items.fishing_rod}s but aren't used for fishing.
+     * that are {@code Items.fishing_rod}s but aren't used for fishing. This is done by checking for the item type of
+     * "FISHING ROD" which is displayed beside the item rarity.
      *
      * @return {@code true} if the held fishing rod can be used for fishing, {@code false} otherwise
      */
@@ -53,17 +48,11 @@ public class BaitManager {
 
         if (player != null) {
             ItemStack item = player.getHeldItem();
+            if (item.getItem() != Items.fishing_rod) return false;
             String itemId = ItemUtils.getSkyblockItemID(item);
+            if (itemId == null) return false;
 
-            if (item == null || itemId == null || item.getItem() != Items.fishing_rod) return false;
-
-            for (String rodItemId : NOT_FOR_FISHING_ROD_IDS) {
-                if (itemId.equals(rodItemId)) {
-                    return false;
-                }
-            }
-
-            return true;
+            return ItemUtils.getItemType(item) == ItemType.FISHING_ROD;
         }
         return false;
     }
@@ -106,8 +95,8 @@ public class BaitManager {
         SHARK("§aShark Bait", "SHARK_BAIT", "9a6c7271-a12d-3941-914c-7c456a086c5a", "edff904124efe486b3a54261dbb8072b0a4e11615ad8d7394d814e0e8c8ef9eb")
         ;
 
-        private String itemID;
-        private ItemStack itemStack;
+        private final String itemID;
+        private final ItemStack itemStack;
 
         BaitType(String name, String itemID, String skullID, String textureURL) {
             this.itemID = itemID;

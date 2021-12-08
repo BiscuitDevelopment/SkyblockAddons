@@ -25,7 +25,7 @@ public class EffectRendererTransformer implements ITransformer {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertOnAddParticle());
             }
 
-            /**
+            /*
              * Insert {@link codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook#renderParticleOverlays(float)} right before the last call to depthMask(true).
              */
             else if (TransformerMethod.renderParticles.matches(methodNode)) {

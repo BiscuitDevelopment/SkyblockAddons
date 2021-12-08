@@ -172,42 +172,7 @@ public class RenderListener {
             }
         }
     }
-    public String getInternalnameFromNBT(NBTTagCompound tag) {
-        String internalname = null;
-        if(tag != null && tag.hasKey("ExtraAttributes", 10)) {
-            NBTTagCompound ea = tag.getCompoundTag("ExtraAttributes");
 
-            if(ea.hasKey("id", 8)) {
-                internalname = ea.getString("id").replaceAll(":", "-");
-            } else {
-                return null;
-            }
-        }
-
-        return internalname;
-    }
-    public String getInternalNameForItem(ItemStack stack) {
-        if(stack == null) return null;
-        NBTTagCompound tag = stack.getTagCompound();
-        return getInternalnameFromNBT(tag);
-    }
-
-    public static String getSkyblockItemID(ItemStack item) {
-        if (item == null) {
-            return null;
-        }
-
-        NBTTagCompound extraAttributes = getExtraAttributes(item);
-        if (extraAttributes == null) {
-            return null;
-        }
-
-        if (!extraAttributes.hasKey("id", ItemUtils.NBT_STRING)) {
-            return null;
-        }
-
-        return extraAttributes.getString("id");
-    }
     /**
      * Render overlays and warnings for clients with labymod.
      * Labymod creates its own ingame gui and replaces the forge one, and changes the events that are called.
@@ -1032,7 +997,7 @@ public class RenderListener {
             }
             ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem(); //sb item id code stolen from neu customitemeffects class
-            String internal = getInternalNameForItem(held);
+            String internal = ItemUtils.getSkyblockItemID(held);
             if (buttonLocation != null) {
                 text = "Hyperion";
             } else if (holdingItem == null || internal == null) {
@@ -1395,7 +1360,7 @@ public class RenderListener {
             DrawUtils.drawText(String.format("%,d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y + 18, color);
             FontRendererHook.endFeatureFont();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
-            String internal = getInternalNameForItem(held);
+            String internal = ItemUtils.getSkyblockItemID(held);
             if (internal == null || internal.equals("HYPERION")) {
                 renderItem(HYPERION, x, y);
             } else if (internal.equals("VALKYRIE")) {

@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
+import codes.biscuit.skyblockaddons.core.ItemType;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
@@ -16,7 +17,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
-import net.minecraftforge.common.util.Constants;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -28,6 +28,8 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static net.minecraftforge.common.util.Constants.NBT.*;
+
 /**
  * Utility methods for Skyblock Items
  */
@@ -36,52 +38,50 @@ public class ItemUtils {
     public static final int NBT_INTEGER = 3;
     public static final int NBT_STRING = 8;
     public static final int NBT_LIST = 9;
-    public static final int NBT_COMPOUND = 10;
-
+    /**
+     * This expression matches the line with a Skyblock item's rarity and item type that's at the end of its lore.
+     */
+    private static final Pattern ITEM_TYPE_AND_RARITY_PATTERN = Pattern.compile("§l(?<rarity>[A-Z]+) ?(?<type>[A-Z ]+)?(?:§[0-9a-f]§l§ka)?$");
     @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     @Setter private static Map<String, CompactorItem> compactorItems;
     @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     @Setter private static Map<String, ContainerData> containers;
 
-    private static final Pattern RARITY_PATTERN = Pattern.compile("§(?<colourCode>[0-9a-f])[§0-9a-fk-or]+(?<rarity>[A-Z]+)");
 
     /**
-     * Returns the rarity of a given Skyblock item
+     * Returns the rarity of a given Skyblock item. The rarity is read from the item's lore.
+     * The item must not be {@code null}.
      *
-     * @param item the Skyblock item to check
+     * @param item the Skyblock item to check, can't be {@code null}
      * @return the rarity of the item if a valid rarity is found, or {@code null} if item is {@code null} or no valid rarity is found
      */
     public static ItemRarity getRarity(ItemStack item) {
-        if (item == null || !item.hasTagCompound())  {
+        if (item == null) {
+            throw new NullPointerException("The item cannot be null!");
+        }
+        if (!item.hasTagCompound())  {
             return null;
         }
 
-        NBTTagCompound display = item.getSubCompound("display", false);
+        return getRarity(getItemLore(item));
+    }
 
-        if (display == null || !display.hasKey("Lore")) {
+    /**
+     * Returns the item type of a given Skyblock item.
+     * The item must not be {@code null}.
+     *
+     * @param item the Skyblock item to check, can't be {@code null}
+     * @return the item type of the item or {@code null} if no item type was found
+     */
+    public static ItemType getItemType(ItemStack item) {
+        if (item == null) {
+            throw new NullPointerException("The item cannot be null!");
+        }
+        if (!item.hasTagCompound())  {
             return null;
         }
 
-        NBTTagList lore = display.getTagList("Lore", Constants.NBT.TAG_STRING);
-
-        // Determine the item's rarity.
-        for (int i = lore.tagCount() - 1; i >= 0 ; i--) {
-            String currentLine = lore.getStringTagAt(i);
-
-            Matcher rarityMatcher = RARITY_PATTERN.matcher(currentLine);
-            if (rarityMatcher.find()) {
-                String rarity = rarityMatcher.group("rarity");
-
-                for (ItemRarity itemRarity : ItemRarity.values()) {
-                    if (rarity.startsWith(itemRarity.getLoreName())) {
-                        return itemRarity;
-                    }
-                }
-            }
-        }
-
-        // If the item doesn't have a valid rarity, return null
-        return null;
+        return getType(getItemLore(item));
     }
 
     /**
@@ -131,13 +131,16 @@ public class ItemUtils {
     }
 
     /**
-     * Returns the {@code ExtraAttributes} compound tag from the item's NBT data.
+     * Returns the {@code ExtraAttributes} compound tag from the item's NBT data. The item must not be {@code null}.
      *
      * @param item the item to get the tag from
      * @return the item's {@code ExtraAttributes} compound tag or {@code null} if the item doesn't have one
      */
     public static NBTTagCompound getExtraAttributes(ItemStack item) {
-        if (item == null || !item.hasTagCompound()) {
+        if (item == null) {
+            throw new NullPointerException("The item cannot be null!");
+        }
+        if (!item.hasTagCompound()) {
             return null;
         }
 
@@ -207,15 +210,24 @@ public class ItemUtils {
 
 
     /**
-     * Checks if the given item is a drill.
+     * Checks if the given {@code ItemStack} is a drill. It works by checking for the presence of the {@code drill_fuel} NBT tag,
+     * which only drills have.
      *
      * @param itemStack the item to check
      * @return {@code true} if this item is a drill, {@code false} otherwise
      */
-    // TODO: This is a hotfix until we come up with a way to jsonify
     public static boolean isDrill(ItemStack itemStack) {
-        String id = getSkyblockItemID(itemStack);
-        return id != null && (id.contains("DRILL"));
+        if (itemStack == null) {
+            return false;
+        }
+
+        NBTTagCompound extraAttributes = getExtraAttributes(itemStack);
+
+        if (extraAttributes != null) {
+            return extraAttributes.hasKey("drill_fuel", TAG_INT);
+        } else {
+            return false;
+        }
     }
 
 
@@ -272,19 +284,22 @@ public class ItemUtils {
     public static BackpackColor getBackpackColor(ItemStack stack) {
         NBTTagCompound extraAttributes = getExtraAttributes(stack);
         ContainerData containerData = containers.get(getSkyblockItemID(extraAttributes));
-        if (containerData != null) {
-            try {
-                return BackpackColor.valueOf(extraAttributes.getString(containerData.getColorTag()));
-            } catch (IllegalArgumentException ignored) {
+        if (extraAttributes != null) {
+            if (containerData != null) {
+                try {
+                    return BackpackColor.valueOf(extraAttributes.getString(containerData.getColorTag()));
+                } catch (IllegalArgumentException ignored) {
+                }
+                return BackpackColor.WHITE;
+            } else if (extraAttributes.hasKey("backpack_color")) {
+                try {
+                    return BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
+                } catch (IllegalArgumentException ignored) {
+                }
+                return BackpackColor.WHITE;
             }
-            return BackpackColor.WHITE;
-        } else if (extraAttributes != null && extraAttributes.hasKey("backpack_color")) {
-            try {
-                return BackpackColor.valueOf(extraAttributes.getString("backpack_color"));
-            } catch (IllegalArgumentException ignored) {
-            }
-            return BackpackColor.WHITE;
         }
+
         return null;
     }
 
@@ -342,32 +357,43 @@ public class ItemUtils {
     }
 
     /**
-     * Returns a string list containing the nbt lore of an ItemStack, or
-     * an empty list if this item doesn't have a lore. The returned lore
-     * list is unmodifiable since it has been converted from an NBTTagList.
+     * Returns a string list containing the NBT lore of an {@code ItemStack}, or
+     * an empty list if this item doesn't have a lore tag.
+     * The itemStack argument must not be {@code null}. The returned lore list is unmodifiable since it has been
+     * converted from an {@code NBTTagList}.
      *
      * @param itemStack the ItemStack to get the lore from
      * @return the lore of an ItemStack as a string list
      */
     public static List<String> getItemLore(ItemStack itemStack) {
-        if (itemStack.hasTagCompound() && itemStack.getTagCompound().hasKey("display", ItemUtils.NBT_COMPOUND)) {
-            NBTTagCompound display = itemStack.getTagCompound().getCompoundTag("display");
+        if (itemStack != null) {
+            if (itemStack.hasTagCompound()) {
+                NBTTagCompound display = itemStack.getSubCompound("display", false);
 
-            if (display.hasKey("Lore", ItemUtils.NBT_LIST)) {
-                NBTTagList lore = display.getTagList("Lore", ItemUtils.NBT_STRING);
+                if (display != null && display.hasKey("Lore", ItemUtils.NBT_LIST)) {
+                    NBTTagList lore = display.getTagList("Lore", ItemUtils.NBT_STRING);
 
-                List<String> loreAsList = new ArrayList<>();
-                for (int lineNumber = 0; lineNumber < lore.tagCount(); lineNumber++) {
-                    loreAsList.add(lore.getStringTagAt(lineNumber));
+                    List<String> loreAsList = new ArrayList<>();
+                    for (int lineNumber = 0; lineNumber < lore.tagCount(); lineNumber++) {
+                        loreAsList.add(lore.getStringTagAt(lineNumber));
+                    }
+
+                    return Collections.unmodifiableList(loreAsList);
                 }
-
-                return Collections.unmodifiableList(loreAsList);
             }
-        }
 
-        return Collections.emptyList();
+            return Collections.emptyList();
+        } else {
+            throw new NullPointerException("Cannot get lore from null item!");
+        }
     }
 
+    /**
+     * Sets the lore text of a given {@code ItemStack}.
+     *
+     * @param itemStack the {@code ItemStack} to set the lore for
+     * @param lore the new lore
+     */
     public static void setItemLore(ItemStack itemStack, List<String> lore) {
         NBTTagCompound display = itemStack.getSubCompound("display", true);
 
@@ -400,6 +426,15 @@ public class ItemUtils {
         }
     }
 
+    /**
+     * Creates a new {@code ItemStack} instance with the given item and a fake enchantment to enable the enchanted "glint"
+     * effect if {@code enchanted} is true. This method should be used when you want to create a bare-bones {@code ItemStack}
+     * to render as part of a GUI.
+     *
+     * @param item the {@code Item} the created {@code ItemStack} should be
+     * @param enchanted the item has the enchanted "glint" effect enabled if {@code true}, disabled if {@code false}
+     * @return a new {@code ItemStack} instance with the given item and a fake enchantment if applicable
+     */
     public static ItemStack createItemStack(Item item, boolean enchanted) {
         return createItemStack(item, 0, null, null, enchanted);
     }
@@ -546,5 +581,62 @@ public class ItemUtils {
             return null;
         }
         return new NBTTagByteArray(stream.toByteArray());
+    }
+
+    /**
+     * Returns the rarity of a Skyblock item given its lore. This method takes the item's lore as a string list as input.
+     * This method is split up from the method that takes the {@code ItemStack} instance for easier unit testing.
+     *
+     * @param lore the {@code List<String>} containing the item's lore
+     * @return the rarity of the item if a valid rarity is found, or {@code null} if item is {@code null} or no valid rarity is found
+     */
+    private static ItemRarity getRarity(List<String> lore) {
+        // Start from the end since the rarity is usually the last line or one of the last.
+        for (int i = lore.size() - 1; i >= 0 ; i--) {
+            String currentLine = lore.get(i);
+
+            Matcher rarityMatcher = ITEM_TYPE_AND_RARITY_PATTERN.matcher(currentLine);
+            if (rarityMatcher.find()) {
+                String rarity = rarityMatcher.group("rarity");
+
+                for (ItemRarity itemRarity : ItemRarity.values()) {
+                    // Use a "startsWith" check here because "VERY SPECIAL" has two words and only "VERY" is matched.
+                    if (itemRarity.getLoreName().startsWith(rarity)) {
+                        return itemRarity;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Returns the item type of a Skyblock item given its lore. This method takes the item's lore as a string list as input.
+     * This method is split up from the method that takes the {@code ItemStack} instance for easier unit testing.
+     *
+     * @param lore the {@code List<String>} containing the item's lore
+     * @return the rarity of the item if a valid rarity is found, or {@code null} if item is {@code null} or no valid rarity is found
+     */
+    private static ItemType getType(List<String> lore) {
+        // Start from the end since the rarity is usually the last line or one of the last.
+        for (int i = lore.size() - 1; i >= 0; i--) {
+            String currentLine = lore.get(i);
+
+            Matcher itemTypeMatcher = ITEM_TYPE_AND_RARITY_PATTERN.matcher(currentLine);
+            if (itemTypeMatcher.find()) {
+                String type = itemTypeMatcher.group("type");
+
+                if (type != null) {
+                    for (ItemType itemType : ItemType.values()) {
+                        if (itemType.getLoreName().startsWith(type)) {
+                            return itemType;
+                        }
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 }

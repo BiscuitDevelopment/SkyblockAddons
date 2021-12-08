@@ -80,7 +80,7 @@ public class ContainerPreviewManager {
         NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(stack);
         String skyblockID = ItemUtils.getSkyblockItemID(extraAttributes);
         ContainerData containerData = ItemUtils.getContainerData(skyblockID);
-        if (containerData != null) {
+        if (extraAttributes != null && containerData != null) {
             int containerSize = containerData.getSize();
 
             // Parse out a list of items in the container

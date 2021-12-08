@@ -460,9 +460,9 @@ public class DrawUtils {
             int colorBlack = new Color(0, 0, 0, colorAlpha / 255F).getRGB();
             String strippedText = TextUtils.stripColor(text);
             fontRenderer.drawString(strippedText, x + 1, y + 0, colorBlack, false);
-            fontRenderer.drawString(strippedText, x + -1, y + 0, colorBlack, false);
+            fontRenderer.drawString(strippedText, x - 1, y + 0, colorBlack, false);
             fontRenderer.drawString(strippedText, x + 0, y + 1, colorBlack, false);
-            fontRenderer.drawString(strippedText, x + 0, y + -1, colorBlack, false);
+            fontRenderer.drawString(strippedText, x + 0, y - 1, colorBlack, false);
             fontRenderer.drawString(text, x + 0, y + 0, color, false);
         } else {
             fontRenderer.drawString(text, x + 0, y + 0, color, true);

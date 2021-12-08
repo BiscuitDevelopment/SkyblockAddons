@@ -34,9 +34,11 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -319,10 +321,32 @@ public class DevUtils {
     }
 
     /**
-     * Copies the provided NBT tag to the clipboard as a formatted string.
+     * Compresses the provided {@code NBTTagCompound}, encodes it as Base64, converts it into a UTF-8 string,
+     * and copies it to the clipboard. The NBT tag cannot be {@code null}.
      *
      * @param nbtTag the NBT tag to copy
-     * @param message the message to show in chat when the NBT tag is copied
+     * @param message the message to show in chat when the NBT tag is copied successfully
+     */
+    public static void copyCompressedNBTTagToClipboard(NBTTagCompound nbtTag, String message) {
+        if (nbtTag == null) {
+            throw new NullPointerException("NBT tag cannot be null!");
+        }
+
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        try {
+            CompressedStreamTools.writeCompressed(nbtTag, outputStream);
+            writeToClipboard(new String(Base64.getEncoder().encode(outputStream.toByteArray()), StandardCharsets.UTF_8), message);
+        } catch (IOException e) {
+            logger.error("Failed to write NBT tag to clipboard!", e);
+        }
+    }
+
+    /**
+     * Copies the provided NBT tag to the clipboard as a pretty-printed string.
+     *
+     * @param nbtTag the NBT tag to copy
+     * @param message the message to show in chat when the NBT tag is copied successfully
      */
     public static void copyNBTTagToClipboard(NBTBase nbtTag, String message) {
         if (nbtTag == null) {
@@ -593,16 +617,22 @@ public class DevUtils {
         }
     }
 
+    /**
+     * Sets the copy mode to a {@code CopyMode} value.
+     *
+     * @param copyMode the new copy mode
+     */
     public static void setCopyMode(CopyMode copyMode) {
         DevUtils.copyMode = copyMode;
         main.getUtils().sendMessage(ColorCode.YELLOW + Translations.getMessage("messages.copyModeSet", copyMode, Keyboard.getKeyName(main.getDeveloperCopyNBTKey().getKeyCode())));
     }
 
     public enum CopyMode {
-        ENTITY,
         BLOCK,
-
-        TAB_LIST,
-        SIDEBAR
+        ENTITY,
+        ITEM,
+        ITEM_COMPRESSED,
+        SIDEBAR,
+        TAB_LIST
     }
 }

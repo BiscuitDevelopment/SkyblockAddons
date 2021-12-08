@@ -32,7 +32,7 @@ public class Scheduler {
             throw new IllegalArgumentException("Delay must be greater than zero!");
         }
 
-        long ticks = totalTicks+(delaySeconds*20);
+        long ticks = totalTicks + (delaySeconds * 20L);
         Set<Command> commands = queue.get(ticks);
         if (commands != null) {
             for (Command command : commands) {
@@ -60,7 +60,7 @@ public class Scheduler {
             Map.Entry<Long, Set<Command>> entry = queueIterator.next();
 
             if (entry.getValue().removeIf(command -> CommandType.SHOW_FULL_INVENTORY_WARNING.equals(command.commandType))) {
-                resetTitleFeatureTicks.add(entry.getKey() + main.getConfigValues().getWarningSeconds() * 20);
+                resetTitleFeatureTicks.add(entry.getKey() + main.getConfigValues().getWarningSeconds() * 20L);
             }
 
             // Remove the corresponding reset title feature command.
@@ -108,7 +108,7 @@ public class Scheduler {
     }
 
     @Getter
-    private class Command {
+    private static class Command {
         private final CommandType commandType;
         private final MutableInt count = new MutableInt(1);
         private final Map<Integer, Object[]> countData = new HashMap<>();

@@ -174,6 +174,7 @@ public class EnumUtils {
             this.inventiveTalentEvent = inventiveTalentEvent;
         }
     }
+
     public enum GuiTab {
         MAIN, GENERAL_SETTINGS
     }

@@ -44,7 +44,7 @@ public class ButtonSelect extends GuiButton {
     }
 
     private final List<SelectItem> itemList;
-    private int index = 0;
+    private int index;
 
     private final int textWidth;
     private final OnItemSelectedCallback callback;
@@ -112,10 +112,14 @@ public class ButtonSelect extends GuiButton {
         drawCenteredString(minecraft.fontRendererObj, description, xPosition + width / 2, yPosition + height + 2, ColorCode.GRAY.getColor());
 
         GlStateManager.color(1, 1, 1, 1);
+
+        // Arrow buttons are square so width = height
         minecraft.getTextureManager().bindTexture(ARROW_LEFT);
+        //noinspection SuspiciousNameCombination
         drawModalRectWithCustomSizedTexture(xPosition, yPosition, 0, 0, height, height, height, height);
 
         minecraft.getTextureManager().bindTexture(ARROW_RIGHT);
+        //noinspection SuspiciousNameCombination
         drawModalRectWithCustomSizedTexture(endX - height, yPosition, 0, 0, height, height, height, height);
 
         if (!name.equals(trimmedName)) {

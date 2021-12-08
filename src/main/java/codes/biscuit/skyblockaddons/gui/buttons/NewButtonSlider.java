@@ -71,7 +71,7 @@ public class NewButtonSlider extends GuiButton {
             float floatMouseX = Mouse.getX() / minecraftScale;
 
             if (this.dragging) {
-                this.normalizedValue = (float) (floatMouseX - (this.xPosition + 4)) / (float) (this.width - 8);
+                this.normalizedValue = (floatMouseX - (this.xPosition + 4)) / (float) (this.width - 8);
                 this.normalizedValue = MathHelper.clamp_float(normalizedValue, 0.0F, 1.0F);
                 onUpdate();
             }

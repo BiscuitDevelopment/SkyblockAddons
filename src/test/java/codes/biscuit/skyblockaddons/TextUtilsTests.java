@@ -10,6 +10,9 @@ import java.text.ParseException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
 
+/**
+ * Tests for {@link TextUtils}
+ */
 public class TextUtilsTests {
 
     @DisplayName("Action Bar Magnitude Conversion Tests")

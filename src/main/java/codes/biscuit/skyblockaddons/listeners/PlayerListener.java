@@ -347,20 +347,15 @@ public class PlayerListener {
                     e.setCanceled(true);
 
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit") || strippedText.startsWith("Your Spirit Sceptre hit")) {
-                    System.out.println(unformattedText);
-                    try {
-                        matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
-                        // Ensure matcher.group gets what it wants, we don't need the result
-                        //noinspection ResultOfMethodCallIgnored
-                        matcher.find();
-                        this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
-                        this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+                    matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
+                    // Ensure matcher.group gets what it wants, we don't need the result
+                    if (matcher.find()) {
+                        if (main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+                            this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
+                            this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+                        }
+                        e.setCanceled(true);
                     }
-                    catch (java.lang.IllegalStateException matchNotFound){
-                        System.out.printf("Things went south, match not found, original text: %s", unformattedText);
-                    }
-                    e.setCanceled(true);
-
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
