@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Potwierdzenie wyrzucenia przedmiotu",
     "hideSkeletonHatBones": "Ukryj kości Skeleton's Helmet",
     "skeletonHatBonesBar": "Pasek kości z Skeleton's Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightSpecialEnchantments": "Podświetl specjalne zaklęcia",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Ukryj dymki szyb w menu",
     "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
     "healingCircleOpacity": "Przeźroczystość koła leczącego",
     "chromaSize": "Rozmiar koloru Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Nasycenie koloru Chroma",
     "chromaBrightness": "Jasność koloru Chroma",
     "useNewChromaEffect": "Użyj nowego efektu Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Skrócony Dzielnik XP'a umiejętności",
-    "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Zaklęcia",
     "reforges": "Reforges",
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
     "magmaBossWarning": "Magmowy boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Ekwipunek jest pełen!",
     "labymod": "Do użytkowników LabyModa: ukrycie pasków zdrowia, jedzenia i zbroi jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał się odradzać!",
@@ -430,6 +440,11 @@
         "help": "e(Dev) §7Przełącz rejestrowanie wiadomości na pasku akcji",
         "disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
         "enabled": "Wiadomości na pasku akcji będą rejestrowane."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
