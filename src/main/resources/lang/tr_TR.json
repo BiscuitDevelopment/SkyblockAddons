@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss Uyarısı",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
@@ -168,10 +169,15 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Menüdeki Camların Bilgilerini Gizle",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
     "chromaSize": "Chroma Ölçüsü",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Doygunluğu",
     "chromaBrightness": "Chroma Parlaklığı",
     "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
@@ -205,13 +211,17 @@
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
-    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
     "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
     "magmaBossWarning": "Magma Küp Bossu!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
     "minionCannotReach": "%type% minyona ulaşılamadığından çalışmayı durdurdu!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
         "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
         "enabled": "Aksiyon barı mesajları gösteriliyor."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
