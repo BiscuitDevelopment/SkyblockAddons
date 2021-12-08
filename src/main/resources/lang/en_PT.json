@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Drop Yer Items Twice",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
@@ -168,10 +169,15 @@
     "showSwordKills": "Show Cutlass Scuttles",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "'ighlight Special Enchantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Count'r",
     "healingCircleOpacity": "Healin' Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Col'rfullness",
     "chromaBrightness": "Level o' Chroma Brightness",
     "useNewChromaEffect": "Use Th' Effect o' New Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Shorten Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
     "dropConfirmation": "Ahoy, drop 'tis 'ere item again t' confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Ahoy mate, yer pouch be full!",
     "labymod": "Ahoy LabyMod Lads: 'ide grub, booty, an' health bar, be incompatible.",
     "minionCannotReach": "Ahoy mate, one o' yer %type% crew could nah reach an' stopped spawnin'!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle loggin' action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
