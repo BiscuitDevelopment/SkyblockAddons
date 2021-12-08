@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Item Dwop Comfowmatiowon",
     "hideSkeletonHatBones": "Hide Skeweton's Hewmet Bowones",
     "skeletonHatBonesBar": "Skeweton Hewmet Bowones Baw",
@@ -168,10 +169,15 @@
     "showSwordKills": "Shwow Swowd Kwills",
     "compactTabList": "Cwompwact Twab Wist",
     "highlightSpecialEnchantments": "Highwight Spwscial Encwantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants ^-^",
     "reforges": "Wefowges",
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Fuww Inwentowy! >w<",
     "labymod": "Wabymod Usews: Hide Fuwud, Awmow, and Heawth Baw, is incompatibwe.",
     "minionCannotReach": "A %type% minwion cannwot weach and has stwopped spawning!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggwe wogging action baw messages",
         "disabled": "Action baw messages wiww no wongew be wogged.",
         "enabled": "Action baw messages wiww now be wogged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
