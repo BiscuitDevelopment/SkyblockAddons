@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Item Drop Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skelett-Helm Knochen Leiste",
@@ -168,10 +169,15 @@
     "showSwordKills": "Zeige Schwert Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Verzauberungen",
     "reforges": "Reforges",
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
     "magmaBossWarning": "Der Magma Boss ist erschienen!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Volles Inventar!",
     "labymod": "\"Essens-, Rüstungs- und Lebensleiste verstecken\" ist inkompatibel mit LabyMod!",
     "minionCannotReach": "Ein %type% Minion kann seine Mobs nicht erreichen und hat aufgehört, zu arbeiten!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
