@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Confirmer le jet de l’objet",
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
     "highlightSpecialEnchantments": "Surlignez les enchantements spéciaux",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Masquer les info-bulles des vitres dans les menus",
     "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
     "healingCircleOpacity": "Opacité du cercle de soin",
     "chromaSize": "Taille Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Saturation Chroma",
     "chromaBrightness": "Luminosité Chroma",
     "useNewChromaEffect": "Utiliser le nouveau effet Chroma",
@@ -205,13 +211,17 @@
     "guiScaleX": "Échelle de l'interface X : %scale%",
     "guiScaleY": "Échelle de l'interface Y : %scale%",
     "abbreviateSkillXpDenominator": "Abréger le dénominateur de l'XP de skill",
-    "otherDefenseStats": "Autres Stats de Défense (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Autres Stats de Défense (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchantements",
     "reforges": "Reforges",
     "dropConfirmation": "Jetez cet objet une nouvelle fois pour confirmer!",
     "magmaBossWarning": "Magma Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Inventaire plein!",
     "labymod": "Utilisateurs de Labymod: Il y a une incompatibilité avec l'option Masquer la barre de nourriture et d'armure",
     "minionCannotReach": "Le minon %type% n'arrive pas à atteindre les entités et à arrêté le spawn!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Activer la sauvegarde des messages de la barre d'action",
         "disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
         "enabled": "Les messages de la barre d'action seront maintenant sauvegardés."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
