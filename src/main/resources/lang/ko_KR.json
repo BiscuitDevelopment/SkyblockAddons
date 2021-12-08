@@ -4,6 +4,7 @@
   "settings": {
     "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
     "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
@@ -168,10 +169,15 @@
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
     "chromaSize": "무지개 사이즈",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "무지개 채도",
     "chromaBrightness": "무지개 밝기",
     "useNewChromaEffect": "새로운 무지개 이펙트 사용하기",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X축 크기:%scale%",
     "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
-    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "인챈트",
     "reforges": "재련",
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "Magma Boss 소환!!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "인벤토리 꽉 참!",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% Minion이 몹을 죽일 수 없어 스폰을 멈췄습니다!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
