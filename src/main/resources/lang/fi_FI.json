@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Asetukset",
     "magmaBossWarning": "Magma Boss -varoitus",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
     "hideSkeletonHatBones": "Piilota Skeleton's Helmet -Luut",
     "skeletonHatBonesBar": "Skeleton's Helmet -luut palkissa",
@@ -168,10 +169,15 @@
     "showSwordKills": "Näytä miekan tapot",
     "compactTabList": "Tiivis Tab-lista",
     "highlightSpecialEnchantments": "Korosta erikoislumoukset",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Piilota valikkojen lasipaneelien tekstit",
     "candyPointsCounter": "Spooky-tapahtuman Candy/Piste -laskuri",
     "healingCircleOpacity": "Parannuskehän läpinäkyvyys",
     "chromaSize": "Väriefektin koko",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Väriefektin kylläisyys",
     "chromaBrightness": "Väriefektin kirkkaus",
     "useNewChromaEffect": "Käytä uutta väriefektiä",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X-Mittakaava: %scale%",
     "guiScaleY": "GUI Y-Mittakaava: %scale%",
     "abbreviateSkillXpDenominator": "Lyhennä Skill XP nimet",
-    "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)"
+    "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Lumoukset",
     "reforges": "Reforges",
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
     "magmaBossWarning": "Magmakuutio johtaja!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Täysi Inventaario!",
     "labymod": "Labymodin käyttäjät: Piilota Ruoka-, Suojaus-, ja Elämäpalkki, ne ovat yhteensopimattomia.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
@@ -430,6 +440,11 @@
         "help": "§e(Kehittäjä) §7Aseta päälle/pois toimintopalkin viestien kirjaaminen lokiin",
         "disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
         "enabled": "Toimintopalkin viestit kirjataan nyt lokiin."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
