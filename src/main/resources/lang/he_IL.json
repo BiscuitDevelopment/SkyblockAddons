@@ -4,6 +4,7 @@
   "settings": {
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "אישור זריקת פריט",
     "hideSkeletonHatBones": "הסתרת עצמות מקסדת שלד",
     "skeletonHatBonesBar": "מד העצמות מקסדת עצמות",
@@ -168,10 +169,15 @@
     "showSwordKills": "הצג את סך ההריגות עם חרב",
     "compactTabList": "רשימת Tab קומפקטית",
     "highlightSpecialEnchantments": "הדגש כשפים מיוחדים",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "סופר סוכריות/נקודות בSpooky Event",
     "healingCircleOpacity": "אטימות מעגל ההחייאה",
     "chromaSize": "גודל אפקט Chroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "רווית הChroma",
     "chromaBrightness": "עוצמת הבהירות של הChroma",
     "useNewChromaEffect": "השתמש באפקט הChroma החדש",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "כישופים",
     "reforges": "חישולים",
     "dropConfirmation": "זרוק פריט זה שוב לאישור!",
     "magmaBossWarning": "בוס המגמה!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "תיק מלא!",
     "labymod": "למשתמשי לאיבימוד: הסתרת עמודות אוכל, שריון וחיים לא נתמכת.",
     "minionCannotReach": "מיניון %type% לא יכול להגיע והפסיק לעבוד!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
