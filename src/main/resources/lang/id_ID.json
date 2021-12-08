@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Pengaturan",
     "magmaBossWarning": "Peringatan Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Konfirmasi Jatuhkan Barang",
     "hideSkeletonHatBones": "Sembunyikan Tulang-Tulang Skeleton's Helmet",
     "skeletonHatBonesBar": "Bar Tulang-Tulang Skeleton's Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
     "compactTabList": "Daftar Tab Padat",
     "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
     "healingCircleOpacity": "Opasitas Healing Circle",
     "chromaSize": "Ukuran Kroma",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Saturasi Kroma",
     "chromaBrightness": "Kecerahan Kroma",
     "useNewChromaEffect": "Pakai Efek Kroma Baru",
@@ -205,13 +211,17 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
-    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
     "dropConfirmation": "Jatuhkan benda ini lagi untuk konfirmasi!",
     "magmaBossWarning": "Boss Magma Cube!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Inventory Penuh!",
     "labymod": "Pengguna Labymod: Sembunyikan Bar Makanan, Armor, dan Nyawa tidak dapat dipakai.",
     "minionCannotReach": "Sebuah %type% minion tidak dapat meraih dan telah berhenti bekerja!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Aktif/nonaktifkan mencatat pesan-pesan log bar aksi",
         "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
         "enabled": "Pesan-pesan bar aksi akan dicatat."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
