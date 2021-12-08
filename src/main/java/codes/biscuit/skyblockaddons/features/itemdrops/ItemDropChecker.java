@@ -26,7 +26,7 @@ public class ItemDropChecker {
 
     private static final long DROP_CONFIRMATION_TIMEOUT = 3000L;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private final SkyblockAddons main = SkyblockAddons.getInstance();
 
     // Variables used for checking drop confirmations
     private ItemStack itemOfLastDropAttempt;
@@ -81,10 +81,13 @@ public class ItemDropChecker {
      */
     public boolean canDropItem(ItemStack item, boolean itemIsInHotbar, boolean playAlert) {
         if (main.getUtils().isOnSkyblock()) {
-            if (ItemUtils.getSkyblockItemID(item) == null) {
+            String itemID = ItemUtils.getSkyblockItemID(item);
+            ItemRarity itemRarity = ItemUtils.getRarity(item);
+
+            if (itemID == null) {
                 // Allow dropping of Skyblock items without IDs
                 return true;
-            } else if (ItemUtils.getRarity(item) == null) {
+            } else if (itemRarity == null) {
             /*
              If this Skyblock item has an ID but no rarity, allow dropping it.
              This really shouldn't happen but just in case it does, this condition is here.
@@ -92,8 +95,6 @@ public class ItemDropChecker {
                 return true;
             }
 
-            String itemID = ItemUtils.getSkyblockItemID(item);
-            ItemRarity itemRarity = ItemUtils.getRarity(item);
             List<String> blacklist = main.getOnlineData().getDropSettings().getDontDropTheseItems();
             List<String> whitelist = main.getOnlineData().getDropSettings().getAllowDroppingTheseItems();
 

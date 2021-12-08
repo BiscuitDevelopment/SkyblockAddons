@@ -247,6 +247,9 @@ public class EnumUtils {
         ITEM_GLOW("settings.glowingDroppedItems", 109),
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
+        SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay",202),
+        OUTBID_ALERT(SETTING_OUTBID_ALERT_SOUND, 206),
+        DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
 
         DISCORD_RP_STATE((Message) null, 0),
         DISCORD_RP_DETAILS((Message) null, 0),
@@ -319,7 +322,12 @@ public class EnumUtils {
                 Feature.SHOW_EXPERIMENTATION_TABLE_TOOLTIPS/*, Feature.ONLY_MINE_ORES_DWARVEN_MINES*/, Feature.DRILL_FUEL_BAR, Feature.DRILL_FUEL_TEXT,
                 Feature.FISHING_PARTICLE_OVERLAY, Feature.COOLDOWN_PREDICTION, Feature.BIGGER_WAKE, Feature.TREVOR_HIGHLIGHT_TRACKED_ENTITY,
                 Feature.TREVOR_SHOW_QUEST_COOLDOWN),
-        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS);
+        PEDRO9558("Pedro9558", "github.com/Pedro9558", Feature.TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, Feature.TREVOR_THE_TRAPPER_FEATURES, Feature.FETCHUR_TODAY, Feature.STOP_RAT_SOUNDS),
+        ROBOTHANZO("RobotHanzo", "robothanzo.dev", Feature.HIDE_SPAWN_POINT_PLAYERS, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
+        IRONM00N("IRONM00N", "github.com/IRONM00N", Feature.FARM_EVENT_TIMER),
+        SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT_SOUND),
+        TIMOLOB("TimoLob", "github.com/TimoLob", Feature.ALERT_BROOD_MOTHER),
+        NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT);
 
         private final Set<Feature> features;
         private final String author;

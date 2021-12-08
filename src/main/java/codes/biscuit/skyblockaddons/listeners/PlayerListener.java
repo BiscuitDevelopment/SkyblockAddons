@@ -82,6 +82,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 import java.util.*;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -103,9 +104,10 @@ public class PlayerListener {
     private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO2 = Pattern.compile(" *SLAYER QUEST STARTED!");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
-    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories in your Accessory Bag!");
+    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories (of|in) (?:\\w+ rarity in )?your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
+    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -135,7 +137,10 @@ public class PlayerListener {
 
     private long lastWorldJoin = -1;
     private long lastBoss = -1;
+    private long lastBal = -1;
+    private long lastBroodmother = -1;
     private int magmaTick = 1;
+    private int balTick = -1;
     private int timerTick = 1;
     private long lastMinionSound = -1;
     private long lastBossSpawnPost = -1;
@@ -165,6 +170,9 @@ public class PlayerListener {
 
     @Getter
     private final Set<IntPair> recentlyLoadedChunks = new HashSet<>();
+
+    @Getter private int spiritSceptreHitEnemies = 0;
+    @Getter private float spiritSceptreDealtDamage = 0;
 
     @Getter
     @Setter
@@ -234,6 +242,10 @@ public class PlayerListener {
      */
     @SubscribeEvent(priority = EventPriority.HIGH)
     public void onChatReceive(ClientChatReceivedEvent e) {
+        if (!main.getUtils().isOnHypixel()) {
+            return;
+        }
+
         String formattedText = e.message.getFormattedText();
         String unformattedText = e.message.getUnformattedText();
         String strippedText = TextUtils.stripColor(formattedText);
@@ -242,6 +254,11 @@ public class PlayerListener {
             lastSkyblockServerJoinAttempt = Minecraft.getSystemTime();
             DragonTracker.getInstance().reset();
             return;
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_SOUND) && formattedText.matches("§6\\[Auction] §..*§eoutbid you .*")
+                && (main.getConfigValues().isEnabled(Feature.OUTBID_ALERT_SOUND_IN_OTHER_GAMES) || main.getUtils().isOnSkyblock())) {
+            main.getUtils().playLoudSound("random.orb", 0.5);
         }
 
         if (main.getUtils().isOnSkyblock()) {
@@ -329,6 +346,16 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
                     e.setCanceled(true);
 
+                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit") || strippedText.startsWith("Your Spirit Sceptre hit")) {
+                    matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
+                    // Ensure matcher.group gets what it wants, we don't need the result
+                    if (matcher.find()) {
+                        if (main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+                            this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
+                            this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+                        }
+                        e.setCanceled(true);
+                    }
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
@@ -478,7 +505,7 @@ public class PlayerListener {
 
     /**
      * This method is triggered by the player right-clicking on something.
-     * Yes, it says it works for left-clicking blocks too but it actually doesn't, so please don't use it to detect that.
+     * Yes, it says it works for left-clicking blocks too, but it actually doesn't, so please don't use it to detect that.
      * <br>
      * Also, when the player right-clicks on a block, {@code PlayerInteractEvent} gets fired twice. The first time,
      * the correct action type {@code Action.RIGHT_CLICK_BLOCK}, is used. The second time, the action type is
@@ -501,18 +528,18 @@ public class PlayerListener {
                 if (color != null) {
                     BackpackInventoryManager.setBackpackColor(color);
                 }
-            } else if (heldItem.getItem().equals(Items.fishing_rod)
+            } else if (heldItem.getItem() == Items.fishing_rod
                     && (e.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK || e.action == PlayerInteractEvent.Action.RIGHT_CLICK_AIR)) {
-                // Update fishing status
-                if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+                // Update fishing status if the player is fishing and reels in their rod.
+                if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && BaitManager.getInstance().isHoldingRod()) {
                     oldBobberIsInWater = false;
                     lastBobberEnteredWater = Long.MAX_VALUE;
                     oldBobberPosY = 0;
                 }
                 if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS)) {
                     String itemId = ItemUtils.getSkyblockItemID(heldItem);
-                    // Grappling hook cooldown
-                    if (itemId.equals(InventoryUtils.GRAPPLING_HOOK_ID) && mc.thePlayer.fishEntity != null) {
+                    // Grappling hook cool-down
+                    if (itemId != null && itemId.equals(InventoryUtils.GRAPPLING_HOOK_ID) && mc.thePlayer.fishEntity != null) {
                         boolean wearingFullBatPerson = InventoryUtils.isWearingFullSet(mc.thePlayer, InventoryUtils.BAT_PERSON_SET_IDS);
                         int cooldownTime = wearingFullBatPerson ? 0 : CooldownManager.getItemCooldown(itemId);
                         CooldownManager.put(itemId, cooldownTime);
@@ -532,8 +559,6 @@ public class PlayerListener {
             timerTick++;
 
             if (mc != null) { // Predict health every tick if needed.
-
-
                 ScoreboardManager.tick();
 
                 if (actionBarParser.getHealthUpdate() != null && System.currentTimeMillis() - actionBarParser.getLastHealthUpdate() > 3000) {
@@ -544,9 +569,6 @@ public class PlayerListener {
                     int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                             getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                     setAttribute(Attribute.HEALTH, newHealth);
-                }
-                if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
-                    main.getUtils().playLoudSound("random.successful_hit", 0.8);
                 }
 
                 if (timerTick == 20) {
@@ -578,6 +600,9 @@ public class PlayerListener {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
                             main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(player);
+                            if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
+                                main.getUtils().playLoudSound("random.successful_hit", 0.8);
+                            }
                             if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY)) {
                                 FetchurManager.getInstance().recalculateFetchurItem();
                             }
@@ -803,14 +828,13 @@ public class PlayerListener {
                         for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
                             if (entity instanceof EntityMagmaCube) {
                                 EntitySlime magma = (EntitySlime) entity;
-                                if (magma.getSlimeSize() > 10) { // Find a big magma boss
+                                if (magma.getSlimeSize() > 10 && main.getUtils().getLocation()==Location.BLAZING_FORTRESS) { // Find a big magma boss
                                     foundBoss = true;
                                     if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
                                         lastBoss = System.currentTimeMillis();
                                         main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
                                         magmaTick = 16; // so the sound plays instantly
                                         main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-//                                logServer(mc);
                                     }
                                     magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
                                     if (currentTime - lastBossSpawnPost > 300000) {
@@ -856,6 +880,40 @@ public class PlayerListener {
     @SubscribeEvent()
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
+
+        // Detect Brood Mother spawn
+        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ALERT_BROOD_MOTHER) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
+            if(entity.hasCustomName() && entity.posY > 165) {
+                if(entity.getName().contains("Brood Mother") && (lastBroodmother == -1 || System.currentTimeMillis() - lastBroodmother > 15000)) { //Brood Mother
+                    lastBroodmother = System.currentTimeMillis();
+//                  main.getUtils().sendMessage("Broodmother spawned."); //testers said to remove message
+                    main.getRenderListener().setTitleFeature(Feature.ALERT_BROOD_MOTHER);
+                    main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                    main.getUtils().playLoudSound("random.orb", 0.5);
+                }
+            }
+        }
+        if (main.getUtils().isOnSkyblock()) {
+        Minecraft mc = Minecraft.getMinecraft();
+        for (Entity cubes : mc.theWorld.loadedEntityList) {
+            if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
+                if (cubes instanceof EntityMagmaCube) {
+                    EntitySlime magma = (EntitySlime) cubes;
+                    if (magma.getSlimeSize() > 10) { // Find a big bal boss
+                        if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
+                            lastBal = System.currentTimeMillis();
+                            main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
+                            balTick = 16; // so the sound plays instantly
+                            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                        }
+                        if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                            main.getUtils().playLoudSound("random.orb", 0.5);
+                        }
+                    }
+                }
+            }
+        }
+     }
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
             EntityArrow arrow = (EntityArrow) entity;
@@ -1048,7 +1106,9 @@ public class PlayerListener {
             }
 
             if (main.getConfigValues().isEnabled(Feature.REPLACE_ROMAN_NUMERALS_WITH_NUMBERS)) {
-                for (int i = 0; i < e.toolTip.size(); i++) {
+                int startIndex = main.getConfigValues().isEnabled(Feature.DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME) ? 1 : 0;
+
+                for (int i = startIndex; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
                 }
             }
@@ -1284,11 +1344,22 @@ public class PlayerListener {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 
+    /**
+     * Checks if the fishing indicator sound should be played. To play the sound, these conditions have to be met:
+     * <p>1. Fishing sound indicator feature is enabled</p>
+     * <p>2. The player is on skyblock (checked in {@link #onTick(TickEvent.ClientTickEvent)})</p>
+     * <p>3. The player is holding a fishing rod</p>
+     * <p>4. The fishing rod is in the water</p>
+     * <p>5. The bobber suddenly moves downwards, indicating a fish has been caught</p>
+     *
+     * @return {@code true} if the fishing alert sound should be played, {@code false} otherwise
+     * @see Feature#FISHING_SOUND_INDICATOR
+     */
     private boolean shouldTriggerFishingIndicator() {
         Minecraft mc = Minecraft.getMinecraft();
-        if (mc.thePlayer != null && mc.thePlayer.fishEntity != null && mc.thePlayer.getHeldItem() != null
-                && mc.thePlayer.getHeldItem().getItem().equals(Items.fishing_rod)
-                && main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR)) {
+
+        if (main.getConfigValues().isEnabled(Feature.FISHING_SOUND_INDICATOR) && mc.thePlayer.fishEntity != null
+                && BaitManager.getInstance().isHoldingRod()) {
             // Highly consistent detection by checking when the hook has been in the water for a while and
             // suddenly moves downward. The client may rarely bug out with the idle bobbing and trigger a false positive.
             EntityFishHook bobber = mc.thePlayer.fishEntity;

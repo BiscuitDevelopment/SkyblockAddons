@@ -504,9 +504,10 @@ public class Utils {
 
     public void fetchMagmaBossEstimate() {
         SkyblockAddons.runAsync(() -> {
-            boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
-            if (!magmaTimerEnabled) {
-                logger.info("Getting magma boss spawn estimate from server...");
+            boolean debugLoggingEnabled = DevUtils.isMagmaTimerDebugLoggingEnabled();
+
+            if (debugLoggingEnabled) {
+                logger.debug("Getting magma boss spawn estimate from server...");
             }
             try {
                 URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
@@ -514,8 +515,8 @@ public class Utils {
                 connection.setRequestMethod("GET");
                 connection.setRequestProperty("User-Agent", USER_AGENT);
 
-                if (!magmaTimerEnabled) {
-                    logger.info("Got response code " + connection.getResponseCode());
+                if (debugLoggingEnabled) {
+                    logger.debug("Got response code " + connection.getResponseCode());
                 }
 
                 JsonObject responseJson = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream()), JsonObject.class);
@@ -525,15 +526,15 @@ public class Utils {
                 long currentTime = responseJson.get("queryTime").getAsLong();
                 int magmaSpawnTime = (int) ((estimate - currentTime) / 1000);
 
-                if (!magmaTimerEnabled) {
-                    logger.info("Query time was " + currentTime + ", server time estimate is " +
+                if (debugLoggingEnabled) {
+                    logger.debug("Query time was " + currentTime + ", server time estimate is " +
                             estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
                 }
 
                 main.getPlayerListener().setMagmaTime(magmaSpawnTime);
                 main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
             } catch (IOException ex) {
-                if (!magmaTimerEnabled) {
+                if (debugLoggingEnabled) {
                     logger.warn("Failed to get magma boss spawn estimate from server");
                 }
             }
@@ -542,9 +543,9 @@ public class Utils {
 
     public void sendInventiveTalentPingRequest(EnumUtils.MagmaEvent event) {
         SkyblockAddons.runAsync(() -> {
-            boolean magmaTimerEnabled = main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER);
-            if (!magmaTimerEnabled) {
-                logger.info("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
+            boolean debugLoggingEnabled = DevUtils.isMagmaTimerDebugLoggingEnabled();
+            if (debugLoggingEnabled) {
+                logger.debug("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
             }
 
             try {
@@ -571,13 +572,14 @@ public class Utils {
                         out.flush();
                     }
 
-                    if (!magmaTimerEnabled) {
-                        logger.info("Got response code " + connection.getResponseCode());
+                    if (debugLoggingEnabled) {
+                        logger.debug("Got response code " + connection.getResponseCode());
                     }
+
                     connection.disconnect();
                 }
             } catch (IOException ex) {
-                if (!magmaTimerEnabled) {
+                if (debugLoggingEnabled) {
                     logger.warn("Failed to post event to server");
                 }
             }

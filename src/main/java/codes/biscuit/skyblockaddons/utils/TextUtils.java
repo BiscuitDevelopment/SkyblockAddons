@@ -5,10 +5,9 @@ import com.google.gson.JsonObject;
 
 import java.nio.charset.StandardCharsets;
 import java.text.DecimalFormat;
-import java.util.Base64;
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,8 +25,7 @@ public class TextUtils {
     private static final Pattern TRIM_WHITESPACE_RESETS = Pattern.compile("^(?:\\s|§r)*|(?:\\s|§r)*$");
     private static final Pattern USERNAME_PATTERN = Pattern.compile("[A-Za-z0-9_]+");
     private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
-    private static final Pattern THOUSANDS = Pattern.compile("(\\d)[kK]");
-    private static final Pattern MILLIONS = Pattern.compile("(\\d)[mM]");
+    private static final Pattern MAGNITUDE_PATTERN = Pattern.compile("(\\d[\\d,.]*\\d*)+([kKmMbBtT])");
 
     private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
 
@@ -111,12 +109,55 @@ public class TextUtils {
     }
 
     /**
-     * Converts strings with "k" or "M" magnitudes, e.g. "10k" -> "10000" and "10M" -> "10000000"
+     * Converts all numbers with magnitudes in a given string, e.g. "10k" -> "10000" and "10M" -> "10000000." Magnitudes
+     * are not case-sensitive.
+     *
+     * <b>Supported magnitudes:</b>
+     * <p>k - thousand</p>
+     * <p>m - million</p>
+     * <p>b - billion</p>
+     * <p>t - trillion</p>
+     * <p>
+     * <p>
+     * <b>Examples:</b>
+     * <p>1k -> 1,000</p>
+     * <p>2.5K -> 2,500</p>
+     * <p>100M -> 100,000,000</p>
+     *
      * @param text - Input text
      * @return Input text with converted magnitudes
      */
-    public static String convertMagnitudes(String text) {
-        return MILLIONS.matcher(THOUSANDS.matcher(text).replaceAll("$1000")).replaceAll("$1000000");
+    public static String convertMagnitudes(String text) throws ParseException {
+        Matcher matcher = MAGNITUDE_PATTERN.matcher(text);
+        // Hypixel uses US number format
+        NumberFormat nf = NumberFormat.getInstance(Locale.US);
+        StringBuffer sb = new StringBuffer();
+
+        nf.setMaximumFractionDigits(2);
+
+        while (matcher.find()) {
+            double parsedDouble = nf.parse(matcher.group(1)).doubleValue();
+            String magnitude = matcher.group(2).toLowerCase(Locale.ROOT);
+
+            switch (magnitude) {
+                case "k":
+                    parsedDouble *= 1_000;
+                    break;
+                case "m":
+                    parsedDouble *= 1_000_000;
+                    break;
+                case "b":
+                    parsedDouble *= 1_000_000_000;
+                    break;
+                case "t":
+                    parsedDouble *= 1_000_000_000_000L;
+            }
+
+            matcher.appendReplacement(sb, nf.format(parsedDouble));
+        }
+        matcher.appendTail(sb);
+
+        return sb.toString();
     }
 
     /**
@@ -209,6 +250,7 @@ public class TextUtils {
         String suffix = entry.getValue();
 
         int truncated = number / (divideBy / 10); //the number part of the output times 10
+        //noinspection IntegerDivisionInFloatingPointContext
         boolean hasDecimal = truncated < 100 && (truncated / 10d) != (truncated / 10);
         return hasDecimal ? (truncated / 10d) + suffix : (truncated / 10) + suffix;
     }
@@ -251,7 +293,7 @@ public class TextUtils {
      * @return a new string in which the first letter of each word is capitalized
      */
     public static String toProperCase(String inputString) {
-        String ret = "";
+        String ret;
         StringBuffer sb = new StringBuffer();
         Matcher match = Pattern.compile("([a-z])([a-z]*)", Pattern.CASE_INSENSITIVE).matcher(inputString);
         while (match.find()) {

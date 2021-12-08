@@ -44,6 +44,7 @@ public enum Location {
     BIRCH_PARK("Birch Park"),
     SPRUCE_WOODS("Spruce Woods"),
     SAVANNA_WOODLAND("Savanna Woodland"),
+    MELODYS_PLATEAU("Melody's Plateau"),
     DARK_THICKET("Dark Thicket"),
     JUNGLE_ISLAND("Jungle Island"),
     HOWLING_CAVE("Howling Cave"),
@@ -87,12 +88,18 @@ public enum Location {
 
     // Crystal Hollows
     CRYSTAL_HOLLOWS("Crystal Hollows"),
+    CRYSTAL_NUCLEUS("Crystal Nucleus"),
     MAGMA_FIELDS("Magma Fields"),
     JUNGLE("Jungle"),
     MITHRIL_DEPOSITS("Mithril Deposits"),
     GOBLIN_HOLDOUT("Goblin Holdout"),
-    PRECURSOR_REMNANT("Precursor Remnant"),
+    PRECURSOR_REMNANT("Precursor Remnants"),
     FAIRY_GROTTO("Fairy Grotto"),
+    KHAZAD_DUM("Khazad-dûm"), //These are the random gen places in each biome
+    JUNGLE_TEMPLE("Jungle Temple"), 
+    MINES_OF_DIVAN("Mines of Divan"),
+    GOBLIN_QUEEN_DEN("Goblin Queens Den"),
+    LOST_PRECURSOR_CITY("Lost Precursor City"),
 
     THE_BARN("The Barn"),
 

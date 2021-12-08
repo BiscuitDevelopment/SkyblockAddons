@@ -36,8 +36,8 @@ dependencies {
     implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
     }
-    // Testing is unused for now
-//    testImplementation('org.junit.jupiter:junit-jupiter:5.6.2')
+    testImplementation(platform('org.junit:junit-bom:5.8.1'))
+    testImplementation('org.junit.jupiter:junit-jupiter:5.8.1')
 }
 
 sourceSets {
@@ -128,9 +128,12 @@ task copyLicenses (type: Copy) {
     into(sourceSets.main.output.resourcesDir)
 }
 
-/*test {
+test {
     useJUnitPlatform()
-}*/
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}
 
 tasks.named('wrapper') {
     distributionType = Wrapper.DistributionType.ALL

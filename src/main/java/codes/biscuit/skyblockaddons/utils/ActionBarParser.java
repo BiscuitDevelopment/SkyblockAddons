@@ -8,9 +8,13 @@ import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.logging.log4j.Logger;
 
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -49,14 +53,15 @@ import java.util.regex.Pattern;
 @Getter
 public class ActionBarParser {
 
-    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
-    private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)\\/(?<total>[0-9.,kM]+))|((?<percent>[0-9.]+)%))\\))");
+    private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
+    private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,]+)/(?<total>[0-9.,]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
     private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
     private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
 
 
     private final SkyblockAddons main;
+    private final Logger logger;
 
     /**
      * The amount of usable tickers or -1 if none are in the action bar.
@@ -80,10 +85,18 @@ public class ActionBarParser {
     private boolean healthLock;
     private String otherDefense;
 
+    /** The skill section that was parsed from the last action bar message */
+    private String lastParsedSkillSection = "";
+    /** The string that was displayed on the skill progress display for the last action bar message */
+    private String lastSkillProgressString;
+    /** The skill type parsed from the last action bar message */
+    private SkillType lastSkillType;
+
     private final LinkedList<String> stringsToRemove = new LinkedList<>();
 
     public ActionBarParser() {
         this.main = SkyblockAddons.getInstance();
+        logger = SkyblockAddons.getLogger();
     }
 
     /**
@@ -130,7 +143,7 @@ public class ActionBarParser {
             }
         }
 
-        // Finally display all unused sections separated by 5 spaces again
+        // Finally, display all unused sections separated by 5 spaces again
         return String.join(StringUtils.repeat(" ", 5), unusedSections);
     }
 
@@ -142,29 +155,37 @@ public class ActionBarParser {
      */
     private String parseSection(String section) {
         String stripColoring = TextUtils.stripColor(section);
-        String convertMag = TextUtils.convertMagnitudes(stripColoring);
+        String convertMag;
 
-        // Format for overflow mana is a bit different. Splitstats must parse out overflow first before getting numbers
-        if (section.contains("ʬ")) {
-            convertMag = convertMag.split(" ")[0];
-        }
-        String numbersOnly = TextUtils.getNumbersOnly(convertMag).trim(); // keeps numbers and slashes
-        String[] splitStats = numbersOnly.split("/");
+        try {
+            convertMag = TextUtils.convertMagnitudes(stripColoring);
 
-        if (section.contains("❤")) {
-            // ❤ indicates a health section
-            return parseHealth(section);
-        } else if (section.contains("❈")) {
-            // ❈ indicates a defense section
-            return parseDefense(section);
-        } else if (section.contains("✎")) {
-            return parseMana(section);
-        } else if (section.contains("(")) {
-            return parseSkill(section);
-        } else if (section.contains("Ⓞ") || section.contains("ⓩ")) {
-            return parseTickers(section);
-        } else if (section.contains("Drill")) {
-            return parseDrill(section, splitStats);
+            // Format for overflow mana is a bit different. Splitstats must parse out overflow first before getting numbers
+            if (section.contains("ʬ")) {
+                convertMag = convertMag.split(" ")[0];
+            }
+            String numbersOnly = TextUtils.getNumbersOnly(convertMag).trim(); // keeps numbers and slashes
+            String[] splitStats = numbersOnly.split("/");
+
+            if (section.contains("❤")) {
+                // ❤ indicates a health section
+                return parseHealth(section);
+            } else if (section.contains("❈")) {
+                // ❈ indicates a defense section
+                return parseDefense(section);
+            } else if (section.contains("✎")) {
+                return parseMana(section);
+            } else if (section.contains("(")) {
+                return parseSkill(convertMag);
+            } else if (section.contains("Ⓞ") || section.contains("ⓩ")) {
+                return parseTickers(section);
+            } else if (section.contains("Drill")) {
+                return parseDrill(section, splitStats);
+            }
+        } catch (ParseException e) {
+            logger.error("The section \"" + section + "\" will be skipped due to an error during number parsing.");
+            logger.error("Failed to parse number at offset " + e.getErrorOffset() + " in string \"" + e.getMessage() + "\".", e);
+            return section;
         }
 
         return section;
@@ -258,77 +279,114 @@ public class ActionBarParser {
     }
 
     /**
-     * Parses the skill section and display the skill progress gui element
+     * Parses the skill section and displays the skill progress gui element.
+     * If the skill section provided is the same as the one from the last action bar message, then the last output is
+     * displayed.
+     *
+     * <p>
+     * <b>Example Skill Section Messages</b>
+     * <p>
+     * §3+10.9 Combat (313,937.1/600,000)
+     * <p>
+     * Another Example: §5+§d30 §5Runecrafting (969/1000)
+     * <p>
+     * Percent: §3+2 Farming (1.01%)
+     * <p>
+     * Percent without decimal: §3+2 Farming (1%)
+     * <p>
+     * Maxed out skill: §5+§d60 §5Runecrafting (118,084/0)
      *
      * @param skillSection Skill XP section of the action bar
-     * @return null or {@code skillSection} if wrong format or skill display is disabled
+     * @return {@code null} or {@code skillSection} if wrong format or skill display is disabled
      */
-    private String parseSkill(String skillSection) {
-        // §3+10.9 Combat (313,937.1/600,000)
-        // Another Example: §5+§d30 §5Runecrafting (969/1000)
-        Matcher matcher = SKILL_GAIN_PATTERN_S.matcher(TextUtils.stripColor(skillSection));
-        if (matcher.matches() && (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY) || main.getConfigValues().isEnabled(Feature.SKILL_PROGRESS_BAR))) {
+    private String parseSkill(String skillSection) throws ParseException {
+        if (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY) || main.getConfigValues().isEnabled(Feature.SKILL_PROGRESS_BAR)) {
+            Matcher matcher = SKILL_GAIN_PATTERN_S.matcher(TextUtils.stripColor(skillSection));
+            NumberFormat nf = NumberFormat.getInstance(Locale.US);
             StringBuilder skillTextBuilder = new StringBuilder();
+            SkillType skillType = null;
 
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
-                skillTextBuilder.append("+").append(matcher.group("gained"));
-            }
+            nf.setMaximumFractionDigits(2);
 
-            float gained = Float.parseFloat(matcher.group("gained").replaceAll(",", ""));
-            SkillType skillType = SkillType.getFromString(matcher.group("skillName"));
+            if (lastParsedSkillSection.equals(skillSection)) {
+                skillTextBuilder.append(lastSkillProgressString);
+                skillType = lastSkillType;
+            } else if (matcher.matches()) {
 
-            boolean skillPercent = matcher.group("percent") != null;
-            boolean parseCurrAndTotal = true;
-            if (skillPercent) {
-                percent = Float.parseFloat(matcher.group("percent"));
-                int skillLevel = main.getSkillXpManager().getSkillLevel(skillType);
-                // Try to re-create xxx/xxx display
-                if (skillLevel != -1) {
-                    totalSkillXP = main.getSkillXpManager().getSkillXpForNextLevel(skillType, skillLevel);
-                    currentSkillXP = totalSkillXP * percent / 100;
-                } else {
-                    parseCurrAndTotal = false;
+                if (main.getConfigValues().isEnabled(Feature.SHOW_SKILL_XP_GAINED)) {
+                    skillTextBuilder.append("+").append(matcher.group("gained"));
                 }
-            } else {
-                currentSkillXP = Float.parseFloat(TextUtils.convertMagnitudes(matcher.group("current")).replaceAll(",", ""));
-                totalSkillXP = Integer.parseInt(TextUtils.convertMagnitudes(matcher.group("total")).replaceAll(",", ""));
-                percent = totalSkillXP == 0 ? 100F : 100F * currentSkillXP / totalSkillXP;
-            }
-            percent = Math.min(100, percent);
 
+                skillType = SkillType.getFromString(matcher.group("skillName"));
 
-            if (!parseCurrAndTotal || main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
-                // We may only have the percent at this point
-                skillTextBuilder.append(" (").append(String.format("%.2f", percent)).append("%)");
-            } else {
-                // Append "(currentXp/totalXp)"
-                skillTextBuilder.append(" (").append(TextUtils.formatDouble(currentSkillXP));
-                // Only print the total when it doesn't = 0
-                if (totalSkillXP != 0) {
-                    skillTextBuilder.append("/");
-                    if (main.getConfigValues().isEnabled(Feature.ABBREVIATE_SKILL_XP_DENOMINATOR)) {
-                        skillTextBuilder.append(TextUtils.abbreviate(totalSkillXP));
+                boolean skillPercent = matcher.group("percent") != null;
+                boolean parseCurrAndTotal = true;
+                if (skillPercent) {
+                    percent = nf.parse(matcher.group("percent")).floatValue();
+                    int skillLevel = main.getSkillXpManager().getSkillLevel(skillType);
+                    // Try to re-create xxx/xxx display
+                    if (skillLevel != -1) {
+                        totalSkillXP = main.getSkillXpManager().getSkillXpForNextLevel(skillType, skillLevel);
+                        currentSkillXP = totalSkillXP * percent / 100;
                     } else {
-                        skillTextBuilder.append(TextUtils.formatDouble(totalSkillXP));
+                        parseCurrAndTotal = false;
+                    }
+                } else {
+                    currentSkillXP = nf.parse(matcher.group("current")).floatValue();
+                    totalSkillXP = nf.parse(matcher.group("total")).intValue();
+                    percent = totalSkillXP == 0 ? 100F : 100F * currentSkillXP / totalSkillXP;
+                }
+                percent = Math.min(100, percent);
+
+
+                if (!parseCurrAndTotal || main.getConfigValues().isEnabled(Feature.SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP)) {
+                    // We may only have the percent at this point
+                    skillTextBuilder.append(" (").append(String.format("%.2f", percent)).append("%)");
+                } else {
+                    // Append "(currentXp/totalXp)"
+                    skillTextBuilder.append(" (").append(nf.format(currentSkillXP));
+                    // Only print the total when it doesn't = 0
+                    if (totalSkillXP != 0) {
+                        skillTextBuilder.append("/");
+                        if (main.getConfigValues().isEnabled(Feature.ABBREVIATE_SKILL_XP_DENOMINATOR)) {
+                            skillTextBuilder.append(TextUtils.abbreviate(totalSkillXP));
+                        } else {
+                            skillTextBuilder.append(nf.format(totalSkillXP));
+                        }
+                    }
+                    skillTextBuilder.append(")");
+                }
+
+                // This feature is only accessible when we have parsed the current and total skill xp
+                if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
+                    float gained = nf.parse(matcher.group("gained")).floatValue();
+
+                    skillTextBuilder.append(" - ");
+
+                    if (percent != 100) {
+                        if (gained != 0) {
+                            skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
+                        } else {
+                            skillTextBuilder.append(Translations.getMessage("messages.actionsLeft", "∞"));
+                        }
                     }
                 }
-                skillTextBuilder.append(")");
+
+                lastParsedSkillSection = skillSection;
+                lastSkillProgressString = skillTextBuilder.toString();
+                lastSkillType = skillType;
             }
 
-            // This feature is only accessible when we have parsed the current and total skill xp
-            if (parseCurrAndTotal && main.getConfigValues().isEnabled(Feature.SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL)) {
-                if (percent != 100) { // 0 means it's maxed...
-                    skillTextBuilder.append(" - ").append(Translations.getMessage("messages.actionsLeft", (int) Math.ceil((totalSkillXP - currentSkillXP) / gained)));
+            if (skillTextBuilder.length() != 0) {
+                main.getRenderListener().setSkillText(skillTextBuilder.toString());
+                main.getRenderListener().setSkill(skillType);
+                main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
+                if (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
+                    return null;
                 }
             }
-
-            main.getRenderListener().setSkillText(skillTextBuilder.toString());
-            main.getRenderListener().setSkill(skillType);
-            main.getRenderListener().setSkillFadeOutTime(System.currentTimeMillis() + 4000);
-            if (main.getConfigValues().isEnabled(Feature.SKILL_DISPLAY)) {
-                return null;
-            }
         }
+
         return skillSection;
     }
 

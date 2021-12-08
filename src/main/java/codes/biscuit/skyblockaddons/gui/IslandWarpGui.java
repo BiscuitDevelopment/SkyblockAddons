@@ -245,12 +245,12 @@ public class IslandWarpGui extends GuiScreen {
                     }
                 }, 20);
             }
-            if (selectedMarker != Marker.DWARVEN_FORGE) {
+            if (selectedMarker != null) {
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp " + selectedMarker.getWarpName());
-            } else {
+            } /*else {
                 // Weirdly, this command is /warpforge instead of /warp forge
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/warp" + selectedMarker.getWarpName());
-            }
+            }*/
 
         }
 
@@ -370,6 +370,7 @@ public class IslandWarpGui extends GuiScreen {
         DARK_AUCTION("da", "Sirius Shack", Island.HUB, 385, 415),
         CRYPT("crypt", "Crypts", Island.HUB, 550, 100),
         DUNGEON_HUB("dungeon_hub", "Dungeon Hub", Island.HUB, false, 400, 175),
+        MUSEUM("museum", "Museum", Island.HUB, true, 310, 200),
 
         SPIDERS_DEN("spider", Translations.getMessage("warpMenu.spawn"), Island.SPIDERS_DEN, true, 345, 240),
         SPIDERS_DEN_NEST("nest", "Top of Nest", Island.SPIDERS_DEN, 450, 30),
@@ -390,8 +391,9 @@ public class IslandWarpGui extends GuiScreen {
 
         GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 86, 259),
         DEEP_CAVERNS("deep", Translations.getMessage("warpMenu.spawn"), Island.DEEP_CAVERNS, true, 97, 213),
-        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 150, 320),
-        DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, false, 220, 350),
+        DWARVEN_MINES("mines", "Dwarven Mines", Island.DEEP_CAVERNS, false, 280, 205),
+        DWARVEN_FORGE("forge", "Forge", Island.DEEP_CAVERNS, true, 260, 280),
+        CRYSTAL_HOLLOWS("crystals", "Crystal Hollows", Island.DEEP_CAVERNS, true, 220, 350),
 
         DUNGEON_HUB_ISLAND("dungeon_hub", Translations.getMessage("warpMenu.spawn"), Island.DUNGEON_HUB, false, 35, 80),
         ;

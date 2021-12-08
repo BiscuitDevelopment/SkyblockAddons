@@ -53,6 +53,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -66,10 +67,12 @@ import org.lwjgl.opengl.GL11;
 import javax.vecmath.Vector3d;
 import java.awt.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
+import static codes.biscuit.skyblockaddons.utils.ItemUtils.getExtraAttributes;
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
@@ -88,6 +91,7 @@ public class RenderListener {
     private static final ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
     private static final ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
     private static final ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
+    private static final ResourceLocation FARM_ICON = new ResourceLocation("skyblockaddons", "icons/farm.png");
 
     private static final ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
 
@@ -99,6 +103,11 @@ public class RenderListener {
     private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null,  "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
     private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
     private static final ItemStack SKULL = ItemUtils.createSkullItemStack("Skull", null, "c659cdd4-e436-4977-a6a7-d5518ebecfbb", "1ae3855f952cd4a03c148a946e3f812a5955ad35cbcb52627ea4acd47d3081");
+    private static final ItemStack HYPERION = ItemUtils.createItemStack(Items.iron_sword,"§6Hyperion","HYPERION", false);
+    private static final ItemStack VALKYRIE = ItemUtils.createItemStack(Items.iron_sword,"§6Valkyrie","VALKYRIE", false);
+    private static final ItemStack ASTRAEA = ItemUtils.createItemStack(Items.iron_sword,"§6Astraea","ASTRAEA", false);
+    private static final ItemStack SCYLLA = ItemUtils.createItemStack(Items.iron_sword,"§6Scylla","SCYLLA", false);
+    private static final ItemStack SCPETRE = new ItemStack(Blocks.red_flower,1,2); //doesnt show sb texture pack cos blocks cant have and idk how
 
     private static final ItemStack GREEN_CANDY = ItemUtils.createSkullItemStack("Green Candy", "GREEN_CANDY", "0961dbb3-2167-3f75-92e4-ec8eb4f57e55", "ce0622d01cfdae386cc7dd83427674b422f46d0a57e67a20607e6ca4b9af3b01");
     private static final ItemStack PURPLE_CANDY = ItemUtils.createSkullItemStack("Purple Candy", "PURPLE_CANDY", "5b0e6bf0-6312-3476-b5f8-dbc9a8849a1f", "95d7aee4e97ad84095f55405ee1305d1fc8554c309edb12a1db863cde9c1ec80");
@@ -231,6 +240,13 @@ public class RenderListener {
                 drawText(Feature.DARK_AUCTION_TIMER, scale, mc, null);
                 GlStateManager.popMatrix();
             }
+            if (main.getConfigValues().isEnabled(Feature.FARM_EVENT_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES)) {
+                float scale = main.getConfigValues().getGuiScale(Feature.FARM_EVENT_TIMER);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                drawText(Feature.FARM_EVENT_TIMER, scale, mc, null);
+                GlStateManager.popMatrix();
+            }
         }
     }
 
@@ -269,6 +285,12 @@ public class RenderListener {
                     break;
                 case WARN_WHEN_FETCHUR_CHANGES:
                     message = Message.MESSAGE_FETCHUR_WARNING;
+                    break;
+                case ALERT_BROOD_MOTHER:
+                    message = Message.MESSAGE_ALERT_BROOD_MOTHER;
+                    break;
+                case BAL_BOSS_ALERT:
+                    message = Message.MESSAGE_BAL_BOSS_WARNING;
                     break;
             }
             if (message != null) {
@@ -688,8 +710,8 @@ public class RenderListener {
         } else if (feature == Feature.DEFENCE_PERCENTAGE) {
             double doubleDefence = getAttribute(Attribute.DEFENCE);
             double percentage = ((doubleDefence / 100) / ((doubleDefence / 100) + 1)) * 100; //Taken from https://hypixel.net/threads/how-armor-works-and-the-diminishing-return-of-higher-defence.2178928/
-            BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, BigDecimal.ROUND_HALF_UP);
-            text = bigDecimal.toString() + "%";
+            BigDecimal bigDecimal = new BigDecimal(percentage).setScale(1, RoundingMode.HALF_UP);
+            text = bigDecimal + "%";
 
         } else if (feature == Feature.SPEED_PERCENTAGE) {
             String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
@@ -735,31 +757,65 @@ public class RenderListener {
             text = timestamp.toString();
 
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            StringBuilder magmaBuilder = new StringBuilder();
-            magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
-            EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
-            if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                if (buttonLocation == null) {
-                    int totalSeconds = main.getPlayerListener().getMagmaTime();
-                    if (totalSeconds < 0) totalSeconds = 0;
-                    int hours = totalSeconds / 3600;
-                    int minutes = totalSeconds / 60 % 60;
-                    int seconds = totalSeconds % 60;
-                    if (Math.abs(hours) >= 10) hours = 10;
-                    magmaBuilder.append(hours).append(":");
-                    if (minutes < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(minutes).append(":");
-                    if (seconds < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(seconds);
-                } else {
-                    magmaBuilder.append("1:23:45");
+        StringBuilder magmaBuilder = new StringBuilder();
+        magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
+        EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
+        if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
+            if (buttonLocation == null) {
+                int totalSeconds = main.getPlayerListener().getMagmaTime();
+                if (totalSeconds < 0) totalSeconds = 0;
+                int hours = totalSeconds / 3600;
+                int minutes = totalSeconds / 60 % 60;
+                int seconds = totalSeconds % 60;
+                if (Math.abs(hours) >= 10) hours = 10;
+                magmaBuilder.append(hours).append(":");
+                if (minutes < 10) {
+                    magmaBuilder.append("0");
                 }
+                magmaBuilder.append(minutes).append(":");
+                if (seconds < 10) {
+                    magmaBuilder.append("0");
+                }
+                magmaBuilder.append(seconds);
+            } else {
+                magmaBuilder.append("1:23:45");
             }
+        }
             text = magmaBuilder.toString();
+        } else if (feature == Feature.FARM_EVENT_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
+            Calendar nextFarmEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+            if (nextFarmEvent.get(Calendar.MINUTE) >= 15) {
+                nextFarmEvent.add(Calendar.HOUR_OF_DAY, 1);
+            }
+            nextFarmEvent.set(Calendar.MINUTE, 15);
+            nextFarmEvent.set(Calendar.SECOND, 0);
+            int difference = (int) (nextFarmEvent.getTimeInMillis() - System.currentTimeMillis());
+            int minutes = difference / 60000;
+            int seconds = (int) Math.round((double) (difference % 60000) / 1000);
+            if (minutes < 40) {
+                StringBuilder timestamp = new StringBuilder();
+                if (minutes < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(minutes).append(":");
+                if (seconds < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(seconds);
+                text = timestamp.toString();
+            } else{
+                StringBuilder timestampActive = new StringBuilder();
+                timestampActive.append("Active: ");
+                if (minutes-40 < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(minutes-40).append(":");
+                if (seconds < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(seconds);
+                text = timestampActive.toString();
+            }
 
         } else if (feature == Feature.SKILL_DISPLAY) {
             if (buttonLocation == null) {
@@ -785,7 +841,7 @@ public class RenderListener {
                 int remainingTime = (int) (skillFadeOutTime - System.currentTimeMillis());
 
                 if (remainingTime < 0) {
-                    if (remainingTime < -2000) {
+                    if (remainingTime < -1968) {
                         return; // Will be invisible, no need to render.
                     }
 
@@ -935,6 +991,23 @@ public class RenderListener {
             }
 
             text = "Secrets";
+        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
+            if (!main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+                return;
+            }
+            ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
+            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem(); //sb item id code stolen from neu customitemeffects class
+            String internal = ItemUtils.getSkyblockItemID(held);
+            if (buttonLocation != null) {
+                text = "Hyperion";
+            } else if (holdingItem == null || internal == null) {
+                return;
+            } else if (internal.equals("HYPERION") || internal.equals("VALKYRIE") || internal.equals("ASTRAEA") || internal.equals("SCYLLA") || internal.equals("BAT_WAND")) {
+                text = holdingItem.getDisplayName().replaceAll("[0-9]?✪", "");
+            } else {
+                return;
+            }
+
         } else if (feature == Feature.CANDY_POINTS_COUNTER) {
             if (buttonLocation == null && !SpookyEventManager.isActive()) {
                 return;
@@ -970,7 +1043,7 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
                 feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
@@ -1003,6 +1076,12 @@ public class RenderListener {
             width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
             height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
         }
+        if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
+            int maxNumberWidth = mc.fontRendererObj.getStringWidth("12345");
+            width += 18 + maxNumberWidth;
+            height += 20;
+        }
+
 
         if (feature == Feature.CANDY_POINTS_COUNTER) {
             width = 0;
@@ -1049,6 +1128,13 @@ public class RenderListener {
             DrawUtils.drawText(text, x + 18, y + 4, color);
             FontRendererHook.endFeatureFont();
 
+        } else if (feature == Feature.FARM_EVENT_TIMER) {
+            mc.getTextureManager().bindTexture(FARM_ICON);
+            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+
+            FontRendererHook.setupFeatureFont(feature);
+            DrawUtils.drawText(text, x + 18, y + 4, color);
+            FontRendererHook.endFeatureFont();
         } else if (feature == Feature.MAGMA_BOSS_TIMER) {
             mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
@@ -1259,6 +1345,34 @@ public class RenderListener {
 
             GlStateManager.color(1, 1, 1, 1);
             renderItem(CHEST, x, y);
+
+        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES && main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+            int hitEnemies = main.getPlayerListener().getSpiritSceptreHitEnemies();
+            float dealtDamage = main.getPlayerListener().getSpiritSceptreDealtDamage();
+            FontRendererHook.setupFeatureFont(feature);
+            DrawUtils.drawText(text, x + 16 + 2, y, color);
+            if (hitEnemies <= 1) {
+                DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y + 9, color);
+            }
+            else {
+                DrawUtils.drawText(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
+            }
+            DrawUtils.drawText(String.format("%,d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y + 18, color);
+            FontRendererHook.endFeatureFont();
+            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
+            String internal = ItemUtils.getSkyblockItemID(held);
+            if (internal == null || internal.equals("HYPERION")) {
+                renderItem(HYPERION, x, y);
+            } else if (internal.equals("VALKYRIE")) {
+                renderItem(VALKYRIE, x, y);
+            } else if (internal.equals("ASTRAEA")) {
+                renderItem(ASTRAEA, x, y);
+            } else if (internal.equals("SCYLLA")) {
+                renderItem(SCYLLA, x, y);
+            } else if (internal.equals("BAT_WAND")) {
+                renderItem(SCPETRE, x, y);
+            }
+
         } else if (feature == Feature.CANDY_POINTS_COUNTER) {
             Map<CandyType, Integer> candyCounts = SpookyEventManager.getCandyCounts();
             if (!SpookyEventManager.isActive()) {
@@ -1342,33 +1456,35 @@ public class RenderListener {
         int color = main.getConfigValues().getColor(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
 
         int count = 0;
-        for (EssenceType essenceType : EssenceType.values()) {
-            int value = collectedEssences.getOrDefault(essenceType, 0);
-            if (usePlaceholders) {
-                value = 99;
-            } else if (value <= 0 && hideZeroes) {
-                continue;
+        if (main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+            for (EssenceType essenceType : EssenceType.values()) {
+                int value = collectedEssences.getOrDefault(essenceType, 0);
+                if (usePlaceholders) {
+                    value = 99;
+                } else if (value <= 0 && hideZeroes) {
+                    continue;
+                }
+
+                int column = count % 2;
+                int row = count / 2;
+
+                if (column == 0) {
+                    currentX = x;
+                } else if (column == 1) {
+                    currentX = x + 18 + 2 + maxNumberWidth + 5;
+                }
+                currentY = y + row * 18;
+
+                GlStateManager.color(1, 1, 1, 1);
+                mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
+                DrawUtils.drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
+
+                FontRendererHook.setupFeatureFont(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
+                DrawUtils.drawText(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
+                FontRendererHook.endFeatureFont();
+
+                count++;
             }
-
-            int column = count % 2;
-            int row = count / 2;
-
-            if (column == 0) {
-                currentX = x;
-            } else if (column == 1) {
-                currentX = x + 18 + 2 + maxNumberWidth + 5;
-            }
-            currentY = y + row * 18;
-
-            GlStateManager.color(1, 1, 1, 1);
-            mc.getTextureManager().bindTexture(essenceType.getResourceLocation());
-            DrawUtils.drawModalRectWithCustomSizedTexture(currentX, currentY, 0, 0, 16, 16, 16, 16);
-
-            FontRendererHook.setupFeatureFont(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY);
-            DrawUtils.drawText(String.valueOf(value), currentX + 18 + 2, currentY + 5, color);
-            FontRendererHook.endFeatureFont();
-
-            count++;
         }
     }
 

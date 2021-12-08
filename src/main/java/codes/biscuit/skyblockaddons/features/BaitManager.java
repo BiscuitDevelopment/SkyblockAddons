@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.features;
 
+import codes.biscuit.skyblockaddons.core.ItemType;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -33,22 +34,25 @@ public class BaitManager {
     /**
      * A map of all baits in the inventory and their count
      */
-    @Getter private Map<BaitType, Integer> baitsInInventory = new HashMap<>();
+    @Getter private final Map<BaitType, Integer> baitsInInventory = new HashMap<>();
 
     /**
-     * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook (If any more items are made that
-     * are Items.fishing_rods but aren't used for fishing, add them here)
+     * Check if our Player is holding a Fishing Rod, and filters out the Grapple Hook and Soul Whip and other items
+     * that are {@code Items.fishing_rod}s but aren't used for fishing. This is done by checking for the item type of
+     * "FISHING ROD" which is displayed beside the item rarity.
      *
-     * @return True if it can be used for fishing
+     * @return {@code true} if the held fishing rod can be used for fishing, {@code false} otherwise
      */
     public boolean isHoldingRod() {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 
         if (player != null) {
             ItemStack item = player.getHeldItem();
-            if (item == null || item.getItem() != Items.fishing_rod) return false;
+            if (item.getItem() != Items.fishing_rod) return false;
+            String itemId = ItemUtils.getSkyblockItemID(item);
+            if (itemId == null) return false;
 
-            return !"GRAPPLING_HOOK".equals(ItemUtils.getSkyblockItemID(item));
+            return ItemUtils.getItemType(item) == ItemType.FISHING_ROD;
         }
         return false;
     }
@@ -91,8 +95,8 @@ public class BaitManager {
         SHARK("§aShark Bait", "SHARK_BAIT", "9a6c7271-a12d-3941-914c-7c456a086c5a", "edff904124efe486b3a54261dbb8072b0a4e11615ad8d7394d814e0e8c8ef9eb")
         ;
 
-        private String itemID;
-        private ItemStack itemStack;
+        private final String itemID;
+        private final ItemStack itemStack;
 
         BaitType(String name, String itemID, String skullID, String textureURL) {
             this.itemID = itemID;
