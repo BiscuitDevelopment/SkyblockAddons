@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
     "hideSkeletonHatBones": "Ẩn Xương Xung Quanh Skeleton's Helmet",
     "skeletonHatBonesBar": "Thanh Xương của Skeleton's Helmet",
@@ -168,10 +169,15 @@
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
     "highlightSpecialEnchantments": "Nổi bật các Phù phép Đặc biệt",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Ẩn Bảng Chú giải Ph.Kính trong Menu",
     "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
     "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
     "chromaSize": "Mức sắc độ",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Độ nét sắc độ",
     "chromaBrightness": "Độ sáng sắc độ",
     "useNewChromaEffect": "Dùng hiệu ứng sắc độ mới",
@@ -205,13 +211,17 @@
     "guiScaleX": "Tỉ Lệ GUI (X): %scale%",
     "guiScaleY": "Tỉ Lệ GUI (Y): %scale%",
     "abbreviateSkillXpDenominator": "Rút ngắn Số Kinh nghiệm Kỹ năng",
-    "otherDefenseStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Phù phép",
     "reforges": "Rèn luyện",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Magma!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Túi Đồ Đã Đầy!",
     "labymod": "Người dùng Labymod: Ẩn thanh Thức ăn, Giáp, Máu là không thực hiện được.",
     "minionCannotReach": "%type% Minion không thể với tới và đã dừng hoạt động!",
@@ -430,6 +440,11 @@
         "help": "§e(Chế độ NPT) Bật/Tắt Chế độ Lưu trữ Tin nhắn từ Thanh Hoạt động",
         "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
         "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
