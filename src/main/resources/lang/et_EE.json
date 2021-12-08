@@ -4,6 +4,7 @@
   "settings": {
     "settings": "Sätted",
     "magmaBossWarning": "Magma Boss 'i hoiatus",
+    "balBossWarning": "Bal Boss Warning",
     "itemDropConfirmation": "Asja viske kinnitus",
     "hideSkeletonHatBones": "Peida Skeleton's Helmet 'i kondid",
     "skeletonHatBonesBar": "Luukere mütsi kontide riba",
@@ -168,10 +169,15 @@
     "showSwordKills": "Näita mõõga tapmisi",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Pane spetsiaalsed loitsud välja paistma",
+    "disableSpiritSceptreMessages": "Disable Ability Messages",
+    "showSpiritSceptreDisplay": "Ability damage display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
+    "alertBroodMother": "Brood Mother alert",
+    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -205,13 +211,17 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "farmEventTimer": "Farm Event Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Loitsud",
     "reforges": "Reforge 'id",
     "dropConfirmation": "Kukuta see asi uuesti, et kinnitada!",
     "magmaBossWarning": "Magma Boss!",
+    "balBossAlert": "Bal Boss!",
     "fullInventory": "Täis inventar!",
     "labymod": "Labymodi kasutajad: Peida toidu, rüü ja elude riba ei ole sobiv.",
     "minionCannotReach": "Üks %type% minion ei ulatu elukateni ja lõpetus tekitamise!",
@@ -430,6 +440,11 @@
         "help": "§e(Dev) §7Lülita sisse/välja action bar 'i sõnumite loggimine",
         "disabled": "Action bar 'i sõnumeid enam ei loggita.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
       },
       "errors": {
         "wrongUsage": {
