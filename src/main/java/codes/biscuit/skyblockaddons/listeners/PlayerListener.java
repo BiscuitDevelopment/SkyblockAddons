@@ -882,12 +882,12 @@ public class PlayerListener {
         Entity entity = e.entity;
 
         // Detect Brood Mother spawn
-        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ALERT_BROOD_MOTHER) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
+        if(main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.BROOD_MOTHER_ALERT) && main.getUtils().getLocation()==Location.SPIDERS_DEN) {
             if(entity.hasCustomName() && entity.posY > 165) {
                 if(entity.getName().contains("Brood Mother") && (lastBroodmother == -1 || System.currentTimeMillis() - lastBroodmother > 15000)) { //Brood Mother
                     lastBroodmother = System.currentTimeMillis();
 //                  main.getUtils().sendMessage("Broodmother spawned."); //testers said to remove message
-                    main.getRenderListener().setTitleFeature(Feature.ALERT_BROOD_MOTHER);
+                    main.getRenderListener().setTitleFeature(Feature.BROOD_MOTHER_ALERT);
                     main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
                     main.getUtils().playLoudSound("random.orb", 0.5);
                 }

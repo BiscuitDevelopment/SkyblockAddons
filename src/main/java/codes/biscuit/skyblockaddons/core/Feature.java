@@ -206,8 +206,8 @@ public enum Feature {
     FARM_EVENT_TIMER(204, "settings.farmEventTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(205, null, false),
     OUTBID_ALERT_SOUND(206, Message.SETTING_OUTBID_ALERT_SOUND,true, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
-    ALERT_BROOD_MOTHER(207, Message.SETTING_ALERT_BROOD_MOTHER, false),
-    BAL_BOSS_ALERT(208, Message.SETTING_BAL_BOSS_ALERT, false),
+    BROOD_MOTHER_ALERT(207, Message.SETTING_BROOD_MOTHER_WARNING, false),
+    BAL_BOSS_ALERT(208, Message.SETTING_BAL_BOSS_WARNING, false),
     OUTBID_ALERT_SOUND_IN_OTHER_GAMES(209, null, false),
     DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME(210, "settings.dontReplaceRomanNumeralsInItemNames", null, true),
 

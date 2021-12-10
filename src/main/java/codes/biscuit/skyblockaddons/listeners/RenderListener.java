@@ -284,8 +284,8 @@ public class RenderListener {
                 case WARN_WHEN_FETCHUR_CHANGES:
                     message = Message.MESSAGE_FETCHUR_WARNING;
                     break;
-                case ALERT_BROOD_MOTHER:
-                    message = Message.MESSAGE_ALERT_BROOD_MOTHER;
+                case BROOD_MOTHER_ALERT:
+                    message = Message.MESSAGE_BROOD_MOTHER_WARNING;
                     break;
                 case BAL_BOSS_ALERT:
                     message = Message.MESSAGE_BAL_BOSS_WARNING;
