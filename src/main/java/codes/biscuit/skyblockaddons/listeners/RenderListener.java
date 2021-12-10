@@ -53,7 +53,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.GuiIngameForge;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -72,7 +71,6 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
-import static codes.biscuit.skyblockaddons.utils.ItemUtils.getExtraAttributes;
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
@@ -1059,9 +1057,14 @@ public class RenderListener {
             height += 15;
         }
 
-        if (feature == Feature.SHOW_DUNGEON_MILESTONE || feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+        if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
             width += 16 + 2;
             height += 10;
+        }
+
+        if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
+            width += 16 + 2;
+            height += 14;
         }
 
         if (feature == Feature.FETCHUR_TODAY) {
@@ -1303,7 +1306,7 @@ public class RenderListener {
             if (secrets == -1 | maxSecrets == 0) {
                 FontRendererHook.setupFeatureFont(feature);
                 String none = Translations.getMessage("messages.none");
-                DrawUtils.drawText(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 9, color);
+                DrawUtils.drawText(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 12, color);
                 FontRendererHook.endFeatureFont();
             } else {
                 if (secrets > maxSecrets) {
@@ -1336,11 +1339,11 @@ public class RenderListener {
                 float totalWidth = secretsWidth + slashWidth + maxSecretsWidth;
 
                 FontRendererHook.setupFeatureFont(feature);
-                DrawUtils.drawText("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 9, color);
+                DrawUtils.drawText("/", x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth, y + 11, color);
                 FontRendererHook.endFeatureFont();
 
-                DrawUtils.drawText(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 9, secretsColor);
-                DrawUtils.drawText(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 9, secretsColor);
+                DrawUtils.drawText(String.valueOf(secrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F, y + 11, secretsColor);
+                DrawUtils.drawText(String.valueOf(maxSecrets), x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - totalWidth / 2F + secretsWidth + slashWidth, y + 11, secretsColor);
             }
 
             GlStateManager.color(1, 1, 1, 1);

@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
@@ -62,13 +63,11 @@ public class DataUtils {
     public static void readLocalAndFetchOnline() {
         readLocalFileData();
 
-        // TODO Let's leave this enabled so we can see errors with the endpoints.
-        //  If you need to change any files locally, just disable this manually.
-//        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
-        fetchFromOnline();
-/*        } else {
-        SkyblockAddons.getInstance().getUpdater().checkForUpdate();
-        }*/
+        if (!SkyblockAddonsTransformer.isDeobfuscated()) {
+            fetchFromOnline();
+        } else {
+            SkyblockAddons.getInstance().getUpdater().checkForUpdate();
+        }
     }
 
     /**

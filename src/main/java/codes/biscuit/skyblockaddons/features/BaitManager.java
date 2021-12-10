@@ -41,16 +41,14 @@ public class BaitManager {
      * that are {@code Items.fishing_rod}s but aren't used for fishing. This is done by checking for the item type of
      * "FISHING ROD" which is displayed beside the item rarity.
      *
-     * @return {@code true} if the held fishing rod can be used for fishing, {@code false} otherwise
+     * @return {@code true} if the player is holding a fishing rod that can be used for fishing, {@code false} otherwise
      */
     public boolean isHoldingRod() {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
 
         if (player != null) {
             ItemStack item = player.getHeldItem();
-            if (item.getItem() != Items.fishing_rod) return false;
-            String itemId = ItemUtils.getSkyblockItemID(item);
-            if (itemId == null) return false;
+            if (item == null || item.getItem() != Items.fishing_rod) return false;
 
             return ItemUtils.getItemType(item) == ItemType.FISHING_ROD;
         }
