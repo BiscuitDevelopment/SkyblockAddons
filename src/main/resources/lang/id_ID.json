@@ -171,13 +171,13 @@
     "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
     "disableSpiritSceptreMessages": "Nonaktifkan Pesan-Pesan Ability",
     "showSpiritSceptreDisplay": "Tampilan Ability damage",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "outbidAlertSound": "Suara peringatan outbid",
     "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
     "healingCircleOpacity": "Opasitas Healing Circle",
     "chromaSize": "Ukuran Kroma",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
+    "alertBroodMother": "Peringatan Brood Mother",
+    "titleBroodMother": "Brood mother Muncul!",
     "chromaSaturation": "Saturasi Kroma",
     "chromaBrightness": "Kecerahan Kroma",
     "useNewChromaEffect": "Pakai Efek Kroma Baru",
@@ -212,16 +212,16 @@
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
     "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
-    "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Sembunyikan Spawn Point Player",
+    "farmEventTimer": "Timer Farm Event",
+    "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
     "dropConfirmation": "Jatuhkan benda ini lagi untuk konfirmasi!",
     "magmaBossWarning": "Boss Magma Cube!",
-    "balBossAlert": "Bal Boss!",
+    "balBossAlert": "Boss Bal!",
     "fullInventory": "Inventory Penuh!",
     "labymod": "Pengguna Labymod: Sembunyikan Bar Makanan, Armor, dan Nyawa tidak dapat dipakai.",
     "minionCannotReach": "Sebuah %type% minion tidak dapat meraih dan telah berhenti bekerja!",
@@ -442,9 +442,9 @@
         "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Dev) §7Aktif/nonaktifkan mencatat pesan-pesan timer magma boss",
+        "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
+        "enabled": "Pesan-pesan timer magma boss akan dicatat."
       },
       "errors": {
         "wrongUsage": {
