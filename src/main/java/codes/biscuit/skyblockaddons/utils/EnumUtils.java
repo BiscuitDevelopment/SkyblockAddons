@@ -247,7 +247,7 @@ public class EnumUtils {
         ITEM_GLOW("settings.glowingDroppedItems", 109),
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
-        SHOW_SPIRIT_SCEPTRE_DISPLAY("settings.showSpiritSceptreDisplay",202),
+        DISABLE_SPIRIT_SCEPTRE_MESSAGES("settings.disableSpiritSceptreMessages", 203),
         OUTBID_ALERT(SETTING_OUTBID_ALERT_SOUND, 206),
         DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
 

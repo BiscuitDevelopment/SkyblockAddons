@@ -107,7 +107,7 @@ public class PlayerListener {
     private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories (of|in) (?:\\w+ rarity in )?your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
-    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(y|ies) for (?<dealtDamage>[0-9]{1,3}(,[0-9]{3})*(\\.[0-9]+)) damage\\.");
+    private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (?:Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(?:y|ies) for (?<dealtDamage>[0-9]{1,3}(?:,[0-9]{3})*(?:\\.[0-9]+)*) damage\\.");
 
     // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
     private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
@@ -346,15 +346,16 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.DISABLE_BOSS_MESSAGES) && strippedText.startsWith("[BOSS] ")) {
                     e.setCanceled(true);
 
-                } else if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) && strippedText.startsWith("Your Implosion hit") || strippedText.startsWith("Your Spirit Sceptre hit")) {
+                } else if (main.getConfigValues().isEnabled(Feature.SPIRIT_SCEPTRE_DISPLAY) && strippedText.startsWith("Your Implosion hit") || strippedText.startsWith("Your Spirit Sceptre hit")) {
                     matcher = SPIRIT_SCEPTRE_MESSAGE_PATTERN.matcher(unformattedText);
-                    // Ensure matcher.group gets what it wants, we don't need the result
+                    // Ensure matcher.group gets what it wants, we don't need the whole result
                     if (matcher.find()) {
-                        if (main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
-                            this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
-                            this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+                        this.spiritSceptreHitEnemies = Integer.parseInt(matcher.group("hitEnemies"));
+                        this.spiritSceptreDealtDamage = Float.parseFloat(matcher.group("dealtDamage").replace(",", ""));
+
+                        if (main.getConfigValues().isEnabled(Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES)) {
+                            e.setCanceled(true);
                         }
-                        e.setCanceled(true);
                     }
                 } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
