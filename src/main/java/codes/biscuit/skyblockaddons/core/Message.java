@@ -259,6 +259,8 @@ public enum Message {
     DISCORD_STATUS_LOCATION_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionLocation"),
     DISCORD_STATUS_PURSE_TITLE(MessageObject.DISCORD_STATUS, "titlePurse"),
     DISCORD_STATUS_PURSE_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionPurse"),
+    DISCORD_STATUS_BITS_TITLE(MessageObject.DISCORD_STATUS, "titleBits"),
+    DISCORD_STATUS_BITS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionBits"),
     DISCORD_STATUS_STATS_TITLE(MessageObject.DISCORD_STATUS, "titleStats"),
     DISCORD_STATUS_STATS_DESCRIPTION(MessageObject.DISCORD_STATUS, "descriptionStats"),
     DISCORD_STATUS_ZEALOTS_TITLE(MessageObject.DISCORD_STATUS, "titleZealots"),

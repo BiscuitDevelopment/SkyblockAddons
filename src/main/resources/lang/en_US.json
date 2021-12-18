@@ -298,6 +298,8 @@
     "descriptionLocation": "Shows your current location",
     "titlePurse": "Purse",
     "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Stats",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",

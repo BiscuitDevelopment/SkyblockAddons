@@ -22,10 +22,40 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
     LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
-            () -> SkyblockAddons.getInstance().getUtils().getLocation().getScoreboardName()),
+            () -> {
+                Location location = SkyblockAddons.getInstance().getUtils().getLocation();
+
+                // Don't display "Your Island."
+                if (location == Location.ISLAND) {
+                    return "Private Island";
+                } else {
+                    return location.getScoreboardName();
+                }
+            }),
 
     PURSE(Message.DISCORD_STATUS_PURSE_TITLE, Message.DISCORD_STATUS_PURSE_DESCRIPTION,
-            () -> String.format("%s Coins", TextUtils.formatDouble(SkyblockAddons.getInstance().getUtils().getPurse()))),
+            () -> {
+                double coins = SkyblockAddons.getInstance().getUtils().getPurse();
+                String coinString = " Coin";
+
+                if (coins == 1) {
+                    return TextUtils.formatDouble(coins) + coinString;
+                } else {
+                    return TextUtils.formatDouble(coins) + coinString + 's';
+                }
+            }),
+
+    BITS(Message.DISCORD_STATUS_BITS_TITLE, Message.DISCORD_STATUS_BITS_DESCRIPTION,
+            ()-> {
+                double bits = SkyblockAddons.getInstance().getUtils().getBits();
+                String bitString = " Bit";
+
+                if (bits == 1) {
+                    return TextUtils.formatDouble(bits) + bitString;
+                } else {
+                    return TextUtils.formatDouble(bits) + bitString + 's';
+                }
+            }),
 
     STATS(Message.DISCORD_STATUS_STATS_TITLE, Message.DISCORD_STATUS_STATS_DESCRIPTION,
             () -> {
@@ -87,6 +117,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
                 return main.getConfigValues().getDiscordAutoDefault().displayMessageSupplier.get();
             }),
+
     REVENANT(Message.DISCORD_STATUS_REVENANT, Message.DISCORD_STATUS_REVENANT_DESCRIPTION,
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
@@ -98,6 +129,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                     return "Doing a Revenant Horror "+main.getUtils().getSlayerQuestLevel()+" quest.";
                 }
             }),
+
     SVEN(Message.DISCORD_STATUS_SVEN, Message.DISCORD_STATUS_SVEN_DESCRIPTION,
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
@@ -109,6 +141,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                     return "Doing a Sven Packmaster "+main.getUtils().getSlayerQuestLevel()+" quest.";
                 }
             }),
+
     TARANTULA(Message.DISCORD_STATUS_TARANTULA, Message.DISCORD_STATUS_TARANTULA_DESCRIPTION,
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();

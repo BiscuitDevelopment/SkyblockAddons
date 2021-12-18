@@ -4,7 +4,6 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.JsonObject;
 
 import java.nio.charset.StandardCharsets;
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
@@ -15,6 +14,10 @@ import java.util.regex.Pattern;
  * Collection of text/string related utility methods
  */
 public class TextUtils {
+    /**
+     * Hypixel uses US number format.
+     */
+    public static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance(Locale.US);
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
     private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
@@ -27,13 +30,12 @@ public class TextUtils {
     private static final Pattern RESET_CODE_PATTERN = Pattern.compile("(?i)§R");
     private static final Pattern MAGNITUDE_PATTERN = Pattern.compile("(\\d[\\d,.]*\\d*)+([kKmMbBtT])");
 
-    private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#,###.##");
-
     private static final NavigableMap<Integer, String> suffixes = new TreeMap<>();
     static {
         suffixes.put(1_000, "k");
         suffixes.put(1_000_000, "M");
         suffixes.put(1_000_000_000, "B");
+        NUMBER_FORMAT.setMaximumFractionDigits(2);
     }
 
     /**
@@ -45,7 +47,7 @@ public class TextUtils {
      * @return Formatted string
      */
     public static String formatDouble(double number) {
-        return DECIMAL_FORMAT.format(number);
+        return NUMBER_FORMAT.format(number);
     }
 
     /**
@@ -129,14 +131,10 @@ public class TextUtils {
      */
     public static String convertMagnitudes(String text) throws ParseException {
         Matcher matcher = MAGNITUDE_PATTERN.matcher(text);
-        // Hypixel uses US number format
-        NumberFormat nf = NumberFormat.getInstance(Locale.US);
         StringBuffer sb = new StringBuffer();
 
-        nf.setMaximumFractionDigits(2);
-
         while (matcher.find()) {
-            double parsedDouble = nf.parse(matcher.group(1)).doubleValue();
+            double parsedDouble = NUMBER_FORMAT.parse(matcher.group(1)).doubleValue();
             String magnitude = matcher.group(2).toLowerCase(Locale.ROOT);
 
             switch (magnitude) {
@@ -153,7 +151,7 @@ public class TextUtils {
                     parsedDouble *= 1_000_000_000_000L;
             }
 
-            matcher.appendReplacement(sb, nf.format(parsedDouble));
+            matcher.appendReplacement(sb, NUMBER_FORMAT.format(parsedDouble));
         }
         matcher.appendTail(sb);
 
