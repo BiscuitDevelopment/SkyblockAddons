@@ -77,17 +77,17 @@ public class SkyblockAddonsCommand extends CommandBase {
 
         if (main.isDevMode()) {
             usage = usage + "\n" +
-                    "§b● " + CommandSyntax.BRAND + " §7- " + Translations.getMessage("commandUsage.sba.brand.help") + "\n" +
-                    "§b● " + CommandSyntax.COPY_BLOCK + " §7- " + Translations.getMessage("commandUsage.sba.copyBlock.help") + "\n" +
-                    "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Translations.getMessage("commandUsage.sba.copyEntity.help") + "\n" +
-                    "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.copySidebar.help") + "\n" +
-                    "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.copyTabList.help") + "\n" +
-                    "§b● " + CommandSyntax.PD + " §7- " + Translations.getMessage("commandUsage.sba.printDeaths.help") + "\n" +
-                    "§b● " + CommandSyntax.RELOAD + " §7- " + Translations.getMessage("commandUsage.sba.reload.help") + "\n" +
-                    "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + Translations.getMessage("commandUsage.sba.reloadConfig.help") + "\n" +
-                    "§b● " + CommandSyntax.RELOAD_RES + " §7- " + Translations.getMessage("commandUsage.sba.reloadRes.help") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleActionBarLogging.help") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.toggleMagmaTimerLogging.help")
+                    "§b● " + CommandSyntax.BRAND + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.brand.help") + "\n" +
+                    "§b● " + CommandSyntax.COPY_BLOCK + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") +  Translations.getMessage("commandUsage.sba.copyBlock.help") + "\n" +
+                    "§b● " + CommandSyntax.COPY_ENTITY + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.copyEntity.help") + "\n" +
+                    "§b● " + CommandSyntax.COPY_SIDEBAR + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.copySidebar.help") + "\n" +
+                    "§b● " + CommandSyntax.COPY_TAB_LIST + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.copyTabList.help") + "\n" +
+                    "§b● " + CommandSyntax.PD + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.printDeaths.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.reload.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.reloadConfig.help") + "\n" +
+                    "§b● " + CommandSyntax.RELOAD_RES + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.reloadRes.help") + "\n" +
+                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.toggleActionBarLogging.help") + "\n" +
+                    "§b● " + CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING + " §7- " + Translations.getMessage("commandUsage.sba.dev.prefix") + Translations.getMessage("commandUsage.sba.toggleMagmaTimerLogging.help")
             ;
         }
 
