@@ -15,7 +15,7 @@
     "editLocations": "Modificar Posiciones de GUI",
     "guiScale": "Escala de Gui: %scale%",
     "resetLocations": "Reiniciar Posiciones",
-    "minionStopWarning": "Alerta de Minion Detenido",
+    "minionStopWarning": "Alerta \"Minion No Alcanza\"",
     "hidePlayersNearNPCs": "Ocultar Jugadores Cercanos a los NPCs Importantes",
     "backpackStyle": "Estilo de Backpack: %style%",
     "backpackStyles": {
@@ -36,7 +36,7 @@
     "healthUpdates": "Número de Actualización de Vida",
     "hidePlayersInLobby": "Ocultar Entidades Lejanas en Lobby",
     "darkAuctionTimer": "Tiempo para el Mercado Negro",
-    "magmaBossTimer": "Tiempo para el Jefe Magma",
+    "magmaBossTimer": "Temporizador del Jefe Magma",
     "itemPickupLog": "Registro de Objetos Recogidos",
     "avoidPlacingEnchantedItems": "Evitar Poner Objetos Encantados",
     "stopBowChargeFromResetting": "Prevenir el Reset del Arco",
