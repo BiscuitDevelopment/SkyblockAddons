@@ -5,6 +5,7 @@
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Jefe Magma",
     "balBossWarning": "Alerta de Jefe Bal",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Confirmar Para Soltar Objeto",
     "hideSkeletonHatBones": "Ocultar los Huesos del Casco Esqueleto",
     "skeletonHatBonesBar": "Barra de Huesos del Casco Esqueleto",
@@ -169,15 +170,13 @@
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Tab Compacta",
     "highlightSpecialEnchantments": "Resaltar Encantamientos Especiales",
-    "disableSpiritSceptreMessages": "Desactivar Mensajes de Habilidad",
-    "showSpiritSceptreDisplay": "Mostrar daño de habilidad",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Sonido de Alerta Sobrepujado",
     "hideMenuGlassPanes": "Ocultar el Nombre de Paneles de Cristal en el Menú",
     "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
     "healingCircleOpacity": "Opacidad del Círculo de Sanación",
     "chromaSize": "Tamaño del Croma",
-    "alertBroodMother": "Alerta de Brood Mother",
-    "titleBroodMother": "¡Apareció una Brood Mother!",
     "chromaSaturation": "Saturación del Croma",
     "chromaBrightness": "Brillo del Croma",
     "useNewChromaEffect": "Usar el Nuevo Efecto Croma",
@@ -212,7 +211,7 @@
     "guiScaleY": "Escala de GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
     "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforges",
     "dropConfirmation": "¡Suelta el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Jefe Magma!",
-    "balBossAlert": "¡Jefe Bal!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "¡Inventario Lleno!",
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
     "minionCannotReach": "¡Un minion de %type% no puede alcanzar y ha parado de generar más!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Muestra tu ubicación actual",
     "titlePurse": "Monedero",
     "descriptionPurse": "Muestra la cantidad de monedas en tu monedero",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Estadísticas",
     "descriptionStats": "Muestra tu HP, Defensa, y Maná",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Abrir el menú principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Mostrar la marca del servidor",
+        "help": "Show the server brand",
         "brandOutput": "Marca del Servidor: %brand%",
         "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
-        "help": "§e(Des) §7Copia datos sobre el bloque que estás mirando"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Des) §7Copia datos NBT para entidades del nombre(s) dentro de un radio dado alrededor del jugador",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copia los datos NBT de entidades. Los tipos de entidad incluidos y el radio alrededor del jugador para copiar datos puede ser personalizado. Si no se da ninguna opción, se utilizan los ajustes predeterminados. La configuración predeterminada es: incluye jugadores, soportes de armadura, y mobs, y un radio de 3 bloques. Si el radio no se indica, se usará el radio predeterminado.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Des) §7Copiar el texto del marcador.",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copia el texto de la ranura del sidebar del marcador",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Des) §7Copia el encabezado y el pie de la lista de tab",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Este comando copia el encabezado y el pie de la lista de jugadores de tab. Los códigos de formato se incluyen."
         }
@@ -372,7 +374,8 @@
           "description": "Este comando habilita el modo de desarrollador. Este modo está pensado para los desarrolladores de mods/tools para Skyblock. Proporciona datos del juego como NBT de entidad y objetos."
         },
         "disabled": "¡Modo desarrollador desactivado!",
-        "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!"
+        "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Editar Posiciones de GUI"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Des) §7Graba los recuentos almacenados en los contadores de muertes de la dungeon con fines de depuración."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Des) §7Recarga todas las configuraciones y recursos del mod. El juego se congelará durante unos segundos."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Des) §7Recarga la configuración del mod"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Des) §7Recarga los recursos del mod. El juego se congelará durante unos segundos."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "¡\"%input%\" no es un boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Des) §7Alternar el registro de los mensajes de la barra de acción",
+        "help": "Toggle logging action bar messages",
         "disabled": "Mensajes de la barra de acción ahora no serán registrados.",
         "enabled": "Los mensajes de la barra de acción ahora se registrarán."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Des) §7Alternar el registro de mensajes de depuración del temporizador del jefe magma",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Los mensajes del temporizador del jefe magma ya no se registrarán.",
         "enabled": "Los mensajes del temporizador del jefe magma ahora se registrarán."
       },
