@@ -5,6 +5,7 @@
     "settings": "الإعدادات",
     "magmaBossWarning": "تحذير Magma Boss",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "تأكيد من رمي العنصر",
     "hideSkeletonHatBones": "إخفاء عظام Skeleton's Helmet",
     "skeletonHatBonesBar": "شريط عظام الـSkeleton's Helmet",
@@ -169,15 +170,13 @@
     "showSwordKills": "إظهار قتلات السيف",
     "compactTabList": "قائمة الـTab المتراصة",
     "highlightSpecialEnchantments": "تمييز التطويرات الخاصة",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "ريفورجس",
     "dropConfirmation": "!إرمي هذا العنصر مرة أخرى للتأكيد",
     "magmaBossWarning": "Magma Cube Boss!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "امتلأت الانفنتوري!",
     "labymod": "مستعملي اللابي مود: إن إخفاء شريط الطعام، الدروع، الصحه، غير متوافق.",
     "minionCannotReach": "!لا يمكنه الوصول وانه سيتوقف عن الإنشاء %type%إن تابع ال",
@@ -298,6 +298,8 @@
     "descriptionLocation": "عرض موقعك الحالي",
     "titlePurse": "Purse",
     "descriptionPurse": "يعرض كمية العملات في حقيبتك",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "إحصائيات",
     "descriptionStats": "يعرض إحصائيات الصحة والدفاع والمانا الخاصة بك",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "فتح القائمة الرئيسية"
       },
       "brand": {
-        "help": "§e(Dev) §7إظهار نوع الخادم",
+        "help": "Show the server brand",
         "brandOutput": "العلامة التجارية للخادم: %brand%",
         "notFound": "لم يتم العثور على العلامة التجارية للخادم!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e§(Dev) 7نسخ بيانات NBT للأشياء من معطيات الاسم(اء) داخل نصف القطر حول اللاعب",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7نسخ نص لوحة النتائج.",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "ينسخ النص المعرض في الـscoreboard القائمة الجانبية",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7نسخ الهامش العلوي والسفلي في التاب",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "هذا الأمر ينسج الهامش العلوي والسفلي من تاب اللاعب. شفرات التنسيق متضمنة."
         }
@@ -372,7 +374,8 @@
           "description": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT."
         },
         "disabled": "وضع المطور معطل!",
-        "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!"
+        "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "تحرير أماكن الواجهة"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" ليس Boss حقيقي!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7إشغال تسجيل شريط إجراءات الرسائل",
+        "help": "Toggle logging action bar messages",
         "disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
         "enabled": "سيتم الآن تسجيل رسائل شريط العمل."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
