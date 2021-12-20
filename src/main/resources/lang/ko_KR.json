@@ -5,6 +5,7 @@
     "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
     "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
@@ -169,15 +170,13 @@
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
     "chromaSize": "무지개 사이즈",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "무지개 채도",
     "chromaBrightness": "무지개 밝기",
     "useNewChromaEffect": "새로운 무지개 이펙트 사용하기",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
     "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "재련",
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "Magma Boss 소환!!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "인벤토리 꽉 참!",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% Minion이 몹을 죽일 수 없어 스폰을 멈췄습니다!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "당신의 현재 위치를 보입니다",
     "titlePurse": "Purse",
     "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "스탯",
     "descriptionStats": "당신의 HP, Defence과 Mana 스탯을 보여줍니다",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "메인 메뉴 열기"
       },
       "brand": {
-        "help": "§e(개발자 모드) §7서버 브랜드 보이기",
+        "help": "Show the server brand",
         "brandOutput": "서버 브랜드: %brand%",
         "notFound": "서버 브랜드를 찾을 수 없습니다!"
       },
       "copyBlock": {
-        "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(개발자 모드) §7특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(개발자 모드) §7스코어보드 텍스트 복사하기",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(개발자 모드) §7Tab 목록의 윗 글과 아랫 글 복사하기",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
         }
@@ -372,7 +374,8 @@
           "description": "이 명령은 개발자 모드를 키고 끕니다. 이 모드는 스카이블럭 모드/툴 개발자를 위한 모드입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
         },
         "disabled": "개발자 모드가 꺼졌습니다!",
-        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
+        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다.",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "GUI 위치 편집"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
+        "help": "Toggle logging action bar messages",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
