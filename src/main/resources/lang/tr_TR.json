@@ -5,7 +5,7 @@
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss Uyarısı",
     "balBossWarning": "Bal Boss Uyarısı",
-    "broodMotherWarning": "Brood Mother Warning",
+    "broodMotherWarning": "Brood Mother Uyarısı",
     "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
@@ -170,8 +170,8 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Hasar Mesajlarını Devre Dışı Bırak",
+    "showSpiritSceptreDisplay": "Yetenek hasar göstergesi",
     "outbidAlertSound": "Teklif Artış Uyarı Sesi",
     "hideMenuGlassPanes": "Menüdeki Camların Bilgilerini Gizle",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
@@ -211,7 +211,7 @@
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
     "farmEventTimer": "Farm Event Zamanlayıcısı",
     "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
   },
@@ -299,7 +299,7 @@
     "titlePurse": "Cüzdan",
     "descriptionPurse": "Cüzdanınızdaki coin miktarını gösterir",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Sahip olduğun bit miktarını gösterir",
     "titleStats": "İstatistikler",
     "descriptionStats": "HP, Defense ve Mana Statlarınızı Gösterir",
     "titleZealots": "Zealotlar",
@@ -341,7 +341,7 @@
         "notFound": "Server markası bulunamadı!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Baktığınız blokla ilgili verileri kopyalar"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "§e(Dev)§7Skorbord yazısını kopyala",
         "detailedHelp": {
           "description": "Skorbord'da görüntülenen metni kopyalar",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
         "detailedHelp": {
           "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
         }
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "set": {
         "zealotCounter": {
@@ -440,12 +440,12 @@
         "invalidStat": "\"%input% \" geçerli bir boss değil!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Aksiyon barı messajları günlüğünü açar/kapatır",
         "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
         "enabled": "Aksiyon barı mesajları gösteriliyor."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Magma boss zamanlayıcı hata ayıklama iletilerini loglamayı aç/kapat",
         "disabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulmayacak.",
         "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
       },
