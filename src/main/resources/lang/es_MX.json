@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Jefe Magma",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "Alerta de Jefe Bal",
     "itemDropConfirmation": "Confirmación de Arrojar Objetos",
     "hideSkeletonHatBones": "Ocultar Huesos del Sombrero Esqueleto",
     "skeletonHatBonesBar": "Barra de Huesos de Sombrero Esqueleto",
@@ -169,9 +169,9 @@
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Pestañas Compacta",
     "highlightSpecialEnchantments": "Resaltar Encantamientos Especiales",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableSpiritSceptreMessages": "Desactivar Mensajes de Habilidad",
+    "showSpiritSceptreDisplay": "Mostrar daño de habilidad",
+    "outbidAlertSound": "Sonido de Alerta Sobrepujado",
     "hideMenuGlassPanes": "Ocultar el Nombre de Paneles de Cristal en el Menú",
     "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
     "healingCircleOpacity": "Opacidad del Círculo de Sanación",
@@ -214,14 +214,14 @@
     "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Spawn Point Players",
     "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos"
   },
   "messages": {
     "enchants": "Encantamientos",
     "reforges": "Reforges",
     "dropConfirmation": "¡Arroja este objeto otra vez para confirmar!",
     "magmaBossWarning": "¡Jefe Magma!",
-    "balBossAlert": "Bal Boss!",
+    "balBossAlert": "¡Jefe Bal!",
     "fullInventory": "¡Inventario Lleno!",
     "labymod": "Usuarios de Labymod: Ocultar Barra de Comida y Armadura no es compatible.",
     "minionCannotReach": "Un minion de %type% no puede alcanzar y se ha detenido!",
@@ -442,9 +442,9 @@
         "enabled": "Mensajes de la barra de acción ya serán registrados."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Des) §7Alternar el registro de mensajes de depuración del temporizador del jefe magma",
+        "disabled": "Los mensajes del temporizador del jefe magma ya no se registrarán.",
+        "enabled": "Los mensajes del temporizador del jefe magma ahora se registrarán."
       },
       "errors": {
         "wrongUsage": {
