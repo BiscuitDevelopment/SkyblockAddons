@@ -5,6 +5,7 @@
     "settings": "Cài Đặt",
     "magmaBossWarning": "Nhắc nhở Magma Boss",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Xác Nhận Vứt Đồ",
     "hideSkeletonHatBones": "Ẩn Xương Xung Quanh Skeleton's Helmet",
     "skeletonHatBonesBar": "Thanh Xương của Skeleton's Helmet",
@@ -169,15 +170,13 @@
     "showSwordKills": "Hiện số Quái đã Giết bằng Kiếm",
     "compactTabList": "Danh sách Tab Gọn gàng",
     "highlightSpecialEnchantments": "Nổi bật các Phù phép Đặc biệt",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Ẩn Bảng Chú giải Ph.Kính trong Menu",
     "candyPointsCounter": "Máy đếm Kẹo/Điểm sự kiện Spooky",
     "healingCircleOpacity": "Độ mờ đục của vòng hồi máu",
     "chromaSize": "Mức sắc độ",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Độ nét sắc độ",
     "chromaBrightness": "Độ sáng sắc độ",
     "useNewChromaEffect": "Dùng hiệu ứng sắc độ mới",
@@ -212,7 +211,7 @@
     "guiScaleY": "Tỉ Lệ GUI (Y): %scale%",
     "abbreviateSkillXpDenominator": "Rút ngắn Số Kinh nghiệm Kỹ năng",
     "otherDefenseStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Rèn luyện",
     "dropConfirmation": "Nhấn \"Q\" Thêm Một Lần Nữa Để Xác Nhận!",
     "magmaBossWarning": "Trùm Magma!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Túi Đồ Đã Đầy!",
     "labymod": "Người dùng Labymod: Ẩn thanh Thức ăn, Giáp, Máu là không thực hiện được.",
     "minionCannotReach": "%type% Minion không thể với tới và đã dừng hoạt động!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Hiện địa điểm hiện tại của bạn",
     "titlePurse": "Purse",
     "descriptionPurse": "Hiện số lượng tiền xu trong ví của bạn",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Thông số",
     "descriptionStats": "Hiện thông số Máu, Giáp và Mana của bạn",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Mở menu chính"
       },
       "brand": {
-        "help": "§e(Chế độ NPT) §7Hiện nhãn hiệu của máy chủ",
+        "help": "Show the server brand",
         "brandOutput": "Nhãn hiệu Máy chủ: %brand%",
         "notFound": "Không thể tìm thấy Nhãn hiệu Máy chủ!"
       },
       "copyBlock": {
-        "help": "§e(Chế độ NPT) §7Sao chép dữ liệu về khối bạn đang nhìn"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Chế độ NPT) §7Sao chép giá trị NBT cho thực thể có chứa những tên đã cho trong tầm bán kính đã cho vòng quanh chỗ người chơi",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Sẽ sao chép giá trị NBT từ các thực thể. Những loại thực thể đã cho và tầm bán kính người chơi được dùng để sao chép giá trị có thể được chỉnh sửa. Nếu bạn không ghi lựa chọn nào, những lựa chọn mặc định sẽ được sử dụng. Lựa chọn mặc định: bao gồm người chơi, cột treo giáp, quái, với bán kính 3 khối. Nếu bạn không định sẵn bán kính, bán kính theo lựa chọn mặc định sẽ được sử dụng.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Chế độ NPT) §7Sao chép bảng chữ trên bảng điểm",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Sao chép phần chữ được hiển thị trên bảng điểm",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Chế độ NPT) §7Sao chép tiêu đề và phần chân trang bảng danh sách Tab",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Lệnh này sẽ giúp bạn sao chép tiêu đề và phần cuối trang của bảng danh sách người chơi. Mã định dạng trong đó cũng sẽ được sao chép."
         }
@@ -372,7 +374,8 @@
           "description": "Lệnh này sẽ bật chế độ cho nhà phát triển. Thường được dùng bởi những nhà phát triển những bản mod/dụng cụ cho Skyblock. Lệnh này sẽ cho bạn dữ liệu gốc từ trò chơi, ví dụ như dữ liệu NBT của thực thể (entity) và vật phẩm."
         },
         "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
-        "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!"
+        "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Điều chỉnh vị trí GUI"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Chế độ NPT) §7Ghi giá trị số đã được lưu lại trong bộ đếm số lần chết trong Dungeon với mục đích sửa lỗi."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Áp dụng tất cả cài đặt và tài nguyên của mod. Game sẽ đứng hình trong vài giây."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Áp dụng cài đặt mod"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Tải lại các tài nguyên của mod. Game sẽ đứng hình trong vài giây."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" không phải là một số liệu hợp lệ!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Chế độ NPT) Bật/Tắt Chế độ Lưu trữ Tin nhắn từ Thanh Hoạt động",
+        "help": "Toggle logging action bar messages",
         "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
         "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
