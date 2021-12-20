@@ -5,6 +5,7 @@
     "settings": "Sätted",
     "magmaBossWarning": "Magma Boss 'i hoiatus",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Asja viske kinnitus",
     "hideSkeletonHatBones": "Peida Skeleton's Helmet 'i kondid",
     "skeletonHatBonesBar": "Luukere mütsi kontide riba",
@@ -169,15 +170,13 @@
     "showSwordKills": "Näita mõõga tapmisi",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Pane spetsiaalsed loitsud välja paistma",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
     "chromaSize": "Chroma Size",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforge 'id",
     "dropConfirmation": "Kukuta see asi uuesti, et kinnitada!",
     "magmaBossWarning": "Magma Boss!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Täis inventar!",
     "labymod": "Labymodi kasutajad: Peida toidu, rüü ja elude riba ei ole sobiv.",
     "minionCannotReach": "Üks %type% minion ei ulatu elukateni ja lõpetus tekitamise!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Näitab su praegust asukohta",
     "titlePurse": "Purse",
     "descriptionPurse": "Näitab mitu Coin 'i sul Purse 'is on",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Näitajad",
     "descriptionStats": "Näitab su elude, Kaitse ja Mana näitajaid",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Ava peamenüü"
       },
       "brand": {
-        "help": "§e(Dev) §7Näita serveri brändi",
+        "help": "Show the server brand",
         "brandOutput": "Serveri bränd: %brand%",
         "notFound": "Serveri brändi ei leitud!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopeerib informaatsiooni selle ploki kohta mida sa vaatad"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopeeri kindla nimega olevuste NBT andmed kindlas raadiuses mängija ümber",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopeerib olendite NBT andmed. Kaasatavate olendite tüüpe ja mängija raadiust, kust andmeid kopeerida, saab kohandada. Kui valikuid pole antud, kasutatakse vaikesätteid. Vaikimisi seaded on järgmised: mängijad, armor standid ja mobid 3 ploki raadiuses. Kui raadiust pole antud, kasutatakse vaikeraadiust.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Kopeeri scoreboard 'i tekst",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kopeerib näidatud tekstid scoreboard 'is külgriba näidatud kohal",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Kopeeri Tab Listi \"header\" ja \"footer\"",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "See käsk kopeerib \"header\" 'i ja \"footer\" 'i Tab mängijate listist. Vormistuskoodid on sisaldatud."
         }
@@ -372,7 +374,8 @@
           "description": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info."
         },
         "disabled": "Arendaja režiim välja lülitatud!",
-        "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!"
+        "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Muuda GUI asukohti"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" pole kehtiv boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Lülita sisse/välja action bar 'i sõnumite loggimine",
+        "help": "Toggle logging action bar messages",
         "disabled": "Action bar 'i sõnumeid enam ei loggita.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
