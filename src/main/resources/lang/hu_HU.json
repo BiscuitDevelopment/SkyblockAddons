@@ -5,6 +5,7 @@
     "settings": "Beállítások",
     "magmaBossWarning": "Magma Boss figyelmeztetés",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Tárgy kidobásának megerősítése",
     "hideSkeletonHatBones": "Skeleton's Helmet csontjainak elrejtése",
     "skeletonHatBonesBar": "Skeleton's Helmet csont sáv",
@@ -169,15 +170,13 @@
     "showSwordKills": "Kard ölések mutatása",
     "compactTabList": "Tab lista kicsinyítése",
     "highlightSpecialEnchantments": "Speciális varázslatok kiemelése",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Pont számláló",
     "healingCircleOpacity": "Gyógyító kör átlátszóság",
     "chromaSize": "Színátmenet nagyság",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Színátmenet telítettség",
     "chromaBrightness": "Színátmente világosság",
     "useNewChromaEffect": "Új színátmenet hatás használata",
@@ -212,7 +211,7 @@
     "guiScaleY": "Gui magassága: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Más védelmi statisztikák (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforgeok",
     "dropConfirmation": "Dobd el ezt a tárgyat újra, hogy megerősítsd!",
     "magmaBossWarning": "Magmakocka Boss!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Megtelt a felszerelésed!",
     "labymod": "Labymod felhasznlók: A étel, páncél és életerő sáv elrejtése nem elérhető.",
     "minionCannotReach": "Az egyik %type% minion nem ér el semmit, ezért nem dolgozik.",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Tartózkodási helyedet mutatja",
     "titlePurse": "Purse",
     "descriptionPurse": "A pénztárcában lévő összeget mutatja",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Statisztikák",
     "descriptionStats": "Az életedet, védelmedet és az én manádat mutatja",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "A fő menü megnyitása"
       },
       "brand": {
-        "help": "§e(Dev) §7Szerver címének mutatása",
+        "help": "Show the server brand",
         "brandOutput": "Szerver címe: %brand%",
         "notFound": "A szerver címe nem található!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Adatokat másol arról a blokkról amire nézel"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Az adott méretű körben a játékos körül az adott nevű entitás(ok)nak az NBT értékének a másolása",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Entitások NBT értékét másolja. Meg lehet adni az entitás fajtája és a játékostól való távolságot ahonnan az adatot másolja. Ha nem választasz semmit, akkor az alap érték lesz használva. Az alap beállítások: másolás Játékosokról, páncélálványokról, és mobokról akik a játékostól 3 blokkra állnak. Ha nincs rádiusz megadva, az alap érték lesz használva.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Scoreboard szövegének másolása",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kimásolja az oldalsó scoreboard szövegét",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Játékos lista fej- és láblécének másolása",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Ez a parancs kimásolja a játékos lista fej- és láblécét. A formai kódokat is tartalmazza."
         }
@@ -372,7 +374,8 @@
           "description": "Ez a parancs átváltja a fejlesztő módot. Ezt a módot Skyblock modok/eszközök fejlesztőinek szántuk. Ez nyers adatokat szolgáltat a játékból, mint például entitások és tárgyak NBT értékei."
         },
         "disabled": "Developer mód kikapcsolva!",
-        "enabled": "Fejlesztő mód bekapcsolva! Tipp: Nyomd meg a \"%keyName%\"-t az NBT érték másolásához!"
+        "enabled": "Fejlesztő mód bekapcsolva! Tipp: Nyomd meg a \"%keyName%\"-t az NBT érték másolásához!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "A GUI szerkesztése"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" nem érvényes boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §Action bar üzenetek naplózása",
+        "help": "Toggle logging action bar messages",
         "disabled": "Action bar üzenetek nem lesznek naplózva.",
         "enabled": "Action bar üzenetek naplózva lesznek."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
