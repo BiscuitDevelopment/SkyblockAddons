@@ -5,6 +5,7 @@
     "settings": "Настройки",
     "magmaBossWarning": "Сигнал за Магма Бос",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Потвърждение за Изхвърляне на Предмет",
     "hideSkeletonHatBones": "Скрий Костите на Скелетната Каска",
     "skeletonHatBonesBar": "Лента за Костите на Скелетната Каска",
@@ -169,15 +170,13 @@
     "showSwordKills": "Покажи убийствата на меча",
     "compactTabList": "Компактен стил за таб",
     "highlightSpecialEnchantments": "Очертаване на специални Enchantments",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Бонбони/Точки брояч",
     "healingCircleOpacity": "Healing Circle непрозрачност",
     "chromaSize": "Размер на Chroma",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Наситеността на Chroma",
     "chromaBrightness": "Яркостта на Chroma",
     "useNewChromaEffect": "Използване на новата Chroma ефект",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Y Мащаб: %scale%",
     "abbreviateSkillXpDenominator": "Съкратяване Знаменателя на Skill XP",
     "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Модификации",
     "dropConfirmation": "Хвърлете Този Предмет Отново за да Потвърдите!",
     "magmaBossWarning": "Магма Бос!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Пълен Инвентар!",
     "labymod": "Labymod Users: Скриване на Лентите за Храна, Броня и Кръв е Несъвместимо.",
     "minionCannotReach": "%type% Миньон не Може да Стигне и е Спрял да Работи!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Показва твоето сегашно местоположение",
     "titlePurse": "Purse",
     "descriptionPurse": "Показва броя монети в кесията ти",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Статистика",
     "descriptionStats": "Показва твоето Здраве, Защита и Мана",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Отвори главното меню"
       },
       "brand": {
-        "help": "§e(Dev) §7Покажи марката на сървъра",
+        "help": "Show the server brand",
         "brandOutput": "Марката на Сървъра: %brand%",
         "notFound": "Марката на Сървъра не е намерена!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Копирай дата на блока, който гледаш"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Копирай NBT датата за субекти на дадено име(на) в рамките на дадения радиус около играча",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Копира NBT данни на обекти. Включените типове обекти и радиусът около играча за копиране на данни могат да бъдат персонализирани. Ако не са дадени опции, се използват обикновенните настройки. Обикновенните настройки са: включват играчи, armor stands, мобове и радиус от 3 блока. Ако радиуса не е даден, обикновенният радиус е използван.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Копирай текста на таблото",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Копирай текста, който е показан на таблото на слота за дисплей на страничната лента",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Копирай the tab списък от горен и долен колонтитул",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Тази команда копира горения и доления колонтитул на списъка с плейъри. Включени са кодове за форматиране."
         }
@@ -372,7 +374,8 @@
           "description": "Тази команда превключва режим за разработчици. Този режим е предназначен за разработчици на Skyblock модове и инструменти. Той предоставя данни за играта като обект и артикул NBT."
         },
         "disabled": "Режима за разработчици е изключен!",
-        "enabled": "Режим за разработчици е включеб! СЪВЕТ: Натиснете \"%keyName%\", за да копирате NBT данни!"
+        "enabled": "Режим за разработчици е включеб! СЪВЕТ: Натиснете \"%keyName%\", за да копирате NBT данни!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Редактиране на GUI местоположения"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Отпечатва броя, съхрани броя на dungeon death за целите на отстраняване на грешки."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Презарежда всички настройки и ресурси на мода. Играта ще замръзне за няколко секунди."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Презарежда настройките на мода"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Презарежда ресурсите на мода. Играта ще замръзне за няколко секунди."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" не е валиден boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Превключване на записа на съобщения от лентата за действие",
+        "help": "Toggle logging action bar messages",
         "disabled": "Съобщенията в лентата за действие вече няма да се регистрират.",
         "enabled": "Съобщенията в лентата за действие вече ще се регистрират."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
