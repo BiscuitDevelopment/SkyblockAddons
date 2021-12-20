@@ -336,15 +336,15 @@
         "help": "Ana menüyü aç"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Sunucu adresini göster",
         "brandOutput": "Server Markası:%brand%",
         "notFound": "Server markası bulunamadı!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Baktığınız blokla ilgili verileri kopyalar"
+        "help": "Baktığınız blokla ilgili verileri kopyalar"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyala",
         "detailedHelp": {
           "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev)§7Skorbord yazısını kopyala",
+        "help": "Skorbord yazısını kopyala",
         "detailedHelp": {
           "description": "Skorbord'da görüntülenen metni kopyalar",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
+        "help": "Tab listesi üstbilgisini ve altbilgisini kopyala",
         "detailedHelp": {
           "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
         }
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
+        "help": "Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
       },
       "reload": {
-        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        "help": "Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
+        "help": "Mod ayarlarını yeniden yükler"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        "help": "Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "set": {
         "zealotCounter": {
