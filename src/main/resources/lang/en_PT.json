@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal Boss Warnin'",
+    "broodMotherWarning": "Brood Mother Warnin'",
     "itemDropConfirmation": "Drop Yer Items Twice",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
@@ -171,7 +171,7 @@
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "'ighlight Special Enchantments",
     "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Cutlass Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Count'r",
@@ -213,7 +213,7 @@
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Do Nah Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants",
@@ -446,8 +446,8 @@
       },
       "toggleMagmaTimerLogging": {
         "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "disabled": "Magma boss timer messages shall nay longer be logged.",
+        "enabled": "Magma boss timer messages shall now be logged."
       },
       "errors": {
         "wrongUsage": {
