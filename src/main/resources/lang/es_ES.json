@@ -4,13 +4,13 @@
   "settings": {
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Jefe Magma",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "Alerta de Jefe Bal",
     "itemDropConfirmation": "Confirmar Para Soltar Objeto",
     "hideSkeletonHatBones": "Ocultar los Huesos del Sombrero Esqueleto",
     "skeletonHatBonesBar": "Barra de Huesos del Sombrero Esqueleto",
     "hideFoodAndArmor": "Ocultar Barra de Hambre y Armadura",
     "fullInventoryWarning": "Aviso de Inventario Lleno",
-    "repeating": "Repita Advertencia",
+    "repeating": "Repetir Advertencia",
     "disableEmberRodAbility": "Deshabilitar en la Isla la Vara de Ember",
     "editLocations": "Editar Posiciciones",
     "guiScale": "Escala del GUI: %scale%",
@@ -169,9 +169,9 @@
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Tab Compacta",
     "highlightSpecialEnchantments": "Resaltar Encantamientos Especiales",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableSpiritSceptreMessages": "Desactivar Mensajes de Habilidad",
+    "showSpiritSceptreDisplay": "Mostrar daño de habilidad",
+    "outbidAlertSound": "Sonido de Alerta Sobrepujado",
     "hideMenuGlassPanes": "Ocultar el Nombre de Paneles de Cristal en el Menú",
     "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
     "healingCircleOpacity": "Opacidad del Círculo de Sanación",
@@ -214,7 +214,7 @@
     "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Spawn Point Players",
     "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos"
   },
   "messages": {
     "enchants": "Encantamientos",
