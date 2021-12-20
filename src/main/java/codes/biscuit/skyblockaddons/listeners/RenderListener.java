@@ -284,8 +284,8 @@ public class RenderListener {
                 case WARN_WHEN_FETCHUR_CHANGES:
                     message = Message.MESSAGE_FETCHUR_WARNING;
                     break;
-                case ALERT_BROOD_MOTHER:
-                    message = Message.MESSAGE_ALERT_BROOD_MOTHER;
+                case BROOD_MOTHER_ALERT:
+                    message = Message.MESSAGE_BROOD_MOTHER_WARNING;
                     break;
                 case BAL_BOSS_ALERT:
                     message = Message.MESSAGE_BAL_BOSS_WARNING;
@@ -989,18 +989,15 @@ public class RenderListener {
             }
 
             text = "Secrets";
-        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
-            if (!main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
-                return;
-            }
+        } else if (feature == Feature.SPIRIT_SCEPTRE_DISPLAY) {
             ItemStack holdingItem = mc.thePlayer.getCurrentEquippedItem();
-            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem(); //sb item id code stolen from neu customitemeffects class
-            String internal = ItemUtils.getSkyblockItemID(held);
+            ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
+            String skyblockItemID = ItemUtils.getSkyblockItemID(held);
             if (buttonLocation != null) {
                 text = "Hyperion";
-            } else if (holdingItem == null || internal == null) {
+            } else if (holdingItem == null || skyblockItemID == null) {
                 return;
-            } else if (internal.equals("HYPERION") || internal.equals("VALKYRIE") || internal.equals("ASTRAEA") || internal.equals("SCYLLA") || internal.equals("BAT_WAND")) {
+            } else if (skyblockItemID.equals("HYPERION") || skyblockItemID.equals("VALKYRIE") || skyblockItemID.equals("ASTRAEA") || skyblockItemID.equals("SCYLLA") || skyblockItemID.equals("BAT_WAND")) {
                 text = holdingItem.getDisplayName().replaceAll("[0-9]?✪", "");
             } else {
                 return;
@@ -1079,7 +1076,7 @@ public class RenderListener {
             width = 18 + 2 + maxNumberWidth + 5 + 18 + 2 + maxNumberWidth;
             height = 18 * (int) Math.ceil(EssenceType.values().length / 2F);
         }
-        if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
+        if (feature == Feature.SPIRIT_SCEPTRE_DISPLAY) {
             int maxNumberWidth = mc.fontRendererObj.getStringWidth("12345");
             width += 18 + maxNumberWidth;
             height += 20;
@@ -1349,7 +1346,7 @@ public class RenderListener {
             GlStateManager.color(1, 1, 1, 1);
             renderItem(CHEST, x, y);
 
-        } else if (feature == Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES && main.getConfigValues().isEnabled(Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY)) {
+        } else if (feature == Feature.SPIRIT_SCEPTRE_DISPLAY) {
             int hitEnemies = main.getPlayerListener().getSpiritSceptreHitEnemies();
             float dealtDamage = main.getPlayerListener().getSpiritSceptreDealtDamage();
             FontRendererHook.setupFeatureFont(feature);
@@ -1363,16 +1360,16 @@ public class RenderListener {
             DrawUtils.drawText(String.format("%,d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y + 18, color);
             FontRendererHook.endFeatureFont();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
-            String internal = ItemUtils.getSkyblockItemID(held);
-            if (internal == null || internal.equals("HYPERION")) {
+            String skyblockItemID = ItemUtils.getSkyblockItemID(held);
+            if (skyblockItemID == null || skyblockItemID.equals("HYPERION")) {
                 renderItem(HYPERION, x, y);
-            } else if (internal.equals("VALKYRIE")) {
+            } else if (skyblockItemID.equals("VALKYRIE")) {
                 renderItem(VALKYRIE, x, y);
-            } else if (internal.equals("ASTRAEA")) {
+            } else if (skyblockItemID.equals("ASTRAEA")) {
                 renderItem(ASTRAEA, x, y);
-            } else if (internal.equals("SCYLLA")) {
+            } else if (skyblockItemID.equals("SCYLLA")) {
                 renderItem(SCYLLA, x, y);
-            } else if (internal.equals("BAT_WAND")) {
+            } else if (skyblockItemID.equals("BAT_WAND")) {
                 renderItem(SCPETRE, x, y);
             }
 

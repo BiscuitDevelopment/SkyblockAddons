@@ -48,6 +48,7 @@ import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.FloatBuffer;
+import java.text.ParseException;
 import java.util.List;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -58,21 +59,40 @@ import java.util.regex.Pattern;
 public class Utils {
 
     /**
-     * Added to the beginning of messages.
+     * Added to the beginning of messages sent by the mod.
      */
     public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
 
-    private static final Pattern SERVER_REGEX = Pattern.compile("(?<serverType>[Mm])(?<serverCode>[0-9]+[A-Z])$");
-    private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.]*)(?: .*)?");
-    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster|Voidgloom Seraph) (?<level>[IV]+)");
-    private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
-
     /**
-     * In English, Chinese Simplified, Traditional Chinese.
+     * "Skyblock" as shown on the scoreboard title in English, Chinese Simplified, Traditional Chinese.
      */
     private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK", "\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58");
 
+    /**
+     * Matches the server ID (mini##/Mega##) line on the Skyblock scoreboard
+     */
+    private static final Pattern SERVER_REGEX = Pattern.compile("(?<serverType>[Mm])(?<serverCode>[0-9]+[A-Z])$");
+    /**
+     * Matches the coins balance (purse/piggy bank) line on the Skyblock scoreboard
+     */
+    private static final Pattern PURSE_REGEX = Pattern.compile("(?:Purse|Piggy): (?<coins>[0-9.,]*)");
+    /**
+     * Matches the bits balance line on the Skyblock scoreboard
+     */
+    private static final Pattern BITS_REGEX = Pattern.compile("Bits: (?<bits>[0-9,]*)");
+    /**
+     * Matches the active slayer quest type line on the Skyblock scoreboard
+     */
+    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster|Voidgloom Seraph) (?<level>[IV]+)");
+    /**
+     * Matches the active slayer quest progress line on the Skyblock scoreboard
+     */
+    private static final Pattern SLAYER_PROGRESS_REGEX = Pattern.compile("(?<progress>[0-9.k]*)/(?<total>[0-9.k]*) (?:Kills|Combat XP)$");
+
+    /**
+     * A dummy world object used for spawning fake entities for GUI features without affecting the actual world
+     */
     private static final WorldClient DUMMY_WORLD = new WorldClient(null, new WorldSettings(0L, WorldSettings.GameType.SURVIVAL,
             false, false, WorldType.DEFAULT), 0, null, null);
 
@@ -120,7 +140,7 @@ public class Utils {
     private String profileName = "Unknown";
 
     /**
-     * Whether or not a loud sound is being played by the mod.
+     * Whether a loud sound is being played by the mod.
      */
     private boolean playingSound;
 
@@ -137,6 +157,7 @@ public class Utils {
 
     private SkyblockDate currentDate = new SkyblockDate(SkyblockDate.SkyblockMonth.EARLY_WINTER, 1, 1, 1, "am");
     private double purse = 0;
+    private double bits = 0;
     private int jerryWave = -1;
 
     private boolean alpha;
@@ -249,43 +270,39 @@ public class Utils {
             for (int lineNumber = 0; lineNumber < ScoreboardManager.getNumberOfLines(); lineNumber++) {
                 String scoreboardLine = ScoreboardManager.getScoreboardLines().get(lineNumber);
                 String strippedScoreboardLine = ScoreboardManager.getStrippedScoreboardLines().get(lineNumber);
+                Matcher matcher;
 
-                if (strippedScoreboardLine.endsWith("am") || strippedScoreboardLine.endsWith("pm")) {
-                    timeString = strippedScoreboardLine;
+                // Server ID
+                if (lineNumber == 0) {
+                    matcher = SERVER_REGEX.matcher(strippedScoreboardLine);
+
+                    if (matcher.find()) {
+                        String serverType = matcher.group("serverType");
+                        if (serverType.equals("m")) {
+                            serverID = "mini" + matcher.group("serverCode");
+                        } else if (serverType.equals("M")) {
+                            serverID = "mega" + matcher.group("serverCode");
+                        }
+                    }
                 }
 
-                if (strippedScoreboardLine.endsWith("st") || strippedScoreboardLine.endsWith("nd") || strippedScoreboardLine.endsWith("rd") || strippedScoreboardLine.endsWith("th")) {
+                // This is a blank line.
+                if (lineNumber == 1) {
+                    continue;
+                }
+
+                // Date
+                if (lineNumber == 2) {
                     dateString = strippedScoreboardLine;
                 }
 
-                Matcher matcher = PURSE_REGEX.matcher(strippedScoreboardLine);
-                if (matcher.matches()) {
-                    try {
-                        double oldCoins = purse;
-                        purse = Double.parseDouble(matcher.group("coins"));
-
-                        if (oldCoins != purse) {
-                            onCoinsChange(purse - oldCoins);
-                        }
-                    } catch (NumberFormatException ignored) {
-                        purse = 0;
-                    }
+                // Time
+                if (lineNumber == 3) {
+                    timeString = strippedScoreboardLine;
                 }
 
-                if ((matcher = SERVER_REGEX.matcher(strippedScoreboardLine)).find()) {
-                    String serverType = matcher.group("serverType");
-                    if (serverType.equals("m")) {
-                        serverID = "mini" + matcher.group("serverCode");
-                    } else if (serverType.equals("M")) {
-                        serverID = "mega" + matcher.group("serverCode");
-                    }
-                }
-
-                if (strippedScoreboardLine.endsWith("Combat XP") || strippedScoreboardLine.endsWith("Kills")) {
-                    parseSlayerProgress(strippedScoreboardLine);
-                }
-
-                if (!foundLocation) {
+                // Location
+                if (lineNumber == 4 && !foundLocation) {
                     // Catacombs contains the floor number so it's a special case...
                     if (strippedScoreboardLine.contains(Location.THE_CATACOMBS.getScoreboardName())) {
                         location = Location.THE_CATACOMBS;
@@ -310,6 +327,46 @@ public class Utils {
                     }
                 }
 
+                // This is a blank line.
+                if (lineNumber == 5) {
+                    continue;
+                }
+
+                // The player's coins balance
+                if (lineNumber == 6) {
+                    matcher = PURSE_REGEX.matcher(strippedScoreboardLine);
+
+                    if (matcher.matches()) {
+                        try {
+                            double oldCoins = purse;
+                            purse = TextUtils.NUMBER_FORMAT.parse(matcher.group("coins")).doubleValue();
+
+                            if (oldCoins != purse) {
+                                onCoinsChange(purse - oldCoins);
+                            }
+                        } catch (ParseException ignored) {
+                            purse = 0;
+                        }
+                    }
+                }
+
+                // The player's bits balance (this line will be blank if the player doesn't have any bits)
+                if (lineNumber == 7 && strippedScoreboardLine.length() > 0) {
+                    matcher = BITS_REGEX.matcher(strippedScoreboardLine);
+
+                    if (matcher.matches()) {
+                        try {
+                            bits = TextUtils.NUMBER_FORMAT.parse(matcher.group("bits")).doubleValue();
+                        } catch (ParseException ignored) {
+                            bits = 0;
+                        }
+                    }
+                }
+
+                if (strippedScoreboardLine.endsWith("Combat XP") || strippedScoreboardLine.endsWith("Kills")) {
+                    parseSlayerProgress(strippedScoreboardLine);
+                }
+
                 if (!foundJerryWave && (location == Location.JERRYS_WORKSHOP || location == Location.JERRY_POND)) {
                     if (strippedScoreboardLine.startsWith("Wave")) {
                         foundJerryWave = true;
@@ -324,12 +381,6 @@ public class Utils {
                             jerryWave = newJerryWave;
                         }
                     }
-                }
-
-                if (!foundAlphaIP && strippedScoreboardLine.contains("alpha.hypixel.net")) {
-                    foundAlphaIP = true;
-                    alpha = true;
-                    profileName = "Alpha";
                 }
 
                 if (!foundInDungeon && strippedScoreboardLine.contains("Dungeon Cleared: ")) {
@@ -373,6 +424,13 @@ public class Utils {
                     } catch (NumberFormatException ex) {
                         logger.error("Failed to update a dungeon player from the line " + scoreboardLine + ".", ex);
                     }
+                }
+
+                // Check if the player is on the Hypixel Alpha Network
+                if (lineNumber == ScoreboardManager.getNumberOfLines() - 1 && !foundAlphaIP && strippedScoreboardLine.contains("alpha.hypixel.net")) {
+                    foundAlphaIP = true;
+                    alpha = true;
+                    profileName = "Alpha";
                 }
             }
 

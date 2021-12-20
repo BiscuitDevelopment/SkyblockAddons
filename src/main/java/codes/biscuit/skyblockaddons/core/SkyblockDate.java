@@ -8,12 +8,17 @@ import java.util.regex.Pattern;
 
 /**
  * This class represents a date (excluding the year) and time in Skyblock.
- *
- * E.g. "Late Autumn 19th 4:00am"
+ * <p>
+ * <p>Examples:</p>
+ * <p>Spring 28th</p>
+ * <p>5:20pm ☀</p>
+ * <p>
+ * <p>Spring 28th</p>
+ * <p>9:10pm ☽</p>
  */
 public class SkyblockDate {
 
-    private static final Pattern DATE_PATTERN = Pattern.compile("(?<month>[\\w ]+) (?<day>\\d{1,2})(th|st|nd|rd)");
+    private static final Pattern DATE_PATTERN = Pattern.compile("(?<month>[\\w ]+) (?<day>\\d{1,2})(?:th|st|nd|rd)");
     private static final Pattern TIME_PATTERN = Pattern.compile("(?<hour>\\d{1,2}):(?<minute>\\d\\d)(?<period>am|pm)");
 
     public static SkyblockDate parse(String dateString, String timeString) {
@@ -40,18 +45,18 @@ public class SkyblockDate {
         return new SkyblockDate(SkyblockMonth.fromName(month), day, hour, minute, period);
     }
 
-    private SkyblockMonth month;
-    private int day;
-    private int hour;
-    private int minute;
-    private String period;
+    private final SkyblockMonth MONTH;
+    private final int DAY;
+    private final int HOUR;
+    private final int MINUTE;
+    private final String PERIOD;
 
     public SkyblockDate(SkyblockMonth month, int day, int hour, int minute, String period) {
-        this.month = month;
-        this.day = day;
-        this.hour = hour;
-        this.minute = minute;
-        this.period = period;
+        MONTH = month;
+        DAY = day;
+        HOUR = hour;
+        MINUTE = minute;
+        PERIOD = period;
     }
 
     /**
@@ -96,18 +101,16 @@ public class SkyblockDate {
 
     /**
      * Returns this Skyblock date as a String in the format:
-     * Month Day, Time
+     * Month Day, hh:mm
      *
      * @return this Skyblock date as a formatted String
      */
     @Override
     public String toString() {
-        // Month Day, hh:mm
-        DecimalFormat decimalFormat = new DecimalFormat("00");
         String monthName;
 
-        if (month != null) {
-            monthName =month.scoreboardString;
+        if (MONTH != null) {
+            monthName = MONTH.scoreboardString;
         }
         else {
             monthName = null;
@@ -115,9 +118,9 @@ public class SkyblockDate {
 
         return String.format("%s %s, %d:%s%s",
                 monthName,
-                day + TextUtils.getOrdinalSuffix(day),
-                hour,
-                decimalFormat.format(minute),
-                period);
+                DAY + TextUtils.getOrdinalSuffix(DAY),
+                HOUR,
+                TextUtils.NUMBER_FORMAT.format(MINUTE),
+                PERIOD);
     }
 }

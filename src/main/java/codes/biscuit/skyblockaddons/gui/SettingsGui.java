@@ -452,12 +452,12 @@ public class SettingsGui extends GuiScreen {
 
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, settingFeature));
 
-        } else if (setting == EnumUtils.FeatureSetting.SHOW_SPIRIT_SCEPTRE_DISPLAY) {
+        } else if (setting == EnumUtils.FeatureSetting.DISABLE_SPIRIT_SCEPTRE_MESSAGES) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
-            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, Feature.SHOW_SPIRIT_SCEPTRE_DISPLAY));
+            buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, Feature.DISABLE_SPIRIT_SCEPTRE_MESSAGES));
 
         } else if (setting == EnumUtils.FeatureSetting.HEALING_CIRCLE_OPACITY) {
             boxWidth = 150;
