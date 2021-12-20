@@ -5,6 +5,7 @@
     "settings": "Inställningar",
     "magmaBossWarning": "Varna för magmakub-bossar",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Släppbekräftelse för föremål",
     "hideSkeletonHatBones": "Dölj ben från skeleton's helmet",
     "skeletonHatBonesBar": "Benmätare för skeleton's helmet",
@@ -169,15 +170,13 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Kompakt spelarlista",
     "highlightSpecialEnchantments": "Tydliggör speciella förtrollningar",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event-godis/poängräknare",
     "healingCircleOpacity": "Opacitet för helande cirkel",
     "chromaSize": "Storlek",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Mättnad",
     "chromaBrightness": "Ljusstyrka",
     "useNewChromaEffect": "Use New Chroma Effect",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI X-storlek: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforges",
     "dropConfirmation": "Släpp föremålet igen för att bekräfta!",
     "magmaBossWarning": "Magmakub-boss!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Fullt förråd!",
     "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
     "minionCannotReach": "En minion av typen %type% kan inte nå och har slutat att fungera!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Visar din nuvarande plats",
     "titlePurse": "Purse",
     "descriptionPurse": "Visar antalet mynt i din purse",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Statistik",
     "descriptionStats": "Visar din HP-, skydd- och manastatistik",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Öppna huvudmenyn"
       },
       "brand": {
-        "help": "§e(Dev) §7Visa servertyp",
+        "help": "Show the server brand",
         "brandOutput": "Servertyp: %brand%",
         "notFound": "Servertyp hittades inte!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopierar data om det block som du tittar på"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopiera NBT-data för entiteter med de angivna namnet/namnen inom den angivna radien runt spelaren",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Kopiera texten från poängtavlan",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kopierar den text som visas i resultattavlans sidofält",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Kopiera spelarlistans rubrik och fotnot",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Detta kommando kopierar spelarlistans rubrik och fotnot. Formateringskoder är inkluderade."
         }
@@ -372,7 +374,8 @@
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Utvecklarläge inaktiverat!",
-        "enabled": "Utvecklarläge aktiverat! TIPS: Tryck på %keyName% för att kopiera NBT-data!"
+        "enabled": "Utvecklarläge aktiverat! TIPS: Tryck på %keyName% för att kopiera NBT-data!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Redigera GUI-positioner"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Uppdaterar alla inställningar och resurser i modifikationen. Spelet kommer att frysa i några sekunder."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Uppdaterar modifikationens inställningar"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Uppdaterar modifikationens resurser. Spelet kommer att frysa i några sekunder."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" är inte en giltig boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "Toggle logging action bar messages",
         "disabled": "Meddelanden i åtgärdsfältet kommer inte längre att loggas.",
         "enabled": "Meddelanden i åtgärdsfältet kommer nu att loggas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
