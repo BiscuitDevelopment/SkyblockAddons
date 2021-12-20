@@ -5,6 +5,7 @@
     "settings": "設定",
     "magmaBossWarning": "Magma Bossのアラート",
     "balBossWarning": "Bal Bossの警告",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "アイテムを捨てる時の確認",
     "hideSkeletonHatBones": "Skeleton's Helmetの骨を非表示",
     "skeletonHatBonesBar": "Skeleton's Helmetの骨のゲージ",
@@ -169,15 +170,13 @@
     "showSwordKills": "剣で倒した数を表示",
     "compactTabList": "コンパクトなTabリスト",
     "highlightSpecialEnchantments": "特別なエンチャントを強調表示",
-    "disableSpiritSceptreMessages": "アビリティのメッセージを無効化",
-    "showSpiritSceptreDisplay": "アビリティのダメージ表示",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbidのアラート音",
     "hideMenuGlassPanes": "メニューのガラス板の説明欄を非表示",
     "candyPointsCounter": "SpookyイベントのCandy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circleの不透明度",
     "chromaSize": "色変化の大きさ",
-    "alertBroodMother": "Brood Motherのアラート",
-    "titleBroodMother": "Brood motherがスポーンしました！",
     "chromaSaturation": "色変化の彩度",
     "chromaBrightness": "色変化の明度",
     "useNewChromaEffect": "新しい色変化の効果を使用",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Yの大きさ：%scale%",
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "スポーン地点のプレイヤーを非表示",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "農業イベントのタイマー",
     "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforge",
     "dropConfirmation": "もう一度このアイテムを捨てて確認！",
     "magmaBossWarning": "Magma Cube Bossが出現しました！",
-    "balBossAlert": "Bal Boss！",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "インベントリが満杯です！",
     "labymod": "Labymod使用者：「食料と防具のゲージを非表示」とは互換性がありません。",
     "minionCannotReach": "%type%Minionは範囲外のためMobのスポーンを停止しました！",
@@ -298,6 +298,8 @@
     "descriptionLocation": "現在いる場所を表示",
     "titlePurse": "Purse",
     "descriptionPurse": "purse内の総額を表示",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "ステータス",
     "descriptionStats": "HP、防御力、Manaのステータスを表示",
     "titleZealots": "Zealot",
@@ -334,15 +336,15 @@
         "help": "メインメニューを開く"
       },
       "brand": {
-        "help": "§e(Dev) §7サーバーのブランドを表示します",
+        "help": "Show the server brand",
         "brandOutput": "サーバーのブランド：%brand%",
         "notFound": "サーバーのブランドが見つかりません！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7見つめているブロックに関するデータをコピーします"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7プレイヤーの周囲の指定された半径内にいる指定された名前のエンティティの NBT データをコピーします",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7スコアボードのテキストをコピーします",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Tabリストのヘッダーとフッターをコピーします",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
         }
@@ -372,7 +374,8 @@
           "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
         },
         "disabled": "開発者モードを無効にしました！",
-        "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！"
+        "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "GUIの場所を編集"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Dungeon死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Modのすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Modの設定を再読み込みします"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "「%input%」は有効なボスではありません！"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7アクションバーのメッセージの記録を切り替えます",
+        "help": "Toggle logging action bar messages",
         "disabled": "アクションバーのメッセージは記録されないようになりました。",
         "enabled": "アクションバーのメッセージが記録されるようになりました。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Magma Bossのタイマーのデバッグメッセージを記録するかどうかを切り替えます",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma Bossのタイマーのメッセージは記録されないようになりました。",
         "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
       },
