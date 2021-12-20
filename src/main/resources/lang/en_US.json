@@ -170,7 +170,7 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
-    "disableSpiritSceptreMessages": "Disable Damage Chat Messages",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
@@ -375,7 +375,7 @@
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-        "prefix": "§e(Dev)§r "
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edit GUI locations"
