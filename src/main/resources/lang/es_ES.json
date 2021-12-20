@@ -15,7 +15,7 @@
     "editLocations": "Editar Posiciciones",
     "guiScale": "Escala del GUI: %scale%",
     "resetLocations": "Restablecer Posiciones",
-    "minionStopWarning": "Aviso de Detención de Minion",
+    "minionStopWarning": "Aviso \"Minion No Alcanza\"",
     "hidePlayersNearNPCs": "Ocultar Jugadores cerca de PNJs Importantes",
     "backpackStyle": "Estilo de Mochila: %style%",
     "backpackStyles": {
