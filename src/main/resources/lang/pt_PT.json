@@ -336,7 +336,7 @@
         "help": "Abrir o menu principal"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Mostrar a marca do servidor",
         "brandOutput": "Marca do servidor: %brand%",
         "notFound": "Não foi possível encontrar a marca do servidor!"
       },
