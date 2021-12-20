@@ -5,6 +5,7 @@
     "settings": "Postavke",
     "magmaBossWarning": "Magma Boss Upozorenje",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Potvrda Bacanja Stvari",
     "hideSkeletonHatBones": "Sakrij Kosti Skeleton Kacige",
     "skeletonHatBonesBar": "Bar Kosti Skeleton Kacige",
@@ -169,15 +170,13 @@
     "showSwordKills": "Brojač ubistva na maču",
     "compactTabList": "Jednostavnija tablista",
     "highlightSpecialEnchantments": "Istaknite Posebne čarolije",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky event Candy brojač",
     "healingCircleOpacity": "Neprozirnost ljekovitog kruga",
     "chromaSize": "Kroma veličina",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Zasićenost kroma",
     "chromaBrightness": "Svjetloća krome",
     "useNewChromaEffect": "Koristite novi Chroma Effect",
@@ -212,7 +211,7 @@
     "guiScaleY": "Veličina Y Veličine: %scale%",
     "abbreviateSkillXpDenominator": "Skratiti nazivnik Skill XP",
     "otherDefenseStats": "Ostale statistike obrane (Povezanost duše / Poravnanje stanice)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Svi reforge",
     "dropConfirmation": "Opet baci ovu stvar za konfirmaciju!",
     "magmaBossWarning": "MagmaCube Boss!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Pun Inventar!",
     "labymod": "Labymod Korisnici: Sakrij Hranu, Armor, i Bar Zdravlja su neuskladivi.",
     "minionCannotReach": "%type% minion ne može posegnuti i prestao je stvarati!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Pokazuje tvoju trenutnu lokaciju",
     "titlePurse": "Purse",
     "descriptionPurse": "Prikazuje količinu kovanica u vašoj torbi",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Statistika",
     "descriptionStats": "Pokazuje statistiku tvojeg Zdravlja, Obrane i Mane",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Otvori glavni izbornik"
       },
       "brand": {
-        "help": "§e(Dev) §7Prikaži brand servera",
+        "help": "Show the server brand",
         "brandOutput": "Brend Servera: %brand%",
         "notFound": "Brend servera nije pronađen!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopiraj informacije o bloku koji gledaš"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopiraj NBT informacije od entiteta s dobivenim imenom(ima) u radiusu od igrača",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopira NBT podatke entiteta. Vrste uključenih entiteta i radijus oko uređaja za kopiranje podataka mogu se prilagoditi. Ako se ne daju nikakve opcije, koriste se zadane postavke. Zadane postavke su: uključuju igrače, armor standove, mobove i radijus od 3 bloka. Ako radijus nije naveden, koristi se zadani radijus.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Kopiraj scoreboard tekst",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kopiraj text koji je prikazan na scoreboardu",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§E (Dev) §7 Kopirajte zaglavlje i podnožje tabliste",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Ova naredba kopira zaglavlje i podnožje popisa za reprodukciju kartica. Uključeni su kodovi za formatiranje."
         }
@@ -372,7 +374,8 @@
           "description": "Ova naredba prebacuje način rada programera. Ovaj je način namijenjen programerima Skyblock modova i alata. Pruža podatke o igrama poput entiteta i stavke NBT."
         },
         "disabled": "Razvojni alati isključeni!",
-        "enabled": "Razvojni alati uključeni! Savjet: Pritisni \"%keyName% da bi kopirao NBT podatke!"
+        "enabled": "Razvojni alati uključeni! Savjet: Pritisni \"%keyName% da bi kopirao NBT podatke!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Uredi lokacije GUI"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Ispisuje brojeve pohranjene u brojačima smrti u tamnici u svrhu otklanjanja pogrešaka."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Ponovno učitava sve postavke i resurse moda. Igra će se zamrznuti nekoliko sekundi."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Ponovno učita postavke moda"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Ponovno učitava resurse moda. Igra će se zamrznuti nekoliko sekundi."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" nije valjan boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Uključi/Isključi registriranje action bar poruka",
+        "help": "Toggle logging action bar messages",
         "disabled": "Poruke Action bara neće biti registrirane.",
         "enabled": "Poruke Action bara biti će registrirane."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
