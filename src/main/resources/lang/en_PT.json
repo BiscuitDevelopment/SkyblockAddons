@@ -5,6 +5,7 @@
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Drop Yer Items Twice",
     "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
     "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
@@ -169,15 +170,13 @@
     "showSwordKills": "Show Cutlass Scuttles",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "'ighlight Special Enchantments",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Count'r",
     "healingCircleOpacity": "Healin' Circle Opacity",
     "chromaSize": "Chroma Size",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "Chroma Col'rfullness",
     "chromaBrightness": "Level o' Chroma Brightness",
     "useNewChromaEffect": "Use Th' Effect o' New Chroma",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Shorten Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "Reforges",
     "dropConfirmation": "Ahoy, drop 'tis 'ere item again t' confirm!",
     "magmaBossWarning": "Yer Magma Boss Spawned!",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Ahoy mate, yer pouch be full!",
     "labymod": "Ahoy LabyMod Lads: 'ide grub, booty, an' health bar, be incompatible.",
     "minionCannotReach": "Ahoy mate, one o' yer %type% crew could nah reach an' stopped spawnin'!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "Yer current place be shown",
     "titlePurse": "Purse",
     "descriptionPurse": "Shows yer count o' coins in ye purse",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Position'",
     "descriptionStats": "Shows yer HP, Defense n' Mana stats",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "Open th' main menu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show th' server brand",
+        "help": "Show the server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand be not found!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about th' block that yer lookin' at"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data fer entities o' th' given name(s) within th' given radius around th' buccaneer",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy th' scoreboard text",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy th' tab list header an' footer",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
@@ -372,7 +374,8 @@
           "description": "This here command toggles developer mode. This mode be meant fer developers Skyblock mods/tools. It provides raw data from th' game such as entity an' item NBT."
         },
         "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!"
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edit GUI locations"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints th' counts stored in th' dungeon death counters fer debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's sett'ngs 'n resources. Th' game w'll freeze fer a few sec'nds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the' mod's sett'ngs"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads th' mod's resources. Th' game w'll freeze fer a few sec'nds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle loggin' action bar messages",
+        "help": "Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
