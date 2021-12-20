@@ -36,7 +36,7 @@
     "healthUpdates": "Número de Cambio de Vida",
     "hidePlayersInLobby": "Ocultar Entidades Lejanas en el Lobby",
     "darkAuctionTimer": "Contador del Mercado Negro",
-    "magmaBossTimer": "Contador del Jefe Magma",
+    "magmaBossTimer": "Temporizador del Jefe Magma",
     "itemPickupLog": "Registro de Objetos Recolectados",
     "avoidPlacingEnchantedItems": "Evitar Poner Objetos Encantados en el Suelo",
     "stopBowChargeFromResetting": "Evitar Reinicio de Arco Cargado",
