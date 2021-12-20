@@ -5,6 +5,7 @@
     "settings": "设定",
     "magmaBossWarning": "岩浆怪 Boss 生成警告",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
@@ -169,15 +170,13 @@
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
     "highlightSpecialEnchantments": "高亮特殊附魔",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event 糖果/分数统计器",
     "healingCircleOpacity": "治疗光环不透明度",
     "chromaSize": "渐变色彩尺寸",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "渐变色彩饱和度",
     "chromaBrightness": "渐变色彩亮度",
     "useNewChromaEffect": "使用新版渐变效果",
@@ -212,7 +211,7 @@
     "guiScaleY": "GUI 纵向高度: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "洗炼",
     "dropConfirmation": "再次丢弃此物品以确认!",
     "magmaBossWarning": "⚠ 岩浆怪 Boss 已生成 ⚠",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "物品栏已满!",
     "labymod": "Labymod 使用者: 不兼容隐藏饱食度、装甲值和生命值 。",
     "minionCannotReach": "有%type%仆从因无法触及生物而停止运作了!",
@@ -298,6 +298,8 @@
     "descriptionLocation": "显示当前位置",
     "titlePurse": "钱包",
     "descriptionPurse": "显示当前钱包内的硬币数",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "玩家状态",
     "descriptionStats": "显示当前生命值，防御值及法力值",
     "titleZealots": "末影战士击杀数",
@@ -334,15 +336,15 @@
         "help": "打开主菜单"
       },
       "brand": {
-        "help": "§e(开发者) §7显示服务端名称",
+        "help": "Show the server brand",
         "brandOutput": "服务端：%brand%",
         "notFound": "无法检测到服务端！"
       },
       "copyBlock": {
-        "help": "§e(开发者) §7复制准星所指方块的 NBT"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(开发者) §7复制计分板文本",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "复制侧边栏显示的文字",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(开发者) §7复制页头页脚标签",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
         }
@@ -372,7 +374,8 @@
           "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
         },
         "disabled": "开发者模式已禁用！",
-        "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
+        "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "编辑 GUI 位置"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(开发者) §7将地牢死亡计数输出至聊天栏以供调试"
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(开发者) §7重载 mod 设定"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" 不是有效的 boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(开发者) §7切换日志操作栏消息",
+        "help": "Toggle logging action bar messages",
         "disabled": "操作栏消息将不再被记录。",
         "enabled": "操作栏消息现在将被记录。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
