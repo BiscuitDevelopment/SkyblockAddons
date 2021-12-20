@@ -5,6 +5,7 @@
     "settings": "設定",
     "magmaBossWarning": "Magma Boss 生成警報",
     "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "確認丟棄物品",
     "hideSkeletonHatBones": "隱藏 Skeleton's Helmet 的防禦骨頭",
     "skeletonHatBonesBar": "Skeleton's Helmet 可抵擋的攻擊次數",
@@ -169,15 +170,13 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
-    "disableSpiritSceptreMessages": "Disable Ability Messages",
-    "showSpiritSceptreDisplay": "Ability damage display",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
     "chromaSize": "漸變色尺寸",
-    "alertBroodMother": "Brood Mother alert",
-    "titleBroodMother": "Brood mother Spawned!",
     "chromaSaturation": "漸變色飽和度",
     "chromaBrightness": "漸變色亮度",
     "useNewChromaEffect": "使用新版漸變效果",
@@ -212,7 +211,7 @@
     "guiScaleY": "介面Y方位大小: %scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Spawn Point Players",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -221,7 +220,8 @@
     "reforges": "重鑄",
     "dropConfirmation": "再次丟棄此物品以確認！",
     "magmaBossWarning": "Magma Cube Boss 已出生！",
-    "balBossAlert": "Bal Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "背包已滿！",
     "labymod": "Labymod 使用者請注意：尚不支援隱藏食物、裝甲值及血條等功能。",
     "minionCannotReach": "有一個 %type% Minion 因無法觸及生物而停止運作了！",
@@ -298,6 +298,8 @@
     "descriptionLocation": "顯示你當前的位置",
     "titlePurse": "錢包",
     "descriptionPurse": "顯示錢包內金錢數",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "數值",
     "descriptionStats": "顯示你的血量，防禦力以及魔力值",
     "titleZealots": "Zealots",
@@ -334,15 +336,15 @@
         "help": "開啟主選單"
       },
       "brand": {
-        "help": "§e(Dev) §7顯示伺服器核心名稱",
+        "help": "Show the server brand",
         "brandOutput": "伺服端: %brand%",
         "notFound": "未發現伺服端！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7複製面朝方塊的資料"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製附近玩家的資料的距離。如果沒有設定，則使用預設的設定。預設值為： 包含玩家、盔甲座、生物、3 格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
@@ -352,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7複製記分板的文字",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
@@ -361,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7複製玩家列表頭尾",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
         }
@@ -372,7 +374,8 @@
           "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
         "disabled": "開發者模式已停用！",
-        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
+        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "編輯介面位置"
@@ -390,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7重新載入模組設定"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7重新載入模組資源。遊戲可能會凍結一段時間。"
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "set": {
         "zealotCounter": {
@@ -437,12 +440,12 @@
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7切換是否紀錄動作列訊息",
+        "help": "Toggle logging action bar messages",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle logging magma boss timer debug messages",
+        "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
