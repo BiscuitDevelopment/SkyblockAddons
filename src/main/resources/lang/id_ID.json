@@ -299,7 +299,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Menunjukkan coins yang terdapat di purse anda",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Menunjukkan bits yang anda miliki",
     "titleStats": "Stats",
     "descriptionStats": "Menunjukkan Stat HP, Defense dan Mana",
     "titleZealots": "Zealots",
@@ -336,12 +336,12 @@
         "help": "Buka menu utama"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Perlihatkan merek server",
         "brandOutput": "Merek Server: %brand%",
         "notFound": "Merek server tidak ditemukan!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -440,12 +440,12 @@
         "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Aktif/nonaktifkan pencatatan pesan-pesan bar aksi",
         "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
         "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Aktif/nonaktifkan pencatatan pesan-pesan timer magma boss",
         "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
         "enabled": "Pesan-pesan timer magma boss akan dicatat."
       },
