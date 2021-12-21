@@ -170,8 +170,8 @@
     "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
     "compactTabList": "Daftar Tab Padat",
     "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Nonaktifkan Pesan-pesan Damage",
+    "showSpiritSceptreDisplay": "Tampilan Damage Spirit Sceptre/Wither Blade",
     "outbidAlertSound": "Suara peringatan outbid",
     "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
@@ -211,7 +211,7 @@
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
     "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
     "farmEventTimer": "Timer Farm Event",
     "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
   },
@@ -344,7 +344,7 @@
         "help": "Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
           "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Salin teks scoreboard",
         "detailedHelp": {
           "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Salin list tab header dan footer",
         "detailedHelp": {
           "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
         }
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Mencetak hitungan yang disimpan di counter-counter kematian dungeon untuk tujuan debugging."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Memuat ulang semua pengaturan dan resources. Game akan beku untuk beberapa detik."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Memuat ulang pengaturan-pengaturan mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Memuat ulang semua resource mod. Game akan beku untuk beberapa detik."
       },
       "set": {
         "zealotCounter": {
