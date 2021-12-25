@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Definições",
     "magmaBossWarning": "Alerta do Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Alerta do Bal Boss",
+    "broodMotherWarning": "Alerta da Brood Mother",
     "itemDropConfirmation": "Confirmação para largar itens",
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
@@ -375,7 +375,7 @@
         },
         "disabled": "Modo de programador desativado!",
         "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!",
-        "prefix": "Dev"
+        "prefix": "Program"
       },
       "edit": {
         "help": "Editar localizações da GUI"
