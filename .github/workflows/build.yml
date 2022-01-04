@@ -32,6 +32,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     env:
+      GRADLE_OPTS: -Dorg.gradle.daemon=false
       ORG_GRADLE_PROJECT_buildId: ${{ github.run_id }}.${{ github.run_attempt }}
       ORG_GRADLE_PROJECT_runningOnCi: ${{ true }}
       UPLOAD_ARTIFACT_ENABLED: ${{ true }}
@@ -47,12 +48,21 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Setup ForgeGradle
-      run: ./gradlew setupCIWorkspace --no-daemon
+      run: ./gradlew setupCIWorkspace
     - name: Build with Gradle
-      run: ./gradlew build --no-daemon
+      run: ./gradlew build
+    - name: Read Project Version
+      id: read_project_version
+      if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
+      uses: christian-draeger/read-properties@1.0.1
+      with:
+        path: gradle.properties
+        property: version
     - name: Upload Artifact
       if: ${{ env.UPLOAD_ARTIFACT_ENABLED || contains(github.event.inputs.upload_artifact, 'yes') }}
+      env:
+        project_version: ${{ steps.read_project_version.outputs.value }}
       uses: actions/upload-artifact@v2
       with:
-        name: Mod Jar
+        name: SkyblockAddons v${{ env.project_version }}
         path: build/libs/*
