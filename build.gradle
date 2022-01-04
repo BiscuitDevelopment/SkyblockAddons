@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '581a86dcbe'
+    id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
     id "io.freefair.lombok" version "6.0.0-m2"
     id 'com.github.johnrengelman.shadow' version '6.1.0'
 }
@@ -8,12 +8,37 @@ plugins {
 group = 'codes.biscuit'
 
 // The below line is for version checkers <= 1.4.2
-//version = "1.6.0"
+//version = "1.6.1"
 
 // Java plugin settings
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
-compileJava.options.encoding = 'UTF-8'
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io'
+    }
+}
+
+dependencies {
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
+        exclude module: 'log4j'
+    }
+    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+        exclude module: 'gson'
+    }
+    testImplementation(platform('org.junit:junit-bom:5.8.1'))
+    testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
+}
 
 sourceSets {
     main {
@@ -28,25 +53,18 @@ minecraft {
     mappings = "${project.mappings}"
 
     // Replace placeholders in source code
-    replace("@MOD_ID@": project.modId,
-            "@MOD_NAME@": project.modName,
-            "@VERSION@": project.version,
-            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions,
-            "@UPDATE_JSON@": project.updateJSON)
+    replace("@VERSION@": project.version,
+            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
     replaceIn("${project.modName}.java")
 }
 
-repositories {
-    maven {
-        name 'JitPack'
-        url 'https://jitpack.io'
-    }
-}
-
-dependencies {
-    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
-        exclude module: 'log4j'
+task configureProjectVersion {
+    if (project.hasProperty("runningOnCi") && project.runningOnCi) {
+        if (project.hasProperty("buildId")) {
+            project.version = "${project.version}+${project.buildId}"
+        } else {
+            throw new InvalidUserDataException('No build ID provided for CI build.')
+        }
     }
 }
 
@@ -55,7 +73,14 @@ jar {
     archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
+            'Manifest-Version': '2.0',
             'Main-Class': 'SkyblockAddonsInstallerFrame',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor' : 'BiscuitDevelopment',
+            'Specification-Title': project.name,
+            'Specification-Vendor': 'BiscuitDevelopment',
+            'Specification-Version': project.version,
             'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
             'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,
@@ -77,6 +102,13 @@ shadowJar {
     exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
+
+    // Relocate Discord RPC into the main codebase
+    relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
+}
+
+sourceJar {
+    enabled = false
 }
 
 processResources {
@@ -108,7 +140,15 @@ task copyLicenses (type: Copy) {
 
 test {
     useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
 }
 
+tasks.named('wrapper') {
+    distributionType = Wrapper.DistributionType.ALL
+}
+
+tasks.build.dependsOn(tasks.configureProjectVersion)
 tasks.jar.dependsOn(tasks.copyLicenses)
 tasks.reobfJar.dependsOn(tasks.shadowJar)
