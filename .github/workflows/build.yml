@@ -64,5 +64,5 @@ jobs:
         project_version: ${{ steps.read_project_version.outputs.value }}
       uses: actions/upload-artifact@v2
       with:
-        name: SkyblockAddons v${{ env.project_version }}
+        name: SkyblockAddons v${{ env.project_version }}+${{ env.ORG_GRADLE_PROJECT_buildId }}
         path: build/libs/*
