@@ -336,12 +336,12 @@
         "help": "Open teh main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Show teh servr brand",
         "brandOutput": "Servr Brand: %brand%",
         "notFound": "Servr brand not findz!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copiez data bout teh block dat u r lookin at"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
