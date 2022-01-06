@@ -4,8 +4,8 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Boss 生成警報",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal Boss 生成警報",
+    "broodMotherWarning": "Brood Mother 生成警報",
     "itemDropConfirmation": "確認丟棄物品",
     "hideSkeletonHatBones": "隱藏 Skeleton's Helmet 的防禦骨頭",
     "skeletonHatBonesBar": "Skeleton's Helmet 可抵擋的攻擊次數",
@@ -170,9 +170,9 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableDamageChatMessages": "關閉聊天室傷害訊息",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 傷害顯示",
+    "outbidAlertSound": "出價被超過提示聲",
     "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
@@ -211,9 +211,9 @@
     "guiScaleY": "介面Y方位大小: %scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
+    "farmEventTimer": "農耕活動計時器",
+    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
   },
   "messages": {
     "enchants": "附魔",
@@ -299,7 +299,7 @@
     "titlePurse": "錢包",
     "descriptionPurse": "顯示錢包內金錢數",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "顯示你擁有的 Bits 數",
     "titleStats": "數值",
     "descriptionStats": "顯示你的血量，防禦力以及魔力值",
     "titleZealots": "Zealots",
@@ -336,15 +336,15 @@
         "help": "開啟主選單"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "顯示伺服器核心名稱",
         "brandOutput": "伺服端: %brand%",
         "notFound": "未發現伺服端！"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "複製面朝方塊的資料"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
           "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製附近玩家的資料的距離。如果沒有設定，則使用預設的設定。預設值為： 包含玩家、盔甲座、生物、3 格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "複製記分板的文字",
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "複製玩家列表頭尾",
         "detailedHelp": {
           "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
         }
@@ -375,7 +375,7 @@
         },
         "disabled": "開發者模式已停用！",
         "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
-        "prefix": "Dev"
+        "prefix": "開發者"
       },
       "edit": {
         "help": "編輯介面位置"
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "重新載入模組設定"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
       },
       "set": {
         "zealotCounter": {
@@ -440,14 +440,14 @@
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "切換是否紀錄動作列訊息",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "切換是否紀錄 Magma Boss 計時器的除錯訊息",
+        "disabled": "Magma Boss 計時器訊息將不再被記錄。",
+        "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
       },
       "errors": {
         "wrongUsage": {
