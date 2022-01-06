@@ -5,7 +5,7 @@
     "settings": "Opciones",
     "magmaBossWarning": "Alerta de Jefe Magma",
     "balBossWarning": "Alerta de Jefe Bal",
-    "broodMotherWarning": "Brood Mother Warning",
+    "broodMotherWarning": "Alerta de Brood Mother",
     "itemDropConfirmation": "Confirmar Para Soltar Objeto",
     "hideSkeletonHatBones": "Ocultar los Huesos del Casco Esqueleto",
     "skeletonHatBonesBar": "Barra de Huesos del Casco Esqueleto",
@@ -170,8 +170,8 @@
     "showSwordKills": "Mostrar Kills con Espada",
     "compactTabList": "Lista de Tab Compacta",
     "highlightSpecialEnchantments": "Resaltar Encantamientos Especiales",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Desactivar Mensajes de Daño en Chat",
+    "showSpiritSceptreDisplay": "Mostrar Daño de Spirit Sceptre/Wither Blade",
     "outbidAlertSound": "Sonido de Alerta Sobrepujado",
     "hideMenuGlassPanes": "Ocultar el Nombre de Paneles de Cristal en el Menú",
     "candyPointsCounter": "Spooky Event Contador de Candy/Puntos",
@@ -211,8 +211,8 @@
     "guiScaleY": "Escala de GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
     "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "farmEventTimer": "Farm Event Timer",
+    "hideSpawnPointPlayers": "Ocultar Jugadores en el Punto de Aparición del Hub",
+    "farmEventTimer": "Temporizador del Farm Event",
     "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos"
   },
   "messages": {
@@ -299,7 +299,7 @@
     "titlePurse": "Monedero",
     "descriptionPurse": "Muestra la cantidad de monedas en tu monedero",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Muestra la cantidad de bits que tienes",
     "titleStats": "Estadísticas",
     "descriptionStats": "Muestra tu HP, Defensa, y Maná",
     "titleZealots": "Zealots",
@@ -336,15 +336,15 @@
         "help": "Abrir el menú principal"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Mostrar la marca del servidor",
         "brandOutput": "Marca del Servidor: %brand%",
         "notFound": "¡Marca del servidor no encontrado!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copia datos sobre el bloque que estás mirando"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copia datos NBT para entidades del nombre(s) dado dentro de un radio específico dado alrededor del jugador",
         "detailedHelp": {
           "description": "Copia los datos NBT de entidades. Los tipos de entidad incluidos y el radio alrededor del jugador para copiar datos puede ser personalizado. Si no se da ninguna opción, se utilizan los ajustes predeterminados. La configuración predeterminada es: incluye jugadores, soportes de armadura, y mobs, y un radio de 3 bloques. Si el radio no se indica, se usará el radio predeterminado.",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copiar el texto del marcador",
         "detailedHelp": {
           "description": "Copia el texto de la ranura del sidebar del marcador",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copia el encabezado y el pie de la lista de tab",
         "detailedHelp": {
           "description": "Este comando copia el encabezado y el pie de la lista de jugadores de tab. Los códigos de formato se incluyen."
         }
@@ -375,7 +375,7 @@
         },
         "disabled": "¡Modo desarrollador desactivado!",
         "enabled": "¡Modo desarrollador activado! CONSEJO: ¡Pulsa \"%keyName%\" para copiar datos NBT!",
-        "prefix": "Dev"
+        "prefix": "Des"
       },
       "edit": {
         "help": "Editar Posiciones de GUI"
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Graba los recuentos almacenados en los contadores de muertes de la dungeon con fines de depuración."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Recarga todas las configuraciones y recursos del mod. El juego se congelará durante unos segundos."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Recarga la configuración del mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Recarga los recursos del mod. El juego se congelará durante unos segundos."
       },
       "set": {
         "zealotCounter": {
@@ -440,12 +440,12 @@
         "invalidStat": "¡\"%input%\" no es un boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Alternar el registro de los mensajes de la barra de acción",
         "disabled": "Mensajes de la barra de acción ahora no serán registrados.",
         "enabled": "Los mensajes de la barra de acción ahora se registrarán."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Alternar el registro de mensajes de depuración del temporizador del jefe magma",
         "disabled": "Los mensajes del temporizador del jefe magma ya no se registrarán.",
         "enabled": "Los mensajes del temporizador del jefe magma ahora se registrarán."
       },
