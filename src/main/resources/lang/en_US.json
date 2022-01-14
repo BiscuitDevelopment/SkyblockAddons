@@ -404,6 +404,10 @@
       "reloadRes": {
         "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts to zero.",
+        "resetSuccess": "Zealot counters reset!"
+      },
       "set": {
         "zealotCounter": {
           "help": "Manually set your zealot counts",
