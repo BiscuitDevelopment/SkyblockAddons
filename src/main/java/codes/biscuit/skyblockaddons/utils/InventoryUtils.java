@@ -16,14 +16,18 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.ReportedException;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -112,43 +116,63 @@ public class InventoryUtils {
         if (previousInventory != null) {
 
             for(int i = 0; i < newInventory.size(); i++) {
-                if (i == SKYBLOCK_MENU_SLOT) { // Skip the SkyBlock Menu slot all together (which includes the Quiver Arrow now)
+                if (i == SKYBLOCK_MENU_SLOT) { // Skip the SkyBlock Menu slot altogether (which includes the Quiver Arrow now)
                     continue;
                 }
 
-                ItemStack previousItem = previousInventory.get(i);
-                ItemStack newItem = newInventory.get(i);
+                ItemStack previousItem = null;
+                ItemStack newItem = null;
 
-                if(previousItem != null) {
-                    int amount;
-                    if (previousInventoryMap.containsKey(previousItem.getDisplayName())) {
-                        amount = previousInventoryMap.get(previousItem.getDisplayName()).getKey() + previousItem.stackSize;
-                    } else {
-                        amount = previousItem.stackSize;
-                    }
-                    NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(previousItem);
-                    if (extraAttributes != null) {
-                        extraAttributes = (NBTTagCompound) extraAttributes.copy();
-                    }
-                    previousInventoryMap.put(previousItem.getDisplayName(), new Pair<>(amount, extraAttributes));
-                }
+                try {
+                    previousItem = previousInventory.get(i);
+                    newItem = newInventory.get(i);
 
-                if(newItem != null) {
-                    if (newItem.getDisplayName().contains(" "+ ColorCode.DARK_GRAY+"x")) {
-                        String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
-                        newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
+                    if(previousItem != null) {
+                        int amount;
+                        if (previousInventoryMap.containsKey(previousItem.getDisplayName())) {
+                            amount = previousInventoryMap.get(previousItem.getDisplayName()).getKey() + previousItem.stackSize;
+                        } else {
+                            amount = previousItem.stackSize;
+                        }
+                        NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(previousItem);
+                        if (extraAttributes != null) {
+                            extraAttributes = (NBTTagCompound) extraAttributes.copy();
+                        }
+                        previousInventoryMap.put(previousItem.getDisplayName(), new Pair<>(amount, extraAttributes));
                     }
-                    int amount;
-                    if (newInventoryMap.containsKey(newItem.getDisplayName())) {
-                        amount = newInventoryMap.get(newItem.getDisplayName()).getKey() + newItem.stackSize;
-                    }  else {
-                        amount = newItem.stackSize;
+
+                    if(newItem != null) {
+                        if (newItem.getDisplayName().contains(" "+ ColorCode.DARK_GRAY+"x")) {
+                            String newName = newItem.getDisplayName().substring(0, newItem.getDisplayName().lastIndexOf(" "));
+                            newItem.setStackDisplayName(newName); // This is a workaround for merchants, it adds x64 or whatever to the end of the name.
+                        }
+                        int amount;
+                        if (newInventoryMap.containsKey(newItem.getDisplayName())) {
+                            amount = newInventoryMap.get(newItem.getDisplayName()).getKey() + newItem.stackSize;
+                        }  else {
+                            amount = newItem.stackSize;
+                        }
+                        NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(newItem);
+                        if (extraAttributes != null) {
+                            extraAttributes = (NBTTagCompound) extraAttributes.copy();
+                        }
+                        newInventoryMap.put(newItem.getDisplayName(), new Pair<>(amount, extraAttributes));
                     }
-                    NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(newItem);
-                    if (extraAttributes != null) {
-                        extraAttributes = (NBTTagCompound) extraAttributes.copy();
-                    }
-                    newInventoryMap.put(newItem.getDisplayName(), new Pair<>(amount, extraAttributes));
+                } catch (RuntimeException exception) {
+                    CrashReport crashReport = CrashReport.makeCrashReport(exception, "Comparing current inventory to previous inventory");
+                    CrashReportCategory inventoryDetails = crashReport.makeCategory("Inventory Details");
+                    inventoryDetails.addCrashSection("Previous", "Size: " + previousInventory.size());
+                    inventoryDetails.addCrashSection("New", "Size: " + newInventory.size());
+                    CrashReportCategory itemDetails = crashReport.makeCategory("Item Details");
+                    itemDetails.addCrashSection("Previous Item", "Item: " + (previousItem != null ? previousItem.toString() : "null") + "\n"
+                        + "Display Name: " + (previousItem != null ? previousItem.getDisplayName() : "null") + "\n"
+                        + "Index: " + i + "\n"
+                        + "Map Value: " + (previousItem != null ? (previousInventoryMap.get(previousItem.getDisplayName()) != null ? previousInventoryMap.get(previousItem.getDisplayName()).toString() : "null") : "null"));
+                    itemDetails.addCrashSection("New Item", "Item: " + (newItem != null ? newItem.toString() : "null") + "\n"
+                            + "Display Name: " + (newItem != null ? newItem.getDisplayName() : "null") + "\n"
+                            + "Index: " + i + "\n"
+                            + "Map Value: " + (newItem != null ? (previousInventoryMap.get(newItem.getDisplayName()) != null ? previousInventoryMap.get(newItem.getDisplayName()).toString() : "null") : "null"));
+                    throw new ReportedException(crashReport);
                 }
             }
 
@@ -333,7 +357,7 @@ public class InventoryUtils {
                             try {
                                 float percentage = Float.parseFloat(matcher.group(2).replace(",", "")) /
                                         Integer.parseInt(matcher.group(3).replace(",", "")) * 100;
-                                BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, BigDecimal.ROUND_HALF_UP);
+                                BigDecimal bigDecimal = new BigDecimal(percentage).setScale(0, RoundingMode.HALF_UP);
                                 percent = bigDecimal.toString();
                                 defence = ColorCode.GREEN + matcher.group(1);
                                 break;
