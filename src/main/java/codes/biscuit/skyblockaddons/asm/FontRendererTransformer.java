@@ -38,7 +38,7 @@ public class FontRendererTransformer implements ITransformer {
             // Find Method Head: Add:
             //   FontRendererHook.changeTextColor(); <- insert the call right before the return
 
-            if (TransformerMethod.renderChar.matches(methodNode)) {
+            if (TransformerMethod.renderChar.matches(methodNode) || methodNode.name.equals("renderChar")) {
                 methodNode.instructions.insertBefore(methodNode.instructions.getFirst(), insertChangeTextColor());
             }
 
