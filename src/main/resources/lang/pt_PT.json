@@ -172,7 +172,7 @@
     "highlightSpecialEnchantments": "Destacar encantamentos especiais",
     "disableDamageChatMessages": "Desativar as mensagens de dano no chat",
     "showSpiritSceptreDisplay": "Mostrador de dano do Spirit Sceptre/Wither Blade",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "outbidAlertSound": "Som de alerta de licitação superada",
     "hideMenuGlassPanes": "Esconder descrições dos painéis de vidro dos menus",
     "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
     "healingCircleOpacity": "Opacidade do healing circle",
@@ -211,9 +211,9 @@
     "guiScaleY": "Escala da GUI no Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "hideSpawnPointPlayers": "Esconder jogadores na origem do hub",
     "farmEventTimer": "Farm Event Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -299,7 +299,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Mostra as moedas na tua purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Mostra a quantidade de bits que tens",
     "titleStats": "Estatísticas",
     "descriptionStats": "Mostra as tuas estatísticas de vida, defesa e mana",
     "titleZealots": "Zealots",
@@ -445,9 +445,9 @@
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Alterna o registo das mensagens de depuração do temporizador do magma boss",
+        "disabled": "As mensagens do temporizador do magma boss não serão registadas.",
+        "enabled": "As mensagens do temporizador do magma boss serão registadas."
       },
       "errors": {
         "wrongUsage": {
