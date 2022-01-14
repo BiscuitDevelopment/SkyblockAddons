@@ -175,8 +175,6 @@ public enum Message {
     SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_BAL_BOSS_WARNING(MessageObject.SETTING, "balBossWarning"),
     SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING,"broodMotherWarning"),
-    MESSAGE_ENCHANTS(MessageObject.MESSAGES, "enchants"),
-    MESSAGE_REFORGES(MessageObject.MESSAGES, "reforges"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_BAL_BOSS_WARNING(MessageObject.MESSAGES, "balBossWarning"),
@@ -185,10 +183,6 @@ public enum Message {
     MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
     MESSAGE_MINION_CANNOT_REACH(MessageObject.MESSAGES, "minionCannotReach"),
     MESSAGE_MINION_IS_FULL(MessageObject.MESSAGES, "minionIsFull"),
-    MESSAGE_TYPE_ENCHANTMENTS(MessageObject.MESSAGES, "typeEnchantmentsHere"),
-    MESSAGE_SEPARATE_ENCHANTMENTS(MessageObject.MESSAGES, "separateMultiple"),
-    MESSAGE_ENCHANTS_TO_MATCH(MessageObject.MESSAGES, "enchantsToMatch"),
-    MESSAGE_ENCHANTS_TO_EXCLUDE(MessageObject.MESSAGES, "enchantsToExclude"),
     MESSAGE_CANCELLED_STEM_BREAK(MessageObject.MESSAGES, "cancelledStemBreak"),
     MESSAGE_SLOT_LOCKED(MessageObject.MESSAGES, "slotLocked"),
     MESSAGE_SUMMONING_EYE_FOUND(MessageObject.MESSAGES, "summoningEyeFound"),
@@ -224,10 +218,6 @@ public enum Message {
     MESSAGE_BOSS_APPROACH_ALERT(MessageObject.MESSAGES, "bossApproaching"),
     MESSAGE_ENABLE_ALL(MessageObject.MESSAGES, "enableAll"),
     MESSAGE_DISABLE_ALL(MessageObject.MESSAGES, "disableAll"),
-    MESSAGE_ENCHANTMENT_INCLUSION_EXAMPLE(MessageObject.MESSAGES, "enchantmentInclusionExample"),
-    MESSAGE_ENCHANTMENT_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "enchantmentExclusionExample"),
-    MESSAGE_REFORGE_INCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeInclusionExample"),
-    MESSAGE_REFORGE_EXCLUSION_EXAMPLE(MessageObject.MESSAGES, "reforgeExclusionExample"),
     MESSAGE_ONE_EFFECT_ACTIVE(MessageObject.MESSAGES, "effectActive"),
     MESSAGE_EFFECTS_ACTIVE(MessageObject.MESSAGES, "effectsActive"),
     MESSAGE_FETCHUR_TODAY(MessageObject.MESSAGES, "fetchurItem"),
@@ -352,8 +342,7 @@ public enum Message {
                     text = text.replace("%scale%", variables[0]);
                 } else if (this == Message.SETTING_TEXT_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getTextStyle().getMessage());
-                } else if (this == Message.MESSAGE_MINION_CANNOT_REACH || this == Message.MESSAGE_TYPE_ENCHANTMENTS
-                        || this == Message.MESSAGE_ENCHANTS_TO_MATCH || this == Message.MESSAGE_ENCHANTS_TO_EXCLUDE) {
+                } else if (this == Message.MESSAGE_MINION_CANNOT_REACH) {
                     text = text.replace("%type%", variables[0]);
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);

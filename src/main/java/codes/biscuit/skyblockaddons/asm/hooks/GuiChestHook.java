@@ -4,13 +4,12 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
-import codes.biscuit.skyblockaddons.gui.elements.CraftingPatternSelection;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -31,6 +30,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import org.apache.commons.lang3.StringUtils;
 import org.lwjgl.input.Keyboard;
+import org.objectweb.asm.tree.ClassNode;
 
 import java.io.IOException;
 import java.util.*;
@@ -39,31 +39,62 @@ import java.util.regex.Pattern;
 
 //TODO Fix for Hypixel localization
 public class GuiChestHook {
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Minecraft mc = Minecraft.getMinecraft();
+    private static final FontRenderer fontRenderer = mc.fontRendererObj;
 
-    private static GuiTextField textFieldMatch = null;
+    /** Strings for reforge filter */
+    private static final String TYPE_TO_MATCH = Translations.getMessage("messages.reforges");
+    private static final String TYPE_ENCHANTMENTS = Translations.getMessage("messages.typeEnchantmentsHere", TYPE_TO_MATCH);
+    private static final String SEPARATE_MULTIPLE = Translations.getMessage("messages.separateMultiple");
+    private static final String ENCHANTS_TO_INCLUDE = Translations.getMessage("messages.enchantsToMatch", TYPE_TO_MATCH);
+    private static final String INCLUSION_EXAMPLE = Translations.getMessage("messages.reforgeInclusionExample");
+    private static final String ENCHANTS_TO_EXCLUDE = Translations.getMessage("messages.enchantsToExclude", TYPE_TO_MATCH);
+    private static final String EXCLUSION_EXAMPLE = Translations.getMessage("messages.reforgeExclusionExample");
+
+    private static final int REFORGE_MENU_HEIGHT = 222 - 108 + 5 * 18;
+
+    private static IslandWarpGui islandWarpGui = null;
+
+    /** Reforge filter text field for reforges to match */
+    private static GuiTextField textFieldMatches = null;
+    /** Reforge filter text field for reforges to exclude */
     private static GuiTextField textFieldExclusions = null;
     @Setter
     @Getter
     private static String lastAccessoryBagReforge = null;
-    private static CraftingPatternSelection craftingPatternSelection = null;
 
     private static final Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
     private static final Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
     private static final Pattern notUnlockedPattern = Pattern.compile("(?:§5§o)?§cWarp not unlocked!");
     private static final Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
     private static final Pattern youAreHerePattern = Pattern.compile("(?:§5§o)?§aYou are here!");
-    private static IslandWarpGui islandWarpGui = null;
 
+    private static int reforgeFilterHeight;
+
+    /** String dimensions for reforge filter */
+    private static int maxStringWidth;
+    private static int typeEnchantmentsHeight;
+    private static int enchantsToIncludeHeight;
+    private static int enchantsToExcludeHeight;
+
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void updateScreen() {
-        if (textFieldMatch != null && textFieldExclusions != null) {
-            textFieldMatch.updateCursorCounter();
+        if (textFieldMatches != null && textFieldExclusions != null) {
+            textFieldMatches.updateCursorCounter();
             textFieldExclusions.updateCursorCounter();
         }
     }
 
     /**
      * Resets variables when the chest is closed
+     *
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
      */
+    @SuppressWarnings("unused")
     public static void onGuiClosed() {
         SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
         Keyboard.enableRepeatEvents(false);
@@ -72,8 +103,11 @@ public class GuiChestHook {
         BackpackInventoryManager.setBackpackColor(null);
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void drawScreenIslands(int mouseX, int mouseY, ReturnValue<?> returnValue) {
-        Minecraft mc = Minecraft.getMinecraft();
         Container playerContainer = mc.thePlayer.openContainer;
         if (playerContainer instanceof ContainerChest && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.FANCY_WARP_MENU)) {
             IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
@@ -169,50 +203,48 @@ public class GuiChestHook {
             ContainerPreviewManager.saveStorageContainerInventory(SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
         }
 
-        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatch != null &&
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatches != null &&
                 (inventoryType== InventoryType.BASIC_REFORGING ||
                         inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
-            Minecraft mc = Minecraft.getMinecraft();
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            String typeToMatch = Message.MESSAGE_REFORGES.getMessage();
-            String inclusionExample;
-            String exclusionExample;
+
             int defaultBlue = main.getUtils().getDefaultBlue(255);
-            float scale = 0.75F;
             int x = guiLeft - 160;
             if (x<0) {
                 x = 20;
             }
-
-            inclusionExample = Message.MESSAGE_REFORGE_INCLUSION_EXAMPLE.getMessage();
-            exclusionExample = Message.MESSAGE_REFORGE_EXCLUSION_EXAMPLE.getMessage();
+            int y = guiTop + REFORGE_MENU_HEIGHT / 2 - reforgeFilterHeight / 2;
 
             GlStateManager.color(1F, 1F, 1F);
-            GlStateManager.pushMatrix();
-            GlStateManager.scale(scale, scale, 1);
-            mc.fontRendererObj.drawString(Message.MESSAGE_TYPE_ENCHANTMENTS.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop+40)/scale), defaultBlue);
-            int width = mc.fontRendererObj.getStringWidth(Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage());
-            if (width > guiLeft - x) {
-                mc.fontRendererObj.drawSplitString(Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), textFieldMatch.width - x, defaultBlue);
-            } else {
-                mc.fontRendererObj.drawString(Message.MESSAGE_SEPARATE_ENCHANTMENTS.getMessage(), Math.round(x/scale), Math.round((guiTop + 50)/scale), defaultBlue);
-            }
-            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_MATCH.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop + 70)/scale), defaultBlue);
-            mc.fontRendererObj.drawString(Message.MESSAGE_ENCHANTS_TO_EXCLUDE.getMessage(typeToMatch), Math.round(x/scale), Math.round((guiTop + 110)/scale), defaultBlue);
-            GlStateManager.popMatrix();
+            fontRenderer.drawSplitString(TYPE_ENCHANTMENTS, x, y, maxStringWidth, defaultBlue);
+            y = y + typeEnchantmentsHeight;
+            fontRenderer.drawSplitString(SEPARATE_MULTIPLE, x, y, maxStringWidth, defaultBlue);
 
-            textFieldMatch.drawTextBox();
-            if (StringUtils.isEmpty(textFieldMatch.getText())) {
-                mc.fontRendererObj.drawString(inclusionExample, x+4, guiTop + 86, ColorCode.DARK_GRAY.getColor());
+            int placeholderTextX = textFieldMatches.xPosition + 4;
+            int placeholderTextY = textFieldMatches.yPosition + (textFieldMatches.height - 8) / 2;
+
+            y = textFieldMatches.yPosition - enchantsToIncludeHeight - 1;
+            fontRenderer.drawSplitString(ENCHANTS_TO_INCLUDE, x, y, maxStringWidth, defaultBlue);
+
+            textFieldMatches.drawTextBox();
+            if (StringUtils.isEmpty(textFieldMatches.getText())) {
+                fontRenderer.drawString(fontRenderer.trimStringToWidth(INCLUSION_EXAMPLE, textFieldMatches.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
             }
 
+            y = textFieldExclusions.yPosition - enchantsToExcludeHeight - 1;
+            fontRenderer.drawSplitString(ENCHANTS_TO_EXCLUDE, x, y, maxStringWidth, defaultBlue);
+
+            placeholderTextY = textFieldExclusions.yPosition + (textFieldExclusions.height - 8) / 2;
             textFieldExclusions.drawTextBox();
             if (StringUtils.isEmpty(textFieldExclusions.getText())) {
-                mc.fontRendererObj.drawString(exclusionExample, x+4, guiTop + 126, ColorCode.DARK_GRAY.getColor());
+                fontRenderer.drawString(fontRenderer.trimStringToWidth(EXCLUSION_EXAMPLE, textFieldExclusions.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
             }
         }
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void initGui(IInventory lowerChestInventory, int guiLeft, int guiTop, FontRenderer fontRendererObj) {
         if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
             return; // don't draw any overlays outside SkyBlock
@@ -221,67 +253,76 @@ public class GuiChestHook {
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
 
         if (inventoryType != null) {
-            if (inventoryType == InventoryType.CRAFTING_TABLE) {
-                if (false /*SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS)*/) {
-                    craftingPatternSelection = new CraftingPatternSelection(Minecraft.getMinecraft(), Math.max(guiLeft - CraftingPatternSelection.ICON_SIZE - 2, 10), guiTop + 1);
-                }
-                return;
-            }
-
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && inventoryType ==
                     InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
                 int xPos = guiLeft - 160;
                 if (xPos<0) {
                     xPos = 20;
                 }
-                int yPos = guiTop + 80;
-                textFieldMatch = new GuiTextField(2, fontRendererObj, xPos, yPos, 120, 20);
-                textFieldMatch.setMaxStringLength(500);
-                List<String> lockedReforges = SkyblockAddons.getInstance().getUtils().getReforgeMatches();
+                int yPos;
+                int textFieldWidth = guiLeft - 20 - xPos;
+                int textFieldHeight = REFORGE_MENU_HEIGHT / 10;
+                int textFieldSpacing = (int) (textFieldHeight * 1.5);
+
+                // Calculate the height of the whole thing to center it vertically in relation to the chest UI.
+                maxStringWidth = textFieldWidth + 5;
+                typeEnchantmentsHeight = fontRenderer.splitStringWidth(TYPE_ENCHANTMENTS, maxStringWidth);
+                int separateEnchantmentsHeight = fontRenderer.splitStringWidth(SEPARATE_MULTIPLE, maxStringWidth) + fontRendererObj.FONT_HEIGHT;
+                enchantsToIncludeHeight = fontRenderer.splitStringWidth(ENCHANTS_TO_INCLUDE, maxStringWidth);
+                enchantsToExcludeHeight = fontRenderer.splitStringWidth(ENCHANTS_TO_EXCLUDE, maxStringWidth);
+                reforgeFilterHeight = typeEnchantmentsHeight + separateEnchantmentsHeight + enchantsToIncludeHeight +
+                        2 * textFieldHeight + textFieldSpacing;
+
+                yPos = guiTop + REFORGE_MENU_HEIGHT / 2 - reforgeFilterHeight / 2;
+
+                // Matches text field
+                yPos = yPos + typeEnchantmentsHeight + separateEnchantmentsHeight + enchantsToIncludeHeight;
+                textFieldMatches = new GuiTextField(2, fontRendererObj, xPos, yPos, textFieldWidth, textFieldHeight);
+                textFieldMatches.setMaxStringLength(500);
+                List<String> reforgeMatches = SkyblockAddons.getInstance().getUtils().getReforgeMatches();
                 StringBuilder reforgeBuilder = new StringBuilder();
-                int i = 1;
-                for (String reforge : lockedReforges) {
-                    reforgeBuilder.append(reforge);
-                    if (i < lockedReforges.size()) {
-                        reforgeBuilder.append(",");
+
+                for (int i = 0; i < reforgeMatches.size(); i++) {
+                    reforgeBuilder.append(reforgeMatches.get(i));
+                    if (i < reforgeMatches.size() - 1) {
+                        reforgeBuilder.append(',');
                     }
-                    i++;
                 }
                 String text = reforgeBuilder.toString();
                 if (text.length() > 0) {
-                    textFieldMatch.setText(text);
+                    textFieldMatches.setText(text);
                 }
-                yPos += 40;
-                textFieldExclusions = new GuiTextField(2, fontRendererObj, xPos, yPos, 120, 20);
+
+                // Exclusions text field
+                yPos = yPos + textFieldHeight + textFieldSpacing;
+                textFieldExclusions = new GuiTextField(2, fontRendererObj, xPos, yPos, textFieldWidth, textFieldHeight);
                 textFieldExclusions.setMaxStringLength(500);
-                lockedReforges = SkyblockAddons.getInstance().getUtils().getReforgeExclusions();
+                List<String> reforgeExclusions = SkyblockAddons.getInstance().getUtils().getReforgeExclusions();
                 reforgeBuilder = new StringBuilder();
-                i = 1;
-                for (String enchantment : lockedReforges) {
-                    reforgeBuilder.append(enchantment);
-                    if (i < lockedReforges.size()) {
-                        reforgeBuilder.append(",");
+
+                for (int i = 0; i < reforgeExclusions.size(); i++) {
+                    reforgeBuilder.append(reforgeExclusions.get(i));
+                    if (i < reforgeExclusions.size() - 1) {
+                        reforgeBuilder.append(',');
                     }
-                    i++;
                 }
                 text = reforgeBuilder.toString();
                 if (text.length() > 0) {
                     textFieldExclusions.setText(text);
                 }
+
                 Keyboard.enableRepeatEvents(true);
             }
         }
     }
 
     public static boolean keyTyped(char typedChar, int keyCode) { // return whether to continue (super.keyTyped(typedChar, keyCode);)
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REFORGE_FILTER)) {
             InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
 
             if (inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                if (keyCode != Minecraft.getMinecraft().gameSettings.keyBindInventory.getKeyCode() ||
-                        (!textFieldMatch.isFocused() && !textFieldExclusions.isFocused())) {
+                if (keyCode != mc.gameSettings.keyBindInventory.getKeyCode() ||
+                        (!textFieldMatches.isFocused() && !textFieldExclusions.isFocused())) {
                     processTextFields(typedChar, keyCode);
                     return true;
                 }
@@ -296,24 +337,24 @@ public class GuiChestHook {
     }
 
     private static void processTextFields(char typedChar, int keyCode) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
-        if (main.getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatch != null) {
-            textFieldMatch.textboxKeyTyped(typedChar, keyCode);
+        if (main.getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatches != null) {
+            textFieldMatches.textboxKeyTyped(typedChar, keyCode);
             textFieldExclusions.textboxKeyTyped(typedChar, keyCode);
-            List<String> reforges = new LinkedList<>(Arrays.asList(textFieldMatch.getText().split(",")));
+            List<String> reforges = new LinkedList<>(Arrays.asList(textFieldMatches.getText().split(",")));
             main.getUtils().setReforgeMatches(reforges);
             reforges = new LinkedList<>(Arrays.asList(textFieldExclusions.getText().split(",")));
             main.getUtils().setReforgeExclusions(reforges);
         }
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void handleMouseClick(Slot slotIn, Container slots, IInventory lowerChestInventory, ReturnValue<?> returnValue) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (main.getUtils().isOnSkyblock()) {
             if (main.getConfigValues().isEnabled(Feature.REFORGE_FILTER) && !main.getUtils().getReforgeMatches().isEmpty()) {
-                if (slotIn != null && !slotIn.inventory.equals(Minecraft.getMinecraft().thePlayer.inventory) && slotIn.getHasStack()) {
+                if (slotIn != null && !slotIn.inventory.equals(mc.thePlayer.inventory) && slotIn.getHasStack()) {
                     InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
 
                     if (slotIn.getSlotIndex() == 22 && (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
@@ -351,7 +392,13 @@ public class GuiChestHook {
         }
     }
 
-    // TODO: Replace ASM?
+    /**
+     * Handles mouse clicks for the Fancy Warp GUI and the Reforge Filter text fields.
+     *
+     * @param mouseX x coordinate of the mouse pointer
+     * @param mouseY y coordinate of the mouse pointer
+     * @param mouseButton mouse button that was clicked
+     */
     public static void mouseClicked(int mouseX, int mouseY, int mouseButton, ReturnValue<?> returnValue) throws IOException {
         if (islandWarpGui != null) {
             islandWarpGui.mouseClicked(mouseX, mouseY, mouseButton);
@@ -359,32 +406,16 @@ public class GuiChestHook {
             return;
         }
 
-        if (textFieldMatch != null) {
-            textFieldMatch.mouseClicked(mouseX, mouseY, mouseButton);
+        if (textFieldMatches != null) {
+            textFieldMatches.mouseClicked(mouseX, mouseY, mouseButton);
             textFieldExclusions.mouseClicked(mouseX, mouseY, mouseButton);
-        }
-
-        if (craftingPatternSelection != null && SkyblockAddons.getInstance().getInventoryUtils().getInventoryType() ==
-                InventoryType.CRAFTING_TABLE) {
-            craftingPatternSelection.mouseClicked(mouseX, mouseY, mouseButton);
         }
     }
 
     public static void color(float colorRed, float colorGreen, float colorBlue, float colorAlpha, IInventory lowerChestInventory) { //Item item, ItemStack stack
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (!main.getUtils().isOnSkyblock()) {
             return;
         }
-
-        // Draw here to make sure it's in the background of the GUI and items overlay it.
-        if (false && /*main.getConfigValues().isEnabled(Feature.CRAFTING_PATTERNS) && */
-                main.getInventoryUtils().getInventoryType() == InventoryType.CRAFTING_TABLE &&
-                craftingPatternSelection != null) {
-            craftingPatternSelection.draw();
-        }
-
-        Minecraft mc = Minecraft.getMinecraft();
 
         if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && lowerChestInventory.hasCustomName()) {
@@ -407,8 +438,6 @@ public class GuiChestHook {
     }
 
     public static int drawString(FontRenderer fontRenderer, String text, int x, int y, int color) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW) &&
                 main.getConfigValues().isEnabled(Feature.MAKE_BACKPACK_INVENTORIES_COLORED) && BackpackInventoryManager.getBackpackColor() != null) {
             return fontRenderer.drawString(text, x,y, BackpackInventoryManager.getBackpackColor().getInventoryTextColor());
@@ -416,24 +445,32 @@ public class GuiChestHook {
         return fontRenderer.drawString(text,x,y,color);
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void mouseReleased(ReturnValue<?> returnValue) {
         if (islandWarpGui != null) {
             returnValue.cancel();
         }
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void mouseClickMove(ReturnValue<?> returnValue) {
         if (islandWarpGui != null) {
             returnValue.cancel();
         }
     }
 
+    /**
+     * @see codes.biscuit.skyblockaddons.asm.GuiChestTransformer#transform(ClassNode, String)
+     */
+    @SuppressWarnings("unused")
     public static void onRenderChestForegroundLayer(GuiChest guiChest) {
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY)) {
-            Minecraft mc = Minecraft.getMinecraft();
-
             if (guiChest.inventorySlots.inventorySlots.size() > 13) {
                 Slot slot = guiChest.inventorySlots.inventorySlots.get(13);
                 if (slot != null) {
@@ -463,7 +500,7 @@ public class GuiChestHook {
                             int renderY = y + 22;
 
                             GlStateManager.disableDepth();
-                            drawTooltipBackground(renderX, renderY, stringWidth, 8);
+                            drawTooltipBackground(renderX, renderY, stringWidth);
                             mc.fontRendererObj.drawString(reforge, renderX, renderY, color, true);
                             GlStateManager.enableDepth();
                         }
@@ -473,18 +510,18 @@ public class GuiChestHook {
         }
     }
 
-    private static void drawTooltipBackground(float x, float y, float width, float height) {
+    private static void drawTooltipBackground(float x, float y, float width) {
         int l = -267386864;
         DrawUtils.drawRectAbsolute(x - 3, y - 4, x + width + 3, y - 3, l);
-        DrawUtils.drawRectAbsolute(x - 3, y + height + 3, x + width + 3, y + height + 4, l);
-        DrawUtils.drawRectAbsolute(x - 3, y - 3, x + width + 3, y + height + 3, l);
-        DrawUtils.drawRectAbsolute(x - 4, y - 3, x - 3, y + height + 3, l);
-        DrawUtils.drawRectAbsolute(x + width + 3, y - 3, x + width + 4, y + height + 3, l);
+        DrawUtils.drawRectAbsolute(x - 3, y + 8 + 3, x + width + 3, y + 8 + 4, l);
+        DrawUtils.drawRectAbsolute(x - 3, y - 3, x + width + 3, y + 8 + 3, l);
+        DrawUtils.drawRectAbsolute(x - 4, y - 3, x - 3, y + 8 + 3, l);
+        DrawUtils.drawRectAbsolute(x + width + 3, y - 3, x + width + 4, y + 8 + 3, l);
 
         int borderColor = 1347420415;
-        DrawUtils.drawRectAbsolute(x - 3, y - 3 + 1, x - 3 + 1, y + height + 3 - 1, borderColor);
-        DrawUtils.drawRectAbsolute(x + width + 2, y - 3 + 1, x + width + 3, y + height + 3 - 1, borderColor);
+        DrawUtils.drawRectAbsolute(x - 3, y - 3 + 1, x - 3 + 1, y + 8 + 3 - 1, borderColor);
+        DrawUtils.drawRectAbsolute(x + width + 2, y - 3 + 1, x + width + 3, y + 8 + 3 - 1, borderColor);
         DrawUtils.drawRectAbsolute(x - 3, y - 3, x + width + 3, y - 3 + 1, borderColor);
-        DrawUtils.drawRectAbsolute(x - 3, y + height + 2, x + width + 3, y + height + 3, borderColor);
+        DrawUtils.drawRectAbsolute(x - 3, y + 8 + 2, x + width + 3, y + 8 + 3, borderColor);
     }
 }
