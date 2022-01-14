@@ -1061,7 +1061,7 @@ public class RenderListener {
 
         if (feature == Feature.DUNGEONS_SECRETS_DISPLAY) {
             width += 16 + 2;
-            height += 14;
+            height += 12;
         }
 
         if (feature == Feature.FETCHUR_TODAY) {
@@ -1292,7 +1292,7 @@ public class RenderListener {
             int maxSecrets = main.getDungeonManager().getMaxSecrets();
 
             FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText("§n" + text, x + 16 + 2, y, color);
+            DrawUtils.drawText(text, x + 16 + 2, y, color);
             FontRendererHook.endFeatureFont();
 
             if (secrets == -1 && buttonLocation != null) {
@@ -1303,7 +1303,7 @@ public class RenderListener {
             if (secrets == -1 | maxSecrets == 0) {
                 FontRendererHook.setupFeatureFont(feature);
                 String none = Translations.getMessage("messages.none");
-                DrawUtils.drawText(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 12, color);
+                DrawUtils.drawText(none, x + 16 + 2 + mc.fontRendererObj.getStringWidth(text) / 2F - mc.fontRendererObj.getStringWidth(none) / 2F, y + 10, color);
                 FontRendererHook.endFeatureFont();
             } else {
                 if (secrets > maxSecrets) {
@@ -1351,7 +1351,7 @@ public class RenderListener {
             float dealtDamage = main.getPlayerListener().getSpiritSceptreDealtDamage();
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 16 + 2, y, color);
-            if (hitEnemies <= 1) {
+            if (hitEnemies == 1) {
                 DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y + 9, color);
             }
             else {
@@ -1361,7 +1361,9 @@ public class RenderListener {
             FontRendererHook.endFeatureFont();
             ItemStack held = Minecraft.getMinecraft().thePlayer.getHeldItem();
             String skyblockItemID = ItemUtils.getSkyblockItemID(held);
-            if (skyblockItemID == null || skyblockItemID.equals("HYPERION")) {
+            if (buttonLocation != null) {
+                renderItem(HYPERION, x, y);
+            } else if (skyblockItemID.equals("HYPERION")) {
                 renderItem(HYPERION, x, y);
             } else if (skyblockItemID.equals("VALKYRIE")) {
                 renderItem(VALKYRIE, x, y);
