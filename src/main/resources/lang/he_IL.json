@@ -142,7 +142,7 @@
     "showCriticalTeammates": "הצג חברי קבוצת הDungeon הנמצאים במצב קריטי",
     "showGlowingItemsOnIsland": "הצג חפצים זוהרים בIsland",
     "showItemDungeonFloor": "הצג את הFloor בה הושג חפץ הDungeon",
-    "showDungeonMilestone": "Show Dungeon Milestone",
+    "showDungeonMilestone": "הצג אבני דרך של ה-Dungeon",
     "dungeonsCollectedEssencesDisplay": "תצוגת סך כל הDungeons Essences שנצבר",
     "stopBonzoStaffSounds": "הפסק את הסאונד של ה- Bonzo's Staff",
     "showRarityUpgraded": "הצג אם הרמה של חפץ שודרגה",
@@ -501,6 +501,6 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "מקסימלי"
   }
 }
