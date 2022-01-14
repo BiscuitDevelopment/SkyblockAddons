@@ -170,8 +170,8 @@
     "showSwordKills": "Mostrar kills com a espada",
     "compactTabList": "Lista de jogadores compacta",
     "highlightSpecialEnchantments": "Destacar encantamentos especiais",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Desativar as mensagens de dano no chat",
+    "showSpiritSceptreDisplay": "Mostrador de dano do Spirit Sceptre/Wither Blade",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Esconder descrições dos painéis de vidro dos menus",
     "candyPointsCounter": "Contador de pontos/doces do Spooky Event",
@@ -341,7 +341,7 @@
         "notFound": "Não foi possível encontrar a marca do servidor!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copia os dados do bloco para o qual estás a olhar"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copiar o texto da tabela lateral",
         "detailedHelp": {
           "description": "Copia o texto apresentado na barra lateral",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copia o cabeçalho e o rodapé da lista de jogadores",
         "detailedHelp": {
           "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Envia os valores armazenados nos contadores de mortes na Dungeon para o chat."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Recarrega todas as definições e recursos do mod. O jogo irá congelar durante alguns segundos."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Recarrega as definições do mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Recarrega os recursos do mod. O jogo irá congelar durante alguns segundos."
       },
       "set": {
         "zealotCounter": {
@@ -440,7 +440,7 @@
         "invalidStat": "\"%input%\" não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Alterna o registo de mensagens da barra de ação",
         "disabled": "As mensagens da barra de ação não serão mais registadas.",
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
