@@ -344,7 +344,7 @@
         "help": "Copia os dados do bloco para o qual estás a olhar"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copia os dados NBT das entidades com o(s) nome(s) dados dentro do raio determinado à volta do jogador",
         "detailedHelp": {
           "description": "Copia os dados NBT das entidades. Os dados dos tipos de entidades incluídas no raio à volta do jogador podem ser personalizados. Se não forem fornecidas definições, serão usados os valores predefinidos. As definições predefinidas são: incluir jogadores, suportes para armaduras e criaturas num raio de 3 blocos. Se não for fornecido um raio, será usado o valor predefinido.",
           "options": {
