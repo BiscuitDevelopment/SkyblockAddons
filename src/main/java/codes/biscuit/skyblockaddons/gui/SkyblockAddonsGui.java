@@ -114,7 +114,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         buttonList.add(new ButtonSocial(width / 2 + 200, 30, main, EnumUtils.Social.YOUTUBE));
         buttonList.add(new ButtonSocial(width / 2 + 175, 30, main, EnumUtils.Social.DISCORD));
         buttonList.add(new ButtonSocial(width / 2 + 150, 30, main, EnumUtils.Social.GITHUB));
-        buttonList.add(new ButtonSocial(width / 2 + 125, 30, main, EnumUtils.Social.PATREON));
+        // buttonList.add(new ButtonSocial(width / 2 + 125, 30, main, EnumUtils.Social.PATREON));
 
         for (Feature feature : features) {
             if (skip == 0) {
@@ -475,7 +475,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxWidth = 140;
         int boxHeight = 50;
         int x = halfWidth+90;
-        double y = getRowHeight(displayCount/3+1);
+        double y = getRowHeight(displayCount/3d+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Translations.getMessage("languageText")+Feature.LANGUAGE.getMessage(), main, Feature.LANGUAGE));
     }
 
@@ -484,7 +484,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxWidth = 140;
         int boxHeight = 50;
         int x = halfWidth-90-boxWidth;
-        double y = getRowHeight(displayCount/3+1);
+        double y = getRowHeight(displayCount/3d+1);
         buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Feature.EDIT_LOCATIONS.getMessage(), main, Feature.EDIT_LOCATIONS));
     }
 
