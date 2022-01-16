@@ -37,13 +37,13 @@ public class PersistentValuesManager {
         private DragonTrackerData dragonTracker = new DragonTrackerData();
         private Map<String, CompressedStorage> storageCache = new HashMap<>();
 
-        private boolean blockCraftingIncompletePatterns = true;
-        private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE;
+        private boolean blockCraftingIncompletePatterns = true; // unused after crafting pattern removal
+        private CraftingPattern selectedCraftingPattern = CraftingPattern.FREE; // unused after crafting pattern removal
 
         private int oresMined = 0;
         private int seaCreaturesKilled = 0;
 
-        private long lastTimeFetchur;
+        private long lastTimeFetchur = 0L; // Last time the player gave Fetchur the correct item in ms from epoch
 
         private HypixelLanguage hypixelLanguage = HypixelLanguage.ENGLISH;
     }
@@ -52,25 +52,32 @@ public class PersistentValuesManager {
         this.persistentValuesFile = new File(configDir.getAbsolutePath() + "/skyblockaddons_persistent.cfg");
     }
 
+    /**
+     * Loads the persistent values from {@code config/skyblockaddons_persistent.cfg} in the user's Minecraft folder.
+     */
     public void loadValues() {
-        if (this.persistentValuesFile.exists()) {
+        if (persistentValuesFile.exists()) {
 
-            try (FileReader reader = new FileReader(this.persistentValuesFile)) {
+            try (FileReader reader = new FileReader(persistentValuesFile)) {
                 persistentValues = SkyblockAddons.getGson().fromJson(reader, PersistentValues.class);
 
             } catch (Exception ex) {
                 SkyblockAddons.getLogger().error("There was an error while trying to load persistent values.");
                 SkyblockAddons.getLogger().catching(ex);
-                this.saveValues();
+                saveValues();
             }
 
         } else {
-            this.saveValues();
+            saveValues();
         }
         FetchurManager.getInstance().postPersistentConfigLoad();
     }
 
+    /**
+     * Saves the persistent values to {@code config/skyblockaddons_persistent.cfg} in the user's Minecraft folder.
+     */
     public void saveValues() {
+        // TODO: Better error handling that tries again/tells the player if it fails
         SkyblockAddons.runAsync(() -> {
             if (!SAVE_LOCK.tryLock()) {
                 return;
@@ -80,8 +87,8 @@ public class PersistentValuesManager {
                 //noinspection ResultOfMethodCallIgnored
                 persistentValuesFile.createNewFile();
 
-                try (FileWriter writer = new FileWriter(this.persistentValuesFile)) {
-                    SkyblockAddons.getGson().toJson(this.persistentValues, writer);
+                try (FileWriter writer = new FileWriter(persistentValuesFile)) {
+                    SkyblockAddons.getGson().toJson(persistentValues, writer);
                 }
             } catch (Exception ex) {
                 SkyblockAddons.getLogger().error("An error occurred while attempting to save persistent values!");
@@ -92,10 +99,23 @@ public class PersistentValuesManager {
         });
     }
 
+    /**
+     * Adds one to the summoning eye counter, adds the kills since last eye to the lifetime kill counter, and resets the kills since last eye counter.
+     */
     public void addEyeResetKills() {
-        this.persistentValues.summoningEyeCount++;
-        this.persistentValues.totalKills += this.persistentValues.kills;
-        this.persistentValues.kills = -1; // This is triggered before the death of the killed zealot, so the kills are set to -1 to account for that.
-        this.saveValues();
+        persistentValues.summoningEyeCount++;
+        persistentValues.totalKills += persistentValues.kills;
+        persistentValues.kills = -1; // This is triggered before the death of the killed zealot, so the kills are set to -1 to account for that.
+        saveValues();
+    }
+
+    /**
+     * Resets all zealot counter stats.
+     */
+    public void resetZealotCounter() {
+        persistentValues.summoningEyeCount = 0;
+        persistentValues.totalKills = 0;
+        persistentValues.kills = 0;
+        saveValues();
     }
 }

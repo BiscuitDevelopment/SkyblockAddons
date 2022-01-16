@@ -203,7 +203,7 @@ public enum Feature {
     HIDE_SPAWN_POINT_PLAYERS(201, "settings.hideSpawnPointPlayers", null, true),
     SPIRIT_SCEPTRE_DISPLAY(202, "settings.showSpiritSceptreDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GRAY), false, EnumUtils.FeatureSetting.DISABLE_SPIRIT_SCEPTRE_MESSAGES),
     DISABLE_SPIRIT_SCEPTRE_MESSAGES(203, null, false),
-    FARM_EVENT_TIMER(204, "settings.farmEventTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    FARM_EVENT_TIMER(204, "settings.jacobsContestTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(205, null, false),
     OUTBID_ALERT_SOUND(206, Message.SETTING_OUTBID_ALERT_SOUND,true, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     BROOD_MOTHER_ALERT(207, Message.SETTING_BROOD_MOTHER_WARNING, false),
