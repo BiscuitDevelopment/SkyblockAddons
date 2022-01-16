@@ -4,8 +4,8 @@
   "settings": {
     "settings": "设定",
     "magmaBossWarning": "岩浆怪 Boss 生成警告",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal boss 生成提示",
+    "broodMotherWarning": "Brood Mother 生成提示",
     "itemDropConfirmation": "确认丢弃物品",
     "hideSkeletonHatBones": "隐藏骷髅头盔的骨头",
     "skeletonHatBonesBar": "骷髅头盔可抵挡攻击次数",
@@ -110,8 +110,8 @@
     "discordRP": "丰富 Discord 状态",
     "endstoneProtectorDisplay": "末地石护卫生成阶段显示",
     "fancyWarpMenu": "精致传送菜单",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "静音宠物鼠",
+    "onlyStopRatSqueak": "仅静音宠物鼠的吱吱声",
     "doubleWarp": "双重传送",
     "advancedMode": "高级模式",
     "legendarySeaCreatureWarning": "传奇海怪警告",
@@ -128,13 +128,13 @@
     "dungeonMapDisplay": "地牢地图显示",
     "rotateMap": "旋转地图至玩家方向",
     "centerRotationOnYourPlayer": "使旋转中心围绕玩家",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "仅在 Dwarven Mines 中显示 Fetchur 所需物品",
+    "showFetchurItemName": "提示 Fetchur 所需物品",
+    "showFetchurInventoryOpenOnly": "仅在物品栏打开时提示 Fetchur 所需的物品",
+    "warnWhenFetchurChanges": "当 Fetchur 所需物品更新时提醒我",
     "mapZoom": "地图缩放",
     "glowingDroppedItems": "标记掉落物",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "在地牢中高亮队友轮廓",
     "baseStatBoostPercentage": "显示地牢物品的基本属性加成",
     "colorByRarity": "按稀有度上色",
     "showPlayerHeadsOnMap": "在地牢地图上显示玩家头像",
@@ -149,7 +149,7 @@
     "revenantSlayerTracker": "猎杀追踪器 - 亡灵/僵尸",
     "tarantulaSlayerTracker": "猎杀追踪器 - 狼蛛/蜘蛛",
     "svenSlayerTracker": "猎杀追踪器 - 狼王/狼",
-    "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
+    "voidgloomSlayerTracker": "猎杀追踪器 - Voidgloom/末影人",
     "textMode": "文本模式",
     "dragonsNestOnly": "仅在龙之巢穴显示",
     "dragonStatsTracker": "末影龙击杀计数",
@@ -170,10 +170,10 @@
     "showSwordKills": "显示剑击杀数",
     "compactTabList": "简洁 Tab 列表",
     "highlightSpecialEnchantments": "高亮特殊附魔",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "disableDamageChatMessages": "关闭聊天栏伤害提示",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "outbidAlertSound": "新竞价提示音效",
+    "hideMenuGlassPanes": "隐藏菜单中玻璃板分隔符的物品信息",
     "candyPointsCounter": "Spooky Event 糖果/分数统计器",
     "healingCircleOpacity": "治疗光环不透明度",
     "chromaSize": "渐变色彩尺寸",
@@ -183,35 +183,35 @@
     "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
     "drillFuelBar": "Drill 燃料计量条",
     "drillFuelNumber": "Drill 燃料值",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "显示 Fetchur 今日所需物品",
     "fishingParticleOverlay": "更改钓鱼提示粒子的颜色",
-    "enchantmentLoreParsing": "Parse Enchant Tooltips",
-    "cooldownPrediction": "Predict and Shorten Cooldown",
+    "enchantmentLoreParsing": "分析附魔工具提示",
+    "cooldownPrediction": "预测和缩短冷却时间",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "放大提示粒子",
     "stackingEnchantProgress": "Show Stacking Enchant Progress",
     "showReforgeOverlay": "显示洗炼提示",
-    "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "reforgeFilter": "洗练筛选",
+    "hideEnchantDescription": "隐藏附魔描述",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
-      "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
+      "title": "Trevor 捕手相关功能",
+      "trackedEntityProximityIndicator": "显示追踪实体接近距离提示",
       "highlightTrackedEntity": "高亮追踪实体",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "This will be displayed above Trevor's head"
+      "showQuestCooldown": "显示 Trevor 任务冷却时间",
+      "showQuestCooldownDescription": "这将显示在 Trevor 的头上"
     },
     "showEnderChestPreview": "显示末影箱预览",
     "hideWhenNotDoingQuest": "在未进行任务时隐藏",
-    "showOverflowManaNumber": "Overflow Mana Number",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "showOverflowManaNumber": "Overflow Mana 数量",
+    "axeCooldownIndicator": "特殊伐木斧冷却时间指示器",
+    "vanillaHealthPrediction": "使用原版生命值预测",
     "entityOutlines": "显示实体轮廓",
-    "effectiveHealthNumber": "Effective Health Number",
+    "effectiveHealthNumber": "有效生命值",
     "guiScaleX": "GUI 横向长度: %scale%",
     "guiScaleY": "GUI 纵向高度: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "abbreviateSkillXpDenominator": "简化技能升级所需经验的提示",
+    "otherDefenseStats": "其他防御统计 (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "隐藏大厅出生点的玩家",
     "farmEventTimer": "Farm Event Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
@@ -275,7 +275,7 @@
     "legendarySeaCreatureWarning": "传奇钓落!",
     "bossApproaching": "Boss 即将生成!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Fetchur 所需物品已更新！ ",
     "enableAll": "全部启用",
     "disableAll": "全部禁用",
     "enchantmentInclusionExample": "例如: \"prot, feather\"",
@@ -288,7 +288,7 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "worldRenderedCooldownTime": "§c[SBA]: §r冷却: %time%s",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”"
   },
   "discordStatus": {
@@ -299,7 +299,7 @@
     "titlePurse": "钱包",
     "descriptionPurse": "显示当前钱包内的硬币数",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "显示当前持有的点券数",
     "titleStats": "玩家状态",
     "descriptionStats": "显示当前生命值，防御值及法力值",
     "titleZealots": "末影战士击杀数",
@@ -322,8 +322,8 @@
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
+    "title": "设定附魔显示数量",
+    "titleCompress": "压缩",
     "descriptionCompress": "以尽可能少的行数显示附魔名称",
     "titleNormal": "普通",
     "descriptionNormal": "以 Hypixel 标准样式显示附魔列表",
@@ -336,15 +336,15 @@
         "help": "打开主菜单"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "§e(开发者) §7显示服务端名称",
         "brandOutput": "服务端：%brand%",
         "notFound": "无法检测到服务端！"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(开发者) §7复制准星所指方块的 NBT"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
         "detailedHelp": {
           "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "§e(开发者) §7复制计分板文本",
         "detailedHelp": {
           "description": "复制侧边栏显示的文字",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "§e(开发者) §7复制页头页脚标签",
         "detailedHelp": {
           "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
         }
@@ -375,7 +375,7 @@
         },
         "disabled": "开发者模式已禁用！",
         "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
-        "prefix": "Dev"
+        "prefix": "开发者"
       },
       "edit": {
         "help": "编辑 GUI 位置"
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(开发者) §7将地牢死亡计数输出至聊天栏以供调试"
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "§e(开发者) §7重载 mod 设定"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
       },
       "set": {
         "zealotCounter": {
@@ -440,14 +440,14 @@
         "invalidStat": "\"%input%\" 不是有效的 boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "§e(开发者) §7切换日志操作栏消息",
         "disabled": "操作栏消息将不再被记录。",
         "enabled": "操作栏消息现在将被记录。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "开启 / 关闭岩浆怪 Boss 计时器调试信息记录",
+        "disabled": "岩浆怪 Boss 计时器将不再被计入日志。",
+        "enabled": "岩浆怪 Boss 计时器将被计入日志。"
       },
       "errors": {
         "wrongUsage": {
@@ -493,14 +493,14 @@
     "inCombat": "战斗中..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
+    "superTier": "满级附魔",
+    "highTier": "高级附魔",
+    "midTier": "中级附魔",
+    "lowTier": "低级附魔",
     "commas": "半角逗号",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
+    "expertiseKills": "Expertise 击杀数: ",
+    "compactedBlocks": "已压缩方块",
     "cultivatedCrops": "已收获作物",
-    "maxed": "Maxed"
+    "maxed": "已满配"
   }
 }
