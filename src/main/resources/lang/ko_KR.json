@@ -4,8 +4,8 @@
   "settings": {
     "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal 보스 알림",
+    "broodMotherWarning": "Brood Mother 경고",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
     "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
