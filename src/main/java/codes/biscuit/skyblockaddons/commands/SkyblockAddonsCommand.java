@@ -33,7 +33,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private static final String HEADER = "§7§m----------------§7[ §b§lSkyblockAddons §7]§7§m----------------";
     private static final String FOOTER = "§7§m-----------------------------------------------------";
-    private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "set", "slayer", "version", "dev", "brand", "copyBlock",
+    private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "resetZealotCounter", "set", "slayer", "version", "dev", "brand", "copyBlock",
             "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging",
             "toggleMagmaTimerLogging"};
 
@@ -71,6 +71,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                 "§b● " + CommandSyntax.HELP + " §7- " + Translations.getMessage("commandUsage.sba.help.help") + "\n" +
                 "§b● " + CommandSyntax.EDIT + " §7- " + Translations.getMessage("commandUsage.sba.edit.help") + "\n" +
                 "§b● " + CommandSyntax.SET + " §7- " + Translations.getMessage("commandUsage.sba.set.zealotCounter.help") + "\n" +
+                "§b● " + CommandSyntax.RESET_ZEALOT_COUNTER + " §7- " + Translations.getMessage("commandUsage.sba.resetZealotCounter.help") + "\n" +
                 "§b● " + CommandSyntax.FOLDER + " §7- " + Translations.getMessage("commandUsage.sba.folder.help") + "\n" +
                 "§b● " + CommandSyntax.SLAYER + " §7- " + Translations.getMessage("commandUsage.sba.slayer.help") + "\n" +
                 "§b● " + CommandSyntax.VERSION + " §7- " + Translations.getMessage("commandUsage.sba.version.help") + "\n" +
@@ -193,6 +194,9 @@ public class SkyblockAddonsCommand extends CommandBase {
                         devModeKeyBinding.deRegister();
                         main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage("commandUsage.sba.dev.disabled"));
                     }
+                } else if (args[0].equalsIgnoreCase("resetZealotCounter")) {
+                    main.getPersistentValuesManager().resetZealotCounter();
+                    main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage("commandUsage.sba.resetZealotCounter.resetSuccess"));
                 } else if (args[0].equalsIgnoreCase("set")) {
                     int number;
 
@@ -391,7 +395,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (main.isDevMode()) {
             return getListOfStringsMatchingLastWord(args, SUBCOMMANDS);
         } else {
-            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(SUBCOMMANDS, 6));
+            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(SUBCOMMANDS, 7));
         }
     }
 
@@ -450,6 +454,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD("/sba reload"),
         RELOAD_CONFIG("/sba reloadConfig"),
         RELOAD_RES("/sba reloadRes"),
+        RESET_ZEALOT_COUNTER("/sba resetZealotCounter"),
         PD("/sba pd"),
         TOGGLE_MAGMA_TIMER_LOGGING("/sba toggleMagmaTimerLogging"),
         VERSION("/sba version")
@@ -473,6 +478,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         HELP(CommandSyntax.HELP, "commandUsage.sba.help.help", Collections.singletonList(CommandOption.COMMAND)),
         EDIT(CommandSyntax.EDIT, "commandUsage.sba.edit.help", null),
         SET(CommandSyntax.SET, "commandUsage.sba.set.zealotCounter.detailedHelp.description", Arrays.asList(CommandOption.ZEALOTS, CommandOption.EYES, CommandOption.TOTAL_ZEALOTS)),
+        RESET_ZEALOT_COUNTER(CommandSyntax.RESET_ZEALOT_COUNTER, "commandUsage.sba.resetZealotCounter.help", null),
         FOLDER(CommandSyntax.FOLDER, "commandUsage.sba.folder.help", null),
         DEV(CommandSyntax.DEV, "commandUsage.sba.dev.detailedHelp.description", null),
         BRAND(CommandSyntax.BRAND, "commandUsage.sba.brand.help", null),
