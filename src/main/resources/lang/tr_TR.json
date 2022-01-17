@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
-    "farmEventTimer": "Farm Event Zamanlayıcısı",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
