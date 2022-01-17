@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Esconder jogadores na origem do hub",
-    "jacobsContestTimer": "Jacob's Contest Timer",
+    "jacobsContestTimer": "Temporizador do Jacob’s contest",
     "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens"
   },
   "messages": {
@@ -405,8 +405,8 @@
         "help": "Recarrega os recursos do mod. O jogo irá congelar durante alguns segundos."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Repõe todas as contagens do contador de zealots.",
+        "resetSuccess": "O contador de zealots foi redefinido!"
       },
       "set": {
         "zealotCounter": {
