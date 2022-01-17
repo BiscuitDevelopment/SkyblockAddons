@@ -172,7 +172,7 @@
     "highlightSpecialEnchantments": "'ighlight Special Enchantments",
     "disableDamageChatMessages": "Disable Damage Chat Messages",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Cutlass Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "outbidAlertSound": "Outbid Alert Noise",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Count'r",
     "healingCircleOpacity": "Healin' Circle Opacity",
@@ -211,7 +211,7 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Shorten Skill XP Denominator",
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "hideSpawnPointPlayers": "Hide Spawn Point Pirates",
     "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Do Nah Replace in Item Names"
   },
@@ -299,7 +299,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Shows yer count o' coins in ye purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Shows th' amount o' bits ye 'ave",
     "titleStats": "Position'",
     "descriptionStats": "Shows yer HP, Defense n' Mana stats",
     "titleZealots": "Zealots",
@@ -336,15 +336,15 @@
         "help": "Open th' main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "§e(Dev) §7Show th' server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand be not found!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Copies data about th' block that yer lookin' at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Copy NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
         "detailedHelp": {
           "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "§e(Dev) §7Copy th' scoreboard text",
         "detailedHelp": {
           "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "§e(Dev) §7Copy th' tab list header an' footer",
         "detailedHelp": {
           "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
@@ -393,19 +393,19 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Prints th' counts stored in th' dungeon scuttle counters fer debuggin' purposes."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Reloads all o' th' mod's settin's an' resources. Th' game shall freeze fer a few seconds."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "§e(Dev) §7Reloads th' mod's settin's"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Reloads th' mod's resources. Th' game shall freeze fer a few seconds."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
+        "help": "Restarts all th' zealot counter counts.",
         "resetSuccess": "Zealot counters reset!"
       },
       "set": {
@@ -444,12 +444,12 @@
         "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "§e(Dev) §7Toggle loggin' action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "§e(Dev) §7Toggle loggin' magma boss timer debug messages",
         "disabled": "Magma boss timer messages shall nay longer be logged.",
         "enabled": "Magma boss timer messages shall now be logged."
       },
