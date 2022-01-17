@@ -28,3 +28,4 @@ run
 .DS_Store
 Thumbs.db
 bytecode
+.vscode
