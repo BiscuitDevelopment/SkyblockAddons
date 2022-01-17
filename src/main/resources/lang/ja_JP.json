@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
-    "farmEventTimer": "農業イベントのタイマー",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
