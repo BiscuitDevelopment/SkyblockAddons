@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
     "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
-    "farmEventTimer": "Timer Farm Event",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "Memuat ulang semua resource mod. Game akan beku untuk beberapa detik."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
