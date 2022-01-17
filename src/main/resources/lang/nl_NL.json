@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
     "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
+    "jacobsContestTimer": "Timer Jacob's Contest",
     "dontReplaceRomanNumeralsInItemNames": "Niet vervangen in itemnamen"
   },
   "messages": {
@@ -405,8 +405,8 @@
         "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Reset alle zealottellers.",
+        "resetSuccess": "Zealottellers gereset!"
       },
       "set": {
         "zealotCounter": {
