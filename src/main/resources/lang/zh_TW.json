@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
-    "farmEventTimer": "農耕活動計時器",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
