@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Abreviar denominador do XP da skill",
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Esconder jogadores na origem do hub",
-    "farmEventTimer": "Farm Event Timer",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "Recarrega os recursos do mod. O jogo irá congelar durante alguns segundos."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
