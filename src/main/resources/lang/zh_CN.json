@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "简化技能升级所需经验的提示",
     "otherDefenseStats": "其他防御统计 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隐藏大厅出生点的玩家",
-    "farmEventTimer": "Farm Event Timer",
+    "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
@@ -403,6 +403,10 @@
       },
       "reloadRes": {
         "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
