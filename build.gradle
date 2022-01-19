@@ -54,15 +54,14 @@ minecraft {
 
     // Replace placeholders in source code
     replace("@VERSION@": project.version,
+            "@BUILD_NUMBER@": project.buildNumber,
             "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
     replaceIn("${project.modName}.java")
 }
 
 task configureProjectVersion {
     if (project.hasProperty("runningOnCi") && project.runningOnCi) {
-        if (project.hasProperty("buildId")) {
-            project.version = "${project.version}+${project.buildId}"
-        } else {
+        if (project.buildNumber == 0) {
             throw new InvalidUserDataException('No build ID provided for CI build.')
         }
     }

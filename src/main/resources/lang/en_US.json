@@ -449,6 +449,11 @@
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
+      "version": {
+        "help": "Prints the mod's version",
+        "hoverText": "Click to put in chat so you can copy.",
+        "version": "Version:"
+      },
       "errors": {
         "wrongUsage": {
           "generic": "Wrong usage!",

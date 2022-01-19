@@ -15,9 +15,9 @@ import com.google.common.base.CaseFormat;
 import lombok.Getter;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.command.*;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.event.ClickEvent;
+import net.minecraft.event.HoverEvent;
+import net.minecraft.util.*;
 
 import java.awt.*;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
     private static final String HEADER = "§7§m----------------§7[ §b§lSkyblockAddons §7]§7§m----------------";
     private static final String FOOTER = "§7§m-----------------------------------------------------";
-    private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "set", "slayer", "dev", "brand", "copyBlock",
+    private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "set", "slayer", "version", "dev", "brand", "copyBlock",
             "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging",
             "toggleMagmaTimerLogging"};
 
@@ -73,6 +73,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                 "§b● " + CommandSyntax.SET + " §7- " + Translations.getMessage("commandUsage.sba.set.zealotCounter.help") + "\n" +
                 "§b● " + CommandSyntax.FOLDER + " §7- " + Translations.getMessage("commandUsage.sba.folder.help") + "\n" +
                 "§b● " + CommandSyntax.SLAYER + " §7- " + Translations.getMessage("commandUsage.sba.slayer.help") + "\n" +
+                "§b● " + CommandSyntax.VERSION + " §7- " + Translations.getMessage("commandUsage.sba.version.help") + "\n" +
                 "§b● " + CommandSyntax.DEV + " §7- " + Translations.getMessage("commandUsage.sba.dev.help");
 
         if (main.isDevMode()) {
@@ -254,6 +255,23 @@ public class SkyblockAddonsCommand extends CommandBase {
                             throw new WrongUsageException(e.getMessage());
                         }
                     }
+                } else if (args[0].equalsIgnoreCase("version")) {
+                    String versionString = Translations.getMessage("commandUsage.sba.version.version") + " v" + SkyblockAddons.VERSION;
+                    // Set by CI, is not actually constant
+                    //noinspection ConstantConditions
+                    if (!SkyblockAddons.BUILD_NUMBER.equals(SkyblockAddons.DEFAULT_BUILD_NUMBER)) {
+                        versionString = versionString + " build " + SkyblockAddons.BUILD_NUMBER;
+                    }
+
+                    ChatComponentText versionChatComponent = new ChatComponentText(versionString);
+                    ChatStyle versionChatStyle = new ChatStyle().setColor(EnumChatFormatting.AQUA)
+                            .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
+                                    new ChatComponentText(
+                                            Translations.getMessage("commandUsage.sba.version.hoverText"))
+                                            .setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE))))
+                            .setChatClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, versionString));
+                    versionChatComponent.setChatStyle(versionChatStyle);
+                    main.getUtils().sendMessage(versionChatComponent, true);
                 } else if (main.isDevMode()) {
                     if (args[0].equalsIgnoreCase("brand")) {
                         String serverBrand = DevUtils.getServerBrand();
@@ -373,7 +391,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         if (main.isDevMode()) {
             return getListOfStringsMatchingLastWord(args, SUBCOMMANDS);
         } else {
-            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(SUBCOMMANDS, 5));
+            return getListOfStringsMatchingLastWord(args, Arrays.copyOf(SUBCOMMANDS, 6));
         }
     }
 
@@ -433,7 +451,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD_CONFIG("/sba reloadConfig"),
         RELOAD_RES("/sba reloadRes"),
         PD("/sba pd"),
-        TOGGLE_MAGMA_TIMER_LOGGING("/sba toggleMagmaTimerLogging")
+        TOGGLE_MAGMA_TIMER_LOGGING("/sba toggleMagmaTimerLogging"),
+        VERSION("/sba version")
         ;
 
         @Getter
@@ -468,6 +487,7 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD_RES(CommandSyntax.RELOAD_RES, "commandUsage.sba.reloadRes.help", null),
         PD(CommandSyntax.PD, "commandUsage.sba.printDeaths.help", null),
         TOGGLE_MAGMA_TIMER_LOGGING(CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING, "commandUsage.sba.toggleMagmaTimerLogging.help", null),
+        VERSION(CommandSyntax.VERSION, "commandUsage.sba.version.help", null)
         ;
 
         private final CommandSyntax syntax;

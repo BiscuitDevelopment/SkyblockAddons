@@ -54,6 +54,14 @@
             <AppenderRef ref="File" />
             <AppenderRef ref="ServerGuiConsole" level="INFO" />
         </Logger>
+        <Logger level="info" name="FML" additivity="false">
+            <filters>
+                <RegexFilter regex="^Zip file lombok-.*$" onMatch="DENY" onMismatch="NEUTRAL" />
+            </filters>
+            <AppenderRef ref="SysOut" level="INFO" />
+            <AppenderRef ref="File" />
+            <AppenderRef ref="ServerGuiConsole" level="INFO" />
+        </Logger>
         <Root level="all">
             <AppenderRef ref="FmlSysOut" level="INFO" />
             <AppenderRef ref="ServerGuiConsole" level="INFO" />
