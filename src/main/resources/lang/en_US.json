@@ -454,7 +454,7 @@
         "enabled": "Magma boss timer messages will now be logged."
       },
       "version": {
-        "help": "Prints the mod's version",
+        "help": "Shows the mod's version",
         "hoverText": "Click to put in chat so you can copy.",
         "version": "Version:"
       },
