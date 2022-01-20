@@ -289,7 +289,9 @@
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "version": "Version",
+    "build": "Build"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -455,8 +457,7 @@
       },
       "version": {
         "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy.",
-        "version": "Version:"
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

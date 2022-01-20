@@ -260,11 +260,12 @@ public class SkyblockAddonsCommand extends CommandBase {
                         }
                     }
                 } else if (args[0].equalsIgnoreCase("version")) {
-                    String versionString = Translations.getMessage("commandUsage.sba.version.version") + " v" + SkyblockAddons.VERSION;
+                    String versionString = Translations.getMessage("messages.version") + " v" + SkyblockAddons.VERSION;
                     // Set by CI, is not actually constant
                     //noinspection ConstantConditions
                     if (!SkyblockAddons.BUILD_NUMBER.equals(SkyblockAddons.DEFAULT_BUILD_NUMBER)) {
-                        versionString = versionString + " build " + SkyblockAddons.BUILD_NUMBER;
+                        versionString = versionString + " " + Translations.getMessage("messages.build") + " " +
+                                SkyblockAddons.BUILD_NUMBER;
                     }
 
                     ChatComponentText versionChatComponent = new ChatComponentText(versionString);

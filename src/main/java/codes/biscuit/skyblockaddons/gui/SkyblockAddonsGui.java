@@ -364,7 +364,8 @@ public class SkyblockAddonsGui extends GuiScreen {
             // Set by CI, is not actually constant
             //noinspection ConstantConditions
             if (!SkyblockAddons.BUILD_NUMBER.equals(SkyblockAddons.DEFAULT_BUILD_NUMBER)) {
-                drawScaledString(gui, "Build " + SkyblockAddons.BUILD_NUMBER, gui.height - 12, defaultBlue, 1, 0);
+                drawScaledString(gui, Translations.getMessage("messages.build") + " " + SkyblockAddons.BUILD_NUMBER,
+                        gui.height - 12, defaultBlue, 1, 0);
             }
         }
         SkyblockAddons.getInstance().getUtils().restoreGLOptions();
