@@ -172,7 +172,7 @@
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
     "disableDamageChatMessages": "Disable Damage Chat Messages",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "outbidAlertSound": "입찰 알림 소리",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
@@ -299,7 +299,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "당신이 가지고 있는 Bits의 양을 표시합니다",
     "titleStats": "스탯",
     "descriptionStats": "당신의 HP, Defence과 Mana 스탯을 보여줍니다",
     "titleZealots": "Zealots",
@@ -336,15 +336,15 @@
         "help": "메인 메뉴 열기"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "§e(개발자 모드) §7서버 브랜드 보이기",
         "brandOutput": "서버 브랜드: %brand%",
         "notFound": "서버 브랜드를 찾을 수 없습니다!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(개발자 모드) §7특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
         "detailedHelp": {
           "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
@@ -354,7 +354,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "§e(개발자 모드) §7스코어보드 텍스트 복사하기",
         "detailedHelp": {
           "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
           "options": {
@@ -363,7 +363,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "§e(개발자 모드) §7Tab 목록의 윗 글과 아랫 글 복사하기",
         "detailedHelp": {
           "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
         }
@@ -375,7 +375,7 @@
         },
         "disabled": "개발자 모드가 꺼졌습니다!",
         "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다.",
-        "prefix": "Dev"
+        "prefix": "개발자"
       },
       "edit": {
         "help": "GUI 위치 편집"
@@ -393,16 +393,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
@@ -444,14 +444,14 @@
         "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(개발자 모드) §7Magma boss 타이머 디버그 메시지 켜기/끄기",
+        "disabled": "더 이상 Magma boss의 타이머를 기록하지 않습니다.",
+        "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
       },
       "errors": {
         "wrongUsage": {
