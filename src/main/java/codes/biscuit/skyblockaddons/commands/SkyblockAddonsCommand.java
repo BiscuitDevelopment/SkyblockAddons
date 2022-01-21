@@ -263,7 +263,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     String versionString = Translations.getMessage("messages.version") + " v" + SkyblockAddons.VERSION;
                     // Set by CI, is not actually constant
                     //noinspection ConstantConditions
-                    if (!SkyblockAddons.BUILD_NUMBER.equals(SkyblockAddons.DEFAULT_BUILD_NUMBER)) {
+                    if (!SkyblockAddons.BUILD_NUMBER.isEmpty()) {
                         versionString = versionString + " " + Translations.getMessage("messages.build") + " " +
                                 SkyblockAddons.BUILD_NUMBER;
                     }

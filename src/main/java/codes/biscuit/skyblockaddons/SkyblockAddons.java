@@ -62,10 +62,10 @@ public class SkyblockAddons {
     public static final String MOD_ID = "skyblockaddons";
     public static final String MOD_NAME = "SkyblockAddons";
     public static String VERSION = "@VERSION@";
+    /**
+     * This is set by the CI. If the build isn't done on CI, this will be an empty string.
+     */
     public static final String BUILD_NUMBER = "@BUILD_NUMBER@";
-    /** The default value of {@code BUILD_NUMBER} when the build is not run on CI,
-     * used for hiding build number in version displays if it is not provided. */
-    public static final String DEFAULT_BUILD_NUMBER = "0";
 
     @Getter private static SkyblockAddons instance;
     @Getter private static boolean fullyInitialized;

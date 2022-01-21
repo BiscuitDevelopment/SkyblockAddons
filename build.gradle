@@ -41,9 +41,11 @@ dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
     implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
         exclude module: 'log4j'
+        because 'Different version conflicts with Minecraft\'s Log4J'
     }
     implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
+        because 'Different version conflicts with Minecraft\'s GSON'
     }
     testImplementation(platform('org.junit:junit-bom:5.8.1'))
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
@@ -51,6 +53,7 @@ dependencies {
 
 sourceSets {
     main {
+        // Forge needs resources to be in the same directory as the classes.
         output.resourcesDir = java.outputDir
     }
 }
@@ -61,7 +64,14 @@ minecraft {
 
     mappings = "${project.mappings}"
 
-    // Replace placeholders in source code
+    /*
+    I know this is ugly but the replace function runs super early so I can't put this stuff in a task since it'll always
+    end up running after the replace.
+     */
+
+    // The MAJOR.MINOR.PATCH part of the mod version
+    def modVersionPart = project.version
+
     if (project.hasProperty('runningOnCi')) {
         if (!project.hasProperty('buildNumber')) {
             throw new InvalidUserDataException('No build number provided for CI build.')
@@ -69,20 +79,24 @@ minecraft {
             throw new InvalidUserDataException('No run attempt provided for CI build.')
         } else {
             def nf = NumberFormat.getIntegerInstance(Locale.US)
-            includeRunAttempt = nf.parse((String) project.property('runAttempt')) > 1
+            def buildNumber = project.property('buildNumber')
+            def runAttempt = project.property('runAttempt')
+            includeRunAttempt = nf.parse(runAttempt as String) > 1
 
             try {
                 if (includeRunAttempt) {
-                    project.setProperty('buildNumber', "${project.ext.buildNumber}.${project.ext.runAttempt}")
+                    project.setProperty('buildNumber', "${buildNumber}.${nf.parse(runAttempt as String) - 1}")
                 }
-                formattedBuildNumber = nf.format(nf.parse((String) project.property('buildNumber')))
+                formattedBuildNumber = nf.format(nf.parse(project.property('buildNumber') as String))
+                project.version = "${project.version}+" + project.property('buildNumber')
             } catch (ParseException e) {
                 throw new InvalidUserDataException("Build number could not be parsed (${e.message})", e)
             }
         }
     }
 
-    replace("@VERSION@": project.version,
+    // Replace placeholders in source code
+    replace("@VERSION@": modVersionPart,
             "@BUILD_NUMBER@": formattedBuildNumber,
             "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
     replaceIn("${project.name}.java")
@@ -101,14 +115,13 @@ jar {
     dependsOn copyLicenses
 
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveFileName = "${project.name}-${project.version}" +
-            "${project.hasProperty('runningOnCi') ? "+" + project.property('buildNumber') : ""}-for-MC-${project.minecraftVersion}.jar"
+    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
             'Manifest-Version': '2.0',
             'Main-Class': 'SkyblockAddonsInstallerFrame',
             'Implementation-Title': project.name,
-            'Implementation-Version': project.version + project.hasProperty('runningOnCi') ? "+" + project.property('buildNumber') : "",
+            'Implementation-Version': project.version,
             'Implementation-Vendor' : 'BiscuitDevelopment',
             'Specification-Title': project.name,
             'Specification-Vendor': 'BiscuitDevelopment',
@@ -156,11 +169,10 @@ processResources {
         include 'mcmod.info'
 
         // replace version and mcversion
-        expand(version: project.version + project.hasProperty('runningOnCi') ? "+" + project.property('buildNumber') : "",
-                mcversion: project.minecraft.version)
+        expand(version: project.version, mcversion: project.minecraft.version)
     }
 
-    // copy everything else, thats not the mcmod.info
+    // copy everything else that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
