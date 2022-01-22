@@ -289,7 +289,8 @@
     "copyModeSet": "A fejlesztői másoló mód be lett állítva: %mode%. Nyomd meg a \"%keyName%\" gombot a másoláshoz!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rIdőzítő: %time%s",
-    "entityOutlinesRequirement": "A Shaderek, Fast Render és az Antialiasing legyenek kikapcsolva"
+    "entityOutlinesRequirement": "A Shaderek, Fast Render és az Antialiasing legyenek kikapcsolva",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Semmi",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
