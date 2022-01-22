@@ -289,7 +289,8 @@
     "copyModeSet": "Th' developer copy mode be set t': %mode%. Press \"%keyName%\" t' trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF"
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -452,6 +453,10 @@
         "help": "§e(Dev) §7Toggle loggin' magma boss timer debug messages",
         "disabled": "Magma boss timer messages shall nay longer be logged.",
         "enabled": "Magma boss timer messages shall now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
