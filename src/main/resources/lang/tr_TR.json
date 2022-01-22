@@ -290,7 +290,7 @@
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
-    "version": "Version"
+    "version": "Versiyon"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -455,8 +455,8 @@
         "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Modun versiyonunu gösterir",
+        "hoverText": "Sohbette göstermek için tıkla bu sayede kopyalayabilirsin."
       },
       "errors": {
         "wrongUsage": {
