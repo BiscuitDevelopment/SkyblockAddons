@@ -289,7 +289,8 @@
     "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
     "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
-    "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」"
+    "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -452,6 +453,10 @@
         "help": "切換是否紀錄 Magma Boss 計時器的除錯訊息",
         "disabled": "Magma Boss 計時器訊息將不再被記錄。",
         "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
