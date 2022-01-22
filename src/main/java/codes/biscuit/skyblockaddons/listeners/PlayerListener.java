@@ -468,18 +468,19 @@ public class PlayerListener {
                 } else if ((matcher = PROFILE_CHAT_PATTERN.matcher(strippedText)).matches()) {
                     String profile = matcher.group(1);
 
-                    if (!profile.equals(main.getUtils().getProfileName())) {
+                    // TODO: Slothpixel can no longer handle our queries
+/*                    if (!profile.equals(main.getUtils().getProfileName())) {
                         APIManager.getInstance().onProfileSwitch(profile);
-                    }
+                    }*/
 
                     main.getUtils().setProfileName(profile);
 
                 } else if ((matcher = SWITCH_PROFILE_CHAT_PATTERN.matcher(strippedText)).matches()) {
                     String profile = matcher.group(1);
 
-                    if (!profile.equals(main.getUtils().getProfileName())) {
+/*                    if (!profile.equals(main.getUtils().getProfileName())) {
                         APIManager.getInstance().onProfileSwitch(profile);
-                    }
+                    }*/
 
                     main.getUtils().setProfileName(profile);
                 }

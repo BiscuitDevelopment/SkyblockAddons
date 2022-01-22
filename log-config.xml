@@ -55,8 +55,11 @@
             <AppenderRef ref="ServerGuiConsole" level="INFO" />
         </Logger>
         <Logger level="info" name="FML" additivity="false">
+            <!-- Filter out errors about reading module-info in Lombok on startup -->
             <filters>
                 <RegexFilter regex="^Zip file lombok-.*$" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="^There was a problem reading the entry module-info.class.*$" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="^Unable to read a class file correctly.*$" onMatch="DENY" onMismatch="NEUTRAL" />
             </filters>
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />

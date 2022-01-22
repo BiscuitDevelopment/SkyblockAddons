@@ -238,6 +238,7 @@ public class Utils {
     public void parseSidebar() {
         boolean foundScoreboard = false;
 
+        boolean foundActiveSoup = false;
         boolean foundLocation = false;
         boolean foundJerryWave = false;
         boolean foundAlphaIP = false;
@@ -338,32 +339,26 @@ public class Utils {
                             //noinspection DuplicateBranchesInSwitch
                             break;
                         case 6:
-                            // The player's coins balance
-                            matcher = PURSE_REGEX.matcher(strippedScoreboardLine);
-
-                            if (matcher.matches()) {
-                                try {
-                                    double oldCoins = purse;
-                                    purse = TextUtils.NUMBER_FORMAT.parse(matcher.group("coins")).doubleValue();
-
-                                    if (oldCoins != purse) {
-                                        onCoinsChange(purse - oldCoins);
-                                    }
-                                } catch (ParseException ignored) {
-                                    purse = 0;
-                                }
+                            /*
+                             If the player has Mushroom Soup active, this line will show the remaining duration.
+                             This shifts the following lines down.
+                             */
+                            if (strippedScoreboardLine.startsWith("Flight")) {
+                                foundActiveSoup = true;
+                            } else {
+                                parseCoins(strippedScoreboardLine);
                             }
                             break;
                         case 7:
-                            // The player's bits balance (this line will be blank if the player doesn't have any bits)
-                            matcher = BITS_REGEX.matcher(strippedScoreboardLine);
-
-                            if (matcher.matches()) {
-                                try {
-                                    bits = TextUtils.NUMBER_FORMAT.parse(matcher.group("bits")).doubleValue();
-                                } catch (ParseException ignored) {
-                                    bits = 0;
-                                }
+                            if (foundActiveSoup) {
+                                parseCoins(strippedScoreboardLine);
+                            } else {
+                                parseBits(strippedScoreboardLine);
+                            }
+                            break;
+                        case 8:
+                            if (foundActiveSoup) {
+                                parseBits(strippedScoreboardLine);
                             }
                             break;
                     }
@@ -865,5 +860,51 @@ public class Utils {
 
     public static int getBlockMetaId(Block block, int meta) {
         return Block.getStateId(block.getStateFromMeta(meta));
+    }
+
+    /**
+     * Parses the player's coins balance from a given scoreboard line. The balance will be set to 0 if parsing fails.
+     *
+     * @param strippedScoreboardLine the scoreboard line (without formatting codes) to parse coins from
+     */
+    private void parseCoins(String strippedScoreboardLine) {
+        // The player's coins balance
+        Matcher matcher = PURSE_REGEX.matcher(strippedScoreboardLine);
+
+        if (matcher.matches()) {
+            try {
+                double oldCoins = purse;
+                purse = TextUtils.NUMBER_FORMAT.parse(matcher.group("coins")).doubleValue();
+
+                if (oldCoins != purse) {
+                    onCoinsChange(purse - oldCoins);
+                }
+            } catch (ParseException ignored) {
+                purse = 0;
+            }
+        }
+    }
+
+    /**
+     * Parses the player's bits balance from a given scoreboard line. The balance will be set to 0 if parsing fails.
+     *
+     * @param strippedScoreboardLine the scoreboard line (without formatting codes) to parse bits from
+     */
+    private void parseBits(String strippedScoreboardLine) {
+        // If the line is empty, the player has no bits.
+        if (strippedScoreboardLine.isEmpty()) {
+            bits = 0;
+            return;
+        }
+
+        Matcher matcher = BITS_REGEX.matcher(strippedScoreboardLine);
+
+        if (matcher.matches()) {
+            try {
+                bits = TextUtils.NUMBER_FORMAT.parse(matcher.group("bits")).doubleValue();
+            } catch (ParseException ignored) {
+                bits = 0;
+            }
+        }
     }
 }
