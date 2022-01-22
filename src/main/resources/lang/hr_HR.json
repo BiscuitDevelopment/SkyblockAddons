@@ -289,7 +289,8 @@
     "copyModeSet": "Način kopiranja programera postavljen je na:%mode%. Pritisnite \"%keyName%\" da biste pokrenuli kopiranje podataka!",
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Zahtijeva da su ISKLJUČENI Shaderi, Fast Render i Antialiasing"
+    "entityOutlinesRequirement": "Zahtijeva da su ISKLJUČENI Shaderi, Fast Render i Antialiasing",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Ništa",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
