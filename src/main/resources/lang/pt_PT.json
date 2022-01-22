@@ -289,7 +289,8 @@
     "copyModeSet": "O modo de cópia para programadores foi definido para: %mode%. Pressiona \"%keyName%\" para copiar os dados!",
     "chroma": "Croma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTempo restante: %time%s",
-    "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS"
+    "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS",
+    "version": "Versão"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -452,6 +453,10 @@
         "help": "Alterna o registo das mensagens de depuração do temporizador do magma boss",
         "disabled": "As mensagens do temporizador do magma boss não serão registadas.",
         "enabled": "As mensagens do temporizador do magma boss serão registadas."
+      },
+      "version": {
+        "help": "Mostra a versão do mod",
+        "hoverText": "Clica para colocares no chat para que possas copiar."
       },
       "errors": {
         "wrongUsage": {
