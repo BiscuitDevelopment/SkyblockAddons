@@ -270,6 +270,21 @@ public class SkyblockAddons {
         }
     }
 
+    /**
+     * Returns the complete SemVer version with pre-release and build number if it is defined.
+     *
+     * @return the complete SemVer version string
+     */
+    public static String getVersionFull() {
+        // Set by CI, is not actually constant
+        //noinspection ConstantConditions
+        if (!SkyblockAddons.BUILD_NUMBER.isEmpty()) {
+            return SkyblockAddons.VERSION + '+' + SkyblockAddons.BUILD_NUMBER;
+        } else {
+            return SkyblockAddons.VERSION;
+        }
+    }
+
     public static void runAsync(Runnable runnable) {
         StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
         String fullClassName = stackTraceElement.getClassName();

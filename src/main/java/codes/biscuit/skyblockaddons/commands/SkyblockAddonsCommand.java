@@ -261,21 +261,19 @@ public class SkyblockAddonsCommand extends CommandBase {
                     }
                 } else if (args[0].equalsIgnoreCase("version")) {
                     String versionString = Translations.getMessage("messages.version") + " v" + SkyblockAddons.VERSION;
-                    // Set by CI, is not actually constant
-                    //noinspection ConstantConditions
-                    if (!SkyblockAddons.BUILD_NUMBER.isEmpty()) {
-                        versionString = versionString + " " + Translations.getMessage("messages.build") + " " +
-                                SkyblockAddons.BUILD_NUMBER;
-                    }
-
                     ChatComponentText versionChatComponent = new ChatComponentText(versionString);
                     ChatStyle versionChatStyle = new ChatStyle().setColor(EnumChatFormatting.AQUA)
                             .setChatHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
                                     new ChatComponentText(
                                             Translations.getMessage("commandUsage.sba.version.hoverText"))
                                             .setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE))))
-                            .setChatClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, versionString));
+                            .setChatClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, SkyblockAddons.getVersionFull()));
                     versionChatComponent.setChatStyle(versionChatStyle);
+
+                    /*
+                     Include MAJOR.MINOR.PATCH-pre-release in the chat message and add build number if it's defined when
+                     the user chooses to copy for diagnostic purposes.
+                     */
                     main.getUtils().sendMessage(versionChatComponent, true);
                 } else if (main.isDevMode()) {
                     if (args[0].equalsIgnoreCase("brand")) {

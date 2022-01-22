@@ -290,8 +290,7 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
-    "version": "Version",
-    "build": "Build"
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "None",

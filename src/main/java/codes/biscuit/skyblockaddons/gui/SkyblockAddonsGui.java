@@ -361,12 +361,6 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         if (gui instanceof SkyblockAddonsGui) {
             drawScaledString(gui, "Special Credits: InventiveTalent - Magma Boss Timer API", gui.height - 22, defaultBlue, 1, 0);
-            // Set by CI, is not actually constant
-            //noinspection ConstantConditions
-            if (!SkyblockAddons.BUILD_NUMBER.isEmpty()) {
-                drawScaledString(gui, Translations.getMessage("messages.build") + " " + SkyblockAddons.BUILD_NUMBER,
-                        gui.height - 12, defaultBlue, 1, 0);
-            }
         }
         SkyblockAddons.getInstance().getUtils().restoreGLOptions();
     }
