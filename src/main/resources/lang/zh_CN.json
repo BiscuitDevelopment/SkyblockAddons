@@ -289,7 +289,8 @@
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
     "worldRenderedCooldownTime": "§c[SBA]: §r冷却: %time%s",
-    "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”"
+    "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -452,6 +453,10 @@
         "help": "开启 / 关闭岩浆怪 Boss 计时器调试信息记录",
         "disabled": "岩浆怪 Boss 计时器将不再被计入日志。",
         "enabled": "岩浆怪 Boss 计时器将被计入日志。"
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
