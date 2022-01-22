@@ -289,7 +289,8 @@
     "copyModeSet": "Le mode développeur à été mis sur : %mode%. Pressez \"%keyName%\" pour effectuer une copie de donnée !",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rTemps de recharge: %time%s",
-    "entityOutlinesRequirement": "Nécessite que les Shaders, le Rendu rapide et l'Anticrénelage soient désactivés"
+    "entityOutlinesRequirement": "Nécessite que les Shaders, le Rendu rapide et l'Anticrénelage soient désactivés",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
