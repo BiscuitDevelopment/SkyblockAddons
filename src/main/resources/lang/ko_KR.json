@@ -289,7 +289,8 @@
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
     "chroma": "무지개",
     "worldRenderedCooldownTime": "§c[SBA]: §r쿨다운: %time%s",
-    "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다."
+    "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "없음",
@@ -452,6 +453,10 @@
         "help": "§e(개발자 모드) §7Magma boss 타이머 디버그 메시지 켜기/끄기",
         "disabled": "더 이상 Magma boss의 타이머를 기록하지 않습니다.",
         "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
