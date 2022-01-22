@@ -700,7 +700,9 @@ public class PlayerListener {
                 }
             }
 
-            if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS)) {
+            if (entity instanceof EntityOtherPlayerMP && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) &&
+                    main.getUtils().getLocation() != Location.GUEST_ISLAND &&
+                    main.getUtils().getLocation() != Location.THE_CATACOMBS) {
                 float health = ((EntityOtherPlayerMP) entity).getHealth();
 
                 if (NPCUtils.getNpcLocations().containsKey(entity.getUniqueID())) {

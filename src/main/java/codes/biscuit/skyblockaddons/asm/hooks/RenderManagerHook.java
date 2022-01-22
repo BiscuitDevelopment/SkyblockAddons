@@ -36,7 +36,7 @@ public class RenderManagerHook {
                     }
                 }
             }
-            if (main.getUtils().getLocation() != Location.THE_CATACOMBS && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && mc.theWorld != null) {
+            if (mc.theWorld != null && main.getConfigValues().isEnabled(Feature.HIDE_PLAYERS_NEAR_NPCS) && currentLocation != Location.GUEST_ISLAND && currentLocation != Location.THE_CATACOMBS) {
                 if (entityIn instanceof EntityOtherPlayerMP && !NPCUtils.isNPC(entityIn) && NPCUtils.isNearNPC(entityIn)) {
                     returnValue.cancel();
                 }
