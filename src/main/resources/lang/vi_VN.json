@@ -289,7 +289,8 @@
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
     "worldRenderedCooldownTime": "§c[SBA]: §rT.gian chờ: %time%gi",
-    "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing"
+    "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
