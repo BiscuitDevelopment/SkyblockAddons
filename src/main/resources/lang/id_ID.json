@@ -289,7 +289,8 @@
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF"
+    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
@@ -452,6 +453,10 @@
         "help": "Aktif/nonaktifkan pencatatan pesan-pesan timer magma boss",
         "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
         "enabled": "Pesan-pesan timer magma boss akan dicatat."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
