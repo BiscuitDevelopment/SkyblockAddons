@@ -18,3 +18,4 @@ pluginManagement {
         }
     }
 }
+rootProject.name = 'SkyblockAddons'

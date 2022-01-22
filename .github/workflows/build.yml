@@ -33,7 +33,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GRADLE_OPTS: -Dorg.gradle.daemon=false
-      ORG_GRADLE_PROJECT_buildId: ${{ github.run_id }}.${{ github.run_attempt }}
+      ORG_GRADLE_PROJECT_buildNumber: ${{ github.run_number }}
+      ORG_GRADLE_PROJECT_runAttempt: ${{ github.run_attempt }}
       ORG_GRADLE_PROJECT_runningOnCi: ${{ true }}
       UPLOAD_ARTIFACT_ENABLED: ${{ true }}
     timeout-minutes: 15
@@ -64,5 +65,5 @@ jobs:
         project_version: ${{ steps.read_project_version.outputs.value }}
       uses: actions/upload-artifact@v2
       with:
-        name: SkyblockAddons v${{ env.project_version }}+${{ env.ORG_GRADLE_PROJECT_buildId }}
+        name: SkyblockAddons v${{ env.project_version }}+${{ env.ORG_GRADLE_PROJECT_buildNumber }}
         path: build/libs/*

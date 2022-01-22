@@ -1,3 +1,6 @@
+import java.text.NumberFormat
+import java.text.ParseException
+
 plugins {
     id 'java'
     id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
@@ -6,6 +9,12 @@ plugins {
 }
 
 group = 'codes.biscuit'
+
+ext {
+    formattedBuildNumber = ''
+    includeRunAttempt = false
+    modId = project.name.toLowerCase(Locale.US)
+}
 
 // The below line is for version checkers <= 1.4.2
 //version = "1.6.1"
@@ -32,9 +41,11 @@ dependencies {
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
     implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
         exclude module: 'log4j'
+        because 'Different version conflicts with Minecraft\'s Log4J'
     }
     implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
+        because 'Different version conflicts with Minecraft\'s GSON'
     }
     testImplementation(platform('org.junit:junit-bom:5.8.1'))
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
@@ -42,6 +53,7 @@ dependencies {
 
 sourceSets {
     main {
+        // Forge needs resources to be in the same directory as the classes.
         output.resourcesDir = java.outputDir
     }
 }
@@ -52,25 +64,58 @@ minecraft {
 
     mappings = "${project.mappings}"
 
-    // Replace placeholders in source code
-    replace("@VERSION@": project.version,
-            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
-    replaceIn("${project.modName}.java")
-}
+    /*
+    I know this is ugly but the replace function runs super early so I can't put this stuff in a task since it'll always
+    end up running after the replace.
+     */
 
-task configureProjectVersion {
-    if (project.hasProperty("runningOnCi") && project.runningOnCi) {
-        if (project.hasProperty("buildId")) {
-            project.version = "${project.version}+${project.buildId}"
+    // The MAJOR.MINOR.PATCH part of the mod version
+    def modVersionPart = project.version
+
+    if (project.hasProperty('runningOnCi')) {
+        if (!project.hasProperty('buildNumber')) {
+            throw new InvalidUserDataException('No build number provided for CI build.')
+        } else if (!project.hasProperty('runAttempt')) {
+            throw new InvalidUserDataException('No run attempt provided for CI build.')
         } else {
-            throw new InvalidUserDataException('No build ID provided for CI build.')
+            def nf = NumberFormat.getIntegerInstance(Locale.US)
+            def buildNumber = project.property('buildNumber')
+            def runAttempt = project.property('runAttempt')
+            includeRunAttempt = nf.parse(runAttempt as String) > 1
+
+            try {
+                if (includeRunAttempt) {
+                    project.setProperty('buildNumber', "${buildNumber}.${nf.parse(runAttempt as String) - 1}")
+                }
+                formattedBuildNumber = nf.format(nf.parse(project.property('buildNumber') as String))
+                project.version = "${project.version}+" + project.property('buildNumber')
+            } catch (ParseException e) {
+                throw new InvalidUserDataException("Build number could not be parsed (${e.message})", e)
+            }
         }
     }
+
+    // Replace placeholders in source code
+    replace("@VERSION@": modVersionPart,
+            "@BUILD_NUMBER@": formattedBuildNumber,
+            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
+    replaceIn("${project.name}.java")
+}
+
+tasks.register('copyLicenses', Copy) {
+    from(project.projectDir) {
+        include('LICENSE')
+        include('NOTICE')
+        include('dependencyLicenses/**')
+    }
+    into(sourceSets.main.output.resourcesDir)
 }
 
 jar {
+    dependsOn copyLicenses
+
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveFileName = "${project.modName}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
             'Manifest-Version': '2.0',
@@ -81,15 +126,19 @@ jar {
             'Specification-Title': project.name,
             'Specification-Vendor': 'BiscuitDevelopment',
             'Specification-Version': project.version,
-            'FMLCorePlugin': "${project.group}.${project.modId}.tweaker.${project.modName}LoadingPlugin",
+            'FMLCorePlugin': "${project.group}.${modId}.tweaker.${project.name}LoadingPlugin",
             'ForceLoadAsMod': true,
             'FMLCorePluginContainsFMLMod': true,
             'ModSide': 'CLIENT',
-            'FMLAT': "${project.modId}_at.cfg"
+            'FMLAT': "${modId}_at.cfg"
     )
 
     // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
     enabled = false
+}
+
+reobfJar {
+    dependsOn shadowJar
 }
 
 shadowJar {
@@ -120,22 +169,13 @@ processResources {
         include 'mcmod.info'
 
         // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        expand(version: project.version, mcversion: project.minecraft.version)
     }
 
-    // copy everything else, thats not the mcmod.info
+    // copy everything else that's not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude 'mcmod.info'
     }
-}
-
-task copyLicenses (type: Copy) {
-    from(project.projectDir) {
-        include('LICENSE')
-        include('NOTICE')
-        include('dependencyLicenses/**')
-    }
-    into(sourceSets.main.output.resourcesDir)
 }
 
 test {
@@ -148,7 +188,3 @@ test {
 tasks.named('wrapper') {
     distributionType = Wrapper.DistributionType.ALL
 }
-
-tasks.build.dependsOn(tasks.configureProjectVersion)
-tasks.jar.dependsOn(tasks.copyLicenses)
-tasks.reobfJar.dependsOn(tasks.shadowJar)

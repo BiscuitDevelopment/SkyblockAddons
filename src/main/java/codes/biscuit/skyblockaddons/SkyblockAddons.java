@@ -62,6 +62,10 @@ public class SkyblockAddons {
     public static final String MOD_ID = "skyblockaddons";
     public static final String MOD_NAME = "SkyblockAddons";
     public static String VERSION = "@VERSION@";
+    /**
+     * This is set by the CI. If the build isn't done on CI, this will be an empty string.
+     */
+    public static final String BUILD_NUMBER = "@BUILD_NUMBER@";
 
     @Getter private static SkyblockAddons instance;
     @Getter private static boolean fullyInitialized;
@@ -263,6 +267,21 @@ public class SkyblockAddons {
             return LogManager.getLogger(loggerName);
         } else {
             return LogManager.getLogger(loggerName, new SkyblockAddonsMessageFactory(loggerName));
+        }
+    }
+
+    /**
+     * Returns the complete SemVer version with pre-release and build number if it is defined.
+     *
+     * @return the complete SemVer version string
+     */
+    public static String getVersionFull() {
+        // Set by CI, is not actually constant
+        //noinspection ConstantConditions
+        if (!SkyblockAddons.BUILD_NUMBER.isEmpty()) {
+            return SkyblockAddons.VERSION + '+' + SkyblockAddons.BUILD_NUMBER;
+        } else {
+            return SkyblockAddons.VERSION;
         }
     }
 
