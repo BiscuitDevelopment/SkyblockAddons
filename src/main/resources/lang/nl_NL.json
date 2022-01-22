@@ -289,7 +289,8 @@
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s",
-    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn"
+    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
         "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
