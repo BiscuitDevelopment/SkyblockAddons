@@ -290,7 +290,7 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s",
     "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
-    "version": "Version"
+    "version": "Versie"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -455,8 +455,8 @@
         "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Toont de versie van de modificatie",
+        "hoverText": "Klik om in chat te plaatsen zodat je kunt kopiëren."
       },
       "errors": {
         "wrongUsage": {
