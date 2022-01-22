@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
     "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
-    "jacobsContestTimer": "Jacob's Contest Timer",
+    "jacobsContestTimer": "Timer Jacob's Contest",
     "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
   },
   "messages": {
@@ -290,7 +290,7 @@
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
     "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
-    "version": "Version"
+    "version": "Versi"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
@@ -406,8 +406,8 @@
         "help": "Memuat ulang semua resource mod. Game akan beku untuk beberapa detik."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Reset semua hitungan pada zealot counter.",
+        "resetSuccess": "Zealot counter direset!"
       },
       "set": {
         "zealotCounter": {
@@ -455,8 +455,8 @@
         "enabled": "Pesan-pesan timer magma boss akan dicatat."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Menunjukkan versi mod",
+        "hoverText": "Klik untuk dimasukkan ke chat agar anda bisa salin."
       },
       "errors": {
         "wrongUsage": {
