@@ -290,7 +290,7 @@
     "chroma": "色変化",
     "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒",
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
-    "version": "Version"
+    "version": "バージョン"
   },
   "discordStatus": {
     "titleNone": "なし",
@@ -455,8 +455,8 @@
         "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Modのバージョンを表示します",
+        "hoverText": "クリックするとチャットに出力されるためコピーできます。"
       },
       "errors": {
         "wrongUsage": {
