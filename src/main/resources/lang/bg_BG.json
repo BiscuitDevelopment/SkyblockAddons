@@ -289,7 +289,8 @@
     "copyModeSet": "Режимът за копиране на разработчика е настроен на: %mode%. Натисни %keyName%, за да задействаш копие на данни!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "§c[SBA]: §rВреметраене: %time%s",
-    "entityOutlinesRequirement": "Изисква Shaders, Fast Render и Antialiasing да са OFF"
+    "entityOutlinesRequirement": "Изисква Shaders, Fast Render и Antialiasing да са OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Нищо",
@@ -452,6 +453,10 @@
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
