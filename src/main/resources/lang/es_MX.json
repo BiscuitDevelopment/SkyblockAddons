@@ -289,7 +289,8 @@
     "copyModeSet": "El modo de copia de desarrolladores ha sido establecido a: %mode%. ¡Presiona \"%keyName%\" para copiar datos!",
     "chroma": "Croma",
     "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO"
+    "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -452,6 +453,10 @@
         "help": "Alternar el registro de mensajes de depuración del temporizador del jefe magma",
         "disabled": "Los mensajes del temporizador del jefe magma ya no se registrarán.",
         "enabled": "Los mensajes del temporizador del jefe magma ahora se registrarán."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {
