@@ -288,7 +288,7 @@
     "none": "なし",
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "クールダウン：%time%秒",
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
     "version": "バージョン"
   },
