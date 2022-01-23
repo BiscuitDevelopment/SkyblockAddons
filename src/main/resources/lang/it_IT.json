@@ -288,7 +288,7 @@
     "none": "Nessuno",
     "copyModeSet": "La modalità di copia sviluppatore è stata impostata come: %mode%. Premi \"%keyName%\" per attivare una copia dei dati!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rTempo di ricarica: %time%s",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Richiede che Shaders, Rendering Veloce, e Antialiasing siano OFF",
     "version": "Version"
   },
