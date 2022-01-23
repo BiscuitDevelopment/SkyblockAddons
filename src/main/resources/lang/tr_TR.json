@@ -288,7 +288,7 @@
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
     "version": "Versiyon"
   },
