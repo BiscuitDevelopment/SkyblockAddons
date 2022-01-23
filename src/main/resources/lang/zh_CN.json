@@ -288,7 +288,7 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "冷却: %time%s",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
     "version": "Version"
   },
