@@ -288,7 +288,7 @@
     "none": "Нищо",
     "copyModeSet": "Режимът за копиране на разработчика е настроен на: %mode%. Натисни %keyName%, за да задействаш копие на данни!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "Времетраене: %time%s",
     "entityOutlinesRequirement": "Изисква Shaders, Fast Render и Antialiasing да са OFF",
     "version": "Version"
   },
