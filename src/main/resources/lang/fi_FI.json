@@ -288,7 +288,7 @@
     "none": "Ei mikään",
     "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
     "chroma": "Väriefekti",
-    "worldRenderedCooldownTime": "§c[SBA]: §rJäähtymisaika: %time%s",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä",
     "version": "Version"
   },
