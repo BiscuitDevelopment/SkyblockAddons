@@ -288,7 +288,7 @@
     "none": "Brak",
     "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
     "version": "Version"
   },
