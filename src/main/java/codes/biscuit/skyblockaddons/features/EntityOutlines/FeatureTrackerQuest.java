@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.listeners.RenderListener;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
+import codes.biscuit.skyblockaddons.utils.Utils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -192,7 +193,8 @@ public class FeatureTrackerQuest {
             Pattern p = Pattern.compile("Trevor The Trapper");
             String s = TextUtils.stripColor(entity.getCustomNameTag());
             if (p.matcher(s).matches()) {
-                String str = Translations.getMessage("messages.worldRenderedCooldownTime", CooldownManager.getRemainingCooldown("TREVOR_THE_TRAPPER_RETURN") / 1000);
+                String str = Utils.MESSAGE_PREFIX_SHORT + Translations.getMessage("messages.worldRenderedCooldownTime",
+                        CooldownManager.getRemainingCooldown("TREVOR_THE_TRAPPER_RETURN") / 1000);
                 DrawUtils.drawTextInWorld(str, e.x, e.y + entity.height + .75, e.z);
             }
         }

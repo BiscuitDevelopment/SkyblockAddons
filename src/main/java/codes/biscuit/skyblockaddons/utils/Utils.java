@@ -63,6 +63,8 @@ public class Utils {
      */
     public static final String MESSAGE_PREFIX =
             ColorCode.GRAY + "[" + ColorCode.AQUA + SkyblockAddons.MOD_NAME + ColorCode.GRAY + "] ";
+    public static final String MESSAGE_PREFIX_SHORT =
+            ColorCode.GRAY + "[" + ColorCode.AQUA + "SBA" + ColorCode.GRAY + "] " + ColorCode.RESET;
 
     /**
      * "Skyblock" as shown on the scoreboard title in English, Chinese Simplified, Traditional Chinese.
