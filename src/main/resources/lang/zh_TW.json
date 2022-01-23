@@ -288,7 +288,7 @@
     "none": "無",
     "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
     "version": "Version"
   },
