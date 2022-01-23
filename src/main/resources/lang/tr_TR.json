@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Ayarlar",
     "magmaBossWarning": "Magma Boss Uyarısı",
+    "balBossWarning": "Bal Boss Uyarısı",
+    "broodMotherWarning": "Brood Mother Uyarısı",
     "itemDropConfirmation": "Eşya Atma Onayı",
     "hideSkeletonHatBones": "Skeleton's Helmet kemiklerini Gizle",
     "skeletonHatBonesBar": "Skeleton's Helmet Göstergesi",
@@ -168,6 +170,9 @@
     "showSwordKills": "Kılıç Leşlerini Göster",
     "compactTabList": "Kompakt Tab Listesi",
     "highlightSpecialEnchantments": "Özel Büyüleri Vurgula",
+    "disableDamageChatMessages": "Hasar Mesajlarını Devre Dışı Bırak",
+    "showSpiritSceptreDisplay": "Yetenek hasar göstergesi",
+    "outbidAlertSound": "Teklif Artış Uyarı Sesi",
     "hideMenuGlassPanes": "Menüdeki Camların Bilgilerini Gizle",
     "candyPointsCounter": "Spooky Event Şeker/Puan Sayacı",
     "healingCircleOpacity": "Şifa Dairesi Görünürlüğü",
@@ -205,13 +210,18 @@
     "guiScaleX": "Arayüz X Ölçeği: %scale%",
     "guiScaleY": "Arayüz Y Ölçeği: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP Paydasını Sadeleştir",
-    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
+    "jacobsContestTimer": "Jacob's Contest Zamanlayıcısı",
+    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
   },
   "messages": {
     "enchants": "Büyüler",
     "reforges": "Reforge'lar",
     "dropConfirmation": "Eşyayı atmayı onaylamak için atma tuşuna bir daha bas!",
     "magmaBossWarning": "Magma Küp Bossu!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Envanter Dolu!",
     "labymod": "Labymod Kullanıcıları: Yemek, Zırh ve Can Göstergelerini saklama bu mod ile uyumsuz.",
     "minionCannotReach": "%type% minyona ulaşılamadığından çalışmayı durdurdu!",
@@ -278,8 +288,9 @@
     "none": "Hiçbiri",
     "copyModeSet": "Geliştirici kopyalama modu şu şekilde ayarlandı: %mode%. Bir veri kopyasını tetiklemek için \"%keyName%\" tuşuna basın!",
     "chroma": "Renk parlaklığı",
-    "worldRenderedCooldownTime": "§c[SBA]: §rBekleme Süresi: %time%sn",
-    "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir"
+    "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
+    "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
+    "version": "Versiyon"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Şu anki konumunuzu gösterir",
     "titlePurse": "Cüzdan",
     "descriptionPurse": "Cüzdanınızdaki coin miktarını gösterir",
+    "titleBits": "Bits",
+    "descriptionBits": "Sahip olduğun bit miktarını gösterir",
     "titleStats": "İstatistikler",
     "descriptionStats": "HP, Defense ve Mana Statlarınızı Gösterir",
     "titleZealots": "Zealotlar",
@@ -324,15 +337,15 @@
         "help": "Ana menüyü aç"
       },
       "brand": {
-        "help": "§e(Dev) §7Sunucu damgasını göster",
+        "help": "Sunucu adresini göster",
         "brandOutput": "Server Markası:%brand%",
         "notFound": "Server markası bulunamadı!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Baktığınız blokla ilgili verileri kopyalar"
+        "help": "Baktığınız blokla ilgili verileri kopyalar"
       },
       "copyEntity": {
-        "help": "§e(Dev) §Oyuncunun etrafında belirli bir yarıçap içinde belirli bir isim(ler) in varlıkları için NBT verilerini kopyala",
+        "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyala",
         "detailedHelp": {
           "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev)§7Skorbord yazısını kopyala",
+        "help": "Skorbord yazısını kopyala",
         "detailedHelp": {
           "description": "Skorbord'da görüntülenen metni kopyalar",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §Tab listesi üstbilgisini ve altbilgisini kopyala",
+        "help": "Tab listesi üstbilgisini ve altbilgisini kopyala",
         "detailedHelp": {
           "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
         }
@@ -362,7 +375,8 @@
           "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
         },
         "disabled": "Geliştirici modu kapatıldı!",
-        "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
+        "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Arayüz konumlarını düzenle"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
+        "help": "Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
       },
       "reload": {
-        "help": "§e(Dev) §7Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        "help": "Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Mod ayarlarını yeniden yükler"
+        "help": "Mod ayarlarını yeniden yükler"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        "help": "Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+      },
+      "resetZealotCounter": {
+        "help": "Tüm zealot sayaçlarını sıfırlar.",
+        "resetSuccess": "Zealot sayaçları sıfırlandı!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input% \" geçerli bir boss değil!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Aksiyon barı messajlarının durumunu değiştir",
+        "help": "Aksiyon barı messajları günlüğünü açar/kapatır",
         "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
         "enabled": "Aksiyon barı mesajları gösteriliyor."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Magma boss zamanlayıcı hata ayıklama iletilerini loglamayı aç/kapat",
+        "disabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulmayacak.",
+        "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
+      },
+      "version": {
+        "help": "Modun versiyonunu gösterir",
+        "hoverText": "Sohbette göstermek için tıkla bu sayede kopyalayabilirsin."
       },
       "errors": {
         "wrongUsage": {

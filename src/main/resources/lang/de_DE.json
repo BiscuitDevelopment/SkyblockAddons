@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Item Drop Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
     "skeletonHatBonesBar": "Skelett-Helm Knochen Leiste",
@@ -168,6 +170,9 @@
     "showSwordKills": "Zeige Schwert Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Special Enchantments",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Verzauberungen",
     "reforges": "Reforges",
     "dropConfirmation": "Werfe diesen Gegenstand nochmal, um zu bestätigen!",
     "magmaBossWarning": "Der Magma Boss ist erschienen!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Volles Inventar!",
     "labymod": "\"Essens-, Rüstungs- und Lebensleiste verstecken\" ist inkompatibel mit LabyMod!",
     "minionCannotReach": "Ein %type% Minion kann seine Mobs nicht erreichen und hat aufgehört, zu arbeiten!",
@@ -278,8 +288,9 @@
     "none": "Keine",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Keine",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Zeigt deine derzeitige Position",
     "titlePurse": "Geldbörse",
     "descriptionPurse": "Shows the amount of coins in your purse",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Stats",
     "descriptionStats": "Shows your HP, Defense and Mana stats",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Hauptmenü öffnen"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the server brand",
+        "help": "Show the server brand",
         "brandOutput": "Servername: %brand%",
         "notFound": "Servername nicht gefunden!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you are looking at"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoreboard text",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list header and footer",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
         }
@@ -362,7 +375,8 @@
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Entwicklermodus deaktiviert!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "GUI Locations bearbeiten"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle logging action bar messages",
+        "help": "Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

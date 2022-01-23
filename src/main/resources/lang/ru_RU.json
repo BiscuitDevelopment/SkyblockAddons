@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Настройки",
     "magmaBossWarning": "Предупреждение о Магма-Боссе",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Подтверждение выбрасывания предмета",
     "hideSkeletonHatBones": "Скрыть кости от Skeleton Helmet'a",
     "skeletonHatBonesBar": "Шкала костей Skeleton Helmet",
@@ -168,6 +170,9 @@
     "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Компактная информация в Tab",
     "highlightSpecialEnchantments": "Подсвечивать Особые Зачарования",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Счётчик конфет/очков во время Spooky Event",
     "healingCircleOpacity": "Прозрачность Круга Исцеления",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Зачарования",
     "reforges": "Перековки",
     "dropConfirmation": "Выбросите предмет ещё раз для подтверждения!",
     "magmaBossWarning": "Магма-Босс!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Инвентарь полон!",
     "labymod": "Пользователи Labymod: Скрытие полос Еды, Защиты и Жизни несовместимо.",
     "minionCannotReach": "%type% миньон не достает и перестает спавнить!",
@@ -278,8 +288,9 @@
     "none": "Нет",
     "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rОсталось: %time% с",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "worldRenderedCooldownTime": "Осталось: %time% с",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Показывает ваше текущее местоположение",
     "titlePurse": "Purse",
     "descriptionPurse": "Показывает количество монет в кошельке",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Статистика",
     "descriptionStats": "Показывает ваше здоровье, уровень защиты и ману",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Открыть главное меню"
       },
       "brand": {
-        "help": "§e(Dev) §7Показывать бренд сервера",
+        "help": "Show the server brand",
         "brandOutput": "Бренд сервера: %brand%",
         "notFound": "Бренд сервера не найден!"
       },
       "copyBlock": {
-        "help": "§e(Разр.) §7Копирует данные о блоке, на который вы смотрите"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Разр.) §7Копирует NBT данные для существ заданного(-ых) имени(-ён) в пределах данного радиуса игрока",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Копирует NBT данные существ. Типы включённых существ и радиус вокруг игрока для копирования данных могут быть изменены. Если параметры не поставлены, используются настройки по умолчанию. Настройки по умолчанию: включать игроков, стойки для брони и мобов, радиус - 3 блока. Если радиус не дан, используется радиус по умолчанию.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Разр.) §7Скопировать текст из таблицы",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Разр.) §7Копирование заголовка и нижнего колонтитула Tab",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Эта команда копирует заголовок и нижний колонтитул Tab. Коды форматирования включены."
         }
@@ -362,7 +375,8 @@
           "description": "Эта команда переключает режим разработчика. Этот режим предназначен только для разработчиков модов и инструментов для Skyblock. Он предоставляет такие данные, как NBT предметов и существ."
         },
         "disabled": "Режим разработчика отключен!",
-        "enabled": "Включён режим разработчика! СОВЕТ: Нажмите %keyName%, чтобы скопировать данные NBT!"
+        "enabled": "Включён режим разработчика! СОВЕТ: Нажмите %keyName%, чтобы скопировать данные NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Настроить интерфейс"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Разр.) §7Выводит значения, содержащиеся в счётчиках смертей в подземельях в целях отладки."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Перезагружает все параметры и ресурсы мода. Игра заморозится на несколько секунд."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Перезагружает параметры мода"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Перезагружает ресурсы мода. Игра заморозится на несколько секунд."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "Босса \"%input%\" не существует!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Разр.) §7Переключить запись сообщений из строки действий",
+        "help": "Toggle logging action bar messages",
         "disabled": "Сообщения из строки действий больше не будут добавляться в логи.",
         "enabled": "Сообщения из строки действий теперь будут добавляться в логи."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

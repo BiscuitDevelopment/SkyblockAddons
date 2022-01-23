@@ -1,9 +1,11 @@
 {
   "languageText": "Język: ",
-  "language": "Polski",
+  "language": "Język polski",
   "settings": {
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Potwierdzenie wyrzucenia przedmiotu",
     "hideSkeletonHatBones": "Ukryj kości Skeleton's Helmet",
     "skeletonHatBonesBar": "Pasek kości z Skeleton's Helmet",
@@ -21,17 +23,17 @@
       "regular": "Zwykły",
       "compact": "Prosty"
     },
-    "showBackpackPreview": "Pokaż podgląd Backpack",
+    "showBackpackPreview": "Pokazuj podgląd Backpacka",
     "hideHealthBar": "Ukryj pasek zdrowia",
     "fullMinionWarning": "Ostrzeżenie o zapełnionym Minionie",
     "showOnlyWhenHoldingShift": "Pokaż jedynie przy trzymaniu przycisku Shift",
     "manaBar": "Pasek many",
     "manaNumber": "Ilość many",
     "healthBar": "Pasek zdrowia",
-    "healthNumber": "Ilość zdrowia",
+    "healthNumber": "Liczba punktów zdrowia",
     "defenseIcon": "Ikona obrony",
-    "defenseNumber": "Ilość obrony",
-    "defensePercentage": "Procent obrony",
+    "defenseNumber": "Liczba punktów obrony",
+    "defensePercentage": "Odsetkowy wskaźnik obrony",
     "healthUpdates": "Liczba Różnicy Zdrowia",
     "hidePlayersInLobby": "Ukryj odległe byty w poczekalni",
     "darkAuctionTimer": "Zegar Dark Auction",
@@ -40,7 +42,7 @@
     "avoidPlacingEnchantedItems": "Zablokuj stawianie zaklętych przedmiotów",
     "stopBowChargeFromResetting": "Wyłącz resetowanie się naładowania łuku",
     "preventMovementOnDeath": "Zablokuj poruszanie się po śmierci",
-    "showItemAnvilUses": "Pokaż liczbę użyć kowadła na przedmiocie",
+    "showItemAnvilUses": "Pokazuj liczbę użyć kowadła na przedmiocie",
     "lockSlots": "Zezwól na blokowanie okienek",
     "lockSlot": "Zablokuj okienko",
     "dontResetCursorInventory": "Nie resetuj kursora pomiędzy ekwipunkami",
@@ -63,9 +65,9 @@
     "craftingPatterns": "Wybierz wzory wytwarzania",
     "soundIndicatorForFishing": "Powiadomienia dźwiękowe podczas łowienia",
     "avoidBlinkingNightVision": "Wyłącz miganie mikstury widzenia w ciemności",
-    "disableMinionLocationWarning": "Wyłącz ostrzeżenia \"Location Not Perfect\"",
+    "disableMinionLocationWarning": "Wyłącz ostrzeżenia „Location Not Perfect”",
     "showItemCooldowns": "Pokazuj czas odnowienia przedmiotów",
-    "speedPercentage": "Procent szybkości",
+    "speedPercentage": "Odsetkowy wskaźnik szybkości",
     "collectionDisplay": "Wyświetlaj postęp umiejętności",
     "revenantIndicator": "Wskaźnik postępu zbroi Slayera",
     "specialZealotAlert": "Powiadomienie o specjalnych Zealotach",
@@ -97,7 +99,7 @@
     },
     "chromaFadeWidth": "Szerokość blaknięcia kolorów",
     "sortTabEffectTimers": "Sortuj zegary według trwania",
-    "showBrokenFragments": "Pokaż zepsute Dragon Fragments",
+    "showBrokenFragments": "Pokazuj zniszczone Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
     "showSummoningEyeCount": "Licznik Zealotów - Łączna ilość Eye",
@@ -132,8 +134,8 @@
     "warnWhenFetchurChanges": "Ostrzeż mnie kiedy Fetchur zmieni przedmiot",
     "mapZoom": "Przybliżenie mapy",
     "glowingDroppedItems": "Świecenie leżących przedmiotów",
-    "outlineDungeonTeammates": "Pokaż kontury kompanów Dungeon",
-    "baseStatBoostPercentage": "Pokaż bazowe ulepszenie statystyk dla przedmiotów z Dungeonów",
+    "outlineDungeonTeammates": "Pokazuj zarysy dungeonowych towarzyszy",
+    "baseStatBoostPercentage": "Pokazuj podstawowe wzmocnienie statystyk przedmiotów z Dungeonów",
     "colorByRarity": "Kolor przypisany do rzadkości",
     "showPlayerHeadsOnMap": "Pokaż głowy graczy na Mapie Dungeonów",
     "showHealingCircleWall": "Pokaż obręb Healing Circle Wall w Dungeonach (Niestabilne)",
@@ -168,7 +170,10 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightSpecialEnchantments": "Podświetl specjalne zaklęcia",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
+    "hideMenuGlassPanes": "Ukryj dymki szyb w menu",
     "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
     "healingCircleOpacity": "Przeźroczystość koła leczącego",
     "chromaSize": "Rozmiar koloru Chroma",
@@ -180,7 +185,7 @@
     "drillFuelNumber": "Tekst paliwa wiertła",
     "fetchurToday": "Pokaż, czego chce dzisiaj Fetchur",
     "fishingParticleOverlay": "Nakładka cząsteczek łowienia",
-    "enchantmentLoreParsing": "Personalizuj listę zaklęć",
+    "enchantmentLoreParsing": "Dostosuj listę zaklęć",
     "cooldownPrediction": "Przewiduj i skracaj czas odnowienia",
     "legendaryMonkeyLevel100": "[TEMP] Legendarny Monkey Poziom 100",
     "biggerWake": "Powiększ cząsteczki nakładki",
@@ -195,23 +200,28 @@
       "showQuestCooldown": "Pokaż czas odnowienia zadania Trevora",
       "showQuestCooldownDescription": "To zostanie wyświetlone nad głową Trevora"
     },
-    "showEnderChestPreview": "Pokaż podgląd skrzyni Endu",
+    "showEnderChestPreview": "Pokazuj podgląd skrzyni Endu",
     "hideWhenNotDoingQuest": "Ukryj podczas nierobienia zadania",
     "showOverflowManaNumber": "Liczba Overflow Mana",
     "axeCooldownIndicator": "Wskaźnik odnowienia Siekiery",
     "vanillaHealthPrediction": "Użyj vanillowego przewidywania zdrowia",
-    "entityOutlines": "Pokaż kontury stworzeń",
-    "effectiveHealthNumber": "Effective Health Number",
+    "entityOutlines": "Pokazuj zarysy stworzeń",
+    "effectiveHealthNumber": "Liczba rzeczywistych punktów zdrowia",
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "abbreviateSkillXpDenominator": "Skrócony Dzielnik XP'a umiejętności",
+    "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Zaklęcia",
     "reforges": "Reforges",
     "dropConfirmation": "Wyrzuć ten przedmiot ponownie, aby potwierdzić!",
     "magmaBossWarning": "Magmowy boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Ekwipunek jest pełen!",
     "labymod": "Do użytkowników LabyModa: ukrycie pasków zdrowia, jedzenia i zbroi jest niekompatybilne.",
     "minionCannotReach": "Minion %type% nie może dosięgnąć moba i przestał się odradzać!",
@@ -278,8 +288,9 @@
     "none": "Brak",
     "copyModeSet": "Tryb kopiowania dewelopera został ustawiony na: %mode%. Naciśnij \"%keyName%\", aby zainicjować kopiowanie danych!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCzas odnowienia: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "worldRenderedCooldownTime": "Czas odnowienia: %time%s",
+    "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Pokazuje Twoje obecne położenie",
     "titlePurse": "Purse",
     "descriptionPurse": "Pokazuje ilość monet w Twoim portfelu",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Statystyki",
     "descriptionStats": "Pokazuje Twoje punkty zdrowia, obrony i many",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Otwórz menu główne"
       },
       "brand": {
-        "help": "§e(Dev) §7Pokaż API Serwera",
+        "help": "Show the server brand",
         "brandOutput": "API Serwera: %brand%",
         "notFound": "Nie znaleziono API serwera!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopiuje Dane o bloku, na który patrzysz"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Skopiuj dane NBT dla podmiotów o podanej nazwie(-ach) w danym promieniu wokół gracza",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają: graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Skopiuj tekst tablicy wyników",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kopiuje tekst pokazany w bocznym pasku tablicy wyników",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Skopiuj nagłówek i stopkę z Tab listy",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Ta komenda kopiuję nagłówek i stopkę Tab listy graczy. Łącznie z kodami formatującymi."
         }
@@ -362,7 +375,8 @@
           "description": "To polecenie włącza tryb programisty. Ten tryb jest przeznaczony dla deweloperów modów/narzędzi dla Skyblock. Dostarcza surowych danych z gry, takich jak tagi NBT przedmiotów i bytów."
         },
         "disabled": "Tryb programisty wyłączony!",
-        "enabled": "Tryb programisty włączony! Kliknij „%keyName%”, aby skopiować dane NBT!"
+        "enabled": "Tryb programisty włączony! Kliknij „%keyName%”, aby skopiować dane NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edytuj położenie GUI"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Pokazuje liczby przechowane w licznikach śmierci w lochach w celu debugowania."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Wczytuje ponownie ustawienia moda"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "„%input%” nie jest prawidłowym bossem!"
       },
       "toggleActionBarLogging": {
-        "help": "e(Dev) §7Przełącz rejestrowanie wiadomości na pasku akcji",
+        "help": "Toggle logging action bar messages",
         "disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
         "enabled": "Wiadomości na pasku akcji będą rejestrowane."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

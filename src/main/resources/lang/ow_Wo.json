@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magmwa Bowoss Wawning",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Item Dwop Comfowmatiowon",
     "hideSkeletonHatBones": "Hide Skeweton's Hewmet Bowones",
     "skeletonHatBonesBar": "Skeweton Hewmet Bowones Baw",
@@ -168,6 +170,9 @@
     "showSwordKills": "Shwow Swowd Kwills",
     "compactTabList": "Cwompwact Twab Wist",
     "highlightSpecialEnchantments": "Highwight Spwscial Encwantments",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Counter",
     "healingCircleOpacity": "Healing Circle Opacity",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Enchants ^-^",
     "reforges": "Wefowges",
     "dropConfirmation": "Dwop thwis itwem agwain to confiwm!",
     "magmaBossWarning": "Magmwa Cube Bowoss! （・□・；）",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Fuww Inwentowy! >w<",
     "labymod": "Wabymod Usews: Hide Fuwud, Awmow, and Heawth Baw, is incompatibwe.",
     "minionCannotReach": "A %type% minwion cannwot weach and has stwopped spawning!",
@@ -278,8 +288,9 @@
     "none": "None",
     "copyModeSet": "The devewopew copy mode has been set to: %mode%. Pwess \"%keyName%\" to twiggew a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Shows youw cuwwent wocation",
     "titlePurse": "Puwse",
     "descriptionPurse": "Shows the amount of coins in youw puwse",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Stats",
     "descriptionStats": "Shows youw HP, Defense and Mana stats",
     "titleZealots": "Zeawots",
@@ -324,15 +337,15 @@
         "help": "Opwen the mwain menwu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show the swewer bwand",
+        "help": "Show the server brand",
         "brandOutput": "Swewer bwand: %brand%",
         "notFound": "Swewer bwand not fwound!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about the block that you awe looking at"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data for entities of the given name(s) within the given wadius awound the playew",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy the scoweboawd text",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy the tab list headew and footew",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
         }
@@ -362,7 +375,8 @@
           "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
         },
         "disabled": "Dewelower wode dwisabled!",
-        "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
+        "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edwit GUI wocations"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads the mod's settings"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" is not a vawid bwoss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggwe wogging action baw messages",
+        "help": "Toggle logging action bar messages",
         "disabled": "Action baw messages wiww no wongew be wogged.",
         "enabled": "Action baw messages wiww now be wogged."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

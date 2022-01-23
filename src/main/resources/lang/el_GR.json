@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Ρυθμίσεις",
     "magmaBossWarning": "Προειδοποιήσει εμφάνισης κύβου μάγματος",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Επιβεβαίωση Ρίψης Αντικειμένου",
     "hideSkeletonHatBones": "Κρύψε τα κόκαλα του Skeleton's helmet",
     "skeletonHatBonesBar": "Κράνος του Σκελετού κοκάλινη μπάρα",
@@ -168,6 +170,9 @@
     "showSwordKills": "Εμφάνιση Sword Kills",
     "compactTabList": "Συμπαγής λίστα καρτελών",
     "highlightSpecialEnchantments": "Επισημάνετε τις ειδικές γοητείες",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Καραμέλες / μετρητές πόντων",
     "healingCircleOpacity": "Θεραπεία αδιαφάνειας κύκλου",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Μαγεύει",
     "reforges": "Ενισχύει",
     "dropConfirmation": "Ξαναρίξε αυτό το αντικείμενο για επιβεβαίωση!",
     "magmaBossWarning": "Εξέχων όγκος Κύβου Μάγμα!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Γεμάτα Αποθέματα!",
     "labymod": "Χρήστες Labymod: Η Απόκρυψη Φαγητού, Ασπίδας, και Μπάρας Ζωής, είναι ασύμβατη.",
     "minionCannotReach": "Το %type% minion δεν μπορεί να φτάσει και έχει σταματήσει την αναπαραγωγή!",
@@ -278,8 +288,9 @@
     "none": "Τίποτα",
     "copyModeSet": "Η λειτουργία αντιγραφής προγραμματιστή έχει οριστεί σε: %mode%. Πατήστε \"%keyName%\" για να ενεργοποιήσετε ένα αντίγραφο δεδομένων!",
     "chroma": "Χρωματιστό",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF"
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Τίποτα",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Δείχνει την τωρινή σου τοποθεσία",
     "titlePurse": "Πορτοφόλι",
     "descriptionPurse": "Δείχνει το ποσό των κερμάτων στο πορτοφόλι σας",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Στατιστικά",
     "descriptionStats": "Εμφανίζει τα στατιστικά σας HP, Defense και Mana",
     "titleZealots": "Ζηλωτές",
@@ -324,15 +337,15 @@
         "help": "Άνοιγμα του κυρίως μενού"
       },
       "brand": {
-        "help": "§e(Dev) §7Εμφάνιση της επωνυμίας του διακομιστή",
+        "help": "Show the server brand",
         "brandOutput": "Επωνυμία διακομιστή: %brand%",
         "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Αντιγραφή δεδομένων NBT για οντότητες του συγκεκριμένου ονόματος (ες) εντός της δεδομένης ακτίνας γύρω από τη συσκευή αναπαραγωγής",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Αντιγράψτε το κείμενο του πίνακα αποτελεσμάτων",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Αντιγράφει το κείμενο που εμφανίζεται στην υποδοχή εμφάνισης της πλευρικής γραμμής του πίνακα αποτελεσμάτων",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Αντιγράψτε την κεφαλίδα και το υποσέλιδο της λίστας καρτελών",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης."
         }
@@ -362,7 +375,8 @@
           "description": "Αυτή η εντολή εναλλάσσει τη λειτουργία προγραμματιστή. Αυτή η λειτουργία προορίζεται για προγραμματιστές Skyblock mods / εργαλεία. Παρέχει ανεπεξέργαστα δεδομένα από το παιχνίδι, όπως οντότητα και αντικείμενο NBT."
         },
         "disabled": "Η λειτουργία προγραμματιστή απενεργοποιήθηκε!",
-        "enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!"
+        "enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Επεξεργάσου τις τοποθεσίες GUI"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Επαναφορτώνει όλες τις ρυθμίσεις και τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Επαναφορτώνει τις ρυθμίσεις του mod"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Επαναφορτώνει τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" δεν είναι έγκυρο boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Καταγραφή μυνημάτων γραμμής ενεργειών",
+        "help": "Toggle logging action bar messages",
         "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
         "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

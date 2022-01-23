@@ -4,6 +4,8 @@
   "settings": {
     "settings": "설정",
     "magmaBossWarning": "마그마 보스 알림",
+    "balBossWarning": "Bal 보스 알림",
+    "broodMotherWarning": "Brood Mother 경고",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
     "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
@@ -168,6 +170,9 @@
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "입찰 알림 소리",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI X축 크기:%scale%",
     "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
-    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "인챈트",
     "reforges": "재련",
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "Magma Boss 소환!!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "인벤토리 꽉 참!",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% Minion이 몹을 죽일 수 없어 스폰을 멈췄습니다!",
@@ -278,8 +288,9 @@
     "none": "없음",
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
     "chroma": "무지개",
-    "worldRenderedCooldownTime": "§c[SBA]: §r쿨다운: %time%s",
-    "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다."
+    "worldRenderedCooldownTime": "쿨다운: %time%s",
+    "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "없음",
@@ -288,6 +299,8 @@
     "descriptionLocation": "당신의 현재 위치를 보입니다",
     "titlePurse": "Purse",
     "descriptionPurse": "당신의 지갑에 있는 Coin의 양을 표시합니다",
+    "titleBits": "Bits",
+    "descriptionBits": "당신이 가지고 있는 Bits의 양을 표시합니다",
     "titleStats": "스탯",
     "descriptionStats": "당신의 HP, Defence과 Mana 스탯을 보여줍니다",
     "titleZealots": "Zealots",
@@ -362,7 +375,8 @@
           "description": "이 명령은 개발자 모드를 키고 끕니다. 이 모드는 스카이블럭 모드/툴 개발자를 위한 모드입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
         },
         "disabled": "개발자 모드가 꺼졌습니다!",
-        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
+        "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다.",
+        "prefix": "개발자"
       },
       "edit": {
         "help": "GUI 위치 편집"
@@ -390,6 +404,10 @@
       },
       "reloadRes": {
         "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -430,6 +448,15 @@
         "help": "§e(Dev) §7액션 바 메시지 기록 켜기/끄기",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "§e(개발자 모드) §7Magma boss 타이머 디버그 메시지 켜기/끄기",
+        "disabled": "더 이상 Magma boss의 타이머를 기록하지 않습니다.",
+        "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

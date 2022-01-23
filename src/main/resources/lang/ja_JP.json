@@ -4,6 +4,8 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Bossのアラート",
+    "balBossWarning": "Bal Bossの警告",
+    "broodMotherWarning": "Brood Motherの警告",
     "itemDropConfirmation": "アイテムを捨てる時の確認",
     "hideSkeletonHatBones": "Skeleton's Helmetの骨を非表示",
     "skeletonHatBonesBar": "Skeleton's Helmetの骨のゲージ",
@@ -66,7 +68,7 @@
     "disableMinionLocationWarning": "Location Not Perfectのアラートを無効化",
     "showItemCooldowns": "アイテムのクールダウンを表示",
     "speedPercentage": "移動速度",
-    "collectionDisplay": "Skillの進捗の表示",
+    "collectionDisplay": "Skillの進捗を表示",
     "revenantIndicator": "Slayer装備の進行度インジケーターを表示",
     "specialZealotAlert": "Special Zealotのアラート",
     "enableMessageWhenActionPrevented": "動作を防止した時にメッセージを表示",
@@ -113,7 +115,7 @@
     "doubleWarp": "2回ワープ",
     "advancedMode": "高度なモード",
     "legendarySeaCreatureWarning": "レジェンダリーSea Creatureのアラート",
-    "bossApproachAlert": "Slayer Boss接近アラート",
+    "bossApproachAlert": "Slayer Boss直前のアラート",
     "disableTeleportPadMessages": "Teleport Padのメッセージを無効化",
     "baitListDisplay": "釣竿を所持中にBaitリストを表示",
     "freezeBackpackPreview": "Backpackのプレビューを一時停止",
@@ -139,7 +141,7 @@
     "showHealingCircleWall": "DungeonのHealing Circleの壁を表示",
     "showCriticalTeammates": "Dungeonで負傷した仲間を表示",
     "showGlowingItemsOnIsland": "Private Islandで発光するアイテムを表示",
-    "showItemDungeonFloor": "Dungeon Itemsを入手したFloorを表示",
+    "showItemDungeonFloor": "Dungeonのアイテムを入手したFloorを表示",
     "showDungeonMilestone": "Dungeon Milestoneを表示",
     "dungeonsCollectedEssencesDisplay": "集めたDungeon Essenceを表示",
     "stopBonzoStaffSounds": "Bonzo's Staffの音を停止",
@@ -168,6 +170,9 @@
     "showSwordKills": "剣で倒した数を表示",
     "compactTabList": "コンパクトなTabリスト",
     "highlightSpecialEnchantments": "特別なエンチャントを強調表示",
+    "disableDamageChatMessages": "ダメージのチャットメッセージを無効化",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Bladeのダメージを表示",
+    "outbidAlertSound": "Outbidのアラート音",
     "hideMenuGlassPanes": "メニューのガラス板の説明欄を非表示",
     "candyPointsCounter": "SpookyイベントのCandy/ポイントカウンター",
     "healingCircleOpacity": "Healing Circleの不透明度",
@@ -205,13 +210,18 @@
     "guiScaleX": "GUI Xの大きさ：%scale%",
     "guiScaleY": "GUI Yの大きさ：%scale%",
     "abbreviateSkillXpDenominator": "Skill XPの分母を省略",
-    "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
+    "jacobsContestTimer": "Jacob's Contestのタイマー",
+    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
   },
   "messages": {
     "enchants": "エンチャント",
     "reforges": "Reforge",
     "dropConfirmation": "もう一度このアイテムを捨てて確認！",
     "magmaBossWarning": "Magma Cube Bossが出現しました！",
+    "balBossWarning": "Bal Boss！",
+    "broodMotherWarning": "Brood Mother！",
     "fullInventory": "インベントリが満杯です！",
     "labymod": "Labymod使用者：「食料と防具のゲージを非表示」とは互換性がありません。",
     "minionCannotReach": "%type%Minionは範囲外のためMobのスポーンを停止しました！",
@@ -278,8 +288,9 @@
     "none": "なし",
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
-    "worldRenderedCooldownTime": "§c[SBA]：§rクールダウン：%time%秒",
-    "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります"
+    "worldRenderedCooldownTime": "クールダウン：%time%秒",
+    "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
+    "version": "バージョン"
   },
   "discordStatus": {
     "titleNone": "なし",
@@ -288,6 +299,8 @@
     "descriptionLocation": "現在いる場所を表示",
     "titlePurse": "Purse",
     "descriptionPurse": "purse内の総額を表示",
+    "titleBits": "Bit",
+    "descriptionBits": "所持中のbitの量を表示",
     "titleStats": "ステータス",
     "descriptionStats": "HP、防御力、Manaのステータスを表示",
     "titleZealots": "Zealot",
@@ -324,15 +337,15 @@
         "help": "メインメニューを開く"
       },
       "brand": {
-        "help": "§e(Dev) §7サーバーのブランドを表示します",
+        "help": "サーバーのブランドを表示します",
         "brandOutput": "サーバーのブランド：%brand%",
         "notFound": "サーバーのブランドが見つかりません！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7見つめているブロックに関するデータをコピーします"
+        "help": "見つめているブロックに関するデータをコピーします"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7プレイヤーの周囲の指定された半径内にいる指定された名前のエンティティの NBT データをコピーします",
+        "help": "プレイヤーを中心とした指定された半径内にいる、指定された名前のエンティティのNBTデータをコピーします",
         "detailedHelp": {
           "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7スコアボードのテキストをコピーします",
+        "help": "スコアボードのテキストをコピーします",
         "detailedHelp": {
           "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Tabリストのヘッダーとフッターをコピーします",
+        "help": "Tabリストのヘッダーとフッターをコピーします",
         "detailedHelp": {
           "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
         }
@@ -362,7 +375,8 @@
           "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
         },
         "disabled": "開発者モードを無効にしました！",
-        "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！"
+        "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "GUIの場所を編集"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Dungeon死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
+        "help": "Dungeon死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
       },
       "reload": {
-        "help": "§e(Dev) §7Modのすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "Modのすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Modの設定を再読み込みします"
+        "help": "Modの設定を再読み込みします"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        "help": "Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
+      },
+      "resetZealotCounter": {
+        "help": "Zealotカウンターのカウントをすべてリセットします。",
+        "resetSuccess": "Zealotカウンターがリセットされました！"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "「%input%」は有効なボスではありません！"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7アクションバーのメッセージの記録を切り替えます",
-        "disabled": "アクションバーのメッセージは現在記録されません。",
-        "enabled": "アクションバーのメッセージは現在記録されます。"
+        "help": "アクションバーのメッセージの記録を切り替えます",
+        "disabled": "アクションバーのメッセージは記録されないようになりました。",
+        "enabled": "アクションバーのメッセージが記録されるようになりました。"
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Magma Bossのタイマーのデバッグメッセージの記録を切り替えます",
+        "disabled": "Magma Bossのタイマーのメッセージは記録されないようになりました。",
+        "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
+      },
+      "version": {
+        "help": "Modのバージョンを表示します",
+        "hoverText": "クリックするとチャットに出力されるためコピーできます。"
       },
       "errors": {
         "wrongUsage": {

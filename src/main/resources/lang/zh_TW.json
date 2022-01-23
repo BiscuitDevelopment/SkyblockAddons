@@ -4,6 +4,8 @@
   "settings": {
     "settings": "設定",
     "magmaBossWarning": "Magma Boss 生成警報",
+    "balBossWarning": "Bal Boss 生成警報",
+    "broodMotherWarning": "Brood Mother 生成警報",
     "itemDropConfirmation": "確認丟棄物品",
     "hideSkeletonHatBones": "隱藏 Skeleton's Helmet 的防禦骨頭",
     "skeletonHatBonesBar": "Skeleton's Helmet 可抵擋的攻擊次數",
@@ -168,6 +170,9 @@
     "showSwordKills": "顯示使用此劍的擊殺數",
     "compactTabList": "簡化 Tab 列表",
     "highlightSpecialEnchantments": "標註特殊附魔",
+    "disableDamageChatMessages": "關閉聊天室傷害訊息",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 傷害顯示",
+    "outbidAlertSound": "出價被超過提示聲",
     "hideMenuGlassPanes": "隱藏選單玻璃物品資訊",
     "candyPointsCounter": "Spooky Event 糖果/分數 計數器",
     "healingCircleOpacity": "Healing Circle 不透明度",
@@ -205,20 +210,25 @@
     "guiScaleX": "介面X方位大小: %scale%",
     "guiScaleY": "介面Y方位大小: %scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
-    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
   },
   "messages": {
     "enchants": "附魔",
     "reforges": "重鑄",
     "dropConfirmation": "再次丟棄此物品以確認！",
     "magmaBossWarning": "Magma Cube Boss 已出生！",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "背包已滿！",
-    "labymod": "Labymod 使用者請注意：隱藏食物、裝甲值及血條還未完成。",
+    "labymod": "Labymod 使用者請注意：尚不支援隱藏食物、裝甲值及血條等功能。",
     "minionCannotReach": "有一個 %type% Minion 因無法觸及生物而停止運作了！",
     "minionIsFull": "有一個 Minion 因背包已滿而停止運作了！",
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
-    "enchantsToMatch": "區配%type%:",
+    "enchantsToMatch": "匹配%type%:",
     "enchantsToExclude": "排除%type%:",
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
@@ -276,10 +286,11 @@
     "effectActive": "1 種狀態效果生效中",
     "effectsActive": "%number% 種狀態效果生效中",
     "none": "無",
-    "copyModeSet": "開發者複製模式已設置成: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
+    "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "§c[SBA]: §r冷卻: %time%秒",
-    "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」"
+    "worldRenderedCooldownTime": "冷卻: %time%秒",
+    "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -288,6 +299,8 @@
     "descriptionLocation": "顯示你當前的位置",
     "titlePurse": "錢包",
     "descriptionPurse": "顯示錢包內金錢數",
+    "titleBits": "Bits",
+    "descriptionBits": "顯示你擁有的 Bits 數",
     "titleStats": "數值",
     "descriptionStats": "顯示你的血量，防禦力以及魔力值",
     "titleZealots": "Zealots",
@@ -324,17 +337,17 @@
         "help": "開啟主選單"
       },
       "brand": {
-        "help": "§e(Dev) §7顯示伺服器核心名稱",
+        "help": "顯示伺服器核心名稱",
         "brandOutput": "伺服端: %brand%",
         "notFound": "未發現伺服端！"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7複製面朝方塊的資料"
+        "help": "複製面朝方塊的資料"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
+        "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
-          "description": "複製實體的 NBT 資料。包含的實體種類和複製資料玩家附近的距離可以自定義。如果沒有給予設置，則採用默認設定。默認設定為: 包含玩家，盔甲座，以及生物，還有3格內的方塊。如果未給予範圍，則採用默認範圍。",
+          "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製附近玩家的資料的距離。如果沒有設定，則使用預設的設定。預設值為： 包含玩家、盔甲座、生物、3 格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
             "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
             "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7複製記分板的文字",
+        "help": "複製記分板的文字",
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7複製玩家列表頭尾",
+        "help": "複製玩家列表頭尾",
         "detailedHelp": {
           "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
         }
@@ -362,7 +375,8 @@
           "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
         "disabled": "開發者模式已停用！",
-        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！"
+        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
+        "prefix": "開發者"
       },
       "edit": {
         "help": "編輯介面位置"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
+        "help": "印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
       },
       "reload": {
-        "help": "§e(Dev) §7重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
+        "help": "重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7重新載入模組設定"
+        "help": "重新載入模組設定"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7重新載入模組資源。遊戲可能會凍結一段時間。"
+        "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7切換是否紀錄動作列訊息",
+        "help": "切換是否紀錄動作列訊息",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "切換是否紀錄 Magma Boss 計時器的除錯訊息",
+        "disabled": "Magma Boss 計時器訊息將不再被記錄。",
+        "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

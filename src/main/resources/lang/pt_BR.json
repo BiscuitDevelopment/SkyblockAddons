@@ -1,9 +1,11 @@
 {
   "languageText": "Idioma: ",
-  "language": "Português (Brasil)",
+  "language": "Português do Brasil",
   "settings": {
     "settings": "Configurações",
-    "magmaBossWarning": "Alerta do Boss Magma",
+    "magmaBossWarning": "Alerta do Magma Boss",
+    "balBossWarning": "Bal Boss Warning",
+    "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "Confirmação para largar item",
     "hideSkeletonHatBones": "Ocultar os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
@@ -33,7 +35,7 @@
     "defenseNumber": "Número de Defesa",
     "defensePercentage": "Porcentagem de Defesa",
     "healthUpdates": "Número de Mudanças de Vida",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
+    "hidePlayersInLobby": "Ocultar entidades longe no Lobby",
     "darkAuctionTimer": "Timer da Dark Auction",
     "magmaBossTimer": "Tempo do Boss Magma",
     "itemPickupLog": "Registro de Itens Pegos",
@@ -42,12 +44,12 @@
     "preventMovementOnDeath": "Impedir Movimento Após Morte",
     "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
     "lockSlots": "Permitir o bloqueio de espaços",
-    "lockSlot": "Lock Slot",
+    "lockSlot": "Bloquear espaço",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Mudar a cor do baú de ender no End",
     "changeColor": "Mudar Cor",
-    "showInOtherGames": "Mostar em Outros Jogos",
+    "showInOtherGames": "Mostrar em outros jogos",
     "useVanillaTexture": "Usar Textura Padrão",
     "textStyle": "Estilo do Texto",
     "textStyles": {
@@ -63,14 +65,14 @@
     "craftingPatterns": "Escolha os padrões de criação",
     "soundIndicatorForFishing": "Indicador de som para pesca",
     "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
+    "disableMinionLocationWarning": "Desativar os alertas de \"Location not perfect\"",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
     "collectionDisplay": "Exibição do progresso da habilidade",
     "revenantIndicator": "Indicador de Progresso da Armadura de Slayer",
     "specialZealotAlert": "Alerta Zealot especial",
     "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
-    "hidePetHealthBar": "Hide Pet Health Bar",
+    "hidePetHealthBar": "Ocultar barra de vida da Mascote",
     "powerOrbDisplay": "Exibição de Power Orbs",
     "powerOrbDisplayStyle": "Poder da Esfera Estilo: %style%",
     "powerOrbStyle": {
@@ -85,7 +87,7 @@
     },
     "tabEffectTimers": "Timer de Poções e Reforços",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
+    "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar a Pré-visualização de Mochilas de Bolo",
     "showBackpackPreviewInAH": "Mostrar a Pré-visualização de Mochilas Enquanto a Casa de Leilão está aberta",
     "enableDevFeatures": "Habilitar Funções de Desenvolvedor",
@@ -112,12 +114,12 @@
     "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Duplo",
     "advancedMode": "Modo Avançado",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "legendarySeaCreatureWarning": "Alerta de Sea Creature lendária",
     "bossApproachAlert": "Alerta de Aproximação do Slayer Boss",
     "disableTeleportPadMessages": "Desativar Mensagens do Teletransportador",
     "baitListDisplay": "Mostrar Lista de Iscas ao Segurar uma Vara de Pesca",
     "freezeBackpackPreview": "Congelar Pré-visualização de Mochilas",
-    "hideGreyEnchants": "Hide Regular Grey Enchants",
+    "hideGreyEnchants": "Ocultar encantamentos cinza normais",
     "zealotCounterExplosiveBow": "Suporte do Arco Explosivo para Contador de Zealot",
     "disableEndermanTeleportation": "Desativar Teleporte de Enderman",
     "changeZealotColor": "Alterar Cor do Contador de Zealot",
@@ -162,13 +164,16 @@
     "showSkillXPGained": "Mostrar XP de Habilidade Ganho",
     "skillProgressBar": "Barra de Progresso de Habilidade",
     "showSalvageEssencesCounter": "Mostrar contador de resgate de essências",
-    "disableMortMessages": "Disable Mort Messages",
+    "disableMortMessages": "Desativar mensagens do Mort",
     "disableBossMessages": "Desabilitar Mensagens do Boss",
-    "hideOtherPlayersPresents": "Hide Other Player's Presents",
+    "hideOtherPlayersPresents": "Esconder presentes de outros jogadores",
     "showSwordKills": "Mostrar abates da espada",
     "compactTabList": "Tab Compacto",
     "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
-    "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
+    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Outbid Alert Sound",
+    "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
     "candyPointsCounter": "Spooky Event Contador de Doces/Pontos",
     "healingCircleOpacity": "Opacidade do círculo de cura",
     "chromaSize": "Tamanho do Chroma",
@@ -189,31 +194,36 @@
     "reforgeFilter": "Filtro de Reforge",
     "hideEnchantDescription": "Ocultar Descrição do Encantamento",
     "trevorTheTrapper": {
-      "title": "Trevor the Trapper Features",
+      "title": "Funções do Trevor the Trapper",
       "trackedEntityProximityIndicator": "Mostrar Indicador de Proximidade da Entidade Rastreada",
       "highlightTrackedEntity": "Destacar Entidade Rastreada",
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
       "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "hideWhenNotDoingQuest": "Ocultar quando não estiver fazendo missões",
     "showOverflowManaNumber": "Número de Mana Overflow",
     "axeCooldownIndicator": "Indicador de Recarga do Machado",
     "vanillaHealthPrediction": "Usar Previsão de Vida Padrão",
     "entityOutlines": "Mostrar Contornos de Entidade",
     "effectiveHealthNumber": "Número de Vida Efetiva",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%",
+    "guiScaleX": "Escala da Interface X: %scale%",
+    "guiScaleY": "Escala da Interface Y: %scale%",
     "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
-    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)"
+    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Jacob's Contest Timer",
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
   },
   "messages": {
     "enchants": "Encantamentos",
     "reforges": "Reforjadas",
     "dropConfirmation": "Largue este item de novo para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Inventário Cheio!",
-    "labymod": "Labymod Users: Hide Food, Armor, and Health Bar, is incompatible.",
+    "labymod": "Usuários de Labymod: Ocultar as barras de fome, armadura e vida não é compatível.",
     "minionCannotReach": "Um minion de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um minion em sua ilha está cheio!",
     "typeEnchantmentsHere": "Escreva %type% Aqui!",
@@ -278,8 +288,9 @@
     "none": "Nenhum",
     "copyModeSet": "O modo de cópia do desenvolvedor foi definido para: %mode%. Pressione \"%keyName%\" para iniciar uma cópia de dados!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rTempo de recarga: %time%s",
-    "entityOutlinesRequirement": "Requer Shaders, Fast Render e Antialiasing desligados"
+    "worldRenderedCooldownTime": "Tempo de recarga: %time%s",
+    "entityOutlinesRequirement": "Requer Shaders, Fast Render e Antialiasing desligados",
+    "version": "Version"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Mostra a sua localização atual",
     "titlePurse": "Carteira",
     "descriptionPurse": "Mostra a quantidade de moedas em sua bolsa",
+    "titleBits": "Bits",
+    "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Estatísticas",
     "descriptionStats": "Mostra suas estatísticas de HP, Defesa e Mana",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Abrir o menu principal"
       },
       "brand": {
-        "help": "§e(Dev) §7Mostrar a marca do servidor",
+        "help": "Show the server brand",
         "brandOutput": "Marca do Servidor: %brand%",
         "notFound": "Marca do Servidor não encontrada!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copia dados sobre o bloco que você está olhando"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Desenvolvedor) §7Copiar dados NBT para entidades do(s) nome(s) fornecido(s) dentro do raio determinado em torno do jogador",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copia dados NBT de entidades. Os tipos de entidades incluídas e o raio em volta do jogador a partir dos quais terão os dados copiados podem ser personalizados. Se nenhuma opção for dada, as configurações padrões serão usadas. As configurações padrões são: incluir jogadores, suporte de armaduras, e criaturas, e um raio de 3 blocos. Se o raio não for dado, o raio padrão é usado.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copiar texto da tabela lateral",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Copia o texto exibido no slot de exibição da barra lateral da scoreboard",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copiar o cabeçalho e rodapé da lista de jogadores",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Esse comando copia o cabeçalho e rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
@@ -362,7 +375,8 @@
           "description": "Esse comando alterna o modo desenvolvedor. Esse modo é para desenvolvedores de Mods/Ferramentas do Skyblock. Ele fornece dados brutos do jogo como Entidade e Item NBT."
         },
         "disabled": "Modo Desenvolvedor desabilitado!",
-        "enabled": "Modo Desenvolvedor habilitado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!"
+        "enabled": "Modo Desenvolvedor habilitado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Editar Posições da Interface"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Grava as contagens armazenadas nos contadores de mortes da dungeon para fins de depuração."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Recarrega as configurações do mod"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Recarrega os recursos do mod. O jogo irá congelar por alguns segundos."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Resets all the zealot counter counts.",
+        "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "%input% não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Alterar o registro de mensagens da barra de ação",
+        "help": "Toggle logging action bar messages",
         "disabled": "As mensagens da barra de ações não serão mais registradas.",
         "enabled": "As mensagens da barra de ações agora serão registradas."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magma boss timer messages will no longer be logged.",
+        "enabled": "Magma boss timer messages will now be logged."
+      },
+      "version": {
+        "help": "Shows the mod's version",
+        "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
         "wrongUsage": {

@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Pengaturan",
     "magmaBossWarning": "Peringatan Magma Boss",
+    "balBossWarning": "Peringatan Boss Bal",
+    "broodMotherWarning": "Peringatan Brood Mother",
     "itemDropConfirmation": "Konfirmasi Jatuhkan Barang",
     "hideSkeletonHatBones": "Sembunyikan Tulang-Tulang Skeleton's Helmet",
     "skeletonHatBonesBar": "Bar Tulang-Tulang Skeleton's Helmet",
@@ -168,6 +170,9 @@
     "showSwordKills": "Perlihatkan Jumlah Pembunuhan Pedang",
     "compactTabList": "Daftar Tab Padat",
     "highlightSpecialEnchantments": "Terangi Enchantments Spesial",
+    "disableDamageChatMessages": "Nonaktifkan Pesan-pesan Damage",
+    "showSpiritSceptreDisplay": "Tampilan Damage Spirit Sceptre/Wither Blade",
+    "outbidAlertSound": "Suara peringatan outbid",
     "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
     "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
     "healingCircleOpacity": "Opasitas Healing Circle",
@@ -205,13 +210,18 @@
     "guiScaleX": "Skala GUI X: %scale%",
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Singkatkan Penyebut Angka Skill XP",
-    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
+    "jacobsContestTimer": "Timer Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
   },
   "messages": {
     "enchants": "Enchants",
     "reforges": "Reforges",
     "dropConfirmation": "Jatuhkan benda ini lagi untuk konfirmasi!",
     "magmaBossWarning": "Boss Magma Cube!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Inventory Penuh!",
     "labymod": "Pengguna Labymod: Sembunyikan Bar Makanan, Armor, dan Nyawa tidak dapat dipakai.",
     "minionCannotReach": "Sebuah %type% minion tidak dapat meraih dan telah berhenti bekerja!",
@@ -278,8 +288,9 @@
     "none": "Tidak Ada",
     "copyModeSet": "Mode salinan pengembang telah diubah menjadi: %mode%. Tekan “%keyName%” untuk memicu sebuah salinan data!",
     "chroma": "Kroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
-    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF"
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
+    "version": "Versi"
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Menunjukkan Lokasi Anda Saat Ini",
     "titlePurse": "Purse",
     "descriptionPurse": "Menunjukkan coins yang terdapat di purse anda",
+    "titleBits": "Bits",
+    "descriptionBits": "Menunjukkan bits yang anda miliki",
     "titleStats": "Stats",
     "descriptionStats": "Menunjukkan Stat HP, Defense dan Mana",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Buka menu utama"
       },
       "brand": {
-        "help": "§e(Dev) §7Perlihatkan merek server",
+        "help": "Perlihatkan merek server",
         "brandOutput": "Merek Server: %brand%",
         "notFound": "Merek server tidak ditemukan!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Salin data tentang blok yang anda sedang lihat"
+        "help": "Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
+        "help": "Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
           "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Salin teks scoreboard",
+        "help": "Salin teks scoreboard",
         "detailedHelp": {
           "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Salin list tab header dan footer",
+        "help": "Salin list tab header dan footer",
         "detailedHelp": {
           "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
         }
@@ -362,7 +375,8 @@
           "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod & alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
         },
         "disabled": "Mode Developer dinonaktifkan!",
-        "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!"
+        "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edit Lokasi GUI"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Mencetak hitungan yang disimpan di counter-counter kematian dungeon untuk tujuan debugging."
+        "help": "Mencetak hitungan yang disimpan di counter-counter kematian dungeon untuk tujuan debugging."
       },
       "reload": {
-        "help": "§e(Dev) §7Memuat ulang semua pengaturan dan bahan-bahan. Game akan beku untuk beberapa detik."
+        "help": "Memuat ulang semua pengaturan dan resources. Game akan beku untuk beberapa detik."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Memuat ulang pengaturan-pengaturan mod"
+        "help": "Memuat ulang pengaturan-pengaturan mod"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Memuat ulang bahan-bahan mod. Game akan beku untuk beberapa detik."
+        "help": "Memuat ulang semua resource mod. Game akan beku untuk beberapa detik."
+      },
+      "resetZealotCounter": {
+        "help": "Reset semua hitungan pada zealot counter.",
+        "resetSuccess": "Zealot counter direset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Aktif/nonaktifkan mencatat pesan-pesan log bar aksi",
+        "help": "Aktif/nonaktifkan pencatatan pesan-pesan bar aksi",
         "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
         "enabled": "Pesan-pesan bar aksi akan dicatat."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Aktif/nonaktifkan pencatatan pesan-pesan timer magma boss",
+        "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
+        "enabled": "Pesan-pesan timer magma boss akan dicatat."
+      },
+      "version": {
+        "help": "Menunjukkan versi mod",
+        "hoverText": "Klik untuk dimasukkan ke chat agar anda bisa salin."
       },
       "errors": {
         "wrongUsage": {

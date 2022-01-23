@@ -4,6 +4,8 @@
   "settings": {
     "settings": "Instellingen",
     "magmaBossWarning": "Magmabaaswaarschuwing",
+    "balBossWarning": "Bal-baaswaarschuwing",
+    "broodMotherWarning": "Brood Mother-waarschuwing",
     "itemDropConfirmation": "Voorwerp laten vallen-bevestiging",
     "hideSkeletonHatBones": "Botten skelettenhelm verbergen",
     "skeletonHatBonesBar": "Skelet Helm Botten Balk",
@@ -168,6 +170,9 @@
     "showSwordKills": "Zwaardeliminaties weergeven",
     "compactTabList": "Compacte spelerslijst",
     "highlightSpecialEnchantments": "Speciale betoveringen markeren",
+    "disableDamageChatMessages": "Schadeberichten uitschakelen",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "outbidAlertSound": "Overbiedingsgeluid",
     "hideMenuGlassPanes": "Tekstballonnen van glas in menu's verbergen",
     "candyPointsCounter": "Snoepjes-/puntenteller voor Spooky Event",
     "healingCircleOpacity": "Healing Circle-doorzichtigheid",
@@ -205,13 +210,18 @@
     "guiScaleX": "X-schaal interface: %scale%",
     "guiScaleY": "Y-schaal interface: %scale%",
     "abbreviateSkillXpDenominator": "Noemer vaardigheids-XP afkorten",
-    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)"
+    "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "jacobsContestTimer": "Timer Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "Niet vervangen in itemnamen"
   },
   "messages": {
     "enchants": "Betoveringen",
     "reforges": "Omsmedingen",
     "dropConfirmation": "Laat dit voorwerp opnieuw vallen om te bevestigen!",
     "magmaBossWarning": "MagmaKubus Baas!",
+    "balBossWarning": "Bal Boss!",
+    "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Volle Inventaris!",
     "labymod": "Labymod Gebruikers: Verstop Voedsel & Harnas Bar is onverenigbaar.",
     "minionCannotReach": "Een %type%minion kan iets niet bereiken en is gestopt!",
@@ -278,8 +288,9 @@
     "none": "Geen",
     "copyModeSet": "De ontwikkelaarskopieermodus is veranderd naar %mode%. Druk op “%keyName%” om een datakopie te activeren!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rAfkoeltijd: %time%s",
-    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn"
+    "worldRenderedCooldownTime": "Afkoeltijd: %time%s",
+    "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
+    "version": "Versie"
   },
   "discordStatus": {
     "titleNone": "Geen",
@@ -288,6 +299,8 @@
     "descriptionLocation": "Toont je huidige locatie",
     "titlePurse": "Portemonnee",
     "descriptionPurse": "Toont de hoeveelheid munten in je portemonnee",
+    "titleBits": "Bits",
+    "descriptionBits": "Toont hoeveel bits je hebt",
     "titleStats": "Statistieken",
     "descriptionStats": "Laat je HP-, Defense- en Manastatistieken zien",
     "titleZealots": "Zealots",
@@ -324,15 +337,15 @@
         "help": "Hoofdmenu openen"
       },
       "brand": {
-        "help": "§e(Dev) §7Servermerk weergeven",
+        "help": "Show the server brand",
         "brandOutput": "Servermerk: %brand%",
         "notFound": "Servermerk niet gevonden!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopieert data over het blok waar je naar kijkt"
+        "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopieer NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
+        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
           "options": {
@@ -342,7 +355,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Scorebordtekst kopiëren",
+        "help": "Copy the scoreboard text",
         "detailedHelp": {
           "description": "Kopieert de weergegeven tekst van de zijbalk uit het scorebord",
           "options": {
@@ -351,7 +364,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Spelerslijstkop- en -voettekst kopiëren",
+        "help": "Copy the tab list header and footer",
         "detailedHelp": {
           "description": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen."
         }
@@ -362,7 +375,8 @@
           "description": "Dit commando schakelt de ontwikkelaarsmodus in of uit. Deze modus is bedoeld voor Skyblock-mod- en -toolontwikkelaars. Het verstrekt ruwe gegevens uit het spel zoals entiteits- en voorwerps-NBT."
         },
         "disabled": "Ontwikkelaarsmodus uitgeschakeld!",
-        "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!"
+        "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Interfacelocaties aanpassen"
@@ -380,16 +394,20 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Print de aantallen opgeslagen in de dungeon-sterfgevaltellers voor debugdoeleinden."
+        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
+        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Herlaadt alle modinstellingen"
+        "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Herlaadt alle modbronnen. Het spel zal een paar seconden stilstaan."
+        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+      },
+      "resetZealotCounter": {
+        "help": "Reset alle zealottellers.",
+        "resetSuccess": "Zealottellers gereset!"
       },
       "set": {
         "zealotCounter": {
@@ -427,9 +445,18 @@
         "invalidStat": "\"%input%\" is geen geldige baas!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Berichten in de actiebalk loggen in-/uitschakelen",
+        "help": "Toggle logging action bar messages",
         "disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
         "enabled": "Berichten in de actiebalk worden nu gelogd."
+      },
+      "toggleMagmaTimerLogging": {
+        "help": "Toggle logging magma boss timer debug messages",
+        "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
+        "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
+      },
+      "version": {
+        "help": "Toont de versie van de modificatie",
+        "hoverText": "Klik om in chat te plaatsen zodat je kunt kopiëren."
       },
       "errors": {
         "wrongUsage": {
