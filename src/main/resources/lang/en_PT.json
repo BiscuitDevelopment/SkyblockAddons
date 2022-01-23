@@ -288,7 +288,7 @@
     "none": "None",
     "copyModeSet": "Th' developer copy mode be set t': %mode%. Press \"%keyName%\" t' trigger a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF",
     "version": "Version"
   },
