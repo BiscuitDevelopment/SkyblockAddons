@@ -288,7 +288,7 @@
     "none": "Không có",
     "copyModeSet": "Chế độ sao chép dành cho Nhà Phát triển hiện đã được đặt thành: %mode%. Nhấn \"%keyName%\" để kích hoạt một lần sao chép dữ liệu!",
     "chroma": "Sắc độ",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "T.gian chờ: %time%gi",
     "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing",
     "version": "Version"
   },
