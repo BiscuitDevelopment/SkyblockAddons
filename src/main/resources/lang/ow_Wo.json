@@ -288,7 +288,7 @@
     "none": "None",
     "copyModeSet": "The devewopew copy mode has been set to: %mode%. Pwess \"%keyName%\" to twiggew a data copy!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "§c[SBA]: §rCooldown: %time%s",
+    "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version"
   },
