@@ -288,7 +288,7 @@
     "none": "Нет",
     "copyModeSet": "Режим копирования в режиме разработчика поставлен на: %mode%. Нажмите \"%keyName%\", чтобы спровоцировать копирование данных!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "Осталось: %time% с",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version"
   },
