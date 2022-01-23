@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.misc;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.UpdateInfo;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import lombok.Getter;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
@@ -174,7 +175,7 @@ public class Updater {
                 Matcher currentMatcher = VERSION_PATTERN.matcher(currentVersion);
                 Matcher targetMatcher = VERSION_PATTERN.matcher(targetVersion);
 
-                // Its a patch if the major & minor numbers are the same & the player isn't upgrading from a beta.
+                // It's a patch if the major & minor numbers are the same & the player isn't upgrading from a beta.
                 isPatch = currentMatcher.matches() && targetMatcher.matches() &&
                         currentMatcher.group("major").equals(targetMatcher.group("major")) &&
                         currentMatcher.group("minor").equals(targetMatcher.group("minor")) &&
@@ -192,8 +193,17 @@ public class Updater {
                 messageToRender = Translations.getMessage("messages.updateChecker.notificationBox.majorAvailable", targetVersion);
             }
         } else if (status == AHEAD) {
-            LOGGER.warn("The current version is newer than the latest version. Please tell an SBA developer to update" +
-                    " the online data.");
+            if (!SkyblockAddonsTransformer.isDeobfuscated()) {
+                LOGGER.warn("The current version is newer than the latest version. Please tell an SBA developer to update" +
+                        " the online data.");
+            } else {
+                LOGGER.error("The current version is newer than the latest version. You're doing something wrong.");
+                LOGGER.error("Current: "  + current);
+                LOGGER.error("Latest: " + latestRelease);
+                LOGGER.error("Latest Beta: " + latestBeta);
+                LOGGER.error("Release Diff: " + releaseDiff);
+                LOGGER.error("Beta Diff: " + betaDiff);
+            }
         } else {
             LOGGER.info("Up to date!");
         }
