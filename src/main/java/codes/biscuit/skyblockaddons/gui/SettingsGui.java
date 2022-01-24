@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
@@ -260,7 +261,14 @@ public class SettingsGui extends GuiScreen {
         if (setting == EnumUtils.FeatureSetting.COLOR) {
             buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
-            buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+            try {
+                buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+            } catch (NumberFormatException e) {
+                SkyblockAddons.getLogger().error(e.getMessage());
+                main.getUtils().sendMessage(Translations.getMessage("messages.invalidFeatureConfiguration", feature.getMessage()));
+                main.getConfigValues().setGuiScale(feature, ConfigValues.normalizeValueNoStep(1));
+                buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
+            }
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE_X) {
             buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature, true));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE_Y) {
