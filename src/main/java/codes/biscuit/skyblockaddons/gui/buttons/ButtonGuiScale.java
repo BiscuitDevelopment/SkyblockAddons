@@ -116,7 +116,7 @@ public class ButtonGuiScale extends ButtonFeature {
     }
 
     private float getRoundedValue(float value) {
-        return new BigDecimal(String.valueOf(value)).setScale(2, RoundingMode.HALF_UP).floatValue();
+        return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).floatValue();
     }
 
     private void setNewScale() {
