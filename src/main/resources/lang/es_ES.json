@@ -290,7 +290,8 @@
     "chroma": "Croma",
     "worldRenderedCooldownTime": "Tiempo de recarga: %time%s",
     "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Ninguno",
