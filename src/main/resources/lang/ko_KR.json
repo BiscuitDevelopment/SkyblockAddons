@@ -290,7 +290,8 @@
     "chroma": "무지개",
     "worldRenderedCooldownTime": "쿨다운: %time%s",
     "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "없음",
