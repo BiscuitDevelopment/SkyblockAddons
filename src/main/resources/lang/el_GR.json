@@ -326,11 +326,11 @@
   "enchantLayout": {
     "title": "Έλεγχος του τρόπου εμφάνισης των μαγεμάτων στις υποδείξεις αντικειμένων",
     "titleCompress": "Συμπίεση",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionCompress": "Συμπιέζει μαγέματα σε όσο το δυνατόν λιγότερες γραμμές",
+    "titleNormal": "Κανονικό",
+    "descriptionNormal": "Εμφανίζει τα μαγέματα όπως ο Hypixel",
+    "titleExpand": "Επέκταση",
+    "descriptionExpand": "Εμφανίζει κάθε μάγεμα στη δική του γραμμή"
   },
   "commandUsage": {
     "sba": {
@@ -338,7 +338,7 @@
         "help": "Άνοιγμα του κυρίως μενού"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Εμφάνιση της επωνυμίας του διακομιστή",
         "brandOutput": "Επωνυμία διακομιστή: %brand%",
         "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
       },
@@ -346,7 +346,7 @@
         "help": "§e(Dev) §7Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Αντιγραφή δεδομένων NBT για οντότητες του συγκεκριμένου ονόματος(ων) εντός της ακτίνας που δόθηκε γύρω από τον παίκτη",
         "detailedHelp": {
           "description": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
           "options": {
@@ -356,7 +356,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Αντιγράψτε το κείμενο του πίνακα σκορ",
         "detailedHelp": {
           "description": "Αντιγράφει το κείμενο που εμφανίζεται στην υποδοχή εμφάνισης της πλευρικής γραμμής του πίνακα αποτελεσμάτων",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Αντιγράψτε την κεφαλίδα και το υποσέλιδο της λίστας tab",
         "detailedHelp": {
           "description": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης."
         }
@@ -395,20 +395,20 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Εκτυπώνει τις μετρήσεις που αποθηκεύονται στους μετρητές θανάτου dungeon για σκοπούς αποσφαλμάτωσης."
       },
       "reload": {
         "help": "§e(Dev) §7Επαναφορτώνει όλες τις ρυθμίσεις και τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Επαναφορτώνει τις ρυθμίσεις του mod"
       },
       "reloadRes": {
         "help": "§e(Dev) §7Επαναφορτώνει τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Επαναφέρει όλες τις μετρήσεις του μετρητή zealot.",
+        "resetSuccess": "Οι μετρητές Zealot επαναφέρθηκαν!"
       },
       "set": {
         "zealotCounter": {
@@ -446,14 +446,14 @@
         "invalidStat": "\"%input%\" δεν είναι έγκυρο boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Εναλλαγή μηνυμάτων γραμμής ενεργειών",
         "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
         "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Εναλλαγή μηνυμάτων αποσφαλμάτωσης χρονομέτρου magma boss",
+        "disabled": "Τα μηνύματα του χρονομέτρου Magma boss δε θα καταγράφονται πλέον.",
+        "enabled": "Τα μηνύματα του χρονομέτρου Magma boss τώρα θα καταγράφονται."
       },
       "version": {
         "help": "Εμφανίζει την έκδοση του mod",
