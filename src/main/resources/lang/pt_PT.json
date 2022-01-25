@@ -291,7 +291,7 @@
     "worldRenderedCooldownTime": "Tempo de espera: %time%s",
     "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS",
     "version": "Versão",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Foi detetada uma configuração inválida para a opção %featureName%. As suas definições serão repostas para as padrão."
   },
   "discordStatus": {
     "titleNone": "Nenhum",
