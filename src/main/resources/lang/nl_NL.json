@@ -290,7 +290,8 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Afkoeltijd: %time%s",
     "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
-    "version": "Versie"
+    "version": "Versie",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Geen",
