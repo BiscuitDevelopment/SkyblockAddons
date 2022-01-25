@@ -291,7 +291,7 @@
     "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
     "version": "Versiyon",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "%featureName% özelliği için geçersiz yapılandırma algılandı ve ayarlar varsayılan değerlere döndürüldü."
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
