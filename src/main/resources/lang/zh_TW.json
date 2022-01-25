@@ -290,7 +290,8 @@
     "chroma": "漸變色",
     "worldRenderedCooldownTime": "冷卻: %time%秒",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "無",
