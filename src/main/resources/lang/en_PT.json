@@ -291,7 +291,7 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected fer fea'ure %featureName%, resettin' its settin's t' default values."
   },
   "discordStatus": {
     "titleNone": "None",
@@ -338,15 +338,15 @@
         "help": "Open th' main menu"
       },
       "brand": {
-        "help": "§e(Dev) §7Show th' server brand",
+        "help": "Show th' server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand be not found!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Copies data about th' block that yer lookin' at"
+        "help": "Copies data about th' block that ye be lookin' at"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Copy NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
+        "help": "Copy NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
         "detailedHelp": {
           "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
@@ -356,7 +356,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Copy th' scoreboard text",
+        "help": "Copy th' scoreboard text",
         "detailedHelp": {
           "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Copy th' tab list header an' footer",
+        "help": "Copy th' tab list header an' footer",
         "detailedHelp": {
           "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
@@ -395,16 +395,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Prints th' counts stored in th' dungeon scuttle counters fer debuggin' purposes."
+        "help": "Prints th' counts stored in th' dungeon scuttle counters fer debuggin' purposes."
       },
       "reload": {
-        "help": "§e(Dev) §7Reloads all o' th' mod's settin's an' resources. Th' game shall freeze fer a few seconds."
+        "help": "Reloads all o' th' mod's settin's an' resources. Th' game shall freeze fer a few seconds."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Reloads th' mod's settin's"
+        "help": "Reloads th' mod's settin's"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Reloads th' mod's resources. Th' game shall freeze fer a few seconds."
+        "help": "Reloads th' mod's resources. Th' game shall freeze fer a few seconds."
       },
       "resetZealotCounter": {
         "help": "Restarts all th' zealot counter counts.",
@@ -446,18 +446,18 @@
         "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Toggle loggin' action bar messages",
+        "help": "Toggle loggin' action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Toggle loggin' magma boss timer debug messages",
+        "help": "Toggle loggin' magma boss timer debug messages",
         "disabled": "Magma boss timer messages shall nay longer be logged.",
         "enabled": "Magma boss timer messages shall now be logged."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Shows th' mod's version",
+        "hoverText": "Click t' put in chat so ye can copy."
       },
       "errors": {
         "wrongUsage": {
