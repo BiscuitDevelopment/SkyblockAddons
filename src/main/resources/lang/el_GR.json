@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Ρυθμίσεις",
     "magmaBossWarning": "Προειδοποιήσει εμφάνισης κύβου μάγματος",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Προειδοποίηση Bal Boss",
+    "broodMotherWarning": "Προειδοποίηση Brood Mother",
     "itemDropConfirmation": "Επιβεβαίωση Ρίψης Αντικειμένου",
     "hideSkeletonHatBones": "Κρύψε τα κόκαλα του Skeleton's helmet",
     "skeletonHatBonesBar": "Κράνος του Σκελετού κοκάλινη μπάρα",
@@ -110,8 +110,8 @@
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Οθόνη Endstone Protector",
     "fancyWarpMenu": "Φανταστικό Warp μενού",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "Διακοπή των ήχων του Rat Pet",
+    "onlyStopRatSqueak": "Διακοπή μόνο του ήχου Rat Squeak",
     "doubleWarp": "Διπλή Τηλεμεταφορά",
     "advancedMode": "Λειτουργία για Προχωρημένους",
     "legendarySeaCreatureWarning": "Προηδοποίηση για Θρυληκά Sea Creatures",
@@ -128,13 +128,13 @@
     "dungeonMapDisplay": "Εμφάνιση χάρτη Dungeon",
     "rotateMap": "Περιστροφή χάρτη στην περιστροφή του παίκτη σας",
     "centerRotationOnYourPlayer": "Κεντράρισμα την Περιστροφής Γύρω από τον Παίκτη Σας",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "Εμφάνιση αντικειμένου του Fetchur μόνο στα Dwarven Mines",
+    "showFetchurItemName": "Εμφάνιση ονόματος αντικειμένου του Fetchur",
+    "showFetchurInventoryOpenOnly": "Εμφάνιση αντικειμένου του Fetchur μόνο όταν τα αποθέματα είναι ανοιχτά",
+    "warnWhenFetchurChanges": "Προειδοποίησε με όταν αλλάξει ο Fetchur",
     "mapZoom": "Ζουμ Χάρτη",
     "glowingDroppedItems": "Λαμπερά αντικείμενα που έπεσαν",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "Επισήμανση Συμπαικτών στο Dungeon",
     "baseStatBoostPercentage": "Εμφάνιση Ενίσχυσης Στατιστικών Βάσης για Αντικείμενα Dungeons",
     "colorByRarity": "Χρώμα Κατά Σπανιότητα",
     "showPlayerHeadsOnMap": "Δείξε τα Κεφάλια Παικτών στον Χάρτη Dungeon",
@@ -170,8 +170,8 @@
     "showSwordKills": "Εμφάνιση Sword Kills",
     "compactTabList": "Συμπαγής λίστα καρτελών",
     "highlightSpecialEnchantments": "Επισημάνετε τις ειδικές γοητείες",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Απενεργοποίηση Μηνυμάτων Ζημιάς στη Συνομιλία",
+    "showSpiritSceptreDisplay": "Εμφάνιση Ζημιάς Spirit Sceptre/Wither blade",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
     "candyPointsCounter": "Spooky Event Καραμέλες / μετρητές πόντων",
@@ -343,7 +343,7 @@
         "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -398,13 +398,13 @@
         "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Επαναφορτώνει όλες τις ρυθμίσεις και τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
       },
       "reloadConfig": {
         "help": "Reloads the mod's settings"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Επαναφορτώνει τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
