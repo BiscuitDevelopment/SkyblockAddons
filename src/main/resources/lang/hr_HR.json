@@ -290,7 +290,8 @@
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Zahtijeva da su ISKLJUČENI Shaderi, Fast Render i Antialiasing",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Ništa",
