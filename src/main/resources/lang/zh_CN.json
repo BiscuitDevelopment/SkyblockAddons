@@ -290,7 +290,8 @@
     "chroma": "渐变",
     "worldRenderedCooldownTime": "冷却: %time%s",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "无",
