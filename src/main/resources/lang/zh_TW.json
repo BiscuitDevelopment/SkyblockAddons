@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
-    "jacobsContestTimer": "Jacob's Contest Timer",
+    "jacobsContestTimer": "Jacob's Contest 計時器",
     "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
   },
   "messages": {
@@ -290,8 +290,8 @@
     "chroma": "漸變色",
     "worldRenderedCooldownTime": "冷卻: %time%秒",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
-    "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "version": "版本",
+    "invalidFeatureConfiguration": "於 %featureName% 功能檢測到無效的設定，已恢復到原始設定。"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -407,8 +407,8 @@
         "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "重置所有 Zealot 計數器數量",
+        "resetSuccess": "Zealot 計數器重置！"
       },
       "set": {
         "zealotCounter": {
@@ -456,8 +456,8 @@
         "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "顯示模組版本",
+        "hoverText": "點擊以置於聊天室以便複製"
       },
       "errors": {
         "wrongUsage": {
