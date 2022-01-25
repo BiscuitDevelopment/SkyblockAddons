@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.MathHelper;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class ButtonGuiScale extends ButtonFeature {
 
@@ -22,7 +23,13 @@ public class ButtonGuiScale extends ButtonFeature {
 
     public ButtonGuiScale(double x, double y, int width, int height, SkyblockAddons main, Feature feature) {
         super(0, (int) x, (int) y, "", feature);
-        this.sliderValue = main.getConfigValues().getGuiScale(feature, false);
+        float sliderValue = main.getConfigValues().getGuiScale(feature, false);
+
+        if (Float.isInfinite(sliderValue) || Float.isNaN(sliderValue)) {
+            throw new NumberFormatException("GUI scale for feature " + feature.getId() + " is infinite or NaN.");
+        }
+
+        this.sliderValue = sliderValue;
         this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
         this.main = main;
         this.width = width;
@@ -109,7 +116,7 @@ public class ButtonGuiScale extends ButtonFeature {
     }
 
     private float getRoundedValue(float value) {
-        return new BigDecimal(String.valueOf(value)).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+        return BigDecimal.valueOf(value).setScale(2, RoundingMode.HALF_UP).floatValue();
     }
 
     private void setNewScale() {
