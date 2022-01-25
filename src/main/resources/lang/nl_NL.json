@@ -291,7 +291,7 @@
     "worldRenderedCooldownTime": "Afkoeltijd: %time%s",
     "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
     "version": "Versie",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Ongeldige configuratie gedetecteerd voor functie %featureName%. Instellingen worden gereset."
   },
   "discordStatus": {
     "titleNone": "Geen",
