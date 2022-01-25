@@ -290,7 +290,8 @@
     "chroma": "Väriefekti",
     "worldRenderedCooldownTime": "Jäähtymisaika: %time%s",
     "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Ei mikään",
