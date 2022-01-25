@@ -290,7 +290,8 @@
     "chroma": "Χρωματιστό",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Τίποτα",
