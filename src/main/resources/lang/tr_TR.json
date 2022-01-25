@@ -290,7 +290,8 @@
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
-    "version": "Versiyon"
+    "version": "Versiyon",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
