@@ -290,7 +290,8 @@
     "chroma": "Sắc độ",
     "worldRenderedCooldownTime": "T.gian chờ: %time%gi",
     "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Không có",
