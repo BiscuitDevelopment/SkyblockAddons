@@ -291,7 +291,7 @@
     "worldRenderedCooldownTime": "クールダウン：%time%秒",
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
     "version": "バージョン",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "%featureName%の機能で無効な設定が検出されました。この設定がデフォルトの値にリセットされます。"
   },
   "discordStatus": {
     "titleNone": "なし",
