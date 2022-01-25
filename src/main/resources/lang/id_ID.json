@@ -290,7 +290,8 @@
     "chroma": "Kroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
-    "version": "Versi"
+    "version": "Versi",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
