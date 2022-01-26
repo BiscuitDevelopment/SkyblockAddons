@@ -156,7 +156,7 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
                 new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
                 new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
-                new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
+                new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_LMENU, Message.KEY_DEVELOPER_COPY_NBT));
         registerKeyBindings(keyBindings);
         /*
          De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
