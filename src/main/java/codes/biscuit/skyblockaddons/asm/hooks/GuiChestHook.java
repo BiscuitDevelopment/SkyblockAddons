@@ -70,6 +70,8 @@ public class GuiChestHook {
     private static final Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
     private static final Pattern youAreHerePattern = Pattern.compile("(?:§5§o)?§aYou are here!");
 
+    private static boolean accessoryReforgeMenuTypeChecked = false;
+
     private static int reforgeFilterHeight;
 
     /** String dimensions for reforge filter */
@@ -96,9 +98,9 @@ public class GuiChestHook {
      */
     @SuppressWarnings("unused")
     public static void onGuiClosed() {
-        SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
         Keyboard.enableRepeatEvents(false);
 
+        accessoryReforgeMenuTypeChecked = false;
         islandWarpGui = null;
         BackpackInventoryManager.setBackpackColor(null);
     }
@@ -189,7 +191,7 @@ public class GuiChestHook {
     }
 
     public static void drawScreen(int guiLeft, int guiTop) {
-        InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+        InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().getInventoryType();
 
         if (inventoryType == InventoryType.SALVAGING) {
             int ySize = 222 - 108 + 6 * 18;
@@ -203,42 +205,53 @@ public class GuiChestHook {
             ContainerPreviewManager.saveStorageContainerInventory(SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
         }
 
-        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && textFieldMatches != null &&
-                (inventoryType== InventoryType.BASIC_REFORGING ||
-                        inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
-
-            int defaultBlue = main.getUtils().getDefaultBlue(255);
-            int x = guiLeft - 160;
-            if (x<0) {
-                x = 20;
-            }
-            int y = guiTop + REFORGE_MENU_HEIGHT / 2 - reforgeFilterHeight / 2;
-
-            GlStateManager.color(1F, 1F, 1F);
-            fontRenderer.drawSplitString(TYPE_ENCHANTMENTS, x, y, maxStringWidth, defaultBlue);
-            y = y + typeEnchantmentsHeight;
-            fontRenderer.drawSplitString(SEPARATE_MULTIPLE, x, y, maxStringWidth, defaultBlue);
-
-            int placeholderTextX = textFieldMatches.xPosition + 4;
-            int placeholderTextY = textFieldMatches.yPosition + (textFieldMatches.height - 8) / 2;
-
-            y = textFieldMatches.yPosition - enchantsToIncludeHeight - 1;
-            fontRenderer.drawSplitString(ENCHANTS_TO_INCLUDE, x, y, maxStringWidth, defaultBlue);
-
-            textFieldMatches.drawTextBox();
-            if (StringUtils.isEmpty(textFieldMatches.getText())) {
-                fontRenderer.drawString(fontRenderer.trimStringToWidth(INCLUSION_EXAMPLE, textFieldMatches.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER)) {
+            /*
+            Special case: The advanced accessory bag reforge menu is detected by the presence of certain items, available
+            only after the inventory is fully initialized.
+             */
+            if (inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING && !accessoryReforgeMenuTypeChecked) {
+                inventoryType = main.getInventoryUtils().updateAccessoryBagReforgeInventoryType();
+                accessoryReforgeMenuTypeChecked = true;
             }
 
-            y = textFieldExclusions.yPosition - enchantsToExcludeHeight - 1;
-            fontRenderer.drawSplitString(ENCHANTS_TO_EXCLUDE, x, y, maxStringWidth, defaultBlue);
+            if ((inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) &&
+                    textFieldMatches != null) {
 
-            placeholderTextY = textFieldExclusions.yPosition + (textFieldExclusions.height - 8) / 2;
-            textFieldExclusions.drawTextBox();
-            if (StringUtils.isEmpty(textFieldExclusions.getText())) {
-                fontRenderer.drawString(fontRenderer.trimStringToWidth(EXCLUSION_EXAMPLE, textFieldExclusions.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
+                int defaultBlue = main.getUtils().getDefaultBlue(255);
+                int x = guiLeft - 160;
+                if (x<0) {
+                    x = 20;
+                }
+                int y = guiTop + REFORGE_MENU_HEIGHT / 2 - reforgeFilterHeight / 2;
+
+                GlStateManager.color(1F, 1F, 1F);
+                fontRenderer.drawSplitString(TYPE_ENCHANTMENTS, x, y, maxStringWidth, defaultBlue);
+                y = y + typeEnchantmentsHeight;
+                fontRenderer.drawSplitString(SEPARATE_MULTIPLE, x, y, maxStringWidth, defaultBlue);
+
+                int placeholderTextX = textFieldMatches.xPosition + 4;
+                int placeholderTextY = textFieldMatches.yPosition + (textFieldMatches.height - 8) / 2;
+
+                y = textFieldMatches.yPosition - enchantsToIncludeHeight - 1;
+                fontRenderer.drawSplitString(ENCHANTS_TO_INCLUDE, x, y, maxStringWidth, defaultBlue);
+
+                textFieldMatches.drawTextBox();
+                if (StringUtils.isEmpty(textFieldMatches.getText())) {
+                    fontRenderer.drawString(fontRenderer.trimStringToWidth(INCLUSION_EXAMPLE, textFieldMatches.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
+                }
+
+                y = textFieldExclusions.yPosition - enchantsToExcludeHeight - 1;
+                fontRenderer.drawSplitString(ENCHANTS_TO_EXCLUDE, x, y, maxStringWidth, defaultBlue);
+
+                placeholderTextY = textFieldExclusions.yPosition + (textFieldExclusions.height - 8) / 2;
+                textFieldExclusions.drawTextBox();
+                if (StringUtils.isEmpty(textFieldExclusions.getText())) {
+                    fontRenderer.drawString(fontRenderer.trimStringToWidth(EXCLUSION_EXAMPLE, textFieldExclusions.width), placeholderTextX, placeholderTextY, ColorCode.DARK_GRAY.getColor());
+                }
             }
         }
+
     }
 
     /**
@@ -250,7 +263,7 @@ public class GuiChestHook {
             return; // don't draw any overlays outside SkyBlock
         }
 
-        InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+        InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().getInventoryType();
 
         if (inventoryType != null) {
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && inventoryType ==

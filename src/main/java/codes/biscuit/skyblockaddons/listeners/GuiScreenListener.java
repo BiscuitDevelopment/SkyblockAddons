@@ -1,35 +1,92 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 /**
  * This listener listens for events that happen while a {@link GuiScreen} is open.
  *
  * @author ILikePlayingGames
- * @version 1.1
+ * @version 1.5
  */
 public class GuiScreenListener {
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
+
+    /** Time in milliseconds of the last time a {@code GuiContainer} was closed */
+    @Getter
+    private long lastContainerCloseMs = -1;
+
+    @SubscribeEvent
+    public void beforeInit(GuiScreenEvent.InitGuiEvent.Pre e) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
+        GuiScreen guiScreen = e.gui;
+
+        if (guiScreen instanceof GuiChest) {
+            SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+
+            // Backpack opening sound
+            Minecraft mc = Minecraft.getMinecraft();
+            IInventory chestInventory = ((GuiChest) guiScreen).lowerChestInventory;
+            if (chestInventory.hasCustomName()) {
+                if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+                    if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
+                        mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
+                    } else {
+                        mc.thePlayer.playSound("mob.horse.leather", 0.5F, 1);
+                    }
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public void onGuiOpen(GuiOpenEvent e) {
+        if (!main.getUtils().isOnSkyblock()) {
+            return;
+        }
+
+        GuiScreen guiScreen = e.gui;
+        GuiScreen oldGuiScreen = Minecraft.getMinecraft().currentScreen;
+
+        // Closing a container
+        if (guiScreen == null && oldGuiScreen instanceof GuiContainer) {
+            lastContainerCloseMs = System.currentTimeMillis();
+        }
+
+        // Closing or switching to a different GuiChest
+        if (oldGuiScreen instanceof GuiChest) {
+            GuiChestHook.onGuiClosed();
+        }
+    }
 
     /**
      * Listens for key presses while a GUI is open
      *
      * @param event the {@code GuiScreenEvent.KeyboardInputEvent} to listen for
      */
-    @SubscribeEvent()
+    @SubscribeEvent
     public void onKeyInput(GuiScreenEvent.KeyboardInputEvent.Pre event) {
         int eventKey = Keyboard.getEventKey();
 
@@ -48,7 +105,7 @@ public class GuiScreenListener {
         }
     }
 
-    @SubscribeEvent()
+    @SubscribeEvent
     public void onMouseClick(GuiScreenEvent.MouseInputEvent.Pre event) {
         if (!main.getUtils().isOnSkyblock()) {
             return;
@@ -77,9 +134,6 @@ public class GuiScreenListener {
                         if (slot == null || hotbarSlot == null) {
                             return;
                         }
-
-                        //SkyblockAddons.getLogger().debug("Slot " + slot.slotNumber + ": " + (slot.getHasStack() ? slot.getStack().toString() : "Empty"));
-                        //SkyblockAddons.getLogger().debug("Hotbar Slot: " + hotbarSlot.slotNumber + ": " + (hotbarSlot.getHasStack() ? hotbarSlot.getStack().toString() : "Empty"));
 
                         if (main.getConfigValues().getLockedSlots().contains(i + 36)) {
                             if (!slot.getHasStack() && !hotbarSlot.getHasStack()) {

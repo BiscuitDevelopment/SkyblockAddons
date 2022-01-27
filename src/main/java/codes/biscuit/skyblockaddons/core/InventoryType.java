@@ -1,11 +1,8 @@
 package codes.biscuit.skyblockaddons.core;
 
-import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
 import lombok.Getter;
 
 import java.util.regex.Pattern;
-
-//TODO Fix for Hypixel localization
 
 /**
  * This is an enum containing different menus in Skyblock. It's used in logic where the menu the player is in matters.
@@ -13,11 +10,11 @@ import java.util.regex.Pattern;
 public enum InventoryType {
     ENCHANTMENT_TABLE("Enchant Item", "Enchant Item"),
     BASIC_REFORGING("Reforge Item", "Reforge Item"),
-    ADVANCED_REFORGING("Reforge Item", "Reforge Item"),
+    ADVANCED_REFORGING("Reforge Item (Advanced)", "Reforge Item (Advanced)"),
     BASIC_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag", "Reforge Accessory Bag"),
     ADVANCED_ACCESSORY_BAG_REFORGING("Reforge Accessory Bag", "Reforge Accessory Bag"),
     BAKER("Baker", "Baker"),
-    CRAFTING_TABLE(CraftingPattern.CRAFTING_TABLE_DISPLAYNAME, CraftingPattern.CRAFTING_TABLE_DISPLAYNAME),
+    CRAFTING_TABLE("Craft Item", "Craft Item"),
     SALVAGING("Salvage Dungeon Item", "Salvage Dungeon Item"),
     ULTRASEQUENCER("Ultrasequencer", "Ultrasequencer \\((?<type>[a-zA-Z]+)\\)"),
     CHRONOMATRON("Chronomatron", "Chronomatron \\((?<type>[a-zA-Z]+)\\)"),

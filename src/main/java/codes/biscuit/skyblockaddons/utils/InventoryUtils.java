@@ -385,7 +385,8 @@ public class InventoryUtils {
     }
 
     /**
-     * Returns true iff the player is wearing a full armor set with IDs contained in the given set
+     * Returns true if the player is wearing a full armor set with IDs contained in the given set
+     *
      * @param player the player
      * @param armorSetIds the given set of armor IDs
      * @return {@code true} iff all player armor contained in given set, {@code false} otherwise.
@@ -410,24 +411,23 @@ public class InventoryUtils {
         return itemPickupLog.values();
     }
 
-    //TODO: Fix for Hypixel localization
-
     /**
-     * Detects and stores, and returns the current Skyblock inventory type. The inventory type is the kind of menu the
-     * player has open, like a crafting table or an enchanting table for example.
-     *
-     * @return the detected inventory type, or {@code null} if an unrecognized inventory is detected or there's no inventory open
+     * Detects and stores the current Skyblock inventory type. The inventory type is the kind of menu the
+     * player has open, like a crafting table or an enchanting table for example. If no known inventory type is detected,
+     * {@code null} will be stored.
      */
-    public InventoryType updateInventoryType() {
+    public void updateInventoryType() {
         GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
 
         if (!(currentScreen instanceof GuiChest)) {
-            return inventoryType = null;
+            inventoryType = null;
+            return;
         }
         // Get the open chest and test if it's the same one that we've seen before
         IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
         if (inventory.getDisplayName() == null) {
-            return inventoryType = null;
+            inventoryType = null;
+            return;
         }
         String chestName = TextUtils.stripColor(inventory.getDisplayName().getUnformattedText());
 
@@ -453,16 +453,31 @@ public class InventoryUtils {
                     inventoryPageNum = 0;
                     inventorySubtype = null;
                 }
-                if (inventoryTypeItr == InventoryType.BASIC_REFORGING || inventoryTypeItr == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                    inventoryType = getReforgeInventoryType(inventoryTypeItr, inventory);
-                } else {
-                    inventoryType = inventoryTypeItr;
-                }
+                inventoryType = inventoryTypeItr;
                 break;
             }
         }
         inventoryKey = getInventoryKey(inventoryType, inventoryPageNum);
-        return inventoryType;
+    }
+
+    /**
+     * Detects, stores, and returns the current accessory bag reforge inventory type. The accessory bag reforge inventory
+     * is a special case as the advanced accessory bag reforge menu is detected by the presence of certain items, available
+     * only after the inventory is fully initialized.
+     *
+     * @return {@code InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING} if this is an advanced reforge inventory,
+     * {@code InventoryType.BASIC_ACCESSORY_BAG_REFORGING} otherwise
+     * @throws IllegalStateException if called when the current inventory is not an accessory bag reforge inventory
+     */
+    public InventoryType updateAccessoryBagReforgeInventoryType() {
+        if (inventoryType != InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+            throw new IllegalStateException("updateAccessoryBagReforgeInventoryType() called on inventory not of type \"BASIC_ACCESSORY_BAG_REFORGING\".");
+        }
+
+        GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
+        IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
+
+        return inventoryType = getAccessoryBagReforgeInventoryType(inventory);
     }
 
     private String getInventoryKey(InventoryType inventoryType, int inventoryPageNum) {
@@ -472,12 +487,18 @@ public class InventoryUtils {
         return inventoryType.getInventoryName() + inventoryPageNum;
     }
 
-    // TODO: Fix for Hypixel localization
-    // Gets the reforge inventory type from a given reforge inventory
-    private InventoryType getReforgeInventoryType(InventoryType baseType, IInventory inventory) {
+    /**
+     * Gets the accessory bag reforge inventory type for a given accessory bag reforge inventory. This works only after
+     * slot 14 of the inventory has been initialized with its item.
+     *
+     * @param inventory the {@code IInventory} containing all the items in the accessory bag reforge inventory
+     * @return {@code InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING} if this is an advanced reforge inventory,
+     * {@code InventoryType.BASIC_ACCESSORY_BAG_REFORGING} otherwise
+     */
+    private InventoryType getAccessoryBagReforgeInventoryType(IInventory inventory) {
         // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
         ItemStack barrier = inventory.getStackInSlot(13);
-        // This is the stained glass pane to the right of the barrier.
+        // This is the stained-glass pane to the right of the barrier.
         ItemStack glassPane = inventory.getStackInSlot(14);
 
         /*
@@ -487,10 +508,10 @@ public class InventoryUtils {
          */
         if ((barrier != null && barrier.getItem() == Item.getItemFromBlock(Blocks.barrier)) ||
                 (glassPane != null && glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone"))) {
-            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.ADVANCED_REFORGING : InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
+            return InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
 
         } else {
-            return baseType == InventoryType.BASIC_REFORGING ? InventoryType.BASIC_REFORGING : InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
+            return InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
         }
     }
 }

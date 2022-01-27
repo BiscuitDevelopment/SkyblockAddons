@@ -9,7 +9,6 @@ public enum TransformerMethod {
 
     // GuiChest / GuiContainer / Gui
     updateScreen("updateScreen", "func_73876_c", "e", "()V"),
-    onGuiClosed("onGuiClosed", "func_146281_b", "m", "()V"),
     drawScreen("drawScreen", "func_73863_a", "a", "(IIF)V"),
     initGui("initGui", "func_73866_w", "b", "()V"),
     keyTyped("keyTyped", "func_73869_a", "a", "(CI)V", true),

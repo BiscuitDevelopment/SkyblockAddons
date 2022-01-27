@@ -62,7 +62,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.*;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -83,7 +82,6 @@ import org.lwjgl.input.Keyboard;
 
 import java.util.*;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -147,8 +145,6 @@ public class PlayerListener {
     private long lastBossDeathPost = -1;
     private long lastMagmaWavePost = -1;
     private long lastBlazeWavePost = -1;
-    private Class<?> lastOpenedInventory;
-    private long lastClosedInv = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
@@ -1119,31 +1115,6 @@ public class PlayerListener {
         }
     }
 
-    @SubscribeEvent
-    public void onGuiOpen(GuiOpenEvent e) {
-        if (e.gui == null && GuiChest.class.equals(lastOpenedInventory)) {
-            lastClosedInv = System.currentTimeMillis();
-            lastOpenedInventory = null;
-        }
-        if (e.gui != null) {
-            lastOpenedInventory = e.gui.getClass();
-
-            if (e.gui instanceof GuiChest) {
-                Minecraft mc = Minecraft.getMinecraft();
-                IInventory chestInventory = ((GuiChest) e.gui).lowerChestInventory;
-                if (chestInventory.hasCustomName()) {
-                    if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
-                        if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
-                            mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
-                        } else {
-                            mc.thePlayer.playSound("mob.horse.leather", 0.5F, 1);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     /**
      * This method handles key presses while the player is in-game.
      * For handling of key presses while a GUI (e.g. chat, pause menu, F3) is open,
@@ -1329,7 +1300,7 @@ public class PlayerListener {
     }
 
     public boolean shouldResetMouse() {
-        return System.currentTimeMillis() - lastClosedInv > 100;
+        return System.currentTimeMillis() - main.getGuiScreenListener().getLastContainerCloseMs() > 100;
     }
 
     Integer getHealthUpdate() {

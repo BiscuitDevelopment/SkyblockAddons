@@ -36,17 +36,6 @@ public class GuiChestTransformer implements ITransformer {
         // Objective: Add:
         //
         // @Override
-        // public onGuiClosed() {
-        //     GuiChestHook.onGuiClosed();
-        // }
-
-        MethodNode onGuiClosed = TransformerMethod.onGuiClosed.createMethodNode();
-        onGuiClosed.instructions.add(onGuiClosed());
-        classNode.methods.add(onGuiClosed);
-
-        // Objective: Add:
-        //
-        // @Override
         // public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         //     super.drawScreen(mouseX, mouseY, partialTicks);
         //     GuiChestHook.drawScreen(this.guiLeft, this.guiTop);
@@ -220,20 +209,6 @@ public class GuiChestTransformer implements ITransformer {
         list.add(new VarInsnNode(Opcodes.ALOAD, 0));
         list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.updateScreen.getName(),
                 "()V", false)); // super.updateScreen();
-
-        list.add(new InsnNode(Opcodes.RETURN));
-        return list;
-    }
-
-    private InsnList onGuiClosed() {
-        InsnList list = new InsnList();
-
-        list.add(new MethodInsnNode(Opcodes.INVOKESTATIC, "codes/biscuit/skyblockaddons/asm/hooks/GuiChestHook", "onGuiClosed",
-                "()V", false)); // GuiChestHook.onGuiClosed();
-
-        list.add(new VarInsnNode(Opcodes.ALOAD, 0));
-        list.add(new MethodInsnNode(Opcodes.INVOKESPECIAL, TransformerClass.GuiContainer.getNameRaw(), TransformerMethod.onGuiClosed.getName(),
-                "()V", false)); // super.onGuiClosed();
 
         list.add(new InsnNode(Opcodes.RETURN));
         return list;
