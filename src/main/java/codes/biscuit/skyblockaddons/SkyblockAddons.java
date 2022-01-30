@@ -151,12 +151,14 @@ public class SkyblockAddons {
         ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
+        // Macs do not have a right control key.
+        int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;
 
         Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
                 new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
                 new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
                 new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
-                new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_LMENU, Message.KEY_DEVELOPER_COPY_NBT));
+                new SkyblockKeyBinding("copy_NBT", developerModeKey, Message.KEY_DEVELOPER_COPY_NBT));
         registerKeyBindings(keyBindings);
         /*
          De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
