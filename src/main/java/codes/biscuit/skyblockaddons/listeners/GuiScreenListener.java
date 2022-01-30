@@ -3,7 +3,9 @@ package codes.biscuit.skyblockaddons.listeners;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import lombok.Getter;
@@ -11,7 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.inventory.GuiChest;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -44,17 +46,29 @@ public class GuiScreenListener {
         GuiScreen guiScreen = e.gui;
 
         if (guiScreen instanceof GuiChest) {
-            SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType();
+            Minecraft mc = Minecraft.getMinecraft();
+            GuiChest guiChest = (GuiChest) guiScreen;
+            InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType(guiChest);
+            InventoryBasic chestInventory = (InventoryBasic) guiChest.lowerChestInventory;
 
             // Backpack opening sound
-            Minecraft mc = Minecraft.getMinecraft();
-            IInventory chestInventory = ((GuiChest) guiScreen).lowerChestInventory;
             if (chestInventory.hasCustomName()) {
                 if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
                     if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
                         mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
                     } else {
                         mc.thePlayer.playSound("mob.horse.leather", 0.5F, 1);
+                    }
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
+                if (inventoryType == InventoryType.STORAGE_BACKPACK || inventoryType == InventoryType.ENDER_CHEST) {
+                    try {
+                        ContainerPreviewManager.saveStorageContainerInventory(chestInventory,
+                                SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
+                    } catch (Exception exception) {
+                        main.getUtils().sendErrorMessage(exception.getMessage());
                     }
                 }
             }
@@ -77,6 +91,7 @@ public class GuiScreenListener {
 
         // Closing or switching to a different GuiChest
         if (oldGuiScreen instanceof GuiChest) {
+            ContainerPreviewManager.onContainerClose();
             GuiChestHook.onGuiClosed();
         }
     }

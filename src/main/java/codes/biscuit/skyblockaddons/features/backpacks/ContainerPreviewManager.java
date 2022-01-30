@@ -4,6 +4,9 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.listeners.InventoryChangeListener;
+import codes.biscuit.skyblockaddons.misc.scheduler.LimitedRepeatingScheduledTask;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -19,20 +22,19 @@ import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompressedStreamTools;
 import net.minecraft.nbt.NBTTagByteArray;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.util.Constants;
 import org.lwjgl.input.Keyboard;
 
 import java.io.ByteArrayInputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -51,6 +53,32 @@ public class ContainerPreviewManager {
     private static ContainerPreview currentContainerPreview;
 
     /**
+     * The listener that monitors the slots of the current container inventory for changes
+     */
+    private static InventoryChangeListener inventoryChangeListener;
+
+    /**
+     * The current container inventory that will be saved to the cache after it is fully initialized
+     */
+    private static InventoryBasic containerInventory;
+
+    /**
+     * The storage key to save {@link ContainerPreviewManager#containerInventory} to
+     */
+    private static String storageKey;
+
+    /**
+     * The scheduled task that saves the contents of a container inventory after a delay to make sure all the items in it
+     * have already been initialized
+     */
+    private static LimitedRepeatingScheduledTask delayedSaveTask;
+
+    /**
+     * The time in milliseconds of the last change in the current container inventory
+     */
+    private static long lastInventoryChangeMillis = 0;
+
+    /**
      * Whether we are currently frozen in the container preview
      */
     @Getter
@@ -62,9 +90,18 @@ public class ContainerPreviewManager {
    private static long lastToggleFreezeTime;
 
     /**
-     * True when we are drawing an itemstack's tooltip while {@link #isFrozen()} is true
+     * True when we are drawing an {@code ItemStack}'s tooltip while {@link #isFrozen()} is true
      */
     private static boolean drawingFrozenItemTooltip;
+
+    public static void addInventoryChangeListener(InventoryBasic inventory) {
+        if (inventory == null) {
+            throw new NullPointerException("Tried to add listener to null inventory.");
+        }
+
+        inventoryChangeListener = new InventoryChangeListener();
+        inventory.addInventoryChangeListener(inventoryChangeListener);
+    }
 
     /**
      * Creates and returns a {@code ContainerPreview} object representing the given {@code ItemStack} if it is a backpack
@@ -116,6 +153,30 @@ public class ContainerPreviewManager {
             return new ContainerPreview(items, name, color, containerData.getNumRows(), containerData.getNumCols());
         }
         return null;
+    }
+
+    /**
+     * Saves {@code containerInventory} to the container inventory cache if it's not {@code null} when a
+     * {@link net.minecraft.client.gui.inventory.GuiChest} is closed.
+     * 
+     * @see codes.biscuit.skyblockaddons.listeners.GuiScreenListener#onGuiOpen(GuiOpenEvent) 
+     */
+    public static void onContainerClose() {
+        if (containerInventory != null) {
+            saveStorageContainerInventory();
+        }
+    }
+
+    /**
+     * Replaces the time of the last inventory change with the current time and refreshes
+     * {@link ContainerPreviewManager#containerInventory} with the new changes.
+     * Called by {@link InventoryChangeListener#onInventoryChanged(InventoryBasic)}.
+     *
+     * @param inventory the {@link InventoryBasic} that changed
+     */
+    public static void onInventoryChange(InventoryBasic inventory) {
+        lastInventoryChangeMillis = System.currentTimeMillis();
+        containerInventory = inventory;
     }
 
     private static List<ItemStack> decompressItems(byte[] bytes) {
@@ -309,9 +370,9 @@ public class ContainerPreviewManager {
     }
 
     /**
-     * Create a {@link ContainerPreview} from an backpack itemstack in the storage menu and the list of items in that preview
+     * Create a {@link ContainerPreview} from a backpack {@code ItemStack} in the storage menu and the list of items in that preview
      *
-     * @param stack the backpack itemstack that's being hovered over
+     * @param stack the backpack {@code ItemStack} that's being hovered over
      * @param items the items in the backpack
      * @return the container preview
      */
@@ -332,14 +393,12 @@ public class ContainerPreviewManager {
             rows = Math.min(containerData.getNumRows(), 5);
             cols = containerData.getNumCols();
         } else if (TextUtils.stripColor(stack.getDisplayName()).toUpperCase().startsWith("ENDER CHEST")) {
-            System.out.println(items.size());
             rows = Math.min(5, (int) Math.ceil(items.size() / 9F));
         }
 
         return new ContainerPreview(items, TextUtils.stripColor(stack.getDisplayName()), color, rows, cols);
     }
-
-
+    
     /**
      * Returns whether the backpack freeze key is down
      *
@@ -357,6 +416,29 @@ public class ContainerPreviewManager {
         return false;
     }
 
+    /**
+     * Returns whether all slots in {@link ContainerPreviewManager#containerInventory} are initialized.
+     * This is determined by checking if {@code containerInventory} isn't {@code null} and two seconds have passed since
+     * the last inventory change (meaning all items likely have been populated). This may fail if there is a lag spike
+     * exceeding two seconds while populating slots.
+     *
+     * @return {@code true} if all slots in {@link ContainerPreviewManager#containerInventory} are initialized,
+     * {@code false} otherwise
+     */
+    public static boolean areAllSlotsInitializedInCurrentInventory() {
+        if (containerInventory != null) {
+            return System.currentTimeMillis() - lastInventoryChangeMillis > 2000;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Called when a key is typed in a {@link GuiContainer}. Used to control backpack preview freezing.
+     *
+     * @param keyCode the key code of the key that was typed
+     * @see codes.biscuit.skyblockaddons.asm.hooks.GuiContainerHook#keyTyped(int) ;
+     */
     public static void onContainerKeyTyped(int keyCode) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -372,7 +454,15 @@ public class ContainerPreviewManager {
         }
     }
 
-    //TODO Fix for Hypixel localization
+    /**
+     * Renders the corresponding container preview if the given {@code ItemStack} is a container.
+     * If a container preview is rendered, {@code true} is returned to cancel the original tooltip render event.
+     *
+     * @param itemStack the {@code ItemStack} to render the container preview for
+     * @param x the x-coordinate where the item's tooltip is rendered
+     * @param y the y-coordinate where the item's tooltip is rendered
+     * @return {@code true} if a container preview is rendered, {@code false} otherwise
+     */
     public static boolean onRenderTooltip(ItemStack itemStack, int x, int y) {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -489,39 +579,131 @@ public class ContainerPreviewManager {
     }
 
     /**
-     * Saves the currently opened menu inventory to the cached backpacks.
-     * Triggers {@link PersistentValuesManager#saveValues()} if there are changes to the backpack
+     * Saves the currently opened menu inventory to the backpack cache.
+     * Triggers {@link PersistentValuesManager#saveValues()} if the inventory has changed from the cached version.
      *
+     * @param inventory the inventory to save the contents of
      * @param storageKey the key in which to store the data
+     * @throws NullPointerException if {@code inventory} or {@code storageKey} are {@code null}
      */
-    public static void saveStorageContainerInventory(String storageKey) {
-        // Get the cached storage containers
-        Map<String, CompressedStorage> cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
-        // Get the cached container stored at this key
-        CompressedStorage cachedContainer = cache.get(storageKey);
-        byte[] previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
-
-        // Compute the compressed inventory of the current open inventory
-        ContainerChest chest = (ContainerChest) Minecraft.getMinecraft().thePlayer.openContainer;
-        IInventory chestInventory = chest.getLowerChestInventory();
-        byte[] bytes = getCompressedInventoryContents(chestInventory).getByteArray();
-
-        // Convert bytes into gson serializable list and check whether the cache is dirty
-        boolean dirty = previousCache == null || previousCache.length != bytes.length;
-        for (int i = 0; i < bytes.length; i++) {
-            if (!dirty && bytes[i] != previousCache[i]) {
-                dirty = true;
-                break;
-            }
+    public static void saveStorageContainerInventory(InventoryBasic inventory, String storageKey) {
+        if (inventory == null) {
+            throw new NullPointerException("Cannot save contents of a null inventory.");
+        } else if (storageKey == null) {
+            throw new NullPointerException("Storage key is required to save the container's inventory.");
         }
-        if (dirty) {
-            if (cachedContainer == null) {
-                cache.put(storageKey, new CompressedStorage(bytes));
-            } else {
-                cachedContainer.setStorage(bytes);
+
+        if (!storageKey.equals(ContainerPreviewManager.storageKey)) {
+            if (containerInventory != null) {
+                saveStorageContainerInventory();
             }
-            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
-            System.out.println("Caching container " + storageKey);
+
+            ContainerPreviewManager.storageKey = storageKey;
+            addInventoryChangeListener(inventory);
+            delayedSaveTask = SkyblockAddons.getInstance().getNewScheduler().scheduleLimitedRepeatingTask(new DelayedSaveRunnable(storageKey), 0, 60, 3);
+        } else {
+            // Get the cached storage containers
+            Map<String, CompressedStorage> cache = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getStorageCache();
+            // Get the cached container stored at this key
+            CompressedStorage cachedContainer = cache.get(storageKey);
+            byte[] previousCache = cachedContainer == null ? null : cachedContainer.getStorage();
+
+            // Compute the compressed inventory of the current open inventory
+            byte[] inventoryContents = getCompressedInventoryContents(inventory).getByteArray();
+
+            // Check if the cache is dirty
+            boolean dirty = previousCache == null || !Arrays.equals(previousCache, inventoryContents);
+
+            if (dirty) {
+                if (cachedContainer == null) {
+                    cache.put(storageKey, new CompressedStorage(inventoryContents));
+                    SkyblockAddons.getLogger().info("Cached new container " + storageKey + ".");
+                } else {
+                    cachedContainer.setStorage(inventoryContents);
+                    SkyblockAddons.getLogger().info("Refreshed cache for container " + storageKey + ".");
+                }
+
+                SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            }
+
+            resetCurrentContainer();
+        }
+    }
+
+    /**
+     * Saves the currently opened menu inventory to the backpack cache.
+     * Triggers {@link PersistentValuesManager#saveValues()} if the inventory has changed from the cached version.
+     *
+     * @throws NullPointerException if {@link ContainerPreviewManager#containerInventory} or
+     * {@link ContainerPreviewManager#storageKey} are {@code null}
+     */
+    public static void saveStorageContainerInventory() {
+        saveStorageContainerInventory(containerInventory, storageKey);
+    }
+
+    /**
+     * Removes {@link ContainerPreviewManager#inventoryChangeListener} from a given {@link InventoryBasic}.
+     *
+     * @param inventory the {@code InventoryBasic} to remove the listener from
+     */
+    private static void removeInventoryChangeListener(InventoryBasic inventory) {
+        if (inventory == null) {
+            throw new NullPointerException("Tried to remove listener from null inventory.");
+        }
+
+        if (inventoryChangeListener != null) {
+            try {
+                inventory.removeInventoryChangeListener(inventoryChangeListener);
+            } catch (NullPointerException e) {
+                SkyblockAddons.getInstance().getUtils().sendErrorMessage(
+                        "Tried to remove an inventory listener from a container that has no listeners.");
+            }
+
+            inventoryChangeListener = null;
+        }
+    }
+
+    /**
+     * Resets the current container being cached by the manager.
+     */
+    private static void resetCurrentContainer() {
+        removeInventoryChangeListener(containerInventory);
+        lastInventoryChangeMillis = 0;
+        containerInventory = null;
+        storageKey = null;
+    }
+
+    /**
+     * Saves the current open container inventory to the backpack cache after all its slots have been initialized.
+     * If the storage key in {@code ContainerPreviewManager} has changed since the container was initialized, meaning the
+     * manager is now tracking a different container, the data for the previous container is not saved. It should have
+     * already been saved in {@link #onContainerClose()}.
+     *
+     * Triggers {@link PersistentValuesManager#saveValues()} if the inventory has changed from the cached version.
+     *
+     * @throws NullPointerException if {@link ContainerPreviewManager#containerInventory} or
+     * {@link ContainerPreviewManager#storageKey} are {@code null}
+     */
+    private static void saveContainerInventoryAfterInitialization(String storageKey) {
+        if (storageKey.equals(ContainerPreviewManager.storageKey)) {
+            saveStorageContainerInventory();
+        } else {
+            delayedSaveTask.cancel();
+        }
+    }
+
+    private static class DelayedSaveRunnable extends SkyblockRunnable {
+        private final String STORAGE_KEY;
+
+        public DelayedSaveRunnable(String storageKey) {
+            STORAGE_KEY = storageKey;
+        }
+
+        @Override
+        public void run() {
+            if (areAllSlotsInitializedInCurrentInventory()) {
+                saveContainerInventoryAfterInitialization(STORAGE_KEY);
+            }
         }
     }
 }

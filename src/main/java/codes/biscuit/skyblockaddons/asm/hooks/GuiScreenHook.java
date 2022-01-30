@@ -24,11 +24,7 @@ public class GuiScreenHook {
             return true;
         }
 
-        if (ContainerPreviewManager.onRenderTooltip(itemStack, x, y)) {
-            return true;
-        }
-
-        return false;
+        return ContainerPreviewManager.onRenderTooltip(itemStack, x, y);
     }
 
     //TODO: Fix for Hypixel localization

@@ -412,22 +412,17 @@ public class InventoryUtils {
     }
 
     /**
-     * Detects and stores the current Skyblock inventory type. The inventory type is the kind of menu the
-     * player has open, like a crafting table or an enchanting table for example. If no known inventory type is detected,
-     * {@code null} will be stored.
+     * Detects, stores, and returns the Skyblock inventory type of the given {@code GuiChest}. The inventory type is the
+     * kind of menu the player has open, like a crafting table, or an enchanting table for example. If no known inventory
+     * type is detected, {@code null} will be stored.
+     *
+     * @return an {@link InventoryType} enum constant representing the current Skyblock inventory type
      */
-    public void updateInventoryType() {
-        GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
-
-        if (!(currentScreen instanceof GuiChest)) {
-            inventoryType = null;
-            return;
-        }
+    public InventoryType updateInventoryType(GuiChest guiChest) {
         // Get the open chest and test if it's the same one that we've seen before
-        IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
+        IInventory inventory = guiChest.lowerChestInventory;
         if (inventory.getDisplayName() == null) {
-            inventoryType = null;
-            return;
+            return inventoryType = null;
         }
         String chestName = TextUtils.stripColor(inventory.getDisplayName().getUnformattedText());
 
@@ -458,6 +453,7 @@ public class InventoryUtils {
             }
         }
         inventoryKey = getInventoryKey(inventoryType, inventoryPageNum);
+        return inventoryType;
     }
 
     /**

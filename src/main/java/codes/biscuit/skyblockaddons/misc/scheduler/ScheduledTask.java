@@ -20,7 +20,7 @@ public class ScheduledTask {
     /**
      * Creates a new Scheduled Task.
      *
-     * @param delay The delay (in ticks) to wait before the task is ran.
+     * @param delay The delay (in ticks) to wait before the task is run.
      * @param period The delay (in ticks) to wait before calling the task again.
      * @param async If the task should be run asynchronously.
      */
@@ -143,13 +143,22 @@ public class ScheduledTask {
         return this.running;
     }
 
+    /**
+     * Gets if the current task is a repeating task.
+     *
+     * @return True if the task is a repeating task.
+     */
+    public boolean isRepeating() {
+        return repeating;
+    }
+
     void setDelay(int delay) {
         this.addedTicks = SkyblockAddons.getInstance().getNewScheduler().getTotalTicks();
         this.delay = delay;
     }
 
     /**
-     * Starts the thread.
+     * Starts the task.
      */
     public void start() {
         if (this.isAsync()) {
@@ -165,9 +174,5 @@ public class ScheduledTask {
             task.run();
             this.running = false;
         };
-    }
-
-    public boolean isRepeating() {
-        return repeating;
     }
 }

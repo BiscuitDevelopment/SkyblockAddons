@@ -65,7 +65,7 @@ public class NewScheduler {
     /**
      * Repeats a task (synchronously) every tick.<br><br>
      *
-     * Warning: This method is ran on the main thread, don't do anything heavy.
+     * Warning: This method is run on the main thread, don't do anything heavy.
      * @param task The task to run.
      * @return The scheduled task.
      */
@@ -155,10 +155,10 @@ public class NewScheduler {
      * Runs a task (synchronously) on the next tick.
      *
      * @param task The task to run.
-     * @param delay The delay (in ticks) to wait before the task is ran.
+     * @param delay The delay (in ticks) to wait before the task is run.
      * @param period The delay (in ticks) to wait before calling the task again.
-     * @param queued Whether or not to queue this task to be run next loop
-     *               (to be used for scheduling tasks directly from a synchronous task.
+     * @param queued Whether to queue this task to be run next loop; to be used for scheduling tasks directly from a
+     *              synchronous task.
      * @return The scheduled task.
      */
     public ScheduledTask scheduleRepeatingTask(SkyblockRunnable task, int delay, int period, boolean queued) {
@@ -169,6 +169,40 @@ public class NewScheduler {
             this.pendingTasks.add(scheduledTask);
         }
         return scheduledTask;
+    }
+
+    /**
+     * Runs a task (synchronously) on the next tick.
+     *
+     * @param task The task to run.
+     * @param delay The delay (in ticks) to wait before the task is ran.
+     * @param period The delay (in ticks) to wait before calling the task again.
+     * @param runLimit The maximum number of times the task should be run.
+     * @return The scheduled task.
+     */
+    public LimitedRepeatingScheduledTask scheduleLimitedRepeatingTask(SkyblockRunnable task, int delay, int period, int runLimit) {
+        return this.scheduleLimitedRepeatingTask(task, delay, period, runLimit,false);
+    }
+
+    /**
+     * Runs a task (synchronously) on the next tick.
+     *
+     * @param task The task to run.
+     * @param delay The delay (in ticks) to wait before the task is run.
+     * @param period The delay (in ticks) to wait before calling the task again.
+     * @param runLimit The maximum number of times the task should be run.
+     * @param queued Whether to queue this task to be run next loop; to be used for scheduling tasks directly from a
+     *              synchronous task.
+     * @return The scheduled task.
+     */
+    public LimitedRepeatingScheduledTask scheduleLimitedRepeatingTask(SkyblockRunnable task, int delay, int period, int runLimit, boolean queued) {
+        LimitedRepeatingScheduledTask limitedRepeatingScheduledTask = new LimitedRepeatingScheduledTask(task, delay, period, false, runLimit);
+        if (queued) {
+            this.queuedTasks.add(limitedRepeatingScheduledTask);
+        } else {
+            this.pendingTasks.add(limitedRepeatingScheduledTask);
+        }
+        return limitedRepeatingScheduledTask;
     }
 
     /**

@@ -881,7 +881,7 @@ public class Utils {
                 if (oldCoins != purse) {
                     onCoinsChange(purse - oldCoins);
                 }
-            } catch (ParseException ignored) {
+            } catch (NumberFormatException | ParseException e) {
                 purse = 0;
             }
         }
