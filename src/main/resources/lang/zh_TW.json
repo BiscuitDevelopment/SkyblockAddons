@@ -1,5 +1,5 @@
 {
-  "languageText": "語言: ",
+  "languageText": "語言： ",
   "language": "繁體中文",
   "settings": {
     "settings": "設定",
@@ -14,11 +14,11 @@
     "repeating": "重複警告",
     "disableEmberRodAbility": "在玩家島嶼上關閉 Ember Rod 的技能",
     "editLocations": "編輯介面位置",
-    "guiScale": "介面大小: %scale%",
+    "guiScale": "介面大小：%scale%",
     "resetLocations": "重置介面位置",
     "minionStopWarning": "\"Minion 無法觸及生物\" 警告",
     "hidePlayersNearNPCs": "隱藏重要NPC旁的玩家",
-    "backpackStyle": "背包樣式: %style%",
+    "backpackStyle": "背包樣式：%style%",
     "backpackStyles": {
       "regular": "一般",
       "compact": "簡易"
@@ -74,7 +74,7 @@
     "enableMessageWhenActionPrevented": "當一個動作被阻止時顯示訊息",
     "hidePetHealthBar": "隱藏寵物血條",
     "powerOrbDisplay": "顯示 Power Orb",
-    "powerOrbDisplayStyle": "Power Orb 樣式: %style%",
+    "powerOrbDisplayStyle": "Power Orb 樣式：%style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "精簡"
@@ -207,8 +207,8 @@
     "vanillaHealthPrediction": "使用原版血量預測",
     "entityOutlines": "顯示生物外框",
     "effectiveHealthNumber": "有效血量數",
-    "guiScaleX": "介面X方位大小: %scale%",
-    "guiScaleY": "介面Y方位大小: %scale%",
+    "guiScaleX": "介面X方位大小：%scale%",
+    "guiScaleY": "介面Y方位大小：%scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
@@ -228,8 +228,8 @@
     "minionIsFull": "有一個 Minion 因背包已滿而停止運作了！",
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
-    "enchantsToMatch": "匹配%type%:",
-    "enchantsToExclude": "排除%type%:",
+    "enchantsToMatch": "匹配%type%：",
+    "enchantsToExclude": "排除%type%：",
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
       "joinDiscord": "加入我們的 Discord 伺服器！",
@@ -251,7 +251,7 @@
     "clickMoreTimes": "如果你真的想這麼做，請再點擊或按丟出 %times% 次。",
     "clickOneMoreTime": "如果你真的想這麼做，請再點擊或按丟出 1 次。",
     "featureDisabled": "功能已被停用",
-    "anvilUses": "鐵砧使用次數: %uses%",
+    "anvilUses": "鐵砧使用次數：%uses%",
     "specialZealotFound": "特殊 Zealot！",
     "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
     "searchFeatures": "搜尋功能",
@@ -286,9 +286,9 @@
     "effectActive": "1 種狀態效果生效中",
     "effectsActive": "%number% 種狀態效果生效中",
     "none": "無",
-    "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
+    "copyModeSet": "開發者複製模式已設定為：%mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "冷卻: %time%秒",
+    "worldRenderedCooldownTime": "冷卻：%time%秒",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
     "version": "版本",
     "invalidFeatureConfiguration": "於 %featureName% 功能檢測到無效的設定，已恢復到預設值。"
@@ -315,7 +315,7 @@
     "titleCustom": "自訂狀態",
     "descriptionCustom": "輸入一個自訂狀態",
     "titleAuto": "自動狀態",
-    "descriptionAuto": "自動顯示一個狀態。例：在 The End 裡的 Zealot 擊殺數",
+    "descriptionAuto": "自動顯示一個狀態。例：在 The End 裡的 Zealot 擊殺數。",
     "titleRevenants": "Revenant 任務",
     "descriptionRevenants": "顯示你是否在進行一個 Revenant 任務。",
     "titleSvens": "Sven 任務",
@@ -339,7 +339,7 @@
       },
       "brand": {
         "help": "顯示伺服器核心名稱",
-        "brandOutput": "伺服端: %brand%",
+        "brandOutput": "伺服端：%brand%",
         "notFound": "未發現伺服端！"
       },
       "copyBlock": {
@@ -367,7 +367,7 @@
       "copyTabList": {
         "help": "複製玩家列表頭尾",
         "detailedHelp": {
-          "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
+          "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
         }
       },
       "dev": {
@@ -376,7 +376,7 @@
           "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
         },
         "disabled": "開發者模式已停用！",
-        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
+        "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！",
         "prefix": "開發者"
       },
       "edit": {
@@ -384,7 +384,7 @@
       },
       "folder": {
         "help": "開啟模組資料夾",
-        "error": "嘗試開啟模組資料夾時出錯: %s"
+        "error": "嘗試開啟模組資料夾時出錯：%s"
       },
       "help": {
         "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
@@ -407,7 +407,7 @@
         "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
       },
       "resetZealotCounter": {
-        "help": "重置所有 Zealot 計數器數量",
+        "help": "重置所有 Zealot 計數器數量。",
         "resetSuccess": "Zealot 計數器重置！"
       },
       "set": {
@@ -432,16 +432,16 @@
         "detailedHelp": {
           "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "options": {
-            "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+            "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
-            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列: \"REVENANT_FLESH\""
+            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列：\"REVENANT_FLESH\""
           }
         },
         "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
-        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項",
-        "numberRequired": "你需要添加你想要的數字",
-        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%",
-        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%",
+        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項。",
+        "numberRequired": "你需要添加你想要的數字。",
+        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%。",
+        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%。",
         "invalidBoss": "\"%input%\" 不是有效的統計數據！",
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
@@ -457,7 +457,7 @@
       },
       "version": {
         "help": "顯示模組版本",
-        "hoverText": "點擊以置於聊天室以便複製"
+        "hoverText": "點擊以置於聊天室以便複製。"
       },
       "errors": {
         "wrongUsage": {
@@ -478,8 +478,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "最近的龍:",
-    "dragonsSince": "龍自從:",
+    "recentDragons": "最近的龍：",
+    "dragonsSince": "龍自從：",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "寵物 Dragon",
     "eyesPlaced": "已放置眼睛",
@@ -494,7 +494,7 @@
   },
   "warpMenu": {
     "click": "點擊一個傳送點以傳送！",
-    "mustUnlock": "必須已解鎖該地的 Scroll",
+    "mustUnlock": "必須已解鎖該地的 Scroll。",
     "privateIsland": "私人島嶼",
     "home": "你的島嶼",
     "spawn": "重生點",
