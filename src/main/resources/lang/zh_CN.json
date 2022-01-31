@@ -189,7 +189,7 @@
     "cooldownPrediction": "预测和缩短冷却时间",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "放大提示粒子",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "显示 Stacking 附魔升级进度",
     "showReforgeOverlay": "显示洗炼提示",
     "reforgeFilter": "洗练筛选",
     "hideEnchantDescription": "隐藏附魔描述",
@@ -212,8 +212,8 @@
     "abbreviateSkillXpDenominator": "简化技能升级所需经验的提示",
     "otherDefenseStats": "其他防御统计 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隐藏大厅出生点的玩家",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "jacobsContestTimer": "农业竞赛计时",
+    "dontReplaceRomanNumeralsInItemNames": "不要替换物品名称"
   },
   "messages": {
     "enchants": "附魔",
@@ -290,8 +290,8 @@
     "chroma": "渐变",
     "worldRenderedCooldownTime": "冷却: %time%s",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
-    "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "version": "版本",
+    "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值"
   },
   "discordStatus": {
     "titleNone": "无",
