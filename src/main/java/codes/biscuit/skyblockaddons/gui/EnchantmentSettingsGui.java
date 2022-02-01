@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantListLayout;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
@@ -129,7 +128,7 @@ public class EnchantmentSettingsGui extends SettingsGui {
             GlStateManager.enableBlend();
             DrawUtils.drawRect(x, y, width, height, ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
 
-            SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
+            SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("settings.settings"), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
@@ -209,7 +208,7 @@ public class EnchantmentSettingsGui extends SettingsGui {
         int x = halfWidth - (boxWidth / 2);
         double y = getRowHeightSetting(row);
         if (setting == FeatureSetting.COLOR) {
-            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Translations.getMessage("settings.changeColor"), main, feature));
             // Temp hardcode until feature rewrite
         } else if (setting == FeatureSetting.PERFECT_ENCHANT_COLOR || setting == FeatureSetting.GREAT_ENCHANT_COLOR ||
                 setting == FeatureSetting.GOOD_ENCHANT_COLOR || setting == FeatureSetting.POOR_ENCHANT_COLOR ||

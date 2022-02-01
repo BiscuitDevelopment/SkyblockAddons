@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
@@ -186,7 +185,7 @@ public class SkyblockAddonsGui extends GuiScreen {
 
         featureSearchBar.drawTextBox();
         if (StringUtils.isEmpty(featureSearchBar.getText())) {
-            Minecraft.getMinecraft().fontRendererObj.drawString(Message.MESSAGE_SEARCH_FEATURES.getMessage(), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ColorCode.DARK_GRAY.getColor());
+            Minecraft.getMinecraft().fontRendererObj.drawString(Translations.getMessage("messages.searchFeatures"), featureSearchBar.xPosition+4, featureSearchBar.yPosition+3, ColorCode.DARK_GRAY.getColor());
         }
 
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
@@ -494,7 +493,7 @@ public class SkyblockAddonsGui extends GuiScreen {
         int boxHeight = 15;
         int x = halfWidth+90;
         double y = getRowHeight(1)-25;
-        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Message.TAB_GENERAL_SETTINGS.getMessage(), main, Feature.GENERAL_SETTINGS));
+        buttonList.add(new ButtonNormal(x, y, boxWidth, boxHeight, Translations.getMessage("settings.tab.generalSettings"), main, Feature.GENERAL_SETTINGS));
     }
 
 

@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.misc;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Message;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -20,7 +19,7 @@ public class SkyblockKeyBinding {
     private final KeyBinding keyBinding;
     private final String name;
     private final int defaultKeyCode;
-    private final Message message;
+    private final String translationKey;
     private boolean registered = false;
     private boolean isFirstRegistration = true;
     /*
@@ -29,10 +28,10 @@ public class SkyblockKeyBinding {
      */
     private int previousKeyCode = 999;
 
-    public SkyblockKeyBinding(String name, int defaultKey, Message message) {
+    public SkyblockKeyBinding(String name, int defaultKey, String translationKey) {
         this.name = name;
         this.defaultKeyCode = defaultKey;
-        this.message = message;
+        this.translationKey = translationKey;
         keyBinding = new KeyBinding("key.skyblockaddons."+ this.getName(), this.getDefaultKeyCode(), MOD_NAME);
     }
 

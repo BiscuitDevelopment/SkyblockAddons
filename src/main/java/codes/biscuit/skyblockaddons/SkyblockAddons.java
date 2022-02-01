@@ -4,8 +4,8 @@ import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureDungeonTeammateOutlines;
@@ -161,11 +161,11 @@ public class SkyblockAddons {
         // Macs do not have a right control key.
         int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;
 
-        Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
-                new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
-                new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
-                new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
-                new SkyblockKeyBinding("copy_NBT", developerModeKey, Message.KEY_DEVELOPER_COPY_NBT));
+        Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, "settings.settings"),
+                new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, "settings.editLocations"),
+                new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, "settings.lockSlot"),
+                new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, "settings.freezeBackpackPreview"),
+                new SkyblockKeyBinding("copy_NBT", developerModeKey, "keybindings.developerCopyNBT"));
         registerKeyBindings(keyBindings);
         setKeyBindingDescriptions();
 
@@ -260,7 +260,7 @@ public class SkyblockAddons {
      */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
-            skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
+            skyblockKeyBinding.getKeyBinding().keyDescription = Translations.getMessage(skyblockKeyBinding.getTranslationKey());
         }
     }
 

@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.DataUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
@@ -53,7 +53,7 @@ public class ButtonLanguage extends GuiButton {
             }
             // FIXME: we shouldn't be loading a whole language file for every language button every frame.
             DataUtils.loadLocalizedStrings(language, false);
-            drawCenteredString(mc.fontRendererObj, Message.LANGUAGE.getMessage(), xPosition+width/2, yPosition+10, fontColor);
+            drawCenteredString(mc.fontRendererObj, Translations.getMessage("language"), xPosition+width/2, yPosition+10, fontColor);
         }
     }
 

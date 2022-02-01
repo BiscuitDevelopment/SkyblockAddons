@@ -261,38 +261,38 @@ public class RenderListener {
         int scaledHeight = scaledResolution.getScaledHeight();
         if (titleFeature != null) {
 
-            Message message = null;
+            String translationKey = null;
             switch (titleFeature) {
                 case MAGMA_WARNING:
-                    message = Message.MESSAGE_MAGMA_BOSS_WARNING;
+                    translationKey = "messages.magmaBossWarning";
                     break;
                 case FULL_INVENTORY_WARNING:
-                    message = Message.MESSAGE_FULL_INVENTORY;
+                    translationKey = "messages.fullInventory";
                     break;
                 case SUMMONING_EYE_ALERT:
-                    message = Message.MESSAGE_SUMMONING_EYE_FOUND;
+                    translationKey = "messages.summoningEyeFound";
                     break;
                 case SPECIAL_ZEALOT_ALERT:
-                    message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    translationKey = "messages.specialZealotFound";
                     break;
                 case LEGENDARY_SEA_CREATURE_WARNING:
-                    message = Message.MESSAGE_LEGENDARY_SEA_CREATURE_WARNING;
+                    translationKey = "messages.legendarySeaCreatureWarning";
                     break;
                 case BOSS_APPROACH_ALERT:
-                    message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    translationKey = "messages.bossApproaching";
                     break;
                 case WARN_WHEN_FETCHUR_CHANGES:
-                    message = Message.MESSAGE_FETCHUR_WARNING;
+                    translationKey = "messages.fetchurWarning";
                     break;
                 case BROOD_MOTHER_ALERT:
-                    message = Message.MESSAGE_BROOD_MOTHER_WARNING;
+                    translationKey = "messages.broodMotherWarning";
                     break;
                 case BAL_BOSS_ALERT:
-                    message = Message.MESSAGE_BAL_BOSS_WARNING;
+                    translationKey = "messages.balBossWarning";
                     break;
             }
-            if (message != null) {
-                String text = message.getMessage();
+            if (translationKey != null) {
+                String text = Translations.getMessage(translationKey);
                 int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
                 float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
@@ -316,30 +316,26 @@ public class RenderListener {
             }
         }
         if (subtitleFeature != null) {
-            Message message = null;
+            String text = null;
             switch (subtitleFeature) {
                 case MINION_STOP_WARNING:
-                    message = Message.MESSAGE_MINION_CANNOT_REACH;
+                    text = Translations.getMessage("messages.minionCannotReach", cannotReachMobName);
                     break;
                 case MINION_FULL_WARNING:
-                    message = Message.MESSAGE_MINION_IS_FULL;
+                    text = Translations.getMessage("messages.minionIsFull");
                     break;
                 case NO_ARROWS_LEFT_ALERT:
-                    message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    if (arrowsLeft != -1) {
+                        Translations.getMessage("messages.noArrowsLeft", TextUtils.NUMBER_FORMAT.format(arrowsLeft));
+                    }
                     break;
             }
-            if (message != null) {
-                String text;
-                if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
-                    text = message.getMessage(cannotReachMobName);
-                } else if (message == Message.MESSAGE_NO_ARROWS_LEFT && arrowsLeft != -1) {
-                    text = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT.getMessage(Integer.toString(arrowsLeft));
-                } else {
-                    text = message.getMessage();
-                }
+
+            if (text != null) {
+
                 int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
-                float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
+                float scale = 2; // Scale is normally 2, but if it's larger than the screen, scale it down...
                 if (stringWidth * scale > (scaledWidth * 0.9F)) {
                     scale = (scaledWidth * 0.9F) / (float) stringWidth;
                 }
@@ -944,7 +940,7 @@ public class RenderListener {
             }
 
             int stageNum = Math.min(stage.ordinal(), 5);
-            text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+            text = Translations.getMessage("messages.stage", String.valueOf(stageNum));
 
         } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
             if (buttonLocation == null && !main.getUtils().isInDungeon()) {
@@ -1013,9 +1009,9 @@ public class RenderListener {
             FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
             if (!FetchurManager.getInstance().hasFetchedToday() || buttonLocation != null) {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
-                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
+                    text = Translations.getMessage("messages.fetchurItem", fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
                 } else {
-                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage("");
+                    text = Translations.getMessage("messages.fetchurItem");
                 }
             } else {
                 text = ""; // If it has made fetchur, then no need for text
@@ -2046,8 +2042,8 @@ public class RenderListener {
         // Draw the "x Effects Active" line
         FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
         int effectCount = TabEffectManager.getInstance().getEffectCount();
-        String text = effectCount == 1 ? Message.MESSAGE_ONE_EFFECT_ACTIVE.getMessage() :
-                Message.MESSAGE_EFFECTS_ACTIVE.getMessage(String.valueOf(effectCount));
+        String text = effectCount == 1 ? Translations.getMessage("messages.effectActive") :
+                Translations.getMessage("messages.effectsActive", String.valueOf(effectCount));
         float lineY;
         if (topDown) {
             lineY = y;

@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.SkyblockAddonsGui;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
@@ -153,7 +153,7 @@ public class ButtonNormal extends ButtonFeature {
             }
 
             if (main.getConfigValues().isRemoteDisabled(feature)) {
-                drawCenteredString(mc.fontRendererObj, Message.MESSAGE_FEATURE_DISABLED.getMessage(), textX, textY + 6 , main.getUtils().getDefaultBlue(alpha));
+                drawCenteredString(mc.fontRendererObj, Translations.getMessage("messages.featureDisabled"), textX, textY + 6 , main.getUtils().getDefaultBlue(alpha));
             }
         }
     }

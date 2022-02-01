@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
@@ -279,9 +278,9 @@ public class SkyblockAddonsCommand extends CommandBase {
                         String serverBrand = DevUtils.getServerBrand();
 
                         if (serverBrand != null) {
-                            main.getUtils().sendMessage(Message.COMMAND_USAGE_SBA_BRAND_BRAND_OUTPUT.getMessage(serverBrand));
+                            main.getUtils().sendMessage(Translations.getMessage("sba.brand.brandOutput", serverBrand));
                         } else {
-                            throw new CommandException(Message.COMMAND_USAGE_SBA_BRAND_NOT_FOUND.getMessage());
+                            throw new CommandException(Translations.getMessage("sba.brand.notFound"));
                         }
                     } else if (args[0].equalsIgnoreCase("copyBlock")) {
                         DevUtils.setCopyMode(DevUtils.CopyMode.BLOCK);
