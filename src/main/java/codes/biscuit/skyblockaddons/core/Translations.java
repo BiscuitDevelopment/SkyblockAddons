@@ -55,7 +55,7 @@ public class Translations {
                 text = bidiReorder(text);
             }
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path, ex);
+            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path);
             text = path; // In case of fire...
         }
         return text;
@@ -66,7 +66,8 @@ public class Translations {
             Bidi bidi = new Bidi((new ArabicShaping(ArabicShaping.LETTERS_SHAPE)).shape(text), Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
             bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
             return bidi.writeReordered(Bidi.DO_MIRRORING);
-        } catch (ArabicShapingException var3) {
+        } catch (ArabicShapingException ex) {
+            SkyblockAddons.getLogger().error(ex.getMessage() + " for string \"{}\"", text);
             return text;
         }
     }

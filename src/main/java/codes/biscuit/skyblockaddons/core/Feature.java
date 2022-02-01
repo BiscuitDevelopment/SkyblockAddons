@@ -222,6 +222,7 @@ public enum Feature {
     SHOW_COLOR_ICONS(-1, Message.MESSAGE_SHOW_COLOR_ICONS, false),
     RESIZE_BARS(-1, Message.MESSAGE_RESIZE_BARS, false),
     ENABLE_FEATURE_SNAPPING(-1, Message.MESSAGE_ENABLE_FEATURE_SNAPPING, false),
+    SHOW_FEATURE_NAMES_ON_HOVER(-1, "settings.showFeatureNamesOnHover", null,true),
     GENERAL_SETTINGS(-1, Message.TAB_GENERAL_SETTINGS, false),
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
