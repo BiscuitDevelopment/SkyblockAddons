@@ -193,9 +193,9 @@ public class SettingsGui extends GuiScreen {
             Feature feature = button.getFeature();
             if (feature == null) return;
             if (main.getConfigValues().isDisabled(feature)) {
-                main.getConfigValues().getDisabledFeatures().remove(feature);
+                feature.setEnabled(true);
             } else {
-                main.getConfigValues().getDisabledFeatures().add(feature);
+                feature.setEnabled(false);
                 if (feature == Feature.HIDE_FOOD_ARMOR_BAR) { // Reset the vanilla bars when disabling these two features.
                     GuiIngameForge.renderArmor = true; // The food gets automatically enabled, no need to include it.
                 } else if (feature == Feature.HIDE_HEALTH_BAR) {
@@ -348,7 +348,6 @@ public class SettingsGui extends GuiScreen {
             if (currentStatus == DiscordStatus.AUTO_STATUS) {
                 row++;
                 row += 0.4;
-                boxWidth = 140;
                 x = halfWidth - (boxWidth / 2);
                 y = getRowHeightSetting(row);
 
@@ -380,6 +379,8 @@ public class SettingsGui extends GuiScreen {
 
             row += 0.4;
         } else if (setting == EnumUtils.FeatureSetting.MAP_ZOOM) {
+            // For clarity
+            //noinspection ConstantConditions
             boxWidth = 100; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);

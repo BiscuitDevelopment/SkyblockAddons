@@ -225,14 +225,14 @@ public class SkyblockAddonsGui extends GuiScreen {
             } else if (abstractButton instanceof ButtonToggle) {
                 if (main.getConfigValues().isRemoteDisabled(feature)) return;
                 if (main.getConfigValues().isDisabled(feature)) {
-                    main.getConfigValues().getDisabledFeatures().remove(feature);
+                    feature.setEnabled(true);
                     if(feature == Feature.DISCORD_RPC && main.getUtils().isOnSkyblock()) {
                         main.getDiscordRPCManager().start();
                     } else if (feature == Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) {
-                        main.getConfigValues().getDisabledFeatures().remove(Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT);
+                        Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT.setEnabled(true);
                     }
                 } else {
-                    main.getConfigValues().getDisabledFeatures().add(feature);
+                    feature.setEnabled(false);
                     if (feature == Feature.HIDE_FOOD_ARMOR_BAR) { // Reset the vanilla bars when disabling these two features.
                         GuiIngameForge.renderArmor = true; // The food gets automatically enabled, no need to include it.
                     } else if (feature == Feature.HIDE_HEALTH_BAR) {
@@ -243,7 +243,7 @@ public class SkyblockAddonsGui extends GuiScreen {
                     } else if(feature == Feature.DISCORD_RPC) {
                         main.getDiscordRPCManager().stop();
                     } else if (feature == Feature.DISABLE_ENDERMAN_TELEPORTATION_EFFECT) {
-                        main.getConfigValues().getDisabledFeatures().remove(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT);
+                        Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT.setEnabled(true);
                     }
                 }
                 ((ButtonToggle)abstractButton).onClick();
