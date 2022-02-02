@@ -77,7 +77,7 @@
     "powerOrbDisplayStyle": "Styl Power Orbów: %style%",
     "powerOrbStyle": {
       "detailed": "Szczegółowy",
-      "compact": "Uproszczony"
+      "compact": "Prosty"
     },
     "disableMagicalSoupMessage": "Ukryj wiadomości Magical Mushroom Soup",
     "zealotCounter": "Licznik Zealotów — od ostatniego Summoning Eye",
