@@ -77,7 +77,7 @@
     "powerOrbDisplayStyle": "รูปแบบลูกแก้ววิเศษ %style%",
     "powerOrbStyle": {
       "detailed": "รายละเอียดสูง",
-      "compact": "กระทัดรัด"
+      "compact": "ไม่มีกรอบ"
     },
     "disableMagicalSoupMessage": "ปิดข้อความการใช้งานของซุปเห็ดบิน",
     "zealotCounter": "แสดงจำนวนการฆ่า Zealot",
