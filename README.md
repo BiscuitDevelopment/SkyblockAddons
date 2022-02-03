@@ -24,6 +24,13 @@
 
 A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better. Always looking for more features to add!
 
+:warning: Note for Contributors
+-----
+The branch `development` has been renamed to `main`, and the branch `master` is now `stable`.
+All commits should start in main and eventually get merged into stable on release. Make sure
+to `git checkout` these new branches in your IDE.
+
+
 Special Credits
 -----
 InventiveTalent for allowing us to use her magma boss API in our project, please check out her magma boss timer website at https://hypixel.inventivetalent.org/skyblock-magma-timer/ .

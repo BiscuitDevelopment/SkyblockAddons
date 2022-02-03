@@ -1,9 +1,9 @@
 Contributor's Guide
 ------
 
-Please make sure to make your pull requests off the `development` branch if you're adding new features. If there's
-an important bug fix, still make your PR on development, but put it in a separate commit so I can cherry-pick it
-into `master` branch. Thank you!
+Please make sure to make your pull requests off the `main` branch if you're adding new features. 
+If there's an important bug fix, always make a PR, but off of the `stable` branch. Then that hotfix
+can be rebased back into `main` afterwards (with `checkout main`, & `rebase stable`).
 ```shell script
 # Not recommended
 git checkout -b development --track origin/development
