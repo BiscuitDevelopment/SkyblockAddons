@@ -23,18 +23,21 @@ Steps to reproduce the behavior (how did you get this bug to occur):
 **Expected behavior**
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+**Screenshots/Video**
+If applicable, add screenshots, or a video to help explain your problem.
 
 **Crash Report**
-If your game crashed, please paste the beginning of your crash report here. Copy from the beginning until the line shown below.
-> A detailed walkthrough of the error, its code path and all known details is as follows:
+If your game crashed, please paste your crash report below.
+
+```text
+[Paste Here]
+```
 
 **System Information**
  - OS: [e.g. Windows 10]
- - Mod Loader: [e.g. Forge, Liteloader]
- - Minecraft Version/Mod Loader Version: [e.g. 1.8.9 - 11.15.1.2318]
- - SkyblockAddons Version: [e.g. 1.4.2]
+ - Minecraft Version: [e.g. 1.8.9]
+ - Forge Version: [e.g. 11.15.1.2318]
+ - SkyblockAddons Version: [e.g. 1.5.2]
 
 **Other Installed Mods**
 If you have any other mods installed, please list them here along with their version number.

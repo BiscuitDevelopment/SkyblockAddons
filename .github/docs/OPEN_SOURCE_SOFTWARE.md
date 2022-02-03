@@ -5,7 +5,6 @@ SkyblockAddons uses the following open source software:
 Software | License | Bundled
 ------------ | ------------- | -------------
 [Apache Commons Lang](https://github.com/apache/commons-lang) | [Apache 2.0](../../dependencyLicenses/discordIPC/APACHE_2.0.txt)
-[Apache HttpClient](https://github.com/apache/httpcomponents-client) | [Apache 2.0](../../dependencyLicenses/discordIPC/APACHE_2.0.txt)
 [Discord IPC](https://github.com/jagrosh/DiscordIPC) | [Apache 2.0](../../dependencyLicenses/discordIPC/APACHE_2.0.txt) | :white_check_mark:
 [Gson](https://github.com/google/gson) | [Apache 2.0](../../dependencyLicenses/discordIPC/APACHE_2.0.txt)
 [Guava](https://github.com/google/guava) | [Apache 2.0](../../dependencyLicenses/discordIPC/APACHE_2.0.txt)

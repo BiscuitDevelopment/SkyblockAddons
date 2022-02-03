@@ -55,7 +55,6 @@ public class Translations {
                 text = bidiReorder(text);
             }
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("The string with the path \"{}\" wasn't found.", path);
             text = path; // In case of fire...
         }
         return text;

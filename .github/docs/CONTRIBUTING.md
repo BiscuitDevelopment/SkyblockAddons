@@ -1,18 +1,15 @@
 Contributor's Guide
 ------
 
-Please make sure to make your pull requests off the `development` branch if you're adding new features. If there's
-an important bug fix, still make your PR on development, but put it in a separate commit so I can cherry-pick it
-into `master` branch. Thank you!
+Please make sure to make your pull requests off the `main` branch if you're adding new features. 
+If there's an important bug fix, always make a PR, but off of the `stable` branch. Then that hotfix
+can be rebased back into `main` afterwards (with `checkout main`, & `rebase stable`).
 ```shell script
 # Not recommended
 git checkout -b development --track origin/development
 ```
 
 ### Requirements
-- **JDK 8** (One of them)
-  - [Oracle JDK 8](https://www.oracle.com/java/technologies/javase/javase-jdk8-downloads.html)
-  - [OpenJDK 8](https://adoptopenjdk.net/index.html?variant=openjdk8&ga=ga)
 - **IDE** (One of them)
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/) **(Recommended)**
   - [Eclipse](https://www.eclipse.org/)
@@ -66,7 +63,7 @@ git checkout -b development --track origin/development
     ```shell script
     ./gradlew build
     ```
-    > **Notes**
+    > **Note**
     > 
     > If your jar **build** is **failing** because the code is trying to access private methods or fields,
     > this may be because someone added some new access transformers.
@@ -77,8 +74,6 @@ git checkout -b development --track origin/development
     > ```
     > so the access transformers are applied to the source code!
     > 
-    > While building the mod, a `NullPointerException` will occur during the task `extractRangemapReplacedMain`.
-    > This is a ForgeGradle bug that is out of our control. It doesn't seem to affect the built JAR, so it can be ignored.
 2. (Optional) Run the **Minecraft Forge** client
     - Using an IDE
         - Run the debug configuration you created in "Getting Started."
