@@ -77,7 +77,7 @@
     "powerOrbDisplayStyle": "Power Orb 스타일: %style%",
     "powerOrbStyle": {
       "detailed": "자세하게 표시",
-      "compact": "간단"
+      "compact": "간단하게 표시"
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soup 사용 메시지 숨기기",
     "zealotCounter": "Zealot 카운터 - 마지막 Summoning Eye 획득 이후 카운트",
