@@ -167,7 +167,6 @@ public class DungeonManager {
      * This method parses the current and the maximum number of secrets found in the room.
      *
      * @param message the action bar message to parse secrets information from
-     * @return A message without the secrets information
      */
     public void addSecrets(String message) {
         Matcher matcher = PATTERN_SECRETS.matcher(message);
