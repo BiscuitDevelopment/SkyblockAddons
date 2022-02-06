@@ -213,7 +213,10 @@
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
     "jacobsContestTimer": "Jacob's Contest 計時器",
-    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
+    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "附魔",
