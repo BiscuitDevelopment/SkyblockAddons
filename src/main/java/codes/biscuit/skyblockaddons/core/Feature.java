@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureTrackerQuest;
 import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
+import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.google.common.collect.Sets;
@@ -210,6 +211,9 @@ public enum Feature {
     BAL_BOSS_ALERT(208, Message.SETTING_BAL_BOSS_WARNING, false),
     OUTBID_ALERT_SOUND_IN_OTHER_GAMES(209, null, false),
     DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME(210, "settings.dontReplaceRomanNumeralsInItemNames", null, true),
+    BACKPACK_OPENING_SOUND(211, "settings.backpackOpeningSound", null, false),
+    DEVELOPER_MODE(212, "settings.devMode", null, true),
+    SHOW_SKYBLOCK_ITEM_ID(213, "settings.showSkyblockItemId", null, true),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -275,9 +279,9 @@ public enum Feature {
      */
     @Getter
     private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
-            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT));
+            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT, DEVELOPER_MODE));
 
-    private static final int ID_AT_PREVIOUS_UPDATE = 98;
+    private static final int ID_AT_PREVIOUS_UPDATE = 199;
 
     private final int id;
     private Message message;
@@ -320,6 +324,36 @@ public enum Feature {
 
     Feature(int id, Message settingMessage, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) {
         this(id, settingMessage,null, defaultDisabled, settings);
+    }
+
+    /**
+     * Called when a features enable state is changed.
+     */
+    public void onToggle() {
+        if (this.id == DEVELOPER_MODE.id) {
+            SkyblockAddons main = SkyblockAddons.getInstance();
+            SkyblockKeyBinding devModeKeyBinding = main.getDeveloperCopyNBTKey();
+
+            if (main.getConfigValues().isEnabled(DEVELOPER_MODE)) {
+                devModeKeyBinding.register();
+            } else {
+                devModeKeyBinding.deRegister();
+            }
+        }
+    }
+
+    /**
+     * Sets whether the current feature is enabled.
+     *
+     * @param enabled {@code true} to enable the feature, {@code false} to disable it
+     */
+    public void setEnabled(boolean enabled) {
+        if (enabled) {
+            SkyblockAddons.getInstance().getConfigValues().getDisabledFeatures().remove(this);
+        } else {
+            SkyblockAddons.getInstance().getConfigValues().getDisabledFeatures().add(this);
+        }
+        onToggle();
     }
 
     public boolean isActualFeature() {

@@ -3,8 +3,8 @@ name: Build
 on:
   push:
     branches:
-      - master
-      - development
+      - stable
+      - main
     paths-ignore:
       - '.github'
       - 'dependencyLicenses/**'
@@ -13,8 +13,8 @@ on:
       - '**.md'
   pull_request:
     branches:
-      - master
-      - development
+      - stable
+      - main
     paths-ignore:
       - '.github'
       - 'dependencyLicenses/**'
@@ -30,6 +30,7 @@ on:
 jobs:
   build:
     name: Build
+    if: ${{ !contains(github.head_ref, 'translations/') }}
     runs-on: ubuntu-latest
     env:
       GRADLE_OPTS: -Dorg.gradle.daemon=false
