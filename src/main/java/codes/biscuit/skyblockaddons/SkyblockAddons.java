@@ -134,6 +134,9 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         configValues = new ConfigValues(e.getSuggestedConfigurationFile());
         persistentValuesManager = new PersistentValuesManager(e.getModConfigurationDirectory());
+        configValues.loadValues();
+        DataUtils.readLocalAndFetchOnline();
+        persistentValuesManager.loadValues();
     }
 
     @Mod.EventHandler
@@ -164,20 +167,14 @@ public class SkyblockAddons {
          de-register it so its default key doesn't conflict with other key bindings with the same key.
          */
         getDeveloperCopyNBTKey().deRegister();
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        configValues.loadValues();
-        DataUtils.readLocalAndFetchOnline();
-        persistentValuesManager.loadValues();
-
-        setKeyBindingDescriptions();
 
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
         usingPatcher = utils.isModLoaded("patcher");
+    }
 
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent e) {
         scheduleMagmaBossCheck();
 
         for (Feature feature : Feature.values()) {
