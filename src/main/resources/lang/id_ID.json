@@ -213,7 +213,10 @@
     "otherDefenseStats": "Stat Defense Lain (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
     "jacobsContestTimer": "Timer Jacob's Contest",
-    "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda"
+    "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "Enchants",
