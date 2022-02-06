@@ -213,7 +213,10 @@
     "otherDefenseStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Playerz at Hub Spawn Point",
     "jacobsContestTimer": "Jacoobs Contest Tiemr",
-    "dontReplaceRomanNumeralsInItemNames": "Doan Replace in Item Namez"
+    "dontReplaceRomanNumeralsInItemNames": "Doan Replace in Item Namez",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "Enchants",
