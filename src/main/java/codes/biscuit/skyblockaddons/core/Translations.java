@@ -65,7 +65,8 @@ public class Translations {
             Bidi bidi = new Bidi((new ArabicShaping(ArabicShaping.LETTERS_SHAPE)).shape(text), Bidi.DIRECTION_DEFAULT_RIGHT_TO_LEFT);
             bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
             return bidi.writeReordered(Bidi.DO_MIRRORING);
-        } catch (ArabicShapingException var3) {
+        } catch (ArabicShapingException ex) {
+            SkyblockAddons.getLogger().error(ex.getMessage() + " for string \"{}\"", text);
             return text;
         }
     }
