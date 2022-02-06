@@ -216,7 +216,8 @@
     "dontReplaceRomanNumeralsInItemNames": "Να μην αντικατασταθούν τα ονόματα αντικειμένων",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover"
   },
   "messages": {
     "enchants": "Μαγεύει",
