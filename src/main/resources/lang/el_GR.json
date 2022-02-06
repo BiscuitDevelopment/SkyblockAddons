@@ -213,7 +213,10 @@
     "otherDefenseStats": "Άλλα Στατιστικά Άμυνας (Soul Tether/Στοίχιση Κελιών)",
     "hideSpawnPointPlayers": "Απόκρυψη Παικτών στο Spawn του Hub",
     "jacobsContestTimer": "Χρονόμετρο Διαγωνισμού του Jacob",
-    "dontReplaceRomanNumeralsInItemNames": "Να μην αντικατασταθούν τα ονόματα αντικειμένων"
+    "dontReplaceRomanNumeralsInItemNames": "Να μην αντικατασταθούν τα ονόματα αντικειμένων",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "Μαγεύει",
