@@ -213,7 +213,10 @@
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
     "jacobsContestTimer": "Jacob's Contestのタイマー",
-    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
+    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "エンチャント",
