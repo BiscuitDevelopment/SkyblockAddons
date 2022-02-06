@@ -213,7 +213,10 @@
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
     "jacobsContestTimer": "Jacob's Contest Zamanlayıcısı",
-    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
+    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "Büyüler",
