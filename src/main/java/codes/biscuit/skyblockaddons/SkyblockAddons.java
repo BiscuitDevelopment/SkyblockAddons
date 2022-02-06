@@ -161,6 +161,8 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
                 new SkyblockKeyBinding("copy_NBT", Keyboard.KEY_RCONTROL, Message.KEY_DEVELOPER_COPY_NBT));
         registerKeyBindings(keyBindings);
+        setKeyBindingDescriptions();
+
         /*
          De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
          in the first place since creating a KeyBinding object already adds it to the main key bind list. I need to manually
@@ -235,12 +237,21 @@ public class SkyblockAddons {
         return keyBindings.get(4);
     }
 
+    /**
+     * Registers the given keybindings to the {@link net.minecraftforge.fml.client.registry.ClientRegistry}.
+     *
+     * @param keyBindings the keybindings to register
+     */
     public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
         for (SkyblockKeyBinding keybinding: keyBindings) {
             keybinding.register();
         }
     }
 
+    /**
+     * This method updates keybinding descriptions to their localized name after registering them with a Minecraft-style
+     * id, which is required for the set key to be saved properly in Minecraft settings.
+     */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
             skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();

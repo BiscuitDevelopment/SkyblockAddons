@@ -30,7 +30,7 @@ public class SkyblockKeyBinding {
         this.name = name;
         this.defaultKeyCode = defaultKey;
         this.message = message;
-        keyBinding = new KeyBinding(message.getMessage(), this.getDefaultKeyCode(), MOD_NAME);
+        keyBinding = new KeyBinding("key.skyblockaddons."+ this.getName(), this.getDefaultKeyCode(), MOD_NAME);
     }
 
     // TODO localize errors?
