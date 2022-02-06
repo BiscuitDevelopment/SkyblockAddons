@@ -134,6 +134,9 @@ public class SkyblockAddons {
     public void preInit(FMLPreInitializationEvent e) {
         configValues = new ConfigValues(e.getSuggestedConfigurationFile());
         persistentValuesManager = new PersistentValuesManager(e.getModConfigurationDirectory());
+        configValues.loadValues();
+        DataUtils.readLocalAndFetchOnline();
+        persistentValuesManager.loadValues();
     }
 
     @Mod.EventHandler
@@ -160,26 +163,22 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
                 new SkyblockKeyBinding("copy_NBT", developerModeKey, Message.KEY_DEVELOPER_COPY_NBT));
         registerKeyBindings(keyBindings);
+        setKeyBindingDescriptions();
+
         /*
          De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
          in the first place since creating a KeyBinding object already adds it to the main key bind list. I need to manually
          de-register it so its default key doesn't conflict with other key bindings with the same key.
          */
         getDeveloperCopyNBTKey().deRegister();
-    }
-
-    @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent e) {
-        configValues.loadValues();
-        DataUtils.readLocalAndFetchOnline();
-        persistentValuesManager.loadValues();
-
-        setKeyBindingDescriptions();
 
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
         usingPatcher = utils.isModLoaded("patcher");
+    }
 
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent e) {
         scheduleMagmaBossCheck();
 
         for (Feature feature : Feature.values()) {
@@ -240,12 +239,21 @@ public class SkyblockAddons {
         return keyBindings.get(4);
     }
 
+    /**
+     * Registers the given keybindings to the {@link net.minecraftforge.fml.client.registry.ClientRegistry}.
+     *
+     * @param keyBindings the keybindings to register
+     */
     public void registerKeyBindings(List<SkyblockKeyBinding> keyBindings) {
         for (SkyblockKeyBinding keybinding: keyBindings) {
             keybinding.register();
         }
     }
 
+    /**
+     * This method updates keybinding descriptions to their localized name after registering them with a Minecraft-style
+     * id, which is required for the set key to be saved properly in Minecraft settings.
+     */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
             skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
