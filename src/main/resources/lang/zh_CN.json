@@ -216,7 +216,8 @@
     "dontReplaceRomanNumeralsInItemNames": "不要替换物品名称",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover"
   },
   "messages": {
     "enchants": "附魔",
