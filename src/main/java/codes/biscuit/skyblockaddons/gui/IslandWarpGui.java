@@ -138,23 +138,11 @@ public class IslandWarpGui extends GuiScreen {
                     }));
             this.buttonList.add(new ButtonToggleNew(x, y - 30 - 60 * 2, 50,
                     () -> main.getConfigValues().isEnabled(Feature.FANCY_WARP_MENU),
-                    () -> {
-                        if (main.getConfigValues().getDisabledFeatures().contains(Feature.FANCY_WARP_MENU)) {
-                            main.getConfigValues().getDisabledFeatures().remove(Feature.FANCY_WARP_MENU);
-                        } else {
-                            main.getConfigValues().getDisabledFeatures().add(Feature.FANCY_WARP_MENU);
-                        }
-                    }));
+                    () -> Feature.FANCY_WARP_MENU.setEnabled(!main.getConfigValues().isEnabled(Feature.FANCY_WARP_MENU))));
         }
         this.buttonList.add(new ButtonToggleNew(x, y - 30 - 60, 50,
                 () -> main.getConfigValues().isEnabled(Feature.DOUBLE_WARP),
-                () -> {
-                    if (main.getConfigValues().getDisabledFeatures().contains(Feature.DOUBLE_WARP)) {
-                        main.getConfigValues().getDisabledFeatures().remove(Feature.DOUBLE_WARP);
-                    } else {
-                        main.getConfigValues().getDisabledFeatures().add(Feature.DOUBLE_WARP);
-                    }
-                }));
+                () -> Feature.DOUBLE_WARP.setEnabled(!main.getConfigValues().isEnabled(Feature.DOUBLE_WARP))));
     }
 
     @Override

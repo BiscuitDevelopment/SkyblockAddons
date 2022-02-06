@@ -37,6 +37,10 @@ public class GuiScreenListener {
     @Getter
     private long lastContainerCloseMs = -1;
 
+    /** Time in milliseconds of the last time a backpack was opened, used by {@link Feature#BACKPACK_OPENING_SOUND}. */
+    @Getter
+    private long lastBackpackOpenMs = -1;
+
     @SubscribeEvent
     public void beforeInit(GuiScreenEvent.InitGuiEvent.Pre e) {
         if (!main.getUtils().isOnSkyblock()) {
@@ -52,8 +56,10 @@ public class GuiScreenListener {
             InventoryBasic chestInventory = (InventoryBasic) guiChest.lowerChestInventory;
 
             // Backpack opening sound
-            if (chestInventory.hasCustomName()) {
+            if (main.getConfigValues().isEnabled(Feature.BACKPACK_OPENING_SOUND) && chestInventory.hasCustomName()) {
                 if (chestInventory.getDisplayName().getUnformattedText().contains("Backpack")) {
+                    lastBackpackOpenMs = System.currentTimeMillis();
+
                     if (ThreadLocalRandom.current().nextInt(0, 2) == 0) {
                         mc.thePlayer.playSound("mob.horse.armor", 0.5F, 1);
                     } else {
@@ -105,7 +111,7 @@ public class GuiScreenListener {
     public void onKeyInput(GuiScreenEvent.KeyboardInputEvent.Pre event) {
         int eventKey = Keyboard.getEventKey();
 
-        if (main.isDevMode() && eventKey == main.getDeveloperCopyNBTKey().getKeyCode() && Keyboard.getEventKeyState()) {
+        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && eventKey == main.getDeveloperCopyNBTKey().getKeyCode() && Keyboard.getEventKeyState()) {
             // Copy Item NBT
             GuiScreen currentScreen = event.gui;
 

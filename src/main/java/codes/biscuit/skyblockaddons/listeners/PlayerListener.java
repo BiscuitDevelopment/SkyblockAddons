@@ -31,6 +31,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
+import com.google.common.math.DoubleMath;
 import lombok.Getter;
 import lombok.Setter;
 import net.minecraft.block.Block;
@@ -80,6 +81,8 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
+import java.math.RoundingMode;
+import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -260,7 +263,7 @@ public class PlayerListener {
             // Type 2 means it's an action bar message.
             if (e.type == 2) {
                 // Log the message to the game log if action bar message logging is enabled.
-                if (main.isDevMode() && DevUtils.isLoggingActionBarMessages()) {
+                if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && DevUtils.isLoggingActionBarMessages()) {
                     SkyblockAddons.getLogger().info("[ACTION BAR] " + unformattedText);
                 }
 
@@ -1077,8 +1080,8 @@ public class PlayerListener {
                 }
             }
 
-            // Append Skyblock Item ID to end of tooltip if in developer mode
-            if (main.isDevMode() && e.showAdvancedItemTooltips) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
+                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
                 String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
 
                 if (itemId != null) {
@@ -1131,7 +1134,7 @@ public class PlayerListener {
             main.getUtils().setFadingIn(false);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.EDIT_LOCATIONS, 0, null);
 
-        } else if (main.isDevMode() && main.getDeveloperCopyNBTKey().isPressed()) {
+        } else if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && main.getDeveloperCopyNBTKey().isPressed()) {
             DevUtils.copyData();
         }
 
@@ -1146,30 +1149,52 @@ public class PlayerListener {
         }
     }
 
+    /**
+     * This method is called when a sound is played.
+     *
+     * @param event the event that caused this method to be called
+     */
     @SubscribeEvent
     public void onPlaySound(PlaySoundEvent event) {
         if (!main.getUtils().isOnSkyblock()) {
             return;
         }
-        // Stop rat sounds feature
-        if (main.getConfigValues().isEnabled(Feature.STOP_RAT_SOUNDS)) {
-            // Ignore sounds that don't have a specific location like GUIs
-            if (event.sound instanceof PositionedSoundRecord && event.category == SoundCategory.ANIMALS) {
-                PositionedSoundRecord eventSound = (PositionedSoundRecord) event.sound;
-                for (PositionedSoundRecord sound : RAT_SOUNDS) {
-                    // Check that the sound matches the rat sound
-                    if (eventSound.getSoundLocation().equals(sound.getSoundLocation()) &&
-                            eventSound.getPitch() == sound.getPitch() && eventSound.getVolume() == sound.getVolume()) {
-                        System.out.println(eventSound.getSoundLocation());
-                        if (main.getConfigValues().isDisabled(Feature.STOP_ONLY_RAT_SQUEAK) ||
-                                eventSound.getSoundLocation().toString().endsWith("mob.bat.idle")) {
-                            // Cancel the result
-                            event.result = null;
+
+        // Ignore sounds that don't have a specific location like GUIs
+        if (event.sound instanceof PositionedSoundRecord) {
+            PositionedSoundRecord eventSound = (PositionedSoundRecord) event.sound;
+
+            if (main.getConfigValues().isEnabled(Feature.STOP_RAT_SOUNDS)) {
+                if (event.category == SoundCategory.ANIMALS) {
+                    for (PositionedSoundRecord sound : RAT_SOUNDS) {
+                        // Check that the sound matches the rat sound
+                        if (eventSound.getSoundLocation().equals(sound.getSoundLocation()) &&
+                                eventSound.getPitch() == sound.getPitch() && eventSound.getVolume() == sound.getVolume()) {
+                            if (main.getConfigValues().isDisabled(Feature.STOP_ONLY_RAT_SQUEAK) ||
+                                    eventSound.getSoundLocation().toString().endsWith("mob.bat.idle")) {
+                                // Cancel the result
+                                event.result = null;
+                            }
                         }
                     }
                 }
             }
+
+            if (main.getConfigValues().isEnabled(Feature.BACKPACK_OPENING_SOUND) &&
+                    System.currentTimeMillis() - main.getGuiScreenListener().getLastBackpackOpenMs() < 500) {
+                if (event.name.equals("random.chestopen")) {
+                    EntityPlayerSP thePlayer = Minecraft.getMinecraft().thePlayer;
+
+                    // When a player opens a backpack, a chest open sound is played at the player's location.
+                    if (DoubleMath.roundToInt(event.sound.getXPosF(), RoundingMode.HALF_UP) == thePlayer.getPosition().getX() &&
+                            DoubleMath.roundToInt(event.sound.getYPosF(), RoundingMode.HALF_UP) == thePlayer.getPosition().getY() &&
+                            DoubleMath.roundToInt(event.sound.getZPosF(), RoundingMode.HALF_UP) == thePlayer.getPosition().getZ()) {
+                        event.result = null;
+                    }
+                }
+            }
         }
+
         if (main.getConfigValues().isEnabled(Feature.STOP_BONZO_STAFF_SOUNDS) && BONZO_STAFF_SOUNDS.contains(event.name)) {
             event.result = null;
         }
