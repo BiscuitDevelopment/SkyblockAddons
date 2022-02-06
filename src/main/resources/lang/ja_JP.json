@@ -214,9 +214,9 @@
     "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
     "jacobsContestTimer": "Jacob's Contestのタイマー",
     "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "backpackOpeningSound": "Leather Backpack開封音",
+    "devMode": "開発者モード",
+    "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
     "showFeatureNamesOnHover": "Show Feature Names on Hover"
   },
   "messages": {
