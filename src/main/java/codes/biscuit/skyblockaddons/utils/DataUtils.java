@@ -179,12 +179,12 @@ public class DataUtils {
         Names of files the mod needs to successfully fetch to load
         The game will crash if these are not loaded successfully.
          */
-        String[] essentialFileNames = {"data.json", "datat.json"};
+        String[] essentialFileNames = {"data.json"};
         URI requestUrl = null;
 
         try {
             // Online Data
-            requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/datat.json");
+            requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/data.json");
             OnlineData receivedOnlineData = Objects.requireNonNull((OnlineData) fetchAndDeserialize(requestUrl, OnlineData.class),
                     String.format(NO_DATA_RECEIVED_ERROR, requestUrl));
             logger.info("Successfully fetched online data!");
