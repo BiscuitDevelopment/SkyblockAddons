@@ -40,6 +40,13 @@ public class DungeonManager {
     /** The latest essences the player collected during a dungeon game */
     @Getter private final Map<EssenceType, Integer> collectedEssences = new EnumMap<>(EssenceType.class);
 
+    /**
+     * Represents the number of essences from salvaged items by the player.
+     *
+     * It's in a separate map to avoid conflict with the collected map.
+     */
+    @Getter private final Map<EssenceType, Integer> salvagedEssences = new EnumMap<>(EssenceType.class);
+
     /** The current teammates of the dungeon game */
     @Getter private final Map<String, DungeonPlayer> teammates = new HashMap<>();
 
@@ -162,17 +169,16 @@ public class DungeonManager {
      * @param message the action bar message to parse secrets information from
      * @return A message without the secrets information
      */
-    public String addSecrets(String message) {
+    public void addSecrets(String message) {
         Matcher matcher = PATTERN_SECRETS.matcher(message);
         if (!matcher.find()) {
             secrets = -1;
-            return message;
+            return;
         }
 
         secrets = Integer.parseInt(matcher.group(1));
         maxSecrets = Integer.parseInt(matcher.group(2));
         SkyblockAddons.getInstance().getPlayerListener().getActionBarParser().getStringsToRemove().add(matcher.group());
-        return matcher.replaceAll("");
     }
 
     /**
@@ -188,7 +194,7 @@ public class DungeonManager {
             EssenceType essenceType = EssenceType.fromName(matcher.group("essenceType"));
             int amount = Integer.parseInt(matcher.group("essenceNum"));
 
-            collectedEssences.put(essenceType, collectedEssences.getOrDefault(essenceType, 0) + amount);
+            salvagedEssences.put(essenceType, salvagedEssences.getOrDefault(essenceType, 0) + amount);
         }
     }
 
