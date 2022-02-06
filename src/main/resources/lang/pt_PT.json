@@ -213,7 +213,10 @@
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Esconder jogadores na origem do hub",
     "jacobsContestTimer": "Temporizador do Jacob’s contest",
-    "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens"
+    "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "encantamentos",
