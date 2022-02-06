@@ -213,7 +213,10 @@
     "otherDefenseStats": "Andere verdedingsstatistieken (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Timer Jacob's Contest",
-    "dontReplaceRomanNumeralsInItemNames": "Niet vervangen in itemnamen"
+    "dontReplaceRomanNumeralsInItemNames": "Niet vervangen in itemnamen",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover"
   },
   "messages": {
     "enchants": "Betoveringen",
