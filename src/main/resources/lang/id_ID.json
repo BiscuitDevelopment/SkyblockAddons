@@ -214,10 +214,10 @@
     "hideSpawnPointPlayers": "Sembunyikan Player di Spawn Point Hub",
     "jacobsContestTimer": "Timer Jacob's Contest",
     "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "backpackOpeningSound": "Suara Membuka Leather Backpack",
     "devMode": "Mode Developer",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover"
+    "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor"
   },
   "messages": {
     "enchants": "Enchants",
