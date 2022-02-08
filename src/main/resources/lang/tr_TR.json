@@ -218,7 +218,7 @@
     "devMode": "Geliştirici Modu",
     "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla"
   },
   "messages": {
     "enchants": "Büyüler",
