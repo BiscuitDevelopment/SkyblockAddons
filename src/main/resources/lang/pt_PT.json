@@ -217,7 +217,8 @@
     "backpackOpeningSound": "Som de abertura de backpacks de couro",
     "devMode": "Modo de programador",
     "showSkyblockItemId": "Mostrar o ID do Skyblock do item ao passar o rato",
-    "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato"
+    "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "encantamentos",
