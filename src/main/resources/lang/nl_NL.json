@@ -218,7 +218,7 @@
     "devMode": "Ontwikkelaarsmodus",
     "showSkyblockItemId": "Skyblock-voorwerp-ID weergeven bij aanwijzen",
     "showFeatureNamesOnHover": "Functienamen weergeven bij aanwijzen",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Geborgen Essences-teller resetten na sluiten menu"
   },
   "messages": {
     "enchants": "Betoveringen",
