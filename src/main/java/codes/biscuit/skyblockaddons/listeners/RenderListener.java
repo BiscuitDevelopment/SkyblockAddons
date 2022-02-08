@@ -1448,8 +1448,6 @@ public class RenderListener {
     public void drawCollectedEssences(float x, float y, boolean usePlaceholders, boolean hideZeroes) {
         Minecraft mc = Minecraft.getMinecraft();
 
-        Map<EssenceType, Integer> collectedEssences = main.getDungeonManager().getCollectedEssences();
-
         float currentX = x;
         float currentY;
 
@@ -1460,7 +1458,14 @@ public class RenderListener {
         int count = 0;
         if (main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
             for (EssenceType essenceType : EssenceType.values()) {
-                int value = collectedEssences.getOrDefault(essenceType, 0);
+                int value;
+
+                if (main.getInventoryUtils().getInventoryType() == InventoryType.SALVAGING) {
+                    value = main.getDungeonManager().getSalvagedEssences().getOrDefault(essenceType, 0);
+                } else {
+                    value = main.getDungeonManager().getCollectedEssences().getOrDefault(essenceType, 0);
+                }
+
                 if (usePlaceholders) {
                     value = 99;
                 } else if (value <= 0 && hideZeroes) {

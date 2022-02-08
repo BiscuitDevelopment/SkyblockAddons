@@ -102,6 +102,14 @@ public class GuiChestHook {
         accessoryReforgeMenuTypeChecked = false;
         islandWarpGui = null;
         BackpackInventoryManager.setBackpackColor(null);
+
+        if (main.getConfigValues().isEnabled(Feature.SHOW_SALVAGE_ESSENCES_COUNTER)) {
+            InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
+
+            if (inventoryType == InventoryType.SALVAGING) {
+                main.getDungeonManager().getSalvagedEssences().clear();
+            }
+        }
     }
 
     /**
