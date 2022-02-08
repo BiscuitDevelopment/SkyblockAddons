@@ -45,7 +45,10 @@ import java.lang.reflect.Type;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadFactory;
 
 /**
  * This class reads data from the JSON files in the mod's resources or on the mod's Github repo and loads it into memory.
@@ -214,7 +217,7 @@ public class DataUtils {
         URI requestUrl;
 
         // Online Data
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/datat.json");
+        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/data.json");
         httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
                 new JSONResponseHandler<>(OnlineData.class), new DataFetchCallback<OnlineData>(requestUrl)));
 
@@ -512,6 +515,7 @@ public class DataUtils {
         // The loader encountered a file name it didn't expect.
         if (exception instanceof IllegalArgumentException) {
             logger.error(exception.getMessage());
+            return;
         }
 
         if (Arrays.stream(ESSENTIAL_FILE_URLS).anyMatch(s -> s.contains(fileName))) {
