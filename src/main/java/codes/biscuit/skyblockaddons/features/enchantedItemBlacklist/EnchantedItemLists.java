@@ -1,7 +1,7 @@
 package codes.biscuit.skyblockaddons.features.enchantedItemBlacklist;
 
 import codes.biscuit.skyblockaddons.core.ItemRarity;
-import codes.biscuit.skyblockaddons.utils.DataUtils;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import lombok.Data;
 
 import java.util.List;

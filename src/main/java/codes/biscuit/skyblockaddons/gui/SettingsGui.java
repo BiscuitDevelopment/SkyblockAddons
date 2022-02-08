@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;

@@ -23,6 +23,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.newgui.GuiManager;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
 import codes.biscuit.skyblockaddons.utils.gson.PatternAdapter;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
@@ -158,6 +159,10 @@ public class SkyblockAddons {
         ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
+
+        DataUtils.loadOnlineData();
+        DataUtils.shutdownExecutorService();
+
         // Macs do not have a right control key.
         int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;
 
