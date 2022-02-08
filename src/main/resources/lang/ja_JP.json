@@ -217,7 +217,8 @@
     "backpackOpeningSound": "Leather Backpack開封音",
     "devMode": "開発者モード",
     "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
-    "showFeatureNamesOnHover": "ホバーして機能名を表示"
+    "showFeatureNamesOnHover": "ホバーして機能名を表示",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "エンチャント",
