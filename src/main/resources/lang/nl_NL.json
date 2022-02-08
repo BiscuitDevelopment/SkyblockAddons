@@ -217,7 +217,8 @@
     "backpackOpeningSound": "Openingsgeluid lederen rugzak",
     "devMode": "Ontwikkelaarsmodus",
     "showSkyblockItemId": "Skyblock-voorwerp-ID weergeven bij aanwijzen",
-    "showFeatureNamesOnHover": "Functienamen weergeven bij aanwijzen"
+    "showFeatureNamesOnHover": "Functienamen weergeven bij aanwijzen",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "Betoveringen",
