@@ -217,7 +217,8 @@
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover"
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "Enchants",
