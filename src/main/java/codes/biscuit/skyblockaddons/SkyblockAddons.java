@@ -164,7 +164,6 @@ public class SkyblockAddons {
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
 
         DataUtils.loadOnlineData();
-        DataUtils.shutdownExecutorService();
 
         // Macs do not have a right control key.
         int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;

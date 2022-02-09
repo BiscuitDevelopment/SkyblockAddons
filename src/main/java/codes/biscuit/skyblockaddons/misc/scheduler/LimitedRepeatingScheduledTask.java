@@ -46,8 +46,8 @@ public class LimitedRepeatingScheduledTask extends ScheduledTask {
     @Override
     public void start() {
         if (runCount < RUN_LIMIT) {
-            super.start();
             runCount++;
+            super.start();
         } else {
             cancel();
         }

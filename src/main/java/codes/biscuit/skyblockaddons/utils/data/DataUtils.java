@@ -11,23 +11,20 @@ import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemLists;
 import codes.biscuit.skyblockaddons.features.enchantedItemBlacklist.EnchantedItemPlacementBlocker;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
+import codes.biscuit.skyblockaddons.misc.scheduler.ScheduledTask;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
-import codes.biscuit.skyblockaddons.utils.pojo.SkyblockAddonsAPIResponse;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import org.apache.http.HttpEntity;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.NoConnectionReuseStrategy;
@@ -41,7 +38,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.lang.reflect.Type;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -97,6 +93,10 @@ public class DataUtils {
     private static final String NO_DATA_RECEIVED_ERROR = "No data received for get request to \"%s\"";
 
     private static String path;
+
+    private static HttpRequestFutureTask<JsonObject> languageRequestTask = null;
+
+    private static ScheduledTask languageLoadingTask = null;
 
     static {
         connectionManager.setMaxTotal(5);
@@ -221,6 +221,10 @@ public class DataUtils {
         httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
                 new JSONResponseHandler<>(OnlineData.class), new DataFetchCallback<OnlineData>(requestUrl)));
 
+        // Localized Strings
+        languageRequestTask = fetchLocalizedStrings(main.getConfigValues().getLanguage());
+        httpRequestFutureTasks.add(languageRequestTask);
+
         // Enchanted Item Blacklist
         requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblockaddons/enchantedItemLists.json");
         httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
@@ -261,16 +265,6 @@ public class DataUtils {
         httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
                 new JSONResponseHandler<>(SkillXpManager.JsonInput.class),
                 new DataFetchCallback<>(requestUrl)));
-
-        // Localized Strings
-        Language language = main.getConfigValues().getLanguage();
-
-        // TODO: Figure out how to do languages in Async
-        try {
-            overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(), getOnlineLocalizedStrings(language));
-        } catch (IOException | JsonSyntaxException | NullPointerException e) {
-            logger.info("Failed to load language file for language \"{}\"", language);
-        }
     }
 
     /**
@@ -279,10 +273,12 @@ public class DataUtils {
      * @see SkyblockAddons#init(FMLInitializationEvent)
      */
     public static void loadOnlineData() {
+        Iterator<HttpRequestFutureTask<?>> requestFutureIterator = httpRequestFutureTasks.iterator();
         ArrayList<String> loadedFileUrls = new ArrayList<>();
         String urlString;
 
-        for (HttpRequestFutureTask<?> futureTask : httpRequestFutureTasks) {
+        while (requestFutureIterator.hasNext()) {
+            HttpRequestFutureTask<?> futureTask = requestFutureIterator.next();
             urlString = futureTask.toString();
             String fileName = getFileNameFromUrlString(urlString);
             String noDataError = String.format(NO_DATA_RECEIVED_ERROR, urlString);
@@ -324,16 +320,24 @@ public class DataUtils {
                                 noDataError));
                         break;
                     case "skillXp.json":
-                        main.getSkillXpManager().initialize((SkillXpManager.JsonInput) futureTask.get());
+                        main.getSkillXpManager().initialize(Objects.requireNonNull((SkillXpManager.JsonInput) futureTask.get()));
                         break;
                     default:
-                        throw new IllegalArgumentException("Unknown data file " + urlString + "\nDid you forget something?");
+                        if (urlString.contains("lang")) {
+                            loadOnlineLocalizedStrings();
+                        } else {
+                            throw new IllegalArgumentException("Unknown data file " + urlString + "\nDid you forget something?");
+                        }
                 }
 
-                logger.info("Successfully loaded {}.", fileName);
+                if (!urlString.contains("lang")) {
+                    logger.info("Successfully loaded {}.", fileName);
+                }
                 loadedFileUrls.add(urlString);
             } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
                 handleOnlineFileLoadException(urlString, e);
+            } finally {
+                requestFutureIterator.remove();
             }
         }
 
@@ -342,6 +346,16 @@ public class DataUtils {
                 handleOnlineFileLoadException(essentialFileUrl, null);
             }
         }
+    }
+
+    /**
+     * Loads the localized strings for the current {@link Language} set in the mod settings with the choice of loading
+     * only local strings or local and online strings.
+     *
+     * @param loadOnlineStrings Loads local and online strings if {@code true}, loads only local strings if {@code false}
+     */
+    public static void loadLocalizedStrings(boolean loadOnlineStrings) {
+        loadLocalizedStrings(main.getConfigValues().getLanguage(), loadOnlineStrings);
     }
 
     /**
@@ -365,44 +379,39 @@ public class DataUtils {
         }
 
         if (loadOnlineStrings) {
-            try {
-                loadOnlineLocalizedStrings(language);
-            } catch (IOException | JsonSyntaxException | NullPointerException e) {
-                logger.error(e.getMessage());
-                logger.error("There was an error fetching data from the server. The bundled version of the file will be used instead.");
+            if (languageRequestTask != null) {
+                languageRequestTask.cancel(false);
+            } else if (languageLoadingTask != null) {
+                languageLoadingTask.cancel();
+                languageLoadingTask = null;
             }
+
+            languageRequestTask = fetchLocalizedStrings(language);
+            languageLoadingTask = main.getNewScheduler().scheduleLimitedRepeatingTask(new SkyblockRunnable() {
+                @Override
+                public void run() {
+                    if (languageRequestTask.isDone()) {
+                        try {
+                            loadOnlineLocalizedStrings();
+                            main.getConfigValues().setLanguage(language);
+                            cancel();
+                        } catch (NullPointerException nullPointerException) {
+                            logger.error("Error loading strings for {}: {}", language.getPath(),
+                                    nullPointerException.getMessage());
+                            cancel();
+                        } catch (IllegalStateException ignored) {
+                            // Try again on the next run if it's not done downloading.
+                        }
+
+                    }
+                }
+            }, 10, 20, 8);
         }
 
         // logger.info("Finished loading localized strings.");
     }
 
-    /**
-     * Loads the online localized strings for the given {@link Language}
-     *
-     * @param language the {@code Language} to load strings for
-     */
-    public static void loadOnlineLocalizedStrings(Language language) throws IOException {
-        JsonObject localLanguageConfig = main.getConfigValues().getLanguageConfig();
-        JsonObject onlineLanguageConfig = getOnlineLocalizedStrings(language);
-
-        if (localLanguageConfig != null) {
-            overwriteCommonJsonMembers(localLanguageConfig, onlineLanguageConfig);
-        } else {
-            logger.warn("Local language configuration was null, it will be replaced with the online version.");
-            main.getConfigValues().setLanguageConfig(onlineLanguageConfig);
-        }
-    }
-
-    /**
-     * Loads the localized strings for the current {@link Language} set in the mod settings with the choice of loading
-     * only local strings or local and online strings.
-     *
-     * @param loadOnlineStrings Loads local and online strings if {@code true}, loads only local strings if {@code false}
-     */
-    public static void loadLocalizedStrings(boolean loadOnlineStrings) {
-        loadLocalizedStrings(main.getConfigValues().getLanguage(), loadOnlineStrings);
-    }
-
+    // TODO: Shut it down and restart it as needed?
     /**
      * Shuts down {@link DataUtils#futureRequestExecutionService} and the underlying {@code ExecutorService} and
      * {@code ClosableHttpClient}.
@@ -430,72 +439,43 @@ public class DataUtils {
     }
 
     /**
-     * Creates a response handler to handle responses from the SkyblockAddons API
-     */
-    private static <T> ResponseHandler<T> createResponseHandler(Type T) {
-        return response -> {
-            int status = response.getStatusLine().getStatusCode();
-
-            if (status == 200) {
-                HttpEntity entity = response.getEntity();
-                try (    InputStream inputStream = entity.getContent();
-                         InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
-                                 StandardCharsets.UTF_8)) {
-                    SkyblockAddonsAPIResponse apiResponse = gson.fromJson(inputStreamReader, SkyblockAddonsAPIResponse.class);
-                    return gson.fromJson(apiResponse.getResponse(), T);
-                }
-            } else {
-                throw new ClientProtocolException("Unexpected response status: " + status);
-            }
-        };
-    }
-
-    /**
-     * Creates a response handler to handle responses from the SkyblockAddons Github repo
-     */
-    private static <T> ResponseHandler<T> createLegacyResponseHandler(Type T) {
-        return response -> {
-            int status = response.getStatusLine().getStatusCode();
-
-            if (status == 200) {
-                HttpEntity entity = response.getEntity();
-                try (    InputStream inputStream = entity.getContent();
-                         InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
-                                 StandardCharsets.UTF_8)) {
-                    return gson.fromJson(inputStreamReader, T);
-                }
-            } else {
-                throw new ClientProtocolException("Unexpected response status: " + status);
-            }
-        };
-    }
-
-    /**
-     * Fetches a JSON file from the given URL and deserializes it to an object of the given type.
+     * Fetches the localized strings for the given language from the server.
      *
-     * @param url the URL to fetch the JSON file from
-     * @param T the {@code Type} to deserialize the JSON to
-     * @return an object of {@code clazz} deserialized from the JSON fetched from {@code url}
+     * @param language the language to fetch strings for
+     * @return a {@link HttpRequestFutureTask} with the status of the request
      */
-    private static Object fetchAndDeserialize(URI url, Type T) throws IOException {
-        return httpClient.execute(new HttpGet(url), createLegacyResponseHandler(T));
-    }
-
-    /**
-     * Gets the online localized strings for the given {@link Language}.
-     *
-     * @param language the {@link Language} of the localized strings to get
-     * @return the localized strings for the given language; a {@code NullPointerException} is thrown if no data is
-     * received.
-     * @throws IOException thrown if an error occurs while executing the request
-     * @throws NullPointerException if the received localized strings object is {@code null}
-     */
-    private static JsonObject getOnlineLocalizedStrings(Language language) throws IOException {
+    private static HttpRequestFutureTask<JsonObject> fetchLocalizedStrings(Language language) {
         URI requestUrl = URI.create(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
-        JsonObject receivedLocalizedStrings = Objects.requireNonNull((JsonObject) fetchAndDeserialize(requestUrl, JsonObject.class),
-                String.format(NO_DATA_RECEIVED_ERROR, requestUrl));
-        logger.info("Successfully fetched localized strings!");
-        return receivedLocalizedStrings;
+        return futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
+                new JSONResponseHandler<>(JsonObject.class), new DataFetchCallback<>(requestUrl));
+    }
+
+    /**
+     * Loads the received localized strings into the mod.
+     *
+     * @throws NullPointerException if {@code languageRequestTask} is {@code null}
+     * @throws IllegalStateException if {@code languageRequestTask} is not done
+     */
+    private static void loadOnlineLocalizedStrings() {
+        if (languageRequestTask == null) {
+            throw new NullPointerException("There are no localized strings to load.");
+        } else if (!languageRequestTask.isDone()) {
+            throw new IllegalStateException("Localized strings are not done downloading.");
+        }
+
+        String urlString = languageRequestTask.toString();
+        String fileName = getFileNameFromUrlString(urlString);
+        String noDataError = String.format(NO_DATA_RECEIVED_ERROR, urlString);
+
+        try {
+            overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(),
+                    Objects.requireNonNull(languageRequestTask.get(), noDataError));
+            logger.info("Successfully loaded {}.", fileName);
+        } catch (InterruptedException | ExecutionException | NullPointerException e) {
+            handleOnlineFileLoadException(urlString, e);
+        } finally {
+            languageRequestTask = null;
+        }
     }
 
     /**

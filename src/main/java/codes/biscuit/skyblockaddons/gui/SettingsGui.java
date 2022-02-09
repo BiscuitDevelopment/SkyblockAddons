@@ -59,6 +59,9 @@ public class SettingsGui extends GuiScreen {
         column = 1;
         buttonList.clear();
         if (feature == Feature.LANGUAGE) {
+            Language currentLanguage = Language.getFromPath(main.getConfigValues().getLanguage().getPath());
+            assert currentLanguage != main.getConfigValues().getLanguage();
+
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page - 1) * displayCount;
@@ -79,6 +82,9 @@ public class SettingsGui extends GuiScreen {
                     skip--;
                 }
             }
+
+            main.getConfigValues().setLanguage(currentLanguage);
+            DataUtils.loadLocalizedStrings(false);
         } else {
             for (EnumUtils.FeatureSetting setting : settings) {
                 addButton(setting);
@@ -173,8 +179,7 @@ public class SettingsGui extends GuiScreen {
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage) abstractButton).getLanguage();
-            main.getConfigValues().setLanguage(language);
-            DataUtils.loadLocalizedStrings(true);
+            DataUtils.loadLocalizedStrings(language, true);
             main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
