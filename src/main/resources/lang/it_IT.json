@@ -462,7 +462,7 @@
       },
       "version": {
         "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "hoverText": "Clicca per inserirlo nella chat e copiarlo."
       },
       "errors": {
         "wrongUsage": {
