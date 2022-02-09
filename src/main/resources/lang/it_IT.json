@@ -461,7 +461,7 @@
         "enabled": "Magma boss timer messages will now be logged."
       },
       "version": {
-        "help": "Shows the mod's version",
+        "help": "Mostra la versione del mod",
         "hoverText": "Clicca per inserirlo nella chat e copiarlo."
       },
       "errors": {
