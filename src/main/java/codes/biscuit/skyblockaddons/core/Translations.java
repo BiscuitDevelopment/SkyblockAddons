@@ -66,7 +66,6 @@ public class Translations {
             bidi.setReorderingMode(Bidi.REORDER_DEFAULT);
             return bidi.writeReordered(Bidi.DO_MIRRORING);
         } catch (ArabicShapingException ex) {
-            SkyblockAddons.getLogger().error(ex.getMessage() + " for string \"{}\"", text);
             return text;
         }
     }

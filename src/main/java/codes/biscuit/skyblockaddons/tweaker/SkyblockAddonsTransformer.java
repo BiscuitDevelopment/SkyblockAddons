@@ -125,6 +125,13 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         }
     }
 
+    /**
+     * Logs a message ot the console at the specified level. This does not use the standard logger implementation because
+     * this class is loaded before Minecraft has started.
+     *
+     * @param level the level to log the message to
+     * @param message the message to log
+     */
     public void log(Level level, String message) {
         String name = "SkyblockAddons/" + this.getClass().getSimpleName();
         FMLRelaunchLog.log(name, level, (SkyblockAddonsTransformer.isDeobfuscated() ? "" : "[" + name + "] ") + message);

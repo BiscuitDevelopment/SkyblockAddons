@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.features.dragontracker.DragonTrackerData;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTrackerData;
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileReader;
@@ -19,6 +20,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 @Setter @Getter
 public class PersistentValuesManager {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
@@ -62,9 +65,7 @@ public class PersistentValuesManager {
                 persistentValues = SkyblockAddons.getGson().fromJson(reader, PersistentValues.class);
 
             } catch (Exception ex) {
-                SkyblockAddons.getLogger().error("There was an error while trying to load persistent values.");
-                SkyblockAddons.getLogger().catching(ex);
-                saveValues();
+                LOGGER.error("Error loading persistent values.", ex);
             }
 
         } else {
@@ -91,8 +92,7 @@ public class PersistentValuesManager {
                     SkyblockAddons.getGson().toJson(persistentValues, writer);
                 }
             } catch (Exception ex) {
-                SkyblockAddons.getLogger().error("An error occurred while attempting to save persistent values!");
-                SkyblockAddons.getLogger().catching(ex);
+                LOGGER.error("Error saving persistent values.", ex);
             }
 
             SAVE_LOCK.unlock();

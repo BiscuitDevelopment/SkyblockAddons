@@ -7,12 +7,15 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import static codes.biscuit.skyblockaddons.SkyblockAddons.MOD_NAME;
 
 @Getter
 public class SkyblockKeyBinding {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private final KeyBinding keyBinding;
     private final String name;
@@ -81,7 +84,7 @@ public class SkyblockKeyBinding {
      */
     public void register() {
         if (registered) {
-            SkyblockAddons.getLogger().error("Tried to register a key binding with the name \"" + name + "\" which is already registered.");
+            LOGGER.error("Tried to register a key binding with the name \"" + name + "\" which is already registered.");
             return;
         }
 
@@ -104,7 +107,7 @@ public class SkyblockKeyBinding {
             int index = ArrayUtils.indexOf(Minecraft.getMinecraft().gameSettings.keyBindings, keyBinding);
 
             if (index == ArrayUtils.INDEX_NOT_FOUND) {
-                SkyblockAddons.getLogger().error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
+                LOGGER.error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
                         " This shouldn't happen; please inform an SBA developer.");
                 registered = false;
                 return;
@@ -121,7 +124,7 @@ public class SkyblockKeyBinding {
             KeyBinding.resetKeyBindingArrayAndHash();
             registered = false;
         } else {
-            SkyblockAddons.getLogger().error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
+            LOGGER.error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
         }
     }
 }

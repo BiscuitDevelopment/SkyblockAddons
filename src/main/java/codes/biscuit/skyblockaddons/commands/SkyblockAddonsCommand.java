@@ -19,6 +19,7 @@ import net.minecraft.command.*;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
 import net.minecraft.util.*;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
@@ -228,7 +229,6 @@ public class SkyblockAddonsCommand extends CommandBase {
                     try {
                         Desktop.getDesktop().open(main.getUtils().getSBAFolder());
                     } catch (IOException e) {
-                        SkyblockAddons.getLogger().error("An error occurred trying to open the mods folder.", e);
                         throw new CommandException(Translations.getMessage("commandUsage.sba.folder.error"), e.getMessage());
                     }
                 } else if (args[0].equalsIgnoreCase("warp")) {

@@ -10,6 +10,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
+import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 
@@ -18,6 +19,8 @@ import java.lang.reflect.Field;
  * Another potential addition is prevent placing enchanted items (blacklist + whitelist), item cooldown amounts, etc.
  */
 public class CompactorItem implements GsonInitializable {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private String itemId;
     private String displayName;
@@ -91,7 +94,7 @@ public class CompactorItem implements GsonInitializable {
             }
         } catch (Exception ex) {
             itemStack = ItemUtils.createItemStack(Item.getItemFromBlock(Blocks.stone), displayName != null ? displayName : "", itemId != null ? itemId : "", false);
-            SkyblockAddons.getLogger().error("An error occurred while making an itemname with ID " + itemId + " and name " + displayName + ".", ex);
+            LOGGER.error("An error occurred while making an item stack with ID " + itemId + " and name " + displayName + ".", ex);
         }
     }
 }

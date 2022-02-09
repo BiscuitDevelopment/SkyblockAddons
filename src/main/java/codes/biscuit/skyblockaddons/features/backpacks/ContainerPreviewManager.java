@@ -31,6 +31,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.util.Constants;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.io.ByteArrayInputStream;
@@ -42,6 +43,8 @@ import java.util.regex.Pattern;
  * This class contains utility methods for backpacks and stores the color of the backpack the player has open.
  */
 public class ContainerPreviewManager {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("skyblockaddons", "containerPreview.png");
     private static final Pattern BACKPACK_STORAGE_PATTERN = Pattern.compile("Backpack Slot (?<slot>[0-9]+)");
@@ -142,7 +145,6 @@ public class ContainerPreviewManager {
                 }
             }
             if (items == null) {
-                //SkyblockAddons.getLogger().error("There was an error parsing container data.");
                 return null;
             }
 
@@ -202,8 +204,7 @@ public class ContainerPreviewManager {
                 items.add(ItemStack.loadItemStackFromNBT(item));
             }
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("There was an error decompressing container data.");
-            SkyblockAddons.getLogger().catching(ex);
+            LOGGER.error("There was an error decompressing container data.", ex);
         }
         return items;
     }
@@ -378,7 +379,6 @@ public class ContainerPreviewManager {
      */
     public static ContainerPreview getFromStorageBackpack(ItemStack stack, List<ItemStack> items) {
         if (items == null) {
-            //SkyblockAddons.getLogger().error("There was an error parsing container data.");
             return null;
         }
 
@@ -617,10 +617,10 @@ public class ContainerPreviewManager {
             if (dirty) {
                 if (cachedContainer == null) {
                     cache.put(storageKey, new CompressedStorage(inventoryContents));
-                    SkyblockAddons.getLogger().info("Cached new container " + storageKey + ".");
+                    LOGGER.info("Cached new container " + storageKey + ".");
                 } else {
                     cachedContainer.setStorage(inventoryContents);
-                    SkyblockAddons.getLogger().info("Refreshed cache for container " + storageKey + ".");
+                    LOGGER.info("Refreshed cache for container " + storageKey + ".");
                 }
 
                 SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();

@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.shader;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.*;
 
 import java.nio.ByteBuffer;
@@ -14,6 +15,8 @@ import java.nio.ByteBuffer;
 public class ShaderHelper {
 
     @Getter public static final ShaderHelper instance = new ShaderHelper();
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     @Getter private boolean shadersSupported;
     @Getter private boolean vbosSupported;
@@ -97,7 +100,7 @@ public class ShaderHelper {
             infoBuilder.append("OpenGL 1.5 is not supported and ARB_vertex_buffer_object is not supported. ");
         }
 
-        SkyblockAddons.getLogger().info(infoBuilder.toString());
+        LOGGER.info(infoBuilder.toString());
     }
 
     public void glLinkProgram(int program) {

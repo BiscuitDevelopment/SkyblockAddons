@@ -22,7 +22,6 @@ import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.newgui.GuiManager;
-import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
 import codes.biscuit.skyblockaddons.utils.gson.PatternAdapter;
@@ -38,6 +37,7 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ProgressManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -81,8 +81,12 @@ public class SkyblockAddons {
             .registerTypeAdapter(Pattern.class, new PatternAdapter())
             .create();
 
+    private static final Logger LOGGER = LogManager.getLogger(new SkyblockAddonsMessageFactory(MOD_NAME));
+
     private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
+
+    private static ProgressManager.ProgressBar progressBar;
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -265,19 +269,18 @@ public class SkyblockAddons {
     }
 
     /**
+     * Returns a {@link Logger} with the name of the calling class in the prefix, following the format
+     * {@code [SkyblockAddons/className]}. Please call this method <b>once</b> in every class that needs a logger.
+     * Do not call it multiple times in the same class to avoid creating un-needed {@code SkyblockAddonsMessageFactory}
+     * instances.
+     *
      * @return a {@code Logger} containing the name of the calling class in the prefix.
      */
     public static Logger getLogger() {
         String fullClassName = new Throwable().getStackTrace()[1].getClassName();
         String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
 
-        String loggerName = MOD_NAME + "/" + simpleClassName;
-
-        if (SkyblockAddonsTransformer.isDeobfuscated()) {
-            return LogManager.getLogger(loggerName);
-        } else {
-            return LogManager.getLogger(loggerName, new SkyblockAddonsMessageFactory(loggerName));
-        }
+        return LogManager.getLogger(fullClassName, new SkyblockAddonsMessageFactory(simpleClassName));
     }
 
     /**
@@ -302,9 +305,10 @@ public class SkyblockAddons {
         String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
 
         THREAD_EXECUTOR.execute(() -> {
-            getLogger().info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
+            Logger logger = getLogger();
+            logger.info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
             runnable.run();
-            getLogger().info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
+            logger.info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
         });
     }
 

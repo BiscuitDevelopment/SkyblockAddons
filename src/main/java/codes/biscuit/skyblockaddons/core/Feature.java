@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
+import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
@@ -301,7 +302,6 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
-            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);
@@ -317,7 +317,6 @@ public enum Feature {
 
         Set<Integer> registeredFeatureIDs = SkyblockAddons.getInstance().getRegisteredFeatureIDs();
         if (id != -1 && registeredFeatureIDs.contains(id)) {
-            SkyblockAddons.getLogger().error("Multiple features have the same IDs! Crashing...");
             throw new RuntimeException("Multiple features have the same IDs!");
         } else {
             registeredFeatureIDs.add(id);

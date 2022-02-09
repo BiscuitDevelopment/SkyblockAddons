@@ -1,46 +1,50 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import org.apache.logging.log4j.message.Message;
-import org.apache.logging.log4j.message.MessageFactory;
-import org.apache.logging.log4j.message.ParameterizedMessage;
-import org.apache.logging.log4j.message.SimpleMessage;
+import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
+import org.apache.logging.log4j.message.*;
 
 /**
- * This is a simple {@code MessageFactory} implementation that adds the logger name in square brackets
- * to the beginning of each log event message. This is required since the Minecraft Log4J config doesn't
+ * This is a simple {@code MessageFactory} implementation that adds the mod name and logger display name in square
+ * brackets to the beginning of each log event message. This is required since the Minecraft Log4J config doesn't
  * include logger names when writing logs to file.
  */
-public class SkyblockAddonsMessageFactory implements MessageFactory {
-
-    private String loggerName;
+public class SkyblockAddonsMessageFactory extends AbstractMessageFactory {
+    private static final String MESSAGE_FORMAT = "[" + SkyblockAddons.MOD_NAME + "%s] %s";
+    private final String LOGGER_DISPLAY_NAME;
 
     /**
-     * Creates a new instance of {@code SkyblockAddonsMessageFactory} that uses the given logger name. The logger name
-     * in square brackets will be added as a prefix before every message that this instance generates.
+     * Creates a new instance of {@code SkyblockAddonsMessageFactory} that uses the given logger display name.
+     * The display name should be the simple class name of the class that is creating the logger.
+     * The logger display name will be shown as a {@code [SkyblockAddons/loggerDisplayName]} prefix added to the
+     * beginning of all logger messages.
      *
-     * @param loggerName the name of the logger
+     * @param loggerDisplayName the name of the logger
      */
-    public SkyblockAddonsMessageFactory(String loggerName) {
-        this.loggerName = loggerName;
+    public SkyblockAddonsMessageFactory(String loggerDisplayName) {
+        LOGGER_DISPLAY_NAME = loggerDisplayName;
     }
 
     @Override
-    public Message newMessage(Object message) {
-        return new SimpleMessage(getMessageWithLoggerName(message.toString()));
+    public Message newMessage(final Object message) {
+        return getFormattedMessage(new ObjectMessage(message));
     }
 
     @Override
     public Message newMessage(String message) {
-        return new SimpleMessage(getMessageWithLoggerName(message));
+        return getFormattedMessage(new SimpleMessage(message));
     }
 
     @Override
     public Message newMessage(String message, Object... params) {
-        return new ParameterizedMessage(getMessageWithLoggerName(message), params);
+        return getFormattedMessage(new ParameterizedMessage(message, params));
     }
 
-    private String getMessageWithLoggerName(String message) {
-        return String.format("[%s/%s] %s", SkyblockAddons.MOD_NAME, loggerName, message);
+    private FormattedMessage getFormattedMessage(Message message) {
+        if (!LOGGER_DISPLAY_NAME.equals(SkyblockAddons.MOD_NAME)) {
+            return new FormattedMessage(MESSAGE_FORMAT, '/' + LOGGER_DISPLAY_NAME, message.getFormattedMessage());
+        } else {
+            return new FormattedMessage(MESSAGE_FORMAT, null, message.getFormattedMessage());
+        }
     }
 }

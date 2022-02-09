@@ -79,6 +79,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
@@ -89,6 +90,8 @@ import java.util.regex.Pattern;
 
 //TODO Fix for Hypixel localization
 public class PlayerListener {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
@@ -264,7 +267,7 @@ public class PlayerListener {
             if (e.type == 2) {
                 // Log the message to the game log if action bar message logging is enabled.
                 if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && DevUtils.isLoggingActionBarMessages()) {
-                    SkyblockAddons.getLogger().info("[ACTION BAR] " + unformattedText);
+                    LOGGER.info("[ACTION BAR] " + unformattedText);
                 }
 
                 // Parse using ActionBarParser and display the rest message instead
@@ -1242,7 +1245,7 @@ public class PlayerListener {
                 main.getDungeonManager().addDeath();
 
             } else {
-                SkyblockAddons.getLogger().warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
+                LOGGER.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
             }
         }
     }

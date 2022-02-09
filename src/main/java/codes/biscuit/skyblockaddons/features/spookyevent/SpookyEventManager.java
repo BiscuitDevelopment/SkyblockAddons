@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.features.spookyevent;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,8 @@ import java.util.regex.Pattern;
 
 // TODO: Feature Rewrite
 public class SpookyEventManager {
+
+    private static final Logger LOGGER = SkyblockAddons.getLogger();
 
     private static final Pattern CANDY_PATTERN = Pattern.compile("Your Candy: (?<greenCandy>\\d+) Green, (?<purpleCandy>\\d+) Purple \\((?<points>\\d+) pts\\.\\)");
     @Getter private static final Map<CandyType, Integer> dummyCandyCounts = new HashMap<>();
@@ -51,7 +54,7 @@ public class SpookyEventManager {
                 points = Integer.parseInt(matcher.group("points"));
             }
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while parsing the spooky event event text in the tab list!", ex);
+            LOGGER.error("An error occurred while parsing the spooky event event text in the tab list!", ex);
         }
     }
 

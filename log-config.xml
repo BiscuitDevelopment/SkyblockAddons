@@ -4,14 +4,15 @@
 <Configuration status="WARN" packages="com.mojang.util">
     <Appenders>
         <Console name="FmlSysOut" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level] [%logger]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" />
+            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level] [%logger]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" >
+                <Replace regex=".* \[codes.biscuit.skyblockaddons.*\]:.*" replacement=":"/>
+            </PatternLayout>
         </Console>
         <Console name="SysOut" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" />
+            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" >
+                <Replace regex=".* \[codes.biscuit.skyblockaddons.*\]:.*" replacement=":"/>
+            </PatternLayout>
         </Console>
-        <Queue name="ServerGuiConsole" ignoreExceptions="true">
-            <PatternLayout pattern="[%d{HH:mm:ss}] [%t/%level] [%logger]: %msg%n" />
-        </Queue>
         <RollingRandomAccessFile name="File" fileName="logs/latest.log" filePattern="logs/%d{yyyy-MM-dd}-%i.log.gz">
             <PatternLayout pattern="[%d{HH:mm:ss}] [%t/%level]: %msg%n" />
             <Policies>
@@ -42,7 +43,6 @@
         <Logger level="info" name="com.mojang" additivity="false">
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />
-            <AppenderRef ref="ServerGuiConsole" level="INFO" />
         </Logger>
         <Logger level="info" name="net.minecraft" additivity="false">
             <filters>
@@ -52,7 +52,6 @@
             </filters>
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />
-            <AppenderRef ref="ServerGuiConsole" level="INFO" />
         </Logger>
         <Logger level="info" name="FML" additivity="false">
             <!-- Filter out errors about reading module-info in Lombok on startup -->
@@ -63,11 +62,9 @@
             </filters>
             <AppenderRef ref="SysOut" level="INFO" />
             <AppenderRef ref="File" />
-            <AppenderRef ref="ServerGuiConsole" level="INFO" />
         </Logger>
         <Root level="all">
             <AppenderRef ref="FmlSysOut" level="INFO" />
-            <AppenderRef ref="ServerGuiConsole" level="INFO" />
             <AppenderRef ref="FmlFile"/>
         </Root>
     </Loggers>

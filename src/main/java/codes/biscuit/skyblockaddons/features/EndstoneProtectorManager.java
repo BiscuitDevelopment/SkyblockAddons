@@ -12,11 +12,15 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
+import org.apache.logging.log4j.Logger;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class EndstoneProtectorManager {
+    private static final Minecraft mc = Minecraft.getMinecraft();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     @Getter private static boolean canDetectSkull = false;
     @Getter private static Stage minibossStage = null;
@@ -25,9 +29,6 @@ public class EndstoneProtectorManager {
     private static long lastWaveStart = -1;
 
     public static void checkGolemStatus() {
-        Minecraft mc = Minecraft.getMinecraft();
-        SkyblockAddons main = SkyblockAddons.getInstance();
-
         if (mc.theWorld != null && (main.getUtils().getLocation() == Location.THE_END || main.getUtils().getLocation() == Location.DRAGONS_NEST) &&
                 main.getConfigValues().isEnabled(Feature.ENDSTONE_PROTECTOR_DISPLAY)) {
             World world = mc.theWorld;
@@ -60,7 +61,7 @@ public class EndstoneProtectorManager {
                 int minutes = totalSeconds/60;
                 int seconds = totalSeconds%60;
 
-                SkyblockAddons.getLogger().info("Endstone protector stage updated from "+previousStage+" to "+newStage.name()+". " +
+                logger.info("Endstone protector stage updated from "+previousStage+" to "+newStage.name()+". " +
                         "Your zealot kill count was "+zealotsKilled+". This took "+minutes+"m "+seconds+"s.");
 
                 if (minibossStage == Stage.GOLEM_ALIVE && newStage == Stage.NO_HEAD) {

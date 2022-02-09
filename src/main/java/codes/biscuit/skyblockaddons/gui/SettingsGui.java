@@ -15,6 +15,7 @@ import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraftforge.client.GuiIngameForge;
+import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.awt.*;
@@ -23,8 +24,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SettingsGui extends GuiScreen {
+    static final SkyblockAddons main = SkyblockAddons.getInstance();
+    static final Logger logger = SkyblockAddons.getLogger();
 
-    final SkyblockAddons main = SkyblockAddons.getInstance();
     final Feature feature;
     final int lastPage;
     final EnumUtils.GuiTab lastTab;
@@ -264,7 +266,7 @@ public class SettingsGui extends GuiScreen {
             try {
                 buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
             } catch (NumberFormatException e) {
-                SkyblockAddons.getLogger().error(e.getMessage());
+                logger.error(e.getMessage());
                 main.getUtils().sendMessage(Translations.getMessage("messages.invalidFeatureConfiguration", feature.getMessage()));
                 main.getConfigValues().setGuiScale(feature, ConfigValues.normalizeValueNoStep(1));
                 buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
@@ -415,7 +417,7 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), this.main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), main, settingFeature));
 
         } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
             boxWidth = 31;

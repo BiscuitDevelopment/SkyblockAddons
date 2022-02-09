@@ -60,8 +60,8 @@ public class ActionBarParser {
     private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
 
 
-    private final SkyblockAddons main;
-    private final Logger logger;
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     /**
      * The amount of usable tickers or -1 if none are in the action bar.
@@ -95,8 +95,6 @@ public class ActionBarParser {
     private final LinkedList<String> stringsToRemove = new LinkedList<>();
 
     public ActionBarParser() {
-        this.main = SkyblockAddons.getInstance();
-        logger = SkyblockAddons.getLogger();
     }
 
     /**

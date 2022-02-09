@@ -181,8 +181,7 @@ public class Updater {
                         currentMatcher.group("minor").equals(targetMatcher.group("minor")) &&
                         !isCurrentBeta;
             } catch (Exception ex) {
-                SkyblockAddons.getLogger().warn("Couldn't parse update version numbers... This shouldn't affect too much.");
-                SkyblockAddons.getLogger().catching(ex);
+                LOGGER.warn("Couldn't parse update version numbers... This shouldn't affect too much.", ex);
             }
 
             if (isPatch) {

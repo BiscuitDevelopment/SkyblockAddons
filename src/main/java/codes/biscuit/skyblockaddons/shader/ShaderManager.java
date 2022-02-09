@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.shader;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import lombok.Getter;
+import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +11,8 @@ import java.util.Map;
 public class ShaderManager {
 
     @Getter public static final ShaderManager instance = new ShaderManager();
+
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     // TODO Disable this code until there is a shader that actually uses a custom pipeline
 //    private ByteBuffer dataBuffer = BufferUtils.createByteBuffer(1_000);
@@ -58,7 +61,7 @@ public class ShaderManager {
         try {
             return shaderClass.getConstructor().newInstance();
         } catch (Exception ex) {
-            SkyblockAddons.getLogger().error("An error occurred while creating a shader!", ex);
+            logger.error("An error occurred while creating a shader!", ex);
         }
         return null;
     }
