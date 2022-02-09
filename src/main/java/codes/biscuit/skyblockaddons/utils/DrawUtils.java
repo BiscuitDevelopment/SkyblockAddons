@@ -485,11 +485,6 @@ public class DrawUtils {
         float z = mat.m32;
 
         float scale = (float) Math.sqrt(mat.m00 * mat.m00 + mat.m01 * mat.m01 + mat.m02 * mat.m02);
-
-        System.out.println("x: " + x);
-        System.out.println("y: " + y);
-        System.out.println("z: " + z);
-        System.out.println("scale: " + scale);
     }
 
     public static void enableBlend() {
