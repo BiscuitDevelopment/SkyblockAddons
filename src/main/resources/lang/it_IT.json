@@ -295,7 +295,7 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Tempo di ricarica: %time%s",
     "entityOutlinesRequirement": "Richiede che Shaders, Rendering Veloce, e Antialiasing siano OFF",
-    "version": "Version",
+    "version": "Versione",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
@@ -343,15 +343,15 @@
         "help": "Apri il menu principale"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Mostra il simbolo del server",
         "brandOutput": "Nome del server: %brand%",
         "notFound": "Nome del server non trovato!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copia i dati del blocco che si sta guardando"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
         "detailedHelp": {
           "description": "Copia i dati NBT delle entità. I tipi di entità incluse e il raggio intorno al giocatore per copiare i dati da possono essere personalizzati. Se non vengono fornite opzioni, vengono utilizzate le impostazioni predefinite. Le impostazioni predefinite sono: giocatori, supporti per armature e mobs, con un raggio di 3 blocchi. Se il raggio non è dato, viene utilizzato il raggio predefinito.",
           "options": {
@@ -361,7 +361,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copia il testo del tabellone",
         "detailedHelp": {
           "description": "Copia il testo visualizzato nello slot di visualizzazione della barra laterale del tabellone",
           "options": {
@@ -370,7 +370,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copia intestazione e piè di pagina della lista giocatori",
         "detailedHelp": {
           "description": "Questo comando copia l'intestazione e il piè di pagina della lista dei giocatori. I codici di formattazione sono inclusi."
         }
@@ -400,16 +400,16 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Raccoglie i conteggi memorizzati nei contatori di morti nel Dungeon per scopi di debug."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Carica tutte le impostazioni e risorse del mod. Il gioco si bloccherà per alcuni secondi."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Carica le impostazioni del mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Carica le risorse del mod. Il gioco si bloccherà per alcuni secondi."
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
@@ -451,7 +451,7 @@
         "invalidStat": "\"%input%\" non è un boss valido!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
         "disabled": "I messaggi della barra delle azioni non saranno più registrati.",
         "enabled": "I messaggi della barra delle azioni saranno ora registrati."
       },
