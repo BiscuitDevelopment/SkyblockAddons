@@ -216,7 +216,7 @@
     "dontReplaceRomanNumeralsInItemNames": "Jangan Mengganti di Nama Benda",
     "backpackOpeningSound": "Suara Membuka Leather Backpack",
     "devMode": "Mode Developer",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showSkyblockItemId": "Tunjukkan item ID Skyblock saat mengarahkan kursor ke benda",
     "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Counter Salvaged Essence Setelah Menutup Menu"
   },
