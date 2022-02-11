@@ -111,9 +111,9 @@ public class DrawUtils {
             if (color.drawMulticolorUsingShader()) {
                 ColorUtils.bindWhite();
                 if (GlStateManager.textureState[GlStateManager.activeTextureUnit].texture2DState.currentState) {
-                    ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
+                    ShaderManager.INSTANCE.enableShader(ChromaScreenTexturedShader.class);
                 } else {
-                    ShaderManager.getInstance().enableShader(ChromaScreenShader.class);
+                    ShaderManager.INSTANCE.enableShader(ChromaScreenShader.class);
                 }
             } else {
                 ColorUtils.bindColor(color.getColor());
@@ -129,8 +129,10 @@ public class DrawUtils {
         } else {
             worldRenderer.begin(drawType, DefaultVertexFormats.POSITION);
             if (color.drawMulticolorUsingShader()) {
-                Chroma3DShader chroma3DShader = ShaderManager.getInstance().enableShader(Chroma3DShader.class);
-                chroma3DShader.setAlpha(ColorUtils.getAlphaFloat(color.getColor()));
+                Chroma3DShader chroma3DShader = ShaderManager.INSTANCE.enableShader(Chroma3DShader.class);
+                if (chroma3DShader != null) {
+                    chroma3DShader.setAlpha(ColorUtils.getAlphaFloat(color.getColor()));
+                }
             } else {
                 ColorUtils.bindColor(color.getColor());
             }
@@ -147,7 +149,7 @@ public class DrawUtils {
             tessellator.draw();
 
             if (color.drawMulticolorUsingShader()) {
-                ShaderManager.getInstance().disableShader();
+                ShaderManager.INSTANCE.disableShader();
             }
         }
     }

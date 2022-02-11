@@ -7,7 +7,7 @@ public class WorldVertexBufferUploaderHook {
 
     public static boolean onRenderWorldRendererBuffer() {
 //        if (true) return false;
-        boolean canceled = ShaderManager.getInstance().onRenderWorldRendererBuffer();
+        boolean canceled = ShaderManager.INSTANCE.onRenderWorldRendererBuffer();
         if (canceled) {
             Tessellator.getInstance().getWorldRenderer().reset();
         }

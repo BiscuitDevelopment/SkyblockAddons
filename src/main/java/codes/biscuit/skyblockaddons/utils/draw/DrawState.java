@@ -55,7 +55,7 @@ public abstract class DrawState {
 
     protected void newColor(boolean is3D) {
         if (color.drawMulticolorUsingShader()) {
-            MulticolorShaderManager.begin(textured, ignoreTexture, is3D);
+            MulticolorShaderManager.INSTANCE.begin(textured, ignoreTexture, is3D);
             GlStateManager.shadeModel(GL11.GL_SMOOTH);
         }
         if (textured && ignoreTexture) {
@@ -83,7 +83,7 @@ public abstract class DrawState {
 
     protected void endColor() {
         if (color.drawMulticolorUsingShader()) {
-            MulticolorShaderManager.end();
+            MulticolorShaderManager.INSTANCE.end();
             GlStateManager.shadeModel(GL11.GL_FLAT);
         }
         if (textured && ignoreTexture) {

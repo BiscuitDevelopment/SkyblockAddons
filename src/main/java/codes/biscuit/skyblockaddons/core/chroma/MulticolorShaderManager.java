@@ -11,11 +11,16 @@ import codes.biscuit.skyblockaddons.shader.chroma.ChromaShader;
 /**
  * Handles all multicolor shaders in shader mode, as well as
  */
-public class MulticolorShaderManager {
+public enum MulticolorShaderManager {
+
+    INSTANCE();
 
     /** Current chroma rendering state */
-    private static MulticolorState currentState = new MulticolorState();
+    private MulticolorState currentState;
 
+    MulticolorShaderManager() {
+        currentState = new MulticolorState();
+    }
 
     private static class MulticolorState {
         boolean chromaEnabled;
@@ -69,7 +74,7 @@ public class MulticolorShaderManager {
         public void setup() {
             if (!chromaEnabled) {
                 chromaEnabled = true;
-                ShaderManager.getInstance().enableShader(shaderType);
+                ShaderManager.INSTANCE.enableShader(shaderType);
             }
         }
 
@@ -77,7 +82,7 @@ public class MulticolorShaderManager {
         public void disable() {
             if (chromaEnabled) {
                 chromaEnabled = false;
-                ShaderManager.getInstance().disableShader();
+                ShaderManager.INSTANCE.disableShader();
             }
         }
     }
@@ -86,23 +91,21 @@ public class MulticolorShaderManager {
      *
      * @param ignoreTexture
      * @param is3D
-     * @return true if we need to callback to render specific manual colors
      */
-    public static void begin(boolean isTextured, boolean ignoreTexture, boolean is3D) {
+    public void begin(boolean isTextured, boolean ignoreTexture, boolean is3D) {
         // Using shader chroma
         currentState.disable();
         currentState = new ShaderChromaState(isTextured, ignoreTexture, is3D);
         currentState.setup();
-
     }
 
 
-    public static void end() {
+    public void end() {
         currentState.disable();
     }
 
-    public static boolean shouldUseChromaShaders() {
-        return ShaderManager.getInstance().areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
+    public boolean shouldUseChromaShaders() {
+        return ShaderManager.INSTANCE.areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
     }
 
 }
