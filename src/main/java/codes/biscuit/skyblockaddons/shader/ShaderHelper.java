@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.shader;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.utils.SkyblockAddonsMessageFactory;
 import lombok.Getter;
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.*;
 
@@ -15,7 +15,8 @@ import java.nio.ByteBuffer;
  */
 public class ShaderHelper {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger LOGGER = LogManager.getLogger(new SkyblockAddonsMessageFactory(
+            ShaderHelper.class.getSimpleName()));
 
     @Getter private static final boolean SHADERS_SUPPORTED;
     @Getter private static final boolean VBOS_SUPPORTED;
