@@ -218,7 +218,7 @@
     "devMode": "Mode Developer",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Counter Salvaged Essence Setelah Menutup Menu"
   },
   "messages": {
     "enchants": "Enchants",
@@ -296,7 +296,7 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
     "version": "Versi",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Konfigurasi salah terdeteksi untuk fitur %featureName%, sedang reset fitur kembali menjadi default."
   },
   "discordStatus": {
     "titleNone": "Tidak Ada",
