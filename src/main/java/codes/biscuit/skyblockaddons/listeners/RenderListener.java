@@ -998,7 +998,7 @@ public class RenderListener {
             } else if (holdingItem == null || skyblockItemID == null) {
                 return;
             } else if (skyblockItemID.equals("HYPERION") || skyblockItemID.equals("VALKYRIE") || skyblockItemID.equals("ASTRAEA") || skyblockItemID.equals("SCYLLA") || skyblockItemID.equals("BAT_WAND")) {
-                text = holdingItem.getDisplayName().replaceAll("[0-9]?✪", "");
+                text = holdingItem.getDisplayName().replaceAll("§[a-f0-9]?✪", "");
             } else {
                 return;
             }
