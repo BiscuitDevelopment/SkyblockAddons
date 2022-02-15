@@ -214,11 +214,11 @@
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
     "jacobsContestTimer": "Jacob's Contest 計時器",
     "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "backpackOpeningSound": "Leather Backpack 開啟聲",
+    "devMode": "開發者模式",
+    "showSkyblockItemId": "鼠標止於物品上方時顯示 Skyblock 物品ID",
+    "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
+    "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器"
   },
   "messages": {
     "enchants": "附魔",
