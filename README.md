@@ -24,6 +24,7 @@
 
 A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better. Always looking for more features to add!
 
+
 :warning: Note for Contributors
 -----
 The branch `development` has been renamed to `main`, and the branch `master` is now `stable`.
