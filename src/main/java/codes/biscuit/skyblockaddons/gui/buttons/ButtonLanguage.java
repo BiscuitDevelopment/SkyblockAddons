@@ -5,8 +5,8 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.DataUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
@@ -18,8 +18,9 @@ public class ButtonLanguage extends GuiButton {
 
     private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
 
-    private Language language;
-    private SkyblockAddons main;
+    private final SkyblockAddons main;
+    private final Language language;
+    private final String languageName;
 
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
@@ -27,6 +28,8 @@ public class ButtonLanguage extends GuiButton {
     public ButtonLanguage(double x, double y, String buttonText, SkyblockAddons main, Language language) {
         super(0, (int)x, (int)y, buttonText);
         this.language = language;
+        DataUtils.loadLocalizedStrings(language, false);
+        this.languageName = Translations.getMessage("language");
         this.main = main;
         this.width = 140;
         this.height = 25;
@@ -51,9 +54,8 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-            // FIXME: we shouldn't be loading a whole language file for every language button every frame.
-            DataUtils.loadLocalizedStrings(language, false);
-            drawCenteredString(mc.fontRendererObj, Translations.getMessage("language"), xPosition+width/2, yPosition+10, fontColor);
+
+            drawCenteredString(mc.fontRendererObj, languageName, xPosition+width/2, yPosition+10, fontColor);
         }
     }
 
