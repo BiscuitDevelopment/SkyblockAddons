@@ -60,7 +60,6 @@ public class SettingsGui extends GuiScreen {
         buttonList.clear();
         if (feature == Feature.LANGUAGE) {
             Language currentLanguage = Language.getFromPath(main.getConfigValues().getLanguage().getPath());
-            assert currentLanguage != main.getConfigValues().getLanguage();
 
             displayCount = findDisplayCount();
             // Add the buttons for each page.
