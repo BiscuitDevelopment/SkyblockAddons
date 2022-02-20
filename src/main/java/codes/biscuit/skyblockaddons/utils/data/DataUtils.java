@@ -16,17 +16,19 @@ import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsTransformer;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.data.requests.*;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.CompactorItem;
 import codes.biscuit.skyblockaddons.utils.skyblockdata.ContainerData;
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 import com.google.gson.Gson;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraft.crash.CrashReport;
+import net.minecraft.util.ReportedException;
+import net.minecraftforge.fml.client.FMLClientHandler;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.NoConnectionReuseStrategy;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.FutureRequestExecutionService;
@@ -38,7 +40,6 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.concurrent.ExecutionException;
@@ -79,28 +80,21 @@ public class DataUtils {
     private static final FutureRequestExecutionService futureRequestExecutionService =
             new FutureRequestExecutionService(httpClient, executorService);
 
+    private static final ArrayList<RemoteFileRequest<?>> remoteRequests = new ArrayList<>();
+
     @Getter
     private static final ArrayList<HttpRequestFutureTask<?>> httpRequestFutureTasks = new ArrayList<>();
 
-    /*
-    URLs of files the mod needs to successfully fetch to load
-    The game will not start if these are not loaded successfully.
-     */
-    static final String[] ESSENTIAL_FILE_URLS = {
-            "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/data.json"
-    };
-
-    private static final String NO_DATA_RECEIVED_ERROR = "No data received for get request to \"%s\"";
-
     private static String path;
 
-    private static HttpRequestFutureTask<JsonObject> languageRequestTask = null;
+    private static LocalizedStringsRequest localizedStringsRequest = null;
 
     private static ScheduledTask languageLoadingTask = null;
 
     static {
         connectionManager.setMaxTotal(5);
         connectionManager.setDefaultMaxPerRoute(5);
+        registerRemoteRequests();
     }
 
     //TODO: Migrate all data file loading to this class
@@ -214,137 +208,35 @@ public class DataUtils {
      If an online copy is newer, the local copy is overwritten.
      */
     private static void fetchFromOnline() {
-        URI requestUrl;
-
-        // Online Data
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/data.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(OnlineData.class), new DataFetchCallback<OnlineData>(requestUrl)));
-
-        // Localized Strings
-        languageRequestTask = fetchLocalizedStrings(main.getConfigValues().getLanguage());
-        httpRequestFutureTasks.add(languageRequestTask);
-
-        // Enchanted Item Blacklist
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblockaddons/enchantedItemLists.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(EnchantedItemLists.class), new DataFetchCallback<>(requestUrl)));
-
-        // Containers
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/containers.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(new TypeToken<HashMap<String, ContainerData>>() {}.getType()),
-                new DataFetchCallback<>(requestUrl)));
-
-        // Compactor Items
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/compactorItems.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(new TypeToken<HashMap<String, CompactorItem>>() {}.getType()),
-                new DataFetchCallback<>(requestUrl)));
-
-        // Sea Creatures
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/seaCreatures.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(new TypeToken<HashMap<String, SeaCreature>>() {}.getType()),
-                new DataFetchCallback<>(requestUrl)));
-
-        // Enchantments
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/enchants.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(new TypeToken<EnchantManager.Enchants>() {}.getType()),
-                new DataFetchCallback<>(requestUrl)));
-
-        // Cooldowns
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/cooldowns.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(new TypeToken<Map<String, Integer>>() {}.getType()),
-                new DataFetchCallback<>(requestUrl)));
-
-        // Skill xp
-        requestUrl = URI.create("https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons-Data/main/skyblock/skillXp.json");
-        httpRequestFutureTasks.add(futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(SkillXpManager.JsonInput.class),
-                new DataFetchCallback<>(requestUrl)));
+        for (RemoteFileRequest<?> request : remoteRequests) {
+            request.execute(futureRequestExecutionService);
+        }
     }
 
     /**
-     * Loads the received online data into the mod.
+     * Loads the received online data files into the mod.
      *
-     * @see SkyblockAddons#init(FMLInitializationEvent)
+     * @see SkyblockAddons#preInit(FMLPreInitializationEvent)
      */
     public static void loadOnlineData() {
-        Iterator<HttpRequestFutureTask<?>> requestFutureIterator = httpRequestFutureTasks.iterator();
-        ArrayList<String> loadedFileUrls = new ArrayList<>();
-        String urlString;
+        Iterator<RemoteFileRequest<?>> requestIterator = remoteRequests.iterator();
 
-        while (requestFutureIterator.hasNext()) {
-            HttpRequestFutureTask<?> futureTask = requestFutureIterator.next();
-            urlString = futureTask.toString();
-            String fileName = getFileNameFromUrlString(urlString);
-            String noDataError = String.format(NO_DATA_RECEIVED_ERROR, urlString);
-
-            // TODO: See if this can be made less copy-pasty with a callback or something
-            try {
-                switch (fileName) {
-                    case "data.json":
-                        main.setOnlineData(Objects.requireNonNull((OnlineData) futureTask.get(),
-                                noDataError));
-                        main.getUpdater().checkForUpdate();
-                        break;
-                    case "enchantedItemLists.json":
-                        EnchantedItemPlacementBlocker.setItemLists(Objects.requireNonNull((EnchantedItemLists) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "containers.json":
-                        //noinspection unchecked
-                        ItemUtils.setContainers(Objects.requireNonNull((HashMap<String, ContainerData>) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "compactorItems.json":
-                        //noinspection unchecked
-                        ItemUtils.setCompactorItems(Objects.requireNonNull((HashMap<String, CompactorItem>) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "seaCreatures.json":
-                        //noinspection unchecked
-                        SeaCreatureManager.getInstance().setSeaCreatures(Objects.requireNonNull((HashMap<String, SeaCreature>) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "enchants.json":
-                        EnchantManager.setEnchants(Objects.requireNonNull((EnchantManager.Enchants) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "cooldowns.json":
-                        //noinspection unchecked
-                        CooldownManager.setItemCooldowns(Objects.requireNonNull((Map<String, Integer>) futureTask.get(),
-                                noDataError));
-                        break;
-                    case "skillXp.json":
-                        main.getSkillXpManager().initialize(Objects.requireNonNull((SkillXpManager.JsonInput) futureTask.get()));
-                        break;
-                    default:
-                        if (urlString.contains("lang")) {
-                            loadOnlineLocalizedStrings();
-                        } else {
-                            throw new IllegalArgumentException("Unknown data file " + urlString + "\nDid you forget something?");
-                        }
-                }
-
-                if (!urlString.contains("lang")) {
-                    logger.info("Successfully loaded {}.", fileName);
-                }
-                loadedFileUrls.add(urlString);
-            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
-                handleOnlineFileLoadException(urlString, e);
-            } finally {
-                requestFutureIterator.remove();
-            }
+        while (requestIterator.hasNext()) {
+            loadOnlineFile(requestIterator.next());
+            requestIterator.remove();
         }
+    }
 
-        for (String essentialFileUrl : ESSENTIAL_FILE_URLS) {
-            if (!loadedFileUrls.contains(essentialFileUrl)) {
-                handleOnlineFileLoadException(essentialFileUrl, null);
-            }
+    /**
+     * Loads a received online data file into the mod.
+     *
+     * @param request the {@code RemoteFileRequest} for the file
+     */
+    public static void loadOnlineFile(RemoteFileRequest<?> request) {
+        try {
+            request.load();
+        } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
+            handleOnlineFileLoadException(Objects.requireNonNull(request), e);
         }
     }
 
@@ -379,30 +271,27 @@ public class DataUtils {
         }
 
         if (loadOnlineStrings) {
-            if (languageRequestTask != null) {
-                languageRequestTask.cancel(false);
+            if (localizedStringsRequest != null) {
+                HttpRequestFutureTask<JsonObject> futureTask = localizedStringsRequest.getFutureTask();
+                if (!futureTask.isDone()) {
+                    futureTask.cancel(false);
+                }
             } else if (languageLoadingTask != null) {
                 languageLoadingTask.cancel();
-                languageLoadingTask = null;
             }
 
-            languageRequestTask = fetchLocalizedStrings(language);
+            localizedStringsRequest = new LocalizedStringsRequest(language);
+            localizedStringsRequest.execute(futureRequestExecutionService);
             languageLoadingTask = main.getNewScheduler().scheduleLimitedRepeatingTask(new SkyblockRunnable() {
                 @Override
                 public void run() {
-                    if (languageRequestTask.isDone()) {
-                        try {
-                            loadOnlineLocalizedStrings();
-                            main.getConfigValues().setLanguage(language);
+                    if (localizedStringsRequest != null) {
+                        if (localizedStringsRequest.getFutureTask().isDone()) {
+                            loadOnlineFile(localizedStringsRequest);
                             cancel();
-                        } catch (NullPointerException nullPointerException) {
-                            logger.error("Error loading strings for {}: {}", language.getPath(),
-                                    nullPointerException.getMessage());
-                            cancel();
-                        } catch (IllegalStateException ignored) {
-                            // Try again on the next run if it's not done downloading.
                         }
-
+                    } else {
+                        cancel();
                     }
                 }
             }, 10, 20, 8);
@@ -438,58 +327,50 @@ public class DataUtils {
         return url.substring(fileNameIndex, queryParamIndex > fileNameIndex ? queryParamIndex : url.length());
     }
 
-    /**
-     * Fetches the localized strings for the given language from the server.
-     *
-     * @param language the language to fetch strings for
-     * @return a {@link HttpRequestFutureTask} with the status of the request
-     */
-    private static HttpRequestFutureTask<JsonObject> fetchLocalizedStrings(Language language) {
-        URI requestUrl = URI.create(String.format(main.getOnlineData().getLanguageJSONFormat(), language.getPath()));
-        return futureRequestExecutionService.execute(new HttpGet(requestUrl), null,
-                new JSONResponseHandler<>(JsonObject.class), new DataFetchCallback<>(requestUrl));
-    }
-
-    /**
-     * Loads the received localized strings into the mod.
-     *
-     * @throws NullPointerException if {@code languageRequestTask} is {@code null}
-     * @throws IllegalStateException if {@code languageRequestTask} is not done
-     */
-    private static void loadOnlineLocalizedStrings() {
-        if (languageRequestTask == null) {
-            throw new NullPointerException("There are no localized strings to load.");
-        } else if (!languageRequestTask.isDone()) {
-            throw new IllegalStateException("Localized strings are not done downloading.");
-        }
-
-        String urlString = languageRequestTask.toString();
-        String fileName = getFileNameFromUrlString(urlString);
-        String noDataError = String.format(NO_DATA_RECEIVED_ERROR, urlString);
-
-        try {
-            overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(),
-                    Objects.requireNonNull(languageRequestTask.get(), noDataError));
-            logger.info("Successfully loaded {}.", fileName);
-        } catch (InterruptedException | ExecutionException | NullPointerException e) {
-            handleOnlineFileLoadException(urlString, e);
-        } finally {
-            languageRequestTask = null;
-        }
+    private static void registerRemoteRequests() {
+        remoteRequests.add(new OnlineDataRequest());
+        remoteRequests.add(new LocalizedStringsRequest(SkyblockAddons.getInstance().getConfigValues().getLanguage()));
+        remoteRequests.add(new EnchantedItemListsRequest());
+        remoteRequests.add(new ContainersRequest());
+        remoteRequests.add(new CompactorItemsRequest());
+        remoteRequests.add(new SeaCreaturesRequest());
+        remoteRequests.add(new EnchantmentsRequest());
+        remoteRequests.add(new CooldownsRequest());
+        remoteRequests.add(new SkillXpRequest());
     }
 
     /**
      * This method handles errors that can occur when reading the local configuration files.
-     * It displays an error screen and prints the stacktrace of the given {@code Throwable} in the console.
+     * If the game is still initializing, it displays an error screen and prints the stacktrace of the given
+     * {@code Throwable} in the console.
+     * If the game is initialized, it crashes the game with a crash report containing the file path and the stacktrace
+     * of the given {@code Throwable}.
      *
      * @param filePath the path to the file that caused the exception
      * @param exception the exception that occurred
      */
     private static void handleLocalFileReadException(String filePath, Throwable exception) {
-        throw new DataLoadingException(filePath, exception);
+        if (FMLClientHandler.instance().isLoading()) {
+            throw new DataLoadingException(filePath, exception);
+        } else {
+            CrashReport crashReport = CrashReport.makeCrashReport(exception, String.format("Loading data file at %s",
+                    filePath));
+            throw new ReportedException(crashReport);
+        }
     }
 
-    private static void handleOnlineFileLoadException(String url, Throwable exception) {
+    /**
+     * This method handles errors that can occur when reading the online configuration files.
+     * If the game is still initializing, it displays an error screen and prints the stacktrace of the given
+     * {@code Throwable} in the console.
+     * If the game is initialized, it crashes the game with a crash report containing the file name and the stacktrace
+     * of the given {@code Throwable}.
+     *
+     * @param request the {@code RemoteFileRequest} for the file that failed to load
+     * @param exception the exception that occurred
+     */
+    private static void handleOnlineFileLoadException(RemoteFileRequest<?> request, Throwable exception) {
+        String url = request.getUrl();
         String fileName = getFileNameFromUrlString(url);
 
         // The loader encountered a file name it didn't expect.
@@ -498,8 +379,16 @@ public class DataUtils {
             return;
         }
 
-        if (Arrays.stream(ESSENTIAL_FILE_URLS).anyMatch(s -> s.contains(fileName))) {
-            throw new DataLoadingException(url, exception);
+        if (request.isEssential()) {
+            if (FMLClientHandler.instance().isLoading()) {
+                throw new DataLoadingException(url, exception);
+            } else {
+                // Don't include URL because Fire strips URLs.
+                CrashReport crashReport = CrashReport.makeCrashReport(exception, String.format("Loading online data file" +
+                                " at %s",
+                        fileName));
+                throw new ReportedException(crashReport);
+            }
         } else {
             logger.error("Failed to load \"{}\" from the server. The local copy will be used instead.", fileName);
             if (!(exception == null)) {
@@ -508,35 +397,5 @@ public class DataUtils {
         }
     }
 
-    /**
-     * This is used to merge in the online language entries into the existing ones.
-     * Using this method rather than an overwrite allows new entries in development to still exist.
-     *
-     * @param baseObject   The object to be merged in to (local entries).
-     * @param otherObject The object to be merged (online entries).
-     */
-    private static void overwriteCommonJsonMembers(JsonObject baseObject, JsonObject otherObject) {
-        for (Map.Entry<String, JsonElement> entry : otherObject.entrySet()) {
-            String memberName = entry.getKey();
-            JsonElement otherElement = entry.getValue();
 
-            if (otherElement.isJsonObject()) {
-                // If the base object already has this object, then recurse
-                if (baseObject.has(memberName) && baseObject.get(memberName).isJsonObject()) {
-                    JsonObject baseElementObject = baseObject.getAsJsonObject(memberName);
-                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
-
-                    // Otherwise we have to add a new object first, then recurse
-                } else {
-                    JsonObject baseElementObject = new JsonObject();
-                    baseObject.add(memberName, baseElementObject);
-                    overwriteCommonJsonMembers(baseElementObject, otherElement.getAsJsonObject());
-                }
-
-                // If it's a string, then just add or overwrite the base version
-            } else if (otherElement.isJsonPrimitive() && otherElement.getAsJsonPrimitive().isString()) {
-                baseObject.add(memberName, otherElement);
-            }
-        }
-    }
 }
