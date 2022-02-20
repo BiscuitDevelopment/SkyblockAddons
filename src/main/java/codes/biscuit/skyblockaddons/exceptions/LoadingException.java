@@ -4,20 +4,13 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiErrorScreen;
 import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static net.minecraft.util.EnumChatFormatting.*;
 
-/**
- * This exception is thrown when the mod fails to load a necessary data file during startup.
- */
-public class DataLoadingException extends LoadingException {
-    private final String FILE_PATH_STRING;
-
-    public DataLoadingException(String filePathString, Throwable cause) {
-        super(filePathString, cause);
-        FILE_PATH_STRING = filePathString;
+public class LoadingException extends CustomModLoadingErrorDisplayException {
+    public LoadingException(String message, Throwable cause) {
+        super(message, cause);
     }
 
     @Override
@@ -31,16 +24,14 @@ public class DataLoadingException extends LoadingException {
         int xPos = errorScreen.width / 2;
 
         errorScreen.drawCenteredString(fontRenderer, String.format(
-                "%sSkyblockAddons%s has encountered an error while loading.", AQUA, RESET), xPos,
+                        "%sSkyblockAddons%s has encountered an error while loading.", AQUA, RESET), xPos,
                 offset, 0xFFFFFF);
         offset += 10;
-        errorScreen.drawCenteredString(fontRenderer, "Failed to load file at", xPos, offset, 0xFFFFFF);
-        offset += 10;
-        List<String> filePathStringList = fontRenderer.listFormattedStringToWidth(DARK_RED + FILE_PATH_STRING + RESET,
-                maxWidth);
-        for (String line : filePathStringList) {
-            errorScreen.drawCenteredString(fontRenderer, line, xPos, offset, 0xFFFFFF);
-            offset += 10;
+        if (getMessage() != null) {
+            for (String errorLine : getMessage().split("\n")) {
+                errorScreen.drawCenteredString(fontRenderer, errorLine, xPos, offset, 0xFFFFFF);
+                offset += 10;
+            }
         }
         offset += 10;
         errorScreen.drawCenteredString(fontRenderer, "Please restart your game.", xPos, offset, 0xFFFFFF);
@@ -50,16 +41,6 @@ public class DataLoadingException extends LoadingException {
         for (String line : errorPersistString) {
             errorScreen.drawCenteredString(fontRenderer, line, xPos, offset, 0xFFFFFF);
             offset += 10;
-        }
-    }
-
-    @Override
-    public void printStackTrace(WrappedPrintStream s) {
-        s.println(String.format("Failed to load file at \"%s\"", FILE_PATH_STRING));
-        if (getCause() != null) {
-            Arrays.stream(getCause().getStackTrace()).forEach(
-                    stackTraceElement -> s.println(stackTraceElement.toString()));
-            super.printStackTrace(s);
         }
     }
 }
