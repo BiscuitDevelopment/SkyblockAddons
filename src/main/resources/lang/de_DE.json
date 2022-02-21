@@ -280,7 +280,7 @@
     "legendarySeaCreatureWarning": "Legendärer Fang!",
     "bossApproaching": "Du bist kurz davor, einen Boss zu erschaffen!",
     "fetchurItem": "Fetchur: %item%",
-    "fetchurWarning": "Fetchur changed!",
+    "fetchurWarning": "Neuer Fetchur-Gegenstand!",
     "enableAll": "Aktiviere alle",
     "disableAll": "Deaktiviere alle",
     "enchantmentInclusionExample": "z.B. \"prot, feather\"",
@@ -291,12 +291,12 @@
     "effectActive": "1 Effekt aktiv",
     "effectsActive": "%number% Effekte Aktiv",
     "none": "Keine",
-    "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
+    "copyModeSet": "Der Entwickler-Kopiermodus wurde auf: %mode% gesetzt. Drücke \"%keyName%\", um eine Datenkopie auszulösen!",
     "chroma": "Chroma",
-    "worldRenderedCooldownTime": "Cooldown: %time%s",
+    "worldRenderedCooldownTime": "Abklingzeit: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Ungültige Konfiguration für die Funktion %featureName% erkannt. Einstellungen werden auf die Standardwerte zurückgestellt."
   },
   "discordStatus": {
     "titleNone": "Keine",
@@ -306,7 +306,7 @@
     "titlePurse": "Geldbörse",
     "descriptionPurse": "Zeigt die derzeitigen Coins in deiner Geldbörse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Zeigt die Anzahl von Bits an, die du hast",
     "titleStats": "Statuswerte",
     "descriptionStats": "Zeigt deine Lebenspunkte, Verteidigungspunkte und Mana-Werte",
     "titleZealots": "Zealots",
@@ -316,11 +316,11 @@
     "titleProfile": "Profil",
     "descriptionProfile": "Zeigt deinen Profil-Namen",
     "titleTime": "Skyblock-Zeit",
-    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
+    "descriptionTime": "Zeigt die derzeitige Skyblock-Zeit. z.B. 12:00am 1st Early Winter",
     "titleCustom": "Benutzerdefinierter Status",
     "descriptionCustom": "Enter a custom status",
     "titleAuto": "Automatischer Status",
-    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
+    "descriptionAuto": "Zeigt automatisch einen Status an. z.B. deine Zealot Kills während du im End bist.",
     "titleRevenants": "Revenant-Quest",
     "descriptionRevenants": "Zeigt, dass du ein Revenant-Quest machst.",
     "titleSvens": "Sven-Quest",
@@ -329,13 +329,13 @@
     "descriptionTarantula": "Zeigt, dass du eine Tarantula-Quest machst."
   },
   "enchantLayout": {
-    "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
+    "title": "Lege fest, wie Verzauberungen in den Tooltips angezeigt werden",
+    "titleCompress": "Komprimieren",
+    "descriptionCompress": "Komprimiert Verzauberungen in so wenig Zeilen wie möglich",
     "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
-    "descriptionExpand": "Lists each enchant on its own line"
+    "descriptionNormal": "Zeigt Verzauberungen wie Hypixel an",
+    "titleExpand": "Erweitern",
+    "descriptionExpand": "Listet jede Verzauberung in einer eigenen Zeile auf"
   },
   "commandUsage": {
     "sba": {
@@ -343,12 +343,12 @@
         "help": "Hauptmenü öffnen"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "§e(Dev) §7Servername anzeigen",
         "brandOutput": "Servername: %brand%",
         "notFound": "Servername nicht gefunden!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Kopiert Daten von den block, den du anschaust"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
