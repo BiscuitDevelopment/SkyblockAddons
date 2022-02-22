@@ -180,10 +180,10 @@
     "chromaSaturation": "Chroma Saturation",
     "chromaBrightness": "Chroma Brightness",
     "useNewChromaEffect": "Nutze den neuen Chroma-Effekt",
-    "showExperimentationTableTooltips": "Show Experimentation Table Tooltips",
-    "drillFuelBar": "Drill Fuel Bar",
+    "showExperimentationTableTooltips": "Zeige Tooltips zum Experimentiertisch",
+    "drillFuelBar": "Bohrtreibstoffleiste",
     "drillFuelNumber": "Drill Fuel Number",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "Zeige was Fetchur heute will",
     "fishingParticleOverlay": "Angelpartikel Übersicht",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Abklingzeit vorhersagen und abkürzen",
@@ -205,13 +205,13 @@
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
-    "effectiveHealthNumber": "Effective Health Number",
-    "guiScaleX": "GUI X Scale: %scale%",
-    "guiScaleY": "GUI Y Scale: %scale%",
-    "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
-    "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "entityOutlines": "Zeige Entitäten Umriss",
+    "effectiveHealthNumber": "Effektive Gesundheitszahl",
+    "guiScaleX": "GUI X Größe: %scale%",
+    "guiScaleY": "GUI Y Größe: %scale%",
+    "abbreviateSkillXpDenominator": "Fähigkeiten XP Nenner abkürzen",
+    "otherDefenseStats": "Andere Verteidigungsstatistiken (Soul Tether/Zellenausrichtung)",
+    "hideSpawnPointPlayers": "Verstecke Spieler am Spawn-Punkt im Hub",
     "jacobsContestTimer": "Wettbewerb-Timer von Jacob",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
     "backpackOpeningSound": "Lederrucksack Öffnungsgeräusch",
@@ -237,7 +237,7 @@
     "enchantsToExclude": "%type% die du nicht möchtest:",
     "updateChecker": {
       "wantToViewPatchNotes": "Brauchst du Hilfe oder möchtest du alle Änderungen lesen?",
-      "joinDiscord": "Join our Discord server!",
+      "joinDiscord": "Trete unseren Discord-Server bei!",
       "watchShowcase": "Video anschauen",
       "downloadButton": "Herunterladen",
       "openModFolderButton": "Mod-Ordner öffnen",
@@ -361,7 +361,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "§e(Dev) §7Kopiere den Scoreboard-Text",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -382,17 +382,17 @@
         },
         "disabled": "Entwicklermodus deaktiviert!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-        "prefix": "Dev"
+        "prefix": "Entwickler"
       },
       "edit": {
         "help": "GUI Locations bearbeiten"
       },
       "folder": {
         "help": "Mods-Ordner öffnen",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "error": "Beim Öffnen des Mods-Ordners ist ein Fehler aufgetreten: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Zeigt diese Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesen Befehl angezeigt.",
         "detailedHelp": {
           "options": {
             "command": "the sub-command to get detailed usage for"
@@ -413,17 +413,17 @@
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "resetSuccess": "Zealot-Zähler zurückgestellt!"
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Anzahl der Zealots manuell festlegen",
           "detailedHelp": {
-            "description": "Manually sets counts in the zealot counter.",
+            "description": "Setzt Zahlen im Zealot-Zähler manuell.",
             "options": {
-              "eyes": "Lifetime summoning eyes obtained",
+              "eyes": "Insgesamt erhaltene Beschwörungsaugen (Summoning eyes)",
               "totalZealots": "Insgesamt getötete Zealots",
-              "zealots": "Zealots killed since the last summoning eye drop"
+              "zealots": "Zealots, die seit dem letzten Beschwörungsauge (Summoning eye) getötet wurden"
             }
           },
           "eyesSet": "Set total summoning eye count to %number%!",
