@@ -216,9 +216,9 @@
     "dontReplaceRomanNumeralsInItemNames": "不要替换物品名称",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "开发者模式",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showSkyblockItemId": "显示物品的空岛生存物品 ID",
     "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器"
   },
   "messages": {
     "enchants": "附魔",
@@ -293,7 +293,7 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "冷却: %time%s",
+    "worldRenderedCooldownTime": "冷却: %time%秒",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
     "version": "版本",
     "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值"
@@ -412,8 +412,8 @@
         "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "重置全部末影战士相关计数器",
+        "resetSuccess": "末影战士击杀计数已重置！"
       },
       "set": {
         "zealotCounter": {
@@ -461,8 +461,8 @@
         "enabled": "岩浆怪 Boss 计时器将被计入日志。"
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "显示 mod 版本信息",
+        "hoverText": "点击置入聊天栏以便复制"
       },
       "errors": {
         "wrongUsage": {
