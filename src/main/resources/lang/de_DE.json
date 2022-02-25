@@ -381,7 +381,7 @@
           "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Entwicklermodus deaktiviert!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
+        "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!",
         "prefix": "Entwickler"
       },
       "edit": {
@@ -443,31 +443,31 @@
           }
         },
         "bossRequired": "You need to select a boss! Please choose %bosses%",
-        "statRequired": "You need to select a stat. Press tab for options.",
-        "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "statRequired": "Du musst eine Statistik auswählen. Drücke Tab für Optionen.",
+        "numberRequired": "Du musst die Zahl schreiben, die du haben willst.",
+        "killsSet": "Kills für Slayer %boss% wurden auf %number% gesetzt.",
+        "statSet": "Statistik %stat% für Slayer %boss% wurde auf %number% gesetzt.",
+        "invalidBoss": "\"%input%\" ist keine gültige Statistik!",
+        "invalidStat": "\"%input%\" ist kein gültiger boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "§e(Dev) §7Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
+        "disabled": "Nachrichten in der Aktionsleiste werden nicht mehr protokolliert.",
+        "enabled": "Nachrichten in der Aktionsleiste werden nun protokolliert."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "§e(Dev) §7Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
+        "disabled": "Die Timer-Meldungen des Magma-Bosses werden nicht mehr protokolliert.",
+        "enabled": "Die Timer-Meldungen des Magma-Bosses werden nun protokolliert."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Zeigt die Version des Mods an",
+        "hoverText": "Klicke hier, um die Zeichenkette im Chat zu platzieren, damit du sie kopieren kannst."
       },
       "errors": {
         "wrongUsage": {
           "generic": "Falsche Verwendung!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "subCommandNotFound": "Der Unterbefehl \"%sub-command%\" wurde nicht gefunden."
         }
       }
     }
@@ -478,11 +478,11 @@
   "dragonTracker": {
     "protector": "Beschützer (Protector)",
     "old": "Alt (Old)",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
-    "superior": "Superior",
+    "wise": "Weise (Wise)",
+    "unstable": "Instabil (Unstable)",
+    "young": "Jung (Young)",
+    "strong": "Stark (Strong)",
+    "superior": "Überlegender (Superior)",
     "recentDragons": "Kürzliche Drachen:",
     "dragonsSince": "Drachen seit:",
     "aspectOfTheDragons": "AOTD",
@@ -498,17 +498,17 @@
     "bossesKilled": "Bosse getötet"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
+    "click": "Klicke auf einen Warppunkt, um dorthin zu reisen!",
+    "mustUnlock": "Der entsprechende Scroll muss freigeschaltet sein.",
+    "privateIsland": "Private Insel",
+    "home": "Deine Insel",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
+    "unknown": "Nicht besucht",
+    "notUnlocked": "Nicht freigeschaltet",
     "inCombat": "Im Kampf ..."
   },
   "enchants": {
-    "superTier": "Max Tier",
+    "superTier": "Höchste Stufe",
     "highTier": "Hohe Stufe",
     "midTier": "Mittlere Stufe",
     "lowTier": "Niedrige Stufe",
