@@ -135,7 +135,7 @@
     "mapZoom": "Karte vergrößern",
     "glowingDroppedItems": "Lass gedroppte Items leuchten",
     "outlineDungeonTeammates": "Umrande Dungeon-Mitspieler",
-    "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
+    "baseStatBoostPercentage": "Zeige Basisstatistik-Boost für Dungeon-Gegenstände",
     "colorByRarity": "Farbe nach Seltenheit",
     "showPlayerHeadsOnMap": "Zeigt Spielerköpfe auf der Dungeon-Karte an",
     "showHealingCircleWall": "Zeige die den Rand des Heilbereiches als grüne Wand",
@@ -163,7 +163,7 @@
     "showSkillPercentageInstead": "Zeige Prozent anstatt XP",
     "showSkillXPGained": "Erhaltene XP anzeigen",
     "skillProgressBar": "Fähigkeit-Fortschrittsanzeige",
-    "showSalvageEssencesCounter": "Show Salvage Essences Counter",
+    "showSalvageEssencesCounter": "Zeige Wiederherstellungs-Essenz-Zähler",
     "disableMortMessages": "Mort Nachrichten Deaktivieren",
     "disableBossMessages": "Boss Nachrichten Deaktivieren",
     "hideOtherPlayersPresents": "Geschenke anderer Spieler ausblenden",
@@ -203,7 +203,7 @@
     "showEnderChestPreview": "Endertruhen Vorschau anzeigen",
     "hideWhenNotDoingQuest": "Verstecken, wenn keine Aufgabe ausgeführt wird",
     "showOverflowManaNumber": "Überlauf-Mana-Zahl",
-    "axeCooldownIndicator": "Axe Cooldown Indicator",
+    "axeCooldownIndicator": "Axt-Abklingzeit-Anzeige",
     "vanillaHealthPrediction": "Vanilla Gesundheitsvorhersage verwenden",
     "entityOutlines": "Zeige Entitäten Umriss",
     "effectiveHealthNumber": "Effektive Gesundheitszahl",
@@ -213,12 +213,12 @@
     "otherDefenseStats": "Andere Verteidigungsstatistiken (Soul Tether/Zellenausrichtung)",
     "hideSpawnPointPlayers": "Verstecke Spieler am Spawn-Punkt im Hub",
     "jacobsContestTimer": "Wettbewerb-Timer von Jacob",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "dontReplaceRomanNumeralsInItemNames": "In Gegenstandsnamen nicht ersetzten",
     "backpackOpeningSound": "Lederrucksack Öffnungsgeräusch",
     "devMode": "Entwicklermodus",
     "showSkyblockItemId": "Skyblock Gegenstand-ID bei Hover anzeigen",
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -356,29 +356,29 @@
           "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
           "options": {
             "entityNames": "Namen der Zieltypen von denen du Daten kopieren willst (z. B. Spieler, Creeper). Drücke \"Tab\" nachdem der Befehl eingegeben wurde, um eine volle Liste zu sehen. Trenne Namen mit Kommas, Groß- und Kleinschreibung beachten.",
-            "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            "radius": "Der Radius (in Blöcken) um den Spieler, um Ziel NBT-Daten zu kopieren"
           }
         }
       },
       "copySidebar": {
         "help": "§e(Dev) §7Kopiere den Scoreboard-Text",
         "detailedHelp": {
-          "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+          "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
           "options": {
-            "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            "formatted": "Legt fest, ob die Formatierungscodes beim Kopieren berücksichtigt werden sollen. Kann entweder \"true\" oder \"false\" sein, Standardwert ist \"false\", wenn kein Wert angegeben wird. Bei \"true\" werden die Formatierungscodes kopiert."
           }
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "§e(Dev) §7Kopiere die Kopf- und Fußzeile in der Tab-Liste",
         "detailedHelp": {
-          "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
         }
       },
       "dev": {
         "help": "Entwickler-Modus ein/aus",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Dieser Befehl schaltet den Entwickler-Modus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
         },
         "disabled": "Entwicklermodus deaktiviert!",
         "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!",
@@ -395,24 +395,24 @@
         "help": "Zeigt diese Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesen Befehl angezeigt.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
           }
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "§e(Dev) §7Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "§e(Dev) §7Lädt die Einstellungen der Mod neu"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
+        "help": "Setzt alle Zealot-Zähler zurück.",
         "resetSuccess": "Zealot-Zähler zurückgestellt!"
       },
       "set": {
@@ -426,23 +426,23 @@
               "zealots": "Zealots, die seit dem letzten Beschwörungsauge (Summoning eye) getötet wurden"
             }
           },
-          "eyesSet": "Set total summoning eye count to %number%!",
-          "totalZealotsSet": "Set total zealot count to %number%!",
-          "wrongUsage": "Invalid selection! Please choose %options%.",
-          "zealotsSet": "Set current zealot count to %number%!"
+          "eyesSet": "Setze die Gesamtzahl der Beschwörungsaugen (Summoning eyes) auf %number%!",
+          "totalZealotsSet": "Setze die totale Zealot-Anzahl auf %number%!",
+          "wrongUsage": "Ungültige Auswahl! Bitte wähle %options%.",
+          "zealotsSet": "Setze die aktuelle Zealot-Anzahl Anzahl auf %number%!"
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manuelles Einstellen der Slayer-Statistiken, drücke Tab für Argumente",
         "detailedHelp": {
           "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
           "options": {
-            "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
-            "number": "Number to set the stat to",
-            "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            "boss": "Slayer Boss: \"Zombie\", \"Spider\", oder \"Wolf\"",
+            "number": "Nummer, auf die die Statistik gesetzt werden soll",
+            "stat": "Zu ändernder Slayer-Wert, kann \"kills\" oder der Name eines fallen gelassenen Gegenstandes sein, formatiert wie folgt: \" REVENANT_FLESH\""
           }
         },
-        "bossRequired": "You need to select a boss! Please choose %bosses%",
+        "bossRequired": "Du musst einen Boss wählen! Bitte wähle %bosses%",
         "statRequired": "Du musst eine Statistik auswählen. Drücke Tab für Optionen.",
         "numberRequired": "Du musst die Zahl schreiben, die du haben willst.",
         "killsSet": "Kills für Slayer %boss% wurden auf %number% gesetzt.",
