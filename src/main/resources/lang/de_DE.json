@@ -200,11 +200,11 @@
       "showQuestCooldown": "Zeige die Abklingzeit von der Aufgabe von Trevor",
       "showQuestCooldownDescription": "Das wird über dem Kopf von Trevor angezeigt"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
-    "showOverflowManaNumber": "Overflow Mana Number",
+    "showEnderChestPreview": "Endertruhen Vorschau anzeigen",
+    "hideWhenNotDoingQuest": "Verstecken, wenn keine Aufgabe ausgeführt wird",
+    "showOverflowManaNumber": "Überlauf-Mana-Zahl",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
-    "vanillaHealthPrediction": "Use Vanilla Health Prediction",
+    "vanillaHealthPrediction": "Vanilla Gesundheitsvorhersage verwenden",
     "entityOutlines": "Zeige Entitäten Umriss",
     "effectiveHealthNumber": "Effektive Gesundheitszahl",
     "guiScaleX": "GUI X Größe: %scale%",
@@ -242,7 +242,7 @@
       "downloadButton": "Herunterladen",
       "openModFolderButton": "Mod-Ordner öffnen",
       "joinDiscordButton": "Discord beitreten",
-      "newUpdateAvailable": "A new update (%version%) is available!",
+      "newUpdateAvailable": "Eine neue Version (%version%) ist verfügbar!",
       "noDownloadAvailable": "Kein Download-Link verfügbar, bitte überprüfe unseren Discord Server.",
       "notificationBox": {
         "majorAvailable": "Ein neues wichtiges Update (%version%) ist verfügbar! Den Link für den Download findest du im Chat.",
@@ -268,13 +268,13 @@
     "setHexColor": "Lege Hex Farbe fest",
     "rescaleFeatures": "Funktionen umskalieren",
     "resizeBars": "Größe der Balken ändern",
-    "showColorIcons": "Show Color Icons",
+    "showColorIcons": "Zeige Symbole zur Farbänderung",
     "enableFeatureSnapping": "Erlaube Feature-Snapping",
     "stage": "Stufe %stage%",
-    "switchedSlots": "You have just switched from a locked slot or rare item. Please wait a bit before dropping!",
+    "switchedSlots": "Du hast gerade von einem gesperrten Slot oder seltenen Gegenstand gewechselt. Bitte warte kurz, bevor du etwas abwirfst!",
     "clickToOpenLink": "Klicke, um diesen Link zu öffnen!",
-    "clickToOpenFolder": "Click to open your mods folder!",
-    "firstStatus": "This status will appear at the top",
+    "clickToOpenFolder": "Klicke, um deinen \"Mods-Ordner\" zu öffnen!",
+    "firstStatus": "Dieser Status wird oben angezeigt",
     "secondStatus": "Dieser Status wird unter deinem ersten Status angezeigt",
     "fallbackStatus": "Dieser Status wird angezeigt, wenn dein automatischer Status nicht angezeigt werden kann",
     "legendarySeaCreatureWarning": "Legendärer Fang!",
@@ -294,7 +294,7 @@
     "copyModeSet": "Der Entwickler-Kopiermodus wurde auf: %mode% gesetzt. Drücke \"%keyName%\", um eine Datenkopie auszulösen!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Abklingzeit: %time%s",
-    "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
+    "entityOutlinesRequirement": "Shader, schnelles Rendern und Antialiasing müssen AUSGESCHALTET sein",
     "version": "Version",
     "invalidFeatureConfiguration": "Ungültige Konfiguration für die Funktion %featureName% erkannt. Einstellungen werden auf die Standardwerte zurückgestellt."
   },
@@ -312,13 +312,13 @@
     "titleZealots": "Zealots",
     "descriptionZealots": "Zeigt deinen Zealot-Zähler",
     "titleItem": "Gehaltener Gegenstand",
-    "descriptionItem": "Shows the name of the item you're holding",
+    "descriptionItem": "Zeigt den Namen des Gegenstandes, den du in der Hand hältst",
     "titleProfile": "Profil",
     "descriptionProfile": "Zeigt deinen Profil-Namen",
     "titleTime": "Skyblock-Zeit",
     "descriptionTime": "Zeigt die derzeitige Skyblock-Zeit. z.B. 12:00am 1st Early Winter",
     "titleCustom": "Benutzerdefinierter Status",
-    "descriptionCustom": "Enter a custom status",
+    "descriptionCustom": "Gib einen individuellen Status ein",
     "titleAuto": "Automatischer Status",
     "descriptionAuto": "Zeigt automatisch einen Status an. z.B. deine Zealot Kills während du im End bist.",
     "titleRevenants": "Revenant-Quest",
@@ -351,11 +351,11 @@
         "help": "§e(Dev) §7Kopiert Daten von den block, den du anschaust"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
         "detailedHelp": {
-          "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+          "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
           "options": {
-            "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+            "entityNames": "Namen der Zieltypen von denen du Daten kopieren willst (z. B. Spieler, Creeper). Drücke \"Tab\" nachdem der Befehl eingegeben wurde, um eine volle Liste zu sehen. Trenne Namen mit Kommas, Groß- und Kleinschreibung beachten.",
             "radius": "The radius (in blocks) around the player to copy entity NBT data from"
           }
         }
@@ -505,7 +505,7 @@
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "inCombat": "Im Kampf ..."
   },
   "enchants": {
     "superTier": "Max Tier",
