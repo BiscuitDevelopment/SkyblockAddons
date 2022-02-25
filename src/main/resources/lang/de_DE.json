@@ -435,7 +435,7 @@
       "slayer": {
         "help": "Manually set slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number to set the stat to",
@@ -476,8 +476,8 @@
     "developerCopyNBT": "NBT-Daten kopieren"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
+    "protector": "Beschützer (Protector)",
+    "old": "Alt (Old)",
     "wise": "Wise",
     "unstable": "Unstable",
     "young": "Young",
@@ -486,7 +486,7 @@
     "recentDragons": "Kürzliche Drachen:",
     "dragonsSince": "Drachen seit:",
     "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
+    "enderDragonPet": "Drachen Haustier",
     "eyesPlaced": "Augen Platziert",
     "never": "Niemals"
   },
@@ -509,13 +509,13 @@
   },
   "enchants": {
     "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "highTier": "Hohe Stufe",
+    "midTier": "Mittlere Stufe",
+    "lowTier": "Niedrige Stufe",
+    "commas": "Kommas",
+    "expertiseKills": "Expertise-Kills",
+    "compactedBlocks": "Kompaktierte Blöcke",
+    "cultivatedCrops": "Kultivierte Pflanzen",
+    "maxed": "Maximum"
   }
 }
