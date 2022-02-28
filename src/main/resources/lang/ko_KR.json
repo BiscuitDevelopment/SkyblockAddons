@@ -218,7 +218,7 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다."
   },
   "messages": {
     "enchants": "인챈트",
@@ -295,7 +295,7 @@
     "chroma": "무지개",
     "worldRenderedCooldownTime": "쿨다운: %time%s",
     "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
-    "version": "Version",
+    "version": "버전",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
@@ -461,8 +461,8 @@
         "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "모드의 버전 보이기",
+        "hoverText": "복사할 수 있도록 채팅에 표시하려면 클릭하세요"
       },
       "errors": {
         "wrongUsage": {
