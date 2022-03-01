@@ -295,7 +295,7 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Czas odnowienia: %time%s",
     "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
-    "version": "Version",
+    "version": "Wersja",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
@@ -361,7 +361,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Skopiuj treść tablicy wyników",
         "detailedHelp": {
           "description": "Kopiuje tekst pokazany w bocznym pasku tablicy wyników",
           "options": {
@@ -461,7 +461,7 @@
         "enabled": "Magma boss timer messages will now be logged."
       },
       "version": {
-        "help": "Shows the mod's version",
+        "help": "Pokazuje wersję modyfikacji",
         "hoverText": "Click to put in chat so you can copy."
       },
       "errors": {
