@@ -385,7 +385,7 @@ public class Utils {
                         }
                     }
 
-                    if (!foundInDungeon && strippedScoreboardLine.contains("Dungeon Cleared: ")) {
+                    if (!foundInDungeon && strippedScoreboardLine.startsWith("Cleared: ")) {
                         foundInDungeon = true;
                         inDungeon = true;
 

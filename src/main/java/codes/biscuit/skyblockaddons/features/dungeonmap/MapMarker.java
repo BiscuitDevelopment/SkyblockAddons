@@ -54,8 +54,9 @@ public class MapMarker {
     }
 
     public void updateXZRot(EntityPlayer player) {
-        x = (((float) player.posX - DungeonMapManager.getMapStartX()) / 1.5F - 64.0F) * 2.0F;
-        z = (((float) player.posZ - DungeonMapManager.getMapStartZ()) / 1.5F - 64.0F) * 2.0F;
+        x = (((float) player.posX - DungeonMapManager.getMapStartX()) / 1.5F - 64.0F + 4) * 2.0F;
+        z = (((float) player.posZ - DungeonMapManager.getMapStartZ()) / 1.5F - 64.0F + 4) * 2.0F;
         rotation = MathHelper.wrapAngleTo180_float(player.rotationYaw) / 360F * 16F;
+        //System.out.println(x);
     }
 }
