@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.*;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
@@ -58,6 +59,8 @@ public class SettingsGui extends GuiScreen {
         column = 1;
         buttonList.clear();
         if (feature == Feature.LANGUAGE) {
+            Language currentLanguage = Language.getFromPath(main.getConfigValues().getLanguage().getPath());
+
             displayCount = findDisplayCount();
             // Add the buttons for each page.
             int skip = (page - 1) * displayCount;
@@ -78,6 +81,9 @@ public class SettingsGui extends GuiScreen {
                     skip--;
                 }
             }
+
+            main.getConfigValues().setLanguage(currentLanguage);
+            DataUtils.loadLocalizedStrings(false);
         } else {
             for (EnumUtils.FeatureSetting setting : settings) {
                 addButton(setting);
@@ -172,8 +178,7 @@ public class SettingsGui extends GuiScreen {
     protected void actionPerformed(GuiButton abstractButton) {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage) abstractButton).getLanguage();
-            main.getConfigValues().setLanguage(language);
-            DataUtils.loadLocalizedStrings(true);
+            DataUtils.loadLocalizedStrings(language, true);
             main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {

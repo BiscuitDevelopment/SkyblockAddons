@@ -377,7 +377,7 @@ public class EntityOutlineRenderer {
                 entityRenderCache.setXrayCache(null);
                 entityRenderCache.setNoXrayCache(null);
                 entityRenderCache.setNoOutlineCache(null);
-                mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                if (mc.renderGlobal.entityOutlineFramebuffer != null) mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
                 emptyLastTick = true;
             }
         }

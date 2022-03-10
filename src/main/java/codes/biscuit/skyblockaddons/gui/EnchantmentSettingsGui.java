@@ -7,7 +7,7 @@ import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantListLayout;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
-import codes.biscuit.skyblockaddons.utils.DataUtils;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.EnumUtils.FeatureSetting;
