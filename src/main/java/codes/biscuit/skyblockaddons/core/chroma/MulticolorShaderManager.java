@@ -11,11 +11,20 @@ import codes.biscuit.skyblockaddons.shader.chroma.ChromaShader;
 /**
  * Handles all multicolor shaders in shader mode, as well as
  */
-public class MulticolorShaderManager {
+public enum MulticolorShaderManager {
+
+    INSTANCE;
 
     /** Current chroma rendering state */
-    private static MulticolorState currentState = new MulticolorState();
+    private MulticolorState currentState;
 
+    MulticolorShaderManager() {
+        currentState = new MulticolorState();
+    }
+
+    public static MulticolorShaderManager getInstance() {
+        return INSTANCE;
+    }
 
     private static class MulticolorState {
         boolean chromaEnabled;
@@ -86,22 +95,20 @@ public class MulticolorShaderManager {
      *
      * @param ignoreTexture
      * @param is3D
-     * @return true if we need to callback to render specific manual colors
      */
-    public static void begin(boolean isTextured, boolean ignoreTexture, boolean is3D) {
+    public void begin(boolean isTextured, boolean ignoreTexture, boolean is3D) {
         // Using shader chroma
         currentState.disable();
         currentState = new ShaderChromaState(isTextured, ignoreTexture, is3D);
         currentState.setup();
-
     }
 
 
-    public static void end() {
+    public void end() {
         currentState.disable();
     }
 
-    public static boolean shouldUseChromaShaders() {
+    public boolean shouldUseChromaShaders() {
         return ShaderManager.getInstance().areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
     }
 

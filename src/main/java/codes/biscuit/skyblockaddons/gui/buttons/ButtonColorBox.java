@@ -37,7 +37,7 @@ public class ButtonColorBox extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         hovered = mouseX > xPosition && mouseX < xPosition+width && mouseY > yPosition && mouseY < yPosition+height;
-        if (color == ColorCode.CHROMA && !MulticolorShaderManager.shouldUseChromaShaders()) {
+        if (color == ColorCode.CHROMA && !MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
             if (hovered) {
                 drawChromaRect(xPosition, yPosition, xPosition + width, yPosition + height, 255);
             }
@@ -46,7 +46,7 @@ public class ButtonColorBox extends GuiButton {
             }
         }
         else {
-            if (color == ColorCode.CHROMA && MulticolorShaderManager.shouldUseChromaShaders()) {
+            if (color == ColorCode.CHROMA && MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
                 ShaderManager.getInstance().enableShader(ChromaScreenShader.class);
             }
             if (hovered) {
@@ -54,7 +54,7 @@ public class ButtonColorBox extends GuiButton {
             } else {
                 drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor(127));
             }
-            if (color == ColorCode.CHROMA && MulticolorShaderManager.shouldUseChromaShaders()) {
+            if (color == ColorCode.CHROMA && MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
                 ShaderManager.getInstance().disableShader();
             }
         }
@@ -93,20 +93,20 @@ public class ButtonColorBox extends GuiButton {
         //GlStateManager.color(1, 1, 1, 1);
         worldrenderer.begin(GL11.GL_QUADS, DefaultVertexFormats.POSITION_COLOR);
         int colorLB = ManualChromaManager.getChromaColor(left, bottom, 1);
-        int colorRB = ManualChromaManager.getChromaColor(right, bottom, 1);;
-        int colorLT = ManualChromaManager.getChromaColor(left, top, 1);;
+        int colorRB = ManualChromaManager.getChromaColor(right, bottom, 1);
+        int colorLT = ManualChromaManager.getChromaColor(left, top, 1);
         int colorRT = ManualChromaManager.getChromaColor(right, top, 1);
-        int colorMM = ManualChromaManager.getChromaColor((right+left)/2, (top+bottom)/2, 1);;
+        int colorMM = ManualChromaManager.getChromaColor(Math.floorDiv((right+left), 2), Math.floorDiv((top+bottom), 2), 1);
         // First triangle
         worldrenderer.pos(right, bottom, 0.0D).color(ColorUtils.getRed(colorRB), ColorUtils.getGreen(colorRB), ColorUtils.getBlue(colorRB), alpha).endVertex();
-        worldrenderer.pos((right+left)/2, (top+bottom)/2, 0.0D).color(ColorUtils.getRed(colorMM), ColorUtils.getGreen(colorMM), ColorUtils.getBlue(colorMM), alpha).endVertex();
+        worldrenderer.pos(Math.floorDiv((right+left), 2), Math.floorDiv((top+bottom), 2), 0.0D).color(ColorUtils.getRed(colorMM), ColorUtils.getGreen(colorMM), ColorUtils.getBlue(colorMM), alpha).endVertex();
         worldrenderer.pos(left, top, 0.0D).color(ColorUtils.getRed(colorLT), ColorUtils.getGreen(colorLT), ColorUtils.getBlue(colorLT), alpha).endVertex();
         worldrenderer.pos(left, bottom, 0.0D).color(ColorUtils.getRed(colorLB), ColorUtils.getGreen(colorLB), ColorUtils.getBlue(colorLB), alpha).endVertex();
         // 2nd triangle
         worldrenderer.pos(right, bottom, 0.0D).color(ColorUtils.getRed(colorRB), ColorUtils.getGreen(colorRB), ColorUtils.getBlue(colorRB), alpha).endVertex();
         worldrenderer.pos(right, top, 0.0D).color(ColorUtils.getRed(colorRT), ColorUtils.getGreen(colorRT), ColorUtils.getBlue(colorRT), alpha).endVertex();
         worldrenderer.pos(left, top, 0.0D).color(ColorUtils.getRed(colorLT), ColorUtils.getGreen(colorLT), ColorUtils.getBlue(colorLT), alpha).endVertex();
-        worldrenderer.pos((right+left)/2, (top+bottom)/2, 0.0D).color(ColorUtils.getRed(colorMM), ColorUtils.getGreen(colorMM), ColorUtils.getBlue(colorMM), alpha).endVertex();
+        worldrenderer.pos(Math.floorDiv((right+left), 2), Math.floorDiv((top+bottom), 2), 0.0D).color(ColorUtils.getRed(colorMM), ColorUtils.getGreen(colorMM), ColorUtils.getBlue(colorMM), alpha).endVertex();
         tessellator.draw();
         GlStateManager.shadeModel(GL11.GL_FLAT);
         GlStateManager.enableTexture2D();

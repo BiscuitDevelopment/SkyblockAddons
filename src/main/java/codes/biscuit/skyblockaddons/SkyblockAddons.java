@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons;
 
+import codes.biscuit.skyblockaddons.asm.hooks.FontRendererHook;
 import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
@@ -149,6 +150,10 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent e) {
+        if (DataUtils.USE_ONLINE_DATA) {
+            DataUtils.loadOnlineData();
+        }
+
         MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
         MinecraftForge.EVENT_BUS.register(guiScreenListener);
@@ -162,8 +167,6 @@ public class SkyblockAddons {
         ((SimpleReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(resourceManagerReloadListener);
 
         ClientCommandHandler.instance.registerCommand(new SkyblockAddonsCommand());
-
-        DataUtils.loadOnlineData();
 
         // Macs do not have a right control key.
         int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;
@@ -210,6 +213,7 @@ public class SkyblockAddons {
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO);
         Minecraft.getMinecraft().getTextureManager().bindTexture(SkyblockAddonsGui.LOGO_GLOW);
         fullyInitialized = true;
+        FontRendererHook.onModInitialized();
     }
 
     @Mod.EventHandler

@@ -29,14 +29,14 @@ public class ShaderLoader {
 
     public void attachShader(Shader shader) {
         ++this.shaderAttachCount;
-        ShaderHelper.getInstance().glAttachShader(shader.getProgram(), this.shader);
+        ShaderHelper.glAttachShader(shader.getProgram(), this.shader);
     }
 
     public void deleteShader() {
         --this.shaderAttachCount;
 
         if (this.shaderAttachCount <= 0) {
-            ShaderHelper.getInstance().glDeleteShader(this.shader);
+            ShaderHelper.glDeleteShader(this.shader);
             this.shaderType.getSavedShaderLoaders().remove(this.fileName);
         }
     }
@@ -52,13 +52,13 @@ public class ShaderLoader {
             buffer.put(bytes);
             buffer.position(0);
 
-            int shaderID = ShaderHelper.getInstance().glCreateShader(type.getGlShaderType());
-            ShaderHelper.getInstance().glShaderSource(shaderID, buffer);
-            ShaderHelper.getInstance().glCompileShader(shaderID);
+            int shaderID = ShaderHelper.glCreateShader(type.getGlShaderType());
+            ShaderHelper.glShaderSource(shaderID, buffer);
+            ShaderHelper.glCompileShader(shaderID);
 
-            if (ShaderHelper.getInstance().glGetShaderi(shaderID, ShaderHelper.getInstance().GL_COMPILE_STATUS) == 0) {
+            if (ShaderHelper.glGetShaderi(shaderID, ShaderHelper.GL_COMPILE_STATUS) == 0) {
                 throw new OpenGLException("An error occurred while compiling shader " + fileName + ": " +
-                        StringUtils.trim(ShaderHelper.getInstance().glGetShaderInfoLog(shaderID, 32768)));
+                        StringUtils.trim(ShaderHelper.glGetShaderInfoLog(shaderID, 32768)));
             }
 
             shaderLoader = new ShaderLoader(type, shaderID, fileName);
@@ -71,8 +71,8 @@ public class ShaderLoader {
     @Getter
     public enum ShaderType {
 
-        VERTEX(".vsh", ShaderHelper.getInstance().GL_VERTEX_SHADER),
-        FRAGMENT(".fsh", ShaderHelper.getInstance().GL_FRAGMENT_SHADER);
+        VERTEX(".vsh", ShaderHelper.GL_VERTEX_SHADER),
+        FRAGMENT(".fsh", ShaderHelper.GL_FRAGMENT_SHADER);
 
         private final String shaderExtension;
         private final int glShaderType;

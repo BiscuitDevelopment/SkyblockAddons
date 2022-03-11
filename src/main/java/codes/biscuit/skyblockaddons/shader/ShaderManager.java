@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Getter
-public class ShaderManager {
+public enum ShaderManager {
 
-    @Getter public static final ShaderManager instance = new ShaderManager();
+    INSTANCE;
 
     private static final Logger logger = SkyblockAddons.getLogger();
 
@@ -22,9 +22,17 @@ public class ShaderManager {
 //    private FloatBuffer projectionMatrixBuffer = BufferUtils.createFloatBuffer(16);
 //    private FloatBuffer modelViewMatrixBuffer = BufferUtils.createFloatBuffer(16);
 
-    private Map<Class<? extends Shader>, Shader> shaders = new HashMap<>();
+    private final Map<Class<? extends Shader>, Shader> shaders;
     private Class<? extends Shader> activeShaderType;
     private Shader activeShader; // Convenience
+
+    ShaderManager() {
+        shaders = new HashMap<>();
+    }
+
+    public static ShaderManager getInstance() {
+        return INSTANCE;
+    }
 
     @SuppressWarnings("unchecked")
     public <T extends Shader> T enableShader(Class<T> shaderClass) {
@@ -82,9 +90,7 @@ public class ShaderManager {
     }
 
     public boolean onRenderWorldRendererBuffer() {
-        if (!isShaderEnabled() || activeShader.isUsingFixedPipeline()) {
-            return false;
-        }
+        return isShaderEnabled() && !activeShader.isUsingFixedPipeline();
 
         // TODO Disable this code until there is a shader that actually uses a custom pipeline
         // Copy world renderer buffer...
@@ -92,21 +98,20 @@ public class ShaderManager {
 //        ByteBuffer worldRendererBuffer = worldRenderer.getByteBuffer();
 
         // Update buffer data
-//        ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
-//        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
-//        ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, worldRendererBuffer, ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
+//        ShaderHelper.glBindVertexArray(ShaderManager.INSTANCE.getVertexArrayObject());
+//        ShaderHelper.glBindBuffer(ShaderHelper.GL_ARRAY_BUFFER, ShaderManager.INSTANCE.getVertexBufferObject());
+//        ShaderHelper.glBufferData(ShaderHelper.GL_ARRAY_BUFFER, worldRendererBuffer, ShaderHelper.GL_DYNAMIC_DRAW);
 
         // Render
-//        ShaderHelper.getInstance().glBindVertexArray(vertexArrayObject);
+//        ShaderHelper.glBindVertexArray(vertexArrayObject);
 //        GL11.glDrawArrays(GL11.GL_QUADS, 0, worldRenderer.getVertexCount());
 
         // Finish
-//        ShaderHelper.getInstance().glBindVertexArray(0);
-//        ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
-        return true;
+//        ShaderHelper.glBindVertexArray(0);
+//        ShaderHelper.glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
     }
 
     public boolean areShadersSupported() {
-        return ShaderHelper.getInstance().isShadersSupported();
+        return ShaderHelper.isSHADERS_SUPPORTED();
     }
 }
