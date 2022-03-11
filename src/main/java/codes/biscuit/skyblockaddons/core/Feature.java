@@ -10,7 +10,6 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import com.google.common.collect.Sets;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 

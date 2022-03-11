@@ -358,31 +358,39 @@ public class PlayerListener {
                             e.setCanceled(true);
                         }
                     }
-                } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
+                } else if (SlayerTracker.getInstance().isTrackerEnabled() &&
+                        (matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
-                } else if ((matcher = SLAYER_COMPLETED_PATTERN_AUTO1.matcher(strippedText)).matches()) { // Spider Slayer LVL 7 - Next LVL in 181,000 XP!
+                } else if (SlayerTracker.getInstance().isTrackerEnabled() &&
+                        (matcher = SLAYER_COMPLETED_PATTERN_AUTO1.matcher(strippedText)).matches()) { // Spider Slayer LVL 7 - Next LVL in 181,000 XP!
                     lastMaddoxLevelTime = System.currentTimeMillis();
                     lastMaddoxSlayerType = matcher.group("slayerType");
                 } else if (SLAYER_COMPLETED_PATTERN_AUTO2.matcher(strippedText).matches() && System.currentTimeMillis() - lastMaddoxLevelTime < 100) {
                     SlayerTracker.getInstance().completedSlayer(lastMaddoxSlayerType);
 
-                } else if (strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
                     DragonTracker.getInstance().addEye();
 
-                } else if (strippedText.equals("You recovered a Summoning Eye!")) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        strippedText.equals("You recovered a Summoning Eye!")) {
                     DragonTracker.getInstance().removeEye();
 
-                } else if ((matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        (matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
                     DragonTracker.getInstance().dragonSpawned(matcher.group("dragonType"));
 
-                } else if (DRAGON_KILLED_PATTERN.matcher(strippedText).matches()) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        DRAGON_KILLED_PATTERN.matcher(strippedText).matches()) {
                     DragonTracker.getInstance().dragonKilled();
 
-                } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
+                } else if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) &&
+                        unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
                     CooldownManager.put(InventoryUtils.CHICKEN_HEAD_ID);
 
-                } else if (formattedText.startsWith("§r§eYou added a minute of rain!")) {
+                } else if (main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) &&
+                        formattedText.startsWith("§r§eYou added a minute of rain!")) {
                     if (this.rainmakerTimeEnd == -1 || this.rainmakerTimeEnd < System.currentTimeMillis()) {
                         this.rainmakerTimeEnd = System.currentTimeMillis() + (1000 * 60); // Set the timer to a minute from now.
                     } else {
@@ -391,7 +399,8 @@ public class PlayerListener {
                 } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
                         (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
                     GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
-                } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
+                } else if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY) &&
+                        formattedText.startsWith("§e[NPC] Fetchur§f:")) {
                     FetchurManager fetchur = FetchurManager.getInstance();
                     // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)
                     if (unformattedText.contains(fetchur.getFetchurTaskCompletedPhrase()) ||

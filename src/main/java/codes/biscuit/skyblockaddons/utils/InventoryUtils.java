@@ -197,8 +197,13 @@ public class InventoryUtils {
                 }
             });
 
-            DragonTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
-            SlayerTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER)) {
+                DragonTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            }
+
+            if (SlayerTracker.getInstance().isTrackerEnabled()) {
+                SlayerTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            }
 
             // Add changes to already logged changes of the same item, so it will increase/decrease the amount
             // instead of displaying the same item twice
