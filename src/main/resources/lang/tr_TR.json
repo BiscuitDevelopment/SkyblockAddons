@@ -213,7 +213,12 @@
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
     "jacobsContestTimer": "Jacob's Contest Zamanlayıcısı",
-    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
+    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme",
+    "backpackOpeningSound": "Deri Sırt Çantası Açılış Sesi",
+    "devMode": "Geliştirici Modu",
+    "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
+    "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
+    "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -290,7 +295,8 @@
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
-    "version": "Versiyon"
+    "version": "Versiyon",
+    "invalidFeatureConfiguration": "%featureName% özelliği için geçersiz yapılandırma algılandı ve ayarlar varsayılan değerlere döndürüldü."
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",

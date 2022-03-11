@@ -212,15 +212,20 @@
     "abbreviateSkillXpDenominator": "Abreviar el Denominador de EXP de Habilidad",
     "otherDefenseStats": "Otras Estadísticas de Defensa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Ocultar Jugadores en el Punto de Aparición del Hub",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos"
+    "jacobsContestTimer": "Temporizador de Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "No Reemplazar en Nombres de Objetos",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "Encantamientos",
     "reforges": "Reforges",
     "dropConfirmation": "¡Suelta el Objeto otra vez para soltar!",
     "magmaBossWarning": "¡Jefe Magma!",
-    "balBossWarning": "Bal Boss!",
+    "balBossWarning": "¡Jefe Bal!",
     "broodMotherWarning": "Brood Mother!",
     "fullInventory": "¡Inventario Lleno!",
     "labymod": "Usuarios de Labymod: Ocultar la Barra de Comida y Armadura Es incompatible.",
@@ -290,7 +295,8 @@
     "chroma": "Croma",
     "worldRenderedCooldownTime": "Tiempo de recarga: %time%s",
     "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO",
-    "version": "Version"
+    "version": "Versión",
+    "invalidFeatureConfiguration": "Se detectó una configuración inválida para la característica %featureName%, restableciendo su configuración a los valores predeterminados."
   },
   "discordStatus": {
     "titleNone": "Ninguno",
@@ -406,8 +412,8 @@
         "help": "Recarga los recursos del mod. El juego se congelará durante unos segundos."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Restablece todos los contazores de zealot.",
+        "resetSuccess": "¡Contadores de Zealot restablecidos!"
       },
       "set": {
         "zealotCounter": {
@@ -455,8 +461,8 @@
         "enabled": "Los mensajes del temporizador del jefe magma ahora se registrarán."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Muestra la versión del mod",
+        "hoverText": "Haz clic para ponerlo en el chat y así copiarlo."
       },
       "errors": {
         "wrongUsage": {

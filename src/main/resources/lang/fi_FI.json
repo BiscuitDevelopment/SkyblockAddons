@@ -213,7 +213,12 @@
     "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -290,7 +295,8 @@
     "chroma": "Väriefekti",
     "worldRenderedCooldownTime": "Jäähtymisaika: %time%s",
     "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
     "titleNone": "Ei mikään",

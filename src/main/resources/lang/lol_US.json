@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warnin",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal Bos Warnin",
+    "broodMotherWarning": "Brood Mommy Warnin",
     "itemDropConfirmation": "Itm drop comfirmashun",
     "hideSkeletonHatBones": "Hide Skeletons Helmet Bonez",
     "skeletonHatBonesBar": "Skeletons Helmet Bonez Bar",
@@ -170,8 +170,8 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Speshul Enchantments",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Disable Damage Chat Mesagez",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Withr Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glas Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Countr",
@@ -211,9 +211,14 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Hide Playerz at Hub Spawn Point",
+    "jacobsContestTimer": "Jacoobs Contest Tiemr",
+    "dontReplaceRomanNumeralsInItemNames": "Doan Replace in Item Namez",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "Enchants",
@@ -290,7 +295,8 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requirez Shaders, Fast Rendr, an Antialiasin 2 be OFF",
-    "version": "Version"
+    "version": "Vershun",
+    "invalidFeatureConfiguration": "Invalid configurashun detectd 4 feachur %featureName%, resettin itz settings 2 default valuez."
   },
   "discordStatus": {
     "titleNone": "None",
@@ -300,7 +306,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Shows teh amount ov coins in ur purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Shows teh amount ov bits u has",
     "titleStats": "Stats",
     "descriptionStats": "Shows ur HP, Defense an Mana stats",
     "titleZealots": "Zealots",
@@ -406,7 +412,7 @@
         "help": "Reloadz teh resourcez. Teh game will freeze 4 few secondz."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
+        "help": "Resets all teh zealot countr counts.",
         "resetSuccess": "Zealot counters reset!"
       },
       "set": {
@@ -450,13 +456,13 @@
         "enabled": "Acshun bar mesagez will nao be loggd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Toggle loggin magma bos tiemr debug mesagez",
+        "disabled": "Magma bos tiemr mesagez will no longr be loggd.",
+        "enabled": "Magma bos tiemr mesagez will nao be loggd."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Shows teh modz vershun",
+        "hoverText": "Click 2 put in chat so u can copy."
       },
       "errors": {
         "wrongUsage": {

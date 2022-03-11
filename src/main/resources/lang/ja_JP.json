@@ -213,7 +213,12 @@
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
     "jacobsContestTimer": "Jacob's Contestのタイマー",
-    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
+    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない",
+    "backpackOpeningSound": "Leather Backpack開封音",
+    "devMode": "開発者モード",
+    "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
+    "showFeatureNamesOnHover": "ホバーして機能名を表示",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -241,7 +246,7 @@
       "noDownloadAvailable": "利用可能なダウンロードリンクがありません、私たちのDiscordサーバーを確認してください。",
       "notificationBox": {
         "majorAvailable": "新しいメジャーアップデート(%version%)が利用可能です！ダウンロードリンクはチャットにあります。",
-        "betaAvailable": "新しいベータアップデート(%version%)が利用可能です！チャットからダウンロードオプションを確認してください。",
+        "betaAvailable": "新しいベータアップデート(%version%)が利用可能です！チャットからダウンロードリンクを確認してください。",
         "patchAvailable": "新しいパッチアップデート(%version%)が利用可能です！チャットからダウンロードオプションを確認してください！"
       }
     },
@@ -255,7 +260,7 @@
     "specialZealotFound": "スペシャル Zealot！",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
-    "downloadingUpdateFile": "アップデートファイルをダウンロード中…",
+    "downloadingUpdateFile": "更新ファイルをダウンロード中…",
     "onlyFewArrowsLeft": "矢は残り%arrows%本のみです！",
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
@@ -290,7 +295,8 @@
     "chroma": "色変化",
     "worldRenderedCooldownTime": "クールダウン：%time%秒",
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
-    "version": "バージョン"
+    "version": "バージョン",
+    "invalidFeatureConfiguration": "%featureName%の機能で無効な設定が検出されました。この設定がデフォルトの値にリセットされます。"
   },
   "discordStatus": {
     "titleNone": "なし",
