@@ -489,14 +489,14 @@ public class RenderListener {
         // If chroma, draw the empty bar much darker than the filled bar
         if (color.drawMulticolorUsingShader()) {
             GlStateManager.color(.5F, .5F, .5F);
-            ShaderManager.INSTANCE.enableShader(ChromaScreenTexturedShader.class);
+            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
         }
         // Empty bar first
         DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 1, 1, barWidth, barHeight, 80, 50);
 
         if (color.drawMulticolorUsingShader()) {
             ColorUtils.bindWhite();
-            ShaderManager.INSTANCE.enableShader(ChromaScreenTexturedShader.class);
+            ShaderManager.getInstance().enableShader(ChromaScreenTexturedShader.class);
         }
 
         // Filled bar next
@@ -505,7 +505,7 @@ public class RenderListener {
         }
         // Disable coloring
         if (color.drawMulticolorUsingShader()) {
-            ShaderManager.INSTANCE.disableShader();
+            ShaderManager.getInstance().disableShader();
         }
         ColorUtils.bindWhite();
 

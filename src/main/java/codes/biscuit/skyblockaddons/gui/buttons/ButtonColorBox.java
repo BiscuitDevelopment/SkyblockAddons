@@ -37,7 +37,7 @@ public class ButtonColorBox extends GuiButton {
     @Override
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         hovered = mouseX > xPosition && mouseX < xPosition+width && mouseY > yPosition && mouseY < yPosition+height;
-        if (color == ColorCode.CHROMA && !MulticolorShaderManager.INSTANCE.shouldUseChromaShaders()) {
+        if (color == ColorCode.CHROMA && !MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
             if (hovered) {
                 drawChromaRect(xPosition, yPosition, xPosition + width, yPosition + height, 255);
             }
@@ -46,16 +46,16 @@ public class ButtonColorBox extends GuiButton {
             }
         }
         else {
-            if (color == ColorCode.CHROMA && MulticolorShaderManager.INSTANCE.shouldUseChromaShaders()) {
-                ShaderManager.INSTANCE.enableShader(ChromaScreenShader.class);
+            if (color == ColorCode.CHROMA && MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
+                ShaderManager.getInstance().enableShader(ChromaScreenShader.class);
             }
             if (hovered) {
                 drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor());
             } else {
                 drawRect(xPosition, yPosition, xPosition + width, yPosition + height, color.getColor(127));
             }
-            if (color == ColorCode.CHROMA && MulticolorShaderManager.INSTANCE.shouldUseChromaShaders()) {
-                ShaderManager.INSTANCE.disableShader();
+            if (color == ColorCode.CHROMA && MulticolorShaderManager.getInstance().shouldUseChromaShaders()) {
+                ShaderManager.getInstance().disableShader();
             }
         }
     }

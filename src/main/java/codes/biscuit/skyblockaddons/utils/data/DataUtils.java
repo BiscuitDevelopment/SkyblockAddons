@@ -85,6 +85,14 @@ public class DataUtils {
     @Getter
     private static final ArrayList<HttpRequestFutureTask<?>> httpRequestFutureTasks = new ArrayList<>();
 
+    /**
+     * The mod uses the online data files if this is {@code true} and local data if this is {@code false}.
+     * This is set to {@code true} if the mod is running in production or if it's running in a dev environment that has
+     * the environment variable {@code FETCH_DATA_ONLINE}.
+     */
+    public static final boolean USE_ONLINE_DATA = !SkyblockAddonsTransformer.isDeobfuscated() ||
+            System.getenv().containsKey("FETCH_DATA_ONLINE");
+
     private static String path;
 
     private static LocalizedStringsRequest localizedStringsRequest = null;
@@ -107,7 +115,7 @@ public class DataUtils {
     public static void readLocalAndFetchOnline() {
         readLocalFileData();
 
-        if (!SkyblockAddonsTransformer.isDeobfuscated() || System.getenv().containsKey("FETCH_DATA_ONLINE")) {
+        if (USE_ONLINE_DATA) {
             fetchFromOnline();
         } else {
             SkyblockAddons.getInstance().getUpdater().checkForUpdate();
@@ -256,7 +264,8 @@ public class DataUtils {
      * times in-game instead of just on startup.
      *
      * @param language the {@code Language} to load strings for
-     * @param loadOnlineStrings Loads local and online strings if {@code true}, loads only local strings if {@code false}
+     * @param loadOnlineStrings Loads local and online strings if {@code true}, loads only local strings if {@code false},
+     *                          does not override {@link DataUtils#USE_ONLINE_DATA}
      */
     public static void loadLocalizedStrings(Language language, boolean loadOnlineStrings) {
         // logger.info("Loading localized strings for " + language.name() + "...");
@@ -270,7 +279,7 @@ public class DataUtils {
             handleLocalFileReadException(path,ex);
         }
 
-        if (loadOnlineStrings) {
+        if (USE_ONLINE_DATA && loadOnlineStrings) {
             if (localizedStringsRequest != null) {
                 HttpRequestFutureTask<JsonObject> futureTask = localizedStringsRequest.getFutureTask();
                 if (!futureTask.isDone()) {

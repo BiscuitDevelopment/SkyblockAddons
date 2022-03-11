@@ -41,7 +41,7 @@ public class DrawStateFontRenderer extends DrawState2D {
             if (multicolorFeatureOverride) {
                 // TODO: change order of restore to bind white here after font renderer binds the other color
             } else {
-                MulticolorShaderManager.INSTANCE.end();
+                MulticolorShaderManager.getInstance().end();
             }
         }
         isActive = false;

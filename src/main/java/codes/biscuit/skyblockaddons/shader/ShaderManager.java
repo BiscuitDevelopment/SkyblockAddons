@@ -30,6 +30,10 @@ public enum ShaderManager {
         shaders = new HashMap<>();
     }
 
+    public static ShaderManager getInstance() {
+        return INSTANCE;
+    }
+
     @SuppressWarnings("unchecked")
     public <T extends Shader> T enableShader(Class<T> shaderClass) {
         if (activeShaderType == shaderClass) {

@@ -13,13 +13,17 @@ import codes.biscuit.skyblockaddons.shader.chroma.ChromaShader;
  */
 public enum MulticolorShaderManager {
 
-    INSTANCE();
+    INSTANCE;
 
     /** Current chroma rendering state */
     private MulticolorState currentState;
 
     MulticolorShaderManager() {
         currentState = new MulticolorState();
+    }
+
+    public static MulticolorShaderManager getInstance() {
+        return INSTANCE;
     }
 
     private static class MulticolorState {
@@ -74,7 +78,7 @@ public enum MulticolorShaderManager {
         public void setup() {
             if (!chromaEnabled) {
                 chromaEnabled = true;
-                ShaderManager.INSTANCE.enableShader(shaderType);
+                ShaderManager.getInstance().enableShader(shaderType);
             }
         }
 
@@ -82,7 +86,7 @@ public enum MulticolorShaderManager {
         public void disable() {
             if (chromaEnabled) {
                 chromaEnabled = false;
-                ShaderManager.INSTANCE.disableShader();
+                ShaderManager.getInstance().disableShader();
             }
         }
     }
@@ -105,7 +109,7 @@ public enum MulticolorShaderManager {
     }
 
     public boolean shouldUseChromaShaders() {
-        return ShaderManager.INSTANCE.areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
+        return ShaderManager.getInstance().areShadersSupported() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.USE_NEW_CHROMA_EFFECT);
     }
 
 }
