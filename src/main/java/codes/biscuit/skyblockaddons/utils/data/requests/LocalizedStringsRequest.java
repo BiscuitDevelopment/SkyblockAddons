@@ -21,7 +21,7 @@ public class LocalizedStringsRequest extends RemoteFileRequest<JsonObject> {
                 "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
                         language.getPath()),
                 new JSONResponseHandler<>(JsonObject.class),
-                true, true);
+                false, true);
         LANGUAGE = language;
     }
 
