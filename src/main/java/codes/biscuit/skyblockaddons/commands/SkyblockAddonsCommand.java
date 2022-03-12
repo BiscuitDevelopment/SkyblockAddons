@@ -19,7 +19,6 @@ import net.minecraft.command.*;
 import net.minecraft.event.ClickEvent;
 import net.minecraft.event.HoverEvent;
 import net.minecraft.util.*;
-import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.io.IOException;
@@ -186,7 +185,7 @@ public class SkyblockAddonsCommand extends CommandBase {
 
                 } else if (args[0].equalsIgnoreCase("dev") || args[0].equalsIgnoreCase("nbt")) {
                     SkyblockKeyBinding devModeKeyBinding = main.getDeveloperCopyNBTKey();
-                    Feature.DEVELOPER_MODE.setEnabled(main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE));
+                    Feature.DEVELOPER_MODE.setEnabled(!main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE));
 
                     if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
                         main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage("commandUsage.sba.dev.enabled",
