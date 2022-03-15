@@ -297,9 +297,9 @@
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
     "version": "バージョン",
     "invalidFeatureConfiguration": "%featureName%の機能で無効な設定が検出されました。この設定がデフォルトの値にリセットされます。",
-    "fileFetchFailed": "%modName% has failed to fetch %number% data file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "fileFetchFailed": "%modName%は%number%データファイルの取得に失敗しました。下のボタンでエラー内容をコピーし、我々のDiscordサーバーで報告してください。",
+    "copy": "コピー",
+    "copied": "コピーされました！"
   },
   "discordStatus": {
     "titleNone": "なし",
