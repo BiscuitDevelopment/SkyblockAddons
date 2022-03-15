@@ -612,7 +612,9 @@ public class DevUtils {
 
         try {
             clipboard.setContents(output, output);
-            main.getUtils().sendMessage(successMessage);
+            if (successMessage != null) {
+                main.getUtils().sendMessage(successMessage);
+            }
         } catch (IllegalStateException exception) {
             main.getUtils().sendErrorMessage("Clipboard not available!");
         }

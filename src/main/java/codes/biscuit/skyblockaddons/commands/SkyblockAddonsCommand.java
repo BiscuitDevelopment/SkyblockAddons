@@ -14,6 +14,7 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
+import lombok.Setter;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.command.*;
 import net.minecraft.event.ClickEvent;
@@ -24,6 +25,7 @@ import java.awt.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.*;
+import java.util.stream.Collectors;
 
 //TODO: Clean this up a bit, make it less complex to add stuff
 
@@ -273,6 +275,14 @@ public class SkyblockAddonsCommand extends CommandBase {
                      the user chooses to copy for diagnostic purposes.
                      */
                     main.getUtils().sendMessage(versionChatComponent, true);
+                } else if (args[0].equalsIgnoreCase("internal")) {
+                    if (args.length > 2) {
+                        if (args[1].equalsIgnoreCase("copy")) {
+                            DevUtils.copyStringToClipboard(
+                                    Arrays.stream(args).skip(2).collect(Collectors.joining(" ")),
+                                    Translations.getMessage("messages.copied"));
+                        }
+                    }
                 } else if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
                     if (args[0].equalsIgnoreCase("brand")) {
                         String serverBrand = DevUtils.getServerBrand();

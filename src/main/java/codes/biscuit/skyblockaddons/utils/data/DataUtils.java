@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.utils.data;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreature;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
 import codes.biscuit.skyblockaddons.exceptions.DataLoadingException;
@@ -25,7 +26,8 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import lombok.Getter;
 import net.minecraft.crash.CrashReport;
-import net.minecraft.util.ReportedException;
+import net.minecraft.event.ClickEvent;
+import net.minecraft.util.*;
 import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.http.client.config.RequestConfig;
@@ -59,9 +61,9 @@ public class DataUtils {
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
 
     private static final RequestConfig requestConfig = RequestConfig.custom()
-            .setConnectTimeout(3000)
-            .setConnectionRequestTimeout(1500)
-            .setSocketTimeout(3000).build();
+            .setConnectTimeout(120 * 1000)
+            .setConnectionRequestTimeout(120 * 1000)
+            .setSocketTimeout(60 * 1000).build();
 
     private static final PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
 
@@ -69,7 +71,8 @@ public class DataUtils {
             .setUserAgent(Utils.USER_AGENT)
             .setDefaultRequestConfig(requestConfig)
             .setConnectionManager(connectionManager)
-            .setConnectionReuseStrategy(new NoConnectionReuseStrategy()).build();
+            .setConnectionReuseStrategy(new NoConnectionReuseStrategy())
+            .setRetryHandler(new RequestRetryHandler()).build();
 
     private static final ThreadFactory threadFactory =
             new ThreadFactoryBuilder().setNameFormat("SBA DataUtils Thread %d")
@@ -84,6 +87,12 @@ public class DataUtils {
 
     @Getter
     private static final ArrayList<HttpRequestFutureTask<?>> httpRequestFutureTasks = new ArrayList<>();
+
+    @Getter
+    private static final HashMap<RemoteFileRequest<?>, Throwable> failedRequests = new HashMap<>();
+
+    // Whether the failed requests error was shown in chat, used to make it show only once per session
+    private static boolean failureMessageShown = false;
 
     /**
      * The mod uses the online data files if this is {@code true} and local data if this is {@code false}.
@@ -261,7 +270,8 @@ public class DataUtils {
     /**
      * Loads the localized strings for the given {@link Language} with the choice of loading only local strings or local
      * and online strings. Languages are handled separately from other files because they may need to be loaded multiple
-     * times in-game instead of just on startup.
+     * times in-game instead of just on startup. Online strings will never be loaded for English, regardless of the value
+     * of {@code loadOnlineStrings}.
      *
      * @param language the {@code Language} to load strings for
      * @param loadOnlineStrings Loads local and online strings if {@code true}, loads only local strings if {@code false},
@@ -275,11 +285,12 @@ public class DataUtils {
                 InputStreamReader inputStreamReader = new InputStreamReader(Objects.requireNonNull(inputStream),
                         StandardCharsets.UTF_8)){
             main.getConfigValues().setLanguageConfig(gson.fromJson(inputStreamReader, JsonObject.class));
+            main.getConfigValues().setLanguage(language);
         } catch (Exception ex) {
             handleLocalFileReadException(path,ex);
         }
 
-        if (USE_ONLINE_DATA && loadOnlineStrings) {
+        if (USE_ONLINE_DATA && loadOnlineStrings && language != Language.ENGLISH) {
             if (localizedStringsRequest != null) {
                 HttpRequestFutureTask<JsonObject> futureTask = localizedStringsRequest.getFutureTask();
                 if (!futureTask.isDone()) {
@@ -324,6 +335,37 @@ public class DataUtils {
     }
 
     /**
+     * Displays a message when the player first joins Skyblock asking them to report failed requests to our Discord server.
+     */
+    public static void onSkyblockJoined() {
+        if (!failureMessageShown && !failedRequests.isEmpty()) {
+            StringBuilder errorMessageBuilder = new StringBuilder("Failed Requests:\n");
+
+            for (Map.Entry<RemoteFileRequest<?>, Throwable> failedRequest : failedRequests.entrySet()) {
+                errorMessageBuilder.append(failedRequest.getKey().getUrl()).append("\n");
+                errorMessageBuilder.append(failedRequest.getValue().toString()).append("\n");
+            }
+
+            ChatComponentText failureMessageComponent = new ChatComponentText(
+                    Translations.getMessage("messages.fileFetchFailed", EnumChatFormatting.AQUA
+                                    + SkyblockAddons.MOD_NAME + EnumChatFormatting.RED,
+                            failedRequests.size()));
+            IChatComponent buttonRowComponent = new ChatComponentText("[" +
+                    Translations.getMessage("messages.copy") + "]").setChatStyle(
+                            new ChatStyle().setColor(EnumChatFormatting.WHITE).setBold(true).setChatClickEvent(
+                                    new ClickEvent(ClickEvent.Action.RUN_COMMAND, String.format("/sba internal copy %s",
+                                            errorMessageBuilder))));
+            buttonRowComponent.appendText("  ");
+            buttonRowComponent.appendSibling(new ChatComponentText("[Discord]").setChatStyle(new ChatStyle()
+                    .setChatClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://discord.gg/PqTAEek"))));
+            failureMessageComponent.appendText("\n").appendSibling(buttonRowComponent);
+
+            main.getUtils().sendMessage(failureMessageComponent, false);
+            failureMessageShown = true;
+        }
+    }
+
+    /**
      * Returns the file name from the end of a given URL string.
      * This does not check if the URL has a valid file name at the end.
      *
@@ -338,7 +380,9 @@ public class DataUtils {
 
     private static void registerRemoteRequests() {
         remoteRequests.add(new OnlineDataRequest());
-        remoteRequests.add(new LocalizedStringsRequest(SkyblockAddons.getInstance().getConfigValues().getLanguage()));
+        if (SkyblockAddons.getInstance().getConfigValues().getLanguage() != Language.ENGLISH) {
+            remoteRequests.add(new LocalizedStringsRequest(SkyblockAddons.getInstance().getConfigValues().getLanguage()));
+        }
         remoteRequests.add(new EnchantedItemListsRequest());
         remoteRequests.add(new ContainersRequest());
         remoteRequests.add(new CompactorItemsRequest());
@@ -381,6 +425,7 @@ public class DataUtils {
     private static void handleOnlineFileLoadException(RemoteFileRequest<?> request, Throwable exception) {
         String url = request.getUrl();
         String fileName = getFileNameFromUrlString(url);
+        failedRequests.put(request, exception);
 
         // The loader encountered a file name it didn't expect.
         if (exception instanceof IllegalArgumentException) {

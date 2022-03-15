@@ -1,65 +1,14 @@
 package codes.biscuit.skyblockaddons.exceptions;
 
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.GuiErrorScreen;
-import net.minecraftforge.fml.client.CustomModLoadingErrorDisplayException;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static net.minecraft.util.EnumChatFormatting.*;
+import static net.minecraft.util.EnumChatFormatting.DARK_RED;
 
 /**
  * This exception is thrown when the mod fails to load a necessary data file during startup.
  */
 public class DataLoadingException extends LoadingException {
-    private final String FILE_PATH_STRING;
+    private static final String ERROR_MESSAGE_FORMAT = "Failed to load file at\n" + DARK_RED + "%s";
 
     public DataLoadingException(String filePathString, Throwable cause) {
-        super(filePathString, cause);
-        FILE_PATH_STRING = filePathString;
-    }
-
-    @Override
-    public void initGui(GuiErrorScreen errorScreen, FontRenderer fontRenderer) {
-    }
-
-    @Override
-    public void drawScreen(GuiErrorScreen errorScreen, FontRenderer fontRenderer, int mouseRelX, int mouseRelY, float tickTime) {
-        int maxWidth = errorScreen.width - 80;
-        int offset = 50;
-        int xPos = errorScreen.width / 2;
-
-        errorScreen.drawCenteredString(fontRenderer, String.format(
-                "%sSkyblockAddons%s has encountered an error while loading.", AQUA, RESET), xPos,
-                offset, 0xFFFFFF);
-        offset += 10;
-        errorScreen.drawCenteredString(fontRenderer, "Failed to load file at", xPos, offset, 0xFFFFFF);
-        offset += 10;
-        List<String> filePathStringList = fontRenderer.listFormattedStringToWidth(DARK_RED + FILE_PATH_STRING + RESET,
-                maxWidth);
-        for (String line : filePathStringList) {
-            errorScreen.drawCenteredString(fontRenderer, line, xPos, offset, 0xFFFFFF);
-            offset += 10;
-        }
-        offset += 10;
-        errorScreen.drawCenteredString(fontRenderer, "Please restart your game.", xPos, offset, 0xFFFFFF);
-        offset += 10;
-        List<String> errorPersistString = fontRenderer.listFormattedStringToWidth(String.format("If error persists after restarting, please report it at " +
-                "%sdiscord.gg/biscuit.%s", BOLD, RESET), maxWidth);
-        for (String line : errorPersistString) {
-            errorScreen.drawCenteredString(fontRenderer, line, xPos, offset, 0xFFFFFF);
-            offset += 10;
-        }
-    }
-
-    @Override
-    public void printStackTrace(WrappedPrintStream s) {
-        s.println(String.format("Failed to load file at \"%s\"", FILE_PATH_STRING));
-        if (getCause() != null) {
-            Arrays.stream(getCause().getStackTrace()).forEach(
-                    stackTraceElement -> s.println(stackTraceElement.toString()));
-            super.printStackTrace(s);
-        }
+        super(String.format(ERROR_MESSAGE_FORMAT, filePathString), cause, true);
     }
 }

@@ -11,7 +11,7 @@ import java.util.concurrent.ExecutionException;
 
 public class OnlineDataRequest extends RemoteFileRequest<OnlineData> {
     public OnlineDataRequest() {
-        super("skyblockaddons/data.json", new JSONResponseHandler<>(OnlineData.class));
+        super("skyblockaddons/data.json", new JSONResponseHandler<>(OnlineData.class), true);
     }
 
     @Override

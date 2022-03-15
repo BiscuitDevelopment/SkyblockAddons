@@ -13,16 +13,14 @@ import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 
 public class LocalizedStringsRequest extends RemoteFileRequest<JsonObject> {
-    private final Language LANGUAGE;
 
     public LocalizedStringsRequest(@NonNull Language language) {
         //TODO: Fix this so it runs after getting language manifest
         super(String.format(
-                "https://raw.githubusercontent.com/BiscuitDevelopment/SkyblockAddons/development/src/main/resources/lang/%s.json",
+                "https://distributions.crowdin.net/d7578b29286a48bcaf7fec87zgb/content/main/src/main/resources/lang/%s.json",
                         language.getPath()),
                 new JSONResponseHandler<>(JsonObject.class),
-                false, true);
-        LANGUAGE = language;
+                language != Language.ENGLISH, true);
     }
 
     @Override
@@ -30,7 +28,6 @@ public class LocalizedStringsRequest extends RemoteFileRequest<JsonObject> {
         SkyblockAddons main = SkyblockAddons.getInstance();
         overwriteCommonJsonMembers(main.getConfigValues().getLanguageConfig(),
                 Objects.requireNonNull(getResult(), NO_DATA_RECEIVED_ERROR));
-        main.getConfigValues().setLanguage(LANGUAGE);
     }
 
     /**
