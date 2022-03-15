@@ -19,7 +19,10 @@ import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Vec3;
+import net.minecraft.util.Vec4b;
 import net.minecraft.world.storage.MapData;
 import org.lwjgl.opengl.GL11;
 
@@ -181,10 +184,10 @@ public class DungeonMapManager {
                                     float mapStartX = playerX - mapMarkerX * 1.5F;
                                     float mapStartZ = playerZ - mapMarkerZ * 1.5F;
 
-                                    DungeonMapManager.mapStartX = Math.round(mapStartX / 16F) * 16F + 22;
-                                    DungeonMapManager.mapStartZ = Math.round(mapStartZ / 16F) * 16F + 22;
+                                    DungeonMapManager.mapStartX = Math.round(mapStartX / 16F) * 16F;
+                                    DungeonMapManager.mapStartZ = Math.round(mapStartZ / 16F) * 16F;
 
-                                    //Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.valueOf(DungeonMapManager.mapStartX)));
+//                                    Minecraft.getMinecraft().thePlayer.addChatMessage(new ChatComponentText(String.valueOf(this.mapStartX)));
                                 }
                             }
                         }
@@ -338,11 +341,7 @@ public class DungeonMapManager {
 
         for (MapMarker mapMarker : allMarkers) {
             GlStateManager.pushMatrix();
-            float renderX = (float)startX + mapMarker.getX() / 2.0F + 64.0F + 8;
-            float renderZ = (float)startY + mapMarker.getZ() / 2.0F + 64.0F + 16;
-            //System.out.println(renderX);
-            //.out.println(renderZ);
-            GlStateManager.translate(renderX, renderZ, -0.02F);
+            GlStateManager.translate((float)startX + mapMarker.getX() / 2.0F + 64.0F, (float)startY + mapMarker.getZ() / 2.0F + 64.0F, -0.02F);
             GlStateManager.rotate((mapMarker.getRotation() * 360) / 16.0F, 0.0F, 0.0F, 1.0F);
             GlStateManager.scale(4.0F/zoom, 4.0F/zoom, 3.0F);
             byte iconType = mapMarker.getIconType();
