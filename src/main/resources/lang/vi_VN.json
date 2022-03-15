@@ -296,7 +296,10 @@
     "worldRenderedCooldownTime": "T.gian chờ: %time%gi",
     "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% data file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Không có",
