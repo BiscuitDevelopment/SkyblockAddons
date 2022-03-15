@@ -296,7 +296,10 @@
     "worldRenderedCooldownTime": "冷却: %time%秒",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
     "version": "版本",
-    "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值"
+    "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值",
+    "fileFetchFailed": "%modName% has failed to fetch %number% data file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "无",
