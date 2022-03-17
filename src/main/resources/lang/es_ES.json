@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Requiere Shaders, Renderizado Rápido y Anti-aliasing para estar DESACTIVADO",
     "version": "Versión",
     "invalidFeatureConfiguration": "Se detectó una configuración inválida para la característica %featureName%, restableciendo su configuración a los valores predeterminados.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% data file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
     "copy": "Copy",
     "copied": "Copied!"
   },
