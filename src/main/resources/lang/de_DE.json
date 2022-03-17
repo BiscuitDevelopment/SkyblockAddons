@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Shader, schnelles Rendern und Antialiasing müssen AUSGESCHALTET sein",
     "version": "Version",
     "invalidFeatureConfiguration": "Ungültige Konfiguration für die Funktion %featureName% erkannt. Einstellungen werden auf die Standardwerte zurückgestellt.",
-    "fileFetchFailed": "%modName% konnte %number% Datendatei(en) nicht abrufen. Bitte kopiere den Fehler mit der unten stehenden Schaltfläche und melde ihn auf unserem Discord-Server.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
     "copy": "Kopieren",
     "copied": "Kopiert!"
   },
