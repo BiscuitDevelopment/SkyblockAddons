@@ -14,7 +14,6 @@ import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.command.*;
 import net.minecraft.event.ClickEvent;
