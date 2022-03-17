@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Vereist dat Shaders, Snelle Weergave en Antialiasing UITGESCHAKELD zijn",
     "version": "Versie",
     "invalidFeatureConfiguration": "Ongeldige configuratie gedetecteerd voor functie %featureName%. Instellingen worden gereset.",
-    "fileFetchFailed": "%modName% is er niet in geslaagd om %number% gegevensbestanden op te halen. Kopieer de fout met de onderstaande knop en meld deze in onze Discord server.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
     "copy": "Kopiëren",
     "copied": "Gekopieerd!"
   },
