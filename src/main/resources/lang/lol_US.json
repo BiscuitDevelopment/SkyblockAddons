@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Requirez Shaders, Fast Rendr, an Antialiasin 2 be OFF",
     "version": "Vershun",
     "invalidFeatureConfiguration": "Invalid configurashun detectd 4 feachur %featureName%, resettin itz settings 2 default valuez.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% data file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
     "copy": "Copy",
     "copied": "Copied!"
   },
