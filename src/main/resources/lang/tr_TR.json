@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
     "version": "Versiyon",
     "invalidFeatureConfiguration": "%featureName% özelliği için geçersiz yapılandırma algılandı ve ayarlar varsayılan değerlere döndürüldü.",
-    "fileFetchFailed": "%modName% modu, %number% veri dosyalarını alamadı. Lütfen aşağıdaki butonu kullanarak hatayı kopyalayın ve Discord sunucumuza bildirin.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
     "copy": "Kopyala",
     "copied": "Kopyalandı!"
   },
