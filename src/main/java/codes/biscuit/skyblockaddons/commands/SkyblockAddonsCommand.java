@@ -8,13 +8,9 @@ import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
-import codes.biscuit.skyblockaddons.utils.DevUtils;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import com.google.common.base.CaseFormat;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.command.*;
 import net.minecraft.event.ClickEvent;
@@ -37,8 +33,8 @@ public class SkyblockAddonsCommand extends CommandBase {
     private static final String HEADER = "§7§m----------------§7[ §b§lSkyblockAddons §7]§7§m----------------";
     private static final String FOOTER = "§7§m-----------------------------------------------------";
     private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "resetZealotCounter", "set", "slayer", "version", "dev", "brand", "copyBlock",
-            "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging",
-            "toggleMagmaTimerLogging"};
+            "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "setMapLoggingDataType",
+            "start", "stop", "toggleActionBarLogging", "toggleAutoMapLogging", "toggleMagmaTimerLogging"};
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -92,7 +88,8 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.reloadConfig.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD_RES + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.reloadRes.help") + "\n" +
                     "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.toggleActionBarLogging.help") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.toggleMagmaTimerLogging.help")
+                    "§b● " + CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.toggleMagmaTimerLogging.help") + "\n" +
+                    "§b● " + CommandSyntax.TOGGLE_AUTO_MAP_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commandUsage.sba.toggleAutoMapLogging.help")
             ;
         }
 
@@ -364,7 +361,30 @@ public class SkyblockAddonsCommand extends CommandBase {
                             main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
                                     "commandUsage.sba.toggleMagmaTimerLogging.disabled"));
                         }
-                    } else {
+                    } else if (args[0].equalsIgnoreCase("toggleAutoMapLogging")) {
+                        DevUtils.setAutomaticMapLoggingEnabled(!DevUtils.isAutomaticMapLoggingEnabled());
+
+                        if (DevUtils.isAutomaticMapLoggingEnabled()) {
+                            main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage(
+                                    "commandUsage.sba.toggleAutoMapLogging.enabled"));
+                        } else {
+                            main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
+                                    "commandUsage.sba.toggleAutoMapLogging.disabled"));
+                        }
+                    } else if (args[0].equalsIgnoreCase("start")) {
+                        DevUtils.startCollectingMapData();
+                    } else if (args[0].equalsIgnoreCase("stop")) {
+                        DevUtils.stopCollectingMapData();
+                    } else if (args[0].equalsIgnoreCase("setMapLoggingDataType")) {
+                        if (args[1].equalsIgnoreCase("map")) {
+                            DevUtils.setMapLoggingDataType(MapDataCollectionService.DataType.MAP);
+                        } else if (args[1].equalsIgnoreCase("player")) {
+                            DevUtils.setMapLoggingDataType(MapDataCollectionService.DataType.PLAYER);
+                        } else {
+                            throw new WrongUsageException("Invalid data type provided.");
+                        }
+                    }
+                    else {
                         throw new WrongUsageException(Translations.getMessage(
                                 "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
                     }
@@ -464,7 +484,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         RESET_ZEALOT_COUNTER("/sba resetZealotCounter"),
         PD("/sba pd"),
         TOGGLE_MAGMA_TIMER_LOGGING("/sba toggleMagmaTimerLogging"),
-        VERSION("/sba version")
+        VERSION("/sba version"),
+        TOGGLE_AUTO_MAP_LOGGING("/sba toggleAutoMapLogging")
         ;
 
         @Getter
@@ -500,7 +521,8 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD_RES(CommandSyntax.RELOAD_RES, "commandUsage.sba.reloadRes.help", null),
         PD(CommandSyntax.PD, "commandUsage.sba.printDeaths.help", null),
         TOGGLE_MAGMA_TIMER_LOGGING(CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING, "commandUsage.sba.toggleMagmaTimerLogging.help", null),
-        VERSION(CommandSyntax.VERSION, "commandUsage.sba.version.help", null)
+        VERSION(CommandSyntax.VERSION, "commandUsage.sba.version.help", null),
+        TOGGLE_AUTO_MAP_LOGGING(CommandSyntax.TOGGLE_AUTO_MAP_LOGGING, "commandUsage.sba.toggleAutoMapLogging.help", null)
         ;
 
         private final CommandSyntax syntax;

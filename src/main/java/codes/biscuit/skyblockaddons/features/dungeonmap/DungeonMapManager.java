@@ -2,9 +2,9 @@ package codes.biscuit.skyblockaddons.features.dungeonmap;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
-import codes.biscuit.skyblockaddons.core.chroma.ManualChromaManager;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.MathUtils;
 import lombok.Getter;
@@ -51,7 +51,7 @@ public class DungeonMapManager {
         return second.getMapMarkerName().compareTo(first.getMapMarkerName());
     };
 
-    private static MapData mapData;
+    @Getter private static MapData mapData;
     @Getter private static float mapStartX = -1;
     @Getter private static float mapStartZ = -1;
     private static NavigableMap<Long, Vec3> previousLocations = new TreeMap<>();

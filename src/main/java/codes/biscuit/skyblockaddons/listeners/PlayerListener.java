@@ -8,9 +8,7 @@ import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonPlayer;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.core.seacreatures.SeaCreatureManager;
-import codes.biscuit.skyblockaddons.events.DungeonPlayerReviveEvent;
-import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
-import codes.biscuit.skyblockaddons.events.SkyblockPlayerDeathEvent;
+import codes.biscuit.skyblockaddons.events.*;
 import codes.biscuit.skyblockaddons.features.BaitManager;
 import codes.biscuit.skyblockaddons.features.EndstoneProtectorManager;
 import codes.biscuit.skyblockaddons.features.FetchurManager;
@@ -54,6 +52,7 @@ import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.entity.projectile.EntityFishHook;
+import net.minecraft.event.ClickEvent;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.ContainerChest;
@@ -83,7 +82,6 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -468,6 +466,14 @@ public class PlayerListener {
 
                     if (main.getConfigValues().isEnabled(Feature.DUNGEONS_COLLECTED_ESSENCES_DISPLAY)) {
                         main.getDungeonManager().addBonusEssence(formattedText);
+                    }
+
+                    if (e.message.getChatStyle() != null && e.message.getChatStyle().getChatClickEvent() != null) {
+                        ClickEvent clickEvent = e.message.getChatStyle().getChatClickEvent();
+                        if (clickEvent.getAction() == ClickEvent.Action.RUN_COMMAND &&
+                                clickEvent.getValue().equals("/showextrastats")) {
+                            MinecraftForge.EVENT_BUS.post(new DungeonEndEvent());
+                        }
                     }
                 }
 
@@ -1306,6 +1312,20 @@ public class PlayerListener {
                     CooldownManager.put(itemId, Math.max(cooldownTime, 400));
                 }
             }
+        }
+    }
+
+    @SubscribeEvent
+    public void onDungeonStart(DungeonStartEvent e) {
+        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+            DevUtils.startCollectingMapData();
+        }
+    }
+
+    @SubscribeEvent
+    public void onDungeonEnd(DungeonEndEvent e) {
+        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+            DevUtils.stopCollectingMapData();
         }
     }
 

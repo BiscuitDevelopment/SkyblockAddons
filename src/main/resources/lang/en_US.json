@@ -453,6 +453,11 @@
         "invalidBoss": "\"%input%\" is not a valid statistic!",
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
+      "toggleAutoMapLogging": {
+        "help": "Toggle automatic dungeon map logging",
+        "enabled": "Automatic dungeon map logging enabled.",
+        "disabled": "Automatic dungeon map logging disabled."
+      },
       "toggleActionBarLogging": {
         "help": "Toggle logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",

@@ -15,16 +15,14 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityList;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.event.ClickEvent;
 import net.minecraft.nbt.*;
 import net.minecraft.scoreboard.Score;
 import net.minecraft.scoreboard.ScoreObjective;
 import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.scoreboard.Scoreboard;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.IChatComponent;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.util.StringUtils;
+import net.minecraft.util.*;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.client.FMLClientHandler;
@@ -36,6 +34,7 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -74,10 +73,15 @@ public class DevUtils {
     private static boolean loggingActionBarMessages = false;
     @Getter @Setter
     private static boolean magmaTimerDebugLoggingEnabled = false;
+    @Getter @Setter
+    private static boolean automaticMapLoggingEnabled = false;
     private static CopyMode copyMode = CopyMode.ENTITY;
     private static List<Class<? extends Entity>> entityNames = DEFAULT_ENTITY_NAMES;
     private static int entityCopyRadius = DEFAULT_ENTITY_COPY_RADIUS;
     private static boolean sidebarFormatted = DEFAULT_SIDEBAR_FORMATTED;
+    private static MapDataCollectionService mapDataCollectionService;
+    @Setter
+    private static MapDataCollectionService.DataType mapLoggingDataType = MapDataCollectionService.DataType.PLAYER;
 
     static {
         ALL_ENTITY_NAMES.add("PlayerSP");
@@ -240,6 +244,34 @@ public class DevUtils {
             resetEntityCopyRadiusToDefault();
         } else {
             entityCopyRadius = copyRadius;
+        }
+    }
+
+    public static void startCollectingMapData() {
+        mapDataCollectionService = new MapDataCollectionService(mapLoggingDataType);
+        mapDataCollectionService.run();
+        main.getUtils().sendMessage("Map Data Collection Service Started");
+    }
+
+    public static void stopCollectingMapData() {
+        if (mapDataCollectionService.isRunning()) {
+            File logFile = mapDataCollectionService.stopAndSaveData();
+
+            if (logFile != null) {
+                IChatComponent logSavedComponent = new ChatComponentText("Map data log saved as ")
+                        .setChatStyle(new ChatStyle().setColor(EnumChatFormatting.WHITE));
+                IChatComponent logFileComponent = new ChatComponentText(logFile.getName())
+                        .setChatStyle(new ChatStyle()
+                                .setUnderlined(true)
+                                .setChatClickEvent(
+                                        new ClickEvent(ClickEvent.Action.OPEN_FILE, logFile.getAbsolutePath())));
+                logSavedComponent.appendSibling(logFileComponent);
+                main.getUtils().sendMessage((ChatComponentText) logSavedComponent, true);
+            } else {
+                main.getUtils().sendMessage("Map Data Collection Service Stopped");
+            }
+        } else {
+            main.getUtils().sendErrorMessage("Map Data Collection Service isn't running.");
         }
     }
 

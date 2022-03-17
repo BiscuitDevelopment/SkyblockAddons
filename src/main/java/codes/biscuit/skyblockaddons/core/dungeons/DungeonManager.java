@@ -34,6 +34,9 @@ public class DungeonManager {
     /** The last dungeon server the player played on */
     @Getter @Setter private String lastServerId;
 
+    /** The dungeon floor the player is on */
+    @Getter @Setter private String currentFloor;
+
     /** The latest milestone the player received during a dungeon game */
     @Getter @Setter private DungeonMilestone dungeonMilestone;
 
@@ -78,6 +81,7 @@ public class DungeonManager {
      * Clear the dungeon game data. Called by {@link codes.biscuit.skyblockaddons.utils.Utils} each new game
      */
     public void reset() {
+        currentFloor = null;
         dungeonMilestone = null;
         collectedEssences.clear();
         teammates.clear();

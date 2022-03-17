@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Attribute;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.events.DungeonStartEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
@@ -315,6 +316,10 @@ public class Utils {
                                 // Catacombs contains the floor number so it's a special case...
                                 if (strippedScoreboardLine.contains(Location.THE_CATACOMBS.getScoreboardName())) {
                                     location = Location.THE_CATACOMBS;
+                                    int floorStartIndex = strippedScoreboardLine.indexOf('(');
+                                    int floorEndIndex = strippedScoreboardLine.indexOf(')', floorStartIndex);
+                                    main.getDungeonManager().setCurrentFloor(strippedScoreboardLine.substring(
+                                            floorStartIndex, floorEndIndex));
                                     foundLocation = true;
                                 } else {
                                     for (Location loopLocation : Location.values()) {
@@ -387,7 +392,11 @@ public class Utils {
 
                     if (!foundInDungeon && strippedScoreboardLine.startsWith("Cleared: ")) {
                         foundInDungeon = true;
-                        inDungeon = true;
+
+                        if (!inDungeon) {
+                            inDungeon = true;
+                            MinecraftForge.EVENT_BUS.post(new DungeonStartEvent(serverID));
+                        }
 
                         String lastServer = main.getDungeonManager().getLastServerId();
                         if (lastServer != null && !lastServer.equals(serverID)) {
