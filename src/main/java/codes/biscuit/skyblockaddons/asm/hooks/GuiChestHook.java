@@ -171,6 +171,13 @@ public class GuiChestHook {
                         }
                     }
 
+                    /*
+                    Special case: We have an extra dungeon hub warp as a separate island for convenience, so we have to
+                    add it manually.
+                     */
+                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND,
+                            markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
+
                     if (islandWarpGui == null || !islandWarpGui.getMarkers().equals(markers)) {
                         islandWarpGui = new IslandWarpGui(markers);
                         ScaledResolution scaledresolution = new ScaledResolution(mc);

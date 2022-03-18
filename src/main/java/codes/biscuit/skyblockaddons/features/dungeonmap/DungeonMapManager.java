@@ -209,7 +209,7 @@ public class DungeonMapManager {
                     }
 
                     MapItemRenderer.Instance instance = mc.entityRenderer.getMapItemRenderer().getMapRendererInstance(mapData);
-                    drawMapEdited(instance, isScoreSummary, totalScaleFactor);
+                    drawMapEdited(instance, isScoreSummary, zoomScaleFactor);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -336,7 +336,7 @@ public class DungeonMapManager {
             }
         }
 
-        markerScale = (float) (-0.75F * Math.pow((markerScale - 1.5F), 2F) + 3F);
+        markerScale = 4.0F / markerScale;
 
         for (MapMarker mapMarker : allMarkers) {
             GlStateManager.pushMatrix();
