@@ -297,9 +297,9 @@
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
     "version": "版本",
     "invalidFeatureConfiguration": "於 %featureName% 功能檢測到無效的設定，已恢復到預設值。",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "fileFetchFailed": "%modName% 未能讀取 %number% 個資料檔案。請使用下方按鈕複製此錯誤訊息，並回報至我們的 Discord 伺服器。",
+    "copy": "複製",
+    "copied": "已複製！"
   },
   "discordStatus": {
     "titleNone": "無",
