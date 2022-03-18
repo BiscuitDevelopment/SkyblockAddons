@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
     "version": "版本",
     "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% 在获取 %number% 个数据文件时出错。请使用下方按钮复制错误信息并在 Discord 服务器上进行反馈。",
     "copy": "复制",
     "copied": "已复制！"
   },
