@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Requer shaders, carregamento rápido e antiserrilhamento DESATIVADOS",
     "version": "Versão",
     "invalidFeatureConfiguration": "Foi detetada uma configuração inválida para a opção %featureName%. As suas definições serão repostas para as padrão.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "O %modName% não conseguiu descarregar %number% ficheiro(s). Copia o erro usando o botão abaixo e relata-o no nosso servidor de Discord.",
     "copy": "Copiar",
     "copied": "Copiado!"
   },
