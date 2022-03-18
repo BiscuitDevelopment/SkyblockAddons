@@ -209,7 +209,7 @@ public class DungeonMapManager {
                     }
 
                     MapItemRenderer.Instance instance = mc.entityRenderer.getMapItemRenderer().getMapRendererInstance(mapData);
-                    drawMapEdited(instance, isScoreSummary, zoomScaleFactor);
+                    drawMapEdited(instance, isScoreSummary, totalScaleFactor);
                 }
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -238,7 +238,7 @@ public class DungeonMapManager {
 
     private static final Map<String, Vec4b> savedMapDecorations = new HashMap<>();
 
-    public static void drawMapEdited(MapItemRenderer.Instance instance, boolean isScoreSummary, float zoom) {
+    public static void drawMapEdited(MapItemRenderer.Instance instance, boolean isScoreSummary, float markerScale) {
         Minecraft mc = Minecraft.getMinecraft();
         int startX = 0;
         int startY = 0;
@@ -336,11 +336,13 @@ public class DungeonMapManager {
             }
         }
 
+        markerScale = (float) (-0.75F * Math.pow((markerScale - 1.5F), 2F) + 3F);
+
         for (MapMarker mapMarker : allMarkers) {
             GlStateManager.pushMatrix();
             GlStateManager.translate((float)startX + mapMarker.getX() / 2.0F + 64.0F, (float)startY + mapMarker.getZ() / 2.0F + 64.0F, -0.02F);
             GlStateManager.rotate((mapMarker.getRotation() * 360) / 16.0F, 0.0F, 0.0F, 1.0F);
-            GlStateManager.scale(4.0F/zoom, 4.0F/zoom, 3.0F);
+            GlStateManager.scale(markerScale, markerScale, 3.0F);
             byte iconType = mapMarker.getIconType();
             float f1 = (float)(iconType % 4) / 4.0F;
             float f2 = (float)(iconType / 4) / 4.0F;

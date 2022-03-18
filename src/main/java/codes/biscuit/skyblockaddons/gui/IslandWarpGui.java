@@ -43,6 +43,7 @@ public class IslandWarpGui extends GuiScreen {
 
     private Marker selectedMarker;
     private boolean guiIsActualWarpMenu = false;
+    @Getter
     private boolean foundAdvancedWarpToggle = false;
 
     public static float ISLAND_SCALE;
