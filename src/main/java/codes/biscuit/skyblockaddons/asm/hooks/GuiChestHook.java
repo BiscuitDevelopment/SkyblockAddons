@@ -53,6 +53,7 @@ public class GuiChestHook {
 
     private static final int REFORGE_MENU_HEIGHT = 222 - 108 + 5 * 18;
 
+    @Getter
     private static IslandWarpGui islandWarpGui = null;
 
     /** Reforge filter text field for reforges to match */
@@ -169,8 +170,14 @@ public class GuiChestHook {
                             markers.put(marker, IslandWarpGui.UnlockedStatus.UNKNOWN);
                         }
                     }
-                    //markers.put(IslandWarpGui.Marker.DWARVEN_FORGE, markers.getOrDefault(IslandWarpGui.Marker.DEEP_CAVERNS, IslandWarpGui.UnlockedStatus.UNKNOWN));
-                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND, markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
+
+                    /*
+                    Special case: We have an extra dungeon hub warp as a separate island for convenience, so we have to
+                    add it manually.
+                     */
+                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND,
+                            markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
+
                     if (islandWarpGui == null || !islandWarpGui.getMarkers().equals(markers)) {
                         islandWarpGui = new IslandWarpGui(markers);
                         ScaledResolution scaledresolution = new ScaledResolution(mc);

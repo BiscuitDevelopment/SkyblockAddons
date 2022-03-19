@@ -13,6 +13,7 @@ public class MapMarker {
 
     private SkyblockAddons main = SkyblockAddons.getInstance();
 
+    /** The icon type of this map marker (https://minecraft.fandom.com/wiki/Map#Map_icons) */
     private byte iconType;
     private float x;
     private float z;
@@ -54,8 +55,21 @@ public class MapMarker {
     }
 
     public void updateXZRot(EntityPlayer player) {
-        x = (((float) player.posX - DungeonMapManager.getMapStartX()) / 1.5F - 64.0F) * 2.0F;
-        z = (((float) player.posZ - DungeonMapManager.getMapStartZ()) / 1.5F - 64.0F) * 2.0F;
+        x = DungeonMapManager.toMapCoordinate(player.getPosition().getX(), DungeonMapManager.getMarkerOffsetX());
+        z = DungeonMapManager.toMapCoordinate(player.getPosition().getZ(), DungeonMapManager.getMarkerOffsetZ());
         rotation = MathHelper.wrapAngleTo180_float(player.rotationYaw) / 360F * 16F;
+    }
+
+    @Override
+    public String toString() {
+        return "MapMarker{" +
+                "iconType=" + iconType +
+                ", x=" + x +
+                ", z=" + z +
+                ", rotation=" + rotation +
+                ", playerName='" + playerName + '\'' +
+                ", mapMarkerName='" + mapMarkerName + '\'' +
+                ", wearingHat=" + wearingHat +
+                '}';
     }
 }
