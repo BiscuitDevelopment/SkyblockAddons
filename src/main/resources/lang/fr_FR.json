@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Paramètres",
     "magmaBossWarning": "Alerte Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Alerte Bal Boss",
+    "broodMotherWarning": "Alerte Brood Mother",
     "itemDropConfirmation": "Confirmer le jet de l’objet",
     "hideSkeletonHatBones": "Masquer les os du Skeleton's Helmet",
     "skeletonHatBonesBar": "Barre du Skeleton's Helmet",
@@ -170,9 +170,9 @@
     "showSwordKills": "Montrer les morts par l'épée",
     "compactTabList": "Liste du Tab Compacte",
     "highlightSpecialEnchantments": "Surlignez les enchantements spéciaux",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableDamageChatMessages": "Masquer les messages de dégâts dans le chat",
+    "showSpiritSceptreDisplay": "Affichage des dégâts Spirit Sceptre/Wither Blade",
+    "outbidAlertSound": "Alerte sonore de surenchère",
     "hideMenuGlassPanes": "Masquer les info-bulles des vitres dans les menus",
     "candyPointsCounter": "Compteur de bonbons/points de l'event Spooky",
     "healingCircleOpacity": "Opacité du cercle de soin",
@@ -211,14 +211,14 @@
     "guiScaleY": "Échelle de l'interface Y : %scale%",
     "abbreviateSkillXpDenominator": "Abréger le dénominateur de l'XP de skill",
     "otherDefenseStats": "Autres Stats de Défense (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
+    "hideSpawnPointPlayers": "Masquer les joueurs proches du Spawn",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "dontReplaceRomanNumeralsInItemNames": "Ne pas remplacer dans les noms d'items",
+    "backpackOpeningSound": "Bruit de cuir à l'ouverture du sac à dos",
+    "devMode": "Mode Développeur",
+    "showSkyblockItemId": "Afficher l'ID des items Skyblock au survol",
+    "showFeatureNamesOnHover": "Afficher le nom des fonctionnalités au survol",
+    "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -296,10 +296,10 @@
     "worldRenderedCooldownTime": "Temps de recharge: %time%s",
     "entityOutlinesRequirement": "Nécessite que les Shaders, le Rendu rapide et l'Anticrénelage soient désactivés",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "invalidFeatureConfiguration": "Configuration incorrecte pour la fonctionnalité %featureName% détectée, réinitialisation de ses paramètres.",
+    "fileFetchFailed": "%modName% n'a pas réussi à récupérer %number% fichier(s) de données. Merci de copier l'erreur en utilisant le bouton ci-dessous et de la signaler sur notre serveur Discord.",
+    "copy": "Copier",
+    "copied": "Copié !"
   },
   "discordStatus": {
     "titleNone": "Aucun",
@@ -309,7 +309,7 @@
     "titlePurse": "Bourse",
     "descriptionPurse": "Affiche la quantité de pièces dans votre bourse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Affiche le nombre de bits que vous avez",
     "titleStats": "Stats",
     "descriptionStats": "Affiche vos statistiques de PV, de Défense et de Mana",
     "titleZealots": "Zealots",
@@ -354,7 +354,7 @@
         "help": "Copie les données du bloc que vous regardez"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copier les données NBT pour les entités indiquées dans le rayon donné autour du joueur",
         "detailedHelp": {
           "description": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
           "options": {
@@ -364,7 +364,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copier le texte du tableau des scores",
         "detailedHelp": {
           "description": "Copie le texte affiché dans le tableau à droite",
           "options": {
@@ -373,7 +373,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copier l'en-tête et le pied de page de la liste des joueurs",
         "detailedHelp": {
           "description": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus."
         }
@@ -406,17 +406,17 @@
         "help": "Affiche les comptes stockés dans les compteurs de mort du donjon à des fins de débogage."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Recharge tous les paramètres et ressources du mod. Le jeu va se figer pendant quelques secondes."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Recharge les paramètres du mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Recharge les ressources du mod. Le jeu va se figer pendant quelques secondes."
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "resetSuccess": "Compteur de Zealots réinitialisé !"
       },
       "set": {
         "zealotCounter": {
@@ -460,12 +460,12 @@
       },
       "toggleMagmaTimerLogging": {
         "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "disabled": "Les messages du minuteur Magma Boss ne seront plus sauvegardés.",
+        "enabled": "Les messages du minuteur Magma Boss seront maintenant sauvegardés."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Affiche la version du mod",
+        "hoverText": "Cliquez pour copier depuis le chat."
       },
       "errors": {
         "wrongUsage": {
