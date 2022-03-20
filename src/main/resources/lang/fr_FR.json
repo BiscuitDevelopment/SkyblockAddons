@@ -346,12 +346,12 @@
         "help": "Ouvrir le menu principal"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Afficher le statut du serveur",
         "brandOutput": "Nom du serveur : %brand%",
         "notFound": "Nom du serveur introuvable !"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copie les données du bloc que vous regardez"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
@@ -403,7 +403,7 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Affiche les comptes stockés dans les compteurs de mort du donjon à des fins de débogage."
       },
       "reload": {
         "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
