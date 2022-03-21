@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Memerlukan Shaders, Fast Render, dan Antialiasing menjadi OFF",
     "version": "Versi",
     "invalidFeatureConfiguration": "Konfigurasi salah terdeteksi untuk fitur %featureName%, sedang reset fitur kembali menjadi default.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% gagal mengambil %number% file. Mohon salin eror dengan menggunakan tombol dibawah ini dan laporkan di server Discord kami.",
     "copy": "Salin",
     "copied": "Tersalin!"
   },
