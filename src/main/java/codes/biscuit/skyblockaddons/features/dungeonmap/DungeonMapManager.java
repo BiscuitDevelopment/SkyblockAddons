@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import codes.biscuit.skyblockaddons.utils.MathUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.MapItemRenderer;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -16,16 +17,15 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.crash.CrashReport;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Vec3;
-import net.minecraft.util.Vec4b;
+import net.minecraft.util.*;
 import net.minecraft.world.storage.MapData;
 import org.lwjgl.opengl.GL11;
 
+import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -54,14 +54,31 @@ public class DungeonMapManager {
     };
 
     /** The factor the player's coordinates are multiplied by to calculate their map marker coordinates */
-    private static final float COORDINATE_FACTOR = -1.33F;
+    private static final float COORDINATE_FACTOR = 1.33F;
+
+    /** {@link EntityPlayerSP#lastReportedPosX} */
+    static final Field lastReportedPosX;
+    /** {@link EntityPlayerSP#lastReportedPosZ} */
+    static final Field lastReportedPosZ;
 
     private static MapData mapData;
     /** The offset added to the player's x-coordinate when calculating their map marker coordinates */
-    @Getter private static float markerOffsetX = 0;
+    @Getter private static double markerOffsetX = 0;
     /** The offset added to the player's z-coordinate when calculating their map marker coordinates */
-    @Getter private static float markerOffsetZ = 0;
+    @Getter private static double markerOffsetZ = 0;
     private static final NavigableMap<Long, Vec3> previousLocations = new TreeMap<>();
+
+    static {
+        try {
+            lastReportedPosX = EntityPlayerSP.class.getDeclaredField("lastReportedPosX");
+            lastReportedPosX.setAccessible(true);
+            lastReportedPosZ = EntityPlayerSP.class.getDeclaredField("lastReportedPosZ");
+            lastReportedPosZ.setAccessible(true);
+        } catch (NoSuchFieldException e) {
+            throw new ReportedException(CrashReport.makeCrashReport(e,
+                    "Field not found, there's something really wrong here."));
+        }
+    }
 
     public static void drawDungeonsMap(Minecraft mc, float scale, ButtonLocation buttonLocation) {
         if (buttonLocation == null && !main.getUtils().isInDungeon()) {
@@ -184,17 +201,17 @@ public class DungeonMapManager {
                                     int mapMarkerX = entry.getValue().func_176112_b();
                                     int mapMarkerZ = entry.getValue().func_176113_c();
 
-                                    markerOffsetX = calculateMarkerOffset(mc.thePlayer.getPosition().getX(), mapMarkerX);
-                                    markerOffsetZ = calculateMarkerOffset(mc.thePlayer.getPosition().getZ(), mapMarkerZ);
+                                    markerOffsetX = calculateMarkerOffset(lastReportedPosX.getDouble(mc.thePlayer), mapMarkerX);
+                                    markerOffsetZ = calculateMarkerOffset(lastReportedPosZ.getDouble(mc.thePlayer), mapMarkerZ);
                                 }
                             }
                         }
                     }
 
                     if (rotate && rotateOnPlayer) {
-                        rotationCenterX = toRenderCoordinate(toMapCoordinate(mc.thePlayer.getPosition().getX(),
+                        rotationCenterX = toRenderCoordinate(toMapCoordinate(mc.thePlayer.posX,
                                 markerOffsetX));
-                        rotationCenterY = toRenderCoordinate(toMapCoordinate(mc.thePlayer.getPosition().getZ(),
+                        rotationCenterY = toRenderCoordinate(toMapCoordinate(mc.thePlayer.posZ,
                                 markerOffsetZ));
                     }
 
@@ -440,22 +457,22 @@ public class DungeonMapManager {
      * @param playerMarkerCoordinate the player's map marker x/z coordinate from {@code mapData}
      * @return the x/z offset used to calculate the player marker's coordinates
      */
-    public static float calculateMarkerOffset(int playerCoordinate, int playerMarkerCoordinate) {
-        return playerCoordinate + (playerMarkerCoordinate / COORDINATE_FACTOR);
+    public static double calculateMarkerOffset(double playerCoordinate, int playerMarkerCoordinate) {
+        return BigDecimal.valueOf(playerMarkerCoordinate - (COORDINATE_FACTOR * playerCoordinate))
+                .setScale(5, RoundingMode.HALF_UP).doubleValue();
     }
 
     /**
      * Converts a player's actual x/z coordinate to their marker's x/z coordinate on the dungeon map.
-     * The resulting coordinate is rounded to the nearest integer lower than the actual value since this is what
-     * Hypixel's map does.
+     * The resulting coordinate is rounded to the nearest integer lower than the actual value.
      *
-     * @param playerCoordinate the player's x/z coordinate from {@link EntityPlayer#getPosition()}
+     * @param playerCoordinate the player's x/z coordinate from {@link EntityPlayer#posX} or {@link EntityPlayer#posZ}
      * @param markerOffset {@code markerOffsetX} or {@code markerOffsetZ}
      * @return the player marker's x/z coordinate
      */
-    public static int toMapCoordinate(int playerCoordinate, float markerOffset) {
-        return BigDecimal.valueOf(COORDINATE_FACTOR * (markerOffset - playerCoordinate))
-                .setScale(0, RoundingMode.FLOOR).intValue();
+    public static float toMapCoordinate(double playerCoordinate, double markerOffset) {
+        return BigDecimal.valueOf((COORDINATE_FACTOR * playerCoordinate) + markerOffset)
+                .setScale(5, RoundingMode.HALF_UP).floatValue();
     }
 
     /**
@@ -464,7 +481,7 @@ public class DungeonMapManager {
      * @param mapCoordinate the map marker's x/z coordinate
      * @return the screen coordinate used when rendering the map marker
      */
-    public static float toRenderCoordinate(int mapCoordinate) {
-        return (float)mapCoordinate / 2.0F + 64.0F;
+    public static float toRenderCoordinate(float mapCoordinate) {
+        return mapCoordinate / 2.0F + 64.0F;
     }
 }
