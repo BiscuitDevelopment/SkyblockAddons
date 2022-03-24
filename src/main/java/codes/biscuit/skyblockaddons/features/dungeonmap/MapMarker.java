@@ -7,11 +7,13 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EnumPlayerModelParts;
 import net.minecraft.util.MathHelper;
+import org.apache.logging.log4j.Logger;
 
 @Setter @Getter
 public class MapMarker {
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     /** The icon type of this map marker (https://minecraft.fandom.com/wiki/Map#Map_icons) */
     private byte iconType;
@@ -55,8 +57,8 @@ public class MapMarker {
     }
 
     public void updateXZRot(EntityPlayer player) {
-        x = DungeonMapManager.toMapCoordinate(player.getPosition().getX(), DungeonMapManager.getMarkerOffsetX());
-        z = DungeonMapManager.toMapCoordinate(player.getPosition().getZ(), DungeonMapManager.getMarkerOffsetZ());
+        x = DungeonMapManager.toMapCoordinate(player.posX, DungeonMapManager.getMarkerOffsetX());
+        z = DungeonMapManager.toMapCoordinate(player.posZ, DungeonMapManager.getMarkerOffsetZ());
         rotation = MathHelper.wrapAngleTo180_float(player.rotationYaw) / 360F * 16F;
     }
 
