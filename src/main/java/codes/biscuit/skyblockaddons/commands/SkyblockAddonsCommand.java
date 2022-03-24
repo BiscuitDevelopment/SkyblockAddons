@@ -366,7 +366,8 @@ public class SkyblockAddonsCommand extends CommandBase {
 
                         if (DevUtils.isAutomaticMapLoggingEnabled()) {
                             main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage(
-                                    "commandUsage.sba.toggleAutoMapLogging.enabled"));
+                                    "commandUsage.sba.toggleAutoMapLogging.enabled",
+                                    DevUtils.getMapLoggingDataType()));
                         } else {
                             main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
                                     "commandUsage.sba.toggleAutoMapLogging.disabled"));
@@ -376,13 +377,17 @@ public class SkyblockAddonsCommand extends CommandBase {
                     } else if (args[0].equalsIgnoreCase("stop")) {
                         DevUtils.stopCollectingMapData();
                     } else if (args[0].equalsIgnoreCase("setMapLoggingDataType")) {
-                        if (args[1].equalsIgnoreCase("map")) {
+                        if (args[1].equalsIgnoreCase("both")) {
+                            DevUtils.setMapLoggingDataType(MapDataCollectionService.DataType.BOTH);
+                        } else if (args[1].equalsIgnoreCase("map")) {
                             DevUtils.setMapLoggingDataType(MapDataCollectionService.DataType.MAP);
                         } else if (args[1].equalsIgnoreCase("player")) {
                             DevUtils.setMapLoggingDataType(MapDataCollectionService.DataType.PLAYER);
                         } else {
                             throw new WrongUsageException("Invalid data type provided.");
                         }
+
+                        main.getUtils().sendMessage("Set data type to " + DevUtils.getMapLoggingDataType());
                     }
                     else {
                         throw new WrongUsageException(Translations.getMessage(

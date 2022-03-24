@@ -4,13 +4,11 @@
 <Configuration status="WARN" packages="com.mojang.util">
     <Appenders>
         <Console name="FmlSysOut" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level] [%logger]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" >
-                <Replace regex=".* \[codes.biscuit.skyblockaddons.*\]:.*" replacement=":"/>
+            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level] [%logger]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=white, dim, TRACE=black}" >
             </PatternLayout>
         </Console>
         <Console name="SysOut" target="SYSTEM_OUT">
-            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=green, dim, TRACE=black}" >
-                <Replace regex=".* \[codes.biscuit.skyblockaddons.*\]:.*" replacement=":"/>
+            <PatternLayout pattern="[%d{HH:mm:ss}] %highlight{[%t/%level]: %msg%n%throwable}{FATAL=BG_Red, default, bold, ERROR=red, WARN=yellow, INFO=default, DEBUG=white, dim, TRACE=black}" >
             </PatternLayout>
         </Console>
         <RollingRandomAccessFile name="File" fileName="logs/latest.log" filePattern="logs/%d{yyyy-MM-dd}-%i.log.gz">

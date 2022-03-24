@@ -455,7 +455,7 @@
       },
       "toggleAutoMapLogging": {
         "help": "Toggle automatic dungeon map logging",
-        "enabled": "Automatic dungeon map logging enabled.",
+        "enabled": "Automatic dungeon map logging enabled (%dataType%).",
         "disabled": "Automatic dungeon map logging disabled."
       },
       "toggleActionBarLogging": {

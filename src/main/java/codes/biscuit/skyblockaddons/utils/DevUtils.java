@@ -80,7 +80,7 @@ public class DevUtils {
     private static int entityCopyRadius = DEFAULT_ENTITY_COPY_RADIUS;
     private static boolean sidebarFormatted = DEFAULT_SIDEBAR_FORMATTED;
     private static MapDataCollectionService mapDataCollectionService;
-    @Setter
+    @Getter @Setter
     private static MapDataCollectionService.DataType mapLoggingDataType = MapDataCollectionService.DataType.PLAYER;
 
     static {
@@ -248,9 +248,14 @@ public class DevUtils {
     }
 
     public static void startCollectingMapData() {
-        mapDataCollectionService = new MapDataCollectionService(mapLoggingDataType);
-        mapDataCollectionService.run();
-        main.getUtils().sendMessage("Map Data Collection Service Started");
+        if (mapDataCollectionService == null || !mapDataCollectionService.isRunning()) {
+            mapDataCollectionService = new MapDataCollectionService(mapLoggingDataType);
+            mapDataCollectionService.run();
+            main.getUtils().sendMessage("Map Data Collection Service Started (" + DevUtils.getMapLoggingDataType()
+                    + ")");
+        } else {
+            main.getUtils().sendErrorMessage("Service is already running.");
+        }
     }
 
     public static void stopCollectingMapData() {
@@ -268,7 +273,7 @@ public class DevUtils {
                 logSavedComponent.appendSibling(logFileComponent);
                 main.getUtils().sendMessage((ChatComponentText) logSavedComponent, true);
             } else {
-                main.getUtils().sendMessage("Map Data Collection Service Stopped");
+                main.getUtils().sendErrorMessage("Map data collection failed, see log for info.");
             }
         } else {
             main.getUtils().sendErrorMessage("Map Data Collection Service isn't running.");

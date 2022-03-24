@@ -1317,16 +1317,16 @@ public class PlayerListener {
 
     @SubscribeEvent
     public void onDungeonStart(DungeonStartEvent e) {
-        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+/*        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
             DevUtils.startCollectingMapData();
-        }
+        }*/
     }
 
     @SubscribeEvent
     public void onDungeonEnd(DungeonEndEvent e) {
-        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+/*        if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
             DevUtils.stopCollectingMapData();
-        }
+        }*/
     }
 
     public boolean aboutToJoinSkyblockServer() {

@@ -319,7 +319,7 @@ public class Utils {
                                     int floorStartIndex = strippedScoreboardLine.indexOf('(');
                                     int floorEndIndex = strippedScoreboardLine.indexOf(')', floorStartIndex);
                                     main.getDungeonManager().setCurrentFloor(strippedScoreboardLine.substring(
-                                            floorStartIndex, floorEndIndex));
+                                            floorStartIndex + 1, floorEndIndex));
                                     foundLocation = true;
                                 } else {
                                     for (Location loopLocation : Location.values()) {
