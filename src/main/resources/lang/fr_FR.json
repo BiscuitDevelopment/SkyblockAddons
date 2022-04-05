@@ -415,7 +415,7 @@
         "help": "Recharge les ressources du mod. Le jeu va se figer pendant quelques secondes."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
+        "help": "Réinitialise le compteur de Zealots.",
         "resetSuccess": "Compteur de Zealots réinitialisé !"
       },
       "set": {
