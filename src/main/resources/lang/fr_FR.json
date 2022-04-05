@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Abréger le dénominateur de l'XP de skill",
     "otherDefenseStats": "Autres Stats de Défense (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Masquer les joueurs proches du Spawn",
-    "jacobsContestTimer": "Jacob's Contest Timer",
+    "jacobsContestTimer": "Minuteur du Jacob's Contest",
     "dontReplaceRomanNumeralsInItemNames": "Ne pas remplacer dans les noms d'items",
     "backpackOpeningSound": "Bruit de cuir à l'ouverture du sac à dos",
     "devMode": "Mode Développeur",
@@ -454,12 +454,12 @@
         "invalidStat": "%input% n'est pas un boss valide !"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Basculer la sauvegarde des messages de la barre d'action",
         "disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
         "enabled": "Les messages de la barre d'action seront maintenant sauvegardés."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Basculer la sauvegarde des messages de débug du minuteur Magma Boss",
         "disabled": "Les messages du minuteur Magma Boss ne seront plus sauvegardés.",
         "enabled": "Les messages du minuteur Magma Boss seront maintenant sauvegardés."
       },
