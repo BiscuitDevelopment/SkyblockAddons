@@ -42,7 +42,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ProgressManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -54,7 +53,6 @@ import org.lwjgl.input.Keyboard;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -88,10 +86,8 @@ public class SkyblockAddons {
 
     private static final Logger LOGGER = LogManager.getLogger(new SkyblockAddonsMessageFactory(MOD_NAME));
 
-    private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
+    private static final ThreadPoolExecutor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
-
-    private static ProgressManager.ProgressBar progressBar;
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -310,17 +306,7 @@ public class SkyblockAddons {
     }
 
     public static void runAsync(Runnable runnable) {
-        StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
-        String fullClassName = stackTraceElement.getClassName();
-        String methodName = stackTraceElement.getMethodName();
-        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-
-        THREAD_EXECUTOR.execute(() -> {
-            Logger logger = getLogger();
-            logger.info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
-            runnable.run();
-            logger.info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
-        });
+        THREAD_EXECUTOR.execute(runnable);
     }
 
     // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.

@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Setter @Getter
 public class PersistentValuesManager {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
@@ -65,7 +65,7 @@ public class PersistentValuesManager {
                 persistentValues = SkyblockAddons.getGson().fromJson(reader, PersistentValues.class);
 
             } catch (Exception ex) {
-                LOGGER.error("Error loading persistent values.", ex);
+                logger.error("Error loading persistent values.", ex);
             }
 
         } else {
@@ -84,6 +84,8 @@ public class PersistentValuesManager {
                 return;
             }
 
+            logger.info("Saving persistent values");
+
             try {
                 //noinspection ResultOfMethodCallIgnored
                 persistentValuesFile.createNewFile();
@@ -92,8 +94,10 @@ public class PersistentValuesManager {
                     SkyblockAddons.getGson().toJson(persistentValues, writer);
                 }
             } catch (Exception ex) {
-                LOGGER.error("Error saving persistent values.", ex);
+                logger.error("Error saving persistent values.", ex);
             }
+
+            logger.info("Persistent Values Saved");
 
             SAVE_LOCK.unlock();
         });

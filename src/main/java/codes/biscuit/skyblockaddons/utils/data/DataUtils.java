@@ -63,7 +63,7 @@ public class DataUtils {
     private static final RequestConfig requestConfig = RequestConfig.custom()
             .setConnectTimeout(120 * 1000)
             .setConnectionRequestTimeout(120 * 1000)
-            .setSocketTimeout(60 * 1000).build();
+            .setSocketTimeout(30 * 1000).build();
 
     private static final PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
 

@@ -39,8 +39,7 @@ public class TextUtils {
     }
 
     /**
-     * Formats a double number to look better with commas every 3 digits and
-     * one decimal point.
+     * Formats a double number to look better with commas every 3 digits and up to two decimal places.
      * For example: {@code 1,006,789.5}
      *
      * @param number Number to format

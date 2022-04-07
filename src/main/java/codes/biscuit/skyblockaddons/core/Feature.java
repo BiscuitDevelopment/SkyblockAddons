@@ -336,7 +336,7 @@ public enum Feature {
 
             if (main.getConfigValues().isEnabled(DEVELOPER_MODE)) {
                 devModeKeyBinding.register();
-            } else {
+            } else if (devModeKeyBinding.isRegistered()) {
                 devModeKeyBinding.deRegister();
             }
         }

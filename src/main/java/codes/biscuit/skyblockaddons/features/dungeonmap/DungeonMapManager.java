@@ -23,6 +23,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.storage.MapData;
+import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import org.lwjgl.opengl.GL11;
 
 import java.lang.reflect.Field;
@@ -70,11 +71,13 @@ public class DungeonMapManager {
 
     static {
         try {
-            lastReportedPosX = EntityPlayerSP.class.getDeclaredField("lastReportedPosX");
+            lastReportedPosX = ReflectionHelper.findField(EntityPlayerSP.class, "bK", "field_175172_bI",
+                    "lastReportedPosX");
             lastReportedPosX.setAccessible(true);
-            lastReportedPosZ = EntityPlayerSP.class.getDeclaredField("lastReportedPosZ");
+            lastReportedPosZ = ReflectionHelper.findField(EntityPlayerSP.class, "bM", "field_175167_bK",
+                    "lastReportedPosZ");
             lastReportedPosZ.setAccessible(true);
-        } catch (NoSuchFieldException e) {
+        } catch (ReflectionHelper.UnableToFindFieldException e) {
             throw new ReportedException(CrashReport.makeCrashReport(e,
                     "Field not found, there's something really wrong here."));
         }

@@ -58,6 +58,9 @@ import java.util.regex.Pattern;
 @Setter
 public class Utils {
 
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
+
     /**
      * Added to the beginning of messages sent by the mod.
      */
@@ -172,9 +175,6 @@ public class Utils {
     private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;
-
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
 
     public Utils() {
         addDefaultStats();

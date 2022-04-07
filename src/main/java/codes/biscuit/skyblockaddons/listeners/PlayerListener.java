@@ -83,7 +83,6 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,7 +90,7 @@ import java.util.regex.Pattern;
 //TODO Fix for Hypixel localization
 public class PlayerListener {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
@@ -267,7 +266,7 @@ public class PlayerListener {
             if (e.type == 2) {
                 // Log the message to the game log if action bar message logging is enabled.
                 if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && DevUtils.isLoggingActionBarMessages()) {
-                    LOGGER.info("[ACTION BAR] " + unformattedText);
+                    logger.info("[ACTION BAR] " + unformattedText);
                 }
 
                 // Parse using ActionBarParser and display the rest message instead
@@ -1097,8 +1096,12 @@ public class PlayerListener {
                 String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
 
                 if (itemId != null) {
-                    // Before the NBT line
-                    insertAt = e.toolTip.size() - 1;
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        // Before the NBT line
+                        insertAt = e.toolTip.size() - 1;
+                    } else {
+                        insertAt = e.toolTip.size();
+                    }
 
                     e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
                 }
@@ -1254,7 +1257,7 @@ public class PlayerListener {
                 main.getDungeonManager().addDeath();
 
             } else {
-                LOGGER.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
+                logger.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
             }
         }
     }

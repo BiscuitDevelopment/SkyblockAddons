@@ -44,7 +44,7 @@ import java.util.regex.Pattern;
  */
 public class ContainerPreviewManager {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final ResourceLocation CHEST_GUI_TEXTURE = new ResourceLocation("skyblockaddons", "containerPreview.png");
     private static final Pattern BACKPACK_STORAGE_PATTERN = Pattern.compile("Backpack Slot (?<slot>[0-9]+)");
@@ -204,7 +204,7 @@ public class ContainerPreviewManager {
                 items.add(ItemStack.loadItemStackFromNBT(item));
             }
         } catch (Exception ex) {
-            LOGGER.error("There was an error decompressing container data.", ex);
+            logger.error("There was an error decompressing container data.", ex);
         }
         return items;
     }
@@ -617,10 +617,10 @@ public class ContainerPreviewManager {
             if (dirty) {
                 if (cachedContainer == null) {
                     cache.put(storageKey, new CompressedStorage(inventoryContents));
-                    LOGGER.info("Cached new container " + storageKey + ".");
+                    logger.info("Cached new container " + storageKey + ".");
                 } else {
                     cachedContainer.setStorage(inventoryContents);
-                    LOGGER.info("Refreshed cache for container " + storageKey + ".");
+                    logger.info("Refreshed cache for container " + storageKey + ".");
                 }
 
                 SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();

@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
  */
 public class CompactorItem implements GsonInitializable {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private String itemId;
     private String displayName;
@@ -94,7 +94,7 @@ public class CompactorItem implements GsonInitializable {
             }
         } catch (Exception ex) {
             itemStack = ItemUtils.createItemStack(Item.getItemFromBlock(Blocks.stone), displayName != null ? displayName : "", itemId != null ? itemId : "", false);
-            LOGGER.error("An error occurred while making an item stack with ID " + itemId + " and name " + displayName + ".", ex);
+            logger.error("An error occurred while making an item stack with ID " + itemId + " and name " + displayName + ".", ex);
         }
     }
 }

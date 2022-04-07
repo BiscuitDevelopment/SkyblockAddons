@@ -118,6 +118,10 @@ public class GuiChestHook {
      */
     @SuppressWarnings("unused")
     public static void drawScreenIslands(int mouseX, int mouseY, ReturnValue<?> returnValue) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         Container playerContainer = mc.thePlayer.openContainer;
         if (playerContainer instanceof ContainerChest && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.FANCY_WARP_MENU)) {
             IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
@@ -205,6 +209,10 @@ public class GuiChestHook {
     }
 
     public static void drawScreen(int guiLeft, int guiTop) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().getInventoryType();
 
         if (inventoryType == InventoryType.SALVAGING) {
@@ -261,7 +269,6 @@ public class GuiChestHook {
                 }
             }
         }
-
     }
 
     /**
@@ -493,6 +500,10 @@ public class GuiChestHook {
      */
     @SuppressWarnings("unused")
     public static void onRenderChestForegroundLayer(GuiChest guiChest) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY)) {
             if (guiChest.inventorySlots.inventorySlots.size() > 13) {
                 Slot slot = guiChest.inventorySlots.inventorySlots.get(13);
