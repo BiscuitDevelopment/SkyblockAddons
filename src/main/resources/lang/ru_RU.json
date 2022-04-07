@@ -170,7 +170,7 @@
     "showSwordKills": "Показывать Убийства На Мече",
     "compactTabList": "Компактная информация в Tab",
     "highlightSpecialEnchantments": "Подсвечивать Особые Зачарования",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "disableDamageChatMessages": "Отключить сообщения об уроне в чате",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glass Pane Tooltips",
@@ -214,10 +214,10 @@
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "backpackOpeningSound": "Звук открытия рюкзака",
+    "devMode": "Режим Разработчика",
+    "showSkyblockItemId": "Отображать ID Предмета при Наведении",
+    "showFeatureNamesOnHover": "Показывать Имена Функций при Наведении",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
   },
   "messages": {
@@ -296,10 +296,10 @@
     "worldRenderedCooldownTime": "Осталось: %time% с",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "invalidFeatureConfiguration": "Обнаружена неправильная настройка функции %featureName%, ее настройки сброшены к значениям по умолчанию.",
     "fileFetchFailed": "%modName% не смог получить %number% файл(ов) данных. Пожалуйста, скопируйте ошибку с помощью кнопки ниже и сообщите о ней на нашем сервере Discord.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "copy": "Копировать",
+    "copied": "Скопировано!"
   },
   "discordStatus": {
     "titleNone": "Нет",
@@ -309,7 +309,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Показывает количество монет в кошельке",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Отображает имеющееся количество битов",
     "titleStats": "Статистика",
     "descriptionStats": "Показывает ваше здоровье, уровень защиты и ману",
     "titleZealots": "Zealots",
@@ -415,8 +415,8 @@
         "help": "Reloads the mod's resources. The game will freeze for a few seconds."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Сбрасывает все счетчики зеалотов.",
+        "resetSuccess": "Счетчики зеалотов сброшены!"
       },
       "set": {
         "zealotCounter": {
