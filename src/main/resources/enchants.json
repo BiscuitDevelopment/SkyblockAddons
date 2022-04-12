@@ -106,7 +106,7 @@
       "loreName": "Efficiency",
       "nbtName": "efficiency",
       "goodLevel": 5,
-      "maxLevel": 5
+      "maxLevel": 10
     },
     "ender slayer": {
       "loreName": "Ender Slayer",
@@ -158,9 +158,8 @@
     },
     "fortune": {
       "loreName": "Fortune",
-      "nbtName": "fortune",
       "goodLevel": 3,
-      "maxLevel": 3
+      "maxLevel": 4
     },
     "frail": {
       "loreName": "Frail",
