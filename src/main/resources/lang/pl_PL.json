@@ -53,8 +53,8 @@
     "useVanillaTexture": "Używaj domyślnej tekstury",
     "textStyle": "Styl tekstu",
     "textStyles": {
-      "one": "Styl pierwszy",
-      "two": "Styl drugi"
+      "one": "Styl Pierwszy",
+      "two": "Styl Drugi"
     },
     "warningDuration": "Długość trwania ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu podczas trzymania łuku",
@@ -215,10 +215,10 @@
     "jacobsContestTimer": "Licznik czasu: Jacob's Contest",
     "dontReplaceRomanNumeralsInItemNames": "Nie zamieniaj w Nazwach Przedmiotów",
     "backpackOpeningSound": "Odgłos otwarcia Skórzanego Plecaka",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "devMode": "Tryb Dewelopera",
+    "showSkyblockItemId": "Pokaż ID Przedmiotu po Najechaniu",
+    "showFeatureNamesOnHover": "Pokaż Nazwę Funkcji po Najechaniu",
+    "resetSalvagedEssencesAfterLeavingMenu": "Zresetuj licznik Odzyskanej Esencji po Zamknięciu Menu"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -296,10 +296,10 @@
     "worldRenderedCooldownTime": "Czas odnowienia: %time%s",
     "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
     "version": "Wersja",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "invalidFeatureConfiguration": "Wykryto nieprawidłową konfigurację %featureName%, resetowanie ustawień do domyślnych wartości.",
     "fileFetchFailed": "%modName% nie pobrał(a) %number% pliku(-ów). Skopiuj błąd za pomocą przycisku poniżej i zgłoś go na naszym serwerze Discord.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "copy": "Skopiuj",
+    "copied": "Skopiowano!"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -346,7 +346,7 @@
         "help": "Otwórz menu główne"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Pokaż API Serwera",
         "brandOutput": "API Serwera: %brand%",
         "notFound": "Nie znaleziono API serwera!"
       },
@@ -373,7 +373,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Skopiuj nagłówek i stopkę z Tab listy",
         "detailedHelp": {
           "description": "Ta komenda kopiuję nagłówek i stopkę Tab listy graczy. Łącznie z kodami formatującymi."
         }
@@ -403,20 +403,20 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Pokazuje liczby przechowane w licznikach śmierci w lochach w celu debugowania."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Wczytuje ponownie ustawienia modyfikacji"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Resetuje licznik zabitych Zealot'ów.",
+        "resetSuccess": "Zresetowano licznik zabójstw Zealot'ów!"
       },
       "set": {
         "zealotCounter": {
@@ -454,18 +454,18 @@
         "invalidStat": "„%input%” nie jest prawidłowym bossem!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Przełącz rejestrowanie wiadomości na pasku akcji",
         "disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
         "enabled": "Wiadomości na pasku akcji będą rejestrowane."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
+        "help": "§e(Dev) §7Przełącz rejestrowanie wiadomości debugowania Licznika czasu Magma Boss",
+        "disabled": "Wiadomości Licznika czasu Magma Boss nie będą rejestrowane.",
         "enabled": "Wiadomości Licznika czasu Magma Boss będą rejestrowane."
       },
       "version": {
         "help": "Pokazuje wersję modyfikacji",
-        "hoverText": "Click to put in chat so you can copy."
+        "hoverText": "Naciśnij, aby umieścić to w chacie, by móc to skopiować."
       },
       "errors": {
         "wrongUsage": {
