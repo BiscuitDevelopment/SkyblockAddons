@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Ostrzeżenie o Bal Boss",
+    "broodMotherWarning": "Ostrzeżenie o Brood Mother",
     "itemDropConfirmation": "Potwierdzenie wyrzucenia przedmiotu",
     "hideSkeletonHatBones": "Ukryj kości Skeleton's Helmet",
     "skeletonHatBonesBar": "Pasek kości z Skeleton's Helmet",
@@ -36,8 +36,8 @@
     "defensePercentage": "Odsetkowy wskaźnik obrony",
     "healthUpdates": "Liczba Różnicy Zdrowia",
     "hidePlayersInLobby": "Ukryj odległe byty w poczekalni",
-    "darkAuctionTimer": "Zegar Dark Auction",
-    "magmaBossTimer": "Zegar Magma Bossa",
+    "darkAuctionTimer": "Licznik czasu: Aukcja w ciemno",
+    "magmaBossTimer": "Licznik czasu: Magma Boss",
     "itemPickupLog": "Wykaz podniesionych przedmiotów",
     "avoidPlacingEnchantedItems": "Zablokuj stawianie zaklętych przedmiotów",
     "stopBowChargeFromResetting": "Wyłącz resetowanie się naładowania łuku",
@@ -85,9 +85,9 @@
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     },
-    "tabEffectTimers": "Zegary mikstur i umiejętności",
+    "tabEffectTimers": "Licznik czasu: mikstury i umiejętności",
     "noArrowsLeftAlert": "Powiadomienie o braku strzał",
-    "hideNightVisionEffectTimer": "Ukryj zegar efektu widzenia w ciemności",
+    "hideNightVisionEffectTimer": "Ukryj licznik czasu efektu widzenia w ciemności",
     "showCakeBagPreview": "Podgląd Cake Bags",
     "showBackpackPreviewInAH": "Podgląd plecaka dla Twoich przedmiotów, gdy Dom Aukcyjny jest otwarty",
     "enableDevFeatures": "Włącz funkcje dla programistów",
@@ -98,7 +98,7 @@
       "fade": "Blaknięcie koloru"
     },
     "chromaFadeWidth": "Szerokość blaknięcia kolorów",
-    "sortTabEffectTimers": "Sortuj zegary według trwania",
+    "sortTabEffectTimers": "Sortuj Licznik czasu według trwania",
     "showBrokenFragments": "Pokazuj zniszczone Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
@@ -106,7 +106,7 @@
     "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość Zealotów na jedno oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Zmień kolor łuku na zielony kiedy Toksyczna, trująca strzała jest w użyciu",
     "birchParkRainmakerTimer": "Pozostały czas deszczu w Brzozowym Parku",
-    "combatTimerDisplay": "Wyświetlaj pozostały czas Combat taga",
+    "combatTimerDisplay": "Licznik czasu: Combat",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Wyświelaj ochronę kamienia Kresu",
     "fancyWarpMenu": "Wymyślne menu przenoszenia",
@@ -170,9 +170,9 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightSpecialEnchantments": "Podświetl specjalne zaklęcia",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableDamageChatMessages": "Wyłącz wiadomości o obrażeniach na czacie",
+    "showSpiritSceptreDisplay": "Wyświetlanie Obrażeń Sceptre/Wither Blade",
+    "outbidAlertSound": "Dźwięk Alarmu Przelicytowania",
     "hideMenuGlassPanes": "Ukryj dymki szyb w menu",
     "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
     "healingCircleOpacity": "Przeźroczystość koła leczącego",
@@ -211,10 +211,10 @@
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Skrócony Dzielnik XP'a umiejętności",
     "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "hideSpawnPointPlayers": "Ukryj Graczy w Miejscu Odrodzenia",
+    "jacobsContestTimer": "Licznik czasu: Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "Nie zamieniaj w Nazwach Przedmiotów",
+    "backpackOpeningSound": "Odgłos otwarcia Skórzanego Plecaka",
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
@@ -297,7 +297,7 @@
     "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
     "version": "Wersja",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% nie pobrał(a) %number% pliku(-ów). Skopiuj błąd za pomocą przycisku poniżej i zgłoś go na naszym serwerze Discord.",
     "copy": "Copy",
     "copied": "Copied!"
   },
@@ -309,7 +309,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Pokazuje ilość monet w Twoim portfelu",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Pokazuje liczbę posiadanych cząstek",
     "titleStats": "Statystyki",
     "descriptionStats": "Pokazuje Twoje punkty zdrowia, obrony i many",
     "titleZealots": "Zealots",
@@ -351,10 +351,10 @@
         "notFound": "Nie znaleziono API serwera!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Kopiuje Dane o bloku, na który patrzysz"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "§e(Dev) §7Skopiuj dane NBT dla podmiotów o podanej nazwie(-ach) w danym promieniu wokół gracza",
         "detailedHelp": {
           "description": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają: graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
           "options": {
@@ -461,7 +461,7 @@
       "toggleMagmaTimerLogging": {
         "help": "Toggle logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "enabled": "Wiadomości Licznika czasu Magma Boss będą rejestrowane."
       },
       "version": {
         "help": "Pokazuje wersję modyfikacji",
