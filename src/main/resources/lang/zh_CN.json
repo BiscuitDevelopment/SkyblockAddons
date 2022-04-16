@@ -218,7 +218,8 @@
     "devMode": "开发者模式",
     "showSkyblockItemId": "显示物品的空岛生存物品 ID",
     "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
-    "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器"
+    "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "附魔",
