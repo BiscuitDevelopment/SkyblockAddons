@@ -218,7 +218,8 @@
     "devMode": "Modo de programador",
     "showSkyblockItemId": "Mostrar o ID do Skyblock do item ao passar o rato",
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "encantamentos",
