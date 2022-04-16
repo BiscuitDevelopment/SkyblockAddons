@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다."
+    "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "인챈트",
