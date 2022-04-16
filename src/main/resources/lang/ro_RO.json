@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Enchants",
