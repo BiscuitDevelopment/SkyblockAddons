@@ -218,7 +218,8 @@
     "devMode": "Entwicklermodus",
     "showSkyblockItemId": "Skyblock Gegenstand-ID bei Hover anzeigen",
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
-    "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen"
+    "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Verzauberungen",
