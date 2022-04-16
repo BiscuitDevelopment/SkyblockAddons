@@ -218,7 +218,8 @@
     "devMode": "Mode Développeur",
     "showSkyblockItemId": "Afficher l'ID des items Skyblock au survol",
     "showFeatureNamesOnHover": "Afficher le nom des fonctionnalités au survol",
-    "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Enchantements",
