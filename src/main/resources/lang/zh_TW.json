@@ -218,7 +218,8 @@
     "devMode": "開發者模式",
     "showSkyblockItemId": "鼠標止於物品上方時顯示 Skyblock 物品ID",
     "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
-    "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器"
+    "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "附魔",
