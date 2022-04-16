@@ -487,4 +487,14 @@ public class DungeonMapManager {
     public static float toRenderCoordinate(float mapCoordinate) {
         return mapCoordinate / 2.0F + 64.0F;
     }
+
+    public static void increaseZoomByStep() {
+        float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+        main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
+    }
+
+    public static void decreaseZoomByStep() {
+        float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
+        main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
+    }
 }

@@ -6,6 +6,8 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
+import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import lombok.Getter;
@@ -122,6 +124,16 @@ public class GuiScreenListener {
                 if (currentSlot != null && currentSlot.getHasStack()) {
                     DevUtils.copyNBTTagToClipboard(currentSlot.getStack().serializeNBT(), ColorCode.GREEN + "Item data was copied to clipboard!");
                 }
+            }
+        }
+
+        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) &&
+                main.getConfigValues().isEnabled(Feature.CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD) &&
+                Minecraft.getMinecraft().currentScreen instanceof LocationEditGui) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.decreaseZoomByStep();
+            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.increaseZoomByStep();
             }
         }
     }

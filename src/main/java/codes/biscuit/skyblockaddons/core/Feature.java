@@ -101,7 +101,7 @@ public enum Feature {
     HIDE_SVEN_PUP_NAMETAGS(97, Message.SETTING_HIDE_SVEN_PUP_NAMETAGS, true),
     REPEAT_SLAYER_BOSS_WARNING(98, null, true),
     // Release v1.5
-    DUNGEONS_MAP_DISPLAY(99, Message.SETTING_DUNGEON_MAP_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.DUNGEONS_MAP, ColorCode.BLACK), false, EnumUtils.FeatureSetting.ROTATE_MAP, EnumUtils.FeatureSetting.CENTER_ROTATION_ON_PLAYER, EnumUtils.FeatureSetting.SHOW_PLAYER_HEADS_ON_MAP, EnumUtils.FeatureSetting.MAP_ZOOM),
+    DUNGEONS_MAP_DISPLAY(99, Message.SETTING_DUNGEON_MAP_DISPLAY, new GuiFeatureData(EnumUtils.DrawType.DUNGEONS_MAP, ColorCode.BLACK), false, EnumUtils.FeatureSetting.ROTATE_MAP, EnumUtils.FeatureSetting.CENTER_ROTATION_ON_PLAYER, EnumUtils.FeatureSetting.SHOW_PLAYER_HEADS_ON_MAP, EnumUtils.FeatureSetting.MAP_ZOOM, EnumUtils.FeatureSetting.CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD),
     ROTATE_MAP(100, Message.SETTING_ROTATE_MAP, false),
     CENTER_ROTATION_ON_PLAYER(101, Message.SETTING_CENTER_ROTATION_ON_PLAYER, false),
     MAP_ZOOM(-1, Message.SETTING_MAP_ZOOM, false),
@@ -215,6 +215,7 @@ public enum Feature {
     DEVELOPER_MODE(212, "settings.devMode", null, true),
     SHOW_SKYBLOCK_ITEM_ID(213, "settings.showSkyblockItemId", null, true),
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
+    CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
