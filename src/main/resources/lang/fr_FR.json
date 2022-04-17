@@ -1,5 +1,5 @@
 {
-  "languageText": "Langue: ",
+  "languageText": "Langue : ",
   "language": "Français",
   "settings": {
     "settings": "Paramètres",
@@ -219,7 +219,7 @@
     "showSkyblockItemId": "Afficher l'ID des items Skyblock au survol",
     "showFeatureNamesOnHover": "Afficher le nom des fonctionnalités au survol",
     "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-"
   },
   "messages": {
     "enchants": "Enchantements",
