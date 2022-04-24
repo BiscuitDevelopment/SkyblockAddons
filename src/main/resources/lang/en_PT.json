@@ -218,8 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closin' Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys"
   },
   "messages": {
     "enchants": "Enchants",
@@ -298,7 +298,7 @@
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF",
     "version": "Version",
     "invalidFeatureConfiguration": "Invalid configuration detected fer fea'ure %featureName%, resettin' its settin's t' default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% failed t' fetch %number% file(s). Please copy th' error usin' th' button below an' report it in our Discord server.",
     "copy": "Copy",
     "copied": "Copied!"
   },
