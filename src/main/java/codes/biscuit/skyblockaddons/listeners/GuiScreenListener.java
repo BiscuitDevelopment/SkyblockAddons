@@ -5,9 +5,12 @@ import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.events.InventoryLoadingDoneEvent;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
+import codes.biscuit.skyblockaddons.misc.scheduler.ScheduledTask;
+import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import lombok.Getter;
@@ -19,6 +22,7 @@ import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.Slot;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
@@ -35,6 +39,10 @@ public class GuiScreenListener {
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
+    private InventoryChangeListener inventoryChangeListener;
+    private InventoryBasic listenedInventory;
+    private ScheduledTask inventoryChangeTimeCheckTask;
+
     /** Time in milliseconds of the last time a {@code GuiContainer} was closed */
     @Getter
     private long lastContainerCloseMs = -1;
@@ -42,6 +50,9 @@ public class GuiScreenListener {
     /** Time in milliseconds of the last time a backpack was opened, used by {@link Feature#BACKPACK_OPENING_SOUND}. */
     @Getter
     private long lastBackpackOpenMs = -1;
+
+    /** Time in milliseconds of the last time an item in the currently open {@code GuiContainer} changed */
+    private long lastInventoryChangeMs = -1;
 
     @SubscribeEvent
     public void beforeInit(GuiScreenEvent.InitGuiEvent.Pre e) {
@@ -56,6 +67,7 @@ public class GuiScreenListener {
             GuiChest guiChest = (GuiChest) guiScreen;
             InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType(guiChest);
             InventoryBasic chestInventory = (InventoryBasic) guiChest.lowerChestInventory;
+            addInventoryChangeListener(chestInventory);
 
             // Backpack opening sound
             if (main.getConfigValues().isEnabled(Feature.BACKPACK_OPENING_SOUND) && chestInventory.hasCustomName()) {
@@ -72,12 +84,7 @@ public class GuiScreenListener {
 
             if (main.getConfigValues().isEnabled(Feature.SHOW_BACKPACK_PREVIEW)) {
                 if (inventoryType == InventoryType.STORAGE_BACKPACK || inventoryType == InventoryType.ENDER_CHEST) {
-                    try {
-                        ContainerPreviewManager.saveStorageContainerInventory(chestInventory,
-                                SkyblockAddons.getInstance().getInventoryUtils().getInventoryKey());
-                    } catch (Exception exception) {
-                        main.getUtils().sendErrorMessage(exception.getMessage());
-                    }
+                    ContainerPreviewManager.onContainerOpen(chestInventory);
                 }
             }
         }
@@ -99,6 +106,10 @@ public class GuiScreenListener {
 
         // Closing or switching to a different GuiChest
         if (oldGuiScreen instanceof GuiChest) {
+            if (inventoryChangeListener != null) {
+                removeInventoryChangeListener(listenedInventory);
+            }
+
             ContainerPreviewManager.onContainerClose();
             GuiChestHook.onGuiClosed();
         }
@@ -136,6 +147,12 @@ public class GuiScreenListener {
                 DungeonMapManager.increaseZoomByStep();
             }
         }
+    }
+
+    @SubscribeEvent
+    public void onInventoryLoadingDone(InventoryLoadingDoneEvent e) {
+        removeInventoryChangeListener(listenedInventory);
+        lastInventoryChangeMs = -1;
     }
 
     @SubscribeEvent
@@ -182,6 +199,83 @@ public class GuiScreenListener {
 
                 //TODO: Cover shift-clicking into locked slots
             }
+        }
+    }
+
+    /**
+     * Called when a slot in the currently opened {@code GuiContainer} changes. Used to determine if all its items have been loaded.
+     */
+    void onInventoryChanged(InventoryBasic inventory) {
+        long currentTimeMs = System.currentTimeMillis();
+
+        if (inventory.getStackInSlot(inventory.getSizeInventory() - 1) != null) {
+            MinecraftForge.EVENT_BUS.post(new InventoryLoadingDoneEvent());
+        } else {
+            lastInventoryChangeMs = currentTimeMs;
+        }
+    }
+
+    /**
+     * Adds a change listener to a given inventory.
+     *
+     * @param inventory the inventory to add the change listener to
+     */
+    private void addInventoryChangeListener(InventoryBasic inventory) {
+        if (inventory == null) {
+            throw new NullPointerException("Tried to add listener to null inventory.");
+        }
+
+        lastInventoryChangeMs = System.currentTimeMillis();
+        inventoryChangeListener = new InventoryChangeListener(this);
+        inventory.addInventoryChangeListener(inventoryChangeListener);
+        listenedInventory = inventory;
+        inventoryChangeTimeCheckTask = main.getNewScheduler().scheduleRepeatingTask(new SkyblockRunnable() {
+            @Override
+            public void run() {
+                checkLastInventoryChangeTime();
+            }
+        }, 20, 5);
+    }
+
+    /**
+     * Checks whether it has been more than one second since the last inventory change, which indicates inventory
+     * loading is most likely finished. Could trigger incorrectly with a lag spike.
+     */
+    private void checkLastInventoryChangeTime() {
+        if (listenedInventory != null) {
+            if (lastInventoryChangeMs > -1 && System.currentTimeMillis() - lastInventoryChangeMs > 1000) {
+                MinecraftForge.EVENT_BUS.post(new InventoryLoadingDoneEvent());
+            }
+        }
+    }
+
+    /**
+     * Removes {@link #inventoryChangeListener} from a given {@link InventoryBasic}.
+     *
+     * @param inventory the {@code InventoryBasic} to remove the listener from
+     */
+    private void removeInventoryChangeListener(InventoryBasic inventory) {
+        if (inventory == null) {
+            throw new NullPointerException("Tried to remove listener from null inventory.");
+        }
+
+        if (inventoryChangeListener != null) {
+            try {
+                inventory.removeInventoryChangeListener(inventoryChangeListener);
+            } catch (NullPointerException e) {
+                SkyblockAddons.getInstance().getUtils().sendErrorMessage(
+                        "Tried to remove an inventory listener from a container that has no listeners.");
+            }
+
+            if (inventoryChangeTimeCheckTask != null) {
+                if (!inventoryChangeTimeCheckTask.isCanceled()) {
+                    inventoryChangeTimeCheckTask.cancel();
+                }
+            }
+
+            inventoryChangeListener = null;
+            listenedInventory = null;
+            inventoryChangeTimeCheckTask = null;
         }
     }
 }

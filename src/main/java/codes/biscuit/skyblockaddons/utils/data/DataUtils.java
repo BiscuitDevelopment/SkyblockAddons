@@ -239,8 +239,20 @@ public class DataUtils {
         Iterator<RemoteFileRequest<?>> requestIterator = remoteRequests.iterator();
 
         while (requestIterator.hasNext()) {
-            loadOnlineFile(requestIterator.next());
-            requestIterator.remove();
+            RemoteFileRequest<?> request = requestIterator.next();
+
+            if (!request.isDone()) {
+                handleOnlineFileLoadException(request,
+                        new RuntimeException(String.format("Request for \"%s\" didn't finish in time for mod init.",
+                                getFileNameFromUrlString(request.getUrl()))));
+            }
+
+            try {
+                loadOnlineFile(request);
+                requestIterator.remove();
+            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
+                handleOnlineFileLoadException(Objects.requireNonNull(request), e);
+            }
         }
     }
 
@@ -249,12 +261,8 @@ public class DataUtils {
      *
      * @param request the {@code RemoteFileRequest} for the file
      */
-    public static void loadOnlineFile(RemoteFileRequest<?> request) {
-        try {
-            request.load();
-        } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
-            handleOnlineFileLoadException(Objects.requireNonNull(request), e);
-        }
+    public static void loadOnlineFile(RemoteFileRequest<?> request) throws ExecutionException, InterruptedException {
+        request.load();
     }
 
     /**
@@ -306,8 +314,12 @@ public class DataUtils {
                 @Override
                 public void run() {
                     if (localizedStringsRequest != null) {
-                        if (localizedStringsRequest.getFutureTask().isDone()) {
-                            loadOnlineFile(localizedStringsRequest);
+                        if (localizedStringsRequest.isDone()) {
+                            try {
+                                loadOnlineFile(localizedStringsRequest);
+                            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
+                                handleOnlineFileLoadException(Objects.requireNonNull(localizedStringsRequest), e);
+                            }
                             cancel();
                         }
                     } else {
@@ -450,6 +462,4 @@ public class DataUtils {
             }
         }
     }
-
-
 }

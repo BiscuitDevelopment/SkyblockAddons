@@ -86,4 +86,8 @@ public class RemoteFileRequest<T> {
     protected T getResult() throws InterruptedException, ExecutionException, RuntimeException {
         return futureTask.get();
     }
+
+    protected boolean isDone() {
+        return futureTask.isDone();
+    }
 }
