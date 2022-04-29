@@ -3,7 +3,9 @@
   "package": "codes.biscuit.skyblockaddons.mixins",
   "refmap": "mixins.skyblockaddons.refmap.json",
   "mixins": [
-    "accessors.AccessorTileEntitySpecialRenderer"
+    "accessors.AccessorTileEntitySpecialRenderer",
+    "accessors.AccessorFontRenderer",
+    "accessors.AccessorGuiPlayerTabOverlay"
   ],
   "verbose": true
 }

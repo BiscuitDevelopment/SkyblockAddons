@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorFontRenderer;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
 import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
@@ -26,7 +27,7 @@ public class FontRendererHook {
     public static void changeTextColor() {
         if (shouldRenderChroma() && currentDrawState != null && currentDrawState.shouldManuallyRecolorFont()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
-            currentDrawState.bindAnimatedColor(fontRenderer.posX, fontRenderer.posY);
+            currentDrawState.bindAnimatedColor(((AccessorFontRenderer) fontRenderer).getPosX(), ((AccessorFontRenderer) fontRenderer).getPosY());
         }
     }
 
@@ -79,7 +80,7 @@ public class FontRendererHook {
      */
     public static void beginRenderString(boolean shadow) {
         if (shouldRenderChroma()) {
-            float alpha = Minecraft.getMinecraft().fontRendererObj.alpha;
+            float alpha = ((AccessorFontRenderer) Minecraft.getMinecraft().fontRendererObj).getAlpha();
             if (shadow) {
                 currentDrawState = DRAW_CHROMA_SHADOW;
                 CHROMA_COLOR_SHADOW.setColor((int) (255 * alpha) << 24 | 0x555555);

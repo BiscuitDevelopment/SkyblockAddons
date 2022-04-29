@@ -1,5 +1,6 @@
 package codes.biscuit.skyblockaddons.features.tablist;
 
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
@@ -44,15 +45,15 @@ public class TabListRenderer {
         // Filter header and footer to only show hypixel advertisements...
         GuiPlayerTabOverlay tabList = mc.ingameGUI.getTabList();
         List<String> header = null;
-        if (tabList.header != null) {
-            header = new ArrayList<>(Arrays.asList(tabList.header.getFormattedText().split("\n")));
+        if (((AccessorGuiPlayerTabOverlay) tabList).getHeader() != null) {
+            header = new ArrayList<>(Arrays.asList(((AccessorGuiPlayerTabOverlay) tabList).getHeader().getFormattedText().split("\n")));
             header.removeIf((line) -> !line.contains(TabListParser.HYPIXEL_ADVERTISEMENT_CONTAINS));
 
             totalHeight += header.size() * LINE_HEIGHT + PADDING;
         }
         List<String> footer = null;
-        if (tabList.footer != null) {
-            footer = new ArrayList<>(Arrays.asList(tabList.footer.getFormattedText().split("\n")));
+        if (((AccessorGuiPlayerTabOverlay) tabList).getFooter() != null) {
+            footer = new ArrayList<>(Arrays.asList(((AccessorGuiPlayerTabOverlay) tabList).getFooter().getFormattedText().split("\n")));
             footer.removeIf((line) -> !line.contains(TabListParser.HYPIXEL_ADVERTISEMENT_CONTAINS));
 
             totalHeight += footer.size() * LINE_HEIGHT + PADDING;

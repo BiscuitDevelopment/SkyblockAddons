@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay;
 import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -363,8 +364,8 @@ public class DevUtils {
      * @see net.minecraft.client.gui.GuiPlayerTabOverlay
      */
     public static void copyTabListHeaderAndFooter() {
-        IChatComponent tabHeader = mc.ingameGUI.getTabList().header;
-        IChatComponent tabFooter = mc.ingameGUI.getTabList().footer;
+        IChatComponent tabHeader = ((AccessorGuiPlayerTabOverlay) mc.ingameGUI.getTabList()).getHeader();
+        IChatComponent tabFooter = ((AccessorGuiPlayerTabOverlay) mc.ingameGUI.getTabList()).getFooter();
 
         if (tabHeader == null && tabFooter == null) {
             main.getUtils().sendErrorMessage("There is no header or footer!");

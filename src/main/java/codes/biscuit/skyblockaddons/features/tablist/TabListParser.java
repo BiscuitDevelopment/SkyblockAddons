@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkillType;
 import codes.biscuit.skyblockaddons.features.spookyevent.SpookyEventManager;
 import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
@@ -114,17 +115,17 @@ public class TabListParser {
     public static ParsedTabColumn parseFooterAsColumn() {
         GuiPlayerTabOverlay tabList = Minecraft.getMinecraft().ingameGUI.getTabList();
 
-        if (tabList.footer == null) {
+        if (((AccessorGuiPlayerTabOverlay) tabList).getFooter() == null) {
             return null;
         }
 
         ParsedTabColumn column = new ParsedTabColumn("§2§lOther");
 
-        String footer = tabList.footer.getFormattedText();
+        String footer = ((AccessorGuiPlayerTabOverlay) tabList).getFooter().getFormattedText();
         //System.out.println(footer);
 
         // Make active effects/booster cookie status compact...
-        Matcher m = GOD_POTION_PATTERN.matcher(tabList.footer.getUnformattedText());
+        Matcher m = GOD_POTION_PATTERN.matcher(((AccessorGuiPlayerTabOverlay) tabList).getFooter().getUnformattedText());
         if (m.find()) {
             footer = ACTIVE_EFFECTS_PATTERN.matcher(footer).replaceAll("Active Effects: §r§e" + TabEffectManager.getInstance().getEffectCount() + "\n§cGod Potion§r: " + m.group("timer"));
         } else {

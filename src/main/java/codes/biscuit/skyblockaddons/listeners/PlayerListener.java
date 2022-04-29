@@ -29,6 +29,7 @@ import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
@@ -672,7 +673,7 @@ public class PlayerListener {
 
     // TODO Feature Rewrite
     public void parseTabList() {
-        IChatComponent tabFooterChatComponent = Minecraft.getMinecraft().ingameGUI.getTabList().footer;
+        IChatComponent tabFooterChatComponent = ((AccessorGuiPlayerTabOverlay) Minecraft.getMinecraft().ingameGUI.getTabList()).getFooter();
 
         String tabFooterString = null;
         String strippedTabFooterString = null;
