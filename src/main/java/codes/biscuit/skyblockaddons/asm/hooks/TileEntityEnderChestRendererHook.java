@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorTileEntitySpecialRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.tileentity.TileEntityEnderChestRenderer;
@@ -19,9 +20,9 @@ public class TileEntityEnderChestRendererHook {
 
         if (main.getUtils().isOnSkyblock() && Minecraft.getMinecraft().currentScreen == null && main.getConfigValues().isEnabled(Feature.MAKE_ENDERCHESTS_GREEN_IN_END) &&
                 (main.getUtils().getLocation() == Location.THE_END || main.getUtils().getLocation() == Location.DRAGONS_NEST)) {
-            tileEntityEnderChestRenderer.bindTexture(BLANK_ENDERCHEST);
+            ((AccessorTileEntitySpecialRenderer) tileEntityEnderChestRenderer).bindTexture(BLANK_ENDERCHEST);
         } else {
-            tileEntityEnderChestRenderer.bindTexture( enderChestTexture);
+            ((AccessorTileEntitySpecialRenderer) tileEntityEnderChestRenderer).bindTexture( enderChestTexture);
         }
     }
 
