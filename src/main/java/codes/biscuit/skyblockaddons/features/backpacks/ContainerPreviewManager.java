@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -272,11 +273,11 @@ public class ContainerPreviewManager {
                         int itemY = itemStartY + ((i / cols) * textureItemSquare);
 
                         RenderItem renderItem = mc.getRenderItem();
-                        guiContainer.zLevel = 200;
+                        ((AccessorGui) guiContainer).setZLevel(200);
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        guiContainer.zLevel = 0;
+                        ((AccessorGui) guiContainer).setZLevel(0);
                         renderItem.zLevel = 0;
 
                         if (frozen && mouseX > itemX && mouseX < itemX + 16 && mouseY > itemY && mouseY < itemY + 16) {
@@ -311,11 +312,11 @@ public class ContainerPreviewManager {
                         int itemY = y + ((i / cols) * 16);
 
                         RenderItem renderItem = mc.getRenderItem();
-                        guiContainer.zLevel = 200;
+                        ((AccessorGui) guiContainer).setZLevel(200);
                         renderItem.zLevel = 200;
                         renderItem.renderItemAndEffectIntoGUI(item, itemX, itemY);
                         renderItem.renderItemOverlayIntoGUI(mc.fontRendererObj, item, itemX, itemY, null);
-                        guiContainer.zLevel = 0;
+                        ((AccessorGui) guiContainer).setZLevel(0);
                         renderItem.zLevel = 0;
 
                         if (frozen && mouseX > itemX && mouseX < itemX+16 && mouseY > itemY && mouseY < itemY+16) {

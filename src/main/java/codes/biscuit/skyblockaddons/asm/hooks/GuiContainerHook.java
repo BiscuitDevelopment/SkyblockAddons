@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.features.backpacks.ContainerPreviewManager;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
@@ -51,11 +52,11 @@ public class GuiContainerHook {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                guiContainer.drawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
+                ((AccessorGui) guiContainer).invokeDrawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
                 return;
             }
         }
-        guiContainer.drawGradientRect(left, top, right, bottom, startColor, endColor);
+        ((AccessorGui) guiContainer).invokeDrawGradientRect(left, top, right, bottom, startColor, endColor);
     }
 
     public static void drawSlot(GuiContainer guiContainer, Slot slot) {
@@ -77,11 +78,11 @@ public class GuiContainerHook {
                     int slotBottom = slotTop + 16;
                     if (main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                            ((AccessorGui) guiContainer).invokeDrawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
                         if (slot.getHasStack()) {
-                            guiContainer.drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                            ((AccessorGui) guiContainer).invokeDrawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
                 }

@@ -5,7 +5,9 @@
   "mixins": [
     "accessors.AccessorTileEntitySpecialRenderer",
     "accessors.AccessorFontRenderer",
-    "accessors.AccessorGuiPlayerTabOverlay"
+    "accessors.AccessorGuiPlayerTabOverlay",
+    "accessors.AccessorGui",
+    "accessors.AccessorSoundManager"
   ],
   "verbose": true
 }
