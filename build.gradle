@@ -6,6 +6,7 @@ plugins {
     id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
     id "io.freefair.lombok" version "6.0.0-m2"
     id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id "org.spongepowered.mixin" version "d5f9873d60"
 }
 
 group = 'codes.biscuit'
@@ -36,6 +37,10 @@ repositories {
         name 'JitPack'
         url 'https://jitpack.io'
     }
+    maven {
+        name 'SpongePowered'
+        url 'https://repo.spongepowered.org/repository/maven-public/'
+    }
 }
 
 dependencies {
@@ -48,6 +53,15 @@ dependencies {
         exclude module: 'gson'
         because 'Different version conflicts with Minecraft\'s GSON'
     }
+
+    implementation("org.spongepowered:mixin:0.7.11-SNAPSHOT") {
+        exclude module: 'guava'
+        exclude module: 'commons-io'
+        exclude module: 'gson'
+    }
+
+    annotationProcessor("org.spongepowered:mixin:0.7.11-SNAPSHOT")
+
     testImplementation(platform('org.junit:junit-bom:5.8.1'))
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
 }
@@ -152,6 +166,11 @@ shadowJar {
     exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
+
+    // include Mixins
+    dependencies {
+        include(dependency("org.spongepowered:mixin:0.7.11-SNAPSHOT"))
+    }
 
     // Relocate Discord RPC into the main codebase
     relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'

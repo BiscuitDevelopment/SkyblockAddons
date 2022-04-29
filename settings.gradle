@@ -15,6 +15,9 @@ pluginManagement {
             if (requested.id.id.startsWith('net.minecraftforge.gradle')) {
                 useModule group: 'com.github.asbyth', name: 'ForgeGradle', version: requested.version
             }
+            if (requested.id.id.startsWith('org.spongepowered.mixin')) {
+                useModule group: 'com.github.Skytils', name: 'mixingradle', version: requested.version
+            }
         }
     }
 }
