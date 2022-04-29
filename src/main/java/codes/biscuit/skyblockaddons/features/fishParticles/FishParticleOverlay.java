@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.fishParticles;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.OverlayEffectRenderer;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorEntityFX;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
 import org.lwjgl.opengl.GL11;
@@ -50,7 +51,7 @@ public class FishParticleOverlay extends OverlayEffectRenderer {
     @Override
     public void setupRenderEffect(EntityFX effect) {
         if (biggerWakeCache) {
-            effect.particleScale *= 2;
+            ((AccessorEntityFX) effect).setParticleScale(((AccessorEntityFX) effect).getParticleScale() * 2);
             effect.posY += .1;
             effect.prevPosY += .1;
         }
@@ -63,7 +64,7 @@ public class FishParticleOverlay extends OverlayEffectRenderer {
     @Override
     public void endRenderEffect(EntityFX effect) {
         if (biggerWakeCache) {
-            effect.particleScale /= 2;
+            ((AccessorEntityFX) effect).setParticleScale(((AccessorEntityFX) effect).getParticleScale() / 2);
             effect.posY -= .1;
             effect.prevPosY -= .1;
         }

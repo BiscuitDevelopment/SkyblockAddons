@@ -7,7 +7,10 @@
     "accessors.AccessorFontRenderer",
     "accessors.AccessorGuiPlayerTabOverlay",
     "accessors.AccessorGui",
-    "accessors.AccessorSoundManager"
+    "accessors.AccessorSoundManager",
+    "accessors.AccessorGuiScreen",
+    "accessors.AccessorMinecraft",
+    "accessors.AccessorEntityFX"
   ],
   "verbose": true
 }

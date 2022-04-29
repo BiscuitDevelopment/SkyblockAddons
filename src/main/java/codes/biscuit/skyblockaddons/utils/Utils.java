@@ -9,6 +9,7 @@ import codes.biscuit.skyblockaddons.events.SkyblockJoinedEvent;
 import codes.biscuit.skyblockaddons.events.SkyblockLeftEvent;
 import codes.biscuit.skyblockaddons.features.itemdrops.ItemDropChecker;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorMinecraft;
 import com.google.common.collect.Sets;
 import com.google.gson.JsonObject;
 import lombok.Getter;
@@ -808,7 +809,7 @@ public class Utils {
     }
 
     public static float getPartialTicks() {
-        return Minecraft.getMinecraft().timer.renderPartialTicks;
+        return ((AccessorMinecraft) Minecraft.getMinecraft()).getTimer().renderPartialTicks;
     }
 
     public static long getCurrentTick() {

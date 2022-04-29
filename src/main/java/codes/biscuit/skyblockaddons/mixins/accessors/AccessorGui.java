@@ -12,5 +12,5 @@ public interface AccessorGui {
     void setZLevel(float zLevel);
 
     @Invoker("drawGradientRect")
-    void invokeDrawGradientRect(int x, int y, int width, int height, int startColor, int endColor);
+    void drawGradientRect(int x, int y, int width, int height, int startColor, int endColor);
 }

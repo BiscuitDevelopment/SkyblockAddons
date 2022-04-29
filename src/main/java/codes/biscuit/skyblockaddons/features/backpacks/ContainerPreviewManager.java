@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.InventoryType;
 import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGui;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiScreen;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -330,7 +331,7 @@ public class ContainerPreviewManager {
                 GlStateManager.pushMatrix();
                 GlStateManager.translate(0,0, 302);
                 drawingFrozenItemTooltip = true;
-                guiContainer.drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
+                ((AccessorGuiScreen) guiContainer).drawHoveringText(tooltipItem.getTooltip(mc.thePlayer, mc.gameSettings.advancedItemTooltips), mouseX, mouseY);
                 drawingFrozenItemTooltip = false;
                 GlStateManager.popMatrix();
             }

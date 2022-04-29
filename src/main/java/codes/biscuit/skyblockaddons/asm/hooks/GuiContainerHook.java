@@ -52,11 +52,11 @@ public class GuiContainerHook {
             if (main.getConfigValues().isEnabled(Feature.LOCK_SLOTS) &&
                     main.getUtils().isOnSkyblock() && main.getConfigValues().getLockedSlots().contains(slotNum)
                     && (slotNum >= 9 || container instanceof ContainerPlayer && slotNum >= 5)) {
-                ((AccessorGui) guiContainer).invokeDrawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
+                ((AccessorGui) guiContainer).drawGradientRect(left, top, right, bottom, OVERLAY_RED, OVERLAY_RED);
                 return;
             }
         }
-        ((AccessorGui) guiContainer).invokeDrawGradientRect(left, top, right, bottom, startColor, endColor);
+        ((AccessorGui) guiContainer).drawGradientRect(left, top, right, bottom, startColor, endColor);
     }
 
     public static void drawSlot(GuiContainer guiContainer, Slot slot) {
@@ -78,11 +78,11 @@ public class GuiContainerHook {
                     int slotBottom = slotTop + 16;
                     if (main.getPersistentValuesManager().getPersistentValues().getSelectedCraftingPattern().isSlotInPattern(craftingGridIndex)) {
                         if (!slot.getHasStack()) {
-                            ((AccessorGui) guiContainer).invokeDrawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
+                            ((AccessorGui) guiContainer).drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_GREEN, OVERLAY_GREEN);
                         }
                     } else {
                         if (slot.getHasStack()) {
-                            ((AccessorGui) guiContainer).invokeDrawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
+                            ((AccessorGui) guiContainer).drawGradientRect(slotLeft, slotTop, slotRight, slotBottom, OVERLAY_RED, OVERLAY_RED);
                         }
                     }
                 }
