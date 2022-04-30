@@ -477,7 +477,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Sao chép giá trị NBT"
+    "developerCopyNBT": "Sao chép giá trị NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",
