@@ -254,7 +254,7 @@ public class SkyblockAddons {
     }
 
     public SkyblockKeyBinding getDeveloperCopyNBTKey() {
-        return keyBindings.get(4);
+        return keyBindings.get(6);
     }
 
     /**

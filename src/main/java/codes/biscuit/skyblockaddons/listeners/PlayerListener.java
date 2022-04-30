@@ -1087,29 +1087,13 @@ public class PlayerListener {
                     e.toolTip.add(insertAt, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
-                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
-                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
-
-                if (itemId != null) {
-                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
-                        // Before the NBT line
-                        insertAt = e.toolTip.size() - 1;
-                    } else {
-                        insertAt = e.toolTip.size();
-                    }
-
-                    e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
-                }
-            }
         }
     }
 
     /**
      * Modifies item enchantments on tooltips as well as roman numerals
      */
-    @SubscribeEvent(priority = EventPriority.LOW)
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onItemTooltipLast(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
@@ -1124,6 +1108,26 @@ public class PlayerListener {
 
                 for (int i = startIndex; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
+                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
+                String tooltipLine = EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId;
+
+                if (itemId != null) {
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        for (int i = e.toolTip.size(); i-- > 0; ) {
+                            if (e.toolTip.get(i).startsWith(EnumChatFormatting.DARK_GRAY + "minecraft:")) {
+                                e.toolTip.add(i + 1, tooltipLine);
+                                break;
+                            }
+                        }
+
+                    } else {
+                        e.toolTip.add(tooltipLine);
+                    }
                 }
             }
         }
