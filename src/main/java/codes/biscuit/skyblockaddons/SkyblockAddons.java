@@ -180,7 +180,9 @@ public class SkyblockAddons {
          in the first place since creating a KeyBinding object already adds it to the main key bind list. I need to manually
          de-register it so its default key doesn't conflict with other key bindings with the same key.
          */
-        getDeveloperCopyNBTKey().deRegister();
+        if (!this.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+            getDeveloperCopyNBTKey().deRegister();
+        }
 
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");

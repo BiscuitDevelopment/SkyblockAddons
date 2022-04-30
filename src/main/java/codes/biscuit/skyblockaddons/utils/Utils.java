@@ -674,6 +674,12 @@ public class Utils {
         return MathHelper.clamp_float((snapNearDefaultValue(value) - min) / (max - min), 0.0F, 1.0F);
     }
 
+    /**
+     * Rounds the given value to 1f if it is between 0.95f and 1.05f exclusive.
+     *
+     * @param value the value to round
+     * @return 1f if 0.95f > {@code value} > 1.05f or {@code value} otherwise
+     */
     public float snapNearDefaultValue(float value) {
         if (value != 1 && value > 1 - 0.05 && value < 1 + 0.05) {
             return 1;
