@@ -32,7 +32,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new EntityPlayerSPTransformer());
         registerTransformer(new EntityRendererTransformer());
         registerTransformer(new SoundManagerTransformer());
-        registerTransformer(new RenderManagerTransformer());
         registerTransformer(new PlayerControllerMPTransformer());
         registerTransformer(new MinecraftTransformer());
         registerTransformer(new ItemTransformer());

@@ -24,6 +24,7 @@
     "MixinModelEnderman",
     "MixinMouseHelper",
     "MixinRenderEnderman",
+    "MixinRenderManager",
     "MixinWorldClient"
   ],
   "verbose": true
