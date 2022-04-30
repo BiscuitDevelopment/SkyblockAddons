@@ -3,6 +3,7 @@ package codes.biscuit.skyblockaddons.features.EntityOutlines;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.events.RenderEntityOutlineEvent;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorRenderGlobal;
 import codes.biscuit.skyblockaddons.utils.DrawUtils;
 import lombok.Getter;
 import lombok.Setter;
@@ -72,10 +73,10 @@ public class EntityOutlineRenderer {
             swapBuffer.createBindFramebuffer(width, height);
         }
         RenderGlobal rg = Minecraft.getMinecraft().renderGlobal;
-        Framebuffer outlineBuffer = rg.entityOutlineFramebuffer;
+        Framebuffer outlineBuffer = ((AccessorRenderGlobal) rg).getEntityOutlineFramebuffer();
         if (outlineBuffer.framebufferWidth != width || outlineBuffer.framebufferHeight != height) {
             outlineBuffer.createBindFramebuffer(width, height);
-            rg.entityOutlineShader.createBindFramebuffers(width, height);
+            ((AccessorRenderGlobal) rg).getEntityOutlineShader().createBindFramebuffers(width, height);
         }
     }
 
@@ -100,8 +101,8 @@ public class EntityOutlineRenderer {
             mc.theWorld.theProfiler.endStartSection("entityOutlines");
             updateFramebufferSize();
             // Clear and bind the outline framebuffer
-            renderGlobal.entityOutlineFramebuffer.framebufferClear();
-            renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+            ((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer().framebufferClear();
+            ((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer().bindFramebuffer(false);
 
             // Vanilla options
             RenderHelper.disableStandardItemLighting();
@@ -152,12 +153,12 @@ public class EntityOutlineRenderer {
                     }
 
                     // Copy the entire depth buffer of everything that might occlude outline to outline framebuffer
-                    copyBuffers(swapBuffer, renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
-                    renderGlobal.entityOutlineFramebuffer.bindFramebuffer(false);
+                    copyBuffers(swapBuffer, ((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer(), GL11.GL_DEPTH_BUFFER_BIT);
+                    ((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer().bindFramebuffer(false);
                 }
                 // If there are no entities that can occlude the outlines, just copy the terrain depth buffer over
                 else {
-                    copyBuffers(mc.getFramebuffer(), renderGlobal.entityOutlineFramebuffer, GL11.GL_DEPTH_BUFFER_BIT);
+                    copyBuffers(mc.getFramebuffer(), ((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer(), GL11.GL_DEPTH_BUFFER_BIT);
                 }
 
                 // Xray disabled by re-enabling traditional depth testing
@@ -185,7 +186,7 @@ public class EntityOutlineRenderer {
 
             // Load the outline shader
             GlStateManager.depthMask(false);
-            renderGlobal.entityOutlineShader.loadShaderGroup(partialTicks);
+            ((AccessorRenderGlobal) renderGlobal).getEntityOutlineShader().loadShaderGroup(partialTicks);
             GlStateManager.depthMask(true);
 
             // Reset GL/framebuffers for next render layers
@@ -223,7 +224,9 @@ public class EntityOutlineRenderer {
         SkyblockAddons main = SkyblockAddons.getInstance();
 
         // Vanilla Conditions
-        if (renderGlobal.entityOutlineFramebuffer == null || renderGlobal.entityOutlineShader == null || mc.thePlayer == null)
+        if (((AccessorRenderGlobal) renderGlobal).getEntityOutlineFramebuffer() == null ||
+                ((AccessorRenderGlobal) renderGlobal).getEntityOutlineShader() == null ||
+                mc.thePlayer == null)
             return false;
 
         // Skyblock Conditions
@@ -367,7 +370,7 @@ public class EntityOutlineRenderer {
 
                 if (isCacheEmpty()) {
                     if (!emptyLastTick) {
-                        mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                        ((AccessorRenderGlobal) mc.renderGlobal).getEntityOutlineFramebuffer().framebufferClear();
                     }
                     emptyLastTick = true;
                 } else {
@@ -377,7 +380,8 @@ public class EntityOutlineRenderer {
                 entityRenderCache.setXrayCache(null);
                 entityRenderCache.setNoXrayCache(null);
                 entityRenderCache.setNoOutlineCache(null);
-                if (mc.renderGlobal.entityOutlineFramebuffer != null) mc.renderGlobal.entityOutlineFramebuffer.framebufferClear();
+                if (((AccessorRenderGlobal) mc.renderGlobal).getEntityOutlineFramebuffer() != null)
+                    ((AccessorRenderGlobal) mc.renderGlobal).getEntityOutlineFramebuffer().framebufferClear();
                 emptyLastTick = true;
             }
         }

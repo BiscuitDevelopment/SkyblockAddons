@@ -3,20 +3,21 @@
   "package": "codes.biscuit.skyblockaddons.mixins",
   "refmap": "mixins.skyblockaddons.refmap.json",
   "mixins": [
-    "accessors.AccessorTileEntitySpecialRenderer",
-    "accessors.AccessorFontRenderer",
-    "accessors.AccessorGuiPlayerTabOverlay",
-    "accessors.AccessorGui",
-    "accessors.AccessorSoundManager",
-    "accessors.AccessorGuiScreen",
-    "accessors.AccessorMinecraft",
-    "accessors.AccessorEntityFX",
-    "accessors.AccessorRenderGlobal",
     "accessors.AccessorEffectRenderer",
-    "accessors.AccessorPlayerControllerMP",
     "accessors.AccessorEntityArrow",
+    "accessors.AccessorEntityFX",
+    "accessors.AccessorFontRenderer",
+    "accessors.AccessorGui",
     "accessors.AccessorGuiChest",
-    "accessors.AccessorKeyBinding"
+    "accessors.AccessorGuiPlayerTabOverlay",
+    "accessors.AccessorGuiScreen",
+    "accessors.AccessorKeyBinding",
+    "accessors.AccessorMinecraft",
+    "accessors.AccessorPlayerControllerMP",
+    "accessors.AccessorRenderGlobal",
+    "accessors.AccessorRenderItem",
+    "accessors.AccessorSoundManager",
+    "accessors.AccessorTileEntitySpecialRenderer"
   ],
   "verbose": true
 }

@@ -10,6 +10,7 @@ import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
@@ -56,7 +57,7 @@ public class TabListParser {
         }
 
         NetHandlerPlayClient netHandler = mc.thePlayer.sendQueue;
-        List<NetworkPlayerInfo> fullList = GuiPlayerTabOverlay.field_175252_a.sortedCopy(netHandler.getPlayerInfoMap());
+        List<NetworkPlayerInfo> fullList = ((AccessorGuiPlayerTabOverlay) mc.ingameGUI.getTabList()).getObfField().sortedCopy(netHandler.getPlayerInfoMap());
         if (fullList.size() < 80) {
             renderColumns = null;
             return;

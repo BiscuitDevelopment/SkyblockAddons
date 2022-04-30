@@ -2,6 +2,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorRenderItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.texture.TextureManager;
@@ -31,7 +32,7 @@ public class RenderItemHook {
 
             GlStateManager.pushMatrix();
 
-            Minecraft.getMinecraft().getRenderItem().renderModel(model, 0x201cba41);
+            ((AccessorRenderItem) Minecraft.getMinecraft().getRenderItem()).renderModel(model, 0x201cba41);
             GlStateManager.popMatrix();
 
             GlStateManager.matrixMode(5888);
