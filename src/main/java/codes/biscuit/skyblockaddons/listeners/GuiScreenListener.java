@@ -141,9 +141,9 @@ public class GuiScreenListener {
         if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) &&
                 main.getConfigValues().isEnabled(Feature.CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD) &&
                 Minecraft.getMinecraft().currentScreen instanceof LocationEditGui) {
-            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
+            if (Keyboard.isKeyDown(main.getKeyBindings().get(5).getKeyCode()) && Keyboard.getEventKeyState()) {
                 DungeonMapManager.decreaseZoomByStep();
-            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
+            } else if (Keyboard.isKeyDown(main.getKeyBindings().get(4).getKeyCode()) && Keyboard.getEventKeyState()) {
                 DungeonMapManager.increaseZoomByStep();
             }
         }
