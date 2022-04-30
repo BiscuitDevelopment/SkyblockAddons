@@ -29,6 +29,7 @@ import codes.biscuit.skyblockaddons.features.tabtimers.TabEffectManager;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorEntityArrow;
 import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiPlayerTabOverlay;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.objects.IntPair;
@@ -940,7 +941,7 @@ public class PlayerListener {
                     main.getNewScheduler().scheduleRepeatingTask(new SkyblockRunnable() {
                         @Override
                         public void run() {
-                            if (arrow.isDead || arrow.isCollided || arrow.inGround) {
+                            if (arrow.isDead || arrow.isCollided || ((AccessorEntityArrow) arrow).getInGround()) {
                                 cancel();
 
 //                                System.out.println("Arrow is done, added an explosion!");

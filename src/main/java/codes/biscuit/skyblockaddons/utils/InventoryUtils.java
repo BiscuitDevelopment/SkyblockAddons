@@ -8,6 +8,7 @@ import codes.biscuit.skyblockaddons.features.SlayerArmorProgress;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerTracker;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiChest;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import lombok.Getter;
@@ -425,7 +426,7 @@ public class InventoryUtils {
      */
     public InventoryType updateInventoryType(GuiChest guiChest) {
         // Get the open chest and test if it's the same one that we've seen before
-        IInventory inventory = guiChest.lowerChestInventory;
+        IInventory inventory = ((AccessorGuiChest) guiChest).getLowerChestInventory();
         if (inventory.getDisplayName() == null) {
             return inventoryType = null;
         }

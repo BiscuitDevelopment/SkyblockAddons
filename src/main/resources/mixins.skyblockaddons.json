@@ -13,7 +13,10 @@
     "accessors.AccessorEntityFX",
     "accessors.AccessorRenderGlobal",
     "accessors.AccessorEffectRenderer",
-    "accessors.AccessorPlayerControllerMP"
+    "accessors.AccessorPlayerControllerMP",
+    "accessors.AccessorEntityArrow",
+    "accessors.AccessorGuiChest",
+    "accessors.AccessorKeyBinding"
   ],
   "verbose": true
 }

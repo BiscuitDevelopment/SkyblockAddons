@@ -22,6 +22,7 @@ import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorKeyBinding;
 import codes.biscuit.skyblockaddons.newgui.GuiManager;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.InventoryUtils;
@@ -267,7 +268,7 @@ public class SkyblockAddons {
      */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
-            skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
+            ((AccessorKeyBinding) skyblockKeyBinding.getKeyBinding()).setKeyDescription(skyblockKeyBinding.getMessage().getMessage());
         }
     }
 

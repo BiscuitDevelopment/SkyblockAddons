@@ -11,6 +11,7 @@ import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.LocationEditGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.ScheduledTask;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorGuiChest;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.DevUtils;
 import lombok.Getter;
@@ -66,7 +67,7 @@ public class GuiScreenListener {
             Minecraft mc = Minecraft.getMinecraft();
             GuiChest guiChest = (GuiChest) guiScreen;
             InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().updateInventoryType(guiChest);
-            InventoryBasic chestInventory = (InventoryBasic) guiChest.lowerChestInventory;
+            InventoryBasic chestInventory = (InventoryBasic) ((AccessorGuiChest) guiChest).getLowerChestInventory();
             addInventoryChangeListener(chestInventory);
 
             // Backpack opening sound
