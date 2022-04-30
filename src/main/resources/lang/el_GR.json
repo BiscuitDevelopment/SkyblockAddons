@@ -477,7 +477,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Αντιγραφή NBT"
+    "developerCopyNBT": "Αντιγραφή NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Προστάτης",
