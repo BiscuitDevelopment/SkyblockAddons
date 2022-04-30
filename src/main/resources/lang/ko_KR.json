@@ -477,7 +477,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "NBT 복사"
+    "developerCopyNBT": "NBT 복사",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",
