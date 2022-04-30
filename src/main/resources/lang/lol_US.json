@@ -477,7 +477,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copy NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",
