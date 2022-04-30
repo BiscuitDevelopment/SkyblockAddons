@@ -17,7 +17,9 @@
     "accessors.AccessorRenderGlobal",
     "accessors.AccessorRenderItem",
     "accessors.AccessorSoundManager",
-    "accessors.AccessorTileEntitySpecialRenderer"
+    "accessors.AccessorTileEntitySpecialRenderer",
+    "MixinGuiDisconnected",
+    "MixinModelEnderman"
   ],
   "verbose": true
 }
