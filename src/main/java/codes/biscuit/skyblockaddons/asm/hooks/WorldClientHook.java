@@ -4,6 +4,7 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorRenderGlobal;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -53,7 +54,7 @@ public class WorldClientHook {
                 // But the alternative is to overcount your blocks if someone else breaks the block before you...not much better
                 // Also could mathematically determine a probability based on pos, yaw, pitch of other entities...worth it? ehh...
                 boolean noOneElseMining = true;
-                for (Map.Entry<Integer, DestroyBlockProgress> block : mc.renderGlobal.damagedBlocks.entrySet()) {
+                for (Map.Entry<Integer, DestroyBlockProgress> block : ((AccessorRenderGlobal) mc.renderGlobal).getDamagedBlocks().entrySet()) {
                     if (block.getKey() != playerID && block.getValue().getPosition().equals(pos)) {
                         noOneElseMining = false;
                     }

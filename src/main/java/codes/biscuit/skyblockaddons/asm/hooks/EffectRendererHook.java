@@ -6,6 +6,7 @@ import codes.biscuit.skyblockaddons.core.OverlayEffectRenderer;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleManager;
 import codes.biscuit.skyblockaddons.features.healingcircle.HealingCircleParticle;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorEffectRenderer;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EntityAuraFX;
@@ -63,7 +64,7 @@ public class EffectRendererHook {
             rotationXY = ActiveRenderInfo.getRotationXY();
             rotationXZ = ActiveRenderInfo.getRotationXZ();
             partialTicks = thePartialTicks;
-            renderer = Minecraft.getMinecraft().effectRenderer.renderer;
+            renderer = ((AccessorEffectRenderer) Minecraft.getMinecraft().effectRenderer).getRenderer();
             worldRenderer = Tessellator.getInstance().getWorldRenderer();
             renderViewEntity = Minecraft.getMinecraft().getRenderViewEntity();
         }

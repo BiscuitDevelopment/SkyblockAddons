@@ -2,8 +2,10 @@ package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.hooks.EffectRendererHook;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorEffectRenderer;
 import codes.biscuit.skyblockaddons.utils.SkyblockColor;
 import codes.biscuit.skyblockaddons.utils.draw.DrawState3D;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.EffectRenderer;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.GlStateManager;
@@ -130,7 +132,7 @@ public class OverlayEffectRenderer {
         Entity entity = info.getRenderViewEntity();
         WorldRenderer worldRenderer = info.getWorldRenderer();
 
-        ResourceLocation particleTextures = EffectRenderer.particleTextures;
+        ResourceLocation particleTextures = ((AccessorEffectRenderer) Minecraft.getMinecraft().effectRenderer).getParticleTextures();
 
         setupRenderEnvironment();
 

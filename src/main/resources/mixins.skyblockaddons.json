@@ -10,7 +10,10 @@
     "accessors.AccessorSoundManager",
     "accessors.AccessorGuiScreen",
     "accessors.AccessorMinecraft",
-    "accessors.AccessorEntityFX"
+    "accessors.AccessorEntityFX",
+    "accessors.AccessorRenderGlobal",
+    "accessors.AccessorEffectRenderer",
+    "accessors.AccessorPlayerControllerMP"
   ],
   "verbose": true
 }

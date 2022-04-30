@@ -5,6 +5,7 @@ import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.mixins.accessors.AccessorPlayerControllerMP;
 import lombok.Getter;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -133,7 +134,7 @@ public class MinecraftHook {
         // This mirrors PlayerControllerMP.clickBlock(), which sends an ABORT_DESTROY message, before calling onPlayerDestroyBlock, which changes "currentBlock"
         if (returnValue.isCancelled()) {
             Minecraft.getMinecraft().playerController.resetBlockRemoving();
-            Minecraft.getMinecraft().playerController.currentBlock = new BlockPos(-1, -1, -1);
+            ((AccessorPlayerControllerMP) Minecraft.getMinecraft().playerController).setCurrentBlock(new BlockPos(-1, -1, -1));
         }
     }
 
