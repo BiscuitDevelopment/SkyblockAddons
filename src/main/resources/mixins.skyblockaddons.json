@@ -20,9 +20,11 @@
     "accessors.AccessorTileEntitySpecialRenderer",
     "MixinGuiDisconnected",
     "MixinIngameMenu",
+    "MixinInventoryPlayer",
     "MixinModelEnderman",
     "MixinMouseHelper",
-    "MixinRenderEnderman"
+    "MixinRenderEnderman",
+    "MixinWorldClient"
   ],
   "verbose": true
 }
