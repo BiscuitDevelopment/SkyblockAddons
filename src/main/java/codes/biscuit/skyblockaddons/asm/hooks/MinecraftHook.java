@@ -7,7 +7,6 @@ import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.mixins.accessors.AccessorPlayerControllerMP;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
@@ -24,7 +23,7 @@ import java.util.*;
 
 public class MinecraftHook {
 
-    @Setter @Getter private static long lastLockedSlotItemChange = -1;
+    @Getter private static long lastLockedSlotItemChange = -1;
 
     private static final Set<Location> DEEP_CAVERNS_LOCATIONS = EnumSet.of(Location.DEEP_CAVERNS, Location.GUNPOWDER_MINES,
             Location.LAPIS_QUARRY, Location.PIGMAN_DEN, Location.SLIMEHILL, Location.DIAMOND_RESERVE, Location.OBSIDIAN_SANCTUARY);
