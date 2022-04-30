@@ -1,6 +1,7 @@
-package codes.biscuit.skyblockaddons.asm.hooks;
+package codes.biscuit.skyblockaddons.mixins;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.asm.hooks.MinecraftHook;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.npc.NPCUtils;
 import codes.biscuit.skyblockaddons.events.SkyblockBlockBreakEvent;
@@ -8,22 +9,31 @@ import codes.biscuit.skyblockaddons.mixins.accessors.AccessorRenderGlobal;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.WorldClient;
 import net.minecraft.client.renderer.DestroyBlockProgress;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
 import net.minecraftforge.common.MinecraftForge;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Iterator;
 import java.util.Map;
 
-public class WorldClientHook {
+@Mixin(WorldClient.class)
+public class MixinWorldClient {
 
-    public static void onEntityRemoved(Entity entityIn) {
+    @Inject(method = "onEntityRemoved", at = @At("HEAD"))
+    private void onEntityRemoved(Entity entityIn, CallbackInfo ci) {
         NPCUtils.getNpcLocations().remove(entityIn.getUniqueID());
     }
 
-    public static void blockUpdated(BlockPos pos, IBlockState state) {
+    @Inject(method = "invalidateRegionAndSetBlock", at = @At("HEAD"))
+    private void invalidateRegionAndSetBlock(BlockPos pos, IBlockState state, CallbackInfoReturnable<Boolean> cir) {
         Minecraft mc = Minecraft.getMinecraft();
         if (mc.thePlayer != null) {
             int BEDROCK_STATE = Block.getStateId(Blocks.bedrock.getDefaultState());
