@@ -29,7 +29,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
 
     public SkyblockAddonsTransformer() {
         registerTransformer(new TileEntityEnderChestRendererTransformer());
-        registerTransformer(new MouseHelperTransformer());
         registerTransformer(new EntityPlayerSPTransformer());
         registerTransformer(new EntityRendererTransformer());
         registerTransformer(new SoundManagerTransformer());
@@ -43,9 +42,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new GuiChestTransformer());
         registerTransformer(new GuiNewChatTransformer());
         registerTransformer(new RendererLivingEntityTransformer());
-        registerTransformer(new GuiDisconnectedTransformer());
-
-        registerTransformer(new GuiIngameMenuTransformer());
 
         registerTransformer(new FontRendererTransformer());
         registerTransformer(new RenderItemTransformer());
@@ -53,7 +49,6 @@ public class SkyblockAddonsTransformer implements IClassTransformer {
         registerTransformer(new InventoryPlayerTransformer());
         registerTransformer(new GuiIngameCustomTransformer());
         registerTransformer(new RenderEndermanTransformer());
-        registerTransformer(new ModelEndermanTransformer());
         registerTransformer(new RenderGlobalTransformer());
         registerTransformer(new EffectRendererTransformer());
         registerTransformer(new WorldClientTransformer());

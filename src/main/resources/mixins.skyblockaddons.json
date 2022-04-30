@@ -19,7 +19,9 @@
     "accessors.AccessorSoundManager",
     "accessors.AccessorTileEntitySpecialRenderer",
     "MixinGuiDisconnected",
-    "MixinModelEnderman"
+    "MixinIngameMenu",
+    "MixinModelEnderman",
+    "MixinMouseHelper"
   ],
   "verbose": true
 }
