@@ -21,7 +21,8 @@
     "MixinGuiDisconnected",
     "MixinIngameMenu",
     "MixinModelEnderman",
-    "MixinMouseHelper"
+    "MixinMouseHelper",
+    "MixinRenderEnderman"
   ],
   "verbose": true
 }
