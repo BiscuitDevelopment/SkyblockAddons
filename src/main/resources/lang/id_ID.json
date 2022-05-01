@@ -219,7 +219,7 @@
     "showSkyblockItemId": "Tunjukkan item ID Skyblock saat mengarahkan kursor ke benda",
     "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Counter Salvaged Essence Setelah Menutup Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-"
   },
   "messages": {
     "enchants": "Enchants",
@@ -478,8 +478,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Salin NBT",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Perbesar Map Dungeon",
+    "decreaseDungeonMapZoom": "Perkecil Map Dungeon"
   },
   "dragonTracker": {
     "protector": "Protector",
