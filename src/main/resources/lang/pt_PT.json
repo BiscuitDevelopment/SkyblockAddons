@@ -10,13 +10,13 @@
     "hideSkeletonHatBones": "Esconder os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
     "hideFoodAndArmor": "Esconder a barra de comida e armadura",
-    "fullInventoryWarning": "Aviso de inventário cheio",
-    "repeating": "Repetir o aviso",
+    "fullInventoryWarning": "Alerta de inventário cheio",
+    "repeating": "Repetir o alerta",
     "disableEmberRodAbility": "Desativar a Ember Rod na ilha",
     "editLocations": "Editar localizações",
     "guiScale": "Escala da interface: %scale%",
     "resetLocations": "Repor as localizações",
-    "minionStopWarning": "Aviso \"Minion Cannot Reach\"",
+    "minionStopWarning": "Alerta \"Minion Cannot Reach\"",
     "hidePlayersNearNPCs": "Esconder jogadores perto de NPCs importantes",
     "backpackStyle": "Estilo da backpack: %style%",
     "backpackStyles": {
@@ -25,7 +25,7 @@
     },
     "showBackpackPreview": "Mostrar uma pré-visualização da backpack",
     "hideHealthBar": "Esconder a barra de vida do vanilla",
-    "fullMinionWarning": "Aviso de minion cheio",
+    "fullMinionWarning": "Alerta de minion cheio",
     "showOnlyWhenHoldingShift": "Mostrar apenas ao segurar o shift",
     "manaBar": "Barra de Mana",
     "manaNumber": "Número de Mana",
@@ -56,16 +56,16 @@
       "one": "Estilo 1",
       "two": "Estilo 2"
     },
-    "warningDuration": "Duração do aviso",
+    "warningDuration": "Duração do alerta",
     "dontOpenProfileWithBow": "Não abrir perfis com o arco",
     "stopDroppingSellingRareItems": "Não largar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários coloridos",
     "replaceRomanNumeralsWithNumbers": "Substituir os números romanos nos itens",
     "changeBarColorForPotions": "Mudar a cor da barra com Wither ou Veneno",
     "craftingPatterns": "Escolher os padrões de criação",
-    "soundIndicatorForFishing": "Aviso sonoro para a pesca",
+    "soundIndicatorForFishing": "Alerta sonoro para a pesca",
     "avoidBlinkingNightVision": "Previnir que a poção de visão noturna pisque",
-    "disableMinionLocationWarning": "Esconder os avisos “Location not perfect”",
+    "disableMinionLocationWarning": "Esconder os alertas “Location not perfect”",
     "showItemCooldowns": "Mostrar os tempos de espera dos itens",
     "speedPercentage": "Percentagem de velocidade",
     "collectionDisplay": "Progresso das skills",
@@ -471,7 +471,7 @@
       "errors": {
         "wrongUsage": {
           "generic": "Uso errado!",
-          "subCommandNotFound": "O comando %sub-command% não foi encontrado."
+          "subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
         }
       }
     }
