@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Mở menu chính"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Nhãn hiệu Máy chủ: %brand%",
         "notFound": "Không thể tìm thấy Nhãn hiệu Máy chủ!"
       },
@@ -355,7 +355,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Sẽ sao chép giá trị NBT từ các thực thể. Những loại thực thể đã cho và tầm bán kính người chơi được dùng để sao chép giá trị có thể được chỉnh sửa. Nếu bạn không ghi lựa chọn nào, những lựa chọn mặc định sẽ được sử dụng. Lựa chọn mặc định: bao gồm người chơi, cột treo giáp, quái, với bán kính 3 khối. Nếu bạn không định sẵn bán kính, bán kính theo lựa chọn mặc định sẽ được sử dụng.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Sao chép phần chữ được hiển thị trên bảng điểm",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Lệnh này sẽ giúp bạn sao chép tiêu đề và phần cuối trang của bảng danh sách người chơi. Mã định dạng trong đó cũng sẽ được sao chép."
         }
       },
       "dev": {
-        "help": "Bật/Tắt chế độ dành cho Nhà Phát Triển (NPT)",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Lệnh này sẽ bật chế độ cho nhà phát triển. Thường được dùng bởi những nhà phát triển những bản mod/dụng cụ cho Skyblock. Lệnh này sẽ cho bạn dữ liệu gốc từ trò chơi, ví dụ như dữ liệu NBT của thực thể (entity) và vật phẩm."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
         "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Điều chỉnh vị trí GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Mở thư mục 'mods'",
-        "error": "Đã có lỗi xảy ra khi cố gắng mở thư mục \"mods\": %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Hiện tin nhắn trợ giúp này. Nếu bạn gõ thêm một lệnh đã được cho sẵn, trợ giúp chi tiết của lệnh đó sẽ được hiển thị.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "lệnh phụ để lấy chi tiết sử dụng"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Chỉnh Bộ Đếm Zealot theo cách thủ công",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Điều chỉnh Bộ Đếm Zealot theo cách thủ công.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Trùm Slayer: \"Zombie\", \"Spider\" hoặc \"Wolf\"",
             "number": "Số đã nhập để cài đặt số liệu",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" không phải là một số liệu hợp lệ!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
         "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
