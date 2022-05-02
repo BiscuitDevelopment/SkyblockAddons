@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Buka menu utama"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Perlihatkan merek server",
+        "help": "Shows the server brand",
         "brandOutput": "Merek Server: %brand%",
         "notFound": "Merek server tidak ditemukan!"
       },
@@ -355,7 +355,7 @@
         "help": "Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
-        "help": "Salin data NBT untuk entities yang diberikan nama/nama-nama dalam radius yang diberikan sekitar player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Salin teks scoreboard",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Salin list tab header dan footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
         }
       },
       "dev": {
-        "help": "Aktif/nonaktifkan mode developer",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini seharusnya untuk mod & alat-alat Skyblock developer. Memberikan data mentah dari game seperti entity dan benda NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Mode Developer dinonaktifkan!",
         "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit Lokasi GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Buka folder mod anda",
-        "error": "Sebuah error terjadi ketika ingin membuka folder mod: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Perlihatkan pesan pembantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "sub-command untuk mendapat penggunaan lebih detil"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Mengatur hitungan zealot secara manual",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Mengatur hitungan di zealot counter secara manual.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Atur stat Slayer secara manual, tekan tab untuk arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Atur stat Slayer secara manual, tekan tab untuk arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
             "number": "Angka untuk mengubah stat",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
-        "help": "Aktif/nonaktifkan pencatatan pesan-pesan bar aksi",
+        "help": "Toggles logging action bar messages",
         "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
         "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Aktif/nonaktifkan pencatatan pesan-pesan timer magma boss",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
         "enabled": "Pesan-pesan timer magma boss akan dicatat."
       },
