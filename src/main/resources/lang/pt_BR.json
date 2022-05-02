@@ -430,10 +430,10 @@
               "zealots": "Zealots mortos desde o último Olho de Invocação"
             }
           },
-          "eyesSet": "Definido a contagem total de Olhos de Invocação para %number%!",
-          "totalZealotsSet": "Definido a contagem total de Zealots para %number%!",
-          "wrongUsage": "Seleção inválida! Por favor escolha %options%.",
-          "zealotsSet": "Definido a contagem atual de Zealots para %number%!"
+          "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+          "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
+          "wrongUsage": "Seleção inválida! Escolha %options%.",
+          "zealotsSet": "A contagem total de zealots foi definida para %number%!"
         }
       },
       "slayer": {
@@ -443,14 +443,14 @@
           "options": {
             "boss": "Boss Slayer: \"Zombie\", \"Spider\", ou \"Wolf\"",
             "number": "Número para definir a estatística",
-            "stat": "Estatística de Slayer a ser alterada, pode ser \"kills\" ou o nome de um item largado formatado assim: \"REVENANT_FLESH\""
+            "stat": "Estatística do slayer que será alterada. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "Você precisa selecionar um Boss! Por favor escolha %bosses%",
-        "statRequired": "Você precisa selecionar uma estatística. Pressione Tab para opções.",
+        "bossRequired": "Você precisa escolher um boss! Escolha %bosses%",
+        "statRequired": "Você precisa escolher uma estatística. Pressione tab para opções.",
         "numberRequired": "Você precisa adicionar o número que você quer.",
-        "killsSet": "As mortes para o slayer %boss% foram definidas para %number%.",
-        "statSet": "Estatística %stat% para slayer %boss% foi definida para %number%.",
+        "killsSet": "Os abates para o slayer de %boss% foram definidas para %number%.",
+        "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
         "invalidBoss": "\"%input%\" não é uma estatística válida!",
         "invalidStat": "%input% não é um boss válido!"
       },
@@ -462,7 +462,7 @@
       "toggleMagmaTimerLogging": {
         "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Mensagens de tempo do magma boss serão registradas."
+        "enabled": "As mensagens de tempo do magma boss serão registradas."
       },
       "version": {
         "help": "Mostra a versão do mod",
@@ -470,7 +470,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Uso Incorreto!",
+          "generic": "Uso incorreto!",
           "subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
         }
       }
@@ -489,8 +489,8 @@
     "young": "Jovem",
     "strong": "Forte",
     "superior": "Superior",
-    "recentDragons": "Dragões Recentes:",
-    "dragonsSince": "Dragões Desde:",
+    "recentDragons": "Dragões recentes:",
+    "dragonsSince": "Dragões desde:",
     "aspectOfTheDragons": "Aspecto dos Dragões",
     "enderDragonPet": "Pet Dragão",
     "eyesPlaced": "Olhos colocados",
@@ -506,22 +506,22 @@
   "warpMenu": {
     "click": "Clique em algum lugar para viajar até lá!",
     "mustUnlock": "Precisa ter uma scroll específica desbloqueada.",
-    "privateIsland": "Ilha Privada",
+    "privateIsland": "Ilha privada",
     "home": "Sua ilha",
     "spawn": "Spawn",
-    "unknown": "Não Visitou",
-    "notUnlocked": "Não Desbloqueado",
-    "inCombat": "Em Combate..."
+    "unknown": "Não visitado",
+    "notUnlocked": "Não desbloqueado",
+    "inCombat": "Em combate..."
   },
   "enchants": {
-    "superTier": "Nível Máximo",
-    "highTier": "Nível Alto",
-    "midTier": "Nível Médio",
-    "lowTier": "Nível Baixo",
+    "superTier": "Nível máximo",
+    "highTier": "Nível alto",
+    "midTier": "Nível médio",
+    "lowTier": "Nível baixo",
     "commas": "Vírgulas",
     "expertiseKills": "Abates com Expertise",
-    "compactedBlocks": "Blocos Compactados",
-    "cultivatedCrops": "Colheitas Cultivadas",
+    "compactedBlocks": "Blocos compactados",
+    "cultivatedCrops": "Colheitas cultivadas",
     "maxed": "Maximizado"
   }
 }
