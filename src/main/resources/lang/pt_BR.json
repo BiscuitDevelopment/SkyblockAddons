@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Configurações",
     "magmaBossWarning": "Alerta do Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Alerta do Bal Boss",
+    "broodMotherWarning": "Alerta da Brood Mother",
     "itemDropConfirmation": "Confirmação para largar item",
     "hideSkeletonHatBones": "Ocultar os ossos do Skeleton Helmet",
     "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
@@ -71,7 +71,7 @@
     "collectionDisplay": "Exibição do progresso da habilidade",
     "revenantIndicator": "Indicador de Progresso da Armadura de Slayer",
     "specialZealotAlert": "Alerta Zealot especial",
-    "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
+    "enableMessageWhenActionPrevented": "Mostrar uma mensagem quando uma ação for impedida",
     "hidePetHealthBar": "Ocultar barra de vida da Mascote",
     "powerOrbDisplay": "Exibição de Power Orbs",
     "powerOrbDisplayStyle": "Poder da Esfera Estilo: %style%",
@@ -90,7 +90,7 @@
     "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar a Pré-visualização de Mochilas de Bolo",
     "showBackpackPreviewInAH": "Mostrar a Pré-visualização de Mochilas Enquanto a Casa de Leilão está aberta",
-    "enableDevFeatures": "Habilitar Funções de Desenvolvedor",
+    "enableDevFeatures": "Ativar funções de desenvolvedor",
     "chromaSpeed": "Velocidade do Chroma",
     "chromaMode": "Modo de Cor do Chroma",
     "chromaModes": {
@@ -113,7 +113,7 @@
     "stopRatSounds": "Parar Sons do Rat Pet",
     "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Duplo",
-    "advancedMode": "Modo Avançado",
+    "advancedMode": "Modo avançado",
     "legendarySeaCreatureWarning": "Alerta de sea creature lendária",
     "bossApproachAlert": "Alerta de Aproximação do Slayer Boss",
     "disableTeleportPadMessages": "Desativar Mensagens do Teletransportador",
@@ -170,7 +170,7 @@
     "showSwordKills": "Mostrar abates da espada",
     "compactTabList": "Tab Compacto",
     "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "disableDamageChatMessages": "Desativar mensagens de dano no chat",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
     "outbidAlertSound": "Som de alerta de lance maior",
     "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
@@ -200,7 +200,7 @@
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
       "showQuestCooldownDescription": "Isto será exibido acima da cabeça do Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
+    "showEnderChestPreview": "Mostrar pré-visualização de baús de ender",
     "hideWhenNotDoingQuest": "Ocultar quando não estiver fazendo missões",
     "showOverflowManaNumber": "Número de Mana Overflow",
     "axeCooldownIndicator": "Indicador de Recarga do Machado",
@@ -212,12 +212,12 @@
     "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
     "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "jacobsContestTimer": "Tempo do Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Modo desenvolvedor",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "showFeatureNamesOnHover": "Mostrar nome da funcionalidade ao passar o cursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
   },
@@ -296,11 +296,11 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Tempo de recarga: %time%s",
     "entityOutlinesRequirement": "Requer Shaders, Fast Render e Antialiasing desligados",
-    "version": "Version",
+    "version": "Versão",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
     "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "copy": "Copiar",
+    "copied": "Copiado!"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
@@ -404,7 +404,7 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Grava as contagens armazenadas nos contadores de mortes na dungeon para fins de depuração."
       },
       "reload": {
         "help": "Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
@@ -455,7 +455,7 @@
         "invalidStat": "%input% não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "Alterna o registro de mensagens da barra de ação",
+        "help": "Alterna o registro de mensagens da barra de ações",
         "disabled": "As mensagens da barra de ações não serão mais registradas.",
         "enabled": "As mensagens da barra de ações agora serão registradas."
       },
@@ -465,8 +465,8 @@
         "enabled": "Mensagens de tempo do magma boss serão registradas."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Mostra a versão do mod",
+        "hoverText": "Clique para colocar no chat para copiar."
       },
       "errors": {
         "wrongUsage": {
