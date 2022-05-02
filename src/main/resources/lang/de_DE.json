@@ -347,15 +347,15 @@
         "help": "Hauptmenü öffnen"
       },
       "brand": {
-        "help": "§e(Dev) §7Servername anzeigen",
+        "help": "Servername anzeigen",
         "brandOutput": "Servername: %brand%",
         "notFound": "Servername nicht gefunden!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopiert Daten von den block, den du anschaust"
+        "help": "Kopiert Daten vom Block, den du anschaust"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
+        "help": "Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
         "detailedHelp": {
           "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Kopiere den Scoreboard-Text",
+        "help": "Kopiere den Scoreboard-Text",
         "detailedHelp": {
           "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
           "options": {
@@ -374,7 +374,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Kopiere die Kopf- und Fußzeile in der Tab-Liste",
+        "help": "Kopiere die Kopf- und Fußzeile in der Tab-Liste",
         "detailedHelp": {
           "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
         }
@@ -404,16 +404,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
+        "help": "Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
       },
       "reload": {
-        "help": "§e(Dev) §7Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        "help": "Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Lädt die Einstellungen der Mod neu"
+        "help": "Lädt die Einstellungen der Mod neu"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        "help": "Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "resetZealotCounter": {
         "help": "Setzt alle Zealot-Zähler zurück.",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" ist kein gültiger boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
+        "help": "Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
         "disabled": "Nachrichten in der Aktionsleiste werden nicht mehr protokolliert.",
         "enabled": "Nachrichten in der Aktionsleiste werden nun protokolliert."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
+        "help": "Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
         "disabled": "Die Timer-Meldungen des Magma-Bosses werden nicht mehr protokolliert.",
         "enabled": "Die Timer-Meldungen des Magma-Bosses werden nun protokolliert."
       },
