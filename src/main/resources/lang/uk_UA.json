@@ -456,28 +456,28 @@
       },
       "toggleActionBarLogging": {
         "help": "Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "disabled": "Повідомлення з рядка дій більше не додаватимуться до логі.",
+        "enabled": "Повідомлення з рядка дій тепер додаватимуться до логів."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Перемкнути збереження дебаг-повідомлень про магма-босс таймер",
+        "disabled": "Повідомлення від таймера Магма боса не будуть зареєстровані.",
+        "enabled": "Повідомлення від таймера Магма боса будуть зареєстровані."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Показує версію моду",
+        "hoverText": "Натисніть, щоб розмістити у чаті, щоб ви могли скопіювати."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Неправильне використання!",
+          "subCommandNotFound": "Підкоманда %sub-command% не була знайдена."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT",
+    "developerCopyNBT": "Копіювати NBT",
     "increaseDungeonMapZoom": "Збільшення мапи підземелля",
     "decreaseDungeonMapZoom": "Зменшення мапи підземелля"
   },
@@ -489,8 +489,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Останні Дракони:",
+    "dragonsSince": "Драконів з:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
     "eyesPlaced": "Вставлено Очей",
