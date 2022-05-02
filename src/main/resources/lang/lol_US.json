@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open teh main menu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show teh servr brand",
+        "help": "Shows the server brand",
         "brandOutput": "Servr Brand: %brand%",
         "notFound": "Servr brand not findz!"
       },
@@ -355,7 +355,7 @@
         "help": "Copiez data bout teh block dat u r lookin at"
       },
       "copyEntity": {
-        "help": "Copy NBT data 4 entitiez ov teh given naym(s) within teh given radius around teh playr",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy teh scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copiez teh text displayd in da scorebordz sidebar display slot",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy teh tab list headr an footr",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd."
         }
       },
       "dev": {
-        "help": "Toggle developr mod",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez game data such as entity an item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developr mode disabld!",
         "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit GUI locashuns"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open ur modz foldr",
-        "error": "An error occurrd tryin 2 open teh modz foldr: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show dis halp mesage. If command iz providd, detaild halp bout dat command iz shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "teh sub-command 2 git detaild usage 4"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set ur zealot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in da zealot countr.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayr stats, pres tab 4 arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayr stats, pres tab 4 arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Numbr 2 set teh stat 2",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" iz not valid bos!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle loggin acshun bar mesagez",
+        "help": "Toggles logging action bar messages",
         "disabled": "Acshun bar mesagez will no longr be loggd.",
         "enabled": "Acshun bar mesagez will nao be loggd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle loggin magma bos tiemr debug mesagez",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma bos tiemr mesagez will no longr be loggd.",
         "enabled": "Magma bos tiemr mesagez will nao be loggd."
       },
