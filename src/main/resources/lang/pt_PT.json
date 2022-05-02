@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copia o texto da tabela lateral",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copia o texto apresentado na barra lateral",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copia o cabeçalho e o rodapé da lista de jogadores",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
       },
       "dev": {
-        "help": "Ativar o modo de programador",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Modo de programador desativado!",
         "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!",
         "prefix": "Program"
       },
       "edit": {
-        "help": "Editar localizações da GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Abre a pasta mods",
-        "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "o comando para o qual desejas obter informação detalhada"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Define as tuas contagens de zealots manualmente",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Define manualmente os valores no contador de zealots.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
             "number": "Número para o qual será definido a estatística",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "Alterna o registo de mensagens da barra de ação",
+        "help": "Toggles logging action bar messages",
         "disabled": "As mensagens da barra de ação não serão mais registadas.",
         "enabled": "As mensagens da barra de ação serão agora registadas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Alterna o registo das mensagens de depuração do temporizador do magma boss",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "As mensagens do temporizador do magma boss não serão registadas.",
         "enabled": "As mensagens do temporizador do magma boss serão registadas."
       },
