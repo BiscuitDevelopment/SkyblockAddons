@@ -478,8 +478,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "NBT kopiëren",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Dungeonkaart inzoomen",
+    "decreaseDungeonMapZoom": "Dungeonkaart uitzoomen"
   },
   "dragonTracker": {
     "protector": "Beschermer",
