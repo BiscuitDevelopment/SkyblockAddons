@@ -347,15 +347,15 @@
         "help": "Hoofdmenu openen"
       },
       "brand": {
-        "help": "§e(Dev) §7Servermerk weergeven",
+        "help": "Servermerk weergeven",
         "brandOutput": "Servermerk: %brand%",
         "notFound": "Servermerk niet gevonden!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopieert data over het blok waar je naar kijkt"
+        "help": "Kopieert data over het blok waar je naar kijkt"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopieer NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
+        "help": "Kopieer NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
         "detailedHelp": {
           "description": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Scorebordtekst kopiëren",
+        "help": "Scorebordtekst kopiëren",
         "detailedHelp": {
           "description": "Kopieert de weergegeven tekst van de zijbalk uit het scorebord",
           "options": {
@@ -374,7 +374,7 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Spelerslijstkop- en -voettekst kopiëren",
+        "help": "Spelerslijstkop- en -voettekst kopiëren",
         "detailedHelp": {
           "description": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen."
         }
@@ -404,16 +404,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Print de aantallen opgeslagen in de dungeon-sterfgevaltellers voor debugdoeleinden."
+        "help": "Print de aantallen opgeslagen in de dungeon-sterfgevaltellers voor debugdoeleinden."
       },
       "reload": {
-        "help": "§e(Dev) §7Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
+        "help": "Herlaadt alle modinstellingen en -bronnen. Het spel zal een paar seconden stilstaan."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Herlaadt alle modinstellingen"
+        "help": "Herlaadt alle modinstellingen"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Herlaadt alle modbronnen. Het spel zal een paar seconden stilstaan."
+        "help": "Herlaadt alle modbronnen. Het spel zal een paar seconden stilstaan."
       },
       "resetZealotCounter": {
         "help": "Reset alle zealottellers.",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" is geen geldige baas!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Berichten in de actiebalk loggen in-/uitschakelen",
+        "help": "Berichten in de actiebalk loggen in-/uitschakelen",
         "disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
         "enabled": "Berichten in de actiebalk worden nu gelogd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Plaatsen van debugberichten magmabaastimer schakelen",
+        "help": "Plaatsen van debugberichten magmabaastimer schakelen",
         "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
         "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
       },
