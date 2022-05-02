@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Άνοιγμα του κυρίως μενού"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Εμφάνιση της επωνυμίας του διακομιστή",
+        "help": "Shows the server brand",
         "brandOutput": "Επωνυμία διακομιστή: %brand%",
         "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
       },
@@ -355,7 +355,7 @@
         "help": "Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
       },
       "copyEntity": {
-        "help": "Αντιγραφή δεδομένων NBT για οντότητες του συγκεκριμένου ονόματος(ων) εντός της ακτίνας που δόθηκε γύρω από τον παίκτη",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Αντιγράψτε το κείμενο του πίνακα σκορ",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Αντιγράφει το κείμενο που εμφανίζεται στην υποδοχή εμφάνισης της πλευρικής γραμμής του πίνακα αποτελεσμάτων",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Αντιγράψτε την κεφαλίδα και το υποσέλιδο της λίστας tab",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης."
         }
       },
       "dev": {
-        "help": "Εναλλαγή λειτουργίας προγραμματιστή",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Αυτή η εντολή εναλλάσσει τη λειτουργία προγραμματιστή. Αυτή η λειτουργία προορίζεται για προγραμματιστές Skyblock mods / εργαλεία. Παρέχει ανεπεξέργαστα δεδομένα από το παιχνίδι, όπως οντότητα και αντικείμενο NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Η λειτουργία προγραμματιστή απενεργοποιήθηκε!",
         "enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Επεξεργάσου τις τοποθεσίες GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Ανοίξτε το φάκελο mods",
-        "error": "Παρουσιάστηκε σφάλμα κατά το άνοιγμα του φακέλου mods: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Δείχνει αυτό το μήνυμα βοήθειας. Αν μία εντολή δοθεί, θα εμφανιστεί λεπτομερής βοήθεια σχετικά με αυτή την εντολή.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "η δευτερεύουσα εντολή για να λάβετε λεπτομερή χρήση για"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Ορίστε χειροκίνητα τους αριθμούς των zealot σας",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Μη αυτόματη ρύθμιση μετρήσεων στον μετρητή zealot.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Μη αυτόματη ρύθμιση στατιστικών στοιχείων slayer, πατήστε tab για ορίσματα",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", ή \"Wolf\"",
             "number": "Αριθμός για να ορίσετε το stat σε",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" δεν είναι έγκυρο boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Εναλλαγή μηνυμάτων γραμμής ενεργειών",
+        "help": "Toggles logging action bar messages",
         "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
         "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Εναλλαγή μηνυμάτων αποσφαλμάτωσης χρονομέτρου magma boss",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Τα μηνύματα του χρονομέτρου Magma boss δε θα καταγράφονται πλέον.",
         "enabled": "Τα μηνύματα του χρονομέτρου Magma boss τώρα θα καταγράφονται."
       },
