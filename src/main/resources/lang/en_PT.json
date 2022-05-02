@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open th' main menu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show th' server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand be not found!"
       },
@@ -355,7 +355,7 @@
         "help": "Copies data about th' block that ye be lookin' at"
       },
       "copyEntity": {
-        "help": "Copy NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy th' scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy th' tab list header an' footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This here command toggles developer mode. This mode be meant fer developers Skyblock mods/tools. It provides raw data from th' game such as entity an' item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open yer mods folder",
-        "error": "An error occurred tryin' t' open th' mods folder: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command be provided, detailed help about that command be shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "th' sub-command t' get detailed usage fer"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set yer zealot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in th' zealot counter.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab fer arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab fer arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number t' set th' stat t'",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle loggin' action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle loggin' magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages shall nay longer be logged.",
         "enabled": "Magma boss timer messages shall now be logged."
       },
