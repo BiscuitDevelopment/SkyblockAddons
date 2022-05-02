@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Hoofdmenu openen"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Servermerk weergeven",
+        "help": "Shows the server brand",
         "brandOutput": "Servermerk: %brand%",
         "notFound": "Servermerk niet gevonden!"
       },
@@ -355,7 +355,7 @@
         "help": "Kopieert data over het blok waar je naar kijkt"
       },
       "copyEntity": {
-        "help": "Kopieer NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Scorebordtekst kopiëren",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Kopieert de weergegeven tekst van de zijbalk uit het scorebord",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Spelerslijstkop- en -voettekst kopiëren",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen."
         }
       },
       "dev": {
-        "help": "Ontwikkelaarsmodus in-/uitschakelen",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Dit commando schakelt de ontwikkelaarsmodus in of uit. Deze modus is bedoeld voor Skyblock-mod- en -toolontwikkelaars. Het verstrekt ruwe gegevens uit het spel zoals entiteits- en voorwerps-NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Ontwikkelaarsmodus uitgeschakeld!",
         "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Interfacelocaties aanpassen"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Modificatiemap openen",
-        "error": "Er is een fout opgetreden bij het openen van de modificatiemap: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Toon dit hulpbericht. Als een commando is opgegeven, wordt gedetailleerde hulp voor dat commando getoond.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "het subcommando om gedetailleerde syntaxis te krijgen voor"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Handmatig aantal voor zealotteller opgeven",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Handmatig aantal voor zealotteller opgeven.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Handmatig spelerstatistieken instellen, druk tab voor argumenten",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Handmatig spelerstatistieken instellen, druk tab voor argumenten",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayerbaas: \"Zombie\", \"Spider\" of \"Wolf\"",
             "number": "Nummer om de statistiek naar te veranderen",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" is geen geldige baas!"
       },
       "toggleActionBarLogging": {
-        "help": "Berichten in de actiebalk loggen in-/uitschakelen",
+        "help": "Toggles logging action bar messages",
         "disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
         "enabled": "Berichten in de actiebalk worden nu gelogd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Plaatsen van debugberichten magmabaastimer schakelen",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
         "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
       },
