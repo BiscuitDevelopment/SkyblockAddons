@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copiar o texto da tabela lateral",
+        "help": "Copia o texto da tabela lateral",
         "detailedHelp": {
           "description": "Copia o texto apresentado na barra lateral",
           "options": {
