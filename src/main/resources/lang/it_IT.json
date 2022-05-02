@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Apri il menu principale"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Mostra il simbolo del server",
+        "help": "Shows the server brand",
         "brandOutput": "Nome del server: %brand%",
         "notFound": "Nome del server non trovato!"
       },
@@ -355,7 +355,7 @@
         "help": "Copia i dati del blocco che si sta guardando"
       },
       "copyEntity": {
-        "help": "Copia i dati NBT per le entità dei nomi indicati entro il raggio indicato intorno al giocatore",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copia i dati NBT delle entità. I tipi di entità incluse e il raggio intorno al giocatore per copiare i dati da possono essere personalizzati. Se non vengono fornite opzioni, vengono utilizzate le impostazioni predefinite. Le impostazioni predefinite sono: giocatori, supporti per armature e mobs, con un raggio di 3 blocchi. Se il raggio non è dato, viene utilizzato il raggio predefinito.",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copia il testo del tabellone",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copia il testo visualizzato nello slot di visualizzazione della barra laterale del tabellone",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copia intestazione e piè di pagina della lista giocatori",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Questo comando copia l'intestazione e il piè di pagina della lista dei giocatori. I codici di formattazione sono inclusi."
         }
       },
       "dev": {
-        "help": "Attiva/Disattiva modalità sviluppatore",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Questo comando attiva la modalità sviluppatore. Questa modalità è pensata per gli sviluppatori Skyblock mods/tools. Fornisce dati dal gioco come entità ed elementi NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Modalità sviluppatore disabilitata!",
         "enabled": "Modalità sviluppatore abilitata! SUGGERIMENTO: Premi \"%keyName%\" per copiare i dati NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Modifica posizioni GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Apri cartella mods",
-        "error": "Si è verificando un errore aprendo la cartella dei mods: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Mostra questo messaggio di aiuto. Se viene fornito un comando, verrà mostrato un aiuto dettagliato per quel comando.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "il sottocomando per ottenere un utilizzo dettagliato per"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Imposta manualmente il conteggio zealot",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Imposta manualmente il conteggio zealot.",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Imposta manualmente i dati dello slayer, premi tab per i dettagli",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Imposta manualmente i dati dello slayer, premi tab per i dettagli",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", o \"Wolf\"",
             "number": "Numero per l'impostazione dello stato",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" non è un boss valido!"
       },
       "toggleActionBarLogging": {
-        "help": "Attiva/Disattiva la registrazione dei messaggi della barra delle azioni",
+        "help": "Toggles logging action bar messages",
         "disabled": "I messaggi della barra delle azioni non saranno più registrati.",
         "enabled": "I messaggi della barra delle azioni saranno ora registrati."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
