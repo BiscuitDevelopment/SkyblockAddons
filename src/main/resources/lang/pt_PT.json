@@ -333,7 +333,7 @@
     "descriptionTarantula": "Mostra que estás a fazer uma missão da tarantula."
   },
   "enchantLayout": {
-    "title": "Controla como os encantamentos são mostrados na descrição dos items",
+    "title": "Controla como os encantamentos são mostrados na descrição dos itens",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
