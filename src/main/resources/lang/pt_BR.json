@@ -308,38 +308,38 @@
     "titleLocation": "Localização",
     "descriptionLocation": "Mostra a sua localização atual",
     "titlePurse": "Carteira",
-    "descriptionPurse": "Mostra a quantidade de moedas em sua bolsa",
+    "descriptionPurse": "Mostra a quantidade de coins na sua purse",
     "titleBits": "Bits",
     "descriptionBits": "Shows the amount of bits you have",
     "titleStats": "Estatísticas",
-    "descriptionStats": "Mostra suas estatísticas de HP, Defesa e Mana",
+    "descriptionStats": "Mostra suas estatísticas de vida, defesa e mana",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Mostrar o contador de Zealots",
+    "descriptionZealots": "Mostra o contador de zealots",
     "titleItem": "Item segurado",
-    "descriptionItem": "Mostrar o nome do item que está segurando",
+    "descriptionItem": "Mostra o nome do item que você está segurando",
     "titleProfile": "Perfil",
     "descriptionProfile": "Mostra o nome do seu perfil",
-    "titleTime": "Horas do Skyblock",
-    "descriptionTime": "Mostra a hora atual do SkyBlock. Por exemplo, 12:00am 1o início do Inverno",
-    "titleCustom": "Status customizado",
+    "titleTime": "Horário no SkyBlock",
+    "descriptionTime": "Mostra o horário atual no SkyBlock. Ex.: 12:00am 1st Early Winter",
+    "titleCustom": "Status personalizado",
     "descriptionCustom": "Inserir um status personalizado",
-    "titleAuto": "Status Automático",
+    "titleAuto": "Status automático",
     "descriptionAuto": "Exibe automaticamente um status. Ex.: seu contador de zealots enquanto está no The End.",
     "titleRevenants": "Missão do Revenant",
-    "descriptionRevenants": "Mostra que você está fazendo uma Missão do Revenant.",
+    "descriptionRevenants": "Mostra que você está fazendo uma missão do Revenant.",
     "titleSvens": "Missão do Sven",
-    "descriptionSvens": "Mostra que você está fazendo uma Missão do Sven.",
+    "descriptionSvens": "Mostra que você está fazendo uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
-    "descriptionTarantula": "Mostra que você está fazendo uma Missão da Tarantula."
+    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula."
   },
   "enchantLayout": {
-    "title": "Controle como os encantamentos são exibidos nas dicas de itens",
+    "title": "Controla como os encantamentos são mostrados na descrição dos itens",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
-    "descriptionNormal": "Exibe Encantamentos como Hypixel faz",
+    "descriptionNormal": "Exibe encantamentos como o Hypixel",
     "titleExpand": "Expandir",
-    "descriptionExpand": "Listar cada encantamento em sua própria linha"
+    "descriptionExpand": "Lista cada encantamento em sua própria linha"
   },
   "commandUsage": {
     "sba": {
@@ -348,8 +348,8 @@
       },
       "brand": {
         "help": "Shows the server brand",
-        "brandOutput": "Marca do Servidor: %brand%",
-        "notFound": "Marca do Servidor não encontrada!"
+        "brandOutput": "Marca do servidor: %brand%",
+        "notFound": "Marca do servidor não encontrada!"
       },
       "copyBlock": {
         "help": "Copia os dados do bloco que você está olhando"
