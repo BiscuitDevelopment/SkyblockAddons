@@ -291,7 +291,7 @@
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active",
-    "none": "None",
+    "none": "Немає",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
@@ -439,7 +439,7 @@
       "slayer": {
         "help": "Manually set slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Ручне встановлення статистики босів; натисніть Tab для параметрів",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number to set the stat to",
@@ -493,35 +493,35 @@
     "dragonsSince": "Dragons Since:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Вставлено Очей",
+    "never": "Ніколи"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
     "voidgloom": "Voidgloom Seraph:",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Босів вбито"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Натисніть місце телепортації щоб потрапити туди!",
+    "mustUnlock": "Необхідно відкрити певний сувій.",
+    "privateIsland": "Приватний острів",
+    "home": "Ваш острів",
+    "spawn": "Спавн",
+    "unknown": "Не відвідано",
+    "notUnlocked": "Не розблоковано",
+    "inCombat": "У битві..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Максимальний Рівень",
+    "highTier": "Високий Рівень",
+    "midTier": "Середній Рівень",
+    "lowTier": "Низький Рівень",
+    "commas": "Коми",
+    "expertiseKills": "Кількість вбивств для зачарування Expertise",
+    "compactedBlocks": "Стиснуті Блоки",
+    "cultivatedCrops": "Культивовані Культури",
+    "maxed": "Максимально"
   }
 }
