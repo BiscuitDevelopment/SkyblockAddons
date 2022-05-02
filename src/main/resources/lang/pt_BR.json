@@ -13,12 +13,12 @@
     "fullInventoryWarning": "Alerta de inventário cheio",
     "repeating": "Alerta de Repetição",
     "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
-    "editLocations": "Editar Posições da Interface",
+    "editLocations": "Editar posições",
     "guiScale": "Interface: %scale%",
     "resetLocations": "Restaurar Posições",
     "minionStopWarning": "Alerta de \"Minion não alcança\"",
     "hidePlayersNearNPCs": "Ocultar jogadores próximos a NPCs importantes",
-    "backpackStyle": "Estilo de Mochila: %style%",
+    "backpackStyle": "Estilo de backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
       "compact": "Compacto"
@@ -58,7 +58,7 @@
     },
     "warningDuration": "Duração do alerta",
     "dontOpenProfileWithBow": "Não abrir perfil com Arco na mão",
-    "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
+    "stopDroppingSellingRareItems": "Não largar/vender itens raros",
     "makeBackpackInventoriesColored": "Inventários Coloridos",
     "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
     "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno",
@@ -114,11 +114,11 @@
     "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
     "doubleWarp": "Warp Duplo",
     "advancedMode": "Modo Avançado",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "legendarySeaCreatureWarning": "Alerta de sea creature lendária",
     "bossApproachAlert": "Alerta de Aproximação do Slayer Boss",
     "disableTeleportPadMessages": "Desativar Mensagens do Teletransportador",
     "baitListDisplay": "Mostrar Lista de Iscas ao Segurar uma Vara de Pesca",
-    "freezeBackpackPreview": "Congelar Pré-visualização de Mochilas",
+    "freezeBackpackPreview": "Congelar pré-visualização da backpack",
     "hideGreyEnchants": "Ocultar encantamentos cinza normais",
     "zealotCounterExplosiveBow": "Suporte do Arco Explosivo para Contador de Zealot",
     "disableEndermanTeleportation": "Desativar Teleporte de Enderman",
@@ -155,7 +155,7 @@
     "dragonStatsTracker": "Rastreador de Dragão",
     "skillActionsLeftUntilNextLevel": "Mostrar Ações Restantes até o Próximo Nível",
     "dungeonDeathCounter": "Contador de Mortes nas Masmorras",
-    "showPersonalCompactorPreview": "Mostrar Pré-visualização do Compactador Pessoal",
+    "showPersonalCompactorPreview": "Mostrar pré-visualização do Personal Compactor",
     "rockPetTracker": "Rastreador de Rock Pet",
     "dolphinPetTracker": "Rastreador de Dolphin Pet",
     "dungeonsTeammateNameOverlay": "Sobreposição do Nome dos Companheiros de Dungeon",
@@ -166,13 +166,13 @@
     "showSalvageEssencesCounter": "Mostrar contador de resgate de essências",
     "disableMortMessages": "Desativar mensagens do Mort",
     "disableBossMessages": "Desabilitar Mensagens do Boss",
-    "hideOtherPlayersPresents": "Esconder presentes de outros jogadores",
+    "hideOtherPlayersPresents": "Ocultar os presentes de outros jogadores",
     "showSwordKills": "Mostrar abates da espada",
     "compactTabList": "Tab Compacto",
     "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
     "disableDamageChatMessages": "Disable Damage Chat Messages",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "outbidAlertSound": "Som de alerta de lance maior",
     "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
     "candyPointsCounter": "Spooky Event Contador de Doces/Pontos",
     "healingCircleOpacity": "Opacidade do círculo de cura",
@@ -198,7 +198,7 @@
       "trackedEntityProximityIndicator": "Mostrar Indicador de Proximidade da Entidade Rastreada",
       "highlightTrackedEntity": "Destacar Entidade Rastreada",
       "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
-      "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
+      "showQuestCooldownDescription": "Isto será exibido acima da cabeça do Trevor"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
     "hideWhenNotDoingQuest": "Ocultar quando não estiver fazendo missões",
@@ -215,11 +215,11 @@
     "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
+    "devMode": "Modo desenvolvedor",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -229,7 +229,7 @@
     "balBossWarning": "Bal Boss!",
     "broodMotherWarning": "Brood Mother!",
     "fullInventory": "Inventário Cheio!",
-    "labymod": "Usuários de Labymod: Ocultar as barras de fome, armadura e vida não é compatível.",
+    "labymod": "Usuários de Labymod: Ocultar a barra de fome, armadura e vida não é compatível.",
     "minionCannotReach": "Um minion de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um minion em sua ilha está cheio!",
     "typeEnchantmentsHere": "Escreva %type% Aqui!",
@@ -278,7 +278,7 @@
     "firstStatus": "Este status aparecerá no topo",
     "secondStatus": "Este status aparecerá abaixo de seu primeiro status",
     "fallbackStatus": "Este status aparecerá quando seu status automático não tem nada para mostrar",
-    "legendarySeaCreatureWarning": "Pescada Lendária!",
+    "legendarySeaCreatureWarning": "Pescada lendária!",
     "bossApproaching": "Você está perto de spawnar um Boss!",
     "fetchurItem": "Fetchur: %item%",
     "fetchurWarning": "Fetchur mudou!",
@@ -344,15 +344,15 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Abrir o menu principal"
+        "help": "Abre o menu principal"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Mostrar a marca do servidor",
         "brandOutput": "Marca do Servidor: %brand%",
         "notFound": "Marca do Servidor não encontrada!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copia os dados do bloco que você está olhando"
       },
       "copyEntity": {
         "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
