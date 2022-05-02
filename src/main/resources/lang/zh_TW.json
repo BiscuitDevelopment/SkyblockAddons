@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "開啟主選單"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "顯示伺服器核心名稱",
+        "help": "Shows the server brand",
         "brandOutput": "伺服端：%brand%",
         "notFound": "未發現伺服端！"
       },
@@ -355,7 +355,7 @@
         "help": "複製面朝方塊的資料"
       },
       "copyEntity": {
-        "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "複製記分板的文字",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "複製玩家列表頭尾",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
         }
       },
       "dev": {
-        "help": "開關開發者模式",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "開發者模式已停用！",
         "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！",
         "prefix": "開發者"
       },
       "edit": {
-        "help": "編輯介面位置"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "開啟模組資料夾",
-        "error": "嘗試開啟模組資料夾時出錯：%s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "要獲得詳細用法的子命令"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "手動設定 Zealot 計數器",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "手動設置 Zealot 計數器的數字。",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "切換是否紀錄動作列訊息",
+        "help": "Toggles logging action bar messages",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "切換是否紀錄 Magma Boss 計時器的除錯訊息",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma Boss 計時器訊息將不再被記錄。",
         "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
       },
