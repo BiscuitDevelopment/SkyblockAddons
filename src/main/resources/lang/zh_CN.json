@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "打开主菜单"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "§e(开发者) §7显示服务端名称",
+        "help": "Shows the server brand",
         "brandOutput": "服务端：%brand%",
         "notFound": "无法检测到服务端！"
       },
@@ -355,7 +355,7 @@
         "help": "§e(开发者) §7复制准星所指方块的 NBT"
       },
       "copyEntity": {
-        "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
           "options": {
@@ -365,7 +365,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(开发者) §7复制计分板文本",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "复制侧边栏显示的文字",
           "options": {
@@ -374,32 +374,32 @@
         }
       },
       "copyTabList": {
-        "help": "§e(开发者) §7复制页头页脚标签",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
         }
       },
       "dev": {
-        "help": "启用/禁用 开发者模式",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "开发者模式已禁用！",
         "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！",
         "prefix": "开发者"
       },
       "edit": {
-        "help": "编辑 GUI 位置"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "打开 mods 文件夹",
-        "error": "试图打开 mods 文件夹时出错：%s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "此子命令来获取详细的用法"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -421,7 +421,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "手动设置末影战士计数器",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "手动设置末影战士计数器。",
             "options": {
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "修改猎手任务统计数据，按 tab 查看指令参数",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "修改猎手任务统计数据，按 tab 查看指令参数",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "统计设置为的数字",
@@ -455,12 +455,12 @@
         "invalidStat": "\"%input%\" 不是有效的 boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(开发者) §7切换日志操作栏消息",
+        "help": "Toggles logging action bar messages",
         "disabled": "操作栏消息将不再被记录。",
         "enabled": "操作栏消息现在将被记录。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "开启 / 关闭岩浆怪 Boss 计时器调试信息记录",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "岩浆怪 Boss 计时器将不再被计入日志。",
         "enabled": "岩浆怪 Boss 计时器将被计入日志。"
       },
