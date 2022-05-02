@@ -344,10 +344,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Abrir o menu principal"
+        "help": "Abre o menu principal"
       },
       "brand": {
-        "help": "Mostrar a marca do servidor",
+        "help": "Mostra a marca do servidor",
         "brandOutput": "Marca do servidor: %brand%",
         "notFound": "Não foi possível encontrar a marca do servidor!"
       },
