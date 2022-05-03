@@ -247,17 +247,17 @@
       "noDownloadAvailable": "Nenhum link para baixar disponível, por favor verifique nosso servidor Discord.",
       "notificationBox": {
         "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-        "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe no chat para o link do download.",
-        "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
+        "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe o chat para o link do download.",
+        "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! Olhe o chat para o link do download!"
       }
     },
     "slotLocked": "Este espaço está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
     "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua barra de itens.",
-    "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
-    "clickOneMoreTime": "Clique/Largue este item mais 1 vez caso realmente queira fazer isso.",
-    "featureDisabled": "Função desabilitada",
-    "anvilUses": "Usos na Bigorna: %uses%",
+    "clickMoreTimes": "Clique/largue este item mais %times% vezes caso realmente queira fazer isto.",
+    "clickOneMoreTime": "Clique/largue este item mais 1 vez caso realmente queira fazer isto.",
+    "featureDisabled": "Função desativada",
+    "anvilUses": "Usos na bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
     "searchFeatures": "Buscar funcionalidades",
@@ -423,11 +423,11 @@
         "zealotCounter": {
           "help": "Manually sets your zealot counts",
           "detailedHelp": {
-            "description": "Define Manualmente as Contagens no Contador de Zealots.",
+            "description": "Define manualmente os valores no contador de zealots.",
             "options": {
-              "eyes": "Olhos de Invocação Vitalícios Obtidos",
-              "totalZealots": "Total de Zealots mortos",
-              "zealots": "Zealots mortos desde o último Olho de Invocação"
+              "eyes": "Total de summoning eyes obtidos",
+              "totalZealots": "Total de zealots mortos",
+              "zealots": "Zealots mortos desde o último summoning eye"
             }
           },
           "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
