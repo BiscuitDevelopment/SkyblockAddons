@@ -369,14 +369,14 @@
         "detailedHelp": {
           "description": "Copia o texto apresentado no placar",
           "options": {
-            "formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser tanto \"true\" ou \"false\", sendo o padrão \"false\" se nenhum valor for fornecido. Códigos de Formatação são copiados caso \"true\"."
+            "formatted": "Determina se os códigos de formatação devem ser incluídos na cópia. Pode ser definido como \"true\" ou \"false\", caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
           }
         }
       },
       "copyTabList": {
         "help": "Copies the tab list header and footer",
         "detailedHelp": {
-          "description": "Esse comando copia o cabeçalho e rodapé da lista de jogadores. Códigos de formatação são incluídos."
+          "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
       },
       "dev": {
