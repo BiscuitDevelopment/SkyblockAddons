@@ -150,7 +150,7 @@
     "tarantulaSlayerTracker": "Rastreador de Slayer - Tarantula/Aranha",
     "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
     "voidgloomSlayerTracker": "Rastreador de Slayer - Voidgloom/Enderman",
-    "textMode": "Modo do Texto",
+    "textMode": "Modo de texto",
     "dragonsNestOnly": "Apenas Mostrar no Ninho do Dragão",
     "dragonStatsTracker": "Rastreador de Dragão",
     "skillActionsLeftUntilNextLevel": "Mostrar Ações Restantes até o Próximo Nível",
@@ -232,21 +232,21 @@
     "labymod": "Usuários de Labymod: Ocultar a barra de fome, armadura e vida não é compatível.",
     "minionCannotReach": "Um minion de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um minion em sua ilha está cheio!",
-    "typeEnchantmentsHere": "Escreva %type% Aqui!",
-    "separateMultiple": "Separe Múltiplos Com Vírgulas.",
-    "enchantsToMatch": "%type% Para Procurar:",
-    "enchantsToExclude": "%type% Para Excluir:",
+    "typeEnchantmentsHere": "Escreve os %type% aqui!",
+    "separateMultiple": "Separe múltiplos com vírgulas.",
+    "enchantsToMatch": "%type% para encontrar:",
+    "enchantsToExclude": "%type% para excluir:",
     "updateChecker": {
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
-      "joinDiscord": "Entre no nosso servidor Discord!",
-      "watchShowcase": "Assistir Vídeo",
+      "joinDiscord": "Entre no nosso servidor de Discord!",
+      "watchShowcase": "Assistir vídeo",
       "downloadButton": "Baixar",
-      "openModFolderButton": "Abrir Pasta de Mods",
+      "openModFolderButton": "Abrir pasta de mods",
       "joinDiscordButton": "Junte-se ao Discord",
       "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-      "noDownloadAvailable": "Nenhum link para baixar disponível, por favor verifique nosso servidor Discord.",
+      "noDownloadAvailable": "Nenhum link para baixar disponível, verifique nosso servidor de Discord.",
       "notificationBox": {
-        "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
+        "majorAvailable": "Uma nova atualização importante (%version%) está disponível! Olhe o chat para o link do download.",
         "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe o chat para o link do download.",
         "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! Olhe o chat para o link do download!"
       }
@@ -382,7 +382,7 @@
       "dev": {
         "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Este comando alterna o modo desenvolvedor. Este modo é para desenvolvedores de mods/ferramentas do SkyBlock. Ele fornece os dados das entidades e dos itens NBT."
         },
         "disabled": "Modo desenvolvedor desativado!",
         "enabled": "Modo desenvolvedor ativado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!",
@@ -392,8 +392,8 @@
         "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "Abre a sua pasta de mods",
+        "error": "Ocorreu um erro ao tentar abrir a pasta de mods: %s"
       },
       "help": {
         "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
