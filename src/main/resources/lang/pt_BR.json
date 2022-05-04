@@ -461,7 +461,7 @@
       },
       "toggleMagmaTimerLogging": {
         "help": "Toggles logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
+        "disabled": "Mensagens de tempo do magma boss não serão registradas.",
         "enabled": "As mensagens de tempo do magma boss serão registradas."
       },
       "version": {
