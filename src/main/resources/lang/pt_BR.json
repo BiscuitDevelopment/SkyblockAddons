@@ -36,8 +36,8 @@
     "defensePercentage": "Porcentagem de Defesa",
     "healthUpdates": "Número de Mudanças de Vida",
     "hidePlayersInLobby": "Ocultar entidades longe no Lobby",
-    "darkAuctionTimer": "Tempo da Dark Auction",
-    "magmaBossTimer": "Tempo do Boss Magma",
+    "darkAuctionTimer": "Temporizador da Dark Auction",
+    "magmaBossTimer": "Temporizador do Magma Boss",
     "itemPickupLog": "Registro de Itens Pegos",
     "avoidPlacingEnchantedItems": "Evitar de Colocar Itens Encantados",
     "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
@@ -85,33 +85,33 @@
     "tab": {
       "generalSettings": "Configurações Gerais"
     },
-    "tabEffectTimers": "Tempo de poções e powerups",
+    "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
     "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
-    "showCakeBagPreview": "Mostrar a Pré-visualização de Mochilas de Bolo",
+    "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar pré-visualização da backpack enquanto a AH está aberta",
     "enableDevFeatures": "Ativar funções de desenvolvedor",
-    "chromaSpeed": "Velocidade do Chroma",
-    "chromaMode": "Modo de Cor do Chroma",
+    "chromaSpeed": "Velocidade do croma",
+    "chromaMode": "Modo da cor do croma",
     "chromaModes": {
-      "allTheSame": "Todos da Mesma Cor",
+      "allTheSame": "Tudo da mesma cor",
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura de Desvanecimento do Chroma",
-    "sortTabEffectTimers": "Ordenar Timers por Duração",
+    "sortTabEffectTimers": "Ordenar temporizadores por duração",
     "showBrokenFragments": "Mostrar Fragmentos de Dragão \"Quebrados\"",
     "skyblockAddonsButtonInPauseMenu": "Mostrar o Botão SBA no Menu de Pausa",
     "showTotalZealotCount": "Contador de Zealot - Contador Total de Zealot",
     "showSummoningEyeCount": "Contador de Zealot - Contador Total de Olhos",
     "showZealotsPerEye": "Contador Zealot - Mostrar Zealots Por Olho",
     "turnBowGreenWhenUsingToxicArrowPoison": "Cor Verde no Arco Quando Usar Flechas de Veneno",
-    "birchParkRainmakerTimer": "Timer de Chuva no Parque de Bétula",
-    "combatTimerDisplay": "Exibir Timer de Combate",
+    "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
+    "combatTimerDisplay": "Mostrar temporizador de combate",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Mostrar Estágio do Protetor de Endstone",
     "fancyWarpMenu": "Menu de Warp Bonito",
     "stopRatSounds": "Parar sons do rat pet",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "onlyStopRatSqueak": "Somente parar o guincho do rat pet",
     "doubleWarp": "Warp Duplo",
     "advancedMode": "Modo avançado",
     "legendarySeaCreatureWarning": "Alerta de sea creature lendária",
@@ -212,7 +212,7 @@
     "abbreviateSkillXpDenominator": "Abreviar denominador de XP da skill",
     "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Tempo do Jacob's contest",
+    "jacobsContestTimer": "Temporizador do Jacob's contest",
     "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Modo desenvolvedor",
@@ -347,7 +347,7 @@
         "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Mostrar a marca do servidor",
         "brandOutput": "Marca do servidor: %brand%",
         "notFound": "Marca do servidor não encontrada!"
       },
@@ -460,9 +460,9 @@
         "enabled": "As mensagens da barra de ações agora serão registradas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
-        "disabled": "Mensagens de tempo do magma boss não serão registradas.",
-        "enabled": "As mensagens de tempo do magma boss serão registradas."
+        "help": "Alterna mensagens de depuração de registro do temporizador do do magma boss",
+        "disabled": "Mensagens do temporizador do magma boss não serão registradas.",
+        "enabled": "Mensagens do temporizador do magma boss serão registradas."
       },
       "version": {
         "help": "Mostra a versão do mod",
