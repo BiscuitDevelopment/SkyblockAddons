@@ -40,7 +40,7 @@
     "magmaBossTimer": "Temporizador do Magma Boss",
     "itemPickupLog": "Registro de itens pegos",
     "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
-    "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
+    "stopBowChargeFromResetting": "Impedir que o arco reinicie",
     "preventMovementOnDeath": "Impedir movimento após morte",
     "showItemAnvilUses": "Mostrar usos da bigorna no item",
     "lockSlots": "Permitir o bloqueio de espaços",
@@ -83,7 +83,7 @@
     "zealotCounter": "Contador de zealots - Conta desde o último eye",
     "tickerChargesDisplay": "Exibição de Tickers/Cargas",
     "tab": {
-      "generalSettings": "Configurações Gerais"
+      "generalSettings": "Configurações gerais"
     },
     "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
