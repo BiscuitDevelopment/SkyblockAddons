@@ -68,7 +68,7 @@
     "disableMinionLocationWarning": "Desativar alertas de \"Location not perfect\"",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
-    "collectionDisplay": "Exibição do progresso da skill",
+    "collectionDisplay": "Progresso das skills",
     "revenantIndicator": "Indicador de progresso da armadura de slayer",
     "specialZealotAlert": "Alerta de zealots especiais",
     "enableMessageWhenActionPrevented": "Mostrar uma mensagem quando uma ação for impedida",
@@ -108,7 +108,7 @@
     "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
     "combatTimerDisplay": "Mostrar temporizador de combate",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Mostrar estágio do Endstone Protector",
+    "endstoneProtectorDisplay": "Exibição do Endstone Protector",
     "fancyWarpMenu": "Menu de transporte chique",
     "stopRatSounds": "Parar sons do rat pet",
     "onlyStopRatSqueak": "Somente parar o guincho do rat pet",
@@ -171,7 +171,7 @@
     "compactTabList": "Lista de jogadores compacta",
     "highlightSpecialEnchantments": "Destacar encantamentos especiais",
     "disableDamageChatMessages": "Desativar mensagens de dano no chat",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "showSpiritSceptreDisplay": "Exibição de dano do Spirit Sceptre/Wither Blade",
     "outbidAlertSound": "Som de alerta de lance maior",
     "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
     "candyPointsCounter": "Contador de doces/pontos do Spooky Event",
@@ -218,7 +218,7 @@
     "devMode": "Modo desenvolvedor",
     "showSkyblockItemId": "Mostrar ID de item do SkyBlock ao passar o cursor",
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o cursor",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "resetSalvagedEssencesAfterLeavingMenu": "Redefine o contador de Salvaged Essence após fechar o menu",
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
   },
   "messages": {
@@ -310,7 +310,7 @@
     "titlePurse": "Carteira",
     "descriptionPurse": "Mostra a quantidade de coins na sua purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Mostra a quantidade de bits que você possui",
     "titleStats": "Estatísticas",
     "descriptionStats": "Mostra suas estatísticas de vida, defesa e mana",
     "titleZealots": "Zealots",
@@ -437,9 +437,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
           "options": {
             "boss": "Boss Slayer: \"Zombie\", \"Spider\", ou \"Wolf\"",
             "number": "Número para definir a estatística",
@@ -447,7 +447,7 @@
           }
         },
         "bossRequired": "Você precisa escolher um boss! Escolha %bosses%",
-        "statRequired": "Você precisa escolher uma estatística. Pressione tab para opções.",
+        "statRequired": "Você precisa escolher uma estatística. Pressione tab para ver as opções.",
         "numberRequired": "Você precisa adicionar o número que você quer.",
         "killsSet": "Os abates para o slayer de %boss% foram definidas para %number%.",
         "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
