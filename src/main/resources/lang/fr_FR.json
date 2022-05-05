@@ -347,7 +347,7 @@
         "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Affiche le statut du serveur",
         "brandOutput": "Nom du serveur : %brand%",
         "notFound": "Nom du serveur introuvable !"
       },
