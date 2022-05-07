@@ -389,8 +389,7 @@
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Opens your mods folder",
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "help": "Opens your mods folder"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -461,7 +460,7 @@
           "enabled": "Режим за разработчици е включеб! СЪВЕТ: Натиснете \"%keyName%\", за да копирате NBT данни!"
         },
         "folder": {
-          "error": "An error occurred trying to open the mods folder: %s"
+          "error": "An error occurred while trying to open the mods folder: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot counters reset!"
