@@ -345,7 +345,7 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "Ouvre le menu principal"
         },
         "brand": {
           "help": "Affiche le statut du serveur"
@@ -354,7 +354,7 @@
           "help": "Copie les données du bloc que vous regardez"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "Copie les données NBT des entités indiquées dans le rayon donné autour du joueur",
           "detailedHelp": {
             "description": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
             "options": {
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "Copie le texte du tableau des scores",
           "detailedHelp": {
             "description": "Copie le texte affiché dans le tableau à droite",
             "options": {
@@ -373,29 +373,29 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Copie l'en-tête et le pied de page de la liste des joueurs",
           "detailedHelp": {
             "description": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus."
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "Active le mode développeur",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
           },
           "prefix": "Dev"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "Modifie l'interface"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Ouvre le dossier des mods"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "Affiche ce message d'aide. Si une commande est précisée, une aide détaillée sur la commande sera affichée.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "La sous-commande nécessitant une explication"
             }
           }
         },
@@ -416,7 +416,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Définit manuellement le nombre de zealot",
             "detailedHelp": {
               "description": "Définir manuellement le nombre de zealot dans le compteur.",
               "options": {
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "Règle manuellement les stats slayer, appuyer sur tab pour les arguments",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "Règle manuellement les stats slayer, appuyer sur tab pour les arguments",
             "options": {
               "boss": "Slayer boss: \"Zombie\", \"Spider\", ou \"Wolf\"",
               "number": "Valeur à appliquer à la statistique",
@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "Bascule la sauvegarde des messages de la barre d'action"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Bascule la sauvegarde des messages de débug du minuteur Magma Boss"
         },
         "version": {
           "help": "Affiche la version du mod"
@@ -460,7 +460,7 @@
           "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "Une erreur est survenue lors de l'ouverture du dossier des mods : %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Compteur de Zealots réinitialisé !"
@@ -505,7 +505,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "Ouvre le menu principal"
       },
       "brand": {
         "help": "Affiche le statut du serveur",
@@ -516,7 +516,7 @@
         "help": "Copie les données du bloc que vous regardez"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copie les données NBT des entités indiquées dans le rayon donné autour du joueur",
         "detailedHelp": {
           "description": "Copie les données NBT des entités. Les types d'entités et le rayon autour du joueur peuvent être personnalisés. Si aucune option n'est fournie, les paramètres par défaut seront utilisés. Les paramètres par défaut sont : les joueurs, les porte-armures et les monstres dans un rayon de 3 blocs. Si le rayon n'est pas donné, la valeur par défaut est utilisée.",
           "options": {
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "Copie le texte du tableau des scores",
         "detailedHelp": {
           "description": "Copie le texte affiché dans le tableau à droite",
           "options": {
@@ -535,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Copie l'en-tête et le pied de page de la liste des joueurs",
         "detailedHelp": {
           "description": "Cette commande copie l'en-tête et le pied de page de la liste des joueurs. Les codes de formatage sont inclus."
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "Active le mode développeur",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Cette commande active le mode développeur. Ce mode est destiné aux développeurs de mods/outils Skyblock. Il fournit des données brutes du jeu telles que les entités et les NBT des objets."
         },
         "disabled": "Mode développeur désactivé !",
         "enabled": "Mode développeur activé ! Astuce : Appuyez sur \"%keyName%\" pour copier les données NBT !",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "Modifie l'interface"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "Ouvre le dossier des mods",
+        "error": "Une erreur est survenue lors de l'ouverture du dossier des mods : %s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Affiche ce message d'aide. Si une commande est précisée, une aide détaillée sur la commande sera affichée.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "La sous-commande nécessitant une explication"
           }
         }
       },
@@ -582,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Définit manuellement le nombre de zealot",
           "detailedHelp": {
             "description": "Définir manuellement le nombre de zealot dans le compteur.",
             "options": {
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Règle manuellement les stats slayer, appuyer sur tab pour les arguments",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Règle manuellement les stats slayer, appuyer sur tab pour les arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", ou \"Wolf\"",
             "number": "Valeur à appliquer à la statistique",
@@ -616,12 +616,12 @@
         "invalidStat": "%input% n'est pas un boss valide !"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "Bascule la sauvegarde des messages de la barre d'action",
         "disabled": "Les messages de la barre d'action ne seront plus sauvegardés.",
         "enabled": "Les messages de la barre d'action seront maintenant sauvegardés."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Bascule la sauvegarde des messages de débug du minuteur Magma Boss",
         "disabled": "Les messages du minuteur Magma Boss ne seront plus sauvegardés.",
         "enabled": "Les messages du minuteur Magma Boss seront maintenant sauvegardés."
       },
