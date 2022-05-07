@@ -386,7 +386,7 @@
           "prefix": "Entwickler"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "Bearbeitet GUI-Standorte"
         },
         "folder": {
           "help": "Öffnet deinen Mods-Ordner"
@@ -550,7 +550,7 @@
         "prefix": "Entwickler"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "Bearbeitet GUI-Standorte"
       },
       "folder": {
         "help": "Öffnet deinen Mods-Ordner",
