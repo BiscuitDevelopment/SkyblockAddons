@@ -379,9 +379,9 @@
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "Schaltet den Entwicklermodus ein/aus",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "Dieser Befehl schaltet den Entwicklermodus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
           },
           "prefix": "Entwickler"
         },
@@ -392,7 +392,7 @@
           "help": "Öffnet deinen Mods-Ordner"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "Zeigt diese Hilfs-Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesem Befehl angezeigt.",
           "detailedHelp": {
             "options": {
               "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
@@ -416,7 +416,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Zealot-Zähler manuell festlegen",
             "detailedHelp": {
               "description": "Setzt Zahlen im Zealot-Zähler manuell.",
               "options": {
@@ -460,7 +460,7 @@
           "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "Beim Öffnen des Mods-Ordners ist ein Fehler aufgetreten: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot-Zähler zurückgestellt!"
@@ -541,9 +541,9 @@
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "Schaltet den Entwicklermodus ein/aus",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Dieser Befehl schaltet den Entwicklermodus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
         },
         "disabled": "Entwicklermodus deaktiviert!",
         "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!",
@@ -554,10 +554,10 @@
       },
       "folder": {
         "help": "Öffnet deinen Mods-Ordner",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "error": "Beim Öffnen des Mods-Ordners ist ein Fehler aufgetreten: %s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Zeigt diese Hilfs-Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesem Befehl angezeigt.",
         "detailedHelp": {
           "options": {
             "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
@@ -582,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Zealot-Zähler manuell festlegen",
           "detailedHelp": {
             "description": "Setzt Zahlen im Zealot-Zähler manuell.",
             "options": {
