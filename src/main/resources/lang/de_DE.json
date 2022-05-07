@@ -345,10 +345,10 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "Öffnet das Hauptmenü"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "Servername anzeigen"
         },
         "copyBlock": {
           "help": "Kopiert Daten vom Block, den du anschaust"
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "Kopiere den Scoreboard-Text",
           "detailedHelp": {
             "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
             "options": {
@@ -389,7 +389,7 @@
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Öffnet deinen Mods-Ordner"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "Schalte die Protokollierung der Nachrichten in der Aktionsleiste um"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen"
         },
         "version": {
           "help": "Zeigt die Version des Mods an"
@@ -505,10 +505,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "Öffnet das Hauptmenü"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Servername anzeigen",
         "brandOutput": "Servername: %brand%",
         "notFound": "Servername nicht gefunden!"
       },
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "Kopiere den Scoreboard-Text",
         "detailedHelp": {
           "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
           "options": {
@@ -553,7 +553,7 @@
         "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Opens your mods folder",
+        "help": "Öffnet deinen Mods-Ordner",
         "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
@@ -616,12 +616,12 @@
         "invalidStat": "\"%input%\" ist kein gültiger boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
         "disabled": "Nachrichten in der Aktionsleiste werden nicht mehr protokolliert.",
         "enabled": "Nachrichten in der Aktionsleiste werden nun protokolliert."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
         "disabled": "Die Timer-Meldungen des Magma-Bosses werden nicht mehr protokolliert.",
         "enabled": "Die Timer-Meldungen des Magma-Bosses werden nun protokolliert."
       },
