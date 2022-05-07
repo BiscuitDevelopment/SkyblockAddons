@@ -252,7 +252,7 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth + 90;
         }
         double y = getRowHeight(row);
-        buttonList.add(new ButtonLanguage(x, y, text, main, language));
+        buttonList.add(new ButtonLanguage(x, y, text, language));
         column++;
         if (column > 3) {
             column = 1;
