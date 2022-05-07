@@ -341,6 +341,168 @@
     "titleExpand": "Επέκταση",
     "descriptionExpand": "Εμφανίζει κάθε μάγεμα στη δική του γραμμή"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Αντιγράφει δεδομένα σχετικά με το μπλοκ που κοιτάτε"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Αντιγράφει τα δεδομένα NBT οντοτήτων. Οι τύποι των οντοτήτων που περιλαμβάνονται και η ακτίνα γύρω από τη συσκευή αναπαραγωγής για την αντιγραφή δεδομένων από μπορούν να προσαρμοστούν. Εάν δεν δίνονται επιλογές, χρησιμοποιούνται οι προεπιλεγμένες ρυθμίσεις. Οι προεπιλεγμένες ρυθμίσεις είναι: περιλαμβάνουν παίκτες, θωρακισμένες βάσεις και όπλα, και μια ακτίνα 3 μπλοκ. Εάν δεν δοθεί η ακτίνα, χρησιμοποιείται η προεπιλεγμένη ακτίνα.",
+            "options": {
+              "entityNames": "Ονόματα των τύπων οντοτήτων για τις οποίες θέλετε να αντιγράψετε δεδομένα (π.χ. Player,Creeper). Πατήστε \"Tab\" αφού πληκτρολογήσετε την εντολή για μια πλήρη λίστα. Διαχωρίστε πολλά ονόματα με κόμματα, τα ονόματα είναι case-sensitive.",
+              "radius": "Η ακτίνα (σε μπλοκ) γύρω από τον παίκτη για την αντιγραφή δεδομένων NBT οντοτήτων από"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Αντιγράφει το κείμενο που εμφανίζεται στην υποδοχή εμφάνισης της πλευρικής γραμμής του πίνακα αποτελεσμάτων",
+            "options": {
+              "formatted": "Καθορίζει εάν οι κωδικοί μορφοποίησης πρέπει να περιλαμβάνονται κατά την αντιγραφή. Μπορεί να είναι \"true\" ή \"false\", από προεπιλογή σε \"false\" εάν δεν παρέχεται τιμή. Οι κωδικοί μορφοποίησης αντιγράφονται εάν είναι \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Αυτή η εντολή αντιγράφει την κεφαλίδα και το υποσέλιδο της λίστας του προγράμματος αναπαραγωγής καρτελών. Περιλαμβάνονται κωδικοί μορφοποίησης."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder",
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Εκτυπώνει τις μετρήσεις που αποθηκεύονται στους μετρητές θανάτου dungeon για σκοπούς αποσφαλμάτωσης."
+        },
+        "reload": {
+          "help": "Επαναφορτώνει όλες τις ρυθμίσεις και τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
+        },
+        "reloadConfig": {
+          "help": "Επαναφορτώνει τις ρυθμίσεις του mod"
+        },
+        "reloadRes": {
+          "help": "Επαναφορτώνει τους πόρους του mod. Το παιχνίδι θα παγώσει για λίγα δευτερόλεπτα."
+        },
+        "resetZealotCounter": {
+          "help": "Επαναφέρει όλες τις μετρήσεις του μετρητή zealot."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Μη αυτόματη ρύθμιση μετρήσεων στον μετρητή zealot.",
+              "options": {
+                "eyes": "Διάρκεια Ζωής summoning eyes αποκτήθηκαν",
+                "totalZealots": "Εφ' όρου ζωής σκοτωμοί zealot",
+                "zealots": "Τα Zealot που σκοτώθηκαι από το τελευταίο Summoning Eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", ή \"Wolf\"",
+              "number": "Αριθμός για να ορίσετε το stat σε",
+              "stat": "Το στατιστικό στοιχείο του Slayer για αλλαγή, μπορεί να είναι \"kill\" ή το όνομα ενός αντικειμένου που έχει πέσει με τη μορφή: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Εμφανίζει την έκδοση του mod"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Επωνυμία διακομιστή: %brand%",
+          "notFound": "Η επωνυμία διακομιστή δεν βρέθηκε!"
+        },
+        "dev": {
+          "disabled": "Η λειτουργία προγραμματιστή απενεργοποιήθηκε!",
+          "enabled": "Η λειτουργία προγραμματιστή ενεργοποιήθηκε! ΣΥΜΒΟΥΛΗ: Πατήστε \"%keyName%\" για να αντιγράψετε δεδομένα NBT!"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Οι μετρητές Zealot επαναφέρθηκαν!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Ορίστε τον συνολικό αριθμό summoning eye σε %number%!",
+            "totalZealotsSet": "Ορίστε τον σύνολο αριθμό zealot σε %number%!",
+            "wrongUsage": "Μη έγκυρη επιλογή! Επιλέξτε %options%.",
+            "zealotsSet": "Ορίστε τον τρέχοντα αριθμό zealot σε %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Πρέπει να διαλέξεις ένα εξέχων όγκος! Παρακαλώ διάλεξε %bosses%",
+          "statRequired": "Πρέπει να διαλέξεις ένα στατιστικό. Πάτα tab για επιλογές.",
+          "numberRequired": "Πρέπει να προσθέσεις τον αριθμό που θέλεις.",
+          "killsSet": "Σκοτωμοί για slayer %boss% ήταν ρυθμισμένο στο %number%.",
+          "statSet": "Στατιστικό %stat% για slayer %boss% ήταν ρυθμισμένο στο %number%.",
+          "invalidBoss": "\"%input%\" δεν είναι έγκυρο στατιστικό!",
+          "invalidStat": "\"%input%\" δεν είναι έγκυρο boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Τα μηνύματα της γραμμής ενεργειών δεν θα καταγράφονται πλέον.",
+          "enabled": "Τα μηνύματα του Action bar θα καταγράφονται από τώρα."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Τα μηνύματα του χρονομέτρου Magma boss δε θα καταγράφονται πλέον.",
+          "enabled": "Τα μηνύματα του χρονομέτρου Magma boss τώρα θα καταγράφονται."
+        },
+        "version": {
+          "hoverText": "Κάντε κλικ για να το βάλετε στη συνομιλία, ώστε να μπορείτε να αντιγράψετε."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Λάθος χρήση!",
+        "subCommandNotFound": "Η υπο-εντολή %sub-command% δεν βρέθηκε."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
