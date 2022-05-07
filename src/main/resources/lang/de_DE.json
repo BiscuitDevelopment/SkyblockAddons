@@ -354,7 +354,7 @@
           "help": "Kopiert Daten vom Block, den du anschaust"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
           "detailedHelp": {
             "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
             "options": {
@@ -373,7 +373,7 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Kopiere die Kopf- und Fußzeile in der Tab-Liste",
           "detailedHelp": {
             "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
           }
@@ -395,7 +395,7 @@
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
             }
           }
         },
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
             "options": {
               "boss": "Slayer Boss: \"Zombie\", \"Spider\", oder \"Wolf\"",
               "number": "Nummer, auf die die Statistik gesetzt werden soll",
@@ -516,7 +516,7 @@
         "help": "Kopiert Daten vom Block, den du anschaust"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
         "detailedHelp": {
           "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
           "options": {
@@ -535,7 +535,7 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Kopiere die Kopf- und Fußzeile in der Tab-Liste",
         "detailedHelp": {
           "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
         }
@@ -560,7 +560,7 @@
         "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
           }
         }
       },
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
           "options": {
             "boss": "Slayer Boss: \"Zombie\", \"Spider\", oder \"Wolf\"",
             "number": "Nummer, auf die die Statistik gesetzt werden soll",
