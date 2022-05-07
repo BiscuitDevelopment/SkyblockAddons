@@ -341,6 +341,168 @@
     "titleExpand": "展開",
     "descriptionExpand": "顯示各個附魔自為一行"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "複製面朝方塊的資料"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
+            "options": {
+              "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
+              "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "複製側邊記分板內的文字",
+            "options": {
+              "formatted": "決定在複製時是否包含格式化代碼。值可以是 \"true\" 或 \"false\"，如果沒有提供，將預設為 \"false\"。如果值為 \"true\"，格式化代碼將被複製。"
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "開發者"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder",
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
+        },
+        "reload": {
+          "help": "重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
+        },
+        "reloadConfig": {
+          "help": "重新載入模組設定"
+        },
+        "reloadRes": {
+          "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
+        },
+        "resetZealotCounter": {
+          "help": "重置所有 Zealot 計數器數量。"
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "手動設置 Zealot 計數器的數字。",
+              "options": {
+                "eyes": "總共獲得多少 Summoning eye",
+                "totalZealots": "總共擊殺多少 Zealots",
+                "zealots": "自上一次 Summoning Eye 掉落後擊殺了多少 Zealots"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
+              "number": "數值要設定成的數字",
+              "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列：\"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "顯示模組版本"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "伺服端：%brand%",
+          "notFound": "未發現伺服端！"
+        },
+        "dev": {
+          "disabled": "開發者模式已停用！",
+          "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot 計數器重置！"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "設定總 Summoning Eye 數至 %number%！",
+            "totalZealotsSet": "設定總 Zealot 數至 %number%！",
+            "wrongUsage": "無效的選項！請選擇 %options%。",
+            "zealotsSet": "設定當前 Zealot 數至 %number%！"
+          }
+        },
+        "slayer": {
+          "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
+          "statRequired": "你需要選擇一個數值。按 Tab 以查看選項。",
+          "numberRequired": "你需要添加你想要的數字。",
+          "killsSet": "Slayer %boss% 擊殺數已設定為 %number%。",
+          "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%。",
+          "invalidBoss": "\"%input%\" 不是有效的統計數據！",
+          "invalidStat": "\"%input%\" 不是有效的 Boss！"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "動作列訊息將不再被記錄。",
+          "enabled": "動作列訊息現在會開始記錄。"
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma Boss 計時器訊息將不再被記錄。",
+          "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
+        },
+        "version": {
+          "hoverText": "點擊以置於聊天室以便複製。"
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "錯誤的用法！",
+        "subCommandNotFound": "查無子命令 \"%sub-command%\"。"
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
