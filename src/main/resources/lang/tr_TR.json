@@ -219,7 +219,7 @@
     "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
     "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -345,10 +345,10 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "Ana menüyü açar"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "Sunucu adresini gösterir"
         },
         "copyBlock": {
           "help": "Baktığınız blokla ilgili verileri kopyalar"
@@ -381,7 +381,7 @@
         "dev": {
           "help": "Toggles the developer mode",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
           },
           "prefix": "Dev"
         },
@@ -505,10 +505,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "Ana menüyü açar"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Sunucu adresini gösterir",
         "brandOutput": "Server Markası:%brand%",
         "notFound": "Server markası bulunamadı!"
       },
@@ -543,7 +543,7 @@
       "dev": {
         "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
         },
         "disabled": "Geliştirici modu kapatıldı!",
         "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!",
