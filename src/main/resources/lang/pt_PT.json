@@ -341,6 +341,168 @@
     "titleExpand": "Expandir",
     "descriptionExpand": "Mostra cada encantamento na sua própria linha"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Abre o menu principal"
+        },
+        "brand": {
+          "help": "Mostra a marca do servidor"
+        },
+        "copyBlock": {
+          "help": "Copia os dados do bloco para o qual estás a olhar"
+        },
+        "copyEntity": {
+          "help": "Copia os dados NBT das entidades com o(s) nome(s) dados dentro do raio determinado à volta do jogador",
+          "detailedHelp": {
+            "description": "Copia os dados NBT das entidades. Os dados dos tipos de entidades incluídas no raio à volta do jogador podem ser personalizados. Se não forem fornecidas definições, serão usados os valores predefinidos. As definições predefinidas são: incluir jogadores, suportes para armaduras e criaturas num raio de 3 blocos. Se não for fornecido um raio, será usado o valor predefinido.",
+            "options": {
+              "entityNames": "Nomes dos tipos de entidades das quais queres copiar os dados (ex.: Player, Creeper). Pressiona \"Tab\" depois de escreveres o comando para uma lista completa. Separa vários nomes com vírgulas. Os nomes são sensíveis a maiúsculas e minúsculas.",
+              "radius": "O raio (em blocos) à volta do jogador para copiar os dados NBT das entidades"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copia o texto da tabela lateral",
+          "detailedHelp": {
+            "description": "Copia o texto apresentado na barra lateral",
+            "options": {
+              "formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser definida como \"true\" ou \"false\" e, caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copia o cabeçalho e o rodapé da lista de jogadores",
+          "detailedHelp": {
+            "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
+          }
+        },
+        "dev": {
+          "help": "Ativa/desativa o modo de programador",
+          "detailedHelp": {
+            "description": "Este comando ativa o modo de programador. Este modo foi pensado para programadores de mods/ferramentas para o SkyBlock. Com ele, poderás obter dados brutos do jogo, como NBT de entidades ou itens."
+          },
+          "prefix": "Program"
+        },
+        "edit": {
+          "help": "Edita a disposição da GUI"
+        },
+        "folder": {
+          "help": "Abre a pasta mods",
+          "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
+        },
+        "help": {
+          "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
+          "detailedHelp": {
+            "options": {
+              "command": "O comando para o qual desejas obter informação detalhada"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Envia os valores armazenados nos contadores de mortes na Dungeon para o chat."
+        },
+        "reload": {
+          "help": "Recarrega todas as definições e recursos do mod. O jogo irá congelar durante alguns segundos."
+        },
+        "reloadConfig": {
+          "help": "Recarrega as definições do mod"
+        },
+        "reloadRes": {
+          "help": "Recarrega os recursos do mod. O jogo irá congelar durante alguns segundos."
+        },
+        "resetZealotCounter": {
+          "help": "Repõe todas as contagens do contador de zealots."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Define as tuas contagens de zealots manualmente",
+            "detailedHelp": {
+              "description": "Define manualmente os valores no contador de zealots.",
+              "options": {
+                "eyes": "Total de summoning eyes obtidos",
+                "totalZealots": "Total de zealots mortos",
+                "zealots": "Zealots mortos desde o último summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+          "detailedHelp": {
+            "description": "Define manualmente as estatísticas do slayer. Carrega no tab para ver os argumentos",
+            "options": {
+              "boss": "Boss do slayer: \"Zombie\", \"Spider\" ou \"Wolf\"",
+              "number": "Número para o qual será definido a estatística",
+              "stat": "Estatística do slayer para alterar. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Alterna o registo de mensagens da barra de ação"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Alterna o registo das mensagens de depuração do temporizador do magma boss"
+        },
+        "version": {
+          "help": "Mostra a versão do mod"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Marca do servidor: %brand%",
+          "notFound": "Não foi possível encontrar a marca do servidor!"
+        },
+        "dev": {
+          "disabled": "Modo de programador desativado!",
+          "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "O contador de zealots foi redefinido!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+            "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
+            "wrongUsage": "Seleção inválida! Escolhe %options%.",
+            "zealotsSet": "A contagem atual de zealots foi definida para %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Precisas de escolher um boss! Escolhe %bosses%",
+          "statRequired": "Precisas de escolher uma estatística. Prime tab para opções.",
+          "numberRequired": "Precisas de adicionar o número que desejas.",
+          "killsSet": "As kills para o slayer de %boss% foram definidas para %number%.",
+          "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
+          "invalidBoss": "\"%input%\" não é uma estatística válida!",
+          "invalidStat": "\"%input%\" não é um boss válido!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "As mensagens da barra de ação não serão mais registadas.",
+          "enabled": "As mensagens da barra de ação serão agora registadas."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "As mensagens do temporizador do magma boss não serão registadas.",
+          "enabled": "As mensagens do temporizador do magma boss serão registadas."
+        },
+        "version": {
+          "hoverText": "Clica para colocares no chat para que possas copiar."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Uso errado!",
+        "subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
