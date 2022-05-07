@@ -389,8 +389,7 @@
           "help": "Edita a disposição da GUI"
         },
         "folder": {
-          "help": "Abre a pasta mods",
-          "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
+          "help": "Abre a pasta mods"
         },
         "help": {
           "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, serão mostradas mais informações sobre esse comando.",
@@ -461,7 +460,7 @@
           "enabled": "Modo de programador ativado! DICA: Pressiona \"%keyName%\" para copiar dados NBT!"
         },
         "folder": {
-          "error": "An error occurred trying to open the mods folder: %s"
+          "error": "Ocorreu um erro ao tentar abrir a pasta mods: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "O contador de zealots foi redefinido!"
