@@ -341,6 +341,168 @@
     "titleExpand": "확장",
     "descriptionExpand": "각 인챈트를 새로운 라인에 나열합니다."
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
+            "options": {
+              "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
+              "radius": "엔티티의 NBT 데이터를 복사할 플레이어의 주변 반경 (단위: 블록)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "스코어보드의 사이드 바 디스플레이 슬롯에 표시된 텍스트를 복사합니다.",
+            "options": {
+              "formatted": "복사할 때 포맷팅 코드들이 포함되어야 하는지 결정합니다. \"참\" 혹은 \"거짓\" 이 될 수 있고, 만약에 아무런 값을 입력받지 않았다면 기본값인 \"거짓\" 이 됩니다. \"참\" 일때 포맷팅 코드들이 복사됩니다."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "이 명령어는 Tab 리스트의 머리글과 바닥 글을 복사합니다. 포매팅 코드도 포함되어 있습니다."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "개발자"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder",
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
+        },
+        "reload": {
+          "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        },
+        "reloadConfig": {
+          "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
+        },
+        "reloadRes": {
+          "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "직접 질럿 카운터의 값을 설정합니다.",
+              "options": {
+                "eyes": "총 서머닝 눈 획득 수",
+                "totalZealots": "총 질럿 킬 수",
+                "zealots": "최근 서머닝 눈 드랍 이후 죽인 질럿들"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "슬레이어 보스: \"Zombie\", \"Spider, 또는 \"Wolf\"",
+              "number": "스탯으로 만들 숫자",
+              "stat": "바꿀 Slayer 스탯, \"kills\" 또는 그 Slayer가 떨어트리는 아이템을 이렇게 포매팅 한 것일수도 있읍니다: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "모드의 버전 보이기"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "서버 브랜드: %brand%",
+          "notFound": "서버 브랜드를 찾을 수 없습니다!"
+        },
+        "dev": {
+          "disabled": "개발자 모드가 꺼졌습니다!",
+          "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "전체 서머닝 눈 카운트를 %number% (으)로 설정했습니다!",
+            "totalZealotsSet": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+            "wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
+            "zealotsSet": "현재 질럿 카운트를 %number% (으)로 설정했습니다!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "보스를 선택해야 합니다! %bosses% 를 골라 주세요!",
+          "statRequired": "스탯을 골라야 합니다. 선택 가능 스탯을 보려면 Tab를 누르세요.",
+          "numberRequired": "당신이 원하는 숫자를 넣어야 합니다.",
+          "killsSet": "%boss% Slayer의 킬 숫자가 %number% 로 바뀌었습니다",
+          "statSet": "%boss% Slayer 스탯 %stat% 이 %number% 로 바뀌었습니다",
+          "invalidBoss": "\"%input%\"은(는) 유효한 스탯이 아닙니다!",
+          "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
+          "enabled": "이제 액션 바의 메시지가 기록됩니다."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "더 이상 Magma boss의 타이머를 기록하지 않습니다.",
+          "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
+        },
+        "version": {
+          "hoverText": "복사할 수 있도록 채팅에 표시하려면 클릭하세요"
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "잘못된 사용법입니다!",
+        "subCommandNotFound": "부 명령어 \"%sub-command%\" (을)를 찾을 수 없습니다."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
