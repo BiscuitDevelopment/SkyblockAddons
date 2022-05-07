@@ -354,7 +354,7 @@
           "help": "Baktığınız blokla ilgili verileri kopyalar"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyalar",
           "detailedHelp": {
             "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
             "options": {
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "Skorbord yazısını kopyalar",
           "detailedHelp": {
             "description": "Skorbord'da görüntülenen metni kopyalar",
             "options": {
@@ -373,29 +373,29 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Tab listesi üstbilgisini ve altbilgisini kopyalar",
           "detailedHelp": {
             "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "Geliştirici modunu açar/kapatır",
           "detailedHelp": {
             "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
           },
           "prefix": "Dev"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "Arayüz konumlarını düzenler"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "mods klasörünü açar"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "Bu yardım iletisini gösterir. Eğer bir komut belirtilirse, o komutla ilgili ayrıntılı bilgi gösterilir.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "ayrıntılı kullanım için alt komut"
             }
           }
         },
@@ -416,7 +416,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Zealot sayılarını el ile gir",
             "detailedHelp": {
               "description": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
               "options": {
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
             "options": {
               "boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
               "number": "Stat değerini ayarlamak için sayı",
@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "Aksiyon barı messajları günlüğünü açar/kapatır"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Magma boss zamanlayıcı hata ayıklama iletilerini loglamayı aç/kapat"
         },
         "version": {
           "help": "Modun versiyonunu gösterir"
@@ -460,7 +460,7 @@
           "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "mods klasörünü açarken bi sorun oluştu: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot sayaçları sıfırlandı!"
@@ -516,7 +516,7 @@
         "help": "Baktığınız blokla ilgili verileri kopyalar"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyalar",
         "detailedHelp": {
           "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
           "options": {
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "Skorbord yazısını kopyalar",
         "detailedHelp": {
           "description": "Skorbord'da görüntülenen metni kopyalar",
           "options": {
@@ -535,13 +535,13 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Tab listesi üstbilgisini ve altbilgisini kopyalar",
         "detailedHelp": {
           "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "Geliştirici modunu açar/kapatır",
         "detailedHelp": {
           "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
         },
@@ -550,17 +550,17 @@
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "Arayüz konumlarını düzenler"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "mods klasörünü açar",
+        "error": "mods klasörünü açarken bi sorun oluştu: %s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Bu yardım iletisini gösterir. Eğer bir komut belirtilirse, o komutla ilgili ayrıntılı bilgi gösterilir.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "ayrıntılı kullanım için alt komut"
           }
         }
       },
@@ -582,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Zealot sayılarını el ile gir",
           "detailedHelp": {
             "description": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
             "options": {
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
             "number": "Stat değerini ayarlamak için sayı",
@@ -616,12 +616,12 @@
         "invalidStat": "\"%input% \" geçerli bir boss değil!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "Aksiyon barı messajları günlüğünü açar/kapatır",
         "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
         "enabled": "Aksiyon barı mesajları gösteriliyor."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Magma boss zamanlayıcı hata ayıklama iletilerini loglamayı aç/kapat",
         "disabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulmayacak.",
         "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
       },
@@ -639,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "NBT Kopyala",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Zindan Haritasını Yakınlaştır",
+    "decreaseDungeonMapZoom": "Zindan Haritasını Uzaklaştır"
   },
   "dragonTracker": {
     "protector": "Protector",
