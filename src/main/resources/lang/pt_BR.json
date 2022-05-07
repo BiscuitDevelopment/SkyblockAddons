@@ -389,8 +389,7 @@
           "help": "Editar posições"
         },
         "folder": {
-          "help": "Abre a sua pasta de mods",
-          "error": "Ocorreu um erro ao tentar abrir a pasta de mods: %s"
+          "help": "Abre a sua pasta de mods"
         },
         "help": {
           "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, é mostrado uma descrição detalhada sobre esse comando.",
@@ -461,7 +460,7 @@
           "enabled": "Modo desenvolvedor ativado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!"
         },
         "folder": {
-          "error": "An error occurred trying to open the mods folder: %s"
+          "error": "Ocorreu um erro ao tentar abrir a pasta de mods: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Contador de zealots redefinido!"
