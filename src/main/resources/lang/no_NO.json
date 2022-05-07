@@ -341,6 +341,168 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+            "options": {
+              "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+              "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+            "options": {
+              "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder",
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in the zealot counter.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Lifetime zealots killed",
+                "zealots": "Zealots killed since the last summoning eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Number to set the stat to",
+              "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Brand: %brand%",
+          "notFound": "Server brand not found!"
+        },
+        "dev": {
+          "disabled": "Developer mode disabled!",
+          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summoning eye count to %number%!",
+            "totalZealotsSet": "Set total zealot count to %number%!",
+            "wrongUsage": "Invalid selection! Please choose %options%.",
+            "zealotsSet": "Set current zealot count to %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "You need to select a boss! Please choose %bosses%",
+          "statRequired": "You need to select a stat. Press tab for options.",
+          "numberRequired": "You need to add the number you want.",
+          "killsSet": "Kills for slayer %boss% was set to %number%.",
+          "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+          "invalidBoss": "\"%input%\" is not a valid statistic!",
+          "invalidStat": "\"%input%\" is not a valid boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action bar messages will no longer be logged.",
+          "enabled": "Action bar messages will now be logged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wrong usage!",
+        "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
