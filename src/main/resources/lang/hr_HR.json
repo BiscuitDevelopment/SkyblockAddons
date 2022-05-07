@@ -341,6 +341,168 @@
     "titleExpand": "Proširi",
     "descriptionExpand": "Prikaži ench na svojoj vlastitoj liniji"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Kopira NBT podatke entiteta. Vrste uključenih entiteta i radijus oko uređaja za kopiranje podataka mogu se prilagoditi. Ako se ne daju nikakve opcije, koriste se zadane postavke. Zadane postavke su: uključuju igrače, armor standove, mobove i radijus od 3 bloka. Ako radijus nije naveden, koristi se zadani radijus.",
+            "options": {
+              "entityNames": "Imena vrsta entiteta za koje želite kopirati podatke (npr. Player, Creeper). Pritisnite \"Tab\" nakon upisivanja naredbe za cjelovit popis. Višestruka imena odvojite zarezima, imena razlikuju velika i mala slova.",
+              "radius": "Polumjer (u blokovima) oko uređaja za kopiranje podataka NBT entiteta"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Kopiraj text koji je prikazan na scoreboardu",
+            "options": {
+              "formatted": "Određuje trebaju li se kod kopiranja uključiti kodovi za oblikovanje. Može biti \"true\" ili \"false\", zadane vrijednosti \"false\" ako nije navedena vrijednost. Kodovi za formatiranje kopiraju se ako su \"istiniti\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Ova naredba kopira zaglavlje i podnožje popisa za reprodukciju kartica. Uključeni su kodovi za formatiranje."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder",
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Ručno postavlja brojeve u zilotskom brojaču.",
+              "options": {
+                "eyes": "Dobivene Summoning eyes",
+                "totalZealots": "Svi zealoti ubijeni u životu",
+                "zealots": "Ubijeni zealoti od zadnje summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Broj za postaviti statistiku na",
+              "stat": "Stat Slayera za promjenu, može biti \"kills\" ili ime ispuštene stavke oblikovano ovako: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Brend Servera: %brand%",
+          "notFound": "Brend servera nije pronađen!"
+        },
+        "dev": {
+          "disabled": "Razvojni alati isključeni!",
+          "enabled": "Razvojni alati uključeni! Savjet: Pritisni \"%keyName% da bi kopirao NBT podatke!"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Postavi totalan broj summoning eyes na %number%!",
+            "totalZealotsSet": "Broj zealota je postavljen na %number%!",
+            "wrongUsage": "Pogrešan odabir! Molimo vas odaberite %options%.",
+            "zealotsSet": "Postavi brojač zealota na %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Moraš odabrati bossa! Izaberi %bosses%",
+          "statRequired": "Trebaš izabrati statistiku. Stisni TAB Za opcije.",
+          "numberRequired": "Moraš dodati broj koji želiš.",
+          "killsSet": "Ubojstva za slayer %boss% su postavljena na %number%.",
+          "statSet": "Statistike %stat% za slayer %boss% su postavljene na %number%.",
+          "invalidBoss": "\"%input%\" nije dobra statistika!",
+          "invalidStat": "\"%input%\" nije valjan boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Poruke Action bara neće biti registrirane.",
+          "enabled": "Poruke Action bara biti će registrirane."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Pogrešna upotreba!",
+        "subCommandNotFound": "Komanda \"%sub-command%\" nije pronađena."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
