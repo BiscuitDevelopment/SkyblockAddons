@@ -389,8 +389,7 @@
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Opens your mods folder",
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "help": "Opens your mods folder"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -461,7 +460,7 @@
           "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
         },
         "folder": {
-          "error": "An error occurred trying to open the mods folder: %s"
+          "error": "An error occurred while trying to open the mods folder: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot counters reset!"
