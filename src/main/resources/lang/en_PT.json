@@ -341,6 +341,168 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens th' main menu"
+        },
+        "brand": {
+          "help": "Shows th' server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about th' block that ye be lookin' at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
+          "detailedHelp": {
+            "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
+            "options": {
+              "entityNames": "Names o' th' types o' entities ye want t' copy data fer (e.g. Buccaneer, Creeper). Press \"Tab\" after typin' th' command fer a full list. Separate multiple names wit' commas, names be case-sensitive.",
+              "radius": "Th' radius (in blocks) around th' buccaneer t' copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies th' scoreboard text",
+          "detailedHelp": {
+            "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
+            "options": {
+              "formatted": "Determines if th' formattin' codes should be included whilst copyin'. Can be either \"true\" or \"false\", defaults t' \"false\" if no value be provided. Formattin' codes be copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies th' tab list header an' footer",
+          "detailedHelp": {
+            "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
+          }
+        },
+        "dev": {
+          "help": "Toggles th' developer mode",
+          "detailedHelp": {
+            "description": "'Tis here command toggles th' developer mode. 'Tis mode be meant fer developers o' SkyBlock mods & tools. It provides game data such as entity an' item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens yer mods folder",
+          "error": "An error occurred whilst tryin' t' open th' mods folder: %s"
+        },
+        "help": {
+          "help": "Shows 'tis help message. If a command be provided, detailed help about that command be shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "Th' sub-command t' get detailed usage fer"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints th' counts stored in th' dungeon scuttle counters fer debuggin' purposes."
+        },
+        "reload": {
+          "help": "Reloads all o' th' mod's settin's an' resources. Th' game shall freeze fer a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads th' mod's settin's"
+        },
+        "reloadRes": {
+          "help": "Reloads th' mod's resources. Th' game shall freeze fer a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Restarts all th' zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets yer zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in th' zealot counter.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Lifetime zealots killed",
+                "zealots": "Zealots killed since th' last summoning eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab fer arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab fer arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Number t' set th' stat t'",
+              "stat": "Slayer stat t' change, can be \"kills\" or th' name o' a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles loggin' action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles loggin' magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows th' mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Brand: %brand%",
+          "notFound": "Server brand be not found!"
+        },
+        "dev": {
+          "disabled": "Developer mode disabled!",
+          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summoning eye count t' %number%!",
+            "totalZealotsSet": "Set total zealot count t' %number%!",
+            "wrongUsage": "Invalid selection! Please choose %options%.",
+            "zealotsSet": "Set current zealot count t' %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Ye need t' select a boss! Please choose %bosses%",
+          "statRequired": "Ye need t' select a stat. Press tab fer options.",
+          "numberRequired": "Ye need t' add th' number ye want.",
+          "killsSet": "Scuttles fer slayer %boss% be set t' %number%.",
+          "statSet": "Statistic %stat% fer slayer %boss% was set t' %number%.",
+          "invalidBoss": "\"%input%\" be not a valid statistic!",
+          "invalidStat": "\"%input%\" be not a valid boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action bar messages will no longer be logged.",
+          "enabled": "Action bar messages will now be logged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages shall nay longer be logged.",
+          "enabled": "Magma boss timer messages shall now be logged."
+        },
+        "version": {
+          "hoverText": "Click t' put in chat so ye can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wrong usage!",
+        "subCommandNotFound": "Th' sub-command \"%sub-command%\" be not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
