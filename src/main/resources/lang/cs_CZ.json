@@ -259,7 +259,7 @@
     "featureDisabled": "Vlastnost je vypnuta",
     "anvilUses": "Použití kovadliny: %uses%",
     "specialZealotFound": "Specialní Zealot!",
-    "blockIncompletePatterns": "Blokovat Vyrábění Neúplných Vzorů (doporučeno)",
+    "blockIncompletePatterns": "Blokovat vyrábění neúplných vzorů (doporučeno)",
     "searchFeatures": "Vyhledat vlastnosti",
     "downloadingUpdateFile": "Stahuji aktualizační soubor...",
     "onlyFewArrowsLeft": "Zbývá %arrows% šíp/ů!",
@@ -477,8 +477,8 @@
           "bossRequired": "You need to select a boss! Please choose %bosses%",
           "statRequired": "You need to select a stat. Press tab for options.",
           "numberRequired": "You need to add the number you want.",
-          "killsSet": "Kills for slayer %boss% was set to %number%.",
-          "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+          "killsSet": "Zabití pro slayera %boss% bylo nastaveno na %number%.",
+          "statSet": "Statistika %stat% pro slayera %boss% byla nastavena na %number%.",
           "invalidBoss": "\"%input%\" is not a valid statistic!",
           "invalidStat": "\"%input%\" is not a valid boss!"
         },
@@ -497,8 +497,8 @@
     },
     "errors": {
       "wrongUsage": {
-        "generic": "Wrong usage!",
-        "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+        "generic": "Špatné použití!",
+        "subCommandNotFound": "Podpříkaz \"%sub-command%\" nebyl nalezen."
       }
     }
   },
@@ -610,8 +610,8 @@
         "bossRequired": "You need to select a boss! Please choose %bosses%",
         "statRequired": "You need to select a stat. Press tab for options.",
         "numberRequired": "You need to add the number you want.",
-        "killsSet": "Kills for slayer %boss% was set to %number%.",
-        "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+        "killsSet": "Zabití pro slayera %boss% bylo nastaveno na %number%.",
+        "statSet": "Statistika %stat% pro slayera %boss% byla nastavena na %number%.",
         "invalidBoss": "\"%input%\" is not a valid statistic!",
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
@@ -631,8 +631,8 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Špatné použití!",
+          "subCommandNotFound": "Podpříkaz \"%sub-command%\" nebyl nalezen."
         }
       }
     }
@@ -650,11 +650,11 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Nedávní draci:",
+    "dragonsSince": "Draků od:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
+    "eyesPlaced": "Položených očí",
     "never": "Nikdy"
   },
   "slayerTracker": {
@@ -670,8 +670,8 @@
     "privateIsland": "Private Island",
     "home": "Your Island",
     "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
+    "unknown": "Nenavštíveno",
+    "notUnlocked": "Neodemčeno",
     "inCombat": "In Combat..."
   },
   "enchants": {
