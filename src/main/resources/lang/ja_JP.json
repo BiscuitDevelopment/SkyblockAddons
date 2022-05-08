@@ -163,7 +163,7 @@
     "showSkillPercentageInstead": "XPの代わりに割合を表示",
     "showSkillXPGained": "獲得したXPを表示",
     "skillProgressBar": "Skillの進捗ゲージ",
-    "showSalvageEssencesCounter": "分解Essencesを表示",
+    "showSalvageEssencesCounter": "Salvage Essencesカウンターを表示",
     "disableMortMessages": "Mortのメッセージを無効化",
     "disableBossMessages": "Bossのメッセージを無効化",
     "hideOtherPlayersPresents": "他のプレイヤーのプレゼントを非表示",
@@ -218,7 +218,7 @@
     "devMode": "開発者モード",
     "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
     "showFeatureNamesOnHover": "ホバーして機能名を表示",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
