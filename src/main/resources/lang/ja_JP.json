@@ -460,7 +460,7 @@
           "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "Modsフォルダーを開く際にエラーが発生しました：%s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealotカウンターがリセットされました！"
