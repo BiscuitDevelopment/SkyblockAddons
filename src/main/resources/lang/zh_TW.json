@@ -345,7 +345,7 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "開啟主選單"
         },
         "brand": {
           "help": "Shows the server brand"
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "複製記分板的文字",
           "detailedHelp": {
             "description": "複製側邊記分板內的文字",
             "options": {
@@ -386,10 +386,10 @@
           "prefix": "開發者"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "編輯 GUI 位置"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "開啟 mods 資料夾"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -460,7 +460,7 @@
           "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "嘗試開啟 mods 資料夾時出錯：%s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot 計數器重置！"
@@ -505,7 +505,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "開啟主選單"
       },
       "brand": {
         "help": "Shows the server brand",
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "複製記分板的文字",
         "detailedHelp": {
           "description": "複製側邊記分板內的文字",
           "options": {
@@ -550,11 +550,11 @@
         "prefix": "開發者"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "編輯 GUI 位置"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "開啟 mods 資料夾",
+        "error": "嘗試開啟 mods 資料夾時出錯：%s"
       },
       "help": {
         "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
