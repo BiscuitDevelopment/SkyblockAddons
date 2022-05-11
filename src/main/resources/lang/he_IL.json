@@ -334,11 +334,11 @@
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
-    "titleCompress": "Compress",
-    "descriptionCompress": "Compresses enchants into as few lines as possible",
-    "titleNormal": "Normal",
-    "descriptionNormal": "Displays enchants like Hypixel does",
-    "titleExpand": "Expand",
+    "titleCompress": "דחוס",
+    "descriptionCompress": "דחוס Enchants לכמה שפחות שורות",
+    "titleNormal": "רגיל",
+    "descriptionNormal": "הראה כישופים כמו ש-Hypixel מראה",
+    "titleExpand": "הרחב",
     "descriptionExpand": "Lists each enchant on its own line"
   },
   "commands": {
@@ -662,7 +662,7 @@
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
     "voidgloom": "Voidgloom Seraph:",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "בוסים שנהרגו"
   },
   "warpMenu": {
     "click": "Click a warp point to travel there!",
