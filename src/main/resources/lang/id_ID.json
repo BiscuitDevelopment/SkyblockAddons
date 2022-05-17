@@ -348,7 +348,7 @@
           "help": "Opens the main menu"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "Memperlihatkan merek server"
         },
         "copyBlock": {
           "help": "Salin data tentang blok yang anda sedang lihat"
@@ -392,7 +392,7 @@
           "help": "Opens your mods folder"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "Perlihatkan pesan bantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
           "detailedHelp": {
             "options": {
               "command": "The sub-command to get detailed usage for"
@@ -508,7 +508,7 @@
         "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Memperlihatkan merek server",
         "brandOutput": "Merek Server: %brand%",
         "notFound": "Merek server tidak ditemukan!"
       },
@@ -557,7 +557,7 @@
         "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Perlihatkan pesan bantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
         "detailedHelp": {
           "options": {
             "command": "The sub-command to get detailed usage for"
