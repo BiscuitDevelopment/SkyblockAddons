@@ -80,7 +80,7 @@
       "compact": "Ringkas"
     },
     "disableMagicalSoupMessage": "Nonaktifkan Pesan-Pesan Magical Mushroom Soup",
-    "zealotCounter": "Penghitung Zealot - Hitungan Sejak Eye Terakhir",
+    "zealotCounter": "Counter Zealot - Hitungan Sejak Eye Terakhir",
     "tickerChargesDisplay": "Tampilan Ticker/Muatan",
     "tab": {
       "generalSettings": "Pengaturan Umum"
@@ -101,9 +101,9 @@
     "sortTabEffectTimers": "Sortir Timer Oleh Durasi",
     "showBrokenFragments": "Perlihatkan Fragment Rusak",
     "skyblockAddonsButtonInPauseMenu": "Perlihatkan Tombol SBA di Menu Pause",
-    "showTotalZealotCount": "Penghitung Zealot - Jumlah Seluruh Zealot Terbunuh",
-    "showSummoningEyeCount": "Penghitung Zealot - Jumlah Seluruh Eye Didapatkan",
-    "showZealotsPerEye": "Penghitung Zealot - Rata-Rata Zealot per Eye",
+    "showTotalZealotCount": "Counter Zealot - Total Semua Zealot Terbunuh",
+    "showSummoningEyeCount": "Counter Zealot - Total Semua Eye",
+    "showZealotsPerEye": "Counter Zealot - Rata-Rata Zealot per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Ubah Busur Menjadi Hijau Saat Menggunakan Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Timer Hujan Birch Park",
     "combatTimerDisplay": "Tampilan Timer Dalam Combat",
@@ -120,7 +120,7 @@
     "baitListDisplay": "Perlihatkan Daftar Bait Saat Memegang Rod",
     "freezeBackpackPreview": "Freeze Isi Backpack",
     "hideGreyEnchants": "Sembunyikan Enchants Biasa Berwarna Abu-abu",
-    "zealotCounterExplosiveBow": "Dukungan Explosive Bow agar bekerja dengan Zealot Counter",
+    "zealotCounterExplosiveBow": "Dukungan Explosive Bow agar bekerja dengan Counter Zealot",
     "disableEndermanTeleportation": "Nonaktifkan Teleportasi Enderman",
     "changeZealotColor": "Ubah Warna Zealot",
     "hideSvenPupNametags": "Sembunyikan Tanda Nama Sven Pup",
@@ -154,7 +154,7 @@
     "dragonsNestOnly": "Hanya Memperlihatkan Di Dragon's Nest",
     "dragonStatsTracker": "Tracker Naga",
     "skillActionsLeftUntilNextLevel": "Perlihatkan Sisa Aksi Sebelum Naik Level",
-    "dungeonDeathCounter": "Penghitung Kematian Di Dungeon",
+    "dungeonDeathCounter": "Counter Kematian Di Dungeon",
     "showPersonalCompactorPreview": "Perlihatkan Isi Super Compactor",
     "rockPetTracker": "Pelacak Rock Pet",
     "dolphinPetTracker": "Pelacak Dolphin Pet",
@@ -174,7 +174,7 @@
     "showSpiritSceptreDisplay": "Tampilan Damage Spirit Sceptre/Wither Blade",
     "outbidAlertSound": "Suara peringatan outbid",
     "hideMenuGlassPanes": "Sembunyikan Tooltip Glass Pane Menu",
-    "candyPointsCounter": "Penghitung Candy/Poin Spooky Event",
+    "candyPointsCounter": "Counter Candy/Poin Spooky Event",
     "healingCircleOpacity": "Opasitas Healing Circle",
     "chromaSize": "Ukuran Kroma",
     "chromaSaturation": "Saturasi Kroma",
@@ -314,7 +314,7 @@
     "titleStats": "Stats",
     "descriptionStats": "Menunjukkan Stat HP, Defense dan Mana",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Menunjukkan Zealot Counter anda",
+    "descriptionZealots": "Menunjukkan counter Zealot anda",
     "titleItem": "Benda Dipegang",
     "descriptionItem": "Menunjukkan nama benda yang sedang anda pegang",
     "titleProfile": "Profil",
@@ -345,7 +345,7 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "Membuka menu utama"
         },
         "brand": {
           "help": "Memperlihatkan merek server"
@@ -354,7 +354,7 @@
           "help": "Salin data tentang blok yang anda sedang lihat"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "Menyalin data NBT untuk entities yang diberikan nama dalam radius yang diberikan sekitar player",
           "detailedHelp": {
             "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
             "options": {
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "Menyalin teks scoreboard",
           "detailedHelp": {
             "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
             "options": {
@@ -373,29 +373,29 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Menyalin list tab header dan footer",
           "detailedHelp": {
             "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "Mengaktif/nonaktifkan mode developer",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini dimaksudkan untuk developer mods dan alat SkyBlock. Memberikan data mentah dari game seperti entity dan benda NBT."
           },
           "prefix": "Dev"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "Mengedit lokasi GUI"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Membuka folder mods anda"
         },
         "help": {
           "help": "Perlihatkan pesan bantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "Sub-command untuk mendapat penggunaan lebih detil"
             }
           }
         },
@@ -416,9 +416,9 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Mengatur counter zealot secara manual",
             "detailedHelp": {
-              "description": "Mengatur hitungan di zealot counter secara manual.",
+              "description": "Mengatur hitungan di counter zealot secara manual.",
               "options": {
                 "eyes": "Summoning eyes yang didapatkan seumur hidup",
                 "totalZealots": "Zealot terbunuh seumur hidup",
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "Mengatur stat Slayer secara manual, tekan tab untuk arguments",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "Mengatur stat Slayer secara manual, tekan tab untuk arguments",
             "options": {
               "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
               "number": "Angka untuk mengubah stat",
@@ -439,7 +439,7 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "Mengaktif/nonaktifkan pencatatan pesan bar aksi"
         },
         "toggleMagmaTimerLogging": {
           "help": "Toggles logging magma boss timer debug messages"
@@ -460,7 +460,7 @@
           "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "Sebuah error terjadi saat mencoba membuka berkas mod: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot counter direset!"
@@ -505,7 +505,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "Membuka menu utama"
       },
       "brand": {
         "help": "Memperlihatkan merek server",
@@ -516,7 +516,7 @@
         "help": "Salin data tentang blok yang anda sedang lihat"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Menyalin data NBT untuk entities yang diberikan nama dalam radius yang diberikan sekitar player",
         "detailedHelp": {
           "description": "Menyalin data NBT entities. Tipe-tipe entity yang termasuk dan data dari radius sekitar player dapat diganti. Jika tidak ada opsi yang diberikan, maka akan memakai setting normal. Setting normalnya adalah: memasukkan player, armor stand, dan mobs, dan sebuah radius 3 blok. Jika radius tidak diberikan, maka radius biasa akan dipakai.",
           "options": {
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "Menyalin teks scoreboard",
         "detailedHelp": {
           "description": "Salinkan teks yang ditampilkan di slot tampilan sidebar scoreboard",
           "options": {
@@ -535,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Menyalin list tab header dan footer",
         "detailedHelp": {
           "description": "Command ini menyalin header dan footer di tab list player. Kode-kode format juga termasuk."
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "Mengaktif/nonaktifkan mode developer",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Command ini mengaktif/nonaktifkan mode developer. Mode ini dimaksudkan untuk developer mods dan alat SkyBlock. Memberikan data mentah dari game seperti entity dan benda NBT."
         },
         "disabled": "Mode Developer dinonaktifkan!",
         "enabled": "Mode developer aktif! TIP: Tekan \"%keyName%\" untuk salin data NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "Mengedit lokasi GUI"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "Membuka folder mods anda",
+        "error": "Sebuah error terjadi saat mencoba membuka berkas mod: %s"
       },
       "help": {
         "help": "Perlihatkan pesan bantuan ini. Jika sebuah command diberikan, terdapat bantuan rinci tentang command tersebut.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "Sub-command untuk mendapat penggunaan lebih detil"
           }
         }
       },
@@ -582,9 +582,9 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Mengatur counter zealot secara manual",
           "detailedHelp": {
-            "description": "Mengatur hitungan di zealot counter secara manual.",
+            "description": "Mengatur hitungan di counter zealot secara manual.",
             "options": {
               "eyes": "Summoning eyes yang didapatkan seumur hidup",
               "totalZealots": "Zealot terbunuh seumur hidup",
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Mengatur stat Slayer secara manual, tekan tab untuk arguments",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Mengatur stat Slayer secara manual, tekan tab untuk arguments",
           "options": {
             "boss": "Bos Slayer: “Zombie”, “Spider”, atau “Wolf”",
             "number": "Angka untuk mengubah stat",
@@ -616,7 +616,7 @@
         "invalidStat": "\"%input%\" bukan sebuah boss valid!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "Mengaktif/nonaktifkan pencatatan pesan bar aksi",
         "disabled": "Pesan-pesan bar aksi tidak akan dicatat.",
         "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
