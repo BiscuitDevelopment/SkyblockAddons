@@ -442,7 +442,7 @@
           "help": "Mengaktif/nonaktifkan pencatatan pesan bar aksi"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Mengaktif/nonaktifkan pencatatan pesan-pesan timer magma boss"
         },
         "version": {
           "help": "Menunjukkan versi mod"
@@ -621,7 +621,7 @@
         "enabled": "Pesan-pesan bar aksi akan dicatat."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Mengaktif/nonaktifkan pencatatan pesan-pesan timer magma boss",
         "disabled": "Pesan-pesan timer magma boss tidak akan dicatat.",
         "enabled": "Pesan-pesan timer magma boss akan dicatat."
       },
