@@ -219,7 +219,7 @@
     "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
     "showFeatureNamesOnHover": "ホバーして機能名を表示",
     "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -345,16 +345,16 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "メインメニューを開く"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "サーバーのブランドを表示します"
         },
         "copyBlock": {
           "help": "見つめているブロックに関するデータをコピーします"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "プレイヤーを中心とした指定された半径内にいる、指定された名前のエンティティのNBTデータをコピーします",
           "detailedHelp": {
             "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
             "options": {
@@ -364,7 +364,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "スコアボードのテキストをコピーします",
           "detailedHelp": {
             "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
             "options": {
@@ -373,29 +373,29 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Tabリストのヘッダーとフッターをコピーします",
           "detailedHelp": {
             "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "開発者モードに切り替える",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
           },
           "prefix": "Dev"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "GUIの場所を編集"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Modsフォルダーを開く"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "詳細な使用法を取得するためのサブコマンドです"
             }
           }
         },
@@ -416,7 +416,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Zealotカウンターの手動設定",
             "detailedHelp": {
               "description": "Zealotカウンターのカウントを手動で設定します。",
               "options": {
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
             "options": {
               "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
               "number": "統計を設定する数字",
@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "アクションバーのメッセージの記録を切り替えます"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Magma Bossのタイマーのデバッグメッセージの記録を切り替えます"
         },
         "version": {
           "help": "Modのバージョンを表示します"
@@ -505,10 +505,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "メインメニューを開く"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "サーバーのブランドを表示します",
         "brandOutput": "サーバーのブランド：%brand%",
         "notFound": "サーバーのブランドが見つかりません！"
       },
@@ -516,7 +516,7 @@
         "help": "見つめているブロックに関するデータをコピーします"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "プレイヤーを中心とした指定された半径内にいる、指定された名前のエンティティのNBTデータをコピーします",
         "detailedHelp": {
           "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
@@ -526,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "スコアボードのテキストをコピーします",
         "detailedHelp": {
           "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
           "options": {
@@ -535,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Tabリストのヘッダーとフッターをコピーします",
         "detailedHelp": {
           "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "開発者モードに切り替える",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
         },
         "disabled": "開発者モードを無効にしました！",
         "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "GUIの場所を編集"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "Modsフォルダーを開く",
+        "error": "Modsフォルダーを開く際にエラーが発生しました：%s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "詳細な使用法を取得するためのサブコマンドです"
           }
         }
       },
@@ -582,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Zealotカウンターの手動設定",
           "detailedHelp": {
             "description": "Zealotカウンターのカウントを手動で設定します。",
             "options": {
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
           "options": {
             "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
             "number": "統計を設定する数字",
@@ -616,12 +616,12 @@
         "invalidStat": "「%input%」は有効なボスではありません！"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "アクションバーのメッセージの記録を切り替えます",
         "disabled": "アクションバーのメッセージは記録されないようになりました。",
         "enabled": "アクションバーのメッセージが記録されるようになりました。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Magma Bossのタイマーのデバッグメッセージの記録を切り替えます",
         "disabled": "Magma Bossのタイマーのメッセージは記録されないようになりました。",
         "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
       },
@@ -639,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "NBTをコピー",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "ダンジョンマップの拡大",
+    "decreaseDungeonMapZoom": "ダンジョンマップの縮小"
   },
   "dragonTracker": {
     "protector": "Protector",
