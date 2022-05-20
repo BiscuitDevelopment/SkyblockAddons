@@ -219,7 +219,7 @@
     "showSkyblockItemId": "鼠標止於物品上方時顯示 Skyblock 物品ID",
     "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
     "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放"
   },
   "messages": {
     "enchants": "附魔",
@@ -348,13 +348,13 @@
           "help": "開啟主選單"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "顯示伺服器核心名稱"
         },
         "copyBlock": {
           "help": "複製面朝方塊的資料"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
           "detailedHelp": {
             "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
             "options": {
@@ -373,15 +373,15 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "複製玩家列表頭尾",
           "detailedHelp": {
             "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "開關開發者模式",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "這個指令將開關開發者模式。這個模式是給 Skyblock 模組與工具開發者使用的。此模式會提供像是實體資料和道具的 NBT 遊戲資料。"
           },
           "prefix": "開發者"
         },
@@ -392,10 +392,10 @@
           "help": "開啟 mods 資料夾"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "欲查詢詳細用法的子命令"
             }
           }
         },
@@ -416,7 +416,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "手動設定 Zealot 數量",
             "detailedHelp": {
               "description": "手動設置 Zealot 計數器的數字。",
               "options": {
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
             "options": {
               "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
               "number": "數值要設定成的數字",
@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "開關是否紀錄動作列訊息"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "開關是否紀錄 Magma Boss 計時器的除錯訊息"
         },
         "version": {
           "help": "顯示模組版本"
@@ -508,7 +508,7 @@
         "help": "開啟主選單"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "顯示伺服器核心名稱",
         "brandOutput": "伺服端：%brand%",
         "notFound": "未發現伺服端！"
       },
@@ -516,7 +516,7 @@
         "help": "複製面朝方塊的資料"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
           "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
@@ -535,15 +535,15 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "複製玩家列表頭尾",
         "detailedHelp": {
           "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "開關開發者模式",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "這個指令將開關開發者模式。這個模式是給 Skyblock 模組與工具開發者使用的。此模式會提供像是實體資料和道具的 NBT 遊戲資料。"
         },
         "disabled": "開發者模式已停用！",
         "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！",
@@ -557,10 +557,10 @@
         "error": "嘗試開啟 mods 資料夾時出錯：%s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "欲查詢詳細用法的子命令"
           }
         }
       },
@@ -582,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "手動設定 Zealot 數量",
           "detailedHelp": {
             "description": "手動設置 Zealot 計數器的數字。",
             "options": {
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "options": {
             "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
@@ -616,12 +616,12 @@
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "開關是否紀錄動作列訊息",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "開關是否紀錄 Magma Boss 計時器的除錯訊息",
         "disabled": "Magma Boss 計時器訊息將不再被記錄。",
         "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
       },
@@ -639,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "複製 NBT",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Dungeon 地圖放大",
+    "decreaseDungeonMapZoom": "Dungeon 地圖縮小"
   },
   "dragonTracker": {
     "protector": "Protector",
