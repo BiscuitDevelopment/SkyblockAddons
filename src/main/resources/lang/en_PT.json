@@ -46,14 +46,14 @@
     "lockSlots": "Allow Lockin' yer Slots",
     "lockSlot": "Lock yer Slot",
     "dontResetCursorInventory": "Do Nah Reset Yer Cursor Between Inventories",
-    "summoningEyeAlert": "Summonin' Eye Alert",
+    "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change yer Ender Chest Col'r in Th’ End",
     "changeColor": "Change Yer Color",
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use th’ Vanilla Texture",
     "textStyle": "Style o' Text",
     "textStyles": {
-      "one": "Fr'st Style",
+      "one": "F'rst Style",
       "two": "Sec'nd Style"
     },
     "warningDuration": "Warnin’ Duration",
@@ -63,7 +63,7 @@
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on yer Items",
     "changeBarColorForPotions": "Change Barrr Color fer Wither & Poison",
     "craftingPatterns": "Choose a Pattern o' Craftin'",
-    "soundIndicatorForFishing": "Sound Indicator fer Fishin'",
+    "soundIndicatorForFishing": "Noise Indicator fer Fishin'",
     "avoidBlinkingNightVision": "Disable Night Seein' Potion Blinkin'",
     "disableMinionLocationWarning": "Disable Location Be Not Perfect Warnin’s",
     "showItemCooldowns": "Show Yer Item Cooldowns",
@@ -86,7 +86,7 @@
       "generalSettings": "General Settin's"
     },
     "tabEffectTimers": "Potion an' Powerup Timers",
-    "noArrowsLeftAlert": "Yer Arrows Gone Alert",
+    "noArrowsLeftAlert": "Yer Bolts be Gone Alert",
     "hideNightVisionEffectTimer": "Hide th' Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview fer Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview fer yer Items Whilst th' AH be Open",
@@ -107,7 +107,7 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green Whilst Usin' Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Yer Combat Tim'r Display",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Rich Pressence o' Discord",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
     "stopRatSounds": "Stop Rat Pet Noises",
@@ -198,7 +198,7 @@
       "trackedEntityProximityIndicator": "Show th' Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight th' Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "'Tis be displayed above Trevor's head"
+      "showQuestCooldownDescription": "'Tis be displayed above Trevor's skull"
     },
     "showEnderChestPreview": "Preview th' Ender Chest",
     "hideWhenNotDoingQuest": "Hide When Be Not Doin' Quest",
@@ -304,7 +304,7 @@
   },
   "discordStatus": {
     "titleNone": "None",
-    "descriptionNone": "No text be displayed",
+    "descriptionNone": "Text nay bein' displayed",
     "titleLocation": "Location",
     "descriptionLocation": "Yer current place be shown",
     "titlePurse": "Purse",
