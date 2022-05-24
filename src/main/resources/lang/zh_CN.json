@@ -345,10 +345,10 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "打开主菜单"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "§e(开发者) §7显示服务端名称"
         },
         "copyBlock": {
           "help": "§e(开发者) §7复制准星所指方块的 NBT"
@@ -379,7 +379,7 @@
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "启用/禁用 开发者模式",
           "detailedHelp": {
             "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
           },
@@ -460,7 +460,7 @@
           "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "试图打开 mods 文件夹时出错：%s"
         },
         "resetZealotCounter": {
           "resetSuccess": "末影战士击杀计数已重置！"
@@ -505,10 +505,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "打开主菜单"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "§e(开发者) §7显示服务端名称",
         "brandOutput": "服务端：%brand%",
         "notFound": "无法检测到服务端！"
       },
@@ -541,7 +541,7 @@
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "启用/禁用 开发者模式",
         "detailedHelp": {
           "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
@@ -554,7 +554,7 @@
       },
       "folder": {
         "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "error": "试图打开 mods 文件夹时出错：%s"
       },
       "help": {
         "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
