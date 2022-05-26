@@ -606,6 +606,7 @@ public class PlayerListener {
 
                         if (main.getUtils().isOnSkyblock()) {
                             main.getInventoryUtils().checkIfWearingSkeletonHelmet(player);
+                            main.getInventoryUtils().checkIfWearingWitherArmor(player);
                             main.getInventoryUtils().checkIfUsingToxicArrowPoison(player);
                             main.getInventoryUtils().checkIfWearingSlayerArmor(player);
                             if (shouldTriggerFishingIndicator()) { // The logic fits better in its own function
