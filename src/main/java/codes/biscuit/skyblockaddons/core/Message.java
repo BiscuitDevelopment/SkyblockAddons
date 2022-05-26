@@ -174,6 +174,7 @@ public enum Message {
     SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_BAL_BOSS_WARNING(MessageObject.SETTING, "balBossWarning"),
     SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING,"broodMotherWarning"),
+    SETTING_HIDE_WITHERBORN(MessageObject.SETTING,"hideWitherborn"),
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_BAL_BOSS_WARNING(MessageObject.MESSAGES, "balBossWarning"),
@@ -411,5 +412,4 @@ public enum Message {
             this.path = new LinkedList<>(Arrays.asList(path.split(Pattern.quote("."))));
         }
     }
-
 }
