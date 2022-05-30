@@ -215,7 +215,7 @@
     "jacobsContestTimer": "Jacob's Contest Timer",
     "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
     "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
+    "devMode": "개발자 모드",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
@@ -299,8 +299,8 @@
     "version": "버전",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
     "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "copy": "복사",
+    "copied": "복사됨!"
   },
   "discordStatus": {
     "titleNone": "없음",
