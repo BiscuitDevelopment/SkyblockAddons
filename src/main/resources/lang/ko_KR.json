@@ -231,7 +231,7 @@
     "fullInventory": "인벤토리 꽉 참!",
     "labymod": "LabyMod 유저들에게: 배고픔, 갑옷, 체력 바 숨기기는 LabyMod와 호환되지 않습니다.",
     "minionCannotReach": "%type% Minion이 몹을 죽일 수 없어 스폰을 멈췄습니다!",
-    "minionIsFull": "당신 Minion의 수납 공간이 꽉 찼습니다!",
+    "minionIsFull": "Minion의 수납 공간이 꽉 찼습니다!",
     "typeEnchantmentsHere": "여기에 %type%들을 입력해 주세요!",
     "separateMultiple": "인챈트나 리포지들을 쉼표로 구분하세요.",
     "enchantsToMatch": "포함할 %type%:",
@@ -432,7 +432,7 @@
           "detailedHelp": {
             "description": "Manually sets slayer stats, press tab for arguments",
             "options": {
-              "boss": "슬레이어 보스: \"Zombie\", \"Spider, 또는 \"Wolf\"",
+              "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
               "number": "스탯으로 만들 숫자",
               "stat": "바꿀 Slayer 스탯, \"kills\" 또는 그 Slayer가 떨어트리는 아이템을 이렇게 포매팅 한 것일수도 있읍니다: \"REVENANT_FLESH\""
             }
@@ -602,7 +602,7 @@
         "detailedHelp": {
           "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
-            "boss": "슬레이어 보스: \"Zombie\", \"Spider, 또는 \"Wolf\"",
+            "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
             "number": "스탯으로 만들 숫자",
             "stat": "바꿀 Slayer 스탯, \"kills\" 또는 그 Slayer가 떨어트리는 아이템을 이렇게 포매팅 한 것일수도 있읍니다: \"REVENANT_FLESH\""
           }
