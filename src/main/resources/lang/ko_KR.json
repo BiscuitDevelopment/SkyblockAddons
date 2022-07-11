@@ -48,7 +48,7 @@
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "Summoning Eye 알림",
     "makeEnderchestsInEndGreen": "The End에서 엔더 상자 색깔 바꾸기",
-    "changeColor": "색상 변경",
+    "changeColor": "색 변경하기",
     "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "기본 텍스쳐 유지하기",
     "textStyle": "텍스트 스타일",
@@ -389,7 +389,7 @@
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "mods 폴더 열기"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -463,7 +463,7 @@
           "error": "An error occurred while trying to open the mods folder: %s"
         },
         "resetZealotCounter": {
-          "resetSuccess": "Zealot counters reset!"
+          "resetSuccess": "Zealot 카운터가 초기화되었습니다!"
         },
         "set": {
           "zealotCounter": {
@@ -553,7 +553,7 @@
         "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Opens your mods folder",
+        "help": "mods 폴더 열기",
         "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
@@ -578,7 +578,7 @@
       },
       "resetZealotCounter": {
         "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "resetSuccess": "Zealot 카운터가 초기화되었습니다!"
       },
       "set": {
         "zealotCounter": {
@@ -639,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "NBT 복사",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Dungeon 맵 확대",
+    "decreaseDungeonMapZoom": "Dungeon 맵 축소"
   },
   "dragonTracker": {
     "protector": "Protector",
