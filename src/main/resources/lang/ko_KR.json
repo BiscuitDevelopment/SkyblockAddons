@@ -439,10 +439,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "액션 바 메시지 기록 켜기/끄기"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "§e(개발자 모드) §7Magma boss 타이머 디버그 메시지 켜기/끄기"
         },
         "version": {
           "help": "모드의 버전 보이기"
@@ -460,7 +460,7 @@
           "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다."
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "mods 폴더를 여는 도중 오류가 발생하였습니다: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealot 카운터가 초기화되었습니다!"
@@ -616,12 +616,12 @@
         "invalidStat": "\"%input%\"은 유효한 보스가 아닙니다!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "액션 바 메시지 기록 켜기/끄기",
         "disabled": "더 이상 액션 바의 메시지가 기록되지 않습니다.",
         "enabled": "이제 액션 바의 메시지가 기록됩니다."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "§e(개발자 모드) §7Magma boss 타이머 디버그 메시지 켜기/끄기",
         "disabled": "더 이상 Magma boss의 타이머를 기록하지 않습니다.",
         "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
       },
