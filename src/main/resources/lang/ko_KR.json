@@ -170,7 +170,7 @@
     "showSwordKills": "소드 킬 보여주기",
     "compactTabList": "간단 Tab 리스트",
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
+    "disableDamageChatMessages": "스킬 대미지 메시지 없애기",
     "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 대미지 보이기",
     "outbidAlertSound": "입찰 알림 소리",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
@@ -297,8 +297,8 @@
     "worldRenderedCooldownTime": "쿨다운: %time%s",
     "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
     "version": "버전",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "invalidFeatureConfiguration": "%featureName% 기능에 잘못된 구성 요소가 감지됐습니다. 설정을 기본값으로 재설정 합니다.",
+    "fileFetchFailed": "%modName%이(가) %number%개의 파일을 가져오는데 실패하였습니다. 아래 버튼으로 오류의 내용을 복사하고 저희의 Discord 서버에서 신고해주세요.",
     "copy": "복사",
     "copied": "복사됨!"
   },
@@ -386,7 +386,7 @@
           "prefix": "개발자"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "GUI 위치 편집"
         },
         "folder": {
           "help": "mods 폴더 열기"
@@ -550,7 +550,7 @@
         "prefix": "개발자"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "GUI 위치 편집"
       },
       "folder": {
         "help": "mods 폴더 열기",
