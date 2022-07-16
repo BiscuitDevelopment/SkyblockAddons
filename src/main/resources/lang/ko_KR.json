@@ -279,7 +279,7 @@
     "secondStatus": "이 상태는 당신의 첫 상태 밑에 나타날 것입니다",
     "fallbackStatus": "이 상태는 당신의 자동 상태가 아무것도 표시할 것이 없을 때 나타납니다",
     "legendarySeaCreatureWarning": "전설 낚음!",
-    "bossApproaching": "당신은 Boss 생성 조건에 가까워졌습니다!",
+    "bossApproaching": "Boss 생성 조건에 가까워졌습니다!",
     "fetchurItem": "Fetchur: %item%",
     "fetchurWarning": "Fetchur 바뀜!",
     "enableAll": "모두 활성화",
