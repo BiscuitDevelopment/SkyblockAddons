@@ -4,17 +4,17 @@
   "settings": {
     "settings": "Asetukset",
     "magmaBossWarning": "Magma Boss -varoitus",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal Boss -varoitus",
+    "broodMotherWarning": "Brood Mother -varoitus",
     "itemDropConfirmation": "Esineen Pudotusvahvistus",
-    "hideSkeletonHatBones": "Piilota Skeleton's Helmet -Luut",
+    "hideSkeletonHatBones": "Piilota Skeleton's Helmet -luut",
     "skeletonHatBonesBar": "Skeleton's Helmet -luut palkissa",
     "hideFoodAndArmor": "Piilota Ruoka & Panssaripalkki",
-    "fullInventoryWarning": "Täysi inventaario -varoitus",
+    "fullInventoryWarning": "Täysi tavaraluettelo -varoitus",
     "repeating": "Toista varoitus",
     "disableEmberRodAbility": "Estä Ember Rod omalla saarella",
-    "editLocations": "Muokkaa GUI sijainteja",
-    "guiScale": "Gui Mittakaava: %scale%",
+    "editLocations": "Muokkaa GUI:n sijainteja",
+    "guiScale": "GUI:n Mittakaava: %scale%",
     "resetLocations": "Nollaa Sijainnit",
     "minionStopWarning": "\"Kätyri ei yletä\" -varoitus",
     "hidePlayersNearNPCs": "Piilota pelaajat tärkeiden NPC:den lähettyviltä",
@@ -30,22 +30,22 @@
     "manaBar": "Manapalkki",
     "manaNumber": "Mana-arvo",
     "healthBar": "Terveyspalkki",
-    "healthNumber": "Terveys-numero",
-    "defenseIcon": "Puolustus-merkki",
-    "defenseNumber": "Puolustus arvo",
-    "defensePercentage": "Puolutus-prosentti",
-    "healthUpdates": "Terveyden muutos -numero",
+    "healthNumber": "Terveysarvo",
+    "defenseIcon": "Puolustusmerkki",
+    "defenseNumber": "Puolustusarvo",
+    "defensePercentage": "Puolutusprosentti",
+    "healthUpdates": "Terveyden muutoksen numero",
     "hidePlayersInLobby": "Piilota kaukana olevat entiteetit aulassa",
     "darkAuctionTimer": "Pimeän huutokaupan ajastin",
-    "magmaBossTimer": "Magma-johtajan ajastin",
+    "magmaBossTimer": "Magma Boss -ajastin",
     "itemPickupLog": "Kerättyjen esineiden loki",
     "avoidPlacingEnchantedItems": "Vältä lumottujen esineiden asettamista maahan",
-    "stopBowChargeFromResetting": "Estä jousen latausta nollaantumasta",
+    "stopBowChargeFromResetting": "Estä jousen latauksen nollaantuminen",
     "preventMovementOnDeath": "Estä kävely kuoleman jälkeen",
     "showItemAnvilUses": "Näytä esineen alasimen käyttökerrat",
     "lockSlots": "Salli lokeroiden lukitseminen",
     "lockSlot": "Lukitse lokero",
-    "dontResetCursorInventory": "Älä nollaa kursoria inventaarioiden välissä",
+    "dontResetCursorInventory": "Älä nollaa kursoria tavaraluetteloiden välissä",
     "summoningEyeAlert": "Summoning Eye -varoitus",
     "makeEnderchestsInEndGreen": "Vaihda Enderchestin väriä Endissä",
     "changeColor": "Vaihda väriä",
@@ -59,9 +59,9 @@
     "warningDuration": "Varoituksen kesto",
     "dontOpenProfileWithBow": "Älä avaa profiileja jousella",
     "stopDroppingSellingRareItems": "Estä harvinaisten tavaroiden pudottamista/myymistä",
-    "makeBackpackInventoriesColored": "Värjää inventaariot",
+    "makeBackpackInventoriesColored": "Värjää tavaraluettelot",
     "replaceRomanNumeralsWithNumbers": "Korvaa roomalaiset numerot esineissä",
-    "changeBarColorForPotions": "Vaihda palkin väriä wither & myrkyn alaisena",
+    "changeBarColorForPotions": "Vaihda palkin väriä wither- & myrkky-vaikutuksen alaisena",
     "craftingPatterns": "Valitse craftausmallit",
     "soundIndicatorForFishing": "Ääni-ilmaisin kalastukseen",
     "avoidBlinkingNightVision": "Estä pimeänäkö-tehostetta välkkymästä",
@@ -69,7 +69,7 @@
     "showItemCooldowns": "Näytä esineiden jäähtymisaika",
     "speedPercentage": "Nopeusprosentti",
     "collectionDisplay": "Taitojen edistyksen näyttäminen",
-    "revenantIndicator": "Slayerhaarniskan edistymisindikaattori",
+    "revenantIndicator": "Slayer-haarniskan edistymisindikaattori",
     "specialZealotAlert": "Varoitus erikoiszealotista",
     "enableMessageWhenActionPrevented": "Näytä viesti, kun toiminto estetään",
     "hidePetHealthBar": "Piilota lemmikin terveyspalkki",
@@ -100,8 +100,8 @@
     "chromaFadeWidth": "Värin himmennyksen leveys",
     "sortTabEffectTimers": "Lajittele ajastimet keston mukaan",
     "showBrokenFragments": "Näytä rikkoutuneet Dragon Fragmentit",
-    "skyblockAddonsButtonInPauseMenu": "Näytä SBA-painike tauko-valikossa",
-    "showTotalZealotCount": "Zealotlaskin - Yhteensä Zealotteja",
+    "skyblockAddonsButtonInPauseMenu": "Näytä SBA-painike taukovalikossa",
+    "showTotalZealotCount": "Zealotlaskin - Zealotteja Yhteensä",
     "showSummoningEyeCount": "Zealotlaskin - Saatujen Eye:den määrä",
     "showZealotsPerEye": "Zealotlaskin - Näytä Zealotit per Eye",
     "turnBowGreenWhenUsingToxicArrowPoison": "Värjää jousi vihreäksi Toxic Arroweita käytettäessä",
@@ -130,19 +130,19 @@
     "centerRotationOnYourPlayer": "Keskitä kierto pelaajasi ympärille",
     "showFetchurOnlyInDwarven": "Näytä Fetchurin esine vain Dwarven-kaivoksissa",
     "showFetchurItemName": "Näytä Fetchurin esineen nimi",
-    "showFetchurInventoryOpenOnly": "Näytä Fetchurin esine vain, kun inventaario on auki",
-    "warnWhenFetchurChanges": "Ilmoita, kun Fletchur muuttuu",
+    "showFetchurInventoryOpenOnly": "Näytä Fetchurin esine vain, kun tavaraluettelo on auki",
+    "warnWhenFetchurChanges": "Ilmoita, kun Fletchurin esine muuttuu",
     "mapZoom": "Kartan suurennus",
     "glowingDroppedItems": "Hehkuvat pudotetut esineet",
     "outlineDungeonTeammates": "Dungeon-tiimiläisten ääriviiva",
-    "baseStatBoostPercentage": "Näytä Dungeon esineittesi pohjatilastot",
+    "baseStatBoostPercentage": "Näytä Dungeon-esineittesi pohjatilastot",
     "colorByRarity": "Väri harvinaisuuden mukaan",
     "showPlayerHeadsOnMap": "Näytä pelaajien kasvot Dungeon-kartalla",
     "showHealingCircleWall": "Näytä Dungeon-parannusringin seinämä",
-    "showCriticalTeammates": "Näytä kriittisellä olevat Dungeon-tiimikaverit",
+    "showCriticalTeammates": "Näytä kriittisenä olevat Dungeon-tiimikaverit",
     "showGlowingItemsOnIsland": "Näytä esineet hohtavina kotisaarella",
-    "showItemDungeonFloor": "Näytä kerros, josta Dungeon esine saatiin",
-    "showDungeonMilestone": "Näytä Dungeon virstanpylväs",
+    "showItemDungeonFloor": "Näytä kerros, josta Dungeon-esine saatiin",
+    "showDungeonMilestone": "Näytä Dungeon-virstanpylväs",
     "dungeonsCollectedEssencesDisplay": "Näytä Dungeoneista kerätyt esanssit",
     "stopBonzoStaffSounds": "Vaimenna Bonzo's Staff",
     "showRarityUpgraded": "Näytä, jos esineen harvinaisuus on korotettu",
@@ -162,7 +162,7 @@
     "dungeonsSecretsDisplay": "Dungeonien kätköjen näyttö",
     "showSkillPercentageInstead": "Näytä prosentti XP:n sijaan",
     "showSkillXPGained": "Näytä tienattu XP",
-    "skillProgressBar": "Taitojen etenemis -palkki",
+    "skillProgressBar": "Taitojen etenemispalkki",
     "showSalvageEssencesCounter": "Näytä kerättyjen esanssien laskuri",
     "disableMortMessages": "Estä Mortin viestit",
     "disableBossMessages": "Poista Johtajien viestit käytöstä",
@@ -191,7 +191,7 @@
     "biggerWake": "Suurenna partikkeleita",
     "stackingEnchantProgress": "Näytä kasvavien lumousten eteneminen",
     "showReforgeOverlay": "Näytä Reforgen päällinen",
-    "reforgeFilter": "Reforge Suodatin",
+    "reforgeFilter": "Reforge-suodatin",
     "hideEnchantDescription": "Piilota Lumousten Kuvaus",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper -ominaisuudet",
@@ -207,9 +207,9 @@
     "vanillaHealthPrediction": "Käytä Vanillan terveyden ennakointia",
     "entityOutlines": "Näytä entiteettien ääriviivat",
     "effectiveHealthNumber": "Vaikuttavan terveyden arvo",
-    "guiScaleX": "GUI X-Mittakaava: %scale%",
-    "guiScaleY": "GUI Y-Mittakaava: %scale%",
-    "abbreviateSkillXpDenominator": "Lyhennä Skill XP nimet",
+    "guiScaleX": "GUI:n X-Mittakaava: %scale%",
+    "guiScaleY": "GUI:n Y-Mittakaava: %scale%",
+    "abbreviateSkillXpDenominator": "Lyhennä Skill XP -nimet",
     "otherDefenseStats": "Muut puolustustilastot (Soul Tether/Cell Alingment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
@@ -222,13 +222,13 @@
   },
   "messages": {
     "enchants": "Lumoukset",
-    "reforges": "Reforges",
+    "reforges": "Reforget",
     "dropConfirmation": "Pudota tämä esine uudelleen vahvistaaksesi!",
     "magmaBossWarning": "Magmakuutio johtaja!",
     "balBossWarning": "Bal Boss!",
     "broodMotherWarning": "Brood Mother!",
-    "fullInventory": "Täysi Inventaario!",
-    "labymod": "Labymodin käyttäjät: Piilota Ruoka-, Suojaus-, ja Elämäpalkki, ne ovat yhteensopimattomia.",
+    "fullInventory": "Täysi Tavaraluettelo!",
+    "labymod": "Labymodin käyttäjät: Piilota Ruoka-, Suojaus- ja Elämäpalkki; ne ovat yhteensopimattomia.",
     "minionCannotReach": "%type% kätyri ei yllä ja on lopettanut spawnaamisen!",
     "minionIsFull": "Kätyri saarellasi on täynnä!",
     "typeEnchantmentsHere": "Kirjoita %type% tähän!",
@@ -243,24 +243,24 @@
       "openModFolderButton": "Avaa Mods-kansio",
       "joinDiscordButton": "Liity Discordiin",
       "newUpdateAvailable": "Uusi päivitys (%version%) on saatavilla!",
-      "noDownloadAvailable": "Latauslinkkiä ei ole saatavilla, tarkista Discord-palvelimme.",
+      "noDownloadAvailable": "Latauslinkkiä ei ole saatavilla, tarkista Discord-palvelimemme.",
       "notificationBox": {
         "majorAvailable": "Uusi merkittävä päivitys (%version%) on saatavilla! Latauslinkki löytyy chatistä.",
-        "betaAvailable": "Uusi beta päivitys (%version%) on saatavilla! Katso chattiin latauslinkkiä varten.",
+        "betaAvailable": "Uusi beta-päivitys (%version%) on saatavilla! Katso chattiin latauslinkkiä varten.",
         "patchAvailable": "Uusi korjauspäivitys (%version%) on saatavilla! Katso chattiin nähdäksesi latausvaihtoehdot!"
       }
     },
     "slotLocked": "Tämä lokero on lukittu!",
     "summoningEyeFound": "Summoning Eye!",
     "cancelledDropping": "Ominaisuus on estänyt sinua pudottamasta tämän \"harvinaisen\" esineen tai työkalun hotbaaristasi.",
-    "clickMoreTimes": "Klikkaa/pudota tämä esine vielä %times% kertaa jos todella haluat tehdä tämän.",
-    "clickOneMoreTime": "Klikkaa/pudota tämä esine vielä yhden kerran jos todella haluat tehdä tämän.",
+    "clickMoreTimes": "Klikkaa/pudota tämä esine vielä %times% kertaa, jos todella haluat tehdä tämän.",
+    "clickOneMoreTime": "Klikkaa/pudota tämä esine vielä yhden kerran, jos todella haluat tehdä tämän.",
     "featureDisabled": "Toiminto estetty",
     "anvilUses": "Alasimen käytöt: %uses%",
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Estä craftaus epätäydellisillä muodoilla (suositeltu)",
     "searchFeatures": "Etsi ominaisuuksia",
-    "downloadingUpdateFile": "Ladataan päivitys-tiedostoa...",
+    "downloadingUpdateFile": "Ladataan päivitystiedostoa...",
     "onlyFewArrowsLeft": "Vain %arrows% nuolta jäljellä!",
     "noArrowsLeft": "Ei nuolia jäljellä!",
     "chooseAColor": "Valitse väri",
@@ -276,9 +276,9 @@
     "clickToOpenFolder": "Klikkaa avataksesi mods-kansiosi!",
     "firstStatus": "Tämä tila tulee näkyviin ylimpänä",
     "secondStatus": "Tämä tila näkyy ensimmäisen tilasi alla",
-    "fallbackStatus": "Tämä tila näkyy kun automaattisella tilalla ei ole mitään näytettävää",
+    "fallbackStatus": "Tämä tila näkyy, kun automaattisella tilalla ei ole mitään näytettävää",
     "legendarySeaCreatureWarning": "Legendaarinen nappaus!",
-    "bossApproaching": "Olet lähellä luomassa johtajan!",
+    "bossApproaching": "Olet lähellä johtajan luomista!",
     "fetchurItem": "Fetchur: %item%",
     "fetchurWarning": "Fetchur muuttui!",
     "enableAll": "Ota kaikki käyttöön",
@@ -294,8 +294,8 @@
     "copyModeSet": "Kehittäjän kopiointitila on asetettu: %mode%. Paina \"%keyName%\" aktivoidaksesi tietojen kopioinnin!",
     "chroma": "Väriefekti",
     "worldRenderedCooldownTime": "Jäähtymisaika: %time%s",
-    "entityOutlinesRequirement": "Vaatii Shaderit, Fast Render ja Antialising olevan pois päältä",
-    "version": "Version",
+    "entityOutlinesRequirement": "Vaatii Shader-, Fast Render- ja Antialising-asetusten olevan pois päältä",
+    "version": "Versio",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
   },
   "discordStatus": {
@@ -305,22 +305,22 @@
     "descriptionLocation": "Näyttää sinun nykyisen sijainnin",
     "titlePurse": "Kukkaro",
     "descriptionPurse": "Näytä kukkarossa olevien kolikkojen määrä",
-    "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "titleBits": "Bitit",
+    "descriptionBits": "Näytä sinulla olevien bittien määrä",
     "titleStats": "Tilastot",
-    "descriptionStats": "Näytä HP, Defense ja Mana tilastot",
+    "descriptionStats": "Näytä HP-, Defense- ja Mana-tilastot",
     "titleZealots": "Zealotit",
-    "descriptionZealots": "Näyttää sinun Zealot laskurin",
+    "descriptionZealots": "Näyttää sinun Zealot-laskurin",
     "titleItem": "Käden esine",
     "descriptionItem": "Näytä kädessäsi olevan esineen nimen",
     "titleProfile": "Profiili",
     "descriptionProfile": "Näyttää profiilinimesi",
     "titleTime": "Skyblock-aika",
-    "descriptionTime": "Näyttää nykyisen Skyblock ajan. Esim. 12:00am 1st Early Winter",
+    "descriptionTime": "Näyttää tämänhetkisen Skyblock-ajan. Esim. 12:00am 1st Early Winter",
     "titleCustom": "Mukautettu tila",
     "descriptionCustom": "Syötä mukautettu tila",
     "titleAuto": "Automaattinen tila",
-    "descriptionAuto": "Automaattisesti valitsee tilan. Esim. sinun Zealot määräsi kun olet Endissä.",
+    "descriptionAuto": "Automaattisesti valitsee tilan. Esim. sinun Zealot-määräsi, kun olet Endissä.",
     "titleRevenants": "Revenant-tehtävä",
     "descriptionRevenants": "Näyttää, että olet tekemässä Revenant-tehtävää.",
     "titleSvens": "Sven-tehtävä",
@@ -343,34 +343,34 @@
         "help": "Avaa päävalikko"
       },
       "brand": {
-        "help": "Show the server brand",
-        "brandOutput": "Palvelimen tunnus: %brand%",
-        "notFound": "Palvelimen tunnusta ei löytynyt!"
+        "help": "Näytä palvelimen brändin",
+        "brandOutput": "Palvelimen brändi: %brand%",
+        "notFound": "Palvelimen brändiä ei löytynyt!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Kopioi tietoja katsottavasta kuutiosta"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Kopioi NBT-tiedot annetun nimen entiteeteistä, jotka ovat annetun säteen päässä pelaajasta",
         "detailedHelp": {
-          "description": "Kopioi entiteetin NBT tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta tiedot kopioidaan voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
+          "description": "Kopioi entiteetin NBT-tiedot. Sisällytettyjen entiteettien tyypit ja säde pelaajan ympäriltä, josta tiedot kopioidaan voi muokata. Jos mitään valintoja ei ole annettu, oletusasetuksia käytetään. Oletusasetukset ovat: sisällytä pelaajat, haarniskatelineet ja mobit, ja 3 palikan säteen. Jos sädettä ei ole annettu, oletussädettä käytetään.",
           "options": {
-            "entityNames": "Entiteettityyppien nimet, joista haluat kopioida tiedot (esim. Player,Creeper). Paina \"Tab\" koko listan komennon kirjoittamisen jälkeen. Erottele useat nimet pilkuilla, nimissä kirjainkoot ovat tärkeitä.",
+            "entityNames": "Entiteettityyppien nimet, joista haluat kopioida tiedot (esim. Player,Creeper). Paina \"Tab\" komennon kirjoittamisen jälkeen koko listaa varten. Erottele useat nimet pilkuilla, nimissä kirjainkoot ovat tärkeitä.",
             "radius": "Säde (palikoissa) pelaajan ympäriltä, josta kopioidaan entiteettien NBT tiedot"
           }
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Kopioi tulostaulun tekstin",
         "detailedHelp": {
           "description": "Kopioi tulostaulun sivupalkin kohdassa näytetyn tekstin",
           "options": {
-            "formatted": "Määrittelee, jos muunnoskoodit sisällytetään kopioitaessa. Voidaan asettaa \"true\" tai \"false\", oletus on \"false\" jos muuta arvoa ei ole annettu. Muunnoskoodit kopioidaan jos \"true\"."
+            "formatted": "Määrittelee, sisällytetäänkö muunnoskoodit kopioitaessa. Voidaan asettaa \"true\" tai \"false\", oletus on \"false\", jos muuta arvoa ei ole annettu. Muunnoskoodit kopioidaan, jos \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Kopioi Tab-listan otsikon ja alatunnisteen",
         "detailedHelp": {
           "description": "Tämä komento kopioi otsikon ja alatunnisteen tab-pelaajalistasta. Muunnoskoodit sisällytetään."
         }
@@ -378,21 +378,21 @@
       "dev": {
         "help": "Kehittäjätyökalut päälle/pois",
         "detailedHelp": {
-          "description": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock modien/työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteettien ja esineiden NBT:t."
+          "description": "Tämä komento vaihtaa kehittäjätilaan ja pois. Tämä tila on tarkoitettu Skyblock-modien/-työkalujen kehittäjille. Se tarjoaa raakaa tietoa pelistä kuten entiteettien ja esineiden NBT:t."
         },
         "disabled": "Kehittäjätila pois käytöstä!",
-        "enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT tiedot!",
+        "enabled": "Kehittäjätila käytössä! Vinkki: Paina \"%keyName%\" kopioidaksesi NBT-tiedot!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Muokkaa GUI sijainteja"
+        "help": "Muokkaa GUI:n sijainteja"
       },
       "folder": {
         "help": "Avaa Mods-kansio",
         "error": "Tapahtui virhe yritettäessä avata mods-kansio: %s"
       },
       "help": {
-        "help": "Näytä tämä apuviesti. Jos komento on saatavilla, lisätietoja siitä komennosta näytetään.",
+        "help": "Näytä tämä apuviesti. Jos komento on saatavilla, lisätietoja siitä näytetään.",
         "detailedHelp": {
           "options": {
             "command": "alakomento, josta saa yksityiskohtaisen käyttökohteet"
@@ -400,69 +400,69 @@
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Tulostaa Dungeon-kuolemalaskurissa olevat luvut virheenkorjauksen tarkoituksille."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Uudellenlataa kaikki modin asetukset ja resurssit. Peli tulee jäätymään muutamaksi sekunniksi."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Uudelleenlataa modin asetukset."
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Uudelleenlataa modin resurssit. Peli tulee jäätymään muutamaksi sekunniksi."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Nollaa kaikkien Zealot-laskurien luvut.",
+        "resetSuccess": "Zealot-laskurit nollattu!"
       },
       "set": {
         "zealotCounter": {
-          "help": "Manuaalisesti aseta Zealot määräsi",
+          "help": "Manuaalisesti aseta Zealot-määräsi",
           "detailedHelp": {
-            "description": "Manuaalisesti asettaa määriä Zealot laskuriin.",
+            "description": "Manuaalisesti asettaa määriä Zealot-laskuriin.",
             "options": {
               "eyes": "Yhteensä Summoning Eye:ta saatu",
               "totalZealots": "Yhteensä Zealotteja tapettu",
-              "zealots": "Zealotteja tapettu viime Summoning Eyen jälkeen"
+              "zealots": "Zealotteja tapettu viime Summoning Eye:n jälkeen"
             }
           },
           "eyesSet": "Aseta Summoning Eye:den kokonaismääräksi %number%!",
-          "totalZealotsSet": "Aseta Zealottien kokonaismääräksi %number%!",
+          "totalZealotsSet": "Asetettu Zealottien kokonaismääräksi %number%!",
           "wrongUsage": "Virheellinen valinta! Valitse %options%.",
-          "zealotsSet": "Aseta nykyiseksi Zealot määräksi %number%!"
+          "zealotsSet": "Asetettu nykyiseksi Zealot-määräksi %number%!"
         }
       },
       "slayer": {
-        "help": "Manuaalisesti aseta Slayer-tilastot, paina tab saadaksesi perusteet",
+        "help": "Manuaalisesti aseta Slayer-tilastot, paina Tab saadaksesi perusteet",
         "detailedHelp": {
-          "description": "Manuaalisesti aseta Slayer-tilastot, paina tab saadaksesi perusteet",
+          "description": "Manuaalisesti aseta Slayer-tilastot, paina Tab saadaksesi perusteet",
           "options": {
             "boss": "Slayer-johtaja: \"Zombie\", \"Spider\", tai \"Wolf\"",
             "number": "Numero, johon tilastot asetetaan",
-            "stat": "Muokattava slayer-tilasto, voi olla \"kills\" tai pudotetun esineen nimi muodossa: \"REVENANT_FLESH\""
+            "stat": "Muokattava Slayer-tilasto, voi olla \"kills\" tai pudotetun esineen nimi muodossa: \"REVENANT_FLESH\""
           }
         },
         "bossRequired": "Sinun täytyy valita johtaja! Valitse %bosses%",
-        "statRequired": "Sinun täytyy valita tilasto. Saadaksesi vaihtoehdot paina tab.",
+        "statRequired": "Sinun täytyy valita tilasto. Saadaksesi vaihtoehdot, paina Tab.",
         "numberRequired": "Sinun täytyy lisätä haluamasi numero.",
-        "killsSet": "Tapot %boss% slayerille asetettiin %number%.",
-        "statSet": "Tilasto %stat% %boss% slayerille asetettiin %number%.",
+        "killsSet": "Tapot %boss% -slayerille asetettiin %number%.",
+        "statSet": "Tilasto %stat% %boss% -slayerille asetettiin %number%.",
         "invalidBoss": "\"%input%\" ei ole pätevä tilasto!",
         "invalidStat": "\"%input%\" ei ole pätevä johtaja!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Vaihda toimintopalkin viestien lokiinkirjaaminen päälle/pois",
         "disabled": "Toimintopalkin viestejä ei enään kirjata lokiin.",
         "enabled": "Toimintopalkin viestit kirjataan nyt lokiin."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Vaihda Magma Boss -ajastimen virheenkorjausviestien lokiinkirjaaminen päälle/pois",
+        "disabled": "Magma Boss -ajastimen viestejä ei enään kirjata lokiin.",
+        "enabled": "Magma Boss -ajastimen viestit kirjataan nyt lokiin."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Näyttää modin version",
+        "hoverText": "Klikkaa laittaaksesi chattiin, jotta voit kopioida."
       },
       "errors": {
         "wrongUsage": {
@@ -476,18 +476,18 @@
     "developerCopyNBT": "Kopioi NBT"
   },
   "dragonTracker": {
-    "protector": "Protector",
-    "old": "Old",
-    "wise": "Wise",
-    "unstable": "Unstable",
-    "young": "Young",
-    "strong": "Strong",
-    "superior": "Superior",
+    "protector": "Puolustaja",
+    "old": "Vanha",
+    "wise": "Viisas",
+    "unstable": "Epävakaa",
+    "young": "Nuori",
+    "strong": "Vahva",
+    "superior": "Parempi",
     "recentDragons": "Viimeisimmät Lohikäärmeet:",
     "dragonsSince": "Lohikäärmeitä alkaen:",
     "aspectOfTheDragons": "AOTD",
-    "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyeitä asetettu",
+    "enderDragonPet": "Dragon-lemmikki",
+    "eyesPlaced": "Eye:ta asetettu",
     "never": "Ei koskaan"
   },
   "slayerTracker": {
@@ -499,10 +499,10 @@
   },
   "warpMenu": {
     "click": "Paina siirtymispistettä matkustaaksesi sinne!",
-    "mustUnlock": "Kyseinen scroll pitää olla avattuna.",
+    "mustUnlock": "Kyseinen käärö pitää olla avattuna.",
     "privateIsland": "Oma saari",
     "home": "Oma saari",
-    "spawn": "Keskusta",
+    "spawn": "Syntypiste",
     "unknown": "Et ole vielä vieraillut",
     "notUnlocked": "Ei avattu",
     "inCombat": "Taistelussa..."
