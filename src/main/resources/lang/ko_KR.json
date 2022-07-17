@@ -58,7 +58,7 @@
     },
     "warningDuration": "경고 길이",
     "dontOpenProfileWithBow": "활을 든 채 프로필 열기 방지",
-    "stopDroppingSellingRareItems": "희귀한 아이템 드랍 및 판매 방지",
+    "stopDroppingSellingRareItems": "희귀한 아이템 버리기 및 판매 방지",
     "makeBackpackInventoriesColored": "색깔 있는 Backpack 인벤토리",
     "replaceRomanNumeralsWithNumbers": "로마숫자를 숫자로 표시",
     "changeBarColorForPotions": "위더 & 독 이펙트에 따른 바 색상 변경",
