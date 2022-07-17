@@ -23,10 +23,10 @@
       "regular": "일반",
       "compact": "간단"
     },
-    "showBackpackPreview": "Backpack 아이템 보이기",
+    "showBackpackPreview": "Backpack 아이템 표시하기",
     "hideHealthBar": "기본 체력 바 숨기기",
     "fullMinionWarning": "Minion 아이템 꽉 참 경고",
-    "showOnlyWhenHoldingShift": "쉬프트키를 눌렀을 때만 보이기",
+    "showOnlyWhenHoldingShift": "쉬프트키를 눌렀을 때만 표시하기",
     "manaBar": "Mana 바",
     "manaNumber": "Mana 숫자",
     "healthBar": "체력 바",
@@ -49,7 +49,7 @@
     "summoningEyeAlert": "Summoning Eye 알림",
     "makeEnderchestsInEndGreen": "The End에서 엔더 상자 색깔 바꾸기",
     "changeColor": "색 변경하기",
-    "showInOtherGames": "다른 미니게임에서도 보이기",
+    "showInOtherGames": "다른 미니게임에서도 표시하기",
     "useVanillaTexture": "기본 텍스쳐 유지하기",
     "textStyle": "텍스트 스타일",
     "textStyles": {
@@ -69,11 +69,11 @@
     "showItemCooldowns": "아이템 재사용 대기 시간 보여주기",
     "speedPercentage": "스피드 배율",
     "collectionDisplay": "Skill 완성도 보여주기",
-    "revenantIndicator": "슬레이어 갑옷 진행상황 표시",
+    "revenantIndicator": "Slayer 갑옷 진행상황 표시",
     "specialZealotAlert": "특별한 Zealot 알림",
-    "enableMessageWhenActionPrevented": "이 모드가 당신의 행동을 멈출 때 메시지 보이기",
+    "enableMessageWhenActionPrevented": "이 모드가 당신의 행동을 멈출 때 메시지 표시하기",
     "hidePetHealthBar": "Pet 체력 바 숨기기",
-    "powerOrbDisplay": "Power Orb 보이기",
+    "powerOrbDisplay": "Power Orb 표시하기",
     "powerOrbDisplayStyle": "Power Orb 스타일: %style%",
     "powerOrbStyle": {
       "detailed": "자세하게 표시",
@@ -81,68 +81,68 @@
     },
     "disableMagicalSoupMessage": "Magical Mushroom Soup 사용 메시지 숨기기",
     "zealotCounter": "Zealot 카운터 - 마지막 Summoning Eye 획득 이후 카운트",
-    "tickerChargesDisplay": "Ticker/Charges 보이기",
+    "tickerChargesDisplay": "Ticker/Charges 표시하기",
     "tab": {
       "generalSettings": "일반 설정"
     },
     "tabEffectTimers": "포션과 파워업 타이머",
     "noArrowsLeftAlert": "화살 없음 경고",
     "hideNightVisionEffectTimer": "야간 투시 이펙트 타이머 숨기기",
-    "showCakeBagPreview": "Cake Bags 프리뷰 보이기",
-    "showBackpackPreviewInAH": "Auction House가 열려 있을 때 내 Backpack 아이템 보이기",
+    "showCakeBagPreview": "Cake Bags 프리뷰 표시하기",
+    "showBackpackPreviewInAH": "Auction House가 열려 있을 때 내 Backpack 아이템 표시하기",
     "enableDevFeatures": "개발자용 기능 활성화",
-    "chromaSpeed": "무지개 색상 변경 속도",
-    "chromaMode": "무지개 색상 모드",
+    "chromaSpeed": "크로마 색상 변경 속도",
+    "chromaMode": "크로마 색상 모드",
     "chromaModes": {
       "allTheSame": "모두 같은 색깔",
       "fade": "색상 페이드"
     },
     "chromaFadeWidth": "색상 페이드 너비",
     "sortTabEffectTimers": "타이머들을 남은 시간순으로 정리하기",
-    "showBrokenFragments": "부서진 Dragon Fragments 보이기",
+    "showBrokenFragments": "부서진 Dragon Fragments 표시하기",
     "skyblockAddonsButtonInPauseMenu": "일시 정지 화면에서 SBA 버튼 보기",
     "showTotalZealotCount": "Zealot 카운터 - 전체 Zealot 카운트",
     "showSummoningEyeCount": "Zealot 카운터 - 전체 Summoning Eye 카운트",
-    "showZealotsPerEye": "Zealot 카운터 - Summoning Eye 당 Zealot 수 보이기",
+    "showZealotsPerEye": "Zealot 카운터 - Summoning Eye 당 Zealot 수 표시하기",
     "turnBowGreenWhenUsingToxicArrowPoison": "Toxic Arrow Poison을 사용할 때 활을 초록색으로 표시",
     "birchParkRainmakerTimer": "Birch Park 비 내림 타이머",
-    "combatTimerDisplay": "전투 타이머 보이기",
+    "combatTimerDisplay": "전투 타이머 표시하기",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Endstone Protector 보이기",
+    "endstoneProtectorDisplay": "Endstone Protector 표시하기",
     "fancyWarpMenu": "이쁜 워프 메뉴",
     "stopRatSounds": "Rat Pet의 소리 방지",
     "onlyStopRatSqueak": "Rat Pet이 찍찍거리는 소리만 방지",
     "doubleWarp": "두 번 워프하기",
     "advancedMode": "고급 모드",
-    "legendarySeaCreatureWarning": "전설 Sea Creature 알림",
+    "legendarySeaCreatureWarning": "전설적인 Sea Creature 알림",
     "bossApproachAlert": "Slayer 보스 경고",
     "disableTeleportPadMessages": "Teleport Pad 메시지 숨기기",
-    "baitListDisplay": "낚싯대를 들고 있을 때 Bait 목록 보이기",
+    "baitListDisplay": "낚싯대를 들고 있을 때 Bait 목록 표시하기",
     "freezeBackpackPreview": "Backpack 프리뷰 멈추기",
     "hideGreyEnchants": "바닐라 회색 인챈트 숨기기",
     "zealotCounterExplosiveBow": "Zealot 카운터에 Explosive Bow 지원하기",
     "disableEndermanTeleportation": "앤더맨 순간이동 끄기",
     "changeZealotColor": "Zealot 색상 변경",
     "hideSvenPupNametags": "Sven Pup 이름표 숨기기",
-    "turnAllFeaturesChroma": "모든 기능을 무지개로 보이기",
+    "turnAllFeaturesChroma": "모든 기능을 크로마로 표시하기",
     "dungeonMapDisplay": "Dungeon Map 표시하기",
     "rotateMap": "플레이어의 시야 회전에 맞춰 지도를 회전하기",
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
     "showFetchurOnlyInDwarven": "Dwarven Mines에서 Fetchur만 보이게 하기",
-    "showFetchurItemName": "Fetchur의 아이템 이름 보이기",
-    "showFetchurInventoryOpenOnly": "인벤토리가 열려 있을때, Fetchur의 아이템만 보이기",
+    "showFetchurItemName": "Fetchur의 아이템 이름 표시하기",
+    "showFetchurInventoryOpenOnly": "인벤토리가 열려 있을때, Fetchur의 아이템만 표시하기",
     "warnWhenFetchurChanges": "Fetchur가 변경되면 경고하기",
     "mapZoom": "지도 확대",
     "glowingDroppedItems": "떨군 아이템을 빛나도록 표시",
     "outlineDungeonTeammates": "Dungeon 팀원 윤곽 표시",
-    "baseStatBoostPercentage": "Dungeon 아이템의 기본 스탯 부스트 보이기",
-    "colorByRarity": "희귀성에 맞춰 색상 변경하기",
-    "showPlayerHeadsOnMap": "플레이어 머리를 Dungeon 지도에 보이기",
-    "showHealingCircleWall": "Dungeon의 Healing Circle 벽 보이기",
-    "showCriticalTeammates": "Dungeon 에서 체력이 낮은 팀원들 보이기",
-    "showGlowingItemsOnIsland": "빛나는 아이템들을 섬에서 보이기",
-    "showItemDungeonFloor": "어떤 층에서 드랍된 Dungeon 아이템인지 보이기",
-    "showDungeonMilestone": "Dungeon Milestone 보이기",
+    "baseStatBoostPercentage": "Dungeon 아이템의 기본 스탯 부스트 표시하기",
+    "colorByRarity": "희귀도에 맞춰 색상 변경하기",
+    "showPlayerHeadsOnMap": "플레이어 머리를 Dungeon 지도에 표시하기",
+    "showHealingCircleWall": "Dungeon의 Healing Circle 벽 표시하기",
+    "showCriticalTeammates": "Dungeon 에서 체력이 낮은 팀원들 표시하기",
+    "showGlowingItemsOnIsland": "빛나는 아이템들을 섬에서 표시하기",
+    "showItemDungeonFloor": "어떤 층에서 드랍된 Dungeon 아이템인지 표시하기",
+    "showDungeonMilestone": "Dungeon Milestone 표시하기",
     "dungeonsCollectedEssencesDisplay": "Dungenon에서 획득한 에센스 목록",
     "stopBonzoStaffSounds": "Bonzo's Staff의 효과음 방지",
     "showRarityUpgraded": "아이템의 희귀도가 업그레이드 됐는지 표시하기",
@@ -151,18 +151,18 @@
     "svenSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Sven/Wolf",
     "voidgloomSlayerTracker": "획득한 Slayer 보스 아이템 기록하기 - Voidgloom/Enderman",
     "textMode": "텍스트 모드",
-    "dragonsNestOnly": "Dragon's Nest 에서만 보이기",
+    "dragonsNestOnly": "Dragon's Nest 에서만 표시하기",
     "dragonStatsTracker": "드래곤 통계 기록하기",
     "skillActionsLeftUntilNextLevel": "다음 레벨까지 남은 액션 보이게 하기",
-    "dungeonDeathCounter": "Dungeon 죽음 카운터",
-    "showPersonalCompactorPreview": "Personal Compactor 속에 있는 아이텀 보이기",
+    "dungeonDeathCounter": "Dungeon 사망 횟수 카운터",
+    "showPersonalCompactorPreview": "Personal Compactor 속에 있는 아이텀 표시하기",
     "rockPetTracker": "Rock Pet을 얻기 위한 광석 카운터",
     "dolphinPetTracker": "Dolphin Pet을 얻기 위한 낚시 카운터",
     "dungeonsTeammateNameOverlay": "Dungeon 팀원 이름 오버레이",
     "dungeonsSecretsDisplay": "Dungeon 비밀 표시",
-    "showSkillPercentageInstead": "XP 숫자 대신 레벨 진행도 보이기",
+    "showSkillPercentageInstead": "XP 숫자 대신 레벨 진행도 표시하기",
     "showSkillXPGained": "얻은 XP 보여주기",
-    "skillProgressBar": "Skill 경험치 바",
+    "skillProgressBar": "Skill 경험치 진행도 바",
     "showSalvageEssencesCounter": "얻은 Essence 카운터",
     "disableMortMessages": "Mort의 메시지 없애기",
     "disableBossMessages": "보스 알림 끄기",
@@ -171,41 +171,41 @@
     "compactTabList": "간단 Tab 리스트",
     "highlightSpecialEnchantments": "특별한 인챈트 강조하기",
     "disableDamageChatMessages": "스킬 대미지 메시지 없애기",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 대미지 보이기",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 대미지 표시하기",
     "outbidAlertSound": "입찰 알림 소리",
     "hideMenuGlassPanes": "메뉴 유리판 툴팁 숨기기",
     "candyPointsCounter": "Spooky Event Candy/포인트 카운터",
     "healingCircleOpacity": "Healing Circle 불투명도",
-    "chromaSize": "무지개 사이즈",
-    "chromaSaturation": "무지개 채도",
-    "chromaBrightness": "무지개 밝기",
-    "useNewChromaEffect": "새로운 무지개 이펙트 사용하기",
-    "showExperimentationTableTooltips": "Experimentation Table 팁 보이기",
+    "chromaSize": "크로마 크기",
+    "chromaSaturation": "크로마 채도",
+    "chromaBrightness": "크로마 밝기",
+    "useNewChromaEffect": "새로운 크로마 이펙트 사용하기",
+    "showExperimentationTableTooltips": "Experimentation Table 팁 표시하기",
     "drillFuelBar": "Drill 연료 바",
     "drillFuelNumber": "Drill 연료 숫자",
-    "fetchurToday": "오늘 Fetchur가 원하는걸 보이기",
+    "fetchurToday": "오늘 Fetchur가 원하는 걸 표시하기",
     "fishingParticleOverlay": "낚시 파티클 오버레이",
     "enchantmentLoreParsing": "인챈트 강조 바꾸기",
     "cooldownPrediction": "쿨다운 예측 및 단축",
     "legendaryMonkeyLevel100": "[TEMP] 레벨 100 전설 Monkey",
     "biggerWake": "오버레이 파티클 크기 키우기",
-    "stackingEnchantProgress": "스태킹 인챈트 진행사항 보이기",
-    "showReforgeOverlay": "Reforge 오버레이 보이기",
+    "stackingEnchantProgress": "스태킹 인챈트 진행사항 표시하기",
+    "showReforgeOverlay": "Reforge 오버레이 표시하기",
     "reforgeFilter": "Reforge 필터",
     "hideEnchantDescription": "인챈트 설명 숨기기",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper 기능",
-      "trackedEntityProximityIndicator": "추적 된 엔티티에 근접 표시기 표시",
-      "highlightTrackedEntity": "추적 된 엔티티 강조",
-      "showQuestCooldown": "Trevor's Quest 쿨다운 보이기",
+      "trackedEntityProximityIndicator": "추적된 엔티티에 근접 표시기 표시하기",
+      "highlightTrackedEntity": "추적된 엔티티 강조",
+      "showQuestCooldown": "Trevor's Quest 쿨다운 표시하기",
       "showQuestCooldownDescription": "이것은 Trevor의 머리 위에 표시될 것 입니다."
     },
-    "showEnderChestPreview": "엔더 상자 아이템 보이기",
+    "showEnderChestPreview": "엔더 상자 아이템 표시하기",
     "hideWhenNotDoingQuest": "퀘스트를 안하고 있을땐 숨기기",
     "showOverflowManaNumber": "Overflow Mana 숫자",
-    "axeCooldownIndicator": "도끼 쿨다운 표시",
+    "axeCooldownIndicator": "도끼 재사용 대기시간 표시",
     "vanillaHealthPrediction": "기본 체력 예측 쓰기",
-    "entityOutlines": "엔티티 윤곽 보이기",
+    "entityOutlines": "엔티티 윤곽 표시하기",
     "effectiveHealthNumber": "사실적 체력",
     "guiScaleX": "GUI X축 크기:%scale%",
     "guiScaleY": "GUI Y축 크기: %scale%",
@@ -223,7 +223,7 @@
   },
   "messages": {
     "enchants": "인챈트",
-    "reforges": "재련",
+    "reforges": "Reforges",
     "dropConfirmation": "아이템을 정말로 버리려면 다시 버리세요!",
     "magmaBossWarning": "Magma Boss 소환!!",
     "balBossWarning": "Bal Boss 소환!!",
@@ -241,9 +241,9 @@
       "joinDiscord": "우리의 Discord 서버에 참여하세요!",
       "watchShowcase": "동영상 보기",
       "downloadButton": "설치",
-      "openModFolderButton": "모드 폴더 열기",
+      "openModFolderButton": "mods 폴더 열기",
       "joinDiscordButton": "Discord 서버 참여하기",
-      "newUpdateAvailable": "새로운 버전 (%version%) 을(를) 사용할 수 있습니다!",
+      "newUpdateAvailable": "새로운 버전 (%version%) 을 사용할 수 있습니다!",
       "noDownloadAvailable": "사용할 수 있는 다운로드 링크가 없습니다. Discord 서버를 확인하세요.",
       "notificationBox": {
         "majorAvailable": "새로운 주요 업데이트 (%version%) 버전이 있습니다! 다운로드 링크는 채팅에서 찾을 수 있습니다.",
@@ -266,15 +266,15 @@
     "noArrowsLeft": "화살이 없습니다!",
     "chooseAColor": "색상 선택하기",
     "selectedColor": "선택한 색상",
-    "setHexColor": "헥스 색상 정하기",
+    "setHexColor": "Hex 색상 정하기",
     "rescaleFeatures": "기능 크기 조정",
     "resizeBars": "바 크기 재조정",
-    "showColorIcons": "색상 아이콘 보이기",
+    "showColorIcons": "색상 아이콘 표시하기",
     "enableFeatureSnapping": "기능 배치시 스냅 켜기",
     "stage": "스테이지 %stage%",
     "switchedSlots": "당신은 방금 잠긴 슬롯이나 레어 아이템에서 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
     "clickToOpenLink": "클릭해서 링크 열기",
-    "clickToOpenFolder": "여기를 클릭해 당신의 모드 폴더를 열으세요!",
+    "clickToOpenFolder": "여기를 클릭해서 mods 폴더를 여세요!",
     "firstStatus": "이 상태는 위에 나타날 것입니다",
     "secondStatus": "이 상태는 당신의 첫 상태 밑에 나타날 것입니다",
     "fallbackStatus": "이 상태는 당신의 자동 상태가 아무것도 표시할 것이 없을 때 나타납니다",
@@ -293,7 +293,7 @@
     "effectsActive": "%number% 개의 효과 활성화 되어 있음",
     "none": "없음",
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
-    "chroma": "무지개",
+    "chroma": "크로마",
     "worldRenderedCooldownTime": "쿨다운: %time%s",
     "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
     "version": "버전",
@@ -326,11 +326,11 @@
     "titleAuto": "자동으로 표시되는 상태",
     "descriptionAuto": "자동으로 상태를 표시합니다. 예: The End에서의 당신의 Zealot 카운트.",
     "titleRevenants": "Revenant 퀘스트",
-    "descriptionRevenants": "당신이 Revenant 퀘스트를 하는 것을 보여줍니다.",
+    "descriptionRevenants": "내가 Revenant 퀘스트를 하는 것을 보여줍니다.",
     "titleSvens": "Sven 퀘스트",
-    "descriptionSvens": "당신이 Sven 퀘스트를 하는 것을 보여줍니다.",
+    "descriptionSvens": "내가 Sven 퀘스트를 하는 것을 보여줍니다.",
     "titleTarantula": "Tarantula 퀘스트",
-    "descriptionTarantula": "당신이 Tarantula 퀘스트를 하는 것을 보여줍니다."
+    "descriptionTarantula": "내가 Tarantula 퀘스트를 하는 것을 보여줍니다."
   },
   "enchantLayout": {
     "title": "아이템이 어떻게 툴팁에 표시되는지 제어합니다.",
@@ -351,14 +351,14 @@
           "help": "서버 브랜드 표시하기"
         },
         "copyBlock": {
-          "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
+          "help": "보고 있는 블록의 데이터 복사"
         },
         "copyEntity": {
           "help": "특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
           "detailedHelp": {
             "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
             "options": {
-              "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
+              "entityNames": "데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
               "radius": "엔티티의 NBT 데이터를 복사할 플레이어의 주변 반경 (단위: 블록)"
             }
           }
@@ -400,16 +400,16 @@
           }
         },
         "printDeaths": {
-          "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
+          "help": "디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
         },
         "reload": {
-          "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+          "help": "모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
         },
         "reloadConfig": {
-          "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
+          "help": "모드의 설정을 다시 불러오기"
         },
         "reloadRes": {
-          "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+          "help": "모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
         },
         "resetZealotCounter": {
           "help": "Zealot 카운터를 모두 초기화합니다"
@@ -420,9 +420,9 @@
             "detailedHelp": {
               "description": "직접 질럿 카운터의 값을 설정합니다.",
               "options": {
-                "eyes": "총 서머닝 눈 획득 수",
-                "totalZealots": "총 질럿 킬 수",
-                "zealots": "최근 서머닝 눈 드랍 이후 죽인 질럿들"
+                "eyes": "총 Summoning Eye 획득 수",
+                "totalZealots": "총 Zealot 처치 횟수",
+                "zealots": "최근 Summoning Eye 드롭 이후 죽인 Zealot"
               }
             }
           }
@@ -445,7 +445,7 @@
           "help": "Magma boss 타이머 디버그 메시지 켜기/끄기"
         },
         "version": {
-          "help": "모드의 버전 보이기"
+          "help": "모드의 버전 표시하기"
         }
       }
     },
@@ -467,10 +467,10 @@
         },
         "set": {
           "zealotCounter": {
-            "eyesSet": "전체 서머닝 눈 카운트를 %number% (으)로 설정했습니다!",
-            "totalZealotsSet": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+            "eyesSet": "전체 Summoning Eye 카운트를 %number% (으)로 설정했습니다!",
+            "totalZealotsSet": "전체 Zealot 카운트를 %number% (으)로 설정했습니다!",
             "wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
-            "zealotsSet": "현재 질럿 카운트를 %number% (으)로 설정했습니다!"
+            "zealotsSet": "현재 Zealot 카운트를 %number% (으)로 설정했습니다!"
           }
         },
         "slayer": {
@@ -513,14 +513,14 @@
         "notFound": "서버 브랜드를 찾을 수 없습니다!"
       },
       "copyBlock": {
-        "help": "§e(개발자 모드) §7보고 있는 블록의 데이터를 복사 합니다."
+        "help": "보고 있는 블록의 데이터 복사"
       },
       "copyEntity": {
         "help": "특정 주변 반경 이내에 있고, 특정 이름(들)이 입력된 엔티티들의 NBT 데이터 복사하기",
         "detailedHelp": {
           "description": "엔티티의 NBT 데이터를 복사합니다. 포함 된 엔티티의 유형과 데이터를 복사 할 플레이어 주변의 반경을 사용자 지정할 수 있습니다. 아무런 반경 설정을 하지 않으면 기본 설정이 사용됩니다. 기본 설정은 플레이어, 방어구 스텐드, 몹을 포함하고 반경 3 블록입니다. 반경을 지정하지 않으면 기본 반경이 사용됩니다.",
           "options": {
-            "entityNames": "당신이 데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
+            "entityNames": "데이터를 복사하고 싶은 엔티티의 타입들의 이름들을 입력하세요. (예: 플레이어, 크리퍼). 명령어를 친 이후에 \"Tab\" 키를 눌러 리스트 전체를 확인 할 수 있습니다. 이름들이 여러개 라면 쉼표로 구분하세요. 또한, 이름은 대소문자를 구분합니다.",
             "radius": "엔티티의 NBT 데이터를 복사할 플레이어의 주변 반경 (단위: 블록)"
           }
         }
@@ -565,16 +565,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(개발자 모드) §7디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
+        "help": "디버깅 목적으로 Dungeon 죽음 카운터에서 저장된 카운트를 복사합니다."
       },
       "reload": {
-        "help": "§e(개발자 모드) §7모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        "help": "모든 모드 설정 및 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "reloadConfig": {
-        "help": "§e(개발자 모드) §7모드의 세팅을 다시 로딩 합니다."
+        "help": "모드의 설정을 다시 불러오기"
       },
       "reloadRes": {
-        "help": "§e(개발자 모드) §7모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
+        "help": "모드의 리소스를 다시 로딩 합니다. 게임은 몇 초 동안 정지될 것입니다."
       },
       "resetZealotCounter": {
         "help": "Zealot 카운터를 모두 초기화합니다",
@@ -586,15 +586,15 @@
           "detailedHelp": {
             "description": "직접 질럿 카운터의 값을 설정합니다.",
             "options": {
-              "eyes": "총 서머닝 눈 획득 수",
-              "totalZealots": "총 질럿 킬 수",
-              "zealots": "최근 서머닝 눈 드랍 이후 죽인 질럿들"
+              "eyes": "총 Summoning Eye 획득 수",
+              "totalZealots": "총 Zealot 처치 횟수",
+              "zealots": "최근 Summoning Eye 드롭 이후 죽인 Zealot"
             }
           },
-          "eyesSet": "전체 서머닝 눈 카운트를 %number% (으)로 설정했습니다!",
-          "totalZealotsSet": "전체 질럿 카운트를 %number% (으)로 설정했습니다!",
+          "eyesSet": "전체 Summoning Eye 카운트를 %number% (으)로 설정했습니다!",
+          "totalZealotsSet": "전체 Zealot 카운트를 %number% (으)로 설정했습니다!",
           "wrongUsage": "잘못된 선택지입니다! %options% (을)를 선택해주세요.",
-          "zealotsSet": "현재 질럿 카운트를 %number% (으)로 설정했습니다!"
+          "zealotsSet": "현재 Zealot 카운트를 %number% (으)로 설정했습니다!"
         }
       },
       "slayer": {
@@ -626,7 +626,7 @@
         "enabled": "이제 Magma boss 타이머의 메시지가 기록됩니다."
       },
       "version": {
-        "help": "모드의 버전 보이기",
+        "help": "모드의 버전 표시하기",
         "hoverText": "복사할 수 있도록 채팅에 표시하려면 클릭하세요"
       },
       "errors": {
@@ -654,7 +654,7 @@
     "dragonsSince": "드래곤 통계:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "설치한 눈",
+    "eyesPlaced": "설치한 Summoning Eye",
     "never": "안 함"
   },
   "slayerTracker": {
@@ -668,10 +668,10 @@
     "click": "워프 포인트를 클릭하여 워프하세요!",
     "mustUnlock": "이 Scroll를 반드시 잠금 해제 해야 합니다.",
     "privateIsland": "개인 섬",
-    "home": "당신의 섬",
+    "home": "자신의 섬",
     "spawn": "스폰",
-    "unknown": "방문하지 않음.",
-    "notUnlocked": "해금 안 됨",
+    "unknown": "방문하지 않음",
+    "notUnlocked": "해금되지 않음",
     "inCombat": "전투 중..."
   },
   "enchants": {
