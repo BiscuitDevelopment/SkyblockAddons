@@ -395,7 +395,7 @@
           "help": "이 도움 메시지를 보여줍니다. 만약 명령어를 입력받았다면, 그 명령어에 대한 자세한 도움말도 보여줍니다.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "자세한 사용법을 얻을 부명령어"
             }
           }
         },
@@ -560,7 +560,7 @@
         "help": "이 도움 메시지를 보여줍니다. 만약 명령어를 입력받았다면, 그 명령어에 대한 자세한 도움말도 보여줍니다.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "자세한 사용법을 얻을 부명령어"
           }
         }
       },
