@@ -6,5 +6,12 @@ pluginManagement {
             url 'https://maven.minecraftforge.net/'
         }
     }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id.startsWith('net.minecraftforge.gradle')) {
+                useModule group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: requested.version
+            }
+        }
+    }
 }
 rootProject.name = 'SkyblockAddons'
