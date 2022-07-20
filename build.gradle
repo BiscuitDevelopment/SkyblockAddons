@@ -4,8 +4,8 @@ import java.text.ParseException
 plugins {
     id 'java'
     id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
-    id "io.freefair.lombok" version "6.0.0-m2"
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id "io.freefair.lombok" version "2.9.5"
+    id 'com.github.johnrengelman.shadow' version '4.0.4'
 }
 
 group = 'codes.biscuit'
