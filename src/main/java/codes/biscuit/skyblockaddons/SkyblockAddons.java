@@ -5,8 +5,8 @@ import codes.biscuit.skyblockaddons.commands.SkyblockAddonsCommand;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.OnlineData;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonManager;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.EntityOutlineRenderer;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureDungeonTeammateOutlines;
@@ -42,7 +42,6 @@ import net.minecraft.client.settings.KeyBinding;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ProgressManager;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLModDisabledEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -54,7 +53,6 @@ import org.lwjgl.input.Keyboard;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.*;
-import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -88,10 +86,8 @@ public class SkyblockAddons {
 
     private static final Logger LOGGER = LogManager.getLogger(new SkyblockAddonsMessageFactory(MOD_NAME));
 
-    private static final Executor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
+    private static final ThreadPoolExecutor THREAD_EXECUTOR = new ThreadPoolExecutor(0, 1, 60L, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(), new ThreadFactoryBuilder().setNameFormat(SkyblockAddons.MOD_NAME + " - #%d").build());
-
-    private static ProgressManager.ProgressBar progressBar;
 
     private ConfigValues configValues;
     private PersistentValuesManager persistentValuesManager;
@@ -171,20 +167,27 @@ public class SkyblockAddons {
         // Macs do not have a right control key.
         int developerModeKey = Minecraft.isRunningOnMac ? Keyboard.KEY_LMENU : Keyboard.KEY_RCONTROL;
 
-        Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, Message.SETTING_SETTINGS),
-                new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, Message.SETTING_EDIT_LOCATIONS),
-                new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, Message.SETTING_LOCK_SLOT),
-                new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, Message.SETTING_FREEZE_BACKPACK_PREVIEW),
-                new SkyblockKeyBinding("copy_NBT", developerModeKey, Message.KEY_DEVELOPER_COPY_NBT));
+        Collections.addAll(keyBindings, new SkyblockKeyBinding("open_settings", Keyboard.KEY_NONE, "settings.settings"),
+                new SkyblockKeyBinding("edit_gui", Keyboard.KEY_NONE, "settings.editLocations"),
+                new SkyblockKeyBinding("lock_slot", Keyboard.KEY_L, "settings.lockSlot"),
+                new SkyblockKeyBinding("freeze_backpack", Keyboard.KEY_F, "settings.freezeBackpackPreview"),
+                new SkyblockKeyBinding("increase_dungeon_map_zoom", Keyboard.KEY_EQUALS, "keyBindings.increaseDungeonMapZoom"),
+                new SkyblockKeyBinding("decrease_dungeon_map_zoom", Keyboard.KEY_SUBTRACT, "keyBindings.decreaseDungeonMapZoom"),
+                new SkyblockKeyBinding("copy_NBT", developerModeKey, "keyBindings.developerCopyNBT"));
         registerKeyBindings(keyBindings);
         setKeyBindingDescriptions();
 
         /*
+         TODO: De-registering keys isn't standard practice. Should this be changed to have the player manually set it to
+          KEY_NONE instead?
+
          De-register the devmode key binding since it's not needed until devmode is enabled. I can't just not register it
          in the first place since creating a KeyBinding object already adds it to the main key bind list. I need to manually
          de-register it so its default key doesn't conflict with other key bindings with the same key.
          */
-        getDeveloperCopyNBTKey().deRegister();
+        if (!this.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+            getDeveloperCopyNBTKey().deRegister();
+        }
 
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
@@ -251,7 +254,7 @@ public class SkyblockAddons {
     }
 
     public SkyblockKeyBinding getDeveloperCopyNBTKey() {
-        return keyBindings.get(4);
+        return keyBindings.get(6);
     }
 
     /**
@@ -271,7 +274,8 @@ public class SkyblockAddons {
      */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
-            skyblockKeyBinding.getKeyBinding().keyDescription = skyblockKeyBinding.getMessage().getMessage();
+            skyblockKeyBinding.getKeyBinding().keyDescription =
+                    Translations.getMessage(skyblockKeyBinding.getTranslationKey());
         }
     }
 
@@ -310,17 +314,7 @@ public class SkyblockAddons {
     }
 
     public static void runAsync(Runnable runnable) {
-        StackTraceElement stackTraceElement = new Throwable().getStackTrace()[1];
-        String fullClassName = stackTraceElement.getClassName();
-        String methodName = stackTraceElement.getMethodName();
-        String simpleClassName = fullClassName.substring(fullClassName.lastIndexOf('.') + 1);
-
-        THREAD_EXECUTOR.execute(() -> {
-            Logger logger = getLogger();
-            logger.info("Started asynchronous task from " + simpleClassName  + "#" + methodName + ".");
-            runnable.run();
-            logger.info("Asynchronous task from " + simpleClassName  + "#" + methodName + " has finished.");
-        });
+        THREAD_EXECUTOR.execute(runnable);
     }
 
     // This replaces the version placeholder if the mod is built using IntelliJ instead of Gradle.

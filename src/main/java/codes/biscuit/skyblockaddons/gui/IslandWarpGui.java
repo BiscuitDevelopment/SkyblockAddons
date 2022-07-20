@@ -43,6 +43,7 @@ public class IslandWarpGui extends GuiScreen {
 
     private Marker selectedMarker;
     private boolean guiIsActualWarpMenu = false;
+    @Getter
     private boolean foundAdvancedWarpToggle = false;
 
     public static float ISLAND_SCALE;
@@ -297,7 +298,7 @@ public class IslandWarpGui extends GuiScreen {
     @Getter
     public enum Island {
         THE_END("The End", 290, -10),
-        BLAZING_FORTRESS("Blazing Fortress", 900, -50),
+        CRIMSON_ISLE("Crimson Isle", 900, -50),
         THE_PARK("The Park", 103, 370),
         SPIDERS_DEN("Spider's Den", 500, 420),
         DEEP_CAVERNS("Deep Caverns", 1400, 200),
@@ -371,8 +372,12 @@ public class IslandWarpGui extends GuiScreen {
         DRAGONS_NEST("drag", "Dragon's Nest", Island.THE_END, 260, 248),
         VOID_SEPULTURE("void", "Void Sepulture", Island.THE_END, true, 370, 227),
 
-        BLAZING_FORTRESS("nether", Translations.getMessage("warpMenu.spawn"), Island.BLAZING_FORTRESS, true, 80, 350),
-        BLAZING_FORTRESS_MAGMA("magma", "Magma Cube Arena", Island.BLAZING_FORTRESS, 350, 200),
+        CRIMSON_ISLE("nether", Translations.getMessage("warpMenu.spawn"), Island.CRIMSON_ISLE, true, 80, 350),
+        FORGOTTEN_SKULL("kuudra", "Forgotten Skull", Island.CRIMSON_ISLE, true, 275, 150),
+        THE_WASTELAND("wasteland", "The Wasteland", Island.CRIMSON_ISLE, true, 275, 180),
+        DRAGONTAIL("dragontail", "Dragontail", Island.CRIMSON_ISLE, true, 60, 200),
+        SCARLETON("scarleton", "Scarleton", Island.CRIMSON_ISLE, true, 400, 180),
+        SMOLDERING_TOMB("smold", "Smoldering Tomb", Island.CRIMSON_ISLE, true, 275, 250),
 
         THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 140, 150),
         MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 210, 295),

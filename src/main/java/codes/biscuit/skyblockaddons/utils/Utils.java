@@ -58,6 +58,9 @@ import java.util.regex.Pattern;
 @Setter
 public class Utils {
 
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
+
     /**
      * Added to the beginning of messages sent by the mod.
      */
@@ -172,9 +175,6 @@ public class Utils {
     private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;
-
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
 
     public Utils() {
         addDefaultStats();
@@ -674,6 +674,12 @@ public class Utils {
         return MathHelper.clamp_float((snapNearDefaultValue(value) - min) / (max - min), 0.0F, 1.0F);
     }
 
+    /**
+     * Rounds the given value to 1f if it is between 0.95f and 1.05f exclusive.
+     *
+     * @param value the value to round
+     * @return 1f if 0.95f > {@code value} > 1.05f or {@code value} otherwise
+     */
     public float snapNearDefaultValue(float value) {
         if (value != 1 && value > 1 - 0.05 && value < 1 + 0.05) {
             return 1;

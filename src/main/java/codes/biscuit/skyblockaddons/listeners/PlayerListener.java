@@ -19,6 +19,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
@@ -83,7 +84,6 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,7 +91,7 @@ import java.util.regex.Pattern;
 //TODO Fix for Hypixel localization
 public class PlayerListener {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
@@ -107,7 +107,6 @@ public class PlayerListener {
     private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO2 = Pattern.compile(" *SLAYER QUEST STARTED!");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
-    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories (of|in) (?:\\w+ rarity in )?your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
     private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (?:Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(?:y|ies) for (?<dealtDamage>[0-9]{1,3}(?:,[0-9]{3})*(?:\\.[0-9]+)*) damage\\.");
@@ -267,7 +266,7 @@ public class PlayerListener {
             if (e.type == 2) {
                 // Log the message to the game log if action bar message logging is enabled.
                 if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && DevUtils.isLoggingActionBarMessages()) {
-                    LOGGER.info("[ACTION BAR] " + unformattedText);
+                    logger.info("[ACTION BAR] " + unformattedText);
                 }
 
                 // Parse using ActionBarParser and display the rest message instead
@@ -396,9 +395,6 @@ public class PlayerListener {
                     } else {
                         this.rainmakerTimeEnd += (1000 * 60); // Extend the timer one minute.
                     }
-                } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
-                        (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
-                    GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
                 } else if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY) &&
                         formattedText.startsWith("§e[NPC] Fetchur§f:")) {
                     FetchurManager fetchur = FetchurManager.getInstance();
@@ -1091,25 +1087,13 @@ public class PlayerListener {
                     e.toolTip.add(insertAt, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
-                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
-                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
-
-                if (itemId != null) {
-                    // Before the NBT line
-                    insertAt = e.toolTip.size() - 1;
-
-                    e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
-                }
-            }
         }
     }
 
     /**
      * Modifies item enchantments on tooltips as well as roman numerals
      */
-    @SubscribeEvent(priority = EventPriority.LOW)
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onItemTooltipLast(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
@@ -1124,6 +1108,26 @@ public class PlayerListener {
 
                 for (int i = startIndex; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
+                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
+                String tooltipLine = EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId;
+
+                if (itemId != null) {
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        for (int i = e.toolTip.size(); i-- > 0; ) {
+                            if (e.toolTip.get(i).startsWith(EnumChatFormatting.DARK_GRAY + "minecraft:")) {
+                                e.toolTip.add(i + 1, tooltipLine);
+                                break;
+                            }
+                        }
+
+                    } else {
+                        e.toolTip.add(tooltipLine);
+                    }
                 }
             }
         }
@@ -1150,13 +1154,13 @@ public class PlayerListener {
             DevUtils.copyData();
         }
 
-        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) && main.getUtils().isInDungeon()) {
-            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
-                float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
-                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
-            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
-                float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
-                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
+        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) &&
+                main.getConfigValues().isEnabled(Feature.CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD) &&
+                main.getUtils().isInDungeon()) {
+            if (Keyboard.isKeyDown(main.getKeyBindings().get(5).getKeyCode()) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.decreaseZoomByStep();
+            } else if (Keyboard.isKeyDown(main.getKeyBindings().get(4).getKeyCode()) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.increaseZoomByStep();
             }
         }
     }
@@ -1254,7 +1258,7 @@ public class PlayerListener {
                 main.getDungeonManager().addDeath();
 
             } else {
-                LOGGER.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
+                logger.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
             }
         }
     }

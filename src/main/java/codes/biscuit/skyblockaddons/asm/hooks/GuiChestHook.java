@@ -53,23 +53,19 @@ public class GuiChestHook {
 
     private static final int REFORGE_MENU_HEIGHT = 222 - 108 + 5 * 18;
 
+    @Getter
     private static IslandWarpGui islandWarpGui = null;
 
     /** Reforge filter text field for reforges to match */
     private static GuiTextField textFieldMatches = null;
     /** Reforge filter text field for reforges to exclude */
     private static GuiTextField textFieldExclusions = null;
-    @Setter
-    @Getter
-    private static String lastAccessoryBagReforge = null;
 
     private static final Pattern warpPattern = Pattern.compile("(?:§5§o)?§8/warp ([a-z_]*)");
     private static final Pattern unlockedPattern = Pattern.compile("(?:§5§o)?§eClick to warp!");
     private static final Pattern notUnlockedPattern = Pattern.compile("(?:§5§o)?§cWarp not unlocked!");
     private static final Pattern inCombatPattern = Pattern.compile("(?:§5§o)?§cYou're in combat!");
     private static final Pattern youAreHerePattern = Pattern.compile("(?:§5§o)?§aYou are here!");
-
-    private static boolean accessoryReforgeMenuTypeChecked = false;
 
     private static int reforgeFilterHeight;
 
@@ -99,7 +95,6 @@ public class GuiChestHook {
     public static void onGuiClosed() {
         Keyboard.enableRepeatEvents(false);
 
-        accessoryReforgeMenuTypeChecked = false;
         islandWarpGui = null;
         BackpackInventoryManager.setBackpackColor(null);
 
@@ -117,6 +112,10 @@ public class GuiChestHook {
      */
     @SuppressWarnings("unused")
     public static void drawScreenIslands(int mouseX, int mouseY, ReturnValue<?> returnValue) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         Container playerContainer = mc.thePlayer.openContainer;
         if (playerContainer instanceof ContainerChest && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.FANCY_WARP_MENU)) {
             IInventory chestInventory = ((ContainerChest) playerContainer).getLowerChestInventory();
@@ -169,8 +168,14 @@ public class GuiChestHook {
                             markers.put(marker, IslandWarpGui.UnlockedStatus.UNKNOWN);
                         }
                     }
-                    //markers.put(IslandWarpGui.Marker.DWARVEN_FORGE, markers.getOrDefault(IslandWarpGui.Marker.DEEP_CAVERNS, IslandWarpGui.UnlockedStatus.UNKNOWN));
-                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND, markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
+
+                    /*
+                    Special case: We have an extra dungeon hub warp as a separate island for convenience, so we have to
+                    add it manually.
+                     */
+                    markers.put(IslandWarpGui.Marker.DUNGEON_HUB_ISLAND,
+                            markers.getOrDefault(IslandWarpGui.Marker.DUNGEON_HUB, IslandWarpGui.UnlockedStatus.UNKNOWN));
+
                     if (islandWarpGui == null || !islandWarpGui.getMarkers().equals(markers)) {
                         islandWarpGui = new IslandWarpGui(markers);
                         ScaledResolution scaledresolution = new ScaledResolution(mc);
@@ -198,6 +203,10 @@ public class GuiChestHook {
     }
 
     public static void drawScreen(int guiLeft, int guiTop) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         InventoryType inventoryType = SkyblockAddons.getInstance().getInventoryUtils().getInventoryType();
 
         if (inventoryType == InventoryType.SALVAGING) {
@@ -209,16 +218,7 @@ public class GuiChestHook {
         }
 
         if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER)) {
-            /*
-            Special case: The advanced accessory bag reforge menu is detected by the presence of certain items, available
-            only after the inventory is fully initialized.
-             */
-            if (inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING && !accessoryReforgeMenuTypeChecked) {
-                inventoryType = main.getInventoryUtils().updateAccessoryBagReforgeInventoryType();
-                accessoryReforgeMenuTypeChecked = true;
-            }
-
-            if ((inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) &&
+            if ((inventoryType== InventoryType.BASIC_REFORGING) &&
                     textFieldMatches != null) {
 
                 int defaultBlue = main.getUtils().getDefaultBlue(255);
@@ -254,7 +254,6 @@ public class GuiChestHook {
                 }
             }
         }
-
     }
 
     /**
@@ -270,7 +269,7 @@ public class GuiChestHook {
 
         if (inventoryType != null) {
             if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.REFORGE_FILTER) && inventoryType ==
-                    InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+                    InventoryType.BASIC_REFORGING) {
                 int xPos = guiLeft - 160;
                 if (xPos<0) {
                     xPos = 20;
@@ -336,7 +335,7 @@ public class GuiChestHook {
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.REFORGE_FILTER)) {
             InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
 
-            if (inventoryType== InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
+            if (inventoryType== InventoryType.BASIC_REFORGING) {
                 if (keyCode != mc.gameSettings.keyBindInventory.getKeyCode() ||
                         (!textFieldMatches.isFocused() && !textFieldExclusions.isFocused())) {
                     processTextFields(typedChar, keyCode);
@@ -373,25 +372,18 @@ public class GuiChestHook {
                 if (slotIn != null && !slotIn.inventory.equals(mc.thePlayer.inventory) && slotIn.getHasStack()) {
                     InventoryType inventoryType = main.getInventoryUtils().getInventoryType();
 
-                    if (slotIn.getSlotIndex() == 22 && (inventoryType == InventoryType.BASIC_REFORGING || inventoryType == InventoryType.BASIC_ACCESSORY_BAG_REFORGING)) {
+                    if (slotIn.getSlotIndex() == 22 && (inventoryType == InventoryType.BASIC_REFORGING)) {
                         Slot itemSlot = slots.getSlot(13);
 
                         if (itemSlot != null && itemSlot.getHasStack()) {
-                            if (inventoryType == InventoryType.BASIC_REFORGING) {
-                                ItemStack item = itemSlot.getStack();
-                                if (item.hasDisplayName()) {
-                                    String reforge = ItemUtils.getReforge(item);
-                                    if (reforge != null) {
-                                        if (main.getUtils().enchantReforgeMatches(reforge)) {
-                                            main.getUtils().playLoudSound("random.orb", 0.1);
-                                            returnValue.cancel();
-                                        }
+                            ItemStack item = itemSlot.getStack();
+                            if (item.hasDisplayName()) {
+                                String reforge = ItemUtils.getReforge(item);
+                                if (reforge != null) {
+                                    if (main.getUtils().enchantReforgeMatches(reforge)) {
+                                        main.getUtils().playLoudSound("random.orb", 0.1);
+                                        returnValue.cancel();
                                     }
-                                }
-                            } else {
-                                if (lastAccessoryBagReforge != null && main.getUtils().enchantReforgeMatches(lastAccessoryBagReforge)) {
-                                    main.getUtils().playLoudSound("random.orb", 0.1);
-                                    returnValue.cancel();
                                 }
                             }
                         }
@@ -486,6 +478,10 @@ public class GuiChestHook {
      */
     @SuppressWarnings("unused")
     public static void onRenderChestForegroundLayer(GuiChest guiChest) {
+        if (!SkyblockAddons.getInstance().getUtils().isOnSkyblock()) {
+            return; // don't draw any overlays outside SkyBlock
+        }
+
         if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY)) {
             if (guiChest.inventorySlots.inventorySlots.size() > 13) {
                 Slot slot = guiChest.inventorySlots.inventorySlots.get(13);
@@ -496,8 +492,6 @@ public class GuiChestHook {
                         String reforge = null;
                         if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_REFORGING) {
                             reforge = ItemUtils.getReforge(item);
-                        } else if (main.getInventoryUtils().getInventoryType() == InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-                            reforge = GuiChestHook.getLastAccessoryBagReforge();
                         }
 
                         if (reforge != null) {

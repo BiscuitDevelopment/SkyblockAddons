@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.core.Language;
 import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.*;
 import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.data.DataUtils;
@@ -251,7 +252,7 @@ public class SettingsGui extends GuiScreen {
             x = halfWidth + 90;
         }
         double y = getRowHeight(row);
-        buttonList.add(new ButtonLanguage(x, y, text, main, language));
+        buttonList.add(new ButtonLanguage(x, y, text, language));
         column++;
         if (column > 3) {
             column = 1;
@@ -391,10 +392,10 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 100; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
-            buttonList.add(new ButtonSlider(x, y, 100, 20, main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
+            buttonList.add(new ButtonSlider(x, y, 100, 20, DungeonMapManager.getMapZoom(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
                 @Override
                 public void sliderUpdated(float value) {
-                    main.getConfigValues().getMapZoom().setValue(value);
+                    DungeonMapManager.setMapZoom(value);
                 }
             }).setPrefix("Map Zoom: "));
 

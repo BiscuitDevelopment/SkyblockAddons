@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.misc;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Message;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -15,12 +14,12 @@ import static codes.biscuit.skyblockaddons.SkyblockAddons.MOD_NAME;
 @Getter
 public class SkyblockKeyBinding {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private final KeyBinding keyBinding;
     private final String name;
     private final int defaultKeyCode;
-    private final Message message;
+    private final String translationKey;
     private boolean registered = false;
     private boolean isFirstRegistration = true;
     /*
@@ -29,10 +28,10 @@ public class SkyblockKeyBinding {
      */
     private int previousKeyCode = 999;
 
-    public SkyblockKeyBinding(String name, int defaultKey, Message message) {
+    public SkyblockKeyBinding(String name, int defaultKey, String translationKey) {
         this.name = name;
         this.defaultKeyCode = defaultKey;
-        this.message = message;
+        this.translationKey = translationKey;
         keyBinding = new KeyBinding("key.skyblockaddons."+ this.getName(), this.getDefaultKeyCode(), MOD_NAME);
     }
 
@@ -84,7 +83,7 @@ public class SkyblockKeyBinding {
      */
     public void register() {
         if (registered) {
-            LOGGER.error("Tried to register a key binding with the name \"" + name + "\" which is already registered.");
+            logger.error("Tried to register a key binding with the name \"" + name + "\" which is already registered.");
             return;
         }
 
@@ -107,7 +106,7 @@ public class SkyblockKeyBinding {
             int index = ArrayUtils.indexOf(Minecraft.getMinecraft().gameSettings.keyBindings, keyBinding);
 
             if (index == ArrayUtils.INDEX_NOT_FOUND) {
-                LOGGER.error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
+                logger.error("Keybinding was registered but no longer exists in the registry. Something else must have removed it." +
                         " This shouldn't happen; please inform an SBA developer.");
                 registered = false;
                 return;
@@ -124,7 +123,7 @@ public class SkyblockKeyBinding {
             KeyBinding.resetKeyBindingArrayAndHash();
             registered = false;
         } else {
-            LOGGER.error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
+            logger.error("Tried to de-register a key binding with the name \"" + name + "\" which wasn't registered.");
         }
     }
 }

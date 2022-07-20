@@ -36,4 +36,15 @@ public class DungeonPlayer {
     public boolean isGhost() {
         return this.health == 0;
     }
+
+    @Override
+    public String toString() {
+        return "DungeonPlayer{" +
+                "name='" + name + '\'' +
+                ", dungeonClass=" + dungeonClass +
+                ", healthColor=" + healthColor.name() +
+                ", mapMarker=" + mapMarker +
+                ", health=" + health +
+                '}';
+    }
 }

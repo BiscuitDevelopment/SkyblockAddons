@@ -24,8 +24,8 @@ public class Updater {
 
     private static final Pattern VERSION_PATTERN = Pattern.compile("(?<major>[0-9])\\.(?<minor>[0-9])\\.(?<patch>[0-9]).*");
 
-    private final SkyblockAddons main = SkyblockAddons.getInstance();
-    private final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private ComparableVersion target = null;
 
@@ -61,7 +61,7 @@ public class Updater {
      * Checks the online data for an update and sets the correct message to be displayed.
      */
     public void checkForUpdate() {
-        LOGGER.info("Checking to see if an update is available...");
+        logger.info("Checking to see if an update is available...");
         UpdateInfo updateInfo = main.getOnlineData().getUpdateInfo();
 
         // Variables reset for testing update checker notifications
@@ -69,7 +69,7 @@ public class Updater {
         main.getRenderListener().setUpdateMessageDisplayed(false);
 
         if (updateInfo == null) {
-            LOGGER.error("Update check failed: Update info is null!");
+            logger.error("Update check failed: Update info is null!");
             return;
         }
 
@@ -87,11 +87,11 @@ public class Updater {
             releaseDiff = latestRelease.compareTo(current);
         } else {
             if (!isCurrentBeta) {
-                LOGGER.error("Update check failed: Current version is a release version and key `latestRelease` is null " +
+                logger.error("Update check failed: Current version is a release version and key `latestRelease` is null " +
                         "or empty.");
                 return;
             } else {
-                LOGGER.warn("Key `latestRelease` is null or empty, skipping!");
+                logger.warn("Key `latestRelease` is null or empty, skipping!");
             }
         }
 
@@ -101,10 +101,10 @@ public class Updater {
                 betaDiff = latestBeta.compareTo(current);
             } else {
                 if (latestRelease == null) {
-                    LOGGER.error("Update check failed: Keys `latestRelease` and `latestBeta` are null or empty.");
+                    logger.error("Update check failed: Keys `latestRelease` and `latestBeta` are null or empty.");
                     return;
                 } else {
-                    LOGGER.warn("Key `latestBeta` is null or empty, skipping!");
+                    logger.warn("Key `latestBeta` is null or empty, skipping!");
                 }
             }
         }
@@ -133,7 +133,7 @@ public class Updater {
                 } else if (!latestBetaExists && releaseDiff < 0) {
                     status = AHEAD;
                 } else if (releaseDiff == 0) {
-                    LOGGER.warn("The current beta version (" + currentVersionString + ") matches the latest release " +
+                    logger.warn("The current beta version (" + currentVersionString + ") matches the latest release " +
                             "version. There is probably something wrong with the online data.");
                     status = UP_TO_DATE;
                 }
@@ -157,7 +157,7 @@ public class Updater {
             String currentVersion = current.toString();
             String targetVersion = target.toString();
 
-            LOGGER.info("Found an update: " + targetVersion);
+            logger.info("Found an update: " + targetVersion);
 
             if (status == OUTDATED) {
                 targetVersion = updateInfo.getLatestRelease();
@@ -181,7 +181,7 @@ public class Updater {
                         currentMatcher.group("minor").equals(targetMatcher.group("minor")) &&
                         !isCurrentBeta;
             } catch (Exception ex) {
-                LOGGER.warn("Couldn't parse update version numbers... This shouldn't affect too much.", ex);
+                logger.warn("Couldn't parse update version numbers... This shouldn't affect too much.", ex);
             }
 
             if (isPatch) {
@@ -193,18 +193,18 @@ public class Updater {
             }
         } else if (status == AHEAD) {
             if (!SkyblockAddonsTransformer.isDeobfuscated()) {
-                LOGGER.warn("The current version is newer than the latest version. Please tell an SBA developer to update" +
+                logger.warn("The current version is newer than the latest version. Please tell an SBA developer to update" +
                         " the online data.");
             } else {
-                LOGGER.error("The current version is newer than the latest version. You're doing something wrong.");
-                LOGGER.error("Current: "  + current);
-                LOGGER.error("Latest: " + latestRelease);
-                LOGGER.error("Latest Beta: " + latestBeta);
-                LOGGER.error("Release Diff: " + releaseDiff);
-                LOGGER.error("Beta Diff: " + betaDiff);
+                logger.error("The current version is newer than the latest version. You're doing something wrong.");
+                logger.error("Current: "  + current);
+                logger.error("Latest: " + latestRelease);
+                logger.error("Latest Beta: " + latestBeta);
+                logger.error("Release Diff: " + releaseDiff);
+                logger.error("Beta Diff: " + betaDiff);
             }
         } else {
-            LOGGER.info("Up to date!");
+            logger.info("Up to date!");
         }
     }
 

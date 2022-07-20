@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 // TODO: Feature Rewrite
 public class SpookyEventManager {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final Pattern CANDY_PATTERN = Pattern.compile("Your Candy: (?<greenCandy>\\d+) Green, (?<purpleCandy>\\d+) Purple \\((?<points>\\d+) pts\\.\\)");
     @Getter private static final Map<CandyType, Integer> dummyCandyCounts = new HashMap<>();
@@ -54,7 +54,7 @@ public class SpookyEventManager {
                 points = Integer.parseInt(matcher.group("points"));
             }
         } catch (Exception ex) {
-            LOGGER.error("An error occurred while parsing the spooky event event text in the tab list!", ex);
+            logger.error("An error occurred while parsing the spooky event event text in the tab list!", ex);
         }
     }
 

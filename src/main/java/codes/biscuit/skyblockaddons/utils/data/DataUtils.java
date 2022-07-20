@@ -63,7 +63,7 @@ public class DataUtils {
     private static final RequestConfig requestConfig = RequestConfig.custom()
             .setConnectTimeout(120 * 1000)
             .setConnectionRequestTimeout(120 * 1000)
-            .setSocketTimeout(60 * 1000).build();
+            .setSocketTimeout(30 * 1000).build();
 
     private static final PoolingHttpClientConnectionManager connectionManager = new PoolingHttpClientConnectionManager();
 
@@ -90,6 +90,12 @@ public class DataUtils {
 
     @Getter
     private static final HashMap<RemoteFileRequest<?>, Throwable> failedRequests = new HashMap<>();
+    
+    /** 
+     * Main CDN doesn't work for some users.
+     * Use fallback CDN if a request fails twice or user is in China or Hong Kong.
+     */
+    static boolean useFallbackCDN;
 
     // Whether the failed requests error was shown in chat, used to make it show only once per session
     private static boolean failureMessageShown = false;
@@ -109,6 +115,10 @@ public class DataUtils {
     private static ScheduledTask languageLoadingTask = null;
 
     static {
+        String country = Locale.getDefault().getCountry();
+        if (country.equals("CN") || country.equals("HK")) {
+            useFallbackCDN = true;
+        }
         connectionManager.setMaxTotal(5);
         connectionManager.setDefaultMaxPerRoute(5);
         registerRemoteRequests();
@@ -228,6 +238,10 @@ public class DataUtils {
         for (RemoteFileRequest<?> request : remoteRequests) {
             request.execute(futureRequestExecutionService);
         }
+        
+        if (useFallbackCDN) {
+            logger.warn("Could not reach main CDN. Some resources were fetched from fallback CDN.");
+        }
     }
 
     /**
@@ -239,8 +253,20 @@ public class DataUtils {
         Iterator<RemoteFileRequest<?>> requestIterator = remoteRequests.iterator();
 
         while (requestIterator.hasNext()) {
-            loadOnlineFile(requestIterator.next());
-            requestIterator.remove();
+            RemoteFileRequest<?> request = requestIterator.next();
+
+            if (!request.isDone()) {
+                handleOnlineFileLoadException(request,
+                        new RuntimeException(String.format("Request for \"%s\" didn't finish in time for mod init.",
+                                getFileNameFromUrlString(request.getUrl()))));
+            }
+
+            try {
+                loadOnlineFile(request);
+                requestIterator.remove();
+            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
+                handleOnlineFileLoadException(Objects.requireNonNull(request), e);
+            }
         }
     }
 
@@ -249,12 +275,8 @@ public class DataUtils {
      *
      * @param request the {@code RemoteFileRequest} for the file
      */
-    public static void loadOnlineFile(RemoteFileRequest<?> request) {
-        try {
-            request.load();
-        } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
-            handleOnlineFileLoadException(Objects.requireNonNull(request), e);
-        }
+    public static void loadOnlineFile(RemoteFileRequest<?> request) throws ExecutionException, InterruptedException {
+        request.load();
     }
 
     /**
@@ -306,8 +328,12 @@ public class DataUtils {
                 @Override
                 public void run() {
                     if (localizedStringsRequest != null) {
-                        if (localizedStringsRequest.getFutureTask().isDone()) {
-                            loadOnlineFile(localizedStringsRequest);
+                        if (localizedStringsRequest.isDone()) {
+                            try {
+                                loadOnlineFile(localizedStringsRequest);
+                            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
+                                handleOnlineFileLoadException(Objects.requireNonNull(localizedStringsRequest), e);
+                            }
                             cancel();
                         }
                     } else {
@@ -450,6 +476,4 @@ public class DataUtils {
             }
         }
     }
-
-
 }
