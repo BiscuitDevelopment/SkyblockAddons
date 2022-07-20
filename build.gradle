@@ -184,7 +184,3 @@ test {
         events "passed", "skipped", "failed"
     }
 }
-
-tasks.named('wrapper') {
-    distributionType = Wrapper.DistributionType.ALL
-}
