@@ -71,7 +71,7 @@ public class RemoteFileRequest<T> {
     public void execute(@NonNull FutureRequestExecutionService executionService) {
         String requestURL = DataUtils.useFallbackCDN ? REQUEST_URL.replace(DataConstants.CDN_BASE_URL, DataConstants.FALLBACK_CDN_BASE_URL) : REQUEST_URL;
     
-        futureTask = executionService.execute(new HttpGet(requestUrl), null, RESPONSE_HANDLER, FETCH_CALLBACK);
+        futureTask = executionService.execute(new HttpGet(requestURL), null, RESPONSE_HANDLER, FETCH_CALLBACK);
     }
 
     public void load() throws InterruptedException, ExecutionException, RuntimeException {
