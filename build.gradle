@@ -47,8 +47,7 @@ dependencies {
     implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
         because 'Different version conflicts with Minecraft\'s GSON'
-    }
-    testImplementation(platform('org.junit:junit-bom:5.8.1'))
+    } 
     testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
 }
 
