@@ -115,7 +115,7 @@ jar {
     dependsOn copyLicenses
 
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+    archiveName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 
     manifest.attributes(
             'Manifest-Version': '2.0',
@@ -142,7 +142,7 @@ reobfJar {
 }
 
 shadowJar {
-    archiveFileName = jar.archiveFileName
+    archiveName = jar.archiveName
 
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
