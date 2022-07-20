@@ -1,5 +1,7 @@
 package codes.biscuit.skyblockaddons.utils.data;
 
+import codes.biscuit.skyblockaddons.utils.data.DataConstants;
+import codes.biscuit.skyblockaddons.utils.data.DataUtils; 
 import codes.biscuit.skyblockaddons.exceptions.LoadingException;
 import lombok.Getter;
 import lombok.NonNull;
@@ -67,7 +69,9 @@ public class RemoteFileRequest<T> {
     }
 
     public void execute(@NonNull FutureRequestExecutionService executionService) {
-        futureTask = executionService.execute(new HttpGet(REQUEST_URL), null, RESPONSE_HANDLER, FETCH_CALLBACK);
+        String requestURL = DataUtils.useFallbackCDN ? REQUEST_URL.replace(DataConstants.CDN_BASE_URL, DataConstants.FALLBACK_CDN_BASE_URL) : REQUEST_URL;
+    
+        futureTask = executionService.execute(new HttpGet(requestURL), null, RESPONSE_HANDLER, FETCH_CALLBACK);
     }
 
     public void load() throws InterruptedException, ExecutionException, RuntimeException {
