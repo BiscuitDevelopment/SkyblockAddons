@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "التطويرات",
@@ -296,7 +297,10 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "لا شيء",
@@ -337,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
+            "options": {
+              "entityNames": "اسماء انواع الأشياء الذي تريد نصخ البيانات (مثل لاعب، كريبر). اضغط على \"Tab\" بعد كتابة الأمر للقائمة كاملة. افصل أسماء متعدده بفواصل، الأسماء حساسة لحالة الأحرف.",
+              "radius": "المجال في البلوكات حول اللاعب لنسخ بياناتNBT منه"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "ينسخ النص المعرض في الـscoreboard القائمة الجانبية",
+            "options": {
+              "formatted": "يحدد اذا ينبغي تضمين رموز الألوان عند النسخ. يمكن أن بكون إما \"صحيح\" او \"خطأ\"، الافتراضي هو \"خطأ\" إذا لم يتم توفير أي قيمة. يتم نسخ رموز الألوان إذا \"صحيح\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "هذا الأمر ينسج الهامش العلوي والسفلي من تاب اللاعب. شفرات التنسيق متضمنة."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "يضع العد في عداد الزيلوتس يدوياً.",
+              "options": {
+                "eyes": "عدد عيون الأستدعاء في حياتك",
+                "totalZealots": "الزيلوتس الذي قتلوا في حياتك",
+                "zealots": "الزيلوتس الذي قتلوا منذ آخر عين استدعاء"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", أو \"Wolf\"",
+              "number": "رقم لوضع الاحصائية الى",
+              "stat": "احصائية السلاير للتغير, قد يكون \"kills\" او اسم الغرض المسقوط منسق هكذا: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "العلامة التجارية للخادم: %brand%",
+          "notFound": "لم يتم العثور على العلامة التجارية للخادم!"
+        },
+        "dev": {
+          "disabled": "وضع المطور معطل!",
+          "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "وضع عدد استدعاء العين الكلي إلى %number%!",
+            "totalZealotsSet": "وضع مجموع الزيلوتس الكلي إلى %number%!",
+            "wrongUsage": "اختيار غير صالح! الرجاء اختيار %options%.",
+            "zealotsSet": "وضع عدد الزيلوتس الحالي إلى %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "يجب أن تضع Boss! الرجاء اختيار %bosses%",
+          "statRequired": "يجب تضع إحصائية. إضعط tab لأعدادات أكثر.",
+          "numberRequired": "يجب ان تضع الرقم الذي تريده.",
+          "killsSet": "القتلات للـSlayer %boss% وضعت الى %number%.",
+          "statSet": "احصائية %stat% للـSlayer %boss% وضع الى %number%.",
+          "invalidBoss": "\"%input%\" ليس احصائية حقيقية!",
+          "invalidStat": "\"%input%\" ليس Boss حقيقي!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
+          "enabled": "سيتم الآن تسجيل رسائل شريط العمل."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "استخدام خاطئ!",
+        "subCommandNotFound": "لم يتم العثور على الأمر الفرعي \"%sub-command%\"."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "فتح القائمة الرئيسية"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "العلامة التجارية للخادم: %brand%",
         "notFound": "لم يتم العثور على العلامة التجارية للخادم!"
       },
@@ -351,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "نسخ بينات NBT للأشياء. انواع الأشياء المضمونه والقطر الذي حول الاعب لنسخ البيانات يمكن تشخيصة. إذا لم يتم إعطاء أي خيارات، الاعدادات الافتراضية تستخدم. الاعدادات الافتراضية هي: إشمال اللاعبين، حاملات الدروع، الغواغئ، وقطر 3 كتلات. إذا لم يعطا نصف القطر، يستخدم القطر الافتراضى.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "ينسخ النص المعرض في الـscoreboard القائمة الجانبية",
           "options": {
@@ -370,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "هذا الأمر ينسج الهامش العلوي والسفلي من تاب اللاعب. شفرات التنسيق متضمنة."
         }
       },
       "dev": {
-        "help": "تثبيت وضعية المطور",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "هذا الأمر يغير وضع المطور. هذا الوضع مخصص لمطورين مودات/أدوات/سكاي بلوك. وهو يوفر بيانات خام من اللعبة مثل الاشياء والعنصر NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "وضع المطور معطل!",
         "enabled": "وضع المطور مفعل! تلميح: اضغط \"%keyName% لنسخ بيانات NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "تحرير أماكن الواجهة"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "افتح مجلد المودات الخاص بك",
-        "error": "حدث خطأ اثناء محاولة فتح ملف المودات: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "إظهار رسالة المساعدة هذه. إذا تم توفير أمر ، يتم عرض مساعدة مفصلة حول هذا الأمر.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "الأمر الفرعي للحصول على الاستخدام المفصل لـه"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "عيّن عدد الزيلوت يدوياً",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "يضع العد في عداد الزيلوتس يدوياً.",
             "options": {
@@ -433,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "ضع إحصائيات السلاير يدويا, إضغط تاب للحجج",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", أو \"Wolf\"",
             "number": "رقم لوضع الاحصائية الى",
@@ -451,12 +616,12 @@
         "invalidStat": "\"%input%\" ليس Boss حقيقي!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "لن يتم تسجيل رسائل شريط العمل بعد الآن.",
         "enabled": "سيتم الآن تسجيل رسائل شريط العمل."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -473,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "نسخ NBT"
+    "developerCopyNBT": "نسخ NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",
