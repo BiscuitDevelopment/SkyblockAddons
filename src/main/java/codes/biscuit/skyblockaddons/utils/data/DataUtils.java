@@ -240,7 +240,7 @@ public class DataUtils {
         }
         
         if (useFallbackCDN) {
-            logger.warn("Could not reach main CDN. Some resources were fetched from fallback CDN.")
+            logger.warn("Could not reach main CDN. Some resources were fetched from fallback CDN.");
         }
     }
 

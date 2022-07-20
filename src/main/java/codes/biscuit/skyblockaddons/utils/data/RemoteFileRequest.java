@@ -1,6 +1,6 @@
 package codes.biscuit.skyblockaddons.utils.data;
 
-import codes.biscuit.skyblockaddons.utils.data.DataConstants
+import codes.biscuit.skyblockaddons.utils.data.DataConstants;
 import codes.biscuit.skyblockaddons.utils.data.DataUtils; 
 import codes.biscuit.skyblockaddons.exceptions.LoadingException;
 import lombok.Getter;
