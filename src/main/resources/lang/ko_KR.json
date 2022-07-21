@@ -272,7 +272,7 @@
     "showColorIcons": "색상 아이콘 표시하기",
     "enableFeatureSnapping": "기능 배치시 스냅 켜기",
     "stage": "스테이지 %stage%",
-    "switchedSlots": "당신은 방금 잠긴 슬롯이나 레어 아이템에서 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
+    "switchedSlots": "방금 잠긴 슬롯이나 레어 아이템끼리 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
     "clickToOpenLink": "클릭해서 링크 열기",
     "clickToOpenFolder": "여기를 클릭해서 mods 폴더를 여세요!",
     "firstStatus": "이 상태는 위에 나타날 것입니다",
