@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
             "options": {
               "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
               "number": "스탯으로 만들 숫자",
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "options": {
             "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
             "number": "스탯으로 만들 숫자",
