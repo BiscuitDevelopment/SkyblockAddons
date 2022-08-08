@@ -170,8 +170,6 @@ public class Utils {
 
     private boolean fadingIn;
 
-    private long lastDamaged = -1;
-
     private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;

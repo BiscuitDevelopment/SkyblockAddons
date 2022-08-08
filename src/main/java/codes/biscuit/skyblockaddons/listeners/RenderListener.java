@@ -887,16 +887,6 @@ public class RenderListener {
                 text = "1:23";
             }
 
-        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            long lastDamaged = main.getUtils().getLastDamaged() + 5000;
-            int combatSeconds = (int) Math.ceil((lastDamaged - System.currentTimeMillis()) / 1000D);
-
-            if (combatSeconds <= 0 && buttonLocation == null) {
-                return;
-            }
-
-            text = "IN COMBAT";
-
         } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
             if (((main.getUtils().getLocation() != Location.THE_END && main.getUtils().getLocation() != Location.DRAGONS_NEST)
                     || EndstoneProtectorManager.getMinibossStage() == null || !EndstoneProtectorManager.isCanDetectSkull()) && buttonLocation == null) {
@@ -1006,7 +996,7 @@ public class RenderListener {
 
         if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
+                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
             width += 18;
             height += 9;
@@ -1014,10 +1004,6 @@ public class RenderListener {
 
         if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
             width += 2 + 16 + 2 + mc.fontRendererObj.getStringWidth(String.valueOf(EndstoneProtectorManager.getZealotCount()));
-        }
-
-        if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            height += 15;
         }
 
         if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
@@ -1148,44 +1134,6 @@ public class RenderListener {
 
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
-        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            long lastDamaged = main.getUtils().getLastDamaged() + 5000;
-            int combatSeconds = (int) Math.ceil((lastDamaged - System.currentTimeMillis()) / 1000D);
-
-            if (buttonLocation != null) {
-                combatSeconds = 5;
-            }
-
-            renderItem(IRON_SWORD, x, y);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
-            y += 20;
-
-            String warpTimeRemaining = combatSeconds + "s";
-            String menuTimeRemaining = (combatSeconds - 2) + "s";
-            if (combatSeconds <= 2) {
-                menuTimeRemaining = "✔";
-            }
-            int menuTimeRemainingWidth = mc.fontRendererObj.getStringWidth(menuTimeRemaining);
-
-            int spacerBetweenBothItems = 4;
-            int spacerBetweenItemsAndText = 2;
-
-            renderItem(SKYBLOCK_MENU, x + width / 2F - 16 - menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems / 2F, y - 5);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(menuTimeRemaining, x + width / 2F - menuTimeRemainingWidth - spacerBetweenBothItems / 2F, y, color);
-            FontRendererHook.endFeatureFont();
-
-            GlStateManager.color(1, 1, 1, 1);
-            renderItem(WARP_SKULL, x + width / 2F + spacerBetweenBothItems / 2F, y - 5);
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(warpTimeRemaining, x + width / 2F + spacerBetweenBothItems / 2F + 13 + spacerBetweenItemsAndText, y, color);
             FontRendererHook.endFeatureFont();
 
         } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {

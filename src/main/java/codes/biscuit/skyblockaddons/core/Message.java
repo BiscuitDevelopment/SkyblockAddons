@@ -107,7 +107,6 @@ public enum Message {
     SETTING_SHOW_AVERAGE_ZEALOTS_PER_EYE(MessageObject.SETTING, "showZealotsPerEye"),
     SETTING_TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(MessageObject.SETTING, "turnBowGreenWhenUsingToxicArrowPoison"),
     SETTING_BIRCH_PARK_RAINMAKER_TIMER(MessageObject.SETTING, "birchParkRainmakerTimer"),
-    SETTING_COMBAT_TIMER_DISPLAY(MessageObject.SETTING, "combatTimerDisplay"),
     SETTING_DISCORD_RP(MessageObject.SETTING, "discordRP"),
     SETTING_ENDSTONE_PROTECTOR_DISPLAY(MessageObject.SETTING, "endstoneProtectorDisplay"),
     SETTING_FANCY_WARP_MENU(MessageObject.SETTING, "fancyWarpMenu"),
