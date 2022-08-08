@@ -2,9 +2,6 @@ package codes.biscuit.skyblockaddons.misc.scheduler;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.listeners.PlayerListener;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -87,7 +84,7 @@ public class Scheduler {
             if (commands != null) {
                 for (Command command : commands) {
                     for (int times = 0; times < command.getCount().getValue(); times++) {
-                        command.getCommandType().execute(command, times+1);
+                        command.getCommandType().execute();
                     }
                 }
                 queue.remove(totalTicks);
@@ -124,20 +121,12 @@ public class Scheduler {
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
         ERASE_UPDATE_MESSAGE,
-        DELETE_RECENT_CHUNK,
         SHOW_FULL_INVENTORY_WARNING,
         CHECK_FOR_UPDATE;
 
-        public void execute(Command command, int count) {
+        public void execute() {
             SkyblockAddons main = SkyblockAddons.getInstance();
-            PlayerListener playerListener = main.getPlayerListener();
-            Object[] commandData = command.getData(count);
-            if (this == DELETE_RECENT_CHUNK) {
-                int x = (int)commandData[0];
-                int z = (int)commandData[1];
-                IntPair intPair = new IntPair(x,z);
-                playerListener.getRecentlyLoadedChunks().remove(intPair);
-            } else if (this == SHOW_FULL_INVENTORY_WARNING) {
+            if (this == SHOW_FULL_INVENTORY_WARNING) {
                 Minecraft mc = Minecraft.getMinecraft();
                 if (mc.theWorld == null || mc.thePlayer == null || !main.getUtils().isOnSkyblock()) {
                     return;
