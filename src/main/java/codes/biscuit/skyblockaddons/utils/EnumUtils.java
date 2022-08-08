@@ -296,7 +296,7 @@ public class EnumUtils {
         SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT_SOUND),
         TIMOLOB("TimoLob", "github.com/TimoLob", Feature.BROOD_MOTHER_ALERT),
         NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT),
-        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.GUI_TEXT_COMMAS);
+        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.GUI_TEXT_COMMAS, Feature.CRIMSON_STACKS);
 
         private final Set<Feature> features;
         private final String author;
