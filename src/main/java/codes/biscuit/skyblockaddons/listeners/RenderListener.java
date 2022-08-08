@@ -674,7 +674,7 @@ public class RenderListener {
         String text;
         int color = main.getConfigValues().getColor(feature);
         if (feature == Feature.MANA_TEXT) {
-            text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
+            text = addCommas(getAttribute(Attribute.MANA)) + "/" + addCommas(getAttribute(Attribute.MAX_MANA));
 
         } else if (feature == Feature.OVERFLOW_MANA) {
             if (getAttribute(Attribute.OVERFLOW_MANA) != 0 || buttonLocation != null) {
@@ -683,10 +683,10 @@ public class RenderListener {
                 return;
             }
         } else if (feature == Feature.HEALTH_TEXT) {
-            text = getAttribute(Attribute.HEALTH) + "/" + getAttribute(Attribute.MAX_HEALTH);
+            text = addCommas(getAttribute(Attribute.HEALTH)) + "/" + addCommas(getAttribute(Attribute.MAX_HEALTH));
 
         } else if (feature == Feature.DEFENCE_TEXT) {
-            text = String.valueOf(getAttribute(Attribute.DEFENCE));
+            text = addCommas(getAttribute(Attribute.DEFENCE));
 
         } else if (feature == Feature.OTHER_DEFENCE_STATS) {
             text = main.getPlayerListener().getActionBarParser().getOtherDefense();
@@ -698,7 +698,7 @@ public class RenderListener {
             }
 
         } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
-            text = String.valueOf(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
+            text = addCommas(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
 
         } else if (feature == Feature.DRILL_FUEL_TEXT) {
             if (!ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
@@ -1443,6 +1443,14 @@ public class RenderListener {
         }
 
         main.getUtils().restoreGLOptions();
+    }
+
+    private String addCommas(int integer) {
+        if (Feature.GUI_TEXT_COMMAS.isEnabled()) {
+            return new DecimalFormat("#,##0").format(integer);
+        } else {
+            return String.valueOf(integer);
+        }
     }
 
     public void drawCollectedEssences(float x, float y, boolean usePlaceholders, boolean hideZeroes) {

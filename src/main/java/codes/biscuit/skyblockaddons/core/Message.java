@@ -168,12 +168,15 @@ public enum Message {
     SETTING_WARN_WHEN_FETCHUR_CHANGES(MessageObject.SETTING, "warnWhenFetchurChanges"),
     SETTING_STOP_RAT_SOUNDS(MessageObject.SETTING, "stopRatSounds"),
     SETTING_STOP_ONLY_RAT_SQUEAK(MessageObject.SETTING, "onlyStopRatSqueak"),
-    BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
-    BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
     SETTING_DISABLE_SPIRIT_SCEPTRE_MESSAGES(MessageObject.SETTING, "disableSpiritSceptreMessages"),
     SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_BAL_BOSS_WARNING(MessageObject.SETTING, "balBossWarning"),
     SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING,"broodMotherWarning"),
+    SETTING_GUI_TEXT_COMMAS(MessageObject.SETTING,"guiTextCommas"),
+
+    BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
+    BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
+
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_BAL_BOSS_WARNING(MessageObject.MESSAGES, "balBossWarning"),
