@@ -207,7 +207,7 @@ public enum Feature {
     DISABLE_SPIRIT_SCEPTRE_MESSAGES(203, null, false),
     FARM_EVENT_TIMER(204, "settings.jacobsContestTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES(205, null, false),
-    OUTBID_ALERT_SOUND(206, Message.SETTING_OUTBID_ALERT_SOUND,true, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    OUTBID_ALERT_SOUND(206, Message.SETTING_OUTBID_ALERT_SOUND, true, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     BROOD_MOTHER_ALERT(207, Message.SETTING_BROOD_MOTHER_WARNING, false),
     BAL_BOSS_ALERT(208, Message.SETTING_BAL_BOSS_WARNING, false),
     OUTBID_ALERT_SOUND_IN_OTHER_GAMES(209, null, false),
@@ -217,7 +217,8 @@ public enum Feature {
     SHOW_SKYBLOCK_ITEM_ID(213, "settings.showSkyblockItemId", null, true),
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
-    GUI_TEXT_COMMAS(216, Message.SETTING_GUI_TEXT_COMMAS, new GuiFeatureData(ColorCode.RED), false),
+    GUI_TEXT_COMMAS(216, Message.SETTING_GUI_TEXT_COMMAS, new GuiFeatureData(ColorCode.RED), true),
+    CRIMSON_STACKS(217, Message.SETTING_CRIMSON_STACKS, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
 
     WARNING_TIME(-1, Message.SETTING_WARNING_DURATION, false),
     WARP_ADVANCED_MODE(-1, Message.SETTING_ADVANCED_MODE, true),
@@ -230,7 +231,7 @@ public enum Feature {
     SHOW_COLOR_ICONS(-1, Message.MESSAGE_SHOW_COLOR_ICONS, false),
     RESIZE_BARS(-1, Message.MESSAGE_RESIZE_BARS, false),
     ENABLE_FEATURE_SNAPPING(-1, Message.MESSAGE_ENABLE_FEATURE_SNAPPING, false),
-    SHOW_FEATURE_NAMES_ON_HOVER(-1, "settings.showFeatureNamesOnHover", null,true),
+    SHOW_FEATURE_NAMES_ON_HOVER(-1, "settings.showFeatureNamesOnHover", null, true),
     GENERAL_SETTINGS(-1, Message.TAB_GENERAL_SETTINGS, false),
     TEXT_STYLE(-1, Message.SETTING_TEXT_STYLE, false),
     CHROMA_SPEED(-1, Message.SETTING_CHROMA_SPEED, false),
@@ -277,7 +278,8 @@ public enum Feature {
             SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
             ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, CANDY_POINTS_COUNTER, DRILL_FUEL_TEXT,
-            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, FETCHUR_TODAY, VOIDGLOOM_SLAYER_TRACKER, OTHER_DEFENCE_STATS, SPIRIT_SCEPTRE_DISPLAY, FARM_EVENT_TIMER, GUI_TEXT_COMMAS));
+            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, FETCHUR_TODAY, VOIDGLOOM_SLAYER_TRACKER, OTHER_DEFENCE_STATS, SPIRIT_SCEPTRE_DISPLAY, FARM_EVENT_TIMER,
+            GUI_TEXT_COMMAS, CRIMSON_STACKS));
 
     /**
      * These are features that are displayed separate, on the general tab.
@@ -326,7 +328,7 @@ public enum Feature {
     }
 
     Feature(int id, Message settingMessage, boolean defaultDisabled, EnumUtils.FeatureSetting... settings) {
-        this(id, settingMessage,null, defaultDisabled, settings);
+        this(id, settingMessage, null, defaultDisabled, settings);
     }
 
     /**
@@ -404,7 +406,7 @@ public enum Feature {
                 main.getRenderListener().drawIcon(scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.REVENANT_PROGRESS) {
                 main.getRenderListener().drawRevenantIndicator(scale, mc, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
                 main.getRenderListener().drawPowerOrbStatus(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);

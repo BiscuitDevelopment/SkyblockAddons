@@ -1,10 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.SkillType;
-import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.core.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -136,7 +133,7 @@ public class ActionBarParser {
                     // Remove via callback
                     stringsToRemove.add(section);
                 }
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 unusedSections.add(section);
             }
         }
@@ -166,6 +163,8 @@ public class ActionBarParser {
             String[] splitStats = numbersOnly.split("/");
 
             if (section.contains("❤")) {
+                // cutting the crimson stack information out
+                section = parseCrimsonStack(section);
                 // ❤ indicates a health section
                 return parseHealth(section);
             } else if (section.contains("❈")) {
@@ -184,6 +183,51 @@ public class ActionBarParser {
             logger.error("The section \"" + section + "\" will be skipped due to an error during number parsing.");
             logger.error("Failed to parse number at offset " + e.getErrorOffset() + " in string \"" + e.getMessage() + "\".", e);
             return section;
+        }
+
+        return section;
+    }
+
+    private String parseCrimsonStack(String section) {
+        for (CrimsonStack crimsonStack : CrimsonStack.values()) {
+            crimsonStack.setCurrentValue(0);
+        }
+
+        int runs = 0;
+        out:
+        while (section.contains("  ")) {
+            runs++;
+            if (runs == 5) break;
+
+            if (section.endsWith("§r")) {
+                section = section.substring(0, section.length() - 2);
+            }
+
+            for (CrimsonStack crimsonStack : CrimsonStack.values()) {
+                String stackSymbol = crimsonStack.getSymbol();
+
+                if (section.endsWith(stackSymbol)) {
+
+                    String[] split = section.split("§6");
+                    String stack = split[split.length - 1];
+                    String remove = "§6" + stack;
+                    if (stack.contains("§l")) {
+                        stack = stack.substring(2);
+                        if (Feature.CRIMSON_STACKS.isEnabled()) {
+                            String realRemove = remove + "§r";
+                            stringsToRemove.add(realRemove);
+                        }
+                    } else {
+                        if (Feature.CRIMSON_STACKS.isEnabled()) stringsToRemove.add(remove);
+                    }
+                    stack = stack.substring(0, stack.length() - 1);
+
+                    section = section.substring(0, section.length() - remove.length());
+                    section = section.trim();
+                    crimsonStack.setCurrentValue(Integer.parseInt(stack));
+                    continue out;
+                }
+            }
         }
 
         return section;
@@ -213,7 +257,8 @@ public class ActionBarParser {
                 returnString = "";// "§c"+ m.group("wand");
                 stringsToRemove.add(stripped.substring(0, m.start("wand")));
             } else {
-                returnString = null;
+                stringsToRemove.add(healthSection);
+                returnString = "";
             }
             healthLock = false;
             boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
@@ -419,7 +464,7 @@ public class ActionBarParser {
                 maxTickers++;
             }
         }
-        if(main.getConfigValues().isEnabled(Feature.TICKER_CHARGES_DISPLAY)) {
+        if (main.getConfigValues().isEnabled(Feature.TICKER_CHARGES_DISPLAY)) {
             return null;
         } else {
             return tickerSection;

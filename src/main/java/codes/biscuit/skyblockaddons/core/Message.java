@@ -171,8 +171,9 @@ public enum Message {
     SETTING_DISABLE_SPIRIT_SCEPTRE_MESSAGES(MessageObject.SETTING, "disableSpiritSceptreMessages"),
     SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_BAL_BOSS_WARNING(MessageObject.SETTING, "balBossWarning"),
-    SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING,"broodMotherWarning"),
-    SETTING_GUI_TEXT_COMMAS(MessageObject.SETTING,"guiTextCommas"),
+    SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING, "broodMotherWarning"),
+    SETTING_GUI_TEXT_COMMAS(MessageObject.SETTING, "guiTextCommas"),
+    SETTING_CRIMSON_STACKS(MessageObject.SETTING, "crimsonStacks"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
@@ -180,7 +181,7 @@ public enum Message {
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
     MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_BAL_BOSS_WARNING(MessageObject.MESSAGES, "balBossWarning"),
-    MESSAGE_BROOD_MOTHER_WARNING(MessageObject.MESSAGES,"broodMotherWarning"),
+    MESSAGE_BROOD_MOTHER_WARNING(MessageObject.MESSAGES, "broodMotherWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
     MESSAGE_LABYMOD(MessageObject.MESSAGES, "labymod"),
     MESSAGE_MINION_CANNOT_REACH(MessageObject.MESSAGES, "minionCannotReach"),
@@ -338,7 +339,7 @@ public enum Message {
             if (text != null) {
                 if (this == Message.SETTING_BACKPACK_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getBackpackStyle().getMessage());
-                } else if(this == Message.SETTING_POWER_ORB_DISPLAY_STYLE) {
+                } else if (this == Message.SETTING_POWER_ORB_DISPLAY_STYLE) {
                     text = text.replace("%style%", main.getConfigValues().getPowerOrbDisplayStyle().getMessage());
                 } else if (this == Message.SETTING_GUI_SCALE) {
                     text = text.replace("%scale%", variables[0]);
