@@ -196,8 +196,6 @@ public class SkyblockAddons {
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent e) {
-        scheduleMagmaBossCheck();
-
         for (Feature feature : Feature.values()) {
             if (feature.isGuiFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.GUI_SCALE);
             if (feature.isColorFeature()) feature.getSettings().add(EnumUtils.FeatureSetting.COLOR);
@@ -222,19 +220,6 @@ public class SkyblockAddons {
     @Mod.EventHandler
     public void stop(FMLModDisabledEvent e) {
         discordRPCManager.stop();
-    }
-
-    private void scheduleMagmaBossCheck() {
-        // Loop every 5s until the player is in game, where it will pull once.
-        newScheduler.scheduleRepeatingTask(new SkyblockRunnable() {
-            @Override
-            public void run() {
-                if (Minecraft.getMinecraft() != null && Minecraft.getMinecraft().thePlayer != null) {
-                    utils.fetchMagmaBossEstimate();
-                    cancel();
-                }
-            }
-        }, 20*5, 20*5);
     }
 
     public KeyBinding getOpenSettingsKey() {

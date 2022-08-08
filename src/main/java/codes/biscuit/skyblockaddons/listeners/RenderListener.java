@@ -83,7 +83,6 @@ public class RenderListener {
 
     private static final ResourceLocation ENDERMAN_ICON = new ResourceLocation("skyblockaddons", "icons/enderman.png");
     private static final ResourceLocation ENDERMAN_GROUP_ICON = new ResourceLocation("skyblockaddons", "icons/endermangroup.png");
-    private static final ResourceLocation MAGMA_BOSS_ICON = new ResourceLocation("skyblockaddons", "icons/magmaboss.png");
     private static final ResourceLocation SIRIUS_ICON = new ResourceLocation("skyblockaddons", "icons/sirius.png");
     private static final ResourceLocation SUMMONING_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/summoningeye.png");
     private static final ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
@@ -217,20 +216,12 @@ public class RenderListener {
     }
 
     /**
-     * I have an option so you can see the magma timer in other games so that's why.
+     * I have an option so you can see dark auction timer and farm event timer in other games so that's why.
      */
     private void renderTimersOnly() {
         Minecraft mc = Minecraft.getMinecraft();
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
             GlStateManager.disableBlend();
-            if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
-                    main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
-                float scale = main.getConfigValues().getGuiScale(Feature.MAGMA_BOSS_TIMER);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
-                GlStateManager.popMatrix();
-            }
             if (main.getConfigValues().isEnabled(Feature.DARK_AUCTION_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES)) {
                 float scale = main.getConfigValues().getGuiScale(Feature.DARK_AUCTION_TIMER);
                 GlStateManager.pushMatrix();
@@ -263,9 +254,6 @@ public class RenderListener {
 
             Message message = null;
             switch (titleFeature) {
-                case MAGMA_WARNING:
-                    message = Message.MESSAGE_MAGMA_BOSS_WARNING;
-                    break;
                 case FULL_INVENTORY_WARNING:
                     message = Message.MESSAGE_FULL_INVENTORY;
                     break;
@@ -758,32 +746,6 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
 
-        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            StringBuilder magmaBuilder = new StringBuilder();
-            magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
-            EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
-            if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                if (buttonLocation == null) {
-                    int totalSeconds = main.getPlayerListener().getMagmaTime();
-                    if (totalSeconds < 0) totalSeconds = 0;
-                    int hours = totalSeconds / 3600;
-                    int minutes = totalSeconds / 60 % 60;
-                    int seconds = totalSeconds % 60;
-                    if (Math.abs(hours) >= 10) hours = 10;
-                    magmaBuilder.append(hours).append(":");
-                    if (minutes < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(minutes).append(":");
-                    if (seconds < 10) {
-                        magmaBuilder.append("0");
-                    }
-                    magmaBuilder.append(seconds);
-                } else {
-                    magmaBuilder.append("1:23:45");
-                }
-            }
-            text = magmaBuilder.toString();
         } else if (feature == Feature.FARM_EVENT_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
             Calendar nextFarmEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
             if (nextFarmEvent.get(Calendar.MINUTE) >= 15) {
@@ -1042,7 +1004,7 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+        if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
                 feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
@@ -1139,14 +1101,6 @@ public class RenderListener {
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 18, y + 4, color);
             FontRendererHook.endFeatureFont();
-        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
-            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
         } else if (feature == Feature.ZEALOT_COUNTER) {
             mc.getTextureManager().bindTexture(ENDERMAN_ICON);
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);

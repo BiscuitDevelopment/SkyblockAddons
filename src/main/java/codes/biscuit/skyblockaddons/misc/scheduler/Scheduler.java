@@ -79,8 +79,6 @@ public class Scheduler {
         }
     }
 
-    private boolean delayingMagmaCall = false; // this addition should decrease the amount of calls by a lot
-
     @SubscribeEvent()
     public void ticker(TickEvent.ClientTickEvent e) {
         if (e.phase == TickEvent.Phase.START) {
@@ -93,16 +91,6 @@ public class Scheduler {
                     }
                 }
                 queue.remove(totalTicks);
-            }
-            if (totalTicks % 12000 == 0 || delayingMagmaCall) { // check magma boss every 15 minutes
-                if (main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-                    if (main.getUtils().isOnSkyblock()) {
-                        delayingMagmaCall = false;
-                        main.getUtils().fetchMagmaBossEstimate();
-                    } else if (!delayingMagmaCall) {
-                        delayingMagmaCall = true;
-                    }
-                }
             }
         }
     }
@@ -133,9 +121,6 @@ public class Scheduler {
     }
 
     public enum CommandType {
-        RESET_MAGMA_PREDICTION,
-        SUBTRACT_MAGMA_COUNT,
-        SUBTRACT_BLAZE_COUNT,
         RESET_TITLE_FEATURE,
         RESET_SUBTITLE_FEATURE,
         ERASE_UPDATE_MESSAGE,
@@ -147,16 +132,7 @@ public class Scheduler {
             SkyblockAddons main = SkyblockAddons.getInstance();
             PlayerListener playerListener = main.getPlayerListener();
             Object[] commandData = command.getData(count);
-            if (this == SUBTRACT_MAGMA_COUNT) {
-                playerListener.setRecentMagmaCubes(playerListener.getRecentMagmaCubes()-1);
-            } else if (this == SUBTRACT_BLAZE_COUNT) {
-                playerListener.setRecentBlazes(playerListener.getRecentBlazes()-1);
-            } else if (this == RESET_MAGMA_PREDICTION) {
-                if (playerListener.getMagmaAccuracy() == EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION) {
-                    playerListener.setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-                    playerListener.setMagmaTime(7200);
-                }
-            } else if (this == DELETE_RECENT_CHUNK) {
+            if (this == DELETE_RECENT_CHUNK) {
                 int x = (int)commandData[0];
                 int z = (int)commandData[1];
                 IntPair intPair = new IntPair(x,z);

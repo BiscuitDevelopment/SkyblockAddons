@@ -141,40 +141,6 @@ public class EnumUtils {
         }
     }
 
-    /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
-    @Getter
-    public enum MagmaTimerAccuracy {
-        NO_DATA("N/A"),
-        SPAWNED("NOW"),
-        SPAWNED_PREDICTION("NOW"),
-        EXACTLY(""),
-        ABOUT("");
-
-        private final String symbol;
-
-        MagmaTimerAccuracy(String symbol) {
-            this.symbol = symbol;
-        }
-    }
-
-    @Getter
-    public enum MagmaEvent {
-        MAGMA_WAVE("magma"),
-        BLAZE_WAVE("blaze"),
-        BOSS_SPAWN("spawn"),
-        BOSS_DEATH("death"),
-
-        // Not actually an event
-        PING("ping");
-
-        // The event name used by InventiveTalent's API
-        private final String inventiveTalentEvent;
-
-        MagmaEvent(String inventiveTalentEvent) {
-            this.inventiveTalentEvent = inventiveTalentEvent;
-        }
-    }
-
     public enum GuiTab {
         MAIN, GENERAL_SETTINGS
     }
@@ -295,7 +261,7 @@ public class EnumUtils {
     public enum FeatureCredit {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
-        INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
+//        INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ENCHANTMENT_LORE_PARSING),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),

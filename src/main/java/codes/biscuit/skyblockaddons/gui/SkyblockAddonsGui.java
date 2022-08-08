@@ -359,9 +359,6 @@ public class SkyblockAddonsGui extends GuiScreen {
         String version = "v" + SkyblockAddons.VERSION.replace("beta", "b") + " by Biscut";
         drawScaledString(gui, version, 55, defaultBlue, 1.3, 170 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(version), false);
 
-        if (gui instanceof SkyblockAddonsGui) {
-            drawScaledString(gui, "Special Credits: InventiveTalent - Magma Boss Timer API", gui.height - 22, defaultBlue, 1, 0);
-        }
         SkyblockAddons.getInstance().getUtils().restoreGLOptions();
     }
 

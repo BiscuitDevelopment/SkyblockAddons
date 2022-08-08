@@ -18,7 +18,6 @@ import java.util.regex.Pattern;
 public enum Message {
     LANGUAGE(MessageObject.ROOT, "language"),
 
-    SETTING_MAGMA_BOSS_WARNING(MessageObject.SETTING, "magmaBossWarning"),
     SETTING_ITEM_DROP_CONFIRMATION(MessageObject.SETTING, "itemDropConfirmation"),
     SETTING_WARNING_DURATION(MessageObject.SETTING, "warningDuration"),
     SETTING_HIDE_SKELETON_HAT_BONES(MessageObject.SETTING, "hideSkeletonHatBones"),
@@ -26,7 +25,6 @@ public enum Message {
     SETTING_HIDE_FOOD_AND_ARMOR(MessageObject.SETTING, "hideFoodAndArmor"),
     SETTING_FULL_INVENTORY_WARNING(MessageObject.SETTING, "fullInventoryWarning"),
     SETTING_REPEATING(MessageObject.SETTING, "repeating"),
-    SETTING_MAGMA_BOSS_TIMER(MessageObject.SETTING, "magmaBossTimer"),
     SETTING_DISABLE_EMBER_ROD_ABILITY(MessageObject.SETTING, "disableEmberRodAbility"),
     SETTING_EDIT_LOCATIONS(MessageObject.SETTING, "editLocations"),
     SETTING_GUI_SCALE(MessageObject.SETTING, "guiScale"),
@@ -179,7 +177,6 @@ public enum Message {
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),
 
     MESSAGE_DROP_CONFIRMATION(MessageObject.MESSAGES, "dropConfirmation"),
-    MESSAGE_MAGMA_BOSS_WARNING(MessageObject.MESSAGES, "magmaBossWarning"),
     MESSAGE_BAL_BOSS_WARNING(MessageObject.MESSAGES, "balBossWarning"),
     MESSAGE_BROOD_MOTHER_WARNING(MessageObject.MESSAGES, "broodMotherWarning"),
     MESSAGE_FULL_INVENTORY(MessageObject.MESSAGES, "fullInventory"),
