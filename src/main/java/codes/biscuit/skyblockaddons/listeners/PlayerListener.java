@@ -899,17 +899,6 @@ public class PlayerListener {
 
             NBTTagCompound extraAttributes = ItemUtils.getExtraAttributes(hoveredItem);
             if (extraAttributes != null) {
-                if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_ANVIL_USES) && extraAttributes.hasKey("anvil_uses", ItemUtils.NBT_INTEGER)) {
-                    // Anvil Uses ~ original done by Dahn#6036
-                    int anvilUses = extraAttributes.getInteger("anvil_uses");
-                    if (extraAttributes.hasKey("hot_potato_count", ItemUtils.NBT_INTEGER)) {
-                        anvilUses -= extraAttributes.getInteger("hot_potato_count");
-                    }
-                    if (anvilUses > 0) {
-                        e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
-                    }
-                }
-
                 if (main.getConfigValues().isEnabled(Feature.SHOW_BROKEN_FRAGMENTS) && hoveredItem.getDisplayName().contains("Dragon Fragment") &&
                         extraAttributes.hasKey("bossId") && extraAttributes.hasKey("spawnedFor")) {
                     e.toolTip.add(insertAt++, "§c§lBROKEN FRAGMENT");

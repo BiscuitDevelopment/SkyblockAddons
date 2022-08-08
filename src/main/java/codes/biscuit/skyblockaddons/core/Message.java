@@ -190,7 +190,6 @@ public enum Message {
     MESSAGE_CLICK_ONE_MORE_TIME(MessageObject.MESSAGES, "clickOneMoreTime"),
     MESSAGE_CANCELLED_CANE_BREAK(MessageObject.MESSAGES, "cancelledCaneBreak"),
     MESSAGE_FEATURE_DISABLED(MessageObject.MESSAGES, "featureDisabled"),
-    MESSAGE_ANVIL_USES(MessageObject.MESSAGES, "anvilUses"),
     MESSAGE_CANCELLED_NON_ORES_BREAK(MessageObject.MESSAGES, "cancelledDeepCaverns"),
     MESSAGE_SPECIAL_ZEALOT_FOUND(MessageObject.MESSAGES, "specialZealotFound"),
     MESSAGE_BLOCK_INCOMPLETE_PATTERNS(MessageObject.MESSAGES, "blockIncompletePatterns"),
@@ -345,8 +344,6 @@ public enum Message {
                     text = text.replace("%type%", variables[0]);
                 } else if (this == Message.MESSAGE_CLICK_MORE_TIMES) {
                     text = text.replace("%times%", variables[0]);
-                } else if (this == Message.MESSAGE_ANVIL_USES) {
-                    text = text.replace("%uses%", main.getConfigValues().getRestrictedColor(Feature.SHOW_ITEM_ANVIL_USES) + variables[0] + ColorCode.GRAY);
                 } else if (this == Message.MESSAGE_ONLY_FEW_ARROWS_LEFT) {
                     text = text.replace("%arrows%", variables[0]);
                 } else if (this == Message.MESSAGE_STAGE) {
