@@ -21,12 +21,8 @@ import codes.biscuit.skyblockaddons.misc.SkyblockKeyBinding;
 import codes.biscuit.skyblockaddons.misc.Updater;
 import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
-import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.newgui.GuiManager;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
-import codes.biscuit.skyblockaddons.utils.SkyblockAddonsMessageFactory;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
 import codes.biscuit.skyblockaddons.utils.gson.PatternAdapter;
@@ -149,6 +145,9 @@ public class SkyblockAddons {
         if (DataUtils.USE_ONLINE_DATA) {
             DataUtils.loadOnlineData();
         }
+
+        //Since i don't wanna run /sba reloadRes after every restart - SBA, WHY?
+        DevUtils.reloadResources();
 
         MinecraftForge.EVENT_BUS.register(new NetworkListener());
         MinecraftForge.EVENT_BUS.register(playerListener);
