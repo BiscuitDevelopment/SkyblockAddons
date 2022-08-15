@@ -304,7 +304,8 @@ public class EnchantManager {
                     b.append(TextUtils.abbreviate(stackedEnchantNum)).append(" §7(").append(Translations.getMessage("enchants.maxed")).append(")");
                 } else {
                     // §7Expertise Kills: §a500 §7/ 1k
-                    b.append(stackedEnchantNum).append(" §7/ ").append(TextUtils.abbreviate(nextLevel));
+                    String format = TextUtils.formatDouble(stackedEnchantNum);
+                    b.append(format).append(" §7/ ").append(TextUtils.abbreviate(nextLevel));
                 }
                 loreList.add(insertAt++, b.toString());
             }
