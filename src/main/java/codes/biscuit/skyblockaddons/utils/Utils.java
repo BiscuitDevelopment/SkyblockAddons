@@ -35,7 +35,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
@@ -112,7 +112,7 @@ public class Utils {
     /**
      * Get a player's attributes. This includes health, mana, and defence.
      */
-    private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
+    private Map<Attribute, MutableFloat> attributes = new EnumMap<>(Attribute.class);
 
     /**
      * This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold.
@@ -182,7 +182,7 @@ public class Utils {
 
     private void addDefaultStats() {
         for (Attribute attribute : Attribute.values()) {
-            attributes.put(attribute, new MutableInt(attribute.getDefaultValue()));
+            attributes.put(attribute, new MutableFloat(attribute.getDefaultValue()));
         }
     }
 
