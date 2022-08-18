@@ -383,13 +383,13 @@
           "detailedHelp": {
             "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
           },
-          "prefix": "Dev"
+          "prefix": "Utvikler"
         },
         "edit": {
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Åpner mods-mappen din"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -456,8 +456,8 @@
           "notFound": "Server brand not found!"
         },
         "dev": {
-          "disabled": "Developer mode disabled!",
-          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+          "disabled": "Utviklermodus deaktivert!",
+          "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!"
         },
         "folder": {
           "error": "An error occurred while trying to open the mods folder: %s"
@@ -479,8 +479,8 @@
           "numberRequired": "You need to add the number you want.",
           "killsSet": "Kills for slayer %boss% was set to %number%.",
           "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-          "invalidBoss": "\"%input%\" is not a valid statistic!",
-          "invalidStat": "\"%input%\" is not a valid boss!"
+          "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
+          "invalidStat": "\"%input%\" er ikke en gyldig boss!"
         },
         "toggleActionBarLogging": {
           "disabled": "Action bar messages will no longer be logged.",
@@ -497,7 +497,7 @@
     },
     "errors": {
       "wrongUsage": {
-        "generic": "Wrong usage!",
+        "generic": "Feil bruk!",
         "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
       }
     }
@@ -545,15 +545,15 @@
         "detailedHelp": {
           "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-        "prefix": "Dev"
+        "disabled": "Utviklermodus deaktivert!",
+        "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!",
+        "prefix": "Utvikler"
       },
       "edit": {
         "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Opens your mods folder",
+        "help": "Åpner mods-mappen din",
         "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
@@ -612,8 +612,8 @@
         "numberRequired": "You need to add the number you want.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
+        "invalidStat": "\"%input%\" er ikke en gyldig boss!"
       },
       "toggleActionBarLogging": {
         "help": "Toggles logging action bar messages",
@@ -631,7 +631,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Feil bruk!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
@@ -639,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Kopier NBT",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Dungeon-kart zoom inn",
+    "decreaseDungeonMapZoom": "Dungeon-kart zoom ut"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -667,8 +667,8 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
+    "privateIsland": "Privat Øy",
+    "home": "Din Øy",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
@@ -680,9 +680,9 @@
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
     "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
+    "expertiseKills": "Vis Expertise-drap",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Maksimert"
   }
 }
