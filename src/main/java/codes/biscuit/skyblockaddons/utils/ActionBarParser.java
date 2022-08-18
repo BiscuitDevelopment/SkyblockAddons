@@ -54,7 +54,7 @@ public class ActionBarParser {
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,]+)/(?<total>[0-9.,]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
     private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
-    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
+    private static final Pattern HEALTH_PATTERN_S = Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
 
 
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
@@ -165,6 +165,15 @@ public class ActionBarParser {
             if (section.contains("❤")) {
                 // cutting the crimson stack information out
                 section = parseCrimsonStack(section);
+
+                // Fixing health when glare damage (from magma boss in crimson isle) is displayed.
+                // Glare damage stays in the action bar normally
+                if (section.endsWith("ಠ")) {
+                    if (section.contains("Glare Damage")) {
+                        section = section.split(Pattern.quote("§6 "))[0];
+                    }
+                }
+
                 // ❤ indicates a health section
                 return parseHealth(section);
             } else if (section.contains("❈")) {
@@ -470,7 +479,6 @@ public class ActionBarParser {
             return tickerSection;
         }
     }
-
 
 
     /**
