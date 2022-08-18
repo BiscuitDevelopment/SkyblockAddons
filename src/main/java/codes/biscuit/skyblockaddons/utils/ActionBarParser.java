@@ -56,8 +56,8 @@ public class ActionBarParser {
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,]+)/(?<total>[0-9.,]+))|((?<percent>[0-9.]+)%))\\))");
     private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
-    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
-    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
+    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9,]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
+    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9,]+)/(?<maxHealth>[0-9,]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
 
 
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
@@ -206,8 +206,8 @@ public class ActionBarParser {
         String stripped = TextUtils.stripColor(healthSection);
         Matcher m = HEALTH_PATTERN_S.matcher(stripped);
         if (separateDisplay && m.matches()) {
-            newHealth = Integer.parseInt(m.group("health"));
-            maxHealth = Integer.parseInt(m.group("maxHealth"));
+            newHealth = Integer.parseInt(m.group("health").replaceAll(",", ""));
+            maxHealth = Integer.parseInt(m.group("maxHealth").replaceAll(",", ""));
             if (m.group("wand") != null) {
                 // Jank way of doing this for now
                 returnString = "";// "§c"+ m.group("wand");
@@ -266,7 +266,7 @@ public class ActionBarParser {
         String stripped = TextUtils.stripColor(defenseSection);
         Matcher m = DEFENSE_PATTERN_S.matcher(stripped);
         if (m.matches()) {
-            int defense = Integer.parseInt(m.group("defense"));
+            int defense = Integer.parseInt(m.group("defense").replaceAll(",", ""));
             setAttribute(Attribute.DEFENCE, defense);
             otherDefense = TextUtils.getFormattedString(defenseSection, m.group("other").trim());
             if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
