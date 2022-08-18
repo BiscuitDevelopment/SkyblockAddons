@@ -179,6 +179,8 @@ public class ActionBarParser {
             } else if (section.contains("❈")) {
                 // ❈ indicates a defense section
                 return parseDefense(section);
+            } else if (section.endsWith("§f❂ True Defense")) {
+                return parseTrueDefence(section);
             } else if (section.contains("✎")) {
                 return parseMana(section);
             } else if (section.contains("(")) {
@@ -195,6 +197,11 @@ public class ActionBarParser {
         }
 
         return section;
+    }
+
+    private String parseTrueDefence(String section) {
+        return main.getConfigValues().isEnabled(Feature.HIDE_TRUE_DEFENSE) ? null : section;
+
     }
 
     private String parseCrimsonStack(String section) {

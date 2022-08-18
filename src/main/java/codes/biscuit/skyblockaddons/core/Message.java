@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.utils.ColorCode;
 import com.google.gson.JsonObject;
 import com.ibm.icu.text.ArabicShaping;
 import com.ibm.icu.text.ArabicShapingException;
@@ -171,6 +170,7 @@ public enum Message {
     SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING, "broodMotherWarning"),
     SETTING_GUI_TEXT_COMMAS(MessageObject.SETTING, "guiTextCommas"),
     SETTING_CRIMSON_STACKS(MessageObject.SETTING, "crimsonStacks"),
+    SETTING_HIDE_TRUE_DEFENSE(MessageObject.SETTING, "hideTrueDefense"),
 
     BACKPACK_STYLE_REGULAR(MessageObject.BACKPACK_STYLE, "regular"),
     BACKPACK_STYLE_COMPACT(MessageObject.BACKPACK_STYLE, "compact"),

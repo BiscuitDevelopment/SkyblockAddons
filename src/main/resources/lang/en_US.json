@@ -221,7 +221,8 @@
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "guiTextCommas": "Gui Text Commas",
-    "crimsonStacks": "Crimson Stacks"
+    "crimsonStacks": "Crimson Stacks",
+    "hideTrueDefense": "Hide True Defense"
   },
   "messages": {
     "enchants": "Enchants",
