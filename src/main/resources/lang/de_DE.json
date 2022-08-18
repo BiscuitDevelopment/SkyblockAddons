@@ -219,7 +219,9 @@
     "showSkyblockItemId": "Skyblock Gegenstand-ID bei Hover anzeigen",
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
     "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen",
-    "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen"
+    "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen",
+    "guiTextCommas": "Gui Text Commas",
+    "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
     "enchants": "Verzauberungen",

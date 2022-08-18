@@ -219,7 +219,9 @@
     "showSkyblockItemId": "Отображать ID Предмета при Наведении",
     "showFeatureNamesOnHover": "Показывать Имена Функций при Наведении",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "guiTextCommas": "Gui Text Commas",
+    "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
     "enchants": "Зачарования",

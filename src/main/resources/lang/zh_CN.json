@@ -219,7 +219,9 @@
     "showSkyblockItemId": "显示物品的空岛生存物品 ID",
     "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
     "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
-    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放"
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放",
+    "guiTextCommas": "Gui Text Commas",
+    "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
     "enchants": "附魔",
