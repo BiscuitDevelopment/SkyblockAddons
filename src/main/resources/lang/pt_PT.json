@@ -219,7 +219,9 @@
     "showSkyblockItemId": "Mostrar o ID do Skyblock do item ao passar o rato",
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato",
     "resetSalvagedEssencesAfterLeavingMenu": "Repor o contador de Salvaged Essences após fechar o menu",
-    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
+    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
+    "guiTextCommas": "Gui Text Commas",
+    "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
     "enchants": "encantamentos",

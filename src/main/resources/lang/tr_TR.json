@@ -219,7 +219,9 @@
     "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
     "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
-    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla"
+    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla",
+    "guiTextCommas": "Gui Text Commas",
+    "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
     "enchants": "Büyüler",
