@@ -59,11 +59,11 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     STATS(Message.DISCORD_STATUS_STATS_TITLE, Message.DISCORD_STATUS_STATS_DESCRIPTION,
             () -> {
-                int health = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.HEALTH).getValue();
-                int defense = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.DEFENCE).getValue();
-                int mana = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.MANA).getValue();
+                float health = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.HEALTH).getValue();
+                float defense = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.DEFENCE).getValue();
+                float mana = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.MANA).getValue();
 //                return String.format("%d\u2764 %d\u2748 %d\u270E", health, defense, mana);
-                return String.format("%d H - %d D - %d M", health, defense, mana);
+                return String.format("%f H - %f D - %f M", health, defense, mana);
             }),
 
     ZEALOTS(Message.DISCORD_STATUS_ZEALOTS_TITLE, Message.DISCORD_STATUS_ZEALOTS_DESCRIPTION,
