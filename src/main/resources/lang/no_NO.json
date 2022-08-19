@@ -219,8 +219,7 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
-    "crimsonStacks": "Crimson Stacks"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -384,13 +383,13 @@
           "detailedHelp": {
             "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
           },
-          "prefix": "Utvikler"
+          "prefix": "Dev"
         },
         "edit": {
           "help": "Edits GUI locations"
         },
         "folder": {
-          "help": "Åpner mods-mappen din"
+          "help": "Opens your mods folder"
         },
         "help": {
           "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
@@ -457,8 +456,8 @@
           "notFound": "Server brand not found!"
         },
         "dev": {
-          "disabled": "Utviklermodus deaktivert!",
-          "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!"
+          "disabled": "Developer mode disabled!",
+          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
         },
         "folder": {
           "error": "An error occurred while trying to open the mods folder: %s"
@@ -480,8 +479,8 @@
           "numberRequired": "You need to add the number you want.",
           "killsSet": "Kills for slayer %boss% was set to %number%.",
           "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-          "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
-          "invalidStat": "\"%input%\" er ikke en gyldig boss!"
+          "invalidBoss": "\"%input%\" is not a valid statistic!",
+          "invalidStat": "\"%input%\" is not a valid boss!"
         },
         "toggleActionBarLogging": {
           "disabled": "Action bar messages will no longer be logged.",
@@ -498,7 +497,7 @@
     },
     "errors": {
       "wrongUsage": {
-        "generic": "Feil bruk!",
+        "generic": "Wrong usage!",
         "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
       }
     }
@@ -546,15 +545,15 @@
         "detailedHelp": {
           "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Utviklermodus deaktivert!",
-        "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!",
-        "prefix": "Utvikler"
+        "disabled": "Developer mode disabled!",
+        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
+        "prefix": "Dev"
       },
       "edit": {
         "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Åpner mods-mappen din",
+        "help": "Opens your mods folder",
         "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
@@ -613,8 +612,8 @@
         "numberRequired": "You need to add the number you want.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
-        "invalidStat": "\"%input%\" er ikke en gyldig boss!"
+        "invalidBoss": "\"%input%\" is not a valid statistic!",
+        "invalidStat": "\"%input%\" is not a valid boss!"
       },
       "toggleActionBarLogging": {
         "help": "Toggles logging action bar messages",
@@ -632,7 +631,7 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Feil bruk!",
+          "generic": "Wrong usage!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
@@ -640,8 +639,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Kopier NBT",
-    "increaseDungeonMapZoom": "Dungeon-kart zoom inn",
-    "decreaseDungeonMapZoom": "Dungeon-kart zoom ut"
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -668,8 +667,8 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Privat Øy",
-    "home": "Din Øy",
+    "privateIsland": "Private Island",
+    "home": "Your Island",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
@@ -681,9 +680,9 @@
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
     "commas": "Commas",
-    "expertiseKills": "Vis Expertise-drap",
+    "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maksimert"
+    "maxed": "Maxed"
   }
 }

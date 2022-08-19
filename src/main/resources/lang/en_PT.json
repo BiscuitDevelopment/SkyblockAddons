@@ -219,8 +219,7 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closin' Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys",
-    "crimsonStacks": "Crimson Stacks"
+    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys"
   },
   "messages": {
     "enchants": "Enchants",

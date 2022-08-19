@@ -219,8 +219,7 @@
     "showSkyblockItemId": "Pokaż ID Przedmiotu po Najechaniu",
     "showFeatureNamesOnHover": "Pokaż Nazwę Funkcji po Najechaniu",
     "resetSalvagedEssencesAfterLeavingMenu": "Zresetuj licznik Odzyskanej Esencji po Zamknięciu Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
-    "crimsonStacks": "Crimson Stacks"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Zaklęcia",

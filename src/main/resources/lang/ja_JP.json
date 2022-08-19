@@ -219,8 +219,7 @@
     "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
     "showFeatureNamesOnHover": "ホバーして機能名を表示",
     "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
-    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整",
-    "crimsonStacks": "Crimson Stacks"
+    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整"
   },
   "messages": {
     "enchants": "エンチャント",
