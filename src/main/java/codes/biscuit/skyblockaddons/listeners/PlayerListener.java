@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;

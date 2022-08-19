@@ -14,9 +14,9 @@ public enum Attribute {
     MAX_FUEL(3000),
     OVERFLOW_MANA(20);
 
-    private final double defaultValue;
+    private final float defaultValue;
 
-    Attribute(double defaultValue) {
+    Attribute(float defaultValue) {
         this.defaultValue = defaultValue;
     }
 }

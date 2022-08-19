@@ -2265,8 +2265,8 @@ public class RenderListener {
         float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
         float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
 
-        double maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
-        double healthRegen = maxHealth * powerOrb.getHealthRegen();
+        float maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
+        float healthRegen = (float) (maxHealth * powerOrb.getHealthRegen());
         if (main.getUtils().getSlayerQuest() == EnumUtils.SlayerQuest.TARANTULA_BROODFATHER && main.getUtils().getSlayerQuestLevel() >= 2) {
             healthRegen *= 0.5; // Tarantula boss 2+ reduces healing by 50%.
         }
@@ -2275,9 +2275,9 @@ public class RenderListener {
         List<String> display = new LinkedList<>();
         display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if (powerOrb.getManaRegen() > 0) {
-            double maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
-            double manaRegen = Math.floor(maxMana / 50);
-            manaRegen = manaRegen + manaRegen * powerOrb.getManaRegen();
+            float maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
+            float manaRegen = (float) Math.floor(maxMana / 50);
+            manaRegen = (float) (manaRegen + manaRegen * powerOrb.getManaRegen());
             display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }
         if (powerOrb.getStrength() > 0) {
