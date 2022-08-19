@@ -684,6 +684,9 @@ public class RenderListener {
                 return;
             }
         } else if (feature == Feature.HEALTH_TEXT) {
+            if (mc.thePlayer.isPotionActive(22/* Absorption */)) {
+                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(), main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
+            }
             text = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH)) + "/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH));
 
         } else if (feature == Feature.DEFENCE_TEXT) {
