@@ -114,6 +114,12 @@
       "goodLevel": 3,
       "maxLevel": 3
     },
+    "divine gift": {
+      "loreName": "Divine Gift",
+      "nbtName": "divine_gift",
+      "goodLevel": 3,
+      "maxLevel": 3
+    },
     "dragon hunter": {
       "loreName": "Dragon Hunter",
       "nbtName": "dragon_hunter",
