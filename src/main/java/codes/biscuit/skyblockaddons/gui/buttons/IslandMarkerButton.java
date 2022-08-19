@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
@@ -33,6 +32,7 @@ public class IslandMarkerButton extends GuiButton {
 
     public void drawButton(float islandX, float islandY, float expansion, boolean hovered, boolean islandUnlocked, IslandWarpGui.UnlockedStatus status) {
         Minecraft mc = Minecraft.getMinecraft();
+        status = IslandWarpGui.UnlockedStatus.UNLOCKED;
 
         float width = 50*expansion;
         float height = width*(100/81F); // Ratio is 81w : 100h
@@ -43,15 +43,8 @@ public class IslandMarkerButton extends GuiButton {
         this.centerX = centerX;
         this.centerY = centerY;
 
-        /*
-        Assume crystal hollows and forge are unlocked for non-MVP+ players due to a Hypixel bug that causes those warps
-        to not show in the menu even when unlocked.
-         */
         this.unlocked = status == IslandWarpGui.UnlockedStatus.UNLOCKED ||
-                status == IslandWarpGui.UnlockedStatus.IN_COMBAT ||
-                (!GuiChestHook.getIslandWarpGui().isFoundAdvancedWarpToggle() &&
-                        (marker == IslandWarpGui.Marker.CRYSTAL_HOLLOWS ||
-                                marker == IslandWarpGui.Marker.DWARVEN_FORGE));
+                status == IslandWarpGui.UnlockedStatus.IN_COMBAT;
 
         float x = centerX-(width/2);
         float y = centerY-(height/2);
