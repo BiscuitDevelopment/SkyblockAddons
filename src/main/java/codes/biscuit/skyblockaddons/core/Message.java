@@ -168,7 +168,6 @@ public enum Message {
     SETTING_OUTBID_ALERT_SOUND(MessageObject.SETTING, "outbidAlertSound"),
     SETTING_BAL_BOSS_WARNING(MessageObject.SETTING, "balBossWarning"),
     SETTING_BROOD_MOTHER_WARNING(MessageObject.SETTING, "broodMotherWarning"),
-    SETTING_GUI_TEXT_COMMAS(MessageObject.SETTING, "guiTextCommas"),
     SETTING_CRIMSON_STACKS(MessageObject.SETTING, "crimsonStacks"),
     SETTING_HIDE_TRUE_DEFENSE(MessageObject.SETTING, "hideTrueDefense"),
 

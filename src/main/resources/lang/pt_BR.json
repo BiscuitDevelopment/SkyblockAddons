@@ -220,7 +220,6 @@
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o cursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Redefine o contador de Salvaged Essence após fechar o menu",
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
-    "guiTextCommas": "Gui Text Commas",
     "crimsonStacks": "Crimson Stacks"
   },
   "messages": {
