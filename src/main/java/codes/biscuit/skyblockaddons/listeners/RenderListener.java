@@ -153,7 +153,7 @@ public class RenderListener {
         if (mc != null) {
             EntityPlayerSP p = mc.thePlayer;
             if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                double newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                float newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                         getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                 main.getUtils().getAttributes().get(Attribute.HEALTH).setValue(newHealth);
             }

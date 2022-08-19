@@ -201,13 +201,13 @@ public class ActionBarParser {
         // With Wand:   §c1390/1390❤+§c30▅
         final boolean separateDisplay = main.getConfigValues().isEnabled(Feature.HEALTH_BAR) || main.getConfigValues().isEnabled(Feature.HEALTH_TEXT);
         String returnString = healthSection;
-        double newHealth;
-        double maxHealth;
+        float newHealth;
+        float maxHealth;
         String stripped = TextUtils.stripColor(healthSection);
         Matcher m = HEALTH_PATTERN_S.matcher(stripped);
         if (separateDisplay && m.matches()) {
-            newHealth = parseDouble(m.group("health"));
-            maxHealth = parseDouble(m.group("maxHealth"));
+            newHealth = parseFloat(m.group("health"));
+            maxHealth = parseFloat(m.group("maxHealth"));
             if (m.group("wand") != null) {
                 // Jank way of doing this for now
                 returnString = "";// "§c"+ m.group("wand");
@@ -217,7 +217,7 @@ public class ActionBarParser {
             }
             healthLock = false;
             boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
-                    ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
+                    (Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
             setAttribute(Attribute.HEALTH, newHealth);
             setAttribute(Attribute.MAX_HEALTH, maxHealth);
             healthLock = postSetLock;
@@ -237,11 +237,11 @@ public class ActionBarParser {
         // 421/421✎ -10ʬ
         Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection).trim());
         if (m.matches()) {
-            setAttribute(Attribute.MANA, parseDouble(m.group("num")));
-            setAttribute(Attribute.MAX_MANA, parseDouble(m.group("den")));
-            double overflowMana = 0;
+            setAttribute(Attribute.MANA, parseFloat(m.group("num")));
+            setAttribute(Attribute.MAX_MANA, parseFloat(m.group("den")));
+            float overflowMana = 0;
             if (m.group("overflow") != null) {
-                overflowMana = parseDouble(m.group("overflow"));
+                overflowMana = parseFloat(m.group("overflow"));
             }
             setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
             main.getRenderListener().setPredictMana(false);
@@ -266,7 +266,7 @@ public class ActionBarParser {
         String stripped = TextUtils.stripColor(defenseSection);
         Matcher m = DEFENSE_PATTERN_S.matcher(stripped);
         if (m.matches()) {
-            double defense = parseDouble(m.group("defense"));
+            float defense = parseFloat(m.group("defense"));
             setAttribute(Attribute.DEFENCE, defense);
             otherDefense = TextUtils.getFormattedString(defenseSection, m.group("other").trim());
             if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
@@ -449,14 +449,14 @@ public class ActionBarParser {
     }
 
     /**
-     * Parses a double from a given string.
+     * Parses a float from a given string.
      *
      * @param string the string to parse
-     * @return the parsed double or `-1` if parsing was unsuccessful
+     * @return the parsed float or `-1` if parsing was unsuccessful
      */
-    private double parseDouble(String string) {
+    private float parseFloat(String string) {
         try {
-            return TextUtils.NUMBER_FORMAT.parse(string).doubleValue();
+            return TextUtils.NUMBER_FORMAT.parse(string).floatValue();
         } catch (ParseException e) {
             return -1;
         }
@@ -469,7 +469,7 @@ public class ActionBarParser {
      * @param attribute Attribute
      * @param value     Attribute value
      */
-    private void setAttribute(Attribute attribute, double value) {
+    private void setAttribute(Attribute attribute, float value) {
         if (attribute == Attribute.HEALTH && healthLock) return;
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
