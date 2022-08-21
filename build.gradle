@@ -1,11 +1,14 @@
+import dev.architectury.pack200.java.Pack200Adapter
 import java.text.NumberFormat
 import java.text.ParseException
 
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version '2.1-SNAPSHOT'
-    id "io.freefair.lombok" version "2.9.5"
-    id 'com.github.johnrengelman.shadow' version '4.0.4'
+    id 'gg.essential.loom' version '0.10.0.4'
+    id 'dev.architectury.architectury-pack200' version '0.1.3'
+    id 'io.freefair.lombok' version "6.5.0.3"
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'net.kyori.blossom' version '1.2.0'
 }
 
 group = 'codes.biscuit'
@@ -16,39 +19,53 @@ ext {
     modId = project.name.toLowerCase(Locale.US)
 }
 
-// The below line is for version checkers <= 1.4.2
-//version = "1.6.1"
-
-// Java plugin settings
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-    options.encoding = 'UTF-8'
-}
+blossom {
+    def modVersion = project.version
 
-repositories {
-    mavenCentral()
-    maven {
-        name 'JitPack'
-        url 'https://jitpack.io'
+    if (project.hasProperty('runningOnCi')) {
+        if (!project.hasProperty('buildNumber')) {
+            throw new InvalidUserDataException('No build number provided for CI build.')
+        } else if (!project.hasProperty('runAttempt')) {
+            throw new InvalidUserDataException('No run attempt provided for CI build.')
+        } else {
+            def nf = NumberFormat.getIntegerInstance(Locale.US)
+            def buildNumber = project.setProperty('buildNumber')
+            def runAttempt = project.setProperty('runAttempt')
+            includeRunAttempt = nf.parse(runAttempt as String) > 1
+
+            try {
+                if (includeRunAttempt) {
+                    project.setProperty('buildNumber', "${buildNumber}.${nf.parse(runAttempt as String) - 1}")
+                }
+                formattedBuildNumber = nf.format(nf.parse(project.setProperty('buildNumber') as String))
+                project.version = "${project.version}+" + project.setProperty('buildNumber')
+            } catch (ParseException e) {
+                throw new InvalidUserDataException("Build number could not be parsed (${e.message})", e)
+            }
+        }
     }
+
+    replaceTokenIn('src/main/java/codes/biscuit/skyblockaddons/SkyblockAddons.java')
+    replaceToken('@VERSION@', modVersion)
+    replaceToken('@MOD_ACCEPTED@', project.minecraftVersion)
+    replaceToken('@BUILD_NUMBER@', project.buildNumber)
 }
 
-dependencies {
-    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
-        exclude module: 'log4j'
-        because 'Different version conflicts with Minecraft\'s Log4J'
+loom {
+    launchConfigs {
+        "client" {
+            property('fml.coreMods.load', 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin')
+            property('devauth.enabled', 'true')
+        }
     }
-    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
-        exclude module: 'gson'
-        because 'Different version conflicts with Minecraft\'s GSON'
-    } 
-    testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
+    forge {
+        pack200Provider.set(new Pack200Adapter())
+        accessTransformer('src/main/resources/META-INF/skyblockaddons_at.cfg')
+    }
 }
 
 sourceSets {
@@ -58,48 +75,43 @@ sourceSets {
     }
 }
 
-minecraft {
-    version = "${project.minecraftVersion}-${project.forgeVersion}"
-    runDir = "run"
+configurations.register('shadowImpl') {
+    configurations.implementation.extendsFrom(configurations.getByName('shadowImpl'))
+}
 
-    mappings = "${project.mappings}"
-
-    /*
-    I know this is ugly but the replace function runs super early so I can't put this stuff in a task since it'll always
-    end up running after the replace.
-     */
-
-    // The MAJOR.MINOR.PATCH part of the mod version
-    def modVersionPart = project.version
-
-    if (project.hasProperty('runningOnCi')) {
-        if (!project.hasProperty('buildNumber')) {
-            throw new InvalidUserDataException('No build number provided for CI build.')
-        } else if (!project.hasProperty('runAttempt')) {
-            throw new InvalidUserDataException('No run attempt provided for CI build.')
-        } else {
-            def nf = NumberFormat.getIntegerInstance(Locale.US)
-            def buildNumber = project.property('buildNumber')
-            def runAttempt = project.property('runAttempt')
-            includeRunAttempt = nf.parse(runAttempt as String) > 1
-
-            try {
-                if (includeRunAttempt) {
-                    project.setProperty('buildNumber', "${buildNumber}.${nf.parse(runAttempt as String) - 1}")
-                }
-                formattedBuildNumber = nf.format(nf.parse(project.property('buildNumber') as String))
-                project.version = "${project.version}+" + project.property('buildNumber')
-            } catch (ParseException e) {
-                throw new InvalidUserDataException("Build number could not be parsed (${e.message})", e)
-            }
-        }
+repositories {
+    mavenCentral()
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io'
     }
+    maven {
+        name 'DevAuth'
+        url 'https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1'
+    }
+}
 
-    // Replace placeholders in source code
-    replace("@VERSION@": modVersionPart,
-            "@BUILD_NUMBER@": formattedBuildNumber,
-            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
-    replaceIn("${project.name}.java")
+dependencies {
+    minecraft(" com.mojang:minecraft:${project.minecraftVersion}")
+    mappings("de.oceanlabs.mcp:mcp_stable:${project.mappings}")
+    forge("net.minecraftforge:forge:${project.forgeVersion}")
+    runtimeOnly('me.djtheredstoner:DevAuth-forge-legacy:1.1.0')
+
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    implementation('com.github.ILikePlayingGames:DiscordIPC:-SNAPSHOT') {
+        exclude module: 'log4j'
+        because 'Different version conflicts with Minecraft\'s Log4J'
+    }
+    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+        exclude module: 'gson'
+        because 'Different version conflicts with Minecraft\'s GSON'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter:5.9.0')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    options.encoding = 'UTF-8'
 }
 
 tasks.register('copyLicenses', Copy) {
@@ -111,8 +123,12 @@ tasks.register('copyLicenses', Copy) {
     into(sourceSets.main.output.resourcesDir)
 }
 
+assemble {
+    dependsOn remapJar
+}
+
 jar {
-    dependsOn copyLicenses
+    mustRunAfter copyLicenses
 
     // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
     archiveName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
@@ -137,8 +153,9 @@ jar {
     enabled = false
 }
 
-reobfJar {
-    dependsOn shadowJar
+remapJar {
+    from(tasks.shadowJar)
+    input.set(tasks.shadowJar.archiveFile)
 }
 
 shadowJar {
@@ -154,28 +171,6 @@ shadowJar {
 
     // Relocate Discord RPC into the main codebase
     relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
-}
-
-sourceJar {
-    enabled = false
-}
-
-processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand(version: project.version, mcversion: project.minecraft.version)
-    }
-
-    // copy everything else that's not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
 }
 
 test {
