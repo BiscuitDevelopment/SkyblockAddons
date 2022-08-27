@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
@@ -574,7 +573,7 @@ public class PlayerListener {
                 }
                 EntityPlayerSP p = mc.thePlayer;
                 if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                    int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                    float newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                             getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                     setAttribute(Attribute.HEALTH, newHealth);
                 }
@@ -1330,7 +1329,7 @@ public class PlayerListener {
     }
 
     public void updateLastSecondHealth() {
-        int health = getAttribute(Attribute.HEALTH);
+        float health = getAttribute(Attribute.HEALTH);
         // Update the health gained/lost over the last second
         if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != health) {
             actionBarParser.setHealthUpdate(health - actionBarParser.getLastSecondHealth());
@@ -1343,19 +1342,19 @@ public class PlayerListener {
         return System.currentTimeMillis() - main.getGuiScreenListener().getLastContainerCloseMs() > 100;
     }
 
-    Integer getHealthUpdate() {
+    Float getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
     }
 
-    private void changeMana(int change) {
+    private void changeMana(float change) {
         setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
     }
 
-    private int getAttribute(Attribute attribute) {
+    private float getAttribute(Attribute attribute) {
         return main.getUtils().getAttributes().get(attribute).getValue();
     }
 
-    private void setAttribute(Attribute attribute, int value) {
+    private void setAttribute(Attribute attribute, float value) {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 

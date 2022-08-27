@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
@@ -365,11 +364,11 @@ public class SkyblockAddonsCommand extends CommandBase {
                         }
                     } else {
                         throw new WrongUsageException(Translations.getMessage(
-                                "commands.responses.sba.errors.wrongUsage.subCommandNotFound", args[0]));
+                                "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
                     }
                 } else {
                     throw new WrongUsageException(Translations.getMessage(
-                            "commands.responses.sba.errors.wrongUsage.subCommandNotFound", args[0]));
+                            "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
                 }
             } else {
                 // If there's no arguments given, open the main GUI

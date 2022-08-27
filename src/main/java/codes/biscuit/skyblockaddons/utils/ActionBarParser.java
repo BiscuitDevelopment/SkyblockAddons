@@ -55,9 +55,9 @@ public class ActionBarParser {
 
     private static final Pattern COLLECTIONS_CHAT_PATTERN = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,kM]+)/(?<total>[0-9.,kM]+))|((?<percent>[0-9.,]+)%))\\))");
     private static final Pattern SKILL_GAIN_PATTERN_S = Pattern.compile("\\+(?<gained>[0-9,.]+) (?<skillName>[A-Za-z]+) (?<progress>\\((((?<current>[0-9.,]+)/(?<total>[0-9.,]+))|((?<percent>[0-9.]+)%))\\))");
-    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,]+)/(?<den>[0-9,]+)✎(| Mana| (?<overflow>-?[0-9,]+)ʬ)");
-    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9]+!?))?.*)?");
-    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9]+)/(?<maxHealth>[0-9]+)❤(?<wand>\\+(?<wandHeal>[0-9]+)[▆▅▄▃▂▁])?");
+    private static final Pattern MANA_PATTERN_S = Pattern.compile("(?<num>[0-9,.]+)/(?<den>[0-9,.]+)✎(| Mana| (?<overflow>-?[0-9,.]+)ʬ)");
+    private static final Pattern DEFENSE_PATTERN_S = Pattern.compile("(?<defense>[0-9,.]+)❈ Defense(?<other>( (?<align>\\|\\|\\|))?( {2}(?<tether>T[0-9,.]+!?))?.*)?");
+    private static final Pattern HEALTH_PATTERN_S =Pattern.compile("(?<health>[0-9,.]+)/(?<maxHealth>[0-9,.]+)❤(?<wand>\\+(?<wandHeal>[0-9,.]+)[▆▅▄▃▂▁])?");
 
 
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
@@ -73,9 +73,9 @@ public class ActionBarParser {
      */
     private int maxTickers = 0;
     @Setter
-    private int lastSecondHealth = -1;
+    private float lastSecondHealth = -1;
     @Setter
-    private Integer healthUpdate;
+    private Float healthUpdate;
     @Setter
     private long lastHealthUpdate;
 
@@ -201,13 +201,13 @@ public class ActionBarParser {
         // With Wand:   §c1390/1390❤+§c30▅
         final boolean separateDisplay = main.getConfigValues().isEnabled(Feature.HEALTH_BAR) || main.getConfigValues().isEnabled(Feature.HEALTH_TEXT);
         String returnString = healthSection;
-        int newHealth;
-        int maxHealth;
+        float newHealth;
+        float maxHealth;
         String stripped = TextUtils.stripColor(healthSection);
         Matcher m = HEALTH_PATTERN_S.matcher(stripped);
         if (separateDisplay && m.matches()) {
-            newHealth = Integer.parseInt(m.group("health"));
-            maxHealth = Integer.parseInt(m.group("maxHealth"));
+            newHealth = parseFloat(m.group("health"));
+            maxHealth = parseFloat(m.group("maxHealth"));
             if (m.group("wand") != null) {
                 // Jank way of doing this for now
                 returnString = "";// "§c"+ m.group("wand");
@@ -217,7 +217,7 @@ public class ActionBarParser {
             }
             healthLock = false;
             boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
-                    ((float) Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
+                    (Math.abs(main.getUtils().getAttributes().get(Attribute.HEALTH).getValue() - newHealth) / maxHealth) > .05;
             setAttribute(Attribute.HEALTH, newHealth);
             setAttribute(Attribute.MAX_HEALTH, maxHealth);
             healthLock = postSetLock;
@@ -237,11 +237,11 @@ public class ActionBarParser {
         // 421/421✎ -10ʬ
         Matcher m = MANA_PATTERN_S.matcher(TextUtils.stripColor(manaSection).trim());
         if (m.matches()) {
-            setAttribute(Attribute.MANA, Integer.parseInt(m.group("num").replaceAll(",", "")));
-            setAttribute(Attribute.MAX_MANA, Integer.parseInt(m.group("den").replaceAll(",", "")));
-            int overflowMana = 0;
+            setAttribute(Attribute.MANA, parseFloat(m.group("num")));
+            setAttribute(Attribute.MAX_MANA, parseFloat(m.group("den")));
+            float overflowMana = 0;
             if (m.group("overflow") != null) {
-                overflowMana = Integer.parseInt(m.group("overflow").replaceAll(",", ""));
+                overflowMana = parseFloat(m.group("overflow"));
             }
             setAttribute(Attribute.OVERFLOW_MANA, overflowMana);
             main.getRenderListener().setPredictMana(false);
@@ -266,7 +266,7 @@ public class ActionBarParser {
         String stripped = TextUtils.stripColor(defenseSection);
         Matcher m = DEFENSE_PATTERN_S.matcher(stripped);
         if (m.matches()) {
-            int defense = Integer.parseInt(m.group("defense"));
+            float defense = parseFloat(m.group("defense"));
             setAttribute(Attribute.DEFENCE, defense);
             otherDefense = TextUtils.getFormattedString(defenseSection, m.group("other").trim());
             if (main.getConfigValues().isEnabled(Feature.DEFENCE_TEXT) || main.getConfigValues().isEnabled(Feature.DEFENCE_PERCENTAGE)) {
@@ -449,13 +449,27 @@ public class ActionBarParser {
     }
 
     /**
+     * Parses a float from a given string.
+     *
+     * @param string the string to parse
+     * @return the parsed float or `-1` if parsing was unsuccessful
+     */
+    private float parseFloat(String string) {
+        try {
+            return TextUtils.NUMBER_FORMAT.parse(string).floatValue();
+        } catch (ParseException e) {
+            return -1;
+        }
+    }
+
+    /**
      * Sets an attribute in {@link Utils}
      * Ignores health if it's locked
      *
      * @param attribute Attribute
      * @param value     Attribute value
      */
-    private void setAttribute(Attribute attribute, int value) {
+    private void setAttribute(Attribute attribute, float value) {
         if (attribute == Attribute.HEALTH && healthLock) return;
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }

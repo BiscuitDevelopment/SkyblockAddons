@@ -1,6 +1,6 @@
 {
   "languageText": "Speak: ",
-  "language": "Pirate English",
+  "language": "Pirate Speak",
   "settings": {
     "settings": "Yer Settin's",
     "magmaBossWarning": "Magma Boss Warnin'",
@@ -17,7 +17,7 @@
     "guiScale": "Gui Scale: %scale%",
     "resetLocations": "Reset Locations",
     "minionStopWarning": "\"Minion Cannot Reach\" Warnin'",
-    "hidePlayersNearNPCs": "'ide scallywags near important NPCs",
+    "hidePlayersNearNPCs": "Hide Pirates Near Important NPCs",
     "backpackStyle": "Backpack Style: %style%",
     "backpackStyles": {
       "regular": "Regular",
@@ -35,9 +35,9 @@
     "defenseNumber": "Yer' Defense Num'r",
     "defensePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Scallywags in th' Lobby",
+    "hidePlayersInLobby": "Hide Far Scallywags in th' Port",
     "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Fire Boss Tim'r",
+    "magmaBossTimer": "Magma Boss Tim'r",
     "itemPickupLog": "Log o' Items Picked Up",
     "avoidPlacingEnchantedItems": "Plunder Placin' Enchant'd Booty",
     "stopBowChargeFromResetting": "Stop Bow Charge From Resettin'",
@@ -45,15 +45,15 @@
     "showItemAnvilUses": "Show Yer Anvil Uses",
     "lockSlots": "Allow Lockin' yer Slots",
     "lockSlot": "Lock yer Slot",
-    "dontResetCursorInventory": "Don't Reset Yer Cursor Between Inventories",
-    "summoningEyeAlert": "Summonin' Eye Alert",
+    "dontResetCursorInventory": "Do Nah Reset Yer Cursor Between Inventories",
+    "summoningEyeAlert": "Summoning Eye Alert",
     "makeEnderchestsInEndGreen": "Change yer Ender Chest Col'r in Th’ End",
     "changeColor": "Change Yer Color",
     "showInOtherGames": "Show in Other Games",
     "useVanillaTexture": "Use th’ Vanilla Texture",
     "textStyle": "Style o' Text",
     "textStyles": {
-      "one": "Fr'st Style",
+      "one": "F'rst Style",
       "two": "Sec'nd Style"
     },
     "warningDuration": "Warnin’ Duration",
@@ -63,7 +63,7 @@
     "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on yer Items",
     "changeBarColorForPotions": "Change Barrr Color fer Wither & Poison",
     "craftingPatterns": "Choose a Pattern o' Craftin'",
-    "soundIndicatorForFishing": "Sound Indicator fer Fishin'",
+    "soundIndicatorForFishing": "Noise Indicator fer Fishin'",
     "avoidBlinkingNightVision": "Disable Night Seein' Potion Blinkin'",
     "disableMinionLocationWarning": "Disable Location Be Not Perfect Warnin’s",
     "showItemCooldowns": "Show Yer Item Cooldowns",
@@ -86,7 +86,7 @@
       "generalSettings": "General Settin's"
     },
     "tabEffectTimers": "Potion an' Powerup Timers",
-    "noArrowsLeftAlert": "Yer Arrows Gone Alert",
+    "noArrowsLeftAlert": "Yer Bolts be Gone Alert",
     "hideNightVisionEffectTimer": "Hide th' Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview fer Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview fer yer Items Whilst th' AH be Open",
@@ -107,17 +107,17 @@
     "turnBowGreenWhenUsingToxicArrowPoison": "Color Bow Green Whilst Usin' Toxic Arrow Poison",
     "birchParkRainmakerTimer": "Birch Park Rainmaker Timer",
     "combatTimerDisplay": "Yer Combat Tim'r Display",
-    "discordRP": "Discord Rich Presence",
+    "discordRP": "Rich Pressence o' Discord",
     "endstoneProtectorDisplay": "Endstone Protector Display",
     "fancyWarpMenu": "Fancy Warp Menu",
     "stopRatSounds": "Stop Rat Pet Noises",
     "onlyStopRatSqueak": "Only Stop th' Rat Squeak Noise",
     "doubleWarp": "Warp Twice",
     "advancedMode": "Captain's Mode",
-    "legendarySeaCreatureWarning": "Oi! Thats a big fish matey!",
+    "legendarySeaCreatureWarning": "Legendary Sea Creature Warnin'",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
-    "baitListDisplay": "Show Bait List Whilst Holdin' a Rod",
+    "baitListDisplay": "Show List o' Baits Whilst Holdin' a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants",
     "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
@@ -141,7 +141,7 @@
     "showHealingCircleWall": "Show Dungeon Healin' Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Crewmates",
     "showGlowingItemsOnIsland": "Show Glowin' Items On Island",
-    "showItemDungeonFloor": "Show on which floor th' booty be obtained",
+    "showItemDungeonFloor": "Show which floor th' dungeon loot be plundered",
     "showDungeonMilestone": "Show Dungeon Milestone",
     "dungeonsCollectedEssencesDisplay": "Dungeons Collected Essences Display",
     "stopBonzoStaffSounds": "Stop Bonzo's Staff Sounds",
@@ -198,14 +198,14 @@
       "trackedEntityProximityIndicator": "Show th' Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight th' Tracked Entity",
       "showQuestCooldown": "Show Trevor's Quest Cooldown",
-      "showQuestCooldownDescription": "'Tis be displayed above Trevor's head"
+      "showQuestCooldownDescription": "'Tis be displayed above Trevor's skull"
     },
     "showEnderChestPreview": "Preview th' Ender Chest",
     "hideWhenNotDoingQuest": "Hide When Be Not Doin' Quest",
     "showOverflowManaNumber": "Overflow Mana Number",
     "axeCooldownIndicator": "Axe Cooldown Indicator",
     "vanillaHealthPrediction": "Use Vanilla Health Prediction",
-    "entityOutlines": "Show Entity Outlines",
+    "entityOutlines": "Show Scallywag Outlines",
     "effectiveHealthNumber": "Effec've Health Num'arr",
     "guiScaleX": "GUI X Scale: %scale%",
     "guiScaleY": "GUI Y Scale: %scale%",
@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closin' Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys"
   },
   "messages": {
     "enchants": "Enchants",
@@ -259,7 +260,7 @@
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Swab craftin' incomplete patt'rns (recommended)",
-    "searchFeatures": "Search feat'rs",
+    "searchFeatures": "Search feat'res",
     "downloadingUpdateFile": "Downloadin' yer updates...",
     "onlyFewArrowsLeft": "Mate, ye only got %arrows% arrows left!",
     "noArrowsLeft": "No Bolts Be Left!",
@@ -296,11 +297,14 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, an' Antialiasin' t' be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected fer fea'ure %featureName%, resettin' its settin's t' default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected fer fea'ure %featureName%, resettin' its settin's t' default values.",
+    "fileFetchFailed": "%modName% failed t' fetch %number% file(s). Please copy th' error usin' th' button below an' report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "None",
-    "descriptionNone": "No text be displayed",
+    "descriptionNone": "Text nay bein' displayed",
     "titleLocation": "Location",
     "descriptionLocation": "Yer current place be shown",
     "titlePurse": "Purse",
@@ -337,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens th' main menu"
+        },
+        "brand": {
+          "help": "Shows th' server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about th' block that ye be lookin' at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
+          "detailedHelp": {
+            "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
+            "options": {
+              "entityNames": "Names o' th' types o' entities ye want t' copy data fer (e.g. Buccaneer, Creeper). Press \"Tab\" after typin' th' command fer a full list. Separate multiple names wit' commas, names be case-sensitive.",
+              "radius": "Th' radius (in blocks) around th' buccaneer t' copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies th' scoreboard text",
+          "detailedHelp": {
+            "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
+            "options": {
+              "formatted": "Determines if th' formattin' codes should be included whilst copyin'. Can be either \"true\" or \"false\", defaults t' \"false\" if no value be provided. Formattin' codes be copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies th' tab list header an' footer",
+          "detailedHelp": {
+            "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
+          }
+        },
+        "dev": {
+          "help": "Toggles th' developer mode",
+          "detailedHelp": {
+            "description": "'Tis here command toggles th' developer mode. 'Tis mode be meant fer developers o' SkyBlock mods & tools. It provides game data such as entity an' item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens yer mods folder"
+        },
+        "help": {
+          "help": "Shows 'tis help message. If a command be provided, detailed help about that command be shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "Th' sub-command t' get detailed usage fer"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints th' counts stored in th' dungeon scuttle counters fer debuggin' purposes."
+        },
+        "reload": {
+          "help": "Reloads all o' th' mod's settin's an' resources. Th' game shall freeze fer a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads th' mod's settin's"
+        },
+        "reloadRes": {
+          "help": "Reloads th' mod's resources. Th' game shall freeze fer a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Restarts all th' zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets yer zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in th' zealot counter.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Lifetime zealots killed",
+                "zealots": "Zealots killed since th' last summoning eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab fer arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab fer arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Number t' set th' stat t'",
+              "stat": "Slayer stat t' change, can be \"kills\" or th' name o' a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles loggin' action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles loggin' magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows th' mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Brand: %brand%",
+          "notFound": "Server brand be not found!"
+        },
+        "dev": {
+          "disabled": "Developer mode disabled!",
+          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred whilst tryin' t' open th' mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summoning eye count t' %number%!",
+            "totalZealotsSet": "Set total zealot count t' %number%!",
+            "wrongUsage": "Invalid selection! Please choose %options%.",
+            "zealotsSet": "Set current zealot count t' %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Ye need t' select a boss! Please choose %bosses%",
+          "statRequired": "Ye need t' select a stat. Press tab fer options.",
+          "numberRequired": "Ye need t' add th' number ye want.",
+          "killsSet": "Scuttles fer slayer %boss% be set t' %number%.",
+          "statSet": "Statistic %stat% fer slayer %boss% was set t' %number%.",
+          "invalidBoss": "\"%input%\" be not a valid statistic!",
+          "invalidStat": "\"%input%\" be not a valid boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action bar messages will no longer be logged.",
+          "enabled": "Action bar messages will now be logged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages shall nay longer be logged.",
+          "enabled": "Magma boss timer messages shall now be logged."
+        },
+        "version": {
+          "hoverText": "Click t' put in chat so ye can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wrong usage!",
+        "subCommandNotFound": "Th' sub-command \"%sub-command%\" be not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open th' main menu"
+        "help": "Opens th' main menu"
       },
       "brand": {
-        "help": "Show th' server brand",
+        "help": "Shows th' server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand be not found!"
       },
@@ -351,7 +516,7 @@
         "help": "Copies data about th' block that ye be lookin' at"
       },
       "copyEntity": {
-        "help": "Copy NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
+        "help": "Copies NBT data fer entities o' th' given name(s) wit'in th' given radius around th' pirate",
         "detailedHelp": {
           "description": "Copies th' NBT data o' entities. Th' types o' entities included an' th' radius 'round th' buccaneer t' copy data from can be customized. If no options be given, th' default settin's be used. The default settin's be: include buccaneers, armor stands, an' mobs, an' a radius o' 3 blocks. If th' radius isn't given, th' default radius be used.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy th' scoreboard text",
+        "help": "Copies th' scoreboard text",
         "detailedHelp": {
           "description": "Copies th' text displayed 'n th' scoreboard's sidebar display slot",
           "options": {
@@ -370,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy th' tab list header an' footer",
+        "help": "Copies th' tab list header an' footer",
         "detailedHelp": {
           "description": "This here command copies th' header an' footer o' th' tab buccaneers list. Formatting codes be included."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Toggles th' developer mode",
         "detailedHelp": {
-          "description": "This here command toggles developer mode. This mode be meant fer developers Skyblock mods/tools. It provides raw data from th' game such as entity an' item NBT."
+          "description": "'Tis here command toggles th' developer mode. 'Tis mode be meant fer developers o' SkyBlock mods & tools. It provides game data such as entity an' item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" t' copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open yer mods folder",
-        "error": "An error occurred tryin' t' open th' mods folder: %s"
+        "help": "Opens yer mods folder",
+        "error": "An error occurred whilst tryin' t' open th' mods folder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command be provided, detailed help about that command be shown.",
+        "help": "Shows 'tis help message. If a command be provided, detailed help about that command be shown.",
         "detailedHelp": {
           "options": {
-            "command": "th' sub-command t' get detailed usage fer"
+            "command": "Th' sub-command t' get detailed usage fer"
           }
         }
       },
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set yer zealot counts",
+          "help": "Manually sets yer zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in th' zealot counter.",
             "options": {
@@ -433,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab fer arguments",
+        "help": "Manually sets slayer stats, press tab fer arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab fer arguments",
+          "description": "Manually sets slayer stats, press tab fer arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number t' set th' stat t'",
@@ -451,12 +616,12 @@
         "invalidStat": "\"%input%\" be not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle loggin' action bar messages",
+        "help": "Toggles loggin' action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle loggin' magma boss timer debug messages",
+        "help": "Toggles loggin' magma boss timer debug messages",
         "disabled": "Magma boss timer messages shall nay longer be logged.",
         "enabled": "Magma boss timer messages shall now be logged."
       },
@@ -473,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copy NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

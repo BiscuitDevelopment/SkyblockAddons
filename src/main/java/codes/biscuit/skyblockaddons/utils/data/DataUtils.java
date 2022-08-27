@@ -90,6 +90,12 @@ public class DataUtils {
 
     @Getter
     private static final HashMap<RemoteFileRequest<?>, Throwable> failedRequests = new HashMap<>();
+    
+    /** 
+     * Main CDN doesn't work for some users.
+     * Use fallback CDN if a request fails twice or user is in China or Hong Kong.
+     */
+    static boolean useFallbackCDN;
 
     // Whether the failed requests error was shown in chat, used to make it show only once per session
     private static boolean failureMessageShown = false;
@@ -109,6 +115,10 @@ public class DataUtils {
     private static ScheduledTask languageLoadingTask = null;
 
     static {
+        String country = Locale.getDefault().getCountry();
+        if (country.equals("CN") || country.equals("HK")) {
+            useFallbackCDN = true;
+        }
         connectionManager.setMaxTotal(5);
         connectionManager.setDefaultMaxPerRoute(5);
         registerRemoteRequests();
@@ -227,6 +237,10 @@ public class DataUtils {
     private static void fetchFromOnline() {
         for (RemoteFileRequest<?> request : remoteRequests) {
             request.execute(futureRequestExecutionService);
+        }
+        
+        if (useFallbackCDN) {
+            logger.warn("Could not reach main CDN. Some resources were fetched from fallback CDN.");
         }
     }
 

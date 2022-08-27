@@ -4,7 +4,7 @@
   "settings": {
     "settings": "Einstellungen",
     "magmaBossWarning": "Magma Boss Spawn Warnung",
-    "balBossWarning": "Bal Boss Warnung",
+    "balBossWarning": "Bal Boss-Warnung",
     "broodMotherWarning": "Brood Mother Warnung",
     "itemDropConfirmation": "Item Drop Bestätigung",
     "hideSkeletonHatBones": "Skelett-Helm Knochen verstecken",
@@ -211,14 +211,15 @@
     "guiScaleY": "GUI Y Größe: %scale%",
     "abbreviateSkillXpDenominator": "Fähigkeiten XP Nenner abkürzen",
     "otherDefenseStats": "Andere Verteidigungsstatistiken (Soul Tether/Zellenausrichtung)",
-    "hideSpawnPointPlayers": "Verstecke Spieler am Spawn-Punkt im Hub",
+    "hideSpawnPointPlayers": "Verstecke Spieler am Startpunkt im Hub",
     "jacobsContestTimer": "Wettbewerb-Timer von Jacob",
     "dontReplaceRomanNumeralsInItemNames": "In Gegenstandsnamen nicht ersetzten",
     "backpackOpeningSound": "Lederrucksack Öffnungsgeräusch",
     "devMode": "Entwicklermodus",
     "showSkyblockItemId": "Skyblock Gegenstand-ID bei Hover anzeigen",
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
-    "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen"
+    "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen",
+    "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -296,7 +297,10 @@
     "worldRenderedCooldownTime": "Abklingzeit: %time%s",
     "entityOutlinesRequirement": "Shader, schnelles Rendern und Antialiasing müssen AUSGESCHALTET sein",
     "version": "Version",
-    "invalidFeatureConfiguration": "Ungültige Konfiguration für die Funktion %featureName% erkannt. Einstellungen werden auf die Standardwerte zurückgestellt."
+    "invalidFeatureConfiguration": "Ungültige Konfiguration für die Funktion %featureName% erkannt. Einstellungen werden auf die Standardwerte zurückgestellt.",
+    "fileFetchFailed": "%modName% konnte %number% Datendatei(en) nicht abrufen. Bitte kopiere den Fehler mit der unten stehenden Schaltfläche und melde ihn auf unserem Discord-Server.",
+    "copy": "Kopieren",
+    "copied": "Kopiert!"
   },
   "discordStatus": {
     "titleNone": "Keine",
@@ -337,21 +341,182 @@
     "titleExpand": "Erweitern",
     "descriptionExpand": "Listet jede Verzauberung in einer eigenen Zeile auf"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Öffnet das Hauptmenü"
+        },
+        "brand": {
+          "help": "Servername anzeigen"
+        },
+        "copyBlock": {
+          "help": "Kopiert Daten vom Block, den du anschaust"
+        },
+        "copyEntity": {
+          "help": "Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
+          "detailedHelp": {
+            "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
+            "options": {
+              "entityNames": "Namen der Zieltypen von denen du Daten kopieren willst (z. B. Spieler, Creeper). Drücke \"Tab\" nachdem der Befehl eingegeben wurde, um eine volle Liste zu sehen. Trenne Namen mit Kommas, Groß- und Kleinschreibung beachten.",
+              "radius": "Der Radius (in Blöcken) um den Spieler, um Ziel NBT-Daten zu kopieren"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Kopiere den Scoreboard-Text",
+          "detailedHelp": {
+            "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
+            "options": {
+              "formatted": "Legt fest, ob die Formatierungscodes beim Kopieren berücksichtigt werden sollen. Kann entweder \"true\" oder \"false\" sein, Standardwert ist \"false\", wenn kein Wert angegeben wird. Bei \"true\" werden die Formatierungscodes kopiert."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Kopiere die Kopf- und Fußzeile in der Tab-Liste",
+          "detailedHelp": {
+            "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
+          }
+        },
+        "dev": {
+          "help": "Schaltet den Entwicklermodus ein/aus",
+          "detailedHelp": {
+            "description": "Dieser Befehl schaltet den Entwicklermodus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
+          },
+          "prefix": "Entwickler"
+        },
+        "edit": {
+          "help": "Bearbeitet GUI-Standorte"
+        },
+        "folder": {
+          "help": "Öffnet deinen Mods-Ordner"
+        },
+        "help": {
+          "help": "Zeigt diese Hilfs-Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesem Befehl angezeigt.",
+          "detailedHelp": {
+            "options": {
+              "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
+        },
+        "reload": {
+          "help": "Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        },
+        "reloadConfig": {
+          "help": "Lädt die Einstellungen der Mod neu"
+        },
+        "reloadRes": {
+          "help": "Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        },
+        "resetZealotCounter": {
+          "help": "Setzt alle Zealot-Zähler zurück."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Zealot-Zähler manuell festlegen",
+            "detailedHelp": {
+              "description": "Setzt Zahlen im Zealot-Zähler manuell.",
+              "options": {
+                "eyes": "Insgesamt erhaltene Beschwörungsaugen (Summoning eyes)",
+                "totalZealots": "Insgesamt getötete Zealots",
+                "zealots": "Zealots, die seit dem letzten Beschwörungsauge (Summoning eye) getötet wurden"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
+          "detailedHelp": {
+            "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
+            "options": {
+              "boss": "Slayer Boss: \"Zombie\", \"Spider\", oder \"Wolf\"",
+              "number": "Nummer, auf die die Statistik gesetzt werden soll",
+              "stat": "Zu ändernder Slayer-Wert, kann \"kills\" oder der Name eines fallen gelassenen Gegenstandes sein, formatiert wie folgt: \" REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Schalte die Protokollierung der Nachrichten in der Aktionsleiste um"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen"
+        },
+        "version": {
+          "help": "Zeigt die Version des Mods an"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Servername: %brand%",
+          "notFound": "Servername nicht gefunden!"
+        },
+        "dev": {
+          "disabled": "Entwicklermodus deaktiviert!",
+          "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!"
+        },
+        "folder": {
+          "error": "Beim Öffnen des Mods-Ordners ist ein Fehler aufgetreten: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot-Zähler zurückgestellt!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Setze die Gesamtzahl der Beschwörungsaugen (Summoning eyes) auf %number%!",
+            "totalZealotsSet": "Setze die totale Zealot-Anzahl auf %number%!",
+            "wrongUsage": "Ungültige Auswahl! Bitte wähle %options%.",
+            "zealotsSet": "Setze die aktuelle Zealot-Anzahl Anzahl auf %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Du musst einen Boss wählen! Bitte wähle %bosses%",
+          "statRequired": "Du musst eine Statistik auswählen. Drücke Tab für Optionen.",
+          "numberRequired": "Du musst die Zahl schreiben, die du haben willst.",
+          "killsSet": "Kills für Slayer %boss% wurden auf %number% gesetzt.",
+          "statSet": "Statistik %stat% für Slayer %boss% wurde auf %number% gesetzt.",
+          "invalidBoss": "\"%input%\" ist keine gültige Statistik!",
+          "invalidStat": "\"%input%\" ist kein gültiger boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Nachrichten in der Aktionsleiste werden nicht mehr protokolliert.",
+          "enabled": "Nachrichten in der Aktionsleiste werden nun protokolliert."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Die Timer-Meldungen des Magma-Bosses werden nicht mehr protokolliert.",
+          "enabled": "Die Timer-Meldungen des Magma-Bosses werden nun protokolliert."
+        },
+        "version": {
+          "hoverText": "Klicke hier, um die Zeichenkette im Chat zu platzieren, damit du sie kopieren kannst."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Falsche Verwendung!",
+        "subCommandNotFound": "Der Unterbefehl \"%sub-command%\" wurde nicht gefunden."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Hauptmenü öffnen"
+        "help": "Öffnet das Hauptmenü"
       },
       "brand": {
-        "help": "§e(Dev) §7Servername anzeigen",
+        "help": "Servername anzeigen",
         "brandOutput": "Servername: %brand%",
         "notFound": "Servername nicht gefunden!"
       },
       "copyBlock": {
-        "help": "§e(Dev) §7Kopiert Daten von den block, den du anschaust"
+        "help": "Kopiert Daten vom Block, den du anschaust"
       },
       "copyEntity": {
-        "help": "§e(Dev) §7Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
+        "help": "Kopiere die NBT-Daten für die Ziele mit (dem) gegebenen Namen innerhalb des gegebenen Radius um den Spieler",
         "detailedHelp": {
           "description": "Kopiert die NBT-Daten von Zielen. Die Art der Ziele und der Radius um den Spieler, von dem Daten kopiert werden sollen, kann angepasst werden, wenn keine Optionen gegeben sind, werden die Standardeinstellungen benutzt. Diese sind: Spieler, Rüstungsständer und Mobs in einem Radius von 3 Blöcken. Wenn der Radius nicht angegeben wurde, wird der Standardradius verwendet.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "§e(Dev) §7Kopiere den Scoreboard-Text",
+        "help": "Kopiere den Scoreboard-Text",
         "detailedHelp": {
           "description": "Kopiert den Text, der in der Anzeigetafel angezeigt wird",
           "options": {
@@ -370,29 +535,29 @@
         }
       },
       "copyTabList": {
-        "help": "§e(Dev) §7Kopiere die Kopf- und Fußzeile in der Tab-Liste",
+        "help": "Kopiere die Kopf- und Fußzeile in der Tab-Liste",
         "detailedHelp": {
           "description": "Dieser Befehl kopiert die Kopf- und Fußzeile der Tab-Spielerliste. Formatierungscodes sind enthalten."
         }
       },
       "dev": {
-        "help": "Entwickler-Modus ein/aus",
+        "help": "Schaltet den Entwicklermodus ein/aus",
         "detailedHelp": {
-          "description": "Dieser Befehl schaltet den Entwickler-Modus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
+          "description": "Dieser Befehl schaltet den Entwicklermodus um. Dieser Modus ist für Entwickler von Skyblock-Mods und -Tools gedacht. Er liefert Rohdaten aus dem Spiel wie Entitäten und Gegenstand NBT-Daten."
         },
         "disabled": "Entwicklermodus deaktiviert!",
         "enabled": "Entwicklermodus aktiviert! HINWEIS: Drücke \"%keyName%\", um NBT-Daten zu kopieren!",
         "prefix": "Entwickler"
       },
       "edit": {
-        "help": "GUI Locations bearbeiten"
+        "help": "Bearbeitet GUI-Standorte"
       },
       "folder": {
-        "help": "Mods-Ordner öffnen",
+        "help": "Öffnet deinen Mods-Ordner",
         "error": "Beim Öffnen des Mods-Ordners ist ein Fehler aufgetreten: %s"
       },
       "help": {
-        "help": "Zeigt diese Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesen Befehl angezeigt.",
+        "help": "Zeigt diese Hilfs-Nachricht. Wenn ein Befehl angegeben wurde, wird genaue Hilfe zu diesem Befehl angezeigt.",
         "detailedHelp": {
           "options": {
             "command": "der Unterbefehl für den eine genauere Nutzung erhalten werden soll"
@@ -400,16 +565,16 @@
         }
       },
       "printDeaths": {
-        "help": "§e(Dev) §7Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
+        "help": "Druckt die in den Dungeon-Todeszählern gespeicherten Zählungen zu Debugging-Zwecken."
       },
       "reload": {
-        "help": "§e(Dev) §7Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        "help": "Lädt alle Einstellungen und Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "reloadConfig": {
-        "help": "§e(Dev) §7Lädt die Einstellungen der Mod neu"
+        "help": "Lädt die Einstellungen der Mod neu"
       },
       "reloadRes": {
-        "help": "§e(Dev) §7Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
+        "help": "Lädt die Ressourcen der Mod neu. Das Spiel wird für ein paar Sekunden einfrieren."
       },
       "resetZealotCounter": {
         "help": "Setzt alle Zealot-Zähler zurück.",
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Anzahl der Zealots manuell festlegen",
+          "help": "Zealot-Zähler manuell festlegen",
           "detailedHelp": {
             "description": "Setzt Zahlen im Zealot-Zähler manuell.",
             "options": {
@@ -433,7 +598,7 @@
         }
       },
       "slayer": {
-        "help": "Manuelles Einstellen der Slayer-Statistiken, drücke Tab für Argumente",
+        "help": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
         "detailedHelp": {
           "description": "Manuelles Einstellen der Slayer-Statistiken drücke Tab für Argumente",
           "options": {
@@ -451,12 +616,12 @@
         "invalidStat": "\"%input%\" ist kein gültiger boss!"
       },
       "toggleActionBarLogging": {
-        "help": "§e(Dev) §7Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
+        "help": "Schalte die Protokollierung der Nachrichten in der Aktionsleiste um",
         "disabled": "Nachrichten in der Aktionsleiste werden nicht mehr protokolliert.",
         "enabled": "Nachrichten in der Aktionsleiste werden nun protokolliert."
       },
       "toggleMagmaTimerLogging": {
-        "help": "§e(Dev) §7Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
+        "help": "Umschalten der Protokollierung von Magma-Boss-Timer-Fehlermeldungen",
         "disabled": "Die Timer-Meldungen des Magma-Bosses werden nicht mehr protokolliert.",
         "enabled": "Die Timer-Meldungen des Magma-Bosses werden nun protokolliert."
       },
@@ -473,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "NBT-Daten kopieren"
+    "developerCopyNBT": "NBT-Daten kopieren",
+    "increaseDungeonMapZoom": "Dungeon-Karte Vergrößern",
+    "decreaseDungeonMapZoom": "Dungeon-Karte Verkleinern"
   },
   "dragonTracker": {
     "protector": "Beschützer (Protector)",

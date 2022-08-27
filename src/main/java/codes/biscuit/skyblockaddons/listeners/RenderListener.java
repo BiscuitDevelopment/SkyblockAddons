@@ -71,6 +71,7 @@ import java.text.DecimalFormat;
 import java.util.List;
 import java.util.*;
 
+import static codes.biscuit.skyblockaddons.utils.TextUtils.NUMBER_FORMAT;
 import static net.minecraft.client.gui.Gui.icons;
 
 public class RenderListener {
@@ -152,7 +153,7 @@ public class RenderListener {
         if (mc != null) {
             EntityPlayerSP p = mc.thePlayer;
             if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                float newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                         getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                 main.getUtils().getAttributes().get(Attribute.HEALTH).setValue(newHealth);
             }
@@ -398,9 +399,9 @@ public class RenderListener {
         // The fill of the bar from 0 to 1
         float fill;
         if (feature == Feature.MANA_BAR) {
-            fill = (float) getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
+            fill = getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.DRILL_FUEL_BAR) {
-            fill = (float) getAttribute(Attribute.FUEL) / getAttribute(Attribute.MAX_FUEL);
+            fill = getAttribute(Attribute.FUEL) / getAttribute(Attribute.MAX_FUEL);
         } else if (feature == Feature.SKILL_PROGRESS_BAR) {
             ActionBarParser parser = main.getPlayerListener().getActionBarParser();
             if (buttonLocation == null) {
@@ -413,7 +414,7 @@ public class RenderListener {
                 fill = 0.40F;
             }
         } else {
-            fill = (float) getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
+            fill = getAttribute(Attribute.HEALTH) / getAttribute(Attribute.MAX_HEALTH);
         }
         if (fill > 1) fill = 1;
 
@@ -674,7 +675,7 @@ public class RenderListener {
         String text;
         int color = main.getConfigValues().getColor(feature);
         if (feature == Feature.MANA_TEXT) {
-            text = getAttribute(Attribute.MANA) + "/" + getAttribute(Attribute.MAX_MANA);
+            text = NUMBER_FORMAT.format(getAttribute(Attribute.MANA)) + "/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_MANA));
 
         } else if (feature == Feature.OVERFLOW_MANA) {
             if (getAttribute(Attribute.OVERFLOW_MANA) != 0 || buttonLocation != null) {
@@ -683,10 +684,13 @@ public class RenderListener {
                 return;
             }
         } else if (feature == Feature.HEALTH_TEXT) {
-            text = getAttribute(Attribute.HEALTH) + "/" + getAttribute(Attribute.MAX_HEALTH);
+            if (mc.thePlayer.isPotionActive(22/* Absorption */)) {
+                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(), main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
+            }
+            text = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH)) + "/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH));
 
         } else if (feature == Feature.DEFENCE_TEXT) {
-            text = String.valueOf(getAttribute(Attribute.DEFENCE));
+            text = NUMBER_FORMAT.format(getAttribute(Attribute.DEFENCE));
 
         } else if (feature == Feature.OTHER_DEFENCE_STATS) {
             text = main.getPlayerListener().getActionBarParser().getOtherDefense();
@@ -698,7 +702,7 @@ public class RenderListener {
             }
 
         } else if (feature == Feature.EFFECTIVE_HEALTH_TEXT) {
-            text = String.valueOf(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
+            text = NUMBER_FORMAT.format(Math.round(getAttribute(Attribute.HEALTH) * (1 + getAttribute(Attribute.DEFENCE) / 100F)));
 
         } else if (feature == Feature.DRILL_FUEL_TEXT) {
             if (!ItemUtils.isDrill(mc.thePlayer.getHeldItem())) {
@@ -712,7 +716,7 @@ public class RenderListener {
             text = bigDecimal + "%";
 
         } else if (feature == Feature.SPEED_PERCENTAGE) {
-            String walkSpeed = String.valueOf(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
+            String walkSpeed = NUMBER_FORMAT.format(Minecraft.getMinecraft().thePlayer.capabilities.getWalkSpeed() * 1000);
             text = walkSpeed.substring(0, Math.min(walkSpeed.length(), 3));
 
             if (text.endsWith(".")) text = text.substring(0, text.indexOf('.')); //remove trailing periods
@@ -720,7 +724,7 @@ public class RenderListener {
             text += "%";
 
         } else if (feature == Feature.HEALTH_UPDATES) {
-            Integer healthUpdate = main.getPlayerListener().getHealthUpdate();
+            Float healthUpdate = main.getPlayerListener().getHealthUpdate();
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
                     color = healthUpdate > 0 ? ColorCode.GREEN.getColor() : ColorCode.RED.getColor();
@@ -2264,8 +2268,8 @@ public class RenderListener {
         float x = main.getConfigValues().getActualX(Feature.POWER_ORB_STATUS_DISPLAY);
         float y = main.getConfigValues().getActualY(Feature.POWER_ORB_STATUS_DISPLAY);
 
-        int maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
-        double healthRegen = maxHealth * powerOrb.getHealthRegen();
+        float maxHealth = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue();
+        float healthRegen = (float) (maxHealth * powerOrb.getHealthRegen());
         if (main.getUtils().getSlayerQuest() == EnumUtils.SlayerQuest.TARANTULA_BROODFATHER && main.getUtils().getSlayerQuestLevel() >= 2) {
             healthRegen *= 0.5; // Tarantula boss 2+ reduces healing by 50%.
         }
@@ -2274,9 +2278,9 @@ public class RenderListener {
         List<String> display = new LinkedList<>();
         display.add(String.format("§c+%s ❤/s", TextUtils.formatDouble(healthRegen)));
         if (powerOrb.getManaRegen() > 0) {
-            int maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
-            double manaRegen = Math.floorDiv(maxMana, 50);
-            manaRegen = manaRegen + manaRegen * powerOrb.getManaRegen();
+            float maxMana = main.getUtils().getAttributes().get(Attribute.MAX_MANA).getValue();
+            float manaRegen = (float) Math.floor(maxMana / 50);
+            manaRegen = (float) (manaRegen + manaRegen * powerOrb.getManaRegen());
             display.add(String.format("§b+%s ✎/s", TextUtils.formatDouble(manaRegen)));
         }
         if (powerOrb.getStrength() > 0) {
@@ -2337,7 +2341,7 @@ public class RenderListener {
     /**
      * Easily grab an attribute from utils.
      */
-    private int getAttribute(Attribute attribute) {
+    private float getAttribute(Attribute attribute) {
         return main.getUtils().getAttributes().get(attribute).getValue();
     }
 

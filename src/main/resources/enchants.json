@@ -33,7 +33,7 @@
     "big brain": {
       "loreName": "Big Brain",
       "nbtName": "big_brain",
-      "goodLevel": 0,
+      "goodLevel": 5,
       "maxLevel": 5
     },
     "blast protection": {
@@ -46,7 +46,7 @@
       "loreName": "Blessing",
       "nbtName": "blessing",
       "goodLevel": 5,
-      "maxLevel": 5
+      "maxLevel": 6
     },
     "caster": {
       "loreName": "Caster",
@@ -84,6 +84,18 @@
       "goodLevel": 5,
       "maxLevel": 6
     },
+    "charm": {
+      "loreName": "Charm",
+      "nbtName": "charm",
+      "goodLevel": 4,
+      "maxLevel": 5
+    },
+    "corruption": {
+      "loreName": "Corruption",
+      "nbtName": "corruption",
+      "goodLevel": 4,
+      "maxLevel": 5
+    },
     "delicate": {
       "loreName": "Delicate",
       "nbtName": "delicate",
@@ -106,7 +118,7 @@
       "loreName": "Efficiency",
       "nbtName": "efficiency",
       "goodLevel": 5,
-      "maxLevel": 5
+      "maxLevel": 10
     },
     "ender slayer": {
       "loreName": "Ender Slayer",
@@ -136,7 +148,7 @@
       "loreName": "Fire Aspect",
       "nbtName": "fire_aspect",
       "goodLevel": 2,
-      "maxLevel": 2
+      "maxLevel": 3
     },
     "fire protection": {
       "loreName": "Fire Protection",
@@ -160,7 +172,7 @@
       "loreName": "Fortune",
       "nbtName": "fortune",
       "goodLevel": 3,
-      "maxLevel": 3
+      "maxLevel": 4
     },
     "frail": {
       "loreName": "Frail",
@@ -173,6 +185,12 @@
       "nbtName": "frost_walker",
       "goodLevel": 2,
       "maxLevel": 2
+    },
+    "ferocious mana": {
+      "loreName": "Ferocious Mana",
+      "nbtName": "ferocious_mana",
+      "goodLevel": 9,
+      "maxLevel": 10
     },
     "giant killer": {
       "loreName": "Giant Killer",
@@ -191,6 +209,12 @@
       "nbtName": "harvesting",
       "goodLevel": 5,
       "maxLevel": 6
+    },
+    "hardened mana": {
+      "loreName": "Hardened Mana",
+      "nbtName": "hardened_mana",
+      "goodLevel": 9,
+      "maxLevel": 10
     },
     "impaling": {
       "loreName": "Impaling",
@@ -258,6 +282,12 @@
       "goodLevel": 0,
       "maxLevel": 3
     },
+    "mana vampire": {
+      "loreName": "Mana Vampire",
+      "nbtName": "mana_vampire",
+      "goodLevel": 9,
+      "maxLevel": 10
+    },
     "overload": {
       "loreName": "Overload",
       "nbtName": "overload",
@@ -275,6 +305,12 @@
       "nbtName": "power",
       "goodLevel": 5,
       "maxLevel": 7
+    },
+    "pristine": {
+      "loreName": "Pristine",
+      "nbtName": "pristine",
+      "goodLevel": 0,
+      "maxLevel": 5
     },
     "projectile protection": {
       "loreName": "Projectile Protection",
@@ -304,7 +340,7 @@
       "loreName": "Rainbow",
       "nbtName": "rainbow",
       "goodLevel": 1,
-      "maxLevel": 1
+      "maxLevel": 2
     },
     "rejuvenate": {
       "loreName": "Rejuvenate",
@@ -390,6 +426,18 @@
       "goodLevel": 3,
       "maxLevel": 5
     },
+    "smoldering": {
+      "loreName": "Smoldering",
+      "nbtName": "smoldering",
+      "goodLevel": 4,
+      "maxLevel": 5
+    },
+    "strong mana": {
+      "loreName": "Strong Mana",
+      "nbtName": "strong_mana",
+      "goodLevel": 9,
+      "maxLevel": 10
+    },
     "telekinesis": {
       "loreName": "Telekinesis",
       "nbtName": "telekinesis",
@@ -450,8 +498,8 @@
       "goodLevel": 0,
       "maxLevel": 5
     },
-    "turbo-coco": {
-      "loreName": "Turbo-Coco",
+    "turbo-cocoa": {
+      "loreName": "Turbo-Cocoa",
       "nbtName": "turbo_coco",
       "goodLevel": 0,
       "maxLevel": 5
@@ -530,9 +578,27 @@
       "goodLevel": 0,
       "maxLevel": 5
     },
+    "duplex": {
+      "loreName": "Duplex",
+      "nbtName": "ultimate_reiterate",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
     "last stand": {
       "loreName": "Last Stand",
       "nbtName": "ultimate_last_stand",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "fatal tempo": {
+      "loreName": "Fatal Tempo",
+      "nbtName": "ultimate_fatal_tempo",
+      "goodLevel": 0,
+      "maxLevel": 5
+    },
+    "inferno": {
+      "loreName": "Inferno",
+      "nbtName": "ultimate_inferno",
       "goodLevel": 0,
       "maxLevel": 5
     },
