@@ -33,16 +33,16 @@ blossom {
             throw new InvalidUserDataException('No run attempt provided for CI build.')
         } else {
             def nf = NumberFormat.getIntegerInstance(Locale.US)
-            def buildNumber = project.setProperty('buildNumber')
-            def runAttempt = project.setProperty('runAttempt')
+            def buildNumber = project.property('buildNumber')
+            def runAttempt = project.property('runAttempt')
             includeRunAttempt = nf.parse(runAttempt as String) > 1
 
             try {
                 if (includeRunAttempt) {
                     project.setProperty('buildNumber', "${buildNumber}.${nf.parse(runAttempt as String) - 1}")
                 }
-                formattedBuildNumber = nf.format(nf.parse(project.setProperty('buildNumber') as String))
-                project.version = "${project.version}+" + project.setProperty('buildNumber')
+                formattedBuildNumber = nf.format(nf.parse(project.property('buildNumber') as String))
+                project.version = "${project.version}+" + project.property('buildNumber')
             } catch (ParseException e) {
                 throw new InvalidUserDataException("Build number could not be parsed (${e.message})", e)
             }
@@ -91,7 +91,7 @@ repositories {
 }
 
 dependencies {
-    minecraft(" com.mojang:minecraft:${project.minecraftVersion}")
+    minecraft("com.mojang:minecraft:${project.minecraftVersion}")
     mappings("de.oceanlabs.mcp:mcp_stable:${project.mappings}")
     forge("net.minecraftforge:forge:${project.forgeVersion}")
     runtimeOnly('me.djtheredstoner:DevAuth-forge-legacy:1.1.0')
