@@ -71,13 +71,12 @@ loom {
 sourceSets {
     main {
         // Forge needs resources to be in the same directory as the classes.
-        output.resourcesDir = java.outputDir
+        output.resourcesDir = java.classesDirectory
     }
 }
 
-configurations.register('shadowImpl') {
-    configurations.implementation.extendsFrom(configurations.getByName('shadowImpl'))
-}
+configurations.create('bundle')
+configurations.implementation.extendsFrom(configurations.getByName('bundle'))
 
 repositories {
     mavenCentral()
@@ -98,11 +97,11 @@ dependencies {
     runtimeOnly('me.djtheredstoner:DevAuth-forge-legacy:1.1.0')
 
     // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    implementation('com.github.ILikePlayingGames:DiscordIPC:-SNAPSHOT') {
+    bundle('com.github.ILikePlayingGames:DiscordIPC:-SNAPSHOT') {
         exclude module: 'log4j'
         because 'Different version conflicts with Minecraft\'s Log4J'
     }
-    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+    bundle('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
         exclude module: 'gson'
         because 'Different version conflicts with Minecraft\'s GSON'
     }
@@ -123,16 +122,7 @@ tasks.register('copyLicenses', Copy) {
     into(sourceSets.main.output.resourcesDir)
 }
 
-assemble {
-    dependsOn remapJar
-}
-
 jar {
-    mustRunAfter copyLicenses
-
-    // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
-
     manifest.attributes(
             'Manifest-Version': '2.0',
             'Main-Class': 'SkyblockAddonsInstallerFrame',
@@ -148,29 +138,37 @@ jar {
             'ModSide': 'CLIENT',
             'FMLAT': "${modId}_at.cfg"
     )
-
-    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
-    enabled = false
 }
 
 remapJar {
     from(tasks.shadowJar)
     input.set(tasks.shadowJar.archiveFile)
+
+    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+}
+
+processResources {
+    dependsOn tasks.copyLicenses
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraftVersion
+
+    // replace stuff in mcmod.info, nothing else
+    from('mcmod.info') {
+        // replace version and mcversion
+        expand(version: project.version, mcversion: project.minecraftVersion)
+    }
 }
 
 shadowJar {
-    archiveName = jar.archiveName
-
+    configurations = [project.configurations.bundle]
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     exclude('dummyThing')
-    exclude('META-INF/maven/')
-    exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
 
     // Relocate Discord RPC into the main codebase
-    relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
+    relocate 'com.jagrosh.discordipc', 'shadow.discordipc'
 }
 
 test {
