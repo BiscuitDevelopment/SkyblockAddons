@@ -1015,7 +1015,7 @@ public class RenderListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
                     text = Translations.getMessage("messages.fetchurItem", fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
                 } else {
-                    text = Translations.getMessage("messages.fetchurItem");
+                    text = Translations.getMessage("messages.fetchurItem", "");
                 }
             } else {
                 text = ""; // If it has made fetchur, then no need for text
