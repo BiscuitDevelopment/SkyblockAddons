@@ -62,6 +62,7 @@ loom {
             property('devauth.enabled', 'true')
         }
     }
+    log4jConfigs.from(file('log-config.xml'))
     forge {
         pack200Provider.set(new Pack200Adapter())
         accessTransformer('src/main/resources/META-INF/skyblockaddons_at.cfg')
