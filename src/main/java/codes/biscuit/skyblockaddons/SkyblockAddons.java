@@ -23,10 +23,7 @@ import codes.biscuit.skyblockaddons.misc.scheduler.NewScheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.newgui.GuiManager;
-import codes.biscuit.skyblockaddons.utils.EnumUtils;
-import codes.biscuit.skyblockaddons.utils.InventoryUtils;
-import codes.biscuit.skyblockaddons.utils.SkyblockAddonsMessageFactory;
-import codes.biscuit.skyblockaddons.utils.Utils;
+import codes.biscuit.skyblockaddons.utils.*;
 import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import codes.biscuit.skyblockaddons.utils.gson.GsonInitializableTypeAdapter;
 import codes.biscuit.skyblockaddons.utils.gson.PatternAdapter;
@@ -192,6 +189,10 @@ public class SkyblockAddons {
         usingLabymod = utils.isModLoaded("labymod");
         usingOofModv1 = utils.isModLoaded("refractionoof", "1.0");
         usingPatcher = utils.isModLoaded("patcher");
+
+        if (!this.configValues.isEnabled(Feature.NUMBER_SEPARATORS)) {
+            TextUtils.NUMBER_FORMAT.setGroupingUsed(false);
+        }
     }
 
     @Mod.EventHandler

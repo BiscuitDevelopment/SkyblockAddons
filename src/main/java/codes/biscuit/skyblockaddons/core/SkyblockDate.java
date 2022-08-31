@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.utils.TextUtils;
 
-import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -120,7 +119,7 @@ public class SkyblockDate {
                 monthName,
                 DAY + TextUtils.getOrdinalSuffix(DAY),
                 HOUR,
-                TextUtils.NUMBER_FORMAT.format(MINUTE),
+                TextUtils.formatNumber(MINUTE),
                 PERIOD);
     }
 }

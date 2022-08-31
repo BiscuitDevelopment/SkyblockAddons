@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 
 /**
  *  This class provides methods to check what opengl capabilities are supported.
- *
+ * <p>
  *  Please use the provided methods instead of calling opengl methods directly to avoid crashes!
  */
 public class ShaderHelper {

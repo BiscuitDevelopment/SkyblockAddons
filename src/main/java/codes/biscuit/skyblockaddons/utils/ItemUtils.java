@@ -42,9 +42,7 @@ public class ItemUtils {
      * This expression matches the line with a Skyblock item's rarity and item type that's at the end of its lore.
      */
     private static final Pattern ITEM_TYPE_AND_RARITY_PATTERN = Pattern.compile("§l(?<rarity>[A-Z]+) ?(?<type>[A-Z ]+)?(?:§[0-9a-f]§l§ka)?$");
-    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     @Setter private static Map<String, CompactorItem> compactorItems;
-    @SuppressWarnings({"FieldMayBeFinal", "MismatchedQueryAndUpdateOfCollection"})
     @Setter private static Map<String, ContainerData> containers;
 
 

@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import com.google.gson.JsonObject;
 
 import java.nio.charset.StandardCharsets;
@@ -18,7 +19,11 @@ public class TextUtils {
      * Hypixel uses US number format.
      */
     public static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance(Locale.US);
-
+    /**
+     * Number format with thousands separators disabled, used for displaying numbers in Hypixel's old (no separators)
+     * style
+     */
+    public static final NumberFormat NUMBER_FORMAT_NO_GROUPING = NumberFormat.getInstance(Locale.US);
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
     private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
@@ -31,22 +36,31 @@ public class TextUtils {
     private static final Pattern MAGNITUDE_PATTERN = Pattern.compile("(\\d[\\d,.]*\\d*)+([kKmMbBtT])");
 
     private static final NavigableMap<Integer, String> suffixes = new TreeMap<>();
+
     static {
         suffixes.put(1_000, "k");
         suffixes.put(1_000_000, "M");
         suffixes.put(1_000_000_000, "B");
+
         NUMBER_FORMAT.setMaximumFractionDigits(2);
+        NUMBER_FORMAT_NO_GROUPING.setMaximumFractionDigits(2);
+        NUMBER_FORMAT_NO_GROUPING.setGroupingUsed(false);
     }
 
     /**
-     * Formats a double number to look better with commas every 3 digits and up to two decimal places.
+     * Formats a number to look better with commas every 3 digits (if the {@code NUMBER_SEPARATORS} mod feature is enabled)
+     * and up to two decimal places.
      * For example: {@code 1,006,789.5}
      *
      * @param number Number to format
      * @return Formatted string
      */
-    public static String formatDouble(double number) {
-        return NUMBER_FORMAT.format(number);
+    public static String formatNumber(Number number) {
+        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.NUMBER_SEPARATORS)) {
+            return NUMBER_FORMAT.format(number);
+        } else {
+            return NUMBER_FORMAT_NO_GROUPING.format(number);
+        }
     }
 
     /**
@@ -112,7 +126,7 @@ public class TextUtils {
     /**
      * Converts all numbers with magnitudes in a given string, e.g. "10k" -> "10000" and "10M" -> "10000000." Magnitudes
      * are not case-sensitive.
-     *
+     * <p>
      * <b>Supported magnitudes:</b>
      * <p>k - thousand</p>
      * <p>m - million</p>
@@ -150,7 +164,7 @@ public class TextUtils {
                     parsedDouble *= 1_000_000_000_000L;
             }
 
-            matcher.appendReplacement(sb, NUMBER_FORMAT.format(parsedDouble));
+            matcher.appendReplacement(sb, TextUtils.formatNumber(parsedDouble));
         }
         matcher.appendTail(sb);
 
@@ -218,7 +232,7 @@ public class TextUtils {
     }
 
     /**
-     * @param textureURL The texture ID/hash that is in the texture URL (not including http://textures.minecraft.net/texture/)
+     * @param textureURL The texture ID/hash that is in the texture URL (not including {@code http://textures.minecraft.net/texture/})
      * @return A json string including the texture URL as a skin texture (used in NBT)
      */
     public static String encodeSkinTextureURL(String textureURL) {
