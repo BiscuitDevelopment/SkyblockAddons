@@ -266,7 +266,7 @@ public class SettingsGui extends GuiScreen {
         int x = halfWidth - (boxWidth / 2);
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
-            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, "settings.changeColor", main, feature));
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Translations.getMessage("settings.changeColor"), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             try {
                 buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));

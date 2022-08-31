@@ -20,7 +20,7 @@ public class LocalizedStringsRequest extends RemoteFileRequest<JsonObject> {
                 "https://distributions.crowdin.net/d7578b29286a48bcaf7fec87zgb/content/main/src/main/resources/lang/%s.json",
                         language.getPath()),
                 new JSONResponseHandler<>(JsonObject.class),
-                language != Language.ENGLISH, true);
+                !(language == Language.ENGLISH || language == Language.RUSSIAN), true);
     }
 
     @Override

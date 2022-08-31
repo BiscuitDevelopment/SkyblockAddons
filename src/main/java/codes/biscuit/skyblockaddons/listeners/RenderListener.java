@@ -394,6 +394,8 @@ public class RenderListener {
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         // The fill of the bar from 0 to 1
         float fill;
+        // Whether the player has absorption hearts
+        boolean hasAbsorption = false;
         if (feature == Feature.MANA_BAR) {
             fill = getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.DRILL_FUEL_BAR) {
@@ -452,12 +454,17 @@ public class RenderListener {
                 color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GREEN.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
                 color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GRAY.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
+            } else if (mc.thePlayer.isPotionActive(22) /* Absorption */) {
+                if (getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH)) {
+                    fill = getAttribute(Attribute.MAX_HEALTH) / getAttribute(Attribute.HEALTH);
+                    hasAbsorption = true;
+                }
             }
         }
 
         main.getUtils().enableStandardGLOptions();
         // Draw the actual bar
-        drawMultiLayeredBar(mc, color, x, y, fill);
+        drawMultiLayeredBar(mc, color, x, y, fill, hasAbsorption);
 
         main.getUtils().restoreGLOptions();
     }
@@ -466,6 +473,7 @@ public class RenderListener {
      * Draws a multitextured bar:
      * Begins by coloring and rendering the empty bar.
      * Then, colors and renders the full bar up to the fraction {@param fill}.
+     * Then, overlays the absorption portion of the bar in gold if the player has absorption hearts
      * Then, overlays (and does not color) an additional texture centered on the current progress of the bar.
      * Then, overlays (and does not color) a final style texture over the bar
      * @param mc link to the current minecraft session
@@ -473,8 +481,9 @@ public class RenderListener {
      * @param x the x position of the bar
      * @param y the y position of the bar
      * @param fill the fraction (from 0 to 1) of the bar that's full
+     * @param hasAbsorption {@code true} if the player has absorption hearts
      */
-    private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
+    private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill, boolean hasAbsorption) {
         int barHeight = 5, barWidth = 71;
         float barFill = barWidth * fill;
         mc.getTextureManager().bindTexture(BARS);
@@ -503,6 +512,12 @@ public class RenderListener {
         // Disable coloring
         if (color.drawMulticolorUsingShader()) {
             ShaderManager.getInstance().disableShader();
+        }
+
+        // Overlay absorption health if needed
+        if (hasAbsorption) {
+            ColorUtils.bindColor(ColorCode.GOLD.getColor());
+            DrawUtils.drawModalRectWithCustomSizedTexture(x + barFill, y, barFill + 1, 7, barWidth - barFill, barHeight, 80, 50);
         }
         ColorUtils.bindWhite();
 
@@ -680,9 +695,6 @@ public class RenderListener {
                 return;
             }
         } else if (feature == Feature.HEALTH_TEXT) {
-            if (mc.thePlayer.isPotionActive(22/* Absorption */)) {
-                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(), main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
-            }
             text = TextUtils.formatNumber(getAttribute(Attribute.HEALTH)) + "/" + TextUtils.formatNumber(getAttribute(Attribute.MAX_HEALTH));
 
         } else if (feature == Feature.DEFENCE_TEXT) {
@@ -1015,7 +1027,7 @@ public class RenderListener {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
                     text = Translations.getMessage("messages.fetchurItem", fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
                 } else {
-                    text = Translations.getMessage("messages.fetchurItem");
+                    text = Translations.getMessage("messages.fetchurItem", "");
                 }
             } else {
                 text = ""; // If it has made fetchur, then no need for text
@@ -1439,6 +1451,24 @@ public class RenderListener {
                 } else {
                     DrawUtils.drawText(text, x, y, color); // Line related to the "Fetchur wants" text
                 }
+                FontRendererHook.endFeatureFont();
+            }
+        } else if (feature == Feature.HEALTH_TEXT) {
+            if (mc.thePlayer.isPotionActive(22/* Absorption */)
+                    && getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH)) {
+                String formattedHealth = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH));
+                int formattedHealthWidth = mc.fontRendererObj.getStringWidth(formattedHealth);
+
+                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(),
+                        main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
+                FontRendererHook.setupFeatureFont(feature);
+                DrawUtils.drawText(formattedHealth, x, y, color);
+                color = main.getConfigValues().getColor(feature);
+                DrawUtils.drawText("/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH)),
+                        x + formattedHealthWidth, y, color);
+            } else {
+                FontRendererHook.setupFeatureFont(feature);
+                DrawUtils.drawText(text, x, y, color);
                 FontRendererHook.endFeatureFont();
             }
         } else {
