@@ -11,28 +11,29 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.util.ResourceLocation;
+import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 
 public class ButtonLanguage extends GuiButton {
-
-    private static ResourceLocation FEATURE_BACKGROUND = new ResourceLocation("skyblockaddons", "gui/featurebackground.png");
-
-    private final SkyblockAddons main;
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
     private final Language language;
     private final String languageName;
+
+    private boolean flagResourceExceptionTriggered;
 
     /**
      * Create a button for toggling a feature on or off. This includes all the {@link Feature}s that have a proper ID.
      */
-    public ButtonLanguage(double x, double y, String buttonText, SkyblockAddons main, Language language) {
+    public ButtonLanguage(double x, double y, String buttonText, Language language) {
         super(0, (int)x, (int)y, buttonText);
         this.language = language;
         DataUtils.loadLocalizedStrings(language, false);
         this.languageName = Translations.getMessage("language");
-        this.main = main;
         this.width = 140;
         this.height = 25;
+        flagResourceExceptionTriggered = false;
     }
 
     @Override
@@ -45,7 +46,10 @@ public class ButtonLanguage extends GuiButton {
                 mc.getTextureManager().bindTexture(language.getResourceLocation());
                 DrawUtils.drawModalRectWithCustomSizedTexture(xPosition+width-32, yPosition, 0, 0, 30, 26, 30, 26, true);
             } catch (Exception ex) {
-                ex.printStackTrace();
+                if (!flagResourceExceptionTriggered) {
+                    flagResourceExceptionTriggered = true;
+                    logger.catching(ex);
+                }
             }
 
             hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
@@ -54,8 +58,7 @@ public class ButtonLanguage extends GuiButton {
             if (hovered) {
                 fontColor = new Color(255, 255, 160, 255).getRGB();
             }
-
-            drawCenteredString(mc.fontRendererObj, languageName, xPosition+width/2, yPosition+10, fontColor);
+            drawString(mc.fontRendererObj, languageName, xPosition + 5, yPosition+10, fontColor);
         }
     }
 

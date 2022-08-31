@@ -14,21 +14,21 @@ public abstract class Shader {
 
     protected static final SkyblockAddons main = SkyblockAddons.getInstance();
 
-    private String vertex;
-    private String fragment;
-    private VertexFormat vertexFormat;
+    private final String VERTEX;
+    private final String FRAGMENT;
+    private final VertexFormat VERTEX_FORMAT;
 
     @Getter protected int program;
-    private List<Uniform<?>> uniforms = new ArrayList<>();
+    private final List<Uniform<?>> uniforms = new ArrayList<>();
 
     public Shader(String vertex, String fragment) throws Exception {
         this(vertex, fragment, null);
     }
 
     private Shader(String vertex, String fragment, VertexFormat vertexFormat) throws Exception {
-        this.vertex = vertex;
-        this.fragment = fragment;
-        this.vertexFormat = vertexFormat;
+        this.VERTEX = vertex;
+        this.FRAGMENT = fragment;
+        this.VERTEX_FORMAT = vertexFormat;
 
         this.init();
     }
@@ -36,38 +36,38 @@ public abstract class Shader {
     private void init() throws Exception {
         // Create programs, load shaders, and link shaders
         program = ShaderLinkHelper.getStaticShaderLinkHelper().createProgram();
-        if (vertex != null) {
-            ShaderLoader vertexShaderLoader = ShaderLoader.load(ShaderLoader.ShaderType.VERTEX, vertex);
+        if (VERTEX != null) {
+            ShaderLoader vertexShaderLoader = ShaderLoader.load(ShaderLoader.ShaderType.VERTEX, VERTEX);
             vertexShaderLoader.attachShader(this);
         }
-        if (fragment != null) {
-            ShaderLoader fragmentShaderLoader = ShaderLoader.load(ShaderLoader.ShaderType.FRAGMENT, fragment);
+        if (FRAGMENT != null) {
+            ShaderLoader fragmentShaderLoader = ShaderLoader.load(ShaderLoader.ShaderType.FRAGMENT, FRAGMENT);
             fragmentShaderLoader.attachShader(this);
         }
-        ShaderHelper.getInstance().glLinkProgram(program);
+        ShaderHelper.glLinkProgram(program);
 
         // Check link status
-        int linkStatus = ShaderHelper.getInstance().glGetProgrami(program, ShaderHelper.getInstance().GL_LINK_STATUS);
+        int linkStatus = ShaderHelper.glGetProgrami(program, ShaderHelper.GL_LINK_STATUS);
         if (linkStatus == GL11.GL_FALSE) {
-            throw new OpenGLException("Error encountered when linking program containing VS " + vertex + " and FS " + fragment + ": "
-                    + ShaderHelper.getInstance().glGetProgramInfoLog(program, 32768));
+            throw new OpenGLException("Error encountered when linking program containing VS " + VERTEX + " and FS " + FRAGMENT + ": "
+                    + ShaderHelper.glGetProgramInfoLog(program, 32768));
         }
 
         // TODO Disable this code until there is a shader that actually uses a custom pipeline
         // If the vertex format is null we are using the fixed pipeline instead
 //        if (!isUsingFixedPipeline()) {
             // Set up VAOs & VBOs
-//            ShaderHelper.getInstance().glBindVertexArray(ShaderManager.getInstance().getVertexArrayObject());
-//            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, ShaderManager.getInstance().getVertexBufferObject());
-            // or ShaderManager.getInstance().getDataBuffer()
-//            ShaderHelper.getInstance().glBufferData(ShaderHelper.getInstance().GL_ARRAY_BUFFER, Tessellator.getInstance().getWorldRenderer().getByteBuffer(), ShaderHelper.getInstance().GL_DYNAMIC_DRAW);
+//            ShaderHelper.glBindVertexArray(ShaderManager.INSTANCE.getVertexArrayObject());
+//            ShaderHelper.glBindBuffer(ShaderHelper.GL_ARRAY_BUFFER, ShaderManager.INSTANCE.getVertexBufferObject());
+            // or ShaderManager.INSTANCE.getDataBuffer()
+//            ShaderHelper.glBufferData(ShaderHelper.GL_ARRAY_BUFFER, Tessellator.getInstance().getWorldRenderer().getByteBuffer(), ShaderHelper.GL_DYNAMIC_DRAW);
 
-//            int stride = vertexFormat.getVertexFormatElements().stream().mapToInt(VertexFormatElement::getTotalSize).sum();
+//            int stride = VERTEX_FORMAT.getVertexFormatElements().stream().mapToInt(VertexFormatElement::getTotalSize).sum();
 //            int index = 0;
 //            int bufferOffset = 0;
-//            for (VertexFormatElement bufferElementType : vertexFormat.getVertexFormatElements()) {
-//                ShaderHelper.getInstance().glEnableVertexAttribArray(index);
-//                ShaderHelper.getInstance().glVertexAttribPointer(index, bufferElementType.getCount(), bufferElementType.getElementType().getGlType(),
+//            for (VertexFormatElement bufferElementType : VERTEX_FORMAT.getVertexFormatElements()) {
+//                ShaderHelper.glEnableVertexAttribArray(index);
+//                ShaderHelper.glVertexAttribPointer(index, bufferElementType.getCount(), bufferElementType.getElementType().getGlType(),
 //                        bufferElementType.getElementType().isNormalize(), stride, bufferOffset);
 //                index++;
 //                bufferOffset += bufferElementType.getTotalSize();
@@ -80,8 +80,8 @@ public abstract class Shader {
         // TODO Disable this code until there is a shader that actually uses a custom pipeline
 //        if (!isUsingFixedPipeline()) {
             // Unbind all
-//            ShaderHelper.getInstance().glBindVertexArray(0);
-//            ShaderHelper.getInstance().glBindBuffer(ShaderHelper.getInstance().GL_ARRAY_BUFFER, 0);
+//            ShaderHelper.glBindVertexArray(0);
+//            ShaderHelper.glBindBuffer(ShaderHelper.GL_ARRAY_BUFFER, 0);
 //        }
     }
 
@@ -95,15 +95,15 @@ public abstract class Shader {
     }
 
     public void enable() {
-        ShaderHelper.getInstance().glUseProgram(program);
+        ShaderHelper.glUseProgram(program);
     }
 
     public void disable() {
-        ShaderHelper.getInstance().glUseProgram(0);
+        ShaderHelper.glUseProgram(0);
     }
 
     public boolean isUsingFixedPipeline() {
-        return vertexFormat == null;
+        return VERTEX_FORMAT == null;
     }
 
     public <T> void registerUniform(UniformType<T> uniformType, String name, Supplier<T> uniformValuesSupplier) {

@@ -171,7 +171,7 @@
     "compactTabList": "简洁 Tab 列表",
     "highlightSpecialEnchantments": "高亮特殊附魔",
     "disableDamageChatMessages": "关闭聊天栏伤害提示",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade 伤害显示",
     "outbidAlertSound": "新竞价提示音效",
     "hideMenuGlassPanes": "隐藏菜单中玻璃板分隔符的物品信息",
     "candyPointsCounter": "Spooky Event 糖果/分数统计器",
@@ -187,9 +187,9 @@
     "fishingParticleOverlay": "更改钓鱼提示粒子的颜色",
     "enchantmentLoreParsing": "分析附魔工具提示",
     "cooldownPrediction": "预测和缩短冷却时间",
-    "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
+    "legendaryMonkeyLevel100": "[临时] 100 级传奇猴子宠物",
     "biggerWake": "放大提示粒子",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "显示 Stacking 附魔升级进度",
     "showReforgeOverlay": "显示洗炼提示",
     "reforgeFilter": "洗练筛选",
     "hideEnchantDescription": "隐藏附魔描述",
@@ -212,8 +212,14 @@
     "abbreviateSkillXpDenominator": "简化技能升级所需经验的提示",
     "otherDefenseStats": "其他防御统计 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隐藏大厅出生点的玩家",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "jacobsContestTimer": "农业竞赛计时",
+    "dontReplaceRomanNumeralsInItemNames": "不要替换物品名称",
+    "backpackOpeningSound": "背包开启音效",
+    "devMode": "开发者模式",
+    "showSkyblockItemId": "显示物品的空岛生存物品 ID",
+    "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
+    "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放"
   },
   "messages": {
     "enchants": "附魔",
@@ -288,9 +294,13 @@
     "none": "无",
     "copyModeSet": "开发者复制模式已切换至： %mode% ，请按下 %keyName% 以复制特定NBT！",
     "chroma": "渐变",
-    "worldRenderedCooldownTime": "冷却: %time%s",
+    "worldRenderedCooldownTime": "冷却: %time%秒",
     "entityOutlinesRequirement": "请将光影、快速渲染以及抗锯齿设为“关闭”",
-    "version": "Version"
+    "version": "版本",
+    "invalidFeatureConfiguration": "%featureName% 检测无效，将其设置重制为默认值",
+    "fileFetchFailed": "%modName% 在获取 %number% 个数据文件时出错。请使用下方按钮复制错误信息并在 Discord 服务器上进行反馈。",
+    "copy": "复制",
+    "copied": "已复制！"
   },
   "discordStatus": {
     "titleNone": "无",
@@ -330,6 +340,167 @@
     "descriptionNormal": "以 Hypixel 标准样式显示附魔列表",
     "titleExpand": "展开",
     "descriptionExpand": "逐行显示附魔"
+  },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "打开主菜单"
+        },
+        "brand": {
+          "help": "§e(开发者) §7显示服务端名称"
+        },
+        "copyBlock": {
+          "help": "§e(开发者) §7复制准星所指方块的 NBT"
+        },
+        "copyEntity": {
+          "help": "§e(开发者) §7复制玩家附近指定范围内指定名称的实体 NBT",
+          "detailedHelp": {
+            "description": "复制实体的NBT数据。进行数据复制的实体种类和距离玩家范围可自定义。如果没有给定设置，则采用默认选项。默认设置为：包含玩家、盔甲架和生物，以及三格范围。如果不给定范围，则采用默认范围。",
+            "options": {
+              "entityNames": "你想要复制数据的实体种类 (例如 Player, Creeper)。输入指令后按下 \"Tab\" 键来获取完整列表。使用英文逗号分隔多个种类，且种类区分大小写。",
+              "radius": "进行复制NBT数据的玩家范围 (按格计算)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "§e(开发者) §7复制计分板文本",
+          "detailedHelp": {
+            "description": "复制侧边栏显示的文字",
+            "options": {
+              "formatted": "决定格式代码是否被复制。值可以为 \"true\" 或 \"false\"，默认值为 \"false\"。若为 \"true\" 则复制格式代码。"
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "§e(开发者) §7复制页头页脚标签",
+          "detailedHelp": {
+            "description": "此命令复制玩家列表标签的页眉和页脚(其中包含样式代码)。"
+          }
+        },
+        "dev": {
+          "help": "启用/禁用 开发者模式",
+          "detailedHelp": {
+            "description": "此命令将开启开发者模式。这个模式是为空岛生存模组和工具开发者所设计。它会给予例如实体和物品NBT的源数据。"
+          },
+          "prefix": "开发者"
+        },
+        "edit": {
+          "help": "编辑 GUI 位置"
+        },
+        "folder": {
+          "help": "打开 mods 文件夹"
+        },
+        "help": {
+          "help": "显示此帮助信息。若指定了某一指令，则显示该指令的帮助信息。",
+          "detailedHelp": {
+            "options": {
+              "command": "此子命令来获取详细的用法"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "§e(开发者) §7将地牢死亡计数输出至聊天栏以供调试"
+        },
+        "reload": {
+          "help": "§e(开发者) §7重载 mod 设定与资源， 游戏可能会冻结一段时间"
+        },
+        "reloadConfig": {
+          "help": "§e(开发者) §7重载 mod 设定"
+        },
+        "reloadRes": {
+          "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
+        },
+        "resetZealotCounter": {
+          "help": "重置全部末影战士相关计数器"
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "手动设置末影战士计数器",
+            "detailedHelp": {
+              "description": "手动设置末影战士计数器。",
+              "options": {
+                "eyes": "总计获取召唤之眼数",
+                "totalZealots": "总计末影战士击杀数",
+                "zealots": "自上次掉落召唤之眼后的末影战士击杀数"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "修改猎手任务统计数据，按 tab 查看指令参数",
+          "detailedHelp": {
+            "description": "修改猎手任务统计数据，按 tab 查看指令参数",
+            "options": {
+              "boss": "猎杀 Boss 类别: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+              "number": "统计设置为的数字",
+              "stat": "可更改统计数据，值可以为 \"kills\"，也可以是掉落物名称，格式如下：\"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "§e(开发者) §7切换日志操作栏消息"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "启用 / 禁用 岩浆怪 Boss 计时器调试信息记录"
+        },
+        "version": {
+          "help": "显示 mod 版本信息"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "服务端：%brand%",
+          "notFound": "无法检测到服务端！"
+        },
+        "dev": {
+          "disabled": "开发者模式已禁用！",
+          "enabled": "开发者模式已启用！提示：按下 \"%keyName%\" 以复制 NBT 数据！"
+        },
+        "folder": {
+          "error": "试图打开 mods 文件夹时出错：%s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "末影战士击杀计数已重置！"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "已设置召唤之眼掉落数为 %number%！",
+            "totalZealotsSet": "已设置总计末影战士击杀数为 %number%！",
+            "wrongUsage": "无效选项！请选择 %options%。",
+            "zealotsSet": "已设置自上次召唤之眼掉落后的末影战士击杀数为 %number%！"
+          }
+        },
+        "slayer": {
+          "bossRequired": "你需要选择一个 Boss! 请选择 %bosses%",
+          "statRequired": "你需要选择一个统计信息. 按 Tab 键查看选项.",
+          "numberRequired": "你需要添加你想要的数值",
+          "killsSet": "猎杀 %boss% 的击杀统计已设定为 %number%",
+          "statSet": "%boss% 的猎杀统计 %stat% 已设定为 %number%",
+          "invalidBoss": "\"%input%\" 不是有效的统计信息!",
+          "invalidStat": "\"%input%\" 不是有效的 boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "操作栏消息将不再被记录。",
+          "enabled": "操作栏消息现在将被记录。"
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "岩浆怪 Boss 计时器将不再被计入日志。",
+          "enabled": "岩浆怪 Boss 计时器将被计入日志。"
+        },
+        "version": {
+          "hoverText": "点击置入聊天栏以便复制"
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "错误用法！",
+        "subCommandNotFound": "未找到子命令 \"%sub-command%\"。"
+      }
+    }
   },
   "commandUsage": {
     "sba": {
@@ -406,8 +577,8 @@
         "help": "§e(开发者) §7重载 mod 资源， 游戏可能会假死一段时间"
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "重置全部末影战士相关计数器",
+        "resetSuccess": "末影战士击杀计数已重置！"
       },
       "set": {
         "zealotCounter": {
@@ -450,13 +621,13 @@
         "enabled": "操作栏消息现在将被记录。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "开启 / 关闭岩浆怪 Boss 计时器调试信息记录",
+        "help": "启用 / 禁用 岩浆怪 Boss 计时器调试信息记录",
         "disabled": "岩浆怪 Boss 计时器将不再被计入日志。",
         "enabled": "岩浆怪 Boss 计时器将被计入日志。"
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "显示 mod 版本信息",
+        "hoverText": "点击置入聊天栏以便复制"
       },
       "errors": {
         "wrongUsage": {
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "复制 NBT"
+    "developerCopyNBT": "复制 NBT",
+    "increaseDungeonMapZoom": "地牢地图显示放大",
+    "decreaseDungeonMapZoom": "地牢地图显示缩小"
   },
   "dragonTracker": {
     "protector": "守护",

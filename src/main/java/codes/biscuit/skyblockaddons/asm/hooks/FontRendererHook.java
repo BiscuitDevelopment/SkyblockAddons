@@ -7,6 +7,7 @@ import codes.biscuit.skyblockaddons.utils.SkyblockColor;
 import codes.biscuit.skyblockaddons.utils.draw.DrawStateFontRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -17,11 +18,13 @@ public class FontRendererHook {
     private static final DrawStateFontRenderer DRAW_CHROMA = new DrawStateFontRenderer(CHROMA_COLOR);
     private static final SkyblockColor CHROMA_COLOR_SHADOW = new SkyblockColor(0xFF555555).setColorAnimation(SkyblockColor.ColorAnimation.CHROMA);
     private static final DrawStateFontRenderer DRAW_CHROMA_SHADOW = new DrawStateFontRenderer(CHROMA_COLOR_SHADOW);
-    private static DrawStateFontRenderer currentDrawState = null;
     private static final MaxSizeHashMap<String, Boolean> stringsWithChroma = new MaxSizeHashMap<>(1000);
 
+    private static DrawStateFontRenderer currentDrawState = null;
+    private static boolean modInitialized = false;
+
     public static void changeTextColor() {
-        if (currentDrawState != null && currentDrawState.shouldManuallyRecolorFont()) {
+        if (shouldRenderChroma() && currentDrawState != null && currentDrawState.shouldManuallyRecolorFont()) {
             FontRenderer fontRenderer = Minecraft.getMinecraft().fontRendererObj;
             currentDrawState.bindAnimatedColor(fontRenderer.posX, fontRenderer.posY);
         }
@@ -47,23 +50,27 @@ public class FontRendererHook {
      * @return true to override
      */
     public static boolean shouldOverridePatcher(String s) {
-        //return chromaStrings.get(s) == null || chromaStrings.get(s);
-        if (stringsWithChroma.get(s) != null) {
-            return stringsWithChroma.get(s);
-        }
-        // Check if there is a "§z" colorcode in the string and cache it
-        boolean hasChroma = false;
-        for (int i = 0; i < s.length(); i++) {
-            if (s.charAt(i) == '§') {
-                i++;
-                if (i < s.length() && (s.charAt(i) == 'z' || s.charAt(i) == 'Z')) {
-                    hasChroma = true;
-                    break;
+        if (shouldRenderChroma()) {
+            //return chromaStrings.get(s) == null || chromaStrings.get(s);
+            if (stringsWithChroma.get(s) != null) {
+                return stringsWithChroma.get(s);
+            }
+            // Check if there is a "§z" colorcode in the string and cache it
+            boolean hasChroma = false;
+            for (int i = 0; i < s.length(); i++) {
+                if (s.charAt(i) == '§') {
+                    i++;
+                    if (i < s.length() && (s.charAt(i) == 'z' || s.charAt(i) == 'Z')) {
+                        hasChroma = true;
+                        break;
+                    }
                 }
             }
+            stringsWithChroma.put(s, hasChroma);
+            return hasChroma;
+        } else {
+            return false;
         }
-        stringsWithChroma.put(s, hasChroma);
-        return hasChroma;
     }
 
 
@@ -71,15 +78,16 @@ public class FontRendererHook {
      * Called to save the current shader state
      */
     public static void beginRenderString(boolean shadow) {
-        float alpha = Minecraft.getMinecraft() == null || Minecraft.getMinecraft().fontRendererObj == null ? 1 : Minecraft.getMinecraft().fontRendererObj.alpha;
-        if (shadow) {
-            currentDrawState = DRAW_CHROMA_SHADOW;
-            CHROMA_COLOR_SHADOW.setColor((int) (255 * alpha) << 24 | 0x555555);
-        } else {
-            currentDrawState = DRAW_CHROMA;
-            CHROMA_COLOR.setColor((int) (255 * alpha) << 24 | 0xFFFFFF);
-        }
-        if (SkyblockAddons.isFullyInitialized()) {
+        if (shouldRenderChroma()) {
+            float alpha = Minecraft.getMinecraft().fontRendererObj.alpha;
+            if (shadow) {
+                currentDrawState = DRAW_CHROMA_SHADOW;
+                CHROMA_COLOR_SHADOW.setColor((int) (255 * alpha) << 24 | 0x555555);
+            } else {
+                currentDrawState = DRAW_CHROMA;
+                CHROMA_COLOR.setColor((int) (255 * alpha) << 24 | 0xFFFFFF);
+            }
+
             currentDrawState.loadFeatureColorEnv();
         }
     }
@@ -88,7 +96,7 @@ public class FontRendererHook {
      * Called to restore the saved chroma state
      */
     public static void restoreChromaState() {
-        if (SkyblockAddons.isFullyInitialized()) {
+        if (shouldRenderChroma()) {
             currentDrawState.restoreColorEnv();
         }
     }
@@ -97,7 +105,7 @@ public class FontRendererHook {
      * Called to turn chroma on
      */
     public static void toggleChromaOn() {
-        if (SkyblockAddons.isFullyInitialized()) {
+        if (shouldRenderChroma()) {
             currentDrawState.newColorEnv().bindActualColor();
         }
     }
@@ -106,7 +114,7 @@ public class FontRendererHook {
      * Called to turn chroma off after the full string has been rendered (before returning)
      */
     public static void endRenderString() {
-        if (SkyblockAddons.isFullyInitialized()) {
+        if (shouldRenderChroma()) {
             currentDrawState.endColorEnv();
         }
     }
@@ -126,5 +134,22 @@ public class FontRendererHook {
         protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
             return size() > maxSize;
         }
+    }
+
+    /**
+     * Called by {@link SkyblockAddons#postInit(FMLPostInitializationEvent)}
+     */
+    public static void onModInitialized() {
+        modInitialized = true;
+    }
+
+    /**
+     * Returns whether the methods for rendering chroma text should be run. They should be run only while the mod is
+     * fully initialized and the player is playing Skyblock.
+     *
+     * @return {@code true} when the mod is fully initialized and the player is in Skyblock, {@code false} otherwise
+     */
+    private static boolean shouldRenderChroma() {
+        return modInitialized && SkyblockAddons.getInstance().getUtils().isOnSkyblock();
     }
 }

@@ -40,4 +40,11 @@ public enum DungeonClass {
         }
         return null;
     }
+
+    @Override
+    public String toString() {
+        return "DungeonClass{" +
+                "chatDisplayName='" + chatDisplayName + '\'' +
+                '}';
+    }
 }

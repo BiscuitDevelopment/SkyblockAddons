@@ -213,7 +213,13 @@
     "otherDefenseStats": "Diğer Savunma İstatistikleri (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Doğum Noktasındaki Oyuncuları Gizle",
     "jacobsContestTimer": "Jacob's Contest Zamanlayıcısı",
-    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme"
+    "dontReplaceRomanNumeralsInItemNames": "Eşya Adlarında Değiştirme",
+    "backpackOpeningSound": "Deri Sırt Çantası Açılış Sesi",
+    "devMode": "Geliştirici Modu",
+    "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
+    "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
+    "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
+    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -290,7 +296,11 @@
     "chroma": "Renk parlaklığı",
     "worldRenderedCooldownTime": "Bekleme Süresi: %time%sn",
     "entityOutlinesRequirement": "Gölgelerin, Hızlı İşlemenin ve Kenar Yumuşatma ayarlarının kapalı olmasını gerektirir",
-    "version": "Versiyon"
+    "version": "Versiyon",
+    "invalidFeatureConfiguration": "%featureName% özelliği için geçersiz yapılandırma algılandı ve ayarlar varsayılan değerlere döndürüldü.",
+    "fileFetchFailed": "%modName% modu, %number% veri dosyalarını alamadı. Lütfen aşağıdaki butonu kullanarak hatayı kopyalayın ve Discord sunucumuza bildirin.",
+    "copy": "Kopyala",
+    "copied": "Kopyalandı!"
   },
   "discordStatus": {
     "titleNone": "Hiçbiri",
@@ -331,13 +341,174 @@
     "titleExpand": "Genişlet",
     "descriptionExpand": "Her büyüyü kendi satırında listeler"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Ana menüyü açar"
+        },
+        "brand": {
+          "help": "Sunucu adresini gösterir"
+        },
+        "copyBlock": {
+          "help": "Baktığınız blokla ilgili verileri kopyalar"
+        },
+        "copyEntity": {
+          "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyalar",
+          "detailedHelp": {
+            "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
+            "options": {
+              "entityNames": "Verileri kopyalamak istediğiniz varlık türlerinin adları (örneğin,Oyuncu, Creeper). Tam liste için komutu yazdıktan sonra \"Tab\" tuşuna bas. Birden fazla ismi virgülle ayırın, isimler büyük/küçük harf duyarlıdır.",
+              "radius": "Varlık NBT verilerini kopyalamak için oyuncunun etrafındaki yarıçap (bloklar halinde)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Skorbord yazısını kopyalar",
+          "detailedHelp": {
+            "description": "Skorbord'da görüntülenen metni kopyalar",
+            "options": {
+              "formatted": "Kopyalama sırasında biçimlendirme kodlarının eklenip eklenmeyeceğini belirler. Herhangi bir değer sağlanmazsa \"true\" veya \"false\", varsayılan olarak \"false\" olabilir. Biçimlendirme kodları \"true\" ise kopyalanır."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Tab listesi üstbilgisini ve altbilgisini kopyalar",
+          "detailedHelp": {
+            "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
+          }
+        },
+        "dev": {
+          "help": "Geliştirici modunu açar/kapatır",
+          "detailedHelp": {
+            "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Arayüz konumlarını düzenler"
+        },
+        "folder": {
+          "help": "mods klasörünü açar"
+        },
+        "help": {
+          "help": "Bu yardım iletisini gösterir. Eğer bir komut belirtilirse, o komutla ilgili ayrıntılı bilgi gösterilir.",
+          "detailedHelp": {
+            "options": {
+              "command": "ayrıntılı kullanım için alt komut"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Hata ayıklama amacıyla zindan ölüm sayacında depolanan sayıları yazdırır."
+        },
+        "reload": {
+          "help": "Mod ayarlarını ve kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        },
+        "reloadConfig": {
+          "help": "Mod ayarlarını yeniden yükler"
+        },
+        "reloadRes": {
+          "help": "Mod kaynaklarını yeniden yükler. Oyununuz birkaç saniye donabilir."
+        },
+        "resetZealotCounter": {
+          "help": "Tüm zealot sayaçlarını sıfırlar."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Zealot sayılarını el ile gir",
+            "detailedHelp": {
+              "description": "Zealot sayacındaki sayıları manuel olarak ayarlar.",
+              "options": {
+                "eyes": "Toplanan Summoning Eye'lar(Tüm Zamanlar)",
+                "totalZealots": "Öldürülen Zealot'lar(Tüm Zamanlar)",
+                "zealots": "En son Eye'dan sonra öldürülen Zealot sayısı"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+          "detailedHelp": {
+            "description": "Slayer istatistiklerini manuel olarak ayarlayın, argümanlar için TAB tuşuna basın",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", ya da \"Wolf\"",
+              "number": "Stat değerini ayarlamak için sayı",
+              "stat": "Slayer stat değiştirmek için, \"kills\" veya bu gibi: \"REVENANT_FLESH\" biçimlendirilmiş atılan bir öğenin adı olabilir"
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Aksiyon barı messajları günlüğünü açar/kapatır"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Magma boss zamanlayıcı hata ayıklama iletilerini loglamayı aç/kapat"
+        },
+        "version": {
+          "help": "Modun versiyonunu gösterir"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Markası:%brand%",
+          "notFound": "Server markası bulunamadı!"
+        },
+        "dev": {
+          "disabled": "Geliştirici modu kapatıldı!",
+          "enabled": "Geliştirici modu açıldı! Not: NBT'yi kopyalamak için %keyName% tuşuna bas!"
+        },
+        "folder": {
+          "error": "mods klasörünü açarken bi sorun oluştu: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot sayaçları sıfırlandı!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Toplam Summonıng Eye sayısını %number% yap!",
+            "totalZealotsSet": "Toplam Zealot sayısını %number% yap!",
+            "wrongUsage": "Geçersiz seçim! Lütfen %options% seç.",
+            "zealotsSet": "Şu anki Zealot sayısını %number% yap!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Bir boss seçmeniz gerekiyor! Lütfen %bosses% seç",
+          "statRequired": "Bir stat seçmeniz gerekiyor. Seçenekler için TAB tuşuna basın.",
+          "numberRequired": "İstediğin numarayı eklemen gerekiyor.",
+          "killsSet": "Slayer %boss%, için öldürmeler %number% olarak ayarlandı.",
+          "statSet": "Slayer %boss% için istatistik %stat%, %number% olarak ayarlandı.",
+          "invalidBoss": "\"%input%\" geçerli bir istatistik değil!",
+          "invalidStat": "\"%input% \" geçerli bir boss değil!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Aksiyon barı mesajları gösterilmeyecek.",
+          "enabled": "Aksiyon barı mesajları gösteriliyor."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulmayacak.",
+          "enabled": "Magma boss zamanlayıcı mesajları artık log olarak tutulacak."
+        },
+        "version": {
+          "hoverText": "Sohbette göstermek için tıkla bu sayede kopyalayabilirsin."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Yanlış Kullanım!",
+        "subCommandNotFound": "\"%sub-command%\" alt komutu bulunamadı."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Ana menüyü aç"
+        "help": "Ana menüyü açar"
       },
       "brand": {
-        "help": "Sunucu adresini göster",
+        "help": "Sunucu adresini gösterir",
         "brandOutput": "Server Markası:%brand%",
         "notFound": "Server markası bulunamadı!"
       },
@@ -345,7 +516,7 @@
         "help": "Baktığınız blokla ilgili verileri kopyalar"
       },
       "copyEntity": {
-        "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyala",
+        "help": "Verilen ad(lar)ın etrafındaki belirli yarıçap içindeki varlıklar için NBT verilerini kopyalar",
         "detailedHelp": {
           "description": "Varlıkların NBT verilerini kopyalar. Dahil edilen varlık türleri ve verileri kopyalamak için oyuncunun etrafındaki yarıçap özelleştirilebilir. Herhangi bir seçenek belirtilmezse, varsayılan ayarlar kullanılır. Varsayılan ayarlar: oyuncuları, zırh standlarını ve mobları ve 3 bloktan oluşan bir yarıçapı içerir. Yarıçap belirtilmezse, varsayılan yarıçap kullanılır.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Skorbord yazısını kopyala",
+        "help": "Skorbord yazısını kopyalar",
         "detailedHelp": {
           "description": "Skorbord'da görüntülenen metni kopyalar",
           "options": {
@@ -364,13 +535,13 @@
         }
       },
       "copyTabList": {
-        "help": "Tab listesi üstbilgisini ve altbilgisini kopyala",
+        "help": "Tab listesi üstbilgisini ve altbilgisini kopyalar",
         "detailedHelp": {
           "description": "Bu komut, TAB oyuncu listesinin üstbilgi ve altbilgisini kopyalar. Biçimlendirme kodları dahildir."
         }
       },
       "dev": {
-        "help": "Geliştirici modunu aç",
+        "help": "Geliştirici modunu açar/kapatır",
         "detailedHelp": {
           "description": "Bu komut geliştirici modunu açar veya kapatır. Bu mod Skyblock için mod veya araçlar geliştirenler içindir. Varlık ve eşya NBT'si gibi oyundan ham veriler sağlar."
         },
@@ -379,14 +550,14 @@
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Arayüz konumlarını düzenle"
+        "help": "Arayüz konumlarını düzenler"
       },
       "folder": {
-        "help": "Mod klasörünü aç",
-        "error": "Mod dosyasını açarken bi sorun oluştu %s"
+        "help": "mods klasörünü açar",
+        "error": "mods klasörünü açarken bi sorun oluştu: %s"
       },
       "help": {
-        "help": "Bu yardım iletisini göster. Bir komut sağlanırsa, bu komutla ilgili ayrıntılı yardım gösterilir.",
+        "help": "Bu yardım iletisini gösterir. Eğer bir komut belirtilirse, o komutla ilgili ayrıntılı bilgi gösterilir.",
         "detailedHelp": {
           "options": {
             "command": "ayrıntılı kullanım için alt komut"
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "NBT Kopyala"
+    "developerCopyNBT": "NBT Kopyala",
+    "increaseDungeonMapZoom": "Zindan Haritasını Yakınlaştır",
+    "decreaseDungeonMapZoom": "Zindan Haritasını Uzaklaştır"
   },
   "dragonTracker": {
     "protector": "Protector",

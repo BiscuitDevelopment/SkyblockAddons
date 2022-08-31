@@ -197,8 +197,13 @@ public class InventoryUtils {
                 }
             });
 
-            DragonTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
-            SlayerTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER)) {
+                DragonTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            }
+
+            if (SlayerTracker.getInstance().isTrackerEnabled()) {
+                SlayerTracker.getInstance().checkInventoryDifferenceForDrops(inventoryDifference);
+            }
 
             // Add changes to already logged changes of the same item, so it will increase/decrease the amount
             // instead of displaying the same item twice
@@ -456,58 +461,10 @@ public class InventoryUtils {
         return inventoryType;
     }
 
-    /**
-     * Detects, stores, and returns the current accessory bag reforge inventory type. The accessory bag reforge inventory
-     * is a special case as the advanced accessory bag reforge menu is detected by the presence of certain items, available
-     * only after the inventory is fully initialized.
-     *
-     * @return {@code InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING} if this is an advanced reforge inventory,
-     * {@code InventoryType.BASIC_ACCESSORY_BAG_REFORGING} otherwise
-     * @throws IllegalStateException if called when the current inventory is not an accessory bag reforge inventory
-     */
-    public InventoryType updateAccessoryBagReforgeInventoryType() {
-        if (inventoryType != InventoryType.BASIC_ACCESSORY_BAG_REFORGING) {
-            throw new IllegalStateException("updateAccessoryBagReforgeInventoryType() called on inventory not of type \"BASIC_ACCESSORY_BAG_REFORGING\".");
-        }
-
-        GuiScreen currentScreen = Minecraft.getMinecraft().currentScreen;
-        IInventory inventory = ((GuiChest) currentScreen).lowerChestInventory;
-
-        return inventoryType = getAccessoryBagReforgeInventoryType(inventory);
-    }
-
     private String getInventoryKey(InventoryType inventoryType, int inventoryPageNum) {
         if (inventoryType == null) {
             return null;
         }
         return inventoryType.getInventoryName() + inventoryPageNum;
-    }
-
-    /**
-     * Gets the accessory bag reforge inventory type for a given accessory bag reforge inventory. This works only after
-     * slot 14 of the inventory has been initialized with its item.
-     *
-     * @param inventory the {@code IInventory} containing all the items in the accessory bag reforge inventory
-     * @return {@code InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING} if this is an advanced reforge inventory,
-     * {@code InventoryType.BASIC_ACCESSORY_BAG_REFORGING} otherwise
-     */
-    private InventoryType getAccessoryBagReforgeInventoryType(IInventory inventory) {
-        // This is the barrier item that's present in the advanced reforging menu. This slot is empty in the basic reforging menu.
-        ItemStack barrier = inventory.getStackInSlot(13);
-        // This is the stained-glass pane to the right of the barrier.
-        ItemStack glassPane = inventory.getStackInSlot(14);
-
-        /*
-        If the barrier is there, it's the advanced reforging menu. If it's not there (since the player placed an item in
-        the menu), check if the glass pane next to the slot is named "Reforge Stone." That indicates it's the advanced
-        reforging menu. Otherwise, it's the basic menu. Finally, check if it's the single item or accessory bag menu.
-         */
-        if ((barrier != null && barrier.getItem() == Item.getItemFromBlock(Blocks.barrier)) ||
-                (glassPane != null && glassPane.hasDisplayName() && TextUtils.stripColor(glassPane.getDisplayName()).equals("Reforge Stone"))) {
-            return InventoryType.ADVANCED_ACCESSORY_BAG_REFORGING;
-
-        } else {
-            return InventoryType.BASIC_ACCESSORY_BAG_REFORGING;
-        }
     }
 }

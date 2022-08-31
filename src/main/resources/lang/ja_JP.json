@@ -163,7 +163,7 @@
     "showSkillPercentageInstead": "XPの代わりに割合を表示",
     "showSkillXPGained": "獲得したXPを表示",
     "skillProgressBar": "Skillの進捗ゲージ",
-    "showSalvageEssencesCounter": "分解Essencesを表示",
+    "showSalvageEssencesCounter": "Salvage Essencesカウンターを表示",
     "disableMortMessages": "Mortのメッセージを無効化",
     "disableBossMessages": "Bossのメッセージを無効化",
     "hideOtherPlayersPresents": "他のプレイヤーのプレゼントを非表示",
@@ -213,7 +213,13 @@
     "otherDefenseStats": "その他の防御力ステータス (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hubのスポーン地点のプレイヤーを非表示",
     "jacobsContestTimer": "Jacob's Contestのタイマー",
-    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない"
+    "dontReplaceRomanNumeralsInItemNames": "アイテム名では置き換えない",
+    "backpackOpeningSound": "Leather Backpack開封音",
+    "devMode": "開発者モード",
+    "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
+    "showFeatureNamesOnHover": "ホバーして機能名を表示",
+    "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
+    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -225,29 +231,29 @@
     "fullInventory": "インベントリが満杯です！",
     "labymod": "Labymod使用者：「食料と防具のゲージを非表示」とは互換性がありません。",
     "minionCannotReach": "%type%Minionは範囲外のためMobのスポーンを停止しました！",
-    "minionIsFull": "自島でMinionのスロットが満杯です！",
+    "minionIsFull": "自島のMinionスロットが満杯です！",
     "typeEnchantmentsHere": "ここに%type%を入力してください！",
     "separateMultiple": "複数ある場合はコンマで分けてください。",
     "enchantsToMatch": "%type%で一致するもの：",
     "enchantsToExclude": "%type%で除外するもの：",
     "updateChecker": {
       "wantToViewPatchNotes": "サポートが必要ですか、またはすべての変更ログを確認したいですか？",
-      "joinDiscord": "私たちのDiscordサーバーに参加してください！",
+      "joinDiscord": "我々のDiscordサーバーに参加してください！",
       "watchShowcase": "動画を視聴",
       "downloadButton": "ダウンロード",
       "openModFolderButton": "Modsフォルダーを開く",
       "joinDiscordButton": "Discordに参加",
       "newUpdateAvailable": "新しいアップデート(%version%)が利用可能です！",
-      "noDownloadAvailable": "利用可能なダウンロードリンクがありません、私たちのDiscordサーバーを確認してください。",
+      "noDownloadAvailable": "利用可能なダウンロードリンクがありません、我々ののDiscordサーバーを確認してください。",
       "notificationBox": {
         "majorAvailable": "新しいメジャーアップデート(%version%)が利用可能です！ダウンロードリンクはチャットにあります。",
-        "betaAvailable": "新しいベータアップデート(%version%)が利用可能です！チャットからダウンロードオプションを確認してください。",
+        "betaAvailable": "新しいベータアップデート(%version%)が利用可能です！チャットからダウンロードリンクを確認してください。",
         "patchAvailable": "新しいパッチアップデート(%version%)が利用可能です！チャットからダウンロードオプションを確認してください！"
       }
     },
     "slotLocked": "このスロットはロックされています！",
     "summoningEyeFound": "Summoning Eye！",
-    "cancelledDropping": "機能がレアなアイテムまたはツールをホットバーから捨てることを阻止しました。",
+    "cancelledDropping": "機能がレアなアイテムまたはツールをホットバーから捨てるのを阻止しました。",
     "clickMoreTimes": "本当に捨てたい場合は、このアイテムを%times%回クリック/捨ててください。",
     "clickOneMoreTime": "本当に捨てたい場合は、このアイテムを1回クリック/捨ててください。",
     "featureDisabled": "機能は無効です",
@@ -255,7 +261,7 @@
     "specialZealotFound": "スペシャル Zealot！",
     "blockIncompletePatterns": "不完全なパターンでのクラフトを防止する (推奨)",
     "searchFeatures": "機能を検索",
-    "downloadingUpdateFile": "アップデートファイルをダウンロード中…",
+    "downloadingUpdateFile": "更新ファイルをダウンロード中…",
     "onlyFewArrowsLeft": "矢は残り%arrows%本のみです！",
     "noArrowsLeft": "矢がありません！",
     "chooseAColor": "色を選択",
@@ -283,20 +289,24 @@
     "reforgeInclusionExample": "例 \"godly, strong\"",
     "reforgeExclusionExample": "例 \"odd, clean\"",
     "actionsLeft": "残り%number%",
-    "effectActive": "1個の効果が有効",
-    "effectsActive": "%number%個の効果が有効",
+    "effectActive": "1個の効果が発動中",
+    "effectsActive": "%number%個の効果が発動中",
     "none": "なし",
     "copyModeSet": "開発者コピーモードは%mode%に設定されています。「%keyName%」を押してデータコピーをトリガーします！",
     "chroma": "色変化",
     "worldRenderedCooldownTime": "クールダウン：%time%秒",
     "entityOutlinesRequirement": "シェーダー、描画の最適化、アンチエイリアスをオフにする必要があります",
-    "version": "バージョン"
+    "version": "バージョン",
+    "invalidFeatureConfiguration": "%featureName%の機能で無効な設定が検出されました。この設定がデフォルトの値にリセットされます。",
+    "fileFetchFailed": "%modName%は%number%データファイルの取得に失敗しました。下のボタンでエラー内容をコピーし、我々のDiscordサーバーで報告してください。",
+    "copy": "コピー",
+    "copied": "コピーされました！"
   },
   "discordStatus": {
     "titleNone": "なし",
     "descriptionNone": "テキストが表示されていません",
     "titleLocation": "場所",
-    "descriptionLocation": "現在いる場所を表示",
+    "descriptionLocation": "現在地を表示",
     "titlePurse": "Purse",
     "descriptionPurse": "purse内の総額を表示",
     "titleBits": "Bit",
@@ -310,11 +320,11 @@
     "titleProfile": "プロファイル",
     "descriptionProfile": "プロファイル名を表示",
     "titleTime": "Skyblock時刻",
-    "descriptionTime": "現在のSkyblock時刻を表示します。例 12:00am 1st Early Winter",
+    "descriptionTime": "現在のSkyblock時刻を表示します。例：12:00am 1st Early Winter",
     "titleCustom": "カスタムステータス",
     "descriptionCustom": "カスタムステータスを入力",
     "titleAuto": "自動ステータス",
-    "descriptionAuto": "ステータスを自動表示します。例えば、The Endにいる間のZealotのカウントなどです。",
+    "descriptionAuto": "ステータスを自動表示します。例：The Endにいる間のZealotカウント",
     "titleRevenants": "Revenantクエスト",
     "descriptionRevenants": "Revenantクエストを行っていることを表示します。",
     "titleSvens": "Svenクエスト",
@@ -330,6 +340,167 @@
     "descriptionNormal": "Hypixelのようにエンチャントを表示します",
     "titleExpand": "拡張",
     "descriptionExpand": "各エンチャントをそれぞれ独立した行に表示します"
+  },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "メインメニューを開く"
+        },
+        "brand": {
+          "help": "サーバーのブランドを表示します"
+        },
+        "copyBlock": {
+          "help": "見つめているブロックに関するデータをコピーします"
+        },
+        "copyEntity": {
+          "help": "プレイヤーを中心とした指定された半径内にいる、指定された名前のエンティティのNBTデータをコピーします",
+          "detailedHelp": {
+            "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
+            "options": {
+              "entityNames": "データをコピーするエンティティの種類の名前 (例：Player, Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
+              "radius": "エンティティのNBTデータをコピーするプレイヤーの周囲の半径 (ブロック)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "スコアボードのテキストをコピーします",
+          "detailedHelp": {
+            "description": "スコアボードのサイドバーに表示されているテキストをコピーします",
+            "options": {
+              "formatted": "コピー時に書式コードを含めるかどうかを決定します。「true」または「false」のいずれかを選択可能で、値が指定されていない場合、デフォルトでは「false」になります。「true」の場合、書式コードがコピーされます。"
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Tabリストのヘッダーとフッターをコピーします",
+          "detailedHelp": {
+            "description": "このコマンドは、Tabのプレーヤーリストのヘッダーとフッターをコピーします。 書式コードが含まれています。"
+          }
+        },
+        "dev": {
+          "help": "開発者モードに切り替える",
+          "detailedHelp": {
+            "description": "このコマンドは開発者モードに切り替えます。このモードは、SkyblockのModとツールの開発者を対象としています。エンティティやアイテムのNBTなどのゲームデータを提供します。"
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "GUIの場所を編集"
+        },
+        "folder": {
+          "help": "Modsフォルダーを開く"
+        },
+        "help": {
+          "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
+          "detailedHelp": {
+            "options": {
+              "command": "詳細な使用法を取得するためのサブコマンドです"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Dungeon死亡数カウンターに保存されているカウントをデバッグ用に出力します。"
+        },
+        "reload": {
+          "help": "Modのすべての設定とリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        },
+        "reloadConfig": {
+          "help": "Modの設定を再読み込みします"
+        },
+        "reloadRes": {
+          "help": "Modのリソースを再読み込みします。ゲームは数秒間フリーズします。"
+        },
+        "resetZealotCounter": {
+          "help": "Zealotカウンターのカウントをすべてリセットします。"
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Zealotカウンターの手動設定",
+            "detailedHelp": {
+              "description": "Zealotカウンターのカウントを手動で設定します。",
+              "options": {
+                "eyes": "入手したsummoning eyeの合計数",
+                "totalZealots": "Zealotを倒した数の合計",
+                "zealots": "summoning eyeドロップまでに倒したZealotの合計"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
+          "detailedHelp": {
+            "description": "手動でSlayerの統計を設定し、Tabを押して引数を入力します",
+            "options": {
+              "boss": "Slayer boss：「Zombie」、「Spider」、または「Wolf」",
+              "number": "統計を設定する数字",
+              "stat": "変更するスレイヤーの統計は、「kills」またはドロップアイテムの名前で、次のような形式になります：「REVENANT_FLESH」"
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "アクションバーのメッセージの記録を切り替えます"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Magma Bossのタイマーのデバッグメッセージの記録を切り替えます"
+        },
+        "version": {
+          "help": "Modのバージョンを表示します"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "サーバーのブランド：%brand%",
+          "notFound": "サーバーのブランドが見つかりません！"
+        },
+        "dev": {
+          "disabled": "開発者モードを無効にしました！",
+          "enabled": "開発者モードが有効になりました！ヒント：「%keyName%」を押してNBTデータをコピーできます！"
+        },
+        "folder": {
+          "error": "Modsフォルダーを開く際にエラーが発生しました：%s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealotカウンターがリセットされました！"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "summoning eyeカウントの合計を%number%に設定しました！",
+            "totalZealotsSet": "Zealotカウントの合計を%number%に設定しました！",
+            "wrongUsage": "無効な選択です！%options%を選択してください。",
+            "zealotsSet": "現在のZealotカウントを%number%に設定しました！"
+          }
+        },
+        "slayer": {
+          "bossRequired": "bossを選択する必要があります！%bosses%を選択してください",
+          "statRequired": "統計を選択する必要があります。Tabでオプション。",
+          "numberRequired": "設定したい数字を追加する必要があります。",
+          "killsSet": "Slayer %boss%のキル数は%number%に設定されました。",
+          "statSet": "Slayer %boss%の統計%stat%が%number%に設定されました。",
+          "invalidBoss": "「%input%」は有効な統計ではありません！",
+          "invalidStat": "「%input%」は有効なボスではありません！"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "アクションバーのメッセージは記録されないようになりました。",
+          "enabled": "アクションバーのメッセージが記録されるようになりました。"
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma Bossのタイマーのメッセージは記録されないようになりました。",
+          "enabled": "Magma Bossのタイマーのメッセージが記録されるようになりました。"
+        },
+        "version": {
+          "hoverText": "クリックするとチャットに出力されるためコピーできます。"
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "間違った使用法です！",
+        "subCommandNotFound": "サブコマンド「%sub-command%」は見つかりませんでした。"
+      }
+    }
   },
   "commandUsage": {
     "sba": {
@@ -349,7 +520,7 @@
         "detailedHelp": {
           "description": "エンティティのNBTデータをコピーします。含まれるエンティティの種類と、データをコピーするプレイヤーの周囲の半径をカスタマイズできます。オプションが指定されていない場合は、デフォルトのオプションが使用されます。デフォルトのオプションは、プレイヤー、防具立て、Mobを含み、半径は3ブロックです。半径が指定されていない場合は、デフォルトの半径が使用されます。",
           "options": {
-            "entityNames": "データをコピーするエンティティの種類の名前 (例 Player, Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
+            "entityNames": "データをコピーするエンティティの種類の名前 (例：Player, Creeper)。完全なリストを表示するには、コマンドを入力してから「Tab」を押してください。複数の名前はコンマで区切ります。名前は大文字と小文字が区別されます。",
             "radius": "エンティティのNBTデータをコピーするプレイヤーの周囲の半径 (ブロック)"
           }
         }
@@ -383,7 +554,7 @@
       },
       "folder": {
         "help": "Modsフォルダーを開く",
-        "error": "Modsフォルダーを開いているときにエラーが発生しました：%s"
+        "error": "Modsフォルダーを開く際にエラーが発生しました：%s"
       },
       "help": {
         "help": "このヘルプメッセージを表示します。もし、コマンドが提供された場合は、そのコマンドに関する詳細なへルプが表示されます。",
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "NBTをコピー"
+    "developerCopyNBT": "NBTをコピー",
+    "increaseDungeonMapZoom": "ダンジョンマップの拡大",
+    "decreaseDungeonMapZoom": "ダンジョンマップの縮小"
   },
   "dragonTracker": {
     "protector": "Protector",

@@ -15,39 +15,36 @@ public class DrawStateFontRenderer extends DrawState2D {
         super(theColor, true, false);
     }
 
-    public DrawStateFontRenderer setupMulticolorFeature(float theFeatureScale) {
+    public void setupMulticolorFeature(float theFeatureScale) {
         if (color.drawMulticolorManually()) {
             featureScale = theFeatureScale;
         }
         multicolorFeatureOverride = true;
-        return this;
     }
 
-    public DrawStateFontRenderer endMulticolorFeature() {
+    public void endMulticolorFeature() {
         if (color.drawMulticolorManually()) {
             featureScale = 1;
         }
         multicolorFeatureOverride = false;
-        return this;
     }
 
-    public DrawStateFontRenderer loadFeatureColorEnv() {
+    public void loadFeatureColorEnv() {
         if (multicolorFeatureOverride) {
             newColorEnv();
         }
-        return this;
     }
 
-    public DrawStateFontRenderer restoreColorEnv() {
+    public void restoreColorEnv() {
         if (color.drawMulticolorUsingShader()) {
+            //noinspection StatementWithEmptyBody
             if (multicolorFeatureOverride) {
                 // TODO: change order of restore to bind white here after font renderer binds the other color
             } else {
-                MulticolorShaderManager.end();
+                MulticolorShaderManager.getInstance().end();
             }
         }
         isActive = false;
-        return this;
     }
 
     public DrawStateFontRenderer newColorEnv() {

@@ -130,7 +130,9 @@ public class DrawUtils {
             worldRenderer.begin(drawType, DefaultVertexFormats.POSITION);
             if (color.drawMulticolorUsingShader()) {
                 Chroma3DShader chroma3DShader = ShaderManager.getInstance().enableShader(Chroma3DShader.class);
-                chroma3DShader.setAlpha(ColorUtils.getAlphaFloat(color.getColor()));
+                if (chroma3DShader != null) {
+                    chroma3DShader.setAlpha(ColorUtils.getAlphaFloat(color.getColor()));
+                }
             } else {
                 ColorUtils.bindColor(color.getColor());
             }

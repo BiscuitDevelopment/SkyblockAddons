@@ -35,7 +35,7 @@ import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.ModContainer;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.mutable.MutableInt;
+import org.apache.commons.lang3.mutable.MutableFloat;
 import org.apache.commons.lang3.text.WordUtils;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.BufferUtils;
@@ -57,6 +57,9 @@ import java.util.regex.Pattern;
 @Getter
 @Setter
 public class Utils {
+
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     /**
      * Added to the beginning of messages sent by the mod.
@@ -109,7 +112,7 @@ public class Utils {
     /**
      * Get a player's attributes. This includes health, mana, and defence.
      */
-    private Map<Attribute, MutableInt> attributes = new EnumMap<>(Attribute.class);
+    private Map<Attribute, MutableFloat> attributes = new EnumMap<>(Attribute.class);
 
     /**
      * This is the item checker that makes sure items being dropped or sold are allowed to be dropped or sold.
@@ -173,16 +176,13 @@ public class Utils {
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;
 
-    private SkyblockAddons main = SkyblockAddons.getInstance();
-    private Logger logger = SkyblockAddons.getLogger();
-
     public Utils() {
         addDefaultStats();
     }
 
     private void addDefaultStats() {
         for (Attribute attribute : Attribute.values()) {
-            attributes.put(attribute, new MutableInt(attribute.getDefaultValue()));
+            attributes.put(attribute, new MutableFloat(attribute.getDefaultValue()));
         }
     }
 
@@ -385,7 +385,7 @@ public class Utils {
                         }
                     }
 
-                    if (!foundInDungeon && strippedScoreboardLine.contains("Dungeon Cleared: ")) {
+                    if (!foundInDungeon && strippedScoreboardLine.startsWith("Cleared: ")) {
                         foundInDungeon = true;
                         inDungeon = true;
 
@@ -674,6 +674,12 @@ public class Utils {
         return MathHelper.clamp_float((snapNearDefaultValue(value) - min) / (max - min), 0.0F, 1.0F);
     }
 
+    /**
+     * Rounds the given value to 1f if it is between 0.95f and 1.05f exclusive.
+     *
+     * @param value the value to round
+     * @return 1f if 0.95f > {@code value} > 1.05f or {@code value} otherwise
+     */
     public float snapNearDefaultValue(float value) {
         if (value != 1 && value > 1 - 0.05 && value < 1 + 0.05) {
             return 1;

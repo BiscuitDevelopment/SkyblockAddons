@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.regex.Pattern;
 
 public class ResourceManagerReloadListener implements IResourceManagerReloadListener {
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
     private static final ResourceLocation containerPreviewLocation = new ResourceLocation("skyblockaddons", "containerPreview.png");
 
     private static final Pattern furfSkyRebornName = Pattern.compile("FurfSky Reborn.*");
@@ -33,7 +33,7 @@ public class ResourceManagerReloadListener implements IResourceManagerReloadList
                 usingFSR = true;
             }
         } catch (IOException e) {
-            LOGGER.error("Failed to get containerPreview texture", e);
+            logger.error("Failed to get containerPreview texture", e);
         }
         SkyblockAddons main = SkyblockAddons.getInstance();
         if (main != null) { // Minecraft reloads textures before and after mods are loaded. So only set the variable if sba was initialized.

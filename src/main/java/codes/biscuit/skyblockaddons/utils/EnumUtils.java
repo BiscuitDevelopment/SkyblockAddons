@@ -252,6 +252,7 @@ public class EnumUtils {
         OUTBID_ALERT("settings.outbidAlertSound", 206),
         DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
         RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU("settings.resetSalvagedEssencesAfterLeavingMenu", 214),
+        CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
 
         DISCORD_RP_STATE(0),
         DISCORD_RP_DETAILS(0),

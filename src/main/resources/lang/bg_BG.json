@@ -213,7 +213,13 @@
     "otherDefenseStats": "Други статистики за Defense (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Enchants",
@@ -290,7 +296,11 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Времетраене: %time%s",
     "entityOutlinesRequirement": "Изисква Shaders, Fast Render и Antialiasing да са OFF",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Нищо",
@@ -331,13 +341,174 @@
     "titleExpand": "Разшири",
     "descriptionExpand": "Покажете всеки enchant на отделен ред"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Копира NBT данни на обекти. Включените типове обекти и радиусът около играча за копиране на данни могат да бъдат персонализирани. Ако не са дадени опции, се използват обикновенните настройки. Обикновенните настройки са: включват играчи, armor stands, мобове и радиус от 3 блока. Ако радиуса не е даден, обикновенният радиус е използван.",
+            "options": {
+              "entityNames": "Имена на типовете обекти, които искате да копирате данни (напр. Player, Creeper). Натиснете \"Tab\", след като въведете командата за пълен списък. Разделете няколко имена със запетаи, имената са чувствителни към малки и големи букви.",
+              "radius": "Радиусът (в блокове) около играча да копира данни за обект от NBT"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Копирай текста, който е показан на таблото на слота за дисплей на страничната лента",
+            "options": {
+              "formatted": "Определя дали кодовете за форматиране трябва да бъдат включени при копиране. Може да бъде „true“ или „false“, по подразбиране е „false“, ако не е предоставена стойност. Кодовете за форматиране се копират, ако е \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Тази команда копира горения и доления колонтитул на списъка с плейъри. Включени са кодове за форматиране."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Саморъчно задай броя в брояча на zealot.",
+              "options": {
+                "eyes": "Събрани summoning eyes през цялото играене",
+                "totalZealots": "Убити zealots през цялото играене",
+                "zealots": "Убити Zealots от последният summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Бос: \"Зомби\", \"Паяк\" или \"Вълк\"",
+              "number": "Номер, за да зададете статистика на",
+              "stat": "Статията на Slayer да се промени, може да бъде \"kills\" или името на изпуснат елемент, форматирано по следния начин: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Марката на Сървъра: %brand%",
+          "notFound": "Марката на Сървъра не е намерена!"
+        },
+        "dev": {
+          "disabled": "Режима за разработчици е изключен!",
+          "enabled": "Режим за разработчици е включеб! СЪВЕТ: Натиснете \"%keyName%\", за да копирате NBT данни!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Задайте общ брой summoning eye %number%!",
+            "totalZealotsSet": "Задайте общ брой zealot на %number%!",
+            "wrongUsage": "Неправилен избор! Моля изберете %options%.",
+            "zealotsSet": "Задайте текущия брой zealot на %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Ти трябва да избереш бос! Моля избереи %bosses%",
+          "statRequired": "Ти трябва да избереш статистика. Натисни tab за повече опции.",
+          "numberRequired": "Ти трябва да добавиш числото, което искаш.",
+          "killsSet": "Убийства за slayer %boss% било изменено на %number%.",
+          "statSet": "Статистика %stat% за slayer%boss% беше настроен на %number%.",
+          "invalidBoss": "\"%input%\" не е валидна статистика!",
+          "invalidStat": "\"%input%\" не е валиден boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Съобщенията в лентата за действие вече няма да се регистрират.",
+          "enabled": "Съобщенията в лентата за действие вече ще се регистрират."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Грешно употребяване!",
+        "subCommandNotFound": "Подкомандата \"%sub-command%\" не беше намерена."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Отвори главното меню"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Марката на Сървъра: %brand%",
         "notFound": "Марката на Сървъра не е намерена!"
       },
@@ -345,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Копира NBT данни на обекти. Включените типове обекти и радиусът около играча за копиране на данни могат да бъдат персонализирани. Ако не са дадени опции, се използват обикновенните настройки. Обикновенните настройки са: включват играчи, armor stands, мобове и радиус от 3 блока. Ако радиуса не е даден, обикновенният радиус е използван.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Копирай текста, който е показан на таблото на слота за дисплей на страничната лента",
           "options": {
@@ -364,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Тази команда копира горения и доления колонтитул на списъка с плейъри. Включени са кодове за форматиране."
         }
       },
       "dev": {
-        "help": "Превключване на режима за разработчици",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Тази команда превключва режим за разработчици. Този режим е предназначен за разработчици на Skyblock модове и инструменти. Той предоставя данни за играта като обект и артикул NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Режима за разработчици е изключен!",
         "enabled": "Режим за разработчици е включеб! СЪВЕТ: Натиснете \"%keyName%\", за да копирате NBT данни!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Редактиране на GUI местоположения"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Отвори твоята папка с модове",
-        "error": "Възникна грешка, докато се отваря папката за модове: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Покажи това помощно съобщение. Ако е предоставена команда, показана е подробна помощ за тази команда.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "подкомандата, за да получите подробна употреба"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -411,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Саморъчно задай твоя брой zealot",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Саморъчно задай броя в брояча на zealot.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Саморъчно задай slayer статистики, натисни tab за аргоменти",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Саморъчно задай slayer статистики, натисни tab за аргоменти",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Бос: \"Зомби\", \"Паяк\" или \"Вълк\"",
             "number": "Номер, за да зададете статистика на",
@@ -445,12 +616,12 @@
         "invalidStat": "\"%input%\" не е валиден boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Съобщенията в лентата за действие вече няма да се регистрират.",
         "enabled": "Съобщенията в лентата за действие вече ще се регистрират."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Копирай NBT"
+    "developerCopyNBT": "Копирай NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

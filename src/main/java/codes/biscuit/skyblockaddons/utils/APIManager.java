@@ -25,8 +25,8 @@ public class APIManager {
     private static final String SKYBLOCK_PROFILES = BASE_URL + "skyblock/profiles/%s"; // UUID
     private static final String SKYBLOCK_PROFILE = BASE_URL + "skyblock/profile/%s/%s"; // UUID, Profile
 
-    private final SkyblockAddons main = SkyblockAddons.getInstance();
-    private final Logger logger = SkyblockAddons.getLogger();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
     private boolean firstSwitch = true;
 
     public void onProfileSwitch(String profileName) {

@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Settings",
     "magmaBossWarning": "Magma Boss Warnin",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Bal Bos Warnin",
+    "broodMotherWarning": "Brood Mommy Warnin",
     "itemDropConfirmation": "Itm drop comfirmashun",
     "hideSkeletonHatBones": "Hide Skeletons Helmet Bonez",
     "skeletonHatBonesBar": "Skeletons Helmet Bonez Bar",
@@ -170,8 +170,8 @@
     "showSwordKills": "Show Sword Kills",
     "compactTabList": "Compact Tab List",
     "highlightSpecialEnchantments": "Highlight Speshul Enchantments",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
+    "disableDamageChatMessages": "Disable Damage Chat Mesagez",
+    "showSpiritSceptreDisplay": "Spirit Sceptre/Withr Blade Damage Display",
     "outbidAlertSound": "Outbid Alert Sound",
     "hideMenuGlassPanes": "Hide Menu Glas Pane Tooltips",
     "candyPointsCounter": "Spooky Event Candy/Points Countr",
@@ -211,9 +211,15 @@
     "guiScaleY": "GUI Y Scale: %scale%",
     "abbreviateSkillXpDenominator": "Abbreviate Skill XP Denominator",
     "otherDefenseStats": "Othr Defense Stats (Soul Tethr/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Hide Playerz at Hub Spawn Point",
+    "jacobsContestTimer": "Jacoobs Contest Tiemr",
+    "dontReplaceRomanNumeralsInItemNames": "Doan Replace in Item Namez",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Enchants",
@@ -290,7 +296,11 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requirez Shaders, Fast Rendr, an Antialiasin 2 be OFF",
-    "version": "Version"
+    "version": "Vershun",
+    "invalidFeatureConfiguration": "Invalid configurashun detectd 4 feachur %featureName%, resettin itz settings 2 default valuez.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -300,7 +310,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Shows teh amount ov coins in ur purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Shows teh amount ov bits u has",
     "titleStats": "Stats",
     "descriptionStats": "Shows ur HP, Defense an Mana stats",
     "titleZealots": "Zealots",
@@ -331,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on itz own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copiez data bout teh block dat u r lookin at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
+            "options": {
+              "entityNames": "Namez ov teh typez ov entitiez u wants 2 copy data 4 (e.g. Playr,Creepr). Pres \"Tab\" aftr typin teh command 4 full list. Separate multiple namez wif commas, namez r case-sensitiv.",
+              "radius": "Teh radius (in blockz) around teh playr 2 copy entity NBT data frum"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Copiez teh text displayd in da scorebordz sidebar display slot",
+            "options": {
+              "formatted": "Determinez if teh formattin codez shud be includd when copyin. Can be eithr \"true\" or \"false\", defaults 2 \"false\" if no valu iz providd. Formattin codez are copid if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints teh counts stord in da dungeon death counters 4 debuggin purposez."
+        },
+        "reload": {
+          "help": "Reloadz all ov teh modz settings an resourcez. Teh game will freeze 4 few secondz."
+        },
+        "reloadConfig": {
+          "help": "Reloadz teh modz settingz"
+        },
+        "reloadRes": {
+          "help": "Reloadz teh resourcez. Teh game will freeze 4 few secondz."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all teh zealot countr counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in da zealot countr.",
+              "options": {
+                "eyes": "Lifetime summonin eyez obtaind",
+                "totalZealots": "Lifetime zealots killd",
+                "zealots": "Zealots killd since teh last summonin eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Numbr 2 set teh stat 2",
+              "stat": "Slayr stat 2 change, can be \"kills\" or teh naym ov droppd item formattd liek dis: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows teh modz vershun"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Servr Brand: %brand%",
+          "notFound": "Servr brand not findz!"
+        },
+        "dev": {
+          "disabled": "Developr mode disabld!",
+          "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summonin eye count 2 %number%!",
+            "totalZealotsSet": "Set total zealot count 2 %number%!",
+            "wrongUsage": "Invalid selecshun! Plz choose %options%.",
+            "zealotsSet": "Set current zealot count 2 %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "U ned 2 select bos! Plz choose %bosses%",
+          "statRequired": "U ned 2 select stat. Pres tab 4 opshuns.",
+          "numberRequired": "U ned 2 add teh numbr u wants.",
+          "killsSet": "Kills 4 slayr %boss% wuz set 2 %number%.",
+          "statSet": "Statistic %stat% 4 slayr %boss% wuz set 2 %number%.",
+          "invalidBoss": "\"%input%\" iz not valid statistic!",
+          "invalidStat": "\"%input%\" iz not valid bos!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Acshun bar mesagez will no longr be loggd.",
+          "enabled": "Acshun bar mesagez will nao be loggd."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma bos tiemr mesagez will no longr be loggd.",
+          "enabled": "Magma bos tiemr mesagez will nao be loggd."
+        },
+        "version": {
+          "hoverText": "Click 2 put in chat so u can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wrong usage!",
+        "subCommandNotFound": "Teh sub-command \"%sub-command%\" wuz nut findz."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open teh main menu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show teh servr brand",
+        "help": "Shows the server brand",
         "brandOutput": "Servr Brand: %brand%",
         "notFound": "Servr brand not findz!"
       },
@@ -345,7 +516,7 @@
         "help": "Copiez data bout teh block dat u r lookin at"
       },
       "copyEntity": {
-        "help": "Copy NBT data 4 entitiez ov teh given naym(s) within teh given radius around teh playr",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copiez teh NBT data ov entitiez. The typez ov entitiez includd an teh radiuz around teh playr 2 copy data frum can be customizd. If no opshuns r given, teh default settings r usd. Teh default settingz r: include players, armor standz, and mobs, an radius of 3 blockz. If teh radius isnt given, teh default radius iz usd.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy teh scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copiez teh text displayd in da scorebordz sidebar display slot",
           "options": {
@@ -364,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy teh tab list headr an footr",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Dis command copiez teh headr an footr ov teh tab playr list. Formattin codez r includd."
         }
       },
       "dev": {
-        "help": "Toggle developr mod",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Dis command togglez developr mode. Dis mode iz meant 4 developers Skyblock modz/tools. It providez game data such as entity an item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developr mode disabld!",
         "enabled": "Developr mode enabld! TIP: Pres \"%keyName%\" 2 copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit GUI locashuns"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open ur modz foldr",
-        "error": "An error occurrd tryin 2 open teh modz foldr: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show dis halp mesage. If command iz providd, detaild halp bout dat command iz shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "teh sub-command 2 git detaild usage 4"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -406,12 +577,12 @@
         "help": "Reloadz teh resourcez. Teh game will freeze 4 few secondz."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
+        "help": "Resets all teh zealot countr counts.",
         "resetSuccess": "Zealot counters reset!"
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set ur zealot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in da zealot countr.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayr stats, pres tab 4 arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayr stats, pres tab 4 arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayr bos: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Numbr 2 set teh stat 2",
@@ -445,18 +616,18 @@
         "invalidStat": "\"%input%\" iz not valid bos!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle loggin acshun bar mesagez",
+        "help": "Toggles logging action bar messages",
         "disabled": "Acshun bar mesagez will no longr be loggd.",
         "enabled": "Acshun bar mesagez will nao be loggd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Toggles logging magma boss timer debug messages",
+        "disabled": "Magma bos tiemr mesagez will no longr be loggd.",
+        "enabled": "Magma bos tiemr mesagez will nao be loggd."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Shows teh modz vershun",
+        "hoverText": "Click 2 put in chat so u can copy."
       },
       "errors": {
         "wrongUsage": {
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Copy NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

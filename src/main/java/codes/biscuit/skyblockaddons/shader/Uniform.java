@@ -21,18 +21,18 @@ public class Uniform<T> {
     }
 
     private void init(Shader shader, String name) {
-        uniformID = ShaderHelper.getInstance().glGetUniformLocation(shader.getProgram(), name);
+        uniformID = ShaderHelper.glGetUniformLocation(shader.getProgram(), name);
     }
 
     public void update() {
         T newUniformValue = uniformValuesSupplier.get();
         if (!Objects.deepEquals(previousUniformValue, newUniformValue)) {
             if (uniformType == UniformType.FLOAT) {
-                ShaderHelper.getInstance().glUniform1f(uniformID, (Float) newUniformValue);
+                ShaderHelper.glUniform1f(uniformID, (Float) newUniformValue);
 
             } else if (uniformType == UniformType.VEC3) {
                 Float[] values = (Float[]) newUniformValue;
-                ShaderHelper.getInstance().glUniform3f(uniformID, values[0], values[1], values[2]);
+                ShaderHelper.glUniform3f(uniformID, values[0], values[1], values[2]);
             }
 
             previousUniformValue = newUniformValue;

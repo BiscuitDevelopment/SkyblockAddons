@@ -213,7 +213,13 @@
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -290,7 +296,11 @@
     "chroma": "Kromatisk färg",
     "worldRenderedCooldownTime": "Väntetid: %time% s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Ingen",
@@ -331,13 +341,174 @@
     "titleExpand": "Expandera",
     "descriptionExpand": "Varje förtrollning visas på en egen rad"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+            "options": {
+              "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+              "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Kopierar den text som visas i resultattavlans sidofält",
+            "options": {
+              "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Detta kommando kopierar spelarlistans rubrik och fotnot. Formateringskoder är inkluderade."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Ställer manuellt in antalet dödade zealoter.",
+              "options": {
+                "eyes": "Totalt antal samlade summoning eyes (någonsin)",
+                "totalZealots": "Totalt antal dödade zeloter (någonsin)",
+                "zealots": "Dödade zealoter sedan senaste summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer-boss: \"Zombie\", \"Spidel\", eller \"Varg\"",
+              "number": "Nummer att ställa in statistiken till",
+              "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Servertyp: %brand%",
+          "notFound": "Servertyp hittades inte!"
+        },
+        "dev": {
+          "disabled": "Utvecklarläge inaktiverat!",
+          "enabled": "Utvecklarläge aktiverat! TIPS: Tryck på %keyName% för att kopiera NBT-data!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Ställ in det totala antalet samlade summoning eyes till %number%!",
+            "totalZealotsSet": "Ställ in det totala antalet dödade zealoter till %number%!",
+            "wrongUsage": "Ogiltigt val! Välj %options%.",
+            "zealotsSet": "Ställ in det nuvarande antalet dödade zealoter till %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Du måste välja en boss! Välj %bosses%",
+          "statRequired": "Du måste välja en statistik. Tryck på Tabb för alternativ.",
+          "numberRequired": "Du måste lägga till det nummer du vill ha.",
+          "killsSet": "Kills for slayer %boss% was set to %number%.",
+          "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+          "invalidBoss": "\"%input%\" är inte en giltig statistik!",
+          "invalidStat": "\"%input%\" är inte en giltig boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Meddelanden i åtgärdsfältet kommer inte längre att loggas.",
+          "enabled": "Meddelanden i åtgärdsfältet kommer nu att loggas."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Fel användning!",
+        "subCommandNotFound": "Underkommandot \"%sub-command%\" hittades inte."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Öppna huvudmenyn"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Servertyp: %brand%",
         "notFound": "Servertyp hittades inte!"
       },
@@ -345,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Kopierar den text som visas i resultattavlans sidofält",
           "options": {
@@ -364,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Detta kommando kopierar spelarlistans rubrik och fotnot. Formateringskoder är inkluderade."
         }
       },
       "dev": {
-        "help": "Byt till utvecklarläget",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Utvecklarläge inaktiverat!",
         "enabled": "Utvecklarläge aktiverat! TIPS: Tryck på %keyName% för att kopiera NBT-data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Redigera GUI-positioner"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Öppna din mapp för moddar",
-        "error": "Ett fel uppstod när mappen för moddar försökte öppnas: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Visa detta hjälpmeddelande. Om ett kommando anges visas detaljerad hjälp om det kommandot.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "underkommandot för att få detaljerad användning för"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -411,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Ställ in antalet dödade zealoter manuellt",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Ställer manuellt in antalet dödade zealoter.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Ställ in slayer-statistik manuellt, tryck på Tabb för argument",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Ställ in slayer-statistik manuellt, tryck på Tabb för argument",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer-boss: \"Zombie\", \"Spidel\", eller \"Varg\"",
             "number": "Nummer att ställa in statistiken till",
@@ -445,12 +616,12 @@
         "invalidStat": "\"%input%\" är inte en giltig boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Meddelanden i åtgärdsfältet kommer inte längre att loggas.",
         "enabled": "Meddelanden i åtgärdsfältet kommer nu att loggas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Kopiera NBT"
+    "developerCopyNBT": "Kopiera NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

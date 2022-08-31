@@ -4,8 +4,8 @@
   "settings": {
     "settings": "Ustawienia",
     "magmaBossWarning": "Ostrzeżenie o Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Ostrzeżenie o Bal Boss",
+    "broodMotherWarning": "Ostrzeżenie o Brood Mother",
     "itemDropConfirmation": "Potwierdzenie wyrzucenia przedmiotu",
     "hideSkeletonHatBones": "Ukryj kości Skeleton's Helmet",
     "skeletonHatBonesBar": "Pasek kości z Skeleton's Helmet",
@@ -36,8 +36,8 @@
     "defensePercentage": "Odsetkowy wskaźnik obrony",
     "healthUpdates": "Liczba Różnicy Zdrowia",
     "hidePlayersInLobby": "Ukryj odległe byty w poczekalni",
-    "darkAuctionTimer": "Zegar Dark Auction",
-    "magmaBossTimer": "Zegar Magma Bossa",
+    "darkAuctionTimer": "Licznik czasu: Aukcja w ciemno",
+    "magmaBossTimer": "Licznik czasu: Magma Boss",
     "itemPickupLog": "Wykaz podniesionych przedmiotów",
     "avoidPlacingEnchantedItems": "Zablokuj stawianie zaklętych przedmiotów",
     "stopBowChargeFromResetting": "Wyłącz resetowanie się naładowania łuku",
@@ -53,8 +53,8 @@
     "useVanillaTexture": "Używaj domyślnej tekstury",
     "textStyle": "Styl tekstu",
     "textStyles": {
-      "one": "Styl pierwszy",
-      "two": "Styl drugi"
+      "one": "Styl Pierwszy",
+      "two": "Styl Drugi"
     },
     "warningDuration": "Długość trwania ostrzeżenia",
     "dontOpenProfileWithBow": "Nie otwieraj profilu podczas trzymania łuku",
@@ -85,9 +85,9 @@
     "tab": {
       "generalSettings": "Ustawienia ogólne"
     },
-    "tabEffectTimers": "Zegary mikstur i umiejętności",
+    "tabEffectTimers": "Licznik czasu: mikstury i umiejętności",
     "noArrowsLeftAlert": "Powiadomienie o braku strzał",
-    "hideNightVisionEffectTimer": "Ukryj zegar efektu widzenia w ciemności",
+    "hideNightVisionEffectTimer": "Ukryj licznik czasu efektu widzenia w ciemności",
     "showCakeBagPreview": "Podgląd Cake Bags",
     "showBackpackPreviewInAH": "Podgląd plecaka dla Twoich przedmiotów, gdy Dom Aukcyjny jest otwarty",
     "enableDevFeatures": "Włącz funkcje dla programistów",
@@ -98,7 +98,7 @@
       "fade": "Blaknięcie koloru"
     },
     "chromaFadeWidth": "Szerokość blaknięcia kolorów",
-    "sortTabEffectTimers": "Sortuj zegary według trwania",
+    "sortTabEffectTimers": "Sortuj Licznik czasu według trwania",
     "showBrokenFragments": "Pokazuj zniszczone Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
@@ -106,7 +106,7 @@
     "showZealotsPerEye": "Licznik Zealotów - Pokaż ilość Zealotów na jedno oko",
     "turnBowGreenWhenUsingToxicArrowPoison": "Zmień kolor łuku na zielony kiedy Toksyczna, trująca strzała jest w użyciu",
     "birchParkRainmakerTimer": "Pozostały czas deszczu w Brzozowym Parku",
-    "combatTimerDisplay": "Wyświetlaj pozostały czas Combat taga",
+    "combatTimerDisplay": "Licznik czasu: Combat",
     "discordRP": "Discord Rich Presence",
     "endstoneProtectorDisplay": "Wyświelaj ochronę kamienia Kresu",
     "fancyWarpMenu": "Wymyślne menu przenoszenia",
@@ -170,9 +170,9 @@
     "showSwordKills": "Pokaż zabójstwa mieczem",
     "compactTabList": "Kompaktowa Tab lista",
     "highlightSpecialEnchantments": "Podświetl specjalne zaklęcia",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "disableDamageChatMessages": "Wyłącz wiadomości o obrażeniach na czacie",
+    "showSpiritSceptreDisplay": "Wyświetlanie Obrażeń Sceptre/Wither Blade",
+    "outbidAlertSound": "Dźwięk Alarmu Przelicytowania",
     "hideMenuGlassPanes": "Ukryj dymki szyb w menu",
     "candyPointsCounter": "Licznik cukierków/punktów podczas Spooky Event",
     "healingCircleOpacity": "Przeźroczystość koła leczącego",
@@ -211,9 +211,15 @@
     "guiScaleY": "Skala GUI Y: %scale%",
     "abbreviateSkillXpDenominator": "Skrócony Dzielnik XP'a umiejętności",
     "otherDefenseStats": "Inne statystyki obrony (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "hideSpawnPointPlayers": "Ukryj Graczy w Miejscu Odrodzenia",
+    "jacobsContestTimer": "Licznik czasu: Jacob's Contest",
+    "dontReplaceRomanNumeralsInItemNames": "Nie zamieniaj w Nazwach Przedmiotów",
+    "backpackOpeningSound": "Odgłos otwarcia Skórzanego Plecaka",
+    "devMode": "Tryb Dewelopera",
+    "showSkyblockItemId": "Pokaż ID Przedmiotu po Najechaniu",
+    "showFeatureNamesOnHover": "Pokaż Nazwę Funkcji po Najechaniu",
+    "resetSalvagedEssencesAfterLeavingMenu": "Zresetuj licznik Odzyskanej Esencji po Zamknięciu Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -290,7 +296,11 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Czas odnowienia: %time%s",
     "entityOutlinesRequirement": "Wymaga wyłączenia Shaderów, szybkiego Renderingu, oraz Antyaliasingu",
-    "version": "Version"
+    "version": "Wersja",
+    "invalidFeatureConfiguration": "Wykryto nieprawidłową konfigurację %featureName%, resetowanie ustawień do domyślnych wartości.",
+    "fileFetchFailed": "%modName% nie pobrał(a) %number% pliku(-ów). Skopiuj błąd za pomocą przycisku poniżej i zgłoś go na naszym serwerze Discord.",
+    "copy": "Skopiuj",
+    "copied": "Skopiowano!"
   },
   "discordStatus": {
     "titleNone": "Brak",
@@ -300,7 +310,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "Pokazuje ilość monet w Twoim portfelu",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Pokazuje liczbę posiadanych cząstek",
     "titleStats": "Statystyki",
     "descriptionStats": "Pokazuje Twoje punkty zdrowia, obrony i many",
     "titleZealots": "Zealots",
@@ -331,21 +341,182 @@
     "titleExpand": "Rozwiń",
     "descriptionExpand": "Wyświetlaj jedno zaklęcie na jeden wiersz"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "§e(Dev) §7Kopiuje Dane o bloku, na który patrzysz"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają: graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
+            "options": {
+              "entityNames": "Nazwy typów bytów, których dane chcesz skopiować (np. Gracz, Creeper). Naciśnij \"Tab\" po wpisaniu komendy, aby zobaczyć pełną listę. Rozdziel nazwy przecinkami, w nazwach jest rozróżniana wielkość liter.",
+              "radius": "Promień (w blokach) dookoła gracza do skopiowania danych z bytów NBT"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Kopiuje tekst pokazany w bocznym pasku tablicy wyników",
+            "options": {
+              "formatted": "Określa, czy kody formatowania powinny być zawarte podczas kopiowania. Może być \"true\" lub \"false\", domyślnie \"false\" jeśli nie podano żadnej wartości. Kody formatowania są kopiowane, jeśli występuje \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Ta komenda kopiuję nagłówek i stopkę Tab listy graczy. Łącznie z kodami formatującymi."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Pokazuje liczby przechowane w licznikach śmierci w lochach w celu debugowania."
+        },
+        "reload": {
+          "help": "Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
+        },
+        "reloadConfig": {
+          "help": "Wczytuje ponownie ustawienia modyfikacji"
+        },
+        "reloadRes": {
+          "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
+        },
+        "resetZealotCounter": {
+          "help": "Resetuje licznik zabitych Zealot'ów."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Ręcznie ustawia wartości licznika zealotów.",
+              "options": {
+                "eyes": "Łączna liczba otrzymanych summoning eyes",
+                "totalZealots": "Łączna liczba zabitych zealotów",
+                "zealots": "Zealoty zabite od ostatniego wyrzucenia summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer bossowie: \"Zombie\", \"Spider\" lub \"Wolf\"",
+              "number": "Numer, do którego chcesz ustawić statystykę",
+              "stat": "Statystyki slayera do zmiany, mogą być \"zabójstwami\" lub nazwą zdobytego przedmiotu sformatowaną w taki sposób: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Pokazuje wersję modyfikacji"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "API Serwera: %brand%",
+          "notFound": "Nie znaleziono API serwera!"
+        },
+        "dev": {
+          "disabled": "Tryb programisty wyłączony!",
+          "enabled": "Tryb programisty włączony! Kliknij „%keyName%”, aby skopiować dane NBT!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zresetowano licznik zabójstw Zealot'ów!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Ustaw całkowitą liczbę summoning eye na %number%!",
+            "totalZealotsSet": "Ustaw całkowitą liczbę zealotów na %number%!",
+            "wrongUsage": "Nieprawidłowy wybór! Proszę wybrać %options%.",
+            "zealotsSet": "Ustaw aktualną liczbę Zealotów na %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Musisz wybrać boss'a! Proszę wybierz %bosses%",
+          "statRequired": "Musisz wybrać statystykę. Kliknij tab, aby zobaczyć opcję.",
+          "numberRequired": "Musisz dodać cyfrę, jaką chcesz.",
+          "killsSet": "Zabicia dla slayera %boss% zostały ustawione na %number%.",
+          "statSet": "Statystyki %stat% dla slayera %boss% zostały ustawione na %number%.",
+          "invalidBoss": "„%input%” nie jest prawidłową statystyką!",
+          "invalidStat": "„%input%” nie jest prawidłowym bossem!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
+          "enabled": "Wiadomości na pasku akcji będą rejestrowane."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Wiadomości Licznika czasu Magma Boss nie będą rejestrowane.",
+          "enabled": "Wiadomości Licznika czasu Magma Boss będą rejestrowane."
+        },
+        "version": {
+          "hoverText": "Naciśnij, aby umieścić to w chacie, by móc to skopiować."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Złe zastosowanie!",
+        "subCommandNotFound": "Podkomenda „%sub-command%” nie została odnaleziona."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Otwórz menu główne"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "API Serwera: %brand%",
         "notFound": "Nie znaleziono API serwera!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "§e(Dev) §7Kopiuje Dane o bloku, na który patrzysz"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopiuje dane NBT bytów. Rodzaje elementów dołączonych i promień wokół gracza do kopiowania danych mogą być dostosowywane. Jeśli nie podano żadnych opcji, używane są domyślne ustawienia. Domyślne ustawienia zawierają: graczy, stojaki na zbroje i moby, a także promień %radius% bloków. Jeśli promień nie jest podany, stosuje się domyślny promień.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Kopiuje tekst pokazany w bocznym pasku tablicy wyników",
           "options": {
@@ -364,54 +535,54 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Ta komenda kopiuję nagłówek i stopkę Tab listy graczy. Łącznie z kodami formatującymi."
         }
       },
       "dev": {
-        "help": "Włącz tryb programisty",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "To polecenie włącza tryb programisty. Ten tryb jest przeznaczony dla deweloperów modów/narzędzi dla Skyblock. Dostarcza surowych danych z gry, takich jak tagi NBT przedmiotów i bytów."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Tryb programisty wyłączony!",
         "enabled": "Tryb programisty włączony! Kliknij „%keyName%”, aby skopiować dane NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edytuj położenie GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Otwórz folder z modyfikacjami",
-        "error": "Wystąpił błąd podczas próby otwarcia folderu z modami: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Pokazuje tę wiadomość. Jeśli polecenie zostanie dostarczone, to wyświetli się szczegółowa informacja o tym poleceniu.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "pod-komenda, aby uzyskać szczegółowe użycie dla"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Pokazuje liczby przechowane w licznikach śmierci w lochach w celu debugowania."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Wczytuje ponownie wszystkie ustawienia i zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Wczytuje ponownie ustawienia modyfikacji"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "§e(Dev) §7Wczytuje ponownie zasoby moda. Gra zamrozi się na kilka sekund."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Resetuje licznik zabitych Zealot'ów.",
+        "resetSuccess": "Zresetowano licznik zabójstw Zealot'ów!"
       },
       "set": {
         "zealotCounter": {
-          "help": "Ręcznie ustaw Twoje liczniki Zealotów",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Ręcznie ustawia wartości licznika zealotów.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Ustaw manualnie statystki Slayera, naciśnij tab, aby zobaczyć argumenty",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer bossowie: \"Zombie\", \"Spider\" lub \"Wolf\"",
             "number": "Numer, do którego chcesz ustawić statystykę",
@@ -445,18 +616,18 @@
         "invalidStat": "„%input%” nie jest prawidłowym bossem!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Wiadomości na pasku akcji nie będą dłużej rejestrowane.",
         "enabled": "Wiadomości na pasku akcji będą rejestrowane."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Toggles logging magma boss timer debug messages",
+        "disabled": "Wiadomości Licznika czasu Magma Boss nie będą rejestrowane.",
+        "enabled": "Wiadomości Licznika czasu Magma Boss będą rejestrowane."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Pokazuje wersję modyfikacji",
+        "hoverText": "Naciśnij, aby umieścić to w chacie, by móc to skopiować."
       },
       "errors": {
         "wrongUsage": {
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Skopiuj NBT"
+    "developerCopyNBT": "Skopiuj NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

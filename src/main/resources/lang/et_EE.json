@@ -213,7 +213,13 @@
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Loitsud",
@@ -290,7 +296,11 @@
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Mitte ühtegi",
@@ -331,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Kopeerib olendite NBT andmed. Kaasatavate olendite tüüpe ja mängija raadiust, kust andmeid kopeerida, saab kohandada. Kui valikuid pole antud, kasutatakse vaikesätteid. Vaikimisi seaded on järgmised: mängijad, armor standid ja mobid 3 ploki raadiuses. Kui raadiust pole antud, kasutatakse vaikeraadiust.",
+            "options": {
+              "entityNames": "Elukatüüpide nimed, kelle andmeid kopeerida (nt. Player, Creeper). Vajuta \"Tab\" peale käsu kirjutamist, et saada täis list. Eralda mitmed nimed komadega, nimed peavad olema õigete suurte tähtedega.",
+              "radius": "Raadius (plokkides) mängija ümber kust NBT andmeid kopeerida"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Kopeerib näidatud tekstid scoreboard 'is külgriba näidatud kohal",
+            "options": {
+              "formatted": "Otsustab, kas vormistuskoodid peaksid olema sisaldatud kopeerimisel. Saab olla kas \"tõene\" või \"väär\", vaikesättena läheb valikule \"väär\", kui väärstust pole antud. Vormistuskoodid on kopeeritud kui on valitud \"tõene\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "See käsk kopeerib \"header\" 'i ja \"footer\" 'i Tab mängijate listist. Vormistuskoodid on sisaldatud."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manuaalselt muudab lugejat Zealot 'i lugejas.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Eluajal tapetud Zealot 'id",
+                "zealots": "Zealot 'id tapetud viimasest summoning eye 'st"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", või \"Wolf\"",
+              "number": "Number milleks näitajad muuta",
+              "stat": "Slayer 'i lugeja mida muuta, võib olla \"kills\" või kindla saadud asja nimi niimoodi: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Serveri bränd: %brand%",
+          "notFound": "Serveri brändi ei leitud!"
+        },
+        "dev": {
+          "disabled": "Arendaja režiim välja lülitatud!",
+          "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Muudetud kogu summoning eye 'de arv arvuks %number%!",
+            "totalZealotsSet": "Muudetud kogu Zealot 'ite arv arvuks %number%!",
+            "wrongUsage": "Kehtetu valik! Palun vali %options%.",
+            "zealotsSet": "Muudetud praegune Zealot 'ite arv arvuks %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Sa pead valima bossi! Palun vali %bosses%",
+          "statRequired": "Sa pead valima lugeja. Vajuta Tab valikute jaoks.",
+          "numberRequired": "Sa pead lisama numbri mida sa tahad.",
+          "killsSet": "Tapmised slayerile %boss% on nüüd %number%.",
+          "statSet": "Statistika %stat% slayer 'ile %boss% muudeti numbriks %number%.",
+          "invalidBoss": "\"%input%\" pole kehtiv statistik!",
+          "invalidStat": "\"%input%\" pole kehtiv boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action bar 'i sõnumeid enam ei loggita.",
+          "enabled": "Action bar messages will now be logged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wrong usage!",
+        "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Ava peamenüü"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Serveri bränd: %brand%",
         "notFound": "Serveri brändi ei leitud!"
       },
@@ -345,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Kopeerib olendite NBT andmed. Kaasatavate olendite tüüpe ja mängija raadiust, kust andmeid kopeerida, saab kohandada. Kui valikuid pole antud, kasutatakse vaikesätteid. Vaikimisi seaded on järgmised: mängijad, armor standid ja mobid 3 ploki raadiuses. Kui raadiust pole antud, kasutatakse vaikeraadiust.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Kopeerib näidatud tekstid scoreboard 'is külgriba näidatud kohal",
           "options": {
@@ -364,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "See käsk kopeerib \"header\" 'i ja \"footer\" 'i Tab mängijate listist. Vormistuskoodid on sisaldatud."
         }
       },
       "dev": {
-        "help": "Lülita arendaja režiim sisse/välja",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "See käsk lülitab arendaja režiimi sisse/välja. See režiim on mõeldud Skyblock 'i modide arendajatele. See annab toore informatsiooni mängust nagu elukate ja asjade NBT info."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Arendaja režiim välja lülitatud!",
         "enabled": "Arendaja režiim sisse lülitatud! VIHJE: Vajuta \"%KeyName%\" et kopeerida NBT andmed!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Muuda GUI asukohti"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Ava oma modide kaust",
-        "error": "Error juhtus proovides avada modide kausta: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Näita seda abisõnumit. Kui käsk on antud, detailset abi käsu näitamise kohta.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "ala-käsk mille kohta saada üksikasjalikku kasutamist"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -411,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manuaalselt muuda oma Zealot 'i lugejad",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manuaalselt muudab lugejat Zealot 'i lugejas.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manuaalselt muuda Slayer 'ite näitajaid, vajuta Tab parameetriteks",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", või \"Wolf\"",
             "number": "Number milleks näitajad muuta",
@@ -445,12 +616,12 @@
         "invalidStat": "\"%input%\" pole kehtiv boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Action bar 'i sõnumeid enam ei loggita.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Kopeeri NBT"
+    "developerCopyNBT": "Kopeeri NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

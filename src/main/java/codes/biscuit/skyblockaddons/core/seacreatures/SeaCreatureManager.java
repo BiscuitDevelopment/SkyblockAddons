@@ -27,7 +27,7 @@ public class SeaCreatureManager {
         legendarySeaCreatureSpawnMessages.clear();
         for (SeaCreature sc : seaCreatures.values()) {
             allSeaCreatureSpawnMessages.add(sc.getSpawnMessage());
-            if (sc.getRarity() == LEGENDARY) {
+            if (sc.getRarity().compareTo(LEGENDARY) >= 0) {
                 legendarySeaCreatureSpawnMessages.add(sc.getSpawnMessage());
             }
         }

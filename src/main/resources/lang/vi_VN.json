@@ -213,7 +213,13 @@
     "otherDefenseStats": "Các Chỉ số Phòng thủ khác (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names"
+    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
+    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "devMode": "Developer Mode",
+    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -290,7 +296,11 @@
     "chroma": "Sắc độ",
     "worldRenderedCooldownTime": "T.gian chờ: %time%gi",
     "entityOutlinesRequirement": "Yêu cầu phải TẮT Shaders, Fast Render và Antialiasing",
-    "version": "Version"
+    "version": "Version",
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Không có",
@@ -331,13 +341,174 @@
     "titleExpand": "Mở rộng",
     "descriptionExpand": "Liệt kê từng phù phép một theo dòng"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Sẽ sao chép giá trị NBT từ các thực thể. Những loại thực thể đã cho và tầm bán kính người chơi được dùng để sao chép giá trị có thể được chỉnh sửa. Nếu bạn không ghi lựa chọn nào, những lựa chọn mặc định sẽ được sử dụng. Lựa chọn mặc định: bao gồm người chơi, cột treo giáp, quái, với bán kính 3 khối. Nếu bạn không định sẵn bán kính, bán kính theo lựa chọn mặc định sẽ được sử dụng.",
+            "options": {
+              "entityNames": "Tên của các thực thể bạn muốn sao chép giá trị (ví dụ: Người chơi, Creeper). Nhấn \"Tab\" sau khi viết lệnh để xem danh sách đầy đủ. Chia những cái tên khác nhau bằng dấu phẩy, và tên phải ghi đúng ký tự.",
+              "radius": "Bán kính (theo số khối) xung quanh người chơi để sao chép giá trị NBT của thực thể"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Sao chép phần chữ được hiển thị trên bảng điểm",
+            "options": {
+              "formatted": "Xác định nếu các mã định dạng sẽ được cho thêm khi sao chép. Có thể tùy thuộc đúng (\"true\") hay sai (\"false\"), mặc định là \"false\" nếu bạn không định sẵn giá trị. Mã định dạng sẽ được sao chép nếu \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "Lệnh này sẽ giúp bạn sao chép tiêu đề và phần cuối trang của bảng danh sách người chơi. Mã định dạng trong đó cũng sẽ được sao chép."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Điều chỉnh Bộ Đếm Zealot theo cách thủ công.",
+              "options": {
+                "eyes": "Tổng số Summoning Eye đã nhận được",
+                "totalZealots": "Tổng số Zealot đã giết",
+                "zealots": "Số Zealot đã giết kể từ khi nhận được Summoning Eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Trùm Slayer: \"Zombie\", \"Spider\" hoặc \"Wolf\"",
+              "number": "Số đã nhập để cài đặt số liệu",
+              "stat": "Để số liệu Slayer thay đổi, có thể là \"kills\" hoặc tên vật phẩm rơi ra được định dạng như thế này: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Nhãn hiệu Máy chủ: %brand%",
+          "notFound": "Không thể tìm thấy Nhãn hiệu Máy chủ!"
+        },
+        "dev": {
+          "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
+          "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Đã đặt bộ đếm tổng số Summoning Eye thành %number%!",
+            "totalZealotsSet": "Đã đặt bộ đếm tổng số Zealot là %number%!",
+            "wrongUsage": "Lựa chọn không phù hợp! Thay vào đó bạn hãy chọn %options%.",
+            "zealotsSet": "Đã đặt bộ đếm Zealot hiện tại là %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Bạn phải chọn một con trùm! Vui lòng chọn %bosses%",
+          "statRequired": "Bạn phải chọn một số liệu. Nhấn Tab để xem thêm lựa chọn.",
+          "numberRequired": "Bạn phải nhập giá trị số bạn muốn đặt.",
+          "killsSet": "Số giết cho trùm Slayer %boss% đã được đặt thành %number%.",
+          "statSet": "Số liệu %stat% cho trùm Slayer %boss% đã được đặt thành %number%.",
+          "invalidBoss": "\"%input%\" không phải là một trùm hợp lệ!",
+          "invalidStat": "\"%input%\" không phải là một số liệu hợp lệ!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
+          "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Sai cách dùng!",
+        "subCommandNotFound": "Lệnh phụ \"%sub-command%\" không tồn tại."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Mở menu chính"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Nhãn hiệu Máy chủ: %brand%",
         "notFound": "Không thể tìm thấy Nhãn hiệu Máy chủ!"
       },
@@ -345,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Sẽ sao chép giá trị NBT từ các thực thể. Những loại thực thể đã cho và tầm bán kính người chơi được dùng để sao chép giá trị có thể được chỉnh sửa. Nếu bạn không ghi lựa chọn nào, những lựa chọn mặc định sẽ được sử dụng. Lựa chọn mặc định: bao gồm người chơi, cột treo giáp, quái, với bán kính 3 khối. Nếu bạn không định sẵn bán kính, bán kính theo lựa chọn mặc định sẽ được sử dụng.",
           "options": {
@@ -355,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Sao chép phần chữ được hiển thị trên bảng điểm",
           "options": {
@@ -364,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "Lệnh này sẽ giúp bạn sao chép tiêu đề và phần cuối trang của bảng danh sách người chơi. Mã định dạng trong đó cũng sẽ được sao chép."
         }
       },
       "dev": {
-        "help": "Bật/Tắt chế độ dành cho Nhà Phát Triển (NPT)",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "Lệnh này sẽ bật chế độ cho nhà phát triển. Thường được dùng bởi những nhà phát triển những bản mod/dụng cụ cho Skyblock. Lệnh này sẽ cho bạn dữ liệu gốc từ trò chơi, ví dụ như dữ liệu NBT của thực thể (entity) và vật phẩm."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Đã tắt chế độ dành cho nhà phát triển!",
         "enabled": "Đã bật chế độ dành cho nhà phát triển! MẸO: Nhấn \"%keyName%\" để sao chép giá trị NBT!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Điều chỉnh vị trí GUI"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Mở thư mục 'mods'",
-        "error": "Đã có lỗi xảy ra khi cố gắng mở thư mục \"mods\": %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Hiện tin nhắn trợ giúp này. Nếu bạn gõ thêm một lệnh đã được cho sẵn, trợ giúp chi tiết của lệnh đó sẽ được hiển thị.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "lệnh phụ để lấy chi tiết sử dụng"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -411,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Chỉnh Bộ Đếm Zealot theo cách thủ công",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Điều chỉnh Bộ Đếm Zealot theo cách thủ công.",
             "options": {
@@ -427,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Điều chỉnh số liệu Slayer theo cách thủ công, nhấn Tab để hiện đối số",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Trùm Slayer: \"Zombie\", \"Spider\" hoặc \"Wolf\"",
             "number": "Số đã nhập để cài đặt số liệu",
@@ -445,12 +616,12 @@
         "invalidStat": "\"%input%\" không phải là một số liệu hợp lệ!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Những tin nhắn từ thanh hoạt động giờ sẽ không được lưu trữ.",
         "enabled": "Những tin nhắn từ thanh hoạt động giờ sẽ được lưu trữ."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Sao chép giá trị NBT"
+    "developerCopyNBT": "Sao chép giá trị NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

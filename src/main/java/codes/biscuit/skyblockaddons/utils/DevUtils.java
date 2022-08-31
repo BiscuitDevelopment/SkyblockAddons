@@ -65,7 +65,7 @@ public class DevUtils {
     /** All possible Minecraft entity names, for tab completion */
     public static final List<String> ALL_ENTITY_NAMES = EntityList.getEntityNameList();
 
-    // If you change this, please change it in the string "commandUsage.sba.help.copyEntity" as well.
+    // If you change this, please change it in the string "commands.usage.sba.help.copyEntity" as well.
     public static final int DEFAULT_ENTITY_COPY_RADIUS = 3;
     private static final List<Class<? extends Entity>> DEFAULT_ENTITY_NAMES = Collections.singletonList(EntityLivingBase.class);
     private static final boolean DEFAULT_SIDEBAR_FORMATTED = false;
@@ -612,7 +612,9 @@ public class DevUtils {
 
         try {
             clipboard.setContents(output, output);
-            main.getUtils().sendMessage(successMessage);
+            if (successMessage != null) {
+                main.getUtils().sendMessage(successMessage);
+            }
         } catch (IllegalStateException exception) {
             main.getUtils().sendErrorMessage("Clipboard not available!");
         }

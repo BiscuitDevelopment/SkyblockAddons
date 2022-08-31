@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.features.slayertracker;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.ItemDiff;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
@@ -17,32 +18,46 @@ import java.util.Map;
 public class SlayerTracker {
 
     @Getter private static final SlayerTracker instance = new SlayerTracker();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
 
     // Saves the last second of inventory differences
     private final transient Map<Long, List<ItemDiff>> recentInventoryDifferences = new HashMap<>();
     private transient long lastSlayerCompleted = -1;
 
     public int getSlayerKills(SlayerBoss slayerBoss) {
-        SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+        SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
         return slayerTrackerData.getSlayerKills().getOrDefault(slayerBoss, 0);
     }
 
     public int getDropCount(SlayerDrop slayerDrop) {
-        SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+        SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
         return slayerTrackerData.getSlayerDropCounts().getOrDefault(slayerDrop, 0);
     }
+
+    /**
+     * Returns whether any slayer trackers are enabled
+     *
+     * @return {@code true} if at least one slayer tracker is enabled, {@code false} otherwise
+     */
+    public boolean isTrackerEnabled() {
+        return main.getConfigValues().isEnabled(Feature.REVENANT_SLAYER_TRACKER) ||
+                main.getConfigValues().isEnabled(Feature.TARANTULA_SLAYER_TRACKER) ||
+                main.getConfigValues().isEnabled(Feature.SVEN_SLAYER_TRACKER) ||
+                main.getConfigValues().isEnabled(Feature.VOIDGLOOM_SLAYER_TRACKER);
+    }
+
     /**
      * Adds a kill to the slayer type
      */
     public void completedSlayer(String slayerTypeText) {
         SlayerBoss slayerBoss = SlayerBoss.getFromMobType(slayerTypeText);
         if (slayerBoss != null) {
-            SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+            SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
             slayerTrackerData.getSlayerKills().put(slayerBoss, slayerTrackerData.getSlayerKills().getOrDefault(slayerBoss, 0) + 1);
             slayerTrackerData.setLastKilledBoss(slayerBoss);
             lastSlayerCompleted = System.currentTimeMillis();
 
-            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            main.getPersistentValuesManager().saveValues();
         }
     }
 
@@ -50,7 +65,7 @@ public class SlayerTracker {
         recentInventoryDifferences.entrySet().removeIf(entry -> System.currentTimeMillis() - entry.getKey() > 1000);
         recentInventoryDifferences.put(System.currentTimeMillis(), newInventoryDifference);
 
-        SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+        SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
         // They haven't killed a dragon recently OR the last killed dragon was over 30 seconds ago...
         if (slayerTrackerData.getLastKilledBoss() == null || lastSlayerCompleted == -1 || System.currentTimeMillis() - lastSlayerCompleted > 30 * 1000) {
             return;
@@ -114,13 +129,13 @@ public class SlayerTracker {
             throw new IllegalArgumentException(Translations.getMessage("commandUsage.sba.slayer.invalidBoss", args[1]));
         }
 
-        SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+        SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
         if (args[2].equalsIgnoreCase("kills")) {
             int count = Integer.parseInt(args[3]);
             slayerTrackerData.getSlayerKills().put(slayerBoss, count);
-            SkyblockAddons.getInstance().getUtils().sendMessage(Translations.getMessage(
+            main.getUtils().sendMessage(Translations.getMessage(
                     "commandUsage.sba.slayer.killsSet", args[1], args[3]));
-            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            main.getPersistentValuesManager().saveValues();
             return;
         }
 
@@ -134,9 +149,9 @@ public class SlayerTracker {
         if (slayerDrop != null) {
             int count = Integer.parseInt(args[3]);
             slayerTrackerData.getSlayerDropCounts().put(slayerDrop, count);
-            SkyblockAddons.getInstance().getUtils().sendMessage(Translations.getMessage(
+            main.getUtils().sendMessage(Translations.getMessage(
                     "commandUsage.sba.slayer.statSet", args[2], args[1], args[3]));
-            SkyblockAddons.getInstance().getPersistentValuesManager().saveValues();
+            main.getPersistentValuesManager().saveValues();
             return;
         }
 
@@ -144,7 +159,7 @@ public class SlayerTracker {
     }
 
     public void setKillCount(SlayerBoss slayerBoss, int kills) {
-        SlayerTrackerData slayerTrackerData = SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getSlayerTracker();
+        SlayerTrackerData slayerTrackerData = main.getPersistentValuesManager().getPersistentValues().getSlayerTracker();
         slayerTrackerData.getSlayerKills().put(slayerBoss, kills);
     }
 }

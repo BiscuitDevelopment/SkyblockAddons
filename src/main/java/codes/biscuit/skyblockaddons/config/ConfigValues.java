@@ -42,8 +42,8 @@ public class ConfigValues {
 
     private static final ReentrantLock SAVE_LOCK = new ReentrantLock();
 
-    private final SkyblockAddons main = SkyblockAddons.getInstance();
-    private final Logger logger = SkyblockAddons.getLogger();
+    private static final SkyblockAddons main = SkyblockAddons.getInstance();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private final Map<Feature, FloatPair> defaultCoordinates = new EnumMap<>(Feature.class);
     private final Map<Feature, EnumUtils.AnchorPoint> defaultAnchorPoints = new EnumMap<>(Feature.class);
@@ -317,6 +317,8 @@ public class ConfigValues {
                 return;
             }
 
+            logger.info("Saving config");
+
             try {
                 settingsConfigFile.createNewFile();
 
@@ -434,6 +436,8 @@ public class ConfigValues {
             }
 
             SAVE_LOCK.unlock();
+
+            logger.info("Config saved");
         });
     }
 

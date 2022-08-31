@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
@@ -19,6 +18,7 @@ import codes.biscuit.skyblockaddons.features.backpacks.BackpackColor;
 import codes.biscuit.skyblockaddons.features.backpacks.BackpackInventoryManager;
 import codes.biscuit.skyblockaddons.features.cooldowns.CooldownManager;
 import codes.biscuit.skyblockaddons.features.dragontracker.DragonTracker;
+import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.features.enchants.EnchantManager;
 import codes.biscuit.skyblockaddons.features.fishParticles.FishParticleManager;
 import codes.biscuit.skyblockaddons.features.powerorbs.PowerOrbManager;
@@ -83,7 +83,6 @@ import org.apache.logging.log4j.Logger;
 import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
-import java.text.NumberFormat;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -91,7 +90,7 @@ import java.util.regex.Pattern;
 //TODO Fix for Hypixel localization
 public class PlayerListener {
 
-    private static final Logger LOGGER = SkyblockAddons.getLogger();
+    private static final Logger logger = SkyblockAddons.getLogger();
 
     private static final Pattern NO_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou don't have any more Arrows left in your Quiver!§r");
     private static final Pattern ONLY_HAVE_ARROWS_LEFT_PATTERN = Pattern.compile("(?:§r)?§cYou only have (?<arrows>[0-9]+) Arrows left in your Quiver!§r");
@@ -107,7 +106,6 @@ public class PlayerListener {
     private static final Pattern SLAYER_COMPLETED_PATTERN_AUTO2 = Pattern.compile(" *SLAYER QUEST STARTED!");
     private static final Pattern DEATH_MESSAGE_PATTERN = Pattern.compile(" ☠ (?<username>\\w+) (?<causeOfDeath>.+)\\.");
     private static final Pattern REVIVE_MESSAGE_PATTERN = Pattern.compile(" ❣ (?<revivedPlayer>\\w+) was revived(?: by (?<reviver>\\w+))*!");
-    private static final Pattern ACCESSORY_BAG_REFORGE_PATTERN = Pattern.compile("You applied the (?<reforge>\\w+) reforge to \\d+ accessories (of|in) (?:\\w+ rarity in )?your Accessory Bag!");
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
     private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (?:Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(?:y|ies) for (?<dealtDamage>[0-9]{1,3}(?:,[0-9]{3})*(?:\\.[0-9]+)*) damage\\.");
@@ -267,7 +265,7 @@ public class PlayerListener {
             if (e.type == 2) {
                 // Log the message to the game log if action bar message logging is enabled.
                 if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && DevUtils.isLoggingActionBarMessages()) {
-                    LOGGER.info("[ACTION BAR] " + unformattedText);
+                    logger.info("[ACTION BAR] " + unformattedText);
                 }
 
                 // Parse using ActionBarParser and display the rest message instead
@@ -358,40 +356,46 @@ public class PlayerListener {
                             e.setCanceled(true);
                         }
                     }
-                } else if ((matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
+                } else if (SlayerTracker.getInstance().isTrackerEnabled() &&
+                        (matcher = SLAYER_COMPLETED_PATTERN.matcher(strippedText)).matches()) { // §r   §r§5§l» §r§7Talk to Maddox to claim your Wolf Slayer XP!§r
                     SlayerTracker.getInstance().completedSlayer(matcher.group("slayerType"));
 
-                } else if ((matcher = SLAYER_COMPLETED_PATTERN_AUTO1.matcher(strippedText)).matches()) { // Spider Slayer LVL 7 - Next LVL in 181,000 XP!
+                } else if (SlayerTracker.getInstance().isTrackerEnabled() &&
+                        (matcher = SLAYER_COMPLETED_PATTERN_AUTO1.matcher(strippedText)).matches()) { // Spider Slayer LVL 7 - Next LVL in 181,000 XP!
                     lastMaddoxLevelTime = System.currentTimeMillis();
                     lastMaddoxSlayerType = matcher.group("slayerType");
                 } else if (SLAYER_COMPLETED_PATTERN_AUTO2.matcher(strippedText).matches() && System.currentTimeMillis() - lastMaddoxLevelTime < 100) {
                     SlayerTracker.getInstance().completedSlayer(lastMaddoxSlayerType);
 
-                } else if (strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        strippedText.startsWith("☬ You placed a Summoning Eye!")) { // §r§5☬ §r§dYou placed a Summoning Eye! §r§7(§r§e5§r§7/§r§a8§r§7)§r
                     DragonTracker.getInstance().addEye();
 
-                } else if (strippedText.equals("You recovered a Summoning Eye!")) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        strippedText.equals("You recovered a Summoning Eye!")) {
                     DragonTracker.getInstance().removeEye();
 
-                } else if ((matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        (matcher = DRAGON_SPAWNED_PATTERN.matcher(strippedText)).matches()) {
                     DragonTracker.getInstance().dragonSpawned(matcher.group("dragonType"));
 
-                } else if (DRAGON_KILLED_PATTERN.matcher(strippedText).matches()) {
+                } else if (main.getConfigValues().isEnabled(Feature.DRAGON_STATS_TRACKER) &&
+                        DRAGON_KILLED_PATTERN.matcher(strippedText).matches()) {
                     DragonTracker.getInstance().dragonKilled();
 
-                } else if (unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
+                } else if (main.getConfigValues().isEnabled(Feature.SHOW_ITEM_COOLDOWNS) &&
+                        unformattedText.equals("You laid an egg!")) { // Put the Chicken Head on cooldown for 20 seconds when the player lays an egg.
                     CooldownManager.put(InventoryUtils.CHICKEN_HEAD_ID);
 
-                } else if (formattedText.startsWith("§r§eYou added a minute of rain!")) {
+                } else if (main.getConfigValues().isEnabled(Feature.BIRCH_PARK_RAINMAKER_TIMER) &&
+                        formattedText.startsWith("§r§eYou added a minute of rain!")) {
                     if (this.rainmakerTimeEnd == -1 || this.rainmakerTimeEnd < System.currentTimeMillis()) {
                         this.rainmakerTimeEnd = System.currentTimeMillis() + (1000 * 60); // Set the timer to a minute from now.
                     } else {
                         this.rainmakerTimeEnd += (1000 * 60); // Extend the timer one minute.
                     }
-                } else if (main.getConfigValues().isEnabled(Feature.SHOW_REFORGE_OVERLAY) &&
-                        (matcher = ACCESSORY_BAG_REFORGE_PATTERN.matcher(unformattedText)).matches()) {
-                    GuiChestHook.setLastAccessoryBagReforge(matcher.group("reforge"));
-                } else if (formattedText.startsWith("§e[NPC] Fetchur§f:")) {
+                } else if (main.getConfigValues().isEnabled(Feature.FETCHUR_TODAY) &&
+                        formattedText.startsWith("§e[NPC] Fetchur§f:")) {
                     FetchurManager fetchur = FetchurManager.getInstance();
                     // Triggered if player has just given the correct item to Fetchur, or if sba isn't in sync (already handed in quest)
                     if (unformattedText.contains(fetchur.getFetchurTaskCompletedPhrase()) ||
@@ -569,7 +573,7 @@ public class PlayerListener {
                 }
                 EntityPlayerSP p = mc.thePlayer;
                 if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                    int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                    float newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                             getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                     setAttribute(Attribute.HEALTH, newHealth);
                 }
@@ -1082,25 +1086,13 @@ public class PlayerListener {
                     e.toolTip.add(insertAt, main.getConfigValues().getRestrictedColor(Feature.SHOW_RARITY_UPGRADED) + "§lRARITY UPGRADED");
                 }
             }
-
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
-                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
-                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
-
-                if (itemId != null) {
-                    // Before the NBT line
-                    insertAt = e.toolTip.size() - 1;
-
-                    e.toolTip.add(insertAt, EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId);
-                }
-            }
         }
     }
 
     /**
      * Modifies item enchantments on tooltips as well as roman numerals
      */
-    @SubscribeEvent(priority = EventPriority.LOW)
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onItemTooltipLast(ItemTooltipEvent e) {
         ItemStack hoveredItem = e.itemStack;
 
@@ -1115,6 +1107,26 @@ public class PlayerListener {
 
                 for (int i = startIndex; i < e.toolTip.size(); i++) {
                     e.toolTip.set(i, RomanNumeralParser.replaceNumeralsWithIntegers(e.toolTip.get(i)));
+                }
+            }
+
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SKYBLOCK_ITEM_ID) ||
+                    main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE)) {
+                String itemId = ItemUtils.getSkyblockItemID(e.itemStack);
+                String tooltipLine = EnumChatFormatting.DARK_GRAY + "skyblock:" + itemId;
+
+                if (itemId != null) {
+                    if (Minecraft.getMinecraft().gameSettings.advancedItemTooltips) {
+                        for (int i = e.toolTip.size(); i-- > 0; ) {
+                            if (e.toolTip.get(i).startsWith(EnumChatFormatting.DARK_GRAY + "minecraft:")) {
+                                e.toolTip.add(i + 1, tooltipLine);
+                                break;
+                            }
+                        }
+
+                    } else {
+                        e.toolTip.add(tooltipLine);
+                    }
                 }
             }
         }
@@ -1141,13 +1153,13 @@ public class PlayerListener {
             DevUtils.copyData();
         }
 
-        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) && main.getUtils().isInDungeon()) {
-            if (Keyboard.isKeyDown(Keyboard.KEY_MINUS) && Keyboard.getEventKeyState()) {
-                float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
-                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor - 0.5F, 0.5F, 5));
-            } else if (Keyboard.isKeyDown(Keyboard.KEY_EQUALS) && Keyboard.getEventKeyState()) {
-                float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5, 0.1F);
-                main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(zoomScaleFactor + 0.5F, 0.5F, 5));
+        if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) &&
+                main.getConfigValues().isEnabled(Feature.CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD) &&
+                main.getUtils().isInDungeon()) {
+            if (Keyboard.isKeyDown(main.getKeyBindings().get(5).getKeyCode()) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.decreaseZoomByStep();
+            } else if (Keyboard.isKeyDown(main.getKeyBindings().get(4).getKeyCode()) && Keyboard.getEventKeyState()) {
+                DungeonMapManager.increaseZoomByStep();
             }
         }
     }
@@ -1245,7 +1257,7 @@ public class PlayerListener {
                 main.getDungeonManager().addDeath();
 
             } else {
-                LOGGER.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
+                logger.warn("Could not record death for " + e.username + ". This dungeon player isn't in the registry.");
             }
         }
     }
@@ -1317,7 +1329,7 @@ public class PlayerListener {
     }
 
     public void updateLastSecondHealth() {
-        int health = getAttribute(Attribute.HEALTH);
+        float health = getAttribute(Attribute.HEALTH);
         // Update the health gained/lost over the last second
         if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != health) {
             actionBarParser.setHealthUpdate(health - actionBarParser.getLastSecondHealth());
@@ -1330,19 +1342,19 @@ public class PlayerListener {
         return System.currentTimeMillis() - main.getGuiScreenListener().getLastContainerCloseMs() > 100;
     }
 
-    Integer getHealthUpdate() {
+    Float getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
     }
 
-    private void changeMana(int change) {
+    private void changeMana(float change) {
         setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
     }
 
-    private int getAttribute(Attribute attribute) {
+    private float getAttribute(Attribute attribute) {
         return main.getUtils().getAttributes().get(attribute).getValue();
     }
 
-    private void setAttribute(Attribute attribute, int value) {
+    private void setAttribute(Attribute attribute, float value) {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 

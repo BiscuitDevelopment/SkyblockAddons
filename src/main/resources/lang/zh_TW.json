@@ -1,5 +1,5 @@
 {
-  "languageText": "語言: ",
+  "languageText": "語言： ",
   "language": "繁體中文",
   "settings": {
     "settings": "設定",
@@ -14,11 +14,11 @@
     "repeating": "重複警告",
     "disableEmberRodAbility": "在玩家島嶼上關閉 Ember Rod 的技能",
     "editLocations": "編輯介面位置",
-    "guiScale": "介面大小: %scale%",
+    "guiScale": "介面大小：%scale%",
     "resetLocations": "重置介面位置",
     "minionStopWarning": "\"Minion 無法觸及生物\" 警告",
     "hidePlayersNearNPCs": "隱藏重要NPC旁的玩家",
-    "backpackStyle": "背包樣式: %style%",
+    "backpackStyle": "背包樣式：%style%",
     "backpackStyles": {
       "regular": "一般",
       "compact": "簡易"
@@ -74,7 +74,7 @@
     "enableMessageWhenActionPrevented": "當一個動作被阻止時顯示訊息",
     "hidePetHealthBar": "隱藏寵物血條",
     "powerOrbDisplay": "顯示 Power Orb",
-    "powerOrbDisplayStyle": "Power Orb 樣式: %style%",
+    "powerOrbDisplayStyle": "Power Orb 樣式：%style%",
     "powerOrbStyle": {
       "detailed": "詳細",
       "compact": "精簡"
@@ -207,13 +207,19 @@
     "vanillaHealthPrediction": "使用原版血量預測",
     "entityOutlines": "顯示生物外框",
     "effectiveHealthNumber": "有效血量數",
-    "guiScaleX": "介面X方位大小: %scale%",
-    "guiScaleY": "介面Y方位大小: %scale%",
+    "guiScaleX": "介面X方位大小：%scale%",
+    "guiScaleY": "介面Y方位大小：%scale%",
     "abbreviateSkillXpDenominator": "簡化技能升級所需經驗",
     "otherDefenseStats": "其他防禦數值 (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "隱藏大廳重生點玩家",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱"
+    "jacobsContestTimer": "Jacob's Contest 計時器",
+    "dontReplaceRomanNumeralsInItemNames": "不替代物品名稱",
+    "backpackOpeningSound": "Leather Backpack 開啟聲",
+    "devMode": "開發者模式",
+    "showSkyblockItemId": "鼠標止於物品上方時顯示 Skyblock 物品ID",
+    "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
+    "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器",
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放"
   },
   "messages": {
     "enchants": "附魔",
@@ -228,8 +234,8 @@
     "minionIsFull": "有一個 Minion 因背包已滿而停止運作了！",
     "typeEnchantmentsHere": "在這裡輸入 %type%！",
     "separateMultiple": "使用逗號分隔。",
-    "enchantsToMatch": "匹配%type%:",
-    "enchantsToExclude": "排除%type%:",
+    "enchantsToMatch": "匹配%type%：",
+    "enchantsToExclude": "排除%type%：",
     "updateChecker": {
       "wantToViewPatchNotes": "需要幫助或想查看更新內容？",
       "joinDiscord": "加入我們的 Discord 伺服器！",
@@ -251,7 +257,7 @@
     "clickMoreTimes": "如果你真的想這麼做，請再點擊或按丟出 %times% 次。",
     "clickOneMoreTime": "如果你真的想這麼做，請再點擊或按丟出 1 次。",
     "featureDisabled": "功能已被停用",
-    "anvilUses": "鐵砧使用次數: %uses%",
+    "anvilUses": "鐵砧使用次數：%uses%",
     "specialZealotFound": "特殊 Zealot！",
     "blockIncompletePatterns": "阻止合成不正確的格式 (推薦)",
     "searchFeatures": "搜尋功能",
@@ -278,7 +284,7 @@
     "fetchurWarning": "Fetchur 物品已改變！",
     "enableAll": "啟用全部",
     "disableAll": "停用全部",
-    "enchantmentInclusionExample": "\"prot, feather\"",
+    "enchantmentInclusionExample": "例： \"prot, feather\"",
     "enchantmentExclusionExample": "例：\"proj, blast\"",
     "reforgeInclusionExample": "例：\"godly, strong\"",
     "reforgeExclusionExample": "例：\"odd, clean\"",
@@ -286,11 +292,15 @@
     "effectActive": "1 種狀態效果生效中",
     "effectsActive": "%number% 種狀態效果生效中",
     "none": "無",
-    "copyModeSet": "開發者複製模式已設定為: %mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
+    "copyModeSet": "開發者複製模式已設定為：%mode%。按 \"%keyName%\" 以觸發一個複製檔案！",
     "chroma": "漸變色",
-    "worldRenderedCooldownTime": "冷卻: %time%秒",
+    "worldRenderedCooldownTime": "冷卻：%time%秒",
     "entityOutlinesRequirement": "請把光影、快速繪製及反鋸齒設為 「關閉」",
-    "version": "Version"
+    "version": "版本",
+    "invalidFeatureConfiguration": "於 %featureName% 功能檢測到無效的設定，已恢復到預設值。",
+    "fileFetchFailed": "%modName% 未能讀取 %number% 個資料檔案。請使用下方按鈕複製此錯誤訊息，並回報至我們的 Discord 伺服器。",
+    "copy": "複製",
+    "copied": "已複製！"
   },
   "discordStatus": {
     "titleNone": "無",
@@ -314,7 +324,7 @@
     "titleCustom": "自訂狀態",
     "descriptionCustom": "輸入一個自訂狀態",
     "titleAuto": "自動狀態",
-    "descriptionAuto": "自動顯示一個狀態。例：在 The End 裡的 Zealot 擊殺數",
+    "descriptionAuto": "自動顯示一個狀態。例：在 The End 裡的 Zealot 擊殺數。",
     "titleRevenants": "Revenant 任務",
     "descriptionRevenants": "顯示你是否在進行一個 Revenant 任務。",
     "titleSvens": "Sven 任務",
@@ -331,6 +341,167 @@
     "titleExpand": "展開",
     "descriptionExpand": "顯示各個附魔自為一行"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "開啟主選單"
+        },
+        "brand": {
+          "help": "顯示伺服器核心名稱"
+        },
+        "copyBlock": {
+          "help": "複製面朝方塊的資料"
+        },
+        "copyEntity": {
+          "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
+          "detailedHelp": {
+            "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
+            "options": {
+              "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
+              "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "複製記分板的文字",
+          "detailedHelp": {
+            "description": "複製側邊記分板內的文字",
+            "options": {
+              "formatted": "決定在複製時是否包含格式化代碼。值可以是 \"true\" 或 \"false\"，如果沒有提供，將預設為 \"false\"。如果值為 \"true\"，格式化代碼將被複製。"
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "複製玩家列表頭尾",
+          "detailedHelp": {
+            "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
+          }
+        },
+        "dev": {
+          "help": "開關開發者模式",
+          "detailedHelp": {
+            "description": "這個指令將開關開發者模式。這個模式是給 Skyblock 模組與工具開發者使用的。此模式會提供像是實體資料和道具的 NBT 遊戲資料。"
+          },
+          "prefix": "開發者"
+        },
+        "edit": {
+          "help": "編輯 GUI 位置"
+        },
+        "folder": {
+          "help": "開啟 mods 資料夾"
+        },
+        "help": {
+          "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
+          "detailedHelp": {
+            "options": {
+              "command": "欲查詢詳細用法的子命令"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "印刷 Dungeon 死亡計數器中儲存的數用以除錯。"
+        },
+        "reload": {
+          "help": "重新載入所有模組設定與資源。遊戲可能會凍結一段時間。"
+        },
+        "reloadConfig": {
+          "help": "重新載入模組設定"
+        },
+        "reloadRes": {
+          "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
+        },
+        "resetZealotCounter": {
+          "help": "重置所有 Zealot 計數器數量。"
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "手動設定 Zealot 數量",
+            "detailedHelp": {
+              "description": "手動設置 Zealot 計數器的數字。",
+              "options": {
+                "eyes": "總共獲得多少 Summoning eye",
+                "totalZealots": "總共擊殺多少 Zealots",
+                "zealots": "自上一次 Summoning Eye 掉落後擊殺了多少 Zealots"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "手動設定 Slayer 數值，按 Tab 以取得參數",
+          "detailedHelp": {
+            "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
+            "options": {
+              "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
+              "number": "數值要設定成的數字",
+              "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列：\"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "開關是否紀錄動作列訊息"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "開關是否紀錄 Magma Boss 計時器的除錯訊息"
+        },
+        "version": {
+          "help": "顯示模組版本"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "伺服端：%brand%",
+          "notFound": "未發現伺服端！"
+        },
+        "dev": {
+          "disabled": "開發者模式已停用！",
+          "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！"
+        },
+        "folder": {
+          "error": "嘗試開啟 mods 資料夾時出錯：%s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot 計數器重置！"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "設定總 Summoning Eye 數至 %number%！",
+            "totalZealotsSet": "設定總 Zealot 數至 %number%！",
+            "wrongUsage": "無效的選項！請選擇 %options%。",
+            "zealotsSet": "設定當前 Zealot 數至 %number%！"
+          }
+        },
+        "slayer": {
+          "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
+          "statRequired": "你需要選擇一個數值。按 Tab 以查看選項。",
+          "numberRequired": "你需要添加你想要的數字。",
+          "killsSet": "Slayer %boss% 擊殺數已設定為 %number%。",
+          "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%。",
+          "invalidBoss": "\"%input%\" 不是有效的統計數據！",
+          "invalidStat": "\"%input%\" 不是有效的 Boss！"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "動作列訊息將不再被記錄。",
+          "enabled": "動作列訊息現在會開始記錄。"
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma Boss 計時器訊息將不再被記錄。",
+          "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
+        },
+        "version": {
+          "hoverText": "點擊以置於聊天室以便複製。"
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "錯誤的用法！",
+        "subCommandNotFound": "查無子命令 \"%sub-command%\"。"
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
@@ -338,7 +509,7 @@
       },
       "brand": {
         "help": "顯示伺服器核心名稱",
-        "brandOutput": "伺服端: %brand%",
+        "brandOutput": "伺服端：%brand%",
         "notFound": "未發現伺服端！"
       },
       "copyBlock": {
@@ -347,7 +518,7 @@
       "copyEntity": {
         "help": "複製玩家附近指定範圍內指定實體名稱(們)的 NBT 資料",
         "detailedHelp": {
-          "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製附近玩家的資料的距離。如果沒有設定，則使用預設的設定。預設值為： 包含玩家、盔甲座、生物、3 格內的方塊。如果未設定範圍，則使用預設範圍。",
+          "description": "複製實體的 NBT 資料。可自訂要包含的實體種類和複製資料玩家附近的距離。如果沒有設定，則使用預設值。預設值為： 包含玩家、盔甲座、生物、3格內的方塊。如果未設定範圍，則使用預設範圍。",
           "options": {
             "entityNames": "你想要複製資料的實體種類名稱 (例：Player、Creeper)。 輸入指令後按 \"Tab\" 以取得完整清單。使用英文逗號來分隔多個名稱。名稱有區分大小寫。",
             "radius": "玩家附近進行複製實體 NBT 資料的距離 (以方塊計算)"
@@ -366,30 +537,30 @@
       "copyTabList": {
         "help": "複製玩家列表頭尾",
         "detailedHelp": {
-          "description": "這個指令複製玩家列表的頭尾。包含顏色代碼"
+          "description": "這個指令複製玩家列表的頭尾。包含格式化代碼。"
         }
       },
       "dev": {
         "help": "開關開發者模式",
         "detailedHelp": {
-          "description": "這個指令將開關開發者模式。這個指令是給 Skyblock 模組開發者使用的，開啟之後能看到各種資料，像是實體資料和道具的 NBT 資料。"
+          "description": "這個指令將開關開發者模式。這個模式是給 Skyblock 模組與工具開發者使用的。此模式會提供像是實體資料和道具的 NBT 遊戲資料。"
         },
         "disabled": "開發者模式已停用！",
-        "enabled": "開發者模式已啟用！ 提示: 按下 \"%keyName%\" 以複製 NBT 資料！",
+        "enabled": "開發者模式已啟用！ 提示：按下 \"%keyName%\" 以複製 NBT 資料！",
         "prefix": "開發者"
       },
       "edit": {
-        "help": "編輯介面位置"
+        "help": "編輯 GUI 位置"
       },
       "folder": {
-        "help": "開啟模組資料夾",
-        "error": "嘗試開啟模組資料夾時出錯: %s"
+        "help": "開啟 mods 資料夾",
+        "error": "嘗試開啟 mods 資料夾時出錯：%s"
       },
       "help": {
         "help": "顯示此幫助訊息。如果在後面打上指令名稱，將會顯示該指令的詳細資訊。",
         "detailedHelp": {
           "options": {
-            "command": "要獲得詳細用法的子命令"
+            "command": "欲查詢詳細用法的子命令"
           }
         }
       },
@@ -406,12 +577,12 @@
         "help": "重新載入模組資源。遊戲可能會凍結一段時間。"
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "重置所有 Zealot 計數器數量。",
+        "resetSuccess": "Zealot 計數器重置！"
       },
       "set": {
         "zealotCounter": {
-          "help": "手動設定 Zealot 計數器",
+          "help": "手動設定 Zealot 數量",
           "detailedHelp": {
             "description": "手動設置 Zealot 計數器的數字。",
             "options": {
@@ -431,32 +602,32 @@
         "detailedHelp": {
           "description": "手動設定 Slayer 數值，按 Tab 以取得參數",
           "options": {
-            "boss": "Slayer Boss: \"Zombie\", \"Spider\", 或 \"Wolf\"",
+            "boss": "Slayer Boss：\"Zombie\", \"Spider\", 或 \"Wolf\"",
             "number": "數值要設定成的數字",
-            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列: \"REVENANT_FLESH\""
+            "stat": "要更改的 Slayer 數值，可為 \"kills\" 或掉落物名稱以以下格式排列：\"REVENANT_FLESH\""
           }
         },
         "bossRequired": "你需要選擇一個 Boss！請選擇 %bosses%",
-        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項",
-        "numberRequired": "你需要添加你想要的數字",
-        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%",
-        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%",
+        "statRequired": "你需要選擇一個數值。按 Tab 以查看選項。",
+        "numberRequired": "你需要添加你想要的數字。",
+        "killsSet": "Slayer %boss% 擊殺數已設定為 %number%。",
+        "statSet": "Slayer %boss% 的數值 %stat% 已設定為 %number%。",
         "invalidBoss": "\"%input%\" 不是有效的統計數據！",
         "invalidStat": "\"%input%\" 不是有效的 Boss！"
       },
       "toggleActionBarLogging": {
-        "help": "切換是否紀錄動作列訊息",
+        "help": "開關是否紀錄動作列訊息",
         "disabled": "動作列訊息將不再被記錄。",
         "enabled": "動作列訊息現在會開始記錄。"
       },
       "toggleMagmaTimerLogging": {
-        "help": "切換是否紀錄 Magma Boss 計時器的除錯訊息",
+        "help": "開關是否紀錄 Magma Boss 計時器的除錯訊息",
         "disabled": "Magma Boss 計時器訊息將不再被記錄。",
         "enabled": "Magma Boss 計時器訊息現在會開始記錄。"
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "顯示模組版本",
+        "hoverText": "點擊以置於聊天室以便複製。"
       },
       "errors": {
         "wrongUsage": {
@@ -467,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "複製 NBT"
+    "developerCopyNBT": "複製 NBT",
+    "increaseDungeonMapZoom": "Dungeon 地圖放大",
+    "decreaseDungeonMapZoom": "Dungeon 地圖縮小"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -477,8 +650,8 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "最近的龍:",
-    "dragonsSince": "龍自從:",
+    "recentDragons": "最近的龍：",
+    "dragonsSince": "龍自從：",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "寵物 Dragon",
     "eyesPlaced": "已放置眼睛",
@@ -493,7 +666,7 @@
   },
   "warpMenu": {
     "click": "點擊一個傳送點以傳送！",
-    "mustUnlock": "必須已解鎖該地的 Scroll",
+    "mustUnlock": "必須已解鎖該地的 Scroll。",
     "privateIsland": "私人島嶼",
     "home": "你的島嶼",
     "spawn": "重生點",
