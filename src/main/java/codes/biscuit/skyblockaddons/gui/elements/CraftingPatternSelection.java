@@ -1,8 +1,8 @@
 package codes.biscuit.skyblockaddons.gui.elements;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.craftingpatterns.CraftingPattern;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.utils.Utils;
 import net.minecraft.client.Minecraft;
@@ -35,7 +35,7 @@ public class CraftingPatternSelection {
         this.x = x;
         this.y = y;
         int checkBoxY = (y - MARGIN - 8);
-        String checkBoxText = Message.MESSAGE_BLOCK_INCOMPLETE_PATTERNS.getMessage();
+        String checkBoxText = Translations.getMessage("messages.blockIncompletePatterns");
 
         PersistentValuesManager persistentValuesManager = SkyblockAddons.getInstance().getPersistentValuesManager();
         blockIncompleteCheckBox = new CheckBox(mc, x, checkBoxY, 8, checkBoxText, persistentValuesManager.getPersistentValues().isBlockCraftingIncompletePatterns());

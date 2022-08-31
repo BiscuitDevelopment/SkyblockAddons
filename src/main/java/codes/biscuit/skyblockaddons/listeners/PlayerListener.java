@@ -1044,7 +1044,7 @@ public class PlayerListener {
                         anvilUses -= extraAttributes.getInteger("hot_potato_count");
                     }
                     if (anvilUses > 0) {
-                        e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
+                        e.toolTip.add(insertAt++, Translations.getMessage(String.valueOf(anvilUses)));
                     }
                 }
 

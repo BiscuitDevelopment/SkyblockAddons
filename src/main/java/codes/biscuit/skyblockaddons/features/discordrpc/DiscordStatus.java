@@ -1,10 +1,7 @@
 package codes.biscuit.skyblockaddons.features.discordrpc;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Location;
-import codes.biscuit.skyblockaddons.core.Message;
-import codes.biscuit.skyblockaddons.core.SkyblockDate;
+import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonSelect;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.TextUtils;
@@ -20,8 +17,8 @@ import java.util.function.Supplier;
  */
 public enum DiscordStatus implements ButtonSelect.SelectItem {
 
-    NONE(Message.DISCORD_STATUS_NONE_TITLE, Message.DISCORD_STATUS_NONE_DESCRIPTION, () -> null),
-    LOCATION(Message.DISCORD_STATUS_LOCATION_TITLE, Message.DISCORD_STATUS_LOCATION_DESCRIPTION,
+    NONE("discordStatus.titleNone", "discordStatus.descriptionNone", () -> null),
+    LOCATION("discordStatus.titleLocation", "discordStatus.descriptionLocation",
             () -> {
                 Location location = SkyblockAddons.getInstance().getUtils().getLocation();
 
@@ -33,7 +30,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
             }),
 
-    PURSE(Message.DISCORD_STATUS_PURSE_TITLE, Message.DISCORD_STATUS_PURSE_DESCRIPTION,
+    PURSE("discordStatus.titlePurse", "discordStatus.descriptionPurse",
             () -> {
                 double coins = SkyblockAddons.getInstance().getUtils().getPurse();
                 String coinString = " Coin";
@@ -45,7 +42,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
             }),
 
-    BITS(Message.DISCORD_STATUS_BITS_TITLE, Message.DISCORD_STATUS_BITS_DESCRIPTION,
+    BITS("discordStatus.titleBits", "discordStatus.descriptionBits",
             ()-> {
                 double bits = SkyblockAddons.getInstance().getUtils().getBits();
                 String bitString = " Bit";
@@ -57,7 +54,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
             }),
 
-    STATS(Message.DISCORD_STATUS_STATS_TITLE, Message.DISCORD_STATUS_STATS_DESCRIPTION,
+    STATS("discordStatus.titleStats", "discordStatus.descriptionStats",
             () -> {
                 float health = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.HEALTH).getValue();
                 float defense = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.DEFENCE).getValue();
@@ -66,10 +63,10 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 return String.format("%f H - %f D - %f M", health, defense, mana);
             }),
 
-    ZEALOTS(Message.DISCORD_STATUS_ZEALOTS_TITLE, Message.DISCORD_STATUS_ZEALOTS_DESCRIPTION,
+    ZEALOTS("discordStatus.titleZealots", "discordStatus.descriptionZealots",
             () -> String.format("%d Zealots killed", SkyblockAddons.getInstance().getPersistentValuesManager().getPersistentValues().getKills())),
 
-    ITEM(Message.DISCORD_STATUS_ITEM_TITLE, Message.DISCORD_STATUS_ITEM_DESCRIPTION,
+    ITEM("discordStatus.titleItem", "discordStatus.descriptionItem",
             () -> {
                 final EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
                 if(player != null && player.getHeldItem() != null) {
@@ -78,19 +75,19 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 return "No item in hand";
             }),
 
-    TIME(Message.DISCORD_STATUS_TIME_TITLE, Message.DISCORD_STATUS_TIME_DESCRIPTION,
+    TIME("discordStatus.titleTime", "discordStatus.descriptionTime",
             () -> {
                 final SkyblockDate date = SkyblockAddons.getInstance().getUtils().getCurrentDate();
                 return date != null ? date.toString() : "";
             }),
 
-    PROFILE(Message.DISCORD_STATUS_PROFILE_TITLE, Message.DISCORD_STATUS_PROFILE_DESCRIPTION,
+    PROFILE("discordStatus.titleProfile", "discordStatus.descriptionProfile",
             () -> {
                 String profile = SkyblockAddons.getInstance().getUtils().getProfileName();
                 return String.format("Profile: %s", profile == null ? "None" : profile);
             }),
 
-    CUSTOM(Message.DISCORD_STATUS_CUSTOM, Message.DISCORD_STATUS_CUSTOM_DESCRIPTION,
+    CUSTOM("discordStatus.titleCustom", "discordStatus.descriptionCustom",
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -98,7 +95,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 return text.substring(0, Math.min(text.length(), 100));
             }),
 
-    AUTO_STATUS(Message.DISCORD_STATUS_AUTO, Message.DISCORD_STATUS_AUTO_DESCRIPTION, () -> {
+    AUTO_STATUS("discordStatus.titleAuto", "discordStatus.descriptionAuto", () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
                 Location location = main.getUtils().getLocation();
 
@@ -118,7 +115,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 return main.getConfigValues().getDiscordAutoDefault().displayMessageSupplier.get();
             }),
 
-    REVENANT(Message.DISCORD_STATUS_REVENANT, Message.DISCORD_STATUS_REVENANT_DESCRIPTION,
+    REVENANT("discordStatus.titleRevenants", "discordStatus.descriptionRevenants",
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
                 boolean bossAlive = main.getUtils().isSlayerBossAlive();
@@ -130,7 +127,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
             }),
 
-    SVEN(Message.DISCORD_STATUS_SVEN, Message.DISCORD_STATUS_SVEN_DESCRIPTION,
+    SVEN("discordStatus.titleSvens", "discordStatus.descriptionSvens",
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
                 boolean bossAlive = main.getUtils().isSlayerBossAlive();
@@ -142,7 +139,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 }
             }),
 
-    TARANTULA(Message.DISCORD_STATUS_TARANTULA, Message.DISCORD_STATUS_TARANTULA_DESCRIPTION,
+    TARANTULA("discordStatus.titleTarantula", "discordStatus.descriptionTarantula",
             () -> {
                 SkyblockAddons main = SkyblockAddons.getInstance();
                 boolean bossAlive = main.getUtils().isSlayerBossAlive();
@@ -155,13 +152,13 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
             }),
     ;
 
-    private final Message title;
-    private final Message description;
+    private final String title;
+    private final String description;
     private final Supplier<String> displayMessageSupplier;
 
-    DiscordStatus(Message title, Message description, Supplier<String> displayMessageSupplier) {
-        this.title = title;
-        this.description = description;
+    DiscordStatus(String titleTranslationKey, String descriptionTranslationKey, Supplier<String> displayMessageSupplier) {
+        this.title = Translations.getMessage(titleTranslationKey);
+        this.description = Translations.getMessage(descriptionTranslationKey);
         this.displayMessageSupplier = displayMessageSupplier;
     }
 
@@ -172,11 +169,11 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     @Override
     public String getName() {
-        return title.getMessage();
+        return title;
     }
 
     @Override
     public String getDescription() {
-        return description.getMessage();
+        return description;
     }
 }

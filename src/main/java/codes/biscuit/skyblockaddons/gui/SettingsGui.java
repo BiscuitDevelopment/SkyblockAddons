@@ -4,7 +4,6 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.Language;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.discordrpc.DiscordStatus;
 import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
@@ -167,7 +166,7 @@ public class SettingsGui extends GuiScreen {
             if (!(this instanceof EnchantmentSettingsGui)) {
                 DrawUtils.drawRect(x, y, width, height, ColorUtils.getDummySkyblockColor(28, 29, 41, 230), 4);
             }
-            SkyblockAddonsGui.drawScaledString(this, Message.SETTING_SETTINGS.getMessage(), 110, defaultBlue, 1.5, 0);
+            SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("settings.settings"), 110, defaultBlue, 1.5, 0);
         }
         super.drawScreen(mouseX, mouseY, partialTicks); // Draw buttons.
     }
@@ -267,7 +266,7 @@ public class SettingsGui extends GuiScreen {
         int x = halfWidth - (boxWidth / 2);
         double y = getRowHeightSetting(row);
         if (setting == EnumUtils.FeatureSetting.COLOR) {
-            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, Message.SETTING_CHANGE_COLOR.getMessage(), main, feature));
+            buttonList.add(new ButtonOpenColorMenu(x, y, 100, 20, "settings.changeColor", main, feature));
         } else if (setting == EnumUtils.FeatureSetting.GUI_SCALE) {
             try {
                 buttonList.add(new ButtonGuiScale(x, y, 100, 20, main, feature));
@@ -293,7 +292,7 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.REPEAT_SLAYER_BOSS_WARNING;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_REPEATING.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.repeating"), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -312,11 +311,11 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.OUTBID_ALERT_SOUND_IN_OTHER_GAMES;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_SHOW_IN_OTHER_GAMES.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.showInOtherGames"), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.BACKPACK_STYLE) {
             boxWidth = 140;
             x = halfWidth - (boxWidth / 2);
-            buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_BACKPACK_STYLE.getMessage(), main, feature));
+            buttonList.add(new ButtonSolid(x, y, 140, 20, Translations.getMessage("settings.backpackStyle"), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.ENABLE_MESSAGE_WHEN_ACTION_PREVENTED) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
@@ -324,11 +323,11 @@ public class SettingsGui extends GuiScreen {
             Feature settingFeature = null;
 
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.enableMessageWhenActionPrevented"), main, settingFeature));
         } else if (setting == EnumUtils.FeatureSetting.POWER_ORB_DISPLAY_STYLE) {
             boxWidth = 140;
             x = halfWidth - (boxWidth / 2);
-            buttonList.add(new ButtonSolid(x, y, 140, 20, Message.SETTING_POWER_ORB_DISPLAY_STYLE.getMessage(), main, feature));
+            buttonList.add(new ButtonSolid(x, y, 140, 20, Translations.getMessage("settings.powerOrbDisplayStyle"), main, feature));
         } else if (setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS || setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
             boxWidth = 140;
             x = halfWidth - (boxWidth / 2);
@@ -339,8 +338,8 @@ public class SettingsGui extends GuiScreen {
                 currentStatus = main.getConfigValues().getDiscordDetails();
             }
 
-            buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS ? Message.MESSAGE_FIRST_STATUS.getMessage() :
-                    Message.MESSAGE_SECOND_STATUS.getMessage(), true, 0xFFFFFFFF));
+            buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, setting == EnumUtils.FeatureSetting.DISCORD_RP_DETAILS ? Translations.getMessage("messages.firstStatus") :
+                    Translations.getMessage("messages.secondStatus"), true, 0xFFFFFFFF));
             buttonList.add(new ButtonSelect(x, (int) y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                 final DiscordStatus selectedStatus = DiscordStatus.values()[index];
                 if (setting == EnumUtils.FeatureSetting.DISCORD_RP_STATE) {
@@ -359,7 +358,7 @@ public class SettingsGui extends GuiScreen {
                 x = halfWidth - (boxWidth / 2);
                 y = getRowHeightSetting(row);
 
-                buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, Message.MESSAGE_FALLBACK_STATUS.getMessage(), true, 0xFFFFFFFF));
+                buttonList.add(new ButtonTextNew(halfWidth, (int) y - 10, Translations.getMessage("messages.fallbackStatus"), true, 0xFFFFFFFF));
                 currentStatus = main.getConfigValues().getDiscordAutoDefault();
                 buttonList.add(new ButtonSelect(x, (int) y, boxWidth, 20, Arrays.asList(DiscordStatus.values()), currentStatus.ordinal(), index -> {
                     final DiscordStatus selectedStatus = DiscordStatus.values()[index];
@@ -423,7 +422,7 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_COLOR_BY_RARITY.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.colorByRarity"), main, settingFeature));
 
         } else if (setting == EnumUtils.FeatureSetting.TEXT_MODE) {
             boxWidth = 31;
@@ -447,7 +446,7 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_TEXT_MODE;
             }
 
-            buttonList.add(new ButtonToggleTitle(x, y, Message.SETTING_TEXT_MODE.getMessage(), main, settingFeature));
+            buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.textMode"), main, settingFeature));
 
         } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
             boxWidth = 31;
