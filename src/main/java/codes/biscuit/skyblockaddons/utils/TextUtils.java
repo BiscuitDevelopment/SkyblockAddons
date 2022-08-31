@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.core.Feature;
 import com.google.gson.JsonObject;
 
@@ -56,7 +57,9 @@ public class TextUtils {
      * @return Formatted string
      */
     public static String formatNumber(Number number) {
-        if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.NUMBER_SEPARATORS)) {
+        // This null check is here for TextUtilsTests
+        if (SkyblockAddons.getInstance() == null ||
+                SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.NUMBER_SEPARATORS)) {
             return NUMBER_FORMAT.format(number);
         } else {
             return NUMBER_FORMAT_NO_GROUPING.format(number);
