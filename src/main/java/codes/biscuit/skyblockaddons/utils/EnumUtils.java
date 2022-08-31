@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import lombok.Getter;
 import net.minecraft.util.ResourceLocation;
@@ -10,8 +9,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.EnumSet;
 import java.util.Set;
-
-import static codes.biscuit.skyblockaddons.core.Message.*;
 
 public class EnumUtils {
 
@@ -73,17 +70,17 @@ public class EnumUtils {
     }
 
     public enum BackpackStyle {
-        GUI(BACKPACK_STYLE_REGULAR),
-        BOX(BACKPACK_STYLE_COMPACT);
+        GUI("settings.backpackStyles.regular"),
+        BOX("settings.backpackStyles.compact");
 
-        private final Message message;
+        private final String TRANSLATION_KEY;
 
-        BackpackStyle(Message message) {
-            this.message = message;
+        BackpackStyle(String translationKey) {
+            this.TRANSLATION_KEY = translationKey;
         }
 
         public String getMessage() {
-            return message.getMessage();
+            return Translations.getMessage(TRANSLATION_KEY);
         }
 
         public BackpackStyle getNextType() {
@@ -96,17 +93,17 @@ public class EnumUtils {
     }
 
     public enum PowerOrbDisplayStyle {
-        DETAILED(Message.POWER_ORB_DISPLAY_STYLE_DETAILED),
-        COMPACT(Message.POWER_ORB_DISPLAY_STYLE_COMPACT);
+        DETAILED("settings.powerOrbStyle.detailed"),
+        COMPACT("settings.powerOrbStyle.compact");
 
-        private final Message message;
+        private final String TRANSLATION_KEY;
 
-        PowerOrbDisplayStyle(Message message) {
-            this.message = message;
+        PowerOrbDisplayStyle(String translationKey) {
+            this.TRANSLATION_KEY = translationKey;
         }
 
         public String getMessage() {
-            return message.getMessage();
+            return Translations.getMessage(TRANSLATION_KEY);
         }
 
         public PowerOrbDisplayStyle getNextType() {
@@ -119,17 +116,17 @@ public class EnumUtils {
     }
 
     public enum TextStyle {
-        STYLE_ONE(TEXT_STYLE_ONE),
-        STYLE_TWO(TEXT_STYLE_TWO);
+        STYLE_ONE("settings.textStyles.one"),
+        STYLE_TWO("settings.textStyles.two");
 
-        private final Message message;
+        private final String TRANSLATION_KEY;
 
-        TextStyle(Message message) {
-            this.message = message;
+        TextStyle(String translationKey) {
+            this.TRANSLATION_KEY = translationKey;
         }
 
         public String getMessage() {
-            return message.getMessage();
+            return Translations.getMessage(TRANSLATION_KEY);
         }
 
         public TextStyle getNextType() {
@@ -187,35 +184,39 @@ public class EnumUtils {
      * because the enum Feature depends on FeatureSetting, so FeatureSetting can't depend on Feature on creation.
      */
     public enum FeatureSetting {
-        COLOR(SETTING_CHANGE_COLOR, -1),
-        GUI_SCALE(SETTING_GUI_SCALE, -1),
+        COLOR("settings.changeColor", -1),
+        GUI_SCALE("settings.guiScale", -1),
         GUI_SCALE_X("settings.guiScaleX", -1),
         GUI_SCALE_Y("settings.guiScaleY", -1),
-        ENABLED_IN_OTHER_GAMES(SETTING_SHOW_IN_OTHER_GAMES, -1),
-        REPEATING(SETTING_REPEATING, -1),
-        TEXT_MODE(SETTING_TEXT_MODE, -1),
-        DRAGONS_NEST_ONLY(SETTING_DRAGONS_NEST_ONLY, -1),
-        USE_VANILLA_TEXTURE(SETTING_USE_VANILLA_TEXTURE, 17),
-        BACKPACK_STYLE(SETTING_BACKPACK_STYLE, -1),
-        SHOW_ONLY_WHEN_HOLDING_SHIFT(SETTING_SHOW_ONLY_WHEN_HOLDING_SHIFT, 18),
-        MAKE_INVENTORY_COLORED(SETTING_MAKE_BACKPACK_INVENTORIES_COLORED, 43),
-        POWER_ORB_DISPLAY_STYLE(SETTING_POWER_ORB_DISPLAY_STYLE, -1),
-        CHANGE_BAR_COLOR_WITH_POTIONS(SETTING_CHANGE_BAR_COLOR_WITH_POTIONS, 46),
-        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED(SETTING_ENABLE_MESSAGE_WHEN_ACTION_PREVENTED, -1),
-        HIDE_NIGHT_VISION_EFFECT(SETTING_HIDE_NIGHT_VISION_EFFECT_TIMER, 70),
-        ENABLE_CAKE_BAG_PREVIEW(SETTING_SHOW_CAKE_BAG_PREVIEW, 71),
-        SORT_TAB_EFFECT_TIMERS(SETTING_SORT_TAB_EFFECT_TIMERS, 74),
-        ROTATE_MAP(SETTING_ROTATE_MAP, 100),
-        CENTER_ROTATION_ON_PLAYER(SETTING_CENTER_ROTATION_ON_PLAYER, 101),
-        MAP_ZOOM(SETTING_MAP_ZOOM, -1),
-        COLOUR_BY_RARITY(SETTING_COLOR_BY_RARITY, -1),
-        SHOW_PLAYER_HEADS_ON_MAP(SETTING_SHOW_PLAYER_HEAD_ON_MAP, 106),
-        SHOW_GLOWING_ITEMS_ON_ISLAND(SETTING_SHOW_GLOWING_ITEMS_ON_ISLAND, 109),
-        SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL(SETTING_SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL, 115),
+        ENABLED_IN_OTHER_GAMES("settings.showInOtherGames", -1),
+        REPEATING("settings.repeating", -1),
+        TEXT_MODE("settings.textMode", -1),
+        DRAGONS_NEST_ONLY("settings.dragonsNestOnly", -1),
+        USE_VANILLA_TEXTURE("settings.useVanillaTexture", 17),
+        BACKPACK_STYLE("settings.backpackStyle", -1),
+        SHOW_ONLY_WHEN_HOLDING_SHIFT("settings.showOnlyWhenHoldingShift", 18),
+        MAKE_INVENTORY_COLORED("settings.makeBackpackInventoriesColored", 43),
+        POWER_ORB_DISPLAY_STYLE("settings.powerOrbDisplayStyle", -1),
+        CHANGE_BAR_COLOR_WITH_POTIONS("settings.changeBarColorForPotions", 46),
+        ENABLE_MESSAGE_WHEN_ACTION_PREVENTED("settings.enableMessageWhenActionPrevented", -1),
+        // Obsolete
+        @Deprecated
+        HIDE_NIGHT_VISION_EFFECT("settings.hideNightVisionEffectTimer", 70),
+        ENABLE_CAKE_BAG_PREVIEW("settings.showCakeBagPreview", 71),
+        // Obsolete
+        @Deprecated
+        SORT_TAB_EFFECT_TIMERS("settings.sortTabEffectTimers", 74),
+        ROTATE_MAP("settings.rotateMap", 100),
+        CENTER_ROTATION_ON_PLAYER("settings.centerRotationOnYourPlayer", 101),
+        MAP_ZOOM("settings.mapZoom", -1),
+        COLOUR_BY_RARITY("settings.colorByRarity", -1),
+        SHOW_PLAYER_HEADS_ON_MAP("settings.showPlayerHeadsOnMap", 106),
+        SHOW_GLOWING_ITEMS_ON_ISLAND("settings.showGlowingItemsOnIsland", 109),
+        SKILL_ACTIONS_LEFT_UNTIL_NEXT_LEVEL("settings.skillActionsLeftUntilNextLevel", 115),
         HIDE_WHEN_NOT_IN_CRYPTS("settings.hideWhenNotDoingQuest", 133),
         HIDE_WHEN_NOT_IN_SPIDERS_DEN("settings.hideWhenNotDoingQuest", 134),
         HIDE_WHEN_NOT_IN_CASTLE("settings.hideWhenNotDoingQuest", 135),
-        ENABLE_PERSONAL_COMPACTOR_PREVIEW(SETTING_SHOW_PERSONAL_COMPACTOR_PREVIEW, 137),
+        ENABLE_PERSONAL_COMPACTOR_PREVIEW("settings.showPersonalCompactorPreview", 137),
         SHOW_SKILL_PERCENTAGE_INSTEAD_OF_XP("settings.showSkillPercentageInstead", 144),
         SHOW_SKILL_XP_GAINED("settings.showSkillXPGained", 145),
         SHOW_SALVAGE_ESSENCES_COUNTER("settings.showSalvageEssencesCounter", 146),
@@ -230,16 +231,16 @@ public class EnumUtils {
         BIGGER_WAKE("settings.biggerWake", 170),
         HIGHLIGHT_ENCHANTMENTS("settings.highlightSpecialEnchantments", 153),
         HIDE_ENCHANTMENT_LORE("settings.hideEnchantDescription", 176),
-        HIDE_GREY_ENCHANTS(Message.SETTING_HIDE_GREY_ENCHANTS, 87),
+        HIDE_GREY_ENCHANTS("settings.hideGreyEnchants", 87),
         ENCHANT_LAYOUT("enchantLayout.title", 0),
         TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR("settings.trevorTheTrapper.trackedEntityProximityIndicator", 173),
         TREVOR_HIGHLIGHT_TRACKED_ENTITY("settings.trevorTheTrapper.highlightTrackedEntity", 174),
         TREVOR_SHOW_QUEST_COOLDOWN("settings.trevorTheTrapper.showQuestCooldown", 175),
-        SHOW_FETCHUR_ONLY_IN_DWARVENS(SETTING_SHOW_FETCHUR_IN_DWARVEN_ONLY, 179),
-        SHOW_FETCHUR_ITEM_NAME(SETTING_SHOW_FETCHUR_ITEM_NAME, 180),
-        SHOW_FETCHUR_INVENTORY_OPEN_ONLY(SETTING_SHOW_FETCHUR_INVENTORY_OPEN_ONLY, 181),
-        WARN_WHEN_FETCHUR_CHANGES(SETTING_WARN_WHEN_FETCHUR_CHANGES, 182),
-        STOP_ONLY_RAT_SQUEAK(SETTING_STOP_ONLY_RAT_SQUEAK, 184),
+        SHOW_FETCHUR_ONLY_IN_DWARVENS("settings.showFetchurOnlyInDwarven", 179),
+        SHOW_FETCHUR_ITEM_NAME("settings.showFetchurItemName", 180),
+        SHOW_FETCHUR_INVENTORY_OPEN_ONLY("settings.showFetchurInventoryOpenOnly", 181),
+        WARN_WHEN_FETCHUR_CHANGES("settings.warnWhenFetchurChanges", 182),
+        STOP_ONLY_RAT_SQUEAK("settings.onlyStopRatSqueak", 184),
         SHOW_ENDER_CHEST_PREVIEW("settings.showEnderChestPreview", 185),
         HIDE_WHEN_NOT_IN_END("settings.hideWhenNotDoingQuest", 187),
         HEALTH_PREDICTION("settings.vanillaHealthPrediction", 194),
@@ -248,35 +249,34 @@ public class EnumUtils {
         ABBREVIATE_SKILL_XP_DENOMINATOR("settings.abbreviateSkillXpDenominator", 198),
         OTHER_DEFENCE_STATS("settings.otherDefenseStats", 199),
         DISABLE_SPIRIT_SCEPTRE_MESSAGES("settings.disableDamageChatMessages", 203),
-        OUTBID_ALERT(SETTING_OUTBID_ALERT_SOUND, 206),
+        OUTBID_ALERT("settings.outbidAlertSound", 206),
         DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
         RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU("settings.resetSalvagedEssencesAfterLeavingMenu", 214),
         CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
 
-        DISCORD_RP_STATE((Message) null, 0),
-        DISCORD_RP_DETAILS((Message) null, 0),
+        DISCORD_RP_STATE(0),
+        DISCORD_RP_DETAILS(0),
         ;
 
-        private Message message;
-        private final int featureEquivalent;
-        private String messagePath;
+        private final int FEATURE_EQUIVALENT;
+        private final String TRANSLATION_KEY;
 
-        FeatureSetting(Message message, int featureEquivalent) {
-            this.message = message;
-            this.featureEquivalent = featureEquivalent;
+        FeatureSetting(int featureEquivalent) {
+            this.TRANSLATION_KEY = null;
+            FEATURE_EQUIVALENT = featureEquivalent;
         }
 
-        FeatureSetting(String messagePath, int featureEquivalent) {
-            this.messagePath = messagePath;
-            this.featureEquivalent = featureEquivalent;
+        FeatureSetting(String translationKey, int featureEquivalent) {
+            this.TRANSLATION_KEY = translationKey;
+            this.FEATURE_EQUIVALENT = featureEquivalent;
         }
 
 
         public Feature getFeatureEquivalent() {
-            if (featureEquivalent == -1) return null;
+            if (FEATURE_EQUIVALENT == -1) return null;
 
             for (Feature feature : Feature.values()) {
-                if (feature.getId() == featureEquivalent) {
+                if (feature.getId() == FEATURE_EQUIVALENT) {
                     return feature;
                 }
             }
@@ -284,11 +284,11 @@ public class EnumUtils {
         }
 
         public String getMessage(String... variables) {
-            if (messagePath != null) {
-                return Translations.getMessage(messagePath, (Object[]) variables);
+            if (TRANSLATION_KEY != null) {
+                return Translations.getMessage(TRANSLATION_KEY, (Object[]) variables);
+            } else {
+                return null;
             }
-
-            return message.getMessage(variables);
         }
     }
 
@@ -403,17 +403,17 @@ public class EnumUtils {
     }
 
     public enum ChromaMode {
-        ALL_SAME_COLOR(CHROMA_MODE_ALL_THE_SAME),
-        FADE(CHROME_MODE_FADE);
+        ALL_SAME_COLOR("settings.chromaModes.allTheSame"),
+        FADE("settings.chromaModes.fade");
 
-        private final Message message;
+        private final String TRANSLATION_KEY;
 
-        ChromaMode(Message message) {
-            this.message = message;
+        ChromaMode(String translationKey) {
+            TRANSLATION_KEY = translationKey;
         }
 
         public String getMessage() {
-            return message.getMessage();
+            return Translations.getMessage(TRANSLATION_KEY);
         }
 
         public ChromaMode getNextType() {

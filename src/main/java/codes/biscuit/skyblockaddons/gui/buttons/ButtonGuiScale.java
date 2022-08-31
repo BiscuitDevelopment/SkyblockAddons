@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
 import codes.biscuit.skyblockaddons.utils.objects.FloatPair;
@@ -30,7 +30,7 @@ public class ButtonGuiScale extends ButtonFeature {
         }
 
         this.sliderValue = sliderValue;
-        this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+        this.displayString = Translations.getMessage("settings.guiScale", String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
         this.main = main;
         this.width = width;
         this.height = height;
@@ -122,7 +122,7 @@ public class ButtonGuiScale extends ButtonFeature {
     private void setNewScale() {
         if (isXScale == null) {
             main.getConfigValues().setGuiScale(feature, sliderValue);
-            this.displayString = Message.SETTING_GUI_SCALE.getMessage(String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
+            this.displayString = Translations.getMessage("settings.guiScale", String.valueOf(getRoundedValue(main.getConfigValues().getGuiScale(feature))));
         }
         // For x and y scaling
         else {

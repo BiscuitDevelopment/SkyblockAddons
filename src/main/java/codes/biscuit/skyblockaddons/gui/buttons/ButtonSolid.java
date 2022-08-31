@@ -2,7 +2,7 @@ package codes.biscuit.skyblockaddons.gui.buttons;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SoundHandler;
@@ -49,7 +49,7 @@ public class ButtonSolid extends ButtonText {
                     }
                 }
             }
-            displayString = (enable ? Message.MESSAGE_ENABLE_ALL : Message.MESSAGE_DISABLE_ALL).getMessage();
+            displayString = enable ? Translations.getMessage("messages.enableAll") : Translations.getMessage("messages.disableAll");
         }
         int alpha;
         float alphaMultiplier = 1F;

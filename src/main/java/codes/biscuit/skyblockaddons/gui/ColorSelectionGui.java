@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.gui;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonColorBox;
 import codes.biscuit.skyblockaddons.gui.buttons.NewButtonSlider;
@@ -132,7 +131,7 @@ public class ColorSelectionGui extends GuiScreen {
 
         if (feature.getGuiFeatureData() != null) {
             if (feature.getGuiFeatureData().isColorsRestricted()) {
-                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_CHOOSE_A_COLOR.getMessage(), 90,
+                SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("messages.chooseAColor"), 90,
                         defaultBlue, 1.5, 0);
 
             } else {
@@ -153,20 +152,20 @@ public class ColorSelectionGui extends GuiScreen {
                 mc.getTextureManager().bindTexture(COLOR_PICKER);
                 Gui.drawModalRectWithCustomSizedTexture(imageX, imageY, 0, 0, pickerWidth, pickerHeight, pickerWidth, pickerHeight);
 
-                SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SELECTED_COLOR.getMessage(), 120, defaultBlue, 1.5, 75);
+                SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("messages.selectedColor"), 120, defaultBlue, 1.5, 75);
                 drawRect(width / 2 + 90, 140, width / 2 + 130, 160, main.getConfigValues().getColor(feature));
 
                 if (chromaCheckbox != null) chromaCheckbox.draw();
 
                 if (!main.getConfigValues().getChromaFeatures().contains(feature)) { // Disabled cause chroma is enabled
-                    SkyblockAddonsGui.drawScaledString(this, Message.MESSAGE_SET_HEX_COLOR.getMessage(), 200, defaultBlue, 1.5, 75);
+                    SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("messages.setHexColor"), 200, defaultBlue, 1.5, 75);
                     hexColorField.drawTextBox();
                 }
 
                 if (main.getConfigValues().getChromaFeatures().contains(feature)) {
-                    SkyblockAddonsGui.drawScaledString(this, Message.SETTING_CHROMA_SPEED.getMessage(), 170 + 25, defaultBlue, 1, 110);
+                    SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("settings.chromaSpeed"), 170 + 25, defaultBlue, 1, 110);
 
-                    SkyblockAddonsGui.drawScaledString(this, Message.SETTING_CHROMA_FADE_WIDTH.getMessage(), 170 + 35 + 25, defaultBlue, 1, 110);
+                    SkyblockAddonsGui.drawScaledString(this, Translations.getMessage("settings.chromaFadeWidth"), 170 + 35 + 25, defaultBlue, 1, 110);
                 }
             }
         }
