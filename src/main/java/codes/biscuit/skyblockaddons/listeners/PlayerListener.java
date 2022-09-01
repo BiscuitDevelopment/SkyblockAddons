@@ -419,7 +419,6 @@ public class PlayerListener {
                     // Remove rank prefix if exists
                     if (username.contains("]"))
                         username = username.split("] ")[1];
-                    System.out.println(username);
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
@@ -431,7 +430,6 @@ public class PlayerListener {
                         }else if(namesWithType.containsKey(username)){
                             e.message = new ChatComponentText(formattedText.replace(username, namesWithType.get(username)));
                         }
-                        System.out.println(namesWithType.entrySet().toString());
                     }
                 }
 
