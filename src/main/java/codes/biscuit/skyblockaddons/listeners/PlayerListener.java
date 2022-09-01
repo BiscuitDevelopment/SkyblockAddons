@@ -415,7 +415,6 @@ public class PlayerListener {
                 // Tries to check if a message is from a player to add the player profile icon
                 } else if (main.getConfigValues().isEnabled(Feature.PROFILE_TYPE_IN_CHAT) &&
                         unformattedText.contains(":")) {
-                    System.out.println(e.message.getFormattedText()+"\n "+e.message.getChatStyle()+"\n "+e.message.getSiblings());
                     String username = unformattedText.split(":")[0].replaceAll("§.","");
                     // Remove rank prefix if exists
                     if (username.contains("]"))
