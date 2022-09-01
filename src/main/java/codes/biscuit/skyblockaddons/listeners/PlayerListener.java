@@ -192,6 +192,16 @@ public class PlayerListener {
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
+    // For caching for the PROFILE_TYPE_IN_CHAT feature, saves the last MAX_SIZE names.
+    private final LinkedHashMap<String, String> namesWithType = new LinkedHashMap<String, String>(){
+        private final int MAX_SIZE = 80;
+
+        protected boolean removeEldestEntry(Map.Entry<String, String> eldest)
+        {
+            return size() > MAX_SIZE;
+        }
+    };
+
     /**
      * Reset all the timers and stuff when joining a new world.
      */
@@ -413,8 +423,15 @@ public class PlayerListener {
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
-                        if(chattingPlayer != null)
-                            e.message = new ChatComponentText(formattedText.replace(username,chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText()));
+                        if(chattingPlayer != null) {
+                            String nameWithType = chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText();
+                            e.message = new ChatComponentText(formattedText.replace(username, nameWithType));
+                            // Cache
+                            namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+                        }else if(namesWithType.containsKey(username)){
+                            e.message = new ChatComponentText(formattedText.replace(username, namesWithType.get(username)));
+                        }
+                        System.out.println(namesWithType.entrySet().toString());
                     }
                 }
 
