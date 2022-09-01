@@ -415,6 +415,7 @@ public class PlayerListener {
                 // Tries to check if a message is from a player to add the player profile icon
                 } else if (main.getConfigValues().isEnabled(Feature.PROFILE_TYPE_IN_CHAT) &&
                         unformattedText.contains(":")) {
+                    System.out.println(e.message.getFormattedText()+"\n "+e.message.getChatStyle()+"\n "+e.message.getSiblings());
                     String username = unformattedText.split(":")[0].replaceAll("§.","");
                     // Remove rank prefix if exists
                     if (username.contains("]"))
@@ -422,13 +423,15 @@ public class PlayerListener {
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
+                        // Put player in cache if found nearby
                         if(chattingPlayer != null) {
-                            String nameWithType = chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText();
-                            e.message = new ChatComponentText(formattedText.replace(username, nameWithType));
-                            // Cache
                             namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
-                        }else if(namesWithType.containsKey(username)){
+                        }
+                        // Check cache regardless if found nearby
+                        if(namesWithType.containsKey(username)){
+                            IChatComponent oldMessage = e.message;
                             e.message = new ChatComponentText(formattedText.replace(username, namesWithType.get(username)));
+                            e.message.setChatStyle(oldMessage.getChatStyle());
                         }
                     }
                 }
