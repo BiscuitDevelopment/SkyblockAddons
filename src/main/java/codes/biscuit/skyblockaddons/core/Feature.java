@@ -216,6 +216,7 @@ public enum Feature {
     SHOW_SKYBLOCK_ITEM_ID(213, "settings.showSkyblockItemId", null, true),
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
+    PROFILE_TYPE_IN_CHAT(216, "settings.showProfileTypeInChat", null, true),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),

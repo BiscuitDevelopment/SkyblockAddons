@@ -402,8 +402,21 @@ public class PlayerListener {
                             !fetchur.hasFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
                         FetchurManager.getInstance().saveLastTimeFetched();
                     }
+                // Tries to check if a message is from a player to add the player profile icon
+                } else if (main.getConfigValues().isEnabled(Feature.PROFILE_TYPE_IN_CHAT) &&
+                        unformattedText.contains(":")) {
+                    String username = unformattedText.split(":")[0].replaceAll("§.","");
+                    // Remove rank prefix if exists
+                    if (username.contains("]"))
+                        username = username.split("] ")[1];
+                    System.out.println(username);
+                    // Check if stripped username is a real username or the player
+                    if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
+                        EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
+                        if(chattingPlayer != null)
+                            e.message = new ChatComponentText(formattedText.replace(username,chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText()));
+                    }
                 }
-
 
                 if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
                     if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {
