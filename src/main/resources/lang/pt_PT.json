@@ -220,7 +220,7 @@
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato",
     "resetSalvagedEssencesAfterLeavingMenu": "Repor o contador de Salvaged Essences após fechar o menu",
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
-    "showProfileTypeInChat": "Show Profile Type In Chat"
+    "showProfileTypeInChat": "Mostrar o tipo de perfil no chat"
   },
   "messages": {
     "enchants": "encantamentos",
