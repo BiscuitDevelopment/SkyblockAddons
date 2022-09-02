@@ -219,7 +219,8 @@
     "showSkyblockItemId": "Отображать ID Предмета при Наведении",
     "showFeatureNamesOnHover": "Показывать Имена Функций при Наведении",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showProfileTypeInChat": "Show Profile Type In Chat"
   },
   "messages": {
     "enchants": "Зачарования",
