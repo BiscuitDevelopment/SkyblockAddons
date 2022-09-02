@@ -219,7 +219,8 @@
     "showSkyblockItemId": "Skyblock-voorwerp-ID weergeven bij aanwijzen",
     "showFeatureNamesOnHover": "Functienamen weergeven bij aanwijzen",
     "resetSalvagedEssencesAfterLeavingMenu": "Geborgen Essences-teller resetten na sluiten menu",
-    "changeDungeonMapZoomWithKeyboard": "Zoom in en uit met de toetsen + en -"
+    "changeDungeonMapZoomWithKeyboard": "Zoom in en uit met de toetsen + en -",
+    "showProfileTypeInChat": "Show Profile Type In Chat"
   },
   "messages": {
     "enchants": "Betoveringen",
