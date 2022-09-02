@@ -219,7 +219,8 @@
     "showSkyblockItemId": "Tunjukkan item ID Skyblock saat mengarahkan kursor ke benda",
     "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Counter Salvaged Essence Setelah Menutup Menu",
-    "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-"
+    "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-",
+    "showProfileTypeInChat": "Show Profile Type In Chat"
   },
   "messages": {
     "enchants": "Enchants",
