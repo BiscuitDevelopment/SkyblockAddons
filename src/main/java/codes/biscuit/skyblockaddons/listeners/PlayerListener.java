@@ -192,6 +192,16 @@ public class PlayerListener {
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
+    // For caching for the PROFILE_TYPE_IN_CHAT feature, saves the last MAX_SIZE names.
+    private final LinkedHashMap<String, String> namesWithType = new LinkedHashMap<String, String>(){
+        private final int MAX_SIZE = 80;
+
+        protected boolean removeEldestEntry(Map.Entry<String, String> eldest)
+        {
+            return size() > MAX_SIZE;
+        }
+    };
+
     /**
      * Reset all the timers and stuff when joining a new world.
      */
@@ -402,8 +412,28 @@ public class PlayerListener {
                             !fetchur.hasFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
                         FetchurManager.getInstance().saveLastTimeFetched();
                     }
+                // Tries to check if a message is from a player to add the player profile icon
+                } else if (main.getConfigValues().isEnabled(Feature.PROFILE_TYPE_IN_CHAT) &&
+                        unformattedText.contains(":")) {
+                    String username = unformattedText.split(":")[0].replaceAll("§.","");
+                    // Remove rank prefix if exists
+                    if (username.contains("]"))
+                        username = username.split("] ")[1];
+                    // Check if stripped username is a real username or the player
+                    if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
+                        EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
+                        // Put player in cache if found nearby
+                        if(chattingPlayer != null) {
+                            namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+                        }
+                        // Check cache regardless if found nearby
+                        if(namesWithType.containsKey(username)){
+                            IChatComponent oldMessage = e.message;
+                            e.message = new ChatComponentText(formattedText.replace(username, namesWithType.get(username)));
+                            e.message.setChatStyle(oldMessage.getChatStyle());
+                        }
+                    }
                 }
-
 
                 if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
                     if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {
