@@ -640,8 +640,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Copier le NBT",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Zoom avant sur la carte des donjons",
+    "decreaseDungeonMapZoom": "Zoom arrière sur la carte des donjons"
   },
   "dragonTracker": {
     "protector": "Protector",
