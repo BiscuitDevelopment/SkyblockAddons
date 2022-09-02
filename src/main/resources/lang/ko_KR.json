@@ -219,7 +219,8 @@
     "showSkyblockItemId": "화면에 SkyBlock 아이템 아이디를 보여줍니다.",
     "showFeatureNamesOnHover": "화면에 기능 이름을 보여줍니다.",
     "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
-    "changeDungeonMapZoomWithKeyboard": "+/- 키로 배율을 조정"
+    "changeDungeonMapZoomWithKeyboard": "+/- 키로 배율을 조정",
+    "showProfileTypeInChat": "Show Profile Type In Chat"
   },
   "messages": {
     "enchants": "인챈트",
