@@ -220,7 +220,7 @@
     "showFeatureNamesOnHover": "ホバーして機能名を表示",
     "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
     "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整",
-    "showProfileTypeInChat": "Show Profile Type In Chat"
+    "showProfileTypeInChat": "チャットにプロファイルの種類を表示"
   },
   "messages": {
     "enchants": "エンチャント",
