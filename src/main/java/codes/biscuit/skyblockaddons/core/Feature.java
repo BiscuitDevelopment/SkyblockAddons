@@ -214,8 +214,8 @@ public enum Feature {
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
     PROFILE_TYPE_IN_CHAT(216, "settings.showProfileTypeInChat", null, true),
-    CRIMSON_STACKS(217, Message.SETTING_CRIMSON_STACKS, new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
-    HIDE_TRUE_DEFENSE(218, Message.SETTING_HIDE_TRUE_DEFENSE, new GuiFeatureData(ColorCode.RED), false),
+    CRIMSON_STACKS(217, "settings.crimsonStacks", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
+    HIDE_TRUE_DEFENSE(218, "settings.hideTrueDefense", new GuiFeatureData(ColorCode.RED), false),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),
