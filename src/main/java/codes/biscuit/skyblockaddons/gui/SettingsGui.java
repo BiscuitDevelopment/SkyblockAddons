@@ -391,7 +391,7 @@ public class SettingsGui extends GuiScreen {
             boxWidth = 100; // Default size and stuff.
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
-            buttonList.add(new ButtonSlider(x, y, 100, 20, DungeonMapManager.getMapZoom(), 0.5F, 5F, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
+            buttonList.add(new ButtonSlider(x, y, 100, 20, DungeonMapManager.getDenormalizedMapZoom(), DungeonMapManager.MIN_ZOOM, DungeonMapManager.MAX_ZOOM, 0.1F, new ButtonSlider.OnSliderChangeCallback() {
                 @Override
                 public void sliderUpdated(float value) {
                     DungeonMapManager.setMapZoom(value);
