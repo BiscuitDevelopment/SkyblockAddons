@@ -164,7 +164,7 @@ public class ActionBarParser {
 
             if (section.contains("❤")) {
                 // cutting the crimson stack information out
-                section = parseCrimsonStack(section);
+                section = parseCrimsonArmorAbilityStack(section);
 
                 // Fixing health when glare damage (from magma boss in crimson isle) is displayed.
                 // Glare damage stays in the action bar normally
@@ -204,9 +204,9 @@ public class ActionBarParser {
 
     }
 
-    private String parseCrimsonStack(String section) {
-        for (CrimsonStack crimsonStack : CrimsonStack.values()) {
-            crimsonStack.setCurrentValue(0);
+    private String parseCrimsonArmorAbilityStack(String section) {
+        for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
+            crimsonArmorAbilityStack.setCurrentValue(0);
         }
 
         int runs = 0;
@@ -219,8 +219,8 @@ public class ActionBarParser {
                 section = section.substring(0, section.length() - 2);
             }
 
-            for (CrimsonStack crimsonStack : CrimsonStack.values()) {
-                String stackSymbol = crimsonStack.getSymbol();
+            for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
+                String stackSymbol = crimsonArmorAbilityStack.getSymbol();
 
                 if (section.endsWith(stackSymbol)) {
 
@@ -229,18 +229,18 @@ public class ActionBarParser {
                     String remove = "§6" + stack;
                     if (stack.contains("§l")) {
                         stack = stack.substring(2);
-                        if (Feature.CRIMSON_STACKS.isEnabled()) {
+                        if (Feature.CRIMSON_ARMOR_ABILITY_STACKS.isEnabled()) {
                             String realRemove = remove + "§r";
                             stringsToRemove.add(realRemove);
                         }
                     } else {
-                        if (Feature.CRIMSON_STACKS.isEnabled()) stringsToRemove.add(remove);
+                        if (Feature.CRIMSON_ARMOR_ABILITY_STACKS.isEnabled()) stringsToRemove.add(remove);
                     }
                     stack = stack.substring(0, stack.length() - 1);
 
                     section = section.substring(0, section.length() - remove.length());
                     section = section.trim();
-                    crimsonStack.setCurrentValue(Integer.parseInt(stack));
+                    crimsonArmorAbilityStack.setCurrentValue(Integer.parseInt(stack));
                     continue out;
                 }
             }

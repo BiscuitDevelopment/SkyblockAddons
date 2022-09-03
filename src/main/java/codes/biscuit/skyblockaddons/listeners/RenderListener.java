@@ -684,8 +684,8 @@ public class RenderListener {
             }
         } else if (feature == Feature.HEALTH_TEXT) {
             text = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH)) + "/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH));
-        } else if (feature == Feature.CRIMSON_STACKS) {
-            text = getCrimsonStack();
+        } else if (feature == Feature.CRIMSON_ARMOR_ABILITY_STACKS) {
+            text = getCrimsonArmorAbilityStacks();
             if (text == null) return;
 
         } else if (feature == Feature.DEFENCE_TEXT) {
@@ -1379,23 +1379,23 @@ public class RenderListener {
         main.getUtils().restoreGLOptions();
     }
 
-    private String getCrimsonStack() {
+    private String getCrimsonArmorAbilityStacks() {
         EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
         ItemStack[] itemStacks = player.inventory.armorInventory;
 
         StringBuilder builder = new StringBuilder();
-        crimsonStack:
-        for (CrimsonStack crimsonStack : CrimsonStack.values()) {
+        out:
+        for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
             for (ItemStack itemStack : itemStacks) {
                 if (itemStack == null) continue;
                 for (String line : ItemUtils.getItemLore(itemStack)) {
                     if (line.contains("§6Tiered Bonus: ")) {
-                        String stackName = crimsonStack.getStackName();
-                        if (line.contains(stackName)) {
-                            String symbol = crimsonStack.getSymbol();
-                            int stack = crimsonStack.getCurrentValue();
-                            builder.append(stackName + " " + symbol + " " + stack);
-                            continue crimsonStack;
+                        String abilityName = crimsonArmorAbilityStack.getAbilityName();
+                        if (line.contains(abilityName)) {
+                            String symbol = crimsonArmorAbilityStack.getSymbol();
+                            int stack = crimsonArmorAbilityStack.getCurrentValue();
+                            builder.append(abilityName + " " + symbol + " " + stack);
+                            continue out;
                         }
                     }
                 }

@@ -297,7 +297,7 @@ public class EnumUtils {
         TIMOLOB("TimoLob", "github.com/TimoLob", Feature.BROOD_MOTHER_ALERT),
         NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT),
         CATFACE("CatFace","github.com/CattoFace",Feature.PROFILE_TYPE_IN_CHAT),
-        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.CRIMSON_STACKS, Feature.HIDE_TRUE_DEFENSE);
+        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.CRIMSON_ARMOR_ABILITY_STACKS, Feature.HIDE_TRUE_DEFENSE);
 
 
         private final Set<Feature> features;
