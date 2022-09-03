@@ -5,18 +5,18 @@
     "settings": "설정",
     "magmaBossWarning": "Magma Boss 알림",
     "balBossWarning": "Bal 보스 알림",
-    "broodMotherWarning": "Brood Mother 경고",
+    "broodMotherWarning": "Brood Mother 알림",
     "itemDropConfirmation": "아이템 버림 재확인",
     "hideSkeletonHatBones": "Skeleton's Helmet 뼈 숨기기",
     "skeletonHatBonesBar": "Skeleton's Helmet 뼈 바",
     "hideFoodAndArmor": "배고픔 & 갑옷 바 숨기기",
     "fullInventoryWarning": "인벤토리 꽉 참 경고",
     "repeating": "경고 반복하기",
-    "disableEmberRodAbility": "섬에서의 Ember Rod 어빌리티 비활성화",
+    "disableEmberRodAbility": "섬에서 Ember Rod 능력 비활성화",
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
     "resetLocations": "위치 설정 초기화",
-    "minionStopWarning": "\"Minion Cannot Reach\" 경고",
+    "minionStopWarning": "\"Minion 몹 공격 불가\" 경고",
     "hidePlayersNearNPCs": "NPC 근처에 있는 플레이어 숨기기",
     "backpackStyle": "Backpack 스타일: %style%",
     "backpackStyles": {
@@ -211,13 +211,13 @@
     "guiScaleY": "GUI Y축 크기: %scale%",
     "abbreviateSkillXpDenominator": "Skill XP 분모 약자",
     "otherDefenseStats": "다른 Defence 스탯 (Soul Tether/Cell Alignment)",
-    "hideSpawnPointPlayers": "Hub 스폰 주변에 있는 플레이어 숨기기",
+    "hideSpawnPointPlayers": "허브 스폰 주변에 있는 플레이어 숨기기",
     "jacobsContestTimer": "Jacob's Contest 타이머",
     "dontReplaceRomanNumeralsInItemNames": "아이템 이름 바꾸기 끄기",
     "backpackOpeningSound": "Leather Backpack 열림 소리",
     "devMode": "개발자 모드",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "showSkyblockItemId": "화면에 SkyBlock 아이템 아이디를 보여줍니다.",
+    "showFeatureNamesOnHover": "화면에 기능 이름을 보여줍니다.",
     "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
     "changeDungeonMapZoomWithKeyboard": "+/- 키로 배율을 조정"
   },
@@ -272,7 +272,7 @@
     "showColorIcons": "색상 아이콘 표시하기",
     "enableFeatureSnapping": "기능 배치시 스냅 켜기",
     "stage": "스테이지 %stage%",
-    "switchedSlots": "당신은 방금 잠긴 슬롯이나 레어 아이템에서 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
+    "switchedSlots": "방금 잠긴 슬롯이나 레어 아이템끼리 슬롯을 바꿨습니다. 아이템을 떨어뜨리기 전에 잠깐 기다려주세요!",
     "clickToOpenLink": "클릭해서 링크 열기",
     "clickToOpenFolder": "여기를 클릭해서 mods 폴더를 여세요!",
     "firstStatus": "이 상태는 위에 나타날 것입니다",
@@ -294,7 +294,7 @@
     "none": "없음",
     "copyModeSet": "개발자 복사 모드가 %mode%로 설정되었습니다. 데이터 복사본을 트리거 하려면 %keyName%를 누르세요.",
     "chroma": "크로마",
-    "worldRenderedCooldownTime": "쿨다운: %time%s",
+    "worldRenderedCooldownTime": "재사용 대기시간: %time%s",
     "entityOutlinesRequirement": "쉐이더, 빠른 렌더, 안티엘리어싱을 꺼야합니다.",
     "version": "버전",
     "invalidFeatureConfiguration": "%featureName% 기능에 잘못된 구성 요소가 감지됐습니다. 설정을 기본값으로 재설정 합니다.",
@@ -428,9 +428,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
             "options": {
               "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
               "number": "스탯으로 만들 숫자",
@@ -598,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "직접 Slayer 전적을 설정합니다, Tab 키를 누르면 인수를 보입니다.",
           "options": {
             "boss": "슬레이어 보스: \"Zombie\", \"Spider\", 또는 \"Wolf\"",
             "number": "스탯으로 만들 숫자",
