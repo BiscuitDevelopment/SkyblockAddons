@@ -218,6 +218,7 @@ public enum Feature {
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
     // Release 1.7
     NUMBER_SEPARATORS(216, "settings.numberSeparators", null, false),
+    PROFILE_TYPE_IN_CHAT(217, "settings.showProfileTypeInChat", null, true),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),
