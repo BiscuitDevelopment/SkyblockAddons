@@ -4,15 +4,14 @@ import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Location;
 import codes.biscuit.skyblockaddons.core.SkyblockDate;
 import codes.biscuit.skyblockaddons.utils.EnumUtils;
+import com.google.gson.JsonObject;
 import com.jagrosh.discordipc.IPCClient;
 import com.jagrosh.discordipc.IPCListener;
 import com.jagrosh.discordipc.entities.RichPresence;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
 
-import java.time.OffsetDateTime;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,7 +28,7 @@ public class DiscordRPCManager implements IPCListener {
     private IPCClient client;
     private DiscordStatus detailsLine;
     private DiscordStatus stateLine;
-    private OffsetDateTime startTimestamp;
+    private long startTimestamp;
 
     private Timer updateTimer;
     private boolean connected;
@@ -44,7 +43,7 @@ public class DiscordRPCManager implements IPCListener {
 
                 stateLine = main.getConfigValues().getDiscordStatus();
                 detailsLine = main.getConfigValues().getDiscordDetails();
-                startTimestamp = OffsetDateTime.now();
+                startTimestamp = System.currentTimeMillis();
                 client = new IPCClient(APPLICATION_ID);
                 client.setListener(this);
                 try {
@@ -119,7 +118,7 @@ public class DiscordRPCManager implements IPCListener {
     }
 
     @Override
-    public void onClose(IPCClient client, JSONObject json) {
+    public void onClose(IPCClient client, JsonObject json) {
         logger.info("Discord RPC closed.");
         this.client = null;
         connected = false;

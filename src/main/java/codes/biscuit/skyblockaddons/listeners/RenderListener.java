@@ -253,35 +253,35 @@ public class RenderListener {
         int scaledHeight = scaledResolution.getScaledHeight();
         if (titleFeature != null) {
 
-            Message message = null;
+            String translationKey = null;
             switch (titleFeature) {
                 case FULL_INVENTORY_WARNING:
-                    message = Message.MESSAGE_FULL_INVENTORY;
+                    translationKey = "messages.fullInventory";
                     break;
                 case SUMMONING_EYE_ALERT:
-                    message = Message.MESSAGE_SUMMONING_EYE_FOUND;
+                    translationKey = "messages.summoningEyeFound";
                     break;
                 case SPECIAL_ZEALOT_ALERT:
-                    message = Message.MESSAGE_SPECIAL_ZEALOT_FOUND;
+                    translationKey = "messages.specialZealotFound";
                     break;
                 case LEGENDARY_SEA_CREATURE_WARNING:
-                    message = Message.MESSAGE_LEGENDARY_SEA_CREATURE_WARNING;
+                    translationKey = "messages.legendarySeaCreatureWarning";
                     break;
                 case BOSS_APPROACH_ALERT:
-                    message = Message.MESSAGE_BOSS_APPROACH_ALERT;
+                    translationKey = "messages.bossApproaching";
                     break;
                 case WARN_WHEN_FETCHUR_CHANGES:
-                    message = Message.MESSAGE_FETCHUR_WARNING;
+                    translationKey = "messages.fetchurWarning";
                     break;
                 case BROOD_MOTHER_ALERT:
-                    message = Message.MESSAGE_BROOD_MOTHER_WARNING;
+                    translationKey = "messages.broodMotherWarning";
                     break;
                 case BAL_BOSS_ALERT:
-                    message = Message.MESSAGE_BAL_BOSS_WARNING;
+                    translationKey = "messages.balBossWarning";
                     break;
             }
-            if (message != null) {
-                String text = message.getMessage();
+            if (translationKey != null) {
+                String text = Translations.getMessage(translationKey);
                 int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
                 float scale = 4; // Scale is normally 4, but if its larger than the screen, scale it down...
@@ -305,30 +305,26 @@ public class RenderListener {
             }
         }
         if (subtitleFeature != null) {
-            Message message = null;
+            String text = null;
             switch (subtitleFeature) {
                 case MINION_STOP_WARNING:
-                    message = Message.MESSAGE_MINION_CANNOT_REACH;
+                    text = Translations.getMessage("messages.minionCannotReach", cannotReachMobName);
                     break;
                 case MINION_FULL_WARNING:
-                    message = Message.MESSAGE_MINION_IS_FULL;
+                    text = Translations.getMessage("messages.minionIsFull");
                     break;
                 case NO_ARROWS_LEFT_ALERT:
-                    message = Message.MESSAGE_NO_ARROWS_LEFT;
+                    if (arrowsLeft != -1) {
+                        Translations.getMessage("messages.noArrowsLeft", TextUtils.NUMBER_FORMAT.format(arrowsLeft));
+                    }
                     break;
             }
-            if (message != null) {
-                String text;
-                if (message == Message.MESSAGE_MINION_CANNOT_REACH) {
-                    text = message.getMessage(cannotReachMobName);
-                } else if (message == Message.MESSAGE_NO_ARROWS_LEFT && arrowsLeft != -1) {
-                    text = Message.MESSAGE_ONLY_FEW_ARROWS_LEFT.getMessage(Integer.toString(arrowsLeft));
-                } else {
-                    text = message.getMessage();
-                }
+
+            if (text != null) {
+
                 int stringWidth = mc.fontRendererObj.getStringWidth(text);
 
-                float scale = 2; // Scale is normally 2, but if its larger than the screen, scale it down...
+                float scale = 2; // Scale is normally 2, but if it's larger than the screen, scale it down...
                 if (stringWidth * scale > (scaledWidth * 0.9F)) {
                     scale = (scaledWidth * 0.9F) / (float) stringWidth;
                 }
@@ -386,6 +382,8 @@ public class RenderListener {
     public void drawBar(Feature feature, float scale, Minecraft mc, ButtonLocation buttonLocation) {
         // The fill of the bar from 0 to 1
         float fill;
+        // Whether the player has absorption hearts
+        boolean hasAbsorption = false;
         if (feature == Feature.MANA_BAR) {
             fill = getAttribute(Attribute.MANA) / getAttribute(Attribute.MAX_MANA);
         } else if (feature == Feature.DRILL_FUEL_BAR) {
@@ -444,12 +442,17 @@ public class RenderListener {
                 color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GREEN.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
             } else if (mc.thePlayer.isPotionActive(20/* Wither */)) {
                 color = ColorUtils.getDummySkyblockColor(ColorCode.DARK_GRAY.getColor(), main.getConfigValues().getChromaFeatures().contains(feature));
+            } else if (mc.thePlayer.isPotionActive(22) /* Absorption */) {
+                if (getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH)) {
+                    fill = getAttribute(Attribute.MAX_HEALTH) / getAttribute(Attribute.HEALTH);
+                    hasAbsorption = true;
+                }
             }
         }
 
         main.getUtils().enableStandardGLOptions();
         // Draw the actual bar
-        drawMultiLayeredBar(mc, color, x, y, fill);
+        drawMultiLayeredBar(mc, color, x, y, fill, hasAbsorption);
 
         main.getUtils().restoreGLOptions();
     }
@@ -458,6 +461,7 @@ public class RenderListener {
      * Draws a multitextured bar:
      * Begins by coloring and rendering the empty bar.
      * Then, colors and renders the full bar up to the fraction {@param fill}.
+     * Then, overlays the absorption portion of the bar in gold if the player has absorption hearts
      * Then, overlays (and does not color) an additional texture centered on the current progress of the bar.
      * Then, overlays (and does not color) a final style texture over the bar
      * @param mc link to the current minecraft session
@@ -465,8 +469,9 @@ public class RenderListener {
      * @param x the x position of the bar
      * @param y the y position of the bar
      * @param fill the fraction (from 0 to 1) of the bar that's full
+     * @param hasAbsorption {@code true} if the player has absorption hearts
      */
-    private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill) {
+    private void drawMultiLayeredBar(Minecraft mc, SkyblockColor color, float x, float y, float fill, boolean hasAbsorption) {
         int barHeight = 5, barWidth = 71;
         float barFill = barWidth * fill;
         mc.getTextureManager().bindTexture(BARS);
@@ -495,6 +500,12 @@ public class RenderListener {
         // Disable coloring
         if (color.drawMulticolorUsingShader()) {
             ShaderManager.getInstance().disableShader();
+        }
+
+        // Overlay absorption health if needed
+        if (hasAbsorption) {
+            ColorUtils.bindColor(ColorCode.GOLD.getColor());
+            DrawUtils.drawModalRectWithCustomSizedTexture(x + barFill, y, barFill + 1, 7, barWidth - barFill, barHeight, 80, 50);
         }
         ColorUtils.bindWhite();
 
@@ -672,9 +683,6 @@ public class RenderListener {
                 return;
             }
         } else if (feature == Feature.HEALTH_TEXT) {
-            if (mc.thePlayer.isPotionActive(22/* Absorption */)) {
-                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(), main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
-            }
             text = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH)) + "/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH));
         } else if (feature == Feature.CRIMSON_STACKS) {
             text = getCrimsonStack();
@@ -719,7 +727,7 @@ public class RenderListener {
             if (buttonLocation == null) {
                 if (healthUpdate != null) {
                     color = healthUpdate > 0 ? ColorCode.GREEN.getColor() : ColorCode.RED.getColor();
-                    text = (healthUpdate > 0 ? "+" : "-") + Math.abs(healthUpdate);
+                    text = (healthUpdate > 0 ? "+" : "-") + NUMBER_FORMAT.format(Math.abs(healthUpdate));
                 } else {
                     return;
                 }
@@ -903,7 +911,7 @@ public class RenderListener {
             }
 
             int stageNum = Math.min(stage.ordinal(), 5);
-            text = Message.MESSAGE_STAGE.getMessage(String.valueOf(stageNum));
+            text = Translations.getMessage("messages.stage", String.valueOf(stageNum));
 
         } else if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
             if (buttonLocation == null && !main.getUtils().isInDungeon()) {
@@ -972,9 +980,9 @@ public class RenderListener {
             FetchurManager.FetchurItem fetchurItem = FetchurManager.getInstance().getCurrentFetchurItem();
             if (!FetchurManager.getInstance().hasFetchedToday() || buttonLocation != null) {
                 if (main.getConfigValues().isEnabled(Feature.SHOW_FETCHUR_ITEM_NAME)) {
-                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage(fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
+                    text = Translations.getMessage("messages.fetchurItem", fetchurItem.getItemStack().stackSize + "x " + fetchurItem.getItemText());
                 } else {
-                    text = Message.MESSAGE_FETCHUR_TODAY.getMessage("");
+                    text = Translations.getMessage("messages.fetchurItem", "");
                 }
             } else {
                 text = ""; // If it has made fetchur, then no need for text
@@ -1342,6 +1350,24 @@ public class RenderListener {
                 } else {
                     DrawUtils.drawText(text, x, y, color); // Line related to the "Fetchur wants" text
                 }
+                FontRendererHook.endFeatureFont();
+            }
+        } else if (feature == Feature.HEALTH_TEXT) {
+            if (mc.thePlayer.isPotionActive(22/* Absorption */)
+                    && getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH)) {
+                String formattedHealth = NUMBER_FORMAT.format(getAttribute(Attribute.HEALTH));
+                int formattedHealthWidth = mc.fontRendererObj.getStringWidth(formattedHealth);
+
+                color = ColorUtils.getDummySkyblockColor(ColorCode.GOLD.getColor(),
+                        main.getConfigValues().getChromaFeatures().contains(feature)).getColor();
+                FontRendererHook.setupFeatureFont(feature);
+                DrawUtils.drawText(formattedHealth, x, y, color);
+                color = main.getConfigValues().getColor(feature);
+                DrawUtils.drawText("/" + NUMBER_FORMAT.format(getAttribute(Attribute.MAX_HEALTH)),
+                        x + formattedHealthWidth, y, color);
+            } else {
+                FontRendererHook.setupFeatureFont(feature);
+                DrawUtils.drawText(text, x, y, color);
                 FontRendererHook.endFeatureFont();
             }
         } else {
@@ -1979,8 +2005,8 @@ public class RenderListener {
         // Draw the "x Effects Active" line
         FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
         int effectCount = TabEffectManager.getInstance().getEffectCount();
-        String text = effectCount == 1 ? Message.MESSAGE_ONE_EFFECT_ACTIVE.getMessage() :
-                Message.MESSAGE_EFFECTS_ACTIVE.getMessage(String.valueOf(effectCount));
+        String text = effectCount == 1 ? Translations.getMessage("messages.effectActive") :
+                Translations.getMessage("messages.effectsActive", String.valueOf(effectCount));
         float lineY;
         if (topDown) {
             lineY = y;

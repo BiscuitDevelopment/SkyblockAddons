@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons.asm.hooks;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.asm.utils.ReturnValue;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.inventory.ContainerPlayer;
@@ -24,14 +24,14 @@ public class EntityPlayerSPHook {
                 int slot = mc.thePlayer.inventory.currentItem + 36;
                 if (main.getConfigValues().getLockedSlots().contains(slot) && (slot >= 9 || mc.thePlayer.openContainer instanceof ContainerPlayer && slot >= 5)) {
                     main.getUtils().playLoudSound("note.bass", 0.5);
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SLOT_LOCKED.getMessage());
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Translations.getMessage("messages.slotLocked"));
                     returnValue.cancel();
                     return null;
                 }
 
                 if (System.currentTimeMillis() - MinecraftHook.getLastLockedSlotItemChange() < 200) {
                     main.getUtils().playLoudSound("note.bass", 0.5);
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SWITCHED_SLOTS.getMessage());
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Translations.getMessage("messages.switchedSlots"));
                     returnValue.cancel();
                     return null;
                 }
@@ -39,14 +39,14 @@ public class EntityPlayerSPHook {
 
             if (heldItemStack != null && main.getConfigValues().isEnabled(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) && !main.getUtils().isInDungeon()) {
                 if (!main.getUtils().getItemDropChecker().canDropItem(heldItemStack, true)) {
-                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) + Message.MESSAGE_CANCELLED_DROPPING.getMessage());
+                    main.getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.STOP_DROPPING_SELLING_RARE_ITEMS) + Translations.getMessage("messages.cancelledDropping"));
                     returnValue.cancel();
                     return null;
                 }
 
                 if (System.currentTimeMillis() - MinecraftHook.getLastLockedSlotItemChange() < 200) {
                     main.getUtils().playLoudSound("note.bass", 0.5);
-                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_SWITCHED_SLOTS.getMessage());
+                    SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Translations.getMessage("messages.switchedSlots"));
                     returnValue.cancel();
                     return null;
                 }
@@ -60,7 +60,7 @@ public class EntityPlayerSPHook {
             String heldItemName = heldItemStack.hasDisplayName() ? heldItemStack.getDisplayName() : heldItemStack.getUnlocalizedName();
 
             if (lastItemName == null || !lastItemName.equals(heldItemName) || Minecraft.getSystemTime() - lastDrop >= 3000L) {
-                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Message.MESSAGE_DROP_CONFIRMATION.getMessage());
+                SkyblockAddons.getInstance().getUtils().sendMessage(main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION) + Translations.getMessage("messages.dropConfirmation"));
                 lastItemName = heldItemName;
                 returnValue.cancel();
             }

@@ -3,7 +3,7 @@ package codes.biscuit.skyblockaddons.features.itemdrops;
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
 import codes.biscuit.skyblockaddons.core.ItemRarity;
-import codes.biscuit.skyblockaddons.core.Message;
+import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ItemUtils;
 import net.minecraft.client.Minecraft;
@@ -188,11 +188,11 @@ public class ItemDropChecker {
         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION);
 
         if (attemptsRequiredToConfirm >= 2) {
-            String multipleAttemptsRequiredMessage = Message.MESSAGE_CLICK_MORE_TIMES.getMessage(Integer.toString(attemptsRequiredToConfirm));
+            String multipleAttemptsRequiredMessage = Translations.getMessage("messages.clickMoreTimes", Integer.toString(attemptsRequiredToConfirm));
             main.getUtils().sendMessage(colorCode + multipleAttemptsRequiredMessage);
 
         } else {
-            String oneMoreAttemptRequiredMessage = Message.MESSAGE_CLICK_ONE_MORE_TIME.getMessage();
+            String oneMoreAttemptRequiredMessage = Translations.getMessage("messages.clickOneMoreTime");
             main.getUtils().sendMessage(colorCode + oneMoreAttemptRequiredMessage);
         }
         playAlert();
