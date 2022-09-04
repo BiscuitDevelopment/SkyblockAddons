@@ -90,7 +90,8 @@ public class TabListRenderer {
                 int savedX = middleX;
 
                 if (tabLine.getType() == TabStringType.PLAYER) {
-                    NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(TextUtils.stripColor(tabLine.getText()));
+                    String username = TextUtils.stripColor(tabLine.getText()).replaceAll("[/^\\w+$/i]", "");
+                    NetworkPlayerInfo networkPlayerInfo = mc.getNetHandler().getPlayerInfo(username);
                     if (networkPlayerInfo != null) {
                         EntityPlayer entityPlayer = mc.theWorld.getPlayerEntityByUUID(networkPlayerInfo.getGameProfile().getId());
 
