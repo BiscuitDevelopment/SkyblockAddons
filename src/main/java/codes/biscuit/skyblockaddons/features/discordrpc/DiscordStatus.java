@@ -152,13 +152,13 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
             }),
     ;
 
-    private final String title;
-    private final String description;
+    private final String titleTranslationKey;
+    private final String descriptionTranslationKey;
     private final Supplier<String> displayMessageSupplier;
 
     DiscordStatus(String titleTranslationKey, String descriptionTranslationKey, Supplier<String> displayMessageSupplier) {
-        this.title = Translations.getMessage(titleTranslationKey);
-        this.description = Translations.getMessage(descriptionTranslationKey);
+        this.titleTranslationKey = titleTranslationKey;
+        this.descriptionTranslationKey = descriptionTranslationKey;
         this.displayMessageSupplier = displayMessageSupplier;
     }
 
@@ -169,11 +169,11 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
 
     @Override
     public String getName() {
-        return title;
+        return Translations.getMessage(titleTranslationKey);
     }
 
     @Override
     public String getDescription() {
-        return description;
+        return Translations.getMessage(descriptionTranslationKey);
     }
 }
