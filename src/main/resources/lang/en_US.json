@@ -220,7 +220,7 @@
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
-    "addPlayerSymbolsToChat": "Add Player Symbols To Chat Messages"
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat Messages"
   },
   "messages": {
     "enchants": "Enchants",
