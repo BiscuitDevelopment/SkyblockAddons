@@ -220,7 +220,7 @@
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closin' Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "showPlayerSymbolsInChat": "Show Pirate Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
     "hideTrueDefense": "Hide True Defense"
   },
@@ -687,7 +687,7 @@
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
     "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "championCombatXp": "Captain Combat XP",
     "maxed": "Maxed"
   }
 }
