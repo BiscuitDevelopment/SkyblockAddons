@@ -221,7 +221,7 @@
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showProfileTypeInChat": "Show Profile Type In Chat",
-    "crimsonArmorAbilityStacks": "Crimson Armor Stacks",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
     "hideTrueDefense": "Hide True Defense"
   },
   "messages": {
