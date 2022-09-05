@@ -220,7 +220,9 @@
     "showFeatureNamesOnHover": "화면에 기능 이름을 보여줍니다.",
     "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
     "changeDungeonMapZoomWithKeyboard": "+/- 키로 배율을 조정",
-    "showProfileTypeInChat": "Show Profile Type In Chat"
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense"
   },
   "messages": {
     "enchants": "인챈트",
@@ -684,6 +686,8 @@
     "expertiseKills": "Expertise 킬 카운트",
     "compactedBlocks": "압축된 블록",
     "cultivatedCrops": "재배된 작물",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "최대"
   }
 }
