@@ -220,7 +220,9 @@
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
     "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen",
     "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen",
-    "showProfileTypeInChat": "Profiltyp im Chat anzeigen"
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -684,6 +686,8 @@
     "expertiseKills": "Expertise-Kills",
     "compactedBlocks": "Kompaktierte Blöcke",
     "cultivatedCrops": "Kultivierte Pflanzen",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maximum"
   }
 }
