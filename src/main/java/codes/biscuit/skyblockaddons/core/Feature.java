@@ -1,6 +1,7 @@
 package codes.biscuit.skyblockaddons.core;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
+import codes.biscuit.skyblockaddons.config.ConfigValues;
 import codes.biscuit.skyblockaddons.features.EntityOutlines.FeatureTrackerQuest;
 import codes.biscuit.skyblockaddons.features.dungeonmap.DungeonMapManager;
 import codes.biscuit.skyblockaddons.gui.buttons.ButtonLocation;
@@ -16,14 +17,12 @@ import java.util.*;
 @Getter
 public enum Feature {
 
-    MAGMA_WARNING(0, "settings.magmaBossWarning", new GuiFeatureData(ColorCode.RED), false),
     DROP_CONFIRMATION(1, "settings.itemDropConfirmation", new GuiFeatureData(ColorCode.RED, true), true, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_BACKPACK_PREVIEW(3, "settings.showBackpackPreview", null, false, EnumUtils.FeatureSetting.BACKPACK_STYLE, EnumUtils.FeatureSetting.SHOW_ONLY_WHEN_HOLDING_SHIFT, EnumUtils.FeatureSetting.MAKE_INVENTORY_COLORED, EnumUtils.FeatureSetting.ENABLE_CAKE_BAG_PREVIEW, EnumUtils.FeatureSetting.ENABLE_PERSONAL_COMPACTOR_PREVIEW, EnumUtils.FeatureSetting.SHOW_ENDER_CHEST_PREVIEW),
     HIDE_BONES(4, "settings.hideSkeletonHatBones", null, false),
     SKELETON_BAR(5, "settings.skeletonHatBonesBar", new GuiFeatureData(EnumUtils.DrawType.SKELETON_BAR), false),
     HIDE_FOOD_ARMOR_BAR(6, "settings.hideFoodAndArmor", null, false),
     FULL_INVENTORY_WARNING(7, "settings.fullInventoryWarning", new GuiFeatureData(ColorCode.RED), false, EnumUtils.FeatureSetting.REPEATING),
-    MAGMA_BOSS_TIMER(8, "settings.magmaBossTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD, false), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
     SHOW_REFORGE_OVERLAY(10, "settings.showReforgeOverlay", null, false),
     MINION_STOP_WARNING(11, "settings.minionStopWarning", new GuiFeatureData(ColorCode.RED), true),
     HIDE_HEALTH_BAR(13, "settings.hideHealthBar", null, true),
@@ -44,7 +43,6 @@ public enum Feature {
     ITEM_PICKUP_LOG(29, "settings.itemPickupLog", new GuiFeatureData(EnumUtils.DrawType.PICKUP_LOG), false),
     SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES(33, null, false),
     SHOW_ITEM_ANVIL_USES(34, "settings.showItemAnvilUses", new GuiFeatureData(ColorCode.RED, true), false),
-    SHOW_MAGMA_TIMER_IN_OTHER_GAMES(36, null, true),
     DONT_RESET_CURSOR_INVENTORY(37, "settings.dontResetCursorInventory", null, false),
     LOCK_SLOTS(38, "settings.lockSlots", null, false),
     SUMMONING_EYE_ALERT(39, "settings.summoningEyeAlert", new GuiFeatureData(ColorCode.RED), false),
@@ -85,7 +83,6 @@ public enum Feature {
     SHOW_AVERAGE_ZEALOTS_PER_EYE(79, "settings.showZealotsPerEye", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA), true, EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY),
     TURN_BOW_GREEN_WHEN_USING_TOXIC_ARROW_POISON(80, "settings.turnBowGreenWhenUsingToxicArrowPoison", null, false),
     BIRCH_PARK_RAINMAKER_TIMER(81, "settings.birchParkRainmakerTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.DARK_AQUA), false),
-    COMBAT_TIMER_DISPLAY(82, "settings.combatTimerDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.RED), false),
     DISCORD_RPC(83, "settings.discordRP", null, true, EnumUtils.FeatureSetting.DISCORD_RP_DETAILS, EnumUtils.FeatureSetting.DISCORD_RP_STATE),
     ENDSTONE_PROTECTOR_DISPLAY(84, "settings.endstoneProtectorDisplay", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.WHITE), false),
     FANCY_WARP_MENU(85, "settings.fancyWarpMenu", null, false),
@@ -217,6 +214,8 @@ public enum Feature {
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
     PLAYER_SYMBOLS_IN_CHAT(216, "settings.showPlayerSymbolsInChat", null, false),
+    CRIMSON_ARMOR_ABILITY_STACKS(217, "settings.crimsonArmorAbilityStacks", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
+    HIDE_TRUE_DEFENSE(218, "settings.hideTrueDefense", new GuiFeatureData(ColorCode.RED), false),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),
@@ -229,7 +228,7 @@ public enum Feature {
     SHOW_COLOR_ICONS(-1, "messages.showColorIcons", null, false),
     RESIZE_BARS(-1, "messages.resizeBars", null, false),
     ENABLE_FEATURE_SNAPPING(-1, "messages.enableFeatureSnapping", null, false),
-    SHOW_FEATURE_NAMES_ON_HOVER(-1, "settings.showFeatureNamesOnHover", null,true),
+    SHOW_FEATURE_NAMES_ON_HOVER(-1, "settings.showFeatureNamesOnHover", null, true),
     GENERAL_SETTINGS(-1, "settings.tab.generalSettings", null, false),
     TEXT_STYLE(-1, "settings.textStyle", null, false),
     CHROMA_SPEED(-1, "settings.chromaSpeed", null, false),
@@ -246,7 +245,7 @@ public enum Feature {
      * a feature here, make sure to add it!
      */
     private static final Set<Feature> SETTINGS = Sets.newHashSet(DOUBLE_DROP_IN_OTHER_GAMES,
-            USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT, SHOW_MAGMA_TIMER_IN_OTHER_GAMES,
+            USE_VANILLA_TEXTURE_DEFENCE, SHOW_BACKPACK_HOLDING_SHIFT,
             MAKE_BACKPACK_INVENTORIES_COLORED, CHANGE_BAR_COLOR_FOR_POTIONS, ENABLE_MESSAGE_WHEN_BREAKING_STEMS,
             ENABLE_MESSAGE_WHEN_MINING_DEEP_CAVERNS, ENABLE_MESSAGE_WHEN_MINING_NETHER, HIDE_NIGHT_VISION_EFFECT_TIMER,
             CAKE_BAG_PREVIEW, REPEAT_FULL_INVENTORY_WARNING, SORT_TAB_EFFECT_TIMERS, DOUBLE_WARP,
@@ -270,13 +269,14 @@ public enum Feature {
      */
     @Getter
     private static final Set<Feature> guiFeatures = new LinkedHashSet<>(Arrays.asList(DRILL_FUEL_BAR, SKILL_PROGRESS_BAR, MANA_BAR, HEALTH_BAR,
-            MAGMA_BOSS_TIMER, MANA_TEXT, OVERFLOW_MANA, DEFENCE_ICON, DEFENCE_TEXT, EFFECTIVE_HEALTH_TEXT,
+            MANA_TEXT, OVERFLOW_MANA, DEFENCE_ICON, DEFENCE_TEXT, EFFECTIVE_HEALTH_TEXT,
             DEFENCE_PERCENTAGE, HEALTH_TEXT, SKELETON_BAR, HEALTH_UPDATES, ITEM_PICKUP_LOG, DARK_AUCTION_TIMER, SKILL_DISPLAY, SPEED_PERCENTAGE,
             SLAYER_INDICATOR, POWER_ORB_STATUS_DISPLAY, ZEALOT_COUNTER, TICKER_CHARGES_DISPLAY, TAB_EFFECT_TIMERS, SHOW_TOTAL_ZEALOT_COUNT, SHOW_SUMMONING_EYE_COUNT,
-            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, COMBAT_TIMER_DISPLAY, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
+            SHOW_AVERAGE_ZEALOTS_PER_EYE, BIRCH_PARK_RAINMAKER_TIMER, ENDSTONE_PROTECTOR_DISPLAY, BAIT_LIST, DUNGEONS_MAP_DISPLAY, SHOW_DUNGEON_MILESTONE,
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
             ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, CANDY_POINTS_COUNTER, DRILL_FUEL_TEXT,
-            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, FETCHUR_TODAY, VOIDGLOOM_SLAYER_TRACKER, OTHER_DEFENCE_STATS, SPIRIT_SCEPTRE_DISPLAY, FARM_EVENT_TIMER));
+            TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, FETCHUR_TODAY, VOIDGLOOM_SLAYER_TRACKER, OTHER_DEFENCE_STATS, SPIRIT_SCEPTRE_DISPLAY, FARM_EVENT_TIMER,
+            CRIMSON_ARMOR_ABILITY_STACKS, HIDE_TRUE_DEFENSE));
 
     /**
      * These are features that are displayed separate, on the general tab.
@@ -386,7 +386,7 @@ public enum Feature {
                 main.getRenderListener().drawIcon(scale, mc, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.REVENANT_PROGRESS) {
                 main.getRenderListener().drawRevenantIndicator(scale, mc, buttonLocation);
-            } else if(guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
+            } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.POWER_ORB_DISPLAY) {
                 main.getRenderListener().drawPowerOrbStatus(mc, scale, buttonLocation);
             } else if (guiFeatureData.getDrawType() == EnumUtils.DrawType.TICKER) {
                 main.getRenderListener().drawScorpionFoilTicker(mc, scale, buttonLocation);
@@ -415,5 +415,10 @@ public enum Feature {
 
     public boolean isNew() {
         return id > ID_AT_PREVIOUS_UPDATE;
+    }
+
+    public boolean isEnabled() {
+        ConfigValues values = SkyblockAddons.getInstance().getConfigValues();
+        return values != null && values.isEnabled(this);
     }
 }

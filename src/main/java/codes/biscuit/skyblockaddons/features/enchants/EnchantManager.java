@@ -23,6 +23,8 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static codes.biscuit.skyblockaddons.utils.TextUtils.NUMBER_FORMAT;
+
 public class EnchantManager {
 
     // Catches successive [ENCHANT] [ROMAN NUMERALS OR DIGITS], as well as stacking enchants listing total stacked number
@@ -304,7 +306,8 @@ public class EnchantManager {
                     b.append(TextUtils.abbreviate(stackedEnchantNum)).append(" §7(").append(Translations.getMessage("enchants.maxed")).append(")");
                 } else {
                     // §7Expertise Kills: §a500 §7/ 1k
-                    b.append(stackedEnchantNum).append(" §7/ ").append(TextUtils.abbreviate(nextLevel));
+                    String format = NUMBER_FORMAT.format(stackedEnchantNum);
+                    b.append(format).append(" §7/ ").append(TextUtils.abbreviate(nextLevel));
                 }
                 loreList.add(insertAt++, b.toString());
             }
