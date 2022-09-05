@@ -220,7 +220,9 @@
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
     "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
     "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla",
-    "showProfileTypeInChat": "Profil Tipini Sohbette Göster"
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -684,6 +686,8 @@
     "expertiseKills": "Expertise Leşleri",
     "compactedBlocks": "Sıkıştırılmış Bloklar",
     "cultivatedCrops": "Ekili Ürünler",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maksimum"
   }
 }
