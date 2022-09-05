@@ -15,6 +15,12 @@
     "displayName": "§fBlock of Coal",
     "enchanted": false
   },
+  "CONCENTRATED_STONE": {
+    "itemId": "skull",
+    "displayName": "§9Concentrated Stone",
+    "skullId": "1587c455-6bba-3195-b978-834d07e6f98e",
+    "texture": "8c8637bc0628f5710f85b8d0679cc2c19afe0e1089b248b6fdb67f687ae81dc2"
+  },
   "DIAMOND_BLOCK": {
     "itemId": "diamond_block",
     "displayName": "§fBlock of Diamond",
@@ -73,6 +79,11 @@
   "ENCHANTED_BROWN_MUSHROOM": {
     "itemId": "brown_mushroom",
     "displayName": "§fEnchanted Brown Mushroom",
+    "enchanted": true
+  },
+  "ENCHANTED_CACTUS": {
+    "itemId": "cactus",
+    "displayName": "§9Enchanted Cactus",
     "enchanted": true
   },
   "ENCHANTED_CACTUS_GREEN": {
@@ -228,6 +239,11 @@
   "ENCHANTED_GUNPOWDER": {
     "itemId": "gunpowder",
     "displayName": "§aEnchanted Gunpowder",
+    "enchanted": true
+  },
+  "ENCHANTED_HARD_STONE": {
+    "itemId": "stone",
+    "displayName": "§aEnchanted Hard Stone",
     "enchanted": true
   },
   "ENCHANTED_HAY_BLOCK": {
@@ -588,15 +604,220 @@
     "displayName": "§fBlock of Redstone",
     "enchanted": false
   },
+  "FLAWED_AMBER_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Amber Gemstone",
+    "skullId": "60d70a39-9d29-3700-9df3-fc0330550817",
+    "texture": "173bcfc39eb85df1848535985214060a1bd1b3bb47defe4201476edc31671744"
+  },
+  "FLAWED_AMETHYST_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Amethyst Gemstone",
+    "skullId": "be8cf0ae-a442-36c0-9f5a-5645c8117382",
+    "texture": "71db59260895578d37e59505880602de940b088e5fff8da3e65201d739c86e84"
+  },
+  "FLAWED_JADE_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Jade Gemstone",
+    "skullId": "041c5b55-875b-3f20-a97e-98610afc3ecb",
+    "texture": "82282c6bb8343e0f0d61ee0747dada75344f332e9ff0acaa3adcdf09321d3dd"
+  },
+  "FLAWED_JASPER_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Jasper Gemstone",
+    "skullId": "45454bb7-2efe-3f7f-95e4-a0389a069335",
+    "texture": "a73511e504c316b139edb35febe73ef591c0f455e8caf9ee353bc12b6c14a922"
+  },
+  "FLAWED_RUBY_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Ruby Gemstone",
+    "skullId": "b5c84278-118b-3634-89e0-547cb6166c0a",
+    "texture": "46d81068cbdf4a364231a26453d6cd660a0095f9cd8795307c5be667427712e"
+  },
+  "FLAWED_SAPPHIRE_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Sapphire Gemstone",
+    "skullId": "b4ea250e-6e58-356f-9584-ba4012a2baa9",
+    "texture": "8a0af99e8d8703194a847a55268cf5ef4ac4eb3b24c0ed86551339d10b646529"
+  },
+  "FLAWED_TOPAZ_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Topaz Gemstone",
+    "skullId": "92e8050b-b823-3ba5-9bde-48e75cf2eef5",
+    "texture": "b6392773d114be30aeb3c09c90cbe691ffeaceb399b530fe6fb53ddc0ced3714"
+  },
+  "FLAWED_OPAL_GEM": {
+    "itemId": "skull",
+    "displayName": "§aFlawed Opal Gemstone",
+    "skullId": "f1fa016a-e25d-3e5b-90c5-b9928ecf14c4",
+    "texture": "eadc3bcdd7c701b63f8b8b4a96e429316a08388669d9a98c1a98791729b961df"
+  },
+  "FINE_AMBER_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Amber Gemstone",
+    "skullId": "a1d42000-e7c0-3c3e-bc11-2c8de9d568e4",
+    "texture": "4b1cce22de19ed6727abc5e6c2d57864c871a44c956bbe2eb3960269b686b8b3"
+  },
+  "FINE_AMETHYST_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Amethyst Gemstone",
+    "skullId": "f933e7f9-cc20-313a-a43f-5f11b3e8a441",
+    "texture": "7a1ee5ffce04eb7da592d42414ff35e1bf38194d6b82e310dbc6261b47fb9c91"
+  },
+  "FINE_JADE_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Jade Gemstone",
+    "skullId": "13e221e0-7f14-38d3-ac19-48ae55ee277f",
+    "texture": "b28f1c0c5092e12d33770df45c5845a9610886039b34abe93a16c5e942dfc8e4"
+  },
+  "FINE_JASPER_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Jasper Gemstone",
+    "skullId": "e942eb66-a350-38e5-aafa-0dfc3e17b4ac",
+    "texture": "aac15f6fcf2ce963ef4ca71f1a8685adb97eb769e1d11194cbbd2e964a88978c"
+  },
+  "FINE_RUBY_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Ruby Gemstone",
+    "skullId": "ab2952c6-003c-38ea-bd83-9844698391a5",
+    "texture": "e672959028f274b379d430f068f0f15a4f793eac12afb94ae0b4e50cf895df0f"
+  },
+  "FINE_SAPPHIRE_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Sapphire Gemstone",
+    "skullId": "40df80a0-70ad-3895-a4fa-a9eafb7d7469",
+    "texture": "36161daa3589ec9c8187459ac36fd4dd2646c040678d3bfacb72a2210c6c801c"
+  },
+  "FINE_TOPAZ_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Topaz Gemstone",
+    "skullId": "83e79d1d-aabf-3369-a7d0-b5215f9147b9",
+    "texture": "92cb6e51c461e7359526bea5e06209cddde7c6469a819f3405cf0a038c159502"
+  },
+  "FINE_OPAL_GEM": {
+    "itemId": "skull",
+    "displayName": "§9Fine Opal Gemstone",
+    "skullId": "9a22d2d5-72b1-32eb-9966-6c7f64997888",
+    "texture": "ad798e20a47d251a9e33d40332973c7189ac1550760ba25c4b956c9159364568"
+  },
+  "FLAWLESS_AMBER_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Amber Gemstone",
+    "skullId": "4ba0166e-5f5b-3d51-9d33-3b5cc86a2fe8",
+    "texture": "9dce62f70ac046b881113c6cf862987727774e265885501c9a245b180db08c0d"
+  },
+  "FLAWLESS_AMETHYST_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Amethyst Gemstone",
+    "skullId": "b771bdf4-fe8a-3ca1-a0ce-8a07c1b0235f",
+    "texture": "d3623521c8111ad29e9dcf7acc56085a9ab07da732d1518976aee61d0b3e3bd6"
+  },
+  "FLAWLESS_JADE_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Jade Gemstone",
+    "skullId": "f8c140e4-0d47-31a9-b164-e698be919a1b",
+    "texture": "f89f75e0b00378a583dbba728dcdc6e9346f31dd601d448f3d60615c7465cc3e"
+  },
+  "FLAWLESS_JASPER_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Jasper Gemstone",
+    "skullId": "2e6c5c05-adb7-32ec-86bb-f12c5a986638",
+    "texture": "ff993d3a43d40597b474485976160d0cf52ac64d157307d3b1c941db224d0ac6"
+  },
+  "FLAWLESS_RUBY_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Ruby Gemstone",
+    "skullId": "93d1453b-80c9-3a09-9d64-f4f08d149970",
+    "texture": "926a248fbbc06cf06e2c920eca1cac8a2c96164d3260494bed142d553026cc6"
+  },
+  "FLAWLESS_SAPPHIRE_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Sapphire Gemstone",
+    "skullId": "117141f7-b729-3bf5-b38c-bfc89f50abde",
+    "texture": "957cfa9c75ba584645ee2af6d9867d767ddea4667cdfc72dc1061dd1975ca7d0"
+  },
+  "FLAWLESS_TOPAZ_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Topaz Gemstone",
+    "skullId": "864eb25a-2b1b-3b6b-8fe2-8858b831c6bd",
+    "texture": "d10964f3c479ad7d9afaf68a42cab7c107d2d884f575cae2f070ec6f935b3be"
+  },
+  "FLAWLESS_OPAL_GEM": {
+    "itemId": "skull",
+    "displayName": "§5Flawless Opal Gemstone",
+    "skullId": "0fcd1dcf-b3e4-3a38-852e-1ca9108c1cfc",
+    "texture": "5d15ed70e720040ad7311e69359dfdf5e114eadd2a4c1f971a9501341a45264b"
+  },
   "SNOW_BLOCK": {
     "itemId": "snow",
     "displayName": "§fSnow Block",
     "enchanted": false
+  },
+  "SUPER_EGG": {
+    "itemId": "spawn_egg",
+    "displayName": "§9Super Enchanted Egg",
+    "enchanted": true
   },
   "TIGHTLY_TIED_HAY_BALE": {
     "itemId": "skull",
     "displayName": "§9Tightly-Tied Hay Bale",
     "skullId": "dedecf64-1ed4-3413-855f-0a38789cd63e",
     "texture": "f7c33cd0c14ba830da149907f7a6aae835b6a35aea01e0ce073fb3c59cc46326"
+  },
+  "OMEGA_EGG": {
+    "itemId": "spawn_egg",
+    "displayName": "§5Omega Enchanted Egg",
+    "enchanted": true
+  },
+  "ENCHANTED_MYCELIUM": {
+    "itemId": "mycelium",
+    "displayName": "§aEnchanted Mycelium",
+    "enchanted": true
+  },
+  "ENCHANTED_MYCELIUM_CUBE": {
+    "itemId": "skull",
+    "displayName": "§9Enchanted Mycelium Cube",
+    "skullId": "361a2d8d-edbe-3b7b-92a5-86011562b752",
+    "texture": "9a351d5316e5b508fbbf595e0773aec9639a0891807fef09bc59a56d46490cb0"
+  },
+  "ENCHANTED_SULPHUR": {
+    "itemId": "glowstone_dust",
+    "displayName": "§aEnchanted Sulphur",
+    "enchanted": true
+  },
+  "ENCHANTED_SULPHUR_CUBE": {
+    "itemId": "skull",
+    "displayName": "§9Enchanted Sulphur Cube",
+    "skullId": "2d6b167d-3096-3485-b0fe-8f0d60e9d797",
+    "texture": "4f0c28dfcf42d4dbd27c3378f67176c84800bc69b4cd531702c95ca6fb990458"
+  },
+  "ENCHANTED_RED_SAND": {
+    "itemId": "sand:1",
+    "displayName": "§aEnchanted Red Sand",
+    "enchanted": true
+  },
+  "ENCHANTED_RED_SAND_CUBE": {
+    "itemId": "skull",
+    "displayName": "§9Enchanted Red Sand Cube",
+    "skullId": "2bdb5767-546d-3fcc-b000-b3b58645bbe6",
+    "texture": "f31f5c78b7e961591293756b9e15012db10457846c5ebc5db0f2b0e1873468ee"
+  },
+  "MAGMA_FISH_SILVER": {
+    "itemId": "skull",
+    "displayName": "§5Silver Magmafish",
+    "skullId": "1dbf6f02-4417-3172-a223-34e830e47ea2",
+    "texture": "353e10c0712ff28d877b9cef990d613b21d843732663f4aac385dc7db97ac54a"
+  },
+  "MAGMA_FISH_GOLD": {
+    "itemId": "skull",
+    "displayName": "§6Gold Magmafish",
+    "skullId": "edbf34fa-0f64-320c-89f8-7729309aaadd",
+    "texture": "5324eda6af85e50f35180607341728ff90faea1465be57a6242c6dea63aa3f28"
+  },
+  "MAGMA_FISH_DIAMOND": {
+    "itemId": "skull",
+    "displayName": "§bDiamond Magmafish",
+    "skullId": "03fa3a72-f00d-3a4e-a172-bc3e278dc16a",
+    "texture": "19b393eb6a5bd65d735aaa3b3cfa993b50f5e536d7a13b535514bd0740d63350"
   }
 }
