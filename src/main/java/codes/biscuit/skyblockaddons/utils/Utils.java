@@ -170,8 +170,6 @@ public class Utils {
 
     private boolean fadingIn;
 
-    private long lastDamaged = -1;
-
     private EnumUtils.SlayerQuest slayerQuest;
     private int slayerQuestLevel = 1;
     private boolean slayerBossAlive;
@@ -319,10 +317,6 @@ public class Utils {
                                 } else {
                                     for (Location loopLocation : Location.values()) {
                                         if (strippedScoreboardLine.endsWith(loopLocation.getScoreboardName())) {
-                                            if (loopLocation == Location.BLAZING_FORTRESS && location != Location.BLAZING_FORTRESS) {
-                                                sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.PING); // going into blazing fortress
-                                                fetchMagmaBossEstimate();
-                                            }
                                             // TODO: Special case causes Dwarven Village to map to Village since endsWith...idk if
                                             //  changing to "equals" will mess it up for other locations
                                             if (loopLocation == Location.VILLAGE && strippedScoreboardLine.contains("Dwarven")) {
@@ -561,90 +555,6 @@ public class Utils {
             }
         }
         return false;
-    }
-
-    public void fetchMagmaBossEstimate() {
-        SkyblockAddons.runAsync(() -> {
-            boolean debugLoggingEnabled = DevUtils.isMagmaTimerDebugLoggingEnabled();
-
-            if (debugLoggingEnabled) {
-                logger.debug("Getting magma boss spawn estimate from server...");
-            }
-            try {
-                URL url = new URL("https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/estimatedSpawn");
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("User-Agent", USER_AGENT);
-
-                if (debugLoggingEnabled) {
-                    logger.debug("Got response code " + connection.getResponseCode());
-                }
-
-                JsonObject responseJson = SkyblockAddons.getGson().fromJson(new InputStreamReader(connection.getInputStream()), JsonObject.class);
-                connection.disconnect();
-
-                long estimate = responseJson.get("estimate").getAsLong();
-                long currentTime = responseJson.get("queryTime").getAsLong();
-                int magmaSpawnTime = (int) ((estimate - currentTime) / 1000);
-
-                if (debugLoggingEnabled) {
-                    logger.debug("Query time was " + currentTime + ", server time estimate is " +
-                            estimate + ". Updating magma boss spawn to be in " + magmaSpawnTime + " seconds.");
-                }
-
-                main.getPlayerListener().setMagmaTime(magmaSpawnTime);
-                main.getPlayerListener().setMagmaAccuracy(EnumUtils.MagmaTimerAccuracy.ABOUT);
-            } catch (IOException ex) {
-                if (debugLoggingEnabled) {
-                    logger.warn("Failed to get magma boss spawn estimate from server");
-                }
-            }
-        });
-    }
-
-    public void sendInventiveTalentPingRequest(EnumUtils.MagmaEvent event) {
-        SkyblockAddons.runAsync(() -> {
-            boolean debugLoggingEnabled = DevUtils.isMagmaTimerDebugLoggingEnabled();
-            if (debugLoggingEnabled) {
-                logger.debug("Posting event " + event.getInventiveTalentEvent() + " to InventiveTalent API");
-            }
-
-            try {
-                String urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/addEvent";
-                if (event == EnumUtils.MagmaEvent.PING) {
-                    urlString = "https://hypixel-api.inventivetalent.org/api/skyblock/bosstimer/magma/ping";
-                }
-                URL url = new URL(urlString);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("POST");
-                connection.setRequestProperty("User-Agent", USER_AGENT);
-
-                Minecraft mc = Minecraft.getMinecraft();
-                if (mc != null && mc.thePlayer != null) {
-                    String postString;
-                    if (event == EnumUtils.MagmaEvent.PING) {
-                        postString = "isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&lastFocused=" + System.currentTimeMillis() / 1000 + "&serverId=" + serverID;
-                    } else {
-                        postString = "type=" + event.getInventiveTalentEvent() + "&isModRequest=true&minecraftUser=" + mc.thePlayer.getName() + "&serverId=" + serverID;
-                    }
-                    connection.setDoOutput(true);
-                    try (DataOutputStream out = new DataOutputStream(connection.getOutputStream())) {
-                        out.writeBytes(postString);
-                        out.flush();
-                    }
-
-                    if (debugLoggingEnabled) {
-                        logger.debug("Got response code " + connection.getResponseCode());
-                    }
-
-                    connection.disconnect();
-                }
-            } catch (IOException ex) {
-                if (debugLoggingEnabled) {
-                    logger.warn("Failed to post event to server");
-                }
-            }
-        });
     }
 
     /**

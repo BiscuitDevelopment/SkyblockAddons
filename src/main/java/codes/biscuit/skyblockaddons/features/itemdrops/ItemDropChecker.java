@@ -188,7 +188,7 @@ public class ItemDropChecker {
         ColorCode colorCode = main.getConfigValues().getRestrictedColor(Feature.DROP_CONFIRMATION);
 
         if (attemptsRequiredToConfirm >= 2) {
-            String multipleAttemptsRequiredMessage = Translations.getMessage("messages,clickMoreTimes", Integer.toString(attemptsRequiredToConfirm));
+            String multipleAttemptsRequiredMessage = Translations.getMessage("messages.clickMoreTimes", Integer.toString(attemptsRequiredToConfirm));
             main.getUtils().sendMessage(colorCode + multipleAttemptsRequiredMessage);
 
         } else {
