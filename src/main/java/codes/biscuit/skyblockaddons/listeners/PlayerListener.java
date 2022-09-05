@@ -43,7 +43,10 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -61,7 +64,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.*;
+import net.minecraft.world.WorldSettings;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
@@ -372,19 +377,33 @@ public class PlayerListener {
                             !fetchur.hasFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
                         FetchurManager.getInstance().saveLastTimeFetched();
                     }
-                // Tries to check if a message is from a player to add the player profile icon
-                } else if (main.getConfigValues().isEnabled(Feature.PROFILE_TYPE_IN_CHAT) &&
+                    // Tries to check if a message is from a player to add the player profile icon
+                } else if (main.getConfigValues().isEnabled(Feature.PLAYER_SYMBOLS_IN_CHAT) &&
                         unformattedText.contains(":")) {
-                    String username = unformattedText.split(":")[0].replaceAll("§.","");
-                    // Remove rank prefix if exists
-                    if (username.contains("]"))
-                        username = username.split("] ")[1];
+                    // For some reason guild chat messages still contain color codes in the unformatted text
+                    String username = TextUtils.stripColor(unformattedText.split(":")[0]);
+                    // Remove rank prefix and guild rank suffix if exists
+                    String[] splitted = username.split("\\[[^\\[\\]]*\\]");
+                    if (splitted.length>1) {
+                        username = TextUtils.trimWhitespaceAndResets(splitted[1]);
+                        logger.info(username);
+                    }
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
                         // Put player in cache if found nearby
                         if(chattingPlayer != null) {
                             namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+                        }
+                        // Otherwise search in tablist
+                        else {
+                            Collection<NetworkPlayerInfo> networkPlayerInfos = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap();
+                            String finalUsername = username;
+                            Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
+                            // Put in cache if found
+                            if(result.isPresent()){
+                                namesWithType.put(username, result.get().getDisplayName().getFormattedText());
+                            }
                         }
                         // Check cache regardless if found nearby
                         if(namesWithType.containsKey(username)){
@@ -827,26 +846,26 @@ public class PlayerListener {
             }
         }
         if (main.getUtils().isOnSkyblock()) {
-        Minecraft mc = Minecraft.getMinecraft();
-        for (Entity cubes : mc.theWorld.loadedEntityList) {
-            if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
-                if (cubes instanceof EntityMagmaCube) {
-                    EntitySlime magma = (EntitySlime) cubes;
-                    if (magma.getSlimeSize() > 10) { // Find a big bal boss
-                        if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
-                            lastBal = System.currentTimeMillis();
-                            main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
-                            balTick = 16; // so the sound plays instantly
-                            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                        }
-                        if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                            main.getUtils().playLoudSound("random.orb", 0.5);
+            Minecraft mc = Minecraft.getMinecraft();
+            for (Entity cubes : mc.theWorld.loadedEntityList) {
+                if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
+                    if (cubes instanceof EntityMagmaCube) {
+                        EntitySlime magma = (EntitySlime) cubes;
+                        if (magma.getSlimeSize() > 10) { // Find a big bal boss
+                            if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
+                                lastBal = System.currentTimeMillis();
+                                main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
+                                balTick = 16; // so the sound plays instantly
+                                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                            }
+                            if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                                main.getUtils().playLoudSound("random.orb", 0.5);
+                            }
                         }
                     }
                 }
             }
         }
-     }
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
             EntityArrow arrow = (EntityArrow) entity;
