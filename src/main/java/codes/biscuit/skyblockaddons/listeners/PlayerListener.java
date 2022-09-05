@@ -439,10 +439,10 @@ public class PlayerListener {
                         else {
                             Collection<NetworkPlayerInfo> networkPlayerInfos = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap();
                             String finalUsername = username;
-                            Optional<String> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).map(npi -> npi.getDisplayName().getUnformattedText()).filter(name -> TextUtils.stripUsername(name).equals(finalUsername)).findAny();
+                            Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
                             // Put in cache if found
                             if(result.isPresent()){
-                                namesWithType.put(username, result.get());
+                                namesWithType.put(username, result.get().getDisplayName().getFormattedText());
                             }
                         }
                         // Check cache regardless if found nearby
