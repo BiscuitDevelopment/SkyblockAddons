@@ -1,10 +1,7 @@
 package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.core.Attribute;
-import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.SkillType;
-import codes.biscuit.skyblockaddons.core.Translations;
+import codes.biscuit.skyblockaddons.core.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.StringUtils;
@@ -136,7 +133,7 @@ public class ActionBarParser {
                     // Remove via callback
                     stringsToRemove.add(section);
                 }
-            } catch(Exception ex) {
+            } catch (Exception ex) {
                 unusedSections.add(section);
             }
         }
@@ -166,11 +163,24 @@ public class ActionBarParser {
             String[] splitStats = numbersOnly.split("/");
 
             if (section.contains("❤")) {
+                // cutting the crimson stack information out
+                section = parseCrimsonArmorAbilityStack(section);
+
+                // Fixing health when glare damage (from magma boss in crimson isle) is displayed.
+                // Glare damage stays in the action bar normally
+                if (section.endsWith("ಠ")) {
+                    if (section.contains("Glare Damage")) {
+                        section = section.split(Pattern.quote("§6 "))[0];
+                    }
+                }
+
                 // ❤ indicates a health section
                 return parseHealth(section);
             } else if (section.contains("❈")) {
                 // ❈ indicates a defense section
                 return parseDefense(section);
+            } else if (section.endsWith("§f❂ True Defense")) {
+                return parseTrueDefence(section);
             } else if (section.contains("✎")) {
                 return parseMana(section);
             } else if (section.contains("(")) {
@@ -184,6 +194,56 @@ public class ActionBarParser {
             logger.error("The section \"" + section + "\" will be skipped due to an error during number parsing.");
             logger.error("Failed to parse number at offset " + e.getErrorOffset() + " in string \"" + e.getMessage() + "\".", e);
             return section;
+        }
+
+        return section;
+    }
+
+    private String parseTrueDefence(String section) {
+        return main.getConfigValues().isEnabled(Feature.HIDE_TRUE_DEFENSE) ? null : section;
+
+    }
+
+    private String parseCrimsonArmorAbilityStack(String section) {
+        for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
+            crimsonArmorAbilityStack.setCurrentValue(0);
+        }
+
+        int runs = 0;
+        out:
+        while (section.contains("  ")) {
+            runs++;
+            if (runs == 5) break;
+
+            if (section.endsWith("§r")) {
+                section = section.substring(0, section.length() - 2);
+            }
+
+            for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
+                String stackSymbol = crimsonArmorAbilityStack.getSymbol();
+
+                if (section.endsWith(stackSymbol)) {
+
+                    String[] split = section.split("§6");
+                    String stack = split[split.length - 1];
+                    String remove = "§6" + stack;
+                    if (stack.contains("§l")) {
+                        stack = stack.substring(2);
+                        if (Feature.CRIMSON_ARMOR_ABILITY_STACKS.isEnabled()) {
+                            String realRemove = remove + "§r";
+                            stringsToRemove.add(realRemove);
+                        }
+                    } else {
+                        if (Feature.CRIMSON_ARMOR_ABILITY_STACKS.isEnabled()) stringsToRemove.add(remove);
+                    }
+                    stack = stack.substring(0, stack.length() - 1);
+
+                    section = section.substring(0, section.length() - remove.length());
+                    section = section.trim();
+                    crimsonArmorAbilityStack.setCurrentValue(Integer.parseInt(stack));
+                    continue out;
+                }
+            }
         }
 
         return section;
@@ -213,7 +273,8 @@ public class ActionBarParser {
                 returnString = "";// "§c"+ m.group("wand");
                 stringsToRemove.add(stripped.substring(0, m.start("wand")));
             } else {
-                returnString = null;
+                stringsToRemove.add(healthSection);
+                returnString = "";
             }
             healthLock = false;
             boolean postSetLock = main.getUtils().getAttributes().get(Attribute.MAX_HEALTH).getValue() != maxHealth ||
@@ -419,13 +480,12 @@ public class ActionBarParser {
                 maxTickers++;
             }
         }
-        if(main.getConfigValues().isEnabled(Feature.TICKER_CHARGES_DISPLAY)) {
+        if (main.getConfigValues().isEnabled(Feature.TICKER_CHARGES_DISPLAY)) {
             return null;
         } else {
             return tickerSection;
         }
     }
-
 
 
     /**

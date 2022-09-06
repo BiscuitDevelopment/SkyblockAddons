@@ -20,6 +20,7 @@ public class TextUtils {
     public static final NumberFormat NUMBER_FORMAT = NumberFormat.getInstance(Locale.US);
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
+    private static final Pattern STRIP_ICONS_PATTERN = Pattern.compile("[♲Ⓑ⚒ቾ]+");
     private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
@@ -57,6 +58,24 @@ public class TextUtils {
      */
     public static String stripColor(final String input) {
         return STRIP_COLOR_PATTERN.matcher(input).replaceAll("");
+    }
+
+    /**
+     * Strips icons from player names
+     * @param input Text to strip icons from
+     * @return Text without icons
+     */
+    public static String stripIcons(String input) {
+        return STRIP_ICONS_PATTERN.matcher(input).replaceAll("");
+    }
+
+    /**
+     * Strips icons and colors and trims spaces from a potential username
+     * @param input Text to strip from
+     * @return Stripped Text
+     */
+    public static String stripUsername(String input) {
+        return trimWhitespaceAndResets(stripIcons(stripColor((input))));
     }
 
     /**
