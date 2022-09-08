@@ -145,7 +145,7 @@ remapJar {
     from(tasks.shadowJar)
     input.set(tasks.shadowJar.archiveFile)
 
-    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}-modded.jar"
 }
 
 processResources {

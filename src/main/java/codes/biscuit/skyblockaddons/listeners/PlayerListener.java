@@ -1051,6 +1051,7 @@ public class PlayerListener {
      */
     @SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent e) {
+        int rotate;
         if (main.getOpenSettingsKey().isPressed()) {
             main.getUtils().setFadingIn(true);
             main.getRenderListener().setGuiToOpen(EnumUtils.GUIType.MAIN, 1, EnumUtils.GuiTab.MAIN);
@@ -1061,6 +1062,9 @@ public class PlayerListener {
 
         } else if (main.getConfigValues().isEnabled(Feature.DEVELOPER_MODE) && main.getDeveloperCopyNBTKey().isPressed()) {
             DevUtils.copyData();
+        } else if ((rotate = (main.getRotateKey(true).isPressed() ? 1 : 0) - (main.getRotateKey(false).isPressed() ? 1 : 0)) != 0) {
+            EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+            player.rotationYaw += rotate * 45.0f;
         }
 
         if (main.getConfigValues().isEnabled(Feature.DUNGEONS_MAP_DISPLAY) &&

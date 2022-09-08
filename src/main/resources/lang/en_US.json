@@ -643,7 +643,9 @@
   "keyBindings": {
     "developerCopyNBT": "Copy NBT",
     "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out",
+    "rotateLeft": "Rotate Left",
+    "rotateRight": "Rotate Right"
   },
   "dragonTracker": {
     "protector": "Protector",

@@ -112,6 +112,7 @@ public class SkyblockAddons {
     @Setter
     private boolean devMode;
     private final List<SkyblockKeyBinding> keyBindings = new LinkedList<>();
+    private final List<SkyblockKeyBinding> customKeyBindings = new LinkedList<>();
 
     @Getter
     private final Set<Integer> registeredFeatureIDs = new HashSet<>();
@@ -174,6 +175,10 @@ public class SkyblockAddons {
                 new SkyblockKeyBinding("decrease_dungeon_map_zoom", Keyboard.KEY_SUBTRACT, "keyBindings.decreaseDungeonMapZoom"),
                 new SkyblockKeyBinding("copy_NBT", developerModeKey, "keyBindings.developerCopyNBT"));
         registerKeyBindings(keyBindings);
+        Collections.addAll(customKeyBindings, new SkyblockKeyBinding("rotate_left", Keyboard.KEY_NONE, "keyBindings.rotateLeft"),
+                new SkyblockKeyBinding("rotate_right", Keyboard.KEY_NONE, "keyBindings.rotateRight"));
+        registerKeyBindings(customKeyBindings);
+
         setKeyBindingDescriptions();
 
         /*
@@ -241,6 +246,10 @@ public class SkyblockAddons {
         return keyBindings.get(6);
     }
 
+    public KeyBinding getRotateKey(boolean right) {
+        return customKeyBindings.get(right ? 1 : 0).getKeyBinding();
+    }
+
     /**
      * Registers the given keybindings to the {@link net.minecraftforge.fml.client.registry.ClientRegistry}.
      *
@@ -258,6 +267,10 @@ public class SkyblockAddons {
      */
     public void setKeyBindingDescriptions() {
         for (SkyblockKeyBinding skyblockKeyBinding : keyBindings) {
+            skyblockKeyBinding.getKeyBinding().keyDescription =
+                    Translations.getMessage(skyblockKeyBinding.getTranslationKey());
+        }
+        for (SkyblockKeyBinding skyblockKeyBinding : customKeyBindings) {
             skyblockKeyBinding.getKeyBinding().keyDescription =
                     Translations.getMessage(skyblockKeyBinding.getTranslationKey());
         }
