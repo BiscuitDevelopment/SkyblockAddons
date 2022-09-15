@@ -220,9 +220,9 @@
     "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
     "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器",
     "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "showPlayerSymbolsInChat": "於聊天室中顯示玩家標誌",
+    "crimsonArmorAbilityStacks": "顯示 Crimson Armor 疊加層數",
+    "hideTrueDefense": "隱藏 True Defense"
   },
   "messages": {
     "enchants": "附魔",
@@ -686,8 +686,8 @@
     "expertiseKills": "Expertise 擊殺數",
     "compactedBlocks": "Compact 方塊數",
     "cultivatedCrops": "Cultivate 作物數",
-    "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "hecatombsSRuns": "Hecatombs S 評級次數",
+    "championCombatXp": "Champion 戰鬥經驗值",
     "maxed": "已達上限"
   }
 }
