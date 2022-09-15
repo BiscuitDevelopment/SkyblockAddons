@@ -386,7 +386,6 @@ public class PlayerListener {
                     String[] splitted = username.split("\\[[^\\[\\]]*\\]");
                     if (splitted.length>1) {
                         username = TextUtils.trimWhitespaceAndResets(splitted[1]);
-                        logger.info(username);
                     }
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
