@@ -60,7 +60,7 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 float defense = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.DEFENCE).getValue();
                 float mana = SkyblockAddons.getInstance().getUtils().getAttributes().get(Attribute.MANA).getValue();
 //                return String.format("%d\u2764 %d\u2748 %d\u270E", health, defense, mana);
-                return String.format("%f H - %f D - %f M", health, defense, mana);
+                return String.format("%.2f H - %.2f D - %.2f M", health, defense, mana);
             }),
 
     ZEALOTS("discordStatus.titleZealots", "discordStatus.descriptionZealots",
