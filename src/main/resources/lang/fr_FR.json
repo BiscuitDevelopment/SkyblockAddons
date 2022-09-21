@@ -220,7 +220,7 @@
     "showFeatureNamesOnHover": "Afficher le nom des fonctionnalités au survol",
     "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu",
     "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "showPlayerSymbolsInChat": "Afficher les symboles du joueur dans le chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
     "hideTrueDefense": "Hide True Defense"
   },
