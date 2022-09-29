@@ -382,11 +382,12 @@ public class PlayerListener {
                         unformattedText.contains(":")) {
                     // For some reason guild chat messages still contain color codes in the unformatted text
                     String username = TextUtils.stripColor(unformattedText.split(":")[0]);
-                    // Remove rank prefix and guild rank suffix if exists
-                    String[] splitted = username.split("\\[[^\\[\\]]*\\]");
-                    if (splitted.length>1) {
-                        username = TextUtils.trimWhitespaceAndResets(splitted[1]);
+                    // Remove chat channel prefix
+                    if(username.contains(">")){
+                        username = username.substring(username.indexOf('>')+1);
                     }
+                    // Remove rank prefix and guild rank suffix if exists
+                    username = TextUtils.trimWhitespaceAndResets(username.replaceAll("\\[[^\\[\\]]*\\]",""));
                     // Check if stripped username is a real username or the player
                     if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
