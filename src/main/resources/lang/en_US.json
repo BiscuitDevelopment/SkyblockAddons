@@ -337,7 +337,7 @@
     "titleVoidgloom": "Voidgloom Quest",
     "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
     "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing a Inferno quest."
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
