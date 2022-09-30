@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -333,7 +335,11 @@
     "titleSvens": "Sven Oppdrag",
     "descriptionSvens": "Viser at du gjør et Sven oppdrag.",
     "titleTarantula": "Tarantula Oppdrag",
-    "descriptionTarantula": "Viser at du gjør et Tarantula oppdrag."
+    "descriptionTarantula": "Viser at du gjør et Tarantula oppdrag.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
