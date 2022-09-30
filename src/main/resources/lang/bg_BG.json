@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Enchants",
@@ -333,7 +335,11 @@
     "titleSvens": "Sven мисия",
     "descriptionSvens": "Показва, че правиш Sven мисия.",
     "titleTarantula": "Tarantula мисия",
-    "descriptionTarantula": "Показва, че правиш Tarantula мисия."
+    "descriptionTarantula": "Показва, че правиш Tarantula мисия.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Контролирай как enchants са показани на item tooltips",
