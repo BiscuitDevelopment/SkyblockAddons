@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -333,7 +335,11 @@
     "titleSvens": "Svenクエスト",
     "descriptionSvens": "Svenクエストを行っていることを表示します。",
     "titleTarantula": "Tarantulaクエスト",
-    "descriptionTarantula": "Tarantulaクエストを行っていることを表示します。"
+    "descriptionTarantula": "Tarantulaクエストを行っていることを表示します。",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "アイテム説明文でのエンチャントの表示方法を設定します",
