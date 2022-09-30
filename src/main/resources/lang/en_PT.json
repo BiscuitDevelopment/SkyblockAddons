@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys",
     "showPlayerSymbolsInChat": "Show Pirate Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Enchants",
@@ -333,7 +335,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows that ye be doin' a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that ye be doin' a Tarantula quest."
+    "descriptionTarantula": "Shows that ye be doin' a Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how yer enchants are displayed on th' item tooltips",
