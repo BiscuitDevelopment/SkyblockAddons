@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Incantesimi",
@@ -333,7 +335,11 @@
     "titleSvens": "Missione - Sven",
     "descriptionSvens": "Mostra che stai facendo una missione di Sven.",
     "titleTarantula": "Missione - Tarantola",
-    "descriptionTarantula": "Mostra che stai facendo una missione di Tarantola."
+    "descriptionTarantula": "Mostra che stai facendo una missione di Tarantola.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Controlla come gli incantesimi vengono visualizzati nella descrizione degli oggetti",
