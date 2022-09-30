@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -333,7 +335,11 @@
     "titleSvens": "Missão do Sven",
     "descriptionSvens": "Mostra que você está fazendo uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
-    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula."
+    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Controla como os encantamentos são mostrados na descrição dos itens",
