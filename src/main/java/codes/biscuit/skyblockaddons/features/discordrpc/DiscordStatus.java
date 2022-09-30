@@ -150,6 +150,30 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                     return "Doing a Tarantula Broodfather "+main.getUtils().getSlayerQuestLevel()+" quest.";
                 }
             }),
+
+    VOIDGLOOM("discordStatus.titleVoidgloom", "discordStatus.descriptionVoidgloom",
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+                boolean bossAlive = main.getUtils().isSlayerBossAlive();
+
+                if (bossAlive) {
+                    return "Slaying a Voidgloom Seraph  "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                } else {
+                    return "Doing a Voidgloom Seraph "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                }
+            }),
+
+    INFERNO("discordStatus.titleInferno", "discordStatus.descriptionInferno",
+            () -> {
+                SkyblockAddons main = SkyblockAddons.getInstance();
+                boolean bossAlive = main.getUtils().isSlayerBossAlive();
+
+                if (bossAlive) {
+                    return "Slaying a Inferno Demonlord  "+main.getUtils().getSlayerQuestLevel()+" boss.";
+                } else {
+                    return "Doing a Inferno Demonlord "+main.getUtils().getSlayerQuestLevel()+" quest.";
+                }
+            }),
     ;
 
     private final String title;

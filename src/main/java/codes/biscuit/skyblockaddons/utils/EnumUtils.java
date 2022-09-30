@@ -412,7 +412,8 @@ public class EnumUtils {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
         SVEN_PACKMASTER("Sven Packmaster"),
-        VOIDGLOOM_SERAPH("Voidgloom Seraph");
+        VOIDGLOOM_SERAPH("Voidgloom Seraph"),
+        INFERNO_DEMONLORD("Inferno Demonlord");
 
         private final String scoreboardName;
 
