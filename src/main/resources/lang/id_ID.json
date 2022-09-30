@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Enchants",
@@ -333,7 +335,11 @@
     "titleSvens": "Quest Sven",
     "descriptionSvens": "Memperlihatkan anda sedang melakukan sebuah Quest Sven.",
     "titleTarantula": "Quest Tarantula",
-    "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula."
+    "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Kontrol bagaimana enchants ditampilkan di tooltip benda",
