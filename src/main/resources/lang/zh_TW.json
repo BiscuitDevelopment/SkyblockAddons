@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放",
     "showPlayerSymbolsInChat": "於聊天室中顯示玩家標誌",
     "crimsonArmorAbilityStacks": "顯示 Crimson Armor 疊加層數",
-    "hideTrueDefense": "隱藏 True Defense"
+    "hideTrueDefense": "隱藏 True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "附魔",
@@ -333,7 +335,11 @@
     "titleSvens": "Sven 任務",
     "descriptionSvens": "顯示你是否在進行一個 Sven 任務。",
     "titleTarantula": "Tarantula 任務",
-    "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
+    "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "控制附魔如何顯示在物品資訊",
