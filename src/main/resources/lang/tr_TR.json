@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -333,7 +335,11 @@
     "titleSvens": "Sven Görevleri",
     "descriptionSvens": "Sven görevleri yaptığını gösterir.",
     "titleTarantula": "Tarantula Görevleri",
-    "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
+    "descriptionTarantula": "Tarantula görevleri yaptığını gösterir.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
