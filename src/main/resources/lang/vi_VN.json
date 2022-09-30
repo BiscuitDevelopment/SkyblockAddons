@@ -222,7 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense"
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -333,7 +335,11 @@
     "titleSvens": "Nhiệm Vụ Sven",
     "descriptionSvens": "Hiện rằng bạn đang làm một nhiệm vụ đánh Sven.",
     "titleTarantula": "Nhiệm Vụ Tarantula",
-    "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula."
+    "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Điều khiển cách DS phù phép được hiển thị như nào trong bảng chú giải",
