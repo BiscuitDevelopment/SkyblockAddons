@@ -337,9 +337,9 @@
     "titleTarantula": "Tarantula Quest",
     "descriptionTarantula": "Shows that ye be doin' a Tarantula quest.",
     "titleVoidgloom": "Voidgloom Quest",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "descriptionVoidgloom": "Showin' that ye be doin' a Voidgloom quest.",
     "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "descriptionInferno": "Showin' that ye be doin' an Infero quest."
   },
   "enchantLayout": {
     "title": "Control how yer enchants are displayed on th' item tooltips",
