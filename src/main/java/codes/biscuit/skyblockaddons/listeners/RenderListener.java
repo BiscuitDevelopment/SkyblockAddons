@@ -90,7 +90,7 @@ public class RenderListener {
     private static final ResourceLocation SLASH_ICON = new ResourceLocation("skyblockaddons", "icons/slash.png");
     private static final ResourceLocation IRON_GOLEM_ICON = new ResourceLocation("skyblockaddons", "icons/irongolem.png");
     private static final ResourceLocation FARM_ICON = new ResourceLocation("skyblockaddons", "icons/farm.png");
-
+    private static final ResourceLocation CULT_ICON = new ResourceLocation("skyblockaddons", "icons/cult.png");
     private static final ResourceLocation CRITICAL = new ResourceLocation("skyblockaddons", "critical.png");
 
     private static final ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
@@ -235,6 +235,13 @@ public class RenderListener {
                 GlStateManager.pushMatrix();
                 GlStateManager.scale(scale, scale, 1);
                 drawText(Feature.FARM_EVENT_TIMER, scale, mc, null);
+                GlStateManager.popMatrix();
+            }
+            if (main.getConfigValues().isEnabled(Feature.CULT_STARFALL_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_CULT_STARFALL_TIMER_IN_OTHER_GAMES)) {
+                float scale = main.getConfigValues().getGuiScale(Feature.CULT_STARFALL_TIMER);
+                GlStateManager.pushMatrix();
+                GlStateManager.scale(scale, scale, 1);
+                drawText(Feature.CULT_STARFALL_TIMER, scale, mc, null);
                 GlStateManager.popMatrix();
             }
         }
@@ -792,7 +799,42 @@ public class RenderListener {
                 text = timestampActive.toString();
             }
 
-        } else if (feature == Feature.SKILL_DISPLAY) {
+        }else if (feature == Feature.CULT_STARFALL_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
+            Calendar nextCultEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
+            if (nextCultEvent.get(Calendar.MINUTE) >= 15) {
+                nextCultEvent.add(Calendar.HOUR_OF_DAY, 1);
+            }
+            nextCultEvent.set(Calendar.MINUTE, 15);
+            nextCultEvent.set(Calendar.SECOND, 0);
+            int difference = (int) (nextCultEvent.getTimeInMillis() - System.currentTimeMillis());
+            int minutes = difference / 60000;
+            int seconds = (int) Math.round((double) (difference % 60000) / 1000);
+            if (minutes < 40) {
+                StringBuilder timestamp = new StringBuilder();
+                if (minutes < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(minutes).append(":");
+                if (seconds < 10) {
+                    timestamp.append("0");
+                }
+                timestamp.append(seconds);
+                text = timestamp.toString();
+            } else {
+                StringBuilder timestampActive = new StringBuilder();
+                timestampActive.append("Active: ");
+                if (minutes - 40 < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(minutes - 40).append(":");
+                if (seconds < 10) {
+                    timestampActive.append("0");
+                }
+                timestampActive.append(seconds);
+                text = timestampActive.toString();
+            }
+        }
+        else if (feature == Feature.SKILL_DISPLAY) {
             if (buttonLocation == null) {
                 text = skillText;
                 if (text == null) return;
@@ -1005,7 +1047,7 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+        if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.CULT_STARFALL_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
                 feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
@@ -1093,6 +1135,13 @@ public class RenderListener {
 
         } else if (feature == Feature.FARM_EVENT_TIMER) {
             mc.getTextureManager().bindTexture(FARM_ICON);
+            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
+
+            FontRendererHook.setupFeatureFont(feature);
+            DrawUtils.drawText(text, x + 18, y + 4, color);
+            FontRendererHook.endFeatureFont();
+        } else if (feature == Feature.CULT_STARFALL_TIMER) {
+            mc.getTextureManager().bindTexture(CULT_ICON);
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
 
             FontRendererHook.setupFeatureFont(feature);

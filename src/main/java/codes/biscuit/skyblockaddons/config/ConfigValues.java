@@ -238,7 +238,7 @@ public class ConfigValues {
 
                     if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER ||feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                             || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-                            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
+                            feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY || feature == Feature.CULT_STARFALL_TIMER) {
                         coords.setY(coords.getY() + 2/2F);
                         coords.setX(coords.getX() - 18/2F);
                         coords.setY(coords.getY() - 9/2F);

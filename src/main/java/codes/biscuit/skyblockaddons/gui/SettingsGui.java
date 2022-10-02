@@ -303,6 +303,8 @@ public class SettingsGui extends GuiScreen {
                 settingFeature = Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES;
             } else if  (feature == Feature.FARM_EVENT_TIMER) {
                     settingFeature = Feature.SHOW_FARM_EVENT_TIMER_IN_OTHER_GAMES;
+            } else if  (feature == Feature.CULT_STARFALL_TIMER) {
+                settingFeature = Feature.SHOW_CULT_STARFALL_TIMER_IN_OTHER_GAMES;
             } else if (feature == Feature.DROP_CONFIRMATION) {
                 settingFeature = Feature.DOUBLE_DROP_IN_OTHER_GAMES;
             } else if (feature == Feature.OUTBID_ALERT_SOUND) {

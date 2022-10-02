@@ -218,7 +218,8 @@ public enum Feature {
     HIDE_TRUE_DEFENSE(218, "settings.hideTrueDefense", new GuiFeatureData(ColorCode.RED), false),
     SHOW_PROFILE_TYPE(219, "settings.showProfileType", false),
     SHOW_NETHER_FACTION(220,"settings.showNetherFaction", false),
-
+    CULT_STARFALL_TIMER(221, "settings.cultStarfallTimer", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false, EnumUtils.FeatureSetting.ENABLED_IN_OTHER_GAMES),
+    SHOW_CULT_STARFALL_TIMER_IN_OTHER_GAMES(222, null, false),
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),
     ADD(-1, null, false),
@@ -240,6 +241,7 @@ public enum Feature {
     CHROMA_SATURATION(-1, "settings.chromaSaturation", null, false),
     CHROMA_BRIGHTNESS(-1, "settings.chromaBrightness", null, false),
     TURN_ALL_FEATURES_CHROMA(-1, "settings.turnAllFeaturesChroma", null, false);
+
 
 
     /**
@@ -278,7 +280,7 @@ public enum Feature {
             DUNGEONS_COLLECTED_ESSENCES_DISPLAY, REVENANT_SLAYER_TRACKER, TARANTULA_SLAYER_TRACKER, SVEN_SLAYER_TRACKER, DRAGON_STATS_TRACKER, DUNGEON_DEATH_COUNTER,
             ROCK_PET_TRACKER, DOLPHIN_PET_TRACKER, DUNGEONS_SECRETS_DISPLAY, CANDY_POINTS_COUNTER, DRILL_FUEL_TEXT,
             TREVOR_TRACKED_ENTITY_PROXIMITY_INDICATOR, FETCHUR_TODAY, VOIDGLOOM_SLAYER_TRACKER, OTHER_DEFENCE_STATS, SPIRIT_SCEPTRE_DISPLAY, FARM_EVENT_TIMER,
-            CRIMSON_ARMOR_ABILITY_STACKS, HIDE_TRUE_DEFENSE));
+            CRIMSON_ARMOR_ABILITY_STACKS, HIDE_TRUE_DEFENSE, CULT_STARFALL_TIMER));
 
     /**
      * These are features that are displayed separate, on the general tab.
