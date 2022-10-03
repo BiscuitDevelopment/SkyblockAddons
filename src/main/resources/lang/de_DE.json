@@ -223,8 +223,8 @@
     "showPlayerSymbolsInChat": "Spielersymbole im Chat anzeigen",
     "crimsonArmorAbilityStacks": "Crimson-Rüstungsstapel anzeigen",
     "hideTrueDefense": "True Defense ausblenden",
-    "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction"
+    "showProfileType": "Profil-Typ anzeigen",
+    "showNetherFaction": "Nether-Fraktion anzeigen"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -336,10 +336,10 @@
     "descriptionSvens": "Zeigt, dass du ein Sven-Quest machst.",
     "titleTarantula": "Tarantula-Quest",
     "descriptionTarantula": "Zeigt, dass du eine Tarantula-Quest machst.",
-    "titleVoidgloom": "Voidgloom Quest",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
-    "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "titleVoidgloom": "Voidgloom-Aufgabe",
+    "descriptionVoidgloom": "Zeigt, dass du eine Voidgloom-Aufgabe machst.",
+    "titleInferno": "Inferno-Aufgabe",
+    "descriptionInferno": "Zeigt, dass du eine Inferno-Aufgabe machst."
   },
   "enchantLayout": {
     "title": "Lege fest, wie Verzauberungen in den Tooltips angezeigt werden",
