@@ -8,10 +8,10 @@ import javax.vecmath.Vector3d;
 
 /**
  *  This shader shows a chroma color on a pixel depending on its position in the world
- *
+ * <p>
  *  This shader does:
  *  - Take in account its position in 3-dimensional space
- *
+ * <p>
  *  This shader does not:
  *  - Preserve the brightness and saturation of the original color
  *  - Work with textures

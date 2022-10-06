@@ -515,7 +515,6 @@ public class ConfigValues {
         }
     }
 
-    @SuppressWarnings("unchecked")
     private <E extends Enum<?>, N extends Number> void deserializeEnumNumberMapFromID(Map<E, N> map, String path, Class<E> keyClass, Class<N> numberClass) {
         deserializeEnumNumberMapFromID(loadedConfig, map, path, keyClass, numberClass);
     }

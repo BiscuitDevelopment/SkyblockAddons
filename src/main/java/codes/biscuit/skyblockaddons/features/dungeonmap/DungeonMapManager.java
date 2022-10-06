@@ -57,9 +57,9 @@ public class DungeonMapManager {
     /** The factor the player's coordinates are multiplied by to calculate their map marker coordinates */
     private static final float COORDINATE_FACTOR = 1.33F;
 
-    /** {@link EntityPlayerSP#lastReportedPosX} */
+    /** {@code EntityPlayerSP#lastReportedPosX} */
     static final Field lastReportedPosX;
-    /** {@link EntityPlayerSP#lastReportedPosZ} */
+    /** {@code EntityPlayerSP#lastReportedPosZ} */
     static final Field lastReportedPosZ;
 
     private static MapData mapData;
@@ -505,16 +505,16 @@ public class DungeonMapManager {
     }
 
     /**
-     * Returns the map zoom factor from {@link codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}.
+     * Returns the map zoom factor from {@code codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}.
      *
-     * @return the map zoom factor from {@link codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}
+     * @return the map zoom factor from {@code codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}
      */
     public static float getMapZoom() {
         return main.getConfigValues().getMapZoom().getValue();
     }
 
     /**
-     * Sets the map zoom factor in {@link codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}.
+     * Sets the map zoom factor in {@code codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}.
      * The new value must be between 0.5f and 5f inclusive.
      *
      * @param value the new map zoom factor

@@ -12,7 +12,7 @@ import java.util.*;
  *
  * This class allows us to approximate the trail of fish particles made by a fish converging to the player's bobber.
  * To do this, we use a variant on the Bellman Ford algorithm, as well as the exponentiation-by-squaring algorithm
- *
+ * <p>
  * In general, we wish to identify those splash particles that belong to a fish converging on the player's bobber.
  * Notice several identifying features of these converging particles:
  *     1) Particles spawn at a radial distance from the cast hook.
@@ -25,15 +25,15 @@ import java.util.*;
  *             3 standard distributions (12 degrees)
  *     3) Sequential particles approaching the hook generally come in every tick, but we can allow for 2 or 3 ticks
  *     4) Particles will not spawn farther than 8 blocks away from the cast hook
- *
+ * <p>
  *     (These are mostly discoverable in the EntityFishHook.java file. Hopefully, my making this algorithm won't cause servers to go ballistic...)
- *
+ * <p>
  * Consideration of time complexity is a huge part of the algorithm.
  * It is an O(n^2) algorithm, which for a large number of particles is unsustainable.
  * Each tick only gives us 50 milliseconds to compute stuff, so we're using bitwise operations.
  * Unfortunately, the longest primitive is 64 bits, so we're limited to tracking 64 particles at the moment.
  * This means when 10+ fishers are in the same spot, we may not be able to link the particles before we overwrite with new ones.
- *
+ * <p>
  * Processing the per-particle step takes <.025 milliseconds and the per-tick step generally takes <.050 milliseconds
  * So we are well below any critical thresholds for computation time.
  *
@@ -187,7 +187,7 @@ public class FishParticleManager {
      * Find a few (i.e. a "trail" of) particles that each meet the criteria for the subsequent particle in the trail
      * E.g. we find a trail 1 -> 5 -> 6 -> 10 (particle 1 meets the criteria for 5, 5 meets the criteria for 6, and so on)
      * Finding the trail of length n is found by computing M^n, where M is the pairwise matchings for each particle combination
-     *
+     * <p>
      * Given the particle trail, spawn a distinct particle (lava drip) at the most recently spawned particle in the particle trail.
      */
     private static void calculateTrails() {
@@ -249,7 +249,7 @@ public class FishParticleManager {
 
     /**
      * Performs a bitwise square of a matrix
-     *
+     * <p>
      * Saves the resulting matrix to result in row form
      * @param result saved result of the matrix squaring
      * @param rows input 64 x 64 bit matrix

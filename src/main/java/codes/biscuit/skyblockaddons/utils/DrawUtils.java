@@ -186,7 +186,7 @@ public class DrawUtils {
 
     /**
      * Draws a rectangle using absolute coordinates & a color.
-     *
+     * <p>
      * See {@link DrawUtils#drawRect(double, double, double, double, int)} to use width/height instead.
      */
     public static void drawRectAbsolute(double left, double top, double right, double bottom, int color) {
@@ -195,7 +195,7 @@ public class DrawUtils {
 
     /**
      * Draws a rectangle using absolute coordinates & a color.
-     *
+     * <p>
      * See {@link DrawUtils#drawRect(double, double, double, double, int, boolean)} to use width/height instead.
      */
     public static void drawRectAbsolute(double left, double top, double right, double bottom, int color, boolean chroma) {
@@ -214,7 +214,7 @@ public class DrawUtils {
 
     /**
      * Draws a rectangle using absolute a starting position and a width/height.
-     *
+     * <p>
      * See {@link DrawUtils#drawRectAbsolute(double, double, double, double, int)} to use absolute coordinates instead.
      */
     public static void drawRect(double x, double y, double w, double h, SkyblockColor color, int rounding) {
@@ -223,7 +223,7 @@ public class DrawUtils {
 
     /**
      * Draws a rectangle using absolute a starting position and a width/height.
-     *
+     * <p>
      * See {@link DrawUtils#drawRectAbsolute(double, double, double, double, int)} to use absolute coordinates instead.
      */
     public static void drawRect(double x, double y, double w, double h, int color) {
@@ -232,7 +232,7 @@ public class DrawUtils {
 
     /**
      * Draws a rectangle using absolute a starting position and a width/height.
-     *
+     * <p>
      * See {@link DrawUtils#drawRectAbsolute(double, double, double, double, int, boolean)} to use absolute coordinates instead.
      */
     public static void drawRect(double x, double y, double w, double h, int color, boolean chroma) {

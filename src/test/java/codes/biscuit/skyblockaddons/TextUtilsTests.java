@@ -18,7 +18,7 @@ public class TextUtilsTests {
     @DisplayName("Action Bar Magnitude Conversion Tests")
     @ParameterizedTest()
     @CsvFileSource(resources = "/convert-magnitudes.csv", numLinesToSkip = 1)
-    void testActionBarMagnitudeConversionS(String inputString, String expectedOutput) {
+    void testActionBarMagnitudeConversions(String inputString, String expectedOutput) {
         try {
             assertEquals(expectedOutput, TextUtils.convertMagnitudes(inputString));
         } catch (ParseException e) {

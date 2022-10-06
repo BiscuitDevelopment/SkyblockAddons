@@ -281,7 +281,6 @@ public class Utils {
                     String strippedScoreboardLine = ScoreboardManager.getStrippedScoreboardLines().get(lineNumber);
                     Matcher matcher;
 
-                    //noinspection RedundantSuppression
                     switch (lineNumber) {
                         case 0:
                             // Server ID
@@ -497,9 +496,6 @@ public class Utils {
 
             lastCompletion = completion;
         }
-    }
-
-    private void onCoinsChange(double coinsChange) {
     }
 
     public int getDefaultColor(float alphaFloat) {
@@ -793,10 +789,6 @@ public class Utils {
             try {
                 double oldCoins = purse;
                 purse = TextUtils.NUMBER_FORMAT.parse(matcher.group("coins")).doubleValue();
-
-                if (oldCoins != purse) {
-                    onCoinsChange(purse - oldCoins);
-                }
             } catch (NumberFormatException | ParseException e) {
                 purse = 0;
             }

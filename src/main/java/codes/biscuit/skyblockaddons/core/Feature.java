@@ -213,11 +213,13 @@ public enum Feature {
     SHOW_SKYBLOCK_ITEM_ID(213, "settings.showSkyblockItemId", null, true),
     RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU(214, "settings.resetSalvagedEssencesAfterLeavingMenu", null, false),
     CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD(215, "settings.changeDungeonMapZoomWithKeyboard", null, false),
+    // Release 1.7
     PLAYER_SYMBOLS_IN_CHAT(216, "settings.showPlayerSymbolsInChat", null, false, EnumUtils.FeatureSetting.SHOW_PROFILE_TYPE, EnumUtils.FeatureSetting.SHOW_NETHER_FACTION),
     CRIMSON_ARMOR_ABILITY_STACKS(217, "settings.crimsonArmorAbilityStacks", new GuiFeatureData(EnumUtils.DrawType.TEXT, ColorCode.GOLD), false),
     HIDE_TRUE_DEFENSE(218, "settings.hideTrueDefense", new GuiFeatureData(ColorCode.RED), false),
     SHOW_PROFILE_TYPE(219, "settings.showProfileType", false),
     SHOW_NETHER_FACTION(220,"settings.showNetherFaction", false),
+    NUMBER_SEPARATORS(221, "settings.numberSeparators", null, false),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),
@@ -285,7 +287,7 @@ public enum Feature {
      */
     @Getter
     private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
-            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT, DEVELOPER_MODE));
+            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT, NUMBER_SEPARATORS, DEVELOPER_MODE));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 199;
 
@@ -315,7 +317,7 @@ public enum Feature {
     }
 
     /**
-     * Called when a features enable state is changed.
+     * Called right after a feature's enable state is changed.
      */
     public void onToggle() {
         if (this.id == DEVELOPER_MODE.id) {

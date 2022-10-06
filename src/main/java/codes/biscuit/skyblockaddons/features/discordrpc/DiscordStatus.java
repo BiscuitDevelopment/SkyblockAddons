@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 /**
  * Statuses that are shown on the Discord RPC feature
- *
+ * <p>
  * This file has LF line endings because ForgeGradle is weird and will throw a NullPointerException if it's CRLF.
  */
 public enum DiscordStatus implements ButtonSelect.SelectItem {
@@ -36,9 +36,9 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 String coinString = " Coin";
 
                 if (coins == 1) {
-                    return TextUtils.formatDouble(coins) + coinString;
+                    return TextUtils.formatNumber(coins) + coinString;
                 } else {
-                    return TextUtils.formatDouble(coins) + coinString + 's';
+                    return TextUtils.formatNumber(coins) + coinString + 's';
                 }
             }),
 
@@ -48,9 +48,9 @@ public enum DiscordStatus implements ButtonSelect.SelectItem {
                 String bitString = " Bit";
 
                 if (bits == 1) {
-                    return TextUtils.formatDouble(bits) + bitString;
+                    return TextUtils.formatNumber(bits) + bitString;
                 } else {
-                    return TextUtils.formatDouble(bits) + bitString + 's';
+                    return TextUtils.formatNumber(bits) + bitString + 's';
                 }
             }),
 
