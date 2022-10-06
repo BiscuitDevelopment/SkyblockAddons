@@ -72,8 +72,6 @@ public class DevUtils {
 
     @Getter @Setter
     private static boolean loggingActionBarMessages = false;
-    @Getter @Setter
-    private static boolean magmaTimerDebugLoggingEnabled = false;
     private static CopyMode copyMode = CopyMode.ENTITY;
     private static List<Class<? extends Entity>> entityNames = DEFAULT_ENTITY_NAMES;
     private static int entityCopyRadius = DEFAULT_ENTITY_COPY_RADIUS;

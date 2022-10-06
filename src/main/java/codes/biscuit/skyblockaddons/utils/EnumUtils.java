@@ -138,40 +138,6 @@ public class EnumUtils {
         }
     }
 
-    /** Different detection methods of the magma boss are more accurate than others, display how accurate the time is. */
-    @Getter
-    public enum MagmaTimerAccuracy {
-        NO_DATA("N/A"),
-        SPAWNED("NOW"),
-        SPAWNED_PREDICTION("NOW"),
-        EXACTLY(""),
-        ABOUT("");
-
-        private final String symbol;
-
-        MagmaTimerAccuracy(String symbol) {
-            this.symbol = symbol;
-        }
-    }
-
-    @Getter
-    public enum MagmaEvent {
-        MAGMA_WAVE("magma"),
-        BLAZE_WAVE("blaze"),
-        BOSS_SPAWN("spawn"),
-        BOSS_DEATH("death"),
-
-        // Not actually an event
-        PING("ping");
-
-        // The event name used by InventiveTalent's API
-        private final String inventiveTalentEvent;
-
-        MagmaEvent(String inventiveTalentEvent) {
-            this.inventiveTalentEvent = inventiveTalentEvent;
-        }
-    }
-
     public enum GuiTab {
         MAIN, GENERAL_SETTINGS
     }
@@ -253,6 +219,8 @@ public class EnumUtils {
         DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
         RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU("settings.resetSalvagedEssencesAfterLeavingMenu", 214),
         CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
+        SHOW_PROFILE_TYPE( "settings.showProfileType", 219),
+        SHOW_NETHER_FACTION("settings.showNetherFaction", 220),
 
         DISCORD_RP_STATE(0),
         DISCORD_RP_DETAILS(0),
@@ -295,7 +263,7 @@ public class EnumUtils {
     public enum FeatureCredit {
         // If you make a feature, feel free to add your name here with an associated website of your choice.
 
-        INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
+        //INVENTIVE_TALENT("InventiveTalent", "inventivetalent.org", Feature.MAGMA_BOSS_TIMER),
         ORCHID_ALLOY("orchidalloy", "github.com/orchidalloy", Feature.SUMMONING_EYE_ALERT, Feature.FISHING_SOUND_INDICATOR, Feature.ENCHANTMENT_LORE_PARSING),
         HIGH_CRIT("HighCrit", "github.com/HighCrit", Feature.PREVENT_MOVEMENT_ON_DEATH),
         MOULBERRY("Moulberry", "github.com/Moulberry", Feature.DONT_RESET_CURSOR_INVENTORY),
@@ -330,7 +298,8 @@ public class EnumUtils {
         SKYCATMINEPOKIE("skycatminepokie", "github.com/skycatminepokie", Feature.OUTBID_ALERT_SOUND),
         TIMOLOB("TimoLob", "github.com/TimoLob", Feature.BROOD_MOTHER_ALERT),
         NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT),
-        CATFACE("CatFace","github.com/CattoFace",Feature.PROFILE_TYPE_IN_CHAT);
+        CATFACE("CatFace","github.com/CattoFace",Feature.PLAYER_SYMBOLS_IN_CHAT),
+        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.CRIMSON_ARMOR_ABILITY_STACKS, Feature.HIDE_TRUE_DEFENSE);
 
         private final Set<Feature> features;
         private final String author;
@@ -443,7 +412,8 @@ public class EnumUtils {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
         SVEN_PACKMASTER("Sven Packmaster"),
-        VOIDGLOOM_SERAPH("Voidgloom Seraph");
+        VOIDGLOOM_SERAPH("Voidgloom Seraph"),
+        INFERNO_DEMONLORD("Inferno Demonlord");
 
         private final String scoreboardName;
 

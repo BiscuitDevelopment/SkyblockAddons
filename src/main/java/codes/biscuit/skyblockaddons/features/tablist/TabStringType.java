@@ -10,8 +10,7 @@ public enum TabStringType {
     PLAYER;
 
     public static TabStringType fromLine(String line) {
-        String strippedLine = TextUtils.stripColor(line);
-
+        String strippedLine = TextUtils.stripUsername(line);
         if (strippedLine.startsWith(" ")) {
             return TEXT;
         }

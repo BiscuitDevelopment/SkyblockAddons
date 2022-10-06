@@ -84,7 +84,6 @@ public class RenderListener {
 
     private static final ResourceLocation ENDERMAN_ICON = new ResourceLocation("skyblockaddons", "icons/enderman.png");
     private static final ResourceLocation ENDERMAN_GROUP_ICON = new ResourceLocation("skyblockaddons", "icons/endermangroup.png");
-    private static final ResourceLocation MAGMA_BOSS_ICON = new ResourceLocation("skyblockaddons", "icons/magmaboss.png");
     private static final ResourceLocation SIRIUS_ICON = new ResourceLocation("skyblockaddons", "icons/sirius.png");
     private static final ResourceLocation SUMMONING_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/summoningeye.png");
     private static final ResourceLocation ZEALOTS_PER_EYE_ICON = new ResourceLocation("skyblockaddons", "icons/zealotspereye.png");
@@ -96,17 +95,17 @@ public class RenderListener {
 
     private static final ItemStack WATER_BUCKET = new ItemStack(Items.water_bucket);
     private static final ItemStack IRON_SWORD = new ItemStack(Items.iron_sword);
-    private static final ItemStack WARP_SKULL = ItemUtils.createSkullItemStack("§bFast Travel", null,  "9ae837fc-19da-3841-af06-7db55d51c815", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56");
+    private static final ItemStack WARP_SKULL = ItemUtils.createSkullItemStack("§bFast Travel", null, "9ae837fc-19da-3841-af06-7db55d51c815", "c9c8881e42915a9d29bb61a16fb26d059913204d265df5b439b3d792acd56");
     private static final ItemStack SKYBLOCK_MENU = ItemUtils.createItemStack(Items.nether_star, "§aSkyBlock Menu §7(Right Click)", "SKYBLOCK_MENU", false);
-    private static final ItemStack PET_ROCK = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Rock", null,  "1ed7c993-8190-3055-a48c-f70f71b17284", "cb2b5d48e57577563aca31735519cb622219bc058b1f34648b67b8e71bc0fa");
-    private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null,  "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
+    private static final ItemStack PET_ROCK = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Rock", null, "1ed7c993-8190-3055-a48c-f70f71b17284", "cb2b5d48e57577563aca31735519cb622219bc058b1f34648b67b8e71bc0fa");
+    private static final ItemStack DOLPHIN_PET = ItemUtils.createSkullItemStack("§f§f§7[Lvl 100] §6Dolphin", null, "48f53ffe-a3f0-3280-aac0-11cc0d6121f4", "cefe7d803a45aa2af1993df2544a28df849a762663719bfefc58bf389ab7f5");
     private static final ItemStack CHEST = new ItemStack(Item.getItemFromBlock(Blocks.chest));
     private static final ItemStack SKULL = ItemUtils.createSkullItemStack("Skull", null, "c659cdd4-e436-4977-a6a7-d5518ebecfbb", "1ae3855f952cd4a03c148a946e3f812a5955ad35cbcb52627ea4acd47d3081");
-    private static final ItemStack HYPERION = ItemUtils.createItemStack(Items.iron_sword,"§6Hyperion","HYPERION", false);
-    private static final ItemStack VALKYRIE = ItemUtils.createItemStack(Items.iron_sword,"§6Valkyrie","VALKYRIE", false);
-    private static final ItemStack ASTRAEA = ItemUtils.createItemStack(Items.iron_sword,"§6Astraea","ASTRAEA", false);
-    private static final ItemStack SCYLLA = ItemUtils.createItemStack(Items.iron_sword,"§6Scylla","SCYLLA", false);
-    private static final ItemStack SCPETRE = new ItemStack(Blocks.red_flower,1,2); //doesnt show sb texture pack cos blocks cant have and idk how
+    private static final ItemStack HYPERION = ItemUtils.createItemStack(Items.iron_sword, "§6Hyperion", "HYPERION", false);
+    private static final ItemStack VALKYRIE = ItemUtils.createItemStack(Items.iron_sword, "§6Valkyrie", "VALKYRIE", false);
+    private static final ItemStack ASTRAEA = ItemUtils.createItemStack(Items.iron_sword, "§6Astraea", "ASTRAEA", false);
+    private static final ItemStack SCYLLA = ItemUtils.createItemStack(Items.iron_sword, "§6Scylla", "SCYLLA", false);
+    private static final ItemStack SCPETRE = new ItemStack(Blocks.red_flower, 1, 2); //doesnt show sb texture pack cos blocks cant have and idk how
 
     private static final ItemStack GREEN_CANDY = ItemUtils.createSkullItemStack("Green Candy", "GREEN_CANDY", "0961dbb3-2167-3f75-92e4-ec8eb4f57e55", "ce0622d01cfdae386cc7dd83427674b422f46d0a57e67a20607e6ca4b9af3b01");
     private static final ItemStack PURPLE_CANDY = ItemUtils.createSkullItemStack("Purple Candy", "PURPLE_CANDY", "5b0e6bf0-6312-3476-b5f8-dbc9a8849a1f", "95d7aee4e97ad84095f55405ee1305d1fc8554c309edb12a1db863cde9c1ec80");
@@ -218,20 +217,12 @@ public class RenderListener {
     }
 
     /**
-     * I have an option so you can see the magma timer in other games so that's why.
+     * I have an option so you can see dark auction timer and farm event timer in other games so that's why.
      */
     private void renderTimersOnly() {
         Minecraft mc = Minecraft.getMinecraft();
         if (!(mc.currentScreen instanceof LocationEditGui) && !(mc.currentScreen instanceof GuiNotification)) {
             GlStateManager.disableBlend();
-            if (main.getConfigValues().isEnabled(Feature.MAGMA_BOSS_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_MAGMA_TIMER_IN_OTHER_GAMES) &&
-                    main.getPlayerListener().getMagmaAccuracy() != EnumUtils.MagmaTimerAccuracy.NO_DATA) {
-                float scale = main.getConfigValues().getGuiScale(Feature.MAGMA_BOSS_TIMER);
-                GlStateManager.pushMatrix();
-                GlStateManager.scale(scale, scale, 1);
-                drawText(Feature.MAGMA_BOSS_TIMER, scale, mc, null);
-                GlStateManager.popMatrix();
-            }
             if (main.getConfigValues().isEnabled(Feature.DARK_AUCTION_TIMER) && main.getConfigValues().isEnabled(Feature.SHOW_DARK_AUCTION_TIMER_IN_OTHER_GAMES)) {
                 float scale = main.getConfigValues().getGuiScale(Feature.DARK_AUCTION_TIMER);
                 GlStateManager.pushMatrix();
@@ -264,9 +255,6 @@ public class RenderListener {
 
             String translationKey = null;
             switch (titleFeature) {
-                case MAGMA_WARNING:
-                    translationKey = "messages.magmaBossWarning";
-                    break;
                 case FULL_INVENTORY_WARNING:
                     translationKey = "messages.fullInventory";
                     break;
@@ -696,6 +684,10 @@ public class RenderListener {
             }
         } else if (feature == Feature.HEALTH_TEXT) {
             text = TextUtils.formatNumber(getAttribute(Attribute.HEALTH)) + "/" + TextUtils.formatNumber(getAttribute(Attribute.MAX_HEALTH));
+            
+        } else if (feature == Feature.CRIMSON_ARMOR_ABILITY_STACKS) {
+            text = getCrimsonArmorAbilityStacks();
+            if (text == null) return;
 
         } else if (feature == Feature.DEFENCE_TEXT) {
             text = TextUtils.formatNumber(getAttribute(Attribute.DEFENCE));
@@ -766,32 +758,6 @@ public class RenderListener {
             timestamp.append(seconds);
             text = timestamp.toString();
 
-        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-        StringBuilder magmaBuilder = new StringBuilder();
-        magmaBuilder.append(main.getPlayerListener().getMagmaAccuracy().getSymbol());
-        EnumUtils.MagmaTimerAccuracy ma = main.getPlayerListener().getMagmaAccuracy();
-        if (ma == EnumUtils.MagmaTimerAccuracy.ABOUT || ma == EnumUtils.MagmaTimerAccuracy.EXACTLY) {
-            if (buttonLocation == null) {
-                int totalSeconds = main.getPlayerListener().getMagmaTime();
-                if (totalSeconds < 0) totalSeconds = 0;
-                int hours = totalSeconds / 3600;
-                int minutes = totalSeconds / 60 % 60;
-                int seconds = totalSeconds % 60;
-                if (Math.abs(hours) >= 10) hours = 10;
-                magmaBuilder.append(hours).append(":");
-                if (minutes < 10) {
-                    magmaBuilder.append("0");
-                }
-                magmaBuilder.append(minutes).append(":");
-                if (seconds < 10) {
-                    magmaBuilder.append("0");
-                }
-                magmaBuilder.append(seconds);
-            } else {
-                magmaBuilder.append("1:23:45");
-            }
-        }
-            text = magmaBuilder.toString();
         } else if (feature == Feature.FARM_EVENT_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
             Calendar nextFarmEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
             if (nextFarmEvent.get(Calendar.MINUTE) >= 15) {
@@ -813,13 +779,13 @@ public class RenderListener {
                 }
                 timestamp.append(seconds);
                 text = timestamp.toString();
-            } else{
+            } else {
                 StringBuilder timestampActive = new StringBuilder();
                 timestampActive.append("Active: ");
-                if (minutes-40 < 10) {
+                if (minutes - 40 < 10) {
                     timestampActive.append("0");
                 }
-                timestampActive.append(minutes-40).append(":");
+                timestampActive.append(minutes - 40).append(":");
                 if (seconds < 10) {
                     timestampActive.append("0");
                 }
@@ -933,16 +899,6 @@ public class RenderListener {
                 text = "1:23";
             }
 
-        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            long lastDamaged = main.getUtils().getLastDamaged() + 5000;
-            int combatSeconds = (int) Math.ceil((lastDamaged - System.currentTimeMillis()) / 1000D);
-
-            if (combatSeconds <= 0 && buttonLocation == null) {
-                return;
-            }
-
-            text = "IN COMBAT";
-
         } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
             if (((main.getUtils().getLocation() != Location.THE_END && main.getUtils().getLocation() != Location.DRAGONS_NEST)
                     || EndstoneProtectorManager.getMinibossStage() == null || !EndstoneProtectorManager.isCanDetectSkull()) && buttonLocation == null) {
@@ -1050,9 +1006,9 @@ public class RenderListener {
             width = mc.fontRendererObj.getStringWidth("100");
         }
 
-        if (feature == Feature.MAGMA_BOSS_TIMER || feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
+        if (feature == Feature.DARK_AUCTION_TIMER || feature == Feature.FARM_EVENT_TIMER || feature == Feature.ZEALOT_COUNTER || feature == Feature.SKILL_DISPLAY
                 || feature == Feature.SHOW_TOTAL_ZEALOT_COUNT || feature == Feature.SHOW_SUMMONING_EYE_COUNT || feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE ||
-                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.COMBAT_TIMER_DISPLAY || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
+                feature == Feature.BIRCH_PARK_RAINMAKER_TIMER || feature == Feature.ENDSTONE_PROTECTOR_DISPLAY ||
                 feature == Feature.DUNGEON_DEATH_COUNTER || feature == Feature.DOLPHIN_PET_TRACKER || feature == Feature.ROCK_PET_TRACKER) {
             width += 18;
             height += 9;
@@ -1060,10 +1016,6 @@ public class RenderListener {
 
         if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
             width += 2 + 16 + 2 + mc.fontRendererObj.getStringWidth(String.valueOf(EndstoneProtectorManager.getZealotCount()));
-        }
-
-        if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            height += 15;
         }
 
         if (feature == Feature.SHOW_DUNGEON_MILESTONE) {
@@ -1147,14 +1099,6 @@ public class RenderListener {
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 18, y + 4, color);
             FontRendererHook.endFeatureFont();
-        } else if (feature == Feature.MAGMA_BOSS_TIMER) {
-            mc.getTextureManager().bindTexture(MAGMA_BOSS_ICON);
-            DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
         } else if (feature == Feature.ZEALOT_COUNTER) {
             mc.getTextureManager().bindTexture(ENDERMAN_ICON);
             DrawUtils.drawModalRectWithCustomSizedTexture(x, y, 0, 0, 16, 16, 16, 16);
@@ -1202,44 +1146,6 @@ public class RenderListener {
 
             FontRendererHook.setupFeatureFont(feature);
             DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
-        } else if (feature == Feature.COMBAT_TIMER_DISPLAY) {
-            long lastDamaged = main.getUtils().getLastDamaged() + 5000;
-            int combatSeconds = (int) Math.ceil((lastDamaged - System.currentTimeMillis()) / 1000D);
-
-            if (buttonLocation != null) {
-                combatSeconds = 5;
-            }
-
-            renderItem(IRON_SWORD, x, y);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(text, x + 18, y + 4, color);
-            FontRendererHook.endFeatureFont();
-
-            y += 20;
-
-            String warpTimeRemaining = combatSeconds + "s";
-            String menuTimeRemaining = (combatSeconds - 2) + "s";
-            if (combatSeconds <= 2) {
-                menuTimeRemaining = "✔";
-            }
-            int menuTimeRemainingWidth = mc.fontRendererObj.getStringWidth(menuTimeRemaining);
-
-            int spacerBetweenBothItems = 4;
-            int spacerBetweenItemsAndText = 2;
-
-            renderItem(SKYBLOCK_MENU, x + width / 2F - 16 - menuTimeRemainingWidth - spacerBetweenItemsAndText - spacerBetweenBothItems / 2F, y - 5);
-
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(menuTimeRemaining, x + width / 2F - menuTimeRemainingWidth - spacerBetweenBothItems / 2F, y, color);
-            FontRendererHook.endFeatureFont();
-
-            GlStateManager.color(1, 1, 1, 1);
-            renderItem(WARP_SKULL, x + width / 2F + spacerBetweenBothItems / 2F, y - 5);
-            FontRendererHook.setupFeatureFont(feature);
-            DrawUtils.drawText(warpTimeRemaining, x + width / 2F + spacerBetweenBothItems / 2F + 13 + spacerBetweenItemsAndText, y, color);
             FontRendererHook.endFeatureFont();
 
         } else if (feature == Feature.ENDSTONE_PROTECTOR_DISPLAY) {
@@ -1370,8 +1276,7 @@ public class RenderListener {
             DrawUtils.drawText(text, x + 16 + 2, y, color);
             if (hitEnemies == 1) {
                 DrawUtils.drawText(String.format("%d enemy hit", hitEnemies), x + 16 + 2, y + 9, color);
-            }
-            else {
+            } else {
                 DrawUtils.drawText(String.format("%d enemies hit", hitEnemies), x + 16 + 2, y + 9, color);
             }
             DrawUtils.drawText(String.format("%,d damage dealt", Math.round(dealtDamage)), x + 16 + 2, y + 18, color);
@@ -1478,6 +1383,31 @@ public class RenderListener {
         }
 
         main.getUtils().restoreGLOptions();
+    }
+
+    private String getCrimsonArmorAbilityStacks() {
+        EntityPlayerSP player = Minecraft.getMinecraft().thePlayer;
+        ItemStack[] itemStacks = player.inventory.armorInventory;
+
+        StringBuilder builder = new StringBuilder();
+        out:
+        for (CrimsonArmorAbilityStack crimsonArmorAbilityStack : CrimsonArmorAbilityStack.values()) {
+            for (ItemStack itemStack : itemStacks) {
+                if (itemStack == null) continue;
+                for (String line : ItemUtils.getItemLore(itemStack)) {
+                    if (line.contains("§6Tiered Bonus: ")) {
+                        String abilityName = crimsonArmorAbilityStack.getAbilityName();
+                        if (line.contains(abilityName)) {
+                            String symbol = crimsonArmorAbilityStack.getSymbol();
+                            int stack = crimsonArmorAbilityStack.getCurrentValue();
+                            builder.append(abilityName + " " + symbol + " " + stack);
+                            continue out;
+                        }
+                    }
+                }
+            }
+        }
+        return builder.length() == 0 ? null : builder.toString();
     }
 
     public void drawCollectedEssences(float x, float y, boolean usePlaceholders, boolean hideZeroes) {
@@ -1975,7 +1905,7 @@ public class RenderListener {
         for (SlayerArmorProgress progress : progresses) {
             if (progress == null) continue;
 
-            int textWidth = mc.fontRendererObj.getStringWidth(progress.getPercent()+"% ("+progress.getDefence()+")");
+            int textWidth = mc.fontRendererObj.getStringWidth(progress.getPercent() + "% (" + progress.getDefence() + ")");
             if (textWidth > longest) {
                 longest = textWidth;
             }
@@ -2018,7 +1948,7 @@ public class RenderListener {
             DrawUtils.drawText(progress.getPercent() + "% (", currentX, fixedY + 5, color);
             FontRendererHook.endFeatureFont();
 
-            currentX += mc.fontRendererObj.getStringWidth(progress.getPercent()+"% (");
+            currentX += mc.fontRendererObj.getStringWidth(progress.getPercent() + "% (");
             DrawUtils.drawText(progress.getDefence(), currentX, fixedY + 5, 0xFFFFFFFF);
 
             currentX += mc.fontRendererObj.getStringWidth(progress.getDefence());
@@ -2109,14 +2039,14 @@ public class RenderListener {
 
             if (alignRight) {
                 FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
-                DrawUtils.drawText(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
+                DrawUtils.drawText(duration + " ", x + width - mc.fontRendererObj.getStringWidth(duration + " ")
                         - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
                 FontRendererHook.endFeatureFont();
                 DrawUtils.drawText(effect.trim(), x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
             } else {
                 DrawUtils.drawText(effect, x, lineY, color);
                 FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
-                DrawUtils.drawText(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color);
+                DrawUtils.drawText(duration, x + mc.fontRendererObj.getStringWidth(effect), lineY, color);
                 FontRendererHook.endFeatureFont();
             }
             drawnCount++;
@@ -2133,14 +2063,14 @@ public class RenderListener {
 
             if (alignRight) {
                 FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
-                DrawUtils.drawText(duration+" ", x + width - mc.fontRendererObj.getStringWidth(duration+" ")
+                DrawUtils.drawText(duration + " ", x + width - mc.fontRendererObj.getStringWidth(duration + " ")
                         - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
                 FontRendererHook.endFeatureFont();
                 DrawUtils.drawText(effect, x + width - mc.fontRendererObj.getStringWidth(effect.trim()), lineY, color);
             } else {
                 DrawUtils.drawText(effect, x, lineY, color);
                 FontRendererHook.setupFeatureFont(Feature.TAB_EFFECT_TIMERS);
-                DrawUtils.drawText(duration, x+mc.fontRendererObj.getStringWidth(effect), lineY, color);
+                DrawUtils.drawText(duration, x + mc.fontRendererObj.getStringWidth(effect), lineY, color);
                 FontRendererHook.endFeatureFont();
             }
             drawnCount++;
@@ -2549,7 +2479,7 @@ public class RenderListener {
                 }
 
                 if (!dungeonPlayer.isGhost() && main.getConfigValues().isEnabled(Feature.SHOW_DUNGEON_TEAMMATE_NAME_OVERLAY)) {
-                    final String nameOverlay = ColorCode.YELLOW + "[" + dungeonPlayer.getDungeonClass().getFirstLetter() +  "] " + ColorCode.GREEN + entity.getName();
+                    final String nameOverlay = ColorCode.YELLOW + "[" + dungeonPlayer.getDungeonClass().getFirstLetter() + "] " + ColorCode.GREEN + entity.getName();
                     mc.fontRendererObj.drawString(nameOverlay, -mc.fontRendererObj.getStringWidth(nameOverlay) / 2F, iconSize / 2F + 13, -1, true);
                 }
 
