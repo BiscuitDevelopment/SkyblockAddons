@@ -79,7 +79,6 @@ public class RenderListener {
     private static final ItemStack BONE_ITEM = new ItemStack(Items.bone);
     private static final ResourceLocation BARS = new ResourceLocation("skyblockaddons", "barsV2.png");
     private static final ResourceLocation DEFENCE_VANILLA = new ResourceLocation("skyblockaddons", "defence.png");
-    private static final ResourceLocation IMPERIAL_BARS_FIX = new ResourceLocation("skyblockaddons", "imperialbarsfix.png");
     private static final ResourceLocation TICKER_SYMBOL = new ResourceLocation("skyblockaddons", "ticker.png");
 
     private static final ResourceLocation ENDERMAN_ICON = new ResourceLocation("skyblockaddons", "icons/enderman.png");
