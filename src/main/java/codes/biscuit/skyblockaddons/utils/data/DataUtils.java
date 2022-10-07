@@ -258,7 +258,7 @@ public class DataUtils {
             if (!request.isDone()) {
                 handleOnlineFileLoadException(request,
                         new RuntimeException(String.format("Request for \"%s\" didn't finish in time for mod init.",
-                                getFileNameFromUrlString(request.getUrl()))));
+                                getFileNameFromUrlString(request.getURL()))));
             }
 
             try {
@@ -368,7 +368,7 @@ public class DataUtils {
             StringBuilder errorMessageBuilder = new StringBuilder("Failed Requests:\n");
 
             for (Map.Entry<RemoteFileRequest<?>, Throwable> failedRequest : failedRequests.entrySet()) {
-                errorMessageBuilder.append(failedRequest.getKey().getUrl()).append("\n");
+                errorMessageBuilder.append(failedRequest.getKey().getURL()).append("\n");
                 errorMessageBuilder.append(failedRequest.getValue().toString()).append("\n");
             }
 
@@ -449,7 +449,7 @@ public class DataUtils {
      * @param exception the exception that occurred
      */
     private static void handleOnlineFileLoadException(RemoteFileRequest<?> request, Throwable exception) {
-        String url = request.getUrl();
+        String url = request.getURL();
         String fileName = getFileNameFromUrlString(url);
         failedRequests.put(request, exception);
 

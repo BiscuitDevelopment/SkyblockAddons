@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.utils.data;
 
-import codes.biscuit.skyblockaddons.utils.data.DataUtils;
 import org.apache.http.client.HttpRequestRetryHandler;
 import org.apache.http.protocol.HttpContext;
 
