@@ -815,8 +815,8 @@ public class RenderListener {
             long RealMSLeft = ((SkyblockDaysLeft * 1200000L) - (SkyblockHours * 50000L) - (SkyblockMinutes * 830L));
             //get the hours, minutes, and seconds of the real world ms value
             int hours = (int) (RealMSLeft / 3600000);
-            int minutes = (int) (RealMSLeft / 60000);
-            int seconds = (int) (RealMSLeft / 1000);
+            int minutes = (int) (RealMSLeft / 60000 % 60);
+            int seconds = (int) (RealMSLeft / 1000 % 60);
 
 
             if (SkyblockDays % 7 == 0 && SkyblockHours < 6){
