@@ -804,35 +804,35 @@ public class RenderListener {
             double FirstSkyblockDay = 15602757e5; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
             long CurrentTime = Instant.now().toEpochMilli();
             double SkyblockCurrentTime = CurrentTime - FirstSkyblockDay;
-            double SkyblockYears = Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
-            double SkyblockMonth = Math.floor(SkyblockCurrentTime / 37200000 % 12)+1; //10 hours and 20 minutes in 1 skyblock month
-            double SkyblockDays = Math.floor(SkyblockCurrentTime / 1.2e+6 % 31)+1; //20 minutes in 1 skyblock day
+            int SkyblockYears = (int)Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
+            int SkyblockMonth = (int)Math.floor(SkyblockCurrentTime / 37200000 % 12)+1; //10 hours and 20 minutes in 1 skyblock month
+            int SkyblockDays = (int)Math.floor(SkyblockCurrentTime / 1.2e+6 % 31)+1; //20 minutes in 1 skyblock day
+            int SkyblockHours = (int)Math.floor(SkyblockCurrentTime / 50000 % 24); //50 seconds in 1 skyblock hour
+            int SkyblockMinutes = (int)Math.floor(SkyblockCurrentTime / 830 % 60); //0.83 seconds in 1 skyblock minute
 
-            int difference = (int) (nextCultEvent.getTimeInMillis() - System.currentTimeMillis());
-            int minutes = difference / 60000;
-            int seconds = (int) Math.round((double) (difference % 60000) / 1000);
-            if (minutes < 40) {
+            
+            if (SkyblockHours < 40) {
                 StringBuilder timestamp = new StringBuilder();
-                if (minutes < 10) {
+                if (SkyblockHours < 10) {
                     timestamp.append("0");
                 }
-                timestamp.append(minutes).append(":");
-                if (seconds < 10) {
+                timestamp.append(SkyblockHours).append(":");
+                if (SkyblockMinutes < 10) {
                     timestamp.append("0");
                 }
-                timestamp.append(seconds);
+                timestamp.append(SkyblockMinutes);
                 text = timestamp.toString();
             } else {
                 StringBuilder timestampActive = new StringBuilder();
                 timestampActive.append("Active: ");
-                if (minutes - 40 < 10) {
+                if (SkyblockHours - 40 < 10) {
                     timestampActive.append("0");
                 }
-                timestampActive.append(minutes - 40).append(":");
-                if (seconds < 10) {
+                timestampActive.append(SkyblockHours - 40).append(":");
+                if (SkyblockMinutes < 10) {
                     timestampActive.append("0");
                 }
-                timestampActive.append(seconds);
+                timestampActive.append(SkyblockMinutes);
                 text = timestampActive.toString();
             }
         }
