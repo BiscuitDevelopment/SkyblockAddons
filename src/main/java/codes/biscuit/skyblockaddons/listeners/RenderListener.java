@@ -68,6 +68,7 @@ import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
+import java.time.Instant;
 import java.util.List;
 import java.util.*;
 
@@ -798,13 +799,14 @@ public class RenderListener {
                 text = timestampActive.toString();
             }
 
-        }else if (feature == Feature.CULT_STARFALL_TIMER) { // The timezone of the server, to avoid problems with like timezones that are 30 minutes ahead or whatnot.
-            Calendar nextCultEvent = Calendar.getInstance(TimeZone.getTimeZone("EST"));
-            if (nextCultEvent.get(Calendar.MINUTE) >= 15) {
-                nextCultEvent.add(Calendar.HOUR_OF_DAY, 1);
-            }
-            nextCultEvent.set(Calendar.MINUTE, 15);
-            nextCultEvent.set(Calendar.SECOND, 0);
+        }else if (feature == Feature.CULT_STARFALL_TIMER) {
+            Calendar nextCultEvent = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
+            double FirstSkyblockDay = 15602757e5; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
+            long CurrentTime = Instant.now().toEpochMilli();
+            double SkyblockCurrentTime = CurrentTime - FirstSkyblockDay;
+            double SkyblockYears = Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
+            double SkyblockMonth = Math.floor(SkyblockCurrentTime / SkyblockYears / 37200000); //10 hours and 20 minutes in 1 skyblock month
+
             int difference = (int) (nextCultEvent.getTimeInMillis() - System.currentTimeMillis());
             int minutes = difference / 60000;
             int seconds = (int) Math.round((double) (difference % 60000) / 1000);
