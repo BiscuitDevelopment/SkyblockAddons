@@ -805,7 +805,8 @@ public class RenderListener {
             long CurrentTime = Instant.now().toEpochMilli();
             double SkyblockCurrentTime = CurrentTime - FirstSkyblockDay;
             double SkyblockYears = Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
-            double SkyblockMonth = Math.floor(SkyblockCurrentTime / SkyblockYears / 37200000); //10 hours and 20 minutes in 1 skyblock month
+            double SkyblockMonth = Math.floor(SkyblockCurrentTime / 37200000 % 12)+1; //10 hours and 20 minutes in 1 skyblock month
+            double SkyblockDays = Math.floor(SkyblockCurrentTime / 1.2e+6 % 31)+1; //20 minutes in 1 skyblock day
 
             int difference = (int) (nextCultEvent.getTimeInMillis() - System.currentTimeMillis());
             int minutes = difference / 60000;
