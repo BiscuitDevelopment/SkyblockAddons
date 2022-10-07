@@ -68,7 +68,6 @@ import java.awt.*;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
-import java.time.Instant;
 import java.util.List;
 import java.util.*;
 
@@ -799,41 +798,52 @@ public class RenderListener {
                 text = timestampActive.toString();
             }
 
-        }else if (feature == Feature.CULT_STARFALL_TIMER) {
-            Calendar nextCultEvent = Calendar.getInstance(TimeZone.getTimeZone("UTC"));
-            double FirstSkyblockDay = 15602757e5; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
-            long CurrentTime = Instant.now().toEpochMilli();
+        }else if (feature == Feature.CULT_STARFALL_TIMER) {//WARNING: POTENTIALLY HILARIOUSLY OVERENGINEERED CODE AHEAD, VIEW AT YOUR OWN RISK
+            long FirstSkyblockDay = 1560275700000L; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
+            long CurrentTime = System.currentTimeMillis();
             double SkyblockCurrentTime = CurrentTime - FirstSkyblockDay;
             int SkyblockYears = (int)Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
             int SkyblockMonth = (int)Math.floor(SkyblockCurrentTime / 37200000 % 12)+1; //10 hours and 20 minutes in 1 skyblock month
-            int SkyblockDays = (int)Math.floor(SkyblockCurrentTime / 1.2e+6 % 31)+1; //20 minutes in 1 skyblock day
+            int SkyblockDays = (int)Math.floor(SkyblockCurrentTime / 1200000 % 31)+1; //20 minutes in 1 skyblock day
             int SkyblockHours = (int)Math.floor(SkyblockCurrentTime / 50000 % 24); //50 seconds in 1 skyblock hour
             int SkyblockMinutes = (int)Math.floor(SkyblockCurrentTime / 830 % 60); //0.83 seconds in 1 skyblock minute
 
-            
-            if (SkyblockHours < 40) {
-                StringBuilder timestamp = new StringBuilder();
-                if (SkyblockHours < 10) {
-                    timestamp.append("0");
-                }
-                timestamp.append(SkyblockHours).append(":");
-                if (SkyblockMinutes < 10) {
-                    timestamp.append("0");
-                }
-                timestamp.append(SkyblockMinutes);
-                text = timestamp.toString();
-            } else {
+            int SkyblockDaysLeft = 7 - (SkyblockDays % 7); //make the difference in days
+            if (SkyblockDays > 28){
+                SkyblockDaysLeft += 3; //add 3 to account for the final 3 days of skyblock's months
+            }//take the days remaining, subtract by the current hours and minutes, and convert to real time ms values
+            long RealMSLeft = ((SkyblockDaysLeft * 1200000L) - (SkyblockHours * 50000L) - (SkyblockMinutes * 830L));
+            //get the hours, minutes, and seconds of the real world ms value
+            int hours = (int) (RealMSLeft / 3600000);
+            int minutes = (int) (RealMSLeft / 60000);
+            int seconds = (int) (RealMSLeft / 1000);
+
+
+            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){
                 StringBuilder timestampActive = new StringBuilder();
                 timestampActive.append("Active: ");
-                if (SkyblockHours - 40 < 10) {
+                if(minutes < 10){
                     timestampActive.append("0");
                 }
-                timestampActive.append(SkyblockHours - 40).append(":");
-                if (SkyblockMinutes < 10) {
+                timestampActive.append(minutes).append(":");
+                if (seconds < 10){
                     timestampActive.append("0");
                 }
-                timestampActive.append(SkyblockMinutes);
+                timestampActive.append(seconds);
                 text = timestampActive.toString();
+            }
+            else{
+                StringBuilder timestamp = new StringBuilder();
+                timestamp.append(hours).append(":"); //start with the hours, no need for digit checking because it can never go above 9
+                if(minutes < 10){
+                    timestamp.append("0");
+                }
+                timestamp.append(minutes).append(":");
+                if (seconds < 10){
+                    timestamp.append("0");
+                }
+                timestamp.append(seconds);
+                text = timestamp.toString();
             }
         }
         else if (feature == Feature.SKILL_DISPLAY) {
