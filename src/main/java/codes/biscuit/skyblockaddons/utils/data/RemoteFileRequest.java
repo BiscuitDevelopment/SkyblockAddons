@@ -1,10 +1,10 @@
 package codes.biscuit.skyblockaddons.utils.data;
 
-import codes.biscuit.skyblockaddons.utils.data.DataConstants;
-import codes.biscuit.skyblockaddons.utils.data.DataUtils; 
+import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.exceptions.LoadingException;
 import lombok.Getter;
 import lombok.NonNull;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.concurrent.FutureCallback;
@@ -25,53 +25,25 @@ public class RemoteFileRequest<T> {
     private HttpRequestFutureTask<T> futureTask;
 
     public RemoteFileRequest(@NonNull String requestPath, @NonNull ResponseHandler<T> responseHandler) {
-        REQUEST_URL = DataConstants.CDN_BASE_URL + requestPath;
-        RESPONSE_HANDLER = responseHandler;
-        FETCH_CALLBACK = new DataFetchCallback<>(URI.create(REQUEST_URL));
-        ESSENTIAL = false;
-        futureTask = null;
-    }
-
-    public RemoteFileRequest(@NonNull String requestPath, @NonNull ResponseHandler<T> responseHandler,
-                             @NonNull FutureCallback<T> fetchCallback) {
-        REQUEST_URL = DataConstants.CDN_BASE_URL + requestPath;
-        RESPONSE_HANDLER = responseHandler;
-        FETCH_CALLBACK = fetchCallback;
-        ESSENTIAL = false;
-        futureTask = null;
+        this(requestPath, responseHandler, false);
     }
 
     public RemoteFileRequest(@NonNull String requestPath, @NonNull ResponseHandler<T> responseHandler,
                              boolean essential) {
-        REQUEST_URL = DataConstants.CDN_BASE_URL + requestPath;
-        RESPONSE_HANDLER = responseHandler;
-        FETCH_CALLBACK = new DataFetchCallback<>(URI.create(REQUEST_URL));
-        ESSENTIAL = essential;
-        futureTask = null;
+        this(requestPath, responseHandler, essential, false);
     }
 
     public RemoteFileRequest(@NonNull String requestPath, @NonNull ResponseHandler<T> responseHandler,
                              boolean essential, boolean usingCustomUrl) {
-        REQUEST_URL = usingCustomUrl ? requestPath : DataConstants.CDN_BASE_URL + requestPath;
+        REQUEST_URL = usingCustomUrl ? requestPath : getVersionedCDNBaseURL() + requestPath;
         RESPONSE_HANDLER = responseHandler;
         FETCH_CALLBACK = new DataFetchCallback<>(URI.create(REQUEST_URL));
-        ESSENTIAL = essential;
-        futureTask = null;
-    }
-
-    public RemoteFileRequest(@NonNull String requestPath, @NonNull ResponseHandler<T> responseHandler,
-                             @NonNull FutureCallback<T> fetchCallback, boolean essential) {
-        REQUEST_URL = DataConstants.CDN_BASE_URL + requestPath;
-        RESPONSE_HANDLER = responseHandler;
-        FETCH_CALLBACK = fetchCallback;
         ESSENTIAL = essential;
         futureTask = null;
     }
 
     public void execute(@NonNull FutureRequestExecutionService executionService) {
-        String requestURL = DataUtils.useFallbackCDN ? REQUEST_URL.replace(DataConstants.CDN_BASE_URL, DataConstants.FALLBACK_CDN_BASE_URL) : REQUEST_URL;
-    
-        futureTask = executionService.execute(new HttpGet(requestURL), null, RESPONSE_HANDLER, FETCH_CALLBACK);
+        futureTask = executionService.execute(new HttpGet(REQUEST_URL), null, RESPONSE_HANDLER, FETCH_CALLBACK);
     }
 
     public void load() throws InterruptedException, ExecutionException, RuntimeException {
@@ -79,7 +51,7 @@ public class RemoteFileRequest<T> {
                 REQUEST_URL.substring(REQUEST_URL.lastIndexOf('/' + 1))), new RuntimeException());
     }
 
-    public String getUrl() {
+    public String getURL() {
         return REQUEST_URL;
     }
 
@@ -93,5 +65,10 @@ public class RemoteFileRequest<T> {
 
     protected boolean isDone() {
         return futureTask.isDone();
+    }
+
+    private static String getVersionedCDNBaseURL() {
+        return String.format(DataUtils.useFallbackCDN ? DataConstants.FALLBACK_CDN_BASE_URL : DataConstants.CDN_BASE_URL,
+                SkyblockAddons.VERSION.substring(0, StringUtils.ordinalIndexOf(SkyblockAddons.VERSION, ".", 2)));
     }
 }

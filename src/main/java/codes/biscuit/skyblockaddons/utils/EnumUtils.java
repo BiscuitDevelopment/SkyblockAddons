@@ -219,6 +219,8 @@ public class EnumUtils {
         DONT_REPLACE_ROMAN_NUMERALS_IN_ITEM_NAME("settings.dontReplaceRomanNumeralsInItemNames", 210),
         RESET_SALVAGED_ESSENCES_AFTER_LEAVING_MENU("settings.resetSalvagedEssencesAfterLeavingMenu", 214),
         CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
+        SHOW_PROFILE_TYPE( "settings.showProfileType", 219),
+        SHOW_NETHER_FACTION("settings.showNetherFaction", 220),
 
         DISCORD_RP_STATE(0),
         DISCORD_RP_DETAILS(0),
@@ -410,7 +412,8 @@ public class EnumUtils {
         REVENANT_HORROR("Revenant Horror"),
         TARANTULA_BROODFATHER("Tarantula Broodfather"),
         SVEN_PACKMASTER("Sven Packmaster"),
-        VOIDGLOOM_SERAPH("Voidgloom Seraph");
+        VOIDGLOOM_SERAPH("Voidgloom Seraph"),
+        INFERNO_DEMONLORD("Inferno Demonlord");
 
         private final String scoreboardName;
 
