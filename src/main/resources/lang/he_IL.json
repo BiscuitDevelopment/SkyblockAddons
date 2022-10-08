@@ -4,7 +4,7 @@
   "settings": {
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
-    "balBossWarning": "Bal Boss Warning",
+    "balBossWarning": "התרעת Bal Boss",
     "broodMotherWarning": "Brood Mother Warning",
     "itemDropConfirmation": "אישור זריקת פריט",
     "hideSkeletonHatBones": "הסתרת עצמות מקסדת שלד",
@@ -134,7 +134,7 @@
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
     "mapZoom": "זום על המפה",
     "glowingDroppedItems": "חפצים שנזרקו זוהרים",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "הדגש חברי קבוצה ב-Dungeons",
     "baseStatBoostPercentage": "הצג Base Stat Boost בעבור Dungeon Items",
     "colorByRarity": "צבע לפי Rarity",
     "showPlayerHeadsOnMap": "הצג את הראשים של השחקנים על גבי הDungeon Map",
@@ -189,7 +189,7 @@
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "הצג את ההתקדמות של Stacking Enchant",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
     "hideEnchantDescription": "Hide Enchant Description",
@@ -197,7 +197,7 @@
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldown": "הצג את זמן ההמתנה למשימה של Trevor",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
@@ -217,7 +217,7 @@
     "backpackOpeningSound": "Leather Backpack Opening Sound",
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "showFeatureNamesOnHover": "הראה את שמות הפיטצ'רים כשהסמן מעליהם",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
@@ -303,7 +303,7 @@
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "fileFetchFailed": "%modName% כשל בהשגת %number% קבצים. אנא העתק את התקלה בעזרת הכפתור למטה ודווח על זה בשרת הדיסקורד שלנו.",
     "copy": "Copy",
     "copied": "Copied!"
   },
@@ -373,7 +373,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "מעתיק את הטקסט מלוח הניקוד",
           "detailedHelp": {
             "description": "Copies the text displayed in the scoreboard's sidebar display slot",
             "options": {
@@ -535,7 +535,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "מעתיק את הטקסט מלוח הניקוד",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
