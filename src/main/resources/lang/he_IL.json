@@ -192,7 +192,7 @@
     "stackingEnchantProgress": "הצג את ההתקדמות של Stacking Enchant",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "הסתר את תיאור הEnchant",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
