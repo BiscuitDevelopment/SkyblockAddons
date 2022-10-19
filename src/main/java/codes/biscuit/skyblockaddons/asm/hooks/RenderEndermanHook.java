@@ -11,7 +11,8 @@ public class RenderEndermanHook {
 
     public static ResourceLocation getEndermanTexture(ResourceLocation endermanTexture) {
         SkyblockAddons main = SkyblockAddons.getInstance();
-        if (main.getUtils().isOnSkyblock() && main.getUtils().getLocation() == Location.DRAGONS_NEST && main.getConfigValues().isEnabled(Feature.CHANGE_ZEALOT_COLOR)) {
+        Location location = main.getUtils().getLocation();
+        if (main.getUtils().isOnSkyblock() && (location == Location.DRAGONS_NEST || location == Location.ZEALOT_BRUISER_HIDEOUT || location == Location.VOID_SLATE) && main.getConfigValues().isEnabled(Feature.CHANGE_ZEALOT_COLOR)) {
             return BLANK_ENDERMAN_TEXTURE;
         }
         return endermanTexture;
