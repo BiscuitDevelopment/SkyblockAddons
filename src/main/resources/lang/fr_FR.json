@@ -222,9 +222,9 @@
     "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-",
     "showPlayerSymbolsInChat": "Afficher les symboles du joueur dans le chat",
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense",
+    "hideTrueDefense": "Cacher la défense pure",
     "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction"
+    "showNetherFaction": "Afficher les factions du Nether"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -336,10 +336,10 @@
     "descriptionSvens": "Montre que vous accomplissez une quête de Sven.",
     "titleTarantula": "Quête tarantula",
     "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula.",
-    "titleVoidgloom": "Voidgloom Quest",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
-    "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "titleVoidgloom": "Quête de Voidgloom",
+    "descriptionVoidgloom": "Montre qu'une quête Voidgloom est en cours.",
+    "titleInferno": "Quête Inferno",
+    "descriptionInferno": "Montre qu'une quête Inferno est en cours."
   },
   "enchantLayout": {
     "title": "Contrôler comment les enchantements sont affichés dans les info-bulles d'objet",
@@ -693,7 +693,7 @@
     "compactedBlocks": "Blocs compacts",
     "cultivatedCrops": "Graines cultivées",
     "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "championCombatXp": "XP de Champion de combat",
     "maxed": "Maxée"
   }
 }
