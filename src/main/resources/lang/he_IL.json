@@ -5,7 +5,7 @@
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
     "balBossWarning": "התרעת Bal Boss",
-    "broodMotherWarning": "Brood Mother Warning",
+    "broodMotherWarning": "התרעת Brood Mother",
     "itemDropConfirmation": "אישור זריקת פריט",
     "hideSkeletonHatBones": "הסתרת עצמות מקסדת שלד",
     "skeletonHatBonesBar": "מד העצמות מקסדת עצמות",
@@ -110,8 +110,8 @@
     "discordRP": "תצוגה עשירה של דיסקורד",
     "endstoneProtectorDisplay": "מצג ה- Endstone Protector",
     "fancyWarpMenu": "תפריט שיגורים מפואר",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "הפסק את צלילי חיית העכבר",
+    "onlyStopRatSqueak": "עצור רק את צליל ה-Squeak של חיית העכברוש",
     "doubleWarp": "שיגור כפול",
     "advancedMode": "מצב מתקדם",
     "legendarySeaCreatureWarning": "אזהרת יצור ימי אגדי",
@@ -128,10 +128,10 @@
     "dungeonMapDisplay": "הצג Dungeon Map",
     "rotateMap": "סובב את המפה למיקום השחקן שלך",
     "centerRotationOnYourPlayer": "מרכז את הסיבוב סביב סמן השחקן שלך",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "הראה את Fetchur רק ב-Dwarven Mines",
+    "showFetchurItemName": "הראה את שם החפץ של Fetchur",
+    "showFetchurInventoryOpenOnly": "הראה את החפץ של Fetchur רק כאשר ה-Inventory פתוח",
+    "warnWhenFetchurChanges": "התרע כאשר Fetchur משתנה",
     "mapZoom": "זום על המפה",
     "glowingDroppedItems": "חפצים שנזרקו זוהרים",
     "outlineDungeonTeammates": "הדגש חברי קבוצה ב-Dungeons",
@@ -213,10 +213,10 @@
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "dontReplaceRomanNumeralsInItemNames": "אל תחליף בשמות הפריטים",
+    "backpackOpeningSound": "צליל הפתיחה של תיק העור",
     "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
+    "showSkyblockItemId": "הראה את ה-ID של פריט הSkyblock כשסמן העכבר מונח מעליו",
     "showFeatureNamesOnHover": "הראה את שמות הפיטצ'רים כשהסמן מעליהם",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
     "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
@@ -304,8 +304,8 @@
     "version": "Version",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
     "fileFetchFailed": "%modName% כשל בהשגת %number% קבצים. אנא העתק את התקלה בעזרת הכפתור למטה ודווח על זה בשרת הדיסקורד שלנו.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "copy": "העתק",
+    "copied": "הועתק!"
   },
   "discordStatus": {
     "titleNone": "ריק",
@@ -315,7 +315,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "מראה את כמות הכסף בארנק שלך",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "מראה את כמות הBits שיש לך",
     "titleStats": "סטטיסטיקות",
     "descriptionStats": "מראה את כמות החיים, הגנה, ומאנה",
     "titleZealots": "Zealots",
@@ -354,7 +354,7 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "פותח את התפריט הראשי"
         },
         "brand": {
           "help": "Shows the server brand"
@@ -514,7 +514,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "פותח את התפריט הראשי"
       },
       "brand": {
         "help": "Shows the server brand",
