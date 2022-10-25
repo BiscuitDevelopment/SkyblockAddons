@@ -221,9 +221,9 @@
     "resetSalvagedEssencesAfterLeavingMenu": "메뉴를 닫은 후 얻은 Essence 카운터를 초기화합니다.",
     "changeDungeonMapZoomWithKeyboard": "+/- 키로 배율을 조정",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "crimsonArmorAbilityStacks": "Crimson Armor 스택 보이게 하기",
     "hideTrueDefense": "Hide True Defense",
-    "showProfileType": "Show Profile Type",
+    "showProfileType": "프로필 유형 표시",
     "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
@@ -338,7 +338,7 @@
     "descriptionTarantula": "내가 Tarantula 퀘스트를 하는 것을 보여줍니다.",
     "titleVoidgloom": "Voidgloom Quest",
     "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
-    "titleInferno": "Inferno Quest",
+    "titleInferno": "인페르노 퀘스트",
     "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
