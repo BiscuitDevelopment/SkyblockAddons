@@ -221,10 +221,10 @@
     "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
     "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放",
     "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "crimsonArmorAbilityStacks": "显示 Crimson 盔甲堆叠数",
     "hideTrueDefense": "Hide True Defense",
-    "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction"
+    "showProfileType": "显示存档类型图标",
+    "showNetherFaction": "显示下界阵营图标"
   },
   "messages": {
     "enchants": "附魔",
