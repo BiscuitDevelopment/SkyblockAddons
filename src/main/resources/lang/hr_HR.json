@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction"
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Čarolije",
