@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Brojači Napitaka i Otrova",
     "noArrowsLeftAlert": "Upozorenje za Nedostatak Strijela",
-    "hideNightVisionEffectTimer": "Sakrij Brojač Nočne Vizije",
     "showCakeBagPreview": "Pokaži Pregled za Torbu od Torte",
     "showBackpackPreviewInAH": "Pokaži prikaz ruksaka za vaše stvari dok je AH otvoren",
     "enableDevFeatures": "Omogući Razvijačke Znajačke",
@@ -98,7 +97,6 @@
       "fade": "Bljeđenje Boje"
     },
     "chromaFadeWidth": "Veličina Bljeđivanja Chroma",
-    "sortTabEffectTimers": "Sortiraj Brojače po Trajanju",
     "showBrokenFragments": "Prikaži Slomljene Dragon Fragmente",
     "skyblockAddonsButtonInPauseMenu": "Pokaži SBA dugmad u pauzijskom meniju",
     "showTotalZealotCount": "Brojač Zealota - Ukupni broj Zealota",
