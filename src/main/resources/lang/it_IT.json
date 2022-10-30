@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Timer pozioni e potenziamenti",
     "noArrowsLeftAlert": "Avviso frecce finite",
-    "hideNightVisionEffectTimer": "Nascondi il timer dell’effetto visione notturna",
     "showCakeBagPreview": "Mostra anteprima delle Cake Bags",
     "showBackpackPreviewInAH": "Mostra l’anteprima dello zaino mentre l’Auction House è aperta",
     "enableDevFeatures": "Abilita la modalità sviluppatore",
@@ -98,7 +97,6 @@
       "fade": "Dissolvenza del colore"
     },
     "chromaFadeWidth": "Larghezza della dissolvenza cromatica",
-    "sortTabEffectTimers": "Ordina i timer per durata",
     "showBrokenFragments": "Mostra i frammenti rotti di drago",
     "skyblockAddonsButtonInPauseMenu": "Mostra il pulsante SBA nel menu in pausa",
     "showTotalZealotCount": "Contatore di Zealot - Numero totale di Zealot",
