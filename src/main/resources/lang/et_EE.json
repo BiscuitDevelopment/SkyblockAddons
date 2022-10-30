@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Võlujookide taimerid",
     "noArrowsLeftAlert": "Nooled on otsas",
-    "hideNightVisionEffectTimer": "Peida öönägemise efekti taimer",
     "showCakeBagPreview": "Näita Cake Bag 'ide eelvaadet",
     "showBackpackPreviewInAH": "Näita Backpack 'ide eelvaadet kui oksjoni maja on avatud",
     "enableDevFeatures": "Pane peale arendaja funktsioonid",
@@ -98,7 +97,6 @@
       "fade": "Värvi hajumine"
     },
     "chromaFadeWidth": "Chroma hajumise laius",
-    "sortTabEffectTimers": "Sorteeri taimerid aja järgi",
     "showBrokenFragments": "Näita katkiseid Dragon Fragment 'e",
     "skyblockAddonsButtonInPauseMenu": "Näita SBA nuppe pausi menüüs",
     "showTotalZealotCount": "Zealot 'i lugeja - kogu Zealot 'ite arv",
