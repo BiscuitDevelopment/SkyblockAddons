@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Drank- en power-uptimers",
     "noArrowsLeftAlert": "Pijlen op-waarschuwing",
-    "hideNightVisionEffectTimer": "Nachtzichteffecttimer verbergen",
     "showCakeBagPreview": "Cake Bag-voorbeelden weergeven",
     "showBackpackPreviewInAH": "Rugzakvoorbeeld voor je voorwerpen weergeven als Veilinghuis open is",
     "enableDevFeatures": "Ontwikkelaarsfuncties inschakelen",
@@ -98,7 +97,6 @@
       "fade": "Kleur vervagen"
     },
     "chromaFadeWidth": "Chromavervagingsbreedte",
-    "sortTabEffectTimers": "Timers sorteren op duur",
     "showBrokenFragments": "Defecte Dragon Fragments weergeven",
     "skyblockAddonsButtonInPauseMenu": "SBA-knop weergeven in pauzemenu",
     "showTotalZealotCount": "Zealotteller - Aantal Zealots",
