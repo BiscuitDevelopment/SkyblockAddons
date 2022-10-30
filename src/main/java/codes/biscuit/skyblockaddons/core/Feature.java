@@ -218,6 +218,7 @@ public enum Feature {
     HIDE_TRUE_DEFENSE(218, "settings.hideTrueDefense", new GuiFeatureData(ColorCode.RED), false),
     SHOW_PROFILE_TYPE(219, "settings.showProfileType", false),
     SHOW_NETHER_FACTION(220,"settings.showNetherFaction", false),
+    HIDE_WITHERBORN(221, "settings.hideWitherborn", true),
 
     WARNING_TIME(-1, "settings.warningDuration", null, false),
     WARP_ADVANCED_MODE(-1, "settings.advancedMode", null, true),

@@ -26,6 +26,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ReportedException;
 
+import net.minecraft.util.ChatComponentText;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.*;
@@ -44,6 +46,7 @@ public class InventoryUtils {
 
     /** Display name of the Skeleton Helmet. */
     private static final String SKELETON_HELMET_ID = "SKELETON_HELMET";
+    private static final String WITHER_ID_SUFFIX = "WITHER_";
     private static final String TOXIC_ARROW_POISON_ID = "TOXIC_ARROW_POISON";
 
     public static final String MADDOX_BATPHONE_ID = "AATROX_BATPHONE";
@@ -66,6 +69,9 @@ public class InventoryUtils {
      */
     @Getter
     private boolean wearingSkeletonHelmet;
+
+    @Getter
+    private boolean wearingWitherArmor;
 
     @Getter
     private boolean usingToxicArrowPoison;
@@ -301,13 +307,32 @@ public class InventoryUtils {
      * @param p Player to check
      */
     public void checkIfWearingSkeletonHelmet(EntityPlayerSP p) {
-        if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR)) {
+        if (main.getConfigValues().isEnabled(Feature.SKELETON_BAR) || main.getConfigValues().isEnabled(Feature.HIDE_BONES)) {
             ItemStack item = p.getEquipmentInSlot(4);
             if (item != null && SKELETON_HELMET_ID.equals(ItemUtils.getSkyblockItemID(item))) {
                 wearingSkeletonHelmet = true;
                 return;
             }
             wearingSkeletonHelmet = false;
+        }
+    }
+
+    /**
+     * Checks if the player is wearing any of the Wither Armor and updates accordingly
+     *
+     * @param p Player to check
+     */
+    public void checkIfWearingWitherArmor(EntityPlayerSP p) {
+        if (main.getConfigValues().isEnabled(Feature.HIDE_WITHERBORN)) {
+            ItemStack witherHelmet = p.getEquipmentInSlot(1);
+            ItemStack witherChest = p.getEquipmentInSlot(2);
+            ItemStack witherLegs = p.getEquipmentInSlot(3);
+            ItemStack witherBoots = p.getEquipmentInSlot(4);
+            if (witherHelmet != null && witherChest != null && witherLegs != null && witherBoots != null && ItemUtils.getSkyblockItemID(witherHelmet).contains(WITHER_ID_SUFFIX) && ItemUtils.getSkyblockItemID(witherChest).contains(WITHER_ID_SUFFIX) && ItemUtils.getSkyblockItemID(witherLegs).contains(WITHER_ID_SUFFIX) && ItemUtils.getSkyblockItemID(witherBoots).contains(WITHER_ID_SUFFIX)) {
+                wearingWitherArmor = true;
+                return;
+            }
+            wearingWitherArmor = false;
         }
     }
 

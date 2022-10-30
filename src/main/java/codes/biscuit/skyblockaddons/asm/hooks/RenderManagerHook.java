@@ -14,6 +14,7 @@ import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.item.EntityItemFrame;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.init.Items;
 import net.minecraft.util.BlockPos;
 
@@ -59,6 +60,11 @@ public class RenderManagerHook {
                 JerryPresent present = JerryPresent.getJerryPresents().get(entityIn.getUniqueID());
                 if (present != null && present.shouldHide()) {
                     returnValue.cancel();
+                }
+            }
+            if (main.getConfigValues().isEnabled(Feature.HIDE_WITHERBORN) && main.getInventoryUtils().isWearingWitherArmor()) {
+                if (entityIn instanceof EntityWither && ((EntityWither) entityIn).getInvulTime() == 800) {
+                        returnValue.cancel();
                 }
             }
         }
