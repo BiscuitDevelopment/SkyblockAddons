@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "مؤقتي الجرعات و مقويات الطاقة",
     "noArrowsLeftAlert": "تنبيه نفاذ الأسهم",
-    "hideNightVisionEffectTimer": "إخفاء مؤقت جرعة الرؤية الليلية",
     "showCakeBagPreview": "إظهار معاينة لـCake Bags",
     "showBackpackPreviewInAH": "إظهار معاينة حقيبة الظهر للاشياء الخاصة بك أثناء فتح المزاد",
     "enableDevFeatures": "تشغيل ميزة المطور",
@@ -98,7 +97,6 @@
       "fade": "تلاشي الألوان"
     },
     "chromaFadeWidth": "عرض تلاشي الـChroma",
-    "sortTabEffectTimers": "ترتيب المؤقتات حسب المدة",
     "showBrokenFragments": "إظهار Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "إظهار زر SBA في قائمة الإيقاف المؤقت",
     "showTotalZealotCount": "عداد الـZealot - المجموع الكلي للـZealot",
