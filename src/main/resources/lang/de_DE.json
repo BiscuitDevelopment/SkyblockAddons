@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "Crimson-Rüstungsstapel anzeigen",
     "hideTrueDefense": "True Defense ausblenden",
     "showProfileType": "Profil-Typ anzeigen",
-    "showNetherFaction": "Nether-Fraktion anzeigen"
+    "showNetherFaction": "Nether-Fraktion anzeigen",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Verzauberungen",
