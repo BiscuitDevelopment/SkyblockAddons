@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Таймер зіллів та підсилень",
     "noArrowsLeftAlert": "Повідомлення про закінчення стріл",
-    "hideNightVisionEffectTimer": "Приховати таймер ефектів нічного бачення",
     "showCakeBagPreview": "Показувати вміст Cake Bag",
     "showBackpackPreviewInAH": "Показувати прев'ю рюкзаків для своїх предметів під час використання Аукціонного Дому",
     "enableDevFeatures": "Увімкнути функції розробника",
@@ -98,7 +97,6 @@
       "fade": "Згасання Кольору"
     },
     "chromaFadeWidth": "Ширина згасання Chroma",
-    "sortTabEffectTimers": "Сортувати таймери за тривалістю",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
