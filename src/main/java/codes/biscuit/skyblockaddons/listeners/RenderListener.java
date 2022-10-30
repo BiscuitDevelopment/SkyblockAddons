@@ -825,13 +825,15 @@ public class RenderListener {
             }
 
         } else if (feature == Feature.ZEALOT_COUNTER) {
-            if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+            if (main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_ZEALOT_SPAWN_AREAS_ONLY) &&
+                    !LocationUtils.isZealotSpawnLocation(main.getUtils().getLocation().getScoreboardName()) && buttonLocation == null) {
                 return;
             }
             text = String.valueOf(main.getPersistentValuesManager().getPersistentValues().getKills());
 
         } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
-            if (main.getConfigValues().isEnabled(Feature.SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_TOTAL_ZEALOT_COUNT_ZEALOT_SPAWN_AREAS_ONLY) &&
+                    !LocationUtils.isZealotSpawnLocation(main.getUtils().getLocation().getScoreboardName()) && buttonLocation == null) {
                 return;
             }
             if (main.getPersistentValuesManager().getPersistentValues().getTotalKills() <= 0) {
@@ -841,13 +843,15 @@ public class RenderListener {
             }
 
         } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-            if (main.getConfigValues().isEnabled(Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_SUMMONING_EYE_COUNT_ZEALOT_SPAWN_AREAS_ONLY) &&
+                    !LocationUtils.isZealotSpawnLocation(main.getUtils().getLocation().getScoreboardName()) && buttonLocation == null) {
                 return;
             }
             text = String.valueOf(main.getPersistentValuesManager().getPersistentValues().getSummoningEyeCount());
 
         } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
-            if (main.getConfigValues().isEnabled(Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY) && main.getUtils().getLocation() != Location.DRAGONS_NEST && buttonLocation == null) {
+            if (main.getConfigValues().isEnabled(Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_ZEALOT_SPAWN_AREAS_ONLY) &&
+                    !LocationUtils.isZealotSpawnLocation(main.getUtils().getLocation().getScoreboardName()) && buttonLocation == null) {
                 return;
             }
             int summoningEyeCount = main.getPersistentValuesManager().getPersistentValues().getSummoningEyeCount();

@@ -157,7 +157,7 @@ public class EnumUtils {
         ENABLED_IN_OTHER_GAMES("settings.showInOtherGames", -1),
         REPEATING("settings.repeating", -1),
         TEXT_MODE("settings.textMode", -1),
-        DRAGONS_NEST_ONLY("settings.dragonsNestOnly", -1),
+        DRAGONS_NEST_ONLY("settings.dragonsNestOnly", 128),
         USE_VANILLA_TEXTURE("settings.useVanillaTexture", 17),
         BACKPACK_STYLE("settings.backpackStyle", -1),
         SHOW_ONLY_WHEN_HOLDING_SHIFT("settings.showOnlyWhenHoldingShift", 18),
@@ -221,6 +221,7 @@ public class EnumUtils {
         CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
         SHOW_PROFILE_TYPE( "settings.showProfileType", 219),
         SHOW_NETHER_FACTION("settings.showNetherFaction", 220),
+        ZEALOT_SPAWN_AREAS_ONLY("settings.zealotSpawnAreasOnly", -1),
 
         DISCORD_RP_STATE(0),
         DISCORD_RP_DETAILS(0),
