@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Potion an' Powerup Timers",
     "noArrowsLeftAlert": "Yer Bolts be Gone Alert",
-    "hideNightVisionEffectTimer": "Hide th' Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview fer Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview fer yer Items Whilst th' AH be Open",
     "enableDevFeatures": "Enable Developer Features",
@@ -98,7 +97,6 @@
       "fade": "Col'r Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in yer Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Tot'l Zealot Count",
