@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
-    "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar pré-visualização da backpack enquanto a AH está aberta",
     "enableDevFeatures": "Ativar funções de desenvolvedor",
@@ -98,7 +97,6 @@
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura de Desvanecimento do Chroma",
-    "sortTabEffectTimers": "Ordenar temporizadores por duração",
     "showBrokenFragments": "Mostrar Dragon Fragments com erros",
     "skyblockAddonsButtonInPauseMenu": "Mostrar o botão SBA no menu de pausa",
     "showTotalZealotCount": "Contador de zealots - Número total de zealots",
