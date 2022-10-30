@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Licznik czasu: mikstury i umiejętności",
     "noArrowsLeftAlert": "Powiadomienie o braku strzał",
-    "hideNightVisionEffectTimer": "Ukryj licznik czasu efektu widzenia w ciemności",
     "showCakeBagPreview": "Podgląd Cake Bags",
     "showBackpackPreviewInAH": "Podgląd plecaka dla Twoich przedmiotów, gdy Dom Aukcyjny jest otwarty",
     "enableDevFeatures": "Włącz funkcje dla programistów",
@@ -98,7 +97,6 @@
       "fade": "Blaknięcie koloru"
     },
     "chromaFadeWidth": "Szerokość blaknięcia kolorów",
-    "sortTabEffectTimers": "Sortuj Licznik czasu według trwania",
     "showBrokenFragments": "Pokazuj zniszczone Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
