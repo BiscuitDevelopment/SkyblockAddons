@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "טיימרים לשיקויים וחיזוקים",
     "noArrowsLeftAlert": "אזהרה שאזלו החצים",
-    "hideNightVisionEffectTimer": "הסתר את טיימר השפעת ראיית הלילה",
     "showCakeBagPreview": "הצגת תכולה של תיקי עוגות",
     "showBackpackPreviewInAH": "הצג את תכולת התרמיל בעוד שתפריט AH פתוח",
     "enableDevFeatures": "אפשר אפשרויות מפתח",
@@ -98,7 +97,6 @@
       "fade": "דהיית הצבע"
     },
     "chromaFadeWidth": "רוחב דהיית הכרומה",
-    "sortTabEffectTimers": "מיין את השעוני העצר לפי משך זמנם",
     "showBrokenFragments": "הצג Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "הצג כפתור SBA בתפריט העצירה",
     "showTotalZealotCount": "מד הזלוטים - כמות הזלוטים בסך הכל",
