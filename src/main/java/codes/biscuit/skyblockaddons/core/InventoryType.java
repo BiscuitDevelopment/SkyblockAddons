@@ -18,7 +18,7 @@ public enum InventoryType {
     CHRONOMATRON("Chronomatron", "Chronomatron \\((?<type>[a-zA-Z]+)\\)"),
     SUPERPAIRS("Superpairs", "Superpairs \\((?<type>[a-zA-Z]+)\\)"),
     STORAGE("Storage", "Storage"),
-    STORAGE_BACKPACK("BackpackStorage", "(?<type>[a-zA-Z]+) Backpack ?✦? \\((?<page>\\d+)/\\d+\\)"),
+    STORAGE_BACKPACK("BackpackStorage", "(?<type>[a-zA-Z]+) Backpack ?✦? \\(Slot #(?<page>\\d+)\\)"),
     SKILL_TYPE_MENU("Skill Type Menu", "(?<type>[a-zA-Z]+) Skill"),
     ENDER_CHEST("EnderChest", "Ender Chest \\((?<page>\\d+)/\\d+\\)");
 

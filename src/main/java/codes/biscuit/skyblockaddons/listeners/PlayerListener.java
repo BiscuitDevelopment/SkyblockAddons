@@ -1,7 +1,6 @@
 package codes.biscuit.skyblockaddons.listeners;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
-import codes.biscuit.skyblockaddons.asm.hooks.GuiChestHook;
 import codes.biscuit.skyblockaddons.config.PersistentValuesManager;
 import codes.biscuit.skyblockaddons.core.*;
 import codes.biscuit.skyblockaddons.core.dungeons.DungeonMilestone;
@@ -44,7 +43,10 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.gui.inventory.GuiChest;
+import net.minecraft.client.network.NetHandlerPlayClient;
+import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
@@ -62,7 +64,9 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.*;
+import net.minecraft.world.WorldSettings;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
@@ -111,9 +115,6 @@ public class PlayerListener {
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
     private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (?:Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(?:y|ies) for (?<dealtDamage>[0-9]{1,3}(?:,[0-9]{3})*(?:\\.[0-9]+)*) damage\\.");
 
-    // Between these two coordinates is the whole "arena" area where all the magmas and stuff are.
-    private static final AxisAlignedBB MAGMA_BOSS_SPAWN_AREA = new AxisAlignedBB(-244, 0, -566, -379, 255, -635);
-
     private static final Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
             "You can now fly for 200 minutes.", "Your flight has been extended for 200 extra minutes."));
@@ -141,14 +142,9 @@ public class PlayerListener {
     private long lastBoss = -1;
     private long lastBal = -1;
     private long lastBroodmother = -1;
-    private int magmaTick = 1;
     private int balTick = -1;
     private int timerTick = 1;
     private long lastMinionSound = -1;
-    private long lastBossSpawnPost = -1;
-    private long lastBossDeathPost = -1;
-    private long lastMagmaWavePost = -1;
-    private long lastBlazeWavePost = -1;
     private long lastFishingAlert = 0;
     private long lastBobberEnteredWater = Long.MAX_VALUE;
     private long lastSkyblockServerJoinAttempt = 0;
@@ -168,30 +164,24 @@ public class PlayerListener {
     @Getter
     private final TreeMap<Long, Set<Vec3>> recentlyKilledZealots = new TreeMap<>();
 
-    @Getter
-    private final Set<IntPair> recentlyLoadedChunks = new HashSet<>();
-
     @Getter private int spiritSceptreHitEnemies = 0;
     @Getter private float spiritSceptreDealtDamage = 0;
-
-    @Getter
-    @Setter
-    private EnumUtils.MagmaTimerAccuracy magmaAccuracy = EnumUtils.MagmaTimerAccuracy.NO_DATA;
-    @Getter
-    @Setter
-    private int magmaTime = 0;
-    @Getter
-    @Setter
-    private int recentMagmaCubes = 0;
-    @Getter
-    @Setter
-    private int recentBlazes = 0;
 
     @Getter
     private final TreeMap<Long, Vec3> explosiveBowExplosions = new TreeMap<>();
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
     private final ActionBarParser actionBarParser = new ActionBarParser();
+
+    // For caching for the PROFILE_TYPE_IN_CHAT feature, saves the last MAX_SIZE names.
+    private final LinkedHashMap<String, String> namesWithType = new LinkedHashMap<String, String>(){
+        private final int MAX_SIZE = 80;
+
+        protected boolean removeEldestEntry(Map.Entry<String, String> eldest)
+        {
+            return size() > MAX_SIZE;
+        }
+    };
 
     /**
      * Reset all the timers and stuff when joining a new world.
@@ -203,10 +193,8 @@ public class PlayerListener {
         if (entity == Minecraft.getMinecraft().thePlayer) {
             lastWorldJoin = Minecraft.getSystemTime();
             lastBoss = -1;
-            magmaTick = 1;
             timerTick = 1;
             main.getInventoryUtils().resetPreviousInventory();
-            recentlyLoadedChunks.clear();
             countedEndermen.clear();
             EndstoneProtectorManager.reset();
 
@@ -219,20 +207,6 @@ public class PlayerListener {
             NPCUtils.getNpcLocations().clear();
             JerryPresent.getJerryPresents().clear();
             FishParticleManager.clearParticleCache();
-        }
-    }
-
-    /**
-     * Keep track of recently loaded chunks for the magma boss timer.
-     */
-    @SubscribeEvent()
-    public void onChunkLoad(ChunkEvent.Load e) {
-        if (main.getUtils().isOnSkyblock()) {
-            int x = e.getChunk().xPosition;
-            int z = e.getChunk().zPosition;
-            IntPair coords = new IntPair(x, z);
-            recentlyLoadedChunks.add(coords);
-            main.getScheduler().schedule(Scheduler.CommandType.DELETE_RECENT_CHUNK, 20, x, z);
         }
     }
 
@@ -403,8 +377,50 @@ public class PlayerListener {
                             !fetchur.hasFetchedToday() && unformattedText.contains(fetchur.getFetchurAlreadyDidTaskPhrase())) {
                         FetchurManager.getInstance().saveLastTimeFetched();
                     }
+                    // Tries to check if a message is from a player to add the player profile icon
+                } else if (main.getConfigValues().isEnabled(Feature.PLAYER_SYMBOLS_IN_CHAT) &&
+                        unformattedText.contains(":")) {
+                    // For some reason guild chat messages still contain color codes in the unformatted text
+                    String username = TextUtils.stripColor(unformattedText.split(":")[0]);
+                    // Remove chat channel prefix
+                    if(username.contains(">")){
+                        username = username.substring(username.indexOf('>')+1);
+                    }
+                    // Remove rank prefix and guild rank suffix if exists
+                    username = TextUtils.trimWhitespaceAndResets(username.replaceAll("\\[[^\\[\\]]*\\]",""));
+                    // Check if stripped username is a real username or the player
+                    if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
+                        EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
+                        // Put player in cache if found nearby
+                        if(chattingPlayer != null) {
+                            namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+                        }
+                        // Otherwise search in tablist
+                        else {
+                            Collection<NetworkPlayerInfo> networkPlayerInfos = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap();
+                            String finalUsername = username;
+                            Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
+                            // Put in cache if found
+                            if(result.isPresent()){
+                                namesWithType.put(username, result.get().getDisplayName().getFormattedText());
+                            }
+                        }
+                        // Check cache regardless if found nearby
+                        if(namesWithType.containsKey(username)){
+                            IChatComponent oldMessage = e.message;
+                            String newName = namesWithType.get(username);
+                            if(main.getConfigValues().isDisabled(Feature.SHOW_PROFILE_TYPE)){
+                                newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[♲Ⓑ](§[0-9a-fk-orz])*","");
+                            }
+                            if(main.getConfigValues().isDisabled(Feature.SHOW_NETHER_FACTION)){
+                                newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[⚒ቾ](§[0-9a-fk-orz])*","");
+                            }
+                            newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*\\[[^\\[\\]]*\\](§[0-9a-fk-orz])*", ""); // Soopyv2 compatibility
+                            e.message = new ChatComponentText(formattedText.replace(username, newName));
+                            e.message.setChatStyle(oldMessage.getChatStyle());
+                        }
+                    }
                 }
-
 
                 if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
                     if (NO_ARROWS_LEFT_PATTERN.matcher(formattedText).matches()) {
@@ -574,7 +590,7 @@ public class PlayerListener {
                 }
                 EntityPlayerSP p = mc.thePlayer;
                 if (p != null && main.getConfigValues().isEnabled(Feature.HEALTH_PREDICTION)) { //Reverse calculate the player's health by using the player's vanilla hearts. Also calculate the health change for the gui item.
-                    int newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
+                    float newHealth = getAttribute(Attribute.HEALTH) > getAttribute(Attribute.MAX_HEALTH) ?
                             getAttribute(Attribute.HEALTH) : Math.round(getAttribute(Attribute.MAX_HEALTH) * ((p.getHealth()) / p.getMaxHealth()));
                     setAttribute(Attribute.HEALTH, newHealth);
                 }
@@ -822,72 +838,6 @@ public class PlayerListener {
         return armorStand.hasCustomName() && armorStand.getCustomNameTag().contains("Zealot");
     }
 
-    /**
-     * The main timer for the magma boss checker.
-     */
-    @SubscribeEvent()
-    public void onClientTickMagma(TickEvent.ClientTickEvent e) {
-        if (e.phase == TickEvent.Phase.START) {
-            Minecraft mc = Minecraft.getMinecraft();
-            if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.MAGMA_WARNING) &&
-                    main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
-                if (mc != null && mc.theWorld != null) {
-                    if (magmaTick % 5 == 0) {
-                        boolean foundBoss = false;
-                        long currentTime = System.currentTimeMillis();
-
-                        for (Entity entity : mc.theWorld.loadedEntityList) { // Loop through all the entities.
-                            if (entity instanceof EntityMagmaCube) {
-                                EntitySlime magma = (EntitySlime) entity;
-                                if (magma.getSlimeSize() > 10 && main.getUtils().getLocation()==Location.BLAZING_FORTRESS) { // Find a big magma boss
-                                    foundBoss = true;
-                                    if ((lastBoss == -1 || System.currentTimeMillis() - lastBoss > 1800000)) {
-                                        lastBoss = System.currentTimeMillis();
-                                        main.getRenderListener().setTitleFeature(Feature.MAGMA_WARNING); // Enable warning and disable again in four seconds.
-                                        magmaTick = 16; // so the sound plays instantly
-                                        main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                                    }
-                                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED;
-                                    if (currentTime - lastBossSpawnPost > 300000) {
-                                        lastBossSpawnPost = currentTime;
-                                        main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_SPAWN);
-                                    }
-                                }
-                            }
-                        }
-
-                        if (!foundBoss && main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING) {
-                            main.getRenderListener().setTitleFeature(null);
-                        }
-
-                        if (!foundBoss && magmaAccuracy == EnumUtils.MagmaTimerAccuracy.SPAWNED) {
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.ABOUT;
-                            magmaTime = 7200;
-                            if (currentTime - lastBossDeathPost > 300000) {
-                                lastBossDeathPost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BOSS_DEATH);
-                            }
-                        }
-                    }
-
-                    if (main.getRenderListener().getTitleFeature() == Feature.MAGMA_WARNING && magmaTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                        main.getUtils().playLoudSound("random.orb", 0.5);
-                    }
-                }
-            }
-            magmaTick++;
-            if (magmaTick > 20) {
-                if ((magmaAccuracy == EnumUtils.MagmaTimerAccuracy.EXACTLY || magmaAccuracy == EnumUtils.MagmaTimerAccuracy.ABOUT)
-                        && magmaTime == 0) {
-                    magmaAccuracy = EnumUtils.MagmaTimerAccuracy.SPAWNED_PREDICTION;
-                    main.getScheduler().schedule(Scheduler.CommandType.RESET_MAGMA_PREDICTION, 20);
-                }
-                magmaTime--;
-                magmaTick = 1;
-            }
-        }
-    }
-
     @SubscribeEvent()
     public void onEntitySpawn(EntityEvent.EnteringChunk e) {
         Entity entity = e.entity;
@@ -905,26 +855,26 @@ public class PlayerListener {
             }
         }
         if (main.getUtils().isOnSkyblock()) {
-        Minecraft mc = Minecraft.getMinecraft();
-        for (Entity cubes : mc.theWorld.loadedEntityList) {
-            if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
-                if (cubes instanceof EntityMagmaCube) {
-                    EntitySlime magma = (EntitySlime) cubes;
-                    if (magma.getSlimeSize() > 10) { // Find a big bal boss
-                        if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
-                            lastBal = System.currentTimeMillis();
-                            main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
-                            balTick = 16; // so the sound plays instantly
-                            main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
-                        }
-                        if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
-                            main.getUtils().playLoudSound("random.orb", 0.5);
+            Minecraft mc = Minecraft.getMinecraft();
+            for (Entity cubes : mc.theWorld.loadedEntityList) {
+                if (main.getConfigValues().isEnabled(Feature.BAL_BOSS_ALERT) && main.getUtils().isOnSkyblock() && LocationUtils.isInCrystalHollows(main.getUtils().getLocation().getScoreboardName())) {
+                    if (cubes instanceof EntityMagmaCube) {
+                        EntitySlime magma = (EntitySlime) cubes;
+                        if (magma.getSlimeSize() > 10) { // Find a big bal boss
+                            if ((lastBal == -1 || System.currentTimeMillis() - lastBal > 240000)) {
+                                lastBal = System.currentTimeMillis();
+                                main.getRenderListener().setTitleFeature(Feature.BAL_BOSS_ALERT); // Enable warning and disable again in four seconds.
+                                balTick = 16; // so the sound plays instantly
+                                main.getScheduler().schedule(Scheduler.CommandType.RESET_TITLE_FEATURE, main.getConfigValues().getWarningSeconds());
+                            }
+                            if (main.getRenderListener().getTitleFeature() == Feature.BAL_BOSS_ALERT && balTick % 4 == 0) { // Play sound every 4 ticks or 1/5 second.
+                                main.getUtils().playLoudSound("random.orb", 0.5);
+                            }
                         }
                     }
                 }
             }
         }
-     }
 
         if (main.getUtils().isOnSkyblock() && main.getConfigValues().isEnabled(Feature.ZEALOT_COUNTER_EXPLOSIVE_BOW_SUPPORT) && entity instanceof EntityArrow) {
             EntityArrow arrow = (EntityArrow) entity;
@@ -977,39 +927,6 @@ public class PlayerListener {
                 }
             }
         }
-
-        if (main.getUtils().getLocation() == Location.BLAZING_FORTRESS) {
-            if (MAGMA_BOSS_SPAWN_AREA.isVecInside(new Vec3(entity.posX, entity.posY, entity.posZ))) { // timers will trigger if 15 magmas/8 blazes spawn in the box within a 4 second time period
-                long currentTime = System.currentTimeMillis();
-                if (e.entity instanceof EntityMagmaCube) {
-                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
-                        recentMagmaCubes++;
-                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_MAGMA_COUNT, 4);
-                        if (recentMagmaCubes >= 17) {
-                            magmaTime = 600;
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime - lastMagmaWavePost > 300000) {
-                                lastMagmaWavePost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.MAGMA_WAVE);
-                            }
-                        }
-                    }
-                } else if (e.entity instanceof EntityBlaze) {
-                    if (!recentlyLoadedChunks.contains(new IntPair(e.newChunkX, e.newChunkZ)) && entity.ticksExisted == 0) {
-                        recentBlazes++;
-                        main.getScheduler().schedule(Scheduler.CommandType.SUBTRACT_BLAZE_COUNT, 4);
-                        if (recentBlazes >= 10) {
-                            magmaTime = 1200;
-                            magmaAccuracy = EnumUtils.MagmaTimerAccuracy.EXACTLY;
-                            if (currentTime - lastBlazeWavePost > 300000) {
-                                lastBlazeWavePost = currentTime;
-                                main.getUtils().sendInventiveTalentPingRequest(EnumUtils.MagmaEvent.BLAZE_WAVE);
-                            }
-                        }
-                    }
-                }
-            }
-        }
     }
 
     @SubscribeEvent()
@@ -1046,7 +963,7 @@ public class PlayerListener {
                         anvilUses -= extraAttributes.getInteger("hot_potato_count");
                     }
                     if (anvilUses > 0) {
-                        e.toolTip.add(insertAt++, Message.MESSAGE_ANVIL_USES.getMessage(String.valueOf(anvilUses)));
+                        e.toolTip.add(insertAt++, Translations.getMessage(String.valueOf(anvilUses)));
                     }
                 }
 
@@ -1331,7 +1248,7 @@ public class PlayerListener {
     }
 
     public void updateLastSecondHealth() {
-        int health = getAttribute(Attribute.HEALTH);
+        float health = getAttribute(Attribute.HEALTH);
         // Update the health gained/lost over the last second
         if (main.getConfigValues().isEnabled(Feature.HEALTH_UPDATES) && actionBarParser.getLastSecondHealth() != health) {
             actionBarParser.setHealthUpdate(health - actionBarParser.getLastSecondHealth());
@@ -1344,19 +1261,19 @@ public class PlayerListener {
         return System.currentTimeMillis() - main.getGuiScreenListener().getLastContainerCloseMs() > 100;
     }
 
-    Integer getHealthUpdate() {
+    Float getHealthUpdate() {
         return actionBarParser.getHealthUpdate();
     }
 
-    private void changeMana(int change) {
+    private void changeMana(float change) {
         setAttribute(Attribute.MANA, getAttribute(Attribute.MANA) + change);
     }
 
-    private int getAttribute(Attribute attribute) {
+    private float getAttribute(Attribute attribute) {
         return main.getUtils().getAttributes().get(attribute).getValue();
     }
 
-    private void setAttribute(Attribute attribute, int value) {
+    private void setAttribute(Attribute attribute, float value) {
         main.getUtils().getAttributes().get(attribute).setValue(value);
     }
 

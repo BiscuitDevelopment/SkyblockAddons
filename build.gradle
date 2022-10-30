@@ -1,11 +1,14 @@
+import dev.architectury.pack200.java.Pack200Adapter
 import java.text.NumberFormat
 import java.text.ParseException
 
 plugins {
     id 'java'
-    id 'net.minecraftforge.gradle.forge' version 'FG_2.1-SNAPSHOT'
-    id "io.freefair.lombok" version "6.0.0-m2"
-    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'gg.essential.loom' version '0.10.0.4'
+    id 'dev.architectury.architectury-pack200' version '0.1.3'
+    id 'io.freefair.lombok' version "6.5.0.3"
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'net.kyori.blossom' version '1.2.0'
 }
 
 group = 'codes.biscuit'
@@ -16,62 +19,12 @@ ext {
     modId = project.name.toLowerCase(Locale.US)
 }
 
-// The below line is for version checkers <= 1.4.2
-//version = "1.6.1"
-
-// Java plugin settings
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_8
-    targetCompatibility = JavaVersion.VERSION_1_8
+    toolchain.languageVersion.set(JavaLanguageVersion.of(8))
 }
 
-tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
-    options.encoding = 'UTF-8'
-}
-
-repositories {
-    mavenCentral()
-    maven {
-        name 'JitPack'
-        url 'https://jitpack.io'
-    }
-}
-
-dependencies {
-    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
-    implementation('com.github.jagrosh:DiscordIPC:e29d6d8') {
-        exclude module: 'log4j'
-        because 'Different version conflicts with Minecraft\'s Log4J'
-    }
-    implementation('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
-        exclude module: 'gson'
-        because 'Different version conflicts with Minecraft\'s GSON'
-    }
-    testImplementation(platform('org.junit:junit-bom:5.8.1'))
-    testImplementation('org.junit.jupiter:junit-jupiter:5.8.2')
-}
-
-sourceSets {
-    main {
-        // Forge needs resources to be in the same directory as the classes.
-        output.resourcesDir = java.outputDir
-    }
-}
-
-minecraft {
-    version = "${project.minecraftVersion}-${project.forgeVersion}"
-    runDir = "run"
-
-    mappings = "${project.mappings}"
-
-    /*
-    I know this is ugly but the replace function runs super early so I can't put this stuff in a task since it'll always
-    end up running after the replace.
-     */
-
-    // The MAJOR.MINOR.PATCH part of the mod version
-    def modVersionPart = project.version
+blossom {
+    def modVersion = project.version
 
     if (project.hasProperty('runningOnCi')) {
         if (!project.hasProperty('buildNumber')) {
@@ -96,11 +49,69 @@ minecraft {
         }
     }
 
-    // Replace placeholders in source code
-    replace("@VERSION@": modVersionPart,
-            "@BUILD_NUMBER@": formattedBuildNumber,
-            "@MOD_ACCEPTED@": project.acceptedMinecraftVersions)
-    replaceIn("${project.name}.java")
+    replaceTokenIn('src/main/java/codes/biscuit/skyblockaddons/SkyblockAddons.java')
+    replaceToken('@VERSION@', modVersion)
+    replaceToken('@MOD_ACCEPTED@', project.minecraftVersion)
+    replaceToken('@BUILD_NUMBER@', project.buildNumber)
+}
+
+loom {
+    launchConfigs {
+        "client" {
+            property('fml.coreMods.load', 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin')
+            property('devauth.enabled', 'true')
+        }
+    }
+    log4jConfigs.from(file('log-config.xml'))
+    forge {
+        pack200Provider.set(new Pack200Adapter())
+        accessTransformer('src/main/resources/META-INF/skyblockaddons_at.cfg')
+    }
+}
+
+sourceSets {
+    main {
+        // Forge needs resources to be in the same directory as the classes.
+        output.resourcesDir = java.classesDirectory
+    }
+}
+
+configurations.create('bundle')
+configurations.implementation.extendsFrom(configurations.getByName('bundle'))
+
+repositories {
+    mavenCentral()
+    maven {
+        name 'JitPack'
+        url 'https://jitpack.io'
+    }
+    maven {
+        name 'DevAuth'
+        url 'https://pkgs.dev.azure.com/djtheredstoner/DevAuth/_packaging/public/maven/v1'
+    }
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${project.minecraftVersion}")
+    mappings("de.oceanlabs.mcp:mcp_stable:${project.mappings}")
+    forge("net.minecraftforge:forge:${project.forgeVersion}")
+    runtimeOnly('me.djtheredstoner:DevAuth-forge-legacy:1.1.0')
+
+    // Discord RPC for Java https://github.com/jagrosh/DiscordIPC
+    bundle('com.github.ILikePlayingGames:DiscordIPC:-SNAPSHOT') {
+        exclude module: 'log4j'
+        because 'Different version conflicts with Minecraft\'s Log4J'
+    }
+    bundle('com.github.BiscuitDevelopment:HypixelLocalizationLib:7122472085') {
+        exclude module: 'gson'
+        because 'Different version conflicts with Minecraft\'s GSON'
+    }
+    testImplementation('org.junit.jupiter:junit-jupiter:5.9.0')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    options.encoding = 'UTF-8'
 }
 
 tasks.register('copyLicenses', Copy) {
@@ -113,11 +124,6 @@ tasks.register('copyLicenses', Copy) {
 }
 
 jar {
-    dependsOn copyLicenses
-
-    // Set the archive name here instead of in shadowJar because ForgeGradle needs it when re-obfuscating the jar.
-    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
-
     manifest.attributes(
             'Manifest-Version': '2.0',
             'Main-Class': 'SkyblockAddonsInstallerFrame',
@@ -133,50 +139,37 @@ jar {
             'ModSide': 'CLIENT',
             'FMLAT': "${modId}_at.cfg"
     )
-
-    // Disable the default jar task and use shadowJar instead to shade the libraries into the jar.
-    enabled = false
 }
 
-reobfJar {
-    dependsOn shadowJar
+remapJar {
+    from(tasks.shadowJar)
+    input.set(tasks.shadowJar.archiveFile)
+
+    archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
+}
+
+processResources {
+    dependsOn tasks.copyLicenses
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraftVersion
+
+    // replace stuff in mcmod.info, nothing else
+    from('mcmod.info') {
+        // replace version and mcversion
+        expand(version: project.version, mcversion: project.minecraftVersion)
+    }
 }
 
 shadowJar {
-    archiveFileName = jar.archiveFileName
-
+    configurations = [project.configurations.bundle]
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     exclude('dummyThing')
-    exclude('META-INF/maven/')
-    exclude('META-INF/nar/')
     exclude('module-info.class')
     exclude('META-INF/versions/')
 
     // Relocate Discord RPC into the main codebase
-    relocate 'com.jagrosh.discordipc', 'codes.biscuit.skyblockaddons.shadow.jagrosh.discordipc'
-}
-
-sourceJar {
-    enabled = false
-}
-
-processResources {
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-
-        // replace version and mcversion
-        expand(version: project.version, mcversion: project.minecraft.version)
-    }
-
-    // copy everything else that's not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
+    relocate 'com.jagrosh.discordipc', 'shadow.discordipc'
 }
 
 test {
@@ -184,8 +177,4 @@ test {
     testLogging {
         events "passed", "skipped", "failed"
     }
-}
-
-tasks.named('wrapper') {
-    distributionType = Wrapper.DistributionType.ALL
 }

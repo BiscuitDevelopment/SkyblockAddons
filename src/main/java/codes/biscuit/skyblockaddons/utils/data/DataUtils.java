@@ -90,6 +90,12 @@ public class DataUtils {
 
     @Getter
     private static final HashMap<RemoteFileRequest<?>, Throwable> failedRequests = new HashMap<>();
+    
+    /** 
+     * Main CDN doesn't work for some users.
+     * Use fallback CDN if a request fails twice or user is in China or Hong Kong.
+     */
+    static boolean useFallbackCDN;
 
     // Whether the failed requests error was shown in chat, used to make it show only once per session
     private static boolean failureMessageShown = false;
@@ -109,6 +115,10 @@ public class DataUtils {
     private static ScheduledTask languageLoadingTask = null;
 
     static {
+        String country = Locale.getDefault().getCountry();
+        if (country.equals("CN") || country.equals("HK")) {
+            useFallbackCDN = true;
+        }
         connectionManager.setMaxTotal(5);
         connectionManager.setDefaultMaxPerRoute(5);
         registerRemoteRequests();
@@ -228,6 +238,10 @@ public class DataUtils {
         for (RemoteFileRequest<?> request : remoteRequests) {
             request.execute(futureRequestExecutionService);
         }
+        
+        if (useFallbackCDN) {
+            logger.warn("Could not reach main CDN. Some resources were fetched from fallback CDN.");
+        }
     }
 
     /**
@@ -244,7 +258,7 @@ public class DataUtils {
             if (!request.isDone()) {
                 handleOnlineFileLoadException(request,
                         new RuntimeException(String.format("Request for \"%s\" didn't finish in time for mod init.",
-                                getFileNameFromUrlString(request.getUrl()))));
+                                getFileNameFromUrlString(request.getURL()))));
             }
 
             try {
@@ -354,7 +368,7 @@ public class DataUtils {
             StringBuilder errorMessageBuilder = new StringBuilder("Failed Requests:\n");
 
             for (Map.Entry<RemoteFileRequest<?>, Throwable> failedRequest : failedRequests.entrySet()) {
-                errorMessageBuilder.append(failedRequest.getKey().getUrl()).append("\n");
+                errorMessageBuilder.append(failedRequest.getKey().getURL()).append("\n");
                 errorMessageBuilder.append(failedRequest.getValue().toString()).append("\n");
             }
 
@@ -435,7 +449,7 @@ public class DataUtils {
      * @param exception the exception that occurred
      */
     private static void handleOnlineFileLoadException(RemoteFileRequest<?> request, Throwable exception) {
-        String url = request.getUrl();
+        String url = request.getURL();
         String fileName = getFileNameFromUrlString(url);
         failedRequests.put(request, exception);
 

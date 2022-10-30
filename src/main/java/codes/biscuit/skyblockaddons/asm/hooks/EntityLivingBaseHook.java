@@ -19,28 +19,7 @@ import java.util.Set;
 public class EntityLivingBaseHook {
 
     public static void onResetHurtTime(EntityLivingBase entity) {
-        if (entity == Minecraft.getMinecraft().thePlayer) {
-            SkyblockAddons main = SkyblockAddons.getInstance();
-            if (!main.getUtils().isOnSkyblock() || !main.getConfigValues().isEnabled(Feature.COMBAT_TIMER_DISPLAY)) {
-                return;
-            }
 
-            Minecraft mc = Minecraft.getMinecraft();
-            List<Entity> nearEntities = mc.theWorld.getEntitiesWithinAABB(Entity.class,
-                    new AxisAlignedBB(mc.thePlayer.posX - 3, mc.thePlayer.posY - 2, mc.thePlayer.posZ - 3, mc.thePlayer.posX + 3, mc.thePlayer.posY + 2, mc.thePlayer.posZ + 3));
-            boolean foundPossibleAttacker = false;
-
-            for (Entity nearEntity : nearEntities) {
-                if (nearEntity instanceof EntityMob || nearEntity instanceof EntityWolf || nearEntity instanceof IProjectile) {
-                    foundPossibleAttacker = true;
-                    break;
-                }
-            }
-
-            if (foundPossibleAttacker) {
-                SkyblockAddons.getInstance().getUtils().setLastDamaged(System.currentTimeMillis());
-            }
-        }
     }
 
     private static Set<Long> nightVisionEffectsToRemove = new HashSet<>();

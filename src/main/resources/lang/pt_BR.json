@@ -4,476 +4,643 @@
   "settings": {
     "settings": "Configurações",
     "magmaBossWarning": "Alerta do Magma Boss",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "Alerta do Bal Boss",
+    "broodMotherWarning": "Alerta da Brood Mother",
     "itemDropConfirmation": "Confirmação para largar item",
     "hideSkeletonHatBones": "Ocultar os ossos do Skeleton Helmet",
-    "skeletonHatBonesBar": "Barra de Ossos para Capacete Esqueleto",
-    "hideFoodAndArmor": "Esconder Barra de Fome e Armadura",
+    "skeletonHatBonesBar": "Barra de ossos do Skeleton Helmet",
+    "hideFoodAndArmor": "Ocultar barra de fome e armadura",
     "fullInventoryWarning": "Alerta de inventário cheio",
-    "repeating": "Alerta de Repetição",
-    "disableEmberRodAbility": "Desativar Bastão de Brasa em Sua Ilha",
-    "editLocations": "Editar Posições da Interface",
-    "guiScale": "Interface: %scale%",
-    "resetLocations": "Restaurar Posições",
-    "minionStopWarning": "Alerta de \"Minion não alcança\"",
-    "hidePlayersNearNPCs": "Ocultar jogadores próximos a NPCs importantes",
-    "backpackStyle": "Estilo de Mochila: %style%",
+    "repeating": "Repetir alerta",
+    "disableEmberRodAbility": "Desativar Ember Rod na sua ilha",
+    "editLocations": "Editar posições",
+    "guiScale": "Escala da interface: %scale%",
+    "resetLocations": "Redefinir posições",
+    "minionStopWarning": "Alerta de \"Minion Cannot Reach\"",
+    "hidePlayersNearNPCs": "Ocultar jogadores próximos de NPCs importantes",
+    "backpackStyle": "Estilo de backpack: %style%",
     "backpackStyles": {
       "regular": "Normal",
       "compact": "Compacto"
     },
-    "showBackpackPreview": "Mostrar Conteúdo de Mochilas",
+    "showBackpackPreview": "Mostrar pré-visualização da backpack",
     "hideHealthBar": "Ocultar a barra de vida padrão",
     "fullMinionWarning": "Alerta de minion cheio",
-    "showOnlyWhenHoldingShift": "Mostrar Apenas com Shift Pressionado",
-    "manaBar": "Barra de Mana",
-    "manaNumber": "Número de Mana",
-    "healthBar": "Barra de Vida",
-    "healthNumber": "Número de Vida",
-    "defenseIcon": "Ícone de Defesa",
-    "defenseNumber": "Número de Defesa",
-    "defensePercentage": "Porcentagem de Defesa",
-    "healthUpdates": "Número de Mudanças de Vida",
-    "hidePlayersInLobby": "Ocultar entidades longe no Lobby",
-    "darkAuctionTimer": "Timer da Dark Auction",
-    "magmaBossTimer": "Tempo do Boss Magma",
-    "itemPickupLog": "Registro de Itens Pegos",
-    "avoidPlacingEnchantedItems": "Evitar de Colocar Itens Encantados",
-    "stopBowChargeFromResetting": "Impedir Arco e Flecha de Resetar",
-    "preventMovementOnDeath": "Impedir Movimento Após Morte",
-    "showItemAnvilUses": "Mostrar Usos de Bigorna no Item",
+    "showOnlyWhenHoldingShift": "Mostrar apenas quando shift for pressionado",
+    "manaBar": "Barra de mana",
+    "manaNumber": "Número de mana",
+    "healthBar": "Barra de vida",
+    "healthNumber": "Número de vida",
+    "defenseIcon": "Símbolo de defesa",
+    "defenseNumber": "Número de defesa",
+    "defensePercentage": "Porcentagem de defesa",
+    "healthUpdates": "Número de mudanças de vida",
+    "hidePlayersInLobby": "Ocultar entidades distantes no Lobby",
+    "darkAuctionTimer": "Temporizador da Dark Auction",
+    "magmaBossTimer": "Temporizador do Magma Boss",
+    "itemPickupLog": "Registro de itens pegos",
+    "avoidPlacingEnchantedItems": "Evitar colocar itens encantados",
+    "stopBowChargeFromResetting": "Impedir que o arco reinicie",
+    "preventMovementOnDeath": "Impedir movimento após morte",
+    "showItemAnvilUses": "Mostrar usos da bigorna no item",
     "lockSlots": "Permitir o bloqueio de espaços",
     "lockSlot": "Bloquear espaço",
     "dontResetCursorInventory": "Não reajustar cursor entre inventários",
     "summoningEyeAlert": "Alerta de Summoning Eyes",
     "makeEnderchestsInEndGreen": "Mudar a cor do baú de ender no End",
-    "changeColor": "Mudar Cor",
+    "changeColor": "Mudar cor",
     "showInOtherGames": "Mostrar em outros jogos",
-    "useVanillaTexture": "Usar Textura Padrão",
-    "textStyle": "Estilo do Texto",
+    "useVanillaTexture": "Usar textura padrão",
+    "textStyle": "Estilo do texto",
     "textStyles": {
-      "one": "Simples",
-      "two": "Contornado"
+      "one": "Estilo 1",
+      "two": "Estilo 2"
     },
     "warningDuration": "Duração do alerta",
-    "dontOpenProfileWithBow": "Não abrir perfil com Arco na mão",
-    "stopDroppingSellingRareItems": "Não Largar/Vender Itens Raros",
-    "makeBackpackInventoriesColored": "Inventários Coloridos",
-    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos Itens",
-    "changeBarColorForPotions": "Mudar cor da barra para Wither e Veneno",
-    "craftingPatterns": "Escolha os padrões de criação",
-    "soundIndicatorForFishing": "Indicador de som para pesca",
-    "avoidBlinkingNightVision": "Evite a poção de Visão Noturna piscar",
-    "disableMinionLocationWarning": "Desativar os alertas de \"Location not perfect\"",
+    "dontOpenProfileWithBow": "Não abrir perfil com arco na mão",
+    "stopDroppingSellingRareItems": "Não largar/vender itens raros",
+    "makeBackpackInventoriesColored": "Inventários coloridos",
+    "replaceRomanNumeralsWithNumbers": "Substituir números romanos nos itens",
+    "changeBarColorForPotions": "Mudar cor da barra para Wither ou Veneno",
+    "craftingPatterns": "Escolher os padrões de criação",
+    "soundIndicatorForFishing": "Som de alerta para pesca",
+    "avoidBlinkingNightVision": "Impedir que a poção de visão noturna pisque",
+    "disableMinionLocationWarning": "Desativar alertas de \"Location not perfect\"",
     "showItemCooldowns": "Mostrar tempo de recarga dos itens",
     "speedPercentage": "Porcentagem de velocidade",
-    "collectionDisplay": "Exibição do progresso da habilidade",
-    "revenantIndicator": "Indicador de Progresso da Armadura de Slayer",
-    "specialZealotAlert": "Alerta Zealot especial",
-    "enableMessageWhenActionPrevented": "Mostrar uma Mensagem Quando uma Ação for Impedida",
-    "hidePetHealthBar": "Ocultar barra de vida da Mascote",
+    "collectionDisplay": "Progresso das skills",
+    "revenantIndicator": "Indicador de progresso da armadura de slayer",
+    "specialZealotAlert": "Alerta de zealots especiais",
+    "enableMessageWhenActionPrevented": "Mostrar uma mensagem quando uma ação for impedida",
+    "hidePetHealthBar": "Ocultar barra de vida das mascotes",
     "powerOrbDisplay": "Exibição de Power Orbs",
-    "powerOrbDisplayStyle": "Poder da Esfera Estilo: %style%",
+    "powerOrbDisplayStyle": "Estilo da Power Orb: %style%",
     "powerOrbStyle": {
       "detailed": "Detalhado",
       "compact": "Compacto"
     },
-    "disableMagicalSoupMessage": "Desativar mensagens da Sopa de Cogumelo Mágica",
-    "zealotCounter": "Contador de Zealots - Contagem desde o último olho",
+    "disableMagicalSoupMessage": "Desativar mensagens da Magical Mushroom Soup",
+    "zealotCounter": "Contador de zealots - Conta desde o último eye",
     "tickerChargesDisplay": "Exibição de Tickers/Cargas",
     "tab": {
-      "generalSettings": "Configurações Gerais"
+      "generalSettings": "Configurações gerais"
     },
-    "tabEffectTimers": "Timer de Poções e Reforços",
+    "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
     "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
-    "showCakeBagPreview": "Mostrar a Pré-visualização de Mochilas de Bolo",
-    "showBackpackPreviewInAH": "Mostrar a Pré-visualização de Mochilas Enquanto a Casa de Leilão está aberta",
-    "enableDevFeatures": "Habilitar Funções de Desenvolvedor",
-    "chromaSpeed": "Velocidade do Chroma",
-    "chromaMode": "Modo de Cor do Chroma",
+    "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
+    "showBackpackPreviewInAH": "Mostrar pré-visualização da backpack enquanto a AH está aberta",
+    "enableDevFeatures": "Ativar funções de desenvolvedor",
+    "chromaSpeed": "Velocidade do croma",
+    "chromaMode": "Modo da cor do croma",
     "chromaModes": {
-      "allTheSame": "Todos da Mesma Cor",
+      "allTheSame": "Tudo da mesma cor",
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura de Desvanecimento do Chroma",
-    "sortTabEffectTimers": "Ordenar Timers por Duração",
-    "showBrokenFragments": "Mostrar Fragmentos de Dragão \"Quebrados\"",
-    "skyblockAddonsButtonInPauseMenu": "Mostrar o Botão SBA no Menu de Pausa",
-    "showTotalZealotCount": "Contador de Zealot - Contador Total de Zealot",
-    "showSummoningEyeCount": "Contador de Zealot - Contador Total de Olhos",
-    "showZealotsPerEye": "Contador Zealot - Mostrar Zealots Por Olho",
-    "turnBowGreenWhenUsingToxicArrowPoison": "Cor Verde no Arco Quando Usar Flechas de Veneno",
-    "birchParkRainmakerTimer": "Timer de Chuva no Parque de Bétula",
-    "combatTimerDisplay": "Exibir Timer de Combate",
+    "sortTabEffectTimers": "Ordenar temporizadores por duração",
+    "showBrokenFragments": "Mostrar Dragon Fragments com erros",
+    "skyblockAddonsButtonInPauseMenu": "Mostrar o botão SBA no menu de pausa",
+    "showTotalZealotCount": "Contador de zealots - Número total de zealots",
+    "showSummoningEyeCount": "Contador de zealots - Contador total de eyes",
+    "showZealotsPerEye": "Contador de zealots - Mostrar zealots por eye",
+    "turnBowGreenWhenUsingToxicArrowPoison": "Pintar o arco de verde ao usar Toxic Arrow Poison",
+    "birchParkRainmakerTimer": "Duração da chuva no Birch Park",
+    "combatTimerDisplay": "Mostrar temporizador de combate",
     "discordRP": "Discord Rich Presence",
-    "endstoneProtectorDisplay": "Mostrar Estágio do Protetor de Endstone",
-    "fancyWarpMenu": "Menu de Warp Bonito",
-    "stopRatSounds": "Parar Sons do Rat Pet",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
-    "doubleWarp": "Warp Duplo",
-    "advancedMode": "Modo Avançado",
-    "legendarySeaCreatureWarning": "Alerta de Sea Creature lendária",
-    "bossApproachAlert": "Alerta de Aproximação do Slayer Boss",
-    "disableTeleportPadMessages": "Desativar Mensagens do Teletransportador",
-    "baitListDisplay": "Mostrar Lista de Iscas ao Segurar uma Vara de Pesca",
-    "freezeBackpackPreview": "Congelar Pré-visualização de Mochilas",
+    "endstoneProtectorDisplay": "Exibição do Endstone Protector",
+    "fancyWarpMenu": "Menu de transporte chique",
+    "stopRatSounds": "Parar sons do rat pet",
+    "onlyStopRatSqueak": "Somente parar o guincho do rat pet",
+    "doubleWarp": "Viajar duas vezes",
+    "advancedMode": "Modo avançado",
+    "legendarySeaCreatureWarning": "Alerta de sea creature lendária",
+    "bossApproachAlert": "Alerta de aproximação do boss",
+    "disableTeleportPadMessages": "Desativar mensagens dos Teleport Pads",
+    "baitListDisplay": "Mostrar lista de baits ao segurar uma vara de pesca",
+    "freezeBackpackPreview": "Congelar pré-visualização da backpack",
     "hideGreyEnchants": "Ocultar encantamentos cinza normais",
-    "zealotCounterExplosiveBow": "Suporte do Arco Explosivo para Contador de Zealot",
-    "disableEndermanTeleportation": "Desativar Teleporte de Enderman",
-    "changeZealotColor": "Alterar Cor do Contador de Zealot",
-    "hideSvenPupNametags": "Ocultar Nametags de Filhotes de Sven",
-    "turnAllFeaturesChroma": "Mudar todas as Opções Chroma",
-    "dungeonMapDisplay": "Exibição do mapa de Dungeon",
-    "rotateMap": "Girar o Mapa Conforme a Rotação de Seu Jogador",
+    "zealotCounterExplosiveBow": "Suporte para o contador de zealots com o Explosive Bow",
+    "disableEndermanTeleportation": "Desativar teleporte dos Enderman",
+    "changeZealotColor": "Mudar cor dos zealots",
+    "hideSvenPupNametags": "Ocultar nome dos Sven Pups",
+    "turnAllFeaturesChroma": "Mudar todas as funções para croma",
+    "dungeonMapDisplay": "Exibição do mapa da Dungeon",
+    "rotateMap": "Girar mapa conforme a rotação do jogador",
     "centerRotationOnYourPlayer": "Girar ao redor do marcador do jogador",
-    "showFetchurOnlyInDwarven": "Somente exibir o item do Fetchur nas Minas dos Anões",
+    "showFetchurOnlyInDwarven": "Somente exibir o item do Fetchur nas Dwarven Mines",
     "showFetchurItemName": "Exibir o nome do item do Fetchur",
-    "showFetchurInventoryOpenOnly": "Somente Exibir o Item do Fetchur quando o inventário estiver aberto",
-    "warnWhenFetchurChanges": "Alertar-me quando Fetchur mudar",
-    "mapZoom": "Zoom do Mapa",
-    "glowingDroppedItems": "Itens Derrubados Brilhantes",
-    "outlineDungeonTeammates": "Contornar Aliados de Dungeon",
-    "baseStatBoostPercentage": "Mostrar Bônus de Status Base para Itens de Dungeon",
-    "colorByRarity": "Cor por Raridade",
-    "showPlayerHeadsOnMap": "Mostrar Cabeças de Jogadores nas Dungeons",
-    "showHealingCircleWall": "Mostrar Círculo de Cura nas Dungeons",
-    "showCriticalTeammates": "Mostrar Companheiros de Time em Perigo na Dungeon",
-    "showGlowingItemsOnIsland": "Mostrar Itens Brilhantes na Ilha",
-    "showItemDungeonFloor": "Mostrar o Andar em que o Item da Dungeon foi Obtido",
-    "showDungeonMilestone": "Mostrar Marco da Dungeon",
-    "dungeonsCollectedEssencesDisplay": "Exibição de Essências Coletadas das Dungeons",
-    "stopBonzoStaffSounds": "Parar sons do cajado de Bonzo",
-    "showRarityUpgraded": "Exibir se a raridade de um item foi melhorada",
-    "revenantSlayerTracker": "Rastreador de Slayer - Revenant/Zombie",
-    "tarantulaSlayerTracker": "Rastreador de Slayer - Tarantula/Aranha",
-    "svenSlayerTracker": "Rastreador de Slayer - Sven/Lobo",
-    "voidgloomSlayerTracker": "Rastreador de Slayer - Voidgloom/Enderman",
-    "textMode": "Modo do Texto",
-    "dragonsNestOnly": "Apenas Mostrar no Ninho do Dragão",
-    "dragonStatsTracker": "Rastreador de Dragão",
-    "skillActionsLeftUntilNextLevel": "Mostrar Ações Restantes até o Próximo Nível",
-    "dungeonDeathCounter": "Contador de Mortes nas Masmorras",
-    "showPersonalCompactorPreview": "Mostrar Pré-visualização do Compactador Pessoal",
-    "rockPetTracker": "Rastreador de Rock Pet",
-    "dolphinPetTracker": "Rastreador de Dolphin Pet",
-    "dungeonsTeammateNameOverlay": "Sobreposição do Nome dos Companheiros de Dungeon",
-    "dungeonsSecretsDisplay": "Exibir Segredos das Masmorras",
-    "showSkillPercentageInstead": "Mostrar Porcentagem ao invés de XP",
-    "showSkillXPGained": "Mostrar XP de Habilidade Ganho",
-    "skillProgressBar": "Barra de Progresso de Habilidade",
-    "showSalvageEssencesCounter": "Mostrar contador de resgate de essências",
+    "showFetchurInventoryOpenOnly": "Apenas mostrar o item do Fetchur quando o inventário estiver aberto",
+    "warnWhenFetchurChanges": "Alertar-me quando o item do Fetchur mudar",
+    "mapZoom": "Zoom do mapa",
+    "glowingDroppedItems": "Brilho nos itens largados",
+    "outlineDungeonTeammates": "Contornar aliados de Dungeon",
+    "baseStatBoostPercentage": "Mostrar bônus de status base para itens da Dungeon",
+    "colorByRarity": "Cor por raridade",
+    "showPlayerHeadsOnMap": "Mostrar cabeças dos jogadores no mapa da Dungeon",
+    "showHealingCircleWall": "Mostrar as paredes do Healing Circle",
+    "showCriticalTeammates": "Mostrar aliados de Dungeon em perigo",
+    "showGlowingItemsOnIsland": "Mostrar itens brilhantes na ilha",
+    "showItemDungeonFloor": "Mostrar o andar em que o item da Dungeon foi obtido",
+    "showDungeonMilestone": "Mostrar a milestone da Dungeon",
+    "dungeonsCollectedEssencesDisplay": "Mostrar a essência coletada na Dungeon",
+    "stopBonzoStaffSounds": "Parar sons do Bonzo's Staff",
+    "showRarityUpgraded": "Mostrar se a raridade de um item foi melhorada",
+    "revenantSlayerTracker": "Rastreador de slayer - Revenant/Zombie",
+    "tarantulaSlayerTracker": "Rastreador de slayer - Tarantula/Spider",
+    "svenSlayerTracker": "Rastreador de slayer - Sven/Wolf",
+    "voidgloomSlayerTracker": "Rastreador de slayer - Voidgloom/Enderman",
+    "textMode": "Modo de texto",
+    "dragonsNestOnly": "Apenas mostrar no Dragon's Nest",
+    "dragonStatsTracker": "Rastreador de dragões",
+    "skillActionsLeftUntilNextLevel": "Mostrar ações necessárias para o próximo nível",
+    "dungeonDeathCounter": "Contador de mortes nas Dungeons",
+    "showPersonalCompactorPreview": "Mostrar pré-visualização do Personal Compactor",
+    "rockPetTracker": "Progresso do Rock pet",
+    "dolphinPetTracker": "Progresso do Dolphin pet",
+    "dungeonsTeammateNameOverlay": "Mostrar os nomes dos aliados da Dungeon",
+    "dungeonsSecretsDisplay": "Mostrar segredos da Dungeon",
+    "showSkillPercentageInstead": "Mostrar porcentagem ao invés de EXP",
+    "showSkillXPGained": "Mostrar EXP obtido",
+    "skillProgressBar": "Barra de progresso da skill",
+    "showSalvageEssencesCounter": "Mostrar a quantidade de essences recuperadas",
     "disableMortMessages": "Desativar mensagens do Mort",
-    "disableBossMessages": "Desabilitar Mensagens do Boss",
-    "hideOtherPlayersPresents": "Esconder presentes de outros jogadores",
+    "disableBossMessages": "Desativar as mensagens dos bosses",
+    "hideOtherPlayersPresents": "Ocultar os presentes de outros jogadores",
     "showSwordKills": "Mostrar abates da espada",
-    "compactTabList": "Tab Compacto",
-    "highlightSpecialEnchantments": "Destaque Encantamentos Especiais",
-    "disableDamageChatMessages": "Disable Damage Chat Messages",
-    "showSpiritSceptreDisplay": "Spirit Sceptre/Wither Blade Damage Display",
-    "outbidAlertSound": "Outbid Alert Sound",
+    "compactTabList": "Lista de jogadores compacta",
+    "highlightSpecialEnchantments": "Destacar encantamentos especiais",
+    "disableDamageChatMessages": "Desativar mensagens de dano no chat",
+    "showSpiritSceptreDisplay": "Exibição de dano do Spirit Sceptre/Wither Blade",
+    "outbidAlertSound": "Som de alerta de lance maior",
     "hideMenuGlassPanes": "Ocultar o nome dos painéis de vidro no menu",
-    "candyPointsCounter": "Spooky Event Contador de Doces/Pontos",
-    "healingCircleOpacity": "Opacidade do círculo de cura",
-    "chromaSize": "Tamanho do Chroma",
-    "chromaSaturation": "Saturação do Chroma",
-    "chromaBrightness": "Brilho do Chroma",
-    "useNewChromaEffect": "Usar Novo Efeito Chroma",
-    "showExperimentationTableTooltips": "Mostrar dicas da tabela de experimentos",
+    "candyPointsCounter": "Contador de doces/pontos do Spooky Event",
+    "healingCircleOpacity": "Opacidade do Healing Circle",
+    "chromaSize": "Tamanho do croma",
+    "chromaSaturation": "Saturação do croma",
+    "chromaBrightness": "Brilho do croma",
+    "useNewChromaEffect": "Usar novo efeito croma",
+    "showExperimentationTableTooltips": "Mostrar descrições dos itens na Experimentation Table",
     "drillFuelBar": "Barra de combustível da Drill",
     "drillFuelNumber": "Número do combustível da Drill",
-    "fetchurToday": "Exibir o que Fetchur quer hoje",
-    "fishingParticleOverlay": "Sobreposição de partículas de pesca",
-    "enchantmentLoreParsing": "Analisar Dicas de Encantamentos",
+    "fetchurToday": "Mostrar o que o Fetchur quer hoje",
+    "fishingParticleOverlay": "Personalizar partículas de pesca",
+    "enchantmentLoreParsing": "Personalizar listas de encantamentos",
     "cooldownPrediction": "Prever e diminuir o tempo de recarga",
-    "legendaryMonkeyLevel100": "[TEMP] Monkey Lendário Nível 100",
-    "biggerWake": "Ampliar partículas de sobreposição",
-    "stackingEnchantProgress": "Mostrar o Progresso dos Encantamentos Agrupados",
-    "showReforgeOverlay": "Mostrar Sobreposição de Reforge",
-    "reforgeFilter": "Filtro de Reforge",
-    "hideEnchantDescription": "Ocultar Descrição do Encantamento",
+    "legendaryMonkeyLevel100": "[TEMP] Monkey lendário nível 100",
+    "biggerWake": "Aumentar partículas customizadas",
+    "stackingEnchantProgress": "Mostrar o progresso dos encantamentos progressivos",
+    "showReforgeOverlay": "Mostrar sobreposição de reforges",
+    "reforgeFilter": "Filtro de reforges",
+    "hideEnchantDescription": "Ocultar a descrição do encantamento",
     "trevorTheTrapper": {
       "title": "Funções do Trevor the Trapper",
-      "trackedEntityProximityIndicator": "Mostrar Indicador de Proximidade da Entidade Rastreada",
-      "highlightTrackedEntity": "Destacar Entidade Rastreada",
-      "showQuestCooldown": "Mostrar Tempo de Recarga das Missões do Trevor",
-      "showQuestCooldownDescription": "Isso será exibido acima da cabeça de Trevor"
+      "trackedEntityProximityIndicator": "Mostrar indicador de proximidade da entidade rastreada",
+      "highlightTrackedEntity": "Destacar entidade rastreada",
+      "showQuestCooldown": "Mostrar tempo de recarga da missão do Trevor",
+      "showQuestCooldownDescription": "Isto será exibido acima da cabeça do Trevor"
     },
-    "showEnderChestPreview": "Show Ender Chest Preview",
+    "showEnderChestPreview": "Mostrar pré-visualização de baús de ender",
     "hideWhenNotDoingQuest": "Ocultar quando não estiver fazendo missões",
-    "showOverflowManaNumber": "Número de Mana Overflow",
-    "axeCooldownIndicator": "Indicador de Recarga do Machado",
-    "vanillaHealthPrediction": "Usar Previsão de Vida Padrão",
-    "entityOutlines": "Mostrar Contornos de Entidade",
-    "effectiveHealthNumber": "Número de Vida Efetiva",
-    "guiScaleX": "Escala da Interface X: %scale%",
-    "guiScaleY": "Escala da Interface Y: %scale%",
-    "abbreviateSkillXpDenominator": "Abreviar Denominador de XP de Habilidade",
-    "otherDefenseStats": "Outras Estatísticas de Defesa (Conexão de Alma/Alinhamento de Célula)",
-    "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
-    "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
-    "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "showOverflowManaNumber": "Número de overflow mana",
+    "axeCooldownIndicator": "Indicador de tempo de recarga do machado",
+    "vanillaHealthPrediction": "Usar previsão de vida padrão",
+    "entityOutlines": "Mostrar contornos das entidades",
+    "effectiveHealthNumber": "Número de vida efetiva",
+    "guiScaleX": "Escala da interface no X: %scale%",
+    "guiScaleY": "Escala da Interface no Y: %scale%",
+    "abbreviateSkillXpDenominator": "Abreviar denominador de XP da skill",
+    "otherDefenseStats": "Outras estatísticas de defesa (Soul Tether/Cell Alignment)",
+    "hideSpawnPointPlayers": "Ocultar jogadores no spawn do hub",
+    "jacobsContestTimer": "Temporizador do Jacob's contest",
+    "dontReplaceRomanNumeralsInItemNames": "Não substituir em nomes de itens",
+    "backpackOpeningSound": "Som de abertura da backpack de couro",
+    "devMode": "Modo desenvolvedor",
+    "showSkyblockItemId": "Mostrar ID de item do SkyBlock ao passar o cursor",
+    "showFeatureNamesOnHover": "Mostrar nome da função ao passar o cursor",
+    "resetSalvagedEssencesAfterLeavingMenu": "Redefine o contador de Salvaged Essence após fechar o menu",
+    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
   },
   "messages": {
     "enchants": "Encantamentos",
-    "reforges": "Reforjadas",
-    "dropConfirmation": "Largue este item de novo para confirmar!",
+    "reforges": "Reforges",
+    "dropConfirmation": "Largue este item novamente para confirmar!",
     "magmaBossWarning": "Magma Cube Boss!",
     "balBossWarning": "Bal Boss!",
     "broodMotherWarning": "Brood Mother!",
-    "fullInventory": "Inventário Cheio!",
-    "labymod": "Usuários de Labymod: Ocultar as barras de fome, armadura e vida não é compatível.",
+    "fullInventory": "Inventário cheio!",
+    "labymod": "Usuários de Labymod: Ocultar a barra de fome, armadura e vida não é compatível.",
     "minionCannotReach": "Um minion de %type% não alcança e parou de trabalhar!",
     "minionIsFull": "Um minion em sua ilha está cheio!",
-    "typeEnchantmentsHere": "Escreva %type% Aqui!",
-    "separateMultiple": "Separe Múltiplos Com Vírgulas.",
-    "enchantsToMatch": "%type% Para Procurar:",
-    "enchantsToExclude": "%type% Para Excluir:",
+    "typeEnchantmentsHere": "Escreve os %type% aqui!",
+    "separateMultiple": "Separe múltiplos com vírgulas.",
+    "enchantsToMatch": "%type% para encontrar:",
+    "enchantsToExclude": "%type% para excluir:",
     "updateChecker": {
       "wantToViewPatchNotes": "Precisa de suporte ou deseja ler a lista de alterações completa?",
-      "joinDiscord": "Entre no nosso servidor Discord!",
-      "watchShowcase": "Assistir Vídeo",
+      "joinDiscord": "Entre no nosso servidor de Discord!",
+      "watchShowcase": "Assistir vídeo",
       "downloadButton": "Baixar",
-      "openModFolderButton": "Abrir Pasta de Mods",
+      "openModFolderButton": "Abrir pasta de mods",
       "joinDiscordButton": "Junte-se ao Discord",
       "newUpdateAvailable": "Uma nova atualização (%version%) está disponível!",
-      "noDownloadAvailable": "Nenhum link para baixar disponível, por favor verifique nosso servidor Discord.",
+      "noDownloadAvailable": "Nenhum link para baixar disponível, verifique nosso servidor de Discord.",
       "notificationBox": {
-        "majorAvailable": "Uma nova atualização importante (%version%) está disponível! O link para o download pode ser encontrado no chat.",
-        "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe no chat para o link do download.",
-        "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! O link para as opções de download está no chat!"
+        "majorAvailable": "Uma nova atualização importante (%version%) está disponível! Olhe o chat para o link do download.",
+        "betaAvailable": "Uma nova atualização beta (%version%) está disponível! Olhe o chat para o link do download.",
+        "patchAvailable": "Uma nova atualização para correção de erros (%version%) está disponível! Olhe o chat para o link do download!"
       }
     },
     "slotLocked": "Este espaço está trancado!",
     "summoningEyeFound": "Olho de Invocação!",
-    "cancelledDropping": "O SkyblockAddons impediu você de largar este item ou ferramenta rara da sua barra de itens.",
-    "clickMoreTimes": "Clique/Largue este item mais %times% vezes caso realmente queira fazer isso.",
-    "clickOneMoreTime": "Clique/Largue este item mais 1 vez caso realmente queira fazer isso.",
-    "featureDisabled": "Função desabilitada",
-    "anvilUses": "Usos na Bigorna: %uses%",
+    "cancelledDropping": "Uma opção impediu você de largar este item ou ferramenta rara da sua barra de itens.",
+    "clickMoreTimes": "Clique/largue este item mais %times% vezes caso realmente queira fazer isto.",
+    "clickOneMoreTime": "Clique/largue este item mais 1 vez caso realmente queira fazer isto.",
+    "featureDisabled": "Função desativada",
+    "anvilUses": "Usos na bigorna: %uses%",
     "specialZealotFound": "Zealot especial!",
     "blockIncompletePatterns": "Bloquear padrões de criação incompletos (recomendado)",
-    "searchFeatures": "Buscar funcionalidades",
+    "searchFeatures": "Buscar funções",
     "downloadingUpdateFile": "Baixando arquivos da atualização...",
-    "onlyFewArrowsLeft": "Apenas %arrows% restantes!",
+    "onlyFewArrowsLeft": "Apenas %arrows% flechas restantes!",
     "noArrowsLeft": "Sem flechas restantes!",
     "chooseAColor": "Escolha uma cor",
     "selectedColor": "Cor selecionada",
     "setHexColor": "Definir a cor em hex",
-    "rescaleFeatures": "Redimensionar Opções",
-    "resizeBars": "Redimensionar Barras",
-    "showColorIcons": "Mostrar Ícones Coloridos",
-    "enableFeatureSnapping": "Ativar Mapeamento de Recursos",
-    "stage": "Estágio %stage%",
+    "rescaleFeatures": "Redimensionar funções",
+    "resizeBars": "Redimensionar barras",
+    "showColorIcons": "Mostrar a cor dos ícones",
+    "enableFeatureSnapping": "Ativar o encaixe de elementos",
+    "stage": "Fase %stage%",
     "switchedSlots": "Você acabou de trocar de um espaço bloqueado ou item raro. Por favor, espere um pouco antes de soltar!",
     "clickToOpenLink": "Clique para abrir este link!",
-    "clickToOpenFolder": "Clique para abrir sua pasta de mods!",
-    "firstStatus": "Este status aparecerá no topo",
-    "secondStatus": "Este status aparecerá abaixo de seu primeiro status",
-    "fallbackStatus": "Este status aparecerá quando seu status automático não tem nada para mostrar",
-    "legendarySeaCreatureWarning": "Pescada Lendária!",
-    "bossApproaching": "Você está perto de spawnar um Boss!",
+    "clickToOpenFolder": "Clique para abrir a pasta de mods!",
+    "firstStatus": "Esta mensagem aparecerá no topo",
+    "secondStatus": "Esta mensagem aparecerá em baixo da primeira",
+    "fallbackStatus": "Esta mensagem aparecerá quando seu status automático não tiver nada para mostrar",
+    "legendarySeaCreatureWarning": "Pescada lendária!",
+    "bossApproaching": "Você está perto de invocar um boss!",
     "fetchurItem": "Fetchur: %item%",
     "fetchurWarning": "Fetchur mudou!",
-    "enableAll": "Habilitar tudo",
-    "disableAll": "Desabilitar tudo",
+    "enableAll": "Ativar tudo",
+    "disableAll": "Desativar tudo",
     "enchantmentInclusionExample": "ex.: \"prot, feather\"",
     "enchantmentExclusionExample": "ex.: \"proj, blast\"",
     "reforgeInclusionExample": "ex.: \"godly, strong\"",
     "reforgeExclusionExample": "ex.: \"odd, clean\"",
-    "actionsLeft": "%number% Restantes",
-    "effectActive": "1 Efeito Ativo",
-    "effectsActive": "%number% Efeitos Ativos",
+    "actionsLeft": "%number% restantes",
+    "effectActive": "1 efeito ativo",
+    "effectsActive": "%number% efeitos ativos",
     "none": "Nenhum",
-    "copyModeSet": "O modo de cópia do desenvolvedor foi definido para: %mode%. Pressione \"%keyName%\" para iniciar uma cópia de dados!",
-    "chroma": "Chroma",
-    "worldRenderedCooldownTime": "Tempo de recarga: %time%s",
-    "entityOutlinesRequirement": "Requer Shaders, Fast Render e Antialiasing desligados",
-    "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "copyModeSet": "O modo de cópia para desenvolvedores foi definido para: %mode%. Pressione \"%keyName%\" para copiar os dados!",
+    "chroma": "Croma",
+    "worldRenderedCooldownTime": "Tempo de espera: %time%s",
+    "entityOutlinesRequirement": "Requer shaders, renderização rápida e suavização DESATIVADOS",
+    "version": "Versão",
+    "invalidFeatureConfiguration": "Configuração inválida detectada para a função %featureName%, redefinindo suas configurações aos valores padrão.",
+    "fileFetchFailed": "%modName% não conseguiu encontrar %number% arquivo(s). Copie o erro usando o botão abaixo e relate-o em nosso servidor de Discord.",
+    "copy": "Copiar",
+    "copied": "Copiado!"
   },
   "discordStatus": {
     "titleNone": "Nenhum",
-    "descriptionNone": "Nenhum texto é exibido",
+    "descriptionNone": "Sem texto",
     "titleLocation": "Localização",
     "descriptionLocation": "Mostra a sua localização atual",
     "titlePurse": "Carteira",
-    "descriptionPurse": "Mostra a quantidade de moedas em sua bolsa",
+    "descriptionPurse": "Mostra a quantidade de coins na sua purse",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "Mostra a quantidade de bits que você possui",
     "titleStats": "Estatísticas",
-    "descriptionStats": "Mostra suas estatísticas de HP, Defesa e Mana",
+    "descriptionStats": "Mostra suas estatísticas de vida, defesa e mana",
     "titleZealots": "Zealots",
-    "descriptionZealots": "Mostrar o contador de Zealots",
+    "descriptionZealots": "Mostra o contador de zealots",
     "titleItem": "Item segurado",
-    "descriptionItem": "Mostrar o nome do item que está segurando",
+    "descriptionItem": "Mostra o nome do item que você está segurando",
     "titleProfile": "Perfil",
     "descriptionProfile": "Mostra o nome do seu perfil",
-    "titleTime": "Horas do Skyblock",
-    "descriptionTime": "Mostra a hora atual do SkyBlock. Por exemplo, 12:00am 1o início do Inverno",
-    "titleCustom": "Status customizado",
+    "titleTime": "Horário no SkyBlock",
+    "descriptionTime": "Mostra o horário atual no SkyBlock. Ex.: 12:00am 1st Early Winter",
+    "titleCustom": "Status personalizado",
     "descriptionCustom": "Inserir um status personalizado",
-    "titleAuto": "Status Automático",
+    "titleAuto": "Status automático",
     "descriptionAuto": "Exibe automaticamente um status. Ex.: seu contador de zealots enquanto está no The End.",
     "titleRevenants": "Missão do Revenant",
-    "descriptionRevenants": "Mostra que você está fazendo uma Missão do Revenant.",
+    "descriptionRevenants": "Mostra que você está fazendo uma missão do Revenant.",
     "titleSvens": "Missão do Sven",
-    "descriptionSvens": "Mostra que você está fazendo uma Missão do Sven.",
+    "descriptionSvens": "Mostra que você está fazendo uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
-    "descriptionTarantula": "Mostra que você está fazendo uma Missão da Tarantula."
+    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula."
   },
   "enchantLayout": {
-    "title": "Controle como os encantamentos são exibidos nas dicas de itens",
+    "title": "Controla como os encantamentos são mostrados na descrição dos itens",
     "titleCompress": "Comprimir",
     "descriptionCompress": "Comprime os encantamentos no mínimo de linhas possível",
     "titleNormal": "Normal",
-    "descriptionNormal": "Exibe Encantamentos como Hypixel faz",
+    "descriptionNormal": "Exibe encantamentos como o Hypixel",
     "titleExpand": "Expandir",
-    "descriptionExpand": "Listar cada encantamento em sua própria linha"
+    "descriptionExpand": "Lista cada encantamento em sua própria linha"
+  },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Abre o menu principal"
+        },
+        "brand": {
+          "help": "Mostrar a marca do servidor"
+        },
+        "copyBlock": {
+          "help": "Copia os dados do bloco que você está olhando"
+        },
+        "copyEntity": {
+          "help": "Copia dados NBT das entidades com o(s) nome(s) fornecido(s) dentro do raio determinado ao redor do jogador",
+          "detailedHelp": {
+            "description": "Copia dados NBT de entidades. Os tipos de entidades incluídas e o raio em volta do jogador a partir dos quais terão os dados copiados podem ser personalizados. Se nenhuma opção for dada, as configurações padrões serão usadas. As configurações padrões são: incluir jogadores, suporte de armaduras, e criaturas, e um raio de 3 blocos. Se o raio não for dado, o raio padrão é usado.",
+            "options": {
+              "entityNames": "Nomes dos tipos de entidades que você quer copiar dados (ex.: Player, Creeper). Aperte \"tab\" após digitar o comando para uma lista completa. Separe múltiplos nomes com vírgulas. Os nomes são sensíveis a maiúsculas e minúsculas.",
+              "radius": "O raio (em blocos) ao redor do jogador para copiar os dados NBT das entidades"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copia o texto do placar",
+          "detailedHelp": {
+            "description": "Copia o texto apresentado no placar",
+            "options": {
+              "formatted": "Determina se os códigos de formatação devem ser incluídos na cópia. Pode ser definido como \"true\" ou \"false\", caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copia o cabeçalho e rodapé da lista de jogadores",
+          "detailedHelp": {
+            "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
+          }
+        },
+        "dev": {
+          "help": "Ativa/desativa o modo desenvolvedor",
+          "detailedHelp": {
+            "description": "Este comando alterna o modo desenvolvedor. Este modo é para desenvolvedores de mods/ferramentas do SkyBlock. Ele fornece os dados das entidades e dos itens NBT."
+          },
+          "prefix": "Des"
+        },
+        "edit": {
+          "help": "Editar posições"
+        },
+        "folder": {
+          "help": "Abre a sua pasta de mods"
+        },
+        "help": {
+          "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, é mostrado uma descrição detalhada sobre esse comando.",
+          "detailedHelp": {
+            "options": {
+              "command": "O comando que deseja obter uso detalhado"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Grava as contagens armazenadas nos contadores de mortes na dungeon para fins de depuração."
+        },
+        "reload": {
+          "help": "Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
+        },
+        "reloadConfig": {
+          "help": "Recarrega as configurações do mod"
+        },
+        "reloadRes": {
+          "help": "Recarrega os recursos do mod. O jogo irá congelar por alguns segundos."
+        },
+        "resetZealotCounter": {
+          "help": "Redefine todos os contadores de zealots."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Defina a sua contagem de zealots manualmente",
+            "detailedHelp": {
+              "description": "Define manualmente os valores no contador de zealots.",
+              "options": {
+                "eyes": "Total de summoning eyes obtidos",
+                "totalZealots": "Total de zealots mortos",
+                "zealots": "Zealots mortos desde o último summoning eye"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
+          "detailedHelp": {
+            "description": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
+            "options": {
+              "boss": "Boss Slayer: \"Zombie\", \"Spider\", ou \"Wolf\"",
+              "number": "Número para definir a estatística",
+              "stat": "Estatística do slayer que será alterada. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Alterna o registro de mensagens da barra de ações"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Alterna mensagens de depuração de registro do temporizador do do magma boss"
+        },
+        "version": {
+          "help": "Mostra a versão do mod"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Marca do servidor: %brand%",
+          "notFound": "Marca do servidor não encontrada!"
+        },
+        "dev": {
+          "disabled": "Modo desenvolvedor desativado!",
+          "enabled": "Modo desenvolvedor ativado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!"
+        },
+        "folder": {
+          "error": "Ocorreu um erro ao tentar abrir a pasta de mods: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Contador de zealots redefinido!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+            "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
+            "wrongUsage": "Seleção inválida! Escolha %options%.",
+            "zealotsSet": "A contagem total de zealots foi definida para %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "Você precisa escolher um boss! Escolha %bosses%",
+          "statRequired": "Você precisa escolher uma estatística. Pressione tab para ver as opções.",
+          "numberRequired": "Você precisa adicionar o número que você quer.",
+          "killsSet": "Os abates para o slayer de %boss% foram definidas para %number%.",
+          "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
+          "invalidBoss": "\"%input%\" não é uma estatística válida!",
+          "invalidStat": "%input% não é um boss válido!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "As mensagens da barra de ações não serão mais registradas.",
+          "enabled": "As mensagens da barra de ações agora serão registradas."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Mensagens do temporizador do magma boss não serão registradas.",
+          "enabled": "Mensagens do temporizador do magma boss serão registradas."
+        },
+        "version": {
+          "hoverText": "Clique para colocar no chat para copiar."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Uso incorreto!",
+        "subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
+      }
+    }
   },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Abrir o menu principal"
+        "help": "Abre o menu principal"
       },
       "brand": {
-        "help": "Show the server brand",
-        "brandOutput": "Marca do Servidor: %brand%",
-        "notFound": "Marca do Servidor não encontrada!"
+        "help": "Mostrar a marca do servidor",
+        "brandOutput": "Marca do servidor: %brand%",
+        "notFound": "Marca do servidor não encontrada!"
       },
       "copyBlock": {
-        "help": "Copies data about the block that you are looking at"
+        "help": "Copia os dados do bloco que você está olhando"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copia dados NBT das entidades com o(s) nome(s) fornecido(s) dentro do raio determinado ao redor do jogador",
         "detailedHelp": {
           "description": "Copia dados NBT de entidades. Os tipos de entidades incluídas e o raio em volta do jogador a partir dos quais terão os dados copiados podem ser personalizados. Se nenhuma opção for dada, as configurações padrões serão usadas. As configurações padrões são: incluir jogadores, suporte de armaduras, e criaturas, e um raio de 3 blocos. Se o raio não for dado, o raio padrão é usado.",
           "options": {
-            "entityNames": "Nomes das Entidades para as quais você deseja copiar dados (ex.: Jogador, Creeper). Aperte \"Tab\" após digitar o comando para uma lista completa. Separe múltiplos nomes com vírgulas, nomes diferenciam de letras maiúsculas e minúsculas.",
-            "radius": "O Raio(em blocos) ao redor do jogador para copiar os dados NBT da Entidade"
+            "entityNames": "Nomes dos tipos de entidades que você quer copiar dados (ex.: Player, Creeper). Aperte \"tab\" após digitar o comando para uma lista completa. Separe múltiplos nomes com vírgulas. Os nomes são sensíveis a maiúsculas e minúsculas.",
+            "radius": "O raio (em blocos) ao redor do jogador para copiar os dados NBT das entidades"
           }
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copia o texto do placar",
         "detailedHelp": {
-          "description": "Copia o texto exibido no slot de exibição da barra lateral da scoreboard",
+          "description": "Copia o texto apresentado no placar",
           "options": {
-            "formatted": "Determina se os códigos de formatação devem ser incluídos ao copiar. Pode ser tanto \"true\" ou \"false\", sendo o padrão \"false\" se nenhum valor for fornecido. Códigos de Formatação são copiados caso \"true\"."
+            "formatted": "Determina se os códigos de formatação devem ser incluídos na cópia. Pode ser definido como \"true\" ou \"false\", caso não seja fornecido nenhum valor, será definida como \"false\". Os códigos de formatação serão copiados caso a opção esteja definida como \"true\"."
           }
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copia o cabeçalho e rodapé da lista de jogadores",
         "detailedHelp": {
-          "description": "Esse comando copia o cabeçalho e rodapé da lista de jogadores. Códigos de formatação são incluídos."
+          "description": "Este comando copia o cabeçalho e o rodapé da lista de jogadores. Códigos de formatação são incluídos."
         }
       },
       "dev": {
-        "help": "Alterar modo de desenvolvedor",
+        "help": "Ativa/desativa o modo desenvolvedor",
         "detailedHelp": {
-          "description": "Esse comando alterna o modo desenvolvedor. Esse modo é para desenvolvedores de Mods/Ferramentas do Skyblock. Ele fornece dados brutos do jogo como Entidade e Item NBT."
+          "description": "Este comando alterna o modo desenvolvedor. Este modo é para desenvolvedores de mods/ferramentas do SkyBlock. Ele fornece os dados das entidades e dos itens NBT."
         },
-        "disabled": "Modo Desenvolvedor desabilitado!",
-        "enabled": "Modo Desenvolvedor habilitado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!",
-        "prefix": "Dev"
+        "disabled": "Modo desenvolvedor desativado!",
+        "enabled": "Modo desenvolvedor ativado! DICA: Aperte \"%keyName%\" para copiar os dados NBT!",
+        "prefix": "Des"
       },
       "edit": {
-        "help": "Editar Posições da Interface"
+        "help": "Editar posições"
       },
       "folder": {
-        "help": "Abrir a sua pasta de mods",
-        "error": "Um erro ocorreu ao tentar abrir a pasta de mods: %s"
+        "help": "Abre a sua pasta de mods",
+        "error": "Ocorreu um erro ao tentar abrir a pasta de mods: %s"
       },
       "help": {
-        "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, é mostrada ajuda detalhada sobre esse comando.",
+        "help": "Mostra esta mensagem de ajuda. Se um comando for fornecido, é mostrado uma descrição detalhada sobre esse comando.",
         "detailedHelp": {
           "options": {
-            "command": "o sub-comando para obter uso detalhado para"
+            "command": "O comando que deseja obter uso detalhado"
           }
         }
       },
       "printDeaths": {
-        "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        "help": "Grava as contagens armazenadas nos contadores de mortes na dungeon para fins de depuração."
       },
       "reload": {
-        "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        "help": "Recarrega todas as configurações e recursos do mod. O jogo irá congelar por alguns segundos."
       },
       "reloadConfig": {
-        "help": "Reloads the mod's settings"
+        "help": "Recarrega as configurações do mod"
       },
       "reloadRes": {
-        "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        "help": "Recarrega os recursos do mod. O jogo irá congelar por alguns segundos."
       },
       "resetZealotCounter": {
-        "help": "Resets all the zealot counter counts.",
-        "resetSuccess": "Zealot counters reset!"
+        "help": "Redefine todos os contadores de zealots.",
+        "resetSuccess": "Contador de zealots redefinido!"
       },
       "set": {
         "zealotCounter": {
           "help": "Defina a sua contagem de zealots manualmente",
           "detailedHelp": {
-            "description": "Define Manualmente as Contagens no Contador de Zealots.",
+            "description": "Define manualmente os valores no contador de zealots.",
             "options": {
-              "eyes": "Olhos de Invocação Vitalícios Obtidos",
-              "totalZealots": "Total de Zealots mortos",
-              "zealots": "Zealots mortos desde o último Olho de Invocação"
+              "eyes": "Total de summoning eyes obtidos",
+              "totalZealots": "Total de zealots mortos",
+              "zealots": "Zealots mortos desde o último summoning eye"
             }
           },
-          "eyesSet": "Definido a contagem total de Olhos de Invocação para %number%!",
-          "totalZealotsSet": "Definido a contagem total de Zealots para %number%!",
-          "wrongUsage": "Seleção inválida! Por favor escolha %options%.",
-          "zealotsSet": "Definido a contagem atual de Zealots para %number%!"
+          "eyesSet": "A contagem total de summoning eyes foi definida para %number%!",
+          "totalZealotsSet": "A contagem total de zealots foi definida para %number%!",
+          "wrongUsage": "Seleção inválida! Escolha %options%.",
+          "zealotsSet": "A contagem total de zealots foi definida para %number%!"
         }
       },
       "slayer": {
-        "help": "Defina manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
+        "help": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
         "detailedHelp": {
-          "description": "Defina manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
+          "description": "Define manualmente as estatísticas do slayer, pressione tab para ver os argumentos",
           "options": {
             "boss": "Boss Slayer: \"Zombie\", \"Spider\", ou \"Wolf\"",
             "number": "Número para definir a estatística",
-            "stat": "Estatística de Slayer a ser alterada, pode ser \"kills\" ou o nome de um item largado formatado assim: \"REVENANT_FLESH\""
+            "stat": "Estatística do slayer que será alterada. Pode ser \"kills\" ou o nome de um item largado formatado da seguinte forma: \"REVENANT_FLESH\""
           }
         },
-        "bossRequired": "Você precisa selecionar um Boss! Por favor escolha %bosses%",
-        "statRequired": "Você precisa selecionar uma estatística. Pressione Tab para opções.",
+        "bossRequired": "Você precisa escolher um boss! Escolha %bosses%",
+        "statRequired": "Você precisa escolher uma estatística. Pressione tab para ver as opções.",
         "numberRequired": "Você precisa adicionar o número que você quer.",
-        "killsSet": "As mortes para o slayer %boss% foram definidas para %number%.",
-        "statSet": "Estatística %stat% para slayer %boss% foi definida para %number%.",
+        "killsSet": "Os abates para o slayer de %boss% foram definidas para %number%.",
+        "statSet": "A estatística %stat% para o slayer de %boss% foi definida para %number%.",
         "invalidBoss": "\"%input%\" não é uma estatística válida!",
         "invalidStat": "%input% não é um boss válido!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Alterna o registro de mensagens da barra de ações",
         "disabled": "As mensagens da barra de ações não serão mais registradas.",
         "enabled": "As mensagens da barra de ações agora serão registradas."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Alterna mensagens de depuração de registro do temporizador do do magma boss",
+        "disabled": "Mensagens do temporizador do magma boss não serão registradas.",
+        "enabled": "Mensagens do temporizador do magma boss serão registradas."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Mostra a versão do mod",
+        "hoverText": "Clique para colocar no chat para copiar."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Uso Incorreto!",
+          "generic": "Uso incorreto!",
           "subCommandNotFound": "O comando \"%sub-command%\" não foi encontrado."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copiar NBT"
+    "developerCopyNBT": "Copiar NBT",
+    "increaseDungeonMapZoom": "Aumentar zoom do mapa da Dungeon",
+    "decreaseDungeonMapZoom": "Diminuir zoom do mapa da Dungeon"
   },
   "dragonTracker": {
     "protector": "Protetor",
@@ -483,8 +650,8 @@
     "young": "Jovem",
     "strong": "Forte",
     "superior": "Superior",
-    "recentDragons": "Dragões Recentes:",
-    "dragonsSince": "Dragões Desde:",
+    "recentDragons": "Dragões recentes:",
+    "dragonsSince": "Dragões desde:",
     "aspectOfTheDragons": "Aspecto dos Dragões",
     "enderDragonPet": "Pet Dragão",
     "eyesPlaced": "Olhos colocados",
@@ -500,22 +667,22 @@
   "warpMenu": {
     "click": "Clique em algum lugar para viajar até lá!",
     "mustUnlock": "Precisa ter uma scroll específica desbloqueada.",
-    "privateIsland": "Ilha Privada",
+    "privateIsland": "Ilha privada",
     "home": "Sua ilha",
     "spawn": "Spawn",
-    "unknown": "Não Visitou",
-    "notUnlocked": "Não Desbloqueado",
-    "inCombat": "Em Combate..."
+    "unknown": "Não visitado",
+    "notUnlocked": "Não desbloqueado",
+    "inCombat": "Em combate..."
   },
   "enchants": {
-    "superTier": "Nível Máximo",
-    "highTier": "Nível Alto",
-    "midTier": "Nível Médio",
-    "lowTier": "Nível Baixo",
+    "superTier": "Nível máximo",
+    "highTier": "Nível alto",
+    "midTier": "Nível médio",
+    "lowTier": "Nível baixo",
     "commas": "Vírgulas",
     "expertiseKills": "Abates com Expertise",
-    "compactedBlocks": "Blocos Compactados",
-    "cultivatedCrops": "Colheitas Cultivadas",
+    "compactedBlocks": "Blocos compactados",
+    "cultivatedCrops": "Colheitas cultivadas",
     "maxed": "Maximizado"
   }
 }

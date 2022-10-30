@@ -1,19 +1,30 @@
 pluginManagement {
     repositories {
+        mavenCentral()
         gradlePluginPortal()
         maven {
-            name 'JitPack'
-            url 'https://jitpack.io'
+            url 'https://oss.sonatype.org/content/repositories/snapshots'
         }
         maven {
-            name 'Minecraft Forge'
+            url 'https://maven.architectury.dev/'
+        }
+        maven {
+            url 'https://maven.fabricmc.net'
+        }
+        maven {
             url 'https://maven.minecraftforge.net/'
+        }
+        maven {
+            url 'https://repo.spongepowered.org/maven/'
+        }
+        maven {
+            url 'https://repo.sk1er.club/repository/maven-releases/'
         }
     }
     resolutionStrategy {
         eachPlugin {
-            if (requested.id.id.startsWith('net.minecraftforge.gradle')) {
-                useModule group: 'com.github.asbyth', name: 'ForgeGradle', version: requested.version
+            if (requested.id.id == 'gg.essential.loom') {
+                useModule group: 'gg.essential', name: 'architectury-loom', version: requested.version
             }
         }
     }

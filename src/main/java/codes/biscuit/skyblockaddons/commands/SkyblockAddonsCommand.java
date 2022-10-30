@@ -2,7 +2,6 @@ package codes.biscuit.skyblockaddons.commands;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.core.Feature;
-import codes.biscuit.skyblockaddons.core.Message;
 import codes.biscuit.skyblockaddons.core.Translations;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerBoss;
 import codes.biscuit.skyblockaddons.features.slayertracker.SlayerDrop;
@@ -36,8 +35,7 @@ public class SkyblockAddonsCommand extends CommandBase {
     private static final String HEADER = "§7§m----------------§7[ §b§lSkyblockAddons §7]§7§m----------------";
     private static final String FOOTER = "§7§m-----------------------------------------------------";
     private static final String[] SUBCOMMANDS = {"help", "edit", "folder", "resetZealotCounter", "set", "slayer", "version", "dev", "brand", "copyBlock",
-            "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging",
-            "toggleMagmaTimerLogging"};
+            "copyEntity", "copySidebar", "copyTabList", "pd", "reload", "reloadConfig", "reloadRes", "toggleActionBarLogging"};
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -90,8 +88,7 @@ public class SkyblockAddonsCommand extends CommandBase {
                     "§b● " + CommandSyntax.RELOAD + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.reload.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD_CONFIG + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.reloadConfig.help") + "\n" +
                     "§b● " + CommandSyntax.RELOAD_RES + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.reloadRes.help") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.toggleActionBarLogging.help") + "\n" +
-                    "§b● " + CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.toggleMagmaTimerLogging.help")
+                    "§b● " + CommandSyntax.TOGGLE_ACTION_BAR_LOGGING + " §7- " + getDevPrefixFormatted() + Translations.getMessage("commands.usage.sba.toggleActionBarLogging.help")
             ;
         }
 
@@ -353,23 +350,13 @@ public class SkyblockAddonsCommand extends CommandBase {
                             main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
                                     "commands.responses.sba.toggleActionBarLogging.disabled"));
                         }
-                    } else if (args[0].equalsIgnoreCase("toggleMagmaTimerLogging")) {
-                        DevUtils.setMagmaTimerDebugLoggingEnabled(!DevUtils.isMagmaTimerDebugLoggingEnabled());
-
-                        if (DevUtils.isMagmaTimerDebugLoggingEnabled()) {
-                            main.getUtils().sendMessage(ColorCode.GREEN + Translations.getMessage(
-                                    "commands.responses.sba.toggleMagmaTimerLogging.enabled"));
-                        } else {
-                            main.getUtils().sendMessage(ColorCode.RED + Translations.getMessage(
-                                    "commands.responses.sba.toggleMagmaTimerLogging.disabled"));
-                        }
                     } else {
                         throw new WrongUsageException(Translations.getMessage(
-                                "commands.responses.sba.errors.wrongUsage.subCommandNotFound", args[0]));
+                                "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
                     }
                 } else {
                     throw new WrongUsageException(Translations.getMessage(
-                            "commands.responses.sba.errors.wrongUsage.subCommandNotFound", args[0]));
+                            "commandUsage.sba.errors.wrongUsage.subCommandNotFound", args[0]));
                 }
             } else {
                 // If there's no arguments given, open the main GUI
@@ -462,7 +449,6 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD_RES("/sba reloadRes"),
         RESET_ZEALOT_COUNTER("/sba resetZealotCounter"),
         PD("/sba pd"),
-        TOGGLE_MAGMA_TIMER_LOGGING("/sba toggleMagmaTimerLogging"),
         VERSION("/sba version")
         ;
 
@@ -498,7 +484,6 @@ public class SkyblockAddonsCommand extends CommandBase {
         RELOAD_CONFIG(CommandSyntax.RELOAD_CONFIG, "commands.usage.sba.reloadConfig.help", null),
         RELOAD_RES(CommandSyntax.RELOAD_RES, "commands.usage.sba.reloadRes.help", null),
         PD(CommandSyntax.PD, "commands.usage.sba.printDeaths.help", null),
-        TOGGLE_MAGMA_TIMER_LOGGING(CommandSyntax.TOGGLE_MAGMA_TIMER_LOGGING, "commands.usage.sba.toggleMagmaTimerLogging.help", null),
         VERSION(CommandSyntax.VERSION, "commands.usage.sba.version.help", null)
         ;
 

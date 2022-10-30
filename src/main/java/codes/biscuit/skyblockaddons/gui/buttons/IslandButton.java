@@ -1,6 +1,5 @@
 package codes.biscuit.skyblockaddons.gui.buttons;
 
-import codes.biscuit.skyblockaddons.SkyblockAddons;
 import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.utils.ColorCode;
 import codes.biscuit.skyblockaddons.utils.ColorUtils;
@@ -35,7 +34,7 @@ public class IslandButton extends GuiButton {
         super(0, island.getX(), island.getY(), island.getLabel());
 
         this.island = island;
-        this.unlockedStatus = unlockedStatus;
+        this.unlockedStatus = IslandWarpGui.UnlockedStatus.UNLOCKED;
         this.markers = markers;
 
         for (IslandWarpGui.Marker marker : IslandWarpGui.Marker.values()) {

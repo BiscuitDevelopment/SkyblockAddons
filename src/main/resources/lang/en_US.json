@@ -219,7 +219,12 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +335,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +692,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxed"
   }
 }

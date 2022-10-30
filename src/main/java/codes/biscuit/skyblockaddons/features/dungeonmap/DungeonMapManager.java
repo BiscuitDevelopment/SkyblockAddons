@@ -33,6 +33,8 @@ import java.util.*;
 
 public class DungeonMapManager {
 
+    public static final float MIN_ZOOM = 0.5f;
+    public static final float MAX_ZOOM = 5f;
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
     private static final ResourceLocation DUNGEON_MAP = new ResourceLocation("skyblockaddons", "dungeonsmap.png");
     private static final Comparator<MapMarker> MAP_MARKER_COMPARATOR = (first, second) -> {
@@ -492,16 +494,14 @@ public class DungeonMapManager {
      * Increases the zoom level of the dungeon map by 0.5.
      */
     public static void increaseZoomByStep() {
-        float zoomScaleFactor = MathUtils.denormalizeSliderValue(getMapZoom(), 0.5F, 5F, 0.1F);
-        setMapZoom(zoomScaleFactor + 0.5F);
+        setDenormalizedMapZoom(getDenormalizedMapZoom() + 0.5F);
     }
 
     /**
      * Decreases the zoom level of the dungeon map by 0.5.
      */
     public static void decreaseZoomByStep() {
-        float zoomScaleFactor = MathUtils.denormalizeSliderValue(main.getConfigValues().getMapZoom().getValue(), 0.5F, 5F, 0.1F);
-        setMapZoom(zoomScaleFactor - 0.5F);
+        setDenormalizedMapZoom(getDenormalizedMapZoom() - 0.5F);
     }
 
     /**
@@ -514,13 +514,25 @@ public class DungeonMapManager {
     }
 
     /**
+     * Returns the denormalized map zoom factor
+     * @return he denormalized map zoom factor
+     */
+    public static float getDenormalizedMapZoom(){
+        return MathUtils.denormalizeSliderValue(getMapZoom(), MIN_ZOOM, MAX_ZOOM, 0.1F);
+    }
+
+    public static void setDenormalizedMapZoom(float value){
+        setMapZoom(MathUtils.normalizeSliderValue(value, MIN_ZOOM, MAX_ZOOM,0.1F));
+    }
+
+    /**
      * Sets the map zoom factor in {@link codes.biscuit.skyblockaddons.config.ConfigValues#mapZoom}.
      * The new value must be between 0.5f and 5f inclusive.
      *
      * @param value the new map zoom factor
      */
     public static void setMapZoom(float value) {
-        main.getConfigValues().getMapZoom().setValue(main.getUtils().normalizeValueNoStep(value, 0.5F, 5F));
+        main.getConfigValues().getMapZoom().setValue(value);
         main.getConfigValues().saveConfig();
     }
 }

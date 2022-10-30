@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Enchants ^-^",
@@ -296,7 +297,10 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -337,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
+            "options": {
+              "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Pwess \"Tab\" aftew typing the command for a fuww wist. Sepawate muwtiple names with commas, names are case-sensitive.",
+              "radius": "The wadius(win blocks) awound the playew to cowpy entwety NBT data fwom"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
+            "options": {
+              "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in the zealot counter.",
+              "options": {
+                "eyes": "Lifewime summoning eyes obwained",
+                "totalZealots": "Lifetime zeawots kiwwed",
+                "zealots": "Zealots kiwwed since the wast summoning eye dwop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
+              "number": "Nuwmbew to swet the stwat to",
+              "stat": "Swayer stwat to chwange, cwan be \"kills\" or the nwame of a dwopped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Swewer bwand: %brand%",
+          "notFound": "Swewer bwand not fwound!"
+        },
+        "dev": {
+          "disabled": "Dewelower wode dwisabled!",
+          "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set totaw summoning eye count to %number%!",
+            "totalZealotsSet": "Set totaw zeawot count to %number%!",
+            "wrongUsage": "Invawid sewection! Pwease choose %options%.",
+            "zealotsSet": "Set cuwwent zealot count to %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "You nweed to sewect a bwoss! Pwease choose %bosses%",
+          "statRequired": "You nweed to sewect a stat. Press twab for optiowns.",
+          "numberRequired": "You nweed to add the nwumber you want.",
+          "killsSet": "Kwills for swayer %boss% was swet to %number%.",
+          "statSet": "Statwistic %stat% for swayer %boss% was swet to %number%.",
+          "invalidBoss": "\"%input%\" is not a vawid statwistic!",
+          "invalidStat": "\"%input%\" is not a vawid bwoss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action baw messages wiww no wongew be wogged.",
+          "enabled": "Action baw messages wiww now be wogged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Wong uswage!",
+        "subCommandNotFound": "The sub-command “%sub-command%” was not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opwen the mwain menwu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Swewer bwand: %brand%",
         "notFound": "Swewer bwand not fwound!"
       },
@@ -351,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities incwuded and the wadius awound the pwayew to copy data fwom can be customized. If no options awe given, the defauwt settings awe used. The defauwt settings awe: incwude pwayews, awmow stands, and mobs, and a wadius of radius bwocks. If the wadius isn't given, the defauwt wadius is used.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text dispwayed in the scoweboawd's sidebaw dispway swot",
           "options": {
@@ -370,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "This command copies the headew and footew of the tab pwayew wist. Fowmatting codes awe incwuded."
         }
       },
       "dev": {
-        "help": "Twoggle dwevewopew mode",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers Skyblock mods/tools. It provides raw data from the game such as entity and item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Dewelower wode dwisabled!",
         "enabled": "Devewopew mode enabwed! TIP: Pwess \"%keyName%\" to copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edwit GUI wocations"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Owpen youw mods fowder",
-        "error": "A werror woccoured twying to opwen da wads wolder: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show this hewp message. If a command is pwovided, detaiwed hewp about that command is shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manuawwy set youw zeawot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
@@ -433,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manuawwy set slayer stats, pwess tab fow awguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manuawwy set slayer stats, pwess tab fow awguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Swayer bwoss: \"Zombie\", \"Spider\", orw \"Wolf\"",
             "number": "Nuwmbew to swet the stwat to",
@@ -451,12 +616,12 @@
         "invalidStat": "\"%input%\" is not a vawid bwoss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Action baw messages wiww no wongew be wogged.",
         "enabled": "Action baw messages wiww now be wogged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -473,7 +638,9 @@
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Cowopy NBT"
+    "developerCopyNBT": "Cowopy NBT",
+    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
+    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
   },
   "dragonTracker": {
     "protector": "Protector",

@@ -1,104 +1,104 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Мова: ",
   "language": "Українська",
   "settings": {
-    "settings": "Settings",
-    "magmaBossWarning": "Magma Boss Warning",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
-    "itemDropConfirmation": "Item Drop Confirmation",
-    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
-    "hideFoodAndArmor": "Hide Food & Armor Bar",
-    "fullInventoryWarning": "Full Inventory Warning",
-    "repeating": "Repeat Warning",
-    "disableEmberRodAbility": "Disable Island Ember Rod",
-    "editLocations": "Edit GUI Locations",
-    "guiScale": "Gui Scale: %scale%",
-    "resetLocations": "Reset Locations",
-    "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
-    "backpackStyle": "Backpack Style: %style%",
+    "settings": "Налаштування",
+    "magmaBossWarning": "Попередження про Магма Боса",
+    "balBossWarning": "Попередження про Bal Боса",
+    "broodMotherWarning": "Попередження про Brood Mother",
+    "itemDropConfirmation": "Підтвердження викидання предмета",
+    "hideSkeletonHatBones": "Приховати кістки Шолому Скелету",
+    "skeletonHatBonesBar": "Шкала кісток Шолому Скелету",
+    "hideFoodAndArmor": "Сховати шкалу Їжі & Броні",
+    "fullInventoryWarning": "Попередження про Повний Інвентар",
+    "repeating": "Повтор попередження",
+    "disableEmberRodAbility": "Вимкнути Ember Rod на острові",
+    "editLocations": "Редагувати розташування інтерфейсу",
+    "guiScale": "Масштаб інтерфейса: %scale%",
+    "resetLocations": "Скинути розташування",
+    "minionStopWarning": "Попередження \"Міньйон не може досягти\"",
+    "hidePlayersNearNPCs": "Ховати гравців біля важливих NPC",
+    "backpackStyle": "Стиль рюкзаку: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "Звичайний",
+      "compact": "Компактний"
     },
-    "showBackpackPreview": "Show Backpack Preview",
-    "hideHealthBar": "Hide Vanilla Health Bar",
-    "fullMinionWarning": "Full Minion Warning",
-    "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
-    "manaBar": "Mana Bar",
-    "manaNumber": "Mana Number",
-    "healthBar": "Health Bar",
-    "healthNumber": "Health Number",
-    "defenseIcon": "Defense Symbol",
-    "defenseNumber": "Defense Number",
-    "defensePercentage": "Defense Percentage",
-    "healthUpdates": "Health Change Number",
-    "hidePlayersInLobby": "Hide Far Entities in Lobby",
-    "darkAuctionTimer": "Dark Auction Timer",
-    "magmaBossTimer": "Magma Boss Timer",
-    "itemPickupLog": "Item Pickup Log",
-    "avoidPlacingEnchantedItems": "Avoid Placing Enchanted Items",
-    "stopBowChargeFromResetting": "Stop Bow Charge From Resetting",
-    "preventMovementOnDeath": "Prevent Walking After Death",
-    "showItemAnvilUses": "Show Item Anvil Uses",
-    "lockSlots": "Allow Locking Slots",
-    "lockSlot": "Lock Slot",
-    "dontResetCursorInventory": "Don't Reset Cursor Between Inventories",
-    "summoningEyeAlert": "Summoning Eye Alert",
-    "makeEnderchestsInEndGreen": "Change Enderchest Color in The End",
-    "changeColor": "Change Color",
-    "showInOtherGames": "Show in Other Games",
-    "useVanillaTexture": "Use the Vanilla Texture",
-    "textStyle": "Text Style",
+    "showBackpackPreview": "Показувати попередній перегляд рюкзаку",
+    "hideHealthBar": "Приховати ванільну шкалу здоров‘я",
+    "fullMinionWarning": "Попередження про те, що мініон переповнений",
+    "showOnlyWhenHoldingShift": "Показувати тільки при утриманні Shift",
+    "manaBar": "Шкала мани",
+    "manaNumber": "Кількість мани",
+    "healthBar": "Полоса здоров‘я",
+    "healthNumber": "Кількість здоров‘я",
+    "defenseIcon": "Іконка захисту",
+    "defenseNumber": "Кількість захисту",
+    "defensePercentage": "Відсоток захисту",
+    "healthUpdates": "Зміна числа здоров‘я",
+    "hidePlayersInLobby": "Ховати далеких істот в лобі",
+    "darkAuctionTimer": "Таймер Темного Аукціону",
+    "magmaBossTimer": "Таймер Магма-Боса",
+    "itemPickupLog": "Список всіх піднятих предметів",
+    "avoidPlacingEnchantedItems": "Уникати розміщення зачарованих предметів",
+    "stopBowChargeFromResetting": "Зупиняти заряд лука від перезарядки",
+    "preventMovementOnDeath": "Запобігти ходьбі після смерті",
+    "showItemAnvilUses": "Показувати використання предмету на ковадлі",
+    "lockSlots": "Дозволити блокування слотів",
+    "lockSlot": "Заблокувати слот",
+    "dontResetCursorInventory": "Не скидати курсор між інвентарями",
+    "summoningEyeAlert": "Оповіщення про Око Призову",
+    "makeEnderchestsInEndGreen": "Змінювати колір Ендер-скринь в Краю",
+    "changeColor": "Змінити колір",
+    "showInOtherGames": "Показувати в інших іграх",
+    "useVanillaTexture": "Використовувати стандартні текстури",
+    "textStyle": "Стиль тексту",
     "textStyles": {
-      "one": "Style One",
-      "two": "Style Two"
+      "one": "Стиль 1",
+      "two": "Стиль 2"
     },
-    "warningDuration": "Warning Duration",
-    "dontOpenProfileWithBow": "Don't Open Profile With Bow",
-    "stopDroppingSellingRareItems": "Stop Dropping/Selling Rare Items",
-    "makeBackpackInventoriesColored": "Color Inventories",
-    "replaceRomanNumeralsWithNumbers": "Replace Roman Numerals on Items",
-    "changeBarColorForPotions": "Change Bar Color for Wither & Poison",
-    "craftingPatterns": "Choose Crafting Patterns",
-    "soundIndicatorForFishing": "Sound Indicator for Fishing",
-    "avoidBlinkingNightVision": "Disable Night Vision Potion Blinking",
-    "disableMinionLocationWarning": "Disable Location Not Perfect Warnings",
-    "showItemCooldowns": "Show Item Cooldowns",
-    "speedPercentage": "Speed Percentage",
-    "collectionDisplay": "Skill Progress Display",
-    "revenantIndicator": "Slayer Armor Progress Indicator",
-    "specialZealotAlert": "Special Zealot Alert",
-    "enableMessageWhenActionPrevented": "Show a Message When an Action is Prevented",
-    "hidePetHealthBar": "Hide Pet Health Bar",
-    "powerOrbDisplay": "Power Orb Display",
-    "powerOrbDisplayStyle": "Power Orb Style: %style%",
+    "warningDuration": "Тривалість попередження",
+    "dontOpenProfileWithBow": "Не відчиняти профіль під час тримання лука",
+    "stopDroppingSellingRareItems": "Не Викидати/Продавати рідкісні предмети",
+    "makeBackpackInventoriesColored": "Кольорові інвентарі",
+    "replaceRomanNumeralsWithNumbers": "Змінювати Римські Цифри на Арабські",
+    "changeBarColorForPotions": "Змінювати колір смуг при висушуванні та отруєнні",
+    "craftingPatterns": "Вибір шаблону крафта",
+    "soundIndicatorForFishing": "Звуковий Індикатор для Риболовлі",
+    "avoidBlinkingNightVision": "Вимкнути блимання від Зілля нічного зору",
+    "disableMinionLocationWarning": "Вимкнути повідомлення про неідеальну локацію",
+    "showItemCooldowns": "Показувати час перезаряджання предметів",
+    "speedPercentage": "Відсоток швидкості",
+    "collectionDisplay": "Відображення прогресу навичок",
+    "revenantIndicator": "Індикатор прогресу броні Slayer",
+    "specialZealotAlert": "Сповіщення про Особливого Зеалота",
+    "enableMessageWhenActionPrevented": "Показувати повідомлення, коли дія запобігається",
+    "hidePetHealthBar": "Приховати смугу здоров'я улюбленця",
+    "powerOrbDisplay": "Відображати Power Orb",
+    "powerOrbDisplayStyle": "Стиль відображення Power Orb: %style%",
     "powerOrbStyle": {
-      "detailed": "Detailed",
-      "compact": "Compact"
+      "detailed": "Детально",
+      "compact": "Компактний"
     },
-    "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
-    "zealotCounter": "Zealot Counter - Count Since Last Eye",
-    "tickerChargesDisplay": "Ticker/Charges Display",
+    "disableMagicalSoupMessage": "Вимкнути повідомлення про кінець дії Магічного супу",
+    "zealotCounter": "Лічильник Зеалотів - Рахувати від останнього ока",
+    "tickerChargesDisplay": "Лічильник зарядів",
     "tab": {
-      "generalSettings": "General Settings"
+      "generalSettings": "Основні налаштування"
     },
-    "tabEffectTimers": "Potion and Powerup Timers",
-    "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
-    "showCakeBagPreview": "Show Preview for Cake Bags",
-    "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
-    "enableDevFeatures": "Enable Developer Features",
-    "chromaSpeed": "Chroma Speed",
-    "chromaMode": "Chroma Color Mode",
+    "tabEffectTimers": "Таймер зіллів та підсилень",
+    "noArrowsLeftAlert": "Повідомлення про закінчення стріл",
+    "hideNightVisionEffectTimer": "Приховати таймер ефектів нічного бачення",
+    "showCakeBagPreview": "Показувати вміст Cake Bag",
+    "showBackpackPreviewInAH": "Показувати прев'ю рюкзаків для своїх предметів під час використання Аукціонного Дому",
+    "enableDevFeatures": "Увімкнути функції розробника",
+    "chromaSpeed": "Швидкість Chroma",
+    "chromaMode": "Колірний режим Chroma",
     "chromaModes": {
-      "allTheSame": "All the Same Color",
-      "fade": "Color Fade"
+      "allTheSame": "Усе одного кольору",
+      "fade": "Згасання Кольору"
     },
-    "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
+    "chromaFadeWidth": "Ширина згасання Chroma",
+    "sortTabEffectTimers": "Сортувати таймери за тривалістю",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
@@ -112,17 +112,17 @@
     "fancyWarpMenu": "Fancy Warp Menu",
     "stopRatSounds": "Stop Rat Pet Sounds",
     "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
-    "doubleWarp": "Warp Twice",
-    "advancedMode": "Advanced Mode",
-    "legendarySeaCreatureWarning": "Legendary Sea Creature Warning",
+    "doubleWarp": "Телепортувати двічі",
+    "advancedMode": "Розширений режим",
+    "legendarySeaCreatureWarning": "Попередження про легендарну морську істоту",
     "bossApproachAlert": "Slayer Boss Approach Alert",
     "disableTeleportPadMessages": "Disable Teleport Pad Messages",
     "baitListDisplay": "Show Bait List While Holding a Rod",
     "freezeBackpackPreview": "Freeze Backpack Preview",
     "hideGreyEnchants": "Hide Regular Grey Enchants",
-    "zealotCounterExplosiveBow": "Zealot Counter Explosive Bow Support",
+    "zealotCounterExplosiveBow": "Лічильник вбитих Зеалотів за допомогою Вибухового лука",
     "disableEndermanTeleportation": "Disable Enderman Teleportation",
-    "changeZealotColor": "Change Zealot Color",
+    "changeZealotColor": "Змінити колір Зеалотів",
     "hideSvenPupNametags": "Hide Sven Pup Nametags",
     "turnAllFeaturesChroma": "Turn All Features Chroma",
     "dungeonMapDisplay": "Dungeon Map Display",
@@ -132,11 +132,11 @@
     "showFetchurItemName": "Show Fetchur's item name",
     "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
     "warnWhenFetchurChanges": "Warn me when Fetchur changes",
-    "mapZoom": "Map Zoom",
+    "mapZoom": "Збільшення мапи",
     "glowingDroppedItems": "Glowing Dropped Items",
     "outlineDungeonTeammates": "Outline Dungeon Teammates",
     "baseStatBoostPercentage": "Show Base Stat Boost for Dungeon Items",
-    "colorByRarity": "Color By Rarity",
+    "colorByRarity": "Колір за рідкістю",
     "showPlayerHeadsOnMap": "Show Player Heads on Dungeon Map",
     "showHealingCircleWall": "Show Dungeon Healing Circle Wall",
     "showCriticalTeammates": "Show Critical Dungeon Teammates",
@@ -150,9 +150,9 @@
     "tarantulaSlayerTracker": "Slayer Tracker - Tarantula/Spider",
     "svenSlayerTracker": "Slayer Tracker - Sven/Wolf",
     "voidgloomSlayerTracker": "Slayer Tracker - Voidgloom/Enderman",
-    "textMode": "Text Mode",
-    "dragonsNestOnly": "Only Show in the Dragon's Nest",
-    "dragonStatsTracker": "Dragon Tracker",
+    "textMode": "Текстовий режим",
+    "dragonsNestOnly": "Показувати тільки у Гнізді Дракона",
+    "dragonStatsTracker": "Лічильник Драконів",
     "skillActionsLeftUntilNextLevel": "Show Actions Left Until Next Level",
     "dungeonDeathCounter": "Dungeon Death Counter",
     "showPersonalCompactorPreview": "Show Personal Compactor Preview",
@@ -218,10 +218,11 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
-    "enchants": "Enchants",
+    "enchants": "Зачарування",
     "reforges": "Reforges",
     "dropConfirmation": "Drop this item again to confirm!",
     "magmaBossWarning": "Magma Cube Boss!",
@@ -255,11 +256,11 @@
     "cancelledDropping": "A feature has stopped you from dropping this \"rare\" item or tool from your hotbar.",
     "clickMoreTimes": "Click/drop this item %times% more times if you really want to do this.",
     "clickOneMoreTime": "Click/drop this item 1 more time if you really want to do this.",
-    "featureDisabled": "Feature Disabled",
+    "featureDisabled": "Функцію вимкнено",
     "anvilUses": "Anvil Uses: %uses%",
     "specialZealotFound": "Special Zealot!",
     "blockIncompletePatterns": "Block crafting incomplete patterns (recommended)",
-    "searchFeatures": "Search features",
+    "searchFeatures": "Пошук функцій",
     "downloadingUpdateFile": "Downloading update file...",
     "onlyFewArrowsLeft": "Only %arrows% arrows left!",
     "noArrowsLeft": "No Arrows Left!",
@@ -290,13 +291,16 @@
     "actionsLeft": "%number% Left",
     "effectActive": "1 Effect Active",
     "effectsActive": "%number% Effects Active",
-    "none": "None",
+    "none": "Немає",
     "copyModeSet": "The developer copy mode has been set to: %mode%. Press \"%keyName%\" to trigger a data copy!",
     "chroma": "Chroma",
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "None",
@@ -337,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+            "options": {
+              "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+              "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+            "options": {
+              "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Dev"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Opens your mods folder"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in the zealot counter.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Lifetime zealots killed",
+                "zealots": "Zealots killed since the last summoning eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Number to set the stat to",
+              "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Показує версію моду"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Brand: %brand%",
+          "notFound": "Server brand not found!"
+        },
+        "dev": {
+          "disabled": "Developer mode disabled!",
+          "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summoning eye count to %number%!",
+            "totalZealotsSet": "Set total zealot count to %number%!",
+            "wrongUsage": "Invalid selection! Please choose %options%.",
+            "zealotsSet": "Set current zealot count to %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "You need to select a boss! Please choose %bosses%",
+          "statRequired": "You need to select a stat. Press tab for options.",
+          "numberRequired": "You need to add the number you want.",
+          "killsSet": "Kills for slayer %boss% was set to %number%.",
+          "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+          "invalidBoss": "\"%input%\" is not a valid statistic!",
+          "invalidStat": "\"%input%\" is not a valid boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Повідомлення з рядка дій більше не додаватимуться до логі.",
+          "enabled": "Повідомлення з рядка дій тепер додаватимуться до логів."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Повідомлення від таймера Магма боса не будуть зареєстровані.",
+          "enabled": "Повідомлення від таймера Магма боса будуть зареєстровані."
+        },
+        "version": {
+          "hoverText": "Натисніть, щоб розмістити у чаті, щоб ви могли скопіювати."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Неправильне використання!",
+        "subCommandNotFound": "Підкоманда %sub-command% не була знайдена."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand not found!"
       },
@@ -351,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -370,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "Developer mode disabled!",
         "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Opens your mods folder",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
@@ -433,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number to set the stat to",
@@ -451,29 +616,31 @@
         "invalidStat": "\"%input%\" is not a valid boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
-        "disabled": "Action bar messages will no longer be logged.",
-        "enabled": "Action bar messages will now be logged."
+        "help": "Toggles logging action bar messages",
+        "disabled": "Повідомлення з рядка дій більше не додаватимуться до логі.",
+        "enabled": "Повідомлення з рядка дій тепер додаватимуться до логів."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
-        "disabled": "Magma boss timer messages will no longer be logged.",
-        "enabled": "Magma boss timer messages will now be logged."
+        "help": "Toggles logging magma boss timer debug messages",
+        "disabled": "Повідомлення від таймера Магма боса не будуть зареєстровані.",
+        "enabled": "Повідомлення від таймера Магма боса будуть зареєстровані."
       },
       "version": {
-        "help": "Shows the mod's version",
-        "hoverText": "Click to put in chat so you can copy."
+        "help": "Показує версію моду",
+        "hoverText": "Натисніть, щоб розмістити у чаті, щоб ви могли скопіювати."
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
-          "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+          "generic": "Неправильне використання!",
+          "subCommandNotFound": "Підкоманда %sub-command% не була знайдена."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Copy NBT"
+    "developerCopyNBT": "Копіювати NBT",
+    "increaseDungeonMapZoom": "Збільшення мапи підземелля",
+    "decreaseDungeonMapZoom": "Зменшення мапи підземелля"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -483,39 +650,39 @@
     "young": "Young",
     "strong": "Strong",
     "superior": "Superior",
-    "recentDragons": "Recent Dragons:",
-    "dragonsSince": "Dragons Since:",
+    "recentDragons": "Останні Дракони:",
+    "dragonsSince": "Драконів з:",
     "aspectOfTheDragons": "AOTD",
     "enderDragonPet": "Dragon Pet",
-    "eyesPlaced": "Eyes Placed",
-    "never": "Never"
+    "eyesPlaced": "Вставлено Очей",
+    "never": "Ніколи"
   },
   "slayerTracker": {
     "revenant": "Revenant Horror:",
     "tarantula": "Tarantula Broodfather:",
     "sven": "Sven Packmaster:",
     "voidgloom": "Voidgloom Seraph:",
-    "bossesKilled": "Bosses Killed"
+    "bossesKilled": "Босів вбито"
   },
   "warpMenu": {
-    "click": "Click a warp point to travel there!",
-    "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
-    "spawn": "Spawn",
-    "unknown": "Haven't Visited",
-    "notUnlocked": "Not Unlocked",
-    "inCombat": "In Combat..."
+    "click": "Натисніть місце телепортації щоб потрапити туди!",
+    "mustUnlock": "Необхідно відкрити певний сувій.",
+    "privateIsland": "Приватний острів",
+    "home": "Ваш острів",
+    "spawn": "Спавн",
+    "unknown": "Не відвідано",
+    "notUnlocked": "Не розблоковано",
+    "inCombat": "У битві..."
   },
   "enchants": {
-    "superTier": "Max Tier",
-    "highTier": "High Tier",
-    "midTier": "Mid Tier",
-    "lowTier": "Low Tier",
-    "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
-    "compactedBlocks": "Compacted Blocks",
-    "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "superTier": "Максимальний Рівень",
+    "highTier": "Високий Рівень",
+    "midTier": "Середній Рівень",
+    "lowTier": "Низький Рівень",
+    "commas": "Коми",
+    "expertiseKills": "Кількість вбивств для зачарування Expertise",
+    "compactedBlocks": "Стиснуті Блоки",
+    "cultivatedCrops": "Культивовані Культури",
+    "maxed": "Максимально"
   }
 }

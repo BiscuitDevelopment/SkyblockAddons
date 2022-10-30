@@ -218,7 +218,8 @@
     "devMode": "Developer Mode",
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
-    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu"
+    "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -296,7 +297,10 @@
     "worldRenderedCooldownTime": "Cooldown: %time%s",
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
-    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values."
+    "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
+    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
+    "copy": "Copy",
+    "copied": "Copied!"
   },
   "discordStatus": {
     "titleNone": "Ingen",
@@ -337,13 +341,174 @@
     "titleExpand": "Expand",
     "descriptionExpand": "Lists each enchant on its own line"
   },
+  "commands": {
+    "usage": {
+      "sba": {
+        "base": {
+          "help": "Opens the main menu"
+        },
+        "brand": {
+          "help": "Shows the server brand"
+        },
+        "copyBlock": {
+          "help": "Copies data about the block that you are looking at"
+        },
+        "copyEntity": {
+          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "detailedHelp": {
+            "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
+            "options": {
+              "entityNames": "Names of the types of entities you want to copy data for (e.g. Player,Creeper). Press \"Tab\" after typing the command for a full list. Separate multiple names with commas, names are case-sensitive.",
+              "radius": "The radius (in blocks) around the player to copy entity NBT data from"
+            }
+          }
+        },
+        "copySidebar": {
+          "help": "Copies the scoreboard text",
+          "detailedHelp": {
+            "description": "Copies the text displayed in the scoreboard's sidebar display slot",
+            "options": {
+              "formatted": "Determines if the formatting codes should be included when copying. Can be either \"true\" or \"false\", defaults to \"false\" if no value is provided. Formatting codes are copied if \"true\"."
+            }
+          }
+        },
+        "copyTabList": {
+          "help": "Copies the tab list header and footer",
+          "detailedHelp": {
+            "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
+          }
+        },
+        "dev": {
+          "help": "Toggles the developer mode",
+          "detailedHelp": {
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          },
+          "prefix": "Utvikler"
+        },
+        "edit": {
+          "help": "Edits GUI locations"
+        },
+        "folder": {
+          "help": "Åpner mods-mappen din"
+        },
+        "help": {
+          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "detailedHelp": {
+            "options": {
+              "command": "The sub-command to get detailed usage for"
+            }
+          }
+        },
+        "printDeaths": {
+          "help": "Prints the counts stored in the dungeon death counters for debugging purposes."
+        },
+        "reload": {
+          "help": "Reloads all of the mod's settings and resources. The game will freeze for a few seconds."
+        },
+        "reloadConfig": {
+          "help": "Reloads the mod's settings"
+        },
+        "reloadRes": {
+          "help": "Reloads the mod's resources. The game will freeze for a few seconds."
+        },
+        "resetZealotCounter": {
+          "help": "Resets all the zealot counter counts."
+        },
+        "set": {
+          "zealotCounter": {
+            "help": "Manually sets your zealot counts",
+            "detailedHelp": {
+              "description": "Manually sets counts in the zealot counter.",
+              "options": {
+                "eyes": "Lifetime summoning eyes obtained",
+                "totalZealots": "Lifetime zealots killed",
+                "zealots": "Zealots killed since the last summoning eye drop"
+              }
+            }
+          }
+        },
+        "slayer": {
+          "help": "Manually sets slayer stats, press tab for arguments",
+          "detailedHelp": {
+            "description": "Manually sets slayer stats, press tab for arguments",
+            "options": {
+              "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
+              "number": "Number to set the stat to",
+              "stat": "Slayer stat to change, can be \"kills\" or the name of a dropped item formatted like this: \"REVENANT_FLESH\""
+            }
+          }
+        },
+        "toggleActionBarLogging": {
+          "help": "Toggles logging action bar messages"
+        },
+        "toggleMagmaTimerLogging": {
+          "help": "Toggles logging magma boss timer debug messages"
+        },
+        "version": {
+          "help": "Shows the mod's version"
+        }
+      }
+    },
+    "responses": {
+      "sba": {
+        "brand": {
+          "brandOutput": "Server Brand: %brand%",
+          "notFound": "Server brand not found!"
+        },
+        "dev": {
+          "disabled": "Utviklermodus deaktivert!",
+          "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!"
+        },
+        "folder": {
+          "error": "An error occurred while trying to open the mods folder: %s"
+        },
+        "resetZealotCounter": {
+          "resetSuccess": "Zealot counters reset!"
+        },
+        "set": {
+          "zealotCounter": {
+            "eyesSet": "Set total summoning eye count to %number%!",
+            "totalZealotsSet": "Set total zealot count to %number%!",
+            "wrongUsage": "Invalid selection! Please choose %options%.",
+            "zealotsSet": "Set current zealot count to %number%!"
+          }
+        },
+        "slayer": {
+          "bossRequired": "You need to select a boss! Please choose %bosses%",
+          "statRequired": "You need to select a stat. Press tab for options.",
+          "numberRequired": "You need to add the number you want.",
+          "killsSet": "Kills for slayer %boss% was set to %number%.",
+          "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
+          "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
+          "invalidStat": "\"%input%\" er ikke en gyldig boss!"
+        },
+        "toggleActionBarLogging": {
+          "disabled": "Action bar messages will no longer be logged.",
+          "enabled": "Action bar messages will now be logged."
+        },
+        "toggleMagmaTimerLogging": {
+          "disabled": "Magma boss timer messages will no longer be logged.",
+          "enabled": "Magma boss timer messages will now be logged."
+        },
+        "version": {
+          "hoverText": "Click to put in chat so you can copy."
+        }
+      }
+    },
+    "errors": {
+      "wrongUsage": {
+        "generic": "Feil bruk!",
+        "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
+      }
+    }
+  },
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Open the main menu"
+        "help": "Opens the main menu"
       },
       "brand": {
-        "help": "Show the server brand",
+        "help": "Shows the server brand",
         "brandOutput": "Server Brand: %brand%",
         "notFound": "Server brand not found!"
       },
@@ -351,7 +516,7 @@
         "help": "Copies data about the block that you are looking at"
       },
       "copyEntity": {
-        "help": "Copy NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
         "detailedHelp": {
           "description": "Copies the NBT data of entities. The types of entities included and the radius around the player to copy data from can be customized. If no options are given, the default settings are used. The default settings are: include players, armor stands, and mobs, and a radius of 3 blocks. If the radius isn't given, the default radius is used.",
           "options": {
@@ -361,7 +526,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copy the scoreboard text",
+        "help": "Copies the scoreboard text",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -370,32 +535,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copy the tab list header and footer",
+        "help": "Copies the tab list header and footer",
         "detailedHelp": {
           "description": "This command copies the header and footer of the tab player list. Formatting codes are included."
         }
       },
       "dev": {
-        "help": "Toggle developer mode",
+        "help": "Toggles the developer mode",
         "detailedHelp": {
-          "description": "This command toggles developer mode. This mode is meant for developers of Skyblock mods & tools. It provides game data such as entity and item NBT."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
-        "disabled": "Developer mode disabled!",
-        "enabled": "Developer mode enabled! TIP: Press \"%keyName%\" to copy NBT data!",
-        "prefix": "Dev"
+        "disabled": "Utviklermodus deaktivert!",
+        "enabled": "Utviklermodus aktivert! TIP: Trykk \"%keyName%\" for å kopiere NBT-data!",
+        "prefix": "Utvikler"
       },
       "edit": {
-        "help": "Edit GUI locations"
+        "help": "Edits GUI locations"
       },
       "folder": {
-        "help": "Open your mods folder",
-        "error": "An error occurred trying to open the mods folder: %s"
+        "help": "Åpner mods-mappen din",
+        "error": "An error occurred while trying to open the mods folder: %s"
       },
       "help": {
-        "help": "Show this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
         "detailedHelp": {
           "options": {
-            "command": "the sub-command to get detailed usage for"
+            "command": "The sub-command to get detailed usage for"
           }
         }
       },
@@ -417,7 +582,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually set your zealot counts",
+          "help": "Manually sets your zealot counts",
           "detailedHelp": {
             "description": "Manually sets counts in the zealot counter.",
             "options": {
@@ -433,9 +598,9 @@
         }
       },
       "slayer": {
-        "help": "Manually set slayer stats, press tab for arguments",
+        "help": "Manually sets slayer stats, press tab for arguments",
         "detailedHelp": {
-          "description": "Manually set slayer stats, press tab for arguments",
+          "description": "Manually sets slayer stats, press tab for arguments",
           "options": {
             "boss": "Slayer boss: \"Zombie\", \"Spider\", or \"Wolf\"",
             "number": "Number to set the stat to",
@@ -447,16 +612,16 @@
         "numberRequired": "You need to add the number you want.",
         "killsSet": "Kills for slayer %boss% was set to %number%.",
         "statSet": "Statistic %stat% for slayer %boss% was set to %number%.",
-        "invalidBoss": "\"%input%\" is not a valid statistic!",
-        "invalidStat": "\"%input%\" is not a valid boss!"
+        "invalidBoss": "\"%input%\" er ikke en gyldig statistikk!",
+        "invalidStat": "\"%input%\" er ikke en gyldig boss!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggle logging action bar messages",
+        "help": "Toggles logging action bar messages",
         "disabled": "Action bar messages will no longer be logged.",
         "enabled": "Action bar messages will now be logged."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggle logging magma boss timer debug messages",
+        "help": "Toggles logging magma boss timer debug messages",
         "disabled": "Magma boss timer messages will no longer be logged.",
         "enabled": "Magma boss timer messages will now be logged."
       },
@@ -466,14 +631,16 @@
       },
       "errors": {
         "wrongUsage": {
-          "generic": "Wrong usage!",
+          "generic": "Feil bruk!",
           "subCommandNotFound": "The sub-command \"%sub-command%\" was not found."
         }
       }
     }
   },
   "keyBindings": {
-    "developerCopyNBT": "Kopier NBT"
+    "developerCopyNBT": "Kopier NBT",
+    "increaseDungeonMapZoom": "Dungeon-kart zoom inn",
+    "decreaseDungeonMapZoom": "Dungeon-kart zoom ut"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -500,8 +667,8 @@
   "warpMenu": {
     "click": "Click a warp point to travel there!",
     "mustUnlock": "Must have the specific scroll unlocked.",
-    "privateIsland": "Private Island",
-    "home": "Your Island",
+    "privateIsland": "Privat Øy",
+    "home": "Din Øy",
     "spawn": "Spawn",
     "unknown": "Haven't Visited",
     "notUnlocked": "Not Unlocked",
@@ -513,9 +680,9 @@
     "midTier": "Mid Tier",
     "lowTier": "Low Tier",
     "commas": "Commas",
-    "expertiseKills": "Expertise Kills",
+    "expertiseKills": "Vis Expertise-drap",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
-    "maxed": "Maxed"
+    "maxed": "Maksimert"
   }
 }

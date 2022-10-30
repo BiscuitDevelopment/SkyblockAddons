@@ -14,6 +14,10 @@ public class RequestRetryHandler implements HttpRequestRetryHandler {
 
     @Override
     public boolean retryRequest(IOException exception, int executionCount, HttpContext context) {
-        return executionCount < MAX_RETRY_COUNT + 1;
+        if (executionCount >= MAX_RETRY_COUNT)  {
+            DataUtils.useFallbackCDN = true;
+        }
+    
+        return executionCount <= MAX_RETRY_COUNT;
     }
 }
