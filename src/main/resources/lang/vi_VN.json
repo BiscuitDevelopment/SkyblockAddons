@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Thời gian của thuốc",
     "noArrowsLeftAlert": "Cảnh báo hết mũi tên",
-    "hideNightVisionEffectTimer": "Ẩn thời gian thuốc nhìn đêm",
     "showCakeBagPreview": "Hiển thị xem trước cho Cake Bags",
     "showBackpackPreviewInAH": "Hiển thị xem trước vật phẩm trong Backpack khi đang mở AH",
     "enableDevFeatures": "Bật chế độ dành cho nhà phát triển",
@@ -98,7 +97,6 @@
       "fade": "Theo dải màu khác nhau"
     },
     "chromaFadeWidth": "Độ dài dải màu",
-    "sortTabEffectTimers": "Sắp xếp thời gian theo thời lượng còn lại",
     "showBrokenFragments": "Hiển thị Dragon Fragments bị hỏng",
     "skyblockAddonsButtonInPauseMenu": "Hiển thị nút cài đặt SBA trong Pause menu",
     "showTotalZealotCount": "Bộ đếm Zealot - Tổng số Zealot",
