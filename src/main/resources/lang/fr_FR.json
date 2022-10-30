@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
     "hideTrueDefense": "Cacher la défense pure",
     "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Afficher les factions du Nether"
+    "showNetherFaction": "Afficher les factions du Nether",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchantements",
