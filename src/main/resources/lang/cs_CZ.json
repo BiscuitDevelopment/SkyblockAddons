@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
-    "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
     "enableDevFeatures": "Povolit Vývojářské funkce",
@@ -98,7 +97,6 @@
       "fade": "Barevné vyblednutí"
     },
     "chromaFadeWidth": "Šířka vyblednutí měnění barev",
-    "sortTabEffectTimers": "Seřadit Časovače podle délky",
     "showBrokenFragments": "Zobrazit rozbité Dragon Fragmenty",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Počítadlo Zealotů - Celkový počet Zealotů",
