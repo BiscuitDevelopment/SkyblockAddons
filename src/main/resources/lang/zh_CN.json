@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "药水及加成效果计时器",
     "noArrowsLeftAlert": "箭矢不足提醒",
-    "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
     "enableDevFeatures": "启用开发者模式",
@@ -98,7 +97,6 @@
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度",
-    "sortTabEffectTimers": "按时长排序计时器",
     "showBrokenFragments": "显示无法使用的龙装碎片",
     "skyblockAddonsButtonInPauseMenu": "在暂停画面中显示 SBA 按钮",
     "showTotalZealotCount": "末影战士击杀计数 - 总击杀数",
