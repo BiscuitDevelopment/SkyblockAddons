@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Bájitalok és Stat Booster számláló",
     "noArrowsLeftAlert": "Elfogytak a nyilaid! figyelmeztetés",
-    "hideNightVisionEffectTimer": "Éjjellátás effekt elrejtése",
     "showCakeBagPreview": "Cake Bag előnézet mutatása",
     "showBackpackPreviewInAH": "Hátizsák előnézet mutatása aukcióház böngészés közben",
     "enableDevFeatures": "Fejlesztői beállítások engedélyezése",
@@ -98,7 +97,6 @@
       "fade": "Szín árnyalata"
     },
     "chromaFadeWidth": "Színátmenet szélessége",
-    "sortTabEffectTimers": "Rendszerezés hátralévő idő szerint",
     "showBrokenFragments": "Buggos Dragon Fragment kiemelése",
     "skyblockAddonsButtonInPauseMenu": "SBA gomb mutatása Játékmenüben",
     "showTotalZealotCount": "Zealot számláló - Összes megölt Zealot",
