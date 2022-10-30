@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Timer Potion dan Powerup",
     "noArrowsLeftAlert": "Peringatan Arrow Habis",
-    "hideNightVisionEffectTimer": "Sembunyikan Efek Night Vision Timer",
     "showCakeBagPreview": "Perlihatkan Isi Cake Bags",
     "showBackpackPreviewInAH": "Perlihatkan Isi Backpack untuk Benda Anda Saat AH dibuka",
     "enableDevFeatures": "Aktifkan Fitur-Fitur Developer",
@@ -98,7 +97,6 @@
       "fade": "Warna Memudar"
     },
     "chromaFadeWidth": "Lebar Luntur Chroma",
-    "sortTabEffectTimers": "Sortir Timer Oleh Durasi",
     "showBrokenFragments": "Perlihatkan Fragment Rusak",
     "skyblockAddonsButtonInPauseMenu": "Perlihatkan Tombol SBA di Menu Pause",
     "showTotalZealotCount": "Counter Zealot - Total Semua Zealot Terbunuh",
