@@ -165,13 +165,7 @@ public class EnumUtils {
         POWER_ORB_DISPLAY_STYLE("settings.powerOrbDisplayStyle", -1),
         CHANGE_BAR_COLOR_WITH_POTIONS("settings.changeBarColorForPotions", 46),
         ENABLE_MESSAGE_WHEN_ACTION_PREVENTED("settings.enableMessageWhenActionPrevented", -1),
-        // Obsolete
-        @Deprecated
-        HIDE_NIGHT_VISION_EFFECT("settings.hideNightVisionEffectTimer", 70),
         ENABLE_CAKE_BAG_PREVIEW("settings.showCakeBagPreview", 71),
-        // Obsolete
-        @Deprecated
-        SORT_TAB_EFFECT_TIMERS("settings.sortTabEffectTimers", 74),
         ROTATE_MAP("settings.rotateMap", 100),
         CENTER_ROTATION_ON_PLAYER("settings.centerRotationOnYourPlayer", 101),
         MAP_ZOOM("settings.mapZoom", -1),
