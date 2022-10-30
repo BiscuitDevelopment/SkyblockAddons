@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Magisk drikk og powerup timere",
     "noArrowsLeftAlert": "Ingen piler igjen-varsel",
-    "hideNightVisionEffectTimer": "Skjul nattsyn-effekt timer",
     "showCakeBagPreview": "Vis forhåndsvisning for kakesekker",
     "showBackpackPreviewInAH": "Vis ryggsekk forhåndsvisning for tingene dine mens auksjonshuset er åpnet",
     "enableDevFeatures": "Aktiver utviklerfunksjoner",
@@ -98,7 +97,6 @@
       "fade": "Farge fade"
     },
     "chromaFadeWidth": "Chroma fade bredde",
-    "sortTabEffectTimers": "Sorter Timere etter Lengde",
     "showBrokenFragments": "Vis Dragon Fragments det er noe feil med",
     "skyblockAddonsButtonInPauseMenu": "Vis SBA-knapp i pausemeny",
     "showTotalZealotCount": "Zealot Teller - Totalt antall Zealoter drept",
