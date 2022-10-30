@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "ポーションとパワーアップのタイマー",
     "noArrowsLeftAlert": "矢切れのアラート",
-    "hideNightVisionEffectTimer": "暗視の効果のタイマーを非表示",
     "showCakeBagPreview": "Cake Bagsのプレビューを表示",
     "showBackpackPreviewInAH": "Auction House内でBackpackのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
@@ -98,7 +97,6 @@
       "fade": "色をフェード"
     },
     "chromaFadeWidth": "色変化の幅",
-    "sortTabEffectTimers": "タイマーを時間で並び替え",
     "showBrokenFragments": "壊れたDragon Fragmentsを表示",
     "skyblockAddonsButtonInPauseMenu": "一時停止中メニューにSBAのボタンを表示",
     "showTotalZealotCount": "Zealotカウンター - Zealotの合計カウント",
