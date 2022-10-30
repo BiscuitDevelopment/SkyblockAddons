@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Minuteur potions/capacités",
     "noArrowsLeftAlert": "Alerte aucune flèche restantes",
-    "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
     "showCakeBagPreview": "Aperçu du sac à gâteaux",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
     "enableDevFeatures": "Activer le mode développeur",
@@ -98,7 +97,6 @@
       "fade": "Dégradé"
     },
     "chromaFadeWidth": "Temps de fondu du Chroma",
-    "sortTabEffectTimers": "Trier les minuteurs par durée",
     "showBrokenFragments": "Afficher les fragments abimé du Dragon",
     "skyblockAddonsButtonInPauseMenu": "Afficher le bouton SBA dans le menu de pause",
     "showTotalZealotCount": "Compteur de Zealot - Nombre total de Zealot",
