@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Таймер за отвари и Powerup",
     "noArrowsLeftAlert": "Стрелите са свършили",
-    "hideNightVisionEffectTimer": "Скрий таймера за ефекта нощно виждане",
     "showCakeBagPreview": "Показване на какво има в Cake Bags",
     "showBackpackPreviewInAH": "Покажи какво има в Чантата ти докато си отворил AH",
     "enableDevFeatures": "Активирай функциите за разработчика",
@@ -98,7 +97,6 @@
       "fade": "Chroma избледняване"
     },
     "chromaFadeWidth": "Chroma широчина на избледняване",
-    "sortTabEffectTimers": "Сортирай Таймерите по Времетраене",
     "showBrokenFragments": "Покажи Счупени Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Покажи SBA бутона в Пауза Менюто",
     "showTotalZealotCount": "Zealot брояч - Общ брой Zealots",
