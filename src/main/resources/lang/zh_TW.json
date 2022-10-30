@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "顯示 Crimson Armor 疊加層數",
     "hideTrueDefense": "隱藏 True Defense",
     "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction"
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "附魔",
