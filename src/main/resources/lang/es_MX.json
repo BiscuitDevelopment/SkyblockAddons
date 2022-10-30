@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Temporizador de Pociones y Powerups",
     "noArrowsLeftAlert": "Alerta de Falta de Flechas",
-    "hideNightVisionEffectTimer": "Esconder el Temporizador del Efecto de Visión Nocturna",
     "showCakeBagPreview": "Mostrar Vista Previa de las Cake Bags",
     "showBackpackPreviewInAH": "Previsualización de Mochila mientras la Casa de Subastas está abierto",
     "enableDevFeatures": "Modo Desarrollador",
@@ -98,7 +97,6 @@
       "fade": "Desvanecimiento de Color"
     },
     "chromaFadeWidth": "Ancho de Desvanecimiento del Croma",
-    "sortTabEffectTimers": "Ordenar Temporizadores por Duración",
     "showBrokenFragments": "Mostrar Fragmentos de Dragón Rotos",
     "skyblockAddonsButtonInPauseMenu": "Mostrar Botón SBA en el Menú de Pausa",
     "showTotalZealotCount": "Contador de Zealots - Total de Zealots",
