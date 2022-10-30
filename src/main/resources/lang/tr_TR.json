@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "İksir ve Güçlendirme Sayaçları",
     "noArrowsLeftAlert": "Ok Kalmadı Uyarısı",
-    "hideNightVisionEffectTimer": "Gece Görüşü Etkisinin Sayacını Gizle",
     "showCakeBagPreview": "Cake Bags İçeriğini Göster",
     "showBackpackPreviewInAH": "AH Açıkken Eşyalarında Backpack Ön İzlemesini Göster",
     "enableDevFeatures": "Geliştirici Seçeneklerini Etkinleştir",
@@ -98,7 +97,6 @@
       "fade": "Rengarenk"
     },
     "chromaFadeWidth": "Rengarenk Geçiş Genişliği",
-    "sortTabEffectTimers": "Sayaçları süresine göre sırala",
     "showBrokenFragments": "Kırık Dragon Fragments'ı Göster",
     "skyblockAddonsButtonInPauseMenu": "Duraklatma Menüsünde SBA Butonunu Göster",
     "showTotalZealotCount": "Zealot Sayacı - Toplam Zealot Sayısı",
