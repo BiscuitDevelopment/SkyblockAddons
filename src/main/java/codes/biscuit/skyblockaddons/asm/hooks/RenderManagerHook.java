@@ -63,7 +63,7 @@ public class RenderManagerHook {
                 }
             }
             if (main.getConfigValues().isEnabled(Feature.HIDE_WITHERBORN) && main.getInventoryUtils().isWearingWitherArmor()) {
-                if (entityIn instanceof EntityWither && ((EntityWither) entityIn).getInvulTime() == 800) {
+                if (entityIn instanceof EntityWither && ((EntityWither) entityIn).getInvulTime() == 800 && entityIn.getDistanceSqToEntity(mc.thePlayer) > HIDE_RADIUS_SQUARED) {
                         returnValue.cancel();
                 }
             }
