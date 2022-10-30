@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "显示 Crimson 盔甲堆叠数",
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "显示存档类型图标",
-    "showNetherFaction": "显示下界阵营图标"
+    "showNetherFaction": "显示下界阵营图标",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "附魔",
