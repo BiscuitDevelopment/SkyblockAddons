@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta \"Acabaram-se as flechas!\"",
-    "hideNightVisionEffectTimer": "Esconder tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar uma pré-visualização da backpack para os teus itens enquanto estás na AH",
     "enableDevFeatures": "Mostrar opções de programador",
@@ -98,7 +97,6 @@
       "fade": "Desvanecimento da cor"
     },
     "chromaFadeWidth": "Intensidade das ondas croma",
-    "sortTabEffectTimers": "Ordenar poções por duração",
     "showBrokenFragments": "Mostrar Dragon Fragments bugados",
     "skyblockAddonsButtonInPauseMenu": "Mostrar o botão do SBA no menu de pausa",
     "showTotalZealotCount": "Contador de Zealots - Número total de Zealots",
@@ -220,12 +218,12 @@
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o rato",
     "resetSalvagedEssencesAfterLeavingMenu": "Repor o contador de Salvaged Essences após fechar o menu",
     "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense",
+    "showPlayerSymbolsInChat": "Mostrar símbolos dos jogadores no chat",
+    "crimsonArmorAbilityStacks": "Mostrar stacks da Crimson Armor",
+    "hideTrueDefense": "Esconder a true defense",
     "showProfileType": "Mostrar tipo de perfil",
     "showNetherFaction": "Mostrar fação do Nether",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "zealotSpawnAreasOnly": "Mostrar apenas em zonas de spawn de Zealots"
   },
   "messages": {
     "enchants": "encantamentos",
@@ -693,8 +691,8 @@
     "expertiseKills": "Kills com Expertise",
     "compactedBlocks": "Blocos compactados",
     "cultivatedCrops": "Plantas cultivadas",
-    "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "hecatombsSRuns": "Rondas S com Hecatombs",
+    "championCombatXp": "XP de combate do Champion",
     "maxed": "Máximo"
   }
 }
