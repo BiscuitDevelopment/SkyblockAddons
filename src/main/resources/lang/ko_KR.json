@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "포션과 파워업 타이머",
     "noArrowsLeftAlert": "화살 없음 경고",
-    "hideNightVisionEffectTimer": "야간 투시 이펙트 타이머 숨기기",
     "showCakeBagPreview": "Cake Bags 프리뷰 보이기",
     "showBackpackPreviewInAH": "Auction House가 열려 있을 때 내 Backpack 아이템 보이기",
     "enableDevFeatures": "개발자용 기능 활성화",
@@ -98,7 +97,6 @@
       "fade": "색상 페이드"
     },
     "chromaFadeWidth": "색상 페이드 너비",
-    "sortTabEffectTimers": "타이머들을 남은 시간순으로 정리하기",
     "showBrokenFragments": "부서진 Dragon Fragments 보이기",
     "skyblockAddonsButtonInPauseMenu": "일시 정지 화면에서 SBA 버튼 보기",
     "showTotalZealotCount": "Zealot 카운터 - 전체 Zealot 카운트",
