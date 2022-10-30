@@ -224,7 +224,8 @@
     "crimsonArmorAbilityStacks": "Crimson Armor 스택 보이게 하기",
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "프로필 유형 표시",
-    "showNetherFaction": "Show Nether Faction"
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "인챈트",
