@@ -223,7 +223,7 @@
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "显示存档类型图标",
     "showNetherFaction": "显示下界阵营图标",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "zealotSpawnAreasOnly": "仅在末影战士生成区域显示"
   },
   "messages": {
     "enchants": "附魔",
