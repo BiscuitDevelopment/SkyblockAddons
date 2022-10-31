@@ -218,9 +218,9 @@
     "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
     "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
     "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "showPlayerSymbolsInChat": "在聊天栏中显示玩家图标",
     "crimsonArmorAbilityStacks": "显示 Crimson 盔甲堆叠数",
-    "hideTrueDefense": "Hide True Defense",
+    "hideTrueDefense": "隐藏真实防御",
     "showProfileType": "显示存档类型图标",
     "showNetherFaction": "显示下界阵营图标",
     "zealotSpawnAreasOnly": "仅在末影战士生成区域显示"
@@ -335,10 +335,10 @@
     "descriptionSvens": "显示你当前正在进行狼王猎手任务",
     "titleTarantula": "狼蛛猎手任务",
     "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务",
-    "titleVoidgloom": "Voidgloom Quest",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
-    "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "titleVoidgloom": "Voidgloom 猎手任务",
+    "descriptionVoidgloom": "显示你当前正在进行 Voidgloom 猎手任务",
+    "titleInferno": "Inferno 猎手任务",
+    "descriptionInferno": "显示你当前正在进行 Inferno 猎手任务"
   },
   "enchantLayout": {
     "title": "设定附魔显示数量",
@@ -691,8 +691,8 @@
     "expertiseKills": "Expertise 击杀数: ",
     "compactedBlocks": "已压缩方块",
     "cultivatedCrops": "已收获作物",
-    "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "hecatombsSRuns": "Hecatombs S 累计局数",
+    "championCombatXp": "Champion 累计战斗经验",
     "maxed": "已满配"
   }
 }
