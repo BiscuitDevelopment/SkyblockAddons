@@ -219,11 +219,11 @@
     "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu",
     "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-",
     "showPlayerSymbolsInChat": "Afficher les symboles du joueur dans le chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "crimsonArmorAbilityStacks": "Afficher les piles d'armures crimson",
     "hideTrueDefense": "Cacher la défense pure",
-    "showProfileType": "Show Profile Type",
+    "showProfileType": "Afficher le type de profil",
     "showNetherFaction": "Afficher les factions du Nether",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "zealotSpawnAreasOnly": "Afficher uniquement dans les zones d'apparition des zealots"
   },
   "messages": {
     "enchants": "Enchantements",
