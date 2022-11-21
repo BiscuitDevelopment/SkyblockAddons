@@ -223,7 +223,7 @@
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "프로필 유형 표시",
     "showNetherFaction": "Show Nether Faction",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "zealotSpawnAreasOnly": "Zealot이 스폰되는 영역에서만 보여줍니다."
   },
   "messages": {
     "enchants": "인챈트",
@@ -691,7 +691,7 @@
     "expertiseKills": "Expertise 킬 카운트",
     "compactedBlocks": "압축된 블록",
     "cultivatedCrops": "재배된 작물",
-    "hecatombsSRuns": "Hecatombs S Runs",
+    "hecatombsSRuns": "Hecatombs S 판 수",
     "championCombatXp": "Champion 전투 경험치",
     "maxed": "최대"
   }
