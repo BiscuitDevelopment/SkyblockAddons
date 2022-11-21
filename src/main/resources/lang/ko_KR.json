@@ -15,7 +15,7 @@
     "disableEmberRodAbility": "섬에서 Ember Rod 능력 비활성화",
     "editLocations": "GUI 위치 편집",
     "guiScale": "GUI 크기: %scale%",
-    "resetLocations": "위치 설정 초기화",
+    "resetLocations": "GUI 위치 초기화",
     "minionStopWarning": "\"Minion 몹 공격 불가\" 경고",
     "hidePlayersNearNPCs": "NPC 근처에 있는 플레이어 숨기기",
     "backpackStyle": "Backpack 스타일: %style%",
@@ -47,7 +47,7 @@
     "lockSlot": "슬롯 잠그기",
     "dontResetCursorInventory": "인벤토리 내의 마우스 위치 리셋 방지",
     "summoningEyeAlert": "Summoning Eye 알림",
-    "makeEnderchestsInEndGreen": "The End에서 엔더 상자 색깔 바꾸기",
+    "makeEnderchestsInEndGreen": "엔드 섬에서 엔더 상자 색깔 바꾸기",
     "changeColor": "색 변경하기",
     "showInOtherGames": "다른 미니게임에서도 보이기",
     "useVanillaTexture": "기본 텍스쳐 유지하기",
@@ -195,7 +195,7 @@
       "title": "Trevor the Trapper 기능",
       "trackedEntityProximityIndicator": "추적된 엔티티에 근접 표시기 표시하기",
       "highlightTrackedEntity": "추적된 엔티티 강조",
-      "showQuestCooldown": "Trevor's Quest 쿨다운 보이기",
+      "showQuestCooldown": "Show Trevor's Quest Cooldown",
       "showQuestCooldownDescription": "이것은 Trevor의 머리 위에 표시될 것 입니다."
     },
     "showEnderChestPreview": "엔더 상자 아이템 보이기",
@@ -323,22 +323,22 @@
     "descriptionItem": "당신이 들고 있는 아이템의 이름을 보여줍니다",
     "titleProfile": "프로필",
     "descriptionProfile": "나의 프로필 이름을 보여줍니다",
-    "titleTime": "스카이블럭 시간",
-    "descriptionTime": "현재 스카이블럭 시간을 보여줍니다. 예: 12:00am 1st Early Winter",
+    "titleTime": "Skyblock Time",
+    "descriptionTime": "Shows the current Skyblock time. E.g. 12:00am 1st Early Winter",
     "titleCustom": "사용자 지정 상태",
     "descriptionCustom": "사용자 지정 상태를 입력하세요",
     "titleAuto": "자동으로 표시되는 상태",
-    "descriptionAuto": "자동으로 상태를 표시합니다. 예: The End에서의 당신의 Zealot 카운트.",
+    "descriptionAuto": "Automatically displays a status. E.g. your zealot count while in The End.",
     "titleRevenants": "Revenant 퀘스트",
     "descriptionRevenants": "내가 Revenant 퀘스트를 하는 것을 보여줍니다.",
     "titleSvens": "Sven 퀘스트",
     "descriptionSvens": "내가 Sven 퀘스트를 하는 것을 보여줍니다.",
     "titleTarantula": "Tarantula 퀘스트",
     "descriptionTarantula": "내가 Tarantula 퀘스트를 하는 것을 보여줍니다.",
-    "titleVoidgloom": "Voidgloom Quest",
+    "titleVoidgloom": "Voidgloom 퀘스트",
     "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
     "titleInferno": "인페르노 퀘스트",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "descriptionInferno": "내가 Inferno 퀘스트를 하는 것을 보여줍니다."
   },
   "enchantLayout": {
     "title": "아이템이 어떻게 툴팁에 표시되는지 제어합니다.",
@@ -389,7 +389,7 @@
         "dev": {
           "help": "개발자 모드 켜기/끄기",
           "detailedHelp": {
-            "description": "클릭해서 개발자 모드 여부를 전환합니다. 이 설정은 스카이블럭 모드나 도구 개발자를 위한 설정입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
+            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
           },
           "prefix": "개발자"
         },
@@ -551,7 +551,7 @@
       "dev": {
         "help": "개발자 모드 켜기/끄기",
         "detailedHelp": {
-          "description": "클릭해서 개발자 모드 여부를 전환합니다. 이 설정은 스카이블럭 모드나 도구 개발자를 위한 설정입니다. 엔티티 및 아이템 NBT와 같은 게임 데이터를 제공합니다."
+          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
         },
         "disabled": "개발자 모드가 꺼졌습니다!",
         "enabled": "개발자 모드가 켜졌습니다! 팁: \"%keyName%\" 키를 누르면 NBT 데이터를 복사할 수 있습니다.",
