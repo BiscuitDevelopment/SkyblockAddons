@@ -41,11 +41,12 @@ public enum SlayerDrop {
     WOLF_TOOTH(Items.ghast_tear, "Wolf Tooth", "WOLF_TOOTH", ItemRarity.UNCOMMON, true),
     HAMSTER_WHEEL(Item.getItemFromBlock(Blocks.trapdoor), "Hamster Wheel", "HAMSTER_WHEEL", ItemRarity.RARE, true),
     SPIRIT_RUNE("Spirit Rune", "RUNE", "SPIRIT", ItemRarity.RARE, "9e0afa8f-22b3-38d3-b5eb-b5328a73d963", "c738b8af8d7ce1a26dc6d40180b3589403e11ef36a66d7c4590037732829542e"),
+    FURBALL("Furball", "FURBALL", ItemRarity.RARE, "20a9a9c2-d24e-4b4b-b6d2-37439abcb9ba", "b548678e44f9f62d350c24a3e01907c0545bef66810590333e654bd931c187db"),
     CRITICAL_SIX("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "critical", 6),
-    GRIZZLY_BAIT(Items.fish, 1, "Grizzly Bait", "GRIZZLY_BAIT", ItemRarity.RARE),
     RED_CLAW_EGG(Items.spawn_egg, 96, "Red Claw Egg", "RED_CLAW_EGG", ItemRarity.EPIC),
-    OVERFLUX_CAPACITOR(Items.quartz, "Overflux Capacitor", "OVERFLUX_CAPACITOR", ItemRarity.EPIC),
     COUTURE_RUNE("Couture Rune", "RUNE", "COUTURE", ItemRarity.LEGENDARY, "0120ccd2-5ee3-314a-b771-35128cc17d22", "734fb3203233efbae82628bd4fca7348cd071e5b7b52407f1d1d2794e31799ff"),
+    OVERFLUX_CAPACITOR(Items.quartz, "Overflux Capacitor", "OVERFLUX_CAPACITOR", ItemRarity.EPIC),
+    GRIZZLY_BAIT(Items.fish, 1, "Grizzly Bait", "GRIZZLY_BAIT", ItemRarity.RARE),
 
     // Enderman Drops
     NULL_SPHERE(Items.firework_charge, "Null Sphere", "NULL_SPHERE", ItemRarity.UNCOMMON, true),
@@ -55,6 +56,7 @@ public enum SlayerDrop {
     MANA_STEAL_ONE("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "mana_steal", 1),
     TRANSMISSION_TUNER("Transmission Tuner", "TRANSMISSION_TUNER", ItemRarity.EPIC, "df5671b6-329a-3fd7-9f56-71b6329a9fd7", "8ae54d03ce05106f6f745b8f851344ec38e68dd3307a31c843b08212df546dd9"),
     NULL_ATOM(Item.getItemFromBlock(Blocks.wooden_button), "Null Atom", "NULL_ATOM", ItemRarity.RARE, true),
+    HAZMAT_ENDERMAN("Hazmat Enderman", "HAZMAT_ENDERMAN", ItemRarity.LEGENDARY, "7f71c933-a8d0-4a2a-af25-2454b8e5a3ee", "71e72890a79e500cf13a97d1374c5ac8a4f15a9e0d6885997fc6f2e3c11254c"),
     POCKET_ESPRESSO_MACHINE("Pocket Espresso Machine", "POCKET_ESPRESSO_MACHINE", ItemRarity.COMMON, "9bf867c8-d5b6-33e3-8fa3-f4a573979ebe", "666070ce03a545ee4d263bcf27f36338d249d7cb7a2376f92c1673ae134e04b6"),
     SMARTY_PANTS_ONE("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "smarty_pants", 1),
     END_RUNE("End Rune", "RUNE", "ENDERSNAKE", ItemRarity.EPIC, "9d07e315-87f9-31e7-98a2-0372ebd8e660", "3b11fb90db7f57beb435954013b1c7ef776c6bd96cbf3308aa8ebac29591ebbd"),
@@ -158,6 +160,7 @@ public enum SlayerDrop {
         internalItemTranslations.put("hamsterWheel", "Hamster Wheel");
         internalItemTranslations.put("spiritRune", "Spirit Rune");
         internalItemTranslations.put("criticalSix", "Critical 6");
+        internalItemTranslations.put("furball", "Furball");
         internalItemTranslations.put("grizzlyBait", "Grizzly Bait");
         internalItemTranslations.put("redClawEgg", "Red Claw Egg");
         internalItemTranslations.put("overfluxCapacitor", "Overflux Capacitor");
@@ -170,6 +173,7 @@ public enum SlayerDrop {
         internalItemTranslations.put("manaStealOne", "Mana Steal 1");
         internalItemTranslations.put("transmissionTuner", "Transmission Tuner");
         internalItemTranslations.put("nullAtom", "Null Atom");
+        internalItemTranslations.put("hazmatenderman", "Hazmat Enderman");
         internalItemTranslations.put("pocketEspressoMachine", "Pocket Espresso Machine");
         internalItemTranslations.put("smartyPantsOne", "Smarty Pants 1");
         internalItemTranslations.put("endRune", "End Rune");

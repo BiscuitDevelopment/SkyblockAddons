@@ -123,6 +123,8 @@ public enum Location {
     THE_END("The End"),
     DRAGONS_NEST("Dragon's Nest"),
     VOID_SEPULTURE("Void Sepulture"),
+    ZEALOT_BRUISER_HIDEOUT("Zealot Bruiser Hideout"),
+    VOID_SLATE("Void Slate"),
 
     // Jerry's workshop
     JERRY_POND("Jerry Pond"), // TODO RPC
