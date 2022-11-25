@@ -10,7 +10,7 @@ public class ModelEndermanHook {
     public static void setEndermanColor() {
         SkyblockAddons main = SkyblockAddons.getInstance();
         Location location = main.getUtils().getLocation();
-        if (main.getUtils().isOnSkyblock() && (location == Location.DRAGONS_NEST || location == Location.ZEALOT_BRUISER_HIDEOUT || location == Location.VOID_SLATE) && main.getConfigValues().isEnabled(Feature.CHANGE_ZEALOT_COLOR)) {
+        if (main.getUtils().isOnSkyblock() && (location == Location.DRAGONS_NEST || location == Location.ZEALOT_BRUISER_HIDEOUT || location == Location.THE_END || location == Location.VOID_SLATE) && main.getConfigValues().isEnabled(Feature.CHANGE_ZEALOT_COLOR)) {
             int color = main.getConfigValues().getColor(Feature.CHANGE_ZEALOT_COLOR);
             ColorUtils.bindColor(color);
         }
