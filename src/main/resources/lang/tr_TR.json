@@ -218,12 +218,12 @@
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
     "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
     "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla",
-    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
-    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
-    "hideTrueDefense": "Hide True Defense",
-    "showProfileType": "Show Profile Type",
-    "showNetherFaction": "Show Nether Faction",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "showPlayerSymbolsInChat": "Oyuncu Sembollerini Sohbette Göster",
+    "crimsonArmorAbilityStacks": "Crimson Armor Yığınlarını Göster",
+    "hideTrueDefense": "True Defense'i Gizle",
+    "showProfileType": "Profil Türünü Göster",
+    "showNetherFaction": "Nether Faction'ı Göster",
+    "zealotSpawnAreasOnly": "Sadece Zealot Doğma Alanlarında Göster"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -335,10 +335,10 @@
     "descriptionSvens": "Sven görevleri yaptığını gösterir.",
     "titleTarantula": "Tarantula Görevleri",
     "descriptionTarantula": "Tarantula görevleri yaptığını gösterir.",
-    "titleVoidgloom": "Voidgloom Quest",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
-    "titleInferno": "Inferno Quest",
-    "descriptionInferno": "Shows that you are doing an Inferno quest."
+    "titleVoidgloom": "Voidgloom Görevi",
+    "descriptionVoidgloom": "Voidgloom görevi yaptığınızı gösterir.",
+    "titleInferno": "Inferno Görevi",
+    "descriptionInferno": "Inferno görevi yaptığınızı gösterir."
   },
   "enchantLayout": {
     "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
@@ -691,8 +691,8 @@
     "expertiseKills": "Expertise Leşleri",
     "compactedBlocks": "Sıkıştırılmış Bloklar",
     "cultivatedCrops": "Ekili Ürünler",
-    "hecatombsSRuns": "Hecatombs S Runs",
-    "championCombatXp": "Champion Combat XP",
+    "hecatombsSRuns": "Hecatombs S Rünleri",
+    "championCombatXp": "Champion Savaş XP'si",
     "maxed": "Maksimum"
   }
 }
