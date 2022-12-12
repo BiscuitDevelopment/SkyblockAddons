@@ -199,7 +199,7 @@
       "showQuestCooldownDescription": "이것은 Trevor의 머리 위에 표시될 것 입니다."
     },
     "showEnderChestPreview": "엔더 상자 아이템 보이기",
-    "hideWhenNotDoingQuest": "Hide When Not Doing Quest",
+    "hideWhenNotDoingQuest": "퀘스트를 안하고 있을 땐 숨기기",
     "showOverflowManaNumber": "Overflow Mana 숫자",
     "axeCooldownIndicator": "도끼 재사용 대기시간 표시",
     "vanillaHealthPrediction": "기본 체력 예측 쓰기",
