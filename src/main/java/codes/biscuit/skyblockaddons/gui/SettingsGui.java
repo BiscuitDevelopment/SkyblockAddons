@@ -446,22 +446,20 @@ public class SettingsGui extends GuiScreen {
 
             buttonList.add(new ButtonToggleTitle(x, y, Translations.getMessage("settings.textMode"), main, settingFeature));
 
-        } else if (setting == EnumUtils.FeatureSetting.DRAGONS_NEST_ONLY) {
+        } else if (setting == EnumUtils.FeatureSetting.ZEALOT_SPAWN_AREAS_ONLY) {
             boxWidth = 31;
             x = halfWidth - (boxWidth / 2);
             y = getRowHeightSetting(row);
 
             Feature settingFeature = null;
-            if (feature == Feature.DRAGON_STATS_TRACKER) {
-                settingFeature = Feature.DRAGON_STATS_TRACKER_NEST_ONLY;
-            } else if (feature == Feature.ZEALOT_COUNTER) {
-                settingFeature = Feature.ZEALOT_COUNTER_NEST_ONLY;
+            if (feature == Feature.ZEALOT_COUNTER) {
+                settingFeature = Feature.ZEALOT_COUNTER_ZEALOT_SPAWN_AREAS_ONLY;
             } else if (feature == Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE) {
-                settingFeature = Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_NEST_ONLY;
+                settingFeature = Feature.SHOW_AVERAGE_ZEALOTS_PER_EYE_ZEALOT_SPAWN_AREAS_ONLY;
             } else if (feature == Feature.SHOW_TOTAL_ZEALOT_COUNT) {
-                settingFeature = Feature.SHOW_TOTAL_ZEALOT_COUNT_NEST_ONLY;
+                settingFeature = Feature.SHOW_TOTAL_ZEALOT_COUNT_ZEALOT_SPAWN_AREAS_ONLY;
             } else if (feature == Feature.SHOW_SUMMONING_EYE_COUNT) {
-                settingFeature = Feature.SHOW_SUMMONING_EYE_COUNT_NEST_ONLY;
+                settingFeature = Feature.SHOW_SUMMONING_EYE_COUNT_ZEALOT_SPAWN_AREAS_ONLY;
             }
 
             buttonList.add(new ButtonToggleTitle(x, y, setting.getMessage(), main, settingFeature));

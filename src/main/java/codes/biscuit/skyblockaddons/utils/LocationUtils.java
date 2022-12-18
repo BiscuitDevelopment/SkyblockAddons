@@ -11,17 +11,19 @@ import java.util.List;
  */
 public class LocationUtils {
     // List of sublocations of the Dwarven Mines
-    private static final List<Location> dwarvenLocations = new ArrayList<Location>(Arrays.asList(Location.DWARVEN_MINES, Location.DWARVEN_VILLAGE, Location.GATES_TO_THE_MINES, Location.THE_LIFT,
+    private static final List<Location> dwarvenLocations = new ArrayList<>(Arrays.asList(Location.DWARVEN_MINES, Location.DWARVEN_VILLAGE, Location.GATES_TO_THE_MINES, Location.THE_LIFT,
             Location.THE_FORGE, Location.FORGE_BASIN, Location.LAVA_SPRINGS, Location.PALACE_BRIDGE, Location.ROYAL_PALACE,
             Location.ARISTOCRAT_PASSAGE, Location.HANGING_TERRACE, Location.CLIFFSIDE_VEINS, Location.RAMPARTS_QUARRY,
             Location.DIVANS_GATEWAY, Location.FAR_RESERVE, Location.GOBLIN_BURROWS, Location.UPPER_MINES, Location.ROYAL_MINES,
             Location.MINERS_GUILD, Location.GREAT_ICE_WALL, Location.THE_MIST, Location.CC_MINECARTS_CO, Location.GRAND_LIBRARY,
             Location.HANGING_COURT));
    // List of sublocations of the Crystal Hollows
-    private static final List<Location> hollowsLocations = new ArrayList<Location>(Arrays.asList(Location.MAGMA_FIELDS,
-            Location.CRYSTAL_HOLLOWS, Location.CRYSTAL_NUCLEUS, Location.JUNGLE, Location.MITHRIL_DEPOSITS, Location.GOBLIN_HOLDOUT,
-            Location.PRECURSOR_REMNANT, Location.FAIRY_GROTTO, Location.KHAZAD_DUM, Location.JUNGLE_TEMPLE, Location.MINES_OF_DIVAN,
-            Location.GOBLIN_QUEEN_DEN, Location.LOST_PRECURSOR_CITY));
+    private static final List<Location> hollowsLocations = new ArrayList<>(Arrays.asList(Location.MAGMA_FIELDS,
+           Location.CRYSTAL_HOLLOWS, Location.CRYSTAL_NUCLEUS, Location.JUNGLE, Location.MITHRIL_DEPOSITS, Location.GOBLIN_HOLDOUT,
+           Location.PRECURSOR_REMNANT, Location.FAIRY_GROTTO, Location.KHAZAD_DUM, Location.JUNGLE_TEMPLE, Location.MINES_OF_DIVAN,
+           Location.GOBLIN_QUEEN_DEN, Location.LOST_PRECURSOR_CITY));
+    // List of locations that spawn zealots/zealot variants
+    private static final List<Location> zealotSpawnLocations = new ArrayList<>(Arrays.asList(Location.DRAGONS_NEST, Location.ZEALOT_BRUISER_HIDEOUT));
 
     /**
      *
@@ -39,6 +41,15 @@ public class LocationUtils {
  //same thing but for hollows
     public static boolean isInCrystalHollows(String locationName) {
         for (Location location : hollowsLocations) {
+            if (location.getScoreboardName().equals(locationName)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isZealotSpawnLocation(String locationName) {
+        for (Location location : zealotSpawnLocations) {
             if (location.getScoreboardName().equals(locationName)) {
                 return true;
             }
