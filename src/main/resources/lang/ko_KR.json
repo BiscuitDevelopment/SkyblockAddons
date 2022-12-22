@@ -128,7 +128,7 @@
     "centerRotationOnYourPlayer": "회전 중점을 플레이어로 설정하기",
     "showFetchurOnlyInDwarven": "Dwarven Mines에서 Fetchur만 보이게 하기",
     "showFetchurItemName": "Fetchur의 아이템 이름 보이기",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
+    "showFetchurInventoryOpenOnly": "인벤토리가 열려 있을 때 Fetchur의 아이템만 보이기",
     "warnWhenFetchurChanges": "Fetchur가 변경되면 경고하기",
     "mapZoom": "지도 확대",
     "glowingDroppedItems": "떨군 아이템을 빛나도록 표시",
@@ -336,7 +336,7 @@
     "titleTarantula": "Tarantula 퀘스트",
     "descriptionTarantula": "내가 Tarantula 퀘스트를 하는 것을 보여줍니다.",
     "titleVoidgloom": "Voidgloom 퀘스트",
-    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "descriptionVoidgloom": "내가 Voidgloom 퀘스트를 하는 것을 보여줍니다.",
     "titleInferno": "인페르노 퀘스트",
     "descriptionInferno": "내가 Inferno 퀘스트를 하는 것을 보여줍니다."
   },
