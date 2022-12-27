@@ -798,28 +798,40 @@ public class RenderListener {
                 text = timestampActive.toString();
             }
 
-        }else if (feature == Feature.CULT_STARFALL_TIMER) {//WARNING: POTENTIALLY HILARIOUSLY OVERENGINEERED CODE AHEAD, VIEW AT YOUR OWN RISK
+        }else if (feature == Feature.CULT_STARFALL_TIMER) {
             long FirstSkyblockDay = 1560275700000L; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
-            long CurrentTime = System.currentTimeMillis();
-            double SkyblockCurrentTime = CurrentTime - FirstSkyblockDay;
-            int SkyblockYears = (int)Math.ceil(SkyblockCurrentTime / 446400000); //5 days and 4 hours in 1 skyblock year
-            int SkyblockMonth = (int)Math.floor(SkyblockCurrentTime / 37200000 % 12)+1; //10 hours and 20 minutes in 1 skyblock month
-            int SkyblockDays = (int)Math.floor(SkyblockCurrentTime / 1200000 % 31)+1; //20 minutes in 1 skyblock day
-            int SkyblockHours = (int)Math.floor(SkyblockCurrentTime / 50000 % 24); //50 seconds in 1 skyblock hour
-            int SkyblockMinutes = (int)Math.floor(SkyblockCurrentTime / 830 % 60); //0.83 seconds in 1 skyblock minute
+            long MSCurrentTime = System.currentTimeMillis();
+            double MSTimeElapsedInSkyblock = MSCurrentTime - FirstSkyblockDay;
+            int SkyblockYears = (int)Math.floor(MSTimeElapsedInSkyblock / 446400000)+1; //5 days and 4 hours in 1 skyblock year
+            int SkyblockMonths = (int)Math.floor((MSTimeElapsedInSkyblock / 37200000) % 12)+1; //10 hours and 20 minutes in 1 skyblock month
+            int SkyblockDays = (int)Math.floor((MSTimeElapsedInSkyblock / 1200000) % 31); //20 minutes in 1 skyblock day
+            int SkyblockHours = (int)Math.floor((MSTimeElapsedInSkyblock / 50000) % 24); //50 seconds in 1 skyblock hour
+            int SkyblockMinutes = (int)Math.floor((MSTimeElapsedInSkyblock / 830) % 60); //0.83 seconds in 1 skyblock minute
 
             int SkyblockDaysLeft = 7 - (SkyblockDays % 7); //make the difference in days
-            if (SkyblockDays > 28){
+            if (SkyblockDays >= 27){
                 SkyblockDaysLeft += 3; //add 3 to account for the final 3 days of skyblock's months
-            }//take the days remaining, subtract by the current hours and minutes, and convert to real time ms values
-            long RealMSLeft = ((SkyblockDaysLeft * 1200000L) - (SkyblockHours * 50000L) - (SkyblockMinutes * 830L));
+            }
+            long MSNextEvent = (SkyblockYears * 446400000L) + (SkyblockMonths * 37200000L) + (SkyblockDaysLeft + (SkyblockDays%7) * 1200000L);
+            double RealMSLeft = MSNextEvent - MSTimeElapsedInSkyblock;
             //get the hours, minutes, and seconds of the real world ms value
-            int hours = (int) (RealMSLeft / 3600000);
-            int minutes = (int) (RealMSLeft / 60000 % 60);
-            int seconds = (int) (RealMSLeft / 1000 % 60);
+            int hours;
+            int minutes;
+            int seconds;
+            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
+                hours = 0;
+                minutes = 0;
+                seconds = 0;
+            }
+            else{
+                hours = (int) Math.floor(RealMSLeft / 360000000);
+                minutes = (int) Math.floor(RealMSLeft / 60000 % 60);
+                seconds = (int) Math.floor(RealMSLeft / 1000 % 60);
+            }
 
 
-            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){
+
+            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
                 StringBuilder timestampActive = new StringBuilder();
                 timestampActive.append("Active: ");
                 if(minutes < 10){
