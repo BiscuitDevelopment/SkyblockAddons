@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Drank- en power-uptimers",
     "noArrowsLeftAlert": "Pijlen op-waarschuwing",
-    "hideNightVisionEffectTimer": "Nachtzichteffecttimer verbergen",
     "showCakeBagPreview": "Cake Bag-voorbeelden weergeven",
     "showBackpackPreviewInAH": "Rugzakvoorbeeld voor je voorwerpen weergeven als Veilinghuis open is",
     "enableDevFeatures": "Ontwikkelaarsfuncties inschakelen",
@@ -98,7 +97,6 @@
       "fade": "Kleur vervagen"
     },
     "chromaFadeWidth": "Chromavervagingsbreedte",
-    "sortTabEffectTimers": "Timers sorteren op duur",
     "showBrokenFragments": "Defecte Dragon Fragments weergeven",
     "skyblockAddonsButtonInPauseMenu": "SBA-knop weergeven in pauzemenu",
     "showTotalZealotCount": "Zealotteller - Aantal Zealots",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Skyblock-voorwerp-ID weergeven bij aanwijzen",
     "showFeatureNamesOnHover": "Functienamen weergeven bij aanwijzen",
     "resetSalvagedEssencesAfterLeavingMenu": "Geborgen Essences-teller resetten na sluiten menu",
-    "changeDungeonMapZoomWithKeyboard": "Zoom in en uit met de toetsen + en -"
+    "changeDungeonMapZoomWithKeyboard": "Zoom in en uit met de toetsen + en -",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Betoveringen",
@@ -330,7 +334,11 @@
     "titleSvens": "Svenopdracht",
     "descriptionSvens": "Laat zien dat je een Svenopdracht aan het doen bent.",
     "titleTarantula": "Tarantulaopdracht",
-    "descriptionTarantula": "Laat zien dat je een Tarantulaopdracht aan het doen bent."
+    "descriptionTarantula": "Laat zien dat je een Tarantulaopdracht aan het doen bent.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Bepaal hoe betoveringen worden weergegeven op itemtooltips",
@@ -345,16 +353,16 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "Opent het hoofdmenu"
         },
         "brand": {
-          "help": "Shows the server brand"
+          "help": "Geeft de serverprovider weer"
         },
         "copyBlock": {
           "help": "Kopieert data over het blok waar je naar kijkt"
         },
         "copyEntity": {
-          "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+          "help": "Kopieert NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
           "detailedHelp": {
             "description": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
             "options": {
@@ -364,7 +372,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "Kopieert de scorebordtekst",
           "detailedHelp": {
             "description": "Kopieert de weergegeven tekst van de zijbalk uit het scorebord",
             "options": {
@@ -373,29 +381,29 @@
           }
         },
         "copyTabList": {
-          "help": "Copies the tab list header and footer",
+          "help": "Kopieert de spelerslijstkop- en -voettekst",
           "detailedHelp": {
             "description": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen."
           }
         },
         "dev": {
-          "help": "Toggles the developer mode",
+          "help": "Schakelt de ontwikkelaarsmodus in/uit",
           "detailedHelp": {
-            "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+            "description": "Dit commando schakelt de ontwikkelaarsmodus in of uit. Deze modus is bedoeld voor Skyblock-mod- en -toolontwikkelaars. Het verstrekt ruwe gegevens uit het spel zoals entiteits- en voorwerps-NBT."
           },
           "prefix": "Dev"
         },
         "edit": {
-          "help": "Edits GUI locations"
+          "help": "Past interfacelocaties aan"
         },
         "folder": {
-          "help": "Opens your mods folder"
+          "help": "Opent je modificatiemap"
         },
         "help": {
-          "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+          "help": "Toont dit hulpbericht. Als een commando is opgegeven, wordt gedetailleerde hulp voor dat commando getoond.",
           "detailedHelp": {
             "options": {
-              "command": "The sub-command to get detailed usage for"
+              "command": "Het subcommando om gedetailleerde syntaxis voor te zien"
             }
           }
         },
@@ -416,7 +424,7 @@
         },
         "set": {
           "zealotCounter": {
-            "help": "Manually sets your zealot counts",
+            "help": "Stelt je zealotteller handmatig in",
             "detailedHelp": {
               "description": "Handmatig aantal voor zealotteller opgeven.",
               "options": {
@@ -428,9 +436,9 @@
           }
         },
         "slayer": {
-          "help": "Manually sets slayer stats, press tab for arguments",
+          "help": "Stelt spelerstatistieken handmatig in, druk tab voor argumenten",
           "detailedHelp": {
-            "description": "Manually sets slayer stats, press tab for arguments",
+            "description": "Stelt spelerstatistieken handmatig in, druk tab voor argumenten",
             "options": {
               "boss": "Slayerbaas: \"Zombie\", \"Spider\" of \"Wolf\"",
               "number": "Nummer om de statistiek naar te veranderen",
@@ -439,10 +447,10 @@
           }
         },
         "toggleActionBarLogging": {
-          "help": "Toggles logging action bar messages"
+          "help": "Schakelt vastleggen van actiebalkberichten in/uit"
         },
         "toggleMagmaTimerLogging": {
-          "help": "Toggles logging magma boss timer debug messages"
+          "help": "Schakelt vastleggen van debugberichten magmabaastimer in/uit"
         },
         "version": {
           "help": "Toont de versie van de modificatie"
@@ -460,7 +468,7 @@
           "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!"
         },
         "folder": {
-          "error": "An error occurred while trying to open the mods folder: %s"
+          "error": "Er is een fout opgetreden bij het openen van de modificatiemap: %s"
         },
         "resetZealotCounter": {
           "resetSuccess": "Zealottellers gereset!"
@@ -505,10 +513,10 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "Opent het hoofdmenu"
       },
       "brand": {
-        "help": "Shows the server brand",
+        "help": "Geeft de serverprovider weer",
         "brandOutput": "Servermerk: %brand%",
         "notFound": "Servermerk niet gevonden!"
       },
@@ -516,7 +524,7 @@
         "help": "Kopieert data over het blok waar je naar kijkt"
       },
       "copyEntity": {
-        "help": "Copies NBT data for entities of the given name(s) within the given radius around the player",
+        "help": "Kopieert NBT-data voor entiteiten met de gegeven na(a)m(en) in de gegeven radius rond de speler",
         "detailedHelp": {
           "description": "Kopieert de NBT-data van entiteiten. De gegeven entiteittypen en de radius rond de speler om gegevens van van te kopiëren kunnen worden aangepast. Als geen opties worden gegeven, worden de standaardinstellingen gebruikt. De standaardinstellingen zijn: spelers, harnashouders en mobs includeren, en een radius van %radius% blokken. Als geen radius wordt gegeven, word de standaardradius gebruikt.",
           "options": {
@@ -526,7 +534,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "Kopieert de scorebordtekst",
         "detailedHelp": {
           "description": "Kopieert de weergegeven tekst van de zijbalk uit het scorebord",
           "options": {
@@ -535,32 +543,32 @@
         }
       },
       "copyTabList": {
-        "help": "Copies the tab list header and footer",
+        "help": "Kopieert de spelerslijstkop- en -voettekst",
         "detailedHelp": {
           "description": "Dit commando kopieert de kop- en voettekst van de spelerlijst (tab). Opmaakcodes zijn inbegrepen."
         }
       },
       "dev": {
-        "help": "Toggles the developer mode",
+        "help": "Schakelt de ontwikkelaarsmodus in/uit",
         "detailedHelp": {
-          "description": "This command toggles the developer mode. This mode is meant for developers of SkyBlock mods & tools. It provides game data such as entity and item NBT."
+          "description": "Dit commando schakelt de ontwikkelaarsmodus in of uit. Deze modus is bedoeld voor Skyblock-mod- en -toolontwikkelaars. Het verstrekt ruwe gegevens uit het spel zoals entiteits- en voorwerps-NBT."
         },
         "disabled": "Ontwikkelaarsmodus uitgeschakeld!",
         "enabled": "Ontwikkelaarsmodus ingeschakeld! TIP: Druk op \"%keyName%\" om NBT-data te kopiëren!",
         "prefix": "Dev"
       },
       "edit": {
-        "help": "Edits GUI locations"
+        "help": "Past interfacelocaties aan"
       },
       "folder": {
-        "help": "Opens your mods folder",
-        "error": "An error occurred while trying to open the mods folder: %s"
+        "help": "Opent je modificatiemap",
+        "error": "Er is een fout opgetreden bij het openen van de modificatiemap: %s"
       },
       "help": {
-        "help": "Shows this help message. If a command is provided, detailed help about that command is shown.",
+        "help": "Toont dit hulpbericht. Als een commando is opgegeven, wordt gedetailleerde hulp voor dat commando getoond.",
         "detailedHelp": {
           "options": {
-            "command": "The sub-command to get detailed usage for"
+            "command": "Het subcommando om gedetailleerde syntaxis voor te zien"
           }
         }
       },
@@ -582,7 +590,7 @@
       },
       "set": {
         "zealotCounter": {
-          "help": "Manually sets your zealot counts",
+          "help": "Stelt je zealotteller handmatig in",
           "detailedHelp": {
             "description": "Handmatig aantal voor zealotteller opgeven.",
             "options": {
@@ -598,9 +606,9 @@
         }
       },
       "slayer": {
-        "help": "Manually sets slayer stats, press tab for arguments",
+        "help": "Stelt spelerstatistieken handmatig in, druk tab voor argumenten",
         "detailedHelp": {
-          "description": "Manually sets slayer stats, press tab for arguments",
+          "description": "Stelt spelerstatistieken handmatig in, druk tab voor argumenten",
           "options": {
             "boss": "Slayerbaas: \"Zombie\", \"Spider\" of \"Wolf\"",
             "number": "Nummer om de statistiek naar te veranderen",
@@ -616,12 +624,12 @@
         "invalidStat": "\"%input%\" is geen geldige baas!"
       },
       "toggleActionBarLogging": {
-        "help": "Toggles logging action bar messages",
+        "help": "Schakelt vastleggen van actiebalkberichten in/uit",
         "disabled": "Berichten in de actiebalk worden nu niet meer gelogd.",
         "enabled": "Berichten in de actiebalk worden nu gelogd."
       },
       "toggleMagmaTimerLogging": {
-        "help": "Toggles logging magma boss timer debug messages",
+        "help": "Schakelt vastleggen van debugberichten magmabaastimer in/uit",
         "disabled": "Magmabaastimerberichten worden niet langer geplaatst.",
         "enabled": "Magmabaastimerberichten worden vanaf nu geplaatst."
       },
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise-eliminaties",
     "compactedBlocks": "Compacte blokken",
     "cultivatedCrops": "Gecultiveerde gewassen",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Gemaximaliseerd"
   }
 }

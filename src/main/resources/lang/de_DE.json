@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Effekt und Powerup Timer",
     "noArrowsLeftAlert": "\"Keine Pfeile übrig\" Warnung",
-    "hideNightVisionEffectTimer": "Verstecke Nachtsicht Effekt Timer",
     "showCakeBagPreview": "Vorschau für Cake-Bag-Talisman anzeigen",
     "showBackpackPreviewInAH": "Rucksack-Vorschau für deine Items anzeigen, während das Auktionshaus geöffnet ist",
     "enableDevFeatures": "Aktiviere Entwickleroptionen",
@@ -98,7 +97,6 @@
       "fade": "Farb Überblendung"
     },
     "chromaFadeWidth": "Chroma Überblendung Breite",
-    "sortTabEffectTimers": "Timer nach Dauer sortieren",
     "showBrokenFragments": "Zeige kaputte Drachenfragmente",
     "skyblockAddonsButtonInPauseMenu": "Zeige SBA-Knopf, wenn das Spiel pausiert ist",
     "showTotalZealotCount": "Zealot-Zähler - Anzahl aller Zealots",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Skyblock Gegenstand-ID bei Hover anzeigen",
     "showFeatureNamesOnHover": "Funktionsnamen bei Hover anzeigen",
     "resetSalvagedEssencesAfterLeavingMenu": "Zähler für wiederhergestellte Essenz nach Schließen des Menüs zurücksetzen",
-    "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen"
+    "changeDungeonMapZoomWithKeyboard": "Zoom mit +/- Tasten anpassen",
+    "showPlayerSymbolsInChat": "Spielersymbole im Chat anzeigen",
+    "crimsonArmorAbilityStacks": "Crimson-Rüstungsstapel anzeigen",
+    "hideTrueDefense": "True Defense ausblenden",
+    "showProfileType": "Profil-Typ anzeigen",
+    "showNetherFaction": "Nether-Fraktion anzeigen",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Verzauberungen",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven-Quest",
     "descriptionSvens": "Zeigt, dass du ein Sven-Quest machst.",
     "titleTarantula": "Tarantula-Quest",
-    "descriptionTarantula": "Zeigt, dass du eine Tarantula-Quest machst."
+    "descriptionTarantula": "Zeigt, dass du eine Tarantula-Quest machst.",
+    "titleVoidgloom": "Voidgloom-Aufgabe",
+    "descriptionVoidgloom": "Zeigt, dass du eine Voidgloom-Aufgabe machst.",
+    "titleInferno": "Inferno-Aufgabe",
+    "descriptionInferno": "Zeigt, dass du eine Inferno-Aufgabe machst."
   },
   "enchantLayout": {
     "title": "Lege fest, wie Verzauberungen in den Tooltips angezeigt werden",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise-Kills",
     "compactedBlocks": "Kompaktierte Blöcke",
     "cultivatedCrops": "Kultivierte Pflanzen",
+    "hecatombsSRuns": "Hectacombs S-Läufe",
+    "championCombatXp": "Champion Kampf-XP",
     "maxed": "Maximum"
   }
 }

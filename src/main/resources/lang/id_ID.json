@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Timer Potion dan Powerup",
     "noArrowsLeftAlert": "Peringatan Arrow Habis",
-    "hideNightVisionEffectTimer": "Sembunyikan Efek Night Vision Timer",
     "showCakeBagPreview": "Perlihatkan Isi Cake Bags",
     "showBackpackPreviewInAH": "Perlihatkan Isi Backpack untuk Benda Anda Saat AH dibuka",
     "enableDevFeatures": "Aktifkan Fitur-Fitur Developer",
@@ -98,7 +97,6 @@
       "fade": "Warna Memudar"
     },
     "chromaFadeWidth": "Lebar Luntur Chroma",
-    "sortTabEffectTimers": "Sortir Timer Oleh Durasi",
     "showBrokenFragments": "Perlihatkan Fragment Rusak",
     "skyblockAddonsButtonInPauseMenu": "Perlihatkan Tombol SBA di Menu Pause",
     "showTotalZealotCount": "Counter Zealot - Total Semua Zealot Terbunuh",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Tunjukkan item ID Skyblock saat mengarahkan kursor ke benda",
     "showFeatureNamesOnHover": "Tunjukkan nama fitur saat mengarahkan kursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Counter Salvaged Essence Setelah Menutup Menu",
-    "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-"
+    "changeDungeonMapZoomWithKeyboard": "Atur zoom dengan tombol +/-",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "Quest Sven",
     "descriptionSvens": "Memperlihatkan anda sedang melakukan sebuah Quest Sven.",
     "titleTarantula": "Quest Tarantula",
-    "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula."
+    "descriptionTarantula": "Memperlihatkan anda sedang melakukan sebuah slayer Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Kontrol bagaimana enchants ditampilkan di tooltip benda",
@@ -683,6 +691,8 @@
     "expertiseKills": "Pembunuhan Expertise",
     "compactedBlocks": "Blok Compacted",
     "cultivatedCrops": "Tanaman Cultivated",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxed"
   }
 }

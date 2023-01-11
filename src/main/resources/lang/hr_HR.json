@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Brojači Napitaka i Otrova",
     "noArrowsLeftAlert": "Upozorenje za Nedostatak Strijela",
-    "hideNightVisionEffectTimer": "Sakrij Brojač Nočne Vizije",
     "showCakeBagPreview": "Pokaži Pregled za Torbu od Torte",
     "showBackpackPreviewInAH": "Pokaži prikaz ruksaka za vaše stvari dok je AH otvoren",
     "enableDevFeatures": "Omogući Razvijačke Znajačke",
@@ -98,7 +97,6 @@
       "fade": "Bljeđenje Boje"
     },
     "chromaFadeWidth": "Veličina Bljeđivanja Chroma",
-    "sortTabEffectTimers": "Sortiraj Brojače po Trajanju",
     "showBrokenFragments": "Prikaži Slomljene Dragon Fragmente",
     "skyblockAddonsButtonInPauseMenu": "Pokaži SBA dugmad u pauzijskom meniju",
     "showTotalZealotCount": "Brojač Zealota - Ukupni broj Zealota",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Čarolije",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven zadatak",
     "descriptionSvens": "Prikaži da radiš Sven zadatke.",
     "titleTarantula": "Tarantula zadatak",
-    "descriptionTarantula": "Prikaži da radiš Tarantula zadatke."
+    "descriptionTarantula": "Prikaži da radiš Tarantula zadatke.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Kontroliraj kako se enchanti prikazuju u deskripciji stvari",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise broj",
     "compactedBlocks": "Compact broj",
     "cultivatedCrops": "Cultivating broj",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Najjače"
   }
 }

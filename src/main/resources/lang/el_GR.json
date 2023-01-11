@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Χρονόμετρα Potion και Powerup",
     "noArrowsLeftAlert": "Ειδοποίηση Για Όταν Δεν Έχουν Απομείνει Βέλη",
-    "hideNightVisionEffectTimer": "Κρύψε τον Χρόνο της Νυχτερινής Όρασης",
     "showCakeBagPreview": "Δείξε την Προεπισκόπηση για το Σακίδιο με τα Κέικ",
     "showBackpackPreviewInAH": "Εμφάνιση προεπισκόπησης σακιδίου για τα στοιχεία σας ενώ το AH είναι ανοιχτό",
     "enableDevFeatures": "Ενεργοποίηση λειτουργιών προγραμματιστή",
@@ -98,7 +97,6 @@
       "fade": "Ξεθώριασμα χρώματος"
     },
     "chromaFadeWidth": "Πλάτος εξασθένισης Chroma",
-    "sortTabEffectTimers": "Ταξινόμηση χρονομετρητών κατά διάρκεια",
     "showBrokenFragments": "Εμφάνιση σπασμένων Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Εμφάνιση Κουμπιού SBA στο Μενού Παύσης",
     "showTotalZealotCount": "Μετρητής Zealot - Συνολικός αριθμός Zealot",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Μαγεύει",
@@ -330,7 +334,11 @@
     "titleSvens": "Αποστολή Sven",
     "descriptionSvens": "Δείχνει ότι κάνετε μια αποστολή Sven.",
     "titleTarantula": "Αποστολή Ταραντούλα",
-    "descriptionTarantula": "Δείχνει ότι κάνετε μια αποστολή Tarantula."
+    "descriptionTarantula": "Δείχνει ότι κάνετε μια αποστολή Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Έλεγχος του τρόπου εμφάνισης των μαγεμάτων στις υποδείξεις αντικειμένων",
@@ -683,6 +691,8 @@
     "expertiseKills": "Εμφάνιση Σκοτωμών Expertise",
     "compactedBlocks": "Συμπυκνωμένα Blocks",
     "cultivatedCrops": "Καλλιεργημένα Σπαρτά",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Μέγιστο"
   }
 }

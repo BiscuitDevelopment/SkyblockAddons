@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Poshun an Powerup Tiemrs",
     "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide teh Nite Vishun Effect Tiemr",
     "showCakeBagPreview": "Show Preview 4 Caek Bags",
     "showBackpackPreviewInAH": "Show Bakpack Preview 4 Ur Items While AH iz Open",
     "enableDevFeatures": "Enable Developr Features",
@@ -98,7 +97,6 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Tiemrs by Durashun",
     "showBrokenFragments": "Show Brokd Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Butn in Pause Menu",
     "showTotalZealotCount": "Zealot Countr - Total Zealot Count",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows dat u r doin Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows dat u r doin Tarantula quest."
+    "descriptionTarantula": "Shows dat u r doin Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants r displayd on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertize Kills",
     "compactedBlocks": "Compactd Blockz",
     "cultivatedCrops": "Cultivatd Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxd"
   }
 }

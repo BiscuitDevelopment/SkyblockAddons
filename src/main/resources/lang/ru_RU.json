@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Таймеры зелий и улучшений",
     "noArrowsLeftAlert": "Предупреждение о закончившихся стрелах",
-    "hideNightVisionEffectTimer": "Скрыть таймер эффекта Ночного Зрения",
     "showCakeBagPreview": "Показывать содержимое Cake Bag",
     "showBackpackPreviewInAH": "Показывать превью рюкзаков для своих предметов во время использования Аукционного Дома",
     "enableDevFeatures": "Включить параметры разработчиков",
@@ -98,7 +97,6 @@
       "fade": "Затухание цвета"
     },
     "chromaFadeWidth": "Ширина затухания Chroma",
-    "sortTabEffectTimers": "Сортировать таймеры по продолжительности",
     "showBrokenFragments": "Показывать \"сломанные\" фрагменты драконов",
     "skyblockAddonsButtonInPauseMenu": "Показывать кнопку SBA в меню паузы",
     "showTotalZealotCount": "Счётчик Зеалотов - Общий счёт Зеалотов",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Отображать ID Предмета при Наведении",
     "showFeatureNamesOnHover": "Показывать Имена Функций при Наведении",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Зачарования",
@@ -330,7 +334,11 @@
     "titleSvens": "Квест Sven",
     "descriptionSvens": "Показывает, что Вы выполняете Квест «Sven».",
     "titleTarantula": "Квест «Tarantula»",
-    "descriptionTarantula": "Показывает, что Вы выполняете Квест «Tarantula»."
+    "descriptionTarantula": "Показывает, что Вы выполняете Квест «Tarantula».",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Управлять, как зачарования показываются в описаниях предметов",
@@ -683,6 +691,8 @@
     "expertiseKills": "Кол-во убийств для зачарования Expertise",
     "compactedBlocks": "Сжатые блоки",
     "cultivatedCrops": "Кол-во собранных растений для Cultivate",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Максимальные"
   }
 }
