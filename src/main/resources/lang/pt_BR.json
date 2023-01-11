@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Temporizadores de poções e powerups",
     "noArrowsLeftAlert": "Alerta sem flechas restantes",
-    "hideNightVisionEffectTimer": "Ocultar o tempo do efeito de visão noturna",
     "showCakeBagPreview": "Mostrar pré-visualização das Cake Bags",
     "showBackpackPreviewInAH": "Mostrar pré-visualização da backpack enquanto a AH está aberta",
     "enableDevFeatures": "Ativar funções de desenvolvedor",
@@ -98,7 +97,6 @@
       "fade": "Desvanecer da Cor"
     },
     "chromaFadeWidth": "Largura de Desvanecimento do Chroma",
-    "sortTabEffectTimers": "Ordenar temporizadores por duração",
     "showBrokenFragments": "Mostrar Dragon Fragments com erros",
     "skyblockAddonsButtonInPauseMenu": "Mostrar o botão SBA no menu de pausa",
     "showTotalZealotCount": "Contador de zealots - Número total de zealots",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Mostrar ID de item do SkyBlock ao passar o cursor",
     "showFeatureNamesOnHover": "Mostrar nome da função ao passar o cursor",
     "resetSalvagedEssencesAfterLeavingMenu": "Redefine o contador de Salvaged Essence após fechar o menu",
-    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-"
+    "changeDungeonMapZoomWithKeyboard": "Ajustar o zoom com as teclas +/-",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Encantamentos",
@@ -330,7 +334,11 @@
     "titleSvens": "Missão do Sven",
     "descriptionSvens": "Mostra que você está fazendo uma missão do Sven.",
     "titleTarantula": "Missão da Tarantula",
-    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula."
+    "descriptionTarantula": "Mostra que você está fazendo uma missão da Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Controla como os encantamentos são mostrados na descrição dos itens",
@@ -683,6 +691,8 @@
     "expertiseKills": "Abates com Expertise",
     "compactedBlocks": "Blocos compactados",
     "cultivatedCrops": "Colheitas cultivadas",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maximizado"
   }
 }

@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "药水及加成效果计时器",
     "noArrowsLeftAlert": "箭矢不足提醒",
-    "hideNightVisionEffectTimer": "隐藏夜视效果持续时间",
     "showCakeBagPreview": "显示蛋糕袋预览",
     "showBackpackPreviewInAH": "当拍卖界面打开时显示背包预览",
     "enableDevFeatures": "启用开发者模式",
@@ -98,7 +97,6 @@
       "fade": "颜色淡入淡出"
     },
     "chromaFadeWidth": "颜色淡入淡出幅度",
-    "sortTabEffectTimers": "按时长排序计时器",
     "showBrokenFragments": "显示无法使用的龙装碎片",
     "skyblockAddonsButtonInPauseMenu": "在暂停画面中显示 SBA 按钮",
     "showTotalZealotCount": "末影战士击杀计数 - 总击杀数",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "显示物品的空岛生存物品 ID",
     "showFeatureNamesOnHover": "鼠标悬停在界面上时显示名称",
     "resetSalvagedEssencesAfterLeavingMenu": "在关闭菜单后重置 Salvaged Essence 计数器",
-    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放"
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按键调整缩放",
+    "showPlayerSymbolsInChat": "在聊天栏中显示玩家图标",
+    "crimsonArmorAbilityStacks": "显示 Crimson 盔甲堆叠数",
+    "hideTrueDefense": "隐藏真实防御",
+    "showProfileType": "显示存档类型图标",
+    "showNetherFaction": "显示下界阵营图标",
+    "zealotSpawnAreasOnly": "仅在末影战士生成区域显示"
   },
   "messages": {
     "enchants": "附魔",
@@ -253,7 +257,7 @@
     },
     "slotLocked": "该栏已锁！",
     "summoningEyeFound": "召唤之眼！",
-    "cancelledDropping": "已阻止你将物品栏中的稀有物品或工具丢弃。",
+    "cancelledDropping": "已阻止你将快捷栏中的稀有物品或工具丢弃。",
     "clickMoreTimes": "已阻止你售出物品。如果你真的想卖掉它，请再点击 %times% 次。",
     "clickOneMoreTime": "如果你真的想这么做，请再 点击/丢弃 此物品一次",
     "featureDisabled": "功能已禁用",
@@ -330,7 +334,11 @@
     "titleSvens": "狼王猎手任务",
     "descriptionSvens": "显示你当前正在进行狼王猎手任务",
     "titleTarantula": "狼蛛猎手任务",
-    "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务"
+    "descriptionTarantula": "显示你当前正在进行狼蛛猎手任务",
+    "titleVoidgloom": "Voidgloom 猎手任务",
+    "descriptionVoidgloom": "显示你当前正在进行 Voidgloom 猎手任务",
+    "titleInferno": "Inferno 猎手任务",
+    "descriptionInferno": "显示你当前正在进行 Inferno 猎手任务"
   },
   "enchantLayout": {
     "title": "设定附魔显示数量",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise 击杀数: ",
     "compactedBlocks": "已压缩方块",
     "cultivatedCrops": "已收获作物",
+    "hecatombsSRuns": "Hecatombs S 累计局数",
+    "championCombatXp": "Champion 累计战斗经验",
     "maxed": "已满配"
   }
 }

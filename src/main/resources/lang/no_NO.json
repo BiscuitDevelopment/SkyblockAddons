@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Magisk drikk og powerup timere",
     "noArrowsLeftAlert": "Ingen piler igjen-varsel",
-    "hideNightVisionEffectTimer": "Skjul nattsyn-effekt timer",
     "showCakeBagPreview": "Vis forhåndsvisning for kakesekker",
     "showBackpackPreviewInAH": "Vis ryggsekk forhåndsvisning for tingene dine mens auksjonshuset er åpnet",
     "enableDevFeatures": "Aktiver utviklerfunksjoner",
@@ -98,7 +97,6 @@
       "fade": "Farge fade"
     },
     "chromaFadeWidth": "Chroma fade bredde",
-    "sortTabEffectTimers": "Sorter Timere etter Lengde",
     "showBrokenFragments": "Vis Dragon Fragments det er noe feil med",
     "skyblockAddonsButtonInPauseMenu": "Vis SBA-knapp i pausemeny",
     "showTotalZealotCount": "Zealot Teller - Totalt antall Zealoter drept",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Fortryllinger",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Oppdrag",
     "descriptionSvens": "Viser at du gjør et Sven oppdrag.",
     "titleTarantula": "Tarantula Oppdrag",
-    "descriptionTarantula": "Viser at du gjør et Tarantula oppdrag."
+    "descriptionTarantula": "Viser at du gjør et Tarantula oppdrag.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Vis Expertise-drap",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maksimert"
   }
 }

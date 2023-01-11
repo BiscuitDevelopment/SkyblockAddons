@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Časovače Lektvarů a Powerupů",
     "noArrowsLeftAlert": "Upozornění na nedostatek šípů",
-    "hideNightVisionEffectTimer": "Skrýt časovač efektu nočního vidění",
     "showCakeBagPreview": "Ukázat přehled pro Tašky na Dorty",
     "showBackpackPreviewInAH": "Zobrazit náhled do tvého batohu, když je otevřená nabídka pro Aukci",
     "enableDevFeatures": "Povolit Vývojářské funkce",
@@ -98,7 +97,6 @@
       "fade": "Barevné vyblednutí"
     },
     "chromaFadeWidth": "Šířka vyblednutí měnění barev",
-    "sortTabEffectTimers": "Seřadit Časovače podle délky",
     "showBrokenFragments": "Zobrazit rozbité Dragon Fragmenty",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Počítadlo Zealotů - Celkový počet Zealotů",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "Úkol - Sven",
     "descriptionSvens": "Ukáže, že děláš úkol se Sveny.",
     "titleTarantula": "Úkol - Tarantula",
-    "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulemi."
+    "descriptionTarantula": "Ukáže, že děláš úkol s Tarantulemi.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxed"
   }
 }

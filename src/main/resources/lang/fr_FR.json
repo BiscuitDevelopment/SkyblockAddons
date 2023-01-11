@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Minuteur potions/capacités",
     "noArrowsLeftAlert": "Alerte aucune flèche restantes",
-    "hideNightVisionEffectTimer": "Masquer le minuteur de la vision nocturne",
     "showCakeBagPreview": "Aperçu du sac à gâteaux",
     "showBackpackPreviewInAH": "Afficher l'aperçu du sac à dos dans le /AH",
     "enableDevFeatures": "Activer le mode développeur",
@@ -98,7 +97,6 @@
       "fade": "Dégradé"
     },
     "chromaFadeWidth": "Temps de fondu du Chroma",
-    "sortTabEffectTimers": "Trier les minuteurs par durée",
     "showBrokenFragments": "Afficher les fragments abimé du Dragon",
     "skyblockAddonsButtonInPauseMenu": "Afficher le bouton SBA dans le menu de pause",
     "showTotalZealotCount": "Compteur de Zealot - Nombre total de Zealot",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Afficher l'ID des items Skyblock au survol",
     "showFeatureNamesOnHover": "Afficher le nom des fonctionnalités au survol",
     "resetSalvagedEssencesAfterLeavingMenu": "Réinitialiser le compteur d'essence après avoir fermé le menu",
-    "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-"
+    "changeDungeonMapZoomWithKeyboard": "Ajuster le zoom avec les touches +/-",
+    "showPlayerSymbolsInChat": "Afficher les symboles du joueur dans le chat",
+    "crimsonArmorAbilityStacks": "Afficher les piles d'armures crimson",
+    "hideTrueDefense": "Cacher la défense pure",
+    "showProfileType": "Afficher le type de profil",
+    "showNetherFaction": "Afficher les factions du Nether",
+    "zealotSpawnAreasOnly": "Afficher uniquement dans les zones d'apparition des zealots"
   },
   "messages": {
     "enchants": "Enchantements",
@@ -330,7 +334,11 @@
     "titleSvens": "Quête sven",
     "descriptionSvens": "Montre que vous accomplissez une quête de Sven.",
     "titleTarantula": "Quête tarantula",
-    "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula."
+    "descriptionTarantula": "Montre que vous accomplissez une quête de tarantula.",
+    "titleVoidgloom": "Quête de Voidgloom",
+    "descriptionVoidgloom": "Montre qu'une quête Voidgloom est en cours.",
+    "titleInferno": "Quête Inferno",
+    "descriptionInferno": "Montre qu'une quête Inferno est en cours."
   },
   "enchantLayout": {
     "title": "Contrôler comment les enchantements sont affichés dans les info-bulles d'objet",
@@ -639,8 +647,8 @@
   },
   "keyBindings": {
     "developerCopyNBT": "Copier le NBT",
-    "increaseDungeonMapZoom": "Dungeon Map Zoom In",
-    "decreaseDungeonMapZoom": "Dungeon Map Zoom Out"
+    "increaseDungeonMapZoom": "Zoom avant sur la carte des donjons",
+    "decreaseDungeonMapZoom": "Zoom arrière sur la carte des donjons"
   },
   "dragonTracker": {
     "protector": "Protector",
@@ -683,6 +691,8 @@
     "expertiseKills": "Montrer les morts de Expertise",
     "compactedBlocks": "Blocs compacts",
     "cultivatedCrops": "Graines cultivées",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "XP de Champion de combat",
     "maxed": "Maxée"
   }
 }

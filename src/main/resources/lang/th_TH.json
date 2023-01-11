@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "ระบะเวลายาและพลังวิเศษ",
     "noArrowsLeftAlert": "แจ้งเตือนลูกศรหมด",
-    "hideNightVisionEffectTimer": "ซ่อนระยะเวลาเอฟเฟ็ค Night Vision",
     "showCakeBagPreview": "แสดงไอเท็มในถุงเก็บเค้ก",
     "showBackpackPreviewInAH": "โชว์แบบกระเป๋าในขณะที่ใช้ร้านประมูล",
     "enableDevFeatures": "เปิดใช้ฟีเจอร์สำหรับผู้พัฒนา",
@@ -98,7 +97,6 @@
       "fade": "เรียงสี"
     },
     "chromaFadeWidth": "เรียงสีด้วยความกว้าง",
-    "sortTabEffectTimers": "เรียงตามระยะเวลา",
     "showBrokenFragments": "แสดงชิ้นส่วนมังกรที่พัง",
     "skyblockAddonsButtonInPauseMenu": "แสดงปุ่ม SBA ในหน้าต่างเมนู",
     "showTotalZealotCount": "จำนวน Zealot",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "ภารกิจหมา",
     "descriptionSvens": "แสดงว่ากำลังทำภารกิจหมา",
     "titleTarantula": "ภารกิจแมงมุม",
-    "descriptionTarantula": "แสดงว่ากำลังทำภารกิจแมงมุม"
+    "descriptionTarantula": "แสดงว่ากำลังทำภารกิจแมงมุม",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxed"
   }
 }

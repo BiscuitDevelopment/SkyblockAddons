@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "İksir ve Güçlendirme Sayaçları",
     "noArrowsLeftAlert": "Ok Kalmadı Uyarısı",
-    "hideNightVisionEffectTimer": "Gece Görüşü Etkisinin Sayacını Gizle",
     "showCakeBagPreview": "Cake Bags İçeriğini Göster",
     "showBackpackPreviewInAH": "AH Açıkken Eşyalarında Backpack Ön İzlemesini Göster",
     "enableDevFeatures": "Geliştirici Seçeneklerini Etkinleştir",
@@ -98,7 +97,6 @@
       "fade": "Rengarenk"
     },
     "chromaFadeWidth": "Rengarenk Geçiş Genişliği",
-    "sortTabEffectTimers": "Sayaçları süresine göre sırala",
     "showBrokenFragments": "Kırık Dragon Fragments'ı Göster",
     "skyblockAddonsButtonInPauseMenu": "Duraklatma Menüsünde SBA Butonunu Göster",
     "showTotalZealotCount": "Zealot Sayacı - Toplam Zealot Sayısı",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Fare İmleci Üstündeyken Skyblock Öğe Kimliğini Göster",
     "showFeatureNamesOnHover": "Fare İmleci Üstündeyken Özellik Adlarını Göster",
     "resetSalvagedEssencesAfterLeavingMenu": "Menüyü Kapattıktan Sonra Çıkartılan Öz Sayacını Sıfırla",
-    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla"
+    "changeDungeonMapZoomWithKeyboard": "+/- tuşları ile yakınlığı ayarla",
+    "showPlayerSymbolsInChat": "Oyuncu Sembollerini Sohbette Göster",
+    "crimsonArmorAbilityStacks": "Crimson Armor Yığınlarını Göster",
+    "hideTrueDefense": "True Defense'i Gizle",
+    "showProfileType": "Profil Türünü Göster",
+    "showNetherFaction": "Nether Faction'ı Göster",
+    "zealotSpawnAreasOnly": "Sadece Zealot Doğma Alanlarında Göster"
   },
   "messages": {
     "enchants": "Büyüler",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Görevleri",
     "descriptionSvens": "Sven görevleri yaptığını gösterir.",
     "titleTarantula": "Tarantula Görevleri",
-    "descriptionTarantula": "Tarantula görevleri yaptığını gösterir."
+    "descriptionTarantula": "Tarantula görevleri yaptığını gösterir.",
+    "titleVoidgloom": "Voidgloom Görevi",
+    "descriptionVoidgloom": "Voidgloom görevi yaptığınızı gösterir.",
+    "titleInferno": "Inferno Görevi",
+    "descriptionInferno": "Inferno görevi yaptığınızı gösterir."
   },
   "enchantLayout": {
     "title": "Eşya bilgilerinde büyülerin nasıl görüntüleneceğini kontrol edin",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Leşleri",
     "compactedBlocks": "Sıkıştırılmış Bloklar",
     "cultivatedCrops": "Ekili Ürünler",
+    "hecatombsSRuns": "Hecatombs S Rünleri",
+    "championCombatXp": "Champion Savaş XP'si",
     "maxed": "Maksimum"
   }
 }

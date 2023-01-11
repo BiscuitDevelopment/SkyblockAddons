@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Таймер зіллів та підсилень",
     "noArrowsLeftAlert": "Повідомлення про закінчення стріл",
-    "hideNightVisionEffectTimer": "Приховати таймер ефектів нічного бачення",
     "showCakeBagPreview": "Показувати вміст Cake Bag",
     "showBackpackPreviewInAH": "Показувати прев'ю рюкзаків для своїх предметів під час використання Аукціонного Дому",
     "enableDevFeatures": "Увімкнути функції розробника",
@@ -98,7 +97,6 @@
       "fade": "Згасання Кольору"
     },
     "chromaFadeWidth": "Ширина згасання Chroma",
-    "sortTabEffectTimers": "Сортувати таймери за тривалістю",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Зачарування",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Кількість вбивств для зачарування Expertise",
     "compactedBlocks": "Стиснуті Блоки",
     "cultivatedCrops": "Культивовані Культури",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Максимально"
   }
 }

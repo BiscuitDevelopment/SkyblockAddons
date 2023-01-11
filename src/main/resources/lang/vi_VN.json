@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Thời gian của thuốc",
     "noArrowsLeftAlert": "Cảnh báo hết mũi tên",
-    "hideNightVisionEffectTimer": "Ẩn thời gian thuốc nhìn đêm",
     "showCakeBagPreview": "Hiển thị xem trước cho Cake Bags",
     "showBackpackPreviewInAH": "Hiển thị xem trước vật phẩm trong Backpack khi đang mở AH",
     "enableDevFeatures": "Bật chế độ dành cho nhà phát triển",
@@ -98,7 +97,6 @@
       "fade": "Theo dải màu khác nhau"
     },
     "chromaFadeWidth": "Độ dài dải màu",
-    "sortTabEffectTimers": "Sắp xếp thời gian theo thời lượng còn lại",
     "showBrokenFragments": "Hiển thị Dragon Fragments bị hỏng",
     "skyblockAddonsButtonInPauseMenu": "Hiển thị nút cài đặt SBA trong Pause menu",
     "showTotalZealotCount": "Bộ đếm Zealot - Tổng số Zealot",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Phù phép",
@@ -330,7 +334,11 @@
     "titleSvens": "Nhiệm Vụ Sven",
     "descriptionSvens": "Hiện rằng bạn đang làm một nhiệm vụ đánh Sven.",
     "titleTarantula": "Nhiệm Vụ Tarantula",
-    "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula."
+    "descriptionTarantula": "Hiện rằng bạn đang làm một nhiệm vụ đánh Tarantula.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Điều khiển cách DS phù phép được hiển thị như nào trong bảng chú giải",
@@ -683,6 +691,8 @@
     "expertiseKills": "Hiện Số Giết cho Phù phép Expertise",
     "compactedBlocks": "Các Khối đã Kết hợp",
     "cultivatedCrops": "Cây Trồng Đã Cấy",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Đã Đạt giới hạn"
   }
 }

@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "藥水及充能計時器",
     "noArrowsLeftAlert": "箭矢不足警報",
-    "hideNightVisionEffectTimer": "隱藏夜視效果持續時間",
     "showCakeBagPreview": "顯示蛋糕袋預覽",
     "showBackpackPreviewInAH": "在競標開啟時顯示你背包物品的預覽",
     "enableDevFeatures": "啟用開發者模式",
@@ -98,7 +97,6 @@
       "fade": "顏色淡入淡出"
     },
     "chromaFadeWidth": "彩色淡入淡出幅度",
-    "sortTabEffectTimers": "按時長排序計時器",
     "showBrokenFragments": "顯示無法使用的龍裝碎片",
     "skyblockAddonsButtonInPauseMenu": "在暫停畫面中顯示SBA按鈕",
     "showTotalZealotCount": "Zealot計數器 - 總Zealot擊殺數",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "鼠標止於物品上方時顯示 Skyblock 物品ID",
     "showFeatureNamesOnHover": "鼠標止於功能上方時顯示功能名稱",
     "resetSalvagedEssencesAfterLeavingMenu": "關閉介面後重置 Salvaged Essence 計數器",
-    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放"
+    "changeDungeonMapZoomWithKeyboard": "使用 +/- 按鍵來調整縮放",
+    "showPlayerSymbolsInChat": "於聊天室中顯示玩家標誌",
+    "crimsonArmorAbilityStacks": "顯示 Crimson Armor 疊加層數",
+    "hideTrueDefense": "隱藏 True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "附魔",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven 任務",
     "descriptionSvens": "顯示你是否在進行一個 Sven 任務。",
     "titleTarantula": "Tarantula 任務",
-    "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。"
+    "descriptionTarantula": "顯示你是否在進行一個 Tarantula 任務。",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "控制附魔如何顯示在物品資訊",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise 擊殺數",
     "compactedBlocks": "Compact 方塊數",
     "cultivatedCrops": "Cultivate 作物數",
+    "hecatombsSRuns": "Hecatombs S 評級次數",
+    "championCombatXp": "Champion 戰鬥經驗值",
     "maxed": "已達上限"
   }
 }
