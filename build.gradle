@@ -4,9 +4,9 @@ import java.text.ParseException
 
 plugins {
     id 'java'
-    id 'gg.essential.loom' version '0.10.0.4'
+    id 'gg.essential.loom' version '0.10.0.5'
     id 'dev.architectury.architectury-pack200' version '0.1.3'
-    id 'io.freefair.lombok' version "6.5.1"
+    id 'io.freefair.lombok' version "6.6.1"
     id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'net.kyori.blossom' version '1.3.1'
 }
@@ -56,6 +56,7 @@ blossom {
 }
 
 loom {
+    //noinspection GroovyAssignabilityCheck
     launchConfigs {
         "client" {
             property('fml.coreMods.load', 'codes.biscuit.skyblockaddons.tweaker.SkyblockAddonsLoadingPlugin')
@@ -77,7 +78,7 @@ sourceSets {
 }
 
 configurations.create('bundle')
-configurations.implementation.extendsFrom(configurations.getByName('bundle'))
+configurations.implementation.extendsFrom(configurations.named('bundle').get())
 
 repositories {
     mavenCentral()
@@ -145,7 +146,7 @@ jar {
 
 remapJar {
     from(tasks.shadowJar)
-    input.set(tasks.shadowJar.archiveFile)
+    input.set(tasks.shadowJar.archiveFile.get())
 
     archiveFileName = "${project.name}-${project.version}-for-MC-${project.minecraftVersion}.jar"
 }

@@ -6,19 +6,19 @@ pluginManagement {
             url 'https://oss.sonatype.org/content/repositories/snapshots'
         }
         maven {
-            url 'https://maven.architectury.dev/'
+            url 'https://maven.architectury.dev'
         }
         maven {
             url 'https://maven.fabricmc.net'
         }
         maven {
-            url 'https://maven.minecraftforge.net/'
+            url 'https://maven.minecraftforge.net'
         }
         maven {
-            url 'https://repo.spongepowered.org/maven/'
+            url 'https://repo.spongepowered.org/maven'
         }
         maven {
-            url 'https://repo.sk1er.club/repository/maven-releases/'
+            url 'https://repo.essential.gg/repository/maven-public'
         }
     }
     resolutionStrategy {
