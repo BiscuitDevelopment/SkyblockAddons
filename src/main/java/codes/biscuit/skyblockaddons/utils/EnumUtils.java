@@ -216,6 +216,7 @@ public class EnumUtils {
         SHOW_PROFILE_TYPE( "settings.showProfileType", 219),
         SHOW_NETHER_FACTION("settings.showNetherFaction", 220),
         ZEALOT_SPAWN_AREAS_ONLY("settings.zealotSpawnAreasOnly", -1),
+        MALMAR_ALSO_TIMER("settings.malmarAlsoTimer", 223),
 
         DISCORD_RP_STATE(0),
         DISCORD_RP_DETAILS(0),

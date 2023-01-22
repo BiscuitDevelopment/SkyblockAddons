@@ -224,7 +224,8 @@
     "showProfileType": "Show Profile Type",
     "showNetherFaction": "Show Nether Faction",
     "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas",
-    "cultStarfallTimer": "Starfall Cult Timer"
+    "cultStarfallTimer": "Starfall Cult Timer",
+    "malmarAlsoTimer": "Also Show Malmar on Timer"
   },
   "messages": {
     "enchants": "Enchants",

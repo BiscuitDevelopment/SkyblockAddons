@@ -801,12 +801,13 @@ public class RenderListener {
         }else if (feature == Feature.CULT_STARFALL_TIMER) {
             final long FIRSTSKYBLOCKDAY = 1560275700000L; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
             double MSCurrentTime = System.currentTimeMillis();
-            double MSTimeElapsedInSkyblock = MSCurrentTime - FIRSTSKYBLOCKDAY;
             final long ONESKYBLOCKYEAR = 446400000;//5 days and 4 hours in 1 skyblock year
             final long ONESKYBLOCKMONTH = 37200000;//10 hours and 20 minutes in 1 skyblock month
             final long ONESKYBLOCKDAY = 1200000;//20 minutes in 1 skyblock day
             final long ONESKYBLOCKHOUR = 50000;//50 seconds in 1 skyblock hour
             final long ONESKYBLOCKMINUTE = 830;//0.83 seconds in 1 skyblock minute
+
+            double MSTimeElapsedInSkyblock = MSCurrentTime - FIRSTSKYBLOCKDAY;
             int SkyblockYears = (int)Math.floor(MSTimeElapsedInSkyblock / ONESKYBLOCKYEAR);
             int SkyblockMonths = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKMONTH) % 12);
             int SkyblockDays = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKDAY) % 31)+1;
@@ -823,28 +824,42 @@ public class RenderListener {
             int hours;
             long minutes;
             long seconds;
-            if (SkyblockDays % 7 != 0 && SkyblockHours < 6) {//cult is not active. Calculate hours normally.
-                hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
-            } else {//cult is active
-                double MSEventOver = MSNextEvent; //get how long the event will last for
+            if (SkyblockDays % 7 == 0 &&
+                    (SkyblockHours > 6 || main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER))){//7th day, an event is active
+                double MSEventOver = MSNextEvent; //variable for how long the event will last for
+                //push event back to the one we're currently in
                 if (SkyblockDays < 7) {//next event is the start of a new month, so we add an extra hour (3 SB days)
                     MSEventOver -= ONESKYBLOCKDAY * 10;
-                }
-                else{//7 days behind
+                } else{//7 days behind
                     MSEventOver -= ONESKYBLOCKDAY * 7;
                 }
-                //add 6 hours to account for 6am cult event end
-                MSEventOver -= 30000;
-
+                //find the endpoint of the current event
+                if (SkyblockHours < 6) {
+                    MSEventOver += ONESKYBLOCKHOUR*6;
+                }
                 RealMSLeft = MSEventOver - MSCurrentTime;
                 hours = 0;
+
+            } else {//Conditions are not right. Calculate hours till the next event.
+                hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
             }
             minutes = (long) Math.floor(RealMSLeft / 60000 % 60);
             seconds = (long) Math.floor(RealMSLeft / 1000 % 60);
 
-            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
+            if (SkyblockDays % 7 == 0 &&
+                    (SkyblockHours < 6 || main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER))){//an event we care about is active
                 StringBuilder timestampActive = new StringBuilder();
-                timestampActive.append("Active: ");
+                if (SkyblockHours < 6 && main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER)){
+                    timestampActive.append("/");
+                }
+                if (SkyblockHours < 6){
+                    timestampActive.insert(0,"Cult");
+                }
+                if (main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER)){
+                    timestampActive.append("Malmar");
+                }
+                timestampActive.append(" Active: ");
+
                 if(minutes < 10){
                     timestampActive.append("0");
                 }
