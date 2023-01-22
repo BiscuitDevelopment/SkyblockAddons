@@ -858,7 +858,7 @@ public class RenderListener {
                 if (main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER)){
                     timestampActive.append("Malmar");
                 }
-                timestampActive.append(" Active: ");
+                timestampActive.append(": ");
 
                 if(minutes < 10){
                     timestampActive.append("0");
