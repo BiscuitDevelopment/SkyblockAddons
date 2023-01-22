@@ -12,7 +12,7 @@
   "NIGHT_SQUID": {
     "name": "Night Squid",
     "rarity": "COMMON",
-    "spawnMessage": "Pitch Darkness reveals you've caught a Night Squid."
+    "spawnMessage": "Pitch darkness reveals a Night Squid."
   },
   "FROZEN_STEVE":  {
     "name": "Frozen Steve",
@@ -37,7 +37,7 @@
   "SCARECROW":  {
     "name": "Scarecrow",
     "rarity": "COMMON",
-    "spawnMessage": "Phew! It's only a scarecrow."
+    "spawnMessage": "Phew! It's only a Scarecrow."
   },
   "SEA_WITCH":  {
     "name": "Sea Witch",
@@ -55,14 +55,24 @@
     "spawnMessage": "You reeled in a Sea Archer."
   },
   "MONSTER_OF_THE_DEEP":  {
-    "name": "Monster of The Deep",
+    "name": "Rider of The Deep",
     "rarity": "UNCOMMON",
-    "spawnMessage": "The Monster of the Deep has emerged."
+    "spawnMessage": "The Rider Of The Deep has emerged."
   },
   "GRINCH":  {
     "name": "Grinch",
     "rarity": "UNCOMMON",
     "spawnMessage": "The Grinch stole Jerry's Gifts...get them back!"
+  },
+  "OASIS_RABBIT"  : {
+    "name": "Oasis Rabbit",
+    "rarity": "UNCOMMON",
+    "spawnmessage": "An Oasis Rabbit appears from the water"
+  },
+  "OASIS_SHEEP"  : {
+    "name": "Oasis Sheep",
+    "rarity": "UNCOMMON",
+    "spawnmessage": "An Oasis Sheep appears from the water"
   },
   "CATFISH":  {
     "name": "Catfish",
@@ -72,7 +82,7 @@
   "NIGHTMARE":  {
     "name": "Nightmare",
     "rarity": "RARE",
-    "spawnMessage": "You hear trotting from beneath the waves, you caught a Nightmare"
+    "spawnMessage": "You hear trotting from beneath the waves, you caught a Nightmare."
   },
   "CARROT_KING":  {
     "name": "Carrot King",
@@ -119,6 +129,26 @@
     "rarity": "RARE",
     "spawnMessage": "Taurus and his steed emerge."
   },
+  "WATER_WORM":  {
+    "name": "Water Worm",
+    "rarity": "RARE",
+    "spawnMessage": "A Water Worm surfaces!"
+  },
+  "POISONED_WATER_WORM":  {
+    "name": "Poisoned Water Worm",
+    "rarity": "RARE",
+    "spawnMessage": "A Poisoned Water Worm surfaces!"
+  },
+  "FLAMING_WORM":  {
+    "name": "Flaming Worm",
+    "rarity": "RARE",
+    "spawnMessage": "A flaming worm surfaces from the depths!"
+  },
+  "NUTCRACKER":  {
+    "name": "Nutcracker",
+    "rarity": "RARE",
+    "spawnMessage": "You found a forgotten Nutcracker laying beneath the ice."
+  },
   "GUARDIAN_DEFENDER":  {
     "name": "Guardian Defender",
     "rarity": "EPIC",
@@ -127,7 +157,7 @@
   "WEREWOLF":  {
     "name": "Werewolf",
     "rarity": "EPIC",
-    "spawnMessage":  "It must be a full moon, a Werewolf appears!"
+    "spawnMessage":  "It must be a full moon, a Werewolf appears."
   },
   "TIGER_SHARK":  {
     "name": "Tiger Shark",
@@ -138,6 +168,16 @@
     "name": "Deep Sea Protector",
     "rarity": "EPIC",
     "spawnMessage": "You have awoken the Deep Sea Protector, prepare for a battle!"
+  },
+  "LAVA_BLAZE":  {
+    "name": "Lava Blaze",
+    "rarity": "EPIC",
+    "spawnMessage": "A Lava Blaze has surfaced from the depths!"
+  },
+  "LAVA_PIGMAN":  {
+    "name": "Lava Pigman",
+    "rarity": "EPIC",
+    "spawnMessage": "A Lava Pigman arose from the depths!"
   },
   "WATER_HYDRA":  {
     "name": "Water Hydra",
@@ -164,10 +204,20 @@
     "rarity": "LEGENDARY",
     "spawnMessage": "What is this creature!?"
   },
+  "REINDRAKE":  {
+    "name": "Reindrake",
+    "rarity": "LEGENDARY",
+    "spawnMessage": "A Reindrake forms from the depths."
+  },
   "GRIM_REAPER":  {
     "name": "Grim Reaper",
     "rarity": "LEGENDARY",
     "spawnMessage": "This can't be! The manifestation of death himself!"
+  },
+  "ZOMBIE_MINER":  {
+    "name": "Zombie Miner",
+    "rarity": "LEGENDARY",
+    "spawnMessage": "A Zombie miner surfaces!"
   },
   "THUNDER":  {
     "name": "Thunder",
