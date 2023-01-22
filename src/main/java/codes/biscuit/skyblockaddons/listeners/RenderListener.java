@@ -828,18 +828,21 @@ public class RenderListener {
                     (SkyblockHours > 6 || main.getConfigValues().isEnabled(Feature.MALMAR_ALSO_TIMER))){//7th day, an event is active
                 double MSEventOver = MSNextEvent; //variable for how long the event will last for
                 //push event back to the one we're currently in
-                if (SkyblockDays < 7) {//next event is the start of a new month, so we add an extra hour (3 SB days)
-                    MSEventOver -= ONESKYBLOCKDAY * 10;
-                } else{//7 days behind
-                    MSEventOver -= ONESKYBLOCKDAY * 7;
-                }
+
                 //find the endpoint of the current event
-                if (SkyblockHours < 6) {
+                if (SkyblockHours < 6) {//cult is active
+                    if (SkyblockDays < 7) {//next event is the start of a new month, so we add an extra hour (3 SB days)
+                        MSEventOver -= ONESKYBLOCKDAY * 10;
+                    } else{//7 days behind
+                        MSEventOver -= ONESKYBLOCKDAY * 7;
+                    }
                     MSEventOver += ONESKYBLOCKHOUR*6;
+                    hours = 0;
+                }
+                else {//calculate hours normally
+                    hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
                 }
                 RealMSLeft = MSEventOver - MSCurrentTime;
-                hours = 0;
-
             } else {//Conditions are not right. Calculate hours till the next event.
                 hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
             }
