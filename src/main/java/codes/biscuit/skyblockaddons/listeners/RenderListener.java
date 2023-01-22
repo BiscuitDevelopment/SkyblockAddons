@@ -799,20 +799,25 @@ public class RenderListener {
             }
 
         }else if (feature == Feature.CULT_STARFALL_TIMER) {
-            long FirstSkyblockDay = 1560275700000L; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
+            final long FIRSTSKYBLOCKDAY = 1560275700000L; //First skyblock day, according to the official skyblock wiki. https://wiki.hypixel.net/SkyBlock_Time
             double MSCurrentTime = System.currentTimeMillis();
-            double MSTimeElapsedInSkyblock = MSCurrentTime - FirstSkyblockDay;
-            int SkyblockYears = (int)Math.floor(MSTimeElapsedInSkyblock / 446400000); //5 days and 4 hours in 1 skyblock year
-            int SkyblockMonths = (int)Math.floor((MSTimeElapsedInSkyblock / 37200000) % 12); //10 hours and 20 minutes in 1 skyblock month
-            int SkyblockDays = (int)Math.floor((MSTimeElapsedInSkyblock / 1200000) % 31)+1; //20 minutes in 1 skyblock day
-            int SkyblockHours = (int)Math.floor((MSTimeElapsedInSkyblock / 50000) % 24); //50 seconds in 1 skyblock hour
-            int SkyblockMinutes = (int)Math.floor((MSTimeElapsedInSkyblock / 830) % 60); //0.83 seconds in 1 skyblock minute
+            double MSTimeElapsedInSkyblock = MSCurrentTime - FIRSTSKYBLOCKDAY;
+            final long ONESKYBLOCKYEAR = 446400000;//5 days and 4 hours in 1 skyblock year
+            final long ONESKYBLOCKMONTH = 37200000;//10 hours and 20 minutes in 1 skyblock month
+            final long ONESKYBLOCKDAY = 1200000;//20 minutes in 1 skyblock day
+            final long ONESKYBLOCKHOUR = 50000;//50 seconds in 1 skyblock hour
+            final long ONESKYBLOCKMINUTE = 830;//0.83 seconds in 1 skyblock minute
+            int SkyblockYears = (int)Math.floor(MSTimeElapsedInSkyblock / ONESKYBLOCKYEAR);
+            int SkyblockMonths = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKMONTH) % 12);
+            int SkyblockDays = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKDAY) % 31)+1;
+            int SkyblockHours = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKHOUR) % 24);
+            int SkyblockMinutes = (int)Math.floor((MSTimeElapsedInSkyblock / ONESKYBLOCKMINUTE) % 60);
 
             int SkyblockDaysLeft = 6 - (SkyblockDays % 7); //make the difference in days
             if (SkyblockDays >= 27){
                 SkyblockDaysLeft += 3; //add 3 to account for the final 3 days of skyblock's months
             }
-            double MSNextEvent = FirstSkyblockDay + (SkyblockYears * 446400000L) + (SkyblockMonths * 37200000L) + ((SkyblockDaysLeft + SkyblockDays) * 1200000L);
+            double MSNextEvent = FIRSTSKYBLOCKDAY + (SkyblockYears * ONESKYBLOCKYEAR) + (SkyblockMonths * ONESKYBLOCKMONTH) + ((SkyblockDaysLeft + SkyblockDays) * ONESKYBLOCKDAY);
             double RealMSLeft = MSNextEvent - MSCurrentTime + 1000;
             //get the hours, minutes, and seconds of the real world ms value
             int hours;
@@ -821,16 +826,16 @@ public class RenderListener {
             if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
                 double MSEventOver; //get how long the cult will last for
                 if (SkyblockDays < 7) {
-                MSEventOver = MSNextEvent - (12000000 - 30000); //next event is the start of a new month, so we add an extra hour (3 SB days)
+                MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 10) - 30000); //next event is the start of a new month, so we add an extra hour (3 SB days)
                 }
                 else{
-                    MSEventOver = MSNextEvent - (8400000 - 30000); //7 days behind, but then add 6 skyblock hours
+                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 4) - 30000); //7 days behind, but then add 6 skyblock hours
                 }
                 RealMSLeft = MSEventOver - MSCurrentTime;
                 hours = 0;
             }
             else{
-                hours = (int) Math.floor(RealMSLeft / 3600000);
+                hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
             }
             minutes = (long) Math.floor(RealMSLeft / 60000 % 60);
             seconds = (long) Math.floor(RealMSLeft / 1000 % 60);
