@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Bájitalok és Stat Booster számláló",
     "noArrowsLeftAlert": "Elfogytak a nyilaid! figyelmeztetés",
-    "hideNightVisionEffectTimer": "Éjjellátás effekt elrejtése",
     "showCakeBagPreview": "Cake Bag előnézet mutatása",
     "showBackpackPreviewInAH": "Hátizsák előnézet mutatása aukcióház böngészés közben",
     "enableDevFeatures": "Fejlesztői beállítások engedélyezése",
@@ -98,7 +97,6 @@
       "fade": "Szín árnyalata"
     },
     "chromaFadeWidth": "Színátmenet szélessége",
-    "sortTabEffectTimers": "Rendszerezés hátralévő idő szerint",
     "showBrokenFragments": "Buggos Dragon Fragment kiemelése",
     "skyblockAddonsButtonInPauseMenu": "SBA gomb mutatása Játékmenüben",
     "showTotalZealotCount": "Zealot számláló - Összes megölt Zealot",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Varázslatok",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven küldetés",
     "descriptionSvens": "Ezt mutatja amikor Sven küldetést csinálsz.",
     "titleTarantula": "Tarantula küldetés",
-    "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz."
+    "descriptionTarantula": "Ezt mutatja amikor Tarantula küldetést csinálsz.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Varázslatok mutatásának kezelése",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maximum"
   }
 }

@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Potion an' Powerup Timers",
     "noArrowsLeftAlert": "Yer Bolts be Gone Alert",
-    "hideNightVisionEffectTimer": "Hide th' Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview fer Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview fer yer Items Whilst th' AH be Open",
     "enableDevFeatures": "Enable Developer Features",
@@ -98,7 +97,6 @@
       "fade": "Col'r Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in yer Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Tot'l Zealot Count",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closin' Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust spyglass wit' +/- keys",
+    "showPlayerSymbolsInChat": "Show Pirate Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows that ye be doin' a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that ye be doin' a Tarantula quest."
+    "descriptionTarantula": "Shows that ye be doin' a Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Showin' that ye be doin' a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Showin' that ye be doin' an Infero quest."
   },
   "enchantLayout": {
     "title": "Control how yer enchants are displayed on th' item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Scuttles",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Captain Combat XP",
     "maxed": "Maxed"
   }
 }

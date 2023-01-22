@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Tidur för förmågor och brygdtider",
     "noArrowsLeftAlert": "Varna när det är slut med pilar",
-    "hideNightVisionEffectTimer": "Dölj brygdtiden för mörkerseende",
     "showCakeBagPreview": "Tillåt förhandsvisning av cake bag",
     "showBackpackPreviewInAH": "Tillåt förhandsvisning av backpack när AH-menyn är öppnen",
     "enableDevFeatures": "Aktivera utvecklarfunktioner",
@@ -98,7 +97,6 @@
       "fade": "Färgtoning"
     },
     "chromaFadeWidth": "Färgtoningsbredd",
-    "sortTabEffectTimers": "Sortera tidur efter tid",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Visa SBA-knappen i pausmenyn",
     "showTotalZealotCount": "Zealot-räknare - Totalt antal dödade zeloter",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Förtrollningar",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven-uppdrag",
     "descriptionSvens": "Visar att du genomför ett sven-uppdrag.",
     "titleTarantula": "Tarantula-uppdrag",
-    "descriptionTarantula": "Visar att du genomför ett tarantula-uppdrag."
+    "descriptionTarantula": "Visar att du genomför ett tarantula-uppdrag.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Kontrollera hur förtrollningar visas i inforutor för föremål",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise-dödanden",
     "compactedBlocks": "Kompakterade block",
     "cultivatedCrops": "Planterade grödor",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxad"
   }
 }

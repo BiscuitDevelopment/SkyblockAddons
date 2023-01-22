@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Juomien ja lisävoimien ajastimet",
     "noArrowsLeftAlert": "Nuolia ei jäljellä -varoitus",
-    "hideNightVisionEffectTimer": "Piilota pimeänäkö-tehosteen ajastin",
     "showCakeBagPreview": "Näytä esikatselu Cake Bagille",
     "showBackpackPreviewInAH": "Näytä repun esikatselu esineillesi, kun huutokauppa on auki",
     "enableDevFeatures": "Ota käyttöön kehittäjäominaisuudet",
@@ -98,7 +97,6 @@
       "fade": "Värin himmennys"
     },
     "chromaFadeWidth": "Värin himmennyksen leveys",
-    "sortTabEffectTimers": "Lajittele ajastimet keston mukaan",
     "showBrokenFragments": "Näytä rikkoutuneet Dragon Fragmentit",
     "skyblockAddonsButtonInPauseMenu": "Näytä SBA-painike tauko-valikossa",
     "showTotalZealotCount": "Zealotlaskin - Yhteensä Zealotteja",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Lumoukset",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven-tehtävä",
     "descriptionSvens": "Näyttää, että olet tekemässä Sven-tehtävää.",
     "titleTarantula": "Tarantula-tehtävä",
-    "descriptionTarantula": "Näyttää, että olet tekemässä Tarantula-tehtävää."
+    "descriptionTarantula": "Näyttää, että olet tekemässä Tarantula-tehtävää.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Mukauta esinevihjeiden lumousten ulkonäköä",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise-tapot",
     "compactedBlocks": "Tiivistetyt palikat",
     "cultivatedCrops": "Viljellyt kasvit",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Korkein"
   }
 }

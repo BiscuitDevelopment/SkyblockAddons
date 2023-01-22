@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Licznik czasu: mikstury i umiejętności",
     "noArrowsLeftAlert": "Powiadomienie o braku strzał",
-    "hideNightVisionEffectTimer": "Ukryj licznik czasu efektu widzenia w ciemności",
     "showCakeBagPreview": "Podgląd Cake Bags",
     "showBackpackPreviewInAH": "Podgląd plecaka dla Twoich przedmiotów, gdy Dom Aukcyjny jest otwarty",
     "enableDevFeatures": "Włącz funkcje dla programistów",
@@ -98,7 +97,6 @@
       "fade": "Blaknięcie koloru"
     },
     "chromaFadeWidth": "Szerokość blaknięcia kolorów",
-    "sortTabEffectTimers": "Sortuj Licznik czasu według trwania",
     "showBrokenFragments": "Pokazuj zniszczone Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Pokaż przycisk SBA w menu pauzy",
     "showTotalZealotCount": "Licznik Zealotów - Łączna ilość Zealotów",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Pokaż ID Przedmiotu po Najechaniu",
     "showFeatureNamesOnHover": "Pokaż Nazwę Funkcji po Najechaniu",
     "resetSalvagedEssencesAfterLeavingMenu": "Zresetuj licznik Odzyskanej Esencji po Zamknięciu Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Zaklęcia",
@@ -330,7 +334,11 @@
     "titleSvens": "Zadanie Svena",
     "descriptionSvens": "Pokazuje, że robisz zadanie Svena.",
     "titleTarantula": "Zadanie Tarantuli",
-    "descriptionTarantula": "Pokazuje, że robisz zadanie Tarantuli."
+    "descriptionTarantula": "Pokazuje, że robisz zadanie Tarantuli.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Zmień sposób wyświetlania listy zaklęć na przedmiocie",
@@ -683,6 +691,8 @@
     "expertiseKills": "Zabójstwa z Expertise",
     "compactedBlocks": "Skompaktowane Bloki",
     "cultivatedCrops": "Zebrane plony",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Wymaksowane"
   }
 }

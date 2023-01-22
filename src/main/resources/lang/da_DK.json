@@ -1,37 +1,37 @@
 {
-  "languageText": "Language: ",
+  "languageText": "Sprog: ",
   "language": "Dansk",
   "settings": {
-    "settings": "Settings",
-    "magmaBossWarning": "Magma Boss Warning",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
-    "itemDropConfirmation": "Item Drop Confirmation",
-    "hideSkeletonHatBones": "Hide Skeleton's Helmet Bones",
-    "skeletonHatBonesBar": "Skeleton's Helmet Bones Bar",
-    "hideFoodAndArmor": "Hide Food & Armor Bar",
-    "fullInventoryWarning": "Full Inventory Warning",
+    "settings": "Indstillinger",
+    "magmaBossWarning": "Magma boss advarsel",
+    "balBossWarning": "Bal Boss Advarsel",
+    "broodMotherWarning": "Brood Mother Advarsel",
+    "itemDropConfirmation": "Smid gendstand bekræftelse",
+    "hideSkeletonHatBones": "Skjul Skeleton Helmet's knogler",
+    "skeletonHatBonesBar": "Skeleton Helmet knogle bar",
+    "hideFoodAndArmor": "Skjul Mad & Rustnings Bar",
+    "fullInventoryWarning": "Fuld Inventar Advarsel",
     "repeating": "Repeat Warning",
-    "disableEmberRodAbility": "Disable Island Ember Rod",
-    "editLocations": "Edit GUI Locations",
-    "guiScale": "Gui Scale: %scale%",
-    "resetLocations": "Reset Locations",
-    "minionStopWarning": "\"Minion Cannot Reach\" Warning",
-    "hidePlayersNearNPCs": "Hide Players Near Important NPCs",
-    "backpackStyle": "Backpack Style: %style%",
+    "disableEmberRodAbility": "Deaktiver Ember Rod På Privat Ø",
+    "editLocations": "Ændre GUI placeringer",
+    "guiScale": "Skærmstørrelse: %scale%",
+    "resetLocations": "Nulstil placeringer",
+    "minionStopWarning": "\"minion kan ikke nå\" advarsel",
+    "hidePlayersNearNPCs": "Skjul spillere tæt på vigtige NPC'er",
+    "backpackStyle": "Taske design: %style%",
     "backpackStyles": {
-      "regular": "Regular",
-      "compact": "Compact"
+      "regular": "Regulær",
+      "compact": "Kompakt"
     },
-    "showBackpackPreview": "Show Backpack Preview",
+    "showBackpackPreview": "Forhåndsvis rygsæk",
     "hideHealthBar": "Hide Vanilla Health Bar",
     "fullMinionWarning": "Full Minion Warning",
     "showOnlyWhenHoldingShift": "Show Only When Holding Shift",
     "manaBar": "Mana Bar",
-    "manaNumber": "Mana Number",
+    "manaNumber": "Mana Nummer",
     "healthBar": "Health Bar",
     "healthNumber": "Health Number",
-    "defenseIcon": "Defense Symbol",
+    "defenseIcon": "Forsvarssymbol",
     "defenseNumber": "Defense Number",
     "defensePercentage": "Defense Percentage",
     "healthUpdates": "Health Change Number",
@@ -77,7 +77,7 @@
     "powerOrbDisplayStyle": "Power Orb Style: %style%",
     "powerOrbStyle": {
       "detailed": "Detailed",
-      "compact": "Compact"
+      "compact": "Kompakt"
     },
     "disableMagicalSoupMessage": "Disable Magical Mushroom Soup Messages",
     "zealotCounter": "Zealot Counter - Count Since Last Eye",
@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "Potion and Powerup Timers",
     "noArrowsLeftAlert": "No Arrows Left Alert",
-    "hideNightVisionEffectTimer": "Hide the Night Vision Effect Timer",
     "showCakeBagPreview": "Show Preview for Cake Bags",
     "showBackpackPreviewInAH": "Show Backpack Preview for Your Items While AH is Open",
     "enableDevFeatures": "Enable Developer Features",
@@ -98,7 +97,6 @@
       "fade": "Color Fade"
     },
     "chromaFadeWidth": "Chroma Fade Width",
-    "sortTabEffectTimers": "Sort Timers by Duration",
     "showBrokenFragments": "Show Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "Show SBA Button in Pause Menu",
     "showTotalZealotCount": "Zealot Counter - Total Zealot Count",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "Show Skyblock Item ID on Hover",
     "showFeatureNamesOnHover": "Show Feature Names on Hover",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "Enchants",
@@ -330,7 +334,11 @@
     "titleSvens": "Sven Quest",
     "descriptionSvens": "Shows that you are doing a Sven quest.",
     "titleTarantula": "Tarantula Quest",
-    "descriptionTarantula": "Shows that you are doing a Tarantula quest."
+    "descriptionTarantula": "Shows that you are doing a Tarantula quest.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "Maxed"
   }
 }

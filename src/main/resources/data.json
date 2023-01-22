@@ -2,15 +2,15 @@
   "bannerImageURL": null,
   "bannerLink": null,
 
-  "latestVersion": "1.7.0",
+  "latestVersion": "1.7.1",
   "latestBeta": "1.7.0-beta.3",
-  "videoLink": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.7.0",
-  "directDownload": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v1.7.0/SkyblockAddons-1.7.0-for-MC-1.8.9.jar",
+  "videoLink": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.7.1",
+  "directDownload": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v1.7.1/SkyblockAddons-1.7.1-for-MC-1.8.9.jar",
 
   "updateInfo": {
-    "latestRelease": "1.7.0",
-    "releaseDownload": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v1.7.0/SkyblockAddons-1.7.0-for-MC-1.8.9.jar",
-    "releaseChangelog": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.7.0",
+    "latestRelease": "1.7.1",
+    "releaseDownload": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/download/v1.7.1/SkyblockAddons-1.7.1-for-MC-1.8.9.jar",
+    "releaseChangelog": "https://github.com/BiscuitDevelopment/SkyblockAddons/releases/tag/v1.7.1",
     "releaseShowcase": "",
     "latestBeta": "1.7.0-beta.3",
     "betaDownload": "https://discord.gg/zWyr3f5GXz",

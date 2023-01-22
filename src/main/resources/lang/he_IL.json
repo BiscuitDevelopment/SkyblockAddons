@@ -4,8 +4,8 @@
   "settings": {
     "settings": "הגדרות",
     "magmaBossWarning": "אזהרת בוס מגמה",
-    "balBossWarning": "Bal Boss Warning",
-    "broodMotherWarning": "Brood Mother Warning",
+    "balBossWarning": "התרעת Bal Boss",
+    "broodMotherWarning": "התרעת Brood Mother",
     "itemDropConfirmation": "אישור זריקת פריט",
     "hideSkeletonHatBones": "הסתרת עצמות מקסדת שלד",
     "skeletonHatBonesBar": "מד העצמות מקסדת עצמות",
@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "טיימרים לשיקויים וחיזוקים",
     "noArrowsLeftAlert": "אזהרה שאזלו החצים",
-    "hideNightVisionEffectTimer": "הסתר את טיימר השפעת ראיית הלילה",
     "showCakeBagPreview": "הצגת תכולה של תיקי עוגות",
     "showBackpackPreviewInAH": "הצג את תכולת התרמיל בעוד שתפריט AH פתוח",
     "enableDevFeatures": "אפשר אפשרויות מפתח",
@@ -98,7 +97,6 @@
       "fade": "דהיית הצבע"
     },
     "chromaFadeWidth": "רוחב דהיית הכרומה",
-    "sortTabEffectTimers": "מיין את השעוני העצר לפי משך זמנם",
     "showBrokenFragments": "הצג Broken Dragon Fragments",
     "skyblockAddonsButtonInPauseMenu": "הצג כפתור SBA בתפריט העצירה",
     "showTotalZealotCount": "מד הזלוטים - כמות הזלוטים בסך הכל",
@@ -110,8 +108,8 @@
     "discordRP": "תצוגה עשירה של דיסקורד",
     "endstoneProtectorDisplay": "מצג ה- Endstone Protector",
     "fancyWarpMenu": "תפריט שיגורים מפואר",
-    "stopRatSounds": "Stop Rat Pet Sounds",
-    "onlyStopRatSqueak": "Only Stop the Rat Squeak Sound",
+    "stopRatSounds": "הפסק את צלילי חיית העכבר",
+    "onlyStopRatSqueak": "עצור רק את צליל ה-Squeak של חיית העכברוש",
     "doubleWarp": "שיגור כפול",
     "advancedMode": "מצב מתקדם",
     "legendarySeaCreatureWarning": "אזהרת יצור ימי אגדי",
@@ -128,13 +126,13 @@
     "dungeonMapDisplay": "הצג Dungeon Map",
     "rotateMap": "סובב את המפה למיקום השחקן שלך",
     "centerRotationOnYourPlayer": "מרכז את הסיבוב סביב סמן השחקן שלך",
-    "showFetchurOnlyInDwarven": "Only Show Fetchur's item in the Dwarven Mines",
-    "showFetchurItemName": "Show Fetchur's item name",
-    "showFetchurInventoryOpenOnly": "Only Show Fetchur's item when the Inventory is Open",
-    "warnWhenFetchurChanges": "Warn me when Fetchur changes",
+    "showFetchurOnlyInDwarven": "הראה את Fetchur רק ב-Dwarven Mines",
+    "showFetchurItemName": "הראה את שם החפץ של Fetchur",
+    "showFetchurInventoryOpenOnly": "הראה את החפץ של Fetchur רק כאשר ה-Inventory פתוח",
+    "warnWhenFetchurChanges": "התרע כאשר Fetchur משתנה",
     "mapZoom": "זום על המפה",
     "glowingDroppedItems": "חפצים שנזרקו זוהרים",
-    "outlineDungeonTeammates": "Outline Dungeon Teammates",
+    "outlineDungeonTeammates": "הדגש חברי קבוצה ב-Dungeons",
     "baseStatBoostPercentage": "הצג Base Stat Boost בעבור Dungeon Items",
     "colorByRarity": "צבע לפי Rarity",
     "showPlayerHeadsOnMap": "הצג את הראשים של השחקנים על גבי הDungeon Map",
@@ -183,21 +181,21 @@
     "showExperimentationTableTooltips": "הצג כלי עזר בExperimentation Table",
     "drillFuelBar": "בר דלק המקדח",
     "drillFuelNumber": "כמות דלק מקדחה",
-    "fetchurToday": "Show What Fetchur Wants Today",
+    "fetchurToday": "הצג מה Fetchur רוצה היום",
     "fishingParticleOverlay": "Fishing Particle Overlay",
     "enchantmentLoreParsing": "Parse Enchant Tooltips",
     "cooldownPrediction": "Predict and Shorten Cooldown",
     "legendaryMonkeyLevel100": "[TEMP] Level 100 Legendary Monkey",
     "biggerWake": "Enlarge Overlay Particles",
-    "stackingEnchantProgress": "Show Stacking Enchant Progress",
+    "stackingEnchantProgress": "הצג את ההתקדמות של Stacking Enchant",
     "showReforgeOverlay": "Show Reforge Overlay",
     "reforgeFilter": "Reforge Filter",
-    "hideEnchantDescription": "Hide Enchant Description",
+    "hideEnchantDescription": "הסתר את תיאור הEnchant",
     "trevorTheTrapper": {
       "title": "Trevor the Trapper Features",
       "trackedEntityProximityIndicator": "Show Tracked Entity Proximity Indicator",
       "highlightTrackedEntity": "Highlight Tracked Entity",
-      "showQuestCooldown": "Show Trevor's Quest Cooldown",
+      "showQuestCooldown": "הצג את זמן ההמתנה למשימה של Trevor",
       "showQuestCooldownDescription": "This will be displayed above Trevor's head"
     },
     "showEnderChestPreview": "Show Ender Chest Preview",
@@ -213,13 +211,19 @@
     "otherDefenseStats": "Other Defense Stats (Soul Tether/Cell Alignment)",
     "hideSpawnPointPlayers": "Hide Players at Hub Spawn Point",
     "jacobsContestTimer": "Jacob's Contest Timer",
-    "dontReplaceRomanNumeralsInItemNames": "Don't Replace in Item Names",
-    "backpackOpeningSound": "Leather Backpack Opening Sound",
+    "dontReplaceRomanNumeralsInItemNames": "אל תחליף בשמות הפריטים",
+    "backpackOpeningSound": "צליל הפתיחה של תיק העור",
     "devMode": "Developer Mode",
-    "showSkyblockItemId": "Show Skyblock Item ID on Hover",
-    "showFeatureNamesOnHover": "Show Feature Names on Hover",
+    "showSkyblockItemId": "הראה את ה-ID של פריט הSkyblock כשסמן העכבר מונח מעליו",
+    "showFeatureNamesOnHover": "הראה את שמות הפיטצ'רים כשהסמן מעליהם",
     "resetSalvagedEssencesAfterLeavingMenu": "Reset Salvaged Essence Counter After Closing Menu",
-    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys"
+    "changeDungeonMapZoomWithKeyboard": "Adjust zoom with +/- keys",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "כישופים",
@@ -298,9 +302,9 @@
     "entityOutlinesRequirement": "Requires Shaders, Fast Render, and Antialiasing to be OFF",
     "version": "Version",
     "invalidFeatureConfiguration": "Invalid configuration detected for feature %featureName%, resetting its settings to default values.",
-    "fileFetchFailed": "%modName% has failed to fetch %number% file(s). Please copy the error using the button below and report it in our Discord server.",
-    "copy": "Copy",
-    "copied": "Copied!"
+    "fileFetchFailed": "%modName% כשל בהשגת %number% קבצים. אנא העתק את התקלה בעזרת הכפתור למטה ודווח על זה בשרת הדיסקורד שלנו.",
+    "copy": "העתק",
+    "copied": "הועתק!"
   },
   "discordStatus": {
     "titleNone": "ריק",
@@ -310,7 +314,7 @@
     "titlePurse": "Purse",
     "descriptionPurse": "מראה את כמות הכסף בארנק שלך",
     "titleBits": "Bits",
-    "descriptionBits": "Shows the amount of bits you have",
+    "descriptionBits": "מראה את כמות הBits שיש לך",
     "titleStats": "סטטיסטיקות",
     "descriptionStats": "מראה את כמות החיים, הגנה, ומאנה",
     "titleZealots": "Zealots",
@@ -330,7 +334,11 @@
     "titleSvens": "משימת Sven",
     "descriptionSvens": "מראה שאתה עושה משימת Sven.",
     "titleTarantula": "משימת טרנטולה",
-    "descriptionTarantula": "מראה שאתה עושה משימת טרנטולה."
+    "descriptionTarantula": "מראה שאתה עושה משימת טרנטולה.",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "Control how enchants are displayed on item tooltips",
@@ -345,7 +353,7 @@
     "usage": {
       "sba": {
         "base": {
-          "help": "Opens the main menu"
+          "help": "פותח את התפריט הראשי"
         },
         "brand": {
           "help": "Shows the server brand"
@@ -364,7 +372,7 @@
           }
         },
         "copySidebar": {
-          "help": "Copies the scoreboard text",
+          "help": "מעתיק את הטקסט מלוח הניקוד",
           "detailedHelp": {
             "description": "Copies the text displayed in the scoreboard's sidebar display slot",
             "options": {
@@ -505,7 +513,7 @@
   "commandUsage": {
     "sba": {
       "base": {
-        "help": "Opens the main menu"
+        "help": "פותח את התפריט הראשי"
       },
       "brand": {
         "help": "Shows the server brand",
@@ -526,7 +534,7 @@
         }
       },
       "copySidebar": {
-        "help": "Copies the scoreboard text",
+        "help": "מעתיק את הטקסט מלוח הניקוד",
         "detailedHelp": {
           "description": "Copies the text displayed in the scoreboard's sidebar display slot",
           "options": {
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertise Kills",
     "compactedBlocks": "Compacted Blocks",
     "cultivatedCrops": "Cultivated Crops",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "מקסימלי"
   }
 }

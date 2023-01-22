@@ -87,7 +87,6 @@
     },
     "tabEffectTimers": "ポーションとパワーアップのタイマー",
     "noArrowsLeftAlert": "矢切れのアラート",
-    "hideNightVisionEffectTimer": "暗視の効果のタイマーを非表示",
     "showCakeBagPreview": "Cake Bagsのプレビューを表示",
     "showBackpackPreviewInAH": "Auction House内でBackpackのプレビューを表示",
     "enableDevFeatures": "開発者機能の有効化",
@@ -98,7 +97,6 @@
       "fade": "色をフェード"
     },
     "chromaFadeWidth": "色変化の幅",
-    "sortTabEffectTimers": "タイマーを時間で並び替え",
     "showBrokenFragments": "壊れたDragon Fragmentsを表示",
     "skyblockAddonsButtonInPauseMenu": "一時停止中メニューにSBAのボタンを表示",
     "showTotalZealotCount": "Zealotカウンター - Zealotの合計カウント",
@@ -219,7 +217,13 @@
     "showSkyblockItemId": "ホバーしてSkyblockのアイテムIDを表示",
     "showFeatureNamesOnHover": "ホバーして機能名を表示",
     "resetSalvagedEssencesAfterLeavingMenu": "メニューを閉じた後にSalvage Essenceカウンターをリセット",
-    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整"
+    "changeDungeonMapZoomWithKeyboard": "+/- キーでズームを調整",
+    "showPlayerSymbolsInChat": "Show Player Symbols In Chat",
+    "crimsonArmorAbilityStacks": "Show Crimson Armor Stacks",
+    "hideTrueDefense": "Hide True Defense",
+    "showProfileType": "Show Profile Type",
+    "showNetherFaction": "Show Nether Faction",
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
   },
   "messages": {
     "enchants": "エンチャント",
@@ -330,7 +334,11 @@
     "titleSvens": "Svenクエスト",
     "descriptionSvens": "Svenクエストを行っていることを表示します。",
     "titleTarantula": "Tarantulaクエスト",
-    "descriptionTarantula": "Tarantulaクエストを行っていることを表示します。"
+    "descriptionTarantula": "Tarantulaクエストを行っていることを表示します。",
+    "titleVoidgloom": "Voidgloom Quest",
+    "descriptionVoidgloom": "Shows that you are doing a Voidgloom quest.",
+    "titleInferno": "Inferno Quest",
+    "descriptionInferno": "Shows that you are doing an Inferno quest."
   },
   "enchantLayout": {
     "title": "アイテム説明文でのエンチャントの表示方法を設定します",
@@ -683,6 +691,8 @@
     "expertiseKills": "Expertiseで倒した数",
     "compactedBlocks": "コンパクト化されたブロック",
     "cultivatedCrops": "栽培された作物",
+    "hecatombsSRuns": "Hecatombs S Runs",
+    "championCombatXp": "Champion Combat XP",
     "maxed": "最大"
   }
 }
