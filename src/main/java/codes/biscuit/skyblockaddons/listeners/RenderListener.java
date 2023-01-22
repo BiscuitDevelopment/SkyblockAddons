@@ -826,10 +826,10 @@ public class RenderListener {
             if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
                 double MSEventOver; //get how long the cult will last for
                 if (SkyblockDays < 7) {
-                MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 10) - 30000); //next event is the start of a new month, so we add an extra hour (3 SB days)
+                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 10) - 30000); //next event is the start of a new month, so we add an extra hour (3 SB days)
                 }
                 else{
-                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 4) - 30000); //7 days behind, but then add 6 skyblock hours
+                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 7) - 30000); //7 days behind, but then add 6 skyblock hours
                 }
                 RealMSLeft = MSEventOver - MSCurrentTime;
                 hours = 0;
