@@ -823,19 +823,21 @@ public class RenderListener {
             int hours;
             long minutes;
             long seconds;
-            if (SkyblockDays % 7 == 0 && SkyblockHours < 6){//cult is active
-                double MSEventOver; //get how long the cult will last for
-                if (SkyblockDays < 7) {
-                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 10) - 30000); //next event is the start of a new month, so we add an extra hour (3 SB days)
+            if (SkyblockDays % 7 != 0 && SkyblockHours < 6) {//cult is not active. Calculate hours normally.
+                hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
+            } else {//cult is active
+                double MSEventOver = MSNextEvent; //get how long the event will last for
+                if (SkyblockDays < 7) {//next event is the start of a new month, so we add an extra hour (3 SB days)
+                    MSEventOver -= ONESKYBLOCKDAY * 10;
                 }
-                else{
-                    MSEventOver = MSNextEvent - ((ONESKYBLOCKDAY * 7) - 30000); //7 days behind, but then add 6 skyblock hours
+                else{//7 days behind
+                    MSEventOver -= ONESKYBLOCKDAY * 7;
                 }
+                //add 6 hours to account for 6am cult event end
+                MSEventOver -= 30000;
+
                 RealMSLeft = MSEventOver - MSCurrentTime;
                 hours = 0;
-            }
-            else{
-                hours = (int) Math.floor(RealMSLeft / (ONESKYBLOCKDAY * 3));
             }
             minutes = (long) Math.floor(RealMSLeft / 60000 % 60);
             seconds = (long) Math.floor(RealMSLeft / 1000 % 60);
