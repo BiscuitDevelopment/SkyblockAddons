@@ -416,8 +416,18 @@ public class PlayerListener {
                                 newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[⚒ቾ](§[0-9a-fk-orz])*","");
                             }
                             newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*\\[[^\\[\\]]*\\](§[0-9a-fk-orz])*", ""); // Soopyv2 compatibility
-                            e.message = new ChatComponentText(formattedText.replace(username, newName));
-                            e.message.setChatStyle(oldMessage.getChatStyle());
+                            ListIterator<IChatComponent> it = oldMessage.getSiblings().listIterator();
+                            while (it.hasNext()) {
+                                IChatComponent chatComponent = it.next();
+                                if (chatComponent.getUnformattedText().contains(username)) {
+                                    it.set(
+                                            new ChatComponentText(chatComponent.getFormattedText().replace(username, newName)) {{
+                                                setChatStyle(chatComponent.getChatStyle());
+                                            }}
+                                    );
+                                    break;
+                                }
+                            }
                         }
                     }
                 }
