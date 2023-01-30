@@ -29,11 +29,9 @@ import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import com.google.common.math.DoubleMath;
 import lombok.Getter;
-import lombok.Setter;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPrismarine;
 import net.minecraft.block.BlockStone;
@@ -43,14 +41,11 @@ import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundCategory;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
-import net.minecraft.client.gui.GuiPlayerTabOverlay;
 import net.minecraft.client.gui.inventory.GuiChest;
-import net.minecraft.client.network.NetHandlerPlayClient;
 import net.minecraft.client.network.NetworkPlayerInfo;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityArmorStand;
-import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityMagmaCube;
 import net.minecraft.entity.monster.EntitySlime;
@@ -64,9 +59,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.EnumDyeColor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.scoreboard.ScorePlayerTeam;
 import net.minecraft.util.*;
-import net.minecraft.world.WorldSettings;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.sound.PlaySoundEvent;
@@ -79,7 +72,6 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -114,6 +106,8 @@ public class PlayerListener {
     private static final Pattern NEXT_TIER_PET_PROGRESS = Pattern.compile("Next tier: (?<total>[0-9,]+)/.*");
     private static final Pattern MAXED_TIER_PET_PROGRESS = Pattern.compile(".*: (?<total>[0-9,]+)");
     private static final Pattern SPIRIT_SCEPTRE_MESSAGE_PATTERN = Pattern.compile("Your (?:Implosion|Spirit Sceptre) hit (?<hitEnemies>[0-9]+) enem(?:y|ies) for (?<dealtDamage>[0-9]{1,3}(?:,[0-9]{3})*(?:\\.[0-9]+)*) damage\\.");
+    private static final Pattern PROFILE_TYPE_SYMBOL = Pattern.compile("(?i)§[0-9A-FK-ORZ][♲Ⓑ]");
+    private static final Pattern NETHER_FACTION_SYMBOL = Pattern.compile("(?i)§[0-9A-FK-ORZ][⚒ቾ]");
 
     private static final Set<String> SOUP_RANDOM_MESSAGES = new HashSet<>(Arrays.asList("I feel like I can fly!", "What was in that soup?",
             "Hmm… tasty!", "Hmm... tasty!", "You can now fly for 2 minutes.", "Your flight has been extended for 2 extra minutes.",
@@ -174,7 +168,7 @@ public class PlayerListener {
     private final ActionBarParser actionBarParser = new ActionBarParser();
 
     // For caching for the PROFILE_TYPE_IN_CHAT feature, saves the last MAX_SIZE names.
-    private final LinkedHashMap<String, String> namesWithType = new LinkedHashMap<String, String>(){
+    private final LinkedHashMap<String, String> namesWithSymbols = new LinkedHashMap<String, String>(){
         private final int MAX_SIZE = 80;
 
         protected boolean removeEldestEntry(Map.Entry<String, String> eldest)
@@ -393,7 +387,7 @@ public class PlayerListener {
                         EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
                         // Put player in cache if found nearby
                         if(chattingPlayer != null) {
-                            namesWithType.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+                            namesWithSymbols.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
                         }
                         // Otherwise search in tablist
                         else {
@@ -402,30 +396,41 @@ public class PlayerListener {
                             Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
                             // Put in cache if found
                             if(result.isPresent()){
-                                namesWithType.put(username, result.get().getDisplayName().getFormattedText());
+                                namesWithSymbols.put(username, result.get().getDisplayName().getFormattedText());
                             }
                         }
                         // Check cache regardless if found nearby
-                        if(namesWithType.containsKey(username)){
+                        if(namesWithSymbols.containsKey(username)){
                             IChatComponent oldMessage = e.message;
-                            String newName = namesWithType.get(username);
-                            if(main.getConfigValues().isDisabled(Feature.SHOW_PROFILE_TYPE)){
-                                newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[♲Ⓑ](§[0-9a-fk-orz])*","");
+                            String usernameWithSymbols = namesWithSymbols.get(username);
+                            String suffix = " ";
+                            if(main.getConfigValues().isEnabled(Feature.SHOW_PROFILE_TYPE)){
+                                Matcher m = PROFILE_TYPE_SYMBOL.matcher(usernameWithSymbols);
+                                if(m.find()){
+                                    suffix+=m.group(0);
+                                }
                             }
-                            if(main.getConfigValues().isDisabled(Feature.SHOW_NETHER_FACTION)){
-                                newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[⚒ቾ](§[0-9a-fk-orz])*","");
+                            if(main.getConfigValues().isEnabled(Feature.SHOW_NETHER_FACTION)){
+                                Matcher m = NETHER_FACTION_SYMBOL.matcher(usernameWithSymbols);
+                                if(m.find()){
+                                    suffix+=m.group(0);
+                                }
                             }
-                            newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*\\[[^\\[\\]]*\\](§[0-9a-fk-orz])*", ""); // Soopyv2 compatibility
-                            ListIterator<IChatComponent> it = oldMessage.getSiblings().listIterator();
-                            while (it.hasNext()) {
-                                IChatComponent chatComponent = it.next();
-                                if (chatComponent.getUnformattedText().contains(username)) {
-                                    it.set(
-                                            new ChatComponentText(chatComponent.getFormattedText().replace(username, newName)) {{
-                                                setChatStyle(chatComponent.getChatStyle());
-                                            }}
-                                    );
-                                    break;
+                            if(!suffix.equals(" ")) {
+                                // need another sibling to correct for player vs others mismatch
+                                e.message= new ChatComponentText("");
+                                e.message.appendSibling(oldMessage);
+                                ListIterator<IChatComponent> it = e.message.getSiblings().listIterator();
+                                while (it.hasNext()) {
+                                    IChatComponent chatComponent = it.next();
+                                    if (chatComponent.getUnformattedText().contains(username)) {
+                                        it.set(
+                                                new ChatComponentText(chatComponent.getFormattedText().replace(username, username + suffix)) {{
+                                                    setChatStyle(chatComponent.getChatStyle());
+                                                }}
+                                        );
+                                        break;
+                                    }
                                 }
                             }
                         }

@@ -21,6 +21,7 @@ public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
     private static final Pattern STRIP_ICONS_PATTERN = Pattern.compile("[♲Ⓑ⚒ቾ]+");
+    private static final Pattern STRIP_PREFIX_PATTERN = Pattern.compile("\\[[^\\[\\]]*\\]");
     private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
@@ -75,7 +76,11 @@ public class TextUtils {
      * @return Stripped Text
      */
     public static String stripUsername(String input) {
-        return trimWhitespaceAndResets(stripIcons(stripColor((input))));
+        return trimWhitespaceAndResets(stripIcons(stripColor(stripPrefix((input)))));
+    }
+
+    public static String stripPrefix(String input) {
+        return STRIP_PREFIX_PATTERN.matcher(input).replaceAll("");
     }
 
     /**
