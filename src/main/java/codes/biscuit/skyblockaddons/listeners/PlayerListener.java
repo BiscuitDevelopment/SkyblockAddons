@@ -29,7 +29,6 @@ import codes.biscuit.skyblockaddons.gui.IslandWarpGui;
 import codes.biscuit.skyblockaddons.misc.scheduler.Scheduler;
 import codes.biscuit.skyblockaddons.misc.scheduler.SkyblockRunnable;
 import codes.biscuit.skyblockaddons.utils.*;
-import codes.biscuit.skyblockaddons.utils.objects.IntPair;
 import com.google.common.collect.Sets;
 import com.google.common.math.DoubleMath;
 import lombok.Getter;
@@ -89,6 +88,7 @@ import org.lwjgl.input.Keyboard;
 
 import java.math.RoundingMode;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -416,18 +416,18 @@ public class PlayerListener {
                                 newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*[⚒ቾ](§[0-9a-fk-orz])*","");
                             }
                             newName = newName.replaceAll("(?i) *(§[0-9a-fk-orz])*\\[[^\\[\\]]*\\](§[0-9a-fk-orz])*", ""); // Soopyv2 compatibility
-                            ListIterator<IChatComponent> it = oldMessage.getSiblings().listIterator();
-                            while (it.hasNext()) {
-                                IChatComponent chatComponent = it.next();
-                                if (chatComponent.getUnformattedText().contains(username)) {
-                                    it.set(
-                                            new ChatComponentText(chatComponent.getFormattedText().replace(username, newName)) {{
-                                                setChatStyle(chatComponent.getChatStyle());
-                                            }}
-                                    );
-                                    break;
+                            IChatComponent chatComponent = oldMessage.createCopy();
+                            final String finalUsername = username;
+                            final String finalNewName = newName;
+                            recursiveTransformChatComponent(chatComponent, component -> {
+                                if (component instanceof ChatComponentText) {
+                                    if (component.getUnformattedText().contains(finalUsername)) {
+                                        ChatComponentText textComponent = (ChatComponentText) component;
+                                        textComponent.text = textComponent.text.replace(finalUsername, finalNewName);
+                                    }
                                 }
-                            }
+                            });
+                            e.message = chatComponent;
                         }
                     }
                 }
@@ -1319,6 +1319,24 @@ public class PlayerListener {
             }
         }
         return false;
+    }
+
+    /**
+     * Recursively performs an action upon a chat component and its siblings
+     * This code is adapted from Skytils
+     * <p>
+     * https://github.com/Skytils/SkytilsMod/commit/35b1fbed1613f07bd422c61dbe3d261218b8edc6
+     * <p>
+     * I, Sychic, the author of this code grant usage under the terms of the MIT License.
+     * @param chatComponent root chat component
+     * @param action action to be performed
+     * @author Sychic
+     */
+    private void recursiveTransformChatComponent(IChatComponent chatComponent, Consumer<IChatComponent> action) {
+        action.accept(chatComponent);
+        for (IChatComponent sibling : chatComponent.getSiblings()) {
+            recursiveTransformChatComponent(sibling, action);
+        }
     }
 
     public ActionBarParser getActionBarParser() {
