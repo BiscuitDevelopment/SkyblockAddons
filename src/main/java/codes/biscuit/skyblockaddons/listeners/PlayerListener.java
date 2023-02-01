@@ -374,67 +374,7 @@ public class PlayerListener {
                     // Tries to check if a message is from a player to add the player profile icon
                 } else if (main.getConfigValues().isEnabled(Feature.PLAYER_SYMBOLS_IN_CHAT) &&
                         unformattedText.contains(":")) {
-                    // For some reason guild chat messages still contain color codes in the unformatted text
-                    String username = TextUtils.stripColor(unformattedText.split(":")[0]);
-                    // Remove chat channel prefix
-                    if(username.contains(">")){
-                        username = username.substring(username.indexOf('>')+1);
-                    }
-                    // Remove rank prefix and guild rank suffix if exists
-                    username = TextUtils.trimWhitespaceAndResets(username.replaceAll("\\[[^\\[\\]]*\\]",""));
-                    // Check if stripped username is a real username or the player
-                    if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
-                        EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
-                        // Put player in cache if found nearby
-                        if(chattingPlayer != null) {
-                            namesWithSymbols.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
-                        }
-                        // Otherwise search in tablist
-                        else {
-                            Collection<NetworkPlayerInfo> networkPlayerInfos = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap();
-                            String finalUsername = username;
-                            Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
-                            // Put in cache if found
-                            if(result.isPresent()){
-                                namesWithSymbols.put(username, result.get().getDisplayName().getFormattedText());
-                            }
-                        }
-                        // Check cache regardless if found nearby
-                        if(namesWithSymbols.containsKey(username)){
-                            IChatComponent oldMessage = e.message;
-                            String usernameWithSymbols = namesWithSymbols.get(username);
-                            String suffix = " ";
-                            if(main.getConfigValues().isEnabled(Feature.SHOW_PROFILE_TYPE)){
-                                Matcher m = PROFILE_TYPE_SYMBOL.matcher(usernameWithSymbols);
-                                if(m.find()){
-                                    suffix+=m.group(0);
-                                }
-                            }
-                            if(main.getConfigValues().isEnabled(Feature.SHOW_NETHER_FACTION)){
-                                Matcher m = NETHER_FACTION_SYMBOL.matcher(usernameWithSymbols);
-                                if(m.find()){
-                                    suffix+=m.group(0);
-                                }
-                            }
-                            if(!suffix.equals(" ")) {
-                                // need another sibling to correct for player vs others mismatch
-                                e.message= new ChatComponentText("");
-                                e.message.appendSibling(oldMessage);
-                                ListIterator<IChatComponent> it = e.message.getSiblings().listIterator();
-                                while (it.hasNext()) {
-                                    IChatComponent chatComponent = it.next();
-                                    if (chatComponent.getUnformattedText().contains(username)) {
-                                        it.set(
-                                                new ChatComponentText(chatComponent.getFormattedText().replace(username, username + suffix)) {{
-                                                    setChatStyle(chatComponent.getChatStyle());
-                                                }}
-                                        );
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    playerSymbolsDisplay(e, unformattedText);
                 }
 
                 if (main.getConfigValues().isEnabled(Feature.NO_ARROWS_LEFT_ALERT)) {
@@ -520,6 +460,63 @@ public class PlayerListener {
                     }*/
 
                     main.getUtils().setProfileName(profile);
+                }
+            }
+        }
+    }
+
+    private void playerSymbolsDisplay(ClientChatReceivedEvent e, String unformattedText) {
+        // For some reason guild chat messages still contain color codes in the unformatted text
+        String username = TextUtils.stripColor(unformattedText.split(":")[0]);
+        // Remove chat channel prefix
+        if(username.contains(">")){
+            username = username.substring(username.indexOf('>')+1);
+        }
+        // Remove rank prefix and guild rank suffix if exists
+        username = TextUtils.trimWhitespaceAndResets(username.replaceAll("\\[[^\\[\\]]*\\]",""));
+        // Check if stripped username is a real username or the player
+        if (TextUtils.isUsername(username) || username.equals("**MINECRAFTUSERNAME**")) {
+            EntityPlayer chattingPlayer = Minecraft.getMinecraft().theWorld.getPlayerEntityByName(username);
+            // Put player in cache if found nearby
+            if(chattingPlayer != null) {
+                namesWithSymbols.put(username, chattingPlayer.getDisplayName().getSiblings().get(0).getUnformattedText());
+            }
+            // Otherwise search in tablist
+            else {
+                Collection<NetworkPlayerInfo> networkPlayerInfos = Minecraft.getMinecraft().thePlayer.sendQueue.getPlayerInfoMap();
+                String finalUsername = username;
+                Optional<NetworkPlayerInfo> result = networkPlayerInfos.stream().filter(npi -> npi.getDisplayName() != null).filter(npi -> TextUtils.stripUsername(npi.getDisplayName().getUnformattedText()).equals(finalUsername)).findAny();
+                // Put in cache if found
+                if(result.isPresent()){
+                    namesWithSymbols.put(username, result.get().getDisplayName().getFormattedText());
+                }
+            }
+            // Check cache regardless if found nearby
+            if(namesWithSymbols.containsKey(username)){
+                IChatComponent oldMessage = e.message;
+                String usernameWithSymbols = namesWithSymbols.get(username);
+                String suffix = " ";
+                if(main.getConfigValues().isEnabled(Feature.SHOW_PROFILE_TYPE)){
+                    Matcher m = PROFILE_TYPE_SYMBOL.matcher(usernameWithSymbols);
+                    if(m.find()){
+                        suffix+=m.group(0);
+                    }
+                }
+                if(main.getConfigValues().isEnabled(Feature.SHOW_NETHER_FACTION)){
+                    Matcher m = NETHER_FACTION_SYMBOL.matcher(usernameWithSymbols);
+                    if(m.find()){
+                        suffix+=m.group(0);
+                    }
+                }
+                if(!suffix.equals(" ")) {
+                    IChatComponent comp = oldMessage;
+                    for(Iterator<IChatComponent> it = oldMessage.getSiblings().iterator();it.hasNext();comp=it.next()) {
+                        if (comp instanceof ChatComponentText & ((ChatComponentText)comp).text.contains(username)) {
+                            ChatComponentText textComponent = (ChatComponentText) comp;
+                            textComponent.text = textComponent.text.replace(username, username + suffix);
+                            break;
+                        }
+                    }
                 }
             }
         }
