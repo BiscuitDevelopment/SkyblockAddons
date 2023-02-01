@@ -516,7 +516,6 @@ public class PlayerListener {
                         if (comp instanceof ChatComponentText & ((ChatComponentText)comp).text.contains(username)) {
                             ChatComponentText textComponent = (ChatComponentText) comp;
                             textComponent.text = textComponent.text.replace(username, username + suffix);
-                            compStack = null;
                             break;
                         }
                         compStack.addAll(comp.getSiblings());
