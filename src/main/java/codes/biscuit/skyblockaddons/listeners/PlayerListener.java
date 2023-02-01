@@ -509,11 +509,15 @@ public class PlayerListener {
                     }
                 }
                 if(!suffix.equals(" ")) {
-                    IChatComponent comp = oldMessage;
-                    for(Iterator<IChatComponent> it = oldMessage.getSiblings().iterator();it.hasNext();comp=it.next()) {
+                    Queue<IChatComponent> compQueue = new LinkedList<IChatComponent>();
+                    compQueue.add(oldMessage);
+                    while(!compQueue.isEmpty()){
+                        IChatComponent comp = compQueue.poll();
+                        compQueue.addAll(comp.getSiblings());
                         if (comp instanceof ChatComponentText & ((ChatComponentText)comp).text.contains(username)) {
                             ChatComponentText textComponent = (ChatComponentText) comp;
                             textComponent.text = textComponent.text.replace(username, username + suffix);
+                            compQueue = null;
                             break;
                         }
                     }
