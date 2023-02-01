@@ -509,17 +509,17 @@ public class PlayerListener {
                     }
                 }
                 if(!suffix.equals(" ")) {
-                    Queue<IChatComponent> compQueue = new LinkedList<IChatComponent>();
-                    compQueue.add(oldMessage);
-                    while(!compQueue.isEmpty()){
-                        IChatComponent comp = compQueue.poll();
-                        compQueue.addAll(comp.getSiblings());
+                    Stack<IChatComponent> compStack = new Stack<IChatComponent>();
+                    compStack.add(oldMessage);
+                    while(!compStack.isEmpty()){
+                        IChatComponent comp = compStack.pop();
                         if (comp instanceof ChatComponentText & ((ChatComponentText)comp).text.contains(username)) {
                             ChatComponentText textComponent = (ChatComponentText) comp;
                             textComponent.text = textComponent.text.replace(username, username + suffix);
-                            compQueue = null;
+                            compStack = null;
                             break;
                         }
+                        compStack.addAll(comp.getSiblings());
                     }
                 }
             }
