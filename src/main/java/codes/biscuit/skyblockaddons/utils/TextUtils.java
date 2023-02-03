@@ -2,11 +2,13 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.JsonObject;
+import net.minecraft.util.IChatComponent;
 
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -439,5 +441,22 @@ public class TextUtils {
             }
         }
         return builder.toString();
+    }
+    /**
+     * Recursively performs an action upon a chat component and its siblings
+     * This code is adapted from Skytils
+     * <p>
+     * https://github.com/Skytils/SkytilsMod/commit/35b1fbed1613f07bd422c61dbe3d261218b8edc6
+     * <p>
+     * I, Sychic, the author of this code grant usage under the terms of the MIT License.
+     * @param chatComponent root chat component
+     * @param action action to be performed
+     * @author Sychic
+     */
+    public static void recursiveTransformChatComponent(IChatComponent chatComponent, Consumer<IChatComponent> action) {
+        action.accept(chatComponent);
+        for (IChatComponent sibling : chatComponent.getSiblings()) {
+            recursiveTransformChatComponent(sibling, action);
+        }
     }
 }

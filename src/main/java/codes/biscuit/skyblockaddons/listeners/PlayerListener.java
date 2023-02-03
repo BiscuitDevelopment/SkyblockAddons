@@ -509,17 +509,15 @@ public class PlayerListener {
                     }
                 }
                 if(!suffix.equals(" ")) {
-                    Stack<IChatComponent> compStack = new Stack<IChatComponent>();
-                    compStack.add(oldMessage);
-                    while(!compStack.isEmpty()){
-                        IChatComponent comp = compStack.pop();
-                        if (comp instanceof ChatComponentText & ((ChatComponentText)comp).text.contains(username)) {
-                            ChatComponentText textComponent = (ChatComponentText) comp;
-                            textComponent.text = textComponent.text.replace(username, username + suffix);
-                            break;
-                        }
-                        compStack.addAll(comp.getSiblings());
-                    }
+                    String finalSuffix = suffix;
+                    String finalUsername = username;
+                    TextUtils.recursiveTransformChatComponent(oldMessage, component -> {
+                                if (component instanceof ChatComponentText & ((ChatComponentText)component).text.contains(finalUsername)) {
+                                    ChatComponentText textComponent = (ChatComponentText) component;
+                                    textComponent.text = textComponent.text.replace(finalUsername, finalUsername + finalSuffix);
+                                }
+                            }
+                    );
                 }
             }
         }
