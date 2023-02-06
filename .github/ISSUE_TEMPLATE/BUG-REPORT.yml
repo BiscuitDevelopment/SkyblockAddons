@@ -67,4 +67,4 @@ body:
     attributes:
       value: |
         **Attachments**
-        If you have attachments like screenshots or videos, please upload them as in a comment after creating the bug report.
+        If you have attachments like screenshots or videos, please upload them in a comment after creating the bug report.
