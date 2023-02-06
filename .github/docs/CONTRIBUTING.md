@@ -10,6 +10,9 @@ git checkout -b development --track origin/development
 ```
 
 ### Requirements
+- **JDK** (You need both)
+  - JDK 8
+  - JDK 17
 - **IDE** (One of them)
   - [IntelliJ IDEA](https://www.jetbrains.com/idea/) **(Recommended)**
     - Our team uses IDEA. We may not be able to provide support for other IDEs.
@@ -29,7 +32,8 @@ git checkout -b development --track origin/development
     ```
 4. Integrate the development environment with your IDE
     - IntelliJ IDEA
-      - Done automatically
+      - Set the project SDK to Java 8 ([instructions](https://www.jetbrains.com/help/idea/sdk.html#change-project-sdk))
+      - Set the gradle JVM to 17 ([instructions](https://www.jetbrains.com/help/idea/gradle-jvm-selection.html#jvm_settings))
     - Eclipse **(doesn't generate debug configuration)**
     ```shell script
     ./gradlew eclipse
