@@ -48,7 +48,7 @@ git checkout -b development --track origin/development
     ```shell script
     ./gradlew build
     ```
-    > **Note**
+    > **Notes**
     > 
     > If your jar **build** is **failing** because the code is trying to access private methods or fields,
     > this may be because someone added some new access transformers.
@@ -58,6 +58,11 @@ git checkout -b development --track origin/development
     > ./gradlew setupDecompWorkspace
     > ```
     > so the access transformers are applied to the source code!
+    > 
+    > The build process produces three artifacts:
+    > - SkyblockAddons-1.7.2.jar (mod code and resources)
+    > - SkyblockAddons-1.7.2-all.jar (above + shaded libraries)
+    > - SkyblockAddons-1.7.2-for-MC-1.8.9.jar (above + remapped for obfuscated environment)
     > 
 2. (Optional) Run the **Minecraft Forge** client
     - Using IntelliJ IDEA

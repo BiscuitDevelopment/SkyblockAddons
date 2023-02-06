@@ -114,7 +114,7 @@ dependencies {
 }
 
 tasks.withType(JavaCompile).configureEach {
-    options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+    options.compilerArgs << '-Xlint:unchecked' << '-Xlint:deprecation'
     options.encoding = 'UTF-8'
 }
 
@@ -154,13 +154,13 @@ remapJar {
 
 processResources {
     dependsOn tasks.copyLicenses
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraftVersion
+    inputs.property 'version', project.version
+    inputs.property 'mcversion', project.minecraftVersion
 
     // replace stuff in mcmod.info, nothing else
-    from('mcmod.info') {
+    filesMatching('mcmod.info') {
         // replace version and mcversion
-        expand(version: project.version, mcversion: project.minecraftVersion)
+        expand('version': project.version, 'mcversion': project.minecraftVersion)
     }
 }
 
@@ -179,6 +179,6 @@ shadowJar {
 test {
     useJUnitPlatform()
     testLogging {
-        events "passed", "skipped", "failed"
+        events 'passed', 'skipped', 'failed'
     }
 }
