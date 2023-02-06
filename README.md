@@ -22,15 +22,14 @@
   </a>
 </p>
 
-A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better. Always looking for more features to add!
+A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better.
 
+```
+Sorry, development is slow and will be for the foreseeable future since I quit SB and I'm also busy with
+other things. Thank you for your understanding.
 
------
-:warning: Note for Contributors
------
-The branch `development` has been renamed to `main`, and the branch `master` is now `stable`.
-All commits should start in main and eventually get merged into stable on release. Make sure
-to `git checkout` these new branches in your IDE.
+- TirelessTraveler
+```
 
 
 Special Credits

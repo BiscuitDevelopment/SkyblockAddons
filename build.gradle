@@ -63,6 +63,7 @@ loom {
             property('devauth.enabled', 'true')
         }
     }
+    // Change this to one of the other log configs if desired
     log4jConfigs.from(file('log-config.xml'))
     forge {
         pack200Provider.set(new Pack200Adapter())
