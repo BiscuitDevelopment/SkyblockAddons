@@ -461,6 +461,14 @@ public class TextUtils {
         }
     }
 
+    /**
+     * Recursively searches for a chat component to transform based on a given Predicate.
+     *
+     * Important to note that this function will stop on the first successful transformation, unlike {@link #transformAllChatComponents(IChatComponent, Consumer)}
+     * @param chatComponent root chat component
+     * @param action predicate that transforms a component and reports a successful transformation
+     * @return Whether any transformation occurred
+     */
     public static boolean transformAnyChatComponent(IChatComponent chatComponent, Predicate<IChatComponent> action) {
         if(action.test(chatComponent))
             return true;
