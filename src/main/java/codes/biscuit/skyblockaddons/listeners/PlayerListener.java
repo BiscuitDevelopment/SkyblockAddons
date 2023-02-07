@@ -511,7 +511,7 @@ public class PlayerListener {
                 if(!suffix.equals(" ")) {
                     String finalSuffix = suffix;
                     String finalUsername = username;
-                    TextUtils.recursiveTransformAnyChatComponent(oldMessage, component -> {
+                    TextUtils.transformAnyChatComponent(oldMessage, component -> {
                                 if (component instanceof ChatComponentText & ((ChatComponentText)component).text.contains(finalUsername)) {
                                     ChatComponentText textComponent = (ChatComponentText) component;
                                     textComponent.text = textComponent.text.replace(finalUsername, finalUsername + finalSuffix);

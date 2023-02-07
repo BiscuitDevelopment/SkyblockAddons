@@ -454,18 +454,18 @@ public class TextUtils {
      * @param action action to be performed
      * @author Sychic
      */
-    public static void recursiveTransformAllChatComponents(IChatComponent chatComponent, Consumer<IChatComponent> action) {
+    public static void transformAllChatComponents(IChatComponent chatComponent, Consumer<IChatComponent> action) {
         action.accept(chatComponent);
         for (IChatComponent sibling : chatComponent.getSiblings()) {
-            recursiveTransformAllChatComponents(sibling, action);
+            transformAllChatComponents(sibling, action);
         }
     }
 
-    public static boolean recursiveTransformAnyChatComponent(IChatComponent chatComponent, Predicate<IChatComponent> action) {
+    public static boolean transformAnyChatComponent(IChatComponent chatComponent, Predicate<IChatComponent> action) {
         if(action.test(chatComponent))
             return true;
         for (IChatComponent sibling : chatComponent.getSiblings()) {
-            if(recursiveTransformAnyChatComponent(sibling, action))
+            if(transformAnyChatComponent(sibling, action))
                 return true;
         }
         return false;
