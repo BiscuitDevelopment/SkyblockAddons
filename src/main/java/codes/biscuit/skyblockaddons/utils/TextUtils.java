@@ -9,6 +9,7 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -453,10 +454,28 @@ public class TextUtils {
      * @param action action to be performed
      * @author Sychic
      */
-    public static void recursiveTransformChatComponent(IChatComponent chatComponent, Consumer<IChatComponent> action) {
+    public static void transformAllChatComponents(IChatComponent chatComponent, Consumer<IChatComponent> action) {
         action.accept(chatComponent);
         for (IChatComponent sibling : chatComponent.getSiblings()) {
-            recursiveTransformChatComponent(sibling, action);
+            transformAllChatComponents(sibling, action);
         }
+    }
+
+    /**
+     * Recursively searches for a chat component to transform based on a given Predicate.
+     *
+     * Important to note that this function will stop on the first successful transformation, unlike {@link #transformAllChatComponents(IChatComponent, Consumer)}
+     * @param chatComponent root chat component
+     * @param action predicate that transforms a component and reports a successful transformation
+     * @return Whether any transformation occurred
+     */
+    public static boolean transformAnyChatComponent(IChatComponent chatComponent, Predicate<IChatComponent> action) {
+        if(action.test(chatComponent))
+            return true;
+        for (IChatComponent sibling : chatComponent.getSiblings()) {
+            if(transformAnyChatComponent(sibling, action))
+                return true;
+        }
+        return false;
     }
 }
