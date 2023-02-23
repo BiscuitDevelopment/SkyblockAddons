@@ -307,6 +307,7 @@ public class IslandWarpGui extends GuiScreen {
         THE_BARN("The Barn", 1125, 800),
         HUB("Hub", 300, 724),
         PRIVATE_ISLAND("Private Island", 275, 1122),
+        GARDEN("Garden", 50, 1000),
         DUNGEON_HUB("Dungeon Hub", 1500, 1050);
 
         private final String label;
@@ -354,6 +355,8 @@ public class IslandWarpGui extends GuiScreen {
     public enum Marker {
         PRIVATE_ISLAND("home", Translations.getMessage("warpMenu.home"), Island.PRIVATE_ISLAND, true, 72, 90),
 
+        GARDEN("garden", Translations.getMessage("warpMenu.spawn"), Island.GARDEN, true, 160, 70),
+
         HUB("hub", Translations.getMessage("warpMenu.spawn"), Island.HUB, true, 600, 200),
         CASTLE("castle", "Castle", Island.HUB, 130, 80),
         DARK_AUCTION("da", "Sirius Shack", Island.HUB, 385, 415),
@@ -381,6 +384,7 @@ public class IslandWarpGui extends GuiScreen {
 
         THE_BARN("barn", Translations.getMessage("warpMenu.spawn"), Island.THE_BARN, true, 140, 150),
         MUSHROOM_DESERT("desert", Translations.getMessage("warpMenu.spawn"), Island.MUSHROOM_DESERT, true, 210, 295),
+        TRAPPER("trapper", "Trapper's Hut", Island.MUSHROOM_DESERT, true, 300, 200),
 
         GOLD_MINE("gold", Translations.getMessage("warpMenu.spawn"), Island.GOLD_MINE, true, 86, 259),
 
