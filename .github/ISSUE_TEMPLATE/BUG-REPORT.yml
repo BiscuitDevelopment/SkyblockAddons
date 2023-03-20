@@ -1,0 +1,70 @@
+name: Bug report
+description: File a bug report
+title: "[Bug] "
+labels: bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please note that we do not provide support for clients other than Forge.
+        We will not fix compatibility issues with other clients.
+  - type: input
+    id: contact
+    attributes:
+      label: Discord Username
+      description: |
+        Please join our [Discord server](https://discord.gg/zWyr3f5GXz) and enter your
+        Discord username below. We may ping you if we require additional info about this bug.
+      placeholder: User#1234
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: What went wrong? What should have happened instead?
+    validations:
+      required: true
+  - type: dropdown
+    id: modVersion
+    attributes:
+      label: SBA Version
+      multiple: false
+      options:
+       - 1.7.2
+       - 1.7.1
+       - 1.7.0
+       - 1.6.x
+       - 1.5.x
+       - \<1.5
+    validations:
+      required: true
+  - type: textarea
+    id: otherMods
+    attributes:
+      label: Other Installed Mods
+      description: |
+        Please list the names and versions of the other mods you have installed.
+        Tip: If you have NEU, you can run `/neustats` to list your installed mods.
+      placeholder: |
+        Optifine M5
+        NEU 2.1.1
+        Skytils 2.3.0
+  - type: input
+    id: operatingSystem
+    attributes:
+      label: Operating System
+      placeholder: Windows 11
+    validations:
+      required: true
+  - type: textarea
+    id: crashReport
+    attributes:
+      label: Crash Report
+      description: |
+        If your game crashed, please paste the crash report below.
+        Please see our [guide](https://github.com/BiscuitDevelopment/SkyblockAddons/wiki/How-to-Find-Your-Crash-Reports-and-Logs) to locate your crash reports.
+        If your crash report has a name starting with `hs_err_pid`, **do not post it here!** It contains your login credentials. Message us on Discord instead.
+  - type: markdown
+    attributes:
+      value: |
+        **Attachments**
+        If you have attachments like screenshots or videos, please upload them in a comment after creating the bug report.

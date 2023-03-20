@@ -2,11 +2,14 @@ package codes.biscuit.skyblockaddons.utils;
 
 import codes.biscuit.skyblockaddons.SkyblockAddons;
 import com.google.gson.JsonObject;
+import net.minecraft.util.IChatComponent;
 
 import java.nio.charset.StandardCharsets;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.*;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -21,6 +24,7 @@ public class TextUtils {
 
     private static final Pattern STRIP_COLOR_PATTERN = Pattern.compile("(?i)§[0-9A-FK-ORZ]");
     private static final Pattern STRIP_ICONS_PATTERN = Pattern.compile("[♲Ⓑ⚒ቾ]+");
+    private static final Pattern STRIP_PREFIX_PATTERN = Pattern.compile("\\[[^\\[\\]]*\\]");
     private static final Pattern REPEATED_COLOR_PATTERN = Pattern.compile("(?i)(§[0-9A-FK-ORZ])+");
     private static final Pattern NUMBERS_SLASHES = Pattern.compile("[^0-9 /]");
     private static final Pattern SCOREBOARD_CHARACTERS = Pattern.compile("[^a-z A-Z:0-9_/'.!§\\[\\]❤]");
@@ -75,7 +79,11 @@ public class TextUtils {
      * @return Stripped Text
      */
     public static String stripUsername(String input) {
-        return trimWhitespaceAndResets(stripIcons(stripColor((input))));
+        return trimWhitespaceAndResets(stripIcons(stripColor(stripPrefix((input)))));
+    }
+
+    public static String stripPrefix(String input) {
+        return STRIP_PREFIX_PATTERN.matcher(input).replaceAll("");
     }
 
     /**
@@ -434,5 +442,40 @@ public class TextUtils {
             }
         }
         return builder.toString();
+    }
+    /**
+     * Recursively performs an action upon a chat component and its siblings
+     * This code is adapted from Skytils
+     * <p>
+     * https://github.com/Skytils/SkytilsMod/commit/35b1fbed1613f07bd422c61dbe3d261218b8edc6
+     * <p>
+     * I, Sychic, the author of this code grant usage under the terms of the MIT License.
+     * @param chatComponent root chat component
+     * @param action action to be performed
+     * @author Sychic
+     */
+    public static void transformAllChatComponents(IChatComponent chatComponent, Consumer<IChatComponent> action) {
+        action.accept(chatComponent);
+        for (IChatComponent sibling : chatComponent.getSiblings()) {
+            transformAllChatComponents(sibling, action);
+        }
+    }
+
+    /**
+     * Recursively searches for a chat component to transform based on a given Predicate.
+     *
+     * Important to note that this function will stop on the first successful transformation, unlike {@link #transformAllChatComponents(IChatComponent, Consumer)}
+     * @param chatComponent root chat component
+     * @param action predicate that transforms a component and reports a successful transformation
+     * @return Whether any transformation occurred
+     */
+    public static boolean transformAnyChatComponent(IChatComponent chatComponent, Predicate<IChatComponent> action) {
+        if(action.test(chatComponent))
+            return true;
+        for (IChatComponent sibling : chatComponent.getSiblings()) {
+            if(transformAnyChatComponent(sibling, action))
+                return true;
+        }
+        return false;
     }
 }

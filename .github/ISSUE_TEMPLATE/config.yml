@@ -5,6 +5,9 @@
 blank_issues_enabled: false
 
 contact_links:
-  - name: Community Discord
+  - name: Suggestions
     url: https://discord.gg/zWyr3f5GXz
-    about: The Discord server is the place to go for news, discussions, support, and suggestions.
+    about: Please submit suggestions on our Discord server.
+  - name: Support
+    url: https://discord.gg/zWyr3f5GXz
+    about: Please join our Discord server and describe your issue in `🙋sba-support-and-chat`.
