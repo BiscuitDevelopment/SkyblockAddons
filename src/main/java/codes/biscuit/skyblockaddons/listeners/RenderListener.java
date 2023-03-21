@@ -43,10 +43,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityArmorStand;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.monster.EntityCaveSpider;
-import net.minecraft.entity.monster.EntityEnderman;
-import net.minecraft.entity.monster.EntitySpider;
-import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -117,6 +114,7 @@ public class RenderListener {
     private static EntityCaveSpider caveSpider;
     private static EntityWolf sven;
     private static EntityEnderman enderman;
+    private static EntityBlaze inferno;
 
     private final SkyblockAddons main = SkyblockAddons.getInstance();
 
@@ -1550,6 +1548,15 @@ public class RenderListener {
             colorByRarity = config.isEnabled(Feature.ENDERMAN_COLOR_BY_RARITY);
             textMode = config.isEnabled(Feature.ENDERMAN_TEXT_MODE);
             slayerBoss = SlayerBoss.VOIDGLOOM;
+        } else if (feature == Feature.INFERNO_SLAYER_TRACKER) {
+            if (buttonLocation == null && config.isEnabled(Feature.HIDE_WHEN_NOT_IN_CRIMSON) &&
+                    (quest != EnumUtils.SlayerQuest.INFERNO_DEMONLORD || (location != Location.CRIMSON_ISLE && location != Location.STRONGHOLD && location != Location.SMOLDERING_TOMB && location != Location.THE_WASTELAND))) {
+                return;
+            }
+
+            colorByRarity = config.isEnabled(Feature.INFERNO_COLOR_BY_RARITY);
+            textMode = config.isEnabled(Feature.INFERNO_TEXT_MODE);
+            slayerBoss = SlayerBoss.INFERNO;
         } else {
             return;
         }
@@ -1636,6 +1643,9 @@ public class RenderListener {
             } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
                 entityRenderY = 25;
                 textCenterX = 20;
+            } else if (feature == Feature.INFERNO_SLAYER_TRACKER) {
+                entityRenderY = 25;
+                textCenterX = 20;
             } else {
                 entityRenderY = 36;
                 textCenterX = 15;
@@ -1716,6 +1726,16 @@ public class RenderListener {
                 GlStateManager.scale(.7, .7, 1);
                 drawEntity(enderman, (x + 15) / .7F, (y + 51) / .7F, -30);
                 GlStateManager.scale(1 / .7, 1 / .7, 1);
+
+            } else if (feature == Feature.INFERNO_SLAYER_TRACKER) {
+                if (inferno == null) {
+                    inferno = new EntityBlaze(Utils.getDummyWorld());
+                    inferno.setOnFire(true);
+
+                }
+                GlStateManager.color(1, 1, 1, 1);
+                inferno.ticksExisted = (int) main.getNewScheduler().getTotalTicks();
+                drawEntity(inferno, x + 15, y + 53, -15);
 
             } else {
                 if (sven == null) {
