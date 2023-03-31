@@ -72,7 +72,8 @@ public class Utils {
     /**
      * "Skyblock" as shown on the scoreboard title in English, Chinese Simplified, Traditional Chinese.
      */
-    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK", "\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58");
+    private static final Set<String> SKYBLOCK_IN_ALL_LANGUAGES = Sets.newHashSet("SKYBLOCK", "\u7A7A\u5C9B\u751F\u5B58", "\u7A7A\u5CF6\u751F\u5B58", 
+                                                                                 "SKIBLOCK"); // April Fools from Skyblock Devs 2023
 
     /**
      * Matches the server ID (mini##/Mega##) line on the Skyblock scoreboard
