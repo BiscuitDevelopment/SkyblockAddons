@@ -178,6 +178,7 @@
     "chromaSaturation": "רווית הChroma",
     "chromaBrightness": "עוצמת הבהירות של הChroma",
     "useNewChromaEffect": "השתמש באפקט הChroma החדש",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "הצג כלי עזר בExperimentation Table",
     "drillFuelBar": "בר דלק המקדח",
     "drillFuelNumber": "כמות דלק מקדחה",

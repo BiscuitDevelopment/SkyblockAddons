@@ -178,6 +178,7 @@
     "chromaSaturation": "Zasićenost kroma",
     "chromaBrightness": "Svjetloća krome",
     "useNewChromaEffect": "Koristite novi Chroma Effect",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Pokaži savjete o tablicama za eksperimentiranje",
     "drillFuelBar": "Razina goriva bušilice",
     "drillFuelNumber": "Razina goriva bušilice",

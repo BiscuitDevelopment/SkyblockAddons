@@ -178,6 +178,7 @@
     "chromaSaturation": "Színátmenet telítettség",
     "chromaBrightness": "Színátmente világosság",
     "useNewChromaEffect": "Új színátmenet hatás használata",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Experimentation Table Tooltip Mutató",
     "drillFuelBar": "Drill üzemanyag jelző",
     "drillFuelNumber": "Drill üzemanyag szám",

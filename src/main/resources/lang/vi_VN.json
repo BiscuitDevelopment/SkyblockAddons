@@ -178,6 +178,7 @@
     "chromaSaturation": "Độ nét sắc độ",
     "chromaBrightness": "Độ sáng sắc độ",
     "useNewChromaEffect": "Dùng hiệu ứng sắc độ mới",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Hiện đáp án Experimentation Table",
     "drillFuelBar": "Thanh nguyên liệu của Drill",
     "drillFuelNumber": "Số nguyên liệu của Drill",

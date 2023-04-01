@@ -178,6 +178,7 @@
     "chromaSaturation": "Κορεσμός χρώματος",
     "chromaBrightness": "Φωτεινότητα Chroma",
     "useNewChromaEffect": "Χρησιμοποιήστε το νέο εφέ Χρωματισμού",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Εμφάνιση συμβουλών εργαλείου πίνακα πειραματισμού",
     "drillFuelBar": "Δράπανο Fuel Bar",
     "drillFuelNumber": "Αριθμός καυσίμου τρυπανιών",

@@ -178,6 +178,7 @@
     "chromaSaturation": "Chroma Saturashun",
     "chromaBrightness": "Chroma Brightnes",
     "useNewChromaEffect": "Use New Chroma Effect",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Show Experimentashun Table Tooltips",
     "drillFuelBar": "Drill Fuel Bar",
     "drillFuelNumber": "Drill Fuel Numbr",

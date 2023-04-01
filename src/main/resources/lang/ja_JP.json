@@ -178,6 +178,7 @@
     "chromaSaturation": "色変化の彩度",
     "chromaBrightness": "色変化の明度",
     "useNewChromaEffect": "新しい色変化の効果を使用",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Experimentation Tableでアイテム説明文を表示",
     "drillFuelBar": "Drill Fuelゲージ",
     "drillFuelNumber": "Drill Fuel数",

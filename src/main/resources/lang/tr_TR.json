@@ -178,6 +178,7 @@
     "chromaSaturation": "Chroma Doygunluğu",
     "chromaBrightness": "Chroma Parlaklığı",
     "useNewChromaEffect": "Yeni Chroma Efektini Kullan",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Experimentation Table İpuçlarını Göster",
     "drillFuelBar": "Drill Yakıt Barı",
     "drillFuelNumber": "Drill Yakıt Sayısı",

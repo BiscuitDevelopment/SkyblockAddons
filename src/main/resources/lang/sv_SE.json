@@ -178,6 +178,7 @@
     "chromaSaturation": "Mättnad",
     "chromaBrightness": "Ljusstyrka",
     "useNewChromaEffect": "Use New Chroma Effect",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Visa inforutor för experimentation table",
     "drillFuelBar": "Bränslemätare för drill",
     "drillFuelNumber": "Bränslenummer för drill",

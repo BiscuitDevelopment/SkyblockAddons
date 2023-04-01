@@ -178,6 +178,7 @@
     "chromaSaturation": "Chromaverzadiging",
     "chromaBrightness": "Chromahelderheid",
     "useNewChromaEffect": "Nieuw Chroma-effect gebruiken",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Experimentation Table-tooltips weergeven",
     "drillFuelBar": "Drill-brandstofbalk",
     "drillFuelNumber": "Drill-brandstofgetal",

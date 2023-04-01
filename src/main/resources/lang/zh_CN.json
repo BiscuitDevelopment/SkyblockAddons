@@ -178,6 +178,7 @@
     "chromaSaturation": "渐变色彩饱和度",
     "chromaBrightness": "渐变色彩亮度",
     "useNewChromaEffect": "使用新版渐变效果",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "启用 Experimentation Table 提示",
     "drillFuelBar": "Drill 燃料计量条",
     "drillFuelNumber": "Drill 燃料值",

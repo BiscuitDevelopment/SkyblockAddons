@@ -178,6 +178,7 @@
     "chromaSaturation": "Nasycenie koloru Chroma",
     "chromaBrightness": "Jasność koloru Chroma",
     "useNewChromaEffect": "Użyj nowego efektu Chroma",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Pokaż dymki w Experimentation Table",
     "drillFuelBar": "Pasek paliwa wiertła",
     "drillFuelNumber": "Tekst paliwa wiertła",
