@@ -42,7 +42,7 @@ public class FeatureTrackerQuest {
             Location.SHEPHERDS_KEEP, Location.OVERGROWN_MUSHROOM_CAVE, Location.JAKES_HOUSE, Location.TREASURE_HUNTER_CAMP);
 
     private static final Pattern TRACKED_ANIMAL_NAME_PATTERN = Pattern.compile("\\[Lv[0-9]+] (?<rarity>[a-zA-Z]+) (?<animal>[a-zA-Z]+) .*❤");
-    private static final Pattern TREVOR_FIND_ANIMAL_PATTERN = Pattern.compile("\\[NPC] Trevor The Trapper: You can find your [A-Z]+ animal near the [a-zA-Z ]+.");
+    private static final Pattern TREVOR_FIND_ANIMAL_PATTERN = Pattern.compile("\\[NPC] Trevor: You can find your [A-Z]+ animal near the [a-zA-Z ]+.");
     private static final Pattern ANIMAL_DIED_PATTERN = Pattern.compile("Your mob died randomly, you are rewarded [0-9]+ pelts?.");
     private static final Pattern ANIMAL_KILLED_PATTERN = Pattern.compile("Killing the animal rewarded you [0-9]+ pelts?.");
 
@@ -190,7 +190,7 @@ public class FeatureTrackerQuest {
         if (SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_THE_TRAPPER_FEATURES) &&
                 !e.isCanceled() && SkyblockAddons.getInstance().getConfigValues().isEnabled(Feature.TREVOR_SHOW_QUEST_COOLDOWN) &&
                 CooldownManager.isOnCooldown("TREVOR_THE_TRAPPER_RETURN")) {
-            Pattern p = Pattern.compile("Trevor The Trapper");
+            Pattern p = Pattern.compile("Trevor");
             String s = TextUtils.stripColor(entity.getCustomNameTag());
             if (p.matcher(s).matches()) {
                 String str = Utils.MESSAGE_PREFIX_SHORT + Translations.getMessage("messages.worldRenderedCooldownTime",
