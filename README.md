@@ -24,9 +24,22 @@
 
 A Minecraft Forge mod with many features to make your Hypixel Skyblock experience better.
 
+⚠️ This project has reached end of life and will not receive further updates.
+
 ```
-Sorry, development is slow and will be for the foreseeable future since I quit SB and I'm also busy with
-other things. Thank you for your understanding.
+Hello everyone,
+
+Skyblock Addons has reached end of life. No further updates will be released, but support will remain available.
+
+I am sorry about the slow pace of communication and mod updates during the past year. I stopped playing Skyblock over a year ago. Combined with IRL circumstances and Biscuit’s absence, I lost motivation to work on the mod.
+
+Thank you to all the contributors, the Discord staff, and the translation team! It was amazing working with all of you over the past three years and the mod wouldn’t be what it is today without you.
+
+Thank you to everyone who used the mod, reported bugs, and suggested new features! I’m very grateful to have been part of something that has helped so many.
+
+I will no longer work on SBA, but I’ll still be around to chat and help out with support on occasion. Please ping me if you have questions.
+
+Lastly, for the Patrons still out there, please cancel your subscriptions.
 
 - TirelessTraveler
 ```
