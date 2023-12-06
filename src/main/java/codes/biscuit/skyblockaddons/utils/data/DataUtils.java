@@ -110,8 +110,6 @@ public class DataUtils {
 
     private static String path;
 
-    private static LocalizedStringsRequest localizedStringsRequest = null;
-
     private static ScheduledTask languageLoadingTask = null;
 
     static {
@@ -312,37 +310,6 @@ public class DataUtils {
             handleLocalFileReadException(path,ex);
         }
 
-        if (USE_ONLINE_DATA && loadOnlineStrings && language != Language.ENGLISH) {
-            if (localizedStringsRequest != null) {
-                HttpRequestFutureTask<JsonObject> futureTask = localizedStringsRequest.getFutureTask();
-                if (!futureTask.isDone()) {
-                    futureTask.cancel(false);
-                }
-            } else if (languageLoadingTask != null) {
-                languageLoadingTask.cancel();
-            }
-
-            localizedStringsRequest = new LocalizedStringsRequest(language);
-            localizedStringsRequest.execute(futureRequestExecutionService);
-            languageLoadingTask = main.getNewScheduler().scheduleLimitedRepeatingTask(new SkyblockRunnable() {
-                @Override
-                public void run() {
-                    if (localizedStringsRequest != null) {
-                        if (localizedStringsRequest.isDone()) {
-                            try {
-                                loadOnlineFile(localizedStringsRequest);
-                            } catch (InterruptedException | ExecutionException | NullPointerException | IllegalArgumentException e) {
-                                handleOnlineFileLoadException(Objects.requireNonNull(localizedStringsRequest), e);
-                            }
-                            cancel();
-                        }
-                    } else {
-                        cancel();
-                    }
-                }
-            }, 10, 20, 8);
-        }
-
         // logger.info("Finished loading localized strings.");
     }
 
@@ -406,9 +373,6 @@ public class DataUtils {
 
     private static void registerRemoteRequests() {
         remoteRequests.add(new OnlineDataRequest());
-        if (SkyblockAddons.getInstance().getConfigValues().getLanguage() != Language.ENGLISH) {
-            remoteRequests.add(new LocalizedStringsRequest(SkyblockAddons.getInstance().getConfigValues().getLanguage()));
-        }
         remoteRequests.add(new EnchantedItemListsRequest());
         remoteRequests.add(new ContainersRequest());
         remoteRequests.add(new CompactorItemsRequest());
