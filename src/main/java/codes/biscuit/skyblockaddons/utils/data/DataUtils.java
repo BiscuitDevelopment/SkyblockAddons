@@ -121,7 +121,8 @@ public class DataUtils {
         }
         connectionManager.setMaxTotal(5);
         connectionManager.setDefaultMaxPerRoute(5);
-        registerRemoteRequests();
+        // Disable online fetching due to EOL
+        // registerRemoteRequests();
     }
 
     //TODO: Migrate all data file loading to this class
@@ -406,9 +407,9 @@ public class DataUtils {
 
     private static void registerRemoteRequests() {
         remoteRequests.add(new OnlineDataRequest());
-        if (SkyblockAddons.getInstance().getConfigValues().getLanguage() != Language.ENGLISH) {
+/*        if (SkyblockAddons.getInstance().getConfigValues().getLanguage() != Language.ENGLISH) {
             remoteRequests.add(new LocalizedStringsRequest(SkyblockAddons.getInstance().getConfigValues().getLanguage()));
-        }
+        }*/
         remoteRequests.add(new EnchantedItemListsRequest());
         remoteRequests.add(new ContainersRequest());
         remoteRequests.add(new CompactorItemsRequest());

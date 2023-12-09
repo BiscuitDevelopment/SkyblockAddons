@@ -141,7 +141,7 @@ public class EnchantmentSettingsGui extends SettingsGui {
         if (abstractButton instanceof ButtonLanguage) {
             Language language = ((ButtonLanguage) abstractButton).getLanguage();
             main.getConfigValues().setLanguage(language);
-            DataUtils.loadLocalizedStrings(true);
+            DataUtils.loadLocalizedStrings(false);
             main.setKeyBindingDescriptions();
             returnToGui();
         } else if (abstractButton instanceof ButtonSwitchTab) {
