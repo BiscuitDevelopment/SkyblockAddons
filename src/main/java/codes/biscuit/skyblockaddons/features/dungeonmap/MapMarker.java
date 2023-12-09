@@ -15,7 +15,7 @@ public class MapMarker {
     private static final SkyblockAddons main = SkyblockAddons.getInstance();
     private static final Logger logger = SkyblockAddons.getLogger();
 
-    /** The icon type of this map marker (https://minecraft.fandom.com/wiki/Map#Map_icons) */
+    /** The icon type of this map marker (https://minecraft.wiki/w/Map#Map_icons) */
     private byte iconType;
     private float x;
     private float z;
