@@ -60,9 +60,9 @@ git checkout -b development --track origin/development
     > so the access transformers are applied to the source code!
     > 
     > The build process produces three artifacts:
-    > - SkyblockAddons-1.7.2.jar (mod code and resources)
-    > - SkyblockAddons-1.7.2-all.jar (above + shaded libraries)
-    > - SkyblockAddons-1.7.2-for-MC-1.8.9.jar (above + remapped for obfuscated environment)
+    > - SkyblockAddons-1.7.3.jar (mod code and resources)
+    > - SkyblockAddons-1.7.3-all.jar (above + shaded libraries)
+    > - SkyblockAddons-1.7.3-for-MC-1.8.9.jar (above + remapped for obfuscated environment)
     > 
 2. (Optional) Run the **Minecraft Forge** client
     - Using IntelliJ IDEA
