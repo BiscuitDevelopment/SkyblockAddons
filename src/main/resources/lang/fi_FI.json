@@ -178,6 +178,7 @@
     "chromaSaturation": "Väriefektin kylläisyys",
     "chromaBrightness": "Väriefektin kirkkaus",
     "useNewChromaEffect": "Käytä uutta väriefektiä",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Näytä Experimentation-pöydän esineiden tiedot",
     "drillFuelBar": "Poran polttoainetankki",
     "drillFuelNumber": "Poran polttoainearvo",

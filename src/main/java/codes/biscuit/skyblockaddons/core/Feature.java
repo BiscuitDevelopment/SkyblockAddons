@@ -237,7 +237,10 @@ public enum Feature {
     CHROMA_SIZE(-1, "settings.chromaSize", null, false),
     CHROMA_SATURATION(-1, "settings.chromaSaturation", null, false),
     CHROMA_BRIGHTNESS(-1, "settings.chromaBrightness", null, false),
-    TURN_ALL_FEATURES_CHROMA(-1, "settings.turnAllFeaturesChroma", null, false);
+    TURN_ALL_FEATURES_CHROMA(-1, "settings.turnAllFeaturesChroma", null, false),
+
+    IGNORE_SKYBLOCK_DETECTION(221, "settings.ignoreSkyblockDetection", true);
+
 
 
     /**
@@ -283,7 +286,7 @@ public enum Feature {
      */
     @Getter
     private static final Set<Feature> generalTabFeatures = new LinkedHashSet<>(Arrays.asList(TEXT_STYLE, WARNING_TIME, CHROMA_SPEED, CHROMA_MODE,
-            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT, DEVELOPER_MODE));
+            CHROMA_SIZE, TURN_ALL_FEATURES_CHROMA, CHROMA_SATURATION, CHROMA_BRIGHTNESS, USE_NEW_CHROMA_EFFECT, DEVELOPER_MODE, IGNORE_SKYBLOCK_DETECTION));
 
     private static final int ID_AT_PREVIOUS_UPDATE = 199;
 

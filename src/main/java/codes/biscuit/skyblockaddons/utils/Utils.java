@@ -253,11 +253,16 @@ public class Utils {
 
             // Check title for skyblock
             String strippedScoreboardTitle = ScoreboardManager.getStrippedScoreboardTitle();
-            for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
-                if (strippedScoreboardTitle.startsWith(skyblock)) {
-                    foundSkyblockTitle = true;
-                    break;
+            if (main.getConfigValues().isDisabled(Feature.IGNORE_SKYBLOCK_DETECTION)) {
+                for (String skyblock : SKYBLOCK_IN_ALL_LANGUAGES) {
+                    if (strippedScoreboardTitle.startsWith(skyblock)) {
+                        foundSkyblockTitle = true;
+                        break;
+                    }
                 }
+            }
+            else {
+                foundSkyblockTitle = true;
             }
 
             if (foundSkyblockTitle) {

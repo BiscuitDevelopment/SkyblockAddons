@@ -178,6 +178,7 @@
     "chromaSaturation": "Chroma-Sättigung",
     "chromaBrightness": "Chroma-Helligkeit",
     "useNewChromaEffect": "Nutze den neuen Chroma-Effekt",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Zeige Tooltips zum Experimentiertisch",
     "drillFuelBar": "Bohrtreibstoffleiste",
     "drillFuelNumber": "Bohrer Treibstoff Nummer",

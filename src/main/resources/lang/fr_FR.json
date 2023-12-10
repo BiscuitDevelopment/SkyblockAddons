@@ -178,6 +178,7 @@
     "chromaSaturation": "Saturation Chroma",
     "chromaBrightness": "Luminosité Chroma",
     "useNewChromaEffect": "Utiliser le nouveau effet Chroma",
+    "ignoreSkyblockDetection" : "Ignorer la détection Skyblock via le ScoreBoard",
     "showExperimentationTableTooltips": "Afficher l'aide pour l'Experimentation Table",
     "drillFuelBar": "Barre de carburant du Drill",
     "drillFuelNumber": "Quantité de carburant du Drill",

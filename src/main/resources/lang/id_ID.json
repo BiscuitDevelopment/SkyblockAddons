@@ -178,6 +178,7 @@
     "chromaSaturation": "Saturasi Kroma",
     "chromaBrightness": "Kecerahan Kroma",
     "useNewChromaEffect": "Pakai Efek Kroma Baru",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Perlihatkan Tooltips Experimentation Table",
     "drillFuelBar": "Bar Bahan Bakar Drill",
     "drillFuelNumber": "Jumlah Bahan Bakar Drill",

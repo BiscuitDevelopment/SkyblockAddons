@@ -178,6 +178,7 @@
     "chromaSaturation": "Насыщенность Chroma",
     "chromaBrightness": "Яркость Chroma",
     "useNewChromaEffect": "Использовать новый эффект Chroma",
+    "ignoreSkyblockDetection" : "Ignore Skyblock ScoreBoard based detection",
     "showExperimentationTableTooltips": "Показывать описания предметов в Experimentation Table",
     "drillFuelBar": "Полоса топлива дрели",
     "drillFuelNumber": "Количество топлива в дрели",
