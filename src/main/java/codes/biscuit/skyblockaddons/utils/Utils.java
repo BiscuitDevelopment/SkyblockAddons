@@ -89,7 +89,7 @@ public class Utils {
     /**
      * Matches the active slayer quest type line on the Skyblock scoreboard
      */
-    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster|Voidgloom Seraph) (?<level>[IV]+)");
+    private static final Pattern SLAYER_TYPE_REGEX = Pattern.compile("(?<type>Tarantula Broodfather|Revenant Horror|Sven Packmaster|Voidgloom Seraph|Inferno Demonlord) (?<level>[IV]+)");
     /**
      * Matches the active slayer quest progress line on the Skyblock scoreboard
      */
