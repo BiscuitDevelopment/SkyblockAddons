@@ -15,6 +15,7 @@ public enum EssenceType {
     GOLD,
     DIAMOND,
     ICE;
+    CRIMSON;
 
     private String niceName;
     @Getter private ResourceLocation resourceLocation;
