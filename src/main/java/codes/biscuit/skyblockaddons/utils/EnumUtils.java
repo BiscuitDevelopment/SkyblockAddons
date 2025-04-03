@@ -215,6 +215,7 @@ public class EnumUtils {
         CHANGE_DUNGEON_MAP_ZOOM_WITH_KEYBOARD("settings.changeDungeonMapZoomWithKeyboard", 215),
         SHOW_PROFILE_TYPE( "settings.showProfileType", 219),
         SHOW_NETHER_FACTION("settings.showNetherFaction", 220),
+        HIDE_WHEN_NOT_IN_CRIMSON("settings.hideWhenNotDoingQuest", 221),
         ZEALOT_SPAWN_AREAS_ONLY("settings.zealotSpawnAreasOnly", -1),
 
         DISCORD_RP_STATE(0),
@@ -294,7 +295,8 @@ public class EnumUtils {
         TIMOLOB("TimoLob", "github.com/TimoLob", Feature.BROOD_MOTHER_ALERT),
         NOPOTHEGAMER("NopoTheGamer", "twitch.tv/nopothegamer", Feature.BAL_BOSS_ALERT),
         CATFACE("CatFace","github.com/CattoFace",Feature.PLAYER_SYMBOLS_IN_CHAT),
-        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.CRIMSON_ARMOR_ABILITY_STACKS, Feature.HIDE_TRUE_DEFENSE);
+        HANNIBAL2("Hannibal2", "github.com/hannibal00212", Feature.CRIMSON_ARMOR_ABILITY_STACKS, Feature.HIDE_TRUE_DEFENSE),
+        JASON54("jason54jg", "github.com/jason54jg", Feature.INFERNO_SLAYER_TRACKER, Feature.INFERNO_COLOR_BY_RARITY, Feature.INFERNO_TEXT_MODE);
 
         private final Set<Feature> features;
         private final String author;

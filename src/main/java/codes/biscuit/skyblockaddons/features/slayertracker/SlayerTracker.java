@@ -43,7 +43,8 @@ public class SlayerTracker {
         return main.getConfigValues().isEnabled(Feature.REVENANT_SLAYER_TRACKER) ||
                 main.getConfigValues().isEnabled(Feature.TARANTULA_SLAYER_TRACKER) ||
                 main.getConfigValues().isEnabled(Feature.SVEN_SLAYER_TRACKER) ||
-                main.getConfigValues().isEnabled(Feature.VOIDGLOOM_SLAYER_TRACKER);
+                main.getConfigValues().isEnabled(Feature.VOIDGLOOM_SLAYER_TRACKER) ||
+                main.getConfigValues().isEnabled(Feature.INFERNO_SLAYER_TRACKER);
     }
 
     /**

@@ -67,7 +67,30 @@ public enum SlayerDrop {
     ETHERWARP_MERGER("Etherwarp Merger", "ETHERWARP_MERGER", ItemRarity.EPIC, "209e7834-3376-36e1-84eb-da13ef083836", "3e5314f4919691ccbf807743dae47ae45ac2e3ff08f79eecdd452fe602eff7f6"),
     JUDGEMENT_CORE("Judgement Core", "JUDGEMENT_CORE", ItemRarity.LEGENDARY, "ed896594-8655-3212-933e-c67bca300084", "2f3ddd7f81089c85b26ed597675519f03a1dcd6d1713e0cfc66afb8743cbe0"),
     ENCHANT_RUNE("Enchant Rune", "RUNE", "ENCHANT", ItemRarity.LEGENDARY, "1a34ecd4-6a5f-35aa-b5d3-617be4684d9a", "59ffacec6ee5a23d9cb24a2fe9dc15b24488f5f71006924560bf12148421ae6d"),
-    ENDER_SLAYER_SEVEN("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "ender_slayer", 7);
+    ENDER_SLAYER_SEVEN("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.RARE, "ender_slayer", 7),
+
+    // Blaze Drops
+    DERELICT_ASHE(Items.gunpowder, "Derelict Ashe", "DERELICT_ASHE", ItemRarity.UNCOMMON, true),
+    LAVATEARS_RUNE("Lavatears Rune I", "RUNE", "LAVATEARS", ItemRarity.LEGENDARY, "9a960dcb-e362-3642-bf8e-510574a20cd7", "4f01ec6331a3bc30a8204ec56398d08ca38788556bca9b81d776f6238d567367"),
+    WISP_ICE_FLAVORED_WATER(Items.potionitem, "Wisp's Ice-Flavored Water I Splash Potion", "POTION", ItemRarity.COMMON),
+    BUNDLE_OF_MAGMA("Bundle of Magma Arrows", "ARROW_BUNDLE_MAGMA", ItemRarity.EPIC, "17c69624-a342-3d09-a976-d0c155aaafec", "68392651a1a4cbb5982b13ace0829a75b98c11e13b68868fe349aea24014ffbd"),
+    MANA_DISINTEGRATOR("Mana Disintegrator", "MANA_DISINTEGRATOR", ItemRarity.RARE, "b9d84e23-a8e5-3992-bace-b6f3b32e34d8", "818f83eb64f438e3f6ae3a5c2dea8ed10303bad85ac34a798659a275aa096506"),
+    SCORCHED_BOOKS("Scorched Books", "SCORCHED_BOOKS", ItemRarity.MYTHIC, "d15a5bd9-33f1-3336-9679-9d4887b84e9c", "46ee7e906686abd5ec192b079314c45f1fb8171d9e13caa4cf9f63afc2263fd5"),
+    KELVIN_INVERTER("Kelvin Inverter", "KELVIN_INVERTER", ItemRarity.RARE, "be00aa7f-9080-3862-8d7d-2c6e4cbfd7c8", "b247f2658aebbb2766046624da85ee04cd2b18a8252045d4260bd81d62c7b6d8"),
+    BLAZE_ROD_DISTILLATE("Blaze Rod Distillate", "BLAZE_ROD_DISTILLATE", ItemRarity.RARE, "8056c161-527f-3c65-87c7-6c6240874d2e", "41e813a3a380e3eb201c24b9661f6edb39bdf42a88989f81a90f771997d6f5cd"),
+    GLOWSTONE_DISTILLATE("Glowstone Distillate", "GLOWSTONE_DUST_DISTILLATE", ItemRarity.RARE, "2f04f258-da20-330c-a415-f03d3b8ffd91", "18a2be157f2380931d697f1169af4eac09cfddaa4e052b53d76ef1cfd19cdaf"),
+    MAGMA_CREAM_DISTILLATE("Magma Cream Distillate", "MAGMA_CREAM_DISTILLATE", ItemRarity.RARE, "c95d296c-9b74-3f50-b97e-2108f6f86e6a", "41e813a3a380e3eb201c24b9661f6edb39bdf42a88989f81a90f771997d6f5cd"),
+    NETHER_WART_DISTILLATE("Nether Wart Distillate", "NETHER_STALK_DISTILLATE", ItemRarity.RARE, "57e7938b-2d98-3ede-86fb-48ba0d3deb4e", "7aff47f07df632bdafbf0b4ab8f3227d1f94c89aefaa28c5a3463b4ca5bfe6c5"),
+    GABAGOOL_DISTILLATE("Gabagool Distillate", "CRUDE_GABAGOOL_DISTILLATE", ItemRarity.RARE, "e33f8341-3ece-364c-a26b-a1d3b460645f", "595231147189ac4b9f53487ce35ba0205bf377f3986c0e5ceb942e77f1c39cc"),
+    SCORCHED_POWER_CRYSTAL("Scorched Power Crystal", "SCORCHED_POWER_CRYSTAL", ItemRarity.LEGENDARY, "3c4d9142-a59b-4e72-8f48-5e48b1650163", "2cf0ccf5a5f97097262e773bbf65c4d7d9a39938015bf00de4918620f034f9b0"),
+    ARCHFIEND_DICE("Archfiend Dice", "ARCHFIEND_DICE", ItemRarity.EPIC, "9c3c19b2-84e6-3eb6-8aec-450e133a569a", "6e22c298e7c6336af17909ac1f1ee6834b58b1a3cc99aba255ca7eaeb476173"),
+    FIRE_ASPECT("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.COMMON, "fire_aspect", 3),
+    FIERY_BURST_RUNE("Fiery Burst Rune I", "RUNE", "FIERY_BURST", ItemRarity.LEGENDARY, "983fd05e-d9e2-3dbc-9185-28e3138ccb34", "8d620e4e3d3abfed6ad81a58a56bcd085d9e9efc803cabb21fa6c9e3969e2d2e"),
+    FLAWED_OPAL_GEMSTONE("Flawed Opal Gemstone", "FLAWED_OPAL_GEM", ItemRarity.UNCOMMON, "f1fa016a-e25d-3e5b-90c5-b9928ecf14c4", "eadc3bcdd7c701b63f8b8b4a96e429316a08388669d9a98c1a98791729b961df"),
+    DUPLEX("Enchanted Book", "ENCHANTED_BOOK", ItemRarity.COMMON, "ultimate_reiterate", 1),
+    HIGH_CLASS_ARCHFIEND_DICE("High Class Archfiend Dice", "HIGH_CLASS_ARCHFIEND_DICE", ItemRarity.LEGENDARY, "9c3c19b2-84e6-3eb6-8aec-450e133a569a"/*change*/, "915f7c313bca9c2f958e68ab14ab393867d67503affff8f20cb13fbe917fd31"),
+    WILSON_ENGINEERING_PLANS(Items.paper, "Wilson's Engineering Plans", "WILSON_ENGINEERING_PLANS", ItemRarity.LEGENDARY, true),
+    SUBZERO_INVERTER("Subzero Inverter", "SUBZERO_INVERTER", ItemRarity.LEGENDARY, "5ab20327-b51e-36b3-b65a-a772bc225067", "1cf677ca6209961e81beeb3aa274e0ec8d21d36778e5a94b80b1d8425b04ac6e");
 
     @Getter
     private final String skyblockID;
@@ -185,6 +208,27 @@ public enum SlayerDrop {
         internalItemTranslations.put("judgementCore", "Judgement Core");
         internalItemTranslations.put("enchantRune", "Enchant Rune");
         internalItemTranslations.put("enderSlayerSeven", "Ender Slayer 7");
+        internalItemTranslations.put("derelictAshe", "Derelict Ashe");
+        internalItemTranslations.put("lavatearsRune", "Lavatears Rune");
+        internalItemTranslations.put("wispIceFlavored", "Wisp's Ice-Flavored Water");
+        internalItemTranslations.put("bundleOfMagmaArrows", "Bundle of Magma Arrows");
+        internalItemTranslations.put("manaDisintegrator", "Mana Disintegrator");
+        internalItemTranslations.put("scorchedBooks", "Scorched Books");
+        internalItemTranslations.put("kelvinInverter", "Kelvin Inverter");
+        internalItemTranslations.put("blazeRodDisillate", "Blaze Rod Distillate");
+        internalItemTranslations.put("glowstoneDistillate", "Glowstone Distillate");
+        internalItemTranslations.put("magmaCreamDistillate", "Magma Cream Distillate");
+        internalItemTranslations.put("netherWartDistillate", "Nether Wart Distillate");
+        internalItemTranslations.put("gabagoolDistillate", "Gabagool Distillate");
+        internalItemTranslations.put("scorchedPowerCrystal", "Scorched Power Crystal");
+        internalItemTranslations.put("archfiendDice", "Archfiend Dice");
+        internalItemTranslations.put("fireAspect", "Fire Aspect 3");
+        internalItemTranslations.put("fieryBurstRune", "Fiery Burst Rune");
+        internalItemTranslations.put("flawedOpalGemstone", "Flawed Opal Gemstone");
+        internalItemTranslations.put("duplex", "Duplex 1");
+        internalItemTranslations.put("highClassArchfiendDice", "High Class Archfiend Dice");
+        internalItemTranslations.put("wilsonEngineeringPlans", "Wilson's Engineering Plans");
+        internalItemTranslations.put("subzeroInverter", "Subzero Inverter");
     }
 
     public String getDisplayName() {

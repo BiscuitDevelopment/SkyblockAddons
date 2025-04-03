@@ -416,6 +416,9 @@ public class SettingsGui extends GuiScreen {
             } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
                 settingFeature = Feature.ENDERMAN_COLOR_BY_RARITY;
 
+            } else if (feature == Feature.INFERNO_SLAYER_TRACKER) {
+                settingFeature = Feature.INFERNO_COLOR_BY_RARITY;
+                
             } else if (feature == Feature.DRAGON_STATS_TRACKER) {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_COLOR_BY_RARITY;
             }
@@ -439,6 +442,9 @@ public class SettingsGui extends GuiScreen {
 
             } else if (feature == Feature.VOIDGLOOM_SLAYER_TRACKER) {
                 settingFeature = Feature.ENDERMAN_TEXT_MODE;
+
+            } else if (feature == Feature.INFERNO_SLAYER_TRACKER) {
+                settingFeature = Feature.INFERNO_TEXT_MODE;
 
             } else if (feature == Feature.DRAGON_STATS_TRACKER_TEXT_MODE) {
                 settingFeature = Feature.DRAGON_STATS_TRACKER_TEXT_MODE;

@@ -223,7 +223,8 @@
     "hideTrueDefense": "Hide True Defense",
     "showProfileType": "Show Profile Type",
     "showNetherFaction": "Show Nether Faction",
-    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas"
+    "zealotSpawnAreasOnly": "Show Only in Zealot Spawn Areas",
+    "infernoSlayerTracker": "Slayer Tracker - Inferno/Blaze"
   },
   "messages": {
     "enchants": "Enchants",
